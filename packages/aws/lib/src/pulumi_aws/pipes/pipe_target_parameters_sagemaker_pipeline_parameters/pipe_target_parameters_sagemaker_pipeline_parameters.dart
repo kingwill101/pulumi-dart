@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipe_target_parameters_sagemaker_pipeline_parameters_pipeline_parameter/pipe_target_parameters_sagemaker_pipeline_parameters_pipeline_parameter.dart';
 
 class PipeTargetParametersSagemakerPipelineParameters {
@@ -16,7 +16,7 @@ class PipeTargetParametersSagemakerPipelineParameters {
     final map = <String, dynamic>{};
     final pipelineParametersValue = pipelineParameters;
     if (pipelineParametersValue != null) {
-      map['pipelineParameters'] = Input.encodeList<
+      map['pipelineParameters'] = pulumi.Input.encodeList<
               PipeTargetParametersSagemakerPipelineParametersPipelineParameter,
               Map<String, dynamic>>(
           pipelineParametersValue, (value) => value.toMap());
@@ -29,7 +29,7 @@ class PipeTargetParametersSagemakerPipelineParameters {
     return PipeTargetParametersSagemakerPipelineParameters(
       pipelineParameters: map['pipelineParameters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PipeTargetParametersSagemakerPipelineParametersPipelineParameter>(
               map['pipelineParameters'],
               (value) =>

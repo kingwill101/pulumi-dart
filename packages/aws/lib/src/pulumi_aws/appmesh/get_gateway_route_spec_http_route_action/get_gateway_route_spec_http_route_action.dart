@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_gateway_route_spec_http_route_action_rewrite/get_gateway_route_spec_http_route_action_rewrite.dart';
 import '../get_gateway_route_spec_http_route_action_target/get_gateway_route_spec_http_route_action_target.dart';
 
@@ -15,24 +15,27 @@ class GetGatewayRouteSpecHttpRouteAction {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['rewrites'] = Input.encodeList<
+    map['rewrites'] = pulumi.Input.encodeList<
         GetGatewayRouteSpecHttpRouteActionRewrite,
         Map<String, dynamic>>(rewrites, (value) => value.toMap());
-    map['targets'] = Input.encodeList<GetGatewayRouteSpecHttpRouteActionTarget,
+    map['targets'] = pulumi.Input.encodeList<
+        GetGatewayRouteSpecHttpRouteActionTarget,
         Map<String, dynamic>>(targets, (value) => value.toMap());
     return map;
   }
 
   factory GetGatewayRouteSpecHttpRouteAction.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttpRouteAction(
-      rewrites: Input.decodeList<GetGatewayRouteSpecHttpRouteActionRewrite>(
-          map['rewrites'],
-          (value) => GetGatewayRouteSpecHttpRouteActionRewrite.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      targets: Input.decodeList<GetGatewayRouteSpecHttpRouteActionTarget>(
-          map['targets'],
-          (value) => GetGatewayRouteSpecHttpRouteActionTarget.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      rewrites:
+          pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteActionRewrite>(
+              map['rewrites'],
+              (value) => GetGatewayRouteSpecHttpRouteActionRewrite.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      targets:
+          pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteActionTarget>(
+              map['targets'],
+              (value) => GetGatewayRouteSpecHttpRouteActionTarget.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

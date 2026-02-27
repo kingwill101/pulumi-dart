@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_replication_set_region/get_replication_set_region.dart';
 
 /// Result data returned by getReplicationSet.
@@ -53,10 +53,10 @@ class GetReplicationSetResult {
     map['id'] = id;
     map['lastModifiedBy'] = lastModifiedBy;
     map['region'] =
-        Input.encodeList<GetReplicationSetRegion, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetReplicationSetRegion, Map<String, dynamic>>(
             region, (value) => value.toMap());
     map['regions'] =
-        Input.encodeList<GetReplicationSetRegion, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetReplicationSetRegion, Map<String, dynamic>>(
             regions, (value) => value.toMap());
     map['status'] = status;
     map['tags'] = tags;
@@ -70,11 +70,11 @@ class GetReplicationSetResult {
       deletionProtected: map['deletionProtected'] as bool,
       id: map['id'] as String,
       lastModifiedBy: map['lastModifiedBy'] as String,
-      region: Input.decodeList<GetReplicationSetRegion>(
+      region: pulumi.Input.decodeList<GetReplicationSetRegion>(
           map['region'],
           (value) => GetReplicationSetRegion.fromMap(
               (value as Map).cast<String, dynamic>())),
-      regions: Input.decodeList<GetReplicationSetRegion>(
+      regions: pulumi.Input.decodeList<GetReplicationSetRegion>(
           map['regions'],
           (value) => GetReplicationSetRegion.fromMap(
               (value as Map).cast<String, dynamic>())),

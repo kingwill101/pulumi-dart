@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../asset_type_forms_input/asset_type_forms_input.dart';
 import '../asset_type_timeouts/asset_type_timeouts.dart';
 import 'asset_type_args.dart';
@@ -18,46 +18,46 @@ import 'asset_type_args.dart';
 /// ```sh
 /// $ pulumi import aws:datazone/assetType:AssetType example domain-id-12345678,example
 /// ```
-class AssetType extends CustomResource {
+class AssetType extends pulumi.CustomResource {
   /// The timestamp when the custom asset type was created.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// The user who created the custom asset type.
-  late final Output<String> createdBy;
+  late final pulumi.Output<String> createdBy;
 
   /// The description of the custom asset type.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The unique identifier of the Amazon DataZone domain where the custom asset type is being created.
-  late final Output<String> domainIdentifier;
+  late final pulumi.Output<String> domainIdentifier;
 
   /// The metadata forms that are to be attached to the custom asset type.
-  late final Output<List<AssetTypeFormsInput>?> formsInputs;
+  late final pulumi.Output<List<AssetTypeFormsInput>?> formsInputs;
 
   /// The name of the custom asset type.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The unique identifier of the Amazon DataZone project that owns the custom asset type.
   ///
   /// The following arguments are optional:
-  late final Output<String> owningProjectIdentifier;
+  late final pulumi.Output<String> owningProjectIdentifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The revision of the asset type.
-  late final Output<String> revision;
-  late final Output<AssetTypeTimeouts?> timeouts;
+  late final pulumi.Output<String> revision;
+  late final pulumi.Output<AssetTypeTimeouts?> timeouts;
 
   AssetType(
     String name, {
     AssetTypeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:datazone/assetType:AssetType',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createdAt = registerOutput<String>('createdAt');
     this.createdBy = registerOutput<String>('createdBy');

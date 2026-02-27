@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLocation.
 class GetLocationArgs {
   /// Code for the location to retrieve.
-  final Input<String> locationCode;
+  final pulumi.Input<String> locationCode;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetLocationArgs({
     required this.locationCode,
@@ -27,8 +27,8 @@ class GetLocationArgs {
 
   factory GetLocationArgs.fromMap(Map<String, dynamic> map) {
     return GetLocationArgs(
-      locationCode: Input.asInput<String>(map['locationCode']),
-      region: Input.asOptionalInput<String>(map['region']),
+      locationCode: pulumi.Input.asInput<String>(map['locationCode']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

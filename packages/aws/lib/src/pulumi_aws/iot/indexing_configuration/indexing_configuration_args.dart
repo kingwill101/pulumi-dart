@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../indexing_configuration_thing_group_indexing_configuration/indexing_configuration_thing_group_indexing_configuration.dart';
 import '../indexing_configuration_thing_indexing_configuration/indexing_configuration_thing_indexing_configuration.dart';
 
 /// The set of arguments for IndexingConfiguration.
 class IndexingConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Thing group indexing configuration. See below.
-  final Input<IndexingConfigurationThingGroupIndexingConfiguration>?
+  final pulumi.Input<IndexingConfigurationThingGroupIndexingConfiguration>?
       thingGroupIndexingConfiguration;
 
   /// Thing indexing configuration. See below.
-  final Input<IndexingConfigurationThingIndexingConfiguration>?
+  final pulumi.Input<IndexingConfigurationThingIndexingConfiguration>?
       thingIndexingConfiguration;
 
   IndexingConfigurationArgs({
@@ -32,14 +32,15 @@ class IndexingConfigurationArgs {
     final thingGroupIndexingConfigurationValue =
         thingGroupIndexingConfiguration;
     if (thingGroupIndexingConfigurationValue != null) {
-      map['thingGroupIndexingConfiguration'] = Input.mapOptionalInputValue<
-              IndexingConfigurationThingGroupIndexingConfiguration,
-              Map<String, dynamic>>(
-          thingGroupIndexingConfigurationValue, (value) => value.toMap());
+      map['thingGroupIndexingConfiguration'] =
+          pulumi.Input.mapOptionalInputValue<
+                  IndexingConfigurationThingGroupIndexingConfiguration,
+                  Map<String, dynamic>>(
+              thingGroupIndexingConfigurationValue, (value) => value.toMap());
     }
     final thingIndexingConfigurationValue = thingIndexingConfiguration;
     if (thingIndexingConfigurationValue != null) {
-      map['thingIndexingConfiguration'] = Input.mapOptionalInputValue<
+      map['thingIndexingConfiguration'] = pulumi.Input.mapOptionalInputValue<
               IndexingConfigurationThingIndexingConfiguration,
               Map<String, dynamic>>(
           thingIndexingConfigurationValue, (value) => value.toMap());
@@ -49,11 +50,11 @@ class IndexingConfigurationArgs {
 
   factory IndexingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return IndexingConfigurationArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      thingGroupIndexingConfiguration: Input.asOptionalInput<
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      thingGroupIndexingConfiguration: pulumi.Input.asOptionalInput<
               IndexingConfigurationThingGroupIndexingConfiguration>(
           map['thingGroupIndexingConfiguration']),
-      thingIndexingConfiguration: Input.asOptionalInput<
+      thingIndexingConfiguration: pulumi.Input.asOptionalInput<
               IndexingConfigurationThingIndexingConfiguration>(
           map['thingIndexingConfiguration']),
     );

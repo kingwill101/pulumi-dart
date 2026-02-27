@@ -1,41 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ImageVersion.
 class ImageVersionArgs {
   /// A list of aliases for the image version.
-  final Input<List<String>>? aliases;
+  final pulumi.Input<List<String>>? aliases;
 
   /// The registry path of the container image on which this image version is based.
-  final Input<String> baseImage;
+  final pulumi.Input<String> baseImage;
 
   /// Indicates Horovod compatibility.
-  final Input<bool>? horovod;
+  final pulumi.Input<bool>? horovod;
 
   /// The name of the image. Must be unique to your account.
-  final Input<String> imageName;
+  final pulumi.Input<String> imageName;
 
   /// Indicates SageMaker AI job type compatibility. Valid values are: `TRAINING`, `INFERENCE`, and `NOTEBOOK_KERNEL`.
-  final Input<String>? jobType;
+  final pulumi.Input<String>? jobType;
 
   /// The machine learning framework vended in the image version.
-  final Input<String>? mlFramework;
+  final pulumi.Input<String>? mlFramework;
 
   /// Indicates CPU or GPU compatibility. Valid values are: `CPU` and `GPU`.
-  final Input<String>? processor;
+  final pulumi.Input<String>? processor;
 
   /// The supported programming language and its version.
-  final Input<String>? programmingLang;
+  final pulumi.Input<String>? programmingLang;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The maintainer description of the image version.
-  final Input<String>? releaseNotes;
+  final pulumi.Input<String>? releaseNotes;
 
   /// The stability of the image version, specified by the maintainer. Valid values are: `NOT_PROVIDED`, `STABLE`, `TO_BE_ARCHIVED`, and `ARCHIVED`.
-  final Input<String>? vendorGuidance;
+  final pulumi.Input<String>? vendorGuidance;
 
   ImageVersionArgs({
     this.aliases,
@@ -96,17 +96,19 @@ class ImageVersionArgs {
 
   factory ImageVersionArgs.fromMap(Map<String, dynamic> map) {
     return ImageVersionArgs(
-      aliases: Input.asOptionalInput<List<String>>(map['aliases']),
-      baseImage: Input.asInput<String>(map['baseImage']),
-      horovod: Input.asOptionalInput<bool>(map['horovod']),
-      imageName: Input.asInput<String>(map['imageName']),
-      jobType: Input.asOptionalInput<String>(map['jobType']),
-      mlFramework: Input.asOptionalInput<String>(map['mlFramework']),
-      processor: Input.asOptionalInput<String>(map['processor']),
-      programmingLang: Input.asOptionalInput<String>(map['programmingLang']),
-      region: Input.asOptionalInput<String>(map['region']),
-      releaseNotes: Input.asOptionalInput<String>(map['releaseNotes']),
-      vendorGuidance: Input.asOptionalInput<String>(map['vendorGuidance']),
+      aliases: pulumi.Input.asOptionalInput<List<String>>(map['aliases']),
+      baseImage: pulumi.Input.asInput<String>(map['baseImage']),
+      horovod: pulumi.Input.asOptionalInput<bool>(map['horovod']),
+      imageName: pulumi.Input.asInput<String>(map['imageName']),
+      jobType: pulumi.Input.asOptionalInput<String>(map['jobType']),
+      mlFramework: pulumi.Input.asOptionalInput<String>(map['mlFramework']),
+      processor: pulumi.Input.asOptionalInput<String>(map['processor']),
+      programmingLang:
+          pulumi.Input.asOptionalInput<String>(map['programmingLang']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      releaseNotes: pulumi.Input.asOptionalInput<String>(map['releaseNotes']),
+      vendorGuidance:
+          pulumi.Input.asOptionalInput<String>(map['vendorGuidance']),
     );
   }
 }

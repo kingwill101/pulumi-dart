@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_application_providers_application_provider/get_application_providers_application_provider.dart';
 
 /// Result data returned by getApplicationProviders.
@@ -20,7 +20,7 @@ class GetApplicationProvidersResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['applicationProviders'] = Input.encodeList<
+    map['applicationProviders'] = pulumi.Input.encodeList<
         GetApplicationProvidersApplicationProvider,
         Map<String, dynamic>>(applicationProviders, (value) => value.toMap());
     map['id'] = id;
@@ -31,7 +31,7 @@ class GetApplicationProvidersResult {
   factory GetApplicationProvidersResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationProvidersResult(
       applicationProviders:
-          Input.decodeList<GetApplicationProvidersApplicationProvider>(
+          pulumi.Input.decodeList<GetApplicationProvidersApplicationProvider>(
               map['applicationProviders'],
               (value) => GetApplicationProvidersApplicationProvider.fromMap(
                   (value as Map).cast<String, dynamic>())),

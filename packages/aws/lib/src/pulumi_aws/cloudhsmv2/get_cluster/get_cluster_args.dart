@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCluster.
 class GetClusterArgs {
   /// ID of Cloud HSM v2 cluster.
-  final Input<String> clusterId;
+  final pulumi.Input<String> clusterId;
 
   /// State of the cluster to be found.
-  final Input<String>? clusterState;
+  final pulumi.Input<String>? clusterState;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetClusterArgs({
     required this.clusterId,
@@ -35,9 +35,9 @@ class GetClusterArgs {
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
-      clusterId: Input.asInput<String>(map['clusterId']),
-      clusterState: Input.asOptionalInput<String>(map['clusterState']),
-      region: Input.asOptionalInput<String>(map['region']),
+      clusterId: pulumi.Input.asInput<String>(map['clusterId']),
+      clusterState: pulumi.Input.asOptionalInput<String>(map['clusterState']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_target_group_args.dart';
 import 'get_target_group_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_target_group_result.dart';
 /// an LB Target Group for use in other resources, given LB Target Group name.
 Future<GetTargetGroupResult> getTargetGroup(
   GetTargetGroupArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:alb/getTargetGroup:getTargetGroup',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetGroupResult.fromMap(result);
 }

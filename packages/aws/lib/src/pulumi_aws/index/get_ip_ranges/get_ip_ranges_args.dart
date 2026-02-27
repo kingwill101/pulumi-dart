@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getIpRanges.
 class GetIpRangesArgs {
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Filter IP ranges by regions (or include all regions, if
   /// omitted). Valid items are `global` (for `cloudfront`) as well as all AWS regions
   /// (e.g., `eu-central-1`)
-  final Input<List<String>>? regions;
+  final pulumi.Input<List<String>>? regions;
 
   /// Filter IP ranges by services. Valid items are `amazon`
   /// (for amazon.com), `amazon_connect`, `api_gateway`, `cloud9`, `cloudfront`,
@@ -19,10 +19,10 @@ class GetIpRangesArgs {
   ///
   /// > **NOTE:** If the specified combination of regions and services does not yield any
   /// CIDR blocks, this call will fail.
-  final Input<List<String>> services;
+  final pulumi.Input<List<String>> services;
 
   /// Custom URL for source JSON file. Syntax must match [AWS IP Address Ranges documentation](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html). Defaults to `https://ip-ranges.amazonaws.com/ip-ranges.json`.
-  final Input<String>? url;
+  final pulumi.Input<String>? url;
 
   GetIpRangesArgs({
     this.id,
@@ -51,10 +51,10 @@ class GetIpRangesArgs {
 
   factory GetIpRangesArgs.fromMap(Map<String, dynamic> map) {
     return GetIpRangesArgs(
-      id: Input.asOptionalInput<String>(map['id']),
-      regions: Input.asOptionalInput<List<String>>(map['regions']),
-      services: Input.asInput<List<String>>(map['services']),
-      url: Input.asOptionalInput<String>(map['url']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      regions: pulumi.Input.asOptionalInput<List<String>>(map['regions']),
+      services: pulumi.Input.asInput<List<String>>(map['services']),
+      url: pulumi.Input.asOptionalInput<String>(map['url']),
     );
   }
 }

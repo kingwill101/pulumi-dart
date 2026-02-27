@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_vpn_gateway_args.dart';
 import 'get_vpn_gateway_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_vpn_gateway_result.dart';
 /// a specific VPN gateway.
 Future<GetVpnGatewayResult> getVpnGateway(
   GetVpnGatewayArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getVpnGateway:getVpnGateway',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpnGatewayResult.fromMap(result);
 }

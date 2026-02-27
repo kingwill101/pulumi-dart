@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connection_function_connection_function_config/connection_function_connection_function_config.dart';
 import 'connection_function_args.dart';
 
@@ -29,49 +29,49 @@ import 'connection_function_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudfront/connectionFunction:ConnectionFunction example E1PA6795UKMFR9
 /// ```
-class ConnectionFunction extends CustomResource {
+class ConnectionFunction extends pulumi.CustomResource {
   /// ARN of the connection function.
-  late final Output<String> connectionFunctionArn;
+  late final pulumi.Output<String> connectionFunctionArn;
 
   /// Code for the connection function. Maximum length is 40960 characters.
-  late final Output<String> connectionFunctionCode;
+  late final pulumi.Output<String> connectionFunctionCode;
 
   /// Configuration information for the connection function. See `connection_function_config` below.
-  late final Output<ConnectionFunctionConnectionFunctionConfig>
+  late final pulumi.Output<ConnectionFunctionConnectionFunctionConfig>
       connectionFunctionConfig;
 
   /// ETag of the connection function.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// ETag of the function's LIVE stage. Will be empty if the function has not been published.
-  late final Output<String> liveStageEtag;
+  late final pulumi.Output<String> liveStageEtag;
 
   /// Name for the connection function. Must be 1-64 characters and can contain letters, numbers, hyphens, and underscores. Changing this forces a new resource to be created.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Whether to publish the function to the `LIVE` stage after creation or update. Defaults to `false`.
-  late final Output<bool> publish;
+  late final pulumi.Output<bool> publish;
 
   /// Status of the connection function.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   ConnectionFunction(
     String name, {
     ConnectionFunctionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/connectionFunction:ConnectionFunction',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.connectionFunctionArn =
         registerOutput<String>('connectionFunctionArn');

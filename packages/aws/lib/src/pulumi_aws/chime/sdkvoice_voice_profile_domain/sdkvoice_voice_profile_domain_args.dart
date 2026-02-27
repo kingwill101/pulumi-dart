@@ -1,23 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../sdkvoice_voice_profile_domain_server_side_encryption_configuration/sdkvoice_voice_profile_domain_server_side_encryption_configuration.dart';
 
 /// The set of arguments for SdkvoiceVoiceProfileDomain.
 class SdkvoiceVoiceProfileDomainArgs {
   /// Description of Voice Profile Domain.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of Voice Profile Domain.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Configuration for server side encryption.
-  final Input<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>
+  final pulumi
+      .Input<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>
       serverSideEncryptionConfiguration;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   SdkvoiceVoiceProfileDomainArgs({
     this.description,
@@ -41,7 +42,7 @@ class SdkvoiceVoiceProfileDomainArgs {
     if (regionValue != null) {
       map['region'] = regionValue;
     }
-    map['serverSideEncryptionConfiguration'] = Input.mapInputValue<
+    map['serverSideEncryptionConfiguration'] = pulumi.Input.mapInputValue<
             SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration,
             Map<String, dynamic>>(
         serverSideEncryptionConfiguration, (value) => value.toMap());
@@ -54,13 +55,13 @@ class SdkvoiceVoiceProfileDomainArgs {
 
   factory SdkvoiceVoiceProfileDomainArgs.fromMap(Map<String, dynamic> map) {
     return SdkvoiceVoiceProfileDomainArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      serverSideEncryptionConfiguration: Input.asInput<
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      serverSideEncryptionConfiguration: pulumi.Input.asInput<
               SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>(
           map['serverSideEncryptionConfiguration']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

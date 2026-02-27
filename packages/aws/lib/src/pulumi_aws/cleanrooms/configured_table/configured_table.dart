@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../configured_table_table_reference/configured_table_table_reference.dart';
 import 'configured_table_args.dart';
 
@@ -29,49 +29,49 @@ import 'configured_table_args.dart';
 /// ```sh
 /// $ pulumi import aws:cleanrooms/configuredTable:ConfiguredTable table 1234abcd-12ab-34cd-56ef-1234567890ab
 /// ```
-class ConfiguredTable extends CustomResource {
+class ConfiguredTable extends pulumi.CustomResource {
   /// The columns of the references table which will be included in the configured table.
-  late final Output<List<String>> allowedColumns;
+  late final pulumi.Output<List<String>> allowedColumns;
 
   /// The analysis method for the configured table. The only valid value is currently `DIRECT_QUERY`.
-  late final Output<String> analysisMethod;
+  late final pulumi.Output<String> analysisMethod;
 
   /// The ARN of the configured table.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The date and time the configured table was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// A description for the configured table.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The name of the configured table.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A reference to the AWS Glue table which will be used to create the configured table.
   /// * `table_reference.database_name` - (Required - Forces new resource) - The name of the AWS Glue database which contains the table.
   /// * `table_reference.table_name` - (Required - Forces new resource) - The name of the AWS Glue table which will be used to create the configured table.
-  late final Output<ConfiguredTableTableReference> tableReference;
+  late final pulumi.Output<ConfiguredTableTableReference> tableReference;
 
   /// Key value pairs which tag the configured table.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The date and time the configured table was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   ConfiguredTable(
     String name, {
     ConfiguredTableArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cleanrooms/configuredTable:ConfiguredTable',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowedColumns = registerOutput<List<String>>('allowedColumns');
     this.analysisMethod = registerOutput<String>('analysisMethod');

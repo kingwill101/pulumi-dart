@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../framework_control_set/framework_control_set.dart';
 import 'framework_args.dart';
 
@@ -17,44 +17,44 @@ import 'framework_args.dart';
 /// ```sh
 /// $ pulumi import aws:auditmanager/framework:Framework example abc123-de45
 /// ```
-class Framework extends CustomResource {
+class Framework extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the framework.
   /// * `control_sets[*].id` - Unique identifier for the framework control set.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Compliance type that the new custom framework supports, such as `CIS` or `HIPAA`.
-  late final Output<String?> complianceType;
+  late final pulumi.Output<String?> complianceType;
 
   /// Configuration block(s) for the control sets that are associated with the framework. See `control_sets` Block below for details.
   ///
   /// The following arguments are optional:
-  late final Output<List<FrameworkControlSet>?> controlSets;
+  late final pulumi.Output<List<FrameworkControlSet>?> controlSets;
 
   /// Description of the framework.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Framework type, such as a custom framework or a standard framework.
-  late final Output<String> frameworkType;
+  late final pulumi.Output<String> frameworkType;
 
   /// Name of the framework.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the framework. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Framework(
     String name, {
     FrameworkArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:auditmanager/framework:Framework',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.complianceType = registerOutput<String?>('complianceType');

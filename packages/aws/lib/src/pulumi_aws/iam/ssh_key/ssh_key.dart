@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ssh_key_args.dart';
 
 /// Uploads an SSH public key and associates it with the specified IAM user.
@@ -14,34 +14,34 @@ import 'ssh_key_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/sshKey:SshKey user user:APKAJNCNNJICVN7CFKCA:SSH
 /// ```
-class SshKey extends CustomResource {
+class SshKey extends pulumi.CustomResource {
   /// Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use `SSH`. To retrieve the public key in PEM format, use `PEM`.
-  late final Output<String> encoding;
+  late final pulumi.Output<String> encoding;
 
   /// The MD5 message digest of the SSH public key.
-  late final Output<String> fingerprint;
+  late final pulumi.Output<String> fingerprint;
 
   /// The SSH public key. The public key must be encoded in ssh-rsa format or PEM format.
-  late final Output<String> publicKey;
+  late final pulumi.Output<String> publicKey;
 
   /// The unique identifier for the SSH public key.
-  late final Output<String> sshPublicKeyId;
+  late final pulumi.Output<String> sshPublicKeyId;
 
   /// The status to assign to the SSH public key. Active means the key can be used for authentication with an AWS CodeCommit repository. Inactive means the key cannot be used. Default is `active`.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// The name of the IAM user to associate the SSH public key with.
-  late final Output<String> username;
+  late final pulumi.Output<String> username;
 
   SshKey(
     String name, {
     SshKeyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/sshKey:SshKey',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.encoding = registerOutput<String>('encoding');
     this.fingerprint = registerOutput<String>('fingerprint');

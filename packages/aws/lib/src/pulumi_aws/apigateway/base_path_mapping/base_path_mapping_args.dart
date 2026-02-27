@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for BasePathMapping.
 class BasePathMappingArgs {
   /// Path segment that must be prepended to the path when accessing the API via this mapping. If omitted, the API is exposed at the root of the given domain.
-  final Input<String>? basePath;
+  final pulumi.Input<String>? basePath;
 
   /// Already-registered domain name to connect the API to.
-  final Input<String> domainName;
+  final pulumi.Input<String> domainName;
 
   /// The identifier for the domain name resource. Supported only for private custom domain names.
-  final Input<String>? domainNameId;
+  final pulumi.Input<String>? domainNameId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the API to connect.
-  final Input<String> restApi;
+  final pulumi.Input<String> restApi;
 
   /// Name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.
-  final Input<String>? stageName;
+  final pulumi.Input<String>? stageName;
 
   BasePathMappingArgs({
     this.basePath,
@@ -56,12 +56,12 @@ class BasePathMappingArgs {
 
   factory BasePathMappingArgs.fromMap(Map<String, dynamic> map) {
     return BasePathMappingArgs(
-      basePath: Input.asOptionalInput<String>(map['basePath']),
-      domainName: Input.asInput<String>(map['domainName']),
-      domainNameId: Input.asOptionalInput<String>(map['domainNameId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      restApi: Input.asInput<String>(map['restApi']),
-      stageName: Input.asOptionalInput<String>(map['stageName']),
+      basePath: pulumi.Input.asOptionalInput<String>(map['basePath']),
+      domainName: pulumi.Input.asInput<String>(map['domainName']),
+      domainNameId: pulumi.Input.asOptionalInput<String>(map['domainNameId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      restApi: pulumi.Input.asInput<String>(map['restApi']),
+      stageName: pulumi.Input.asOptionalInput<String>(map['stageName']),
     );
   }
 }

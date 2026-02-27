@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vpc_peering_connection_accepter_accepter/vpc_peering_connection_accepter_accepter.dart';
 import '../vpc_peering_connection_accepter_requester/vpc_peering_connection_accepter_requester.dart';
 
@@ -8,23 +8,23 @@ import '../vpc_peering_connection_accepter_requester/vpc_peering_connection_acce
 class VpcPeeringConnectionAccepterArgs {
   /// A configuration block that describes [VPC Peering Connection]
   /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the accepter VPC.
-  final Input<VpcPeeringConnectionAccepterAccepter>? accepter;
+  final pulumi.Input<VpcPeeringConnectionAccepterAccepter>? accepter;
 
   /// Whether or not to accept the peering request. Defaults to `false`.
-  final Input<bool>? autoAccept;
+  final pulumi.Input<bool>? autoAccept;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A configuration block that describes [VPC Peering Connection]
   /// (https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options set for the requester VPC.
-  final Input<VpcPeeringConnectionAccepterRequester>? requester;
+  final pulumi.Input<VpcPeeringConnectionAccepterRequester>? requester;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The VPC Peering Connection ID to manage.
-  final Input<String> vpcPeeringConnectionId;
+  final pulumi.Input<String> vpcPeeringConnectionId;
 
   VpcPeeringConnectionAccepterArgs({
     this.accepter,
@@ -39,7 +39,7 @@ class VpcPeeringConnectionAccepterArgs {
     final map = <String, dynamic>{};
     final accepterValue = accepter;
     if (accepterValue != null) {
-      map['accepter'] = Input.mapOptionalInputValue<
+      map['accepter'] = pulumi.Input.mapOptionalInputValue<
           VpcPeeringConnectionAccepterAccepter,
           Map<String, dynamic>>(accepterValue, (value) => value.toMap());
     }
@@ -53,7 +53,7 @@ class VpcPeeringConnectionAccepterArgs {
     }
     final requesterValue = requester;
     if (requesterValue != null) {
-      map['requester'] = Input.mapOptionalInputValue<
+      map['requester'] = pulumi.Input.mapOptionalInputValue<
           VpcPeeringConnectionAccepterRequester,
           Map<String, dynamic>>(requesterValue, (value) => value.toMap());
     }
@@ -67,15 +67,17 @@ class VpcPeeringConnectionAccepterArgs {
 
   factory VpcPeeringConnectionAccepterArgs.fromMap(Map<String, dynamic> map) {
     return VpcPeeringConnectionAccepterArgs(
-      accepter: Input.asOptionalInput<VpcPeeringConnectionAccepterAccepter>(
-          map['accepter']),
-      autoAccept: Input.asOptionalInput<bool>(map['autoAccept']),
-      region: Input.asOptionalInput<String>(map['region']),
-      requester: Input.asOptionalInput<VpcPeeringConnectionAccepterRequester>(
-          map['requester']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      accepter:
+          pulumi.Input.asOptionalInput<VpcPeeringConnectionAccepterAccepter>(
+              map['accepter']),
+      autoAccept: pulumi.Input.asOptionalInput<bool>(map['autoAccept']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      requester:
+          pulumi.Input.asOptionalInput<VpcPeeringConnectionAccepterRequester>(
+              map['requester']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
       vpcPeeringConnectionId:
-          Input.asInput<String>(map['vpcPeeringConnectionId']),
+          pulumi.Input.asInput<String>(map['vpcPeeringConnectionId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_permissions_lf_tag_policy_expression/get_permissions_lf_tag_policy_expression.dart';
 
 class GetPermissionsLfTagPolicy {
@@ -24,7 +24,8 @@ class GetPermissionsLfTagPolicy {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['catalogId'] = catalogId;
-    map['expressions'] = Input.encodeList<GetPermissionsLfTagPolicyExpression,
+    map['expressions'] = pulumi.Input.encodeList<
+        GetPermissionsLfTagPolicyExpression,
         Map<String, dynamic>>(expressions, (value) => value.toMap());
     map['resourceType'] = resourceType;
     return map;
@@ -33,7 +34,7 @@ class GetPermissionsLfTagPolicy {
   factory GetPermissionsLfTagPolicy.fromMap(Map<String, dynamic> map) {
     return GetPermissionsLfTagPolicy(
       catalogId: map['catalogId'] as String,
-      expressions: Input.decodeList<GetPermissionsLfTagPolicyExpression>(
+      expressions: pulumi.Input.decodeList<GetPermissionsLfTagPolicyExpression>(
           map['expressions'],
           (value) => GetPermissionsLfTagPolicyExpression.fromMap(
               (value as Map).cast<String, dynamic>())),

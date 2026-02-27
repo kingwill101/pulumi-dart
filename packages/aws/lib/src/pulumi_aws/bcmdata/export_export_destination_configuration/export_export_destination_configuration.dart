@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../export_export_destination_configuration_s3_destination/export_export_destination_configuration_s3_destination.dart';
 
 class ExportExportDestinationConfiguration {
@@ -15,7 +15,7 @@ class ExportExportDestinationConfiguration {
     final map = <String, dynamic>{};
     final s3DestinationsValue = s3Destinations;
     if (s3DestinationsValue != null) {
-      map['s3Destinations'] = Input.encodeList<
+      map['s3Destinations'] = pulumi.Input.encodeList<
           ExportExportDestinationConfigurationS3Destination,
           Map<String, dynamic>>(s3DestinationsValue, (value) => value.toMap());
     }
@@ -27,7 +27,8 @@ class ExportExportDestinationConfiguration {
     return ExportExportDestinationConfiguration(
       s3Destinations: map['s3Destinations'] == null
           ? null
-          : Input.decodeList<ExportExportDestinationConfigurationS3Destination>(
+          : pulumi.Input.decodeList<
+                  ExportExportDestinationConfigurationS3Destination>(
               map['s3Destinations'],
               (value) =>
                   ExportExportDestinationConfigurationS3Destination.fromMap(

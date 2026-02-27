@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_route_spec_grpc_route_match_metadata_match/get_route_spec_grpc_route_match_metadata_match.dart';
 
 class GetRouteSpecGrpcRouteMatchMetadata {
@@ -19,7 +19,8 @@ class GetRouteSpecGrpcRouteMatchMetadata {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['invert'] = invert;
-    map['matches'] = Input.encodeList<GetRouteSpecGrpcRouteMatchMetadataMatch,
+    map['matches'] = pulumi.Input.encodeList<
+        GetRouteSpecGrpcRouteMatchMetadataMatch,
         Map<String, dynamic>>(matches, (value) => value.toMap());
     map['name'] = name;
     return map;
@@ -28,7 +29,7 @@ class GetRouteSpecGrpcRouteMatchMetadata {
   factory GetRouteSpecGrpcRouteMatchMetadata.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteMatchMetadata(
       invert: map['invert'] as bool,
-      matches: Input.decodeList<GetRouteSpecGrpcRouteMatchMetadataMatch>(
+      matches: pulumi.Input.decodeList<GetRouteSpecGrpcRouteMatchMetadataMatch>(
           map['matches'],
           (value) => GetRouteSpecGrpcRouteMatchMetadataMatch.fromMap(
               (value as Map).cast<String, dynamic>())),

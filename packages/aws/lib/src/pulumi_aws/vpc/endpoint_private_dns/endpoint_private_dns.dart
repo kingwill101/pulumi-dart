@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_private_dns_args.dart';
 
 /// Resource for enabling private DNS on an AWS VPC (Virtual Private Cloud) Endpoint.
@@ -19,25 +19,25 @@ import 'endpoint_private_dns_args.dart';
 /// ```sh
 /// $ pulumi import aws:vpc/endpointPrivateDns:EndpointPrivateDns example vpce-abcd-1234
 /// ```
-class EndpointPrivateDns extends CustomResource {
+class EndpointPrivateDns extends pulumi.CustomResource {
   /// Indicates whether a private hosted zone is associated with the VPC. Only applicable for `Interface` endpoints.
-  late final Output<bool> privateDnsEnabled;
+  late final pulumi.Output<bool> privateDnsEnabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// VPC endpoint identifier.
-  late final Output<String> vpcEndpointId;
+  late final pulumi.Output<String> vpcEndpointId;
 
   EndpointPrivateDns(
     String name, {
     EndpointPrivateDnsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:vpc/endpointPrivateDns:EndpointPrivateDns',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.privateDnsEnabled = registerOutput<bool>('privateDnsEnabled');
     this.region = registerOutput<String>('region');

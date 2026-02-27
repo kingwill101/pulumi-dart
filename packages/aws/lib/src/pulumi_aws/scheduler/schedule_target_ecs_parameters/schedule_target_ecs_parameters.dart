@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../schedule_target_ecs_parameters_capacity_provider_strategy/schedule_target_ecs_parameters_capacity_provider_strategy.dart';
 import '../schedule_target_ecs_parameters_network_configuration/schedule_target_ecs_parameters_network_configuration.dart';
 import '../schedule_target_ecs_parameters_placement_constraint/schedule_target_ecs_parameters_placement_constraint.dart';
@@ -74,7 +74,7 @@ class ScheduleTargetEcsParameters {
     final map = <String, dynamic>{};
     final capacityProviderStrategiesValue = capacityProviderStrategies;
     if (capacityProviderStrategiesValue != null) {
-      map['capacityProviderStrategies'] = Input.encodeList<
+      map['capacityProviderStrategies'] = pulumi.Input.encodeList<
               ScheduleTargetEcsParametersCapacityProviderStrategy,
               Map<String, dynamic>>(
           capacityProviderStrategiesValue, (value) => value.toMap());
@@ -101,14 +101,14 @@ class ScheduleTargetEcsParameters {
     }
     final placementConstraintsValue = placementConstraints;
     if (placementConstraintsValue != null) {
-      map['placementConstraints'] = Input.encodeList<
+      map['placementConstraints'] = pulumi.Input.encodeList<
               ScheduleTargetEcsParametersPlacementConstraint,
               Map<String, dynamic>>(
           placementConstraintsValue, (value) => value.toMap());
     }
     final placementStrategiesValue = placementStrategies;
     if (placementStrategiesValue != null) {
-      map['placementStrategies'] = Input.encodeList<
+      map['placementStrategies'] = pulumi.Input.encodeList<
               ScheduleTargetEcsParametersPlacementStrategy,
               Map<String, dynamic>>(
           placementStrategiesValue, (value) => value.toMap());
@@ -141,7 +141,7 @@ class ScheduleTargetEcsParameters {
     return ScheduleTargetEcsParameters(
       capacityProviderStrategies: map['capacityProviderStrategies'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ScheduleTargetEcsParametersCapacityProviderStrategy>(
               map['capacityProviderStrategies'],
               (value) =>
@@ -162,13 +162,15 @@ class ScheduleTargetEcsParameters {
               (map['networkConfiguration'] as Map).cast<String, dynamic>()),
       placementConstraints: map['placementConstraints'] == null
           ? null
-          : Input.decodeList<ScheduleTargetEcsParametersPlacementConstraint>(
+          : pulumi.Input.decodeList<
+                  ScheduleTargetEcsParametersPlacementConstraint>(
               map['placementConstraints'],
               (value) => ScheduleTargetEcsParametersPlacementConstraint.fromMap(
                   (value as Map).cast<String, dynamic>())),
       placementStrategies: map['placementStrategies'] == null
           ? null
-          : Input.decodeList<ScheduleTargetEcsParametersPlacementStrategy>(
+          : pulumi.Input.decodeList<
+                  ScheduleTargetEcsParametersPlacementStrategy>(
               map['placementStrategies'],
               (value) => ScheduleTargetEcsParametersPlacementStrategy.fromMap(
                   (value as Map).cast<String, dynamic>())),

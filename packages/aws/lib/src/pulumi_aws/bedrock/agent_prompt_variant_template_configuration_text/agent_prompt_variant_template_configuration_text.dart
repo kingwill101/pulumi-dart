@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_prompt_variant_template_configuration_text_cache_point/agent_prompt_variant_template_configuration_text_cache_point.dart';
 import '../agent_prompt_variant_template_configuration_text_input_variable/agent_prompt_variant_template_configuration_text_input_variable.dart';
 
@@ -24,7 +24,7 @@ class AgentPromptVariantTemplateConfigurationText {
     }
     final inputVariablesValue = inputVariables;
     if (inputVariablesValue != null) {
-      map['inputVariables'] = Input.encodeList<
+      map['inputVariables'] = pulumi.Input.encodeList<
           AgentPromptVariantTemplateConfigurationTextInputVariable,
           Map<String, dynamic>>(inputVariablesValue, (value) => value.toMap());
     }
@@ -41,7 +41,7 @@ class AgentPromptVariantTemplateConfigurationText {
               (map['cachePoint'] as Map).cast<String, dynamic>()),
       inputVariables: map['inputVariables'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentPromptVariantTemplateConfigurationTextInputVariable>(
               map['inputVariables'],
               (value) =>

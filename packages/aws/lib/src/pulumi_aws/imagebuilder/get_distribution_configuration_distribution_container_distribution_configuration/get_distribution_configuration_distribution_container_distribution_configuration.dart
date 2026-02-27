@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_distribution_configuration_distribution_container_distribution_configuration_target_repository/get_distribution_configuration_distribution_container_distribution_configuration_target_repository.dart';
 
 class GetDistributionConfigurationDistributionContainerDistributionConfiguration {
@@ -25,7 +25,7 @@ class GetDistributionConfigurationDistributionContainerDistributionConfiguration
     final map = <String, dynamic>{};
     map['containerTags'] = containerTags;
     map['description'] = description;
-    map['targetRepositories'] = Input.encodeList<
+    map['targetRepositories'] = pulumi.Input.encodeList<
         GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository,
         Map<String, dynamic>>(targetRepositories, (value) => value.toMap());
     return map;
@@ -36,7 +36,7 @@ class GetDistributionConfigurationDistributionContainerDistributionConfiguration
     return GetDistributionConfigurationDistributionContainerDistributionConfiguration(
       containerTags: (map['containerTags'] as List).cast<String>(),
       description: map['description'] as String,
-      targetRepositories: Input.decodeList<
+      targetRepositories: pulumi.Input.decodeList<
               GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository>(
           map['targetRepositories'],
           (value) =>

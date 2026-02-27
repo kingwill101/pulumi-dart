@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_key_args.dart';
 
 /// Provides an IAM access key. This is a set of credentials that allow API requests to be made as an IAM user.
@@ -18,43 +18,43 @@ import 'access_key_args.dart';
 /// ```
 ///
 /// Resource attributes such as `encrypted_secret`, `key_fingerprint`, `pgp_key`, `secret`, `ses_smtp_password_v4`, and `encrypted_ses_smtp_password_v4` are not available for imported resources as this information cannot be read from the IAM API.
-class AccessKey extends CustomResource {
+class AccessKey extends pulumi.CustomResource {
   /// Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the access key was created.
-  late final Output<String> createDate;
+  late final pulumi.Output<String> createDate;
 
   /// Encrypted secret, base64 encoded, if `pgp_key` was specified. This attribute is not available for imported resources. The encrypted secret may be decrypted using the command line.
-  late final Output<String> encryptedSecret;
+  late final pulumi.Output<String> encryptedSecret;
 
   /// Encrypted SES SMTP password, base64 encoded, if `pgp_key` was specified. This attribute is not available for imported resources. The encrypted password may be decrypted using the command line.
-  late final Output<String> encryptedSesSmtpPasswordV4;
+  late final pulumi.Output<String> encryptedSesSmtpPasswordV4;
 
   /// Fingerprint of the PGP key used to encrypt the secret. This attribute is not available for imported resources.
-  late final Output<String> keyFingerprint;
+  late final pulumi.Output<String> keyFingerprint;
 
   /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`, for use in the `encrypted_secret` output attribute. If providing a base-64 encoded PGP public key, make sure to provide the "raw" version and not the "armored" one (e.g. avoid passing the `-a` option to `gpg --export`).
-  late final Output<String?> pgpKey;
+  late final pulumi.Output<String?> pgpKey;
 
   /// Secret access key. This attribute is not available for imported resources. Note that this will be written to the state file. If you use this, please protect your backend state file judiciously. Alternatively, you may supply a `pgp_key` instead, which will prevent the secret from being stored in plaintext, at the cost of preventing the use of the secret key in automation.
-  late final Output<String> secret;
+  late final pulumi.Output<String> secret;
 
   /// Secret access key converted into an SES SMTP password by applying [AWS's documented Sigv4 conversion algorithm](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/smtp-credentials.html#smtp-credentials-convert). This attribute is not available for imported resources. As SigV4 is region specific, valid Provider regions are `ap-south-1`, `ap-southeast-2`, `eu-central-1`, `eu-west-1`, `us-east-1` and `us-west-2`. See current [AWS SES regions](https://docs.aws.amazon.com/general/latest/gr/rande.html#ses_region).
-  late final Output<String> sesSmtpPasswordV4;
+  late final pulumi.Output<String> sesSmtpPasswordV4;
 
   /// Access key status to apply. Defaults to `Active`. Valid values are `Active` and `Inactive`.
-  late final Output<String?> status;
+  late final pulumi.Output<String?> status;
 
   /// IAM user to associate with this access key.
-  late final Output<String> user;
+  late final pulumi.Output<String> user;
 
   AccessKey(
     String name, {
     AccessKeyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/accessKey:AccessKey',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createDate = registerOutput<String>('createDate');
     this.encryptedSecret = registerOutput<String>('encryptedSecret');

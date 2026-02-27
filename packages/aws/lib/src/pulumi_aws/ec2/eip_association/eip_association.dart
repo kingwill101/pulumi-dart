@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'eip_association_args.dart';
 
 /// Provides an AWS EIP Association as a top level resource, to associate and disassociate Elastic IPs from AWS Instances and Network Interfaces.
@@ -18,44 +18,44 @@ import 'eip_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/eipAssociation:EipAssociation test eipassoc-ab12c345
 /// ```
-class EipAssociation extends CustomResource {
+class EipAssociation extends pulumi.CustomResource {
   /// ID of the associated Elastic IP.
   /// This argument is required despite being optional at the resource level due to legacy support for EC2-Classic networking.
-  late final Output<String> allocationId;
+  late final pulumi.Output<String> allocationId;
 
   /// Whether to allow an Elastic IP address to be re-associated.
   /// Defaults to `true`.
-  late final Output<bool?> allowReassociation;
+  late final pulumi.Output<bool?> allowReassociation;
 
   /// ID of the instance.
   /// The instance must have exactly one attached network interface.
   /// You can specify either the instance ID or the network interface ID, but not both.
-  late final Output<String> instanceId;
+  late final pulumi.Output<String> instanceId;
 
   /// ID of the network interface.
   /// If the instance has more than one network interface, you must specify a network interface ID.
   /// You can specify either the instance ID or the network interface ID, but not both.
-  late final Output<String> networkInterfaceId;
+  late final pulumi.Output<String> networkInterfaceId;
 
   /// Primary or secondary private IP address to associate with the Elastic IP address.
   /// If no private IP address is specified, the Elastic IP address is associated with the primary private IP address.
-  late final Output<String> privateIpAddress;
+  late final pulumi.Output<String> privateIpAddress;
 
   /// ) Address of the associated Elastic IP.
-  late final Output<String> publicIp;
+  late final pulumi.Output<String> publicIp;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   EipAssociation(
     String name, {
     EipAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/eipAssociation:EipAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allocationId = registerOutput<String>('allocationId');
     this.allowReassociation = registerOutput<bool?>('allowReassociation');

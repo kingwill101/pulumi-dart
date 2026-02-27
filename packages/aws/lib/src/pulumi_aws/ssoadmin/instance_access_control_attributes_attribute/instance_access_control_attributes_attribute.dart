@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_access_control_attributes_attribute_value/instance_access_control_attributes_attribute_value.dart';
 
 class InstanceAccessControlAttributesAttribute {
@@ -18,7 +18,7 @@ class InstanceAccessControlAttributesAttribute {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['key'] = key;
-    map['values'] = Input.encodeList<
+    map['values'] = pulumi.Input.encodeList<
         InstanceAccessControlAttributesAttributeValue,
         Map<String, dynamic>>(values, (value) => value.toMap());
     return map;
@@ -28,7 +28,8 @@ class InstanceAccessControlAttributesAttribute {
       Map<String, dynamic> map) {
     return InstanceAccessControlAttributesAttribute(
       key: map['key'] as String,
-      values: Input.decodeList<InstanceAccessControlAttributesAttributeValue>(
+      values: pulumi.Input.decodeList<
+              InstanceAccessControlAttributesAttributeValue>(
           map['values'],
           (value) => InstanceAccessControlAttributesAttributeValue.fromMap(
               (value as Map).cast<String, dynamic>())),

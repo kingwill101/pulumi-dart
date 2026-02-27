@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SpotDatafeedSubscription.
 class SpotDatafeedSubscriptionArgs {
   /// The Amazon S3 bucket in which to store the Spot instance data feed.
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// Path of folder inside bucket to place spot pricing data.
-  final Input<String>? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   SpotDatafeedSubscriptionArgs({
     required this.bucket,
@@ -35,9 +35,9 @@ class SpotDatafeedSubscriptionArgs {
 
   factory SpotDatafeedSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SpotDatafeedSubscriptionArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      prefix: Input.asOptionalInput<String>(map['prefix']),
-      region: Input.asOptionalInput<String>(map['region']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      prefix: pulumi.Input.asOptionalInput<String>(map['prefix']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

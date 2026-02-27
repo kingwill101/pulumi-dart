@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../endpoint_network_interface_options_port_range/endpoint_network_interface_options_port_range.dart';
 
 class EndpointNetworkInterfaceOptions {
@@ -28,7 +28,7 @@ class EndpointNetworkInterfaceOptions {
     }
     final portRangesValue = portRanges;
     if (portRangesValue != null) {
-      map['portRanges'] = Input.encodeList<
+      map['portRanges'] = pulumi.Input.encodeList<
           EndpointNetworkInterfaceOptionsPortRange,
           Map<String, dynamic>>(portRangesValue, (value) => value.toMap());
     }
@@ -47,7 +47,7 @@ class EndpointNetworkInterfaceOptions {
       port: map['port'] == null ? null : map['port'] as int,
       portRanges: map['portRanges'] == null
           ? null
-          : Input.decodeList<EndpointNetworkInterfaceOptionsPortRange>(
+          : pulumi.Input.decodeList<EndpointNetworkInterfaceOptionsPortRange>(
               map['portRanges'],
               (value) => EndpointNetworkInterfaceOptionsPortRange.fromMap(
                   (value as Map).cast<String, dynamic>())),

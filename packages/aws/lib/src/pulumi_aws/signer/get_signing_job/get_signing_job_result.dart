@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_signing_job_revocation_record/get_signing_job_revocation_record.dart';
 import '../get_signing_job_signed_object/get_signing_job_signed_object.dart';
 import '../get_signing_job_source/get_signing_job_source.dart';
@@ -92,15 +92,14 @@ class GetSigningJobResult {
     map['profileVersion'] = profileVersion;
     map['region'] = region;
     map['requestedBy'] = requestedBy;
-    map['revocationRecords'] =
-        Input.encodeList<GetSigningJobRevocationRecord, Map<String, dynamic>>(
-            revocationRecords, (value) => value.toMap());
+    map['revocationRecords'] = pulumi.Input.encodeList<
+        GetSigningJobRevocationRecord,
+        Map<String, dynamic>>(revocationRecords, (value) => value.toMap());
     map['signatureExpiresAt'] = signatureExpiresAt;
-    map['signedObjects'] =
-        Input.encodeList<GetSigningJobSignedObject, Map<String, dynamic>>(
-            signedObjects, (value) => value.toMap());
+    map['signedObjects'] = pulumi.Input.encodeList<GetSigningJobSignedObject,
+        Map<String, dynamic>>(signedObjects, (value) => value.toMap());
     map['sources'] =
-        Input.encodeList<GetSigningJobSource, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetSigningJobSource, Map<String, dynamic>>(
             sources, (value) => value.toMap());
     map['status'] = status;
     map['statusReason'] = statusReason;
@@ -121,16 +120,16 @@ class GetSigningJobResult {
       profileVersion: map['profileVersion'] as String,
       region: map['region'] as String,
       requestedBy: map['requestedBy'] as String,
-      revocationRecords: Input.decodeList<GetSigningJobRevocationRecord>(
+      revocationRecords: pulumi.Input.decodeList<GetSigningJobRevocationRecord>(
           map['revocationRecords'],
           (value) => GetSigningJobRevocationRecord.fromMap(
               (value as Map).cast<String, dynamic>())),
       signatureExpiresAt: map['signatureExpiresAt'] as String,
-      signedObjects: Input.decodeList<GetSigningJobSignedObject>(
+      signedObjects: pulumi.Input.decodeList<GetSigningJobSignedObject>(
           map['signedObjects'],
           (value) => GetSigningJobSignedObject.fromMap(
               (value as Map).cast<String, dynamic>())),
-      sources: Input.decodeList<GetSigningJobSource>(
+      sources: pulumi.Input.decodeList<GetSigningJobSource>(
           map['sources'],
           (value) => GetSigningJobSource.fromMap(
               (value as Map).cast<String, dynamic>())),

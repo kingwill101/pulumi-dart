@@ -1,41 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SnapshotCopy.
 class SnapshotCopyArgs {
   /// Specifies a completion duration to initiate a time-based snapshot copy. Time-based snapshot copy operations complete within the specified duration.  Value must be between 15 and 2880 minutes, in 15 minute increments only.
-  final Input<int>? completionDurationMinutes;
+  final pulumi.Input<int>? completionDurationMinutes;
 
   /// A description of what the snapshot is.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Whether the snapshot is encrypted.
-  final Input<bool>? encrypted;
+  final pulumi.Input<bool>? encrypted;
 
   /// The ARN for the KMS encryption key.
-  final Input<String>? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
 
   /// Indicates whether to permanently restore an archived snapshot.
-  final Input<bool>? permanentRestore;
+  final pulumi.Input<bool>? permanentRestore;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The region of the source snapshot.
-  final Input<String> sourceRegion;
+  final pulumi.Input<String> sourceRegion;
 
   /// The ARN for the snapshot to be copied.
-  final Input<String> sourceSnapshotId;
+  final pulumi.Input<String> sourceSnapshotId;
 
   /// The name of the storage tier. Valid values are `archive` and `standard`. Default value is `standard`.
-  final Input<String>? storageTier;
+  final pulumi.Input<String>? storageTier;
 
   /// A map of tags for the snapshot.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
-  final Input<int>? temporaryRestoreDays;
+  final pulumi.Input<int>? temporaryRestoreDays;
 
   SnapshotCopyArgs({
     this.completionDurationMinutes,
@@ -97,18 +97,19 @@ class SnapshotCopyArgs {
   factory SnapshotCopyArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotCopyArgs(
       completionDurationMinutes:
-          Input.asOptionalInput<int>(map['completionDurationMinutes']),
-      description: Input.asOptionalInput<String>(map['description']),
-      encrypted: Input.asOptionalInput<bool>(map['encrypted']),
-      kmsKeyId: Input.asOptionalInput<String>(map['kmsKeyId']),
-      permanentRestore: Input.asOptionalInput<bool>(map['permanentRestore']),
-      region: Input.asOptionalInput<String>(map['region']),
-      sourceRegion: Input.asInput<String>(map['sourceRegion']),
-      sourceSnapshotId: Input.asInput<String>(map['sourceSnapshotId']),
-      storageTier: Input.asOptionalInput<String>(map['storageTier']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<int>(map['completionDurationMinutes']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      encrypted: pulumi.Input.asOptionalInput<bool>(map['encrypted']),
+      kmsKeyId: pulumi.Input.asOptionalInput<String>(map['kmsKeyId']),
+      permanentRestore:
+          pulumi.Input.asOptionalInput<bool>(map['permanentRestore']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sourceRegion: pulumi.Input.asInput<String>(map['sourceRegion']),
+      sourceSnapshotId: pulumi.Input.asInput<String>(map['sourceSnapshotId']),
+      storageTier: pulumi.Input.asOptionalInput<String>(map['storageTier']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
       temporaryRestoreDays:
-          Input.asOptionalInput<int>(map['temporaryRestoreDays']),
+          pulumi.Input.asOptionalInput<int>(map['temporaryRestoreDays']),
     );
   }
 }

@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFunctionUrl.
 class GetFunctionUrlArgs {
   /// Name or ARN of the Lambda function.
   ///
   /// The following arguments are optional:
-  final Input<String> functionName;
+  final pulumi.Input<String> functionName;
 
   /// Alias name or `$LATEST`.
-  final Input<String>? qualifier;
+  final pulumi.Input<String>? qualifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetFunctionUrlArgs({
     required this.functionName,
@@ -37,9 +37,9 @@ class GetFunctionUrlArgs {
 
   factory GetFunctionUrlArgs.fromMap(Map<String, dynamic> map) {
     return GetFunctionUrlArgs(
-      functionName: Input.asInput<String>(map['functionName']),
-      qualifier: Input.asOptionalInput<String>(map['qualifier']),
-      region: Input.asOptionalInput<String>(map['region']),
+      functionName: pulumi.Input.asInput<String>(map['functionName']),
+      qualifier: pulumi.Input.asOptionalInput<String>(map['qualifier']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_deployment_configuration_alarm/get_service_deployment_configuration_alarm.dart';
 import '../get_service_deployment_configuration_canary_configuration/get_service_deployment_configuration_canary_configuration.dart';
 import '../get_service_deployment_configuration_deployment_circuit_breaker/get_service_deployment_configuration_deployment_circuit_breaker.dart';
@@ -52,20 +52,21 @@ class GetServiceDeploymentConfiguration {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['alarms'] = Input.encodeList<GetServiceDeploymentConfigurationAlarm,
+    map['alarms'] = pulumi.Input.encodeList<
+        GetServiceDeploymentConfigurationAlarm,
         Map<String, dynamic>>(alarms, (value) => value.toMap());
     map['bakeTimeInMinutes'] = bakeTimeInMinutes;
-    map['canaryConfigurations'] = Input.encodeList<
+    map['canaryConfigurations'] = pulumi.Input.encodeList<
         GetServiceDeploymentConfigurationCanaryConfiguration,
         Map<String, dynamic>>(canaryConfigurations, (value) => value.toMap());
-    map['deploymentCircuitBreakers'] = Input.encodeList<
+    map['deploymentCircuitBreakers'] = pulumi.Input.encodeList<
             GetServiceDeploymentConfigurationDeploymentCircuitBreaker,
             Map<String, dynamic>>(
         deploymentCircuitBreakers, (value) => value.toMap());
-    map['lifecycleHooks'] = Input.encodeList<
+    map['lifecycleHooks'] = pulumi.Input.encodeList<
         GetServiceDeploymentConfigurationLifecycleHook,
         Map<String, dynamic>>(lifecycleHooks, (value) => value.toMap());
-    map['linearConfigurations'] = Input.encodeList<
+    map['linearConfigurations'] = pulumi.Input.encodeList<
         GetServiceDeploymentConfigurationLinearConfiguration,
         Map<String, dynamic>>(linearConfigurations, (value) => value.toMap());
     map['maximumPercent'] = maximumPercent;
@@ -76,29 +77,29 @@ class GetServiceDeploymentConfiguration {
 
   factory GetServiceDeploymentConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceDeploymentConfiguration(
-      alarms: Input.decodeList<GetServiceDeploymentConfigurationAlarm>(
+      alarms: pulumi.Input.decodeList<GetServiceDeploymentConfigurationAlarm>(
           map['alarms'],
           (value) => GetServiceDeploymentConfigurationAlarm.fromMap(
               (value as Map).cast<String, dynamic>())),
       bakeTimeInMinutes: map['bakeTimeInMinutes'] as String,
-      canaryConfigurations: Input.decodeList<
+      canaryConfigurations: pulumi.Input.decodeList<
               GetServiceDeploymentConfigurationCanaryConfiguration>(
           map['canaryConfigurations'],
           (value) =>
               GetServiceDeploymentConfigurationCanaryConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      deploymentCircuitBreakers: Input.decodeList<
+      deploymentCircuitBreakers: pulumi.Input.decodeList<
               GetServiceDeploymentConfigurationDeploymentCircuitBreaker>(
           map['deploymentCircuitBreakers'],
           (value) =>
               GetServiceDeploymentConfigurationDeploymentCircuitBreaker.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      lifecycleHooks:
-          Input.decodeList<GetServiceDeploymentConfigurationLifecycleHook>(
-              map['lifecycleHooks'],
-              (value) => GetServiceDeploymentConfigurationLifecycleHook.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      linearConfigurations: Input.decodeList<
+      lifecycleHooks: pulumi.Input.decodeList<
+              GetServiceDeploymentConfigurationLifecycleHook>(
+          map['lifecycleHooks'],
+          (value) => GetServiceDeploymentConfigurationLifecycleHook.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      linearConfigurations: pulumi.Input.decodeList<
               GetServiceDeploymentConfigurationLinearConfiguration>(
           map['linearConfigurations'],
           (value) =>

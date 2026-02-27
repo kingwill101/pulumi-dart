@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resource_lf_tags_database/resource_lf_tags_database.dart';
 import '../resource_lf_tags_lf_tag/resource_lf_tags_lf_tag.dart';
 import '../resource_lf_tags_table/resource_lf_tags_table.dart';
@@ -14,38 +14,38 @@ import 'resource_lf_tags_args.dart';
 ///
 ///
 /// ### Multiple Tags Example
-class ResourceLfTags extends CustomResource {
+class ResourceLfTags extends pulumi.CustomResource {
   /// Identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
-  late final Output<String> catalogId;
+  late final pulumi.Output<String> catalogId;
 
   /// Configuration block for a database resource. See below.
-  late final Output<ResourceLfTagsDatabase> database;
+  late final pulumi.Output<ResourceLfTagsDatabase> database;
 
   /// Set of LF-tags to attach to the resource. See below.
   ///
   /// Exactly one of the following is required:
-  late final Output<List<ResourceLfTagsLfTag>> lfTags;
+  late final pulumi.Output<List<ResourceLfTagsLfTag>> lfTags;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration block for a table resource. See below.
-  late final Output<ResourceLfTagsTable> table;
+  late final pulumi.Output<ResourceLfTagsTable> table;
 
   /// Configuration block for a table with columns resource. See below.
   ///
   /// The following arguments are optional:
-  late final Output<ResourceLfTagsTableWithColumns> tableWithColumns;
+  late final pulumi.Output<ResourceLfTagsTableWithColumns> tableWithColumns;
 
   ResourceLfTags(
     String name, {
     ResourceLfTagsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lakeformation/resourceLfTags:ResourceLfTags',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.catalogId = registerOutput<String>('catalogId');
     this.database = registerOutput<ResourceLfTagsDatabase>('database');

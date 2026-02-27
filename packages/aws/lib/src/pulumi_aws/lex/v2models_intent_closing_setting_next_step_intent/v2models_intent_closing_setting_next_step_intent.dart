@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_closing_setting_next_step_intent_slot/v2models_intent_closing_setting_next_step_intent_slot.dart';
 
 class V2modelsIntentClosingSettingNextStepIntent {
@@ -23,7 +23,7 @@ class V2modelsIntentClosingSettingNextStepIntent {
     }
     final slotsValue = slots;
     if (slotsValue != null) {
-      map['slots'] = Input.encodeList<
+      map['slots'] = pulumi.Input.encodeList<
           V2modelsIntentClosingSettingNextStepIntentSlot,
           Map<String, dynamic>>(slotsValue, (value) => value.toMap());
     }
@@ -36,7 +36,8 @@ class V2modelsIntentClosingSettingNextStepIntent {
       name: map['name'] == null ? null : map['name'] as String,
       slots: map['slots'] == null
           ? null
-          : Input.decodeList<V2modelsIntentClosingSettingNextStepIntentSlot>(
+          : pulumi.Input.decodeList<
+                  V2modelsIntentClosingSettingNextStepIntentSlot>(
               map['slots'],
               (value) => V2modelsIntentClosingSettingNextStepIntentSlot.fromMap(
                   (value as Map).cast<String, dynamic>())),

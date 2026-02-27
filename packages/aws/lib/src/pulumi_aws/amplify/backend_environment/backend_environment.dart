@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backend_environment_args.dart';
 
 /// Provides an Amplify Backend Environment resource.
@@ -14,34 +14,34 @@ import 'backend_environment_args.dart';
 /// ```sh
 /// $ pulumi import aws:amplify/backendEnvironment:BackendEnvironment example d2ypk4k47z8u6/example
 /// ```
-class BackendEnvironment extends CustomResource {
+class BackendEnvironment extends pulumi.CustomResource {
   /// Unique ID for an Amplify app.
-  late final Output<String> appId;
+  late final pulumi.Output<String> appId;
 
   /// ARN for a backend environment that is part of an Amplify app.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Name of deployment artifacts.
-  late final Output<String> deploymentArtifacts;
+  late final pulumi.Output<String> deploymentArtifacts;
 
   /// Name for the backend environment.
-  late final Output<String> environmentName;
+  late final pulumi.Output<String> environmentName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// AWS CloudFormation stack name of a backend environment.
-  late final Output<String> stackName;
+  late final pulumi.Output<String> stackName;
 
   BackendEnvironment(
     String name, {
     BackendEnvironmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:amplify/backendEnvironment:BackendEnvironment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appId = registerOutput<String>('appId');
     this.arn = registerOutput<String>('arn');

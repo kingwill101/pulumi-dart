@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../log_transformer_transformer_config_split_string_entry/log_transformer_transformer_config_split_string_entry.dart';
 
 class LogTransformerTransformerConfigSplitString {
@@ -13,7 +13,7 @@ class LogTransformerTransformerConfigSplitString {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['entries'] = Input.encodeList<
+    map['entries'] = pulumi.Input.encodeList<
         LogTransformerTransformerConfigSplitStringEntry,
         Map<String, dynamic>>(entries, (value) => value.toMap());
     return map;
@@ -22,12 +22,11 @@ class LogTransformerTransformerConfigSplitString {
   factory LogTransformerTransformerConfigSplitString.fromMap(
       Map<String, dynamic> map) {
     return LogTransformerTransformerConfigSplitString(
-      entries:
-          Input.decodeList<LogTransformerTransformerConfigSplitStringEntry>(
-              map['entries'],
-              (value) =>
-                  LogTransformerTransformerConfigSplitStringEntry.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      entries: pulumi.Input.decodeList<
+              LogTransformerTransformerConfigSplitStringEntry>(
+          map['entries'],
+          (value) => LogTransformerTransformerConfigSplitStringEntry.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

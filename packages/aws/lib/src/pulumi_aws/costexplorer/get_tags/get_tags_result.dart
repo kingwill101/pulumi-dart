@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_tags_filter/get_tags_filter.dart';
 import '../get_tags_sort_by/get_tags_sort_by.dart';
 import '../get_tags_time_period/get_tags_time_period.dart';
@@ -42,8 +42,9 @@ class GetTagsResult {
     }
     final sortBiesValue = sortBies;
     if (sortBiesValue != null) {
-      map['sortBies'] = Input.encodeList<GetTagsSortBy, Map<String, dynamic>>(
-          sortBiesValue, (value) => value.toMap());
+      map['sortBies'] =
+          pulumi.Input.encodeList<GetTagsSortBy, Map<String, dynamic>>(
+              sortBiesValue, (value) => value.toMap());
     }
     final tagKeyValue = tagKey;
     if (tagKeyValue != null) {
@@ -65,7 +66,7 @@ class GetTagsResult {
           map['searchString'] == null ? null : map['searchString'] as String,
       sortBies: map['sortBies'] == null
           ? null
-          : Input.decodeList<GetTagsSortBy>(
+          : pulumi.Input.decodeList<GetTagsSortBy>(
               map['sortBies'],
               (value) => GetTagsSortBy.fromMap(
                   (value as Map).cast<String, dynamic>())),

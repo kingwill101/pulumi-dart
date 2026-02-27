@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLink.
 class GetLinkArgs {
   /// ID of the Global Network of the link to retrieve.
-  final Input<String> globalNetworkId;
+  final pulumi.Input<String> globalNetworkId;
 
   /// ID of the specific link to retrieve.
-  final Input<String> linkId;
+  final pulumi.Input<String> linkId;
 
   /// Key-value tags for the link.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetLinkArgs({
     required this.globalNetworkId,
@@ -32,9 +32,9 @@ class GetLinkArgs {
 
   factory GetLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetLinkArgs(
-      globalNetworkId: Input.asInput<String>(map['globalNetworkId']),
-      linkId: Input.asInput<String>(map['linkId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      globalNetworkId: pulumi.Input.asInput<String>(map['globalNetworkId']),
+      linkId: pulumi.Input.asInput<String>(map['linkId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

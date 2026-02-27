@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_replication_configuration_rule/bucket_replication_configuration_rule.dart';
 
 class BucketReplicationConfiguration {
@@ -18,7 +18,7 @@ class BucketReplicationConfiguration {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['role'] = role;
-    map['rules'] = Input.encodeList<BucketReplicationConfigurationRule,
+    map['rules'] = pulumi.Input.encodeList<BucketReplicationConfigurationRule,
         Map<String, dynamic>>(rules, (value) => value.toMap());
     return map;
   }
@@ -26,7 +26,7 @@ class BucketReplicationConfiguration {
   factory BucketReplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfiguration(
       role: map['role'] as String,
-      rules: Input.decodeList<BucketReplicationConfigurationRule>(
+      rules: pulumi.Input.decodeList<BucketReplicationConfigurationRule>(
           map['rules'],
           (value) => BucketReplicationConfigurationRule.fromMap(
               (value as Map).cast<String, dynamic>())),

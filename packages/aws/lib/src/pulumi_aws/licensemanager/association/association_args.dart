@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Association.
 class AssociationArgs {
   /// ARN of the license configuration.
-  final Input<String> licenseConfigurationArn;
+  final pulumi.Input<String> licenseConfigurationArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ARN of the resource associated with the license configuration.
-  final Input<String> resourceArn;
+  final pulumi.Input<String> resourceArn;
 
   AssociationArgs({
     required this.licenseConfigurationArn,
@@ -33,9 +33,9 @@ class AssociationArgs {
   factory AssociationArgs.fromMap(Map<String, dynamic> map) {
     return AssociationArgs(
       licenseConfigurationArn:
-          Input.asInput<String>(map['licenseConfigurationArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      resourceArn: Input.asInput<String>(map['resourceArn']),
+          pulumi.Input.asInput<String>(map['licenseConfigurationArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourceArn: pulumi.Input.asInput<String>(map['resourceArn']),
     );
   }
 }

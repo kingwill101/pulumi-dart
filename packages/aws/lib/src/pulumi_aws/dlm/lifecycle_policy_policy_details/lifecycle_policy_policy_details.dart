@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lifecycle_policy_policy_details_action/lifecycle_policy_policy_details_action.dart';
 import '../lifecycle_policy_policy_details_event_source/lifecycle_policy_policy_details_event_source.dart';
 import '../lifecycle_policy_policy_details_exclusions/lifecycle_policy_policy_details_exclusions.dart';
@@ -125,7 +125,8 @@ class LifecyclePolicyPolicyDetails {
     }
     final schedulesValue = schedules;
     if (schedulesValue != null) {
-      map['schedules'] = Input.encodeList<LifecyclePolicyPolicyDetailsSchedule,
+      map['schedules'] = pulumi.Input.encodeList<
+          LifecyclePolicyPolicyDetailsSchedule,
           Map<String, dynamic>>(schedulesValue, (value) => value.toMap());
     }
     final targetTagsValue = targetTags;
@@ -175,7 +176,7 @@ class LifecyclePolicyPolicyDetails {
           map['retainInterval'] == null ? null : map['retainInterval'] as int,
       schedules: map['schedules'] == null
           ? null
-          : Input.decodeList<LifecyclePolicyPolicyDetailsSchedule>(
+          : pulumi.Input.decodeList<LifecyclePolicyPolicyDetailsSchedule>(
               map['schedules'],
               (value) => LifecyclePolicyPolicyDetailsSchedule.fromMap(
                   (value as Map).cast<String, dynamic>())),

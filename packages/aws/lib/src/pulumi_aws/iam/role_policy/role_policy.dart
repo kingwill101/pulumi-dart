@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_policy_args.dart';
 
 /// Provides an IAM role inline policy.
@@ -30,32 +30,32 @@ import 'role_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/rolePolicy:RolePolicy example role_of_mypolicy_name:mypolicy_name
 /// ```
-class RolePolicy extends CustomResource {
+class RolePolicy extends pulumi.CustomResource {
   /// The name of the role policy.
   /// If omitted, the provider will assign a random, unique name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Creates a unique name beginning with the specified prefix.
   /// Conflicts with `name`.
-  late final Output<String> namePrefix;
+  late final pulumi.Output<String> namePrefix;
 
   /// The inline policy document.
   /// This is a JSON formatted string.
   /// For more information about building IAM policy documents with Pulumi, see the AWS IAM Policy Document Guide
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// The name of the IAM role to attach to the policy.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   RolePolicy(
     String name, {
     RolePolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/rolePolicy:RolePolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
     this.namePrefix = registerOutput<String>('namePrefix');

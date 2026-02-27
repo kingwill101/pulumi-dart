@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../form_type_import/form_type_import.dart';
 import '../form_type_model/form_type_model.dart';
 import '../form_type_timeouts/form_type_timeouts.dart';
@@ -19,54 +19,54 @@ import 'form_type_args.dart';
 /// ```sh
 /// $ pulumi import aws:datazone/formType:FormType example domain_identifier,name,revision
 /// ```
-class FormType extends CustomResource {
+class FormType extends pulumi.CustomResource {
   /// Creation time of the Form Type.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// Creator of the Form Type.
-  late final Output<String> createdBy;
+  late final pulumi.Output<String> createdBy;
 
   /// Description of form type. Must have a length of between 1 and 2048 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Identifier of the domain.
-  late final Output<String> domainIdentifier;
-  late final Output<List<FormTypeImport>> imports;
+  late final pulumi.Output<String> domainIdentifier;
+  late final pulumi.Output<List<FormTypeImport>> imports;
 
   /// Object of the model of the form type that contains the following attributes.
-  late final Output<FormTypeModel> model;
+  late final pulumi.Output<FormTypeModel> model;
 
   /// Name of the form type. Must be the name of the structure in smithy document.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Origin domain id of the Form Type.
-  late final Output<String> originDomainId;
+  late final pulumi.Output<String> originDomainId;
 
   /// Origin project id of the Form Type.
-  late final Output<String> originProjectId;
+  late final pulumi.Output<String> originProjectId;
 
   /// Identifier of project that owns the form type. Must follow regex of ^[a-zA-Z0-9_-]{1,36}.
-  late final Output<String> owningProjectIdentifier;
+  late final pulumi.Output<String> owningProjectIdentifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Revision of the Form Type.
-  late final Output<String> revision;
+  late final pulumi.Output<String> revision;
 
   /// Status of form type. Must be "ENABLED" or "DISABLED" If status is set to "ENABLED" terraform cannot delete the resource until it is manually changed in the AWS console.
-  late final Output<String> status;
-  late final Output<FormTypeTimeouts?> timeouts;
+  late final pulumi.Output<String> status;
+  late final pulumi.Output<FormTypeTimeouts?> timeouts;
 
   FormType(
     String name, {
     FormTypeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:datazone/formType:FormType',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createdAt = registerOutput<String>('createdAt');
     this.createdBy = registerOutput<String>('createdBy');

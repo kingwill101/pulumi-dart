@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resolver_firewall_rule_group_association_args.dart';
 
 /// Provides a Route 53 Resolver DNS Firewall rule group association resource.
@@ -14,43 +14,43 @@ import 'resolver_firewall_rule_group_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53/resolverFirewallRuleGroupAssociation:ResolverFirewallRuleGroupAssociation example rslvr-frgassoc-0123456789abcdef
 /// ```
-class ResolverFirewallRuleGroupAssociation extends CustomResource {
+class ResolverFirewallRuleGroupAssociation extends pulumi.CustomResource {
   /// The ARN (Amazon Resource Name) of the firewall rule group association.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The unique identifier of the firewall rule group.
-  late final Output<String> firewallRuleGroupId;
+  late final pulumi.Output<String> firewallRuleGroupId;
 
   /// If enabled, this setting disallows modification or removal of the association, to help prevent against accidentally altering DNS firewall protections. Valid values: `ENABLED`, `DISABLED`.
-  late final Output<String> mutationProtection;
+  late final pulumi.Output<String> mutationProtection;
 
   /// A name that lets you identify the rule group association, to manage and use it.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The setting that determines the processing order of the rule group among the rule groups that you associate with the specified VPC. DNS Firewall filters VPC traffic starting from the rule group with the lowest numeric priority setting.
-  late final Output<int> priority;
+  late final pulumi.Output<int> priority;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The unique identifier of the VPC that you want to associate with the rule group.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   ResolverFirewallRuleGroupAssociation(
     String name, {
     ResolverFirewallRuleGroupAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53/resolverFirewallRuleGroupAssociation:ResolverFirewallRuleGroupAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.firewallRuleGroupId = registerOutput<String>('firewallRuleGroupId');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../access_grant_access_grants_location_configuration/access_grant_access_grants_location_configuration.dart';
 import '../access_grant_grantee/access_grant_grantee.dart';
 import 'access_grant_args.dart';
@@ -18,53 +18,53 @@ import 'access_grant_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3control/accessGrant:AccessGrant example 123456789012,04549c5e-2f3c-4a07-824d-2cafe720aa22
 /// ```
-class AccessGrant extends CustomResource {
+class AccessGrant extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the S3 Access Grant.
-  late final Output<String> accessGrantArn;
+  late final pulumi.Output<String> accessGrantArn;
 
   /// Unique ID of the S3 Access Grant.
-  late final Output<String> accessGrantId;
+  late final pulumi.Output<String> accessGrantId;
 
   /// See Location Configuration below for more details.
-  late final Output<AccessGrantAccessGrantsLocationConfiguration?>
+  late final pulumi.Output<AccessGrantAccessGrantsLocationConfiguration?>
       accessGrantsLocationConfiguration;
 
   /// The ID of the S3 Access Grants location to with the access grant is giving access.
-  late final Output<String> accessGrantsLocationId;
+  late final pulumi.Output<String> accessGrantsLocationId;
 
   /// The AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// The access grant's scope.
-  late final Output<String> grantScope;
+  late final pulumi.Output<String> grantScope;
 
   /// See Grantee below for more details.
-  late final Output<AccessGrantGrantee> grantee;
+  late final pulumi.Output<AccessGrantGrantee> grantee;
 
   /// The access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
-  late final Output<String> permission;
+  late final pulumi.Output<String> permission;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// If you are creating an access grant that grants access to only one object, set this to `Object`. Valid values: `Object`.
-  late final Output<String?> s3PrefixType;
+  late final pulumi.Output<String?> s3PrefixType;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   AccessGrant(
     String name, {
     AccessGrantArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3control/accessGrant:AccessGrant',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessGrantArn = registerOutput<String>('accessGrantArn');
     this.accessGrantId = registerOutput<String>('accessGrantId');

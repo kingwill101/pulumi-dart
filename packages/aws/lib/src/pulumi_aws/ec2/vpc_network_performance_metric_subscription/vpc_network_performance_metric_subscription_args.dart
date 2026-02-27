@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VpcNetworkPerformanceMetricSubscription.
 class VpcNetworkPerformanceMetricSubscriptionArgs {
   /// The target Region or Availability Zone that the metric subscription is enabled for. For example, `eu-west-1`.
-  final Input<String> destination;
+  final pulumi.Input<String> destination;
 
   /// The metric used for the enabled subscription. Valid values: `aggregate-latency`. Default: `aggregate-latency`.
-  final Input<String>? metric;
+  final pulumi.Input<String>? metric;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The source Region or Availability Zone that the metric subscription is enabled for. For example, `us-east-1`.
-  final Input<String> source;
+  final pulumi.Input<String> source;
 
   /// The statistic used for the enabled subscription. Valid values: `p50`. Default: `p50`.
-  final Input<String>? statistic;
+  final pulumi.Input<String>? statistic;
 
   VpcNetworkPerformanceMetricSubscriptionArgs({
     required this.destination,
@@ -49,11 +49,11 @@ class VpcNetworkPerformanceMetricSubscriptionArgs {
   factory VpcNetworkPerformanceMetricSubscriptionArgs.fromMap(
       Map<String, dynamic> map) {
     return VpcNetworkPerformanceMetricSubscriptionArgs(
-      destination: Input.asInput<String>(map['destination']),
-      metric: Input.asOptionalInput<String>(map['metric']),
-      region: Input.asOptionalInput<String>(map['region']),
-      source: Input.asInput<String>(map['source']),
-      statistic: Input.asOptionalInput<String>(map['statistic']),
+      destination: pulumi.Input.asInput<String>(map['destination']),
+      metric: pulumi.Input.asOptionalInput<String>(map['metric']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      source: pulumi.Input.asInput<String>(map['source']),
+      statistic: pulumi.Input.asOptionalInput<String>(map['statistic']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_source_configuration_web_crawler_configuration_authentication_configuration_basic_authentication/data_source_configuration_web_crawler_configuration_authentication_configuration_basic_authentication.dart';
 
 class DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration {
@@ -17,7 +17,7 @@ class DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration 
     final map = <String, dynamic>{};
     final basicAuthenticationsValue = basicAuthentications;
     if (basicAuthenticationsValue != null) {
-      map['basicAuthentications'] = Input.encodeList<
+      map['basicAuthentications'] = pulumi.Input.encodeList<
           DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication,
           Map<String,
               dynamic>>(basicAuthenticationsValue, (value) => value.toMap());
@@ -30,7 +30,7 @@ class DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration 
     return DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration(
       basicAuthentications: map['basicAuthentications'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfigurationBasicAuthentication>(
               map['basicAuthentications'],
               (value) =>

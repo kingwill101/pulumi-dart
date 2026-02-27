@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../account_throttle_setting/account_throttle_setting.dart';
 import 'account_args.dart';
 
@@ -15,31 +15,31 @@ import 'account_args.dart';
 /// ```sh
 /// $ pulumi import aws:apigateway/account:Account demo 123456789012
 /// ```
-class Account extends CustomResource {
+class Account extends pulumi.CustomResource {
   /// The version of the API keys used for the account.
-  late final Output<String> apiKeyVersion;
+  late final pulumi.Output<String> apiKeyVersion;
 
   /// ARN of an IAM role for CloudWatch (to allow logging & monitoring). See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console). Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
-  late final Output<String> cloudwatchRoleArn;
+  late final pulumi.Output<String> cloudwatchRoleArn;
 
   /// A list of features supported for the account.
-  late final Output<List<String>> features;
+  late final pulumi.Output<List<String>> features;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Account-Level throttle settings. See exported fields below.
-  late final Output<List<AccountThrottleSetting>> throttleSettings;
+  late final pulumi.Output<List<AccountThrottleSetting>> throttleSettings;
 
   Account(
     String name, {
     AccountArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigateway/account:Account',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiKeyVersion = registerOutput<String>('apiKeyVersion');
     this.cloudwatchRoleArn = registerOutput<String>('cloudwatchRoleArn');

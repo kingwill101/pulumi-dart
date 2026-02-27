@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multiplex_program_multiplex_program_settings/multiplex_program_multiplex_program_settings.dart';
 import '../multiplex_program_timeouts/multiplex_program_timeouts.dart';
 import 'multiplex_program_args.dart';
@@ -18,32 +18,32 @@ import 'multiplex_program_args.dart';
 /// ```sh
 /// $ pulumi import aws:medialive/multiplexProgram:MultiplexProgram example example_program/1234567
 /// ```
-class MultiplexProgram extends CustomResource {
+class MultiplexProgram extends pulumi.CustomResource {
   /// Multiplex ID.
-  late final Output<String> multiplexId;
+  late final pulumi.Output<String> multiplexId;
 
   /// MultiplexProgram settings. See Multiplex Program Settings for more details.
   ///
   /// The following arguments are optional:
-  late final Output<MultiplexProgramMultiplexProgramSettings?>
+  late final pulumi.Output<MultiplexProgramMultiplexProgramSettings?>
       multiplexProgramSettings;
 
   /// Unique program name.
-  late final Output<String> programName;
+  late final pulumi.Output<String> programName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<MultiplexProgramTimeouts?> timeouts;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<MultiplexProgramTimeouts?> timeouts;
 
   MultiplexProgram(
     String name, {
     MultiplexProgramArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:medialive/multiplexProgram:MultiplexProgram',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.multiplexId = registerOutput<String>('multiplexId');
     this.multiplexProgramSettings =

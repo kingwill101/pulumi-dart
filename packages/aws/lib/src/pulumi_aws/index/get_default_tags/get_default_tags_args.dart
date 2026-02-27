@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDefaultTags.
 class GetDefaultTagsArgs {
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   GetDefaultTagsArgs({
     this.id,
@@ -21,7 +21,7 @@ class GetDefaultTagsArgs {
 
   factory GetDefaultTagsArgs.fromMap(Map<String, dynamic> map) {
     return GetDefaultTagsArgs(
-      id: Input.asOptionalInput<String>(map['id']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
     );
   }
 }

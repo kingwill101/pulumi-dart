@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_distribution_configuration_distribution/get_distribution_configuration_distribution.dart';
 
 /// Result data returned by getDistributionConfiguration.
@@ -49,7 +49,7 @@ class GetDistributionConfigurationResult {
     map['dateCreated'] = dateCreated;
     map['dateUpdated'] = dateUpdated;
     map['description'] = description;
-    map['distributions'] = Input.encodeList<
+    map['distributions'] = pulumi.Input.encodeList<
         GetDistributionConfigurationDistribution,
         Map<String, dynamic>>(distributions, (value) => value.toMap());
     map['id'] = id;
@@ -65,10 +65,11 @@ class GetDistributionConfigurationResult {
       dateCreated: map['dateCreated'] as String,
       dateUpdated: map['dateUpdated'] as String,
       description: map['description'] as String,
-      distributions: Input.decodeList<GetDistributionConfigurationDistribution>(
-          map['distributions'],
-          (value) => GetDistributionConfigurationDistribution.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      distributions:
+          pulumi.Input.decodeList<GetDistributionConfigurationDistribution>(
+              map['distributions'],
+              (value) => GetDistributionConfigurationDistribution.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,

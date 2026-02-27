@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegions.
 class GetRegionsArgs {
   /// AWS account ID. Must be a member account in the same organization.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// A list of region opt-in statuses to filter the results. Valid values are `ENABLED`, `ENABLING`, `DISABLING`, `DISABLED`, and `ENABLED_BY_DEFAULT`.
-  final Input<List<String>>? regionOptStatusContains;
+  final pulumi.Input<List<String>>? regionOptStatusContains;
 
   GetRegionsArgs({
     this.accountId,
@@ -30,9 +30,9 @@ class GetRegionsArgs {
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
-      regionOptStatusContains:
-          Input.asOptionalInput<List<String>>(map['regionOptStatusContains']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
+      regionOptStatusContains: pulumi.Input.asOptionalInput<List<String>>(
+          map['regionOptStatusContains']),
     );
   }
 }

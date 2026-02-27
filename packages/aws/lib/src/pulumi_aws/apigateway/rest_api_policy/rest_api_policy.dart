@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rest_api_policy_args.dart';
 
 /// Provides an API Gateway REST API Policy.
@@ -18,25 +18,25 @@ import 'rest_api_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:apigateway/restApiPolicy:RestApiPolicy example 12345abcde
 /// ```
-class RestApiPolicy extends CustomResource {
+class RestApiPolicy extends pulumi.CustomResource {
   /// JSON formatted policy document that controls access to the API Gateway.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ID of the REST API.
-  late final Output<String> restApiId;
+  late final pulumi.Output<String> restApiId;
 
   RestApiPolicy(
     String name, {
     RestApiPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigateway/restApiPolicy:RestApiPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.policy = registerOutput<String>('policy');
     this.region = registerOutput<String>('region');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_data_source_data_source_configuration_web_configuration_source_configuration_url_configuration_seed_url/agent_data_source_data_source_configuration_web_configuration_source_configuration_url_configuration_seed_url.dart';
 
 class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration {
@@ -17,7 +17,7 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationU
     final map = <String, dynamic>{};
     final seedUrlsValue = seedUrls;
     if (seedUrlsValue != null) {
-      map['seedUrls'] = Input.encodeList<
+      map['seedUrls'] = pulumi.Input.encodeList<
           AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl,
           Map<String, dynamic>>(seedUrlsValue, (value) => value.toMap());
     }
@@ -29,7 +29,7 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationU
     return AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration(
       seedUrls: map['seedUrls'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl>(
               map['seedUrls'],
               (value) =>

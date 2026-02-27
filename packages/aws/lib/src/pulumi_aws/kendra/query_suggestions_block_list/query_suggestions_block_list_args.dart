@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../query_suggestions_block_list_source_s3_path/query_suggestions_block_list_source_s3_path.dart';
 
 /// The set of arguments for QuerySuggestionsBlockList.
 class QuerySuggestionsBlockListArgs {
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Identifier of the index for a block list.
-  final Input<String> indexId;
+  final pulumi.Input<String> indexId;
 
   /// Name for the block list.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// IAM (Identity and Access Management) role used to access the block list text file in S3.
-  final Input<String> roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// S3 path where your block list text file is located. See details below.
-  final Input<QuerySuggestionsBlockListSourceS3Path> sourceS3Path;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<QuerySuggestionsBlockListSourceS3Path> sourceS3Path;
+  final pulumi.Input<Map<String, String>>? tags;
 
   QuerySuggestionsBlockListArgs({
     this.description,
@@ -49,7 +49,7 @@ class QuerySuggestionsBlockListArgs {
       map['region'] = regionValue;
     }
     map['roleArn'] = roleArn;
-    map['sourceS3Path'] = Input.mapInputValue<
+    map['sourceS3Path'] = pulumi.Input.mapInputValue<
         QuerySuggestionsBlockListSourceS3Path,
         Map<String, dynamic>>(sourceS3Path, (value) => value.toMap());
     final tagsValue = tags;
@@ -61,14 +61,14 @@ class QuerySuggestionsBlockListArgs {
 
   factory QuerySuggestionsBlockListArgs.fromMap(Map<String, dynamic> map) {
     return QuerySuggestionsBlockListArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      indexId: Input.asInput<String>(map['indexId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      roleArn: Input.asInput<String>(map['roleArn']),
-      sourceS3Path: Input.asInput<QuerySuggestionsBlockListSourceS3Path>(
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      indexId: pulumi.Input.asInput<String>(map['indexId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      roleArn: pulumi.Input.asInput<String>(map['roleArn']),
+      sourceS3Path: pulumi.Input.asInput<QuerySuggestionsBlockListSourceS3Path>(
           map['sourceS3Path']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

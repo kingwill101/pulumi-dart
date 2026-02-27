@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getQuerySuggestionsBlockList.
 class GetQuerySuggestionsBlockListArgs {
   /// Identifier of the index that contains the block list.
-  final Input<String> indexId;
+  final pulumi.Input<String> indexId;
 
   /// Identifier of the block list.
-  final Input<String> querySuggestionsBlockListId;
+  final pulumi.Input<String> querySuggestionsBlockListId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Metadata that helps organize the block list you create.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetQuerySuggestionsBlockListArgs({
     required this.indexId,
@@ -40,11 +40,11 @@ class GetQuerySuggestionsBlockListArgs {
 
   factory GetQuerySuggestionsBlockListArgs.fromMap(Map<String, dynamic> map) {
     return GetQuerySuggestionsBlockListArgs(
-      indexId: Input.asInput<String>(map['indexId']),
+      indexId: pulumi.Input.asInput<String>(map['indexId']),
       querySuggestionsBlockListId:
-          Input.asInput<String>(map['querySuggestionsBlockListId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asInput<String>(map['querySuggestionsBlockListId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

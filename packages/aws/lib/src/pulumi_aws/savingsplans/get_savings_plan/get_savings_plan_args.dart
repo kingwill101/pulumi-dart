@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSavingsPlan.
 class GetSavingsPlanArgs {
   /// The ID of the Savings Plan.
-  final Input<String> savingsPlanId;
+  final pulumi.Input<String> savingsPlanId;
 
   GetSavingsPlanArgs({
     required this.savingsPlanId,
@@ -19,7 +19,7 @@ class GetSavingsPlanArgs {
 
   factory GetSavingsPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetSavingsPlanArgs(
-      savingsPlanId: Input.asInput<String>(map['savingsPlanId']),
+      savingsPlanId: pulumi.Input.asInput<String>(map['savingsPlanId']),
     );
   }
 }

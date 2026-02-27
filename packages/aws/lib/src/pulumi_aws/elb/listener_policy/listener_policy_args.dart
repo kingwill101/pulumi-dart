@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ListenerPolicy.
 class ListenerPolicyArgs {
   /// The load balancer to attach the policy to.
-  final Input<String> loadBalancerName;
+  final pulumi.Input<String> loadBalancerName;
 
   /// The load balancer listener port to apply the policy to.
-  final Input<int> loadBalancerPort;
+  final pulumi.Input<int> loadBalancerPort;
 
   /// List of Policy Names to apply to the backend server.
-  final Input<List<String>>? policyNames;
+  final pulumi.Input<List<String>>? policyNames;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of arbitrary keys and values that, when changed, will trigger an update.
-  final Input<Map<String, String>>? triggers;
+  final pulumi.Input<Map<String, String>>? triggers;
 
   ListenerPolicyArgs({
     required this.loadBalancerName,
@@ -48,11 +48,13 @@ class ListenerPolicyArgs {
 
   factory ListenerPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ListenerPolicyArgs(
-      loadBalancerName: Input.asInput<String>(map['loadBalancerName']),
-      loadBalancerPort: Input.asInput<int>(map['loadBalancerPort']),
-      policyNames: Input.asOptionalInput<List<String>>(map['policyNames']),
-      region: Input.asOptionalInput<String>(map['region']),
-      triggers: Input.asOptionalInput<Map<String, String>>(map['triggers']),
+      loadBalancerName: pulumi.Input.asInput<String>(map['loadBalancerName']),
+      loadBalancerPort: pulumi.Input.asInput<int>(map['loadBalancerPort']),
+      policyNames:
+          pulumi.Input.asOptionalInput<List<String>>(map['policyNames']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      triggers:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['triggers']),
     );
   }
 }

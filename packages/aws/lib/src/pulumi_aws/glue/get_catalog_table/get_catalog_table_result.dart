@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_catalog_table_partition_index/get_catalog_table_partition_index.dart';
 import '../get_catalog_table_partition_key/get_catalog_table_partition_key.dart';
 import '../get_catalog_table_storage_descriptor/get_catalog_table_storage_descriptor.dart';
@@ -93,25 +93,23 @@ class GetCatalogTableResult {
     map['name'] = name;
     map['owner'] = owner;
     map['parameters'] = parameters;
-    map['partitionIndices'] =
-        Input.encodeList<GetCatalogTablePartitionIndex, Map<String, dynamic>>(
-            partitionIndices, (value) => value.toMap());
-    map['partitionKeys'] =
-        Input.encodeList<GetCatalogTablePartitionKey, Map<String, dynamic>>(
-            partitionKeys, (value) => value.toMap());
+    map['partitionIndices'] = pulumi.Input.encodeList<
+        GetCatalogTablePartitionIndex,
+        Map<String, dynamic>>(partitionIndices, (value) => value.toMap());
+    map['partitionKeys'] = pulumi.Input.encodeList<GetCatalogTablePartitionKey,
+        Map<String, dynamic>>(partitionKeys, (value) => value.toMap());
     final queryAsOfTimeValue = queryAsOfTime;
     if (queryAsOfTimeValue != null) {
       map['queryAsOfTime'] = queryAsOfTimeValue;
     }
     map['region'] = region;
     map['retention'] = retention;
-    map['storageDescriptors'] = Input.encodeList<
+    map['storageDescriptors'] = pulumi.Input.encodeList<
         GetCatalogTableStorageDescriptor,
         Map<String, dynamic>>(storageDescriptors, (value) => value.toMap());
     map['tableType'] = tableType;
-    map['targetTables'] =
-        Input.encodeList<GetCatalogTableTargetTable, Map<String, dynamic>>(
-            targetTables, (value) => value.toMap());
+    map['targetTables'] = pulumi.Input.encodeList<GetCatalogTableTargetTable,
+        Map<String, dynamic>>(targetTables, (value) => value.toMap());
     final transactionIdValue = transactionId;
     if (transactionIdValue != null) {
       map['transactionId'] = transactionIdValue;
@@ -131,11 +129,11 @@ class GetCatalogTableResult {
       name: map['name'] as String,
       owner: map['owner'] as String,
       parameters: (map['parameters'] as Map).cast<String, String>(),
-      partitionIndices: Input.decodeList<GetCatalogTablePartitionIndex>(
+      partitionIndices: pulumi.Input.decodeList<GetCatalogTablePartitionIndex>(
           map['partitionIndices'],
           (value) => GetCatalogTablePartitionIndex.fromMap(
               (value as Map).cast<String, dynamic>())),
-      partitionKeys: Input.decodeList<GetCatalogTablePartitionKey>(
+      partitionKeys: pulumi.Input.decodeList<GetCatalogTablePartitionKey>(
           map['partitionKeys'],
           (value) => GetCatalogTablePartitionKey.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -143,12 +141,13 @@ class GetCatalogTableResult {
           map['queryAsOfTime'] == null ? null : map['queryAsOfTime'] as String,
       region: map['region'] as String,
       retention: map['retention'] as int,
-      storageDescriptors: Input.decodeList<GetCatalogTableStorageDescriptor>(
-          map['storageDescriptors'],
-          (value) => GetCatalogTableStorageDescriptor.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      storageDescriptors:
+          pulumi.Input.decodeList<GetCatalogTableStorageDescriptor>(
+              map['storageDescriptors'],
+              (value) => GetCatalogTableStorageDescriptor.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       tableType: map['tableType'] as String,
-      targetTables: Input.decodeList<GetCatalogTableTargetTable>(
+      targetTables: pulumi.Input.decodeList<GetCatalogTableTargetTable>(
           map['targetTables'],
           (value) => GetCatalogTableTargetTable.fromMap(
               (value as Map).cast<String, dynamic>())),

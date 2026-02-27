@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VpcIpamOrganizationAdminAccount.
 class VpcIpamOrganizationAdminAccountArgs {
-  final Input<String> delegatedAdminAccountId;
+  final pulumi.Input<String> delegatedAdminAccountId;
 
   VpcIpamOrganizationAdminAccountArgs({
     required this.delegatedAdminAccountId,
@@ -20,7 +20,7 @@ class VpcIpamOrganizationAdminAccountArgs {
       Map<String, dynamic> map) {
     return VpcIpamOrganizationAdminAccountArgs(
       delegatedAdminAccountId:
-          Input.asInput<String>(map['delegatedAdminAccountId']),
+          pulumi.Input.asInput<String>(map['delegatedAdminAccountId']),
     );
   }
 }

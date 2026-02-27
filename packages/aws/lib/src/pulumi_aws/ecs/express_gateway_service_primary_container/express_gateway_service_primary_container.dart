@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../express_gateway_service_primary_container_aws_logs_configuration/express_gateway_service_primary_container_aws_logs_configuration.dart';
 import '../express_gateway_service_primary_container_environment/express_gateway_service_primary_container_environment.dart';
 import '../express_gateway_service_primary_container_repository_credentials/express_gateway_service_primary_container_repository_credentials.dart';
@@ -37,7 +37,7 @@ class ExpressGatewayServicePrimaryContainer {
     final map = <String, dynamic>{};
     final awsLogsConfigurationsValue = awsLogsConfigurations;
     if (awsLogsConfigurationsValue != null) {
-      map['awsLogsConfigurations'] = Input.encodeList<
+      map['awsLogsConfigurations'] = pulumi.Input.encodeList<
               ExpressGatewayServicePrimaryContainerAwsLogsConfiguration,
               Map<String, dynamic>>(
           awsLogsConfigurationsValue, (value) => value.toMap());
@@ -52,7 +52,7 @@ class ExpressGatewayServicePrimaryContainer {
     }
     final environmentsValue = environments;
     if (environmentsValue != null) {
-      map['environments'] = Input.encodeList<
+      map['environments'] = pulumi.Input.encodeList<
           ExpressGatewayServicePrimaryContainerEnvironment,
           Map<String, dynamic>>(environmentsValue, (value) => value.toMap());
     }
@@ -63,7 +63,7 @@ class ExpressGatewayServicePrimaryContainer {
     }
     final secretsValue = secrets;
     if (secretsValue != null) {
-      map['secrets'] = Input.encodeList<
+      map['secrets'] = pulumi.Input.encodeList<
           ExpressGatewayServicePrimaryContainerSecret,
           Map<String, dynamic>>(secretsValue, (value) => value.toMap());
     }
@@ -75,7 +75,7 @@ class ExpressGatewayServicePrimaryContainer {
     return ExpressGatewayServicePrimaryContainer(
       awsLogsConfigurations: map['awsLogsConfigurations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ExpressGatewayServicePrimaryContainerAwsLogsConfiguration>(
               map['awsLogsConfigurations'],
               (value) =>
@@ -88,7 +88,8 @@ class ExpressGatewayServicePrimaryContainer {
           map['containerPort'] == null ? null : map['containerPort'] as int,
       environments: map['environments'] == null
           ? null
-          : Input.decodeList<ExpressGatewayServicePrimaryContainerEnvironment>(
+          : pulumi.Input.decodeList<
+                  ExpressGatewayServicePrimaryContainerEnvironment>(
               map['environments'],
               (value) =>
                   ExpressGatewayServicePrimaryContainerEnvironment.fromMap(
@@ -100,7 +101,8 @@ class ExpressGatewayServicePrimaryContainer {
               (map['repositoryCredentials'] as Map).cast<String, dynamic>()),
       secrets: map['secrets'] == null
           ? null
-          : Input.decodeList<ExpressGatewayServicePrimaryContainerSecret>(
+          : pulumi.Input.decodeList<
+                  ExpressGatewayServicePrimaryContainerSecret>(
               map['secrets'],
               (value) => ExpressGatewayServicePrimaryContainerSecret.fromMap(
                   (value as Map).cast<String, dynamic>())),

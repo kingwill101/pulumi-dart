@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../proxy_default_target_group_connection_pool_config/proxy_default_target_group_connection_pool_config.dart';
 import 'proxy_default_target_group_args.dart';
 
@@ -15,32 +15,32 @@ import 'proxy_default_target_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup example example
 /// ```
-class ProxyDefaultTargetGroup extends CustomResource {
+class ProxyDefaultTargetGroup extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) representing the target group.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The settings that determine the size and behavior of the connection pool for the target group.
-  late final Output<ProxyDefaultTargetGroupConnectionPoolConfig>
+  late final pulumi.Output<ProxyDefaultTargetGroupConnectionPoolConfig>
       connectionPoolConfig;
 
   /// Name of the RDS DB Proxy.
-  late final Output<String> dbProxyName;
+  late final pulumi.Output<String> dbProxyName;
 
   /// The name of the default target group.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ProxyDefaultTargetGroup(
     String name, {
     ProxyDefaultTargetGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:rds/proxyDefaultTargetGroup:ProxyDefaultTargetGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.connectionPoolConfig =

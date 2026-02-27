@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../endpoint_service_private_dns_verification_timeouts/endpoint_service_private_dns_verification_timeouts.dart';
 import 'endpoint_service_private_dns_verification_args.dart';
 
@@ -19,28 +19,29 @@ import 'endpoint_service_private_dns_verification_args.dart';
 /// ## Import
 ///
 /// You cannot import this resource.
-class EndpointServicePrivateDnsVerification extends CustomResource {
+class EndpointServicePrivateDnsVerification extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ID of the endpoint service.
   ///
   /// The following arguments are optional:
-  late final Output<String> serviceId;
-  late final Output<EndpointServicePrivateDnsVerificationTimeouts?> timeouts;
+  late final pulumi.Output<String> serviceId;
+  late final pulumi.Output<EndpointServicePrivateDnsVerificationTimeouts?>
+      timeouts;
 
   /// Whether to wait until the endpoint service returns a `Verified` status for the configured private DNS name.
-  late final Output<bool?> waitForVerification;
+  late final pulumi.Output<bool?> waitForVerification;
 
   EndpointServicePrivateDnsVerification(
     String name, {
     EndpointServicePrivateDnsVerificationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:vpc/endpointServicePrivateDnsVerification:EndpointServicePrivateDnsVerification',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.serviceId = registerOutput<String>('serviceId');

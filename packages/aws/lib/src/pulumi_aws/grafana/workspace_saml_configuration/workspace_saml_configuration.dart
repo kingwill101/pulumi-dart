@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workspace_saml_configuration_args.dart';
 
 /// Provides an Amazon Managed Grafana workspace SAML configuration resource.
@@ -16,63 +16,63 @@ import 'workspace_saml_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:grafana/workspaceSamlConfiguration:WorkspaceSamlConfiguration example g-2054c75a02
 /// ```
-class WorkspaceSamlConfiguration extends CustomResource {
+class WorkspaceSamlConfiguration extends pulumi.CustomResource {
   /// The admin role values.
-  late final Output<List<String>?> adminRoleValues;
+  late final pulumi.Output<List<String>?> adminRoleValues;
 
   /// The allowed organizations.
-  late final Output<List<String>?> allowedOrganizations;
+  late final pulumi.Output<List<String>?> allowedOrganizations;
 
   /// The editor role values.
-  late final Output<List<String>> editorRoleValues;
+  late final pulumi.Output<List<String>> editorRoleValues;
 
   /// The email assertion.
-  late final Output<String> emailAssertion;
+  late final pulumi.Output<String> emailAssertion;
 
   /// The groups assertion.
-  late final Output<String?> groupsAssertion;
+  late final pulumi.Output<String?> groupsAssertion;
 
   /// The IDP Metadata URL. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
-  late final Output<String?> idpMetadataUrl;
+  late final pulumi.Output<String?> idpMetadataUrl;
 
   /// The IDP Metadata XML. Note that either `idp_metadata_url` or `idp_metadata_xml` (but not both) must be specified.
-  late final Output<String?> idpMetadataXml;
+  late final pulumi.Output<String?> idpMetadataXml;
 
   /// The login assertion.
-  late final Output<String> loginAssertion;
+  late final pulumi.Output<String> loginAssertion;
 
   /// The login validity duration.
-  late final Output<int> loginValidityDuration;
+  late final pulumi.Output<int> loginValidityDuration;
 
   /// The name assertion.
-  late final Output<String> nameAssertion;
+  late final pulumi.Output<String> nameAssertion;
 
   /// The org assertion.
-  late final Output<String?> orgAssertion;
+  late final pulumi.Output<String?> orgAssertion;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The role assertion.
-  late final Output<String?> roleAssertion;
+  late final pulumi.Output<String?> roleAssertion;
 
   /// The status of the SAML configuration.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// The workspace id.
   ///
   /// The following arguments are optional:
-  late final Output<String> workspaceId;
+  late final pulumi.Output<String> workspaceId;
 
   WorkspaceSamlConfiguration(
     String name, {
     WorkspaceSamlConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:grafana/workspaceSamlConfiguration:WorkspaceSamlConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.adminRoleValues = registerOutput<List<String>?>('adminRoleValues');
     this.allowedOrganizations =

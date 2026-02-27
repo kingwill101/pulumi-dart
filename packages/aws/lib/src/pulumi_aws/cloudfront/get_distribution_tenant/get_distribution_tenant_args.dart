@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDistributionTenant.
 class GetDistributionTenantArgs {
   /// ARN (Amazon Resource Name) for the distribution tenant.
-  final Input<String>? arn;
+  final pulumi.Input<String>? arn;
 
   /// An associated domain of the distribution tenant. Exactly one of `id` or `domain` must be specified.
-  final Input<String>? domain;
+  final pulumi.Input<String>? domain;
 
   /// Identifier for the distribution tenant. For example: `EDFDVBD632BHDS5`. Exactly one of `id` or `domain` must be specified.
-  final Input<String>? id;
-  final Input<String>? name;
+  final pulumi.Input<String>? id;
+  final pulumi.Input<String>? name;
 
   GetDistributionTenantArgs({
     this.arn,
@@ -44,10 +44,10 @@ class GetDistributionTenantArgs {
 
   factory GetDistributionTenantArgs.fromMap(Map<String, dynamic> map) {
     return GetDistributionTenantArgs(
-      arn: Input.asOptionalInput<String>(map['arn']),
-      domain: Input.asOptionalInput<String>(map['domain']),
-      id: Input.asOptionalInput<String>(map['id']),
-      name: Input.asOptionalInput<String>(map['name']),
+      arn: pulumi.Input.asOptionalInput<String>(map['arn']),
+      domain: pulumi.Input.asOptionalInput<String>(map['domain']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
     );
   }
 }

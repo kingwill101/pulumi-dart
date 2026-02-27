@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../catalog_table_open_table_format_input/catalog_table_open_table_format_input.dart';
 import '../catalog_table_partition_index/catalog_table_partition_index.dart';
 import '../catalog_table_partition_key/catalog_table_partition_key.dart';
@@ -25,69 +25,70 @@ import 'catalog_table_args.dart';
 /// ```sh
 /// $ pulumi import aws:glue/catalogTable:CatalogTable MyTable 123456789012:MyDatabase:MyTable
 /// ```
-class CatalogTable extends CustomResource {
+class CatalogTable extends pulumi.CustomResource {
   /// The ARN of the Glue Table.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// ID of the Glue Catalog and database to create the table in. If omitted, this defaults to the AWS Account ID plus the database name.
-  late final Output<String> catalogId;
+  late final pulumi.Output<String> catalogId;
 
   /// Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
   ///
   /// The following arguments are optional:
-  late final Output<String> databaseName;
+  late final pulumi.Output<String> databaseName;
 
   /// Description of the table.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Name of the table. For Hive compatibility, this must be entirely lowercase.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Configuration block for open table formats. See `open_table_format_input` below.
-  late final Output<CatalogTableOpenTableFormatInput?> openTableFormatInput;
+  late final pulumi.Output<CatalogTableOpenTableFormatInput?>
+      openTableFormatInput;
 
   /// Owner of the table.
-  late final Output<String?> owner;
+  late final pulumi.Output<String?> owner;
 
   /// Properties associated with this table, as a list of key-value pairs.
-  late final Output<Map<String, String>?> parameters;
+  late final pulumi.Output<Map<String, String>?> parameters;
 
   /// Configuration block for a maximum of 3 partition indexes. See `partition_index` below.
-  late final Output<List<CatalogTablePartitionIndex>> partitionIndices;
+  late final pulumi.Output<List<CatalogTablePartitionIndex>> partitionIndices;
 
   /// Configuration block of columns by which the table is partitioned. Only primitive types are supported as partition keys. See `partition_keys` below.
-  late final Output<List<CatalogTablePartitionKey>?> partitionKeys;
+  late final pulumi.Output<List<CatalogTablePartitionKey>?> partitionKeys;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Retention time for this table.
-  late final Output<int?> retention;
+  late final pulumi.Output<int?> retention;
 
   /// Configuration block for information about the physical storage of this table. For more information, refer to the [Glue Developer Guide](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-tables.html#aws-glue-api-catalog-tables-StorageDescriptor). See `storage_descriptor` below.
-  late final Output<CatalogTableStorageDescriptor?> storageDescriptor;
+  late final pulumi.Output<CatalogTableStorageDescriptor?> storageDescriptor;
 
   /// Type of this table (EXTERNAL_TABLE, VIRTUAL_VIEW, etc.). While optional, some Athena DDL queries such as `ALTER TABLE` and `SHOW CREATE TABLE` will fail if this argument is empty.
-  late final Output<String?> tableType;
+  late final pulumi.Output<String?> tableType;
 
   /// Configuration block of a target table for resource linking. See `target_table` below.
-  late final Output<CatalogTableTargetTable?> targetTable;
+  late final pulumi.Output<CatalogTableTargetTable?> targetTable;
 
   /// If the table is a view, the expanded text of the view; otherwise null.
-  late final Output<String?> viewExpandedText;
+  late final pulumi.Output<String?> viewExpandedText;
 
   /// If the table is a view, the original text of the view; otherwise null.
-  late final Output<String?> viewOriginalText;
+  late final pulumi.Output<String?> viewOriginalText;
 
   CatalogTable(
     String name, {
     CatalogTableArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:glue/catalogTable:CatalogTable',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.catalogId = registerOutput<String>('catalogId');

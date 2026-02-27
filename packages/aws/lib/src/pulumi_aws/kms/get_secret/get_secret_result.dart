@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_secret_secret/get_secret_secret.dart';
 
 /// Result data returned by getSecret.
@@ -20,8 +20,9 @@ class GetSecretResult {
     final map = <String, dynamic>{};
     map['id'] = id;
     map['region'] = region;
-    map['secrets'] = Input.encodeList<GetSecretSecret, Map<String, dynamic>>(
-        secrets, (value) => value.toMap());
+    map['secrets'] =
+        pulumi.Input.encodeList<GetSecretSecret, Map<String, dynamic>>(
+            secrets, (value) => value.toMap());
     return map;
   }
 
@@ -29,7 +30,7 @@ class GetSecretResult {
     return GetSecretResult(
       id: map['id'] as String,
       region: map['region'] as String,
-      secrets: Input.decodeList<GetSecretSecret>(
+      secrets: pulumi.Input.decodeList<GetSecretSecret>(
           map['secrets'],
           (value) =>
               GetSecretSecret.fromMap((value as Map).cast<String, dynamic>())),

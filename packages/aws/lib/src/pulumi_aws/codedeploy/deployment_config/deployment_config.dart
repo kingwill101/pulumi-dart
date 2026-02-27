@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../deployment_config_minimum_healthy_hosts/deployment_config_minimum_healthy_hosts.dart';
 import '../deployment_config_traffic_routing_config/deployment_config_traffic_routing_config.dart';
 import '../deployment_config_zonal_config/deployment_config_zonal_config.dart';
@@ -23,40 +23,42 @@ import 'deployment_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:codedeploy/deploymentConfig:DeploymentConfig example my-deployment-config
 /// ```
-class DeploymentConfig extends CustomResource {
+class DeploymentConfig extends pulumi.CustomResource {
   /// The ARN of the deployment config.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
-  late final Output<String?> computePlatform;
+  late final pulumi.Output<String?> computePlatform;
 
   /// The AWS Assigned deployment config id
-  late final Output<String> deploymentConfigId;
+  late final pulumi.Output<String> deploymentConfigId;
 
   /// The name of the deployment config.
-  late final Output<String> deploymentConfigName;
+  late final pulumi.Output<String> deploymentConfigName;
 
   /// A minimum_healthy_hosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
-  late final Output<DeploymentConfigMinimumHealthyHosts?> minimumHealthyHosts;
+  late final pulumi.Output<DeploymentConfigMinimumHealthyHosts?>
+      minimumHealthyHosts;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A traffic_routing_config block. Traffic Routing Config is documented below.
-  late final Output<DeploymentConfigTrafficRoutingConfig?> trafficRoutingConfig;
+  late final pulumi.Output<DeploymentConfigTrafficRoutingConfig?>
+      trafficRoutingConfig;
 
   /// A zonal_config block. Zonal Config is documented below.
-  late final Output<DeploymentConfigZonalConfig?> zonalConfig;
+  late final pulumi.Output<DeploymentConfigZonalConfig?> zonalConfig;
 
   DeploymentConfig(
     String name, {
     DeploymentConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:codedeploy/deploymentConfig:DeploymentConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.computePlatform = registerOutput<String?>('computePlatform');

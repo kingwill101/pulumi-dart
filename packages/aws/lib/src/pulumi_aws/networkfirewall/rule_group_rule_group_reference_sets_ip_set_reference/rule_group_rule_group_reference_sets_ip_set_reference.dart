@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_group_reference_sets_ip_set_reference_ip_set_reference/rule_group_rule_group_reference_sets_ip_set_reference_ip_set_reference.dart';
 
 class RuleGroupRuleGroupReferenceSetsIpSetReference {
@@ -16,7 +16,7 @@ class RuleGroupRuleGroupReferenceSetsIpSetReference {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['ipSetReferences'] = Input.encodeList<
+    map['ipSetReferences'] = pulumi.Input.encodeList<
         RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference,
         Map<String, dynamic>>(ipSetReferences, (value) => value.toMap());
     map['key'] = key;
@@ -26,7 +26,7 @@ class RuleGroupRuleGroupReferenceSetsIpSetReference {
   factory RuleGroupRuleGroupReferenceSetsIpSetReference.fromMap(
       Map<String, dynamic> map) {
     return RuleGroupRuleGroupReferenceSetsIpSetReference(
-      ipSetReferences: Input.decodeList<
+      ipSetReferences: pulumi.Input.decodeList<
               RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference>(
           map['ipSetReferences'],
           (value) => RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference

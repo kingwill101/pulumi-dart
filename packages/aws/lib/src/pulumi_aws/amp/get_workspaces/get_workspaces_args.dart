@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWorkspaces.
 class GetWorkspacesArgs {
   /// Limits results to workspaces with aliases that begin with this value.
-  final Input<String>? aliasPrefix;
+  final pulumi.Input<String>? aliasPrefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetWorkspacesArgs({
     this.aliasPrefix,
@@ -30,8 +30,8 @@ class GetWorkspacesArgs {
 
   factory GetWorkspacesArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspacesArgs(
-      aliasPrefix: Input.asOptionalInput<String>(map['aliasPrefix']),
-      region: Input.asOptionalInput<String>(map['region']),
+      aliasPrefix: pulumi.Input.asOptionalInput<String>(map['aliasPrefix']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_network_peering_connections_args.dart';
 import 'get_network_peering_connections_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_network_peering_connections_result.dart';
 /// ### Basic Usage
 Future<GetNetworkPeeringConnectionsResult> getNetworkPeeringConnections(
   GetNetworkPeeringConnectionsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:odb/getNetworkPeeringConnections:getNetworkPeeringConnections',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkPeeringConnectionsResult.fromMap(result);
 }

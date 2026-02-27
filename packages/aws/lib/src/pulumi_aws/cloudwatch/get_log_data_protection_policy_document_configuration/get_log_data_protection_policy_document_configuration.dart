@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_log_data_protection_policy_document_configuration_custom_data_identifier/get_log_data_protection_policy_document_configuration_custom_data_identifier.dart';
 
 class GetLogDataProtectionPolicyDocumentConfiguration {
@@ -17,7 +17,7 @@ class GetLogDataProtectionPolicyDocumentConfiguration {
     final map = <String, dynamic>{};
     final customDataIdentifiersValue = customDataIdentifiers;
     if (customDataIdentifiersValue != null) {
-      map['customDataIdentifiers'] = Input.encodeList<
+      map['customDataIdentifiers'] = pulumi.Input.encodeList<
           GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier,
           Map<String,
               dynamic>>(customDataIdentifiersValue, (value) => value.toMap());
@@ -30,7 +30,7 @@ class GetLogDataProtectionPolicyDocumentConfiguration {
     return GetLogDataProtectionPolicyDocumentConfiguration(
       customDataIdentifiers: map['customDataIdentifiers'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier>(
               map['customDataIdentifiers'],
               (value) =>

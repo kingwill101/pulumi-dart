@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../view_data_filter_expression_dimensions/view_data_filter_expression_dimensions.dart';
 import '../view_data_filter_expression_tag/view_data_filter_expression_tag.dart';
 import '../view_data_filter_expression_time_range/view_data_filter_expression_time_range.dart';
@@ -29,9 +29,8 @@ class ViewDataFilterExpression {
     }
     final tagsValue = tags;
     if (tagsValue != null) {
-      map['tags'] =
-          Input.encodeList<ViewDataFilterExpressionTag, Map<String, dynamic>>(
-              tagsValue, (value) => value.toMap());
+      map['tags'] = pulumi.Input.encodeList<ViewDataFilterExpressionTag,
+          Map<String, dynamic>>(tagsValue, (value) => value.toMap());
     }
     final timeRangeValue = timeRange;
     if (timeRangeValue != null) {
@@ -48,7 +47,7 @@ class ViewDataFilterExpression {
               (map['dimensions'] as Map).cast<String, dynamic>()),
       tags: map['tags'] == null
           ? null
-          : Input.decodeList<ViewDataFilterExpressionTag>(
+          : pulumi.Input.decodeList<ViewDataFilterExpressionTag>(
               map['tags'],
               (value) => ViewDataFilterExpressionTag.fromMap(
                   (value as Map).cast<String, dynamic>())),

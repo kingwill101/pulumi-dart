@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trust_store_revocation_args.dart';
 
 /// Provides a ELBv2 Trust Store Revocation for use with Application Load Balancer Listener resources.
@@ -16,34 +16,34 @@ import 'trust_store_revocation_args.dart';
 /// ```sh
 /// $ pulumi import aws:lb/trustStoreRevocation:TrustStoreRevocation example arn:aws:elasticloadbalancing:us-west-2:187416307283:truststore/my-trust-store/20cfe21448b66314,6
 /// ```
-class TrustStoreRevocation extends CustomResource {
+class TrustStoreRevocation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// AWS assigned RevocationId, (number).
-  late final Output<int> revocationId;
+  late final pulumi.Output<int> revocationId;
 
   /// S3 Bucket name holding the client certificate CA bundle.
-  late final Output<String> revocationsS3Bucket;
+  late final pulumi.Output<String> revocationsS3Bucket;
 
   /// S3 object key holding the client certificate CA bundle.
-  late final Output<String> revocationsS3Key;
+  late final pulumi.Output<String> revocationsS3Key;
 
   /// Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
-  late final Output<String?> revocationsS3ObjectVersion;
+  late final pulumi.Output<String?> revocationsS3ObjectVersion;
 
   /// Trust Store ARN.
-  late final Output<String> trustStoreArn;
+  late final pulumi.Output<String> trustStoreArn;
 
   TrustStoreRevocation(
     String name, {
     TrustStoreRevocationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lb/trustStoreRevocation:TrustStoreRevocation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.revocationId = registerOutput<int>('revocationId');

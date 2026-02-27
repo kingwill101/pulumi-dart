@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'baidu_channel_args.dart';
 
 /// Provides a Pinpoint Baidu Channel resource.
@@ -15,31 +15,31 @@ import 'baidu_channel_args.dart';
 /// ```sh
 /// $ pulumi import aws:pinpoint/baiduChannel:BaiduChannel channel application-id
 /// ```
-class BaiduChannel extends CustomResource {
+class BaiduChannel extends pulumi.CustomResource {
   /// Platform credential API key from Baidu.
-  late final Output<String> apiKey;
+  late final pulumi.Output<String> apiKey;
 
   /// The application ID.
-  late final Output<String> applicationId;
+  late final pulumi.Output<String> applicationId;
 
   /// Specifies whether to enable the channel. Defaults to `true`.
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Platform credential Secret key from Baidu.
-  late final Output<String> secretKey;
+  late final pulumi.Output<String> secretKey;
 
   BaiduChannel(
     String name, {
     BaiduChannelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:pinpoint/baiduChannel:BaiduChannel',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiKey = registerOutput<String>('apiKey');
     this.applicationId = registerOutput<String>('applicationId');

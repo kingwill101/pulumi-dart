@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_workflow_step/plan_workflow_step.dart';
 
 class PlanWorkflow {
@@ -27,8 +27,9 @@ class PlanWorkflow {
     final map = <String, dynamic>{};
     final stepsValue = steps;
     if (stepsValue != null) {
-      map['steps'] = Input.encodeList<PlanWorkflowStep, Map<String, dynamic>>(
-          stepsValue, (value) => value.toMap());
+      map['steps'] =
+          pulumi.Input.encodeList<PlanWorkflowStep, Map<String, dynamic>>(
+              stepsValue, (value) => value.toMap());
     }
     final workflowDescriptionValue = workflowDescription;
     if (workflowDescriptionValue != null) {
@@ -46,7 +47,7 @@ class PlanWorkflow {
     return PlanWorkflow(
       steps: map['steps'] == null
           ? null
-          : Input.decodeList<PlanWorkflowStep>(
+          : pulumi.Input.decodeList<PlanWorkflowStep>(
               map['steps'],
               (value) => PlanWorkflowStep.fromMap(
                   (value as Map).cast<String, dynamic>())),

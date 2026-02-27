@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_global_cluster_member/get_global_cluster_member.dart';
 
 /// Result data returned by getGlobalCluster.
@@ -72,7 +72,7 @@ class GetGlobalClusterResult {
     map['id'] = id;
     map['identifier'] = identifier;
     map['members'] =
-        Input.encodeList<GetGlobalClusterMember, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetGlobalClusterMember, Map<String, dynamic>>(
             members, (value) => value.toMap());
     map['region'] = region;
     map['resourceId'] = resourceId;
@@ -92,7 +92,7 @@ class GetGlobalClusterResult {
       engineVersion: map['engineVersion'] as String,
       id: map['id'] as String,
       identifier: map['identifier'] as String,
-      members: Input.decodeList<GetGlobalClusterMember>(
+      members: pulumi.Input.decodeList<GetGlobalClusterMember>(
           map['members'],
           (value) => GetGlobalClusterMember.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_agent_action_group_function_schema_member_functions_function/agent_agent_action_group_function_schema_member_functions_function.dart';
 
 class AgentAgentActionGroupFunctionSchemaMemberFunctions {
@@ -16,7 +16,7 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctions {
     final map = <String, dynamic>{};
     final functionsValue = functions;
     if (functionsValue != null) {
-      map['functions'] = Input.encodeList<
+      map['functions'] = pulumi.Input.encodeList<
           AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction,
           Map<String, dynamic>>(functionsValue, (value) => value.toMap());
     }
@@ -28,7 +28,7 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctions {
     return AgentAgentActionGroupFunctionSchemaMemberFunctions(
       functions: map['functions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction>(
               map['functions'],
               (value) =>

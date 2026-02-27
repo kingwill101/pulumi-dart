@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../function_event_invoke_config_destination_config/function_event_invoke_config_destination_config.dart';
 import 'function_event_invoke_config_args.dart';
 
@@ -70,37 +70,37 @@ import 'function_event_invoke_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:lambda/functionEventInvokeConfig:FunctionEventInvokeConfig example example:production
 /// ```
-class FunctionEventInvokeConfig extends CustomResource {
+class FunctionEventInvokeConfig extends pulumi.CustomResource {
   /// Configuration block with destination configuration. See below.
-  late final Output<FunctionEventInvokeConfigDestinationConfig?>
+  late final pulumi.Output<FunctionEventInvokeConfigDestinationConfig?>
       destinationConfig;
 
   /// Name or ARN of the Lambda Function, omitting any version or alias qualifier.
   ///
   /// The following arguments are optional:
-  late final Output<String> functionName;
+  late final pulumi.Output<String> functionName;
 
   /// Maximum age of a request that Lambda sends to a function for processing in seconds. Valid values between 60 and 21600.
-  late final Output<int?> maximumEventAgeInSeconds;
+  late final pulumi.Output<int?> maximumEventAgeInSeconds;
 
   /// Maximum number of times to retry when the function returns an error. Valid values between 0 and 2. Defaults to 2.
-  late final Output<int?> maximumRetryAttempts;
+  late final pulumi.Output<int?> maximumRetryAttempts;
 
   /// Lambda Function published version, `$LATEST`, or Lambda Alias name.
-  late final Output<String?> qualifier;
+  late final pulumi.Output<String?> qualifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   FunctionEventInvokeConfig(
     String name, {
     FunctionEventInvokeConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lambda/functionEventInvokeConfig:FunctionEventInvokeConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.destinationConfig =
         registerOutput<FunctionEventInvokeConfigDestinationConfig?>(

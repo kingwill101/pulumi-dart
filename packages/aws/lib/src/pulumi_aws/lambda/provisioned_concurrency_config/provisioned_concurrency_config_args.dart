@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ProvisionedConcurrencyConfig.
 class ProvisionedConcurrencyConfigArgs {
   /// Name or Amazon Resource Name (ARN) of the Lambda Function.
-  final Input<String> functionName;
+  final pulumi.Input<String> functionName;
 
   /// Amount of capacity to allocate. Must be greater than or equal to 1.
-  final Input<int> provisionedConcurrentExecutions;
+  final pulumi.Input<int> provisionedConcurrentExecutions;
 
   /// Lambda Function version or Lambda Alias name.
   ///
   /// The following arguments are optional:
-  final Input<String> qualifier;
+  final pulumi.Input<String> qualifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Whether to retain the provisioned concurrency configuration upon destruction. Defaults to `false`. If set to `true`, the resource is simply removed from state instead.
-  final Input<bool>? skipDestroy;
+  final pulumi.Input<bool>? skipDestroy;
 
   ProvisionedConcurrencyConfigArgs({
     required this.functionName,
@@ -47,12 +47,12 @@ class ProvisionedConcurrencyConfigArgs {
 
   factory ProvisionedConcurrencyConfigArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedConcurrencyConfigArgs(
-      functionName: Input.asInput<String>(map['functionName']),
+      functionName: pulumi.Input.asInput<String>(map['functionName']),
       provisionedConcurrentExecutions:
-          Input.asInput<int>(map['provisionedConcurrentExecutions']),
-      qualifier: Input.asInput<String>(map['qualifier']),
-      region: Input.asOptionalInput<String>(map['region']),
-      skipDestroy: Input.asOptionalInput<bool>(map['skipDestroy']),
+          pulumi.Input.asInput<int>(map['provisionedConcurrentExecutions']),
+      qualifier: pulumi.Input.asInput<String>(map['qualifier']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      skipDestroy: pulumi.Input.asOptionalInput<bool>(map['skipDestroy']),
     );
   }
 }

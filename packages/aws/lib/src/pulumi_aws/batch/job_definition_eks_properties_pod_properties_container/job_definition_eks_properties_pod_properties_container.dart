@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_definition_eks_properties_pod_properties_container_env/job_definition_eks_properties_pod_properties_container_env.dart';
 import '../job_definition_eks_properties_pod_properties_container_resources/job_definition_eks_properties_pod_properties_container_resources.dart';
 import '../job_definition_eks_properties_pod_properties_container_security_context/job_definition_eks_properties_pod_properties_container_security_context.dart';
@@ -60,7 +60,7 @@ class JobDefinitionEksPropertiesPodPropertiesContainer {
     }
     final envsValue = envs;
     if (envsValue != null) {
-      map['envs'] = Input.encodeList<
+      map['envs'] = pulumi.Input.encodeList<
           JobDefinitionEksPropertiesPodPropertiesContainerEnv,
           Map<String, dynamic>>(envsValue, (value) => value.toMap());
     }
@@ -83,7 +83,7 @@ class JobDefinitionEksPropertiesPodPropertiesContainer {
     }
     final volumeMountsValue = volumeMounts;
     if (volumeMountsValue != null) {
-      map['volumeMounts'] = Input.encodeList<
+      map['volumeMounts'] = pulumi.Input.encodeList<
           JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount,
           Map<String, dynamic>>(volumeMountsValue, (value) => value.toMap());
     }
@@ -99,7 +99,7 @@ class JobDefinitionEksPropertiesPodPropertiesContainer {
           : (map['commands'] as List).cast<String>(),
       envs: map['envs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   JobDefinitionEksPropertiesPodPropertiesContainerEnv>(
               map['envs'],
               (value) =>
@@ -120,7 +120,7 @@ class JobDefinitionEksPropertiesPodPropertiesContainer {
               .fromMap((map['securityContext'] as Map).cast<String, dynamic>()),
       volumeMounts: map['volumeMounts'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount>(
               map['volumeMounts'],
               (value) =>

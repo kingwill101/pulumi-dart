@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../guardrail_topic_policy_config_tier_config/guardrail_topic_policy_config_tier_config.dart';
 import '../guardrail_topic_policy_config_topics_config/guardrail_topic_policy_config_topics_config.dart';
 
@@ -20,13 +20,13 @@ class GuardrailTopicPolicyConfig {
     final map = <String, dynamic>{};
     final tierConfigsValue = tierConfigs;
     if (tierConfigsValue != null) {
-      map['tierConfigs'] = Input.encodeList<
+      map['tierConfigs'] = pulumi.Input.encodeList<
           GuardrailTopicPolicyConfigTierConfig,
           Map<String, dynamic>>(tierConfigsValue, (value) => value.toMap());
     }
     final topicsConfigsValue = topicsConfigs;
     if (topicsConfigsValue != null) {
-      map['topicsConfigs'] = Input.encodeList<
+      map['topicsConfigs'] = pulumi.Input.encodeList<
           GuardrailTopicPolicyConfigTopicsConfig,
           Map<String, dynamic>>(topicsConfigsValue, (value) => value.toMap());
     }
@@ -37,13 +37,13 @@ class GuardrailTopicPolicyConfig {
     return GuardrailTopicPolicyConfig(
       tierConfigs: map['tierConfigs'] == null
           ? null
-          : Input.decodeList<GuardrailTopicPolicyConfigTierConfig>(
+          : pulumi.Input.decodeList<GuardrailTopicPolicyConfigTierConfig>(
               map['tierConfigs'],
               (value) => GuardrailTopicPolicyConfigTierConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       topicsConfigs: map['topicsConfigs'] == null
           ? null
-          : Input.decodeList<GuardrailTopicPolicyConfigTopicsConfig>(
+          : pulumi.Input.decodeList<GuardrailTopicPolicyConfigTopicsConfig>(
               map['topicsConfigs'],
               (value) => GuardrailTopicPolicyConfigTopicsConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

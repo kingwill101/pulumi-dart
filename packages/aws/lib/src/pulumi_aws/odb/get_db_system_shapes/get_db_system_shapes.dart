@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_db_system_shapes_args.dart';
 import 'get_db_system_shapes_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_db_system_shapes_result.dart';
 /// ### Basic Usage
 Future<GetDbSystemShapesResult> getDbSystemShapes(
   GetDbSystemShapesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:odb/getDbSystemShapes:getDbSystemShapes',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDbSystemShapesResult.fromMap(result);
 }

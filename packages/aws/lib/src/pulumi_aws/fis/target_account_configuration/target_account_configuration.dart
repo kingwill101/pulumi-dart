@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'target_account_configuration_args.dart';
 
 /// Manages an AWS FIS (Fault Injection Simulator) Target Account Configuration.
@@ -16,33 +16,33 @@ import 'target_account_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:fis/targetAccountConfiguration:TargetAccountConfiguration example 123456789012,abcd123456789
 /// ```
-class TargetAccountConfiguration extends CustomResource {
+class TargetAccountConfiguration extends pulumi.CustomResource {
   /// Account ID of the target account.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// Description of the target account.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Experiment Template ID.
   ///
   /// The following arguments are optional:
-  late final Output<String> experimentTemplateId;
+  late final pulumi.Output<String> experimentTemplateId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the IAM Role for the target account.
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   TargetAccountConfiguration(
     String name, {
     TargetAccountConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:fis/targetAccountConfiguration:TargetAccountConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
     this.description = registerOutput<String>('description');

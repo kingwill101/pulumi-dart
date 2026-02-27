@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../glossary_term_term_relations/glossary_term_term_relations.dart';
 import '../glossary_term_timeouts/glossary_term_timeouts.dart';
 import 'glossary_term_args.dart';
@@ -16,49 +16,49 @@ import 'glossary_term_args.dart';
 /// ```sh
 /// $ pulumi import aws:datazone/glossaryTerm:GlossaryTerm example domain-id,glossary-term-id,glossary-id
 /// ```
-class GlossaryTerm extends CustomResource {
+class GlossaryTerm extends pulumi.CustomResource {
   /// Time of glossary term creation.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// Creator of glossary term.
-  late final Output<String> createdBy;
+  late final pulumi.Output<String> createdBy;
 
   /// Identifier of domain.
-  late final Output<String?> domainIdentifier;
+  late final pulumi.Output<String?> domainIdentifier;
 
   /// Identifier of glossary.
-  late final Output<String> glossaryIdentifier;
+  late final pulumi.Output<String> glossaryIdentifier;
 
   /// Long description of entry.
-  late final Output<String?> longDescription;
+  late final pulumi.Output<String?> longDescription;
 
   /// Name of glossary term.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Short description of entry.
-  late final Output<String?> shortDescription;
+  late final pulumi.Output<String?> shortDescription;
 
   /// If glossary term is ENABLED or DISABLED.
-  late final Output<String?> status;
+  late final pulumi.Output<String?> status;
 
   /// Object classifying the term relations through the following attributes:
-  late final Output<GlossaryTermTermRelations?> termRelations;
-  late final Output<GlossaryTermTimeouts?> timeouts;
+  late final pulumi.Output<GlossaryTermTermRelations?> termRelations;
+  late final pulumi.Output<GlossaryTermTimeouts?> timeouts;
 
   GlossaryTerm(
     String name, {
     GlossaryTermArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:datazone/glossaryTerm:GlossaryTerm',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createdAt = registerOutput<String>('createdAt');
     this.createdBy = registerOutput<String>('createdBy');

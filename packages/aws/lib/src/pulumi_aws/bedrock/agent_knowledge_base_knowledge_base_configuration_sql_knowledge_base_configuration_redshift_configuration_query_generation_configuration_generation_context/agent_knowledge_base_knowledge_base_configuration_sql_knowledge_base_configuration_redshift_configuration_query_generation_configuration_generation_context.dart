@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_generation_configuration_generation_context_curated_query/agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_generation_configuration_generation_context_curated_query.dart';
 import '../agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_generation_configuration_generation_context_table/agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_generation_configuration_generation_context_table.dart';
 
@@ -24,13 +24,13 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
     final map = <String, dynamic>{};
     final curatedQueriesValue = curatedQueries;
     if (curatedQueriesValue != null) {
-      map['curatedQueries'] = Input.encodeList<
+      map['curatedQueries'] = pulumi.Input.encodeList<
           AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery,
           Map<String, dynamic>>(curatedQueriesValue, (value) => value.toMap());
     }
     final tablesValue = tables;
     if (tablesValue != null) {
-      map['tables'] = Input.encodeList<
+      map['tables'] = pulumi.Input.encodeList<
           AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable,
           Map<String, dynamic>>(tablesValue, (value) => value.toMap());
     }
@@ -42,7 +42,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext(
       curatedQueries: map['curatedQueries'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextCuratedQuery>(
               map['curatedQueries'],
               (value) =>
@@ -50,7 +50,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
                       .fromMap((value as Map).cast<String, dynamic>())),
       tables: map['tables'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable>(
               map['tables'],
               (value) =>

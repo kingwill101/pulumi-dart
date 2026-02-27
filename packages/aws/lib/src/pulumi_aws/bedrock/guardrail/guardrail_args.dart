@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../guardrail_content_policy_config/guardrail_content_policy_config.dart';
 import '../guardrail_contextual_grounding_policy_config/guardrail_contextual_grounding_policy_config.dart';
 import '../guardrail_cross_region_config/guardrail_cross_region_config.dart';
@@ -12,46 +12,46 @@ import '../guardrail_word_policy_config/guardrail_word_policy_config.dart';
 /// The set of arguments for Guardrail.
 class GuardrailArgs {
   /// Message to return when the guardrail blocks a prompt.
-  final Input<String> blockedInputMessaging;
+  final pulumi.Input<String> blockedInputMessaging;
 
   /// Message to return when the guardrail blocks a model response.
-  final Input<String> blockedOutputsMessaging;
+  final pulumi.Input<String> blockedOutputsMessaging;
 
   /// Content policy config for a guardrail. See Content Policy Config for more information.
-  final Input<GuardrailContentPolicyConfig>? contentPolicyConfig;
+  final pulumi.Input<GuardrailContentPolicyConfig>? contentPolicyConfig;
 
   /// Contextual grounding policy config for a guardrail. See Contextual Grounding Policy Config for more information.
-  final Input<GuardrailContextualGroundingPolicyConfig>?
+  final pulumi.Input<GuardrailContextualGroundingPolicyConfig>?
       contextualGroundingPolicyConfig;
-  final Input<GuardrailCrossRegionConfig>? crossRegionConfig;
+  final pulumi.Input<GuardrailCrossRegionConfig>? crossRegionConfig;
 
   /// Description of the guardrail or its version.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The KMS key with which the guardrail was encrypted at rest.
-  final Input<String>? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
 
   /// Name of the guardrail.
   ///
   /// The following arguments are optional:
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Sensitive information policy config for a guardrail. See Sensitive Information Policy Config for more information.
-  final Input<GuardrailSensitiveInformationPolicyConfig>?
+  final pulumi.Input<GuardrailSensitiveInformationPolicyConfig>?
       sensitiveInformationPolicyConfig;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<GuardrailTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<GuardrailTimeouts>? timeouts;
 
   /// Topic policy config for a guardrail. See Topic Policy Config for more information.
-  final Input<GuardrailTopicPolicyConfig>? topicPolicyConfig;
+  final pulumi.Input<GuardrailTopicPolicyConfig>? topicPolicyConfig;
 
   /// Word policy config for a guardrail. See Word Policy Config for more information.
-  final Input<GuardrailWordPolicyConfig>? wordPolicyConfig;
+  final pulumi.Input<GuardrailWordPolicyConfig>? wordPolicyConfig;
 
   GuardrailArgs({
     required this.blockedInputMessaging,
@@ -76,20 +76,22 @@ class GuardrailArgs {
     map['blockedOutputsMessaging'] = blockedOutputsMessaging;
     final contentPolicyConfigValue = contentPolicyConfig;
     if (contentPolicyConfigValue != null) {
-      map['contentPolicyConfig'] = Input.mapOptionalInputValue<
+      map['contentPolicyConfig'] = pulumi.Input.mapOptionalInputValue<
               GuardrailContentPolicyConfig, Map<String, dynamic>>(
           contentPolicyConfigValue, (value) => value.toMap());
     }
     final contextualGroundingPolicyConfigValue =
         contextualGroundingPolicyConfig;
     if (contextualGroundingPolicyConfigValue != null) {
-      map['contextualGroundingPolicyConfig'] = Input.mapOptionalInputValue<
-              GuardrailContextualGroundingPolicyConfig, Map<String, dynamic>>(
-          contextualGroundingPolicyConfigValue, (value) => value.toMap());
+      map['contextualGroundingPolicyConfig'] =
+          pulumi.Input.mapOptionalInputValue<
+                  GuardrailContextualGroundingPolicyConfig,
+                  Map<String, dynamic>>(
+              contextualGroundingPolicyConfigValue, (value) => value.toMap());
     }
     final crossRegionConfigValue = crossRegionConfig;
     if (crossRegionConfigValue != null) {
-      map['crossRegionConfig'] = Input.mapOptionalInputValue<
+      map['crossRegionConfig'] = pulumi.Input.mapOptionalInputValue<
               GuardrailCrossRegionConfig, Map<String, dynamic>>(
           crossRegionConfigValue, (value) => value.toMap());
     }
@@ -112,9 +114,11 @@ class GuardrailArgs {
     final sensitiveInformationPolicyConfigValue =
         sensitiveInformationPolicyConfig;
     if (sensitiveInformationPolicyConfigValue != null) {
-      map['sensitiveInformationPolicyConfig'] = Input.mapOptionalInputValue<
-              GuardrailSensitiveInformationPolicyConfig, Map<String, dynamic>>(
-          sensitiveInformationPolicyConfigValue, (value) => value.toMap());
+      map['sensitiveInformationPolicyConfig'] =
+          pulumi.Input.mapOptionalInputValue<
+                  GuardrailSensitiveInformationPolicyConfig,
+                  Map<String, dynamic>>(
+              sensitiveInformationPolicyConfigValue, (value) => value.toMap());
     }
     final tagsValue = tags;
     if (tagsValue != null) {
@@ -122,19 +126,18 @@ class GuardrailArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] =
-          Input.mapOptionalInputValue<GuardrailTimeouts, Map<String, dynamic>>(
-              timeoutsValue, (value) => value.toMap());
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<GuardrailTimeouts,
+          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     final topicPolicyConfigValue = topicPolicyConfig;
     if (topicPolicyConfigValue != null) {
-      map['topicPolicyConfig'] = Input.mapOptionalInputValue<
+      map['topicPolicyConfig'] = pulumi.Input.mapOptionalInputValue<
               GuardrailTopicPolicyConfig, Map<String, dynamic>>(
           topicPolicyConfigValue, (value) => value.toMap());
     }
     final wordPolicyConfigValue = wordPolicyConfig;
     if (wordPolicyConfigValue != null) {
-      map['wordPolicyConfig'] = Input.mapOptionalInputValue<
+      map['wordPolicyConfig'] = pulumi.Input.mapOptionalInputValue<
               GuardrailWordPolicyConfig, Map<String, dynamic>>(
           wordPolicyConfigValue, (value) => value.toMap());
     }
@@ -144,28 +147,32 @@ class GuardrailArgs {
   factory GuardrailArgs.fromMap(Map<String, dynamic> map) {
     return GuardrailArgs(
       blockedInputMessaging:
-          Input.asInput<String>(map['blockedInputMessaging']),
+          pulumi.Input.asInput<String>(map['blockedInputMessaging']),
       blockedOutputsMessaging:
-          Input.asInput<String>(map['blockedOutputsMessaging']),
-      contentPolicyConfig: Input.asOptionalInput<GuardrailContentPolicyConfig>(
-          map['contentPolicyConfig']),
-      contextualGroundingPolicyConfig:
-          Input.asOptionalInput<GuardrailContextualGroundingPolicyConfig>(
-              map['contextualGroundingPolicyConfig']),
-      crossRegionConfig: Input.asOptionalInput<GuardrailCrossRegionConfig>(
-          map['crossRegionConfig']),
-      description: Input.asOptionalInput<String>(map['description']),
-      kmsKeyArn: Input.asOptionalInput<String>(map['kmsKeyArn']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      sensitiveInformationPolicyConfig:
-          Input.asOptionalInput<GuardrailSensitiveInformationPolicyConfig>(
-              map['sensitiveInformationPolicyConfig']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<GuardrailTimeouts>(map['timeouts']),
-      topicPolicyConfig: Input.asOptionalInput<GuardrailTopicPolicyConfig>(
-          map['topicPolicyConfig']),
-      wordPolicyConfig: Input.asOptionalInput<GuardrailWordPolicyConfig>(
+          pulumi.Input.asInput<String>(map['blockedOutputsMessaging']),
+      contentPolicyConfig:
+          pulumi.Input.asOptionalInput<GuardrailContentPolicyConfig>(
+              map['contentPolicyConfig']),
+      contextualGroundingPolicyConfig: pulumi.Input.asOptionalInput<
+              GuardrailContextualGroundingPolicyConfig>(
+          map['contextualGroundingPolicyConfig']),
+      crossRegionConfig:
+          pulumi.Input.asOptionalInput<GuardrailCrossRegionConfig>(
+              map['crossRegionConfig']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      kmsKeyArn: pulumi.Input.asOptionalInput<String>(map['kmsKeyArn']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sensitiveInformationPolicyConfig: pulumi.Input.asOptionalInput<
+              GuardrailSensitiveInformationPolicyConfig>(
+          map['sensitiveInformationPolicyConfig']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts:
+          pulumi.Input.asOptionalInput<GuardrailTimeouts>(map['timeouts']),
+      topicPolicyConfig:
+          pulumi.Input.asOptionalInput<GuardrailTopicPolicyConfig>(
+              map['topicPolicyConfig']),
+      wordPolicyConfig: pulumi.Input.asOptionalInput<GuardrailWordPolicyConfig>(
           map['wordPolicyConfig']),
     );
   }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../network_insights_analysis_return_path_component_inbound_header_destination_port_range/network_insights_analysis_return_path_component_inbound_header_destination_port_range.dart';
 import '../network_insights_analysis_return_path_component_inbound_header_source_port_range/network_insights_analysis_return_path_component_inbound_header_source_port_range.dart';
 
@@ -31,7 +31,7 @@ class NetworkInsightsAnalysisReturnPathComponentInboundHeader {
     }
     final destinationPortRangesValue = destinationPortRanges;
     if (destinationPortRangesValue != null) {
-      map['destinationPortRanges'] = Input.encodeList<
+      map['destinationPortRanges'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisReturnPathComponentInboundHeaderDestinationPortRange,
           Map<String,
               dynamic>>(destinationPortRangesValue, (value) => value.toMap());
@@ -46,7 +46,7 @@ class NetworkInsightsAnalysisReturnPathComponentInboundHeader {
     }
     final sourcePortRangesValue = sourcePortRanges;
     if (sourcePortRangesValue != null) {
-      map['sourcePortRanges'] = Input.encodeList<
+      map['sourcePortRanges'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisReturnPathComponentInboundHeaderSourcePortRange,
           Map<String,
               dynamic>>(sourcePortRangesValue, (value) => value.toMap());
@@ -62,7 +62,7 @@ class NetworkInsightsAnalysisReturnPathComponentInboundHeader {
           : (map['destinationAddresses'] as List).cast<String>(),
       destinationPortRanges: map['destinationPortRanges'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisReturnPathComponentInboundHeaderDestinationPortRange>(
               map['destinationPortRanges'],
               (value) =>
@@ -74,7 +74,7 @@ class NetworkInsightsAnalysisReturnPathComponentInboundHeader {
           : (map['sourceAddresses'] as List).cast<String>(),
       sourcePortRanges: map['sourcePortRanges'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisReturnPathComponentInboundHeaderSourcePortRange>(
               map['sourcePortRanges'],
               (value) =>

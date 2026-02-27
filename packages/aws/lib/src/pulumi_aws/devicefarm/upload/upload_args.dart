@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Upload.
 class UploadArgs {
   /// The upload's content type (for example, application/octet-stream).
-  final Input<String>? contentType;
+  final pulumi.Input<String>? contentType;
 
   /// The upload's file name. The name should not contain any forward slashes (/). If you are uploading an iOS app, the file name must end with the .ipa extension. If you are uploading an Android app, the file name must end with the .apk extension. For all others, the file name must end with the .zip file extension.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ARN of the project for the upload.
-  final Input<String> projectArn;
+  final pulumi.Input<String> projectArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The upload's upload type. See [AWS Docs](https://docs.aws.amazon.com/devicefarm/latest/APIReference/API_CreateUpload.html#API_CreateUpload_RequestSyntax) for valid list of values.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   UploadArgs({
     this.contentType,
@@ -48,11 +48,11 @@ class UploadArgs {
 
   factory UploadArgs.fromMap(Map<String, dynamic> map) {
     return UploadArgs(
-      contentType: Input.asOptionalInput<String>(map['contentType']),
-      name: Input.asOptionalInput<String>(map['name']),
-      projectArn: Input.asInput<String>(map['projectArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      type: Input.asInput<String>(map['type']),
+      contentType: pulumi.Input.asOptionalInput<String>(map['contentType']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      projectArn: pulumi.Input.asInput<String>(map['projectArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

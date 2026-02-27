@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_access_key_args.dart';
 
 /// Manages a Lightsail bucket access key. Use this resource to create credentials that allow programmatic access to your Lightsail bucket via API requests.
@@ -14,34 +14,34 @@ import 'bucket_access_key_args.dart';
 /// ```sh
 /// $ pulumi import aws:lightsail/bucketAccessKey:BucketAccessKey example example-bucket,AKIAIOSFODNN7EXAMPLE
 /// ```
-class BucketAccessKey extends CustomResource {
+class BucketAccessKey extends pulumi.CustomResource {
   /// Access key ID.
-  late final Output<String> accessKeyId;
+  late final pulumi.Output<String> accessKeyId;
 
   /// Name of the bucket that the access key will belong to and grant access to.
-  late final Output<String> bucketName;
+  late final pulumi.Output<String> bucketName;
 
   /// Date and time when the access key was created.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Secret access key used to sign requests. This attribute is not available for imported resources. Note that this will be written to the state file.
-  late final Output<String> secretAccessKey;
+  late final pulumi.Output<String> secretAccessKey;
 
   /// Status of the access key.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   BucketAccessKey(
     String name, {
     BucketAccessKeyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lightsail/bucketAccessKey:BucketAccessKey',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessKeyId = registerOutput<String>('accessKeyId');
     this.bucketName = registerOutput<String>('bucketName');

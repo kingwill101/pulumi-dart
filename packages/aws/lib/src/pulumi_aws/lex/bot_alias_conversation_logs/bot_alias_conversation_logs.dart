@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bot_alias_conversation_logs_log_setting/bot_alias_conversation_logs_log_setting.dart';
 
 class BotAliasConversationLogs {
@@ -20,7 +20,8 @@ class BotAliasConversationLogs {
     map['iamRoleArn'] = iamRoleArn;
     final logSettingsValue = logSettings;
     if (logSettingsValue != null) {
-      map['logSettings'] = Input.encodeList<BotAliasConversationLogsLogSetting,
+      map['logSettings'] = pulumi.Input.encodeList<
+          BotAliasConversationLogsLogSetting,
           Map<String, dynamic>>(logSettingsValue, (value) => value.toMap());
     }
     return map;
@@ -31,7 +32,7 @@ class BotAliasConversationLogs {
       iamRoleArn: map['iamRoleArn'] as String,
       logSettings: map['logSettings'] == null
           ? null
-          : Input.decodeList<BotAliasConversationLogsLogSetting>(
+          : pulumi.Input.decodeList<BotAliasConversationLogsLogSetting>(
               map['logSettings'],
               (value) => BotAliasConversationLogsLogSetting.fromMap(
                   (value as Map).cast<String, dynamic>())),

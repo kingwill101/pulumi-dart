@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_statement_rate_based_statement_scope_down_statement_size_constraint_statement_field_to_match_body/rule_group_rule_statement_rate_based_statement_scope_down_statement_size_constraint_statement_field_to_match_body.dart';
 import '../rule_group_rule_statement_rate_based_statement_scope_down_statement_size_constraint_statement_field_to_match_cookies/rule_group_rule_statement_rate_based_statement_scope_down_statement_size_constraint_statement_field_to_match_cookies.dart';
 import '../rule_group_rule_statement_rate_based_statement_scope_down_statement_size_constraint_statement_field_to_match_header/rule_group_rule_statement_rate_based_statement_scope_down_statement_size_constraint_statement_field_to_match_header.dart';
@@ -100,13 +100,13 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintSt
     }
     final headerOrdersValue = headerOrders;
     if (headerOrdersValue != null) {
-      map['headerOrders'] = Input.encodeList<
+      map['headerOrders'] = pulumi.Input.encodeList<
           RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchHeaderOrder,
           Map<String, dynamic>>(headerOrdersValue, (value) => value.toMap());
     }
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] = Input.encodeList<
+      map['headers'] = pulumi.Input.encodeList<
           RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchHeader,
           Map<String, dynamic>>(headersValue, (value) => value.toMap());
     }
@@ -165,7 +165,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintSt
               .fromMap((map['cookies'] as Map).cast<String, dynamic>()),
       headerOrders: map['headerOrders'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchHeaderOrder>(
               map['headerOrders'],
               (value) =>
@@ -173,7 +173,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintSt
                       .fromMap((value as Map).cast<String, dynamic>())),
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchHeader>(
               map['headers'],
               (value) =>

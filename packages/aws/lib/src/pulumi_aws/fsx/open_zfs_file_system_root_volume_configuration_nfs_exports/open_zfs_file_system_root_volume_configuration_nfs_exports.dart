@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../open_zfs_file_system_root_volume_configuration_nfs_exports_client_configuration/open_zfs_file_system_root_volume_configuration_nfs_exports_client_configuration.dart';
 
 class OpenZfsFileSystemRootVolumeConfigurationNfsExports {
@@ -15,7 +15,7 @@ class OpenZfsFileSystemRootVolumeConfigurationNfsExports {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['clientConfigurations'] = Input.encodeList<
+    map['clientConfigurations'] = pulumi.Input.encodeList<
         OpenZfsFileSystemRootVolumeConfigurationNfsExportsClientConfiguration,
         Map<String, dynamic>>(clientConfigurations, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class OpenZfsFileSystemRootVolumeConfigurationNfsExports {
   factory OpenZfsFileSystemRootVolumeConfigurationNfsExports.fromMap(
       Map<String, dynamic> map) {
     return OpenZfsFileSystemRootVolumeConfigurationNfsExports(
-      clientConfigurations: Input.decodeList<
+      clientConfigurations: pulumi.Input.decodeList<
               OpenZfsFileSystemRootVolumeConfigurationNfsExportsClientConfiguration>(
           map['clientConfigurations'],
           (value) =>

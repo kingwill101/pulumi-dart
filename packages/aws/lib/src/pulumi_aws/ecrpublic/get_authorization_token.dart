@@ -1,5 +1,5 @@
 library module_ecrpublic_get_authorization_token;
 
-export 'get_authorization_token/get_authorization_token3.dart';
-export 'get_authorization_token/get_authorization_token_args3.dart';
-export 'get_authorization_token/get_authorization_token_result3.dart';
+export 'get_authorization_token/get_authorization_token_ecrpublic.dart';
+export 'get_authorization_token/get_authorization_token_ecrpublic_args.dart';
+export 'get_authorization_token/get_authorization_token_ecrpublic_result.dart';

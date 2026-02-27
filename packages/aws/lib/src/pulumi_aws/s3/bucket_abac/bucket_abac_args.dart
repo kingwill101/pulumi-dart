@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_abac_abac_status/bucket_abac_abac_status.dart';
 
 /// The set of arguments for BucketAbac.
@@ -8,16 +8,16 @@ class BucketAbacArgs {
   /// ABAC status configuration. See `abac_status` Block for details.
   ///
   /// The following arguments are optional:
-  final Input<BucketAbacAbacStatus> abacStatus;
+  final pulumi.Input<BucketAbacAbacStatus> abacStatus;
 
   /// General purpose bucket that you want to create the metadata configuration for.
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// Account ID of the expected bucket owner.
-  final Input<String>? expectedBucketOwner;
+  final pulumi.Input<String>? expectedBucketOwner;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   BucketAbacArgs({
     required this.abacStatus,
@@ -29,7 +29,7 @@ class BucketAbacArgs {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['abacStatus'] =
-        Input.mapInputValue<BucketAbacAbacStatus, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<BucketAbacAbacStatus, Map<String, dynamic>>(
             abacStatus, (value) => value.toMap());
     map['bucket'] = bucket;
     final expectedBucketOwnerValue = expectedBucketOwner;
@@ -45,11 +45,11 @@ class BucketAbacArgs {
 
   factory BucketAbacArgs.fromMap(Map<String, dynamic> map) {
     return BucketAbacArgs(
-      abacStatus: Input.asInput<BucketAbacAbacStatus>(map['abacStatus']),
-      bucket: Input.asInput<String>(map['bucket']),
+      abacStatus: pulumi.Input.asInput<BucketAbacAbacStatus>(map['abacStatus']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
       expectedBucketOwner:
-          Input.asOptionalInput<String>(map['expectedBucketOwner']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['expectedBucketOwner']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

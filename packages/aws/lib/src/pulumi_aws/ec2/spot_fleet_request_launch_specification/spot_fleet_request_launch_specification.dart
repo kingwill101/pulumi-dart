@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../spot_fleet_request_launch_specification_ebs_block_device/spot_fleet_request_launch_specification_ebs_block_device.dart';
 import '../spot_fleet_request_launch_specification_ephemeral_block_device/spot_fleet_request_launch_specification_ephemeral_block_device.dart';
 import '../spot_fleet_request_launch_specification_root_block_device/spot_fleet_request_launch_specification_root_block_device.dart';
@@ -78,7 +78,7 @@ class SpotFleetRequestLaunchSpecification {
     }
     final ebsBlockDevicesValue = ebsBlockDevices;
     if (ebsBlockDevicesValue != null) {
-      map['ebsBlockDevices'] = Input.encodeList<
+      map['ebsBlockDevices'] = pulumi.Input.encodeList<
           SpotFleetRequestLaunchSpecificationEbsBlockDevice,
           Map<String, dynamic>>(ebsBlockDevicesValue, (value) => value.toMap());
     }
@@ -88,7 +88,7 @@ class SpotFleetRequestLaunchSpecification {
     }
     final ephemeralBlockDevicesValue = ephemeralBlockDevices;
     if (ephemeralBlockDevicesValue != null) {
-      map['ephemeralBlockDevices'] = Input.encodeList<
+      map['ephemeralBlockDevices'] = pulumi.Input.encodeList<
               SpotFleetRequestLaunchSpecificationEphemeralBlockDevice,
               Map<String, dynamic>>(
           ephemeralBlockDevicesValue, (value) => value.toMap());
@@ -120,7 +120,7 @@ class SpotFleetRequestLaunchSpecification {
     }
     final rootBlockDevicesValue = rootBlockDevices;
     if (rootBlockDevicesValue != null) {
-      map['rootBlockDevices'] = Input.encodeList<
+      map['rootBlockDevices'] = pulumi.Input.encodeList<
               SpotFleetRequestLaunchSpecificationRootBlockDevice,
               Map<String, dynamic>>(
           rootBlockDevicesValue, (value) => value.toMap());
@@ -164,7 +164,8 @@ class SpotFleetRequestLaunchSpecification {
           : map['availabilityZone'] as String,
       ebsBlockDevices: map['ebsBlockDevices'] == null
           ? null
-          : Input.decodeList<SpotFleetRequestLaunchSpecificationEbsBlockDevice>(
+          : pulumi.Input.decodeList<
+                  SpotFleetRequestLaunchSpecificationEbsBlockDevice>(
               map['ebsBlockDevices'],
               (value) =>
                   SpotFleetRequestLaunchSpecificationEbsBlockDevice.fromMap(
@@ -173,7 +174,7 @@ class SpotFleetRequestLaunchSpecification {
           map['ebsOptimized'] == null ? null : map['ebsOptimized'] as bool,
       ephemeralBlockDevices: map['ephemeralBlockDevices'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   SpotFleetRequestLaunchSpecificationEphemeralBlockDevice>(
               map['ephemeralBlockDevices'],
               (value) => SpotFleetRequestLaunchSpecificationEphemeralBlockDevice
@@ -195,7 +196,7 @@ class SpotFleetRequestLaunchSpecification {
           : map['placementTenancy'] as String,
       rootBlockDevices: map['rootBlockDevices'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   SpotFleetRequestLaunchSpecificationRootBlockDevice>(
               map['rootBlockDevices'],
               (value) =>

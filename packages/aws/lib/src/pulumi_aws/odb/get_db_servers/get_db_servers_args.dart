@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDbServers.
 class GetDbServersArgs {
   /// The unique identifier of the cloud vm cluster.
   ///
   /// The following arguments are optional:
-  final Input<String> cloudExadataInfrastructureId;
+  final pulumi.Input<String> cloudExadataInfrastructureId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetDbServersArgs({
     required this.cloudExadataInfrastructureId,
@@ -30,8 +30,8 @@ class GetDbServersArgs {
   factory GetDbServersArgs.fromMap(Map<String, dynamic> map) {
     return GetDbServersArgs(
       cloudExadataInfrastructureId:
-          Input.asInput<String>(map['cloudExadataInfrastructureId']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asInput<String>(map['cloudExadataInfrastructureId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

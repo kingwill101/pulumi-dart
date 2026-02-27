@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../registered_domain_admin_contact/registered_domain_admin_contact.dart';
 import '../registered_domain_billing_contact/registered_domain_billing_contact.dart';
 import '../registered_domain_name_server/registered_domain_name_server.dart';
@@ -10,45 +10,45 @@ import '../registered_domain_tech_contact/registered_domain_tech_contact.dart';
 /// The set of arguments for RegisteredDomain.
 class RegisteredDomainArgs {
   /// Details about the domain administrative contact. See Contact Blocks for more details.
-  final Input<RegisteredDomainAdminContact>? adminContact;
+  final pulumi.Input<RegisteredDomainAdminContact>? adminContact;
 
   /// Whether domain administrative contact information is concealed from WHOIS queries. Default: `true`.
-  final Input<bool>? adminPrivacy;
+  final pulumi.Input<bool>? adminPrivacy;
 
   /// Whether the domain registration is set to renew automatically. Default: `true`.
-  final Input<bool>? autoRenew;
+  final pulumi.Input<bool>? autoRenew;
 
   /// Details about the domain billing contact. See Contact Blocks for more details.
-  final Input<RegisteredDomainBillingContact>? billingContact;
+  final pulumi.Input<RegisteredDomainBillingContact>? billingContact;
 
   /// Whether domain billing contact information is concealed from WHOIS queries. Default: `true`.
-  final Input<bool>? billingPrivacy;
+  final pulumi.Input<bool>? billingPrivacy;
 
   /// The name of the registered domain.
-  final Input<String> domainName;
+  final pulumi.Input<String> domainName;
 
   /// The list of nameservers for the domain. See `name_server` Blocks for more details.
-  final Input<List<RegisteredDomainNameServer>>? nameServers;
+  final pulumi.Input<List<RegisteredDomainNameServer>>? nameServers;
 
   /// Details about the domain registrant. See Contact Blocks for more details.
-  final Input<RegisteredDomainRegistrantContact>? registrantContact;
+  final pulumi.Input<RegisteredDomainRegistrantContact>? registrantContact;
 
   /// Whether domain registrant contact information is concealed from WHOIS queries. Default: `true`.
-  final Input<bool>? registrantPrivacy;
+  final pulumi.Input<bool>? registrantPrivacy;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Details about the domain technical contact. See Contact Blocks for more details.
-  final Input<RegisteredDomainTechContact>? techContact;
+  final pulumi.Input<RegisteredDomainTechContact>? techContact;
 
   /// Whether domain technical contact information is concealed from WHOIS queries. Default: `true`.
-  final Input<bool>? techPrivacy;
+  final pulumi.Input<bool>? techPrivacy;
 
   /// Whether the domain is locked for transfer. Default: `true`.
   ///
   /// > **NOTE:** You must specify the same privacy setting for `admin_privacy`, `registrant_privacy` and `tech_privacy`.
-  final Input<bool>? transferLock;
+  final pulumi.Input<bool>? transferLock;
 
   RegisteredDomainArgs({
     this.adminContact,
@@ -70,7 +70,7 @@ class RegisteredDomainArgs {
     final map = <String, dynamic>{};
     final adminContactValue = adminContact;
     if (adminContactValue != null) {
-      map['adminContact'] = Input.mapOptionalInputValue<
+      map['adminContact'] = pulumi.Input.mapOptionalInputValue<
           RegisteredDomainAdminContact,
           Map<String, dynamic>>(adminContactValue, (value) => value.toMap());
     }
@@ -84,7 +84,7 @@ class RegisteredDomainArgs {
     }
     final billingContactValue = billingContact;
     if (billingContactValue != null) {
-      map['billingContact'] = Input.mapOptionalInputValue<
+      map['billingContact'] = pulumi.Input.mapOptionalInputValue<
           RegisteredDomainBillingContact,
           Map<String, dynamic>>(billingContactValue, (value) => value.toMap());
     }
@@ -95,15 +95,15 @@ class RegisteredDomainArgs {
     map['domainName'] = domainName;
     final nameServersValue = nameServers;
     if (nameServersValue != null) {
-      map['nameServers'] = Input.mapOptionalInputValue<
+      map['nameServers'] = pulumi.Input.mapOptionalInputValue<
               List<RegisteredDomainNameServer>, List<Map<String, dynamic>>>(
           nameServersValue,
-          (value) => Input.encodeList<RegisteredDomainNameServer,
+          (value) => pulumi.Input.encodeList<RegisteredDomainNameServer,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final registrantContactValue = registrantContact;
     if (registrantContactValue != null) {
-      map['registrantContact'] = Input.mapOptionalInputValue<
+      map['registrantContact'] = pulumi.Input.mapOptionalInputValue<
               RegisteredDomainRegistrantContact, Map<String, dynamic>>(
           registrantContactValue, (value) => value.toMap());
     }
@@ -117,7 +117,7 @@ class RegisteredDomainArgs {
     }
     final techContactValue = techContact;
     if (techContactValue != null) {
-      map['techContact'] = Input.mapOptionalInputValue<
+      map['techContact'] = pulumi.Input.mapOptionalInputValue<
           RegisteredDomainTechContact,
           Map<String, dynamic>>(techContactValue, (value) => value.toMap());
     }
@@ -134,25 +134,28 @@ class RegisteredDomainArgs {
 
   factory RegisteredDomainArgs.fromMap(Map<String, dynamic> map) {
     return RegisteredDomainArgs(
-      adminContact: Input.asOptionalInput<RegisteredDomainAdminContact>(
+      adminContact: pulumi.Input.asOptionalInput<RegisteredDomainAdminContact>(
           map['adminContact']),
-      adminPrivacy: Input.asOptionalInput<bool>(map['adminPrivacy']),
-      autoRenew: Input.asOptionalInput<bool>(map['autoRenew']),
-      billingContact: Input.asOptionalInput<RegisteredDomainBillingContact>(
-          map['billingContact']),
-      billingPrivacy: Input.asOptionalInput<bool>(map['billingPrivacy']),
-      domainName: Input.asInput<String>(map['domainName']),
-      nameServers: Input.asOptionalInput<List<RegisteredDomainNameServer>>(
-          map['nameServers']),
+      adminPrivacy: pulumi.Input.asOptionalInput<bool>(map['adminPrivacy']),
+      autoRenew: pulumi.Input.asOptionalInput<bool>(map['autoRenew']),
+      billingContact:
+          pulumi.Input.asOptionalInput<RegisteredDomainBillingContact>(
+              map['billingContact']),
+      billingPrivacy: pulumi.Input.asOptionalInput<bool>(map['billingPrivacy']),
+      domainName: pulumi.Input.asInput<String>(map['domainName']),
+      nameServers:
+          pulumi.Input.asOptionalInput<List<RegisteredDomainNameServer>>(
+              map['nameServers']),
       registrantContact:
-          Input.asOptionalInput<RegisteredDomainRegistrantContact>(
+          pulumi.Input.asOptionalInput<RegisteredDomainRegistrantContact>(
               map['registrantContact']),
-      registrantPrivacy: Input.asOptionalInput<bool>(map['registrantPrivacy']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      techContact: Input.asOptionalInput<RegisteredDomainTechContact>(
+      registrantPrivacy:
+          pulumi.Input.asOptionalInput<bool>(map['registrantPrivacy']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      techContact: pulumi.Input.asOptionalInput<RegisteredDomainTechContact>(
           map['techContact']),
-      techPrivacy: Input.asOptionalInput<bool>(map['techPrivacy']),
-      transferLock: Input.asOptionalInput<bool>(map['transferLock']),
+      techPrivacy: pulumi.Input.asOptionalInput<bool>(map['techPrivacy']),
+      transferLock: pulumi.Input.asOptionalInput<bool>(map['transferLock']),
     );
   }
 }

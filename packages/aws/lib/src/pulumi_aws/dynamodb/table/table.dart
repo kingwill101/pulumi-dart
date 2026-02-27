@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../table_attribute/table_attribute.dart';
 import '../table_global_secondary_index/table_global_secondary_index.dart';
 import '../table_global_table_witness/table_global_table_witness.dart';
@@ -86,115 +86,117 @@ import 'table_args.dart';
 /// ```sh
 /// $ pulumi import aws:dynamodb/table:Table basic-dynamodb-table GameScores
 /// ```
-class Table extends CustomResource {
+class Table extends pulumi.CustomResource {
   /// ARN of the table
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Set of nested attribute definitions. Only required for `hash_key` and `range_key` attributes. See below.
-  late final Output<List<TableAttribute>> attributes;
+  late final pulumi.Output<List<TableAttribute>> attributes;
 
   /// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
-  late final Output<String?> billingMode;
+  late final pulumi.Output<String?> billingMode;
 
   /// Enables deletion protection for table. Defaults to `false`.
-  late final Output<bool?> deletionProtectionEnabled;
+  late final pulumi.Output<bool?> deletionProtectionEnabled;
 
   /// Describe a GSI for the table; subject to the normal limits on the number of GSIs, projected attributes, etc. See below.
-  late final Output<List<TableGlobalSecondaryIndex>> globalSecondaryIndexes;
+  late final pulumi.Output<List<TableGlobalSecondaryIndex>>
+      globalSecondaryIndexes;
 
   /// Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single `replica` with `consistency_mode` set to `STRONG`. Other combinations will fail to provision. See below.
-  late final Output<TableGlobalTableWitness> globalTableWitness;
+  late final pulumi.Output<TableGlobalTableWitness> globalTableWitness;
 
   /// Attribute to use as the hash (partition) key. Must also be defined as an `attribute`. See below.
-  late final Output<String> hashKey;
+  late final pulumi.Output<String> hashKey;
 
   /// Import Amazon S3 data into a new table. See below.
-  late final Output<TableImportTable?> importTable;
+  late final pulumi.Output<TableImportTable?> importTable;
 
   /// Describe an LSI on the table; these can only be allocated _at creation_ so you cannot change this definition after you have created the resource. See below.
-  late final Output<List<TableLocalSecondaryIndex>?> localSecondaryIndexes;
+  late final pulumi.Output<List<TableLocalSecondaryIndex>?>
+      localSecondaryIndexes;
 
   /// Unique within a region name of the table.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Sets the maximum number of read and write units for the specified on-demand table. See below.
-  late final Output<TableOnDemandThroughput?> onDemandThroughput;
+  late final pulumi.Output<TableOnDemandThroughput?> onDemandThroughput;
 
   /// Enable point-in-time recovery options. See below.
-  late final Output<TablePointInTimeRecovery> pointInTimeRecovery;
+  late final pulumi.Output<TablePointInTimeRecovery> pointInTimeRecovery;
 
   /// Attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
-  late final Output<String?> rangeKey;
+  late final pulumi.Output<String?> rangeKey;
 
   /// Number of read units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
-  late final Output<int> readCapacity;
+  late final pulumi.Output<int> readCapacity;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. See below.
-  late final Output<List<TableReplica>?> replicas;
+  late final pulumi.Output<List<TableReplica>?> replicas;
 
   /// Time of the point-in-time recovery point to restore.
-  late final Output<String?> restoreDateTime;
+  late final pulumi.Output<String?> restoreDateTime;
 
   /// Name of the table to restore. Must match the name of an existing table.
-  late final Output<String?> restoreSourceName;
+  late final pulumi.Output<String?> restoreSourceName;
 
   /// ARN of the source table to restore. Must be supplied for cross-region restores.
-  late final Output<String?> restoreSourceTableArn;
+  late final pulumi.Output<String?> restoreSourceTableArn;
 
   /// If set, restores table to the most recent point-in-time recovery point.
-  late final Output<bool?> restoreToLatestTime;
+  late final pulumi.Output<bool?> restoreToLatestTime;
 
   /// Encryption at rest options. AWS DynamoDB tables are automatically encrypted at rest with an AWS-owned Customer Master Key if this argument isn't specified. Must be supplied for cross-region restores. See below.
-  late final Output<TableServerSideEncryption> serverSideEncryption;
+  late final pulumi.Output<TableServerSideEncryption> serverSideEncryption;
 
   /// ARN of the Table Stream. Only available when `stream_enabled = true`
-  late final Output<String> streamArn;
+  late final pulumi.Output<String> streamArn;
 
   /// Whether Streams are enabled.
-  late final Output<bool?> streamEnabled;
+  late final pulumi.Output<bool?> streamEnabled;
 
   /// Timestamp, in ISO 8601 format, for this stream. Note that this timestamp is not a unique identifier for the stream on its own. However, the combination of AWS customer ID, table name and this field is guaranteed to be unique. It can be used for creating CloudWatch Alarms. Only available when `stream_enabled = true`.
-  late final Output<String> streamLabel;
+  late final pulumi.Output<String> streamLabel;
 
   /// When an item in the table is modified, StreamViewType determines what information is written to the table's stream.
   /// Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
   /// Only valid when `stream_enabled` is true.
-  late final Output<String> streamViewType;
+  late final pulumi.Output<String> streamViewType;
 
   /// Storage class of the table.
   /// Valid values are `STANDARD` and `STANDARD_INFREQUENT_ACCESS`.
   /// Default value is `STANDARD`.
-  late final Output<String?> tableClass;
+  late final pulumi.Output<String?> tableClass;
 
   /// A map of tags to populate on the created table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Configuration block for TTL. See below.
-  late final Output<TableTtl> ttl;
+  late final pulumi.Output<TableTtl> ttl;
 
   /// Sets the number of warm read and write units for the specified table. See below.
-  late final Output<TableWarmThroughput> warmThroughput;
+  late final pulumi.Output<TableWarmThroughput> warmThroughput;
 
   /// Number of write units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
-  late final Output<int> writeCapacity;
+  late final pulumi.Output<int> writeCapacity;
 
   Table(
     String name, {
     TableArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:dynamodb/table:Table',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.attributes = registerOutput<List<TableAttribute>>('attributes');

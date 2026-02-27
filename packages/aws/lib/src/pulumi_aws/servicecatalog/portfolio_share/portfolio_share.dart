@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'portfolio_share_args.dart';
 
 /// Manages a Service Catalog Portfolio Share. Shares the specified portfolio with the specified account or organization node. You can share portfolios to an organization, an organizational unit, or a specific account.
@@ -24,45 +24,45 @@ import 'portfolio_share_args.dart';
 /// ```sh
 /// $ pulumi import aws:servicecatalog/portfolioShare:PortfolioShare example port-12344321:ACCOUNT:123456789012
 /// ```
-class PortfolioShare extends CustomResource {
+class PortfolioShare extends pulumi.CustomResource {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  late final Output<String?> acceptLanguage;
+  late final pulumi.Output<String?> acceptLanguage;
 
   /// Whether the shared portfolio is imported by the recipient account. If the recipient is organizational, the share is automatically imported, and the field is always set to true.
-  late final Output<bool> accepted;
+  late final pulumi.Output<bool> accepted;
 
   /// Portfolio identifier.
-  late final Output<String> portfolioId;
+  late final pulumi.Output<String> portfolioId;
 
   /// Identifier of the principal with whom you will share the portfolio. Valid values AWS account IDs and ARNs of AWS Organizations and organizational units.
-  late final Output<String> principalId;
+  late final pulumi.Output<String> principalId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Enables or disables Principal sharing when creating the portfolio share. If this flag is not provided, principal sharing is disabled.
-  late final Output<bool?> sharePrincipals;
+  late final pulumi.Output<bool?> sharePrincipals;
 
   /// Whether to enable sharing of `aws.servicecatalog.TagOption` resources when creating the portfolio share.
-  late final Output<bool?> shareTagOptions;
+  late final pulumi.Output<bool?> shareTagOptions;
 
   /// Type of portfolio share. Valid values are `ACCOUNT` (an external account), `ORGANIZATION` (a share to every account in an organization), `ORGANIZATIONAL_UNIT`, `ORGANIZATION_MEMBER_ACCOUNT` (a share to an account in an organization).
   ///
   /// The following arguments are optional:
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// Whether to wait (up to the timeout) for the share to be accepted. Organizational shares are automatically accepted.
-  late final Output<bool?> waitForAcceptance;
+  late final pulumi.Output<bool?> waitForAcceptance;
 
   PortfolioShare(
     String name, {
     PortfolioShareArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:servicecatalog/portfolioShare:PortfolioShare',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.acceptLanguage = registerOutput<String?>('acceptLanguage');
     this.accepted = registerOutput<bool>('accepted');

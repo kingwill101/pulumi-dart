@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../analytics_application_inputs_kinesis_firehose/analytics_application_inputs_kinesis_firehose.dart';
 import '../analytics_application_inputs_kinesis_stream/analytics_application_inputs_kinesis_stream.dart';
 import '../analytics_application_inputs_parallelism/analytics_application_inputs_parallelism.dart';
@@ -79,7 +79,7 @@ class AnalyticsApplicationInputs {
     map['schema'] = schema.toMap();
     final startingPositionConfigurationsValue = startingPositionConfigurations;
     if (startingPositionConfigurationsValue != null) {
-      map['startingPositionConfigurations'] = Input.encodeList<
+      map['startingPositionConfigurations'] = pulumi.Input.encodeList<
               AnalyticsApplicationInputsStartingPositionConfiguration,
               Map<String, dynamic>>(
           startingPositionConfigurationsValue, (value) => value.toMap());
@@ -116,7 +116,7 @@ class AnalyticsApplicationInputs {
       startingPositionConfigurations: map['startingPositionConfigurations'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AnalyticsApplicationInputsStartingPositionConfiguration>(
               map['startingPositionConfigurations'],
               (value) => AnalyticsApplicationInputsStartingPositionConfiguration

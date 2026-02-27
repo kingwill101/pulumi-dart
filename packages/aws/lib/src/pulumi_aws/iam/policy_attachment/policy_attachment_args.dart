@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for PolicyAttachment.
 class PolicyAttachmentArgs {
   /// Group(s) the policy should be applied to.
-  final Input<List<String>>? groups;
+  final pulumi.Input<List<String>>? groups;
 
   /// Name of the attachment. This cannot be an empty string.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// ARN of the policy you want to apply. Typically this should be a reference to the ARN of another resource to ensure dependency ordering, such as `aws_iam_policy.example.arn`.
-  final Input<String> policyArn;
+  final pulumi.Input<String> policyArn;
 
   /// Role(s) the policy should be applied to.
-  final Input<List<String>>? roles;
+  final pulumi.Input<List<String>>? roles;
 
   /// User(s) the policy should be applied to.
-  final Input<List<String>>? users;
+  final pulumi.Input<List<String>>? users;
 
   PolicyAttachmentArgs({
     this.groups,
@@ -51,11 +51,11 @@ class PolicyAttachmentArgs {
 
   factory PolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentArgs(
-      groups: Input.asOptionalInput<List<String>>(map['groups']),
-      name: Input.asOptionalInput<String>(map['name']),
-      policyArn: Input.asInput<String>(map['policyArn']),
-      roles: Input.asOptionalInput<List<String>>(map['roles']),
-      users: Input.asOptionalInput<List<String>>(map['users']),
+      groups: pulumi.Input.asOptionalInput<List<String>>(map['groups']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      policyArn: pulumi.Input.asInput<String>(map['policyArn']),
+      roles: pulumi.Input.asOptionalInput<List<String>>(map['roles']),
+      users: pulumi.Input.asOptionalInput<List<String>>(map['users']),
     );
   }
 }

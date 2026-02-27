@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_service_connect_configuration_log_configuration_secret_option/service_service_connect_configuration_log_configuration_secret_option.dart';
 
 class ServiceServiceConnectConfigurationLogConfiguration {
@@ -29,7 +29,7 @@ class ServiceServiceConnectConfigurationLogConfiguration {
     }
     final secretOptionsValue = secretOptions;
     if (secretOptionsValue != null) {
-      map['secretOptions'] = Input.encodeList<
+      map['secretOptions'] = pulumi.Input.encodeList<
           ServiceServiceConnectConfigurationLogConfigurationSecretOption,
           Map<String, dynamic>>(secretOptionsValue, (value) => value.toMap());
     }
@@ -45,7 +45,7 @@ class ServiceServiceConnectConfigurationLogConfiguration {
           : (map['options'] as Map).cast<String, String>(),
       secretOptions: map['secretOptions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ServiceServiceConnectConfigurationLogConfigurationSecretOption>(
               map['secretOptions'],
               (value) =>

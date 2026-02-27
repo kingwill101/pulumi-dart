@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tag_option_args.dart';
 
 /// Manages a Service Catalog Tag Option.
@@ -16,31 +16,31 @@ import 'tag_option_args.dart';
 /// ```sh
 /// $ pulumi import aws:servicecatalog/tagOption:TagOption example tag-pjtvagohlyo3m
 /// ```
-class TagOption extends CustomResource {
+class TagOption extends pulumi.CustomResource {
   /// Whether tag option is active. Default is `true`.
-  late final Output<bool?> active;
+  late final pulumi.Output<bool?> active;
 
   /// Tag option key.
-  late final Output<String> key;
-  late final Output<String> owner;
+  late final pulumi.Output<String> key;
+  late final pulumi.Output<String> owner;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Tag option value.
   ///
   /// The following arguments are optional:
-  late final Output<String> value;
+  late final pulumi.Output<String> value;
 
   TagOption(
     String name, {
     TagOptionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:servicecatalog/tagOption:TagOption',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.active = registerOutput<bool?>('active');
     this.key = registerOutput<String>('key');

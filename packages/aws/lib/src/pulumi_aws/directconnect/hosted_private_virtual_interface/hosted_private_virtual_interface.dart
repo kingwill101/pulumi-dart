@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hosted_private_virtual_interface_args.dart';
 
 /// Provides a Direct Connect hosted private virtual interface resource. This resource represents the allocator's side of the hosted virtual interface.
@@ -15,59 +15,59 @@ import 'hosted_private_virtual_interface_args.dart';
 /// ```sh
 /// $ pulumi import aws:directconnect/hostedPrivateVirtualInterface:HostedPrivateVirtualInterface test dxvif-33cc44dd
 /// ```
-class HostedPrivateVirtualInterface extends CustomResource {
+class HostedPrivateVirtualInterface extends pulumi.CustomResource {
   /// The address family for the BGP peer. `ipv4 ` or `ipv6`.
-  late final Output<String> addressFamily;
+  late final pulumi.Output<String> addressFamily;
 
   /// The IPv4 CIDR address to use to send traffic to Amazon. Required for IPv4 BGP peers.
-  late final Output<String> amazonAddress;
-  late final Output<String> amazonSideAsn;
+  late final pulumi.Output<String> amazonAddress;
+  late final pulumi.Output<String> amazonSideAsn;
 
   /// The ARN of the virtual interface.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The Direct Connect endpoint on which the virtual interface terminates.
-  late final Output<String> awsDevice;
+  late final pulumi.Output<String> awsDevice;
 
   /// The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
-  late final Output<int> bgpAsn;
+  late final pulumi.Output<int> bgpAsn;
 
   /// The authentication key for BGP configuration.
-  late final Output<String> bgpAuthKey;
+  late final pulumi.Output<String> bgpAuthKey;
 
   /// The ID of the Direct Connect connection (or LAG) on which to create the virtual interface.
-  late final Output<String> connectionId;
+  late final pulumi.Output<String> connectionId;
 
   /// The IPv4 CIDR destination address to which Amazon should send traffic. Required for IPv4 BGP peers.
-  late final Output<String> customerAddress;
+  late final pulumi.Output<String> customerAddress;
 
   /// Indicates whether jumbo frames (9001 MTU) are supported.
-  late final Output<bool> jumboFrameCapable;
+  late final pulumi.Output<bool> jumboFrameCapable;
 
   /// The maximum transmission unit (MTU) is the size, in bytes, of the largest permissible packet that can be passed over the connection. The MTU of a virtual private interface can be either `1500` or `9001` (jumbo frames). Default is `1500`.
-  late final Output<int?> mtu;
+  late final pulumi.Output<int?> mtu;
 
   /// The name for the virtual interface.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The AWS account that will own the new virtual interface.
-  late final Output<String> ownerAccountId;
+  late final pulumi.Output<String> ownerAccountId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The VLAN ID.
-  late final Output<int> vlan;
+  late final pulumi.Output<int> vlan;
 
   HostedPrivateVirtualInterface(
     String name, {
     HostedPrivateVirtualInterfaceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:directconnect/hostedPrivateVirtualInterface:HostedPrivateVirtualInterface',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.addressFamily = registerOutput<String>('addressFamily');
     this.amazonAddress = registerOutput<String>('amazonAddress');

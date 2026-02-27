@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scheduling_policy_fair_share_policy_share_distribution/scheduling_policy_fair_share_policy_share_distribution.dart';
 
 class SchedulingPolicyFairSharePolicy {
@@ -30,7 +30,7 @@ class SchedulingPolicyFairSharePolicy {
     }
     final shareDistributionsValue = shareDistributions;
     if (shareDistributionsValue != null) {
-      map['shareDistributions'] = Input.encodeList<
+      map['shareDistributions'] = pulumi.Input.encodeList<
               SchedulingPolicyFairSharePolicyShareDistribution,
               Map<String, dynamic>>(
           shareDistributionsValue, (value) => value.toMap());
@@ -48,7 +48,8 @@ class SchedulingPolicyFairSharePolicy {
           : map['shareDecaySeconds'] as int,
       shareDistributions: map['shareDistributions'] == null
           ? null
-          : Input.decodeList<SchedulingPolicyFairSharePolicyShareDistribution>(
+          : pulumi.Input.decodeList<
+                  SchedulingPolicyFairSharePolicyShareDistribution>(
               map['shareDistributions'],
               (value) =>
                   SchedulingPolicyFairSharePolicyShareDistribution.fromMap(

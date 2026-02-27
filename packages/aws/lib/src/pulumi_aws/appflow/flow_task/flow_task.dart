@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../flow_task_connector_operator/flow_task_connector_operator.dart';
 
 class FlowTask {
@@ -31,9 +31,9 @@ class FlowTask {
     final map = <String, dynamic>{};
     final connectorOperatorsValue = connectorOperators;
     if (connectorOperatorsValue != null) {
-      map['connectorOperators'] =
-          Input.encodeList<FlowTaskConnectorOperator, Map<String, dynamic>>(
-              connectorOperatorsValue, (value) => value.toMap());
+      map['connectorOperators'] = pulumi.Input.encodeList<
+              FlowTaskConnectorOperator, Map<String, dynamic>>(
+          connectorOperatorsValue, (value) => value.toMap());
     }
     final destinationFieldValue = destinationField;
     if (destinationFieldValue != null) {
@@ -55,7 +55,7 @@ class FlowTask {
     return FlowTask(
       connectorOperators: map['connectorOperators'] == null
           ? null
-          : Input.decodeList<FlowTaskConnectorOperator>(
+          : pulumi.Input.decodeList<FlowTaskConnectorOperator>(
               map['connectorOperators'],
               (value) => FlowTaskConnectorOperator.fromMap(
                   (value as Map).cast<String, dynamic>())),

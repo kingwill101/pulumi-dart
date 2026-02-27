@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../voice_connector_streaming_media_insights_configuration/voice_connector_streaming_media_insights_configuration.dart';
 
 /// The set of arguments for VoiceConnectorStreaming.
 class VoiceConnectorStreamingArgs {
   /// The retention period, in hours, for the Amazon Kinesis data.
-  final Input<int> dataRetention;
+  final pulumi.Input<int> dataRetention;
 
   /// When true, media streaming to Amazon Kinesis is turned off. Default: `false`
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// The media insights configuration. See `media_insights_configuration`.
-  final Input<VoiceConnectorStreamingMediaInsightsConfiguration>?
+  final pulumi.Input<VoiceConnectorStreamingMediaInsightsConfiguration>?
       mediaInsightsConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The streaming notification targets. Valid Values: `EventBridge | SNS | SQS`
-  final Input<List<String>>? streamingNotificationTargets;
+  final pulumi.Input<List<String>>? streamingNotificationTargets;
 
   /// The Amazon Chime Voice Connector ID.
-  final Input<String> voiceConnectorId;
+  final pulumi.Input<String> voiceConnectorId;
 
   VoiceConnectorStreamingArgs({
     required this.dataRetention,
@@ -42,7 +42,7 @@ class VoiceConnectorStreamingArgs {
     }
     final mediaInsightsConfigurationValue = mediaInsightsConfiguration;
     if (mediaInsightsConfigurationValue != null) {
-      map['mediaInsightsConfiguration'] = Input.mapOptionalInputValue<
+      map['mediaInsightsConfiguration'] = pulumi.Input.mapOptionalInputValue<
               VoiceConnectorStreamingMediaInsightsConfiguration,
               Map<String, dynamic>>(
           mediaInsightsConfigurationValue, (value) => value.toMap());
@@ -61,15 +61,15 @@ class VoiceConnectorStreamingArgs {
 
   factory VoiceConnectorStreamingArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorStreamingArgs(
-      dataRetention: Input.asInput<int>(map['dataRetention']),
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      mediaInsightsConfiguration: Input.asOptionalInput<
+      dataRetention: pulumi.Input.asInput<int>(map['dataRetention']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      mediaInsightsConfiguration: pulumi.Input.asOptionalInput<
               VoiceConnectorStreamingMediaInsightsConfiguration>(
           map['mediaInsightsConfiguration']),
-      region: Input.asOptionalInput<String>(map['region']),
-      streamingNotificationTargets: Input.asOptionalInput<List<String>>(
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      streamingNotificationTargets: pulumi.Input.asOptionalInput<List<String>>(
           map['streamingNotificationTargets']),
-      voiceConnectorId: Input.asInput<String>(map['voiceConnectorId']),
+      voiceConnectorId: pulumi.Input.asInput<String>(map['voiceConnectorId']),
     );
   }
 }

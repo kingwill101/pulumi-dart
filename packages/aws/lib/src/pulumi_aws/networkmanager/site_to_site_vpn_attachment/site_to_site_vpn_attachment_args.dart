@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SiteToSiteVpnAttachment.
 class SiteToSiteVpnAttachmentArgs {
   /// ID of a core network for the VPN attachment.
-  final Input<String> coreNetworkId;
+  final pulumi.Input<String> coreNetworkId;
 
   /// The routing policy label to apply to the Site-to-Site VPN attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
-  final Input<String>? routingPolicyLabel;
+  final pulumi.Input<String>? routingPolicyLabel;
 
   /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// ARN of the site-to-site VPN connection.
   ///
   /// The following arguments are optional:
-  final Input<String> vpnConnectionArn;
+  final pulumi.Input<String> vpnConnectionArn;
 
   SiteToSiteVpnAttachmentArgs({
     required this.coreNetworkId,
@@ -42,11 +42,11 @@ class SiteToSiteVpnAttachmentArgs {
 
   factory SiteToSiteVpnAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return SiteToSiteVpnAttachmentArgs(
-      coreNetworkId: Input.asInput<String>(map['coreNetworkId']),
+      coreNetworkId: pulumi.Input.asInput<String>(map['coreNetworkId']),
       routingPolicyLabel:
-          Input.asOptionalInput<String>(map['routingPolicyLabel']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vpnConnectionArn: Input.asInput<String>(map['vpnConnectionArn']),
+          pulumi.Input.asOptionalInput<String>(map['routingPolicyLabel']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpnConnectionArn: pulumi.Input.asInput<String>(map['vpnConnectionArn']),
     );
   }
 }

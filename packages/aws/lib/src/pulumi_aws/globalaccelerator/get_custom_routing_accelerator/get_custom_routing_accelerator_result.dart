@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_custom_routing_accelerator_attribute/get_custom_routing_accelerator_attribute.dart';
 import '../get_custom_routing_accelerator_ip_set/get_custom_routing_accelerator_ip_set.dart';
 
@@ -35,14 +35,15 @@ class GetCustomRoutingAcceleratorResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['attributes'] = Input.encodeList<GetCustomRoutingAcceleratorAttribute,
+    map['attributes'] = pulumi.Input.encodeList<
+        GetCustomRoutingAcceleratorAttribute,
         Map<String, dynamic>>(attributes, (value) => value.toMap());
     map['dnsName'] = dnsName;
     map['enabled'] = enabled;
     map['hostedZoneId'] = hostedZoneId;
     map['id'] = id;
     map['ipAddressType'] = ipAddressType;
-    map['ipSets'] = Input.encodeList<GetCustomRoutingAcceleratorIpSet,
+    map['ipSets'] = pulumi.Input.encodeList<GetCustomRoutingAcceleratorIpSet,
         Map<String, dynamic>>(ipSets, (value) => value.toMap());
     map['name'] = name;
     map['tags'] = tags;
@@ -52,7 +53,7 @@ class GetCustomRoutingAcceleratorResult {
   factory GetCustomRoutingAcceleratorResult.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingAcceleratorResult(
       arn: map['arn'] as String,
-      attributes: Input.decodeList<GetCustomRoutingAcceleratorAttribute>(
+      attributes: pulumi.Input.decodeList<GetCustomRoutingAcceleratorAttribute>(
           map['attributes'],
           (value) => GetCustomRoutingAcceleratorAttribute.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -61,7 +62,7 @@ class GetCustomRoutingAcceleratorResult {
       hostedZoneId: map['hostedZoneId'] as String,
       id: map['id'] as String,
       ipAddressType: map['ipAddressType'] as String,
-      ipSets: Input.decodeList<GetCustomRoutingAcceleratorIpSet>(
+      ipSets: pulumi.Input.decodeList<GetCustomRoutingAcceleratorIpSet>(
           map['ipSets'],
           (value) => GetCustomRoutingAcceleratorIpSet.fromMap(
               (value as Map).cast<String, dynamic>())),

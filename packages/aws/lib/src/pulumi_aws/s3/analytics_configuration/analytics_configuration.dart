@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../analytics_configuration_filter/analytics_configuration_filter.dart';
 import '../analytics_configuration_storage_class_analysis/analytics_configuration_storage_class_analysis.dart';
 import 'analytics_configuration_args.dart';
@@ -24,32 +24,32 @@ import 'analytics_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3/analyticsConfiguration:AnalyticsConfiguration my-bucket-entire-bucket my-bucket:EntireBucket
 /// ```
-class AnalyticsConfiguration extends CustomResource {
+class AnalyticsConfiguration extends pulumi.CustomResource {
   /// Name of the bucket this analytics configuration is associated with.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Object filtering that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
-  late final Output<AnalyticsConfigurationFilter?> filter;
+  late final pulumi.Output<AnalyticsConfigurationFilter?> filter;
 
   /// Unique identifier of the analytics configuration for the bucket.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration for the analytics data export (documented below).
-  late final Output<AnalyticsConfigurationStorageClassAnalysis?>
+  late final pulumi.Output<AnalyticsConfigurationStorageClassAnalysis?>
       storageClassAnalysis;
 
   AnalyticsConfiguration(
     String name, {
     AnalyticsConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/analyticsConfiguration:AnalyticsConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.filter = registerOutput<AnalyticsConfigurationFilter?>('filter');

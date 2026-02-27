@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stream_processor_regions_of_interest_bounding_box/stream_processor_regions_of_interest_bounding_box.dart';
 import '../stream_processor_regions_of_interest_polygon/stream_processor_regions_of_interest_polygon.dart';
 
@@ -24,7 +24,7 @@ class StreamProcessorRegionsOfInterest {
     }
     final polygonsValue = polygons;
     if (polygonsValue != null) {
-      map['polygons'] = Input.encodeList<
+      map['polygons'] = pulumi.Input.encodeList<
           StreamProcessorRegionsOfInterestPolygon,
           Map<String, dynamic>>(polygonsValue, (value) => value.toMap());
     }
@@ -39,7 +39,7 @@ class StreamProcessorRegionsOfInterest {
               (map['boundingBox'] as Map).cast<String, dynamic>()),
       polygons: map['polygons'] == null
           ? null
-          : Input.decodeList<StreamProcessorRegionsOfInterestPolygon>(
+          : pulumi.Input.decodeList<StreamProcessorRegionsOfInterestPolygon>(
               map['polygons'],
               (value) => StreamProcessorRegionsOfInterestPolygon.fromMap(
                   (value as Map).cast<String, dynamic>())),

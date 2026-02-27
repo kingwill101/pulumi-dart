@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../group_configuration_parameter/group_configuration_parameter.dart';
 
 class GroupConfiguration {
@@ -19,9 +19,8 @@ class GroupConfiguration {
     final map = <String, dynamic>{};
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] =
-          Input.encodeList<GroupConfigurationParameter, Map<String, dynamic>>(
-              parametersValue, (value) => value.toMap());
+      map['parameters'] = pulumi.Input.encodeList<GroupConfigurationParameter,
+          Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
     map['type'] = type;
     return map;
@@ -31,7 +30,7 @@ class GroupConfiguration {
     return GroupConfiguration(
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<GroupConfigurationParameter>(
+          : pulumi.Input.decodeList<GroupConfigurationParameter>(
               map['parameters'],
               (value) => GroupConfigurationParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

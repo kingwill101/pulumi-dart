@@ -1,47 +1,47 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for CustomDbEngineVersion.
 class CustomDbEngineVersionArgs {
   /// The name of the Amazon S3 bucket that contains the database installation files.
-  final Input<String>? databaseInstallationFilesS3BucketName;
+  final pulumi.Input<String>? databaseInstallationFilesS3BucketName;
 
   /// The prefix for the Amazon S3 bucket that contains the database installation files.
-  final Input<String>? databaseInstallationFilesS3Prefix;
+  final pulumi.Input<String>? databaseInstallationFilesS3Prefix;
 
   /// The description of the CEV.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The name of the database engine. Valid values are `custom-oracle*`, `custom-sqlserver*`.
-  final Input<String> engine;
+  final pulumi.Input<String> engine;
 
   /// The version of the database engine.
-  final Input<String> engineVersion;
+  final pulumi.Input<String> engineVersion;
 
   /// The name of the manifest file within the local filesystem. Conflicts with `manifest`.
-  final Input<String>? filename;
+  final pulumi.Input<String>? filename;
 
   /// The ARN of the AWS KMS key that is used to encrypt the database installation files. Required for RDS Custom for Oracle.
-  final Input<String>? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
 
   /// The manifest file, in JSON format, that contains the list of database installation files. Conflicts with `filename`.
-  final Input<String>? manifest;
+  final pulumi.Input<String>? manifest;
 
   /// Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the manifest source specified with `filename`. The usual way to set this is filebase64sha256("manifest.json") where "manifest.json" is the local filename of the manifest source.
-  final Input<String>? manifestHash;
+  final pulumi.Input<String>? manifestHash;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of the AMI to create the CEV from. Required for RDS Custom for SQL Server. For RDS Custom for Oracle, you can specify an AMI ID that was used in a different Oracle CEV.
-  final Input<String>? sourceImageId;
+  final pulumi.Input<String>? sourceImageId;
 
   /// The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
-  final Input<String>? status;
+  final pulumi.Input<String>? status;
 
   /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   CustomDbEngineVersionArgs({
     this.databaseInstallationFilesS3BucketName,
@@ -116,21 +116,22 @@ class CustomDbEngineVersionArgs {
 
   factory CustomDbEngineVersionArgs.fromMap(Map<String, dynamic> map) {
     return CustomDbEngineVersionArgs(
-      databaseInstallationFilesS3BucketName: Input.asOptionalInput<String>(
-          map['databaseInstallationFilesS3BucketName']),
-      databaseInstallationFilesS3Prefix: Input.asOptionalInput<String>(
+      databaseInstallationFilesS3BucketName:
+          pulumi.Input.asOptionalInput<String>(
+              map['databaseInstallationFilesS3BucketName']),
+      databaseInstallationFilesS3Prefix: pulumi.Input.asOptionalInput<String>(
           map['databaseInstallationFilesS3Prefix']),
-      description: Input.asOptionalInput<String>(map['description']),
-      engine: Input.asInput<String>(map['engine']),
-      engineVersion: Input.asInput<String>(map['engineVersion']),
-      filename: Input.asOptionalInput<String>(map['filename']),
-      kmsKeyId: Input.asOptionalInput<String>(map['kmsKeyId']),
-      manifest: Input.asOptionalInput<String>(map['manifest']),
-      manifestHash: Input.asOptionalInput<String>(map['manifestHash']),
-      region: Input.asOptionalInput<String>(map['region']),
-      sourceImageId: Input.asOptionalInput<String>(map['sourceImageId']),
-      status: Input.asOptionalInput<String>(map['status']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      engine: pulumi.Input.asInput<String>(map['engine']),
+      engineVersion: pulumi.Input.asInput<String>(map['engineVersion']),
+      filename: pulumi.Input.asOptionalInput<String>(map['filename']),
+      kmsKeyId: pulumi.Input.asOptionalInput<String>(map['kmsKeyId']),
+      manifest: pulumi.Input.asOptionalInput<String>(map['manifest']),
+      manifestHash: pulumi.Input.asOptionalInput<String>(map['manifestHash']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sourceImageId: pulumi.Input.asOptionalInput<String>(map['sourceImageId']),
+      status: pulumi.Input.asOptionalInput<String>(map['status']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

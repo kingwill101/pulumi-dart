@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_mapping_args.dart';
 
 /// Manages an Amazon API Gateway Version 2 API mapping.
@@ -17,31 +17,31 @@ import 'api_mapping_args.dart';
 /// ```sh
 /// $ pulumi import aws:apigatewayv2/apiMapping:ApiMapping example 1122334/ws-api.example.com
 /// ```
-class ApiMapping extends CustomResource {
+class ApiMapping extends pulumi.CustomResource {
   /// API identifier.
-  late final Output<String> apiId;
+  late final pulumi.Output<String> apiId;
 
   /// The API mapping key. Refer to [REST API](https://docs.aws.amazon.com/apigateway/latest/developerguide/rest-api-mappings.html), [HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-mappings.html) or [WebSocket API](https://docs.aws.amazon.com/apigateway/latest/developerguide/websocket-api-mappings.html).
-  late final Output<String?> apiMappingKey;
+  late final pulumi.Output<String?> apiMappingKey;
 
   /// Domain name. Use the `aws.apigatewayv2.DomainName` resource to configure a domain name.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// API stage. Use the `aws.apigatewayv2.Stage` resource to configure an API stage.
-  late final Output<String> stage;
+  late final pulumi.Output<String> stage;
 
   ApiMapping(
     String name, {
     ApiMappingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigatewayv2/apiMapping:ApiMapping',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiId = registerOutput<String>('apiId');
     this.apiMappingKey = registerOutput<String?>('apiMappingKey');

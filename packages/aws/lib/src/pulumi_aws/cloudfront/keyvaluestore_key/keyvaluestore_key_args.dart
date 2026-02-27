@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for KeyvaluestoreKey.
 class KeyvaluestoreKeyArgs {
   /// Key to put.
-  final Input<String> key;
+  final pulumi.Input<String> key;
 
   /// Amazon Resource Name (ARN) of the Key Value Store.
-  final Input<String> keyValueStoreArn;
+  final pulumi.Input<String> keyValueStoreArn;
 
   /// Value to put.
-  final Input<String> value;
+  final pulumi.Input<String> value;
 
   KeyvaluestoreKeyArgs({
     required this.key,
@@ -29,9 +29,9 @@ class KeyvaluestoreKeyArgs {
 
   factory KeyvaluestoreKeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyvaluestoreKeyArgs(
-      key: Input.asInput<String>(map['key']),
-      keyValueStoreArn: Input.asInput<String>(map['keyValueStoreArn']),
-      value: Input.asInput<String>(map['value']),
+      key: pulumi.Input.asInput<String>(map['key']),
+      keyValueStoreArn: pulumi.Input.asInput<String>(map['keyValueStoreArn']),
+      value: pulumi.Input.asInput<String>(map['value']),
     );
   }
 }

@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ontap_storage_virtual_machine_active_directory_configuration/ontap_storage_virtual_machine_active_directory_configuration.dart';
 
 /// The set of arguments for OntapStorageVirtualMachine.
 class OntapStorageVirtualMachineArgs {
   /// Configuration block that Amazon FSx uses to join the FSx ONTAP Storage Virtual Machine(SVM) to your Microsoft Active Directory (AD) directory. Detailed below.
-  final Input<OntapStorageVirtualMachineActiveDirectoryConfiguration>?
+  final pulumi.Input<OntapStorageVirtualMachineActiveDirectoryConfiguration>?
       activeDirectoryConfiguration;
 
   /// The ID of the Amazon FSx ONTAP File System that this SVM will be created on.
-  final Input<String> fileSystemId;
+  final pulumi.Input<String> fileSystemId;
 
   /// The name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Specifies the root volume security style, Valid values are `UNIX`, `NTFS`, and `MIXED`. All volumes created under this SVM will inherit the root security style unless the security style is specified on the volume. Default value is `UNIX`.
-  final Input<String>? rootVolumeSecurityStyle;
+  final pulumi.Input<String>? rootVolumeSecurityStyle;
 
   /// Specifies the password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
-  final Input<String>? svmAdminPassword;
+  final pulumi.Input<String>? svmAdminPassword;
 
   /// A map of tags to assign to the storage virtual machine. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   OntapStorageVirtualMachineArgs({
     this.activeDirectoryConfiguration,
@@ -41,7 +41,7 @@ class OntapStorageVirtualMachineArgs {
     final map = <String, dynamic>{};
     final activeDirectoryConfigurationValue = activeDirectoryConfiguration;
     if (activeDirectoryConfigurationValue != null) {
-      map['activeDirectoryConfiguration'] = Input.mapOptionalInputValue<
+      map['activeDirectoryConfiguration'] = pulumi.Input.mapOptionalInputValue<
               OntapStorageVirtualMachineActiveDirectoryConfiguration,
               Map<String, dynamic>>(
           activeDirectoryConfigurationValue, (value) => value.toMap());
@@ -72,16 +72,17 @@ class OntapStorageVirtualMachineArgs {
 
   factory OntapStorageVirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return OntapStorageVirtualMachineArgs(
-      activeDirectoryConfiguration: Input.asOptionalInput<
+      activeDirectoryConfiguration: pulumi.Input.asOptionalInput<
               OntapStorageVirtualMachineActiveDirectoryConfiguration>(
           map['activeDirectoryConfiguration']),
-      fileSystemId: Input.asInput<String>(map['fileSystemId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      fileSystemId: pulumi.Input.asInput<String>(map['fileSystemId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       rootVolumeSecurityStyle:
-          Input.asOptionalInput<String>(map['rootVolumeSecurityStyle']),
-      svmAdminPassword: Input.asOptionalInput<String>(map['svmAdminPassword']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<String>(map['rootVolumeSecurityStyle']),
+      svmAdminPassword:
+          pulumi.Input.asOptionalInput<String>(map['svmAdminPassword']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

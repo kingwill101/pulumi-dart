@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'folder_membership_args.dart';
 
 /// Resource for managing an AWS QuickSight Folder Membership.
@@ -16,33 +16,33 @@ import 'folder_membership_args.dart';
 /// ```sh
 /// $ pulumi import aws:quicksight/folderMembership:FolderMembership example 123456789012,example-folder,DATASET,example-dataset
 /// ```
-class FolderMembership extends CustomResource {
+class FolderMembership extends pulumi.CustomResource {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  late final Output<String> awsAccountId;
+  late final pulumi.Output<String> awsAccountId;
 
   /// Identifier for the folder.
-  late final Output<String> folderId;
+  late final pulumi.Output<String> folderId;
 
   /// ID of the asset (the dashboard, analysis, or dataset).
-  late final Output<String> memberId;
+  late final pulumi.Output<String> memberId;
 
   /// Type of the member. Valid values are `ANALYSIS`, `DASHBOARD`, and `DATASET`.
   ///
   /// The following arguments are optional:
-  late final Output<String> memberType;
+  late final pulumi.Output<String> memberType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   FolderMembership(
     String name, {
     FolderMembershipArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:quicksight/folderMembership:FolderMembership',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.awsAccountId = registerOutput<String>('awsAccountId');
     this.folderId = registerOutput<String>('folderId');

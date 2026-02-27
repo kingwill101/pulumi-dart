@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../fast_snapshot_restore_timeouts/fast_snapshot_restore_timeouts.dart';
 import 'fast_snapshot_restore_args.dart';
 
@@ -17,29 +17,29 @@ import 'fast_snapshot_restore_args.dart';
 /// ```sh
 /// $ pulumi import aws:ebs/fastSnapshotRestore:FastSnapshotRestore example us-west-2a,snap-abcdef123456
 /// ```
-class FastSnapshotRestore extends CustomResource {
+class FastSnapshotRestore extends pulumi.CustomResource {
   /// Availability zone in which to enable fast snapshot restores.
-  late final Output<String> availabilityZone;
+  late final pulumi.Output<String> availabilityZone;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ID of the snapshot.
-  late final Output<String> snapshotId;
+  late final pulumi.Output<String> snapshotId;
 
   /// State of fast snapshot restores. Valid values are `enabling`, `optimizing`, `enabled`, `disabling`, `disabled`.
-  late final Output<String> state;
-  late final Output<FastSnapshotRestoreTimeouts?> timeouts;
+  late final pulumi.Output<String> state;
+  late final pulumi.Output<FastSnapshotRestoreTimeouts?> timeouts;
 
   FastSnapshotRestore(
     String name, {
     FastSnapshotRestoreArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ebs/fastSnapshotRestore:FastSnapshotRestore',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.availabilityZone = registerOutput<String>('availabilityZone');
     this.region = registerOutput<String>('region');

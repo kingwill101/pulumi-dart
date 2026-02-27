@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'preferences_args.dart';
 
 /// Resource for managing AWS Cost Optimization Hub Preferences.
@@ -20,22 +20,22 @@ import 'preferences_args.dart';
 /// ```sh
 /// $ pulumi import aws:costoptimizationhub/preferences:Preferences example 111222333444
 /// ```
-class Preferences extends CustomResource {
+class Preferences extends pulumi.CustomResource {
   /// Customize whether the member accounts can see the "After Discounts" savings estimates. Valid values are `All` and `None`. Default value is `All`.
-  late final Output<String> memberAccountDiscountVisibility;
+  late final pulumi.Output<String> memberAccountDiscountVisibility;
 
   /// Customize how estimated monthly savings are calculated. Valid values are `BeforeDiscounts` and `AfterDiscounts`. Default value is `BeforeDiscounts`.
-  late final Output<String> savingsEstimationMode;
+  late final pulumi.Output<String> savingsEstimationMode;
 
   Preferences(
     String name, {
     PreferencesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:costoptimizationhub/preferences:Preferences',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.memberAccountDiscountVisibility =
         registerOutput<String>('memberAccountDiscountVisibility');

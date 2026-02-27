@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_prompt_variant_template_configuration_chat_tool_configuration_tool/agent_prompt_variant_template_configuration_chat_tool_configuration_tool.dart';
 import '../agent_prompt_variant_template_configuration_chat_tool_configuration_tool_choice/agent_prompt_variant_template_configuration_chat_tool_configuration_tool_choice.dart';
 
@@ -26,7 +26,7 @@ class AgentPromptVariantTemplateConfigurationChatToolConfiguration {
     }
     final toolsValue = tools;
     if (toolsValue != null) {
-      map['tools'] = Input.encodeList<
+      map['tools'] = pulumi.Input.encodeList<
           AgentPromptVariantTemplateConfigurationChatToolConfigurationTool,
           Map<String, dynamic>>(toolsValue, (value) => value.toMap());
     }
@@ -42,7 +42,7 @@ class AgentPromptVariantTemplateConfigurationChatToolConfiguration {
               .fromMap((map['toolChoice'] as Map).cast<String, dynamic>()),
       tools: map['tools'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentPromptVariantTemplateConfigurationChatToolConfigurationTool>(
               map['tools'],
               (value) =>

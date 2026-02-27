@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_strategy_args.dart';
 
 /// Provides an AppConfig Deployment Strategy resource.
@@ -14,49 +14,49 @@ import 'deployment_strategy_args.dart';
 /// ```sh
 /// $ pulumi import aws:appconfig/deploymentStrategy:DeploymentStrategy example 11xxxxx
 /// ```
-class DeploymentStrategy extends CustomResource {
+class DeploymentStrategy extends pulumi.CustomResource {
   /// ARN of the AppConfig Deployment Strategy.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Total amount of time for a deployment to last. Minimum value of 0, maximum value of 1440.
-  late final Output<int> deploymentDurationInMinutes;
+  late final pulumi.Output<int> deploymentDurationInMinutes;
 
   /// Description of the deployment strategy. Can be at most 1024 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Amount of time AWS AppConfig monitors for alarms before considering the deployment to be complete and no longer eligible for automatic roll back. Minimum value of 0, maximum value of 1440.
-  late final Output<int?> finalBakeTimeInMinutes;
+  late final pulumi.Output<int?> finalBakeTimeInMinutes;
 
   /// Percentage of targets to receive a deployed configuration during each interval. Minimum value of 1.0, maximum value of 100.0.
-  late final Output<double> growthFactor;
+  late final pulumi.Output<double> growthFactor;
 
   /// Algorithm used to define how percentage grows over time. Valid value: `LINEAR` and `EXPONENTIAL`. Defaults to `LINEAR`.
-  late final Output<String?> growthType;
+  late final pulumi.Output<String?> growthType;
 
   /// Name for the deployment strategy. Must be between 1 and 64 characters in length.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Where to save the deployment strategy. Valid values: `NONE` and `SSM_DOCUMENT`.
-  late final Output<String> replicateTo;
+  late final pulumi.Output<String> replicateTo;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   DeploymentStrategy(
     String name, {
     DeploymentStrategyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:appconfig/deploymentStrategy:DeploymentStrategy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.deploymentDurationInMinutes =

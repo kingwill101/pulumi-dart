@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_group_args.dart';
 
 /// ## Example Usage
@@ -14,28 +14,28 @@ import 'key_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudfront/keyGroup:KeyGroup example 4b4f2r1c-315d-5c2e-f093-216t50jed10f
 /// ```
-class KeyGroup extends CustomResource {
+class KeyGroup extends pulumi.CustomResource {
   /// A comment to describe the key group..
-  late final Output<String?> comment;
+  late final pulumi.Output<String?> comment;
 
   /// The identifier for this version of the key group.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// A list of the identifiers of the public keys in the key group.
-  late final Output<List<String>> items;
+  late final pulumi.Output<List<String>> items;
 
   /// A name to identify the key group.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   KeyGroup(
     String name, {
     KeyGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/keyGroup:KeyGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.comment = registerOutput<String?>('comment');
     this.etag = registerOutput<String>('etag');

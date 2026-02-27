@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_prompt_variant_template_configuration_chat_input_variable/agent_prompt_variant_template_configuration_chat_input_variable.dart';
 import '../agent_prompt_variant_template_configuration_chat_message/agent_prompt_variant_template_configuration_chat_message.dart';
 import '../agent_prompt_variant_template_configuration_chat_system/agent_prompt_variant_template_configuration_chat_system.dart';
@@ -31,16 +31,16 @@ class AgentPromptVariantTemplateConfigurationChat {
     final map = <String, dynamic>{};
     final inputVariablesValue = inputVariables;
     if (inputVariablesValue != null) {
-      map['inputVariables'] = Input.encodeList<
+      map['inputVariables'] = pulumi.Input.encodeList<
           AgentPromptVariantTemplateConfigurationChatInputVariable,
           Map<String, dynamic>>(inputVariablesValue, (value) => value.toMap());
     }
-    map['messages'] = Input.encodeList<
+    map['messages'] = pulumi.Input.encodeList<
         AgentPromptVariantTemplateConfigurationChatMessage,
         Map<String, dynamic>>(messages, (value) => value.toMap());
     final systemsValue = systems;
     if (systemsValue != null) {
-      map['systems'] = Input.encodeList<
+      map['systems'] = pulumi.Input.encodeList<
           AgentPromptVariantTemplateConfigurationChatSystem,
           Map<String, dynamic>>(systemsValue, (value) => value.toMap());
     }
@@ -56,21 +56,21 @@ class AgentPromptVariantTemplateConfigurationChat {
     return AgentPromptVariantTemplateConfigurationChat(
       inputVariables: map['inputVariables'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentPromptVariantTemplateConfigurationChatInputVariable>(
               map['inputVariables'],
               (value) =>
                   AgentPromptVariantTemplateConfigurationChatInputVariable
                       .fromMap((value as Map).cast<String, dynamic>())),
-      messages:
-          Input.decodeList<AgentPromptVariantTemplateConfigurationChatMessage>(
-              map['messages'],
-              (value) =>
-                  AgentPromptVariantTemplateConfigurationChatMessage.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      messages: pulumi.Input.decodeList<
+              AgentPromptVariantTemplateConfigurationChatMessage>(
+          map['messages'],
+          (value) => AgentPromptVariantTemplateConfigurationChatMessage.fromMap(
+              (value as Map).cast<String, dynamic>())),
       systems: map['systems'] == null
           ? null
-          : Input.decodeList<AgentPromptVariantTemplateConfigurationChatSystem>(
+          : pulumi.Input.decodeList<
+                  AgentPromptVariantTemplateConfigurationChatSystem>(
               map['systems'],
               (value) =>
                   AgentPromptVariantTemplateConfigurationChatSystem.fromMap(

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_group_association_args.dart';
 
 /// Associate an existing ElastiCache user and an existing user group.
@@ -16,25 +16,25 @@ import 'user_group_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:elasticache/userGroupAssociation:UserGroupAssociation example userGoupId1,userId
 /// ```
-class UserGroupAssociation extends CustomResource {
+class UserGroupAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ID of the user group.
-  late final Output<String> userGroupId;
+  late final pulumi.Output<String> userGroupId;
 
   /// ID of the user to associated with the user group.
-  late final Output<String> userId;
+  late final pulumi.Output<String> userId;
 
   UserGroupAssociation(
     String name, {
     UserGroupAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:elasticache/userGroupAssociation:UserGroupAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.userGroupId = registerOutput<String>('userGroupId');

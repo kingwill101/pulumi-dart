@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_control_control_mapping_source_source_keyword/get_control_control_mapping_source_source_keyword.dart';
 
 class GetControlControlMappingSource {
@@ -29,7 +29,7 @@ class GetControlControlMappingSource {
     map['sourceDescription'] = sourceDescription;
     map['sourceFrequency'] = sourceFrequency;
     map['sourceId'] = sourceId;
-    map['sourceKeywords'] = Input.encodeList<
+    map['sourceKeywords'] = pulumi.Input.encodeList<
         GetControlControlMappingSourceSourceKeyword,
         Map<String, dynamic>>(sourceKeywords, (value) => value.toMap());
     map['sourceName'] = sourceName;
@@ -45,7 +45,7 @@ class GetControlControlMappingSource {
       sourceFrequency: map['sourceFrequency'] as String,
       sourceId: map['sourceId'] as String,
       sourceKeywords:
-          Input.decodeList<GetControlControlMappingSourceSourceKeyword>(
+          pulumi.Input.decodeList<GetControlControlMappingSourceSourceKeyword>(
               map['sourceKeywords'],
               (value) => GetControlControlMappingSourceSourceKeyword.fromMap(
                   (value as Map).cast<String, dynamic>())),

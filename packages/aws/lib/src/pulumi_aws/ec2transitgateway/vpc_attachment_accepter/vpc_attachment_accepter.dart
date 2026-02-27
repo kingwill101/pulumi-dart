@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_attachment_accepter_args.dart';
 
 /// Manages the accepter's side of an EC2 Transit Gateway VPC Attachment.
@@ -20,58 +20,58 @@ import 'vpc_attachment_accepter_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2transitgateway/vpcAttachmentAccepter:VpcAttachmentAccepter example tgw-attach-12345678
 /// ```
-class VpcAttachmentAccepter extends CustomResource {
+class VpcAttachmentAccepter extends pulumi.CustomResource {
   /// Whether Appliance Mode support is enabled. Valid values: `disable`, `enable`.
-  late final Output<String> applianceModeSupport;
+  late final pulumi.Output<String> applianceModeSupport;
 
   /// Whether DNS support is enabled. Valid values: `disable`, `enable`.
-  late final Output<String> dnsSupport;
+  late final pulumi.Output<String> dnsSupport;
 
   /// Whether IPv6 support is enabled. Valid values: `disable`, `enable`.
-  late final Output<String> ipv6Support;
+  late final pulumi.Output<String> ipv6Support;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Whether Security Group Referencing Support is enabled. Valid values: `disable`, `enable`.
-  late final Output<String> securityGroupReferencingSupport;
+  late final pulumi.Output<String> securityGroupReferencingSupport;
 
   /// Identifiers of EC2 Subnets.
-  late final Output<List<String>> subnetIds;
+  late final pulumi.Output<List<String>> subnetIds;
 
   /// Key-value tags for the EC2 Transit Gateway VPC Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The ID of the EC2 Transit Gateway Attachment to manage.
-  late final Output<String> transitGatewayAttachmentId;
+  late final pulumi.Output<String> transitGatewayAttachmentId;
 
   /// Boolean whether the VPC Attachment should be associated with the EC2 Transit Gateway association default route table. Default value: `true`.
-  late final Output<bool?> transitGatewayDefaultRouteTableAssociation;
+  late final pulumi.Output<bool?> transitGatewayDefaultRouteTableAssociation;
 
   /// Boolean whether the VPC Attachment should propagate routes with the EC2 Transit Gateway propagation default route table. Default value: `true`.
-  late final Output<bool?> transitGatewayDefaultRouteTablePropagation;
+  late final pulumi.Output<bool?> transitGatewayDefaultRouteTablePropagation;
 
   /// Identifier of EC2 Transit Gateway.
-  late final Output<String> transitGatewayId;
+  late final pulumi.Output<String> transitGatewayId;
 
   /// Identifier of EC2 VPC.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   /// Identifier of the AWS account that owns the EC2 VPC.
-  late final Output<String> vpcOwnerId;
+  late final pulumi.Output<String> vpcOwnerId;
 
   VpcAttachmentAccepter(
     String name, {
     VpcAttachmentAccepterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2transitgateway/vpcAttachmentAccepter:VpcAttachmentAccepter',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.applianceModeSupport = registerOutput<String>('applianceModeSupport');
     this.dnsSupport = registerOutput<String>('dnsSupport');

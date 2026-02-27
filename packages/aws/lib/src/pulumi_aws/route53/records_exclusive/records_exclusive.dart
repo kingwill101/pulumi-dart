@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../records_exclusive_resource_record_set/records_exclusive_resource_record_set.dart';
 import '../records_exclusive_timeouts/records_exclusive_timeouts.dart';
 import 'records_exclusive_args.dart';
@@ -32,27 +32,27 @@ import 'records_exclusive_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53/recordsExclusive:RecordsExclusive example ABCD1234
 /// ```
-class RecordsExclusive extends CustomResource {
+class RecordsExclusive extends pulumi.CustomResource {
   /// A list of all resource record sets associated with the hosted zone.
   /// See `resource_record_set` below.
-  late final Output<List<RecordsExclusiveResourceRecordSet>?>
+  late final pulumi.Output<List<RecordsExclusiveResourceRecordSet>?>
       resourceRecordSets;
-  late final Output<RecordsExclusiveTimeouts?> timeouts;
+  late final pulumi.Output<RecordsExclusiveTimeouts?> timeouts;
 
   /// ID of the hosted zone containing the resource record sets.
   ///
   /// The following arguments are optional:
-  late final Output<String> zoneId;
+  late final pulumi.Output<String> zoneId;
 
   RecordsExclusive(
     String name, {
     RecordsExclusiveArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53/recordsExclusive:RecordsExclusive',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.resourceRecordSets =
         registerOutput<List<RecordsExclusiveResourceRecordSet>?>(

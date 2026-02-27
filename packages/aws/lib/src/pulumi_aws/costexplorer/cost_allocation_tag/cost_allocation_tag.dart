@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cost_allocation_tag_args.dart';
 
 /// Provides a CE Cost Allocation Tag.
@@ -14,25 +14,25 @@ import 'cost_allocation_tag_args.dart';
 /// ```sh
 /// $ pulumi import aws:costexplorer/costAllocationTag:CostAllocationTag example key
 /// ```
-class CostAllocationTag extends CustomResource {
+class CostAllocationTag extends pulumi.CustomResource {
   /// The status of a cost allocation tag. Valid values are `Active` and `Inactive`.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// The key for the cost allocation tag.
-  late final Output<String> tagKey;
+  late final pulumi.Output<String> tagKey;
 
   /// The type of cost allocation tag.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   CostAllocationTag(
     String name, {
     CostAllocationTagArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:costexplorer/costAllocationTag:CostAllocationTag',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.status = registerOutput<String>('status');
     this.tagKey = registerOutput<String>('tagKey');

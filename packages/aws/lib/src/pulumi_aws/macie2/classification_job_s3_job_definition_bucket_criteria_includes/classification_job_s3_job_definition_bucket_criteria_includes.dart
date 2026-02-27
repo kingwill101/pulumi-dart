@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../classification_job_s3_job_definition_bucket_criteria_includes_and/classification_job_s3_job_definition_bucket_criteria_includes_and.dart';
 
 class ClassificationJobS3JobDefinitionBucketCriteriaIncludes {
@@ -15,7 +15,7 @@ class ClassificationJobS3JobDefinitionBucketCriteriaIncludes {
     final map = <String, dynamic>{};
     final andsValue = ands;
     if (andsValue != null) {
-      map['ands'] = Input.encodeList<
+      map['ands'] = pulumi.Input.encodeList<
           ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd,
           Map<String, dynamic>>(andsValue, (value) => value.toMap());
     }
@@ -27,7 +27,7 @@ class ClassificationJobS3JobDefinitionBucketCriteriaIncludes {
     return ClassificationJobS3JobDefinitionBucketCriteriaIncludes(
       ands: map['ands'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd>(
               map['ands'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../network_insights_analysis_explanation_acl/network_insights_analysis_explanation_acl.dart';
 import '../network_insights_analysis_explanation_acl_rule/network_insights_analysis_explanation_acl_rule.dart';
 import '../network_insights_analysis_explanation_attached_to/network_insights_analysis_explanation_attached_to.dart';
@@ -154,13 +154,14 @@ class NetworkInsightsAnalysisExplanation {
     final map = <String, dynamic>{};
     final aclRulesValue = aclRules;
     if (aclRulesValue != null) {
-      map['aclRules'] = Input.encodeList<
+      map['aclRules'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationAclRule,
           Map<String, dynamic>>(aclRulesValue, (value) => value.toMap());
     }
     final aclsValue = acls;
     if (aclsValue != null) {
-      map['acls'] = Input.encodeList<NetworkInsightsAnalysisExplanationAcl,
+      map['acls'] = pulumi.Input.encodeList<
+          NetworkInsightsAnalysisExplanationAcl,
           Map<String, dynamic>>(aclsValue, (value) => value.toMap());
     }
     final addressValue = address;
@@ -173,7 +174,7 @@ class NetworkInsightsAnalysisExplanation {
     }
     final attachedTosValue = attachedTos;
     if (attachedTosValue != null) {
-      map['attachedTos'] = Input.encodeList<
+      map['attachedTos'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationAttachedTo,
           Map<String, dynamic>>(attachedTosValue, (value) => value.toMap());
     }
@@ -187,33 +188,33 @@ class NetworkInsightsAnalysisExplanation {
     }
     final classicLoadBalancerListenersValue = classicLoadBalancerListeners;
     if (classicLoadBalancerListenersValue != null) {
-      map['classicLoadBalancerListeners'] = Input.encodeList<
+      map['classicLoadBalancerListeners'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationClassicLoadBalancerListener,
               Map<String, dynamic>>(
           classicLoadBalancerListenersValue, (value) => value.toMap());
     }
     final componentsValue = components;
     if (componentsValue != null) {
-      map['components'] = Input.encodeList<
+      map['components'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationComponent,
           Map<String, dynamic>>(componentsValue, (value) => value.toMap());
     }
     final customerGatewaysValue = customerGateways;
     if (customerGatewaysValue != null) {
-      map['customerGateways'] = Input.encodeList<
+      map['customerGateways'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationCustomerGateway,
               Map<String, dynamic>>(
           customerGatewaysValue, (value) => value.toMap());
     }
     final destinationVpcsValue = destinationVpcs;
     if (destinationVpcsValue != null) {
-      map['destinationVpcs'] = Input.encodeList<
+      map['destinationVpcs'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationDestinationVpc,
           Map<String, dynamic>>(destinationVpcsValue, (value) => value.toMap());
     }
     final destinationsValue = destinations;
     if (destinationsValue != null) {
-      map['destinations'] = Input.encodeList<
+      map['destinations'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationDestination,
           Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
     }
@@ -223,7 +224,7 @@ class NetworkInsightsAnalysisExplanation {
     }
     final elasticLoadBalancerListenersValue = elasticLoadBalancerListeners;
     if (elasticLoadBalancerListenersValue != null) {
-      map['elasticLoadBalancerListeners'] = Input.encodeList<
+      map['elasticLoadBalancerListeners'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationElasticLoadBalancerListener,
               Map<String, dynamic>>(
           elasticLoadBalancerListenersValue, (value) => value.toMap());
@@ -234,14 +235,14 @@ class NetworkInsightsAnalysisExplanation {
     }
     final ingressRouteTablesValue = ingressRouteTables;
     if (ingressRouteTablesValue != null) {
-      map['ingressRouteTables'] = Input.encodeList<
+      map['ingressRouteTables'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationIngressRouteTable,
               Map<String, dynamic>>(
           ingressRouteTablesValue, (value) => value.toMap());
     }
     final internetGatewaysValue = internetGateways;
     if (internetGatewaysValue != null) {
-      map['internetGateways'] = Input.encodeList<
+      map['internetGateways'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationInternetGateway,
               Map<String, dynamic>>(
           internetGatewaysValue, (value) => value.toMap());
@@ -256,14 +257,14 @@ class NetworkInsightsAnalysisExplanation {
     }
     final loadBalancerTargetGroupValue = loadBalancerTargetGroup;
     if (loadBalancerTargetGroupValue != null) {
-      map['loadBalancerTargetGroup'] = Input.encodeList<
+      map['loadBalancerTargetGroup'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup,
               Map<String, dynamic>>(
           loadBalancerTargetGroupValue, (value) => value.toMap());
     }
     final loadBalancerTargetGroupsValue = loadBalancerTargetGroups;
     if (loadBalancerTargetGroupsValue != null) {
-      map['loadBalancerTargetGroups'] = Input.encodeList<
+      map['loadBalancerTargetGroups'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup,
               Map<String, dynamic>>(
           loadBalancerTargetGroupsValue, (value) => value.toMap());
@@ -278,13 +279,13 @@ class NetworkInsightsAnalysisExplanation {
     }
     final natGatewaysValue = natGateways;
     if (natGatewaysValue != null) {
-      map['natGateways'] = Input.encodeList<
+      map['natGateways'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationNatGateway,
           Map<String, dynamic>>(natGatewaysValue, (value) => value.toMap());
     }
     final networkInterfacesValue = networkInterfaces;
     if (networkInterfacesValue != null) {
-      map['networkInterfaces'] = Input.encodeList<
+      map['networkInterfaces'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationNetworkInterface,
               Map<String, dynamic>>(
           networkInterfacesValue, (value) => value.toMap());
@@ -299,13 +300,13 @@ class NetworkInsightsAnalysisExplanation {
     }
     final portRangesValue = portRanges;
     if (portRangesValue != null) {
-      map['portRanges'] = Input.encodeList<
+      map['portRanges'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationPortRange,
           Map<String, dynamic>>(portRangesValue, (value) => value.toMap());
     }
     final prefixListsValue = prefixLists;
     if (prefixListsValue != null) {
-      map['prefixLists'] = Input.encodeList<
+      map['prefixLists'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationPrefixList,
           Map<String, dynamic>>(prefixListsValue, (value) => value.toMap());
     }
@@ -315,39 +316,39 @@ class NetworkInsightsAnalysisExplanation {
     }
     final routeTableRoutesValue = routeTableRoutes;
     if (routeTableRoutesValue != null) {
-      map['routeTableRoutes'] = Input.encodeList<
+      map['routeTableRoutes'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationRouteTableRoute,
               Map<String, dynamic>>(
           routeTableRoutesValue, (value) => value.toMap());
     }
     final routeTablesValue = routeTables;
     if (routeTablesValue != null) {
-      map['routeTables'] = Input.encodeList<
+      map['routeTables'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationRouteTable,
           Map<String, dynamic>>(routeTablesValue, (value) => value.toMap());
     }
     final securityGroupValue = securityGroup;
     if (securityGroupValue != null) {
-      map['securityGroup'] = Input.encodeList<
+      map['securityGroup'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationSecurityGroup,
           Map<String, dynamic>>(securityGroupValue, (value) => value.toMap());
     }
     final securityGroupRulesValue = securityGroupRules;
     if (securityGroupRulesValue != null) {
-      map['securityGroupRules'] = Input.encodeList<
+      map['securityGroupRules'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationSecurityGroupRule,
               Map<String, dynamic>>(
           securityGroupRulesValue, (value) => value.toMap());
     }
     final securityGroupsValue = securityGroups;
     if (securityGroupsValue != null) {
-      map['securityGroups'] = Input.encodeList<
+      map['securityGroups'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationSecurityGroup,
           Map<String, dynamic>>(securityGroupsValue, (value) => value.toMap());
     }
     final sourceVpcsValue = sourceVpcs;
     if (sourceVpcsValue != null) {
-      map['sourceVpcs'] = Input.encodeList<
+      map['sourceVpcs'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationSourceVpc,
           Map<String, dynamic>>(sourceVpcsValue, (value) => value.toMap());
     }
@@ -357,71 +358,72 @@ class NetworkInsightsAnalysisExplanation {
     }
     final subnetRouteTablesValue = subnetRouteTables;
     if (subnetRouteTablesValue != null) {
-      map['subnetRouteTables'] = Input.encodeList<
+      map['subnetRouteTables'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationSubnetRouteTable,
               Map<String, dynamic>>(
           subnetRouteTablesValue, (value) => value.toMap());
     }
     final subnetsValue = subnets;
     if (subnetsValue != null) {
-      map['subnets'] = Input.encodeList<
+      map['subnets'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationSubnet,
           Map<String, dynamic>>(subnetsValue, (value) => value.toMap());
     }
     final transitGatewayAttachmentsValue = transitGatewayAttachments;
     if (transitGatewayAttachmentsValue != null) {
-      map['transitGatewayAttachments'] = Input.encodeList<
+      map['transitGatewayAttachments'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationTransitGatewayAttachment,
               Map<String, dynamic>>(
           transitGatewayAttachmentsValue, (value) => value.toMap());
     }
     final transitGatewayRouteTableRoutesValue = transitGatewayRouteTableRoutes;
     if (transitGatewayRouteTableRoutesValue != null) {
-      map['transitGatewayRouteTableRoutes'] = Input.encodeList<
+      map['transitGatewayRouteTableRoutes'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationTransitGatewayRouteTableRoute,
               Map<String, dynamic>>(
           transitGatewayRouteTableRoutesValue, (value) => value.toMap());
     }
     final transitGatewayRouteTablesValue = transitGatewayRouteTables;
     if (transitGatewayRouteTablesValue != null) {
-      map['transitGatewayRouteTables'] = Input.encodeList<
+      map['transitGatewayRouteTables'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationTransitGatewayRouteTable,
               Map<String, dynamic>>(
           transitGatewayRouteTablesValue, (value) => value.toMap());
     }
     final transitGatewaysValue = transitGateways;
     if (transitGatewaysValue != null) {
-      map['transitGateways'] = Input.encodeList<
+      map['transitGateways'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationTransitGateway,
           Map<String, dynamic>>(transitGatewaysValue, (value) => value.toMap());
     }
     final vpcEndpointsValue = vpcEndpoints;
     if (vpcEndpointsValue != null) {
-      map['vpcEndpoints'] = Input.encodeList<
+      map['vpcEndpoints'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationVpcEndpoint,
           Map<String, dynamic>>(vpcEndpointsValue, (value) => value.toMap());
     }
     final vpcPeeringConnectionsValue = vpcPeeringConnections;
     if (vpcPeeringConnectionsValue != null) {
-      map['vpcPeeringConnections'] = Input.encodeList<
+      map['vpcPeeringConnections'] = pulumi.Input.encodeList<
               NetworkInsightsAnalysisExplanationVpcPeeringConnection,
               Map<String, dynamic>>(
           vpcPeeringConnectionsValue, (value) => value.toMap());
     }
     final vpcsValue = vpcs;
     if (vpcsValue != null) {
-      map['vpcs'] = Input.encodeList<NetworkInsightsAnalysisExplanationVpc,
+      map['vpcs'] = pulumi.Input.encodeList<
+          NetworkInsightsAnalysisExplanationVpc,
           Map<String, dynamic>>(vpcsValue, (value) => value.toMap());
     }
     final vpnConnectionsValue = vpnConnections;
     if (vpnConnectionsValue != null) {
-      map['vpnConnections'] = Input.encodeList<
+      map['vpnConnections'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationVpnConnection,
           Map<String, dynamic>>(vpnConnectionsValue, (value) => value.toMap());
     }
     final vpnGatewaysValue = vpnGateways;
     if (vpnGatewaysValue != null) {
-      map['vpnGateways'] = Input.encodeList<
+      map['vpnGateways'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisExplanationVpnGateway,
           Map<String, dynamic>>(vpnGatewaysValue, (value) => value.toMap());
     }
@@ -432,13 +434,13 @@ class NetworkInsightsAnalysisExplanation {
     return NetworkInsightsAnalysisExplanation(
       aclRules: map['aclRules'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationAclRule>(
+          : pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationAclRule>(
               map['aclRules'],
               (value) => NetworkInsightsAnalysisExplanationAclRule.fromMap(
                   (value as Map).cast<String, dynamic>())),
       acls: map['acls'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationAcl>(
+          : pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationAcl>(
               map['acls'],
               (value) => NetworkInsightsAnalysisExplanationAcl.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -448,7 +450,8 @@ class NetworkInsightsAnalysisExplanation {
           : (map['addresses'] as List).cast<String>(),
       attachedTos: map['attachedTos'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationAttachedTo>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationAttachedTo>(
               map['attachedTos'],
               (value) => NetworkInsightsAnalysisExplanationAttachedTo.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -459,7 +462,7 @@ class NetworkInsightsAnalysisExplanation {
           map['cidrs'] == null ? null : (map['cidrs'] as List).cast<String>(),
       classicLoadBalancerListeners: map['classicLoadBalancerListeners'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisExplanationClassicLoadBalancerListener>(
               map['classicLoadBalancerListeners'],
               (value) =>
@@ -467,34 +470,38 @@ class NetworkInsightsAnalysisExplanation {
                       .fromMap((value as Map).cast<String, dynamic>())),
       components: map['components'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationComponent>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationComponent>(
               map['components'],
               (value) => NetworkInsightsAnalysisExplanationComponent.fromMap(
                   (value as Map).cast<String, dynamic>())),
       customerGateways: map['customerGateways'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationCustomerGateway>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationCustomerGateway>(
               map['customerGateways'],
               (value) =>
                   NetworkInsightsAnalysisExplanationCustomerGateway.fromMap(
                       (value as Map).cast<String, dynamic>())),
       destinationVpcs: map['destinationVpcs'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationDestinationVpc>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationDestinationVpc>(
               map['destinationVpcs'],
               (value) =>
                   NetworkInsightsAnalysisExplanationDestinationVpc.fromMap(
                       (value as Map).cast<String, dynamic>())),
       destinations: map['destinations'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationDestination>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationDestination>(
               map['destinations'],
               (value) => NetworkInsightsAnalysisExplanationDestination.fromMap(
                   (value as Map).cast<String, dynamic>())),
       direction: map['direction'] == null ? null : map['direction'] as String,
       elasticLoadBalancerListeners: map['elasticLoadBalancerListeners'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisExplanationElasticLoadBalancerListener>(
               map['elasticLoadBalancerListeners'],
               (value) =>
@@ -505,7 +512,7 @@ class NetworkInsightsAnalysisExplanation {
           : map['explanationCode'] as String,
       ingressRouteTables: map['ingressRouteTables'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisExplanationIngressRouteTable>(
               map['ingressRouteTables'],
               (value) =>
@@ -513,7 +520,8 @@ class NetworkInsightsAnalysisExplanation {
                       (value as Map).cast<String, dynamic>())),
       internetGateways: map['internetGateways'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationInternetGateway>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationInternetGateway>(
               map['internetGateways'],
               (value) =>
                   NetworkInsightsAnalysisExplanationInternetGateway.fromMap(
@@ -526,7 +534,7 @@ class NetworkInsightsAnalysisExplanation {
           : map['loadBalancerListenerPort'] as int,
       loadBalancerTargetGroup: map['loadBalancerTargetGroup'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup>(
               map['loadBalancerTargetGroup'],
               (value) =>
@@ -534,7 +542,7 @@ class NetworkInsightsAnalysisExplanation {
                       .fromMap((value as Map).cast<String, dynamic>())),
       loadBalancerTargetGroups: map['loadBalancerTargetGroups'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup>(
               map['loadBalancerTargetGroups'],
               (value) =>
@@ -548,13 +556,14 @@ class NetworkInsightsAnalysisExplanation {
           : map['missingComponent'] as String,
       natGateways: map['natGateways'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationNatGateway>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationNatGateway>(
               map['natGateways'],
               (value) => NetworkInsightsAnalysisExplanationNatGateway.fromMap(
                   (value as Map).cast<String, dynamic>())),
       networkInterfaces: map['networkInterfaces'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisExplanationNetworkInterface>(
               map['networkInterfaces'],
               (value) =>
@@ -565,13 +574,15 @@ class NetworkInsightsAnalysisExplanation {
       port: map['port'] == null ? null : map['port'] as int,
       portRanges: map['portRanges'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationPortRange>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationPortRange>(
               map['portRanges'],
               (value) => NetworkInsightsAnalysisExplanationPortRange.fromMap(
                   (value as Map).cast<String, dynamic>())),
       prefixLists: map['prefixLists'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationPrefixList>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationPrefixList>(
               map['prefixLists'],
               (value) => NetworkInsightsAnalysisExplanationPrefixList.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -580,27 +591,30 @@ class NetworkInsightsAnalysisExplanation {
           : (map['protocols'] as List).cast<String>(),
       routeTableRoutes: map['routeTableRoutes'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationRouteTableRoute>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationRouteTableRoute>(
               map['routeTableRoutes'],
               (value) =>
                   NetworkInsightsAnalysisExplanationRouteTableRoute.fromMap(
                       (value as Map).cast<String, dynamic>())),
       routeTables: map['routeTables'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationRouteTable>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationRouteTable>(
               map['routeTables'],
               (value) => NetworkInsightsAnalysisExplanationRouteTable.fromMap(
                   (value as Map).cast<String, dynamic>())),
       securityGroup: map['securityGroup'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationSecurityGroup>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationSecurityGroup>(
               map['securityGroup'],
               (value) =>
                   NetworkInsightsAnalysisExplanationSecurityGroup.fromMap(
                       (value as Map).cast<String, dynamic>())),
       securityGroupRules: map['securityGroupRules'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisExplanationSecurityGroupRule>(
               map['securityGroupRules'],
               (value) =>
@@ -608,21 +622,23 @@ class NetworkInsightsAnalysisExplanation {
                       (value as Map).cast<String, dynamic>())),
       securityGroups: map['securityGroups'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationSecurityGroup>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationSecurityGroup>(
               map['securityGroups'],
               (value) =>
                   NetworkInsightsAnalysisExplanationSecurityGroup.fromMap(
                       (value as Map).cast<String, dynamic>())),
       sourceVpcs: map['sourceVpcs'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationSourceVpc>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationSourceVpc>(
               map['sourceVpcs'],
               (value) => NetworkInsightsAnalysisExplanationSourceVpc.fromMap(
                   (value as Map).cast<String, dynamic>())),
       state: map['state'] == null ? null : map['state'] as String,
       subnetRouteTables: map['subnetRouteTables'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisExplanationSubnetRouteTable>(
               map['subnetRouteTables'],
               (value) =>
@@ -630,13 +646,13 @@ class NetworkInsightsAnalysisExplanation {
                       (value as Map).cast<String, dynamic>())),
       subnets: map['subnets'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationSubnet>(
+          : pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationSubnet>(
               map['subnets'],
               (value) => NetworkInsightsAnalysisExplanationSubnet.fromMap(
                   (value as Map).cast<String, dynamic>())),
       transitGatewayAttachments: map['transitGatewayAttachments'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisExplanationTransitGatewayAttachment>(
               map['transitGatewayAttachments'],
               (value) =>
@@ -645,7 +661,7 @@ class NetworkInsightsAnalysisExplanation {
       transitGatewayRouteTableRoutes: map['transitGatewayRouteTableRoutes'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisExplanationTransitGatewayRouteTableRoute>(
               map['transitGatewayRouteTableRoutes'],
               (value) =>
@@ -653,7 +669,7 @@ class NetworkInsightsAnalysisExplanation {
                       .fromMap((value as Map).cast<String, dynamic>())),
       transitGatewayRouteTables: map['transitGatewayRouteTables'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisExplanationTransitGatewayRouteTable>(
               map['transitGatewayRouteTables'],
               (value) =>
@@ -661,40 +677,44 @@ class NetworkInsightsAnalysisExplanation {
                       .fromMap((value as Map).cast<String, dynamic>())),
       transitGateways: map['transitGateways'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationTransitGateway>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationTransitGateway>(
               map['transitGateways'],
               (value) =>
                   NetworkInsightsAnalysisExplanationTransitGateway.fromMap(
                       (value as Map).cast<String, dynamic>())),
       vpcEndpoints: map['vpcEndpoints'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationVpcEndpoint>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationVpcEndpoint>(
               map['vpcEndpoints'],
               (value) => NetworkInsightsAnalysisExplanationVpcEndpoint.fromMap(
                   (value as Map).cast<String, dynamic>())),
       vpcPeeringConnections: map['vpcPeeringConnections'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisExplanationVpcPeeringConnection>(
               map['vpcPeeringConnections'],
               (value) => NetworkInsightsAnalysisExplanationVpcPeeringConnection
                   .fromMap((value as Map).cast<String, dynamic>())),
       vpcs: map['vpcs'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationVpc>(
+          : pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationVpc>(
               map['vpcs'],
               (value) => NetworkInsightsAnalysisExplanationVpc.fromMap(
                   (value as Map).cast<String, dynamic>())),
       vpnConnections: map['vpnConnections'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationVpnConnection>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationVpnConnection>(
               map['vpnConnections'],
               (value) =>
                   NetworkInsightsAnalysisExplanationVpnConnection.fromMap(
                       (value as Map).cast<String, dynamic>())),
       vpnGateways: map['vpnGateways'] == null
           ? null
-          : Input.decodeList<NetworkInsightsAnalysisExplanationVpnGateway>(
+          : pulumi.Input.decodeList<
+                  NetworkInsightsAnalysisExplanationVpnGateway>(
               map['vpnGateways'],
               (value) => NetworkInsightsAnalysisExplanationVpnGateway.fromMap(
                   (value as Map).cast<String, dynamic>())),

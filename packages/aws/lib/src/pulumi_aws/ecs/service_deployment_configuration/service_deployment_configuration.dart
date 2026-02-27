@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_deployment_configuration_canary_configuration/service_deployment_configuration_canary_configuration.dart';
 import '../service_deployment_configuration_lifecycle_hook/service_deployment_configuration_lifecycle_hook.dart';
 import '../service_deployment_configuration_linear_configuration/service_deployment_configuration_linear_configuration.dart';
@@ -41,7 +41,7 @@ class ServiceDeploymentConfiguration {
     }
     final lifecycleHooksValue = lifecycleHooks;
     if (lifecycleHooksValue != null) {
-      map['lifecycleHooks'] = Input.encodeList<
+      map['lifecycleHooks'] = pulumi.Input.encodeList<
           ServiceDeploymentConfigurationLifecycleHook,
           Map<String, dynamic>>(lifecycleHooksValue, (value) => value.toMap());
     }
@@ -67,7 +67,8 @@ class ServiceDeploymentConfiguration {
               (map['canaryConfiguration'] as Map).cast<String, dynamic>()),
       lifecycleHooks: map['lifecycleHooks'] == null
           ? null
-          : Input.decodeList<ServiceDeploymentConfigurationLifecycleHook>(
+          : pulumi.Input.decodeList<
+                  ServiceDeploymentConfigurationLifecycleHook>(
               map['lifecycleHooks'],
               (value) => ServiceDeploymentConfigurationLifecycleHook.fromMap(
                   (value as Map).cast<String, dynamic>())),

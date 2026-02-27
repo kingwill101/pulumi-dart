@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../endpoint_configuration_data_capture_config_capture_content_type_header/endpoint_configuration_data_capture_config_capture_content_type_header.dart';
 import '../endpoint_configuration_data_capture_config_capture_option/endpoint_configuration_data_capture_config_capture_option.dart';
 
@@ -40,7 +40,7 @@ class EndpointConfigurationDataCaptureConfig {
     if (captureContentTypeHeaderValue != null) {
       map['captureContentTypeHeader'] = captureContentTypeHeaderValue.toMap();
     }
-    map['captureOptions'] = Input.encodeList<
+    map['captureOptions'] = pulumi.Input.encodeList<
         EndpointConfigurationDataCaptureConfigCaptureOption,
         Map<String, dynamic>>(captureOptions, (value) => value.toMap());
     map['destinationS3Uri'] = destinationS3Uri;
@@ -64,12 +64,12 @@ class EndpointConfigurationDataCaptureConfig {
           : EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader
               .fromMap((map['captureContentTypeHeader'] as Map)
                   .cast<String, dynamic>()),
-      captureOptions:
-          Input.decodeList<EndpointConfigurationDataCaptureConfigCaptureOption>(
-              map['captureOptions'],
-              (value) =>
-                  EndpointConfigurationDataCaptureConfigCaptureOption.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      captureOptions: pulumi.Input.decodeList<
+              EndpointConfigurationDataCaptureConfigCaptureOption>(
+          map['captureOptions'],
+          (value) =>
+              EndpointConfigurationDataCaptureConfigCaptureOption.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       destinationS3Uri: map['destinationS3Uri'] as String,
       enableCapture:
           map['enableCapture'] == null ? null : map['enableCapture'] as bool,

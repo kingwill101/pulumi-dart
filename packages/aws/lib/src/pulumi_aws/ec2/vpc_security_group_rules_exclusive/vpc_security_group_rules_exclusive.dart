@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_security_group_rules_exclusive_args.dart';
 
 /// Resource for managing an exclusive set of AWS VPC (Virtual Private Cloud) Security Group Rules.
@@ -32,28 +32,28 @@ import 'vpc_security_group_rules_exclusive_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/vpcSecurityGroupRulesExclusive:VpcSecurityGroupRulesExclusive example sg-1234567890abcdef0
 /// ```
-class VpcSecurityGroupRulesExclusive extends CustomResource {
+class VpcSecurityGroupRulesExclusive extends pulumi.CustomResource {
   /// Egress rule IDs.
-  late final Output<List<String>> egressRuleIds;
+  late final pulumi.Output<List<String>> egressRuleIds;
 
   /// Ingress rule IDs.
-  late final Output<List<String>> ingressRuleIds;
+  late final pulumi.Output<List<String>> ingressRuleIds;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ID of the security group.
-  late final Output<String> securityGroupId;
+  late final pulumi.Output<String> securityGroupId;
 
   VpcSecurityGroupRulesExclusive(
     String name, {
     VpcSecurityGroupRulesExclusiveArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpcSecurityGroupRulesExclusive:VpcSecurityGroupRulesExclusive',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.egressRuleIds = registerOutput<List<String>>('egressRuleIds');
     this.ingressRuleIds = registerOutput<List<String>>('ingressRuleIds');

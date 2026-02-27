@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scheduled_query_target_configuration_timestream_configuration_dimension_mapping/scheduled_query_target_configuration_timestream_configuration_dimension_mapping.dart';
 import '../scheduled_query_target_configuration_timestream_configuration_mixed_measure_mapping/scheduled_query_target_configuration_timestream_configuration_mixed_measure_mapping.dart';
 import '../scheduled_query_target_configuration_timestream_configuration_multi_measure_mappings/scheduled_query_target_configuration_timestream_configuration_multi_measure_mappings.dart';
@@ -45,7 +45,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfiguration {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['databaseName'] = databaseName;
-    map['dimensionMappings'] = Input.encodeList<
+    map['dimensionMappings'] = pulumi.Input.encodeList<
         ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping,
         Map<String, dynamic>>(dimensionMappings, (value) => value.toMap());
     final measureNameColumnValue = measureNameColumn;
@@ -54,7 +54,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfiguration {
     }
     final mixedMeasureMappingsValue = mixedMeasureMappings;
     if (mixedMeasureMappingsValue != null) {
-      map['mixedMeasureMappings'] = Input.encodeList<
+      map['mixedMeasureMappings'] = pulumi.Input.encodeList<
           ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping,
           Map<String,
               dynamic>>(mixedMeasureMappingsValue, (value) => value.toMap());
@@ -72,7 +72,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfiguration {
       Map<String, dynamic> map) {
     return ScheduledQueryTargetConfigurationTimestreamConfiguration(
       databaseName: map['databaseName'] as String,
-      dimensionMappings: Input.decodeList<
+      dimensionMappings: pulumi.Input.decodeList<
               ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping>(
           map['dimensionMappings'],
           (value) =>
@@ -83,7 +83,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfiguration {
           : map['measureNameColumn'] as String,
       mixedMeasureMappings: map['mixedMeasureMappings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping>(
               map['mixedMeasureMappings'],
               (value) =>

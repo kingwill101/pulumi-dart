@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_endpoint_route_table_association_args.dart';
 
 /// Manages a VPC Endpoint Route Table Association
@@ -14,25 +14,25 @@ import 'vpc_endpoint_route_table_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/vpcEndpointRouteTableAssociation:VpcEndpointRouteTableAssociation example vpce-aaaaaaaa/rtb-bbbbbbbb
 /// ```
-class VpcEndpointRouteTableAssociation extends CustomResource {
+class VpcEndpointRouteTableAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
-  late final Output<String> routeTableId;
+  late final pulumi.Output<String> routeTableId;
 
   /// Identifier of the VPC Endpoint with which the EC2 Route Table will be associated.
-  late final Output<String> vpcEndpointId;
+  late final pulumi.Output<String> vpcEndpointId;
 
   VpcEndpointRouteTableAssociation(
     String name, {
     VpcEndpointRouteTableAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpcEndpointRouteTableAssociation:VpcEndpointRouteTableAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.routeTableId = registerOutput<String>('routeTableId');

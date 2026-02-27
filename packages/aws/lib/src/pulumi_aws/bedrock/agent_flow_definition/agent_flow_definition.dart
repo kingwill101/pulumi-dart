@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_flow_definition_connection/agent_flow_definition_connection.dart';
 import '../agent_flow_definition_node/agent_flow_definition_node.dart';
 
@@ -20,15 +20,14 @@ class AgentFlowDefinition {
     final map = <String, dynamic>{};
     final connectionsValue = connections;
     if (connectionsValue != null) {
-      map['connections'] =
-          Input.encodeList<AgentFlowDefinitionConnection, Map<String, dynamic>>(
-              connectionsValue, (value) => value.toMap());
+      map['connections'] = pulumi.Input.encodeList<
+          AgentFlowDefinitionConnection,
+          Map<String, dynamic>>(connectionsValue, (value) => value.toMap());
     }
     final nodesValue = nodes;
     if (nodesValue != null) {
-      map['nodes'] =
-          Input.encodeList<AgentFlowDefinitionNode, Map<String, dynamic>>(
-              nodesValue, (value) => value.toMap());
+      map['nodes'] = pulumi.Input.encodeList<AgentFlowDefinitionNode,
+          Map<String, dynamic>>(nodesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -37,13 +36,13 @@ class AgentFlowDefinition {
     return AgentFlowDefinition(
       connections: map['connections'] == null
           ? null
-          : Input.decodeList<AgentFlowDefinitionConnection>(
+          : pulumi.Input.decodeList<AgentFlowDefinitionConnection>(
               map['connections'],
               (value) => AgentFlowDefinitionConnection.fromMap(
                   (value as Map).cast<String, dynamic>())),
       nodes: map['nodes'] == null
           ? null
-          : Input.decodeList<AgentFlowDefinitionNode>(
+          : pulumi.Input.decodeList<AgentFlowDefinitionNode>(
               map['nodes'],
               (value) => AgentFlowDefinitionNode.fromMap(
                   (value as Map).cast<String, dynamic>())),

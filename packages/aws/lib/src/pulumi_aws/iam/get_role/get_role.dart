@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_role_args.dart';
 import 'get_role_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_role_result.dart';
 /// properties without having to hard code ARNs as input.
 Future<GetRoleResult> getRole(
   GetRoleArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:iam/getRole:getRole',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRoleResult.fromMap(result);
 }

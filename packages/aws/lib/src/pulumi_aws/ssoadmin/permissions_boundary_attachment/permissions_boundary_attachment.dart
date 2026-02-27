@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../permissions_boundary_attachment_permissions_boundary/permissions_boundary_attachment_permissions_boundary.dart';
 import 'permissions_boundary_attachment_args.dart';
 
@@ -23,29 +23,29 @@ import 'permissions_boundary_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:ssoadmin/permissionsBoundaryAttachment:PermissionsBoundaryAttachment example arn:aws:sso:::permissionSet/ssoins-2938j0x8920sbj72/ps-80383020jr9302rk,arn:aws:sso:::instance/ssoins-2938j0x8920sbj72
 /// ```
-class PermissionsBoundaryAttachment extends CustomResource {
+class PermissionsBoundaryAttachment extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
-  late final Output<String> instanceArn;
+  late final pulumi.Output<String> instanceArn;
 
   /// The Amazon Resource Name (ARN) of the Permission Set.
-  late final Output<String> permissionSetArn;
+  late final pulumi.Output<String> permissionSetArn;
 
   /// The permissions boundary policy. See below.
-  late final Output<PermissionsBoundaryAttachmentPermissionsBoundary>
+  late final pulumi.Output<PermissionsBoundaryAttachmentPermissionsBoundary>
       permissionsBoundary;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   PermissionsBoundaryAttachment(
     String name, {
     PermissionsBoundaryAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssoadmin/permissionsBoundaryAttachment:PermissionsBoundaryAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.instanceArn = registerOutput<String>('instanceArn');
     this.permissionSetArn = registerOutput<String>('permissionSetArn');

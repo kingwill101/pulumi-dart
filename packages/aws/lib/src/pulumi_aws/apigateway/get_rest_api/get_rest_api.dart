@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_rest_api_args.dart';
 import 'get_rest_api_result.dart';
 
@@ -8,13 +8,13 @@ import 'get_rest_api_result.dart';
 /// error if there is more than one match.
 Future<GetRestApiResult> getRestApi(
   GetRestApiArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:apigateway/getRestApi:getRestApi',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRestApiResult.fromMap(result);
 }

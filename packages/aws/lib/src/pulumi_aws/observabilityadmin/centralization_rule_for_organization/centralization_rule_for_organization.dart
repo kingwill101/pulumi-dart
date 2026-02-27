@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../centralization_rule_for_organization_rule/centralization_rule_for_organization_rule.dart';
 import '../centralization_rule_for_organization_timeouts/centralization_rule_for_organization_timeouts.dart';
 import 'centralization_rule_for_organization_args.dart';
@@ -30,37 +30,37 @@ import 'centralization_rule_for_organization_args.dart';
 /// ```sh
 /// $ pulumi import aws:observabilityadmin/centralizationRuleForOrganization:CentralizationRuleForOrganization example example-centralization-rule
 /// ```
-class CentralizationRuleForOrganization extends CustomResource {
+class CentralizationRuleForOrganization extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration block for the centralization rule. See `rule` below.
   ///
   /// The following arguments are optional:
-  late final Output<CentralizationRuleForOrganizationRule> rule;
+  late final pulumi.Output<CentralizationRuleForOrganizationRule> rule;
 
   /// ARN of the centralization rule.
-  late final Output<String> ruleArn;
+  late final pulumi.Output<String> ruleArn;
 
   /// Name of the centralization rule. Must be unique within the organization.
-  late final Output<String> ruleName;
+  late final pulumi.Output<String> ruleName;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<CentralizationRuleForOrganizationTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<CentralizationRuleForOrganizationTimeouts?> timeouts;
 
   CentralizationRuleForOrganization(
     String name, {
     CentralizationRuleForOrganizationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:observabilityadmin/centralizationRuleForOrganization:CentralizationRuleForOrganization',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.rule = registerOutput<CentralizationRuleForOrganizationRule>('rule');

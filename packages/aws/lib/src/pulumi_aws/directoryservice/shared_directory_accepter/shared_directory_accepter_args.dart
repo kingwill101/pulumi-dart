@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SharedDirectoryAccepter.
 class SharedDirectoryAccepterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Identifier of the directory that is stored in the directory consumer account that corresponds to the shared directory in the owner account.
-  final Input<String> sharedDirectoryId;
+  final pulumi.Input<String> sharedDirectoryId;
 
   SharedDirectoryAccepterArgs({
     this.region,
@@ -27,8 +27,8 @@ class SharedDirectoryAccepterArgs {
 
   factory SharedDirectoryAccepterArgs.fromMap(Map<String, dynamic> map) {
     return SharedDirectoryAccepterArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      sharedDirectoryId: Input.asInput<String>(map['sharedDirectoryId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sharedDirectoryId: pulumi.Input.asInput<String>(map['sharedDirectoryId']),
     );
   }
 }

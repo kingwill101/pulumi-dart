@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_service_connect_configuration_service_client_alias_test_traffic_rule/service_service_connect_configuration_service_client_alias_test_traffic_rule.dart';
 
 class ServiceServiceConnectConfigurationServiceClientAlias {
@@ -30,7 +30,7 @@ class ServiceServiceConnectConfigurationServiceClientAlias {
     map['port'] = port;
     final testTrafficRulesValue = testTrafficRules;
     if (testTrafficRulesValue != null) {
-      map['testTrafficRules'] = Input.encodeList<
+      map['testTrafficRules'] = pulumi.Input.encodeList<
           ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule,
           Map<String,
               dynamic>>(testTrafficRulesValue, (value) => value.toMap());
@@ -45,7 +45,7 @@ class ServiceServiceConnectConfigurationServiceClientAlias {
       port: map['port'] as int,
       testTrafficRules: map['testTrafficRules'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule>(
               map['testTrafficRules'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_profile_user_settings_jupyter_lab_app_settings_app_lifecycle_management/user_profile_user_settings_jupyter_lab_app_settings_app_lifecycle_management.dart';
 import '../user_profile_user_settings_jupyter_lab_app_settings_code_repository/user_profile_user_settings_jupyter_lab_app_settings_code_repository.dart';
 import '../user_profile_user_settings_jupyter_lab_app_settings_custom_image/user_profile_user_settings_jupyter_lab_app_settings_custom_image.dart';
@@ -53,14 +53,14 @@ class UserProfileUserSettingsJupyterLabAppSettings {
     }
     final codeRepositoriesValue = codeRepositories;
     if (codeRepositoriesValue != null) {
-      map['codeRepositories'] = Input.encodeList<
+      map['codeRepositories'] = pulumi.Input.encodeList<
               UserProfileUserSettingsJupyterLabAppSettingsCodeRepository,
               Map<String, dynamic>>(
           codeRepositoriesValue, (value) => value.toMap());
     }
     final customImagesValue = customImages;
     if (customImagesValue != null) {
-      map['customImages'] = Input.encodeList<
+      map['customImages'] = pulumi.Input.encodeList<
           UserProfileUserSettingsJupyterLabAppSettingsCustomImage,
           Map<String, dynamic>>(customImagesValue, (value) => value.toMap());
     }
@@ -92,7 +92,7 @@ class UserProfileUserSettingsJupyterLabAppSettings {
           : map['builtInLifecycleConfigArn'] as String,
       codeRepositories: map['codeRepositories'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   UserProfileUserSettingsJupyterLabAppSettingsCodeRepository>(
               map['codeRepositories'],
               (value) =>
@@ -100,7 +100,7 @@ class UserProfileUserSettingsJupyterLabAppSettings {
                       .fromMap((value as Map).cast<String, dynamic>())),
       customImages: map['customImages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   UserProfileUserSettingsJupyterLabAppSettingsCustomImage>(
               map['customImages'],
               (value) => UserProfileUserSettingsJupyterLabAppSettingsCustomImage

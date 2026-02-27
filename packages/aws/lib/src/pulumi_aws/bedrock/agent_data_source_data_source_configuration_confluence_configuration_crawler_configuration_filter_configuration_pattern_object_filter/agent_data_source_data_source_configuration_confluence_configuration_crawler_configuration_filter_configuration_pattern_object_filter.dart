@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_data_source_data_source_configuration_confluence_configuration_crawler_configuration_filter_configuration_pattern_object_filter_filter/agent_data_source_data_source_configuration_confluence_configuration_crawler_configuration_filter_configuration_pattern_object_filter_filter.dart';
 
 class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter {
@@ -19,7 +19,7 @@ class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfig
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<
+      map['filters'] = pulumi.Input.encodeList<
           AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
@@ -31,7 +31,7 @@ class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfig
     return AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter>(
               map['filters'],
               (value) =>

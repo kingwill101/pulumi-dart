@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VpcConnector.
 class VpcConnectorArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// List of IDs of security groups that App Runner should use for access to AWS resources under the specified subnets. If not specified, App Runner uses the default security group of the Amazon VPC. The default security group allows all outbound traffic.
-  final Input<List<String>> securityGroups;
+  final pulumi.Input<List<String>> securityGroups;
 
   /// List of IDs of subnets that App Runner should use when it associates your service with a custom Amazon VPC. Specify IDs of subnets of a single Amazon VPC. App Runner determines the Amazon VPC from the subnets you specify.
-  final Input<List<String>> subnets;
+  final pulumi.Input<List<String>> subnets;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Name for the VPC connector.
-  final Input<String> vpcConnectorName;
+  final pulumi.Input<String> vpcConnectorName;
 
   VpcConnectorArgs({
     this.region,
@@ -45,11 +45,11 @@ class VpcConnectorArgs {
 
   factory VpcConnectorArgs.fromMap(Map<String, dynamic> map) {
     return VpcConnectorArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      securityGroups: Input.asInput<List<String>>(map['securityGroups']),
-      subnets: Input.asInput<List<String>>(map['subnets']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vpcConnectorName: Input.asInput<String>(map['vpcConnectorName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      securityGroups: pulumi.Input.asInput<List<String>>(map['securityGroups']),
+      subnets: pulumi.Input.asInput<List<String>>(map['subnets']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpcConnectorName: pulumi.Input.asInput<String>(map['vpcConnectorName']),
     );
   }
 }

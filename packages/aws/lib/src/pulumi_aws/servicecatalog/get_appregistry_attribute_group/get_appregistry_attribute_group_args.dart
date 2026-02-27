@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAppregistryAttributeGroup.
 class GetAppregistryAttributeGroupArgs {
   /// ARN of the Attribute Group to find.
-  final Input<String>? arn;
+  final pulumi.Input<String>? arn;
 
   /// ID of the Attribute Group to find.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Name of the Attribute Group to find.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// > Exactly one of `arn`, `id`, or `name` must be set.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetAppregistryAttributeGroupArgs({
     this.arn,
@@ -47,10 +47,10 @@ class GetAppregistryAttributeGroupArgs {
 
   factory GetAppregistryAttributeGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetAppregistryAttributeGroupArgs(
-      arn: Input.asOptionalInput<String>(map['arn']),
-      id: Input.asOptionalInput<String>(map['id']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      arn: pulumi.Input.asOptionalInput<String>(map['arn']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

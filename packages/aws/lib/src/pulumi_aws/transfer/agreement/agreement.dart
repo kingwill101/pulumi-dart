@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agreement_args.dart';
 
 /// Provides a AWS Transfer AS2 Agreement resource.
@@ -16,48 +16,48 @@ import 'agreement_args.dart';
 /// ```sh
 /// $ pulumi import aws:transfer/agreement:Agreement example s-4221a88afd5f4362a/a-4221a88afd5f4362a
 /// ```
-class Agreement extends CustomResource {
+class Agreement extends pulumi.CustomResource {
   /// The IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
-  late final Output<String> accessRole;
+  late final pulumi.Output<String> accessRole;
 
   /// The unique identifier for the AS2 agreement.
-  late final Output<String> agreementId;
+  late final pulumi.Output<String> agreementId;
 
   /// The ARN of the agreement.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The landing directory for the files transferred by using the AS2 protocol.
-  late final Output<String> baseDirectory;
+  late final pulumi.Output<String> baseDirectory;
 
   /// The Optional description of the transdfer.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The unique identifier for the AS2 local profile.
-  late final Output<String> localProfileId;
+  late final pulumi.Output<String> localProfileId;
 
   /// The unique identifier for the AS2 partner profile.
-  late final Output<String> partnerProfileId;
+  late final pulumi.Output<String> partnerProfileId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The unique server identifier for the server instance. This is the specific server the agreement uses.
-  late final Output<String> serverId;
-  late final Output<String> status;
+  late final pulumi.Output<String> serverId;
+  late final pulumi.Output<String> status;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Agreement(
     String name, {
     AgreementArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:transfer/agreement:Agreement',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessRole = registerOutput<String>('accessRole');
     this.agreementId = registerOutput<String>('agreementId');

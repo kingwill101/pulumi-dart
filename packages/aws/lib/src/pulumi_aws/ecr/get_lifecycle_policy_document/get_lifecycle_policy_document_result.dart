@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_lifecycle_policy_document_rule/get_lifecycle_policy_document_rule.dart';
 
 /// Result data returned by getLifecyclePolicyDocument.
@@ -22,9 +22,8 @@ class GetLifecyclePolicyDocumentResult {
     final map = <String, dynamic>{};
     map['id'] = id;
     map['json'] = json;
-    map['rules'] =
-        Input.encodeList<GetLifecyclePolicyDocumentRule, Map<String, dynamic>>(
-            rules, (value) => value.toMap());
+    map['rules'] = pulumi.Input.encodeList<GetLifecyclePolicyDocumentRule,
+        Map<String, dynamic>>(rules, (value) => value.toMap());
     return map;
   }
 
@@ -32,7 +31,7 @@ class GetLifecyclePolicyDocumentResult {
     return GetLifecyclePolicyDocumentResult(
       id: map['id'] as String,
       json: map['json'] as String,
-      rules: Input.decodeList<GetLifecyclePolicyDocumentRule>(
+      rules: pulumi.Input.decodeList<GetLifecyclePolicyDocumentRule>(
           map['rules'],
           (value) => GetLifecyclePolicyDocumentRule.fromMap(
               (value as Map).cast<String, dynamic>())),

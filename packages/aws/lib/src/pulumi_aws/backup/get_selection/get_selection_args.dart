@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSelection.
 class GetSelectionArgs {
   /// Backup plan ID associated with the selection of resources.
-  final Input<String> planId;
+  final pulumi.Input<String> planId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Backup selection ID.
-  final Input<String> selectionId;
+  final pulumi.Input<String> selectionId;
 
   GetSelectionArgs({
     required this.planId,
@@ -32,9 +32,9 @@ class GetSelectionArgs {
 
   factory GetSelectionArgs.fromMap(Map<String, dynamic> map) {
     return GetSelectionArgs(
-      planId: Input.asInput<String>(map['planId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      selectionId: Input.asInput<String>(map['selectionId']),
+      planId: pulumi.Input.asInput<String>(map['planId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      selectionId: pulumi.Input.asInput<String>(map['selectionId']),
     );
   }
 }

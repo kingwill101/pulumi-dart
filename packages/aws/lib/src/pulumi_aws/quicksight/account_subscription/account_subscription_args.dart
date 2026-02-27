@@ -1,70 +1,70 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AccountSubscription.
 class AccountSubscriptionArgs {
   /// Name of your Amazon QuickSight account. This name is unique over all of AWS, and it appears only when users sign in.
-  final Input<String> accountName;
+  final pulumi.Input<String> accountName;
 
   /// Name of your Active Directory. This field is required if `ACTIVE_DIRECTORY` is the selected authentication method of the new Amazon QuickSight account.
-  final Input<String>? activeDirectoryName;
+  final pulumi.Input<String>? activeDirectoryName;
 
   /// Admin group associated with your Active Directory or IAM Identity Center account. This field is required if `ACTIVE_DIRECTORY` or `IAM_IDENTITY_CENTER` is the selected authentication method of the new Amazon QuickSight account.
-  final Input<List<String>>? adminGroups;
+  final pulumi.Input<List<String>>? adminGroups;
 
   /// Admin PRO group associated with your Active Directory or IAM Identity Center account.
-  final Input<List<String>>? adminProGroups;
+  final pulumi.Input<List<String>>? adminProGroups;
 
   /// Method that you want to use to authenticate your Amazon QuickSight account. Currently, the valid values for this parameter are `IAM_AND_QUICKSIGHT`, `IAM_ONLY`, `IAM_IDENTITY_CENTER`, and `ACTIVE_DIRECTORY`.
-  final Input<String> authenticationMethod;
+  final pulumi.Input<String> authenticationMethod;
 
   /// Author group associated with your Active Directory or IAM Identity Center account.
-  final Input<List<String>>? authorGroups;
+  final pulumi.Input<List<String>>? authorGroups;
 
   /// Author PRO group associated with your Active Directory or IAM Identity Center account.
-  final Input<List<String>>? authorProGroups;
+  final pulumi.Input<List<String>>? authorProGroups;
 
   /// AWS account ID. Defaults to automatically determined account ID of the Pulumi AWS provider.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// A 10-digit phone number for the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
-  final Input<String>? contactNumber;
+  final pulumi.Input<String>? contactNumber;
 
   /// Active Directory ID that is associated with your Amazon QuickSight account.
-  final Input<String>? directoryId;
+  final pulumi.Input<String>? directoryId;
 
   /// Edition of Amazon QuickSight that you want your account to have. Currently, you can choose from `STANDARD`, `ENTERPRISE` or `ENTERPRISE_AND_Q`.
-  final Input<String> edition;
+  final pulumi.Input<String> edition;
 
   /// Email address of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
-  final Input<String>? emailAddress;
+  final pulumi.Input<String>? emailAddress;
 
   /// First name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
-  final Input<String>? firstName;
+  final pulumi.Input<String>? firstName;
 
   /// The Amazon Resource Name (ARN) for the IAM Identity Center instance.
-  final Input<String>? iamIdentityCenterInstanceArn;
+  final pulumi.Input<String>? iamIdentityCenterInstanceArn;
 
   /// Last name of the author of the Amazon QuickSight account to use for future communications. This field is required if `ENTERPPRISE_AND_Q` is the selected edition of the new Amazon QuickSight account.
-  final Input<String>? lastName;
+  final pulumi.Input<String>? lastName;
 
   /// Email address that you want Amazon QuickSight to send notifications to regarding your Amazon QuickSight account or Amazon QuickSight subscription.
   ///
   /// The following arguments are optional:
-  final Input<String> notificationEmail;
+  final pulumi.Input<String> notificationEmail;
 
   /// Reader group associated with your Active Directory or IAM Identity Center account.
-  final Input<List<String>>? readerGroups;
+  final pulumi.Input<List<String>>? readerGroups;
 
   /// Reader PRO group associated with your Active Directory or IAM Identity Center account.
-  final Input<List<String>>? readerProGroups;
+  final pulumi.Input<List<String>>? readerProGroups;
 
   /// Realm of the Active Directory that is associated with your Amazon QuickSight account.
-  final Input<String>? realm;
+  final pulumi.Input<String>? realm;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   AccountSubscriptionArgs({
     required this.accountName,
@@ -164,31 +164,35 @@ class AccountSubscriptionArgs {
 
   factory AccountSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return AccountSubscriptionArgs(
-      accountName: Input.asInput<String>(map['accountName']),
+      accountName: pulumi.Input.asInput<String>(map['accountName']),
       activeDirectoryName:
-          Input.asOptionalInput<String>(map['activeDirectoryName']),
-      adminGroups: Input.asOptionalInput<List<String>>(map['adminGroups']),
+          pulumi.Input.asOptionalInput<String>(map['activeDirectoryName']),
+      adminGroups:
+          pulumi.Input.asOptionalInput<List<String>>(map['adminGroups']),
       adminProGroups:
-          Input.asOptionalInput<List<String>>(map['adminProGroups']),
-      authenticationMethod: Input.asInput<String>(map['authenticationMethod']),
-      authorGroups: Input.asOptionalInput<List<String>>(map['authorGroups']),
+          pulumi.Input.asOptionalInput<List<String>>(map['adminProGroups']),
+      authenticationMethod:
+          pulumi.Input.asInput<String>(map['authenticationMethod']),
+      authorGroups:
+          pulumi.Input.asOptionalInput<List<String>>(map['authorGroups']),
       authorProGroups:
-          Input.asOptionalInput<List<String>>(map['authorProGroups']),
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
-      contactNumber: Input.asOptionalInput<String>(map['contactNumber']),
-      directoryId: Input.asOptionalInput<String>(map['directoryId']),
-      edition: Input.asInput<String>(map['edition']),
-      emailAddress: Input.asOptionalInput<String>(map['emailAddress']),
-      firstName: Input.asOptionalInput<String>(map['firstName']),
-      iamIdentityCenterInstanceArn:
-          Input.asOptionalInput<String>(map['iamIdentityCenterInstanceArn']),
-      lastName: Input.asOptionalInput<String>(map['lastName']),
-      notificationEmail: Input.asInput<String>(map['notificationEmail']),
-      readerGroups: Input.asOptionalInput<List<String>>(map['readerGroups']),
+          pulumi.Input.asOptionalInput<List<String>>(map['authorProGroups']),
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
+      contactNumber: pulumi.Input.asOptionalInput<String>(map['contactNumber']),
+      directoryId: pulumi.Input.asOptionalInput<String>(map['directoryId']),
+      edition: pulumi.Input.asInput<String>(map['edition']),
+      emailAddress: pulumi.Input.asOptionalInput<String>(map['emailAddress']),
+      firstName: pulumi.Input.asOptionalInput<String>(map['firstName']),
+      iamIdentityCenterInstanceArn: pulumi.Input.asOptionalInput<String>(
+          map['iamIdentityCenterInstanceArn']),
+      lastName: pulumi.Input.asOptionalInput<String>(map['lastName']),
+      notificationEmail: pulumi.Input.asInput<String>(map['notificationEmail']),
+      readerGroups:
+          pulumi.Input.asOptionalInput<List<String>>(map['readerGroups']),
       readerProGroups:
-          Input.asOptionalInput<List<String>>(map['readerProGroups']),
-      realm: Input.asOptionalInput<String>(map['realm']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<List<String>>(map['readerProGroups']),
+      realm: pulumi.Input.asOptionalInput<String>(map['realm']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

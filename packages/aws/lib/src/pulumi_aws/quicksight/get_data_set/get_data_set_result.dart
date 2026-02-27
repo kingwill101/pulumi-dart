@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_data_set_column_group/get_data_set_column_group.dart';
 import '../get_data_set_column_level_permission_rule/get_data_set_column_level_permission_rule.dart';
 import '../get_data_set_data_set_usage_configuration/get_data_set_data_set_usage_configuration.dart';
@@ -59,35 +59,34 @@ class GetDataSetResult {
     map['arn'] = arn;
     map['awsAccountId'] = awsAccountId;
     map['columnGroups'] =
-        Input.encodeList<GetDataSetColumnGroup, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDataSetColumnGroup, Map<String, dynamic>>(
             columnGroups, (value) => value.toMap());
-    map['columnLevelPermissionRules'] = Input.encodeList<
+    map['columnLevelPermissionRules'] = pulumi.Input.encodeList<
             GetDataSetColumnLevelPermissionRule, Map<String, dynamic>>(
         columnLevelPermissionRules, (value) => value.toMap());
     map['dataSetId'] = dataSetId;
-    map['dataSetUsageConfigurations'] = Input.encodeList<
+    map['dataSetUsageConfigurations'] = pulumi.Input.encodeList<
             GetDataSetDataSetUsageConfiguration, Map<String, dynamic>>(
         dataSetUsageConfigurations, (value) => value.toMap());
     map['fieldFolders'] =
-        Input.encodeList<GetDataSetFieldFolder, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDataSetFieldFolder, Map<String, dynamic>>(
             fieldFolders, (value) => value.toMap());
     map['id'] = id;
     map['importMode'] = importMode;
-    map['logicalTableMaps'] =
-        Input.encodeList<GetDataSetLogicalTableMap, Map<String, dynamic>>(
-            logicalTableMaps, (value) => value.toMap());
+    map['logicalTableMaps'] = pulumi.Input.encodeList<GetDataSetLogicalTableMap,
+        Map<String, dynamic>>(logicalTableMaps, (value) => value.toMap());
     map['name'] = name;
     map['permissions'] =
-        Input.encodeList<GetDataSetPermission, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDataSetPermission, Map<String, dynamic>>(
             permissions, (value) => value.toMap());
-    map['physicalTableMaps'] =
-        Input.encodeList<GetDataSetPhysicalTableMap, Map<String, dynamic>>(
-            physicalTableMaps, (value) => value.toMap());
+    map['physicalTableMaps'] = pulumi.Input.encodeList<
+        GetDataSetPhysicalTableMap,
+        Map<String, dynamic>>(physicalTableMaps, (value) => value.toMap());
     map['region'] = region;
-    map['rowLevelPermissionDataSets'] = Input.encodeList<
+    map['rowLevelPermissionDataSets'] = pulumi.Input.encodeList<
             GetDataSetRowLevelPermissionDataSet, Map<String, dynamic>>(
         rowLevelPermissionDataSets, (value) => value.toMap());
-    map['rowLevelPermissionTagConfigurations'] = Input.encodeList<
+    map['rowLevelPermissionTagConfigurations'] = pulumi.Input.encodeList<
             GetDataSetRowLevelPermissionTagConfiguration, Map<String, dynamic>>(
         rowLevelPermissionTagConfigurations, (value) => value.toMap());
     map['tags'] = tags;
@@ -98,48 +97,48 @@ class GetDataSetResult {
     return GetDataSetResult(
       arn: map['arn'] as String,
       awsAccountId: map['awsAccountId'] as String,
-      columnGroups: Input.decodeList<GetDataSetColumnGroup>(
+      columnGroups: pulumi.Input.decodeList<GetDataSetColumnGroup>(
           map['columnGroups'],
           (value) => GetDataSetColumnGroup.fromMap(
               (value as Map).cast<String, dynamic>())),
       columnLevelPermissionRules:
-          Input.decodeList<GetDataSetColumnLevelPermissionRule>(
+          pulumi.Input.decodeList<GetDataSetColumnLevelPermissionRule>(
               map['columnLevelPermissionRules'],
               (value) => GetDataSetColumnLevelPermissionRule.fromMap(
                   (value as Map).cast<String, dynamic>())),
       dataSetId: map['dataSetId'] as String,
       dataSetUsageConfigurations:
-          Input.decodeList<GetDataSetDataSetUsageConfiguration>(
+          pulumi.Input.decodeList<GetDataSetDataSetUsageConfiguration>(
               map['dataSetUsageConfigurations'],
               (value) => GetDataSetDataSetUsageConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      fieldFolders: Input.decodeList<GetDataSetFieldFolder>(
+      fieldFolders: pulumi.Input.decodeList<GetDataSetFieldFolder>(
           map['fieldFolders'],
           (value) => GetDataSetFieldFolder.fromMap(
               (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       importMode: map['importMode'] as String,
-      logicalTableMaps: Input.decodeList<GetDataSetLogicalTableMap>(
+      logicalTableMaps: pulumi.Input.decodeList<GetDataSetLogicalTableMap>(
           map['logicalTableMaps'],
           (value) => GetDataSetLogicalTableMap.fromMap(
               (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      permissions: Input.decodeList<GetDataSetPermission>(
+      permissions: pulumi.Input.decodeList<GetDataSetPermission>(
           map['permissions'],
           (value) => GetDataSetPermission.fromMap(
               (value as Map).cast<String, dynamic>())),
-      physicalTableMaps: Input.decodeList<GetDataSetPhysicalTableMap>(
+      physicalTableMaps: pulumi.Input.decodeList<GetDataSetPhysicalTableMap>(
           map['physicalTableMaps'],
           (value) => GetDataSetPhysicalTableMap.fromMap(
               (value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       rowLevelPermissionDataSets:
-          Input.decodeList<GetDataSetRowLevelPermissionDataSet>(
+          pulumi.Input.decodeList<GetDataSetRowLevelPermissionDataSet>(
               map['rowLevelPermissionDataSets'],
               (value) => GetDataSetRowLevelPermissionDataSet.fromMap(
                   (value as Map).cast<String, dynamic>())),
       rowLevelPermissionTagConfigurations:
-          Input.decodeList<GetDataSetRowLevelPermissionTagConfiguration>(
+          pulumi.Input.decodeList<GetDataSetRowLevelPermissionTagConfiguration>(
               map['rowLevelPermissionTagConfigurations'],
               (value) => GetDataSetRowLevelPermissionTagConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),

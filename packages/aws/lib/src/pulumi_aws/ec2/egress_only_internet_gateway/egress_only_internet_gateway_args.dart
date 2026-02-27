@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for EgressOnlyInternetGateway.
 class EgressOnlyInternetGatewayArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The VPC ID to create in.
-  final Input<String> vpcId;
+  final pulumi.Input<String> vpcId;
 
   EgressOnlyInternetGatewayArgs({
     this.region,
@@ -35,9 +35,9 @@ class EgressOnlyInternetGatewayArgs {
 
   factory EgressOnlyInternetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return EgressOnlyInternetGatewayArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vpcId: Input.asInput<String>(map['vpcId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpcId: pulumi.Input.asInput<String>(map['vpcId']),
     );
   }
 }

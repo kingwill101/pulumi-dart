@@ -1,32 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Snapshot.
 class SnapshotArgs {
   /// A description of what the snapshot is.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The Amazon Resource Name (ARN) of the Outpost on which to create a local snapshot.
-  final Input<String>? outpostArn;
+  final pulumi.Input<String>? outpostArn;
 
   /// Indicates whether to permanently restore an archived snapshot.
-  final Input<bool>? permanentRestore;
+  final pulumi.Input<bool>? permanentRestore;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The name of the storage tier. Valid values are `archive` and `standard`. Default value is `standard`.
-  final Input<String>? storageTier;
+  final pulumi.Input<String>? storageTier;
 
   /// A map of tags to assign to the snapshot. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
-  final Input<int>? temporaryRestoreDays;
+  final pulumi.Input<int>? temporaryRestoreDays;
 
   /// The Volume ID of which to make a snapshot.
-  final Input<String> volumeId;
+  final pulumi.Input<String> volumeId;
 
   SnapshotArgs({
     this.description,
@@ -75,15 +75,16 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      outpostArn: Input.asOptionalInput<String>(map['outpostArn']),
-      permanentRestore: Input.asOptionalInput<bool>(map['permanentRestore']),
-      region: Input.asOptionalInput<String>(map['region']),
-      storageTier: Input.asOptionalInput<String>(map['storageTier']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      outpostArn: pulumi.Input.asOptionalInput<String>(map['outpostArn']),
+      permanentRestore:
+          pulumi.Input.asOptionalInput<bool>(map['permanentRestore']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      storageTier: pulumi.Input.asOptionalInput<String>(map['storageTier']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
       temporaryRestoreDays:
-          Input.asOptionalInput<int>(map['temporaryRestoreDays']),
-      volumeId: Input.asInput<String>(map['volumeId']),
+          pulumi.Input.asOptionalInput<int>(map['temporaryRestoreDays']),
+      volumeId: pulumi.Input.asInput<String>(map['volumeId']),
     );
   }
 }

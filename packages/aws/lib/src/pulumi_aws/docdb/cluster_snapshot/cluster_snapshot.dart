@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_snapshot_args.dart';
 
 /// Manages a DocumentDB database cluster snapshot for DocumentDB clusters.
@@ -14,54 +14,54 @@ import 'cluster_snapshot_args.dart';
 /// ```sh
 /// $ pulumi import aws:docdb/clusterSnapshot:ClusterSnapshot example my-cluster-snapshot
 /// ```
-class ClusterSnapshot extends CustomResource {
+class ClusterSnapshot extends pulumi.CustomResource {
   /// List of EC2 Availability Zones that instances in the DocumentDB cluster snapshot can be restored in.
-  late final Output<List<String>> availabilityZones;
+  late final pulumi.Output<List<String>> availabilityZones;
 
   /// The DocumentDB Cluster Identifier from which to take the snapshot.
-  late final Output<String> dbClusterIdentifier;
+  late final pulumi.Output<String> dbClusterIdentifier;
 
   /// The Amazon Resource Name (ARN) for the DocumentDB Cluster Snapshot.
-  late final Output<String> dbClusterSnapshotArn;
+  late final pulumi.Output<String> dbClusterSnapshotArn;
 
   /// The Identifier for the snapshot.
-  late final Output<String> dbClusterSnapshotIdentifier;
+  late final pulumi.Output<String> dbClusterSnapshotIdentifier;
 
   /// Specifies the name of the database engine.
-  late final Output<String> engine;
+  late final pulumi.Output<String> engine;
 
   /// Version of the database engine for this DocumentDB cluster snapshot.
-  late final Output<String> engineVersion;
+  late final pulumi.Output<String> engineVersion;
 
   /// If storage_encrypted is true, the AWS KMS key identifier for the encrypted DocumentDB cluster snapshot.
-  late final Output<String> kmsKeyId;
+  late final pulumi.Output<String> kmsKeyId;
 
   /// Port that the DocumentDB cluster was listening on at the time of the snapshot.
-  late final Output<int> port;
+  late final pulumi.Output<int> port;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<String> snapshotType;
-  late final Output<String> sourceDbClusterSnapshotArn;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<String> snapshotType;
+  late final pulumi.Output<String> sourceDbClusterSnapshotArn;
 
   /// The status of this DocumentDB Cluster Snapshot.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Specifies whether the DocumentDB cluster snapshot is encrypted.
-  late final Output<bool> storageEncrypted;
+  late final pulumi.Output<bool> storageEncrypted;
 
   /// The VPC ID associated with the DocumentDB cluster snapshot.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   ClusterSnapshot(
     String name, {
     ClusterSnapshotArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:docdb/clusterSnapshot:ClusterSnapshot',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.availabilityZones = registerOutput<List<String>>('availabilityZones');
     this.dbClusterIdentifier = registerOutput<String>('dbClusterIdentifier');

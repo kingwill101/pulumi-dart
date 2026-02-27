@@ -1,36 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../shard_group_timeouts/shard_group_timeouts.dart';
 
 /// The set of arguments for ShardGroup.
 class ShardGroupArgs {
   /// Specifies whether to create standby DB shard groups for the DB shard group. Valid values are:
-  final Input<int>? computeRedundancy;
+  final pulumi.Input<int>? computeRedundancy;
 
   /// The name of the primary DB cluster for the DB shard group.
-  final Input<String> dbClusterIdentifier;
+  final pulumi.Input<String> dbClusterIdentifier;
 
   /// The name of the DB shard group.
-  final Input<String> dbShardGroupIdentifier;
+  final pulumi.Input<String> dbShardGroupIdentifier;
 
   /// The maximum capacity of the DB shard group in Aurora capacity units (ACUs).
-  final Input<double> maxAcu;
+  final pulumi.Input<double> maxAcu;
 
   /// The minimum capacity of the DB shard group in Aurora capacity units (ACUs).
-  final Input<double>? minAcu;
+  final pulumi.Input<double>? minAcu;
 
   /// Indicates whether the DB shard group is publicly accessible.
-  final Input<bool>? publiclyAccessible;
+  final pulumi.Input<bool>? publiclyAccessible;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-shard-group.html).
-  final Input<Map<String, String>>? tags;
-  final Input<ShardGroupTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<ShardGroupTimeouts>? timeouts;
 
   ShardGroupArgs({
     this.computeRedundancy,
@@ -71,26 +71,28 @@ class ShardGroupArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] =
-          Input.mapOptionalInputValue<ShardGroupTimeouts, Map<String, dynamic>>(
-              timeoutsValue, (value) => value.toMap());
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<ShardGroupTimeouts,
+          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
   }
 
   factory ShardGroupArgs.fromMap(Map<String, dynamic> map) {
     return ShardGroupArgs(
-      computeRedundancy: Input.asOptionalInput<int>(map['computeRedundancy']),
-      dbClusterIdentifier: Input.asInput<String>(map['dbClusterIdentifier']),
+      computeRedundancy:
+          pulumi.Input.asOptionalInput<int>(map['computeRedundancy']),
+      dbClusterIdentifier:
+          pulumi.Input.asInput<String>(map['dbClusterIdentifier']),
       dbShardGroupIdentifier:
-          Input.asInput<String>(map['dbShardGroupIdentifier']),
-      maxAcu: Input.asInput<double>(map['maxAcu']),
-      minAcu: Input.asOptionalInput<double>(map['minAcu']),
+          pulumi.Input.asInput<String>(map['dbShardGroupIdentifier']),
+      maxAcu: pulumi.Input.asInput<double>(map['maxAcu']),
+      minAcu: pulumi.Input.asOptionalInput<double>(map['minAcu']),
       publiclyAccessible:
-          Input.asOptionalInput<bool>(map['publiclyAccessible']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<ShardGroupTimeouts>(map['timeouts']),
+          pulumi.Input.asOptionalInput<bool>(map['publiclyAccessible']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts:
+          pulumi.Input.asOptionalInput<ShardGroupTimeouts>(map['timeouts']),
     );
   }
 }

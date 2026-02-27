@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../event_target_ecs_target_capacity_provider_strategy/event_target_ecs_target_capacity_provider_strategy.dart';
 import '../event_target_ecs_target_network_configuration/event_target_ecs_target_network_configuration.dart';
 import '../event_target_ecs_target_ordered_placement_strategy/event_target_ecs_target_ordered_placement_strategy.dart';
@@ -68,7 +68,7 @@ class EventTargetEcsTarget {
     final map = <String, dynamic>{};
     final capacityProviderStrategiesValue = capacityProviderStrategies;
     if (capacityProviderStrategiesValue != null) {
-      map['capacityProviderStrategies'] = Input.encodeList<
+      map['capacityProviderStrategies'] = pulumi.Input.encodeList<
               EventTargetEcsTargetCapacityProviderStrategy,
               Map<String, dynamic>>(
           capacityProviderStrategiesValue, (value) => value.toMap());
@@ -95,14 +95,14 @@ class EventTargetEcsTarget {
     }
     final orderedPlacementStrategiesValue = orderedPlacementStrategies;
     if (orderedPlacementStrategiesValue != null) {
-      map['orderedPlacementStrategies'] = Input.encodeList<
+      map['orderedPlacementStrategies'] = pulumi.Input.encodeList<
               EventTargetEcsTargetOrderedPlacementStrategy,
               Map<String, dynamic>>(
           orderedPlacementStrategiesValue, (value) => value.toMap());
     }
     final placementConstraintsValue = placementConstraints;
     if (placementConstraintsValue != null) {
-      map['placementConstraints'] = Input.encodeList<
+      map['placementConstraints'] = pulumi.Input.encodeList<
               EventTargetEcsTargetPlacementConstraint, Map<String, dynamic>>(
           placementConstraintsValue, (value) => value.toMap());
     }
@@ -130,7 +130,8 @@ class EventTargetEcsTarget {
     return EventTargetEcsTarget(
       capacityProviderStrategies: map['capacityProviderStrategies'] == null
           ? null
-          : Input.decodeList<EventTargetEcsTargetCapacityProviderStrategy>(
+          : pulumi.Input.decodeList<
+                  EventTargetEcsTargetCapacityProviderStrategy>(
               map['capacityProviderStrategies'],
               (value) => EventTargetEcsTargetCapacityProviderStrategy.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -149,13 +150,14 @@ class EventTargetEcsTarget {
               (map['networkConfiguration'] as Map).cast<String, dynamic>()),
       orderedPlacementStrategies: map['orderedPlacementStrategies'] == null
           ? null
-          : Input.decodeList<EventTargetEcsTargetOrderedPlacementStrategy>(
+          : pulumi.Input.decodeList<
+                  EventTargetEcsTargetOrderedPlacementStrategy>(
               map['orderedPlacementStrategies'],
               (value) => EventTargetEcsTargetOrderedPlacementStrategy.fromMap(
                   (value as Map).cast<String, dynamic>())),
       placementConstraints: map['placementConstraints'] == null
           ? null
-          : Input.decodeList<EventTargetEcsTargetPlacementConstraint>(
+          : pulumi.Input.decodeList<EventTargetEcsTargetPlacementConstraint>(
               map['placementConstraints'],
               (value) => EventTargetEcsTargetPlacementConstraint.fromMap(
                   (value as Map).cast<String, dynamic>())),

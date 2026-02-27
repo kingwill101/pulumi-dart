@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../../iam/policy_document_version/policy_document_version.dart';
 import '../../iam/policy_statement/policy_statement.dart';
 
@@ -22,8 +22,9 @@ class PolicyDocument {
     if (idValue != null) {
       map['Id'] = idValue;
     }
-    map['Statement'] = Input.encodeList<PolicyStatement, Map<String, dynamic>>(
-        statement, (value) => value.toMap());
+    map['Statement'] =
+        pulumi.Input.encodeList<PolicyStatement, Map<String, dynamic>>(
+            statement, (value) => value.toMap());
     map['Version'] = version.value;
     return map;
   }
@@ -31,7 +32,7 @@ class PolicyDocument {
   factory PolicyDocument.fromMap(Map<String, dynamic> map) {
     return PolicyDocument(
       id: map['Id'] == null ? null : map['Id'] as String,
-      statement: Input.decodeList<PolicyStatement>(
+      statement: pulumi.Input.decodeList<PolicyStatement>(
           map['Statement'],
           (value) =>
               PolicyStatement.fromMap((value as Map).cast<String, dynamic>())),

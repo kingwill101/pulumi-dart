@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_proxy_auth/get_proxy_auth.dart';
 
 /// Result data returned by getProxy.
@@ -75,7 +75,7 @@ class GetProxyResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['auths'] = Input.encodeList<GetProxyAuth, Map<String, dynamic>>(
+    map['auths'] = pulumi.Input.encodeList<GetProxyAuth, Map<String, dynamic>>(
         auths, (value) => value.toMap());
     map['debugLogging'] = debugLogging;
     map['defaultAuthScheme'] = defaultAuthScheme;
@@ -98,7 +98,7 @@ class GetProxyResult {
   factory GetProxyResult.fromMap(Map<String, dynamic> map) {
     return GetProxyResult(
       arn: map['arn'] as String,
-      auths: Input.decodeList<GetProxyAuth>(
+      auths: pulumi.Input.decodeList<GetProxyAuth>(
           map['auths'],
           (value) =>
               GetProxyAuth.fromMap((value as Map).cast<String, dynamic>())),

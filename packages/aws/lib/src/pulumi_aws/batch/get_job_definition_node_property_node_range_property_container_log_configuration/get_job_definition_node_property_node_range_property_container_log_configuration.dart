@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_definition_node_property_node_range_property_container_log_configuration_secret_option/get_job_definition_node_property_node_range_property_container_log_configuration_secret_option.dart';
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration {
@@ -25,7 +25,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration {
     final map = <String, dynamic>{};
     map['logDriver'] = logDriver;
     map['options'] = options;
-    map['secretOptions'] = Input.encodeList<
+    map['secretOptions'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption,
         Map<String, dynamic>>(secretOptions, (value) => value.toMap());
     return map;
@@ -36,7 +36,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration(
       logDriver: map['logDriver'] as String,
       options: (map['options'] as Map).cast<String, String>(),
-      secretOptions: Input.decodeList<
+      secretOptions: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption>(
           map['secretOptions'],
           (value) =>

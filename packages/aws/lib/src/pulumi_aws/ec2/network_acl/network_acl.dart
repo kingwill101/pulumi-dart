@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../network_acl_egress/network_acl_egress.dart';
 import '../network_acl_ingress/network_acl_ingress.dart';
 import 'network_acl_args.dart';
@@ -27,43 +27,43 @@ import 'network_acl_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/networkAcl:NetworkAcl main acl-7aaabd18
 /// ```
-class NetworkAcl extends CustomResource {
+class NetworkAcl extends pulumi.CustomResource {
   /// The ARN of the network ACL
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Specifies an egress rule. Parameters defined below.
-  late final Output<List<NetworkAclEgress>> egress;
+  late final pulumi.Output<List<NetworkAclEgress>> egress;
 
   /// Specifies an ingress rule. Parameters defined below.
-  late final Output<List<NetworkAclIngress>> ingress;
+  late final pulumi.Output<List<NetworkAclIngress>> ingress;
 
   /// The ID of the AWS account that owns the network ACL.
-  late final Output<String> ownerId;
+  late final pulumi.Output<String> ownerId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A list of Subnet IDs to apply the ACL to
-  late final Output<List<String>> subnetIds;
+  late final pulumi.Output<List<String>> subnetIds;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The ID of the associated VPC.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   NetworkAcl(
     String name, {
     NetworkAclArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/networkAcl:NetworkAcl',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.egress = registerOutput<List<NetworkAclEgress>>('egress');

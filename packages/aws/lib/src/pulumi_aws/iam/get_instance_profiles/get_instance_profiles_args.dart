@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInstanceProfiles.
 class GetInstanceProfilesArgs {
   /// IAM role name.
-  final Input<String> roleName;
+  final pulumi.Input<String> roleName;
 
   GetInstanceProfilesArgs({
     required this.roleName,
@@ -19,7 +19,7 @@ class GetInstanceProfilesArgs {
 
   factory GetInstanceProfilesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceProfilesArgs(
-      roleName: Input.asInput<String>(map['roleName']),
+      roleName: pulumi.Input.asInput<String>(map['roleName']),
     );
   }
 }

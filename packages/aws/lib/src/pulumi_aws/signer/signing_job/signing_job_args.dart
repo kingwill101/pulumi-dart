@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../signing_job_destination/signing_job_destination.dart';
 import '../signing_job_source/signing_job_source.dart';
 
 /// The set of arguments for SigningJob.
 class SigningJobArgs {
   /// The S3 bucket in which to save your signed object. See Destination below for details.
-  final Input<SigningJobDestination> destination;
+  final pulumi.Input<SigningJobDestination> destination;
 
   /// Set this argument to `true` to ignore signing job failures and retrieve failed status and reason. Default `false`.
-  final Input<bool>? ignoreSigningJobFailure;
+  final pulumi.Input<bool>? ignoreSigningJobFailure;
 
   /// The name of the profile to initiate the signing operation.
-  final Input<String> profileName;
+  final pulumi.Input<String> profileName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The S3 bucket that contains the object to sign. See Source below for details.
-  final Input<SigningJobSource> source;
+  final pulumi.Input<SigningJobSource> source;
 
   SigningJobArgs({
     required this.destination,
@@ -32,7 +32,7 @@ class SigningJobArgs {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['destination'] =
-        Input.mapInputValue<SigningJobDestination, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<SigningJobDestination, Map<String, dynamic>>(
             destination, (value) => value.toMap());
     final ignoreSigningJobFailureValue = ignoreSigningJobFailure;
     if (ignoreSigningJobFailureValue != null) {
@@ -43,19 +43,21 @@ class SigningJobArgs {
     if (regionValue != null) {
       map['region'] = regionValue;
     }
-    map['source'] = Input.mapInputValue<SigningJobSource, Map<String, dynamic>>(
-        source, (value) => value.toMap());
+    map['source'] =
+        pulumi.Input.mapInputValue<SigningJobSource, Map<String, dynamic>>(
+            source, (value) => value.toMap());
     return map;
   }
 
   factory SigningJobArgs.fromMap(Map<String, dynamic> map) {
     return SigningJobArgs(
-      destination: Input.asInput<SigningJobDestination>(map['destination']),
+      destination:
+          pulumi.Input.asInput<SigningJobDestination>(map['destination']),
       ignoreSigningJobFailure:
-          Input.asOptionalInput<bool>(map['ignoreSigningJobFailure']),
-      profileName: Input.asInput<String>(map['profileName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      source: Input.asInput<SigningJobSource>(map['source']),
+          pulumi.Input.asOptionalInput<bool>(map['ignoreSigningJobFailure']),
+      profileName: pulumi.Input.asInput<String>(map['profileName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      source: pulumi.Input.asInput<SigningJobSource>(map['source']),
     );
   }
 }

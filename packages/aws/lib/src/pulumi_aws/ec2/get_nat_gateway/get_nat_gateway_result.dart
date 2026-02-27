@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_nat_gateway_availability_zone_address/get_nat_gateway_availability_zone_address.dart';
 import '../get_nat_gateway_filter/get_nat_gateway_filter.dart';
 import '../get_nat_gateway_regional_nat_gateway_address/get_nat_gateway_regional_nat_gateway_address.dart';
@@ -92,14 +92,14 @@ class GetNatGatewayResult {
     map['autoProvisionZones'] = autoProvisionZones;
     map['autoScalingIps'] = autoScalingIps;
     map['availabilityMode'] = availabilityMode;
-    map['availabilityZoneAddresses'] = Input.encodeList<
+    map['availabilityZoneAddresses'] = pulumi.Input.encodeList<
             GetNatGatewayAvailabilityZoneAddress, Map<String, dynamic>>(
         availabilityZoneAddresses, (value) => value.toMap());
     map['connectivityType'] = connectivityType;
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetNatGatewayFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetNatGatewayFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -107,7 +107,7 @@ class GetNatGatewayResult {
     map['privateIp'] = privateIp;
     map['publicIp'] = publicIp;
     map['region'] = region;
-    map['regionalNatGatewayAddresses'] = Input.encodeList<
+    map['regionalNatGatewayAddresses'] = pulumi.Input.encodeList<
             GetNatGatewayRegionalNatGatewayAddress, Map<String, dynamic>>(
         regionalNatGatewayAddresses, (value) => value.toMap());
     map['routeTableId'] = routeTableId;
@@ -129,14 +129,14 @@ class GetNatGatewayResult {
       autoScalingIps: map['autoScalingIps'] as String,
       availabilityMode: map['availabilityMode'] as String,
       availabilityZoneAddresses:
-          Input.decodeList<GetNatGatewayAvailabilityZoneAddress>(
+          pulumi.Input.decodeList<GetNatGatewayAvailabilityZoneAddress>(
               map['availabilityZoneAddresses'],
               (value) => GetNatGatewayAvailabilityZoneAddress.fromMap(
                   (value as Map).cast<String, dynamic>())),
       connectivityType: map['connectivityType'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetNatGatewayFilter>(
+          : pulumi.Input.decodeList<GetNatGatewayFilter>(
               map['filters'],
               (value) => GetNatGatewayFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -146,7 +146,7 @@ class GetNatGatewayResult {
       publicIp: map['publicIp'] as String,
       region: map['region'] as String,
       regionalNatGatewayAddresses:
-          Input.decodeList<GetNatGatewayRegionalNatGatewayAddress>(
+          pulumi.Input.decodeList<GetNatGatewayRegionalNatGatewayAddress>(
               map['regionalNatGatewayAddresses'],
               (value) => GetNatGatewayRegionalNatGatewayAddress.fromMap(
                   (value as Map).cast<String, dynamic>())),

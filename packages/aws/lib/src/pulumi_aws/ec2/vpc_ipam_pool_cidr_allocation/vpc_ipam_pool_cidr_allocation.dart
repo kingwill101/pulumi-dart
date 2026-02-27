@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_ipam_pool_cidr_allocation_args.dart';
 
 /// Allocates (reserves) a CIDR from an IPAM address pool, preventing usage by IPAM. Only works for private IPv4.
@@ -20,44 +20,44 @@ import 'vpc_ipam_pool_cidr_allocation_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/vpcIpamPoolCidrAllocation:VpcIpamPoolCidrAllocation example ipam-pool-alloc-0dc6d196509c049ba8b549ff99f639736_ipam-pool-07cfb559e0921fcbe
 /// ```
-class VpcIpamPoolCidrAllocation extends CustomResource {
+class VpcIpamPoolCidrAllocation extends pulumi.CustomResource {
   /// The CIDR you want to assign to the pool.
-  late final Output<String> cidr;
+  late final pulumi.Output<String> cidr;
 
   /// The description for the allocation.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Exclude a particular CIDR range from being returned by the pool.
-  late final Output<List<String>?> disallowedCidrs;
-  late final Output<String> ipamPoolAllocationId;
+  late final pulumi.Output<List<String>?> disallowedCidrs;
+  late final pulumi.Output<String> ipamPoolAllocationId;
 
   /// The ID of the pool to which you want to assign a CIDR.
-  late final Output<String> ipamPoolId;
+  late final pulumi.Output<String> ipamPoolId;
 
   /// The netmask length of the CIDR you would like to allocate to the IPAM pool. Valid Values: `0-128`.
-  late final Output<int> netmaskLength;
+  late final pulumi.Output<int> netmaskLength;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the resource.
-  late final Output<String> resourceId;
+  late final pulumi.Output<String> resourceId;
 
   /// The owner of the resource.
-  late final Output<String> resourceOwner;
+  late final pulumi.Output<String> resourceOwner;
 
   /// The type of the resource.
-  late final Output<String> resourceType;
+  late final pulumi.Output<String> resourceType;
 
   VpcIpamPoolCidrAllocation(
     String name, {
     VpcIpamPoolCidrAllocationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpcIpamPoolCidrAllocation:VpcIpamPoolCidrAllocation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cidr = registerOutput<String>('cidr');
     this.description = registerOutput<String?>('description');

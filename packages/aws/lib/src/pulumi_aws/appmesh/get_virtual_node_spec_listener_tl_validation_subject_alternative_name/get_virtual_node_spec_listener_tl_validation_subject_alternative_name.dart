@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_node_spec_listener_tl_validation_subject_alternative_name_match/get_virtual_node_spec_listener_tl_validation_subject_alternative_name_match.dart';
 
 class GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName {
@@ -13,7 +13,7 @@ class GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['matches'] = Input.encodeList<
+    map['matches'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch,
         Map<String, dynamic>>(matches, (value) => value.toMap());
     return map;
@@ -22,7 +22,7 @@ class GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName {
   factory GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName.fromMap(
       Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName(
-      matches: Input.decodeList<
+      matches: pulumi.Input.decodeList<
               GetVirtualNodeSpecListenerTlValidationSubjectAlternativeNameMatch>(
           map['matches'],
           (value) =>

@@ -1,3 +1,3 @@
 library module_vpclattice_listener_rule_action_fixed_response;
 
-export 'listener_rule_action_fixed_response/listener_rule_action_fixed_response3.dart';
+export 'listener_rule_action_fixed_response/listener_rule_action_fixed_response_vpclattice.dart';

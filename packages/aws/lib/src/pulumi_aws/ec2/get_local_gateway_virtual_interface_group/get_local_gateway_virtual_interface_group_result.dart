@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_local_gateway_virtual_interface_group_filter/get_local_gateway_virtual_interface_group_filter.dart';
 
 /// Result data returned by getLocalGatewayVirtualInterfaceGroup.
@@ -27,7 +27,7 @@ class GetLocalGatewayVirtualInterfaceGroupResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<
+      map['filters'] = pulumi.Input.encodeList<
           GetLocalGatewayVirtualInterfaceGroupFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
@@ -44,7 +44,7 @@ class GetLocalGatewayVirtualInterfaceGroupResult {
     return GetLocalGatewayVirtualInterfaceGroupResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetLocalGatewayVirtualInterfaceGroupFilter>(
+          : pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceGroupFilter>(
               map['filters'],
               (value) => GetLocalGatewayVirtualInterfaceGroupFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

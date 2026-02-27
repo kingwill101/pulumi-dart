@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_confirmation_setting_code_hook_post_code_hook_specification_success_conditional_conditional_branch_next_step_intent_slot/v2models_intent_confirmation_setting_code_hook_post_code_hook_specification_success_conditional_conditional_branch_next_step_intent_slot.dart';
 
 class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranchNextStepIntent {
@@ -25,7 +25,7 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessC
     }
     final slotsValue = slots;
     if (slotsValue != null) {
-      map['slots'] = Input.encodeList<
+      map['slots'] = pulumi.Input.encodeList<
           V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranchNextStepIntentSlot,
           Map<String, dynamic>>(slotsValue, (value) => value.toMap());
     }
@@ -38,7 +38,7 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessC
       name: map['name'] == null ? null : map['name'] as String,
       slots: map['slots'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranchNextStepIntentSlot>(
               map['slots'],
               (value) =>

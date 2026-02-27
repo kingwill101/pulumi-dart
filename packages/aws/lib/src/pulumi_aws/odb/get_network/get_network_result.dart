@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_network_managed_service/get_network_managed_service.dart';
 import '../get_network_oci_dns_forwarding_config/get_network_oci_dns_forwarding_config.dart';
 
@@ -108,9 +108,9 @@ class GetNetworkResult {
     map['displayName'] = displayName;
     map['id'] = id;
     map['managedServices'] =
-        Input.encodeList<GetNetworkManagedService, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetNetworkManagedService, Map<String, dynamic>>(
             managedServices, (value) => value.toMap());
-    map['ociDnsForwardingConfigs'] = Input.encodeList<
+    map['ociDnsForwardingConfigs'] = pulumi.Input.encodeList<
             GetNetworkOciDnsForwardingConfig, Map<String, dynamic>>(
         ociDnsForwardingConfigs, (value) => value.toMap());
     map['ociNetworkAnchorId'] = ociNetworkAnchorId;
@@ -139,12 +139,12 @@ class GetNetworkResult {
       defaultDnsPrefix: map['defaultDnsPrefix'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
-      managedServices: Input.decodeList<GetNetworkManagedService>(
+      managedServices: pulumi.Input.decodeList<GetNetworkManagedService>(
           map['managedServices'],
           (value) => GetNetworkManagedService.fromMap(
               (value as Map).cast<String, dynamic>())),
       ociDnsForwardingConfigs:
-          Input.decodeList<GetNetworkOciDnsForwardingConfig>(
+          pulumi.Input.decodeList<GetNetworkOciDnsForwardingConfig>(
               map['ociDnsForwardingConfigs'],
               (value) => GetNetworkOciDnsForwardingConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

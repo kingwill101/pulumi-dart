@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_args.dart';
 
 /// Manages an API Gateway REST Deployment. A deployment is a snapshot of the REST API configuration. The deployment can then be published to callable endpoints via the `aws.apigateway.Stage` resource and optionally managed further with the `aws.apigateway.BasePathMapping` resource, `aws.apigateway.DomainName` resource, and `aws_api_method_settings` resource. For more information, see the [API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-deploy-api.html).
@@ -22,34 +22,34 @@ import 'deployment_args.dart';
 /// The `variables` arguments cannot be imported. Use the `aws.apigateway.Stage` resource to import and manage stages.
 ///
 /// The `triggers` argument cannot be imported.
-class DeploymentType extends CustomResource {
+class DeploymentType extends pulumi.CustomResource {
   /// Creation date of the deployment
-  late final Output<String> createdDate;
+  late final pulumi.Output<String> createdDate;
 
   /// Description of the deployment.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// REST API identifier.
-  late final Output<String> restApi;
+  late final pulumi.Output<String> restApi;
 
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
-  late final Output<Map<String, String>?> triggers;
+  late final pulumi.Output<Map<String, String>?> triggers;
 
   /// Map to set on the related stage.
-  late final Output<Map<String, String>?> variables;
+  late final pulumi.Output<Map<String, String>?> variables;
 
   DeploymentType(
     String name, {
     DeploymentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigateway/deployment:Deployment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createdDate = registerOutput<String>('createdDate');
     this.description = registerOutput<String?>('description');

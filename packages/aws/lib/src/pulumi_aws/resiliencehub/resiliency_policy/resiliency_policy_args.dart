@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resiliency_policy_policy/resiliency_policy_policy.dart';
 import '../resiliency_policy_timeouts/resiliency_policy_timeouts.dart';
 
@@ -8,31 +8,31 @@ import '../resiliency_policy_timeouts/resiliency_policy_timeouts.dart';
 class ResiliencyPolicyArgs {
   /// Data Location Constraint of the Policy.
   /// Valid values are `AnyLocation`, `SameContinent`, and `SameCountry`.
-  final Input<String>? dataLocationConstraint;
+  final pulumi.Input<String>? dataLocationConstraint;
 
   /// Description of Resiliency Policy.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of Resiliency Policy.
   /// Must be between 2 and 60 characters long.
   /// Must start with an alphanumeric character and contain alphanumeric characters, underscores, or hyphens.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The type of resiliency policy to be created, including the recovery time objective (RTO) and recovery point objective (RPO) in seconds. See `policy`.
   ///
   /// The following arguments are optional:
-  final Input<ResiliencyPolicyPolicy>? policy;
+  final pulumi.Input<ResiliencyPolicyPolicy>? policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Resiliency Policy Tier.
   /// Valid values are `MissionCritical`, `Critical`, `Important`, `CoreServices`, `NonCritical`, and `NotApplicable`.
-  final Input<String> tier;
-  final Input<ResiliencyPolicyTimeouts>? timeouts;
+  final pulumi.Input<String> tier;
+  final pulumi.Input<ResiliencyPolicyTimeouts>? timeouts;
 
   ResiliencyPolicyArgs({
     this.dataLocationConstraint,
@@ -61,7 +61,7 @@ class ResiliencyPolicyArgs {
     }
     final policyValue = policy;
     if (policyValue != null) {
-      map['policy'] = Input.mapOptionalInputValue<ResiliencyPolicyPolicy,
+      map['policy'] = pulumi.Input.mapOptionalInputValue<ResiliencyPolicyPolicy,
           Map<String, dynamic>>(policyValue, (value) => value.toMap());
     }
     final regionValue = region;
@@ -75,7 +75,8 @@ class ResiliencyPolicyArgs {
     map['tier'] = tier;
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<ResiliencyPolicyTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
+          ResiliencyPolicyTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
@@ -84,15 +85,16 @@ class ResiliencyPolicyArgs {
   factory ResiliencyPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResiliencyPolicyArgs(
       dataLocationConstraint:
-          Input.asOptionalInput<String>(map['dataLocationConstraint']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      policy: Input.asOptionalInput<ResiliencyPolicyPolicy>(map['policy']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      tier: Input.asInput<String>(map['tier']),
-      timeouts:
-          Input.asOptionalInput<ResiliencyPolicyTimeouts>(map['timeouts']),
+          pulumi.Input.asOptionalInput<String>(map['dataLocationConstraint']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      policy:
+          pulumi.Input.asOptionalInput<ResiliencyPolicyPolicy>(map['policy']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tier: pulumi.Input.asInput<String>(map['tier']),
+      timeouts: pulumi.Input.asOptionalInput<ResiliencyPolicyTimeouts>(
+          map['timeouts']),
     );
   }
 }

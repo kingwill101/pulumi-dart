@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../key_registration_key_registration/key_registration_key_registration.dart';
 import 'key_registration_args.dart';
 
@@ -17,25 +17,26 @@ import 'key_registration_args.dart';
 /// ```sh
 /// $ pulumi import aws:quicksight/keyRegistration:KeyRegistration example "012345678901"
 /// ```
-class KeyRegistration extends CustomResource {
+class KeyRegistration extends pulumi.CustomResource {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  late final Output<String> awsAccountId;
+  late final pulumi.Output<String> awsAccountId;
 
   /// Registered keys. See key_registration.
-  late final Output<List<KeyRegistrationKeyRegistration>> keyRegistrations;
+  late final pulumi.Output<List<KeyRegistrationKeyRegistration>>
+      keyRegistrations;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   KeyRegistration(
     String name, {
     KeyRegistrationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:quicksight/keyRegistration:KeyRegistration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.awsAccountId = registerOutput<String>('awsAccountId');
     this.keyRegistrations =

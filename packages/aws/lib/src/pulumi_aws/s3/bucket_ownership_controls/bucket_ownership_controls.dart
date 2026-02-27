@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_ownership_controls_rule/bucket_ownership_controls_rule.dart';
 import 'bucket_ownership_controls_args.dart';
 
@@ -17,25 +17,25 @@ import 'bucket_ownership_controls_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3/bucketOwnershipControls:BucketOwnershipControls example my-bucket
 /// ```
-class BucketOwnershipControls extends CustomResource {
+class BucketOwnershipControls extends pulumi.CustomResource {
   /// Name of the bucket that you want to associate this access point with.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration block(s) with Ownership Controls rules. Detailed below.
-  late final Output<BucketOwnershipControlsRule> rule;
+  late final pulumi.Output<BucketOwnershipControlsRule> rule;
 
   BucketOwnershipControls(
     String name, {
     BucketOwnershipControlsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/bucketOwnershipControls:BucketOwnershipControls',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.region = registerOutput<String>('region');

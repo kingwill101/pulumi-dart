@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipeline_stage_action/pipeline_stage_action.dart';
 import '../pipeline_stage_before_entry/pipeline_stage_before_entry.dart';
 import '../pipeline_stage_on_failure/pipeline_stage_on_failure.dart';
@@ -33,7 +33,7 @@ class PipelineStage {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['actions'] =
-        Input.encodeList<PipelineStageAction, Map<String, dynamic>>(
+        pulumi.Input.encodeList<PipelineStageAction, Map<String, dynamic>>(
             actions, (value) => value.toMap());
     final beforeEntryValue = beforeEntry;
     if (beforeEntryValue != null) {
@@ -53,7 +53,7 @@ class PipelineStage {
 
   factory PipelineStage.fromMap(Map<String, dynamic> map) {
     return PipelineStage(
-      actions: Input.decodeList<PipelineStageAction>(
+      actions: pulumi.Input.decodeList<PipelineStageAction>(
           map['actions'],
           (value) => PipelineStageAction.fromMap(
               (value as Map).cast<String, dynamic>())),

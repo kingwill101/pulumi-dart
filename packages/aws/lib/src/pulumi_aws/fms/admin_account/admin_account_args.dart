@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AdminAccount.
 class AdminAccountArgs {
   /// The AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. Defaults to the current account. Must be configured to perform drift detection.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   AdminAccountArgs({
     this.accountId,
@@ -22,7 +22,7 @@ class AdminAccountArgs {
 
   factory AdminAccountArgs.fromMap(Map<String, dynamic> map) {
     return AdminAccountArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
     );
   }
 }

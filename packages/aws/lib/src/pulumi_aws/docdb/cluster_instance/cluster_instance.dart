@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_instance_args.dart';
 
 /// Provides an DocumentDB Cluster Resource Instance. A Cluster Instance Resource defines attributes that are specific to a single instance in a DocumentDB Cluster.
@@ -16,101 +16,101 @@ import 'cluster_instance_args.dart';
 /// ```sh
 /// $ pulumi import aws:docdb/clusterInstance:ClusterInstance prod_instance_1 aurora-cluster-instance-1
 /// ```
-class ClusterInstance extends CustomResource {
+class ClusterInstance extends pulumi.CustomResource {
   /// Whether any database modifications are applied immediately, or during the next maintenance window. Default is`false`.
-  late final Output<bool?> applyImmediately;
+  late final pulumi.Output<bool?> applyImmediately;
 
   /// ARN of cluster instance
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Parameter does not apply to Amazon DocumentDB. Amazon DocumentDB does not perform minor version upgrades regardless of the value set (see [docs](https://docs.aws.amazon.com/documentdb/latest/developerguide/API_DBInstance.html)). Default `true`.
-  late final Output<bool?> autoMinorVersionUpgrade;
+  late final pulumi.Output<bool?> autoMinorVersionUpgrade;
 
   /// EC2 Availability Zone that the DB instance is created in. See [docs](https://docs.aws.amazon.com/documentdb/latest/developerguide/API_CreateDBInstance.html) about the details.
-  late final Output<String> availabilityZone;
+  late final pulumi.Output<String> availabilityZone;
 
   /// Identifier of the certificate authority (CA) certificate for the DB instance.
-  late final Output<String> caCertIdentifier;
+  late final pulumi.Output<String> caCertIdentifier;
 
   /// Whether to restart the DB instance when rotating its SSL/TLS certificate. By default, AWS restarts the DB instance when you rotate your SSL/TLS certificate. The certificate is not updated until the DB instance is restarted. Set to `false` only if you are not using SSL/TLS to connect to the DB instance.
-  late final Output<String?> certificateRotationRestart;
+  late final pulumi.Output<String?> certificateRotationRestart;
 
   /// Identifier of the `aws.docdb.Cluster` in which to launch this instance.
-  late final Output<String> clusterIdentifier;
+  late final pulumi.Output<String> clusterIdentifier;
 
   /// Copy all DB instance `tags` to snapshots. Default is `false`.
-  late final Output<bool?> copyTagsToSnapshot;
+  late final pulumi.Output<bool?> copyTagsToSnapshot;
 
   /// DB subnet group to associate with this DB instance.
-  late final Output<String> dbSubnetGroupName;
+  late final pulumi.Output<String> dbSubnetGroupName;
 
   /// Region-unique, immutable identifier for the DB instance.
-  late final Output<String> dbiResourceId;
+  late final pulumi.Output<String> dbiResourceId;
 
   /// Value that indicates whether to enable Performance Insights for the DB Instance. Default `false`. See [docs] (https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html) about the details.
-  late final Output<bool?> enablePerformanceInsights;
+  late final pulumi.Output<bool?> enablePerformanceInsights;
 
   /// DNS address for this instance. May not be writable
-  late final Output<String> endpoint;
+  late final pulumi.Output<String> endpoint;
 
   /// Name of the database engine to be used for the DocumentDB instance. Defaults to `docdb`. Valid Values: `docdb`.
-  late final Output<String?> engine;
+  late final pulumi.Output<String?> engine;
 
   /// Database engine version
-  late final Output<String> engineVersion;
+  late final pulumi.Output<String> engineVersion;
 
   /// The identifier for the DocumentDB instance, if omitted, the provider will assign a random, unique identifier.
-  late final Output<String> identifier;
+  late final pulumi.Output<String> identifier;
 
   /// Creates a unique identifier beginning with the specified prefix. Conflicts with `identifier`.
-  late final Output<String> identifierPrefix;
+  late final pulumi.Output<String> identifierPrefix;
 
   /// Instance class to use. For details on CPU and memory, see [Scaling for DocumentDB Instances](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-manage-performance.html#db-cluster-manage-scaling-instance). See the `aws.docdb.getOrderableDbInstance` data source. See [AWS Documentation](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-instance-classes.html#db-instance-class-specs) for complete details.
-  late final Output<String> instanceClass;
+  late final pulumi.Output<String> instanceClass;
 
   /// ARN for the KMS encryption key if one is set to the cluster.
-  late final Output<String> kmsKeyId;
+  late final pulumi.Output<String> kmsKeyId;
 
   /// KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key. If you do not specify a value for PerformanceInsightsKMSKeyId, then Amazon DocumentDB uses your default KMS key.
-  late final Output<String> performanceInsightsKmsKeyId;
+  late final pulumi.Output<String> performanceInsightsKmsKeyId;
 
   /// Database port
-  late final Output<int> port;
+  late final pulumi.Output<int> port;
 
   /// Daily time range during which automated backups are created if automated backups are enabled.
-  late final Output<String> preferredBackupWindow;
+  late final pulumi.Output<String> preferredBackupWindow;
 
   /// Window to perform maintenance in. Syntax: "ddd:hh24:mi-ddd:hh24:mi". Eg: "Mon:00:00-Mon:03:00".
-  late final Output<String> preferredMaintenanceWindow;
+  late final pulumi.Output<String> preferredMaintenanceWindow;
 
   /// Failover Priority setting on instance level. Default `0`. The reader who has lower tier has higher priority to get promoter to writer.
-  late final Output<int?> promotionTier;
-  late final Output<bool> publiclyAccessible;
+  late final pulumi.Output<int?> promotionTier;
+  late final pulumi.Output<bool> publiclyAccessible;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Whether the DB cluster is encrypted.
-  late final Output<bool> storageEncrypted;
+  late final pulumi.Output<bool> storageEncrypted;
 
   /// Map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Whether this instance is writable. `False` indicates this instance is a read replica.
-  late final Output<bool> writer;
+  late final pulumi.Output<bool> writer;
 
   ClusterInstance(
     String name, {
     ClusterInstanceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:docdb/clusterInstance:ClusterInstance',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.applyImmediately = registerOutput<bool?>('applyImmediately');
     this.arn = registerOutput<String>('arn');

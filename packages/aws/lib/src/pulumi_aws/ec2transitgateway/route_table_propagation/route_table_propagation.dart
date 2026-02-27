@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_table_propagation_args.dart';
 
 /// Manages an EC2 Transit Gateway Route Table propagation.
@@ -30,31 +30,31 @@ import 'route_table_propagation_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2transitgateway/routeTablePropagation:RouteTablePropagation example tgw-rtb-12345678_tgw-attach-87654321
 /// ```
-class RouteTablePropagation extends CustomResource {
+class RouteTablePropagation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Identifier of the resource
-  late final Output<String> resourceId;
+  late final pulumi.Output<String> resourceId;
 
   /// Type of the resource
-  late final Output<String> resourceType;
+  late final pulumi.Output<String> resourceType;
 
   /// Identifier of EC2 Transit Gateway Attachment.
-  late final Output<String> transitGatewayAttachmentId;
+  late final pulumi.Output<String> transitGatewayAttachmentId;
 
   /// Identifier of EC2 Transit Gateway Route Table.
-  late final Output<String> transitGatewayRouteTableId;
+  late final pulumi.Output<String> transitGatewayRouteTableId;
 
   RouteTablePropagation(
     String name, {
     RouteTablePropagationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2transitgateway/routeTablePropagation:RouteTablePropagation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.resourceId = registerOutput<String>('resourceId');

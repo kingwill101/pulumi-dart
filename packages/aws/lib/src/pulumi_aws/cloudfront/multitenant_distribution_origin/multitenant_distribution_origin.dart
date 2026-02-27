@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multitenant_distribution_origin_custom_header/multitenant_distribution_origin_custom_header.dart';
 import '../multitenant_distribution_origin_custom_origin_config/multitenant_distribution_origin_custom_origin_config.dart';
 import '../multitenant_distribution_origin_origin_shield/multitenant_distribution_origin_origin_shield.dart';
@@ -67,13 +67,13 @@ class MultitenantDistributionOrigin {
     }
     final customHeadersValue = customHeaders;
     if (customHeadersValue != null) {
-      map['customHeaders'] = Input.encodeList<
+      map['customHeaders'] = pulumi.Input.encodeList<
           MultitenantDistributionOriginCustomHeader,
           Map<String, dynamic>>(customHeadersValue, (value) => value.toMap());
     }
     final customOriginConfigsValue = customOriginConfigs;
     if (customOriginConfigsValue != null) {
-      map['customOriginConfigs'] = Input.encodeList<
+      map['customOriginConfigs'] = pulumi.Input.encodeList<
               MultitenantDistributionOriginCustomOriginConfig,
               Map<String, dynamic>>(
           customOriginConfigsValue, (value) => value.toMap());
@@ -90,7 +90,7 @@ class MultitenantDistributionOrigin {
     }
     final originShieldsValue = originShields;
     if (originShieldsValue != null) {
-      map['originShields'] = Input.encodeList<
+      map['originShields'] = pulumi.Input.encodeList<
           MultitenantDistributionOriginOriginShield,
           Map<String, dynamic>>(originShieldsValue, (value) => value.toMap());
     }
@@ -100,7 +100,7 @@ class MultitenantDistributionOrigin {
     }
     final vpcOriginConfigsValue = vpcOriginConfigs;
     if (vpcOriginConfigsValue != null) {
-      map['vpcOriginConfigs'] = Input.encodeList<
+      map['vpcOriginConfigs'] = pulumi.Input.encodeList<
               MultitenantDistributionOriginVpcOriginConfig,
               Map<String, dynamic>>(
           vpcOriginConfigsValue, (value) => value.toMap());
@@ -118,13 +118,14 @@ class MultitenantDistributionOrigin {
           : map['connectionTimeout'] as int,
       customHeaders: map['customHeaders'] == null
           ? null
-          : Input.decodeList<MultitenantDistributionOriginCustomHeader>(
+          : pulumi.Input.decodeList<MultitenantDistributionOriginCustomHeader>(
               map['customHeaders'],
               (value) => MultitenantDistributionOriginCustomHeader.fromMap(
                   (value as Map).cast<String, dynamic>())),
       customOriginConfigs: map['customOriginConfigs'] == null
           ? null
-          : Input.decodeList<MultitenantDistributionOriginCustomOriginConfig>(
+          : pulumi.Input.decodeList<
+                  MultitenantDistributionOriginCustomOriginConfig>(
               map['customOriginConfigs'],
               (value) =>
                   MultitenantDistributionOriginCustomOriginConfig.fromMap(
@@ -138,7 +139,7 @@ class MultitenantDistributionOrigin {
           map['originPath'] == null ? null : map['originPath'] as String,
       originShields: map['originShields'] == null
           ? null
-          : Input.decodeList<MultitenantDistributionOriginOriginShield>(
+          : pulumi.Input.decodeList<MultitenantDistributionOriginOriginShield>(
               map['originShields'],
               (value) => MultitenantDistributionOriginOriginShield.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -147,7 +148,8 @@ class MultitenantDistributionOrigin {
           : map['responseCompletionTimeout'] as int,
       vpcOriginConfigs: map['vpcOriginConfigs'] == null
           ? null
-          : Input.decodeList<MultitenantDistributionOriginVpcOriginConfig>(
+          : pulumi.Input.decodeList<
+                  MultitenantDistributionOriginVpcOriginConfig>(
               map['vpcOriginConfigs'],
               (value) => MultitenantDistributionOriginVpcOriginConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

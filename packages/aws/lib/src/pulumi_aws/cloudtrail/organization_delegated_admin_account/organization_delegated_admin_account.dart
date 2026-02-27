@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'organization_delegated_admin_account_args.dart';
 
 /// Provides a resource to manage an AWS CloudTrail Delegated Administrator.
@@ -16,31 +16,31 @@ import 'organization_delegated_admin_account_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudtrail/organizationDelegatedAdminAccount:OrganizationDelegatedAdminAccount example 12345678901
 /// ```
-class OrganizationDelegatedAdminAccount extends CustomResource {
+class OrganizationDelegatedAdminAccount extends pulumi.CustomResource {
   /// An organization member account ID that you want to designate as a delegated administrator.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// The Amazon Resource Name (ARN) of the delegated administrator's account.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The email address that is associated with the delegated administrator's AWS account.
-  late final Output<String> email;
+  late final pulumi.Output<String> email;
 
   /// The friendly name of the delegated administrator's account.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The AWS CloudTrail service principal name.
-  late final Output<String> servicePrincipal;
+  late final pulumi.Output<String> servicePrincipal;
 
   OrganizationDelegatedAdminAccount(
     String name, {
     OrganizationDelegatedAdminAccountArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudtrail/organizationDelegatedAdminAccount:OrganizationDelegatedAdminAccount',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
     this.arn = registerOutput<String>('arn');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ontap_storage_virtual_machine_active_directory_configuration/ontap_storage_virtual_machine_active_directory_configuration.dart';
 import '../ontap_storage_virtual_machine_endpoint/ontap_storage_virtual_machine_endpoint.dart';
 import 'ontap_storage_virtual_machine_args.dart';
@@ -27,53 +27,54 @@ import 'ontap_storage_virtual_machine_args.dart';
 /// ```
 ///
 /// Certain resource arguments, like `svm_admin_password` and the `self_managed_active_directory` configuation block `password`, do not have a FSx API method for reading the information after creation. If these arguments are set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignore_changes` to hide the difference. For example:
-class OntapStorageVirtualMachine extends CustomResource {
+class OntapStorageVirtualMachine extends pulumi.CustomResource {
   /// Configuration block that Amazon FSx uses to join the FSx ONTAP Storage Virtual Machine(SVM) to your Microsoft Active Directory (AD) directory. Detailed below.
-  late final Output<OntapStorageVirtualMachineActiveDirectoryConfiguration?>
+  late final pulumi
+      .Output<OntapStorageVirtualMachineActiveDirectoryConfiguration?>
       activeDirectoryConfiguration;
 
   /// Amazon Resource Name of the storage virtual machine.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The endpoints that are used to access data or to manage the storage virtual machine using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See Endpoints below.
-  late final Output<List<OntapStorageVirtualMachineEndpoint>> endpoints;
+  late final pulumi.Output<List<OntapStorageVirtualMachineEndpoint>> endpoints;
 
   /// The ID of the Amazon FSx ONTAP File System that this SVM will be created on.
-  late final Output<String> fileSystemId;
+  late final pulumi.Output<String> fileSystemId;
 
   /// The name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Specifies the root volume security style, Valid values are `UNIX`, `NTFS`, and `MIXED`. All volumes created under this SVM will inherit the root security style unless the security style is specified on the volume. Default value is `UNIX`.
-  late final Output<String?> rootVolumeSecurityStyle;
+  late final pulumi.Output<String?> rootVolumeSecurityStyle;
 
   /// Describes the SVM's subtype, e.g. `DEFAULT`
-  late final Output<String> subtype;
+  late final pulumi.Output<String> subtype;
 
   /// Specifies the password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
-  late final Output<String?> svmAdminPassword;
+  late final pulumi.Output<String?> svmAdminPassword;
 
   /// A map of tags to assign to the storage virtual machine. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The SVM's UUID (universally unique identifier).
-  late final Output<String> uuid;
+  late final pulumi.Output<String> uuid;
 
   OntapStorageVirtualMachine(
     String name, {
     OntapStorageVirtualMachineArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:fsx/ontapStorageVirtualMachine:OntapStorageVirtualMachine',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.activeDirectoryConfiguration =
         registerOutput<OntapStorageVirtualMachineActiveDirectoryConfiguration?>(

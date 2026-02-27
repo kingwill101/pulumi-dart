@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEndpoint.
 class GetEndpointArgs {
   /// Database endpoint identifier. Identifiers must contain from 1 to 255 alphanumeric characters or hyphens, begin with a letter, contain only ASCII letters, digits, and hyphens, not end with a hyphen, and not contain two consecutive hyphens.
-  final Input<String> endpointId;
+  final pulumi.Input<String> endpointId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetEndpointArgs({
     required this.endpointId,
@@ -33,9 +33,9 @@ class GetEndpointArgs {
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      endpointId: Input.asInput<String>(map['endpointId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      endpointId: pulumi.Input.asInput<String>(map['endpointId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

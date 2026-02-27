@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getStandardsControlAssociations.
 class GetStandardsControlAssociationsArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The identifier of the control (identified with `SecurityControlId`, `SecurityControlArn`, or a mix of both parameters).
-  final Input<String> securityControlId;
+  final pulumi.Input<String> securityControlId;
 
   GetStandardsControlAssociationsArgs({
     this.region,
@@ -28,8 +28,8 @@ class GetStandardsControlAssociationsArgs {
   factory GetStandardsControlAssociationsArgs.fromMap(
       Map<String, dynamic> map) {
     return GetStandardsControlAssociationsArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      securityControlId: Input.asInput<String>(map['securityControlId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      securityControlId: pulumi.Input.asInput<String>(map['securityControlId']),
     );
   }
 }

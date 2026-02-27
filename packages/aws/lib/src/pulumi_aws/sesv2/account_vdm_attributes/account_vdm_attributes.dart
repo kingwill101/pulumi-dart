@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../account_vdm_attributes_dashboard_attributes/account_vdm_attributes_dashboard_attributes.dart';
 import '../account_vdm_attributes_guardian_attributes/account_vdm_attributes_guardian_attributes.dart';
 import 'account_vdm_attributes_args.dart';
@@ -18,31 +18,32 @@ import 'account_vdm_attributes_args.dart';
 /// ```sh
 /// $ pulumi import aws:sesv2/accountVdmAttributes:AccountVdmAttributes example ses-account-vdm-attributes
 /// ```
-class AccountVdmAttributes extends CustomResource {
+class AccountVdmAttributes extends pulumi.CustomResource {
   /// Specifies additional settings for your VDM configuration as applicable to the Dashboard.
-  late final Output<AccountVdmAttributesDashboardAttributes>
+  late final pulumi.Output<AccountVdmAttributesDashboardAttributes>
       dashboardAttributes;
 
   /// Specifies additional settings for your VDM configuration as applicable to the Guardian.
-  late final Output<AccountVdmAttributesGuardianAttributes> guardianAttributes;
+  late final pulumi.Output<AccountVdmAttributesGuardianAttributes>
+      guardianAttributes;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Specifies the status of your VDM configuration. Valid values: `ENABLED`, `DISABLED`.
   ///
   /// The following arguments are optional:
-  late final Output<String> vdmEnabled;
+  late final pulumi.Output<String> vdmEnabled;
 
   AccountVdmAttributes(
     String name, {
     AccountVdmAttributesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sesv2/accountVdmAttributes:AccountVdmAttributes',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dashboardAttributes =
         registerOutput<AccountVdmAttributesDashboardAttributes>(

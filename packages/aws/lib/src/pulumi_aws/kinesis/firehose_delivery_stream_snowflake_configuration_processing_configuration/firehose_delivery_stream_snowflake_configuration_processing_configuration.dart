@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firehose_delivery_stream_snowflake_configuration_processing_configuration_processor/firehose_delivery_stream_snowflake_configuration_processing_configuration_processor.dart';
 
 class FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration {
@@ -25,7 +25,7 @@ class FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration {
     }
     final processorsValue = processors;
     if (processorsValue != null) {
-      map['processors'] = Input.encodeList<
+      map['processors'] = pulumi.Input.encodeList<
           FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor,
           Map<String, dynamic>>(processorsValue, (value) => value.toMap());
     }
@@ -38,7 +38,7 @@ class FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration {
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       processors: map['processors'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor>(
               map['processors'],
               (value) =>

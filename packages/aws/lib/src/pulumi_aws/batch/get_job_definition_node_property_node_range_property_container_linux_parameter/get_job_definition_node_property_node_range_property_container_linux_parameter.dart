@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_definition_node_property_node_range_property_container_linux_parameter_device/get_job_definition_node_property_node_range_property_container_linux_parameter_device.dart';
 import '../get_job_definition_node_property_node_range_property_container_linux_parameter_tmpf/get_job_definition_node_property_node_range_property_container_linux_parameter_tmpf.dart';
 
@@ -38,14 +38,14 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['devices'] = Input.encodeList<
+    map['devices'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice,
         Map<String, dynamic>>(devices, (value) => value.toMap());
     map['initProcessEnabled'] = initProcessEnabled;
     map['maxSwap'] = maxSwap;
     map['sharedMemorySize'] = sharedMemorySize;
     map['swappiness'] = swappiness;
-    map['tmpfs'] = Input.encodeList<
+    map['tmpfs'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf,
         Map<String, dynamic>>(tmpfs, (value) => value.toMap());
     return map;
@@ -54,7 +54,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter {
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter.fromMap(
       Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter(
-      devices: Input.decodeList<
+      devices: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice>(
           map['devices'],
           (value) =>
@@ -64,7 +64,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter {
       maxSwap: map['maxSwap'] as int,
       sharedMemorySize: map['sharedMemorySize'] as int,
       swappiness: map['swappiness'] as int,
-      tmpfs: Input.decodeList<
+      tmpfs: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf>(
           map['tmpfs'],
           (value) =>

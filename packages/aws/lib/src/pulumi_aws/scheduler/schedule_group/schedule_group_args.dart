@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ScheduleGroup.
 class ScheduleGroupArgs {
   /// Name of the schedule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   ScheduleGroupArgs({
     this.name,
@@ -46,10 +46,10 @@ class ScheduleGroupArgs {
 
   factory ScheduleGroupArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleGroupArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

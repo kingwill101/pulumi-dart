@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_setting_default_args.dart';
 
 /// Provides an ECS default account setting for a specific ECS Resource name within a specific region. More information can be found on the [ECS Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html).
@@ -24,26 +24,26 @@ import 'account_setting_default_args.dart';
 /// ```sh
 /// $ pulumi import aws:ecs/accountSettingDefault:AccountSettingDefault example taskLongArnFormat
 /// ```
-class AccountSettingDefault extends CustomResource {
+class AccountSettingDefault extends pulumi.CustomResource {
   /// Name of the account setting to set.
-  late final Output<String> name;
-  late final Output<String> principalArn;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> principalArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// State of the setting.
-  late final Output<String> value;
+  late final pulumi.Output<String> value;
 
   AccountSettingDefault(
     String name, {
     AccountSettingDefaultArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ecs/accountSettingDefault:AccountSettingDefault',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
     this.principalArn = registerOutput<String>('principalArn');

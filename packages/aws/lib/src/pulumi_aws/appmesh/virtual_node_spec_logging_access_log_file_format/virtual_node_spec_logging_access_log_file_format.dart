@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../virtual_node_spec_logging_access_log_file_format_json/virtual_node_spec_logging_access_log_file_format_json.dart';
 
 class VirtualNodeSpecLoggingAccessLogFileFormat {
@@ -19,7 +19,7 @@ class VirtualNodeSpecLoggingAccessLogFileFormat {
     final map = <String, dynamic>{};
     final jsonsValue = jsons;
     if (jsonsValue != null) {
-      map['jsons'] = Input.encodeList<
+      map['jsons'] = pulumi.Input.encodeList<
           VirtualNodeSpecLoggingAccessLogFileFormatJson,
           Map<String, dynamic>>(jsonsValue, (value) => value.toMap());
     }
@@ -35,7 +35,8 @@ class VirtualNodeSpecLoggingAccessLogFileFormat {
     return VirtualNodeSpecLoggingAccessLogFileFormat(
       jsons: map['jsons'] == null
           ? null
-          : Input.decodeList<VirtualNodeSpecLoggingAccessLogFileFormatJson>(
+          : pulumi.Input.decodeList<
+                  VirtualNodeSpecLoggingAccessLogFileFormatJson>(
               map['jsons'],
               (value) => VirtualNodeSpecLoggingAccessLogFileFormatJson.fromMap(
                   (value as Map).cast<String, dynamic>())),

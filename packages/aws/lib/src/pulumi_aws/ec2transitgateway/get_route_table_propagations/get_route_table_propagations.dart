@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_route_table_propagations_args.dart';
 import 'get_route_table_propagations_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_route_table_propagations_result.dart';
 /// ### By Transit Gateway Identifier
 Future<GetRouteTablePropagationsResult> getRouteTablePropagations(
   GetRouteTablePropagationsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2transitgateway/getRouteTablePropagations:getRouteTablePropagations',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouteTablePropagationsResult.fromMap(result);
 }

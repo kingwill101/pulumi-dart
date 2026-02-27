@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRegion.
 class GetRegionArgs {
   /// EC2 endpoint of the region to select.
-  final Input<String>? endpoint;
+  final pulumi.Input<String>? endpoint;
 
   /// Region's name (e.g. `us-east-1`).
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Full name of the region to select. Use `region` instead.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Full name of the region to select (e.g. `us-east-1`), and the region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetRegionArgs({
     this.endpoint,
@@ -46,10 +46,10 @@ class GetRegionArgs {
 
   factory GetRegionArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionArgs(
-      endpoint: Input.asOptionalInput<String>(map['endpoint']),
-      id: Input.asOptionalInput<String>(map['id']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      endpoint: pulumi.Input.asOptionalInput<String>(map['endpoint']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

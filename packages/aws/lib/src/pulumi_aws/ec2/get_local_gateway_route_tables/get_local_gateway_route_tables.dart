@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_local_gateway_route_tables_args.dart';
 import 'get_local_gateway_route_tables_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_local_gateway_route_tables_result.dart';
 /// The following shows outputting all Local Gateway Route Table Ids.
 Future<GetLocalGatewayRouteTablesResult> getLocalGatewayRouteTables(
   GetLocalGatewayRouteTablesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getLocalGatewayRouteTables:getLocalGatewayRouteTables',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocalGatewayRouteTablesResult.fromMap(result);
 }

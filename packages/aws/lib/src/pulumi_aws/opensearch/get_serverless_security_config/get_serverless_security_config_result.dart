@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_serverless_security_config_saml_option/get_serverless_security_config_saml_option.dart';
 
 /// Result data returned by getServerlessSecurityConfig.
@@ -46,7 +46,7 @@ class GetServerlessSecurityConfigResult {
     map['region'] = region;
     final samlOptionsValue = samlOptions;
     if (samlOptionsValue != null) {
-      map['samlOptions'] = Input.encodeList<
+      map['samlOptions'] = pulumi.Input.encodeList<
           GetServerlessSecurityConfigSamlOption,
           Map<String, dynamic>>(samlOptionsValue, (value) => value.toMap());
     }
@@ -64,7 +64,7 @@ class GetServerlessSecurityConfigResult {
       region: map['region'] as String,
       samlOptions: map['samlOptions'] == null
           ? null
-          : Input.decodeList<GetServerlessSecurityConfigSamlOption>(
+          : pulumi.Input.decodeList<GetServerlessSecurityConfigSamlOption>(
               map['samlOptions'],
               (value) => GetServerlessSecurityConfigSamlOption.fromMap(
                   (value as Map).cast<String, dynamic>())),

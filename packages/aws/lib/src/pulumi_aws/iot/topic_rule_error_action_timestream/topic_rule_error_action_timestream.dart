@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../topic_rule_error_action_timestream_dimension/topic_rule_error_action_timestream_dimension.dart';
 import '../topic_rule_error_action_timestream_timestamp/topic_rule_error_action_timestream_timestamp.dart';
 
@@ -31,7 +31,7 @@ class TopicRuleErrorActionTimestream {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['databaseName'] = databaseName;
-    map['dimensions'] = Input.encodeList<
+    map['dimensions'] = pulumi.Input.encodeList<
         TopicRuleErrorActionTimestreamDimension,
         Map<String, dynamic>>(dimensions, (value) => value.toMap());
     map['roleArn'] = roleArn;
@@ -46,10 +46,11 @@ class TopicRuleErrorActionTimestream {
   factory TopicRuleErrorActionTimestream.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionTimestream(
       databaseName: map['databaseName'] as String,
-      dimensions: Input.decodeList<TopicRuleErrorActionTimestreamDimension>(
-          map['dimensions'],
-          (value) => TopicRuleErrorActionTimestreamDimension.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      dimensions:
+          pulumi.Input.decodeList<TopicRuleErrorActionTimestreamDimension>(
+              map['dimensions'],
+              (value) => TopicRuleErrorActionTimestreamDimension.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       roleArn: map['roleArn'] as String,
       tableName: map['tableName'] as String,
       timestamp: map['timestamp'] == null

@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../backup_policy_backup_policy/backup_policy_backup_policy.dart';
 
 /// The set of arguments for BackupPolicy.
 class BackupPolicyArgs {
   /// A backup_policy object (documented below).
-  final Input<BackupPolicyBackupPolicy> backupPolicy;
+  final pulumi.Input<BackupPolicyBackupPolicy> backupPolicy;
 
   /// The ID of the EFS file system.
-  final Input<String> fileSystemId;
+  final pulumi.Input<String> fileSystemId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   BackupPolicyArgs({
     required this.backupPolicy,
@@ -22,9 +22,8 @@ class BackupPolicyArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['backupPolicy'] =
-        Input.mapInputValue<BackupPolicyBackupPolicy, Map<String, dynamic>>(
-            backupPolicy, (value) => value.toMap());
+    map['backupPolicy'] = pulumi.Input.mapInputValue<BackupPolicyBackupPolicy,
+        Map<String, dynamic>>(backupPolicy, (value) => value.toMap());
     map['fileSystemId'] = fileSystemId;
     final regionValue = region;
     if (regionValue != null) {
@@ -36,9 +35,9 @@ class BackupPolicyArgs {
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
       backupPolicy:
-          Input.asInput<BackupPolicyBackupPolicy>(map['backupPolicy']),
-      fileSystemId: Input.asInput<String>(map['fileSystemId']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asInput<BackupPolicyBackupPolicy>(map['backupPolicy']),
+      fileSystemId: pulumi.Input.asInput<String>(map['fileSystemId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

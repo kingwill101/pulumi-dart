@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_network_interface_association/get_network_interface_association.dart';
 import '../get_network_interface_attachment/get_network_interface_attachment.dart';
 import '../get_network_interface_filter/get_network_interface_filter.dart';
@@ -91,19 +91,17 @@ class GetNetworkInterfaceResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['associations'] =
-        Input.encodeList<GetNetworkInterfaceAssociation, Map<String, dynamic>>(
-            associations, (value) => value.toMap());
-    map['attachments'] =
-        Input.encodeList<GetNetworkInterfaceAttachment, Map<String, dynamic>>(
-            attachments, (value) => value.toMap());
+    map['associations'] = pulumi.Input.encodeList<
+        GetNetworkInterfaceAssociation,
+        Map<String, dynamic>>(associations, (value) => value.toMap());
+    map['attachments'] = pulumi.Input.encodeList<GetNetworkInterfaceAttachment,
+        Map<String, dynamic>>(attachments, (value) => value.toMap());
     map['availabilityZone'] = availabilityZone;
     map['description'] = description;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetNetworkInterfaceFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetNetworkInterfaceFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['interfaceType'] = interfaceType;
@@ -126,11 +124,11 @@ class GetNetworkInterfaceResult {
   factory GetNetworkInterfaceResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceResult(
       arn: map['arn'] as String,
-      associations: Input.decodeList<GetNetworkInterfaceAssociation>(
+      associations: pulumi.Input.decodeList<GetNetworkInterfaceAssociation>(
           map['associations'],
           (value) => GetNetworkInterfaceAssociation.fromMap(
               (value as Map).cast<String, dynamic>())),
-      attachments: Input.decodeList<GetNetworkInterfaceAttachment>(
+      attachments: pulumi.Input.decodeList<GetNetworkInterfaceAttachment>(
           map['attachments'],
           (value) => GetNetworkInterfaceAttachment.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -138,7 +136,7 @@ class GetNetworkInterfaceResult {
       description: map['description'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetNetworkInterfaceFilter>(
+          : pulumi.Input.decodeList<GetNetworkInterfaceFilter>(
               map['filters'],
               (value) => GetNetworkInterfaceFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

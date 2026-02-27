@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'origin_access_identity_args.dart';
 
 /// Creates an Amazon CloudFront origin access identity.
@@ -43,44 +43,44 @@ import 'origin_access_identity_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudfront/originAccessIdentity:OriginAccessIdentity origin_access E74FTE3AEXAMPLE
 /// ```
-class OriginAccessIdentity extends CustomResource {
+class OriginAccessIdentity extends pulumi.CustomResource {
   /// The origin access identity ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Internal value used by CloudFront to allow future
   /// updates to the origin access identity.
-  late final Output<String> callerReference;
+  late final pulumi.Output<String> callerReference;
 
   /// A shortcut to the full path for the
   /// origin access identity to use in CloudFront, see below.
-  late final Output<String> cloudfrontAccessIdentityPath;
+  late final pulumi.Output<String> cloudfrontAccessIdentityPath;
 
   /// An optional comment for the origin access identity.
-  late final Output<String?> comment;
+  late final pulumi.Output<String?> comment;
 
   /// The current version of the origin access identity's information.
   /// For example: `E2QWRUHAPOMQZL`.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// A pre-generated ARN for use in S3 bucket policies (see below).
   /// Example: `arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity
   /// E2QWRUHAPOMQZL`.
-  late final Output<String> iamArn;
+  late final pulumi.Output<String> iamArn;
 
   /// The Amazon S3 canonical user ID for the origin
   /// access identity, which you use when giving the origin access identity read
   /// permission to an object in Amazon S3.
-  late final Output<String> s3CanonicalUserId;
+  late final pulumi.Output<String> s3CanonicalUserId;
 
   OriginAccessIdentity(
     String name, {
     OriginAccessIdentityArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/originAccessIdentity:OriginAccessIdentity',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.callerReference = registerOutput<String>('callerReference');

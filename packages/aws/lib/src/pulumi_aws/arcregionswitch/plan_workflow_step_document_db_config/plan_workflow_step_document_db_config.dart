@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_workflow_step_document_db_config_ungraceful/plan_workflow_step_document_db_config_ungraceful.dart';
 
 class PlanWorkflowStepDocumentDbConfig {
@@ -41,7 +41,7 @@ class PlanWorkflowStepDocumentDbConfig {
     }
     final ungracefulsValue = ungracefuls;
     if (ungracefulsValue != null) {
-      map['ungracefuls'] = Input.encodeList<
+      map['ungracefuls'] = pulumi.Input.encodeList<
           PlanWorkflowStepDocumentDbConfigUngraceful,
           Map<String, dynamic>>(ungracefulsValue, (value) => value.toMap());
     }
@@ -62,7 +62,7 @@ class PlanWorkflowStepDocumentDbConfig {
           map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
       ungracefuls: map['ungracefuls'] == null
           ? null
-          : Input.decodeList<PlanWorkflowStepDocumentDbConfigUngraceful>(
+          : pulumi.Input.decodeList<PlanWorkflowStepDocumentDbConfigUngraceful>(
               map['ungracefuls'],
               (value) => PlanWorkflowStepDocumentDbConfigUngraceful.fromMap(
                   (value as Map).cast<String, dynamic>())),

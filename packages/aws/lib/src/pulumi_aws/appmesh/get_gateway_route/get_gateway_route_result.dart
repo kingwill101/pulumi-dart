@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_gateway_route_spec/get_gateway_route_spec.dart';
 
 /// Result data returned by getGatewayRoute.
@@ -57,8 +57,9 @@ class GetGatewayRouteResult {
     map['name'] = name;
     map['region'] = region;
     map['resourceOwner'] = resourceOwner;
-    map['specs'] = Input.encodeList<GetGatewayRouteSpec, Map<String, dynamic>>(
-        specs, (value) => value.toMap());
+    map['specs'] =
+        pulumi.Input.encodeList<GetGatewayRouteSpec, Map<String, dynamic>>(
+            specs, (value) => value.toMap());
     map['tags'] = tags;
     map['virtualGatewayName'] = virtualGatewayName;
     return map;
@@ -75,7 +76,7 @@ class GetGatewayRouteResult {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceOwner: map['resourceOwner'] as String,
-      specs: Input.decodeList<GetGatewayRouteSpec>(
+      specs: pulumi.Input.decodeList<GetGatewayRouteSpec>(
           map['specs'],
           (value) => GetGatewayRouteSpec.fromMap(
               (value as Map).cast<String, dynamic>())),

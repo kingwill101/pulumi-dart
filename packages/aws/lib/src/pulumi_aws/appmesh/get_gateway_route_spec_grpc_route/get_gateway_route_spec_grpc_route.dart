@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_gateway_route_spec_grpc_route_action/get_gateway_route_spec_grpc_route_action.dart';
 import '../get_gateway_route_spec_grpc_route_match/get_gateway_route_spec_grpc_route_match.dart';
 
@@ -15,20 +15,20 @@ class GetGatewayRouteSpecGrpcRoute {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['actions'] = Input.encodeList<GetGatewayRouteSpecGrpcRouteAction,
+    map['actions'] = pulumi.Input.encodeList<GetGatewayRouteSpecGrpcRouteAction,
         Map<String, dynamic>>(actions, (value) => value.toMap());
-    map['matches'] = Input.encodeList<GetGatewayRouteSpecGrpcRouteMatch,
+    map['matches'] = pulumi.Input.encodeList<GetGatewayRouteSpecGrpcRouteMatch,
         Map<String, dynamic>>(matches, (value) => value.toMap());
     return map;
   }
 
   factory GetGatewayRouteSpecGrpcRoute.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecGrpcRoute(
-      actions: Input.decodeList<GetGatewayRouteSpecGrpcRouteAction>(
+      actions: pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRouteAction>(
           map['actions'],
           (value) => GetGatewayRouteSpecGrpcRouteAction.fromMap(
               (value as Map).cast<String, dynamic>())),
-      matches: Input.decodeList<GetGatewayRouteSpecGrpcRouteMatch>(
+      matches: pulumi.Input.decodeList<GetGatewayRouteSpecGrpcRouteMatch>(
           map['matches'],
           (value) => GetGatewayRouteSpecGrpcRouteMatch.fromMap(
               (value as Map).cast<String, dynamic>())),

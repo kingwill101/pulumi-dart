@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_dhcp_options_association_args.dart';
 
 /// Provides a VPC DHCP Options Association resource.
@@ -19,25 +19,25 @@ import 'vpc_dhcp_options_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/vpcDhcpOptionsAssociation:VpcDhcpOptionsAssociation imported vpc-0f001273ec18911b1
 /// ```
-class VpcDhcpOptionsAssociation extends CustomResource {
+class VpcDhcpOptionsAssociation extends pulumi.CustomResource {
   /// The ID of the DHCP Options Set to associate to the VPC.
-  late final Output<String> dhcpOptionsId;
+  late final pulumi.Output<String> dhcpOptionsId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the VPC to which we would like to associate a DHCP Options Set.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   VpcDhcpOptionsAssociation(
     String name, {
     VpcDhcpOptionsAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpcDhcpOptionsAssociation:VpcDhcpOptionsAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dhcpOptionsId = registerOutput<String>('dhcpOptionsId');
     this.region = registerOutput<String>('region');

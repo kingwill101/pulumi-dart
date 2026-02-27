@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_index_capacity_unit/get_index_capacity_unit.dart';
 import '../get_index_document_metadata_configuration_update/get_index_document_metadata_configuration_update.dart';
 import '../get_index_index_statistic/get_index_index_statistic.dart';
@@ -94,56 +94,56 @@ class GetIndexResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['capacityUnits'] =
-        Input.encodeList<GetIndexCapacityUnit, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetIndexCapacityUnit, Map<String, dynamic>>(
             capacityUnits, (value) => value.toMap());
     map['createdAt'] = createdAt;
     map['description'] = description;
-    map['documentMetadataConfigurationUpdates'] = Input.encodeList<
+    map['documentMetadataConfigurationUpdates'] = pulumi.Input.encodeList<
             GetIndexDocumentMetadataConfigurationUpdate, Map<String, dynamic>>(
         documentMetadataConfigurationUpdates, (value) => value.toMap());
     map['edition'] = edition;
     map['errorMessage'] = errorMessage;
     map['id'] = id;
     map['indexStatistics'] =
-        Input.encodeList<GetIndexIndexStatistic, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetIndexIndexStatistic, Map<String, dynamic>>(
             indexStatistics, (value) => value.toMap());
     map['name'] = name;
     map['region'] = region;
     map['roleArn'] = roleArn;
-    map['serverSideEncryptionConfigurations'] = Input.encodeList<
+    map['serverSideEncryptionConfigurations'] = pulumi.Input.encodeList<
             GetIndexServerSideEncryptionConfiguration, Map<String, dynamic>>(
         serverSideEncryptionConfigurations, (value) => value.toMap());
     map['status'] = status;
     map['tags'] = tags;
     map['updatedAt'] = updatedAt;
     map['userContextPolicy'] = userContextPolicy;
-    map['userGroupResolutionConfigurations'] = Input.encodeList<
+    map['userGroupResolutionConfigurations'] = pulumi.Input.encodeList<
             GetIndexUserGroupResolutionConfiguration, Map<String, dynamic>>(
         userGroupResolutionConfigurations, (value) => value.toMap());
-    map['userTokenConfigurations'] =
-        Input.encodeList<GetIndexUserTokenConfiguration, Map<String, dynamic>>(
-            userTokenConfigurations, (value) => value.toMap());
+    map['userTokenConfigurations'] = pulumi.Input.encodeList<
+            GetIndexUserTokenConfiguration, Map<String, dynamic>>(
+        userTokenConfigurations, (value) => value.toMap());
     return map;
   }
 
   factory GetIndexResult.fromMap(Map<String, dynamic> map) {
     return GetIndexResult(
       arn: map['arn'] as String,
-      capacityUnits: Input.decodeList<GetIndexCapacityUnit>(
+      capacityUnits: pulumi.Input.decodeList<GetIndexCapacityUnit>(
           map['capacityUnits'],
           (value) => GetIndexCapacityUnit.fromMap(
               (value as Map).cast<String, dynamic>())),
       createdAt: map['createdAt'] as String,
       description: map['description'] as String,
       documentMetadataConfigurationUpdates:
-          Input.decodeList<GetIndexDocumentMetadataConfigurationUpdate>(
+          pulumi.Input.decodeList<GetIndexDocumentMetadataConfigurationUpdate>(
               map['documentMetadataConfigurationUpdates'],
               (value) => GetIndexDocumentMetadataConfigurationUpdate.fromMap(
                   (value as Map).cast<String, dynamic>())),
       edition: map['edition'] as String,
       errorMessage: map['errorMessage'] as String,
       id: map['id'] as String,
-      indexStatistics: Input.decodeList<GetIndexIndexStatistic>(
+      indexStatistics: pulumi.Input.decodeList<GetIndexIndexStatistic>(
           map['indexStatistics'],
           (value) => GetIndexIndexStatistic.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -151,7 +151,7 @@ class GetIndexResult {
       region: map['region'] as String,
       roleArn: map['roleArn'] as String,
       serverSideEncryptionConfigurations:
-          Input.decodeList<GetIndexServerSideEncryptionConfiguration>(
+          pulumi.Input.decodeList<GetIndexServerSideEncryptionConfiguration>(
               map['serverSideEncryptionConfigurations'],
               (value) => GetIndexServerSideEncryptionConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -160,14 +160,15 @@ class GetIndexResult {
       updatedAt: map['updatedAt'] as String,
       userContextPolicy: map['userContextPolicy'] as String,
       userGroupResolutionConfigurations:
-          Input.decodeList<GetIndexUserGroupResolutionConfiguration>(
+          pulumi.Input.decodeList<GetIndexUserGroupResolutionConfiguration>(
               map['userGroupResolutionConfigurations'],
               (value) => GetIndexUserGroupResolutionConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      userTokenConfigurations: Input.decodeList<GetIndexUserTokenConfiguration>(
-          map['userTokenConfigurations'],
-          (value) => GetIndexUserTokenConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      userTokenConfigurations:
+          pulumi.Input.decodeList<GetIndexUserTokenConfiguration>(
+              map['userTokenConfigurations'],
+              (value) => GetIndexUserTokenConfiguration.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

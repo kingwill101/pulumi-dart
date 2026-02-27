@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_concentrator_args.dart';
 
 /// Provides a resource to create a VPN Concentrator that aggregates multiple VPN connections to a transit gateway.
@@ -14,39 +14,39 @@ import 'vpn_concentrator_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/vpnConcentrator:VpnConcentrator example vcn-12345678
 /// ```
-class VpnConcentrator extends CustomResource {
+class VpnConcentrator extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// ID of the transit gateway attachment created for the VPN concentrator.
-  late final Output<String> transitGatewayAttachmentId;
+  late final pulumi.Output<String> transitGatewayAttachmentId;
 
   /// ID of the transit gateway to attach the VPN concentrator to.
   ///
   /// The following arguments are optional:
-  late final Output<String> transitGatewayId;
+  late final pulumi.Output<String> transitGatewayId;
 
   /// Type of VPN concentrator. Valid value: `ipsec.1`.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// ID of the VPN Concentrator.
-  late final Output<String> vpnConcentratorId;
+  late final pulumi.Output<String> vpnConcentratorId;
 
   VpnConcentrator(
     String name, {
     VpnConcentratorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpnConcentrator:VpnConcentrator',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.tags = registerOutput<Map<String, String>?>('tags');

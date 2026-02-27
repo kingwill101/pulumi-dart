@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for CustomDomainAssociation.
 class CustomDomainAssociationArgs {
   /// Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`.
-  final Input<String> domainName;
+  final pulumi.Input<String> domainName;
 
   /// Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`.
-  final Input<bool>? enableWwwSubdomain;
+  final pulumi.Input<bool>? enableWwwSubdomain;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ARN of the App Runner service.
-  final Input<String> serviceArn;
+  final pulumi.Input<String> serviceArn;
 
   CustomDomainAssociationArgs({
     required this.domainName,
@@ -40,11 +40,11 @@ class CustomDomainAssociationArgs {
 
   factory CustomDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainAssociationArgs(
-      domainName: Input.asInput<String>(map['domainName']),
+      domainName: pulumi.Input.asInput<String>(map['domainName']),
       enableWwwSubdomain:
-          Input.asOptionalInput<bool>(map['enableWwwSubdomain']),
-      region: Input.asOptionalInput<String>(map['region']),
-      serviceArn: Input.asInput<String>(map['serviceArn']),
+          pulumi.Input.asOptionalInput<bool>(map['enableWwwSubdomain']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      serviceArn: pulumi.Input.asInput<String>(map['serviceArn']),
     );
   }
 }

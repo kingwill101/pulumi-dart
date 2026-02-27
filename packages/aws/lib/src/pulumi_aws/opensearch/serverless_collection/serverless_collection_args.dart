@@ -1,30 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../serverless_collection_timeouts/serverless_collection_timeouts.dart';
 
 /// The set of arguments for ServerlessCollection.
 class ServerlessCollectionArgs {
   /// Description of the collection.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the collection.
   ///
   /// The following arguments are optional:
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Indicates whether standby replicas should be used for a collection. One of `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
-  final Input<String>? standbyReplicas;
+  final pulumi.Input<String>? standbyReplicas;
 
   /// A map of tags to assign to the collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<ServerlessCollectionTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<ServerlessCollectionTimeouts>? timeouts;
 
   /// Type of collection. One of `SEARCH`, `TIMESERIES`, or `VECTORSEARCH`. Defaults to `TIMESERIES`.
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   ServerlessCollectionArgs({
     this.description,
@@ -60,7 +60,7 @@ class ServerlessCollectionArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           ServerlessCollectionTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -73,14 +73,15 @@ class ServerlessCollectionArgs {
 
   factory ServerlessCollectionArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessCollectionArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      standbyReplicas: Input.asOptionalInput<String>(map['standbyReplicas']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts:
-          Input.asOptionalInput<ServerlessCollectionTimeouts>(map['timeouts']),
-      type: Input.asOptionalInput<String>(map['type']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      standbyReplicas:
+          pulumi.Input.asOptionalInput<String>(map['standbyReplicas']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<ServerlessCollectionTimeouts>(
+          map['timeouts']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
     );
   }
 }

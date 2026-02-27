@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_data_protection_config_data_protection/web_acl_data_protection_config_data_protection.dart';
 
 class WebAclDataProtectionConfig {
@@ -15,7 +15,7 @@ class WebAclDataProtectionConfig {
     final map = <String, dynamic>{};
     final dataProtectionsValue = dataProtections;
     if (dataProtectionsValue != null) {
-      map['dataProtections'] = Input.encodeList<
+      map['dataProtections'] = pulumi.Input.encodeList<
           WebAclDataProtectionConfigDataProtection,
           Map<String, dynamic>>(dataProtectionsValue, (value) => value.toMap());
     }
@@ -26,7 +26,7 @@ class WebAclDataProtectionConfig {
     return WebAclDataProtectionConfig(
       dataProtections: map['dataProtections'] == null
           ? null
-          : Input.decodeList<WebAclDataProtectionConfigDataProtection>(
+          : pulumi.Input.decodeList<WebAclDataProtectionConfigDataProtection>(
               map['dataProtections'],
               (value) => WebAclDataProtectionConfigDataProtection.fromMap(
                   (value as Map).cast<String, dynamic>())),

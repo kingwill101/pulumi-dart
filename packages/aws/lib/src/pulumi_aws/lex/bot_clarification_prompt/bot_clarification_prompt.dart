@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bot_clarification_prompt_message/bot_clarification_prompt_message.dart';
 
 class BotClarificationPrompt {
@@ -18,9 +18,8 @@ class BotClarificationPrompt {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['maxAttempts'] = maxAttempts;
-    map['messages'] =
-        Input.encodeList<BotClarificationPromptMessage, Map<String, dynamic>>(
-            messages, (value) => value.toMap());
+    map['messages'] = pulumi.Input.encodeList<BotClarificationPromptMessage,
+        Map<String, dynamic>>(messages, (value) => value.toMap());
     final responseCardValue = responseCard;
     if (responseCardValue != null) {
       map['responseCard'] = responseCardValue;
@@ -31,7 +30,7 @@ class BotClarificationPrompt {
   factory BotClarificationPrompt.fromMap(Map<String, dynamic> map) {
     return BotClarificationPrompt(
       maxAttempts: map['maxAttempts'] as int,
-      messages: Input.decodeList<BotClarificationPromptMessage>(
+      messages: pulumi.Input.decodeList<BotClarificationPromptMessage>(
           map['messages'],
           (value) => BotClarificationPromptMessage.fromMap(
               (value as Map).cast<String, dynamic>())),

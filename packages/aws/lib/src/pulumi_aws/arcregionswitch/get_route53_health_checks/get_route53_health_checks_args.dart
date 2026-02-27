@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRoute53HealthChecks.
 class GetRoute53HealthChecksArgs {
   /// ARN of the ARC Region Switch Plan.
-  final Input<String> planArn;
+  final pulumi.Input<String> planArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetRoute53HealthChecksArgs({
     required this.planArn,
@@ -27,8 +27,8 @@ class GetRoute53HealthChecksArgs {
 
   factory GetRoute53HealthChecksArgs.fromMap(Map<String, dynamic> map) {
     return GetRoute53HealthChecksArgs(
-      planArn: Input.asInput<String>(map['planArn']),
-      region: Input.asOptionalInput<String>(map['region']),
+      planArn: pulumi.Input.asInput<String>(map['planArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

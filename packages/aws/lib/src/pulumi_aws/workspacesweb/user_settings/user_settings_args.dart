@@ -1,55 +1,55 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_settings_cookie_synchronization_configuration/user_settings_cookie_synchronization_configuration.dart';
 import '../user_settings_toolbar_configuration/user_settings_toolbar_configuration.dart';
 
 /// The set of arguments for UserSettings.
 class UserSettingsArgs {
   /// Additional encryption context for the user settings.
-  final Input<Map<String, String>>? additionalEncryptionContext;
+  final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
 
   /// Configuration that specifies which cookies should be synchronized from the end user's local browser to the remote browser. Detailed below.
-  final Input<UserSettingsCookieSynchronizationConfiguration>?
+  final pulumi.Input<UserSettingsCookieSynchronizationConfiguration>?
       cookieSynchronizationConfiguration;
 
   /// Specifies whether the user can copy text from the streaming session to the local device. Valid values are `Enabled` or `Disabled`.
-  final Input<String> copyAllowed;
+  final pulumi.Input<String> copyAllowed;
 
   /// ARN of the customer managed KMS key.
-  final Input<String>? customerManagedKey;
+  final pulumi.Input<String>? customerManagedKey;
 
   /// Specifies whether the user can use deep links that open automatically when connecting to a session. Valid values are `Enabled` or `Disabled`.
-  final Input<String>? deepLinkAllowed;
+  final pulumi.Input<String>? deepLinkAllowed;
 
   /// Amount of time that a streaming session remains active after users disconnect. Value must be between 1 and 600 minutes.
-  final Input<int>? disconnectTimeoutInMinutes;
+  final pulumi.Input<int>? disconnectTimeoutInMinutes;
 
   /// Specifies whether the user can download files from the streaming session to the local device. Valid values are `Enabled` or `Disabled`.
-  final Input<String> downloadAllowed;
+  final pulumi.Input<String> downloadAllowed;
 
   /// Amount of time that users can be idle before they are disconnected from their streaming session. Value must be between 0 and 60 minutes.
-  final Input<int>? idleDisconnectTimeoutInMinutes;
+  final pulumi.Input<int>? idleDisconnectTimeoutInMinutes;
 
   /// Specifies whether the user can paste text from the local device to the streaming session. Valid values are `Enabled` or `Disabled`.
-  final Input<String> pasteAllowed;
+  final pulumi.Input<String> pasteAllowed;
 
   /// Specifies whether the user can print to the local device. Valid values are `Enabled` or `Disabled`.
-  final Input<String> printAllowed;
+  final pulumi.Input<String> printAllowed;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Configuration of the toolbar. Detailed below.
-  final Input<UserSettingsToolbarConfiguration>? toolbarConfiguration;
+  final pulumi.Input<UserSettingsToolbarConfiguration>? toolbarConfiguration;
 
   /// Specifies whether the user can upload files from the local device to the streaming session. Valid values are `Enabled` or `Disabled`.
   ///
   /// The following arguments are optional:
-  final Input<String> uploadAllowed;
+  final pulumi.Input<String> uploadAllowed;
 
   UserSettingsArgs({
     this.additionalEncryptionContext,
@@ -77,10 +77,11 @@ class UserSettingsArgs {
     final cookieSynchronizationConfigurationValue =
         cookieSynchronizationConfiguration;
     if (cookieSynchronizationConfigurationValue != null) {
-      map['cookieSynchronizationConfiguration'] = Input.mapOptionalInputValue<
-              UserSettingsCookieSynchronizationConfiguration,
-              Map<String, dynamic>>(
-          cookieSynchronizationConfigurationValue, (value) => value.toMap());
+      map['cookieSynchronizationConfiguration'] =
+          pulumi.Input.mapOptionalInputValue<
+                  UserSettingsCookieSynchronizationConfiguration,
+                  Map<String, dynamic>>(cookieSynchronizationConfigurationValue,
+              (value) => value.toMap());
     }
     map['copyAllowed'] = copyAllowed;
     final customerManagedKeyValue = customerManagedKey;
@@ -113,7 +114,7 @@ class UserSettingsArgs {
     }
     final toolbarConfigurationValue = toolbarConfiguration;
     if (toolbarConfigurationValue != null) {
-      map['toolbarConfiguration'] = Input.mapOptionalInputValue<
+      map['toolbarConfiguration'] = pulumi.Input.mapOptionalInputValue<
               UserSettingsToolbarConfiguration, Map<String, dynamic>>(
           toolbarConfigurationValue, (value) => value.toMap());
     }
@@ -123,28 +124,30 @@ class UserSettingsArgs {
 
   factory UserSettingsArgs.fromMap(Map<String, dynamic> map) {
     return UserSettingsArgs(
-      additionalEncryptionContext: Input.asOptionalInput<Map<String, String>>(
-          map['additionalEncryptionContext']),
-      cookieSynchronizationConfiguration:
-          Input.asOptionalInput<UserSettingsCookieSynchronizationConfiguration>(
-              map['cookieSynchronizationConfiguration']),
-      copyAllowed: Input.asInput<String>(map['copyAllowed']),
+      additionalEncryptionContext:
+          pulumi.Input.asOptionalInput<Map<String, String>>(
+              map['additionalEncryptionContext']),
+      cookieSynchronizationConfiguration: pulumi.Input.asOptionalInput<
+              UserSettingsCookieSynchronizationConfiguration>(
+          map['cookieSynchronizationConfiguration']),
+      copyAllowed: pulumi.Input.asInput<String>(map['copyAllowed']),
       customerManagedKey:
-          Input.asOptionalInput<String>(map['customerManagedKey']),
-      deepLinkAllowed: Input.asOptionalInput<String>(map['deepLinkAllowed']),
+          pulumi.Input.asOptionalInput<String>(map['customerManagedKey']),
+      deepLinkAllowed:
+          pulumi.Input.asOptionalInput<String>(map['deepLinkAllowed']),
       disconnectTimeoutInMinutes:
-          Input.asOptionalInput<int>(map['disconnectTimeoutInMinutes']),
-      downloadAllowed: Input.asInput<String>(map['downloadAllowed']),
-      idleDisconnectTimeoutInMinutes:
-          Input.asOptionalInput<int>(map['idleDisconnectTimeoutInMinutes']),
-      pasteAllowed: Input.asInput<String>(map['pasteAllowed']),
-      printAllowed: Input.asInput<String>(map['printAllowed']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<int>(map['disconnectTimeoutInMinutes']),
+      downloadAllowed: pulumi.Input.asInput<String>(map['downloadAllowed']),
+      idleDisconnectTimeoutInMinutes: pulumi.Input.asOptionalInput<int>(
+          map['idleDisconnectTimeoutInMinutes']),
+      pasteAllowed: pulumi.Input.asInput<String>(map['pasteAllowed']),
+      printAllowed: pulumi.Input.asInput<String>(map['printAllowed']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
       toolbarConfiguration:
-          Input.asOptionalInput<UserSettingsToolbarConfiguration>(
+          pulumi.Input.asOptionalInput<UserSettingsToolbarConfiguration>(
               map['toolbarConfiguration']),
-      uploadAllowed: Input.asInput<String>(map['uploadAllowed']),
+      uploadAllowed: pulumi.Input.asInput<String>(map['uploadAllowed']),
     );
   }
 }

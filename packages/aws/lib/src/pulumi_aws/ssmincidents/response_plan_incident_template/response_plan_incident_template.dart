@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../response_plan_incident_template_notification_target/response_plan_incident_template_notification_target.dart';
 
 class ResponsePlanIncidentTemplate {
@@ -45,7 +45,7 @@ class ResponsePlanIncidentTemplate {
     }
     final notificationTargetsValue = notificationTargets;
     if (notificationTargetsValue != null) {
-      map['notificationTargets'] = Input.encodeList<
+      map['notificationTargets'] = pulumi.Input.encodeList<
               ResponsePlanIncidentTemplateNotificationTarget,
               Map<String, dynamic>>(
           notificationTargetsValue, (value) => value.toMap());
@@ -68,7 +68,8 @@ class ResponsePlanIncidentTemplate {
           : (map['incidentTags'] as Map).cast<String, String>(),
       notificationTargets: map['notificationTargets'] == null
           ? null
-          : Input.decodeList<ResponsePlanIncidentTemplateNotificationTarget>(
+          : pulumi.Input.decodeList<
+                  ResponsePlanIncidentTemplateNotificationTarget>(
               map['notificationTargets'],
               (value) => ResponsePlanIncidentTemplateNotificationTarget.fromMap(
                   (value as Map).cast<String, dynamic>())),

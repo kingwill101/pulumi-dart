@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_evaluation_mode/rule_evaluation_mode.dart';
 import '../rule_scope/rule_scope.dart';
 import '../rule_source/rule_source.dart';
@@ -8,31 +8,31 @@ import '../rule_source/rule_source.dart';
 /// The set of arguments for Rule.
 class RuleArgs {
   /// Description of the rule
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The modes the Config rule can be evaluated in. See Evaluation Mode for more details.
-  final Input<List<RuleEvaluationMode>>? evaluationModes;
+  final pulumi.Input<List<RuleEvaluationMode>>? evaluationModes;
 
   /// A string in JSON format that is passed to the AWS Config rule Lambda function.
-  final Input<String>? inputParameters;
+  final pulumi.Input<String>? inputParameters;
 
   /// The maximum frequency with which AWS Config runs evaluations for a rule.
-  final Input<String>? maximumExecutionFrequency;
+  final pulumi.Input<String>? maximumExecutionFrequency;
 
   /// The name of the rule
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Scope defines which resources can trigger an evaluation for the rule. See Scope Below.
-  final Input<RuleScope>? scope;
+  final pulumi.Input<RuleScope>? scope;
 
   /// Source specifies the rule owner, the rule identifier, and the notifications that cause the function to evaluate your AWS resources. See Source Below.
-  final Input<RuleSource> source;
+  final pulumi.Input<RuleSource> source;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   RuleArgs({
     this.description,
@@ -54,11 +54,12 @@ class RuleArgs {
     }
     final evaluationModesValue = evaluationModes;
     if (evaluationModesValue != null) {
-      map['evaluationModes'] = Input.mapOptionalInputValue<
+      map['evaluationModes'] = pulumi.Input.mapOptionalInputValue<
               List<RuleEvaluationMode>, List<Map<String, dynamic>>>(
           evaluationModesValue,
-          (value) => Input.encodeList<RuleEvaluationMode, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<RuleEvaluationMode, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final inputParametersValue = inputParameters;
     if (inputParametersValue != null) {
@@ -79,11 +80,12 @@ class RuleArgs {
     final scopeValue = scope;
     if (scopeValue != null) {
       map['scope'] =
-          Input.mapOptionalInputValue<RuleScope, Map<String, dynamic>>(
+          pulumi.Input.mapOptionalInputValue<RuleScope, Map<String, dynamic>>(
               scopeValue, (value) => value.toMap());
     }
-    map['source'] = Input.mapInputValue<RuleSource, Map<String, dynamic>>(
-        source, (value) => value.toMap());
+    map['source'] =
+        pulumi.Input.mapInputValue<RuleSource, Map<String, dynamic>>(
+            source, (value) => value.toMap());
     final tagsValue = tags;
     if (tagsValue != null) {
       map['tags'] = tagsValue;
@@ -93,17 +95,18 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      evaluationModes: Input.asOptionalInput<List<RuleEvaluationMode>>(
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      evaluationModes: pulumi.Input.asOptionalInput<List<RuleEvaluationMode>>(
           map['evaluationModes']),
-      inputParameters: Input.asOptionalInput<String>(map['inputParameters']),
-      maximumExecutionFrequency:
-          Input.asOptionalInput<String>(map['maximumExecutionFrequency']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      scope: Input.asOptionalInput<RuleScope>(map['scope']),
-      source: Input.asInput<RuleSource>(map['source']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      inputParameters:
+          pulumi.Input.asOptionalInput<String>(map['inputParameters']),
+      maximumExecutionFrequency: pulumi.Input.asOptionalInput<String>(
+          map['maximumExecutionFrequency']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      scope: pulumi.Input.asOptionalInput<RuleScope>(map['scope']),
+      source: pulumi.Input.asInput<RuleSource>(map['source']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

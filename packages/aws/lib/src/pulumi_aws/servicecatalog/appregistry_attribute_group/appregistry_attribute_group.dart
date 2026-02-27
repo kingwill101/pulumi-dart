@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'appregistry_attribute_group_args.dart';
 
 /// Resource for managing an AWS Service Catalog AppRegistry Attribute Group.
@@ -16,39 +16,39 @@ import 'appregistry_attribute_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:servicecatalog/appregistryAttributeGroup:AppregistryAttributeGroup example 1234567890abcfedhijk09876s
 /// ```
-class AppregistryAttributeGroup extends CustomResource {
+class AppregistryAttributeGroup extends pulumi.CustomResource {
   /// ARN of the Attribute Group.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// A JSON string of nested key-value pairs that represents the attributes of the group.
   ///
   /// The following arguments are optional:
-  late final Output<String> attributes;
+  late final pulumi.Output<String> attributes;
 
   /// Description of the Attribute Group.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Name of the Attribute Group.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags assigned to the Attribute Group. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   AppregistryAttributeGroup(
     String name, {
     AppregistryAttributeGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:servicecatalog/appregistryAttributeGroup:AppregistryAttributeGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.attributes = registerOutput<String>('attributes');

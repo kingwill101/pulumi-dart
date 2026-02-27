@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin/get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin.dart';
 
 /// Result data returned by getCachePolicy.
@@ -57,7 +57,7 @@ class GetCachePolicyResult {
     if (nameValue != null) {
       map['name'] = nameValue;
     }
-    map['parametersInCacheKeyAndForwardedToOrigins'] = Input.encodeList<
+    map['parametersInCacheKeyAndForwardedToOrigins'] = pulumi.Input.encodeList<
             GetCachePolicyParametersInCacheKeyAndForwardedToOrigin,
             Map<String, dynamic>>(
         parametersInCacheKeyAndForwardedToOrigins, (value) => value.toMap());
@@ -74,7 +74,7 @@ class GetCachePolicyResult {
       maxTtl: map['maxTtl'] as int,
       minTtl: map['minTtl'] as int,
       name: map['name'] == null ? null : map['name'] as String,
-      parametersInCacheKeyAndForwardedToOrigins: Input.decodeList<
+      parametersInCacheKeyAndForwardedToOrigins: pulumi.Input.decodeList<
               GetCachePolicyParametersInCacheKeyAndForwardedToOrigin>(
           map['parametersInCacheKeyAndForwardedToOrigins'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_connect_peer_filter/get_connect_peer_filter.dart';
 
 /// Result data returned by getConnectPeer.
@@ -63,7 +63,7 @@ class GetConnectPeerResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetConnectPeerFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetConnectPeerFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -86,7 +86,7 @@ class GetConnectPeerResult {
           (map['bgpTransitGatewayAddresses'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetConnectPeerFilter>(
+          : pulumi.Input.decodeList<GetConnectPeerFilter>(
               map['filters'],
               (value) => GetConnectPeerFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'single_scram_secret_association_args.dart';
 
 /// Associates a single SCRAM secret with a Managed Streaming for Kafka (MSK) cluster.
@@ -14,25 +14,25 @@ import 'single_scram_secret_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:msk/singleScramSecretAssociation:SingleScramSecretAssociation example arn:aws:kafka:us-west-2:123456789012:cluster/example/279c0212-d057-4dba-9aa9-1c4e5a25bfc7-3,arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456
 /// ```
-class SingleScramSecretAssociation extends CustomResource {
+class SingleScramSecretAssociation extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the MSK cluster.
-  late final Output<String> clusterArn;
+  late final pulumi.Output<String> clusterArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// AWS Secrets Manager secret ARN.
-  late final Output<String> secretArn;
+  late final pulumi.Output<String> secretArn;
 
   SingleScramSecretAssociation(
     String name, {
     SingleScramSecretAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:msk/singleScramSecretAssociation:SingleScramSecretAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.clusterArn = registerOutput<String>('clusterArn');
     this.region = registerOutput<String>('region');

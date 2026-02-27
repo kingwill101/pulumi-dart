@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DataProtectionSettingsAssociation.
 class DataProtectionSettingsAssociationArgs {
   /// ARN of the data protection settings to associate with the portal. Forces replacement if changed.
-  final Input<String> dataProtectionSettingsArn;
+  final pulumi.Input<String> dataProtectionSettingsArn;
 
   /// ARN of the portal to associate with the data protection settings. Forces replacement if changed.
   ///
   /// The following arguments are optional:
-  final Input<String> portalArn;
+  final pulumi.Input<String> portalArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   DataProtectionSettingsAssociationArgs({
     required this.dataProtectionSettingsArn,
@@ -36,9 +36,9 @@ class DataProtectionSettingsAssociationArgs {
       Map<String, dynamic> map) {
     return DataProtectionSettingsAssociationArgs(
       dataProtectionSettingsArn:
-          Input.asInput<String>(map['dataProtectionSettingsArn']),
-      portalArn: Input.asInput<String>(map['portalArn']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asInput<String>(map['dataProtectionSettingsArn']),
+      portalArn: pulumi.Input.asInput<String>(map['portalArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

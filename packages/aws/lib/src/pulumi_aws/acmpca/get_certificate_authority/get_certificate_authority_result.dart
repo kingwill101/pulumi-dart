@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_certificate_authority_revocation_configuration/get_certificate_authority_revocation_configuration.dart';
 
 /// Result data returned by getCertificateAuthority.
@@ -75,7 +75,7 @@ class GetCertificateAuthorityResult {
     map['notAfter'] = notAfter;
     map['notBefore'] = notBefore;
     map['region'] = region;
-    map['revocationConfigurations'] = Input.encodeList<
+    map['revocationConfigurations'] = pulumi.Input.encodeList<
             GetCertificateAuthorityRevocationConfiguration,
             Map<String, dynamic>>(
         revocationConfigurations, (value) => value.toMap());
@@ -98,11 +98,11 @@ class GetCertificateAuthorityResult {
       notAfter: map['notAfter'] as String,
       notBefore: map['notBefore'] as String,
       region: map['region'] as String,
-      revocationConfigurations:
-          Input.decodeList<GetCertificateAuthorityRevocationConfiguration>(
-              map['revocationConfigurations'],
-              (value) => GetCertificateAuthorityRevocationConfiguration.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      revocationConfigurations: pulumi.Input.decodeList<
+              GetCertificateAuthorityRevocationConfiguration>(
+          map['revocationConfigurations'],
+          (value) => GetCertificateAuthorityRevocationConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>())),
       serial: map['serial'] as String,
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),

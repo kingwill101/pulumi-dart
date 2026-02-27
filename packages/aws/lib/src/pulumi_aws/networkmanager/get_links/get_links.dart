@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_links_args.dart';
 import 'get_links_result.dart';
 
 /// Provides details about existing Network Manager links.
 Future<GetLinksResult> getLinks(
   GetLinksArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:networkmanager/getLinks:getLinks',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLinksResult.fromMap(result);
 }

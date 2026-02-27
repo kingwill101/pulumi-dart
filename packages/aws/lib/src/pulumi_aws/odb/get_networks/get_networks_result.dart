@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_networks_odb_network/get_networks_odb_network.dart';
 
 /// Result data returned by getNetworks.
@@ -22,7 +22,7 @@ class GetNetworksResult {
     final map = <String, dynamic>{};
     map['id'] = id;
     map['odbNetworks'] =
-        Input.encodeList<GetNetworksOdbNetwork, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetNetworksOdbNetwork, Map<String, dynamic>>(
             odbNetworks, (value) => value.toMap());
     map['region'] = region;
     return map;
@@ -31,7 +31,7 @@ class GetNetworksResult {
   factory GetNetworksResult.fromMap(Map<String, dynamic> map) {
     return GetNetworksResult(
       id: map['id'] as String,
-      odbNetworks: Input.decodeList<GetNetworksOdbNetwork>(
+      odbNetworks: pulumi.Input.decodeList<GetNetworksOdbNetwork>(
           map['odbNetworks'],
           (value) => GetNetworksOdbNetwork.fromMap(
               (value as Map).cast<String, dynamic>())),

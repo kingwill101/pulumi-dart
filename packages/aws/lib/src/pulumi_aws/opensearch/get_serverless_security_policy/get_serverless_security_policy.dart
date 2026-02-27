@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_serverless_security_policy_args.dart';
 import 'get_serverless_security_policy_result.dart';
 
 /// Use this data source to get information about an AWS OpenSearch Serverless Security Policy.
 Future<GetServerlessSecurityPolicyResult> getServerlessSecurityPolicy(
   GetServerlessSecurityPolicyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:opensearch/getServerlessSecurityPolicy:getServerlessSecurityPolicy',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerlessSecurityPolicyResult.fromMap(result);
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../capacity_reservation_timeouts/capacity_reservation_timeouts.dart';
 import 'capacity_reservation_args.dart';
 
@@ -19,43 +19,43 @@ import 'capacity_reservation_args.dart';
 /// ```sh
 /// $ pulumi import aws:athena/capacityReservation:CapacityReservation example example-reservation
 /// ```
-class CapacityReservation extends CustomResource {
+class CapacityReservation extends pulumi.CustomResource {
   /// Number of data processing units currently allocated.
-  late final Output<int> allocatedDpus;
+  late final pulumi.Output<int> allocatedDpus;
 
   /// ARN of the Capacity Reservation.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Name of the capacity reservation.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Status of the capacity reservation.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Number of data processing units requested. Must be at least `24` units.
   ///
   /// The following arguments are optional:
-  late final Output<int> targetDpus;
-  late final Output<CapacityReservationTimeouts?> timeouts;
+  late final pulumi.Output<int> targetDpus;
+  late final pulumi.Output<CapacityReservationTimeouts?> timeouts;
 
   CapacityReservation(
     String name, {
     CapacityReservationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:athena/capacityReservation:CapacityReservation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allocatedDpus = registerOutput<int>('allocatedDpus');
     this.arn = registerOutput<String>('arn');

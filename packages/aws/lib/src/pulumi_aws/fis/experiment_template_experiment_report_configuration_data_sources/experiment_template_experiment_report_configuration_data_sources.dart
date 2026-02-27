@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../experiment_template_experiment_report_configuration_data_sources_cloudwatch_dashboard/experiment_template_experiment_report_configuration_data_sources_cloudwatch_dashboard.dart';
 
 class ExperimentTemplateExperimentReportConfigurationDataSources {
@@ -17,7 +17,7 @@ class ExperimentTemplateExperimentReportConfigurationDataSources {
     final map = <String, dynamic>{};
     final cloudwatchDashboardsValue = cloudwatchDashboards;
     if (cloudwatchDashboardsValue != null) {
-      map['cloudwatchDashboards'] = Input.encodeList<
+      map['cloudwatchDashboards'] = pulumi.Input.encodeList<
           ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard,
           Map<String,
               dynamic>>(cloudwatchDashboardsValue, (value) => value.toMap());
@@ -30,7 +30,7 @@ class ExperimentTemplateExperimentReportConfigurationDataSources {
     return ExperimentTemplateExperimentReportConfigurationDataSources(
       cloudwatchDashboards: map['cloudwatchDashboards'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard>(
               map['cloudwatchDashboards'],
               (value) =>

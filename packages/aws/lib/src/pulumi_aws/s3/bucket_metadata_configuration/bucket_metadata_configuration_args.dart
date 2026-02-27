@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_metadata_configuration_metadata_configuration/bucket_metadata_configuration_metadata_configuration.dart';
 import '../bucket_metadata_configuration_timeouts/bucket_metadata_configuration_timeouts.dart';
 
 /// The set of arguments for BucketMetadataConfiguration.
 class BucketMetadataConfigurationArgs {
   /// General purpose bucket that you want to create the metadata configuration for.
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// Account ID of the expected bucket owner.
-  final Input<String>? expectedBucketOwner;
+  final pulumi.Input<String>? expectedBucketOwner;
 
   /// Metadata configuration. See `metadata_configuration` Block for details.
   ///
   /// The following arguments are optional:
-  final Input<BucketMetadataConfigurationMetadataConfiguration>
+  final pulumi.Input<BucketMetadataConfigurationMetadataConfiguration>
       metadataConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
-  final Input<BucketMetadataConfigurationTimeouts>? timeouts;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<BucketMetadataConfigurationTimeouts>? timeouts;
 
   BucketMetadataConfigurationArgs({
     required this.bucket,
@@ -37,7 +37,7 @@ class BucketMetadataConfigurationArgs {
     if (expectedBucketOwnerValue != null) {
       map['expectedBucketOwner'] = expectedBucketOwnerValue;
     }
-    map['metadataConfiguration'] = Input.mapInputValue<
+    map['metadataConfiguration'] = pulumi.Input.mapInputValue<
         BucketMetadataConfigurationMetadataConfiguration,
         Map<String, dynamic>>(metadataConfiguration, (value) => value.toMap());
     final regionValue = region;
@@ -46,7 +46,7 @@ class BucketMetadataConfigurationArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           BucketMetadataConfigurationTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -55,15 +55,16 @@ class BucketMetadataConfigurationArgs {
 
   factory BucketMetadataConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationArgs(
-      bucket: Input.asInput<String>(map['bucket']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
       expectedBucketOwner:
-          Input.asOptionalInput<String>(map['expectedBucketOwner']),
-      metadataConfiguration:
-          Input.asInput<BucketMetadataConfigurationMetadataConfiguration>(
-              map['metadataConfiguration']),
-      region: Input.asOptionalInput<String>(map['region']),
-      timeouts: Input.asOptionalInput<BucketMetadataConfigurationTimeouts>(
-          map['timeouts']),
+          pulumi.Input.asOptionalInput<String>(map['expectedBucketOwner']),
+      metadataConfiguration: pulumi.Input.asInput<
+              BucketMetadataConfigurationMetadataConfiguration>(
+          map['metadataConfiguration']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      timeouts:
+          pulumi.Input.asOptionalInput<BucketMetadataConfigurationTimeouts>(
+              map['timeouts']),
     );
   }
 }

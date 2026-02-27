@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../monitoring_schedule_monitoring_schedule_config_monitoring_job_definition_baseline/monitoring_schedule_monitoring_schedule_config_monitoring_job_definition_baseline.dart';
 import '../monitoring_schedule_monitoring_schedule_config_monitoring_job_definition_monitoring_app_specification/monitoring_schedule_monitoring_schedule_config_monitoring_job_definition_monitoring_app_specification.dart';
 import '../monitoring_schedule_monitoring_schedule_config_monitoring_job_definition_monitoring_inputs/monitoring_schedule_monitoring_schedule_config_monitoring_job_definition_monitoring_inputs.dart';
@@ -78,7 +78,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition {
     map['roleArn'] = roleArn;
     final stoppingConditionsValue = stoppingConditions;
     if (stoppingConditionsValue != null) {
-      map['stoppingConditions'] = Input.encodeList<
+      map['stoppingConditions'] = pulumi.Input.encodeList<
           MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition,
           Map<String,
               dynamic>>(stoppingConditionsValue, (value) => value.toMap());
@@ -119,7 +119,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition {
       roleArn: map['roleArn'] as String,
       stoppingConditions: map['stoppingConditions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition>(
               map['stoppingConditions'],
               (value) =>

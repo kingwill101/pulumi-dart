@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_principal_policy_simulation_result_matched_statement/get_principal_policy_simulation_result_matched_statement.dart';
 
 class GetPrincipalPolicySimulationResult {
@@ -42,7 +42,7 @@ class GetPrincipalPolicySimulationResult {
     map['allowed'] = allowed;
     map['decision'] = decision;
     map['decisionDetails'] = decisionDetails;
-    map['matchedStatements'] = Input.encodeList<
+    map['matchedStatements'] = pulumi.Input.encodeList<
         GetPrincipalPolicySimulationResultMatchedStatement,
         Map<String, dynamic>>(matchedStatements, (value) => value.toMap());
     map['missingContextKeys'] = missingContextKeys;
@@ -56,12 +56,11 @@ class GetPrincipalPolicySimulationResult {
       allowed: map['allowed'] as bool,
       decision: map['decision'] as String,
       decisionDetails: (map['decisionDetails'] as Map).cast<String, String>(),
-      matchedStatements:
-          Input.decodeList<GetPrincipalPolicySimulationResultMatchedStatement>(
-              map['matchedStatements'],
-              (value) =>
-                  GetPrincipalPolicySimulationResultMatchedStatement.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      matchedStatements: pulumi.Input.decodeList<
+              GetPrincipalPolicySimulationResultMatchedStatement>(
+          map['matchedStatements'],
+          (value) => GetPrincipalPolicySimulationResultMatchedStatement.fromMap(
+              (value as Map).cast<String, dynamic>())),
       missingContextKeys: (map['missingContextKeys'] as List).cast<String>(),
       resourceArn: map['resourceArn'] as String,
     );

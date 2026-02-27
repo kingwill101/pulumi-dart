@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../input_security_group_whitelist_rule/input_security_group_whitelist_rule.dart';
 
 /// The set of arguments for InputSecurityGroup.
 class InputSecurityGroupArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the InputSecurityGroup. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Whitelist rules. See Whitelist Rules for more details.
   ///
   /// The following arguments are optional:
-  final Input<List<InputSecurityGroupWhitelistRule>> whitelistRules;
+  final pulumi.Input<List<InputSecurityGroupWhitelistRule>> whitelistRules;
 
   InputSecurityGroupArgs({
     this.region,
@@ -32,20 +32,21 @@ class InputSecurityGroupArgs {
     if (tagsValue != null) {
       map['tags'] = tagsValue;
     }
-    map['whitelistRules'] = Input.mapInputValue<
+    map['whitelistRules'] = pulumi.Input.mapInputValue<
             List<InputSecurityGroupWhitelistRule>, List<Map<String, dynamic>>>(
         whitelistRules,
-        (value) => Input.encodeList<InputSecurityGroupWhitelistRule,
+        (value) => pulumi.Input.encodeList<InputSecurityGroupWhitelistRule,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     return map;
   }
 
   factory InputSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return InputSecurityGroupArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      whitelistRules: Input.asInput<List<InputSecurityGroupWhitelistRule>>(
-          map['whitelistRules']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      whitelistRules:
+          pulumi.Input.asInput<List<InputSecurityGroupWhitelistRule>>(
+              map['whitelistRules']),
     );
   }
 }

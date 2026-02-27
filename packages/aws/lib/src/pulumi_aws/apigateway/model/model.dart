@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'model_args.dart';
 
 /// Provides a Model for a REST API Gateway.
@@ -14,34 +14,34 @@ import 'model_args.dart';
 /// ```sh
 /// $ pulumi import aws:apigateway/model:Model example 12345abcde/example
 /// ```
-class Model extends CustomResource {
+class Model extends pulumi.CustomResource {
   /// Content type of the model
-  late final Output<String> contentType;
+  late final pulumi.Output<String> contentType;
 
   /// Description of the model
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Name of the model
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ID of the associated REST API
-  late final Output<String> restApi;
+  late final pulumi.Output<String> restApi;
 
   /// Schema of the model in a JSON form
-  late final Output<String?> schema;
+  late final pulumi.Output<String?> schema;
 
   Model(
     String name, {
     ModelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigateway/model:Model',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.contentType = registerOutput<String>('contentType');
     this.description = registerOutput<String?>('description');

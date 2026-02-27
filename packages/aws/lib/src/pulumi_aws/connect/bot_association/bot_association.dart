@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bot_association_lex_bot/bot_association_lex_bot.dart';
 import 'bot_association_args.dart';
 
@@ -24,25 +24,25 @@ import 'bot_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:connect/botAssociation:BotAssociation example aaaaaaaa-bbbb-cccc-dddd-111111111111:Example:us-west-2
 /// ```
-class BotAssociation extends CustomResource {
+class BotAssociation extends pulumi.CustomResource {
   /// The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
-  late final Output<String> instanceId;
+  late final pulumi.Output<String> instanceId;
 
   /// Configuration information of an Amazon Lex (V1) bot. Detailed below.
-  late final Output<BotAssociationLexBot> lexBot;
+  late final pulumi.Output<BotAssociationLexBot> lexBot;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   BotAssociation(
     String name, {
     BotAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:connect/botAssociation:BotAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.instanceId = registerOutput<String>('instanceId');
     this.lexBot = registerOutput<BotAssociationLexBot>('lexBot');

@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Response.
 class ResponseArgs {
   /// Region where this resource will be managed. See the [AWS Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for supported values. Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of parameters (paths, query strings and headers) of the Gateway Response.
-  final Input<Map<String, String>>? responseParameters;
+  final pulumi.Input<Map<String, String>>? responseParameters;
 
   /// Map of templates used to transform the response body.
-  final Input<Map<String, String>>? responseTemplates;
+  final pulumi.Input<Map<String, String>>? responseTemplates;
 
   /// Response type of the associated GatewayResponse. See the [AWS Documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/supported-gateway-response-types.html) for supported values.
-  final Input<String> responseType;
+  final pulumi.Input<String> responseType;
 
   /// String identifier of the associated REST API.
-  final Input<String> restApiId;
+  final pulumi.Input<String> restApiId;
 
   /// HTTP status code of the Gateway Response.
-  final Input<String>? statusCode;
+  final pulumi.Input<String>? statusCode;
 
   ResponseArgs({
     this.region,
@@ -56,14 +56,14 @@ class ResponseArgs {
 
   factory ResponseArgs.fromMap(Map<String, dynamic> map) {
     return ResponseArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      responseParameters:
-          Input.asOptionalInput<Map<String, String>>(map['responseParameters']),
-      responseTemplates:
-          Input.asOptionalInput<Map<String, String>>(map['responseTemplates']),
-      responseType: Input.asInput<String>(map['responseType']),
-      restApiId: Input.asInput<String>(map['restApiId']),
-      statusCode: Input.asOptionalInput<String>(map['statusCode']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      responseParameters: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['responseParameters']),
+      responseTemplates: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['responseTemplates']),
+      responseType: pulumi.Input.asInput<String>(map['responseType']),
+      restApiId: pulumi.Input.asInput<String>(map['restApiId']),
+      statusCode: pulumi.Input.asOptionalInput<String>(map['statusCode']),
     );
   }
 }

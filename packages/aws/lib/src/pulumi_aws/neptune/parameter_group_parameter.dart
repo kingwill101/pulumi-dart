@@ -1,3 +1,3 @@
 library module_neptune_parameter_group_parameter;
 
-export 'parameter_group_parameter/parameter_group_parameter4.dart';
+export 'parameter_group_parameter/parameter_group_parameter_neptune.dart';

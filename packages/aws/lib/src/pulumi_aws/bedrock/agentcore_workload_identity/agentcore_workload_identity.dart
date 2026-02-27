@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agentcore_workload_identity_args.dart';
 
 /// Manages an AWS Bedrock AgentCore Workload Identity. Workload Identity provides OAuth2-based authentication and authorization for AI agents to access external resources securely.
@@ -20,30 +20,30 @@ import 'agentcore_workload_identity_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrock/agentcoreWorkloadIdentity:AgentcoreWorkloadIdentity example example-workload-identity
 /// ```
-class AgentcoreWorkloadIdentity extends CustomResource {
+class AgentcoreWorkloadIdentity extends pulumi.CustomResource {
   /// Set of allowed OAuth2 return URLs for resources associated with this workload identity. These URLs are used as valid redirect targets during OAuth2 authentication flows.
-  late final Output<List<String>?> allowedResourceOauth2ReturnUrls;
+  late final pulumi.Output<List<String>?> allowedResourceOauth2ReturnUrls;
 
   /// Name of the workload identity. Must be 3-255 characters and contain only alphanumeric characters, hyphens, periods, and underscores.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the Workload Identity.
-  late final Output<String> workloadIdentityArn;
+  late final pulumi.Output<String> workloadIdentityArn;
 
   AgentcoreWorkloadIdentity(
     String name, {
     AgentcoreWorkloadIdentityArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/agentcoreWorkloadIdentity:AgentcoreWorkloadIdentity',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowedResourceOauth2ReturnUrls =
         registerOutput<List<String>?>('allowedResourceOauth2ReturnUrls');

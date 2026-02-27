@@ -1,4 +1,4 @@
 library module_efs_replication_configuration;
 
-export 'replication_configuration/replication_configuration2.dart';
-export 'replication_configuration/replication_configuration_args2.dart';
+export 'replication_configuration/replication_configuration_efs.dart';
+export 'replication_configuration/replication_configuration_efs_args.dart';

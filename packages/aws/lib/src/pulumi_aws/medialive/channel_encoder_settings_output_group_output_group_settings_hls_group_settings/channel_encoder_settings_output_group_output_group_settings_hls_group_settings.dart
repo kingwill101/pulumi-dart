@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../channel_encoder_settings_output_group_output_group_settings_hls_group_settings_caption_language_mapping/channel_encoder_settings_output_group_output_group_settings_hls_group_settings_caption_language_mapping.dart';
 import '../channel_encoder_settings_output_group_output_group_settings_hls_group_settings_destination/channel_encoder_settings_output_group_output_group_settings_hls_group_settings_destination.dart';
 import '../channel_encoder_settings_output_group_output_group_settings_hls_group_settings_hls_cdn_setting/channel_encoder_settings_output_group_output_group_settings_hls_group_settings_hls_cdn_setting.dart';
@@ -128,7 +128,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
     }
     final captionLanguageMappingsValue = captionLanguageMappings;
     if (captionLanguageMappingsValue != null) {
-      map['captionLanguageMappings'] = Input.encodeList<
+      map['captionLanguageMappings'] = pulumi.Input.encodeList<
           ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping,
           Map<String,
               dynamic>>(captionLanguageMappingsValue, (value) => value.toMap());
@@ -164,7 +164,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
     }
     final hlsCdnSettingsValue = hlsCdnSettings;
     if (hlsCdnSettingsValue != null) {
-      map['hlsCdnSettings'] = Input.encodeList<
+      map['hlsCdnSettings'] = pulumi.Input.encodeList<
           ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting,
           Map<String, dynamic>>(hlsCdnSettingsValue, (value) => value.toMap());
     }
@@ -299,7 +299,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
           : map['baseUrlManifest1'] as String,
       captionLanguageMappings: map['captionLanguageMappings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping>(
               map['captionLanguageMappings'],
               (value) =>
@@ -329,7 +329,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings {
           : map['encryptionType'] as String,
       hlsCdnSettings: map['hlsCdnSettings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting>(
               map['hlsCdnSettings'],
               (value) =>

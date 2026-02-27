@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_slot_value_elicitation_setting_wait_and_continue_specification_continue_response_message_group_message_image_response_card_button/v2models_slot_value_elicitation_setting_wait_and_continue_specification_continue_response_message_group_message_image_response_card_button.dart';
 
 class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupMessageImageResponseCard {
@@ -22,7 +22,7 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueRes
     final map = <String, dynamic>{};
     final buttonsValue = buttons;
     if (buttonsValue != null) {
-      map['buttons'] = Input.encodeList<
+      map['buttons'] = pulumi.Input.encodeList<
           V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupMessageImageResponseCardButton,
           Map<String, dynamic>>(buttonsValue, (value) => value.toMap());
     }
@@ -43,7 +43,7 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueRes
     return V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupMessageImageResponseCard(
       buttons: map['buttons'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupMessageImageResponseCardButton>(
               map['buttons'],
               (value) =>

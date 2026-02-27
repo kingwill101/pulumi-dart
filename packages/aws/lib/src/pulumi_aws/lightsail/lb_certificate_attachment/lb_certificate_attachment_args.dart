@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LbCertificateAttachment.
 class LbCertificateAttachmentArgs {
   /// Name of your SSL/TLS certificate.
-  final Input<String> certificateName;
+  final pulumi.Input<String> certificateName;
 
   /// Name of the load balancer to which you want to associate the SSL/TLS certificate.
   ///
   /// The following arguments are optional:
-  final Input<String> lbName;
+  final pulumi.Input<String> lbName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   LbCertificateAttachmentArgs({
     required this.certificateName,
@@ -34,9 +34,9 @@ class LbCertificateAttachmentArgs {
 
   factory LbCertificateAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return LbCertificateAttachmentArgs(
-      certificateName: Input.asInput<String>(map['certificateName']),
-      lbName: Input.asInput<String>(map['lbName']),
-      region: Input.asOptionalInput<String>(map['region']),
+      certificateName: pulumi.Input.asInput<String>(map['certificateName']),
+      lbName: pulumi.Input.asInput<String>(map['lbName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

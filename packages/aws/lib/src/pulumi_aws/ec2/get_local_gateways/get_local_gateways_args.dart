@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_local_gateways_filter/get_local_gateways_filter.dart';
 
 /// Arguments for getLocalGateways.
@@ -9,14 +9,14 @@ class GetLocalGatewaysArgs {
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
-  final Input<List<GetLocalGatewaysFilter>>? filters;
+  final pulumi.Input<List<GetLocalGatewaysFilter>>? filters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Mapping of tags, each pair of which must exactly match
   /// a pair on the desired local_gateways.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetLocalGatewaysArgs({
     this.filters,
@@ -28,12 +28,11 @@ class GetLocalGatewaysArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetLocalGatewaysFilter>,
-              List<Map<String, dynamic>>>(
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
+              List<GetLocalGatewaysFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetLocalGatewaysFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetLocalGatewaysFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final regionValue = region;
     if (regionValue != null) {
@@ -48,10 +47,10 @@ class GetLocalGatewaysArgs {
 
   factory GetLocalGatewaysArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewaysArgs(
-      filters:
-          Input.asOptionalInput<List<GetLocalGatewaysFilter>>(map['filters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      filters: pulumi.Input.asOptionalInput<List<GetLocalGatewaysFilter>>(
+          map['filters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

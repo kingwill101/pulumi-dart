@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_xss_match_statement_field_to_match/web_acl_rule_statement_xss_match_statement_field_to_match.dart';
 import '../web_acl_rule_statement_xss_match_statement_text_transformation/web_acl_rule_statement_xss_match_statement_text_transformation.dart';
 
@@ -23,7 +23,7 @@ class WebAclRuleStatementXssMatchStatement {
     if (fieldToMatchValue != null) {
       map['fieldToMatch'] = fieldToMatchValue.toMap();
     }
-    map['textTransformations'] = Input.encodeList<
+    map['textTransformations'] = pulumi.Input.encodeList<
         WebAclRuleStatementXssMatchStatementTextTransformation,
         Map<String, dynamic>>(textTransformations, (value) => value.toMap());
     return map;
@@ -36,7 +36,7 @@ class WebAclRuleStatementXssMatchStatement {
           ? null
           : WebAclRuleStatementXssMatchStatementFieldToMatch.fromMap(
               (map['fieldToMatch'] as Map).cast<String, dynamic>()),
-      textTransformations: Input.decodeList<
+      textTransformations: pulumi.Input.decodeList<
               WebAclRuleStatementXssMatchStatementTextTransformation>(
           map['textTransformations'],
           (value) =>

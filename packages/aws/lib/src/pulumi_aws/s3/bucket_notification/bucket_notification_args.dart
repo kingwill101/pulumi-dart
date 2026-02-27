@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_notification_lambda_function/bucket_notification_lambda_function.dart';
 import '../bucket_notification_queue/bucket_notification_queue.dart';
 import '../bucket_notification_topic/bucket_notification_topic.dart';
@@ -10,22 +10,22 @@ class BucketNotificationArgs {
   /// Name of the bucket for notification configuration.
   ///
   /// The following arguments are optional:
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// Whether to enable Amazon EventBridge notifications. Defaults to `false`.
-  final Input<bool>? eventbridge;
+  final pulumi.Input<bool>? eventbridge;
 
   /// Used to configure notifications to a Lambda Function. See below.
-  final Input<List<BucketNotificationLambdaFunction>>? lambdaFunctions;
+  final pulumi.Input<List<BucketNotificationLambdaFunction>>? lambdaFunctions;
 
   /// Notification configuration to SQS Queue. See below.
-  final Input<List<BucketNotificationQueue>>? queues;
+  final pulumi.Input<List<BucketNotificationQueue>>? queues;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Notification configuration to SNS Topic. See below.
-  final Input<List<BucketNotificationTopic>>? topics;
+  final pulumi.Input<List<BucketNotificationTopic>>? topics;
 
   BucketNotificationArgs({
     required this.bucket,
@@ -45,21 +45,20 @@ class BucketNotificationArgs {
     }
     final lambdaFunctionsValue = lambdaFunctions;
     if (lambdaFunctionsValue != null) {
-      map['lambdaFunctions'] = Input.mapOptionalInputValue<
+      map['lambdaFunctions'] = pulumi.Input.mapOptionalInputValue<
               List<BucketNotificationLambdaFunction>,
               List<Map<String, dynamic>>>(
           lambdaFunctionsValue,
-          (value) => Input.encodeList<BucketNotificationLambdaFunction,
+          (value) => pulumi.Input.encodeList<BucketNotificationLambdaFunction,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final queuesValue = queues;
     if (queuesValue != null) {
-      map['queues'] = Input.mapOptionalInputValue<List<BucketNotificationQueue>,
-              List<Map<String, dynamic>>>(
+      map['queues'] = pulumi.Input.mapOptionalInputValue<
+              List<BucketNotificationQueue>, List<Map<String, dynamic>>>(
           queuesValue,
-          (value) =>
-              Input.encodeList<BucketNotificationQueue, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<BucketNotificationQueue,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final regionValue = region;
     if (regionValue != null) {
@@ -67,28 +66,27 @@ class BucketNotificationArgs {
     }
     final topicsValue = topics;
     if (topicsValue != null) {
-      map['topics'] = Input.mapOptionalInputValue<List<BucketNotificationTopic>,
-              List<Map<String, dynamic>>>(
+      map['topics'] = pulumi.Input.mapOptionalInputValue<
+              List<BucketNotificationTopic>, List<Map<String, dynamic>>>(
           topicsValue,
-          (value) =>
-              Input.encodeList<BucketNotificationTopic, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<BucketNotificationTopic,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     return map;
   }
 
   factory BucketNotificationArgs.fromMap(Map<String, dynamic> map) {
     return BucketNotificationArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      eventbridge: Input.asOptionalInput<bool>(map['eventbridge']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      eventbridge: pulumi.Input.asOptionalInput<bool>(map['eventbridge']),
       lambdaFunctions:
-          Input.asOptionalInput<List<BucketNotificationLambdaFunction>>(
+          pulumi.Input.asOptionalInput<List<BucketNotificationLambdaFunction>>(
               map['lambdaFunctions']),
-      queues:
-          Input.asOptionalInput<List<BucketNotificationQueue>>(map['queues']),
-      region: Input.asOptionalInput<String>(map['region']),
-      topics:
-          Input.asOptionalInput<List<BucketNotificationTopic>>(map['topics']),
+      queues: pulumi.Input.asOptionalInput<List<BucketNotificationQueue>>(
+          map['queues']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      topics: pulumi.Input.asOptionalInput<List<BucketNotificationTopic>>(
+          map['topics']),
     );
   }
 }

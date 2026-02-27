@@ -1,22 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../customer_managed_policy_attachment_customer_managed_policy_reference/customer_managed_policy_attachment_customer_managed_policy_reference.dart';
 
 /// The set of arguments for CustomerManagedPolicyAttachment.
 class CustomerManagedPolicyAttachmentArgs {
   /// Specifies the name and path of a customer managed policy. See below.
-  final Input<CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>
+  final pulumi
+      .Input<CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>
       customerManagedPolicyReference;
 
   /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
-  final Input<String> instanceArn;
+  final pulumi.Input<String> instanceArn;
 
   /// The Amazon Resource Name (ARN) of the Permission Set.
-  final Input<String> permissionSetArn;
+  final pulumi.Input<String> permissionSetArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   CustomerManagedPolicyAttachmentArgs({
     required this.customerManagedPolicyReference,
@@ -27,7 +28,7 @@ class CustomerManagedPolicyAttachmentArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['customerManagedPolicyReference'] = Input.mapInputValue<
+    map['customerManagedPolicyReference'] = pulumi.Input.mapInputValue<
             CustomerManagedPolicyAttachmentCustomerManagedPolicyReference,
             Map<String, dynamic>>(
         customerManagedPolicyReference, (value) => value.toMap());
@@ -43,12 +44,12 @@ class CustomerManagedPolicyAttachmentArgs {
   factory CustomerManagedPolicyAttachmentArgs.fromMap(
       Map<String, dynamic> map) {
     return CustomerManagedPolicyAttachmentArgs(
-      customerManagedPolicyReference: Input.asInput<
+      customerManagedPolicyReference: pulumi.Input.asInput<
               CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>(
           map['customerManagedPolicyReference']),
-      instanceArn: Input.asInput<String>(map['instanceArn']),
-      permissionSetArn: Input.asInput<String>(map['permissionSetArn']),
-      region: Input.asOptionalInput<String>(map['region']),
+      instanceArn: pulumi.Input.asInput<String>(map['instanceArn']),
+      permissionSetArn: pulumi.Input.asInput<String>(map['permissionSetArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

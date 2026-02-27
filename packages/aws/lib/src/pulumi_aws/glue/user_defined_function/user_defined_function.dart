@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_defined_function_resource_uri/user_defined_function_resource_uri.dart';
 import 'user_defined_function_args.dart';
 
@@ -15,46 +15,46 @@ import 'user_defined_function_args.dart';
 /// ```sh
 /// $ pulumi import aws:glue/userDefinedFunction:UserDefinedFunction func 123456789012:my_database:my_func
 /// ```
-class UserDefinedFunction extends CustomResource {
+class UserDefinedFunction extends pulumi.CustomResource {
   /// The ARN of the Glue User Defined Function.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// ID of the Glue Catalog to create the function in. If omitted, this defaults to the AWS Account ID.
-  late final Output<String?> catalogId;
+  late final pulumi.Output<String?> catalogId;
 
   /// The Java class that contains the function code.
-  late final Output<String> className;
+  late final pulumi.Output<String> className;
 
   /// The time at which the function was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The name of the Database to create the Function.
-  late final Output<String> databaseName;
+  late final pulumi.Output<String> databaseName;
 
   /// The name of the function.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The owner of the function.
-  late final Output<String> ownerName;
+  late final pulumi.Output<String> ownerName;
 
   /// The owner type. can be one of `USER`, `ROLE`, and `GROUP`.
-  late final Output<String> ownerType;
+  late final pulumi.Output<String> ownerType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The configuration block for Resource URIs. See resource uris below for more details.
-  late final Output<List<UserDefinedFunctionResourceUri>?> resourceUris;
+  late final pulumi.Output<List<UserDefinedFunctionResourceUri>?> resourceUris;
 
   UserDefinedFunction(
     String name, {
     UserDefinedFunctionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:glue/userDefinedFunction:UserDefinedFunction',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.catalogId = registerOutput<String?>('catalogId');

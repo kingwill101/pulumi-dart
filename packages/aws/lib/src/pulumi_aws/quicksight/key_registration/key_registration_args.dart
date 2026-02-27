@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../key_registration_key_registration/key_registration_key_registration.dart';
 
 /// The set of arguments for KeyRegistration.
 class KeyRegistrationArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// Registered keys. See key_registration.
-  final Input<List<KeyRegistrationKeyRegistration>> keyRegistrations;
+  final pulumi.Input<List<KeyRegistrationKeyRegistration>> keyRegistrations;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   KeyRegistrationArgs({
     this.awsAccountId,
@@ -26,10 +26,10 @@ class KeyRegistrationArgs {
     if (awsAccountIdValue != null) {
       map['awsAccountId'] = awsAccountIdValue;
     }
-    map['keyRegistrations'] = Input.mapInputValue<
+    map['keyRegistrations'] = pulumi.Input.mapInputValue<
             List<KeyRegistrationKeyRegistration>, List<Map<String, dynamic>>>(
         keyRegistrations,
-        (value) => Input.encodeList<KeyRegistrationKeyRegistration,
+        (value) => pulumi.Input.encodeList<KeyRegistrationKeyRegistration,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     final regionValue = region;
     if (regionValue != null) {
@@ -40,10 +40,11 @@ class KeyRegistrationArgs {
 
   factory KeyRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return KeyRegistrationArgs(
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
-      keyRegistrations: Input.asInput<List<KeyRegistrationKeyRegistration>>(
-          map['keyRegistrations']),
-      region: Input.asOptionalInput<String>(map['region']),
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
+      keyRegistrations:
+          pulumi.Input.asInput<List<KeyRegistrationKeyRegistration>>(
+              map['keyRegistrations']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

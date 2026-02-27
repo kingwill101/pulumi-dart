@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_nat_gateway_args.dart';
 import 'get_nat_gateway_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_nat_gateway_result.dart';
 /// ### With tags
 Future<GetNatGatewayResult> getNatGateway(
   GetNatGatewayArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getNatGateway:getNatGateway',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNatGatewayResult.fromMap(result);
 }

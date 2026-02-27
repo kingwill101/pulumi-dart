@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_network_acls_filter/get_network_acls_filter.dart';
 
 /// Arguments for getNetworkAcls.
 class GetNetworkAclsArgs {
   /// Custom filter block as described below.
-  final Input<List<GetNetworkAclsFilter>>? filters;
+  final pulumi.Input<List<GetNetworkAclsFilter>>? filters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired network ACLs.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// VPC ID that you want to filter from.
-  final Input<String>? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   GetNetworkAclsArgs({
     this.filters,
@@ -29,12 +29,11 @@ class GetNetworkAclsArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetNetworkAclsFilter>,
-              List<Map<String, dynamic>>>(
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
+              List<GetNetworkAclsFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetNetworkAclsFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetNetworkAclsFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final regionValue = region;
     if (regionValue != null) {
@@ -53,11 +52,11 @@ class GetNetworkAclsArgs {
 
   factory GetNetworkAclsArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkAclsArgs(
-      filters:
-          Input.asOptionalInput<List<GetNetworkAclsFilter>>(map['filters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vpcId: Input.asOptionalInput<String>(map['vpcId']),
+      filters: pulumi.Input.asOptionalInput<List<GetNetworkAclsFilter>>(
+          map['filters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpcId: pulumi.Input.asOptionalInput<String>(map['vpcId']),
     );
   }
 }

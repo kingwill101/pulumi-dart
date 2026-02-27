@@ -1,43 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_peering_connection_filter/get_vpc_peering_connection_filter.dart';
 
 /// Arguments for getVpcPeeringConnection.
 class GetVpcPeeringConnectionArgs {
   /// Primary CIDR block of the requester VPC of the specific VPC Peering Connection to retrieve.
-  final Input<String>? cidrBlock;
+  final pulumi.Input<String>? cidrBlock;
 
   /// Custom filter block as described below.
-  final Input<List<GetVpcPeeringConnectionFilter>>? filters;
+  final pulumi.Input<List<GetVpcPeeringConnectionFilter>>? filters;
 
   /// ID of the specific VPC Peering Connection to retrieve.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// AWS account ID of the owner of the requester VPC of the specific VPC Peering Connection to retrieve.
-  final Input<String>? ownerId;
+  final pulumi.Input<String>? ownerId;
 
   /// Primary CIDR block of the accepter VPC of the specific VPC Peering Connection to retrieve.
-  final Input<String>? peerCidrBlock;
+  final pulumi.Input<String>? peerCidrBlock;
 
   /// AWS account ID of the owner of the accepter VPC of the specific VPC Peering Connection to retrieve.
-  final Input<String>? peerOwnerId;
+  final pulumi.Input<String>? peerOwnerId;
 
   /// ID of the accepter VPC of the specific VPC Peering Connection to retrieve.
-  final Input<String>? peerVpcId;
+  final pulumi.Input<String>? peerVpcId;
 
   /// Status of the specific VPC Peering Connection to retrieve.
-  final Input<String>? status;
+  final pulumi.Input<String>? status;
 
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired VPC Peering Connection.
   ///
   /// The arguments of this data source act as filters for querying the available VPC peering connection.
   /// The given filters must match exactly one VPC peering connection whose data will be exported as attributes.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// ID of the requester VPC of the specific VPC Peering Connection to retrieve.
-  final Input<String>? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   GetVpcPeeringConnectionArgs({
     this.cidrBlock,
@@ -60,10 +60,10 @@ class GetVpcPeeringConnectionArgs {
     }
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
               List<GetVpcPeeringConnectionFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) => Input.encodeList<GetVpcPeeringConnectionFilter,
+          (value) => pulumi.Input.encodeList<GetVpcPeeringConnectionFilter,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final idValue = id;
@@ -103,17 +103,18 @@ class GetVpcPeeringConnectionArgs {
 
   factory GetVpcPeeringConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcPeeringConnectionArgs(
-      cidrBlock: Input.asOptionalInput<String>(map['cidrBlock']),
-      filters: Input.asOptionalInput<List<GetVpcPeeringConnectionFilter>>(
-          map['filters']),
-      id: Input.asOptionalInput<String>(map['id']),
-      ownerId: Input.asOptionalInput<String>(map['ownerId']),
-      peerCidrBlock: Input.asOptionalInput<String>(map['peerCidrBlock']),
-      peerOwnerId: Input.asOptionalInput<String>(map['peerOwnerId']),
-      peerVpcId: Input.asOptionalInput<String>(map['peerVpcId']),
-      status: Input.asOptionalInput<String>(map['status']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vpcId: Input.asOptionalInput<String>(map['vpcId']),
+      cidrBlock: pulumi.Input.asOptionalInput<String>(map['cidrBlock']),
+      filters:
+          pulumi.Input.asOptionalInput<List<GetVpcPeeringConnectionFilter>>(
+              map['filters']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      ownerId: pulumi.Input.asOptionalInput<String>(map['ownerId']),
+      peerCidrBlock: pulumi.Input.asOptionalInput<String>(map['peerCidrBlock']),
+      peerOwnerId: pulumi.Input.asOptionalInput<String>(map['peerOwnerId']),
+      peerVpcId: pulumi.Input.asOptionalInput<String>(map['peerVpcId']),
+      status: pulumi.Input.asOptionalInput<String>(map['status']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpcId: pulumi.Input.asOptionalInput<String>(map['vpcId']),
     );
   }
 }

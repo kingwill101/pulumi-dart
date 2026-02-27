@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_api_keys_item/get_api_keys_item.dart';
 
 /// Result data returned by getApiKeys.
@@ -35,8 +35,9 @@ class GetApiKeysResult {
     if (includeValuesValue != null) {
       map['includeValues'] = includeValuesValue;
     }
-    map['items'] = Input.encodeList<GetApiKeysItem, Map<String, dynamic>>(
-        items, (value) => value.toMap());
+    map['items'] =
+        pulumi.Input.encodeList<GetApiKeysItem, Map<String, dynamic>>(
+            items, (value) => value.toMap());
     map['region'] = region;
     return map;
   }
@@ -48,7 +49,7 @@ class GetApiKeysResult {
       id: map['id'] as String,
       includeValues:
           map['includeValues'] == null ? null : map['includeValues'] as bool,
-      items: Input.decodeList<GetApiKeysItem>(
+      items: pulumi.Input.decodeList<GetApiKeysItem>(
           map['items'],
           (value) =>
               GetApiKeysItem.fromMap((value as Map).cast<String, dynamic>())),

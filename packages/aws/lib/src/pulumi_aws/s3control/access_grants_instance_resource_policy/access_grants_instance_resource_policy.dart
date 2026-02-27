@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_grants_instance_resource_policy_args.dart';
 
 /// Provides a resource to manage an S3 Access Grants instance resource policy.
@@ -15,25 +15,25 @@ import 'access_grants_instance_resource_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3control/accessGrantsInstanceResourcePolicy:AccessGrantsInstanceResourcePolicy example 123456789012
 /// ```
-class AccessGrantsInstanceResourcePolicy extends CustomResource {
+class AccessGrantsInstanceResourcePolicy extends pulumi.CustomResource {
   /// The AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// The policy document.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   AccessGrantsInstanceResourcePolicy(
     String name, {
     AccessGrantsInstanceResourcePolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3control/accessGrantsInstanceResourcePolicy:AccessGrantsInstanceResourcePolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
     this.policy = registerOutput<String>('policy');

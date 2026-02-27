@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_contributor_managed_insight_rules_args.dart';
 import 'get_contributor_managed_insight_rules_result.dart';
 
@@ -10,13 +10,13 @@ import 'get_contributor_managed_insight_rules_result.dart';
 Future<GetContributorManagedInsightRulesResult>
     getContributorManagedInsightRules(
   GetContributorManagedInsightRulesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:cloudwatch/getContributorManagedInsightRules:getContributorManagedInsightRules',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContributorManagedInsightRulesResult.fromMap(result);
 }

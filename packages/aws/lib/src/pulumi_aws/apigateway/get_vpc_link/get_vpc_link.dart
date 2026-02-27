@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_vpc_link_args.dart';
 import 'get_vpc_link_result.dart';
 
@@ -8,13 +8,13 @@ import 'get_vpc_link_result.dart';
 /// error if there is more than one match.
 Future<GetVpcLinkResult> getVpcLink(
   GetVpcLinkArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:apigateway/getVpcLink:getVpcLink',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpcLinkResult.fromMap(result);
 }

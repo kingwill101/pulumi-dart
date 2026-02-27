@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../managed_login_branding_asset/managed_login_branding_asset.dart';
 
 /// The set of arguments for ManagedLoginBranding.
 class ManagedLoginBrandingArgs {
   /// Image files to apply to roles like backgrounds, logos, and icons. See details below.
-  final Input<List<ManagedLoginBrandingAsset>>? assets;
+  final pulumi.Input<List<ManagedLoginBrandingAsset>>? assets;
 
   /// App client that the branding style is for.
-  final Input<String> clientId;
+  final pulumi.Input<String> clientId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// JSON document with the the settings to apply to the style.
-  final Input<String>? settings;
+  final pulumi.Input<String>? settings;
 
   /// When `true`, applies the default branding style options.
-  final Input<bool>? useCognitoProvidedValues;
+  final pulumi.Input<bool>? useCognitoProvidedValues;
 
   /// User pool the client belongs to.
   ///
   /// The following arguments are optional:
-  final Input<String> userPoolId;
+  final pulumi.Input<String> userPoolId;
 
   ManagedLoginBrandingArgs({
     this.assets,
@@ -38,12 +38,11 @@ class ManagedLoginBrandingArgs {
     final map = <String, dynamic>{};
     final assetsValue = assets;
     if (assetsValue != null) {
-      map['assets'] = Input.mapOptionalInputValue<
+      map['assets'] = pulumi.Input.mapOptionalInputValue<
               List<ManagedLoginBrandingAsset>, List<Map<String, dynamic>>>(
           assetsValue,
-          (value) =>
-              Input.encodeList<ManagedLoginBrandingAsset, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<ManagedLoginBrandingAsset,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['clientId'] = clientId;
     final regionValue = region;
@@ -64,14 +63,14 @@ class ManagedLoginBrandingArgs {
 
   factory ManagedLoginBrandingArgs.fromMap(Map<String, dynamic> map) {
     return ManagedLoginBrandingArgs(
-      assets:
-          Input.asOptionalInput<List<ManagedLoginBrandingAsset>>(map['assets']),
-      clientId: Input.asInput<String>(map['clientId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      settings: Input.asOptionalInput<String>(map['settings']),
+      assets: pulumi.Input.asOptionalInput<List<ManagedLoginBrandingAsset>>(
+          map['assets']),
+      clientId: pulumi.Input.asInput<String>(map['clientId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      settings: pulumi.Input.asOptionalInput<String>(map['settings']),
       useCognitoProvidedValues:
-          Input.asOptionalInput<bool>(map['useCognitoProvidedValues']),
-      userPoolId: Input.asInput<String>(map['userPoolId']),
+          pulumi.Input.asOptionalInput<bool>(map['useCognitoProvidedValues']),
+      userPoolId: pulumi.Input.asInput<String>(map['userPoolId']),
     );
   }
 }

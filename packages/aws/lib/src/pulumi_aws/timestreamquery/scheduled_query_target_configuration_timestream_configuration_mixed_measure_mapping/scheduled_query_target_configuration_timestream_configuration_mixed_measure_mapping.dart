@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scheduled_query_target_configuration_timestream_configuration_mixed_measure_mapping_multi_measure_attribute_mapping/scheduled_query_target_configuration_timestream_configuration_mixed_measure_mapping_multi_measure_attribute_mapping.dart';
 
 class ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping {
@@ -38,7 +38,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappin
     map['measureValueType'] = measureValueType;
     final multiMeasureAttributeMappingsValue = multiMeasureAttributeMappings;
     if (multiMeasureAttributeMappingsValue != null) {
-      map['multiMeasureAttributeMappings'] = Input.encodeList<
+      map['multiMeasureAttributeMappings'] = pulumi.Input.encodeList<
               ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping,
               Map<String, dynamic>>(
           multiMeasureAttributeMappingsValue, (value) => value.toMap());
@@ -63,7 +63,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappin
       multiMeasureAttributeMappings: map['multiMeasureAttributeMappings'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping>(
               map['multiMeasureAttributeMappings'],
               (value) =>

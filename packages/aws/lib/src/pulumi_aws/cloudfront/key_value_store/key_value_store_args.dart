@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../key_value_store_timeouts/key_value_store_timeouts.dart';
 
 /// The set of arguments for KeyValueStore.
 class KeyValueStoreArgs {
   /// Comment.
-  final Input<String>? comment;
+  final pulumi.Input<String>? comment;
 
   /// Unique name for your CloudFront KeyValueStore.
   ///
   /// The following arguments are optional:
-  final Input<String>? name;
-  final Input<KeyValueStoreTimeouts>? timeouts;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<KeyValueStoreTimeouts>? timeouts;
 
   KeyValueStoreArgs({
     this.comment,
@@ -32,7 +32,8 @@ class KeyValueStoreArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<KeyValueStoreTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
+          KeyValueStoreTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
@@ -40,9 +41,10 @@ class KeyValueStoreArgs {
 
   factory KeyValueStoreArgs.fromMap(Map<String, dynamic> map) {
     return KeyValueStoreArgs(
-      comment: Input.asOptionalInput<String>(map['comment']),
-      name: Input.asOptionalInput<String>(map['name']),
-      timeouts: Input.asOptionalInput<KeyValueStoreTimeouts>(map['timeouts']),
+      comment: pulumi.Input.asOptionalInput<String>(map['comment']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      timeouts:
+          pulumi.Input.asOptionalInput<KeyValueStoreTimeouts>(map['timeouts']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_attachments_filter/get_attachments_filter.dart';
 
 /// Result data returned by getAttachments.
@@ -28,7 +28,7 @@ class GetAttachmentsResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetAttachmentsFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetAttachmentsFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -42,7 +42,7 @@ class GetAttachmentsResult {
     return GetAttachmentsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetAttachmentsFilter>(
+          : pulumi.Input.decodeList<GetAttachmentsFilter>(
               map['filters'],
               (value) => GetAttachmentsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

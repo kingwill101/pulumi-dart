@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_fulfillment_code_hook_fulfillment_updates_specification_start_response_message_group/v2models_intent_fulfillment_code_hook_fulfillment_updates_specification_start_response_message_group.dart';
 
 class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponse {
@@ -33,7 +33,7 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartRespo
     }
     final messageGroupsValue = messageGroups;
     if (messageGroupsValue != null) {
-      map['messageGroups'] = Input.encodeList<
+      map['messageGroups'] = pulumi.Input.encodeList<
           V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponseMessageGroup,
           Map<String, dynamic>>(messageGroupsValue, (value) => value.toMap());
     }
@@ -49,7 +49,7 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartRespo
           map['delayInSeconds'] == null ? null : map['delayInSeconds'] as int,
       messageGroups: map['messageGroups'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponseMessageGroup>(
               map['messageGroups'],
               (value) =>

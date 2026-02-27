@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_prefix_list_filter/get_prefix_list_filter.dart';
 
 /// Result data returned by getPrefixList.
@@ -32,7 +32,7 @@ class GetPrefixListResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetPrefixListFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetPrefixListFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -50,7 +50,7 @@ class GetPrefixListResult {
       cidrBlocks: (map['cidrBlocks'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetPrefixListFilter>(
+          : pulumi.Input.decodeList<GetPrefixListFilter>(
               map['filters'],
               (value) => GetPrefixListFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

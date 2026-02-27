@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'static_ip_attachment_args.dart';
 
 /// Manages a static IP address attachment - relationship between a Lightsail static IP and Lightsail instance.
@@ -18,30 +18,30 @@ import 'static_ip_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:lightsail/staticIpAttachment:StaticIpAttachment example example-static-ip
 /// ```
-class StaticIpAttachment extends CustomResource {
+class StaticIpAttachment extends pulumi.CustomResource {
   /// Name of the Lightsail instance to attach the IP to.
-  late final Output<String> instanceName;
+  late final pulumi.Output<String> instanceName;
 
   /// Allocated static IP address.
-  late final Output<String> ipAddress;
+  late final pulumi.Output<String> ipAddress;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Name of the allocated static IP.
   ///
   /// The following arguments are optional:
-  late final Output<String> staticIpName;
+  late final pulumi.Output<String> staticIpName;
 
   StaticIpAttachment(
     String name, {
     StaticIpAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lightsail/staticIpAttachment:StaticIpAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.instanceName = registerOutput<String>('instanceName');
     this.ipAddress = registerOutput<String>('ipAddress');

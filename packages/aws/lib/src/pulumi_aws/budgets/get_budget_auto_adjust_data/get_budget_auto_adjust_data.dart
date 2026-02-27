@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_budget_auto_adjust_data_historical_option/get_budget_auto_adjust_data_historical_option.dart';
 
 class GetBudgetAutoAdjustData {
@@ -22,7 +22,7 @@ class GetBudgetAutoAdjustData {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['autoAdjustType'] = autoAdjustType;
-    map['historicalOptions'] = Input.encodeList<
+    map['historicalOptions'] = pulumi.Input.encodeList<
         GetBudgetAutoAdjustDataHistoricalOption,
         Map<String, dynamic>>(historicalOptions, (value) => value.toMap());
     map['lastAutoAdjustTime'] = lastAutoAdjustTime;
@@ -33,7 +33,7 @@ class GetBudgetAutoAdjustData {
     return GetBudgetAutoAdjustData(
       autoAdjustType: map['autoAdjustType'] as String,
       historicalOptions:
-          Input.decodeList<GetBudgetAutoAdjustDataHistoricalOption>(
+          pulumi.Input.decodeList<GetBudgetAutoAdjustDataHistoricalOption>(
               map['historicalOptions'],
               (value) => GetBudgetAutoAdjustDataHistoricalOption.fromMap(
                   (value as Map).cast<String, dynamic>())),

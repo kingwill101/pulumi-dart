@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../model_card_export_job_export_artifact/model_card_export_job_export_artifact.dart';
 import '../model_card_export_job_output_config/model_card_export_job_output_config.dart';
 import '../model_card_export_job_timeouts/model_card_export_job_timeouts.dart';
@@ -19,36 +19,37 @@ import 'model_card_export_job_args.dart';
 /// ```sh
 /// $ pulumi import aws:sagemaker/modelCardExportJob:ModelCardExportJob example arn:aws:sagemaker:us-west-2:123456789012:model-card/my-model-card/export-job/my-model-card-export-job
 /// ```
-class ModelCardExportJob extends CustomResource {
+class ModelCardExportJob extends pulumi.CustomResource {
   /// Exported model card artifacts.
-  late final Output<List<ModelCardExportJobExportArtifact>> exportArtifacts;
+  late final pulumi.Output<List<ModelCardExportJobExportArtifact>>
+      exportArtifacts;
 
   /// The Amazon Resource Name (ARN) of the model card export job.
-  late final Output<String> modelCardExportJobArn;
+  late final pulumi.Output<String> modelCardExportJobArn;
 
   /// Name of the model card export job.
-  late final Output<String> modelCardExportJobName;
+  late final pulumi.Output<String> modelCardExportJobName;
 
   /// Name of the model card.
-  late final Output<String> modelCardName;
-  late final Output<int> modelCardVersion;
+  late final pulumi.Output<String> modelCardName;
+  late final pulumi.Output<int> modelCardVersion;
 
   /// Export output details. Fields are documented below.
-  late final Output<ModelCardExportJobOutputConfig> outputConfig;
+  late final pulumi.Output<ModelCardExportJobOutputConfig> outputConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration
-  late final Output<String> region;
-  late final Output<ModelCardExportJobTimeouts?> timeouts;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<ModelCardExportJobTimeouts?> timeouts;
 
   ModelCardExportJob(
     String name, {
     ModelCardExportJobArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sagemaker/modelCardExportJob:ModelCardExportJob',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.exportArtifacts =
         registerOutput<List<ModelCardExportJobExportArtifact>>(

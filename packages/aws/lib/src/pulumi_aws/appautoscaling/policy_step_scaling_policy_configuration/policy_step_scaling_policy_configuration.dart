@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../policy_step_scaling_policy_configuration_step_adjustment/policy_step_scaling_policy_configuration_step_adjustment.dart';
 
 class PolicyStepScalingPolicyConfiguration {
@@ -48,7 +48,7 @@ class PolicyStepScalingPolicyConfiguration {
     }
     final stepAdjustmentsValue = stepAdjustments;
     if (stepAdjustmentsValue != null) {
-      map['stepAdjustments'] = Input.encodeList<
+      map['stepAdjustments'] = pulumi.Input.encodeList<
           PolicyStepScalingPolicyConfigurationStepAdjustment,
           Map<String, dynamic>>(stepAdjustmentsValue, (value) => value.toMap());
     }
@@ -70,7 +70,7 @@ class PolicyStepScalingPolicyConfiguration {
           : map['minAdjustmentMagnitude'] as int,
       stepAdjustments: map['stepAdjustments'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PolicyStepScalingPolicyConfigurationStepAdjustment>(
               map['stepAdjustments'],
               (value) =>

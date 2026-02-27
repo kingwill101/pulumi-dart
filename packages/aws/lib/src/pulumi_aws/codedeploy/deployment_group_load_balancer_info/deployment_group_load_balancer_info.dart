@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../deployment_group_load_balancer_info_elb_info/deployment_group_load_balancer_info_elb_info.dart';
 import '../deployment_group_load_balancer_info_target_group_info/deployment_group_load_balancer_info_target_group_info.dart';
 import '../deployment_group_load_balancer_info_target_group_pair_info/deployment_group_load_balancer_info_target_group_pair_info.dart';
@@ -25,12 +25,13 @@ class DeploymentGroupLoadBalancerInfo {
     final map = <String, dynamic>{};
     final elbInfosValue = elbInfos;
     if (elbInfosValue != null) {
-      map['elbInfos'] = Input.encodeList<DeploymentGroupLoadBalancerInfoElbInfo,
+      map['elbInfos'] = pulumi.Input.encodeList<
+          DeploymentGroupLoadBalancerInfoElbInfo,
           Map<String, dynamic>>(elbInfosValue, (value) => value.toMap());
     }
     final targetGroupInfosValue = targetGroupInfos;
     if (targetGroupInfosValue != null) {
-      map['targetGroupInfos'] = Input.encodeList<
+      map['targetGroupInfos'] = pulumi.Input.encodeList<
               DeploymentGroupLoadBalancerInfoTargetGroupInfo,
               Map<String, dynamic>>(
           targetGroupInfosValue, (value) => value.toMap());
@@ -46,13 +47,14 @@ class DeploymentGroupLoadBalancerInfo {
     return DeploymentGroupLoadBalancerInfo(
       elbInfos: map['elbInfos'] == null
           ? null
-          : Input.decodeList<DeploymentGroupLoadBalancerInfoElbInfo>(
+          : pulumi.Input.decodeList<DeploymentGroupLoadBalancerInfoElbInfo>(
               map['elbInfos'],
               (value) => DeploymentGroupLoadBalancerInfoElbInfo.fromMap(
                   (value as Map).cast<String, dynamic>())),
       targetGroupInfos: map['targetGroupInfos'] == null
           ? null
-          : Input.decodeList<DeploymentGroupLoadBalancerInfoTargetGroupInfo>(
+          : pulumi.Input.decodeList<
+                  DeploymentGroupLoadBalancerInfoTargetGroupInfo>(
               map['targetGroupInfos'],
               (value) => DeploymentGroupLoadBalancerInfoTargetGroupInfo.fromMap(
                   (value as Map).cast<String, dynamic>())),

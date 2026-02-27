@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_initial_response_setting_next_step_intent_slot/v2models_intent_initial_response_setting_next_step_intent_slot.dart';
 
 class V2modelsIntentInitialResponseSettingNextStepIntent {
@@ -23,7 +23,7 @@ class V2modelsIntentInitialResponseSettingNextStepIntent {
     }
     final slotsValue = slots;
     if (slotsValue != null) {
-      map['slots'] = Input.encodeList<
+      map['slots'] = pulumi.Input.encodeList<
           V2modelsIntentInitialResponseSettingNextStepIntentSlot,
           Map<String, dynamic>>(slotsValue, (value) => value.toMap());
     }
@@ -36,7 +36,7 @@ class V2modelsIntentInitialResponseSettingNextStepIntent {
       name: map['name'] == null ? null : map['name'] as String,
       slots: map['slots'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsIntentInitialResponseSettingNextStepIntentSlot>(
               map['slots'],
               (value) => V2modelsIntentInitialResponseSettingNextStepIntentSlot

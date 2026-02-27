@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getConstraint.
 class GetConstraintArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  final Input<String>? acceptLanguage;
+  final pulumi.Input<String>? acceptLanguage;
 
   /// Description of the constraint.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Constraint identifier.
   ///
   /// The following arguments are optional:
-  final Input<String> id;
+  final pulumi.Input<String> id;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetConstraintArgs({
     this.acceptLanguage,
@@ -45,10 +45,11 @@ class GetConstraintArgs {
 
   factory GetConstraintArgs.fromMap(Map<String, dynamic> map) {
     return GetConstraintArgs(
-      acceptLanguage: Input.asOptionalInput<String>(map['acceptLanguage']),
-      description: Input.asOptionalInput<String>(map['description']),
-      id: Input.asInput<String>(map['id']),
-      region: Input.asOptionalInput<String>(map['region']),
+      acceptLanguage:
+          pulumi.Input.asOptionalInput<String>(map['acceptLanguage']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      id: pulumi.Input.asInput<String>(map['id']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

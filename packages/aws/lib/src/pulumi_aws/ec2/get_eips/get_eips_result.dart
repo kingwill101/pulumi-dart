@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_eips_filter/get_eips_filter.dart';
 
 /// Result data returned by getEips.
@@ -31,8 +31,9 @@ class GetEipsResult {
     map['allocationIds'] = allocationIds;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetEipsFilter, Map<String, dynamic>>(
-          filtersValue, (value) => value.toMap());
+      map['filters'] =
+          pulumi.Input.encodeList<GetEipsFilter, Map<String, dynamic>>(
+              filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['publicIps'] = publicIps;
@@ -49,7 +50,7 @@ class GetEipsResult {
       allocationIds: (map['allocationIds'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetEipsFilter>(
+          : pulumi.Input.decodeList<GetEipsFilter>(
               map['filters'],
               (value) => GetEipsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'probe_args.dart';
 
 /// Resource for managing an AWS Network Monitor Probe.
@@ -16,50 +16,50 @@ import 'probe_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkmonitor/probe:Probe example monitor-7786087912324693644,probe-3qm8p693i4fi1h8lqylzkbp42e
 /// ```
-class Probe extends CustomResource {
-  late final Output<String> addressFamily;
+class Probe extends pulumi.CustomResource {
+  late final pulumi.Output<String> addressFamily;
 
   /// The ARN of the attachment.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The destination IP address. This must be either IPV4 or IPV6.
-  late final Output<String> destination;
+  late final pulumi.Output<String> destination;
 
   /// The port associated with the destination. This is required only if the protocol is TCP and must be a number between 1 and 65536.
-  late final Output<int?> destinationPort;
+  late final pulumi.Output<int?> destinationPort;
 
   /// The name of the monitor.
-  late final Output<String> monitorName;
+  late final pulumi.Output<String> monitorName;
 
   /// The size of the packets sent between the source and destination. This must be a number between 56 and 8500.
-  late final Output<int> packetSize;
-  late final Output<String> probeId;
+  late final pulumi.Output<int> packetSize;
+  late final pulumi.Output<String> probeId;
 
   /// The protocol used for the network traffic between the source and destination. This must be either TCP or ICMP.
-  late final Output<String> protocol;
+  late final pulumi.Output<String> protocol;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ARN of the subnet.
-  late final Output<String> sourceArn;
+  late final pulumi.Output<String> sourceArn;
 
   /// Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<String> vpcId;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<String> vpcId;
 
   Probe(
     String name, {
     ProbeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkmonitor/probe:Probe',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.addressFamily = registerOutput<String>('addressFamily');
     this.arn = registerOutput<String>('arn');

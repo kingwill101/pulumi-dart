@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_dev_environment_repository/get_dev_environment_repository.dart';
 
 /// Arguments for getDevEnvironment.
 class GetDevEnvironmentArgs {
   /// The user-specified alias for the Dev Environment.
-  final Input<String>? alias;
+  final pulumi.Input<String>? alias;
 
   /// The system-generated unique ID of the user who created the Dev Environment.
-  final Input<String>? creatorId;
+  final pulumi.Input<String>? creatorId;
 
   /// - (Required) The system-generated unique ID of the Dev Environment for which you want to view information. To retrieve a list of Dev Environment IDs, use [ListDevEnvironments](https://docs.aws.amazon.com/codecatalyst/latest/APIReference/API_ListDevEnvironments.html).
-  final Input<String> envId;
+  final pulumi.Input<String> envId;
 
   /// The name of the project in the space.
-  final Input<String> projectName;
+  final pulumi.Input<String> projectName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The source repository that contains the branch to clone into the Dev Environment.
-  final Input<List<GetDevEnvironmentRepository>>? repositories;
+  final pulumi.Input<List<GetDevEnvironmentRepository>>? repositories;
 
   /// The name of the space.
-  final Input<String> spaceName;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<String> spaceName;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetDevEnvironmentArgs({
     this.alias,
@@ -56,10 +56,10 @@ class GetDevEnvironmentArgs {
     }
     final repositoriesValue = repositories;
     if (repositoriesValue != null) {
-      map['repositories'] = Input.mapOptionalInputValue<
+      map['repositories'] = pulumi.Input.mapOptionalInputValue<
               List<GetDevEnvironmentRepository>, List<Map<String, dynamic>>>(
           repositoriesValue,
-          (value) => Input.encodeList<GetDevEnvironmentRepository,
+          (value) => pulumi.Input.encodeList<GetDevEnvironmentRepository,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['spaceName'] = spaceName;
@@ -72,15 +72,16 @@ class GetDevEnvironmentArgs {
 
   factory GetDevEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetDevEnvironmentArgs(
-      alias: Input.asOptionalInput<String>(map['alias']),
-      creatorId: Input.asOptionalInput<String>(map['creatorId']),
-      envId: Input.asInput<String>(map['envId']),
-      projectName: Input.asInput<String>(map['projectName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      repositories: Input.asOptionalInput<List<GetDevEnvironmentRepository>>(
-          map['repositories']),
-      spaceName: Input.asInput<String>(map['spaceName']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      alias: pulumi.Input.asOptionalInput<String>(map['alias']),
+      creatorId: pulumi.Input.asOptionalInput<String>(map['creatorId']),
+      envId: pulumi.Input.asInput<String>(map['envId']),
+      projectName: pulumi.Input.asInput<String>(map['projectName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      repositories:
+          pulumi.Input.asOptionalInput<List<GetDevEnvironmentRepository>>(
+              map['repositories']),
+      spaceName: pulumi.Input.asInput<String>(map['spaceName']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

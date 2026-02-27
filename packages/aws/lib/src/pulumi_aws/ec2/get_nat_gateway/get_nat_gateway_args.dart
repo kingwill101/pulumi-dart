@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_nat_gateway_filter/get_nat_gateway_filter.dart';
 
 /// Arguments for getNatGateway.
@@ -10,26 +10,26 @@ class GetNatGatewayArgs {
   /// The arguments of this data source act as filters for querying the available
   /// NAT Gateways in the current Region. The given filters must match exactly one
   /// NAT Gateway whose data will be exported as attributes.
-  final Input<List<GetNatGatewayFilter>>? filters;
+  final pulumi.Input<List<GetNatGatewayFilter>>? filters;
 
   /// ID of the specific NAT Gateway to retrieve.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// State of the NAT Gateway (pending | failed | available | deleting | deleted ).
-  final Input<String>? state;
+  final pulumi.Input<String>? state;
 
   /// ID of subnet that the NAT Gateway resides in.
-  final Input<String>? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired NAT Gateway.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// ID of the VPC that the NAT Gateway resides in.
-  final Input<String>? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   GetNatGatewayArgs({
     this.filters,
@@ -45,12 +45,11 @@ class GetNatGatewayArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetNatGatewayFilter>,
-              List<Map<String, dynamic>>>(
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
+              List<GetNatGatewayFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetNatGatewayFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetNatGatewayFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final idValue = id;
     if (idValue != null) {
@@ -81,13 +80,14 @@ class GetNatGatewayArgs {
 
   factory GetNatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetNatGatewayArgs(
-      filters: Input.asOptionalInput<List<GetNatGatewayFilter>>(map['filters']),
-      id: Input.asOptionalInput<String>(map['id']),
-      region: Input.asOptionalInput<String>(map['region']),
-      state: Input.asOptionalInput<String>(map['state']),
-      subnetId: Input.asOptionalInput<String>(map['subnetId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vpcId: Input.asOptionalInput<String>(map['vpcId']),
+      filters: pulumi.Input.asOptionalInput<List<GetNatGatewayFilter>>(
+          map['filters']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      state: pulumi.Input.asOptionalInput<String>(map['state']),
+      subnetId: pulumi.Input.asOptionalInput<String>(map['subnetId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpcId: pulumi.Input.asOptionalInput<String>(map['vpcId']),
     );
   }
 }

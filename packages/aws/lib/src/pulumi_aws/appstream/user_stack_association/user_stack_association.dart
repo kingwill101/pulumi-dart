@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_stack_association_args.dart';
 
 /// Manages an AppStream User Stack association.
@@ -14,33 +14,33 @@ import 'user_stack_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:appstream/userStackAssociation:UserStackAssociation example userName/auhtenticationType/stackName
 /// ```
-class UserStackAssociation extends CustomResource {
+class UserStackAssociation extends pulumi.CustomResource {
   /// Authentication type for the user.
-  late final Output<String> authenticationType;
+  late final pulumi.Output<String> authenticationType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Whether a welcome email is sent to a user after the user is created in the user pool.
-  late final Output<bool?> sendEmailNotification;
+  late final pulumi.Output<bool?> sendEmailNotification;
 
   /// Name of the stack that is associated with the user.
-  late final Output<String> stackName;
+  late final pulumi.Output<String> stackName;
 
   /// Email address of the user who is associated with the stack.
   ///
   /// The following arguments are optional:
-  late final Output<String> userName;
+  late final pulumi.Output<String> userName;
 
   UserStackAssociation(
     String name, {
     UserStackAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:appstream/userStackAssociation:UserStackAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.authenticationType = registerOutput<String>('authenticationType');
     this.region = registerOutput<String>('region');

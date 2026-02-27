@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'main_route_table_association_args.dart';
 
 /// Provides a resource for managing the main routing table of a VPC.
@@ -18,29 +18,29 @@ import 'main_route_table_association_args.dart';
 /// this original table as the Main Route Table for the VPC. You'll see this
 /// additional Route Table in the AWS console; it must remain intact in order for
 /// the `main_route_table_association` delete to work properly.
-class MainRouteTableAssociation extends CustomResource {
+class MainRouteTableAssociation extends pulumi.CustomResource {
   /// Used internally, see **Notes** below
-  late final Output<String> originalRouteTableId;
+  late final pulumi.Output<String> originalRouteTableId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the Route Table to set as the new
   /// main route table for the target VPC
-  late final Output<String> routeTableId;
+  late final pulumi.Output<String> routeTableId;
 
   /// The ID of the VPC whose main route table should be set
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   MainRouteTableAssociation(
     String name, {
     MainRouteTableAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/mainRouteTableAssociation:MainRouteTableAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.originalRouteTableId = registerOutput<String>('originalRouteTableId');
     this.region = registerOutput<String>('region');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_data_set_logical_table_map_source_join_instruction_left_join_key_property/get_data_set_logical_table_map_source_join_instruction_left_join_key_property.dart';
 import '../get_data_set_logical_table_map_source_join_instruction_right_join_key_property/get_data_set_logical_table_map_source_join_instruction_right_join_key_property.dart';
 
@@ -25,12 +25,12 @@ class GetDataSetLogicalTableMapSourceJoinInstruction {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['leftJoinKeyProperties'] = Input.encodeList<
+    map['leftJoinKeyProperties'] = pulumi.Input.encodeList<
         GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty,
         Map<String, dynamic>>(leftJoinKeyProperties, (value) => value.toMap());
     map['leftOperand'] = leftOperand;
     map['onClause'] = onClause;
-    map['rightJoinKeyProperties'] = Input.encodeList<
+    map['rightJoinKeyProperties'] = pulumi.Input.encodeList<
         GetDataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperty,
         Map<String, dynamic>>(rightJoinKeyProperties, (value) => value.toMap());
     map['rightOperand'] = rightOperand;
@@ -41,7 +41,7 @@ class GetDataSetLogicalTableMapSourceJoinInstruction {
   factory GetDataSetLogicalTableMapSourceJoinInstruction.fromMap(
       Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapSourceJoinInstruction(
-      leftJoinKeyProperties: Input.decodeList<
+      leftJoinKeyProperties: pulumi.Input.decodeList<
               GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty>(
           map['leftJoinKeyProperties'],
           (value) =>
@@ -49,7 +49,7 @@ class GetDataSetLogicalTableMapSourceJoinInstruction {
                   .fromMap((value as Map).cast<String, dynamic>())),
       leftOperand: map['leftOperand'] as String,
       onClause: map['onClause'] as String,
-      rightJoinKeyProperties: Input.decodeList<
+      rightJoinKeyProperties: pulumi.Input.decodeList<
               GetDataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperty>(
           map['rightJoinKeyProperties'],
           (value) =>

@@ -1,45 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../remediation_configuration_execution_controls/remediation_configuration_execution_controls.dart';
 import '../remediation_configuration_parameter/remediation_configuration_parameter.dart';
 
 /// The set of arguments for RemediationConfiguration.
 class RemediationConfigurationArgs {
   /// Remediation is triggered automatically if `true`.
-  final Input<bool>? automatic;
+  final pulumi.Input<bool>? automatic;
 
   /// Name of the AWS Config rule.
-  final Input<String> configRuleName;
+  final pulumi.Input<String> configRuleName;
 
   /// Configuration block for execution controls. See below.
-  final Input<RemediationConfigurationExecutionControls>? executionControls;
+  final pulumi.Input<RemediationConfigurationExecutionControls>?
+      executionControls;
 
   /// Maximum number of failed attempts for auto-remediation. If you do not select a number, the default is 5.
-  final Input<int>? maximumAutomaticAttempts;
+  final pulumi.Input<int>? maximumAutomaticAttempts;
 
   /// Can be specified multiple times for each parameter. Each parameter block supports arguments below.
-  final Input<List<RemediationConfigurationParameter>>? parameters;
+  final pulumi.Input<List<RemediationConfigurationParameter>>? parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Type of resource.
-  final Input<String>? resourceType;
+  final pulumi.Input<String>? resourceType;
 
   /// Maximum time in seconds that AWS Config runs auto-remediation. If you do not select a number, the default is 60 seconds.
-  final Input<int>? retryAttemptSeconds;
+  final pulumi.Input<int>? retryAttemptSeconds;
 
   /// Target ID is the name of the public document.
-  final Input<String> targetId;
+  final pulumi.Input<String> targetId;
 
   /// Type of the target. Target executes remediation. For example, SSM document.
   ///
   /// The following arguments are optional:
-  final Input<String> targetType;
+  final pulumi.Input<String> targetType;
 
   /// Version of the target. For example, version of the SSM document
-  final Input<String>? targetVersion;
+  final pulumi.Input<String>? targetVersion;
 
   RemediationConfigurationArgs({
     this.automatic,
@@ -64,7 +65,7 @@ class RemediationConfigurationArgs {
     map['configRuleName'] = configRuleName;
     final executionControlsValue = executionControls;
     if (executionControlsValue != null) {
-      map['executionControls'] = Input.mapOptionalInputValue<
+      map['executionControls'] = pulumi.Input.mapOptionalInputValue<
               RemediationConfigurationExecutionControls, Map<String, dynamic>>(
           executionControlsValue, (value) => value.toMap());
     }
@@ -74,11 +75,11 @@ class RemediationConfigurationArgs {
     }
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.mapOptionalInputValue<
+      map['parameters'] = pulumi.Input.mapOptionalInputValue<
               List<RemediationConfigurationParameter>,
               List<Map<String, dynamic>>>(
           parametersValue,
-          (value) => Input.encodeList<RemediationConfigurationParameter,
+          (value) => pulumi.Input.encodeList<RemediationConfigurationParameter,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final regionValue = region;
@@ -104,23 +105,22 @@ class RemediationConfigurationArgs {
 
   factory RemediationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return RemediationConfigurationArgs(
-      automatic: Input.asOptionalInput<bool>(map['automatic']),
-      configRuleName: Input.asInput<String>(map['configRuleName']),
-      executionControls:
-          Input.asOptionalInput<RemediationConfigurationExecutionControls>(
-              map['executionControls']),
+      automatic: pulumi.Input.asOptionalInput<bool>(map['automatic']),
+      configRuleName: pulumi.Input.asInput<String>(map['configRuleName']),
+      executionControls: pulumi.Input.asOptionalInput<
+          RemediationConfigurationExecutionControls>(map['executionControls']),
       maximumAutomaticAttempts:
-          Input.asOptionalInput<int>(map['maximumAutomaticAttempts']),
+          pulumi.Input.asOptionalInput<int>(map['maximumAutomaticAttempts']),
       parameters:
-          Input.asOptionalInput<List<RemediationConfigurationParameter>>(
+          pulumi.Input.asOptionalInput<List<RemediationConfigurationParameter>>(
               map['parameters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      resourceType: Input.asOptionalInput<String>(map['resourceType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourceType: pulumi.Input.asOptionalInput<String>(map['resourceType']),
       retryAttemptSeconds:
-          Input.asOptionalInput<int>(map['retryAttemptSeconds']),
-      targetId: Input.asInput<String>(map['targetId']),
-      targetType: Input.asInput<String>(map['targetType']),
-      targetVersion: Input.asOptionalInput<String>(map['targetVersion']),
+          pulumi.Input.asOptionalInput<int>(map['retryAttemptSeconds']),
+      targetId: pulumi.Input.asInput<String>(map['targetId']),
+      targetType: pulumi.Input.asInput<String>(map['targetType']),
+      targetVersion: pulumi.Input.asOptionalInput<String>(map['targetVersion']),
     );
   }
 }

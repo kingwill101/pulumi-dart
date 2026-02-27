@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_prompt_specification_message_group_message/v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_prompt_specification_message_group_message.dart';
 import '../v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_prompt_specification_message_group_variation/v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_prompt_specification_message_group_variation.dart';
 
@@ -30,7 +30,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
     }
     final variationsValue = variations;
     if (variationsValue != null) {
-      map['variations'] = Input.encodeList<
+      map['variations'] = pulumi.Input.encodeList<
           V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupVariation,
           Map<String, dynamic>>(variationsValue, (value) => value.toMap());
     }
@@ -46,7 +46,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
               .fromMap((map['message'] as Map).cast<String, dynamic>()),
       variations: map['variations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupVariation>(
               map['variations'],
               (value) =>

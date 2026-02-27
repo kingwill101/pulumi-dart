@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multitenant_distribution_default_cache_behavior_allowed_methods/multitenant_distribution_default_cache_behavior_allowed_methods.dart';
 import '../multitenant_distribution_default_cache_behavior_function_association/multitenant_distribution_default_cache_behavior_function_association.dart';
 import '../multitenant_distribution_default_cache_behavior_lambda_function_association/multitenant_distribution_default_cache_behavior_lambda_function_association.dart';
@@ -80,14 +80,14 @@ class MultitenantDistributionDefaultCacheBehavior {
     }
     final functionAssociationsValue = functionAssociations;
     if (functionAssociationsValue != null) {
-      map['functionAssociations'] = Input.encodeList<
+      map['functionAssociations'] = pulumi.Input.encodeList<
               MultitenantDistributionDefaultCacheBehaviorFunctionAssociation,
               Map<String, dynamic>>(
           functionAssociationsValue, (value) => value.toMap());
     }
     final lambdaFunctionAssociationsValue = lambdaFunctionAssociations;
     if (lambdaFunctionAssociationsValue != null) {
-      map['lambdaFunctionAssociations'] = Input.encodeList<
+      map['lambdaFunctionAssociations'] = pulumi.Input.encodeList<
               MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation,
               Map<String, dynamic>>(
           lambdaFunctionAssociationsValue, (value) => value.toMap());
@@ -127,7 +127,7 @@ class MultitenantDistributionDefaultCacheBehavior {
           : map['fieldLevelEncryptionId'] as String,
       functionAssociations: map['functionAssociations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   MultitenantDistributionDefaultCacheBehaviorFunctionAssociation>(
               map['functionAssociations'],
               (value) =>
@@ -135,7 +135,7 @@ class MultitenantDistributionDefaultCacheBehavior {
                       .fromMap((value as Map).cast<String, dynamic>())),
       lambdaFunctionAssociations: map['lambdaFunctionAssociations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation>(
               map['lambdaFunctionAssociations'],
               (value) =>

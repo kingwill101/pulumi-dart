@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VpcEndpointServiceAllowedPrinciple.
 class VpcEndpointServiceAllowedPrincipleArgs {
   /// The ARN of the principal to allow permissions.
-  final Input<String> principalArn;
+  final pulumi.Input<String> principalArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of the VPC endpoint service to allow permission.
-  final Input<String> vpcEndpointServiceId;
+  final pulumi.Input<String> vpcEndpointServiceId;
 
   VpcEndpointServiceAllowedPrincipleArgs({
     required this.principalArn,
@@ -33,9 +33,10 @@ class VpcEndpointServiceAllowedPrincipleArgs {
   factory VpcEndpointServiceAllowedPrincipleArgs.fromMap(
       Map<String, dynamic> map) {
     return VpcEndpointServiceAllowedPrincipleArgs(
-      principalArn: Input.asInput<String>(map['principalArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      vpcEndpointServiceId: Input.asInput<String>(map['vpcEndpointServiceId']),
+      principalArn: pulumi.Input.asInput<String>(map['principalArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      vpcEndpointServiceId:
+          pulumi.Input.asInput<String>(map['vpcEndpointServiceId']),
     );
   }
 }

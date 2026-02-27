@@ -1,3 +1,3 @@
 library module_opensearch_domain_cluster_config;
 
-export 'domain_cluster_config/domain_cluster_config2.dart';
+export 'domain_cluster_config/domain_cluster_config_opensearch.dart';

@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ModelPackageGroupPolicy.
 class ModelPackageGroupPolicyArgs {
   /// The name of the model package group.
-  final Input<String> modelPackageGroupName;
+  final pulumi.Input<String> modelPackageGroupName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
-  final Input<String> resourcePolicy;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<String> resourcePolicy;
 
   ModelPackageGroupPolicyArgs({
     required this.modelPackageGroupName,
@@ -31,9 +31,9 @@ class ModelPackageGroupPolicyArgs {
   factory ModelPackageGroupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ModelPackageGroupPolicyArgs(
       modelPackageGroupName:
-          Input.asInput<String>(map['modelPackageGroupName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      resourcePolicy: Input.asInput<String>(map['resourcePolicy']),
+          pulumi.Input.asInput<String>(map['modelPackageGroupName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourcePolicy: pulumi.Input.asInput<String>(map['resourcePolicy']),
     );
   }
 }

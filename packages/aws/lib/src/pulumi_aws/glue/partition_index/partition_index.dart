@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../partition_index_partition_index/partition_index_partition_index.dart';
 import 'partition_index_args.dart';
 
@@ -13,31 +13,31 @@ import 'partition_index_args.dart';
 /// ```sh
 /// $ pulumi import aws:glue/partitionIndex:PartitionIndex example 123456789012:MyDatabase:MyTable:index-name
 /// ```
-class PartitionIndex extends CustomResource {
+class PartitionIndex extends pulumi.CustomResource {
   /// The catalog ID where the table resides.
-  late final Output<String> catalogId;
+  late final pulumi.Output<String> catalogId;
 
   /// Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
-  late final Output<String> databaseName;
+  late final pulumi.Output<String> databaseName;
 
   /// Configuration block for a partition index. See `partition_index` below.
-  late final Output<PartitionIndexPartitionIndex> partitionIndex;
+  late final pulumi.Output<PartitionIndexPartitionIndex> partitionIndex;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Name of the table. For Hive compatibility, this must be entirely lowercase.
-  late final Output<String> tableName;
+  late final pulumi.Output<String> tableName;
 
   PartitionIndex(
     String name, {
     PartitionIndexArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:glue/partitionIndex:PartitionIndex',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.catalogId = registerOutput<String>('catalogId');
     this.databaseName = registerOutput<String>('databaseName');

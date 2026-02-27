@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_cluster_certificate/get_cluster_cluster_certificate.dart';
 
 /// Result data returned by getCluster.
@@ -36,9 +36,9 @@ class GetClusterResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['clusterCertificates'] =
-        Input.encodeList<GetClusterClusterCertificate, Map<String, dynamic>>(
-            clusterCertificates, (value) => value.toMap());
+    map['clusterCertificates'] = pulumi.Input.encodeList<
+        GetClusterClusterCertificate,
+        Map<String, dynamic>>(clusterCertificates, (value) => value.toMap());
     map['clusterId'] = clusterId;
     map['clusterState'] = clusterState;
     map['id'] = id;
@@ -51,10 +51,11 @@ class GetClusterResult {
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
-      clusterCertificates: Input.decodeList<GetClusterClusterCertificate>(
-          map['clusterCertificates'],
-          (value) => GetClusterClusterCertificate.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      clusterCertificates:
+          pulumi.Input.decodeList<GetClusterClusterCertificate>(
+              map['clusterCertificates'],
+              (value) => GetClusterClusterCertificate.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       clusterId: map['clusterId'] as String,
       clusterState: map['clusterState'] as String,
       id: map['id'] as String,

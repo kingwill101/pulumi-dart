@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../view_data_filter_expression/view_data_filter_expression.dart';
 import '../view_timeouts/view_timeouts.dart';
 
 /// The set of arguments for View.
 class ViewArgs {
   /// Filter Cost Explorer APIs using the expression. Refer to the data-filter-expression block documentation for more details.
-  final Input<ViewDataFilterExpression>? dataFilterExpression;
+  final pulumi.Input<ViewDataFilterExpression>? dataFilterExpression;
 
   /// Description of the custom billing view.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the custom billing view to be created.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// List of ARNs of the source data views for the custom billing view.
   ///
   /// The following arguments are optional:
-  final Input<List<String>>? sourceViews;
+  final pulumi.Input<List<String>>? sourceViews;
 
   /// List of key value map specifying tags associated to the billing view being created.
-  final Input<Map<String, String>>? tags;
-  final Input<ViewTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<ViewTimeouts>? timeouts;
 
   ViewArgs({
     this.dataFilterExpression,
@@ -37,7 +37,7 @@ class ViewArgs {
     final map = <String, dynamic>{};
     final dataFilterExpressionValue = dataFilterExpression;
     if (dataFilterExpressionValue != null) {
-      map['dataFilterExpression'] = Input.mapOptionalInputValue<
+      map['dataFilterExpression'] = pulumi.Input.mapOptionalInputValue<
               ViewDataFilterExpression, Map<String, dynamic>>(
           dataFilterExpressionValue, (value) => value.toMap());
     }
@@ -59,22 +59,23 @@ class ViewArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] =
-          Input.mapOptionalInputValue<ViewTimeouts, Map<String, dynamic>>(
-              timeoutsValue, (value) => value.toMap());
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<ViewTimeouts,
+          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
   }
 
   factory ViewArgs.fromMap(Map<String, dynamic> map) {
     return ViewArgs(
-      dataFilterExpression: Input.asOptionalInput<ViewDataFilterExpression>(
-          map['dataFilterExpression']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      sourceViews: Input.asOptionalInput<List<String>>(map['sourceViews']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<ViewTimeouts>(map['timeouts']),
+      dataFilterExpression:
+          pulumi.Input.asOptionalInput<ViewDataFilterExpression>(
+              map['dataFilterExpression']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      sourceViews:
+          pulumi.Input.asOptionalInput<List<String>>(map['sourceViews']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<ViewTimeouts>(map['timeouts']),
     );
   }
 }

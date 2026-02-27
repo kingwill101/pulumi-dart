@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_task_definition_volume_efs_volume_configuration_authorization_config/get_task_definition_volume_efs_volume_configuration_authorization_config.dart';
 
 class GetTaskDefinitionVolumeEfsVolumeConfiguration {
@@ -30,7 +30,7 @@ class GetTaskDefinitionVolumeEfsVolumeConfiguration {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['authorizationConfigs'] = Input.encodeList<
+    map['authorizationConfigs'] = pulumi.Input.encodeList<
         GetTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig,
         Map<String, dynamic>>(authorizationConfigs, (value) => value.toMap());
     map['fileSystemId'] = fileSystemId;
@@ -43,7 +43,7 @@ class GetTaskDefinitionVolumeEfsVolumeConfiguration {
   factory GetTaskDefinitionVolumeEfsVolumeConfiguration.fromMap(
       Map<String, dynamic> map) {
     return GetTaskDefinitionVolumeEfsVolumeConfiguration(
-      authorizationConfigs: Input.decodeList<
+      authorizationConfigs: pulumi.Input.decodeList<
               GetTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig>(
           map['authorizationConfigs'],
           (value) =>

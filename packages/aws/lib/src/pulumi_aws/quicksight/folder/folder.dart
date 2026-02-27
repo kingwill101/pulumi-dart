@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../folder_permission/folder_permission.dart';
 import 'folder_args.dart';
 
@@ -25,57 +25,57 @@ import 'folder_args.dart';
 /// ```sh
 /// $ pulumi import aws:quicksight/folder:Folder example 123456789012,example-id
 /// ```
-class Folder extends CustomResource {
+class Folder extends pulumi.CustomResource {
   /// ARN of the folder.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  late final Output<String> awsAccountId;
+  late final pulumi.Output<String> awsAccountId;
 
   /// The time that the folder was created.
-  late final Output<String> createdTime;
+  late final pulumi.Output<String> createdTime;
 
   /// Identifier for the folder.
-  late final Output<String> folderId;
+  late final pulumi.Output<String> folderId;
 
   /// An array of ancestor ARN strings for the folder. Empty for root-level folders.
-  late final Output<List<String>> folderPaths;
+  late final pulumi.Output<List<String>> folderPaths;
 
   /// The type of folder. By default, it is `SHARED`. Valid values are: `SHARED`.
-  late final Output<String?> folderType;
+  late final pulumi.Output<String?> folderType;
 
   /// The time that the folder was last updated.
-  late final Output<String> lastUpdatedTime;
+  late final pulumi.Output<String> lastUpdatedTime;
 
   /// Display name for the folder.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Amazon Resource Name (ARN) for the parent folder. If not set, creates a root-level folder.
-  late final Output<String?> parentFolderArn;
+  late final pulumi.Output<String?> parentFolderArn;
 
   /// A set of resource permissions on the folder. Maximum of 64 items. See permissions.
-  late final Output<List<FolderPermission>?> permissions;
+  late final pulumi.Output<List<FolderPermission>?> permissions;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Folder(
     String name, {
     FolderArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:quicksight/folder:Folder',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.awsAccountId = registerOutput<String>('awsAccountId');

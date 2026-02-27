@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_slot_type_enumeration_value/get_slot_type_enumeration_value.dart';
 
 /// Result data returned by getSlotType.
@@ -57,9 +57,9 @@ class GetSlotTypeResult {
     map['checksum'] = checksum;
     map['createdDate'] = createdDate;
     map['description'] = description;
-    map['enumerationValues'] =
-        Input.encodeList<GetSlotTypeEnumerationValue, Map<String, dynamic>>(
-            enumerationValues, (value) => value.toMap());
+    map['enumerationValues'] = pulumi.Input.encodeList<
+        GetSlotTypeEnumerationValue,
+        Map<String, dynamic>>(enumerationValues, (value) => value.toMap());
     map['id'] = id;
     map['lastUpdatedDate'] = lastUpdatedDate;
     map['name'] = name;
@@ -77,7 +77,7 @@ class GetSlotTypeResult {
       checksum: map['checksum'] as String,
       createdDate: map['createdDate'] as String,
       description: map['description'] as String,
-      enumerationValues: Input.decodeList<GetSlotTypeEnumerationValue>(
+      enumerationValues: pulumi.Input.decodeList<GetSlotTypeEnumerationValue>(
           map['enumerationValues'],
           (value) => GetSlotTypeEnumerationValue.fromMap(
               (value as Map).cast<String, dynamic>())),

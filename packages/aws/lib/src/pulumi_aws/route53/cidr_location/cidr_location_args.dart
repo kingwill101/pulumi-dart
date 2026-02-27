@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for CidrLocation.
 class CidrLocationArgs {
   /// CIDR blocks for the location.
-  final Input<List<String>> cidrBlocks;
+  final pulumi.Input<List<String>> cidrBlocks;
 
   /// The ID of the CIDR collection to update.
-  final Input<String> cidrCollectionId;
+  final pulumi.Input<String> cidrCollectionId;
 
   /// Name for the CIDR location.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   CidrLocationArgs({
     required this.cidrBlocks,
@@ -32,9 +32,9 @@ class CidrLocationArgs {
 
   factory CidrLocationArgs.fromMap(Map<String, dynamic> map) {
     return CidrLocationArgs(
-      cidrBlocks: Input.asInput<List<String>>(map['cidrBlocks']),
-      cidrCollectionId: Input.asInput<String>(map['cidrCollectionId']),
-      name: Input.asOptionalInput<String>(map['name']),
+      cidrBlocks: pulumi.Input.asInput<List<String>>(map['cidrBlocks']),
+      cidrCollectionId: pulumi.Input.asInput<String>(map['cidrCollectionId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
     );
   }
 }

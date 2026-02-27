@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../voice_connector_termination_credentials_credential/voice_connector_termination_credentials_credential.dart';
 
 /// The set of arguments for VoiceConnectorTerminationCredentials.
 class VoiceConnectorTerminationCredentialsArgs {
   /// List of termination SIP credentials.
-  final Input<List<VoiceConnectorTerminationCredentialsCredential>> credentials;
+  final pulumi.Input<List<VoiceConnectorTerminationCredentialsCredential>>
+      credentials;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Amazon Chime Voice Connector ID.
-  final Input<String> voiceConnectorId;
+  final pulumi.Input<String> voiceConnectorId;
 
   VoiceConnectorTerminationCredentialsArgs({
     required this.credentials,
@@ -22,11 +23,11 @@ class VoiceConnectorTerminationCredentialsArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['credentials'] = Input.mapInputValue<
+    map['credentials'] = pulumi.Input.mapInputValue<
             List<VoiceConnectorTerminationCredentialsCredential>,
             List<Map<String, dynamic>>>(
         credentials,
-        (value) => Input.encodeList<
+        (value) => pulumi.Input.encodeList<
             VoiceConnectorTerminationCredentialsCredential,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     final regionValue = region;
@@ -40,11 +41,11 @@ class VoiceConnectorTerminationCredentialsArgs {
   factory VoiceConnectorTerminationCredentialsArgs.fromMap(
       Map<String, dynamic> map) {
     return VoiceConnectorTerminationCredentialsArgs(
-      credentials:
-          Input.asInput<List<VoiceConnectorTerminationCredentialsCredential>>(
-              map['credentials']),
-      region: Input.asOptionalInput<String>(map['region']),
-      voiceConnectorId: Input.asInput<String>(map['voiceConnectorId']),
+      credentials: pulumi.Input.asInput<
+              List<VoiceConnectorTerminationCredentialsCredential>>(
+          map['credentials']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      voiceConnectorId: pulumi.Input.asInput<String>(map['voiceConnectorId']),
     );
   }
 }

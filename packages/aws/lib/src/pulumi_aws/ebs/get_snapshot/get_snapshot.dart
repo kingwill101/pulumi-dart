@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_snapshot_args.dart';
 import 'get_snapshot_result.dart';
 
 /// Use this data source to get information about an EBS Snapshot for use when provisioning EBS Volumes
 Future<GetSnapshotResult> getSnapshot(
   GetSnapshotArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ebs/getSnapshot:getSnapshot',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotResult.fromMap(result);
 }

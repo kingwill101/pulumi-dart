@@ -1,31 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../anomaly_subscription_subscriber/anomaly_subscription_subscriber.dart';
 import '../anomaly_subscription_threshold_expression/anomaly_subscription_threshold_expression.dart';
 
 /// The set of arguments for AnomalySubscription.
 class AnomalySubscriptionArgs {
   /// The unique identifier for the AWS account in which the anomaly subscription ought to be created.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// The frequency that anomaly reports are sent. Valid Values: `DAILY` | `IMMEDIATE` | `WEEKLY`.
-  final Input<String> frequency;
+  final pulumi.Input<String> frequency;
 
   /// A list of cost anomaly monitors.
-  final Input<List<String>> monitorArnLists;
+  final pulumi.Input<List<String>> monitorArnLists;
 
   /// The name for the subscription.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// A subscriber configuration. Multiple subscribers can be defined.
-  final Input<List<AnomalySubscriptionSubscriber>> subscribers;
+  final pulumi.Input<List<AnomalySubscriptionSubscriber>> subscribers;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// An Expression object used to specify the anomalies that you want to generate alerts for. See Threshold Expression.
-  final Input<AnomalySubscriptionThresholdExpression>? thresholdExpression;
+  final pulumi.Input<AnomalySubscriptionThresholdExpression>?
+      thresholdExpression;
 
   AnomalySubscriptionArgs({
     this.accountId,
@@ -49,10 +50,10 @@ class AnomalySubscriptionArgs {
     if (nameValue != null) {
       map['name'] = nameValue;
     }
-    map['subscribers'] = Input.mapInputValue<
+    map['subscribers'] = pulumi.Input.mapInputValue<
             List<AnomalySubscriptionSubscriber>, List<Map<String, dynamic>>>(
         subscribers,
-        (value) => Input.encodeList<AnomalySubscriptionSubscriber,
+        (value) => pulumi.Input.encodeList<AnomalySubscriptionSubscriber,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     final tagsValue = tags;
     if (tagsValue != null) {
@@ -60,7 +61,7 @@ class AnomalySubscriptionArgs {
     }
     final thresholdExpressionValue = thresholdExpression;
     if (thresholdExpressionValue != null) {
-      map['thresholdExpression'] = Input.mapOptionalInputValue<
+      map['thresholdExpression'] = pulumi.Input.mapOptionalInputValue<
               AnomalySubscriptionThresholdExpression, Map<String, dynamic>>(
           thresholdExpressionValue, (value) => value.toMap());
     }
@@ -69,15 +70,16 @@ class AnomalySubscriptionArgs {
 
   factory AnomalySubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return AnomalySubscriptionArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
-      frequency: Input.asInput<String>(map['frequency']),
-      monitorArnLists: Input.asInput<List<String>>(map['monitorArnLists']),
-      name: Input.asOptionalInput<String>(map['name']),
-      subscribers: Input.asInput<List<AnomalySubscriptionSubscriber>>(
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
+      frequency: pulumi.Input.asInput<String>(map['frequency']),
+      monitorArnLists:
+          pulumi.Input.asInput<List<String>>(map['monitorArnLists']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      subscribers: pulumi.Input.asInput<List<AnomalySubscriptionSubscriber>>(
           map['subscribers']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
       thresholdExpression:
-          Input.asOptionalInput<AnomalySubscriptionThresholdExpression>(
+          pulumi.Input.asOptionalInput<AnomalySubscriptionThresholdExpression>(
               map['thresholdExpression']),
     );
   }

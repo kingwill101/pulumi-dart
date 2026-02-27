@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_workflow_step_parallel_config_step_eks_resource_scaling_config_eks_cluster/plan_workflow_step_parallel_config_step_eks_resource_scaling_config_eks_cluster.dart';
 import '../plan_workflow_step_parallel_config_step_eks_resource_scaling_config_kubernetes_resource_type/plan_workflow_step_parallel_config_step_eks_resource_scaling_config_kubernetes_resource_type.dart';
 import '../plan_workflow_step_parallel_config_step_eks_resource_scaling_config_scaling_resource/plan_workflow_step_parallel_config_step_eks_resource_scaling_config_scaling_resource.dart';
@@ -51,20 +51,20 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfig {
     map['capacityMonitoringApproach'] = capacityMonitoringApproach;
     final eksClustersValue = eksClusters;
     if (eksClustersValue != null) {
-      map['eksClusters'] = Input.encodeList<
+      map['eksClusters'] = pulumi.Input.encodeList<
           PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster,
           Map<String, dynamic>>(eksClustersValue, (value) => value.toMap());
     }
     final kubernetesResourceTypesValue = kubernetesResourceTypes;
     if (kubernetesResourceTypesValue != null) {
-      map['kubernetesResourceTypes'] = Input.encodeList<
+      map['kubernetesResourceTypes'] = pulumi.Input.encodeList<
           PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType,
           Map<String,
               dynamic>>(kubernetesResourceTypesValue, (value) => value.toMap());
     }
     final scalingResourcesValue = scalingResources;
     if (scalingResourcesValue != null) {
-      map['scalingResources'] = Input.encodeList<
+      map['scalingResources'] = pulumi.Input.encodeList<
           PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource,
           Map<String,
               dynamic>>(scalingResourcesValue, (value) => value.toMap());
@@ -76,7 +76,7 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfig {
     }
     final ungracefulsValue = ungracefuls;
     if (ungracefulsValue != null) {
-      map['ungracefuls'] = Input.encodeList<
+      map['ungracefuls'] = pulumi.Input.encodeList<
           PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful,
           Map<String, dynamic>>(ungracefulsValue, (value) => value.toMap());
     }
@@ -89,7 +89,7 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfig {
       capacityMonitoringApproach: map['capacityMonitoringApproach'] as String,
       eksClusters: map['eksClusters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster>(
               map['eksClusters'],
               (value) =>
@@ -97,7 +97,7 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfig {
                       .fromMap((value as Map).cast<String, dynamic>())),
       kubernetesResourceTypes: map['kubernetesResourceTypes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepEksResourceScalingConfigKubernetesResourceType>(
               map['kubernetesResourceTypes'],
               (value) =>
@@ -105,7 +105,7 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfig {
                       .fromMap((value as Map).cast<String, dynamic>())),
       scalingResources: map['scalingResources'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource>(
               map['scalingResources'],
               (value) =>
@@ -116,7 +116,7 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfig {
           map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
       ungracefuls: map['ungracefuls'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepEksResourceScalingConfigUngraceful>(
               map['ungracefuls'],
               (value) =>

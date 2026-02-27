@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_contacts_rotation_recurrence_weekly_setting_hand_off_time/get_contacts_rotation_recurrence_weekly_setting_hand_off_time.dart';
 
 class GetContactsRotationRecurrenceWeeklySetting {
@@ -16,7 +16,7 @@ class GetContactsRotationRecurrenceWeeklySetting {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['dayOfWeek'] = dayOfWeek;
-    map['handOffTimes'] = Input.encodeList<
+    map['handOffTimes'] = pulumi.Input.encodeList<
         GetContactsRotationRecurrenceWeeklySettingHandOffTime,
         Map<String, dynamic>>(handOffTimes, (value) => value.toMap());
     return map;
@@ -26,7 +26,7 @@ class GetContactsRotationRecurrenceWeeklySetting {
       Map<String, dynamic> map) {
     return GetContactsRotationRecurrenceWeeklySetting(
       dayOfWeek: map['dayOfWeek'] as String,
-      handOffTimes: Input.decodeList<
+      handOffTimes: pulumi.Input.decodeList<
               GetContactsRotationRecurrenceWeeklySettingHandOffTime>(
           map['handOffTimes'],
           (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_quota_usage_metric/service_quota_usage_metric.dart';
 import 'service_quota_args.dart';
 
@@ -19,48 +19,48 @@ import 'service_quota_args.dart';
 /// ```sh
 /// $ pulumi import aws:servicequotas/serviceQuota:ServiceQuota example vpc/L-F678F1CE
 /// ```
-class ServiceQuota extends CustomResource {
+class ServiceQuota extends pulumi.CustomResource {
   /// Whether the service quota can be increased.
-  late final Output<bool> adjustable;
+  late final pulumi.Output<bool> adjustable;
 
   /// Amazon Resource Name (ARN) of the service quota.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Default value of the service quota.
-  late final Output<double> defaultValue;
+  late final pulumi.Output<double> defaultValue;
 
   /// Code of the service quota to track. For example: `L-F678F1CE`. Available values can be found with the [AWS CLI service-quotas list-service-quotas command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html).
-  late final Output<String> quotaCode;
+  late final pulumi.Output<String> quotaCode;
 
   /// Name of the quota.
-  late final Output<String> quotaName;
+  late final pulumi.Output<String> quotaName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<String> requestId;
-  late final Output<String> requestStatus;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<String> requestId;
+  late final pulumi.Output<String> requestStatus;
 
   /// Code of the service to track. For example: `vpc`. Available values can be found with the [AWS CLI service-quotas list-services command](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-services.html).
-  late final Output<String> serviceCode;
+  late final pulumi.Output<String> serviceCode;
 
   /// Name of the service.
-  late final Output<String> serviceName;
+  late final pulumi.Output<String> serviceName;
 
   /// Information about the measurement.
-  late final Output<List<ServiceQuotaUsageMetric>> usageMetrics;
+  late final pulumi.Output<List<ServiceQuotaUsageMetric>> usageMetrics;
 
   /// Float specifying the desired value for the service quota. If the desired value is higher than the current value, a quota increase request is submitted. When a known request is submitted and pending, the value reflects the desired value of the pending request.
-  late final Output<double> value;
+  late final pulumi.Output<double> value;
 
   ServiceQuota(
     String name, {
     ServiceQuotaArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:servicequotas/serviceQuota:ServiceQuota',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.adjustable = registerOutput<bool>('adjustable');
     this.arn = registerOutput<String>('arn');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_coip_pools_filter/get_coip_pools_filter.dart';
 
 /// Result data returned by getCoipPools.
@@ -28,7 +28,7 @@ class GetCoipPoolsResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetCoipPoolsFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetCoipPoolsFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -45,7 +45,7 @@ class GetCoipPoolsResult {
     return GetCoipPoolsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetCoipPoolsFilter>(
+          : pulumi.Input.decodeList<GetCoipPoolsFilter>(
               map['filters'],
               (value) => GetCoipPoolsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

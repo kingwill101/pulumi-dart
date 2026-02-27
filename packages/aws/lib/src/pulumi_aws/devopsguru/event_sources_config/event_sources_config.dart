@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../event_sources_config_event_source/event_sources_config_event_source.dart';
 import 'event_sources_config_args.dart';
 
@@ -21,22 +21,22 @@ import 'event_sources_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:devopsguru/eventSourcesConfig:EventSourcesConfig example us-east-1
 /// ```
-class EventSourcesConfig extends CustomResource {
+class EventSourcesConfig extends pulumi.CustomResource {
   /// Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See `event_sources` below.
-  late final Output<List<EventSourcesConfigEventSource>> eventSources;
+  late final pulumi.Output<List<EventSourcesConfigEventSource>> eventSources;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   EventSourcesConfig(
     String name, {
     EventSourcesConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:devopsguru/eventSourcesConfig:EventSourcesConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.eventSources =
         registerOutput<List<EventSourcesConfigEventSource>>('eventSources');

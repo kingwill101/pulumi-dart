@@ -1,3 +1,3 @@
 library module_lb_get_listener_default_action_authenticate_cognito;
 
-export 'get_listener_default_action_authenticate_cognito/get_listener_default_action_authenticate_cognito2.dart';
+export 'get_listener_default_action_authenticate_cognito/get_listener_default_action_authenticate_cognito_lb.dart';

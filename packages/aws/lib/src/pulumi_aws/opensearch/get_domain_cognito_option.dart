@@ -1,3 +1,3 @@
 library module_opensearch_get_domain_cognito_option;
 
-export 'get_domain_cognito_option/get_domain_cognito_option2.dart';
+export 'get_domain_cognito_option/get_domain_cognito_option_opensearch.dart';

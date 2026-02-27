@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_workflow_step_parallel_config_step_route53_health_check_config_record_set/plan_workflow_step_parallel_config_step_route53_health_check_config_record_set.dart';
 
 class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig {
@@ -47,7 +47,7 @@ class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig {
     map['recordName'] = recordName;
     final recordSetsValue = recordSets;
     if (recordSetsValue != null) {
-      map['recordSets'] = Input.encodeList<
+      map['recordSets'] = pulumi.Input.encodeList<
           PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet,
           Map<String, dynamic>>(recordSetsValue, (value) => value.toMap());
     }
@@ -70,7 +70,7 @@ class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig {
       recordName: map['recordName'] as String,
       recordSets: map['recordSets'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfigRecordSet>(
               map['recordSets'],
               (value) =>

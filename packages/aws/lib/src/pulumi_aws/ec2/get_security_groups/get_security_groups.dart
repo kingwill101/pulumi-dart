@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_security_groups_args.dart';
 import 'get_security_groups_result.dart';
 
 /// Use this data source to get IDs and VPC membership of Security Groups that are created outside this provider.
 Future<GetSecurityGroupsResult> getSecurityGroups(
   GetSecurityGroupsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getSecurityGroups:getSecurityGroups',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityGroupsResult.fromMap(result);
 }

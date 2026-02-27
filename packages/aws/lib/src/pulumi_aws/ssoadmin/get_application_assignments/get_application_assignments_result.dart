@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_application_assignments_application_assignment/get_application_assignments_application_assignment.dart';
 
 /// Result data returned by getApplicationAssignments.
@@ -24,7 +24,7 @@ class GetApplicationAssignmentsResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['applicationArn'] = applicationArn;
-    map['applicationAssignments'] = Input.encodeList<
+    map['applicationAssignments'] = pulumi.Input.encodeList<
         GetApplicationAssignmentsApplicationAssignment,
         Map<String, dynamic>>(applicationAssignments, (value) => value.toMap());
     map['id'] = id;
@@ -35,11 +35,11 @@ class GetApplicationAssignmentsResult {
   factory GetApplicationAssignmentsResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationAssignmentsResult(
       applicationArn: map['applicationArn'] as String,
-      applicationAssignments:
-          Input.decodeList<GetApplicationAssignmentsApplicationAssignment>(
-              map['applicationAssignments'],
-              (value) => GetApplicationAssignmentsApplicationAssignment.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      applicationAssignments: pulumi.Input.decodeList<
+              GetApplicationAssignmentsApplicationAssignment>(
+          map['applicationAssignments'],
+          (value) => GetApplicationAssignmentsApplicationAssignment.fromMap(
+              (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

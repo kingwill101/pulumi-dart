@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ProxyTarget.
 class ProxyTargetArgs {
   /// DB cluster identifier.
   ///
   /// **NOTE:** Either `db_instance_identifier` or `db_cluster_identifier` should be specified and both should not be specified together
-  final Input<String>? dbClusterIdentifier;
+  final pulumi.Input<String>? dbClusterIdentifier;
 
   /// DB instance identifier.
-  final Input<String>? dbInstanceIdentifier;
+  final pulumi.Input<String>? dbInstanceIdentifier;
 
   /// The name of the DB proxy.
-  final Input<String> dbProxyName;
+  final pulumi.Input<String> dbProxyName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The name of the target group.
-  final Input<String> targetGroupName;
+  final pulumi.Input<String> targetGroupName;
 
   ProxyTargetArgs({
     this.dbClusterIdentifier,
@@ -51,12 +51,12 @@ class ProxyTargetArgs {
   factory ProxyTargetArgs.fromMap(Map<String, dynamic> map) {
     return ProxyTargetArgs(
       dbClusterIdentifier:
-          Input.asOptionalInput<String>(map['dbClusterIdentifier']),
+          pulumi.Input.asOptionalInput<String>(map['dbClusterIdentifier']),
       dbInstanceIdentifier:
-          Input.asOptionalInput<String>(map['dbInstanceIdentifier']),
-      dbProxyName: Input.asInput<String>(map['dbProxyName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      targetGroupName: Input.asInput<String>(map['targetGroupName']),
+          pulumi.Input.asOptionalInput<String>(map['dbInstanceIdentifier']),
+      dbProxyName: pulumi.Input.asInput<String>(map['dbProxyName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      targetGroupName: pulumi.Input.asInput<String>(map['targetGroupName']),
     );
   }
 }

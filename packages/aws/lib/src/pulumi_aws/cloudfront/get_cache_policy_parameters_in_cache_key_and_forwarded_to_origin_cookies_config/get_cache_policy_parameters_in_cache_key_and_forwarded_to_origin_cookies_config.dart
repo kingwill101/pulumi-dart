@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_cookies_config_cookie/get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_cookies_config_cookie.dart';
 
 class GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig {
@@ -20,7 +20,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['cookieBehavior'] = cookieBehavior;
-    map['cookies'] = Input.encodeList<
+    map['cookies'] = pulumi.Input.encodeList<
         GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie,
         Map<String, dynamic>>(cookies, (value) => value.toMap());
     return map;
@@ -30,7 +30,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig {
       Map<String, dynamic> map) {
     return GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig(
       cookieBehavior: map['cookieBehavior'] as String,
-      cookies: Input.decodeList<
+      cookies: pulumi.Input.decodeList<
               GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie>(
           map['cookies'],
           (value) =>

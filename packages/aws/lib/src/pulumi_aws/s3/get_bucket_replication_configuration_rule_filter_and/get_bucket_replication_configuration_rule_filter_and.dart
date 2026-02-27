@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bucket_replication_configuration_rule_filter_and_tag/get_bucket_replication_configuration_rule_filter_and_tag.dart';
 
 class GetBucketReplicationConfigurationRuleFilterAnd {
@@ -18,7 +18,7 @@ class GetBucketReplicationConfigurationRuleFilterAnd {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['prefix'] = prefix;
-    map['tags'] = Input.encodeList<
+    map['tags'] = pulumi.Input.encodeList<
         GetBucketReplicationConfigurationRuleFilterAndTag,
         Map<String, dynamic>>(tags, (value) => value.toMap());
     return map;
@@ -28,7 +28,8 @@ class GetBucketReplicationConfigurationRuleFilterAnd {
       Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleFilterAnd(
       prefix: map['prefix'] as String,
-      tags: Input.decodeList<GetBucketReplicationConfigurationRuleFilterAndTag>(
+      tags: pulumi.Input.decodeList<
+              GetBucketReplicationConfigurationRuleFilterAndTag>(
           map['tags'],
           (value) => GetBucketReplicationConfigurationRuleFilterAndTag.fromMap(
               (value as Map).cast<String, dynamic>())),

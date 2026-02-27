@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_received_license_consumption_configuration_borrow_configuration/get_received_license_consumption_configuration_borrow_configuration.dart';
 import '../get_received_license_consumption_configuration_provisional_configuration/get_received_license_consumption_configuration_provisional_configuration.dart';
 
@@ -22,10 +22,10 @@ class GetReceivedLicenseConsumptionConfiguration {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['borrowConfigurations'] = Input.encodeList<
+    map['borrowConfigurations'] = pulumi.Input.encodeList<
         GetReceivedLicenseConsumptionConfigurationBorrowConfiguration,
         Map<String, dynamic>>(borrowConfigurations, (value) => value.toMap());
-    map['provisionalConfigurations'] = Input.encodeList<
+    map['provisionalConfigurations'] = pulumi.Input.encodeList<
             GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration,
             Map<String, dynamic>>(
         provisionalConfigurations, (value) => value.toMap());
@@ -36,13 +36,13 @@ class GetReceivedLicenseConsumptionConfiguration {
   factory GetReceivedLicenseConsumptionConfiguration.fromMap(
       Map<String, dynamic> map) {
     return GetReceivedLicenseConsumptionConfiguration(
-      borrowConfigurations: Input.decodeList<
+      borrowConfigurations: pulumi.Input.decodeList<
               GetReceivedLicenseConsumptionConfigurationBorrowConfiguration>(
           map['borrowConfigurations'],
           (value) =>
               GetReceivedLicenseConsumptionConfigurationBorrowConfiguration
                   .fromMap((value as Map).cast<String, dynamic>())),
-      provisionalConfigurations: Input.decodeList<
+      provisionalConfigurations: pulumi.Input.decodeList<
               GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration>(
           map['provisionalConfigurations'],
           (value) =>

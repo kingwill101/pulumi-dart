@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInstanceType.
 class GetInstanceTypeArgs {
   /// Instance
-  final Input<String> instanceType;
+  final pulumi.Input<String> instanceType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetInstanceTypeArgs({
     required this.instanceType,
@@ -27,8 +27,8 @@ class GetInstanceTypeArgs {
 
   factory GetInstanceTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeArgs(
-      instanceType: Input.asInput<String>(map['instanceType']),
-      region: Input.asOptionalInput<String>(map['region']),
+      instanceType: pulumi.Input.asInput<String>(map['instanceType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

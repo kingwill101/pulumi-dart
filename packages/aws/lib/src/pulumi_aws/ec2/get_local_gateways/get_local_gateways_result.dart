@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_local_gateways_filter/get_local_gateways_filter.dart';
 
 /// Result data returned by getLocalGateways.
@@ -28,7 +28,7 @@ class GetLocalGatewaysResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetLocalGatewaysFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetLocalGatewaysFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -42,7 +42,7 @@ class GetLocalGatewaysResult {
     return GetLocalGatewaysResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetLocalGatewaysFilter>(
+          : pulumi.Input.decodeList<GetLocalGatewaysFilter>(
               map['filters'],
               (value) => GetLocalGatewaysFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../configuration_set_event_destination_event_destination_cloud_watch_destination_dimension_configuration/configuration_set_event_destination_event_destination_cloud_watch_destination_dimension_configuration.dart';
 
 class ConfigurationSetEventDestinationEventDestinationCloudWatchDestination {
@@ -15,7 +15,7 @@ class ConfigurationSetEventDestinationEventDestinationCloudWatchDestination {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dimensionConfigurations'] = Input.encodeList<
+    map['dimensionConfigurations'] = pulumi.Input.encodeList<
         ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration,
         Map<String,
             dynamic>>(dimensionConfigurations, (value) => value.toMap());
@@ -25,7 +25,7 @@ class ConfigurationSetEventDestinationEventDestinationCloudWatchDestination {
   factory ConfigurationSetEventDestinationEventDestinationCloudWatchDestination.fromMap(
       Map<String, dynamic> map) {
     return ConfigurationSetEventDestinationEventDestinationCloudWatchDestination(
-      dimensionConfigurations: Input.decodeList<
+      dimensionConfigurations: pulumi.Input.decodeList<
               ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration>(
           map['dimensionConfigurations'],
           (value) =>

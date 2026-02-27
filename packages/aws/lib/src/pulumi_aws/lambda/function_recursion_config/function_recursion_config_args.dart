@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for FunctionRecursionConfig.
 class FunctionRecursionConfigArgs {
   /// Name of the Lambda function.
-  final Input<String> functionName;
+  final pulumi.Input<String> functionName;
 
   /// Lambda function recursion configuration. Valid values are `Allow` or `Terminate`.
   ///
   /// The following arguments are optional:
-  final Input<String> recursiveLoop;
+  final pulumi.Input<String> recursiveLoop;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   FunctionRecursionConfigArgs({
     required this.functionName,
@@ -34,9 +34,9 @@ class FunctionRecursionConfigArgs {
 
   factory FunctionRecursionConfigArgs.fromMap(Map<String, dynamic> map) {
     return FunctionRecursionConfigArgs(
-      functionName: Input.asInput<String>(map['functionName']),
-      recursiveLoop: Input.asInput<String>(map['recursiveLoop']),
-      region: Input.asOptionalInput<String>(map['region']),
+      functionName: pulumi.Input.asInput<String>(map['functionName']),
+      recursiveLoop: pulumi.Input.asInput<String>(map['recursiveLoop']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

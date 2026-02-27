@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../notification_type/notification_type.dart';
 import 'notification_args.dart';
 
@@ -9,29 +9,29 @@ import 'notification_args.dart';
 /// ## Example Usage
 ///
 /// Basic usage:
-class Notification extends CustomResource {
+class Notification extends pulumi.CustomResource {
   /// List of AutoScaling Group Names
-  late final Output<List<String>> groupNames;
+  late final pulumi.Output<List<String>> groupNames;
 
   /// List of Notification Types that trigger
   /// notifications. Acceptable values are documented [in the AWS documentation here](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_NotificationConfiguration.html)
-  late final Output<List<NotificationType>> notifications;
+  late final pulumi.Output<List<NotificationType>> notifications;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Topic ARN for notifications to be sent through
-  late final Output<String> topicArn;
+  late final pulumi.Output<String> topicArn;
 
   Notification(
     String name, {
     NotificationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:autoscaling/notification:Notification',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.groupNames = registerOutput<List<String>>('groupNames');
     this.notifications =

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scraper_destination/scraper_destination.dart';
 import '../scraper_role_configuration/scraper_role_configuration.dart';
 import '../scraper_source/scraper_source.dart';
@@ -60,45 +60,45 @@ import 'scraper_args.dart';
 /// ```sh
 /// $ pulumi import aws:amp/scraper:Scraper example s-0123abc-0000-0123-a000-000000000000
 /// ```
-class Scraper extends CustomResource {
+class Scraper extends pulumi.CustomResource {
   /// a name to associate with the managed scraper. This is for your use, and does not need to be unique.
-  late final Output<String?> alias;
+  late final pulumi.Output<String?> alias;
 
   /// The Amazon Resource Name (ARN) of the new scraper.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Configuration block for the managed scraper to send metrics to. See `destination`.
-  late final Output<ScraperDestination> destination;
+  late final pulumi.Output<ScraperDestination> destination;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the scraper to discover, collect, and produce metrics
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   /// Configuration block to enable writing to an Amazon Managed Service for Prometheus workspace in a different account. See `role_configuration` below.
-  late final Output<ScraperRoleConfiguration?> roleConfiguration;
+  late final pulumi.Output<ScraperRoleConfiguration?> roleConfiguration;
 
   /// The configuration file to use in the new scraper. For more information, see [Scraper configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration).
-  late final Output<String> scrapeConfiguration;
+  late final pulumi.Output<String> scrapeConfiguration;
 
   /// Configuration block to specify where the managed scraper will collect metrics from. See `source`.
   ///
   /// The following arguments are optional:
-  late final Output<ScraperSource?> source;
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<ScraperTimeouts?> timeouts;
+  late final pulumi.Output<ScraperSource?> source;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<ScraperTimeouts?> timeouts;
 
   Scraper(
     String name, {
     ScraperArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:amp/scraper:Scraper',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.alias = registerOutput<String?>('alias');
     this.arn = registerOutput<String>('arn');

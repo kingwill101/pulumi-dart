@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_acl_v2_access_control_policy/bucket_acl_v2_access_control_policy.dart';
 
 /// The set of arguments for BucketAclV2.
 class BucketAclV2Args {
   /// Configuration block that sets the ACL permissions for an object per grantee. See below.
-  final Input<BucketAclV2AccessControlPolicy>? accessControlPolicy;
+  final pulumi.Input<BucketAclV2AccessControlPolicy>? accessControlPolicy;
 
   /// Specifies the Canned ACL to apply to the bucket. Valid values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, `bucket-owner-read`, `bucket-owner-full-control`, `log-delivery-write`. Full details are available on the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
-  final Input<String>? acl;
+  final pulumi.Input<String>? acl;
 
   /// Bucket to which to apply the ACL.
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// Account ID of the expected bucket owner.
-  final Input<String>? expectedBucketOwner;
+  final pulumi.Input<String>? expectedBucketOwner;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   BucketAclV2Args({
     this.accessControlPolicy,
@@ -32,7 +32,7 @@ class BucketAclV2Args {
     final map = <String, dynamic>{};
     final accessControlPolicyValue = accessControlPolicy;
     if (accessControlPolicyValue != null) {
-      map['accessControlPolicy'] = Input.mapOptionalInputValue<
+      map['accessControlPolicy'] = pulumi.Input.mapOptionalInputValue<
               BucketAclV2AccessControlPolicy, Map<String, dynamic>>(
           accessControlPolicyValue, (value) => value.toMap());
     }
@@ -55,13 +55,13 @@ class BucketAclV2Args {
   factory BucketAclV2Args.fromMap(Map<String, dynamic> map) {
     return BucketAclV2Args(
       accessControlPolicy:
-          Input.asOptionalInput<BucketAclV2AccessControlPolicy>(
+          pulumi.Input.asOptionalInput<BucketAclV2AccessControlPolicy>(
               map['accessControlPolicy']),
-      acl: Input.asOptionalInput<String>(map['acl']),
-      bucket: Input.asInput<String>(map['bucket']),
+      acl: pulumi.Input.asOptionalInput<String>(map['acl']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
       expectedBucketOwner:
-          Input.asOptionalInput<String>(map['expectedBucketOwner']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['expectedBucketOwner']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

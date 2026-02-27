@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_dev_environment_args.dart';
 import 'get_dev_environment_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_dev_environment_result.dart';
 /// ### Basic Usage
 Future<GetDevEnvironmentResult> getDevEnvironment(
   GetDevEnvironmentArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:codecatalyst/getDevEnvironment:getDevEnvironment',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDevEnvironmentResult.fromMap(result);
 }

@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getIntent.
 class GetIntentArgs {
   /// Name of the intent. The name is case sensitive.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Version of the intent.
-  final Input<String>? version;
+  final pulumi.Input<String>? version;
 
   GetIntentArgs({
     required this.name,
@@ -35,9 +35,9 @@ class GetIntentArgs {
 
   factory GetIntentArgs.fromMap(Map<String, dynamic> map) {
     return GetIntentArgs(
-      name: Input.asInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      version: Input.asOptionalInput<String>(map['version']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      version: pulumi.Input.asOptionalInput<String>(map['version']),
     );
   }
 }

@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AdmChannel.
 class AdmChannelArgs {
   /// The application ID.
-  final Input<String> applicationId;
+  final pulumi.Input<String> applicationId;
 
   /// Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
-  final Input<String> clientId;
+  final pulumi.Input<String> clientId;
 
   /// Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
-  final Input<String> clientSecret;
+  final pulumi.Input<String> clientSecret;
 
   /// Specifies whether to enable the channel. Defaults to `true`.
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   AdmChannelArgs({
     required this.applicationId,
@@ -45,11 +45,11 @@ class AdmChannelArgs {
 
   factory AdmChannelArgs.fromMap(Map<String, dynamic> map) {
     return AdmChannelArgs(
-      applicationId: Input.asInput<String>(map['applicationId']),
-      clientId: Input.asInput<String>(map['clientId']),
-      clientSecret: Input.asInput<String>(map['clientSecret']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
-      region: Input.asOptionalInput<String>(map['region']),
+      applicationId: pulumi.Input.asInput<String>(map['applicationId']),
+      clientId: pulumi.Input.asInput<String>(map['clientId']),
+      clientSecret: pulumi.Input.asInput<String>(map['clientSecret']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

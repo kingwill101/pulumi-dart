@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_load_balancer_args.dart';
 import 'get_load_balancer_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_load_balancer_result.dart';
 /// with it, etc.
 Future<GetLoadBalancerResult> getLoadBalancer(
   GetLoadBalancerArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:alb/getLoadBalancer:getLoadBalancer',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLoadBalancerResult.fromMap(result);
 }

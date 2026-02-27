@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_job_definition_args.dart';
 import 'get_job_definition_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_job_definition_result.dart';
 /// ### Lookup via Name
 Future<GetJobDefinitionResult> getJobDefinition(
   GetJobDefinitionArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:batch/getJobDefinition:getJobDefinition',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJobDefinitionResult.fromMap(result);
 }

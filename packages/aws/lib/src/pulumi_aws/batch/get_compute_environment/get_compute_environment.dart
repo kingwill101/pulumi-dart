@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_compute_environment_args.dart';
 import 'get_compute_environment_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_compute_environment_result.dart';
 /// compute environment within AWS Batch.
 Future<GetComputeEnvironmentResult> getComputeEnvironment(
   GetComputeEnvironmentArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:batch/getComputeEnvironment:getComputeEnvironment',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetComputeEnvironmentResult.fromMap(result);
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_connector_args.dart';
 
 /// Manages an App Runner VPC Connector.
@@ -21,43 +21,43 @@ import 'vpc_connector_args.dart';
 /// ```sh
 /// $ pulumi import aws:apprunner/vpcConnector:VpcConnector example arn:aws:apprunner:us-east-1:1234567890:vpcconnector/example/1/0a03292a89764e5882c41d8f991c82fe
 /// ```
-class VpcConnector extends CustomResource {
+class VpcConnector extends pulumi.CustomResource {
   /// ARN of VPC connector.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// List of IDs of security groups that App Runner should use for access to AWS resources under the specified subnets. If not specified, App Runner uses the default security group of the Amazon VPC. The default security group allows all outbound traffic.
-  late final Output<List<String>> securityGroups;
+  late final pulumi.Output<List<String>> securityGroups;
 
   /// Current state of the VPC connector. If the status of a connector revision is INACTIVE, it was deleted and can't be used. Inactive connector revisions are permanently removed some time after they are deleted.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// List of IDs of subnets that App Runner should use when it associates your service with a custom Amazon VPC. Specify IDs of subnets of a single Amazon VPC. App Runner determines the Amazon VPC from the subnets you specify.
-  late final Output<List<String>> subnets;
+  late final pulumi.Output<List<String>> subnets;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Name for the VPC connector.
-  late final Output<String> vpcConnectorName;
+  late final pulumi.Output<String> vpcConnectorName;
 
   /// The revision of VPC connector. It's unique among all the active connectors ("Status": "ACTIVE") that share the same Name.
-  late final Output<int> vpcConnectorRevision;
+  late final pulumi.Output<int> vpcConnectorRevision;
 
   VpcConnector(
     String name, {
     VpcConnectorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apprunner/vpcConnector:VpcConnector',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.region = registerOutput<String>('region');

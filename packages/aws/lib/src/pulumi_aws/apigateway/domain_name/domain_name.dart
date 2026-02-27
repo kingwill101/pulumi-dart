@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../domain_name_endpoint_configuration/domain_name_endpoint_configuration.dart';
 import '../domain_name_mutual_tls_authentication/domain_name_mutual_tls_authentication.dart';
 import 'domain_name_args.dart';
@@ -60,95 +60,97 @@ import 'domain_name_args.dart';
 /// ```sh
 /// $ pulumi import aws:apigateway/domainName:DomainName example dev.api.internal.example.com/abcde12345
 /// ```
-class DomainName extends CustomResource {
+class DomainName extends pulumi.CustomResource {
   /// ARN of domain name.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// ARN for an AWS-managed certificate. AWS Certificate Manager is the only supported source. Used when an edge-optimized domain name is desired. Conflicts with `certificate_name`, `certificate_body`, `certificate_chain`, `certificate_private_key`, `regional_certificate_arn`, and `regional_certificate_name`.
-  late final Output<String?> certificateArn;
+  late final pulumi.Output<String?> certificateArn;
 
   /// Certificate issued for the domain name being registered, in PEM format. Only valid for `EDGE` endpoint configuration type. Conflicts with `certificate_arn`, `regional_certificate_arn`, and `regional_certificate_name`.
-  late final Output<String?> certificateBody;
+  late final pulumi.Output<String?> certificateBody;
 
   /// Certificate for the CA that issued the certificate, along with any intermediate CA certificates required to create an unbroken chain to a certificate trusted by the intended API clients. Only valid for `EDGE` endpoint configuration type. Conflicts with `certificate_arn`, `regional_certificate_arn`, and `regional_certificate_name`.
-  late final Output<String?> certificateChain;
+  late final pulumi.Output<String?> certificateChain;
 
   /// Unique name to use when registering this certificate as an IAM server certificate. Conflicts with `certificate_arn`, `regional_certificate_arn`, and `regional_certificate_name`. Required if `certificate_arn` is not set.
-  late final Output<String?> certificateName;
+  late final pulumi.Output<String?> certificateName;
 
   /// Private key associated with the domain certificate given in `certificate_body`. Only valid for `EDGE` endpoint configuration type. Conflicts with `certificate_arn`, `regional_certificate_arn`, and `regional_certificate_name`.
-  late final Output<String?> certificatePrivateKey;
+  late final pulumi.Output<String?> certificatePrivateKey;
 
   /// Upload date associated with the domain certificate.
-  late final Output<String> certificateUploadDate;
+  late final pulumi.Output<String> certificateUploadDate;
 
   /// Hostname created by Cloudfront to represent the distribution that implements this domain name mapping.
-  late final Output<String> cloudfrontDomainName;
+  late final pulumi.Output<String> cloudfrontDomainName;
 
   /// For convenience, the hosted zone ID (`Z2FDTNDATAQYW2`) that can be used to create a Route53 alias record for the distribution.
-  late final Output<String> cloudfrontZoneId;
+  late final pulumi.Output<String> cloudfrontZoneId;
 
   /// Fully-qualified domain name to register.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// The identifier for the domain name resource. Supported only for private custom domain names.
-  late final Output<String> domainNameId;
+  late final pulumi.Output<String> domainNameId;
 
   /// Endpoint access mode of the DomainName. Only available for domain names that use security policies that start with `SecurityPolicy_`. Valid values: `BASIC`, `STRICT`.
-  late final Output<String?> endpointAccessMode;
+  late final pulumi.Output<String?> endpointAccessMode;
 
   /// Configuration block defining API endpoint information including type. See below.
-  late final Output<DomainNameEndpointConfiguration> endpointConfiguration;
+  late final pulumi.Output<DomainNameEndpointConfiguration>
+      endpointConfiguration;
 
   /// Mutual TLS authentication configuration for the domain name. See below.
-  late final Output<DomainNameMutualTlsAuthentication?> mutualTlsAuthentication;
+  late final pulumi.Output<DomainNameMutualTlsAuthentication?>
+      mutualTlsAuthentication;
 
   /// ARN of the AWS-issued certificate used to validate custom domain ownership (when `certificate_arn` is issued via an ACM Private CA or `mutual_tls_authentication` is configured with an ACM-imported certificate.)
-  late final Output<String> ownershipVerificationCertificateArn;
+  late final pulumi.Output<String> ownershipVerificationCertificateArn;
 
   /// A stringified JSON policy document that applies to the execute-api service for this DomainName regardless of the caller and Method configuration. Supported only for private custom domain names.
-  late final Output<String?> policy;
+  late final pulumi.Output<String?> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN for an AWS-managed certificate. AWS Certificate Manager is the only supported source. Used when a regional domain name is desired. Conflicts with `certificate_arn`, `certificate_name`, `certificate_body`, `certificate_chain`, and `certificate_private_key`.
   ///
   /// When uploading a certificate, the following arguments are supported:
-  late final Output<String?> regionalCertificateArn;
+  late final pulumi.Output<String?> regionalCertificateArn;
 
   /// User-friendly name of the certificate that will be used by regional endpoint for this domain name. Conflicts with `certificate_arn`, `certificate_name`, `certificate_body`, `certificate_chain`, and `certificate_private_key`.
-  late final Output<String?> regionalCertificateName;
+  late final pulumi.Output<String?> regionalCertificateName;
 
   /// Hostname for the custom domain's regional endpoint.
-  late final Output<String> regionalDomainName;
+  late final pulumi.Output<String> regionalDomainName;
 
   /// Hosted zone ID that can be used to create a Route53 alias record for the regional endpoint.
-  late final Output<String> regionalZoneId;
+  late final pulumi.Output<String> regionalZoneId;
 
   /// Mode to route traffic for the domain name. Valid values: `BASE_PATH_MAPPING_ONLY`, `ROUTING_RULE_ONLY`, `ROUTING_RULE_THEN_BASE_PATH_MAPPING`.
-  late final Output<String> routingMode;
+  late final pulumi.Output<String> routingMode;
 
   /// Transport Layer Security (TLS) version + cipher suite for this DomainName. Must be configured to perform drift detection. For a list of valid security policies, see [DomainName](https://docs.aws.amazon.com/apigateway/latest/api/API_DomainName.html) in the Amazon API Gateway API Reference.
-  late final Output<String> securityPolicy;
+  late final pulumi.Output<String> securityPolicy;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// When referencing an AWS-managed certificate, the following arguments are supported:
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   DomainName(
     String name, {
     DomainNameArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigateway/domainName:DomainName',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.certificateArn = registerOutput<String?>('certificateArn');

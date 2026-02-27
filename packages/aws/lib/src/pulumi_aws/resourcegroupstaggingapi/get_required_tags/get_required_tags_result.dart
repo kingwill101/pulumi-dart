@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_required_tags_required_tag/get_required_tags_required_tag.dart';
 
 /// Result data returned by getRequiredTags.
@@ -22,9 +22,8 @@ class GetRequiredTagsResult {
     final map = <String, dynamic>{};
     map['id'] = id;
     map['region'] = region;
-    map['requiredTags'] =
-        Input.encodeList<GetRequiredTagsRequiredTag, Map<String, dynamic>>(
-            requiredTags, (value) => value.toMap());
+    map['requiredTags'] = pulumi.Input.encodeList<GetRequiredTagsRequiredTag,
+        Map<String, dynamic>>(requiredTags, (value) => value.toMap());
     return map;
   }
 
@@ -32,7 +31,7 @@ class GetRequiredTagsResult {
     return GetRequiredTagsResult(
       id: map['id'] as String,
       region: map['region'] as String,
-      requiredTags: Input.decodeList<GetRequiredTagsRequiredTag>(
+      requiredTags: pulumi.Input.decodeList<GetRequiredTagsRequiredTag>(
           map['requiredTags'],
           (value) => GetRequiredTagsRequiredTag.fromMap(
               (value as Map).cast<String, dynamic>())),

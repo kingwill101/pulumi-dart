@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_flow_definition_node_configuration/agent_flow_definition_node_configuration.dart';
 import '../agent_flow_definition_node_input/agent_flow_definition_node_input.dart';
 import '../agent_flow_definition_node_output/agent_flow_definition_node_output.dart';
@@ -37,16 +37,14 @@ class AgentFlowDefinitionNode {
     }
     final inputsValue = inputs;
     if (inputsValue != null) {
-      map['inputs'] =
-          Input.encodeList<AgentFlowDefinitionNodeInput, Map<String, dynamic>>(
-              inputsValue, (value) => value.toMap());
+      map['inputs'] = pulumi.Input.encodeList<AgentFlowDefinitionNodeInput,
+          Map<String, dynamic>>(inputsValue, (value) => value.toMap());
     }
     map['name'] = name;
     final outputsValue = outputs;
     if (outputsValue != null) {
-      map['outputs'] =
-          Input.encodeList<AgentFlowDefinitionNodeOutput, Map<String, dynamic>>(
-              outputsValue, (value) => value.toMap());
+      map['outputs'] = pulumi.Input.encodeList<AgentFlowDefinitionNodeOutput,
+          Map<String, dynamic>>(outputsValue, (value) => value.toMap());
     }
     map['type'] = type;
     return map;
@@ -60,14 +58,14 @@ class AgentFlowDefinitionNode {
               (map['configuration'] as Map).cast<String, dynamic>()),
       inputs: map['inputs'] == null
           ? null
-          : Input.decodeList<AgentFlowDefinitionNodeInput>(
+          : pulumi.Input.decodeList<AgentFlowDefinitionNodeInput>(
               map['inputs'],
               (value) => AgentFlowDefinitionNodeInput.fromMap(
                   (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       outputs: map['outputs'] == null
           ? null
-          : Input.decodeList<AgentFlowDefinitionNodeOutput>(
+          : pulumi.Input.decodeList<AgentFlowDefinitionNodeOutput>(
               map['outputs'],
               (value) => AgentFlowDefinitionNodeOutput.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,65 +1,65 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Branch.
 class BranchArgs {
   /// Unique ID for an Amplify app.
-  final Input<String> appId;
+  final pulumi.Input<String> appId;
 
   /// ARN for a backend environment that is part of an Amplify app.
-  final Input<String>? backendEnvironmentArn;
+  final pulumi.Input<String>? backendEnvironmentArn;
 
   /// Basic authorization credentials for the branch.
-  final Input<String>? basicAuthCredentials;
+  final pulumi.Input<String>? basicAuthCredentials;
 
   /// Name for the branch.
-  final Input<String> branchName;
+  final pulumi.Input<String> branchName;
 
   /// Description for the branch.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Display name for a branch. This is used as the default domain prefix.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Enables auto building for the branch.
-  final Input<bool>? enableAutoBuild;
+  final pulumi.Input<bool>? enableAutoBuild;
 
   /// Enables basic authorization for the branch.
-  final Input<bool>? enableBasicAuth;
+  final pulumi.Input<bool>? enableBasicAuth;
 
   /// Enables notifications for the branch.
-  final Input<bool>? enableNotification;
+  final pulumi.Input<bool>? enableNotification;
 
   /// Enables performance mode for the branch.
-  final Input<bool>? enablePerformanceMode;
+  final pulumi.Input<bool>? enablePerformanceMode;
 
   /// Enables pull request previews for this branch.
-  final Input<bool>? enablePullRequestPreview;
+  final pulumi.Input<bool>? enablePullRequestPreview;
 
   /// Enables skew protection for the branch.
-  final Input<bool>? enableSkewProtection;
+  final pulumi.Input<bool>? enableSkewProtection;
 
   /// Environment variables for the branch.
-  final Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>>? environmentVariables;
 
   /// Framework for the branch.
-  final Input<String>? framework;
+  final pulumi.Input<String>? framework;
 
   /// Amplify environment name for the pull request.
-  final Input<String>? pullRequestEnvironmentName;
+  final pulumi.Input<String>? pullRequestEnvironmentName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Describes the current stage for the branch. Valid values: `PRODUCTION`, `BETA`, `DEVELOPMENT`, `EXPERIMENTAL`, `PULL_REQUEST`.
-  final Input<String>? stage;
+  final pulumi.Input<String>? stage;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Content Time To Live (TTL) for the website in seconds.
-  final Input<String>? ttl;
+  final pulumi.Input<String>? ttl;
 
   BranchArgs({
     required this.appId,
@@ -160,33 +160,35 @@ class BranchArgs {
 
   factory BranchArgs.fromMap(Map<String, dynamic> map) {
     return BranchArgs(
-      appId: Input.asInput<String>(map['appId']),
+      appId: pulumi.Input.asInput<String>(map['appId']),
       backendEnvironmentArn:
-          Input.asOptionalInput<String>(map['backendEnvironmentArn']),
+          pulumi.Input.asOptionalInput<String>(map['backendEnvironmentArn']),
       basicAuthCredentials:
-          Input.asOptionalInput<String>(map['basicAuthCredentials']),
-      branchName: Input.asInput<String>(map['branchName']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      enableAutoBuild: Input.asOptionalInput<bool>(map['enableAutoBuild']),
-      enableBasicAuth: Input.asOptionalInput<bool>(map['enableBasicAuth']),
+          pulumi.Input.asOptionalInput<String>(map['basicAuthCredentials']),
+      branchName: pulumi.Input.asInput<String>(map['branchName']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      enableAutoBuild:
+          pulumi.Input.asOptionalInput<bool>(map['enableAutoBuild']),
+      enableBasicAuth:
+          pulumi.Input.asOptionalInput<bool>(map['enableBasicAuth']),
       enableNotification:
-          Input.asOptionalInput<bool>(map['enableNotification']),
+          pulumi.Input.asOptionalInput<bool>(map['enableNotification']),
       enablePerformanceMode:
-          Input.asOptionalInput<bool>(map['enablePerformanceMode']),
+          pulumi.Input.asOptionalInput<bool>(map['enablePerformanceMode']),
       enablePullRequestPreview:
-          Input.asOptionalInput<bool>(map['enablePullRequestPreview']),
+          pulumi.Input.asOptionalInput<bool>(map['enablePullRequestPreview']),
       enableSkewProtection:
-          Input.asOptionalInput<bool>(map['enableSkewProtection']),
-      environmentVariables: Input.asOptionalInput<Map<String, String>>(
+          pulumi.Input.asOptionalInput<bool>(map['enableSkewProtection']),
+      environmentVariables: pulumi.Input.asOptionalInput<Map<String, String>>(
           map['environmentVariables']),
-      framework: Input.asOptionalInput<String>(map['framework']),
-      pullRequestEnvironmentName:
-          Input.asOptionalInput<String>(map['pullRequestEnvironmentName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      stage: Input.asOptionalInput<String>(map['stage']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      ttl: Input.asOptionalInput<String>(map['ttl']),
+      framework: pulumi.Input.asOptionalInput<String>(map['framework']),
+      pullRequestEnvironmentName: pulumi.Input.asOptionalInput<String>(
+          map['pullRequestEnvironmentName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      stage: pulumi.Input.asOptionalInput<String>(map['stage']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      ttl: pulumi.Input.asOptionalInput<String>(map['ttl']),
     );
   }
 }

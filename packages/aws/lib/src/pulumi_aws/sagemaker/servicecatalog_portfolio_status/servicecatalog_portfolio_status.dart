@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'servicecatalog_portfolio_status_args.dart';
 
 /// Manages status of Service Catalog in SageMaker. Service Catalog is used to create SageMaker AI projects.
@@ -16,22 +16,22 @@ import 'servicecatalog_portfolio_status_args.dart';
 /// ```sh
 /// $ pulumi import aws:sagemaker/servicecatalogPortfolioStatus:ServicecatalogPortfolioStatus example us-east-1
 /// ```
-class ServicecatalogPortfolioStatus extends CustomResource {
+class ServicecatalogPortfolioStatus extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Whether Service Catalog is enabled or disabled in SageMaker. Valid values are `Enabled` and `Disabled`.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   ServicecatalogPortfolioStatus(
     String name, {
     ServicecatalogPortfolioStatusArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sagemaker/servicecatalogPortfolioStatus:ServicecatalogPortfolioStatus',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.status = registerOutput<String>('status');

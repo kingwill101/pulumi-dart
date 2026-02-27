@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../express_gateway_service_ingress_path/express_gateway_service_ingress_path.dart';
 import '../express_gateway_service_network_configuration/express_gateway_service_network_configuration.dart';
 import '../express_gateway_service_primary_container/express_gateway_service_primary_container.dart';
@@ -33,71 +33,73 @@ import 'express_gateway_service_args.dart';
 /// ```sh
 /// $ pulumi import aws:ecs/expressGatewayService:ExpressGatewayService example arn:aws:ecs:us-west-2:123456789012:service/my-cluster/my-express-gateway-service
 /// ```
-class ExpressGatewayService extends CustomResource {
+class ExpressGatewayService extends pulumi.CustomResource {
   /// Name or ARN of the ECS cluster. Defaults to `default`.
-  late final Output<String> cluster;
+  late final pulumi.Output<String> cluster;
 
   /// Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096.
-  late final Output<String> cpu;
+  late final pulumi.Output<String> cpu;
 
   /// ARN of the current deployment.
-  late final Output<String> currentDeployment;
+  late final pulumi.Output<String> currentDeployment;
 
   /// ARN of the IAM role that allows ECS to pull container images and publish container logs to Amazon CloudWatch.
-  late final Output<String> executionRoleArn;
+  late final pulumi.Output<String> executionRoleArn;
 
   /// Path for health check requests. Defaults to `/ping`.
-  late final Output<String> healthCheckPath;
+  late final pulumi.Output<String> healthCheckPath;
 
   /// ARN of the IAM role that allows ECS to manage AWS infrastructure on your behalf. **Important:** The infrastructure role cannot be modified after the service is created. Changing this forces a new resource to be created.
   ///
   /// The following arguments are optional:
-  late final Output<String> infrastructureRoleArn;
+  late final pulumi.Output<String> infrastructureRoleArn;
 
   /// List of ingress paths with access type and endpoint information.
-  late final Output<List<ExpressGatewayServiceIngressPath>> ingressPaths;
+  late final pulumi.Output<List<ExpressGatewayServiceIngressPath>> ingressPaths;
 
   /// Amount of memory (in MiB) used by the task. Valid values are between 512 and 8192.
-  late final Output<String> memory;
-  late final Output<List<ExpressGatewayServiceNetworkConfiguration>>
+  late final pulumi.Output<String> memory;
+  late final pulumi.Output<List<ExpressGatewayServiceNetworkConfiguration>>
       networkConfigurations;
-  late final Output<ExpressGatewayServicePrimaryContainer> primaryContainer;
+  late final pulumi.Output<ExpressGatewayServicePrimaryContainer>
+      primaryContainer;
 
   /// AWS region where the service will be created. If not specified, the region configured in the provider will be used.
-  late final Output<String> region;
-  late final Output<List<ExpressGatewayServiceScalingTarget>> scalingTargets;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<List<ExpressGatewayServiceScalingTarget>>
+      scalingTargets;
 
   /// ARN of the Express Gateway Service.
-  late final Output<String> serviceArn;
+  late final pulumi.Output<String> serviceArn;
 
   /// Name of the service. If not specified, a name will be generated. Changing this forces a new resource to be created.
-  late final Output<String> serviceName;
+  late final pulumi.Output<String> serviceName;
 
   /// ARN of the service revision.
-  late final Output<String> serviceRevisionArn;
+  late final pulumi.Output<String> serviceRevisionArn;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// ARN of the IAM role that allows your Amazon ECS container task to make calls to other AWS services.
-  late final Output<String?> taskRoleArn;
-  late final Output<ExpressGatewayServiceTimeouts?> timeouts;
+  late final pulumi.Output<String?> taskRoleArn;
+  late final pulumi.Output<ExpressGatewayServiceTimeouts?> timeouts;
 
   /// Whether to wait for the service to reach a steady state before considering the operation complete. Defaults to `false`.
-  late final Output<bool> waitForSteadyState;
+  late final pulumi.Output<bool> waitForSteadyState;
 
   ExpressGatewayService(
     String name, {
     ExpressGatewayServiceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ecs/expressGatewayService:ExpressGatewayService',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cluster = registerOutput<String>('cluster');
     this.cpu = registerOutput<String>('cpu');

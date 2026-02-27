@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_user_pool_user_pool_add_on_advanced_security_additional_flow/get_user_pool_user_pool_add_on_advanced_security_additional_flow.dart';
 
 class GetUserPoolUserPoolAddOn {
@@ -18,7 +18,7 @@ class GetUserPoolUserPoolAddOn {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['advancedSecurityAdditionalFlows'] = Input.encodeList<
+    map['advancedSecurityAdditionalFlows'] = pulumi.Input.encodeList<
             GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow,
             Map<String, dynamic>>(
         advancedSecurityAdditionalFlows, (value) => value.toMap());
@@ -28,7 +28,7 @@ class GetUserPoolUserPoolAddOn {
 
   factory GetUserPoolUserPoolAddOn.fromMap(Map<String, dynamic> map) {
     return GetUserPoolUserPoolAddOn(
-      advancedSecurityAdditionalFlows: Input.decodeList<
+      advancedSecurityAdditionalFlows: pulumi.Input.decodeList<
               GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow>(
           map['advancedSecurityAdditionalFlows'],
           (value) =>

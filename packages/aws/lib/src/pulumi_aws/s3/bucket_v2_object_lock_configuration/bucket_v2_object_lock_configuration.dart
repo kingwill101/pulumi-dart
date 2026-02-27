@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_v2_object_lock_configuration_rule/bucket_v2_object_lock_configuration_rule.dart';
 
 class BucketV2ObjectLockConfiguration {
@@ -23,7 +23,8 @@ class BucketV2ObjectLockConfiguration {
     }
     final rulesValue = rules;
     if (rulesValue != null) {
-      map['rules'] = Input.encodeList<BucketV2ObjectLockConfigurationRule,
+      map['rules'] = pulumi.Input.encodeList<
+          BucketV2ObjectLockConfigurationRule,
           Map<String, dynamic>>(rulesValue, (value) => value.toMap());
     }
     return map;
@@ -36,7 +37,7 @@ class BucketV2ObjectLockConfiguration {
           : map['objectLockEnabled'] as String,
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<BucketV2ObjectLockConfigurationRule>(
+          : pulumi.Input.decodeList<BucketV2ObjectLockConfigurationRule>(
               map['rules'],
               (value) => BucketV2ObjectLockConfigurationRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

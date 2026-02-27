@@ -1,3 +1,3 @@
 library module_lb_listener_rule_action_fixed_response;
 
-export 'listener_rule_action_fixed_response/listener_rule_action_fixed_response2.dart';
+export 'listener_rule_action_fixed_response/listener_rule_action_fixed_response_lb.dart';

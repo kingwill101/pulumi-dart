@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_core_network_policy_document_attachment_routing_policy_rule_action/get_core_network_policy_document_attachment_routing_policy_rule_action.dart';
 import '../get_core_network_policy_document_attachment_routing_policy_rule_condition/get_core_network_policy_document_attachment_routing_policy_rule_condition.dart';
 
@@ -32,7 +32,7 @@ class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['action'] = action.toMap();
-    map['conditions'] = Input.encodeList<
+    map['conditions'] = pulumi.Input.encodeList<
         GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition,
         Map<String, dynamic>>(conditions, (value) => value.toMap());
     final descriptionValue = description;
@@ -53,7 +53,7 @@ class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule {
       action:
           GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction.fromMap(
               (map['action'] as Map).cast<String, dynamic>()),
-      conditions: Input.decodeList<
+      conditions: pulumi.Input.decodeList<
               GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition>(
           map['conditions'],
           (value) =>

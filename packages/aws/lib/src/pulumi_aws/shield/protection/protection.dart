@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'protection_args.dart';
 
 /// Enables AWS Shield Advanced for a specific AWS resource.
@@ -17,31 +17,31 @@ import 'protection_args.dart';
 /// ```sh
 /// $ pulumi import aws:shield/protection:Protection example ff9592dc-22f3-4e88-afa1-7b29fde9669a
 /// ```
-class Protection extends CustomResource {
+class Protection extends pulumi.CustomResource {
   /// The ARN of the Protection.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// A friendly name for the Protection you are creating.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ARN (Amazon Resource Name) of the resource to be protected.
-  late final Output<String> resourceArn;
+  late final pulumi.Output<String> resourceArn;
 
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Protection(
     String name, {
     ProtectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:shield/protection:Protection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

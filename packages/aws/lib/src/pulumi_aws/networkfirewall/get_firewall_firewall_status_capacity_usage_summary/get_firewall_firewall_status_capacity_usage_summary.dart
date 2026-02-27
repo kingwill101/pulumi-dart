@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_firewall_firewall_status_capacity_usage_summary_cidr/get_firewall_firewall_status_capacity_usage_summary_cidr.dart';
 
 class GetFirewallFirewallStatusCapacityUsageSummary {
@@ -13,7 +13,7 @@ class GetFirewallFirewallStatusCapacityUsageSummary {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cidrs'] = Input.encodeList<
+    map['cidrs'] = pulumi.Input.encodeList<
         GetFirewallFirewallStatusCapacityUsageSummaryCidr,
         Map<String, dynamic>>(cidrs, (value) => value.toMap());
     return map;
@@ -22,12 +22,11 @@ class GetFirewallFirewallStatusCapacityUsageSummary {
   factory GetFirewallFirewallStatusCapacityUsageSummary.fromMap(
       Map<String, dynamic> map) {
     return GetFirewallFirewallStatusCapacityUsageSummary(
-      cidrs:
-          Input.decodeList<GetFirewallFirewallStatusCapacityUsageSummaryCidr>(
-              map['cidrs'],
-              (value) =>
-                  GetFirewallFirewallStatusCapacityUsageSummaryCidr.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      cidrs: pulumi.Input.decodeList<
+              GetFirewallFirewallStatusCapacityUsageSummaryCidr>(
+          map['cidrs'],
+          (value) => GetFirewallFirewallStatusCapacityUsageSummaryCidr.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

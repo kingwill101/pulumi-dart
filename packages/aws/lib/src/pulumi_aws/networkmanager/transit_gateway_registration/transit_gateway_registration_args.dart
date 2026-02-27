@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TransitGatewayRegistration.
 class TransitGatewayRegistrationArgs {
   /// ID of the Global Network to register to.
-  final Input<String> globalNetworkId;
+  final pulumi.Input<String> globalNetworkId;
 
   /// ARN of the Transit Gateway to register.
-  final Input<String> transitGatewayArn;
+  final pulumi.Input<String> transitGatewayArn;
 
   TransitGatewayRegistrationArgs({
     required this.globalNetworkId,
@@ -24,8 +24,8 @@ class TransitGatewayRegistrationArgs {
 
   factory TransitGatewayRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return TransitGatewayRegistrationArgs(
-      globalNetworkId: Input.asInput<String>(map['globalNetworkId']),
-      transitGatewayArn: Input.asInput<String>(map['transitGatewayArn']),
+      globalNetworkId: pulumi.Input.asInput<String>(map['globalNetworkId']),
+      transitGatewayArn: pulumi.Input.asInput<String>(map['transitGatewayArn']),
     );
   }
 }

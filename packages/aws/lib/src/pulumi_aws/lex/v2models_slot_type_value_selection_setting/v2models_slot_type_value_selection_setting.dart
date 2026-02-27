@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_slot_type_value_selection_setting_advanced_recognition_setting/v2models_slot_type_value_selection_setting_advanced_recognition_setting.dart';
 import '../v2models_slot_type_value_selection_setting_regex_filter/v2models_slot_type_value_selection_setting_regex_filter.dart';
 
@@ -29,14 +29,14 @@ class V2modelsSlotTypeValueSelectionSetting {
     final map = <String, dynamic>{};
     final advancedRecognitionSettingsValue = advancedRecognitionSettings;
     if (advancedRecognitionSettingsValue != null) {
-      map['advancedRecognitionSettings'] = Input.encodeList<
+      map['advancedRecognitionSettings'] = pulumi.Input.encodeList<
               V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting,
               Map<String, dynamic>>(
           advancedRecognitionSettingsValue, (value) => value.toMap());
     }
     final regexFiltersValue = regexFilters;
     if (regexFiltersValue != null) {
-      map['regexFilters'] = Input.encodeList<
+      map['regexFilters'] = pulumi.Input.encodeList<
           V2modelsSlotTypeValueSelectionSettingRegexFilter,
           Map<String, dynamic>>(regexFiltersValue, (value) => value.toMap());
     }
@@ -49,7 +49,7 @@ class V2modelsSlotTypeValueSelectionSetting {
     return V2modelsSlotTypeValueSelectionSetting(
       advancedRecognitionSettings: map['advancedRecognitionSettings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting>(
               map['advancedRecognitionSettings'],
               (value) =>
@@ -57,7 +57,8 @@ class V2modelsSlotTypeValueSelectionSetting {
                       .fromMap((value as Map).cast<String, dynamic>())),
       regexFilters: map['regexFilters'] == null
           ? null
-          : Input.decodeList<V2modelsSlotTypeValueSelectionSettingRegexFilter>(
+          : pulumi.Input.decodeList<
+                  V2modelsSlotTypeValueSelectionSettingRegexFilter>(
               map['regexFilters'],
               (value) =>
                   V2modelsSlotTypeValueSelectionSettingRegexFilter.fromMap(

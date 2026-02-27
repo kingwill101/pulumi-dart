@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_policy_attachment_args.dart';
 
 /// Attaches a Managed IAM Policy to an IAM user
@@ -16,22 +16,22 @@ import 'user_policy_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/userPolicyAttachment:UserPolicyAttachment test-attach test-user/arn:aws:iam::xxxxxxxxxxxx:policy/test-policy
 /// ```
-class UserPolicyAttachment extends CustomResource {
+class UserPolicyAttachment extends pulumi.CustomResource {
   /// The ARN of the policy you want to apply
-  late final Output<String> policyArn;
+  late final pulumi.Output<String> policyArn;
 
   /// The user the policy should be applied to
-  late final Output<String> user;
+  late final pulumi.Output<String> user;
 
   UserPolicyAttachment(
     String name, {
     UserPolicyAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/userPolicyAttachment:UserPolicyAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.policyArn = registerOutput<String>('policyArn');
     this.user = registerOutput<String>('user');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_network_acls_filter/get_network_acls_filter.dart';
 
 /// Result data returned by getNetworkAcls.
@@ -30,7 +30,7 @@ class GetNetworkAclsResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetNetworkAclsFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetNetworkAclsFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -48,7 +48,7 @@ class GetNetworkAclsResult {
     return GetNetworkAclsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetNetworkAclsFilter>(
+          : pulumi.Input.decodeList<GetNetworkAclsFilter>(
               map['filters'],
               (value) => GetNetworkAclsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

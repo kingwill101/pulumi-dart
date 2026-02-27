@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for BucketRequestPaymentConfiguration.
 class BucketRequestPaymentConfigurationArgs {
   /// Name of the bucket.
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// Account ID of the expected bucket owner.
-  final Input<String>? expectedBucketOwner;
+  final pulumi.Input<String>? expectedBucketOwner;
 
   /// Specifies who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
-  final Input<String> payer;
+  final pulumi.Input<String> payer;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   BucketRequestPaymentConfigurationArgs({
     required this.bucket,
@@ -41,11 +41,11 @@ class BucketRequestPaymentConfigurationArgs {
   factory BucketRequestPaymentConfigurationArgs.fromMap(
       Map<String, dynamic> map) {
     return BucketRequestPaymentConfigurationArgs(
-      bucket: Input.asInput<String>(map['bucket']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
       expectedBucketOwner:
-          Input.asOptionalInput<String>(map['expectedBucketOwner']),
-      payer: Input.asInput<String>(map['payer']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['expectedBucketOwner']),
+      payer: pulumi.Input.asInput<String>(map['payer']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

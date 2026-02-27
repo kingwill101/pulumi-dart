@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_group_mixed_instances_policy_launch_template_override_instance_requirement/get_group_mixed_instances_policy_launch_template_override_instance_requirement.dart';
 import '../get_group_mixed_instances_policy_launch_template_override_launch_template_specification/get_group_mixed_instances_policy_launch_template_override_launch_template_specification.dart';
 
@@ -31,11 +31,11 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverride {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['instanceRequirements'] = Input.encodeList<
+    map['instanceRequirements'] = pulumi.Input.encodeList<
         GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement,
         Map<String, dynamic>>(instanceRequirements, (value) => value.toMap());
     map['instanceType'] = instanceType;
-    map['launchTemplateSpecifications'] = Input.encodeList<
+    map['launchTemplateSpecifications'] = pulumi.Input.encodeList<
         GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification,
         Map<String,
             dynamic>>(launchTemplateSpecifications, (value) => value.toMap());
@@ -46,14 +46,14 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverride {
   factory GetGroupMixedInstancesPolicyLaunchTemplateOverride.fromMap(
       Map<String, dynamic> map) {
     return GetGroupMixedInstancesPolicyLaunchTemplateOverride(
-      instanceRequirements: Input.decodeList<
+      instanceRequirements: pulumi.Input.decodeList<
               GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement>(
           map['instanceRequirements'],
           (value) =>
               GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement
                   .fromMap((value as Map).cast<String, dynamic>())),
       instanceType: map['instanceType'] as String,
-      launchTemplateSpecifications: Input.decodeList<
+      launchTemplateSpecifications: pulumi.Input.decodeList<
               GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification>(
           map['launchTemplateSpecifications'],
           (value) =>

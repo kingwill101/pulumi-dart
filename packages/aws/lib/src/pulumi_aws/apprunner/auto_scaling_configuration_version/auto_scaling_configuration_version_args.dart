@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AutoScalingConfigurationVersion.
 class AutoScalingConfigurationVersionArgs {
   /// Name of the auto scaling configuration.
-  final Input<String> autoScalingConfigurationName;
+  final pulumi.Input<String> autoScalingConfigurationName;
 
   /// Maximal number of concurrent requests that you want an instance to process. When the number of concurrent requests goes over this limit, App Runner scales up your service.
-  final Input<int>? maxConcurrency;
+  final pulumi.Input<int>? maxConcurrency;
 
   /// Maximal number of instances that App Runner provisions for your service.
-  final Input<int>? maxSize;
+  final pulumi.Input<int>? maxSize;
 
   /// Minimal number of instances that App Runner provisions for your service.
-  final Input<int>? minSize;
+  final pulumi.Input<int>? minSize;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   AutoScalingConfigurationVersionArgs({
     required this.autoScalingConfigurationName,
@@ -61,12 +61,12 @@ class AutoScalingConfigurationVersionArgs {
       Map<String, dynamic> map) {
     return AutoScalingConfigurationVersionArgs(
       autoScalingConfigurationName:
-          Input.asInput<String>(map['autoScalingConfigurationName']),
-      maxConcurrency: Input.asOptionalInput<int>(map['maxConcurrency']),
-      maxSize: Input.asOptionalInput<int>(map['maxSize']),
-      minSize: Input.asOptionalInput<int>(map['minSize']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asInput<String>(map['autoScalingConfigurationName']),
+      maxConcurrency: pulumi.Input.asOptionalInput<int>(map['maxConcurrency']),
+      maxSize: pulumi.Input.asOptionalInput<int>(map['maxSize']),
+      minSize: pulumi.Input.asOptionalInput<int>(map['minSize']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

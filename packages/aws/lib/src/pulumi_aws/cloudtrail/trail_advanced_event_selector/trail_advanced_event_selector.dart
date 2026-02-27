@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../trail_advanced_event_selector_field_selector/trail_advanced_event_selector_field_selector.dart';
 
 class TrailAdvancedEventSelector {
@@ -17,7 +17,7 @@ class TrailAdvancedEventSelector {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['fieldSelectors'] = Input.encodeList<
+    map['fieldSelectors'] = pulumi.Input.encodeList<
         TrailAdvancedEventSelectorFieldSelector,
         Map<String, dynamic>>(fieldSelectors, (value) => value.toMap());
     final nameValue = name;
@@ -29,10 +29,11 @@ class TrailAdvancedEventSelector {
 
   factory TrailAdvancedEventSelector.fromMap(Map<String, dynamic> map) {
     return TrailAdvancedEventSelector(
-      fieldSelectors: Input.decodeList<TrailAdvancedEventSelectorFieldSelector>(
-          map['fieldSelectors'],
-          (value) => TrailAdvancedEventSelectorFieldSelector.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      fieldSelectors:
+          pulumi.Input.decodeList<TrailAdvancedEventSelectorFieldSelector>(
+              map['fieldSelectors'],
+              (value) => TrailAdvancedEventSelectorFieldSelector.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       name: map['name'] == null ? null : map['name'] as String,
     );
   }

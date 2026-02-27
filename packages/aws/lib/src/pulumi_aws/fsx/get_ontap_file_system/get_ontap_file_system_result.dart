@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ontap_file_system_disk_iops_configuration/get_ontap_file_system_disk_iops_configuration.dart';
 import '../get_ontap_file_system_endpoint/get_ontap_file_system_endpoint.dart';
 
@@ -109,14 +109,13 @@ class GetOntapFileSystemResult {
     map['automaticBackupRetentionDays'] = automaticBackupRetentionDays;
     map['dailyAutomaticBackupStartTime'] = dailyAutomaticBackupStartTime;
     map['deploymentType'] = deploymentType;
-    map['diskIopsConfigurations'] = Input.encodeList<
+    map['diskIopsConfigurations'] = pulumi.Input.encodeList<
         GetOntapFileSystemDiskIopsConfiguration,
         Map<String, dynamic>>(diskIopsConfigurations, (value) => value.toMap());
     map['dnsName'] = dnsName;
     map['endpointIpAddressRange'] = endpointIpAddressRange;
-    map['endpoints'] =
-        Input.encodeList<GetOntapFileSystemEndpoint, Map<String, dynamic>>(
-            endpoints, (value) => value.toMap());
+    map['endpoints'] = pulumi.Input.encodeList<GetOntapFileSystemEndpoint,
+        Map<String, dynamic>>(endpoints, (value) => value.toMap());
     map['haPairs'] = haPairs;
     map['id'] = id;
     map['kmsKeyId'] = kmsKeyId;
@@ -144,13 +143,13 @@ class GetOntapFileSystemResult {
           map['dailyAutomaticBackupStartTime'] as String,
       deploymentType: map['deploymentType'] as String,
       diskIopsConfigurations:
-          Input.decodeList<GetOntapFileSystemDiskIopsConfiguration>(
+          pulumi.Input.decodeList<GetOntapFileSystemDiskIopsConfiguration>(
               map['diskIopsConfigurations'],
               (value) => GetOntapFileSystemDiskIopsConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
       dnsName: map['dnsName'] as String,
       endpointIpAddressRange: map['endpointIpAddressRange'] as String,
-      endpoints: Input.decodeList<GetOntapFileSystemEndpoint>(
+      endpoints: pulumi.Input.decodeList<GetOntapFileSystemEndpoint>(
           map['endpoints'],
           (value) => GetOntapFileSystemEndpoint.fromMap(
               (value as Map).cast<String, dynamic>())),

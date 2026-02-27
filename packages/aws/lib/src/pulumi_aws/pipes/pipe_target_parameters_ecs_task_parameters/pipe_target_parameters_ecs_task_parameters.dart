@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipe_target_parameters_ecs_task_parameters_capacity_provider_strategy/pipe_target_parameters_ecs_task_parameters_capacity_provider_strategy.dart';
 import '../pipe_target_parameters_ecs_task_parameters_network_configuration/pipe_target_parameters_ecs_task_parameters_network_configuration.dart';
 import '../pipe_target_parameters_ecs_task_parameters_overrides/pipe_target_parameters_ecs_task_parameters_overrides.dart';
@@ -79,7 +79,7 @@ class PipeTargetParametersEcsTaskParameters {
     final map = <String, dynamic>{};
     final capacityProviderStrategiesValue = capacityProviderStrategies;
     if (capacityProviderStrategiesValue != null) {
-      map['capacityProviderStrategies'] = Input.encodeList<
+      map['capacityProviderStrategies'] = pulumi.Input.encodeList<
               PipeTargetParametersEcsTaskParametersCapacityProviderStrategy,
               Map<String, dynamic>>(
           capacityProviderStrategiesValue, (value) => value.toMap());
@@ -110,14 +110,14 @@ class PipeTargetParametersEcsTaskParameters {
     }
     final placementConstraintsValue = placementConstraints;
     if (placementConstraintsValue != null) {
-      map['placementConstraints'] = Input.encodeList<
+      map['placementConstraints'] = pulumi.Input.encodeList<
               PipeTargetParametersEcsTaskParametersPlacementConstraint,
               Map<String, dynamic>>(
           placementConstraintsValue, (value) => value.toMap());
     }
     final placementStrategiesValue = placementStrategies;
     if (placementStrategiesValue != null) {
-      map['placementStrategies'] = Input.encodeList<
+      map['placementStrategies'] = pulumi.Input.encodeList<
               PipeTargetParametersEcsTaskParametersPlacementStrategy,
               Map<String, dynamic>>(
           placementStrategiesValue, (value) => value.toMap());
@@ -151,7 +151,7 @@ class PipeTargetParametersEcsTaskParameters {
     return PipeTargetParametersEcsTaskParameters(
       capacityProviderStrategies: map['capacityProviderStrategies'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PipeTargetParametersEcsTaskParametersCapacityProviderStrategy>(
               map['capacityProviderStrategies'],
               (value) =>
@@ -176,7 +176,7 @@ class PipeTargetParametersEcsTaskParameters {
               (map['overrides'] as Map).cast<String, dynamic>()),
       placementConstraints: map['placementConstraints'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PipeTargetParametersEcsTaskParametersPlacementConstraint>(
               map['placementConstraints'],
               (value) =>
@@ -184,7 +184,7 @@ class PipeTargetParametersEcsTaskParameters {
                       .fromMap((value as Map).cast<String, dynamic>())),
       placementStrategies: map['placementStrategies'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PipeTargetParametersEcsTaskParametersPlacementStrategy>(
               map['placementStrategies'],
               (value) => PipeTargetParametersEcsTaskParametersPlacementStrategy

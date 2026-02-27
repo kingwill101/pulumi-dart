@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'link_association_args.dart';
 
 /// Manages a Network Manager link association. Associates a link to a device. A device can be associated to multiple links and a link can be associated to multiple devices. The device and link must be in the same global network and the same site.
@@ -14,25 +14,25 @@ import 'link_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkmanager/linkAssociation:LinkAssociation example global-network-0d47f6t230mz46dy4,link-444555aaabbb11223,device-07f6fd08867abc123
 /// ```
-class LinkAssociation extends CustomResource {
+class LinkAssociation extends pulumi.CustomResource {
   /// ID of the device.
-  late final Output<String> deviceId;
+  late final pulumi.Output<String> deviceId;
 
   /// ID of the global network.
-  late final Output<String> globalNetworkId;
+  late final pulumi.Output<String> globalNetworkId;
 
   /// ID of the link.
-  late final Output<String> linkId;
+  late final pulumi.Output<String> linkId;
 
   LinkAssociation(
     String name, {
     LinkAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkmanager/linkAssociation:LinkAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.deviceId = registerOutput<String>('deviceId');
     this.globalNetworkId = registerOutput<String>('globalNetworkId');

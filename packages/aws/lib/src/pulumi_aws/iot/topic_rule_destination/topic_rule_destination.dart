@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../topic_rule_destination_vpc_configuration/topic_rule_destination_vpc_configuration.dart';
 import 'topic_rule_destination_args.dart';
 
@@ -13,28 +13,29 @@ import 'topic_rule_destination_args.dart';
 /// ```sh
 /// $ pulumi import aws:iot/topicRuleDestination:TopicRuleDestination example arn:aws:iot:us-west-2:123456789012:ruledestination/vpc/2ce781c8-68a6-4c52-9c62-63fe489ecc60
 /// ```
-class TopicRuleDestination extends CustomResource {
+class TopicRuleDestination extends pulumi.CustomResource {
   /// The ARN of the topic rule destination
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Whether or not to enable the destination. Default: `true`.
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration of the virtual private cloud (VPC) connection. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/vpc-rule-action.html).
-  late final Output<TopicRuleDestinationVpcConfiguration> vpcConfiguration;
+  late final pulumi.Output<TopicRuleDestinationVpcConfiguration>
+      vpcConfiguration;
 
   TopicRuleDestination(
     String name, {
     TopicRuleDestinationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iot/topicRuleDestination:TopicRuleDestination',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.enabled = registerOutput<bool?>('enabled');

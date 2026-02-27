@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../intent_rejection_statement_message/intent_rejection_statement_message.dart';
 
 class IntentRejectionStatement {
@@ -14,9 +14,8 @@ class IntentRejectionStatement {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['messages'] =
-        Input.encodeList<IntentRejectionStatementMessage, Map<String, dynamic>>(
-            messages, (value) => value.toMap());
+    map['messages'] = pulumi.Input.encodeList<IntentRejectionStatementMessage,
+        Map<String, dynamic>>(messages, (value) => value.toMap());
     final responseCardValue = responseCard;
     if (responseCardValue != null) {
       map['responseCard'] = responseCardValue;
@@ -26,7 +25,7 @@ class IntentRejectionStatement {
 
   factory IntentRejectionStatement.fromMap(Map<String, dynamic> map) {
     return IntentRejectionStatement(
-      messages: Input.decodeList<IntentRejectionStatementMessage>(
+      messages: pulumi.Input.decodeList<IntentRejectionStatementMessage>(
           map['messages'],
           (value) => IntentRejectionStatementMessage.fromMap(
               (value as Map).cast<String, dynamic>())),

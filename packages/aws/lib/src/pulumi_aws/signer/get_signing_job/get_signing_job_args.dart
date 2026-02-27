@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSigningJob.
 class GetSigningJobArgs {
   /// ID of the signing job on output.
-  final Input<String> jobId;
+  final pulumi.Input<String> jobId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetSigningJobArgs({
     required this.jobId,
@@ -27,8 +27,8 @@ class GetSigningJobArgs {
 
   factory GetSigningJobArgs.fromMap(Map<String, dynamic> map) {
     return GetSigningJobArgs(
-      jobId: Input.asInput<String>(map['jobId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      jobId: pulumi.Input.asInput<String>(map['jobId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

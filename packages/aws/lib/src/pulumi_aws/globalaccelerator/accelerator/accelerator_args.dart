@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../accelerator_attributes/accelerator_attributes.dart';
 
 /// The set of arguments for Accelerator.
 class AcceleratorArgs {
   /// The attributes of the accelerator. Fields documented below.
-  final Input<AcceleratorAttributes>? attributes;
+  final pulumi.Input<AcceleratorAttributes>? attributes;
 
   /// Indicates whether the accelerator is enabled. Defaults to `true`. Valid values: `true`, `false`.
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// The value for the address type. Defaults to `IPV4`. Valid values: `IPV4`, `DUAL_STACK`.
-  final Input<String>? ipAddressType;
+  final pulumi.Input<String>? ipAddressType;
 
   /// The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
-  final Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>>? ipAddresses;
 
   /// The name of the accelerator.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   AcceleratorArgs({
     this.attributes,
@@ -36,7 +36,8 @@ class AcceleratorArgs {
     final map = <String, dynamic>{};
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] = Input.mapOptionalInputValue<AcceleratorAttributes,
+      map['attributes'] = pulumi.Input.mapOptionalInputValue<
+          AcceleratorAttributes,
           Map<String, dynamic>>(attributesValue, (value) => value.toMap());
     }
     final enabledValue = enabled;
@@ -64,13 +65,14 @@ class AcceleratorArgs {
 
   factory AcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return AcceleratorArgs(
-      attributes:
-          Input.asOptionalInput<AcceleratorAttributes>(map['attributes']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
-      ipAddressType: Input.asOptionalInput<String>(map['ipAddressType']),
-      ipAddresses: Input.asOptionalInput<List<String>>(map['ipAddresses']),
-      name: Input.asOptionalInput<String>(map['name']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      attributes: pulumi.Input.asOptionalInput<AcceleratorAttributes>(
+          map['attributes']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
+      ipAddressType: pulumi.Input.asOptionalInput<String>(map['ipAddressType']),
+      ipAddresses:
+          pulumi.Input.asOptionalInput<List<String>>(map['ipAddresses']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

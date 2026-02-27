@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getQueue.
 class GetQueueArgs {
   /// Reference to the hosting Amazon Connect Instance
-  final Input<String> instanceId;
+  final pulumi.Input<String> instanceId;
 
   /// Returns information on a specific Queue by name
   ///
   /// > **NOTE:** `instance_id` and one of either `name` or `queue_id` is required.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Returns information on a specific Queue by Queue id
-  final Input<String>? queueId;
+  final pulumi.Input<String>? queueId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags assigned to the Queue.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetQueueArgs({
     required this.instanceId,
@@ -53,11 +53,11 @@ class GetQueueArgs {
 
   factory GetQueueArgs.fromMap(Map<String, dynamic> map) {
     return GetQueueArgs(
-      instanceId: Input.asInput<String>(map['instanceId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      queueId: Input.asOptionalInput<String>(map['queueId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      queueId: pulumi.Input.asOptionalInput<String>(map['queueId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_broker_nodes_node_info_list/get_broker_nodes_node_info_list.dart';
 
 /// Result data returned by getBrokerNodes.
@@ -23,9 +23,8 @@ class GetBrokerNodesResult {
     final map = <String, dynamic>{};
     map['clusterArn'] = clusterArn;
     map['id'] = id;
-    map['nodeInfoLists'] =
-        Input.encodeList<GetBrokerNodesNodeInfoList, Map<String, dynamic>>(
-            nodeInfoLists, (value) => value.toMap());
+    map['nodeInfoLists'] = pulumi.Input.encodeList<GetBrokerNodesNodeInfoList,
+        Map<String, dynamic>>(nodeInfoLists, (value) => value.toMap());
     map['region'] = region;
     return map;
   }
@@ -34,7 +33,7 @@ class GetBrokerNodesResult {
     return GetBrokerNodesResult(
       clusterArn: map['clusterArn'] as String,
       id: map['id'] as String,
-      nodeInfoLists: Input.decodeList<GetBrokerNodesNodeInfoList>(
+      nodeInfoLists: pulumi.Input.decodeList<GetBrokerNodesNodeInfoList>(
           map['nodeInfoLists'],
           (value) => GetBrokerNodesNodeInfoList.fromMap(
               (value as Map).cast<String, dynamic>())),

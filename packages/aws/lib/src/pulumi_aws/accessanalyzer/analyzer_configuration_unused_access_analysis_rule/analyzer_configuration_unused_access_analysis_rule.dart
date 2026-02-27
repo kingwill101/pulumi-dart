@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../analyzer_configuration_unused_access_analysis_rule_exclusion/analyzer_configuration_unused_access_analysis_rule_exclusion.dart';
 
 class AnalyzerConfigurationUnusedAccessAnalysisRule {
@@ -16,7 +16,7 @@ class AnalyzerConfigurationUnusedAccessAnalysisRule {
     final map = <String, dynamic>{};
     final exclusionsValue = exclusions;
     if (exclusionsValue != null) {
-      map['exclusions'] = Input.encodeList<
+      map['exclusions'] = pulumi.Input.encodeList<
           AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion,
           Map<String, dynamic>>(exclusionsValue, (value) => value.toMap());
     }
@@ -28,7 +28,7 @@ class AnalyzerConfigurationUnusedAccessAnalysisRule {
     return AnalyzerConfigurationUnusedAccessAnalysisRule(
       exclusions: map['exclusions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion>(
               map['exclusions'],
               (value) => AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firewall_firewall_status_sync_state_attachment/firewall_firewall_status_sync_state_attachment.dart';
 
 class FirewallFirewallStatusSyncState {
@@ -19,7 +19,7 @@ class FirewallFirewallStatusSyncState {
     final map = <String, dynamic>{};
     final attachmentsValue = attachments;
     if (attachmentsValue != null) {
-      map['attachments'] = Input.encodeList<
+      map['attachments'] = pulumi.Input.encodeList<
           FirewallFirewallStatusSyncStateAttachment,
           Map<String, dynamic>>(attachmentsValue, (value) => value.toMap());
     }
@@ -34,7 +34,7 @@ class FirewallFirewallStatusSyncState {
     return FirewallFirewallStatusSyncState(
       attachments: map['attachments'] == null
           ? null
-          : Input.decodeList<FirewallFirewallStatusSyncStateAttachment>(
+          : pulumi.Input.decodeList<FirewallFirewallStatusSyncStateAttachment>(
               map['attachments'],
               (value) => FirewallFirewallStatusSyncStateAttachment.fromMap(
                   (value as Map).cast<String, dynamic>())),

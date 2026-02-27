@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../channel_input_attachment_input_settings_audio_selector/channel_input_attachment_input_settings_audio_selector.dart';
 import '../channel_input_attachment_input_settings_caption_selector/channel_input_attachment_input_settings_caption_selector.dart';
 import '../channel_input_attachment_input_settings_network_input_settings/channel_input_attachment_input_settings_network_input_settings.dart';
@@ -58,13 +58,13 @@ class ChannelInputAttachmentInputSettings {
     final map = <String, dynamic>{};
     final audioSelectorsValue = audioSelectors;
     if (audioSelectorsValue != null) {
-      map['audioSelectors'] = Input.encodeList<
+      map['audioSelectors'] = pulumi.Input.encodeList<
           ChannelInputAttachmentInputSettingsAudioSelector,
           Map<String, dynamic>>(audioSelectorsValue, (value) => value.toMap());
     }
     final captionSelectorsValue = captionSelectors;
     if (captionSelectorsValue != null) {
-      map['captionSelectors'] = Input.encodeList<
+      map['captionSelectors'] = pulumi.Input.encodeList<
               ChannelInputAttachmentInputSettingsCaptionSelector,
               Map<String, dynamic>>(
           captionSelectorsValue, (value) => value.toMap());
@@ -113,14 +113,15 @@ class ChannelInputAttachmentInputSettings {
     return ChannelInputAttachmentInputSettings(
       audioSelectors: map['audioSelectors'] == null
           ? null
-          : Input.decodeList<ChannelInputAttachmentInputSettingsAudioSelector>(
+          : pulumi.Input.decodeList<
+                  ChannelInputAttachmentInputSettingsAudioSelector>(
               map['audioSelectors'],
               (value) =>
                   ChannelInputAttachmentInputSettingsAudioSelector.fromMap(
                       (value as Map).cast<String, dynamic>())),
       captionSelectors: map['captionSelectors'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ChannelInputAttachmentInputSettingsCaptionSelector>(
               map['captionSelectors'],
               (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_stack_args.dart';
 import 'get_stack_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_stack_result.dart';
 /// outputs and other useful data including the template body.
 Future<GetStackResult> getStack(
   GetStackArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:cloudformation/getStack:getStack',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStackResult.fromMap(result);
 }

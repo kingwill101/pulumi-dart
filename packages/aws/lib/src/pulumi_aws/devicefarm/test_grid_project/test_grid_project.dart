@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../test_grid_project_vpc_config/test_grid_project_vpc_config.dart';
 import 'test_grid_project_args.dart';
 
@@ -24,37 +24,37 @@ import 'test_grid_project_args.dart';
 /// ```sh
 /// $ pulumi import aws:devicefarm/testGridProject:TestGridProject example arn:aws:devicefarm:us-west-2:123456789012:testgrid-project:4fa784c7-ccb4-4dbf-ba4f-02198320daa1
 /// ```
-class TestGridProject extends CustomResource {
+class TestGridProject extends pulumi.CustomResource {
   /// The Amazon Resource Name of this Test Grid Project.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Human-readable description of the project.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The name of the Selenium testing project.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The VPC security groups and subnets that are attached to a project. See VPC Config below.
-  late final Output<TestGridProjectVpcConfig?> vpcConfig;
+  late final pulumi.Output<TestGridProjectVpcConfig?> vpcConfig;
 
   TestGridProject(
     String name, {
     TestGridProjectArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:devicefarm/testGridProject:TestGridProject',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');

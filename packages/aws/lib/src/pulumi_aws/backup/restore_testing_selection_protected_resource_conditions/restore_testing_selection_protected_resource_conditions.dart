@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_testing_selection_protected_resource_conditions_string_equal/restore_testing_selection_protected_resource_conditions_string_equal.dart';
 import '../restore_testing_selection_protected_resource_conditions_string_not_equal/restore_testing_selection_protected_resource_conditions_string_not_equal.dart';
 
@@ -22,13 +22,13 @@ class RestoreTestingSelectionProtectedResourceConditions {
     final map = <String, dynamic>{};
     final stringEqualsValue = stringEquals;
     if (stringEqualsValue != null) {
-      map['stringEquals'] = Input.encodeList<
+      map['stringEquals'] = pulumi.Input.encodeList<
           RestoreTestingSelectionProtectedResourceConditionsStringEqual,
           Map<String, dynamic>>(stringEqualsValue, (value) => value.toMap());
     }
     final stringNotEqualsValue = stringNotEquals;
     if (stringNotEqualsValue != null) {
-      map['stringNotEquals'] = Input.encodeList<
+      map['stringNotEquals'] = pulumi.Input.encodeList<
           RestoreTestingSelectionProtectedResourceConditionsStringNotEqual,
           Map<String, dynamic>>(stringNotEqualsValue, (value) => value.toMap());
     }
@@ -40,7 +40,7 @@ class RestoreTestingSelectionProtectedResourceConditions {
     return RestoreTestingSelectionProtectedResourceConditions(
       stringEquals: map['stringEquals'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreTestingSelectionProtectedResourceConditionsStringEqual>(
               map['stringEquals'],
               (value) =>
@@ -48,7 +48,7 @@ class RestoreTestingSelectionProtectedResourceConditions {
                       .fromMap((value as Map).cast<String, dynamic>())),
       stringNotEquals: map['stringNotEquals'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RestoreTestingSelectionProtectedResourceConditionsStringNotEqual>(
               map['stringNotEquals'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_cookies_config/get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_cookies_config.dart';
 import '../get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_headers_config/get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_headers_config.dart';
 import '../get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_query_strings_config/get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_query_strings_config.dart';
@@ -37,15 +37,15 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOrigin {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cookiesConfigs'] = Input.encodeList<
+    map['cookiesConfigs'] = pulumi.Input.encodeList<
         GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig,
         Map<String, dynamic>>(cookiesConfigs, (value) => value.toMap());
     map['enableAcceptEncodingBrotli'] = enableAcceptEncodingBrotli;
     map['enableAcceptEncodingGzip'] = enableAcceptEncodingGzip;
-    map['headersConfigs'] = Input.encodeList<
+    map['headersConfigs'] = pulumi.Input.encodeList<
         GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig,
         Map<String, dynamic>>(headersConfigs, (value) => value.toMap());
-    map['queryStringsConfigs'] = Input.encodeList<
+    map['queryStringsConfigs'] = pulumi.Input.encodeList<
         GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig,
         Map<String, dynamic>>(queryStringsConfigs, (value) => value.toMap());
     return map;
@@ -54,7 +54,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOrigin {
   factory GetCachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap(
       Map<String, dynamic> map) {
     return GetCachePolicyParametersInCacheKeyAndForwardedToOrigin(
-      cookiesConfigs: Input.decodeList<
+      cookiesConfigs: pulumi.Input.decodeList<
               GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig>(
           map['cookiesConfigs'],
           (value) =>
@@ -62,13 +62,13 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOrigin {
                   .fromMap((value as Map).cast<String, dynamic>())),
       enableAcceptEncodingBrotli: map['enableAcceptEncodingBrotli'] as bool,
       enableAcceptEncodingGzip: map['enableAcceptEncodingGzip'] as bool,
-      headersConfigs: Input.decodeList<
+      headersConfigs: pulumi.Input.decodeList<
               GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig>(
           map['headersConfigs'],
           (value) =>
               GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig
                   .fromMap((value as Map).cast<String, dynamic>())),
-      queryStringsConfigs: Input.decodeList<
+      queryStringsConfigs: pulumi.Input.decodeList<
               GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig>(
           map['queryStringsConfigs'],
           (value) =>

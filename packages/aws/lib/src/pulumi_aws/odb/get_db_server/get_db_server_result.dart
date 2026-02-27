@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_db_server_db_server_patching_detail/get_db_server_db_server_patching_detail.dart';
 
 /// Result data returned by getDbServer.
@@ -99,7 +99,7 @@ class GetDbServerResult {
     map['cpuCoreCount'] = cpuCoreCount;
     map['createdAt'] = createdAt;
     map['dbNodeStorageSizeInGbs'] = dbNodeStorageSizeInGbs;
-    map['dbServerPatchingDetails'] = Input.encodeList<
+    map['dbServerPatchingDetails'] = pulumi.Input.encodeList<
             GetDbServerDbServerPatchingDetail, Map<String, dynamic>>(
         dbServerPatchingDetails, (value) => value.toMap());
     map['displayName'] = displayName;
@@ -132,7 +132,7 @@ class GetDbServerResult {
       createdAt: map['createdAt'] as String,
       dbNodeStorageSizeInGbs: map['dbNodeStorageSizeInGbs'] as int,
       dbServerPatchingDetails:
-          Input.decodeList<GetDbServerDbServerPatchingDetail>(
+          pulumi.Input.decodeList<GetDbServerDbServerPatchingDetail>(
               map['dbServerPatchingDetails'],
               (value) => GetDbServerDbServerPatchingDetail.fromMap(
                   (value as Map).cast<String, dynamic>())),

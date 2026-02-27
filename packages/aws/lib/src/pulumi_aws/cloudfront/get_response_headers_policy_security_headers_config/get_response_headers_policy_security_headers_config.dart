@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_response_headers_policy_security_headers_config_content_security_policy/get_response_headers_policy_security_headers_config_content_security_policy.dart';
 import '../get_response_headers_policy_security_headers_config_content_type_option/get_response_headers_policy_security_headers_config_content_type_option.dart';
 import '../get_response_headers_policy_security_headers_config_frame_option/get_response_headers_policy_security_headers_config_frame_option.dart';
@@ -45,24 +45,24 @@ class GetResponseHeadersPolicySecurityHeadersConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['contentSecurityPolicies'] = Input.encodeList<
+    map['contentSecurityPolicies'] = pulumi.Input.encodeList<
             GetResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy,
             Map<String, dynamic>>(
         contentSecurityPolicies, (value) => value.toMap());
-    map['contentTypeOptions'] = Input.encodeList<
+    map['contentTypeOptions'] = pulumi.Input.encodeList<
         GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption,
         Map<String, dynamic>>(contentTypeOptions, (value) => value.toMap());
-    map['frameOptions'] = Input.encodeList<
+    map['frameOptions'] = pulumi.Input.encodeList<
         GetResponseHeadersPolicySecurityHeadersConfigFrameOption,
         Map<String, dynamic>>(frameOptions, (value) => value.toMap());
-    map['referrerPolicies'] = Input.encodeList<
+    map['referrerPolicies'] = pulumi.Input.encodeList<
         GetResponseHeadersPolicySecurityHeadersConfigReferrerPolicy,
         Map<String, dynamic>>(referrerPolicies, (value) => value.toMap());
-    map['strictTransportSecurities'] = Input.encodeList<
+    map['strictTransportSecurities'] = pulumi.Input.encodeList<
         GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity,
         Map<String,
             dynamic>>(strictTransportSecurities, (value) => value.toMap());
-    map['xssProtections'] = Input.encodeList<
+    map['xssProtections'] = pulumi.Input.encodeList<
         GetResponseHeadersPolicySecurityHeadersConfigXssProtection,
         Map<String, dynamic>>(xssProtections, (value) => value.toMap());
     return map;
@@ -71,36 +71,36 @@ class GetResponseHeadersPolicySecurityHeadersConfig {
   factory GetResponseHeadersPolicySecurityHeadersConfig.fromMap(
       Map<String, dynamic> map) {
     return GetResponseHeadersPolicySecurityHeadersConfig(
-      contentSecurityPolicies: Input.decodeList<
+      contentSecurityPolicies: pulumi.Input.decodeList<
               GetResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy>(
           map['contentSecurityPolicies'],
           (value) =>
               GetResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy
                   .fromMap((value as Map).cast<String, dynamic>())),
-      contentTypeOptions: Input.decodeList<
+      contentTypeOptions: pulumi.Input.decodeList<
               GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption>(
           map['contentTypeOptions'],
           (value) =>
               GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption
                   .fromMap((value as Map).cast<String, dynamic>())),
-      frameOptions: Input.decodeList<
+      frameOptions: pulumi.Input.decodeList<
               GetResponseHeadersPolicySecurityHeadersConfigFrameOption>(
           map['frameOptions'],
           (value) =>
               GetResponseHeadersPolicySecurityHeadersConfigFrameOption.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      referrerPolicies: Input.decodeList<
+      referrerPolicies: pulumi.Input.decodeList<
               GetResponseHeadersPolicySecurityHeadersConfigReferrerPolicy>(
           map['referrerPolicies'],
           (value) => GetResponseHeadersPolicySecurityHeadersConfigReferrerPolicy
               .fromMap((value as Map).cast<String, dynamic>())),
-      strictTransportSecurities: Input.decodeList<
+      strictTransportSecurities: pulumi.Input.decodeList<
               GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity>(
           map['strictTransportSecurities'],
           (value) =>
               GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity
                   .fromMap((value as Map).cast<String, dynamic>())),
-      xssProtections: Input.decodeList<
+      xssProtections: pulumi.Input.decodeList<
               GetResponseHeadersPolicySecurityHeadersConfigXssProtection>(
           map['xssProtections'],
           (value) => GetResponseHeadersPolicySecurityHeadersConfigXssProtection

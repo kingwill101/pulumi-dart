@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getVocabulary.
 class GetVocabularyArgs {
   /// Reference to the hosting Amazon Connect Instance
-  final Input<String> instanceId;
+  final pulumi.Input<String> instanceId;
 
   /// Returns information on a specific Vocabulary by name
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the Vocabulary.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Returns information on a specific Vocabulary by Vocabulary id
   ///
   /// > **NOTE:** `instance_id` and one of either `name` or `vocabulary_id` is required.
-  final Input<String>? vocabularyId;
+  final pulumi.Input<String>? vocabularyId;
 
   GetVocabularyArgs({
     required this.instanceId,
@@ -53,11 +53,11 @@ class GetVocabularyArgs {
 
   factory GetVocabularyArgs.fromMap(Map<String, dynamic> map) {
     return GetVocabularyArgs(
-      instanceId: Input.asInput<String>(map['instanceId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vocabularyId: Input.asOptionalInput<String>(map['vocabularyId']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vocabularyId: pulumi.Input.asOptionalInput<String>(map['vocabularyId']),
     );
   }
 }

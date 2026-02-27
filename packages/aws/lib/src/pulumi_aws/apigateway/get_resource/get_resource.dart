@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_resource_args.dart';
 import 'get_resource_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_resource_result.dart';
 /// To fetch the Resource, you must provide the REST API id as well as the full path.
 Future<GetResourceResult> getResource(
   GetResourceArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:apigateway/getResource:getResource',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourceResult.fromMap(result);
 }

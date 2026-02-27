@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_agent_agent_versions_agent_version_summary/get_agent_agent_versions_agent_version_summary.dart';
 
 /// Result data returned by getAgentAgentVersions.
@@ -26,7 +26,7 @@ class GetAgentAgentVersionsResult {
     map['agentId'] = agentId;
     final agentVersionSummariesValue = agentVersionSummaries;
     if (agentVersionSummariesValue != null) {
-      map['agentVersionSummaries'] = Input.encodeList<
+      map['agentVersionSummaries'] = pulumi.Input.encodeList<
               GetAgentAgentVersionsAgentVersionSummary, Map<String, dynamic>>(
           agentVersionSummariesValue, (value) => value.toMap());
     }
@@ -40,7 +40,7 @@ class GetAgentAgentVersionsResult {
       agentId: map['agentId'] as String,
       agentVersionSummaries: map['agentVersionSummaries'] == null
           ? null
-          : Input.decodeList<GetAgentAgentVersionsAgentVersionSummary>(
+          : pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummary>(
               map['agentVersionSummaries'],
               (value) => GetAgentAgentVersionsAgentVersionSummary.fromMap(
                   (value as Map).cast<String, dynamic>())),

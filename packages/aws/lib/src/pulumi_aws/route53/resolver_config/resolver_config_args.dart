@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ResolverConfig.
 class ResolverConfigArgs {
   /// Indicates whether or not the Resolver will create autodefined rules for reverse DNS lookups. Valid values: `ENABLE`, `DISABLE`.
-  final Input<String> autodefinedReverseFlag;
+  final pulumi.Input<String> autodefinedReverseFlag;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of the VPC that the configuration is for.
-  final Input<String> resourceId;
+  final pulumi.Input<String> resourceId;
 
   ResolverConfigArgs({
     required this.autodefinedReverseFlag,
@@ -33,9 +33,9 @@ class ResolverConfigArgs {
   factory ResolverConfigArgs.fromMap(Map<String, dynamic> map) {
     return ResolverConfigArgs(
       autodefinedReverseFlag:
-          Input.asInput<String>(map['autodefinedReverseFlag']),
-      region: Input.asOptionalInput<String>(map['region']),
-      resourceId: Input.asInput<String>(map['resourceId']),
+          pulumi.Input.asInput<String>(map['autodefinedReverseFlag']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourceId: pulumi.Input.asInput<String>(map['resourceId']),
     );
   }
 }

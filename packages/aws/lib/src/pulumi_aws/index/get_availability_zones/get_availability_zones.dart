@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_availability_zones_args.dart';
 import 'get_availability_zones_result.dart';
 
@@ -26,13 +26,13 @@ import 'get_availability_zones_result.dart';
 /// Only Availability Zones (no Local Zones):
 Future<GetAvailabilityZonesResult> getAvailabilityZones(
   GetAvailabilityZonesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:index/getAvailabilityZones:getAvailabilityZones',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAvailabilityZonesResult.fromMap(result);
 }

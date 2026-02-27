@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_lifecycle_configuration_rule_abort_incomplete_multipart_upload/bucket_lifecycle_configuration_rule_abort_incomplete_multipart_upload.dart';
 import '../bucket_lifecycle_configuration_rule_expiration/bucket_lifecycle_configuration_rule_expiration.dart';
 import '../bucket_lifecycle_configuration_rule_filter/bucket_lifecycle_configuration_rule_filter.dart';
@@ -77,7 +77,7 @@ class BucketLifecycleConfigurationRule {
     }
     final noncurrentVersionTransitionsValue = noncurrentVersionTransitions;
     if (noncurrentVersionTransitionsValue != null) {
-      map['noncurrentVersionTransitions'] = Input.encodeList<
+      map['noncurrentVersionTransitions'] = pulumi.Input.encodeList<
               BucketLifecycleConfigurationRuleNoncurrentVersionTransition,
               Map<String, dynamic>>(
           noncurrentVersionTransitionsValue, (value) => value.toMap());
@@ -89,7 +89,7 @@ class BucketLifecycleConfigurationRule {
     map['status'] = status;
     final transitionsValue = transitions;
     if (transitionsValue != null) {
-      map['transitions'] = Input.encodeList<
+      map['transitions'] = pulumi.Input.encodeList<
           BucketLifecycleConfigurationRuleTransition,
           Map<String, dynamic>>(transitionsValue, (value) => value.toMap());
     }
@@ -120,7 +120,7 @@ class BucketLifecycleConfigurationRule {
                   .cast<String, dynamic>()),
       noncurrentVersionTransitions: map['noncurrentVersionTransitions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BucketLifecycleConfigurationRuleNoncurrentVersionTransition>(
               map['noncurrentVersionTransitions'],
               (value) =>
@@ -130,7 +130,7 @@ class BucketLifecycleConfigurationRule {
       status: map['status'] as String,
       transitions: map['transitions'] == null
           ? null
-          : Input.decodeList<BucketLifecycleConfigurationRuleTransition>(
+          : pulumi.Input.decodeList<BucketLifecycleConfigurationRuleTransition>(
               map['transitions'],
               (value) => BucketLifecycleConfigurationRuleTransition.fromMap(
                   (value as Map).cast<String, dynamic>())),

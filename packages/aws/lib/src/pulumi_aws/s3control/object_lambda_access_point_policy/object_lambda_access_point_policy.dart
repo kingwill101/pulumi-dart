@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_lambda_access_point_policy_args.dart';
 
 /// Provides a resource to manage an S3 Object Lambda Access Point resource policy.
@@ -14,31 +14,31 @@ import 'object_lambda_access_point_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3control/objectLambdaAccessPointPolicy:ObjectLambdaAccessPointPolicy example 123456789012:example
 /// ```
-class ObjectLambdaAccessPointPolicy extends CustomResource {
+class ObjectLambdaAccessPointPolicy extends pulumi.CustomResource {
   /// The AWS account ID for the account that owns the Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// Indicates whether this access point currently has a policy that allows public access.
-  late final Output<bool> hasPublicAccessPolicy;
+  late final pulumi.Output<bool> hasPublicAccessPolicy;
 
   /// The name of the Object Lambda Access Point.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Object Lambda Access Point resource policy document.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ObjectLambdaAccessPointPolicy(
     String name, {
     ObjectLambdaAccessPointPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3control/objectLambdaAccessPointPolicy:ObjectLambdaAccessPointPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
     this.hasPublicAccessPolicy = registerOutput<bool>('hasPublicAccessPolicy');

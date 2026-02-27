@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LogDestinationPolicy.
 class LogDestinationPolicyArgs {
   /// The policy document. This is a JSON formatted string.
-  final Input<String> accessPolicy;
+  final pulumi.Input<String> accessPolicy;
 
   /// A name for the subscription filter
-  final Input<String> destinationName;
+  final pulumi.Input<String> destinationName;
 
   /// Specify true if you are updating an existing destination policy to grant permission to an organization ID instead of granting permission to individual AWS accounts.
-  final Input<bool>? forceUpdate;
+  final pulumi.Input<bool>? forceUpdate;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   LogDestinationPolicyArgs({
     required this.accessPolicy,
@@ -40,10 +40,10 @@ class LogDestinationPolicyArgs {
 
   factory LogDestinationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LogDestinationPolicyArgs(
-      accessPolicy: Input.asInput<String>(map['accessPolicy']),
-      destinationName: Input.asInput<String>(map['destinationName']),
-      forceUpdate: Input.asOptionalInput<bool>(map['forceUpdate']),
-      region: Input.asOptionalInput<String>(map['region']),
+      accessPolicy: pulumi.Input.asInput<String>(map['accessPolicy']),
+      destinationName: pulumi.Input.asInput<String>(map['destinationName']),
+      forceUpdate: pulumi.Input.asOptionalInput<bool>(map['forceUpdate']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

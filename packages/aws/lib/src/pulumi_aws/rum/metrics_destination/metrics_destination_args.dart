@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for MetricsDestination.
 class MetricsDestinationArgs {
   /// The name of the CloudWatch RUM app monitor that will send the metrics.
-  final Input<String> appMonitorName;
+  final pulumi.Input<String> appMonitorName;
 
   /// Defines the destination to send the metrics to. Valid values are `CloudWatch` and `Evidently`. If you specify `Evidently`, you must also specify the ARN of the CloudWatchEvidently experiment that is to be the destination and an IAM role that has permission to write to the experiment.
-  final Input<String> destination;
+  final pulumi.Input<String> destination;
 
   /// Use this parameter only if Destination is Evidently. This parameter specifies the ARN of the Evidently experiment that will receive the extended metrics.
-  final Input<String>? destinationArn;
+  final pulumi.Input<String>? destinationArn;
 
   /// This parameter is required if Destination is Evidently. If Destination is CloudWatch, do not use this parameter.
-  final Input<String>? iamRoleArn;
+  final pulumi.Input<String>? iamRoleArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   MetricsDestinationArgs({
     required this.appMonitorName,
@@ -48,11 +48,12 @@ class MetricsDestinationArgs {
 
   factory MetricsDestinationArgs.fromMap(Map<String, dynamic> map) {
     return MetricsDestinationArgs(
-      appMonitorName: Input.asInput<String>(map['appMonitorName']),
-      destination: Input.asInput<String>(map['destination']),
-      destinationArn: Input.asOptionalInput<String>(map['destinationArn']),
-      iamRoleArn: Input.asOptionalInput<String>(map['iamRoleArn']),
-      region: Input.asOptionalInput<String>(map['region']),
+      appMonitorName: pulumi.Input.asInput<String>(map['appMonitorName']),
+      destination: pulumi.Input.asInput<String>(map['destination']),
+      destinationArn:
+          pulumi.Input.asOptionalInput<String>(map['destinationArn']),
+      iamRoleArn: pulumi.Input.asOptionalInput<String>(map['iamRoleArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

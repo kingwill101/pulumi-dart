@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_connect_filter/get_connect_filter.dart';
 
 /// Arguments for getConnect.
 class GetConnectArgs {
   /// One or more configuration blocks containing name-values filters. Detailed below.
-  final Input<List<GetConnectFilter>>? filters;
+  final pulumi.Input<List<GetConnectFilter>>? filters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value tags for the EC2 Transit Gateway Connect
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Identifier of the EC2 Transit Gateway Connect.
-  final Input<String>? transitGatewayConnectId;
+  final pulumi.Input<String>? transitGatewayConnectId;
 
   GetConnectArgs({
     this.filters,
@@ -28,11 +28,12 @@ class GetConnectArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetConnectFilter>,
-              List<Map<String, dynamic>>>(
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
+              List<GetConnectFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) => Input.encodeList<GetConnectFilter, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<GetConnectFilter, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final regionValue = region;
     if (regionValue != null) {
@@ -51,11 +52,12 @@ class GetConnectArgs {
 
   factory GetConnectArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectArgs(
-      filters: Input.asOptionalInput<List<GetConnectFilter>>(map['filters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      filters:
+          pulumi.Input.asOptionalInput<List<GetConnectFilter>>(map['filters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
       transitGatewayConnectId:
-          Input.asOptionalInput<String>(map['transitGatewayConnectId']),
+          pulumi.Input.asOptionalInput<String>(map['transitGatewayConnectId']),
     );
   }
 }

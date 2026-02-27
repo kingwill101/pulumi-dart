@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'zone_association_args.dart';
 
 /// Manages a Route53 Hosted Zone VPC association. VPC associations can only be made on private zones. See the `aws.route53.VpcAssociationAuthorization` resource for setting up cross-account associations.
@@ -29,28 +29,28 @@ import 'zone_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53/zoneAssociation:ZoneAssociation example Z123456ABCDEFG:vpc-12345678:us-east-2
 /// ```
-class ZoneAssociation extends CustomResource {
+class ZoneAssociation extends pulumi.CustomResource {
   /// The account ID of the account that created the hosted zone.
-  late final Output<String> owningAccount;
+  late final pulumi.Output<String> owningAccount;
 
   /// The VPC to associate with the private hosted zone.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   /// The VPC's region. Defaults to the region of the AWS provider.
-  late final Output<String> vpcRegion;
+  late final pulumi.Output<String> vpcRegion;
 
   /// The private hosted zone to associate.
-  late final Output<String> zoneId;
+  late final pulumi.Output<String> zoneId;
 
   ZoneAssociation(
     String name, {
     ZoneAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53/zoneAssociation:ZoneAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.owningAccount = registerOutput<String>('owningAccount');
     this.vpcId = registerOutput<String>('vpcId');

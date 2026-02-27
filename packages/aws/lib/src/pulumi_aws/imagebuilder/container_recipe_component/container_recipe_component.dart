@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../container_recipe_component_parameter/container_recipe_component_parameter.dart';
 
 class ContainerRecipeComponent {
@@ -20,7 +20,8 @@ class ContainerRecipeComponent {
     map['componentArn'] = componentArn;
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<ContainerRecipeComponentParameter,
+      map['parameters'] = pulumi.Input.encodeList<
+          ContainerRecipeComponentParameter,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
     return map;
@@ -31,7 +32,7 @@ class ContainerRecipeComponent {
       componentArn: map['componentArn'] as String,
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<ContainerRecipeComponentParameter>(
+          : pulumi.Input.decodeList<ContainerRecipeComponentParameter>(
               map['parameters'],
               (value) => ContainerRecipeComponentParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

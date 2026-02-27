@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_data_catalog_encryption_settings_data_catalog_encryption_setting_connection_password_encryption/get_data_catalog_encryption_settings_data_catalog_encryption_setting_connection_password_encryption.dart';
 import '../get_data_catalog_encryption_settings_data_catalog_encryption_setting_encryption_at_rest/get_data_catalog_encryption_settings_data_catalog_encryption_setting_encryption_at_rest.dart';
 
@@ -22,11 +22,11 @@ class GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['connectionPasswordEncryptions'] = Input.encodeList<
+    map['connectionPasswordEncryptions'] = pulumi.Input.encodeList<
         GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingConnectionPasswordEncryption,
         Map<String,
             dynamic>>(connectionPasswordEncryptions, (value) => value.toMap());
-    map['encryptionAtRests'] = Input.encodeList<
+    map['encryptionAtRests'] = pulumi.Input.encodeList<
         GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRest,
         Map<String, dynamic>>(encryptionAtRests, (value) => value.toMap());
     return map;
@@ -35,13 +35,13 @@ class GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting {
   factory GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting.fromMap(
       Map<String, dynamic> map) {
     return GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting(
-      connectionPasswordEncryptions: Input.decodeList<
+      connectionPasswordEncryptions: pulumi.Input.decodeList<
               GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingConnectionPasswordEncryption>(
           map['connectionPasswordEncryptions'],
           (value) =>
               GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingConnectionPasswordEncryption
                   .fromMap((value as Map).cast<String, dynamic>())),
-      encryptionAtRests: Input.decodeList<
+      encryptionAtRests: pulumi.Input.decodeList<
               GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingEncryptionAtRest>(
           map['encryptionAtRests'],
           (value) =>

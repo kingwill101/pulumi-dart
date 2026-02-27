@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../analysis_parameters_date_time_parameter/analysis_parameters_date_time_parameter.dart';
 import '../analysis_parameters_decimal_parameter/analysis_parameters_decimal_parameter.dart';
 import '../analysis_parameters_integer_parameter/analysis_parameters_integer_parameter.dart';
@@ -30,25 +30,25 @@ class AnalysisParameters {
     final map = <String, dynamic>{};
     final dateTimeParametersValue = dateTimeParameters;
     if (dateTimeParametersValue != null) {
-      map['dateTimeParameters'] = Input.encodeList<
+      map['dateTimeParameters'] = pulumi.Input.encodeList<
               AnalysisParametersDateTimeParameter, Map<String, dynamic>>(
           dateTimeParametersValue, (value) => value.toMap());
     }
     final decimalParametersValue = decimalParameters;
     if (decimalParametersValue != null) {
-      map['decimalParameters'] = Input.encodeList<
+      map['decimalParameters'] = pulumi.Input.encodeList<
               AnalysisParametersDecimalParameter, Map<String, dynamic>>(
           decimalParametersValue, (value) => value.toMap());
     }
     final integerParametersValue = integerParameters;
     if (integerParametersValue != null) {
-      map['integerParameters'] = Input.encodeList<
+      map['integerParameters'] = pulumi.Input.encodeList<
               AnalysisParametersIntegerParameter, Map<String, dynamic>>(
           integerParametersValue, (value) => value.toMap());
     }
     final stringParametersValue = stringParameters;
     if (stringParametersValue != null) {
-      map['stringParameters'] = Input.encodeList<
+      map['stringParameters'] = pulumi.Input.encodeList<
               AnalysisParametersStringParameter, Map<String, dynamic>>(
           stringParametersValue, (value) => value.toMap());
     }
@@ -59,25 +59,25 @@ class AnalysisParameters {
     return AnalysisParameters(
       dateTimeParameters: map['dateTimeParameters'] == null
           ? null
-          : Input.decodeList<AnalysisParametersDateTimeParameter>(
+          : pulumi.Input.decodeList<AnalysisParametersDateTimeParameter>(
               map['dateTimeParameters'],
               (value) => AnalysisParametersDateTimeParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       decimalParameters: map['decimalParameters'] == null
           ? null
-          : Input.decodeList<AnalysisParametersDecimalParameter>(
+          : pulumi.Input.decodeList<AnalysisParametersDecimalParameter>(
               map['decimalParameters'],
               (value) => AnalysisParametersDecimalParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       integerParameters: map['integerParameters'] == null
           ? null
-          : Input.decodeList<AnalysisParametersIntegerParameter>(
+          : pulumi.Input.decodeList<AnalysisParametersIntegerParameter>(
               map['integerParameters'],
               (value) => AnalysisParametersIntegerParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       stringParameters: map['stringParameters'] == null
           ? null
-          : Input.decodeList<AnalysisParametersStringParameter>(
+          : pulumi.Input.decodeList<AnalysisParametersStringParameter>(
               map['stringParameters'],
               (value) => AnalysisParametersStringParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

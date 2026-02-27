@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_gateway_spec/get_virtual_gateway_spec.dart';
 
 /// Result data returned by getVirtualGateway.
@@ -56,7 +56,7 @@ class GetVirtualGatewayResult {
     map['region'] = region;
     map['resourceOwner'] = resourceOwner;
     map['specs'] =
-        Input.encodeList<GetVirtualGatewaySpec, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetVirtualGatewaySpec, Map<String, dynamic>>(
             specs, (value) => value.toMap());
     map['tags'] = tags;
     return map;
@@ -73,7 +73,7 @@ class GetVirtualGatewayResult {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceOwner: map['resourceOwner'] as String,
-      specs: Input.decodeList<GetVirtualGatewaySpec>(
+      specs: pulumi.Input.decodeList<GetVirtualGatewaySpec>(
           map['specs'],
           (value) => GetVirtualGatewaySpec.fromMap(
               (value as Map).cast<String, dynamic>())),

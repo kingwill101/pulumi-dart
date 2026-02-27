@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../table_global_secondary_index_key_schema/table_global_secondary_index_key_schema.dart';
 import '../table_global_secondary_index_on_demand_throughput/table_global_secondary_index_on_demand_throughput.dart';
 import '../table_global_secondary_index_warm_throughput/table_global_secondary_index_warm_throughput.dart';
@@ -57,7 +57,8 @@ class TableGlobalSecondaryIndex {
     }
     final keySchemasValue = keySchemas;
     if (keySchemasValue != null) {
-      map['keySchemas'] = Input.encodeList<TableGlobalSecondaryIndexKeySchema,
+      map['keySchemas'] = pulumi.Input.encodeList<
+          TableGlobalSecondaryIndexKeySchema,
           Map<String, dynamic>>(keySchemasValue, (value) => value.toMap());
     }
     map['name'] = name;
@@ -94,7 +95,7 @@ class TableGlobalSecondaryIndex {
       hashKey: map['hashKey'] == null ? null : map['hashKey'] as String,
       keySchemas: map['keySchemas'] == null
           ? null
-          : Input.decodeList<TableGlobalSecondaryIndexKeySchema>(
+          : pulumi.Input.decodeList<TableGlobalSecondaryIndexKeySchema>(
               map['keySchemas'],
               (value) => TableGlobalSecondaryIndexKeySchema.fromMap(
                   (value as Map).cast<String, dynamic>())),

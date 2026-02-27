@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_ipam_pool_filter/get_vpc_ipam_pool_filter.dart';
 import '../get_vpc_ipam_pool_source_resource/get_vpc_ipam_pool_source_resource.dart';
 
@@ -99,7 +99,7 @@ class GetVpcIpamPoolResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetVpcIpamPoolFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetVpcIpamPoolFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     final idValue = id;
@@ -117,9 +117,9 @@ class GetVpcIpamPoolResult {
     map['publiclyAdvertisable'] = publiclyAdvertisable;
     map['region'] = region;
     map['sourceIpamPoolId'] = sourceIpamPoolId;
-    map['sourceResources'] =
-        Input.encodeList<GetVpcIpamPoolSourceResource, Map<String, dynamic>>(
-            sourceResources, (value) => value.toMap());
+    map['sourceResources'] = pulumi.Input.encodeList<
+        GetVpcIpamPoolSourceResource,
+        Map<String, dynamic>>(sourceResources, (value) => value.toMap());
     map['state'] = state;
     map['tags'] = tags;
     return map;
@@ -140,7 +140,7 @@ class GetVpcIpamPoolResult {
       description: map['description'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVpcIpamPoolFilter>(
+          : pulumi.Input.decodeList<GetVpcIpamPoolFilter>(
               map['filters'],
               (value) => GetVpcIpamPoolFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -154,7 +154,7 @@ class GetVpcIpamPoolResult {
       publiclyAdvertisable: map['publiclyAdvertisable'] as bool,
       region: map['region'] as String,
       sourceIpamPoolId: map['sourceIpamPoolId'] as String,
-      sourceResources: Input.decodeList<GetVpcIpamPoolSourceResource>(
+      sourceResources: pulumi.Input.decodeList<GetVpcIpamPoolSourceResource>(
           map['sourceResources'],
           (value) => GetVpcIpamPoolSourceResource.fromMap(
               (value as Map).cast<String, dynamic>())),

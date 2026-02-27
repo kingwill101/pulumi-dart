@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for PreparedStatement.
 class PreparedStatementArgs {
   /// Brief explanation of prepared statement. Maximum length of 1024.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The name of the prepared statement. Maximum length of 256.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The query string for the prepared statement.
-  final Input<String> queryStatement;
+  final pulumi.Input<String> queryStatement;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The name of the workgroup to which the prepared statement belongs.
-  final Input<String> workgroup;
+  final pulumi.Input<String> workgroup;
 
   PreparedStatementArgs({
     this.description,
@@ -48,11 +48,11 @@ class PreparedStatementArgs {
 
   factory PreparedStatementArgs.fromMap(Map<String, dynamic> map) {
     return PreparedStatementArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      queryStatement: Input.asInput<String>(map['queryStatement']),
-      region: Input.asOptionalInput<String>(map['region']),
-      workgroup: Input.asInput<String>(map['workgroup']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      queryStatement: pulumi.Input.asInput<String>(map['queryStatement']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      workgroup: pulumi.Input.asInput<String>(map['workgroup']),
     );
   }
 }

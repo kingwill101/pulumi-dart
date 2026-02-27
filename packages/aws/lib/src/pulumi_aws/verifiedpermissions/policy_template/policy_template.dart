@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_template_args.dart';
 
 /// Resource for managing an AWS Verified Permissions Policy Template.
@@ -16,36 +16,36 @@ import 'policy_template_args.dart';
 /// ```sh
 /// $ pulumi import aws:verifiedpermissions/policyTemplate:PolicyTemplate example policyStoreId:policyTemplateId
 /// ```
-class PolicyTemplate extends CustomResource {
+class PolicyTemplate extends pulumi.CustomResource {
   /// The date the Policy Store was created.
-  late final Output<String> createdDate;
+  late final pulumi.Output<String> createdDate;
 
   /// Provides a description for the policy template.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The ID of the Policy Store.
-  late final Output<String> policyStoreId;
+  late final pulumi.Output<String> policyStoreId;
 
   /// The ID of the Policy Store.
-  late final Output<String> policyTemplateId;
+  late final pulumi.Output<String> policyTemplateId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Defines the content of the statement, written in Cedar policy language.
   ///
   /// The following arguments are optional:
-  late final Output<String> statement;
+  late final pulumi.Output<String> statement;
 
   PolicyTemplate(
     String name, {
     PolicyTemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:verifiedpermissions/policyTemplate:PolicyTemplate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.createdDate = registerOutput<String>('createdDate');
     this.description = registerOutput<String?>('description');

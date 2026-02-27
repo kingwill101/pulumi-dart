@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scheduled_query_recently_failed_run_error_report_location/scheduled_query_recently_failed_run_error_report_location.dart';
 import '../scheduled_query_recently_failed_run_execution_stat/scheduled_query_recently_failed_run_execution_stat.dart';
 import '../scheduled_query_recently_failed_run_query_insights_response/scheduled_query_recently_failed_run_query_insights_response.dart';
@@ -43,14 +43,14 @@ class ScheduledQueryRecentlyFailedRun {
     final map = <String, dynamic>{};
     final errorReportLocationsValue = errorReportLocations;
     if (errorReportLocationsValue != null) {
-      map['errorReportLocations'] = Input.encodeList<
+      map['errorReportLocations'] = pulumi.Input.encodeList<
               ScheduledQueryRecentlyFailedRunErrorReportLocation,
               Map<String, dynamic>>(
           errorReportLocationsValue, (value) => value.toMap());
     }
     final executionStatsValue = executionStats;
     if (executionStatsValue != null) {
-      map['executionStats'] = Input.encodeList<
+      map['executionStats'] = pulumi.Input.encodeList<
           ScheduledQueryRecentlyFailedRunExecutionStat,
           Map<String, dynamic>>(executionStatsValue, (value) => value.toMap());
     }
@@ -64,7 +64,7 @@ class ScheduledQueryRecentlyFailedRun {
     }
     final queryInsightsResponsesValue = queryInsightsResponses;
     if (queryInsightsResponsesValue != null) {
-      map['queryInsightsResponses'] = Input.encodeList<
+      map['queryInsightsResponses'] = pulumi.Input.encodeList<
               ScheduledQueryRecentlyFailedRunQueryInsightsResponse,
               Map<String, dynamic>>(
           queryInsightsResponsesValue, (value) => value.toMap());
@@ -84,7 +84,7 @@ class ScheduledQueryRecentlyFailedRun {
     return ScheduledQueryRecentlyFailedRun(
       errorReportLocations: map['errorReportLocations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ScheduledQueryRecentlyFailedRunErrorReportLocation>(
               map['errorReportLocations'],
               (value) =>
@@ -92,7 +92,8 @@ class ScheduledQueryRecentlyFailedRun {
                       (value as Map).cast<String, dynamic>())),
       executionStats: map['executionStats'] == null
           ? null
-          : Input.decodeList<ScheduledQueryRecentlyFailedRunExecutionStat>(
+          : pulumi.Input.decodeList<
+                  ScheduledQueryRecentlyFailedRunExecutionStat>(
               map['executionStats'],
               (value) => ScheduledQueryRecentlyFailedRunExecutionStat.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -103,7 +104,7 @@ class ScheduledQueryRecentlyFailedRun {
           : map['invocationTime'] as String,
       queryInsightsResponses: map['queryInsightsResponses'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ScheduledQueryRecentlyFailedRunQueryInsightsResponse>(
               map['queryInsightsResponses'],
               (value) =>

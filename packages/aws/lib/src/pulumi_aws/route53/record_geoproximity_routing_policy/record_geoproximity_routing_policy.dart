@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../record_geoproximity_routing_policy_coordinate/record_geoproximity_routing_policy_coordinate.dart';
 
 class RecordGeoproximityRoutingPolicy {
@@ -35,7 +35,7 @@ class RecordGeoproximityRoutingPolicy {
     }
     final coordinatesValue = coordinates;
     if (coordinatesValue != null) {
-      map['coordinates'] = Input.encodeList<
+      map['coordinates'] = pulumi.Input.encodeList<
           RecordGeoproximityRoutingPolicyCoordinate,
           Map<String, dynamic>>(coordinatesValue, (value) => value.toMap());
     }
@@ -52,7 +52,7 @@ class RecordGeoproximityRoutingPolicy {
       bias: map['bias'] == null ? null : map['bias'] as int,
       coordinates: map['coordinates'] == null
           ? null
-          : Input.decodeList<RecordGeoproximityRoutingPolicyCoordinate>(
+          : pulumi.Input.decodeList<RecordGeoproximityRoutingPolicyCoordinate>(
               map['coordinates'],
               (value) => RecordGeoproximityRoutingPolicyCoordinate.fromMap(
                   (value as Map).cast<String, dynamic>())),

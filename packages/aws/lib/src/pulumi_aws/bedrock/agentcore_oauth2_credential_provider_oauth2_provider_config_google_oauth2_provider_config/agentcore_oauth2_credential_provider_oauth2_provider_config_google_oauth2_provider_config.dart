@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agentcore_oauth2_credential_provider_oauth2_provider_config_google_oauth2_provider_config_oauth_discovery/agentcore_oauth2_credential_provider_oauth2_provider_config_google_oauth2_provider_config_oauth_discovery.dart';
 
 class AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderConfig {
@@ -52,7 +52,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderC
     }
     final oauthDiscoveriesValue = oauthDiscoveries;
     if (oauthDiscoveriesValue != null) {
-      map['oauthDiscoveries'] = Input.encodeList<
+      map['oauthDiscoveries'] = pulumi.Input.encodeList<
           AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderConfigOauthDiscovery,
           Map<String,
               dynamic>>(oauthDiscoveriesValue, (value) => value.toMap());
@@ -76,7 +76,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderC
           : map['clientSecretWo'] as String,
       oauthDiscoveries: map['oauthDiscoveries'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentcoreOauth2CredentialProviderOauth2ProviderConfigGoogleOauth2ProviderConfigOauthDiscovery>(
               map['oauthDiscoveries'],
               (value) =>

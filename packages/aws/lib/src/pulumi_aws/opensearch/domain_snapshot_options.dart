@@ -1,3 +1,3 @@
 library module_opensearch_domain_snapshot_options;
 
-export 'domain_snapshot_options/domain_snapshot_options2.dart';
+export 'domain_snapshot_options/domain_snapshot_options_opensearch.dart';

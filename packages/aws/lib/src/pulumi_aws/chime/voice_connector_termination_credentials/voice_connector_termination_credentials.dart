@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../voice_connector_termination_credentials_credential/voice_connector_termination_credentials_credential.dart';
 import 'voice_connector_termination_credentials_args.dart';
 
@@ -17,26 +17,26 @@ import 'voice_connector_termination_credentials_args.dart';
 /// ```sh
 /// $ pulumi import aws:chime/voiceConnectorTerminationCredentials:VoiceConnectorTerminationCredentials default abcdef1ghij2klmno3pqr4
 /// ```
-class VoiceConnectorTerminationCredentials extends CustomResource {
+class VoiceConnectorTerminationCredentials extends pulumi.CustomResource {
   /// List of termination SIP credentials.
-  late final Output<List<VoiceConnectorTerminationCredentialsCredential>>
+  late final pulumi.Output<List<VoiceConnectorTerminationCredentialsCredential>>
       credentials;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Amazon Chime Voice Connector ID.
-  late final Output<String> voiceConnectorId;
+  late final pulumi.Output<String> voiceConnectorId;
 
   VoiceConnectorTerminationCredentials(
     String name, {
     VoiceConnectorTerminationCredentialsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:chime/voiceConnectorTerminationCredentials:VoiceConnectorTerminationCredentials',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.credentials =
         registerOutput<List<VoiceConnectorTerminationCredentialsCredential>>(

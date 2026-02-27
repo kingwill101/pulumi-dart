@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RegexPatternSet.
 class RegexPatternSetArgs {
   /// The name or description of the Regex Pattern Set.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
-  final Input<List<String>>? regexPatternStrings;
+  final pulumi.Input<List<String>>? regexPatternStrings;
 
   RegexPatternSetArgs({
     this.name,
@@ -30,9 +30,9 @@ class RegexPatternSetArgs {
 
   factory RegexPatternSetArgs.fromMap(Map<String, dynamic> map) {
     return RegexPatternSetArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      regexPatternStrings:
-          Input.asOptionalInput<List<String>>(map['regexPatternStrings']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      regexPatternStrings: pulumi.Input.asOptionalInput<List<String>>(
+          map['regexPatternStrings']),
     );
   }
 }

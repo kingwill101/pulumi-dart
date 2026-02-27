@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../custom_routing_endpoint_group_destination_configuration/custom_routing_endpoint_group_destination_configuration.dart';
 import '../custom_routing_endpoint_group_endpoint_configuration/custom_routing_endpoint_group_endpoint_configuration.dart';
 import 'custom_routing_endpoint_group_args.dart';
@@ -23,33 +23,35 @@ import 'custom_routing_endpoint_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:globalaccelerator/customRoutingEndpointGroup:CustomRoutingEndpointGroup example arn:aws:globalaccelerator::111111111111:accelerator/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/listener/xxxxxxx/endpoint-group/xxxxxxxx
 /// ```
-class CustomRoutingEndpointGroup extends CustomResource {
+class CustomRoutingEndpointGroup extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the custom routing endpoint group.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. Fields documented below.
-  late final Output<List<CustomRoutingEndpointGroupDestinationConfiguration>>
+  late final pulumi
+      .Output<List<CustomRoutingEndpointGroupDestinationConfiguration>>
       destinationConfigurations;
 
   /// The list of endpoint objects. Fields documented below.
-  late final Output<List<CustomRoutingEndpointGroupEndpointConfiguration>?>
+  late final pulumi
+      .Output<List<CustomRoutingEndpointGroupEndpointConfiguration>?>
       endpointConfigurations;
 
   /// The name of the AWS Region where the custom routing endpoint group is located.
-  late final Output<String> endpointGroupRegion;
+  late final pulumi.Output<String> endpointGroupRegion;
 
   /// The Amazon Resource Name (ARN) of the custom routing listener.
-  late final Output<String> listenerArn;
+  late final pulumi.Output<String> listenerArn;
 
   CustomRoutingEndpointGroup(
     String name, {
     CustomRoutingEndpointGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:globalaccelerator/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.destinationConfigurations = registerOutput<

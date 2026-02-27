@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_groups_args.dart';
 import 'get_groups_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_groups_result.dart';
 /// ### Basic Usage
 Future<GetGroupsResult> getGroups(
   GetGroupsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:identitystore/getGroups:getGroups',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupsResult.fromMap(result);
 }

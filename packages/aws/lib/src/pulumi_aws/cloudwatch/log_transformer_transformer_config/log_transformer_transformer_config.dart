@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../log_transformer_transformer_config_add_keys/log_transformer_transformer_config_add_keys.dart';
 import '../log_transformer_transformer_config_copy_value/log_transformer_transformer_config_copy_value.dart';
 import '../log_transformer_transformer_config_csv/log_transformer_transformer_config_csv.dart';
@@ -135,19 +135,19 @@ class LogTransformerTransformerConfig {
     }
     final csvsValue = csvs;
     if (csvsValue != null) {
-      map['csvs'] = Input.encodeList<LogTransformerTransformerConfigCsv,
+      map['csvs'] = pulumi.Input.encodeList<LogTransformerTransformerConfigCsv,
           Map<String, dynamic>>(csvsValue, (value) => value.toMap());
     }
     final dateTimeConvertersValue = dateTimeConverters;
     if (dateTimeConvertersValue != null) {
-      map['dateTimeConverters'] = Input.encodeList<
+      map['dateTimeConverters'] = pulumi.Input.encodeList<
               LogTransformerTransformerConfigDateTimeConverter,
               Map<String, dynamic>>(
           dateTimeConvertersValue, (value) => value.toMap());
     }
     final deleteKeysValue = deleteKeys;
     if (deleteKeysValue != null) {
-      map['deleteKeys'] = Input.encodeList<
+      map['deleteKeys'] = pulumi.Input.encodeList<
           LogTransformerTransformerConfigDeleteKey,
           Map<String, dynamic>>(deleteKeysValue, (value) => value.toMap());
     }
@@ -157,20 +157,21 @@ class LogTransformerTransformerConfig {
     }
     final listToMapsValue = listToMaps;
     if (listToMapsValue != null) {
-      map['listToMaps'] = Input.encodeList<
+      map['listToMaps'] = pulumi.Input.encodeList<
           LogTransformerTransformerConfigListToMap,
           Map<String, dynamic>>(listToMapsValue, (value) => value.toMap());
     }
     final lowerCaseStringsValue = lowerCaseStrings;
     if (lowerCaseStringsValue != null) {
-      map['lowerCaseStrings'] = Input.encodeList<
+      map['lowerCaseStrings'] = pulumi.Input.encodeList<
               LogTransformerTransformerConfigLowerCaseString,
               Map<String, dynamic>>(
           lowerCaseStringsValue, (value) => value.toMap());
     }
     final moveKeysValue = moveKeys;
     if (moveKeysValue != null) {
-      map['moveKeys'] = Input.encodeList<LogTransformerTransformerConfigMoveKey,
+      map['moveKeys'] = pulumi.Input.encodeList<
+          LogTransformerTransformerConfigMoveKey,
           Map<String, dynamic>>(moveKeysValue, (value) => value.toMap());
     }
     final parseCloudfrontValue = parseCloudfront;
@@ -179,13 +180,13 @@ class LogTransformerTransformerConfig {
     }
     final parseJsonsValue = parseJsons;
     if (parseJsonsValue != null) {
-      map['parseJsons'] = Input.encodeList<
+      map['parseJsons'] = pulumi.Input.encodeList<
           LogTransformerTransformerConfigParseJson,
           Map<String, dynamic>>(parseJsonsValue, (value) => value.toMap());
     }
     final parseKeyValuesValue = parseKeyValues;
     if (parseKeyValuesValue != null) {
-      map['parseKeyValues'] = Input.encodeList<
+      map['parseKeyValues'] = pulumi.Input.encodeList<
           LogTransformerTransformerConfigParseKeyValue,
           Map<String, dynamic>>(parseKeyValuesValue, (value) => value.toMap());
     }
@@ -211,38 +212,38 @@ class LogTransformerTransformerConfig {
     }
     final renameKeysValue = renameKeys;
     if (renameKeysValue != null) {
-      map['renameKeys'] = Input.encodeList<
+      map['renameKeys'] = pulumi.Input.encodeList<
           LogTransformerTransformerConfigRenameKey,
           Map<String, dynamic>>(renameKeysValue, (value) => value.toMap());
     }
     final splitStringsValue = splitStrings;
     if (splitStringsValue != null) {
-      map['splitStrings'] = Input.encodeList<
+      map['splitStrings'] = pulumi.Input.encodeList<
           LogTransformerTransformerConfigSplitString,
           Map<String, dynamic>>(splitStringsValue, (value) => value.toMap());
     }
     final substituteStringsValue = substituteStrings;
     if (substituteStringsValue != null) {
-      map['substituteStrings'] = Input.encodeList<
+      map['substituteStrings'] = pulumi.Input.encodeList<
               LogTransformerTransformerConfigSubstituteString,
               Map<String, dynamic>>(
           substituteStringsValue, (value) => value.toMap());
     }
     final trimStringsValue = trimStrings;
     if (trimStringsValue != null) {
-      map['trimStrings'] = Input.encodeList<
+      map['trimStrings'] = pulumi.Input.encodeList<
           LogTransformerTransformerConfigTrimString,
           Map<String, dynamic>>(trimStringsValue, (value) => value.toMap());
     }
     final typeConvertersValue = typeConverters;
     if (typeConvertersValue != null) {
-      map['typeConverters'] = Input.encodeList<
+      map['typeConverters'] = pulumi.Input.encodeList<
           LogTransformerTransformerConfigTypeConverter,
           Map<String, dynamic>>(typeConvertersValue, (value) => value.toMap());
     }
     final upperCaseStringsValue = upperCaseStrings;
     if (upperCaseStringsValue != null) {
-      map['upperCaseStrings'] = Input.encodeList<
+      map['upperCaseStrings'] = pulumi.Input.encodeList<
               LogTransformerTransformerConfigUpperCaseString,
               Map<String, dynamic>>(
           upperCaseStringsValue, (value) => value.toMap());
@@ -262,20 +263,21 @@ class LogTransformerTransformerConfig {
               (map['copyValue'] as Map).cast<String, dynamic>()),
       csvs: map['csvs'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigCsv>(
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigCsv>(
               map['csvs'],
               (value) => LogTransformerTransformerConfigCsv.fromMap(
                   (value as Map).cast<String, dynamic>())),
       dateTimeConverters: map['dateTimeConverters'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigDateTimeConverter>(
+          : pulumi.Input.decodeList<
+                  LogTransformerTransformerConfigDateTimeConverter>(
               map['dateTimeConverters'],
               (value) =>
                   LogTransformerTransformerConfigDateTimeConverter.fromMap(
                       (value as Map).cast<String, dynamic>())),
       deleteKeys: map['deleteKeys'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigDeleteKey>(
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigDeleteKey>(
               map['deleteKeys'],
               (value) => LogTransformerTransformerConfigDeleteKey.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -285,19 +287,20 @@ class LogTransformerTransformerConfig {
               (map['grok'] as Map).cast<String, dynamic>()),
       listToMaps: map['listToMaps'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigListToMap>(
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigListToMap>(
               map['listToMaps'],
               (value) => LogTransformerTransformerConfigListToMap.fromMap(
                   (value as Map).cast<String, dynamic>())),
       lowerCaseStrings: map['lowerCaseStrings'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigLowerCaseString>(
+          : pulumi.Input.decodeList<
+                  LogTransformerTransformerConfigLowerCaseString>(
               map['lowerCaseStrings'],
               (value) => LogTransformerTransformerConfigLowerCaseString.fromMap(
                   (value as Map).cast<String, dynamic>())),
       moveKeys: map['moveKeys'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigMoveKey>(
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigMoveKey>(
               map['moveKeys'],
               (value) => LogTransformerTransformerConfigMoveKey.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -307,13 +310,14 @@ class LogTransformerTransformerConfig {
               (map['parseCloudfront'] as Map).cast<String, dynamic>()),
       parseJsons: map['parseJsons'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigParseJson>(
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigParseJson>(
               map['parseJsons'],
               (value) => LogTransformerTransformerConfigParseJson.fromMap(
                   (value as Map).cast<String, dynamic>())),
       parseKeyValues: map['parseKeyValues'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigParseKeyValue>(
+          : pulumi.Input.decodeList<
+                  LogTransformerTransformerConfigParseKeyValue>(
               map['parseKeyValues'],
               (value) => LogTransformerTransformerConfigParseKeyValue.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -339,38 +343,41 @@ class LogTransformerTransformerConfig {
               (map['parseWaf'] as Map).cast<String, dynamic>()),
       renameKeys: map['renameKeys'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigRenameKey>(
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigRenameKey>(
               map['renameKeys'],
               (value) => LogTransformerTransformerConfigRenameKey.fromMap(
                   (value as Map).cast<String, dynamic>())),
       splitStrings: map['splitStrings'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigSplitString>(
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigSplitString>(
               map['splitStrings'],
               (value) => LogTransformerTransformerConfigSplitString.fromMap(
                   (value as Map).cast<String, dynamic>())),
       substituteStrings: map['substituteStrings'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigSubstituteString>(
+          : pulumi.Input.decodeList<
+                  LogTransformerTransformerConfigSubstituteString>(
               map['substituteStrings'],
               (value) =>
                   LogTransformerTransformerConfigSubstituteString.fromMap(
                       (value as Map).cast<String, dynamic>())),
       trimStrings: map['trimStrings'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigTrimString>(
+          : pulumi.Input.decodeList<LogTransformerTransformerConfigTrimString>(
               map['trimStrings'],
               (value) => LogTransformerTransformerConfigTrimString.fromMap(
                   (value as Map).cast<String, dynamic>())),
       typeConverters: map['typeConverters'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigTypeConverter>(
+          : pulumi.Input.decodeList<
+                  LogTransformerTransformerConfigTypeConverter>(
               map['typeConverters'],
               (value) => LogTransformerTransformerConfigTypeConverter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       upperCaseStrings: map['upperCaseStrings'] == null
           ? null
-          : Input.decodeList<LogTransformerTransformerConfigUpperCaseString>(
+          : pulumi.Input.decodeList<
+                  LogTransformerTransformerConfigUpperCaseString>(
               map['upperCaseStrings'],
               (value) => LogTransformerTransformerConfigUpperCaseString.fromMap(
                   (value as Map).cast<String, dynamic>())),

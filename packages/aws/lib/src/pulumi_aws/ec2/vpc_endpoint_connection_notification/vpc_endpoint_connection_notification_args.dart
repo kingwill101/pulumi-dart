@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VpcEndpointConnectionNotification.
 class VpcEndpointConnectionNotificationArgs {
   /// One or more endpoint [events](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpointConnectionNotification.html#API_CreateVpcEndpointConnectionNotification_RequestParameters) for which to receive notifications.
   ///
   /// > **NOTE:** One of `vpc_endpoint_service_id` or `vpc_endpoint_id` must be specified.
-  final Input<List<String>> connectionEvents;
+  final pulumi.Input<List<String>> connectionEvents;
 
   /// The ARN of the SNS topic for the notifications.
-  final Input<String> connectionNotificationArn;
+  final pulumi.Input<String> connectionNotificationArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of the VPC Endpoint to receive notifications for.
-  final Input<String>? vpcEndpointId;
+  final pulumi.Input<String>? vpcEndpointId;
 
   /// The ID of the VPC Endpoint Service to receive notifications for.
-  final Input<String>? vpcEndpointServiceId;
+  final pulumi.Input<String>? vpcEndpointServiceId;
 
   VpcEndpointConnectionNotificationArgs({
     required this.connectionEvents,
@@ -51,13 +51,14 @@ class VpcEndpointConnectionNotificationArgs {
   factory VpcEndpointConnectionNotificationArgs.fromMap(
       Map<String, dynamic> map) {
     return VpcEndpointConnectionNotificationArgs(
-      connectionEvents: Input.asInput<List<String>>(map['connectionEvents']),
+      connectionEvents:
+          pulumi.Input.asInput<List<String>>(map['connectionEvents']),
       connectionNotificationArn:
-          Input.asInput<String>(map['connectionNotificationArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      vpcEndpointId: Input.asOptionalInput<String>(map['vpcEndpointId']),
+          pulumi.Input.asInput<String>(map['connectionNotificationArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      vpcEndpointId: pulumi.Input.asOptionalInput<String>(map['vpcEndpointId']),
       vpcEndpointServiceId:
-          Input.asOptionalInput<String>(map['vpcEndpointServiceId']),
+          pulumi.Input.asOptionalInput<String>(map['vpcEndpointServiceId']),
     );
   }
 }

@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for UserGroupAssociation.
 class UserGroupAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the user group.
-  final Input<String> userGroupId;
+  final pulumi.Input<String> userGroupId;
 
   /// ID of the user to associated with the user group.
-  final Input<String> userId;
+  final pulumi.Input<String> userId;
 
   UserGroupAssociationArgs({
     this.region,
@@ -32,9 +32,9 @@ class UserGroupAssociationArgs {
 
   factory UserGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupAssociationArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      userGroupId: Input.asInput<String>(map['userGroupId']),
-      userId: Input.asInput<String>(map['userId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      userGroupId: pulumi.Input.asInput<String>(map['userGroupId']),
+      userId: pulumi.Input.asInput<String>(map['userId']),
     );
   }
 }

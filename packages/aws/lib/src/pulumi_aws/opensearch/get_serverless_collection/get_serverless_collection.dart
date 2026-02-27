@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_serverless_collection_args.dart';
 import 'get_serverless_collection_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_serverless_collection_result.dart';
 /// ### Basic Usage
 Future<GetServerlessCollectionResult> getServerlessCollection(
   GetServerlessCollectionArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:opensearch/getServerlessCollection:getServerlessCollection',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerlessCollectionResult.fromMap(result);
 }

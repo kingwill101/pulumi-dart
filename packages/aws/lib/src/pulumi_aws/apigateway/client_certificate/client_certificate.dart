@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'client_certificate_args.dart';
 
 /// Provides an API Gateway Client Certificate.
@@ -14,40 +14,40 @@ import 'client_certificate_args.dart';
 /// ```sh
 /// $ pulumi import aws:apigateway/clientCertificate:ClientCertificate demo ab1cqe
 /// ```
-class ClientCertificate extends CustomResource {
+class ClientCertificate extends pulumi.CustomResource {
   /// ARN
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Date when the client certificate was created.
-  late final Output<String> createdDate;
+  late final pulumi.Output<String> createdDate;
 
   /// Description of the client certificate.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Date when the client certificate will expire.
-  late final Output<String> expirationDate;
+  late final pulumi.Output<String> expirationDate;
 
   /// The PEM-encoded public key of the client certificate.
-  late final Output<String> pemEncodedCertificate;
+  late final pulumi.Output<String> pemEncodedCertificate;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   ClientCertificate(
     String name, {
     ClientCertificateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigateway/clientCertificate:ClientCertificate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.createdDate = registerOutput<String>('createdDate');

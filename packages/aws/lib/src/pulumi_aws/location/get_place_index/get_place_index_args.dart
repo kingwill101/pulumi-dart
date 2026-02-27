@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPlaceIndex.
 class GetPlaceIndexArgs {
   /// Name of the place index resource.
-  final Input<String> indexName;
+  final pulumi.Input<String> indexName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags for the place index.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetPlaceIndexArgs({
     required this.indexName,
@@ -35,9 +35,9 @@ class GetPlaceIndexArgs {
 
   factory GetPlaceIndexArgs.fromMap(Map<String, dynamic> map) {
     return GetPlaceIndexArgs(
-      indexName: Input.asInput<String>(map['indexName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      indexName: pulumi.Input.asInput<String>(map['indexName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

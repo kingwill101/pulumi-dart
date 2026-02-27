@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_regex_match_statement_field_to_match_body/web_acl_rule_statement_regex_match_statement_field_to_match_body.dart';
 import '../web_acl_rule_statement_regex_match_statement_field_to_match_cookies/web_acl_rule_statement_regex_match_statement_field_to_match_cookies.dart';
 import '../web_acl_rule_statement_regex_match_statement_field_to_match_header/web_acl_rule_statement_regex_match_statement_field_to_match_header.dart';
@@ -94,13 +94,13 @@ class WebAclRuleStatementRegexMatchStatementFieldToMatch {
     }
     final headerOrdersValue = headerOrders;
     if (headerOrdersValue != null) {
-      map['headerOrders'] = Input.encodeList<
+      map['headerOrders'] = pulumi.Input.encodeList<
           WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderOrder,
           Map<String, dynamic>>(headerOrdersValue, (value) => value.toMap());
     }
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] = Input.encodeList<
+      map['headers'] = pulumi.Input.encodeList<
           WebAclRuleStatementRegexMatchStatementFieldToMatchHeader,
           Map<String, dynamic>>(headersValue, (value) => value.toMap());
     }
@@ -159,7 +159,7 @@ class WebAclRuleStatementRegexMatchStatementFieldToMatch {
               (map['cookies'] as Map).cast<String, dynamic>()),
       headerOrders: map['headerOrders'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderOrder>(
               map['headerOrders'],
               (value) =>
@@ -167,7 +167,7 @@ class WebAclRuleStatementRegexMatchStatementFieldToMatch {
                       .fromMap((value as Map).cast<String, dynamic>())),
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WebAclRuleStatementRegexMatchStatementFieldToMatchHeader>(
               map['headers'],
               (value) =>

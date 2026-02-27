@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_parameter_group_parameter/cluster_parameter_group_parameter.dart';
 import 'cluster_parameter_group_args.dart';
 
@@ -15,43 +15,43 @@ import 'cluster_parameter_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:docdb/clusterParameterGroup:ClusterParameterGroup cluster_pg production-pg-1
 /// ```
-class ClusterParameterGroup extends CustomResource {
+class ClusterParameterGroup extends pulumi.CustomResource {
   /// The ARN of the DocumentDB cluster parameter group.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The description of the DocumentDB cluster parameter group. Defaults to "Managed by Pulumi".
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The family of the DocumentDB cluster parameter group.
-  late final Output<String> family;
+  late final pulumi.Output<String> family;
 
   /// The name of the DocumentDB parameter.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  late final Output<String> namePrefix;
+  late final pulumi.Output<String> namePrefix;
 
   /// A list of DocumentDB parameters to apply. Setting parameters to system default values may show a difference on imported resources.
-  late final Output<List<ClusterParameterGroupParameter>?> parameters;
+  late final pulumi.Output<List<ClusterParameterGroupParameter>?> parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   ClusterParameterGroup(
     String name, {
     ClusterParameterGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:docdb/clusterParameterGroup:ClusterParameterGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_templates_args.dart';
 import 'get_templates_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_templates_result.dart';
 /// ### Basic Usage
 Future<GetTemplatesResult> getTemplates(
   GetTemplatesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:servicequotas/getTemplates:getTemplates',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTemplatesResult.fromMap(result);
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../policy_predictive_scaling_policy_configuration_metric_specification_customized_capacity_metric_specification_metric_data_query/policy_predictive_scaling_policy_configuration_metric_specification_customized_capacity_metric_specification_metric_data_query.dart';
 
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecification {
@@ -15,7 +15,7 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCap
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['metricDataQueries'] = Input.encodeList<
+    map['metricDataQueries'] = pulumi.Input.encodeList<
         PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery,
         Map<String, dynamic>>(metricDataQueries, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCap
   factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecification.fromMap(
       Map<String, dynamic> map) {
     return PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecification(
-      metricDataQueries: Input.decodeList<
+      metricDataQueries: pulumi.Input.decodeList<
               PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery>(
           map['metricDataQueries'],
           (value) =>

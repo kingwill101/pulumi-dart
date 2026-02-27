@@ -1,4 +1,4 @@
 library module_verifiedaccess_instance;
 
-export 'instance/instance6.dart';
-export 'instance/instance_args6.dart';
+export 'instance/instance_verifiedaccess.dart';
+export 'instance/instance_verifiedaccess_args.dart';

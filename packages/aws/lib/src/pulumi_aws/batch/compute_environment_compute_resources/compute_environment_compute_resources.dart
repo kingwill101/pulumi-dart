@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../compute_environment_compute_resources_ec2_configuration/compute_environment_compute_resources_ec2_configuration.dart';
 import '../compute_environment_compute_resources_launch_template/compute_environment_compute_resources_launch_template.dart';
 
@@ -93,7 +93,7 @@ class ComputeEnvironmentComputeResources {
     }
     final ec2ConfigurationsValue = ec2Configurations;
     if (ec2ConfigurationsValue != null) {
-      map['ec2Configurations'] = Input.encodeList<
+      map['ec2Configurations'] = pulumi.Input.encodeList<
               ComputeEnvironmentComputeResourcesEc2Configuration,
               Map<String, dynamic>>(
           ec2ConfigurationsValue, (value) => value.toMap());
@@ -155,7 +155,7 @@ class ComputeEnvironmentComputeResources {
           map['desiredVcpus'] == null ? null : map['desiredVcpus'] as int,
       ec2Configurations: map['ec2Configurations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ComputeEnvironmentComputeResourcesEc2Configuration>(
               map['ec2Configurations'],
               (value) =>

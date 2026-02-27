@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SecurityTokenServicePreferences.
 class SecurityTokenServicePreferencesArgs {
   /// The version of the STS global endpoint token. Valid values: `v1Token`, `v2Token`.
-  final Input<String> globalEndpointTokenVersion;
+  final pulumi.Input<String> globalEndpointTokenVersion;
 
   SecurityTokenServicePreferencesArgs({
     required this.globalEndpointTokenVersion,
@@ -21,7 +21,7 @@ class SecurityTokenServicePreferencesArgs {
       Map<String, dynamic> map) {
     return SecurityTokenServicePreferencesArgs(
       globalEndpointTokenVersion:
-          Input.asInput<String>(map['globalEndpointTokenVersion']),
+          pulumi.Input.asInput<String>(map['globalEndpointTokenVersion']),
     );
   }
 }

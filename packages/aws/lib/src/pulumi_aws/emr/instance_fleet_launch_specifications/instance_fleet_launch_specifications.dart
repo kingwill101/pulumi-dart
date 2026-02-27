@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_fleet_launch_specifications_on_demand_specification/instance_fleet_launch_specifications_on_demand_specification.dart';
 import '../instance_fleet_launch_specifications_spot_specification/instance_fleet_launch_specifications_spot_specification.dart';
 
@@ -22,14 +22,14 @@ class InstanceFleetLaunchSpecifications {
     final map = <String, dynamic>{};
     final onDemandSpecificationsValue = onDemandSpecifications;
     if (onDemandSpecificationsValue != null) {
-      map['onDemandSpecifications'] = Input.encodeList<
+      map['onDemandSpecifications'] = pulumi.Input.encodeList<
               InstanceFleetLaunchSpecificationsOnDemandSpecification,
               Map<String, dynamic>>(
           onDemandSpecificationsValue, (value) => value.toMap());
     }
     final spotSpecificationsValue = spotSpecifications;
     if (spotSpecificationsValue != null) {
-      map['spotSpecifications'] = Input.encodeList<
+      map['spotSpecifications'] = pulumi.Input.encodeList<
               InstanceFleetLaunchSpecificationsSpotSpecification,
               Map<String, dynamic>>(
           spotSpecificationsValue, (value) => value.toMap());
@@ -41,14 +41,14 @@ class InstanceFleetLaunchSpecifications {
     return InstanceFleetLaunchSpecifications(
       onDemandSpecifications: map['onDemandSpecifications'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   InstanceFleetLaunchSpecificationsOnDemandSpecification>(
               map['onDemandSpecifications'],
               (value) => InstanceFleetLaunchSpecificationsOnDemandSpecification
                   .fromMap((value as Map).cast<String, dynamic>())),
       spotSpecifications: map['spotSpecifications'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   InstanceFleetLaunchSpecificationsSpotSpecification>(
               map['spotSpecifications'],
               (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_manager_definition_args.dart';
 
 /// Manages an Amazon Managed Service for Prometheus (AMP) Alert Manager Definition
@@ -14,25 +14,25 @@ import 'alert_manager_definition_args.dart';
 /// ```sh
 /// $ pulumi import aws:amp/alertManagerDefinition:AlertManagerDefinition demo ws-C6DCB907-F2D7-4D96-957B-66691F865D8B
 /// ```
-class AlertManagerDefinition extends CustomResource {
+class AlertManagerDefinition extends pulumi.CustomResource {
   /// the alert manager definition that you want to be applied. See more [in AWS Docs](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-alert-manager.html).
-  late final Output<String> definition;
+  late final pulumi.Output<String> definition;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ID of the prometheus workspace the alert manager definition should be linked to
-  late final Output<String> workspaceId;
+  late final pulumi.Output<String> workspaceId;
 
   AlertManagerDefinition(
     String name, {
     AlertManagerDefinitionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:amp/alertManagerDefinition:AlertManagerDefinition',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.definition = registerOutput<String>('definition');
     this.region = registerOutput<String>('region');

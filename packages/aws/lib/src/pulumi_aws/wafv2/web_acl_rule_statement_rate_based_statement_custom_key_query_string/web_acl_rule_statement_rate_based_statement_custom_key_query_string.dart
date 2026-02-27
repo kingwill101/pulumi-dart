@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_rate_based_statement_custom_key_query_string_text_transformation/web_acl_rule_statement_rate_based_statement_custom_key_query_string_text_transformation.dart';
 
 class WebAclRuleStatementRateBasedStatementCustomKeyQueryString {
@@ -15,7 +15,7 @@ class WebAclRuleStatementRateBasedStatementCustomKeyQueryString {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['textTransformations'] = Input.encodeList<
+    map['textTransformations'] = pulumi.Input.encodeList<
         WebAclRuleStatementRateBasedStatementCustomKeyQueryStringTextTransformation,
         Map<String, dynamic>>(textTransformations, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class WebAclRuleStatementRateBasedStatementCustomKeyQueryString {
   factory WebAclRuleStatementRateBasedStatementCustomKeyQueryString.fromMap(
       Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementCustomKeyQueryString(
-      textTransformations: Input.decodeList<
+      textTransformations: pulumi.Input.decodeList<
               WebAclRuleStatementRateBasedStatementCustomKeyQueryStringTextTransformation>(
           map['textTransformations'],
           (value) =>

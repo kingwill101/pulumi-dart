@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../serverless_cache_cache_usage_limits_data_storage/serverless_cache_cache_usage_limits_data_storage.dart';
 import '../serverless_cache_cache_usage_limits_ecpu_per_second/serverless_cache_cache_usage_limits_ecpu_per_second.dart';
 
@@ -24,7 +24,7 @@ class ServerlessCacheCacheUsageLimits {
     }
     final ecpuPerSecondsValue = ecpuPerSeconds;
     if (ecpuPerSecondsValue != null) {
-      map['ecpuPerSeconds'] = Input.encodeList<
+      map['ecpuPerSeconds'] = pulumi.Input.encodeList<
           ServerlessCacheCacheUsageLimitsEcpuPerSecond,
           Map<String, dynamic>>(ecpuPerSecondsValue, (value) => value.toMap());
     }
@@ -39,7 +39,8 @@ class ServerlessCacheCacheUsageLimits {
               (map['dataStorage'] as Map).cast<String, dynamic>()),
       ecpuPerSeconds: map['ecpuPerSeconds'] == null
           ? null
-          : Input.decodeList<ServerlessCacheCacheUsageLimitsEcpuPerSecond>(
+          : pulumi.Input.decodeList<
+                  ServerlessCacheCacheUsageLimitsEcpuPerSecond>(
               map['ecpuPerSeconds'],
               (value) => ServerlessCacheCacheUsageLimitsEcpuPerSecond.fromMap(
                   (value as Map).cast<String, dynamic>())),

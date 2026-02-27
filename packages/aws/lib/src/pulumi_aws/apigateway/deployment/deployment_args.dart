@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Deployment.
 class DeploymentArgs {
   /// Description of the deployment.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// REST API identifier.
-  final Input<String> restApi;
+  final pulumi.Input<String> restApi;
 
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
-  final Input<Map<String, String>>? triggers;
+  final pulumi.Input<Map<String, String>>? triggers;
 
   /// Map to set on the related stage.
-  final Input<Map<String, String>>? variables;
+  final pulumi.Input<Map<String, String>>? variables;
 
   DeploymentArgs({
     this.description,
@@ -51,11 +51,13 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      region: Input.asOptionalInput<String>(map['region']),
-      restApi: Input.asInput<String>(map['restApi']),
-      triggers: Input.asOptionalInput<Map<String, String>>(map['triggers']),
-      variables: Input.asOptionalInput<Map<String, String>>(map['variables']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      restApi: pulumi.Input.asInput<String>(map['restApi']),
+      triggers:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['triggers']),
+      variables:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['variables']),
     );
   }
 }

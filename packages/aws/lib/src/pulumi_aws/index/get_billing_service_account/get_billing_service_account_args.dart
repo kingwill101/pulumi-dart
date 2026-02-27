@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBillingServiceAccount.
 class GetBillingServiceAccountArgs {
   /// ID of the AWS billing service account.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   GetBillingServiceAccountArgs({
     this.id,
@@ -22,7 +22,7 @@ class GetBillingServiceAccountArgs {
 
   factory GetBillingServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingServiceAccountArgs(
-      id: Input.asOptionalInput<String>(map['id']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_broker_engine_types_broker_engine_type/get_broker_engine_types_broker_engine_type.dart';
 
 /// Result data returned by getBrokerEngineTypes.
@@ -24,7 +24,7 @@ class GetBrokerEngineTypesResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['brokerEngineTypes'] = Input.encodeList<
+    map['brokerEngineTypes'] = pulumi.Input.encodeList<
         GetBrokerEngineTypesBrokerEngineType,
         Map<String, dynamic>>(brokerEngineTypes, (value) => value.toMap());
     final engineTypeValue = engineType;
@@ -38,10 +38,11 @@ class GetBrokerEngineTypesResult {
 
   factory GetBrokerEngineTypesResult.fromMap(Map<String, dynamic> map) {
     return GetBrokerEngineTypesResult(
-      brokerEngineTypes: Input.decodeList<GetBrokerEngineTypesBrokerEngineType>(
-          map['brokerEngineTypes'],
-          (value) => GetBrokerEngineTypesBrokerEngineType.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      brokerEngineTypes:
+          pulumi.Input.decodeList<GetBrokerEngineTypesBrokerEngineType>(
+              map['brokerEngineTypes'],
+              (value) => GetBrokerEngineTypesBrokerEngineType.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       engineType:
           map['engineType'] == null ? null : map['engineType'] as String,
       id: map['id'] as String,

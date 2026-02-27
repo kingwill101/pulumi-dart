@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_core_network_policy_document_routing_policy_routing_policy_rule/get_core_network_policy_document_routing_policy_routing_policy_rule.dart';
 
 class GetCoreNetworkPolicyDocumentRoutingPolicy {
@@ -37,7 +37,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicy {
     map['routingPolicyDirection'] = routingPolicyDirection;
     map['routingPolicyName'] = routingPolicyName;
     map['routingPolicyNumber'] = routingPolicyNumber;
-    map['routingPolicyRules'] = Input.encodeList<
+    map['routingPolicyRules'] = pulumi.Input.encodeList<
         GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule,
         Map<String, dynamic>>(routingPolicyRules, (value) => value.toMap());
     return map;
@@ -52,7 +52,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicy {
       routingPolicyDirection: map['routingPolicyDirection'] as String,
       routingPolicyName: map['routingPolicyName'] as String,
       routingPolicyNumber: map['routingPolicyNumber'] as int,
-      routingPolicyRules: Input.decodeList<
+      routingPolicyRules: pulumi.Input.decodeList<
               GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule>(
           map['routingPolicyRules'],
           (value) => GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule

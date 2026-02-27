@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SinkPolicy.
 class SinkPolicyArgs {
   /// JSON policy to use. If you are updating an existing policy, the entire existing policy is replaced by what you specify here.
-  final Input<String> policy;
+  final pulumi.Input<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ARN of the sink to attach this policy to.
-  final Input<String> sinkIdentifier;
+  final pulumi.Input<String> sinkIdentifier;
 
   SinkPolicyArgs({
     required this.policy,
@@ -32,9 +32,9 @@ class SinkPolicyArgs {
 
   factory SinkPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SinkPolicyArgs(
-      policy: Input.asInput<String>(map['policy']),
-      region: Input.asOptionalInput<String>(map['region']),
-      sinkIdentifier: Input.asInput<String>(map['sinkIdentifier']),
+      policy: pulumi.Input.asInput<String>(map['policy']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sinkIdentifier: pulumi.Input.asInput<String>(map['sinkIdentifier']),
     );
   }
 }

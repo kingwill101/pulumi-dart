@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_network_insights_analysis_return_path_component_security_group_rule_port_range/get_network_insights_analysis_return_path_component_security_group_rule_port_range.dart';
 
 class GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRule {
@@ -26,7 +26,7 @@ class GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRule {
     final map = <String, dynamic>{};
     map['cidr'] = cidr;
     map['direction'] = direction;
-    map['portRanges'] = Input.encodeList<
+    map['portRanges'] = pulumi.Input.encodeList<
         GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange,
         Map<String, dynamic>>(portRanges, (value) => value.toMap());
     map['prefixListId'] = prefixListId;
@@ -40,7 +40,7 @@ class GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRule {
     return GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRule(
       cidr: map['cidr'] as String,
       direction: map['direction'] as String,
-      portRanges: Input.decodeList<
+      portRanges: pulumi.Input.decodeList<
               GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange>(
           map['portRanges'],
           (value) =>

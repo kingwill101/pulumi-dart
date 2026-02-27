@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_replication_group_log_delivery_configuration/get_replication_group_log_delivery_configuration.dart';
 import '../get_replication_group_node_group_configuration/get_replication_group_node_group_configuration.dart';
 
@@ -103,12 +103,12 @@ class GetReplicationGroupResult {
     map['configurationEndpointAddress'] = configurationEndpointAddress;
     map['description'] = description;
     map['id'] = id;
-    map['logDeliveryConfigurations'] = Input.encodeList<
+    map['logDeliveryConfigurations'] = pulumi.Input.encodeList<
             GetReplicationGroupLogDeliveryConfiguration, Map<String, dynamic>>(
         logDeliveryConfigurations, (value) => value.toMap());
     map['memberClusters'] = memberClusters;
     map['multiAzEnabled'] = multiAzEnabled;
-    map['nodeGroupConfigurations'] = Input.encodeList<
+    map['nodeGroupConfigurations'] = pulumi.Input.encodeList<
             GetReplicationGroupNodeGroupConfiguration, Map<String, dynamic>>(
         nodeGroupConfigurations, (value) => value.toMap());
     map['nodeType'] = nodeType;
@@ -136,14 +136,14 @@ class GetReplicationGroupResult {
       description: map['description'] as String,
       id: map['id'] as String,
       logDeliveryConfigurations:
-          Input.decodeList<GetReplicationGroupLogDeliveryConfiguration>(
+          pulumi.Input.decodeList<GetReplicationGroupLogDeliveryConfiguration>(
               map['logDeliveryConfigurations'],
               (value) => GetReplicationGroupLogDeliveryConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
       memberClusters: (map['memberClusters'] as List).cast<String>(),
       multiAzEnabled: map['multiAzEnabled'] as bool,
       nodeGroupConfigurations:
-          Input.decodeList<GetReplicationGroupNodeGroupConfiguration>(
+          pulumi.Input.decodeList<GetReplicationGroupNodeGroupConfiguration>(
               map['nodeGroupConfigurations'],
               (value) => GetReplicationGroupNodeGroupConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../distribution_connection_function_association/distribution_connection_function_association.dart';
 import '../distribution_custom_error_response/distribution_custom_error_response.dart';
 import '../distribution_default_cache_behavior/distribution_default_cache_behavior.dart';
@@ -64,127 +64,128 @@ import 'distribution_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudfront/distribution:Distribution distribution E74FTE3EXAMPLE
 /// ```
-class Distribution extends CustomResource {
+class Distribution extends pulumi.CustomResource {
   /// Extra CNAMEs (alternate domain names), if any, for this distribution.
-  late final Output<List<String>?> aliases;
+  late final pulumi.Output<List<String>?> aliases;
 
   /// ID of the Anycast static IP list that is associated with the distribution.
-  late final Output<String?> anycastIpListId;
+  late final pulumi.Output<String?> anycastIpListId;
 
   /// ARN for the distribution. For example: `arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5`, where `123456789012` is your AWS account ID.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Internal value used by CloudFront to allow future updates to the distribution configuration.
-  late final Output<String> callerReference;
+  late final pulumi.Output<String> callerReference;
 
   /// Any comments you want to include about the distribution.
-  late final Output<String?> comment;
+  late final pulumi.Output<String?> comment;
 
   /// A connection function association configuration block (maximum one).
-  late final Output<DistributionConnectionFunctionAssociation?>
+  late final pulumi.Output<DistributionConnectionFunctionAssociation?>
       connectionFunctionAssociation;
 
   /// Identifier of a continuous deployment policy. This argument should only be set on a production distribution. See the `aws.cloudfront.ContinuousDeploymentPolicy` resource for additional details.
-  late final Output<String> continuousDeploymentPolicyId;
+  late final pulumi.Output<String> continuousDeploymentPolicyId;
 
   /// One or more custom error response elements (multiples allowed).
-  late final Output<List<DistributionCustomErrorResponse>?>
+  late final pulumi.Output<List<DistributionCustomErrorResponse>?>
       customErrorResponses;
 
   /// Default cache behavior for this distribution (maximum one). Requires either `cache_policy_id` (preferred) or `forwarded_values` (deprecated) be set.
-  late final Output<DistributionDefaultCacheBehavior> defaultCacheBehavior;
+  late final pulumi.Output<DistributionDefaultCacheBehavior>
+      defaultCacheBehavior;
 
   /// Object that you want CloudFront to return (for example, index.html) when an end user requests the root URL.
-  late final Output<String?> defaultRootObject;
+  late final pulumi.Output<String?> defaultRootObject;
 
   /// Domain name corresponding to the distribution. For example: `d604721fxaaqy9.cloudfront.net`.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// Whether the distribution is enabled to accept end user requests for content.
-  late final Output<bool> enabled;
+  late final pulumi.Output<bool> enabled;
 
   /// Current version of the distribution's information. For example: `E2QWRUHAPOMQZL`.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// CloudFront Route 53 zone ID that can be used to route an [Alias Resource Record Set](http://docs.aws.amazon.com/Route53/latest/APIReference/CreateAliasRRSAPI.html) to. This attribute is simply an alias for the zone ID `Z2FDTNDATAQYW2`.
-  late final Output<String> hostedZoneId;
+  late final pulumi.Output<String> hostedZoneId;
 
   /// Maximum HTTP version to support on the distribution. Allowed values are `http1.1`, `http2`, `http2and3` and `http3`. The default is `http2`.
-  late final Output<String?> httpVersion;
+  late final pulumi.Output<String?> httpVersion;
 
   /// Number of invalidation batches currently in progress.
-  late final Output<int> inProgressValidationBatches;
+  late final pulumi.Output<int> inProgressValidationBatches;
 
   /// Whether the IPv6 is enabled for the distribution.
-  late final Output<bool?> isIpv6Enabled;
+  late final pulumi.Output<bool?> isIpv6Enabled;
 
   /// Date and time the distribution was last modified.
-  late final Output<String> lastModifiedTime;
+  late final pulumi.Output<String> lastModifiedTime;
 
   /// The logging configuration that controls how logs are written to your distribution (maximum one). AWS provides two versions of access logs for CloudFront: Legacy and v2. This argument configures legacy version standard logs.
-  late final Output<DistributionLoggingConfig?> loggingConfig;
+  late final pulumi.Output<DistributionLoggingConfig?> loggingConfig;
 
   /// Whether V1 logging is enabled for the distribution.
-  late final Output<bool> loggingV1Enabled;
+  late final pulumi.Output<bool> loggingV1Enabled;
 
   /// Ordered list of cache behaviors resource for this distribution. List from top to bottom in order of precedence. The topmost cache behavior will have precedence 0.
-  late final Output<List<DistributionOrderedCacheBehavior>?>
+  late final pulumi.Output<List<DistributionOrderedCacheBehavior>?>
       orderedCacheBehaviors;
 
   /// One or more origin_group for this distribution (multiples allowed).
-  late final Output<List<DistributionOriginGroup>?> originGroups;
+  late final pulumi.Output<List<DistributionOriginGroup>?> originGroups;
 
   /// One or more origins for this distribution (multiples allowed).
-  late final Output<List<DistributionOrigin>> origins;
+  late final pulumi.Output<List<DistributionOrigin>> origins;
 
   /// Price class for this distribution. One of `PriceClass_All`, `PriceClass_200`, `PriceClass_100`.
-  late final Output<String?> priceClass;
+  late final pulumi.Output<String?> priceClass;
 
   /// The restriction configuration for this distribution (maximum one).
-  late final Output<DistributionRestrictions> restrictions;
+  late final pulumi.Output<DistributionRestrictions> restrictions;
 
   /// Disables the distribution instead of deleting it when destroying the resource through the provider. If this is set, the distribution needs to be deleted manually afterwards. Default: `false`.
-  late final Output<bool?> retainOnDelete;
+  late final pulumi.Output<bool?> retainOnDelete;
 
   /// A Boolean that indicates whether this is a staging distribution. Defaults to `false`.
-  late final Output<bool?> staging;
+  late final pulumi.Output<bool?> staging;
 
   /// Current status of the distribution. `Deployed` if the distribution's information is fully propagated throughout the Amazon CloudFront system.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// List of nested attributes for active trusted key groups, if the distribution is set up to serve private content with signed URLs.
-  late final Output<List<DistributionTrustedKeyGroup>> trustedKeyGroups;
+  late final pulumi.Output<List<DistributionTrustedKeyGroup>> trustedKeyGroups;
 
   /// List of nested attributes for active trusted signers, if the distribution is set up to serve private content with signed URLs.
-  late final Output<List<DistributionTrustedSigner>> trustedSigners;
+  late final pulumi.Output<List<DistributionTrustedSigner>> trustedSigners;
 
   /// The SSL configuration for this distribution (maximum one).
-  late final Output<DistributionViewerCertificate> viewerCertificate;
+  late final pulumi.Output<DistributionViewerCertificate> viewerCertificate;
 
   /// The viewer mTLS configuration for this distribution (maximum one).
-  late final Output<DistributionViewerMtlsConfig?> viewerMtlsConfig;
+  late final pulumi.Output<DistributionViewerMtlsConfig?> viewerMtlsConfig;
 
   /// If enabled, the resource will wait for the distribution status to change from `InProgress` to `Deployed`. Setting this to`false` will skip the process. Default: `true`.
-  late final Output<bool?> waitForDeployment;
+  late final pulumi.Output<bool?> waitForDeployment;
 
   /// Unique identifier that specifies the AWS WAF web ACL, if any, to associate with this distribution. To specify a web ACL created using the latest version of AWS WAF (WAFv2), use the ACL ARN, for example `aws_wafv2_web_acl.example.arn`. To specify a web ACL created using AWS WAF Classic, use the ACL ID, for example `aws_waf_web_acl.example.id`. The WAF Web ACL must exist in the WAF Global (CloudFront) region and the credentials configuring this argument must have `waf:GetWebACL` permissions assigned.
-  late final Output<String?> webAclId;
+  late final pulumi.Output<String?> webAclId;
 
   Distribution(
     String name, {
     DistributionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/distribution:Distribution',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.aliases = registerOutput<List<String>?>('aliases');
     this.anycastIpListId = registerOutput<String?>('anycastIpListId');

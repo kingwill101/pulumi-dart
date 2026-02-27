@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../provisioned_model_throughput_timeouts/provisioned_model_throughput_timeouts.dart';
 import 'provisioned_model_throughput_args.dart';
 
@@ -22,41 +22,41 @@ import 'provisioned_model_throughput_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrock/provisionedModelThroughput:ProvisionedModelThroughput example arn:aws:bedrock:us-west-2:123456789012:provisioned-model/1y5n57gh5y2e
 /// ```
-class ProvisionedModelThroughput extends CustomResource {
+class ProvisionedModelThroughput extends pulumi.CustomResource {
   /// Commitment duration requested for the Provisioned Throughput. For custom models, you can purchase on-demand Provisioned Throughput by omitting this argument. Valid values: `OneMonth`, `SixMonths`.
-  late final Output<String?> commitmentDuration;
+  late final pulumi.Output<String?> commitmentDuration;
 
   /// ARN of the model to associate with this Provisioned Throughput.
-  late final Output<String> modelArn;
+  late final pulumi.Output<String> modelArn;
 
   /// Number of model units to allocate. A model unit delivers a specific throughput level for the specified model.
-  late final Output<int> modelUnits;
+  late final pulumi.Output<int> modelUnits;
 
   /// The ARN of the Provisioned Throughput.
-  late final Output<String> provisionedModelArn;
+  late final pulumi.Output<String> provisionedModelArn;
 
   /// Unique name for this Provisioned Throughput.
-  late final Output<String> provisionedModelName;
+  late final pulumi.Output<String> provisionedModelName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<ProvisionedModelThroughputTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<ProvisionedModelThroughputTimeouts?> timeouts;
 
   ProvisionedModelThroughput(
     String name, {
     ProvisionedModelThroughputArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/provisionedModelThroughput:ProvisionedModelThroughput',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.commitmentDuration = registerOutput<String?>('commitmentDuration');
     this.modelArn = registerOutput<String>('modelArn');

@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AccountAssignment.
 class AccountAssignmentArgs {
   /// The Amazon Resource Name (ARN) of the SSO Instance.
-  final Input<String> instanceArn;
+  final pulumi.Input<String> instanceArn;
 
   /// The Amazon Resource Name (ARN) of the Permission Set that the admin wants to grant the principal access to.
-  final Input<String> permissionSetArn;
+  final pulumi.Input<String> permissionSetArn;
 
   /// An identifier for an object in SSO, such as a user or group. PrincipalIds are GUIDs (For example, `f81d4fae-7dec-11d0-a765-00a0c91e6bf6`).
-  final Input<String> principalId;
+  final pulumi.Input<String> principalId;
 
   /// The entity type for which the assignment will be created. Valid values: `USER`, `GROUP`.
-  final Input<String> principalType;
+  final pulumi.Input<String> principalType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// An AWS account identifier, typically a 10-12 digit string.
-  final Input<String> targetId;
+  final pulumi.Input<String> targetId;
 
   /// The entity type for which the assignment will be created. Valid values: `AWS_ACCOUNT`.
-  final Input<String> targetType;
+  final pulumi.Input<String> targetType;
 
   AccountAssignmentArgs({
     required this.instanceArn,
@@ -52,13 +52,13 @@ class AccountAssignmentArgs {
 
   factory AccountAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AccountAssignmentArgs(
-      instanceArn: Input.asInput<String>(map['instanceArn']),
-      permissionSetArn: Input.asInput<String>(map['permissionSetArn']),
-      principalId: Input.asInput<String>(map['principalId']),
-      principalType: Input.asInput<String>(map['principalType']),
-      region: Input.asOptionalInput<String>(map['region']),
-      targetId: Input.asInput<String>(map['targetId']),
-      targetType: Input.asInput<String>(map['targetType']),
+      instanceArn: pulumi.Input.asInput<String>(map['instanceArn']),
+      permissionSetArn: pulumi.Input.asInput<String>(map['permissionSetArn']),
+      principalId: pulumi.Input.asInput<String>(map['principalId']),
+      principalType: pulumi.Input.asInput<String>(map['principalType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      targetId: pulumi.Input.asInput<String>(map['targetId']),
+      targetType: pulumi.Input.asInput<String>(map['targetType']),
     );
   }
 }

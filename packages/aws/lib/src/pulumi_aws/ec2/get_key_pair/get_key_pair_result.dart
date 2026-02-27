@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_key_pair_filter/get_key_pair_filter.dart';
 
 /// Result data returned by getKeyPair.
@@ -52,8 +52,9 @@ class GetKeyPairResult {
     map['createTime'] = createTime;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetKeyPairFilter, Map<String, dynamic>>(
-          filtersValue, (value) => value.toMap());
+      map['filters'] =
+          pulumi.Input.encodeList<GetKeyPairFilter, Map<String, dynamic>>(
+              filtersValue, (value) => value.toMap());
     }
     map['fingerprint'] = fingerprint;
     map['id'] = id;
@@ -82,7 +83,7 @@ class GetKeyPairResult {
       createTime: map['createTime'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetKeyPairFilter>(
+          : pulumi.Input.decodeList<GetKeyPairFilter>(
               map['filters'],
               (value) => GetKeyPairFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

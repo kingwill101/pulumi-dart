@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_profiling_group_profiling_status_latest_aggregated_profile/get_profiling_group_profiling_status_latest_aggregated_profile.dart';
 
 class GetProfilingGroupProfilingStatus {
@@ -19,7 +19,7 @@ class GetProfilingGroupProfilingStatus {
     final map = <String, dynamic>{};
     map['latestAgentOrchestratedAt'] = latestAgentOrchestratedAt;
     map['latestAgentProfileReportedAt'] = latestAgentProfileReportedAt;
-    map['latestAggregatedProfiles'] = Input.encodeList<
+    map['latestAggregatedProfiles'] = pulumi.Input.encodeList<
             GetProfilingGroupProfilingStatusLatestAggregatedProfile,
             Map<String, dynamic>>(
         latestAggregatedProfiles, (value) => value.toMap());
@@ -31,7 +31,7 @@ class GetProfilingGroupProfilingStatus {
       latestAgentOrchestratedAt: map['latestAgentOrchestratedAt'] as String,
       latestAgentProfileReportedAt:
           map['latestAgentProfileReportedAt'] as String,
-      latestAggregatedProfiles: Input.decodeList<
+      latestAggregatedProfiles: pulumi.Input.decodeList<
               GetProfilingGroupProfilingStatusLatestAggregatedProfile>(
           map['latestAggregatedProfiles'],
           (value) =>

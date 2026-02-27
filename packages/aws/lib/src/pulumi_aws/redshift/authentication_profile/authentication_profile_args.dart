@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AuthenticationProfile.
 class AuthenticationProfileArgs {
   /// The content of the authentication profile in JSON format. The maximum length of the JSON string is determined by a quota for your account.
-  final Input<String> authenticationProfileContent;
+  final pulumi.Input<String> authenticationProfileContent;
 
   /// The name of the authentication profile.
-  final Input<String> authenticationProfileName;
+  final pulumi.Input<String> authenticationProfileName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   AuthenticationProfileArgs({
     required this.authenticationProfileContent,
@@ -33,10 +33,10 @@ class AuthenticationProfileArgs {
   factory AuthenticationProfileArgs.fromMap(Map<String, dynamic> map) {
     return AuthenticationProfileArgs(
       authenticationProfileContent:
-          Input.asInput<String>(map['authenticationProfileContent']),
+          pulumi.Input.asInput<String>(map['authenticationProfileContent']),
       authenticationProfileName:
-          Input.asInput<String>(map['authenticationProfileName']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asInput<String>(map['authenticationProfileName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

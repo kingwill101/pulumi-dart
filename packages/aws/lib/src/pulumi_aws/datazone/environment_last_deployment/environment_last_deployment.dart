@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../environment_last_deployment_failure_reason/environment_last_deployment_failure_reason.dart';
 
 class EnvironmentLastDeployment {
@@ -25,7 +25,7 @@ class EnvironmentLastDeployment {
     map['deploymentId'] = deploymentId;
     map['deploymentStatus'] = deploymentStatus;
     map['deploymentType'] = deploymentType;
-    map['failureReasons'] = Input.encodeList<
+    map['failureReasons'] = pulumi.Input.encodeList<
         EnvironmentLastDeploymentFailureReason,
         Map<String, dynamic>>(failureReasons, (value) => value.toMap());
     map['isDeploymentComplete'] = isDeploymentComplete;
@@ -38,10 +38,11 @@ class EnvironmentLastDeployment {
       deploymentId: map['deploymentId'] as String,
       deploymentStatus: map['deploymentStatus'] as String,
       deploymentType: map['deploymentType'] as String,
-      failureReasons: Input.decodeList<EnvironmentLastDeploymentFailureReason>(
-          map['failureReasons'],
-          (value) => EnvironmentLastDeploymentFailureReason.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      failureReasons:
+          pulumi.Input.decodeList<EnvironmentLastDeploymentFailureReason>(
+              map['failureReasons'],
+              (value) => EnvironmentLastDeploymentFailureReason.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       isDeploymentComplete: map['isDeploymentComplete'] as bool,
       messages: (map['messages'] as List).cast<String>(),
     );

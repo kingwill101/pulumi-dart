@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_multi_region_access_points_args.dart';
 import 'get_multi_region_access_points_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_multi_region_access_points_result.dart';
 /// ### Basic Usage
 Future<GetMultiRegionAccessPointsResult> getMultiRegionAccessPoints(
   GetMultiRegionAccessPointsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:s3control/getMultiRegionAccessPoints:getMultiRegionAccessPoints',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMultiRegionAccessPointsResult.fromMap(result);
 }

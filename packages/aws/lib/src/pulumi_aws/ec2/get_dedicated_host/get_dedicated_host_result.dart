@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_dedicated_host_filter/get_dedicated_host_filter.dart';
 
 /// Result data returned by getDedicatedHost.
@@ -78,7 +78,7 @@ class GetDedicatedHostResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetDedicatedHostFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetDedicatedHostFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['hostId'] = hostId;
@@ -104,7 +104,7 @@ class GetDedicatedHostResult {
       cores: map['cores'] as int,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetDedicatedHostFilter>(
+          : pulumi.Input.decodeList<GetDedicatedHostFilter>(
               map['filters'],
               (value) => GetDedicatedHostFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

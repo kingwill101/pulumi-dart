@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_args.dart';
 
 /// Provides an VPC subnet resource.
@@ -41,97 +41,97 @@ import 'subnet_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/subnet:Subnet example subnet-9d4a7b6c
 /// ```
-class Subnet extends CustomResource {
+class Subnet extends pulumi.CustomResource {
   /// The ARN of the subnet.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Specify true to indicate
   /// that network interfaces created in the specified subnet should be
   /// assigned an IPv6 address. Default is `false`
-  late final Output<bool?> assignIpv6AddressOnCreation;
+  late final pulumi.Output<bool?> assignIpv6AddressOnCreation;
 
   /// AZ for the subnet.
-  late final Output<String> availabilityZone;
+  late final pulumi.Output<String> availabilityZone;
 
   /// AZ ID of the subnet. This argument is not supported in all regions or partitions. If necessary, use `availability_zone` instead.
-  late final Output<String> availabilityZoneId;
+  late final pulumi.Output<String> availabilityZoneId;
 
   /// The IPv4 CIDR block for the subnet.
-  late final Output<String> cidrBlock;
+  late final pulumi.Output<String> cidrBlock;
 
   /// The customer owned IPv4 address pool. Typically used with the `map_customer_owned_ip_on_launch` argument. The `outpost_arn` argument must be specified when configured.
-  late final Output<String?> customerOwnedIpv4Pool;
+  late final pulumi.Output<String?> customerOwnedIpv4Pool;
 
   /// Indicates whether DNS queries made to the Amazon-provided DNS Resolver in this subnet should return synthetic IPv6 addresses for IPv4-only destinations. Default: `false`.
-  late final Output<bool?> enableDns64;
+  late final pulumi.Output<bool?> enableDns64;
 
   /// Indicates the device position for local network interfaces in this subnet. For example, 1 indicates local network interfaces in this subnet are the secondary network interface (eth1). A local network interface cannot be the primary network interface (eth0).
-  late final Output<int?> enableLniAtDeviceIndex;
+  late final pulumi.Output<int?> enableLniAtDeviceIndex;
 
   /// Indicates whether to respond to DNS queries for instance hostnames with DNS A records. Default: `false`.
-  late final Output<bool?> enableResourceNameDnsARecordOnLaunch;
+  late final pulumi.Output<bool?> enableResourceNameDnsARecordOnLaunch;
 
   /// Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records. Default: `false`.
-  late final Output<bool?> enableResourceNameDnsAaaaRecordOnLaunch;
+  late final pulumi.Output<bool?> enableResourceNameDnsAaaaRecordOnLaunch;
 
   /// ID of an IPv4 VPC Resource Planning IPAM Pool. The CIDR of this pool is used to allocate the CIDR for the subnet.
-  late final Output<String?> ipv4IpamPoolId;
+  late final pulumi.Output<String?> ipv4IpamPoolId;
 
   /// Netmask. Requires specifying a `ipv4_ipam_pool_id`.
-  late final Output<int?> ipv4NetmaskLength;
+  late final pulumi.Output<int?> ipv4NetmaskLength;
 
   /// The IPv6 network range for the subnet,
   /// in CIDR notation. The subnet size must use a /64 prefix length. If the existing IPv6 subnet was created with `assign_ipv6_address_on_creation = true`, changing this value will force resource recreation.
-  late final Output<String> ipv6CidrBlock;
+  late final pulumi.Output<String> ipv6CidrBlock;
 
   /// The association ID for the IPv6 CIDR block.
-  late final Output<String> ipv6CidrBlockAssociationId;
+  late final pulumi.Output<String> ipv6CidrBlockAssociationId;
 
   /// ID of an IPv6 VPC Resource Planning IPAM Pool. The CIDR of this pool is used to allocate the CIDR for the subnet.
-  late final Output<String?> ipv6IpamPoolId;
+  late final pulumi.Output<String?> ipv6IpamPoolId;
 
   /// Indicates whether to create an IPv6-only subnet. Default: `false`.
-  late final Output<bool?> ipv6Native;
+  late final pulumi.Output<bool?> ipv6Native;
 
   /// Netmask. Requires specifying a `ipv6_ipam_pool_id`. Valid values are from 44 to 64 in increments of 4.
-  late final Output<int?> ipv6NetmaskLength;
+  late final pulumi.Output<int?> ipv6NetmaskLength;
 
   /// Specify `true` to indicate that network interfaces created in the subnet should be assigned a customer owned IP address. The `customer_owned_ipv4_pool` and `outpost_arn` arguments must be specified when set to `true`. Default is `false`.
-  late final Output<bool?> mapCustomerOwnedIpOnLaunch;
+  late final pulumi.Output<bool?> mapCustomerOwnedIpOnLaunch;
 
   /// Specify true to indicate that instances launched into the subnet should be assigned a public IP address. Default is `false`.
-  late final Output<bool?> mapPublicIpOnLaunch;
+  late final pulumi.Output<bool?> mapPublicIpOnLaunch;
 
   /// The Amazon Resource Name (ARN) of the Outpost.
-  late final Output<String?> outpostArn;
+  late final pulumi.Output<String?> outpostArn;
 
   /// The ID of the AWS account that owns the subnet.
-  late final Output<String> ownerId;
+  late final pulumi.Output<String> ownerId;
 
   /// The type of hostnames to assign to instances in the subnet at launch. For IPv6-only subnets, an instance DNS name must be based on the instance ID. For dual-stack and IPv4-only subnets, you can specify whether DNS names use the instance IPv4 address or the instance ID. Valid values: `ip-name`, `resource-name`.
-  late final Output<String> privateDnsHostnameTypeOnLaunch;
+  late final pulumi.Output<String> privateDnsHostnameTypeOnLaunch;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The VPC ID.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   Subnet(
     String name, {
     SubnetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/subnet:Subnet',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.assignIpv6AddressOnCreation =

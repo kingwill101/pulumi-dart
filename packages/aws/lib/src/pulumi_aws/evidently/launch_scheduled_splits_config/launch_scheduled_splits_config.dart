@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../launch_scheduled_splits_config_step/launch_scheduled_splits_config_step.dart';
 
 class LaunchScheduledSplitsConfig {
@@ -13,15 +13,14 @@ class LaunchScheduledSplitsConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['steps'] =
-        Input.encodeList<LaunchScheduledSplitsConfigStep, Map<String, dynamic>>(
-            steps, (value) => value.toMap());
+    map['steps'] = pulumi.Input.encodeList<LaunchScheduledSplitsConfigStep,
+        Map<String, dynamic>>(steps, (value) => value.toMap());
     return map;
   }
 
   factory LaunchScheduledSplitsConfig.fromMap(Map<String, dynamic> map) {
     return LaunchScheduledSplitsConfig(
-      steps: Input.decodeList<LaunchScheduledSplitsConfigStep>(
+      steps: pulumi.Input.decodeList<LaunchScheduledSplitsConfigStep>(
           map['steps'],
           (value) => LaunchScheduledSplitsConfigStep.fromMap(
               (value as Map).cast<String, dynamic>())),

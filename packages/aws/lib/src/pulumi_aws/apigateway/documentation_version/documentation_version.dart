@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'documentation_version_args.dart';
 
 /// Provides a resource to manage an API Gateway Documentation Version.
@@ -14,28 +14,28 @@ import 'documentation_version_args.dart';
 /// ```sh
 /// $ pulumi import aws:apigateway/documentationVersion:DocumentationVersion example 5i4e1ko720/example-version
 /// ```
-class DocumentationVersion extends CustomResource {
+class DocumentationVersion extends pulumi.CustomResource {
   /// Description of the API documentation version.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ID of the associated Rest API
-  late final Output<String> restApiId;
+  late final pulumi.Output<String> restApiId;
 
   /// Version identifier of the API documentation snapshot.
-  late final Output<String> version;
+  late final pulumi.Output<String> version;
 
   DocumentationVersion(
     String name, {
     DocumentationVersionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigateway/documentationVersion:DocumentationVersion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.region = registerOutput<String>('region');

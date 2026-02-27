@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganizationalUnitChildAccounts.
 class GetOrganizationalUnitChildAccountsArgs {
   /// The parent ID of the accounts.
-  final Input<String> parentId;
+  final pulumi.Input<String> parentId;
 
   GetOrganizationalUnitChildAccountsArgs({
     required this.parentId,
@@ -20,7 +20,7 @@ class GetOrganizationalUnitChildAccountsArgs {
   factory GetOrganizationalUnitChildAccountsArgs.fromMap(
       Map<String, dynamic> map) {
     return GetOrganizationalUnitChildAccountsArgs(
-      parentId: Input.asInput<String>(map['parentId']),
+      parentId: pulumi.Input.asInput<String>(map['parentId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../channel_input_attachment_automatic_input_failover_settings_failover_condition/channel_input_attachment_automatic_input_failover_settings_failover_condition.dart';
 
 class ChannelInputAttachmentAutomaticInputFailoverSettings {
@@ -33,7 +33,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettings {
     }
     final failoverConditionsValue = failoverConditions;
     if (failoverConditionsValue != null) {
-      map['failoverConditions'] = Input.encodeList<
+      map['failoverConditions'] = pulumi.Input.encodeList<
           ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition,
           Map<String,
               dynamic>>(failoverConditionsValue, (value) => value.toMap());
@@ -54,7 +54,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettings {
           : map['errorClearTimeMsec'] as int,
       failoverConditions: map['failoverConditions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition>(
               map['failoverConditions'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_headers_config_header/get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_headers_config_header.dart';
 
 class GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig {
@@ -20,7 +20,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['headerBehavior'] = headerBehavior;
-    map['headers'] = Input.encodeList<
+    map['headers'] = pulumi.Input.encodeList<
         GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader,
         Map<String, dynamic>>(headers, (value) => value.toMap());
     return map;
@@ -30,7 +30,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig {
       Map<String, dynamic> map) {
     return GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig(
       headerBehavior: map['headerBehavior'] as String,
-      headers: Input.decodeList<
+      headers: pulumi.Input.decodeList<
               GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader>(
           map['headers'],
           (value) =>

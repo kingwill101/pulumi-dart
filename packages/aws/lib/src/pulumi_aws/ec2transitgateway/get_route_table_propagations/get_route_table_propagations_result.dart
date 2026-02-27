@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_route_table_propagations_filter/get_route_table_propagations_filter.dart';
 
 /// Result data returned by getRouteTablePropagations.
@@ -27,7 +27,7 @@ class GetRouteTablePropagationsResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetRouteTablePropagationsFilter,
+      map['filters'] = pulumi.Input.encodeList<GetRouteTablePropagationsFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -41,7 +41,7 @@ class GetRouteTablePropagationsResult {
     return GetRouteTablePropagationsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetRouteTablePropagationsFilter>(
+          : pulumi.Input.decodeList<GetRouteTablePropagationsFilter>(
               map['filters'],
               (value) => GetRouteTablePropagationsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

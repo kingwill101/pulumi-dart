@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_domain_off_peak_window_options_off_peak_window_window_start_time/get_domain_off_peak_window_options_off_peak_window_window_start_time.dart';
 
 class GetDomainOffPeakWindowOptionsOffPeakWindow {
@@ -14,7 +14,7 @@ class GetDomainOffPeakWindowOptionsOffPeakWindow {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['windowStartTimes'] = Input.encodeList<
+    map['windowStartTimes'] = pulumi.Input.encodeList<
         GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime,
         Map<String, dynamic>>(windowStartTimes, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class GetDomainOffPeakWindowOptionsOffPeakWindow {
   factory GetDomainOffPeakWindowOptionsOffPeakWindow.fromMap(
       Map<String, dynamic> map) {
     return GetDomainOffPeakWindowOptionsOffPeakWindow(
-      windowStartTimes: Input.decodeList<
+      windowStartTimes: pulumi.Input.decodeList<
               GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime>(
           map['windowStartTimes'],
           (value) =>

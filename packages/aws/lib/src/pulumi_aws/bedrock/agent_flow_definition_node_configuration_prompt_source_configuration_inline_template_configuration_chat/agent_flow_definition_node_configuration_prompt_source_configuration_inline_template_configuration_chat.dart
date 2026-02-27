@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_input_variable/agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_input_variable.dart';
 import '../agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_message/agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_message.dart';
 import '../agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_system/agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_system.dart';
@@ -36,16 +36,16 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
     final map = <String, dynamic>{};
     final inputVariablesValue = inputVariables;
     if (inputVariablesValue != null) {
-      map['inputVariables'] = Input.encodeList<
+      map['inputVariables'] = pulumi.Input.encodeList<
           AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatInputVariable,
           Map<String, dynamic>>(inputVariablesValue, (value) => value.toMap());
     }
-    map['messages'] = Input.encodeList<
+    map['messages'] = pulumi.Input.encodeList<
         AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage,
         Map<String, dynamic>>(messages, (value) => value.toMap());
     final systemsValue = systems;
     if (systemsValue != null) {
-      map['systems'] = Input.encodeList<
+      map['systems'] = pulumi.Input.encodeList<
           AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem,
           Map<String, dynamic>>(systemsValue, (value) => value.toMap());
     }
@@ -61,13 +61,13 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChat(
       inputVariables: map['inputVariables'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatInputVariable>(
               map['inputVariables'],
               (value) =>
                   AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatInputVariable
                       .fromMap((value as Map).cast<String, dynamic>())),
-      messages: Input.decodeList<
+      messages: pulumi.Input.decodeList<
               AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage>(
           map['messages'],
           (value) =>
@@ -75,7 +75,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
                   .fromMap((value as Map).cast<String, dynamic>())),
       systems: map['systems'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem>(
               map['systems'],
               (value) =>

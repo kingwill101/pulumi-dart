@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_route_spec_http2_route_match_header_match/get_route_spec_http2_route_match_header_match.dart';
 
 class GetRouteSpecHttp2RouteMatchHeader {
@@ -19,7 +19,8 @@ class GetRouteSpecHttp2RouteMatchHeader {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['invert'] = invert;
-    map['matches'] = Input.encodeList<GetRouteSpecHttp2RouteMatchHeaderMatch,
+    map['matches'] = pulumi.Input.encodeList<
+        GetRouteSpecHttp2RouteMatchHeaderMatch,
         Map<String, dynamic>>(matches, (value) => value.toMap());
     map['name'] = name;
     return map;
@@ -28,7 +29,7 @@ class GetRouteSpecHttp2RouteMatchHeader {
   factory GetRouteSpecHttp2RouteMatchHeader.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttp2RouteMatchHeader(
       invert: map['invert'] as bool,
-      matches: Input.decodeList<GetRouteSpecHttp2RouteMatchHeaderMatch>(
+      matches: pulumi.Input.decodeList<GetRouteSpecHttp2RouteMatchHeaderMatch>(
           map['matches'],
           (value) => GetRouteSpecHttp2RouteMatchHeaderMatch.fromMap(
               (value as Map).cast<String, dynamic>())),

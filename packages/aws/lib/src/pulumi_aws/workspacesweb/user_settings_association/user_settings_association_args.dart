@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for UserSettingsAssociation.
 class UserSettingsAssociationArgs {
   /// ARN of the portal to associate with the user settings. Forces replacement if changed.
   ///
   /// The following arguments are optional:
-  final Input<String> portalArn;
+  final pulumi.Input<String> portalArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ARN of the user settings to associate with the portal. Forces replacement if changed.
-  final Input<String> userSettingsArn;
+  final pulumi.Input<String> userSettingsArn;
 
   UserSettingsAssociationArgs({
     required this.portalArn,
@@ -34,9 +34,9 @@ class UserSettingsAssociationArgs {
 
   factory UserSettingsAssociationArgs.fromMap(Map<String, dynamic> map) {
     return UserSettingsAssociationArgs(
-      portalArn: Input.asInput<String>(map['portalArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      userSettingsArn: Input.asInput<String>(map['userSettingsArn']),
+      portalArn: pulumi.Input.asInput<String>(map['portalArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      userSettingsArn: pulumi.Input.asInput<String>(map['userSettingsArn']),
     );
   }
 }

@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AnomalyMonitor.
 class AnomalyMonitorArgs {
   /// The dimensions to evaluate. Valid values: `SERVICE`.
-  final Input<String>? monitorDimension;
+  final pulumi.Input<String>? monitorDimension;
 
   /// A valid JSON representation for the [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html) object.
-  final Input<String>? monitorSpecification;
+  final pulumi.Input<String>? monitorSpecification;
 
   /// The possible type values. Valid values: `DIMENSIONAL` | `CUSTOM`.
-  final Input<String> monitorType;
+  final pulumi.Input<String> monitorType;
 
   /// The name of the monitor.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   AnomalyMonitorArgs({
     this.monitorDimension,
@@ -51,12 +51,13 @@ class AnomalyMonitorArgs {
 
   factory AnomalyMonitorArgs.fromMap(Map<String, dynamic> map) {
     return AnomalyMonitorArgs(
-      monitorDimension: Input.asOptionalInput<String>(map['monitorDimension']),
+      monitorDimension:
+          pulumi.Input.asOptionalInput<String>(map['monitorDimension']),
       monitorSpecification:
-          Input.asOptionalInput<String>(map['monitorSpecification']),
-      monitorType: Input.asInput<String>(map['monitorType']),
-      name: Input.asOptionalInput<String>(map['name']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<String>(map['monitorSpecification']),
+      monitorType: pulumi.Input.asInput<String>(map['monitorType']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

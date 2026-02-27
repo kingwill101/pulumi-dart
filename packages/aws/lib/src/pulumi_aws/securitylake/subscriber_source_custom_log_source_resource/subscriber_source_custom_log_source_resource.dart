@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../subscriber_source_custom_log_source_resource_attribute/subscriber_source_custom_log_source_resource_attribute.dart';
 import '../subscriber_source_custom_log_source_resource_provider/subscriber_source_custom_log_source_resource_provider.dart';
 
@@ -28,13 +28,13 @@ class SubscriberSourceCustomLogSourceResource {
     final map = <String, dynamic>{};
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] = Input.encodeList<
+      map['attributes'] = pulumi.Input.encodeList<
           SubscriberSourceCustomLogSourceResourceAttribute,
           Map<String, dynamic>>(attributesValue, (value) => value.toMap());
     }
     final providersValue = providers;
     if (providersValue != null) {
-      map['providers'] = Input.encodeList<
+      map['providers'] = pulumi.Input.encodeList<
           SubscriberSourceCustomLogSourceResourceProvider,
           Map<String, dynamic>>(providersValue, (value) => value.toMap());
     }
@@ -51,14 +51,16 @@ class SubscriberSourceCustomLogSourceResource {
     return SubscriberSourceCustomLogSourceResource(
       attributes: map['attributes'] == null
           ? null
-          : Input.decodeList<SubscriberSourceCustomLogSourceResourceAttribute>(
+          : pulumi.Input.decodeList<
+                  SubscriberSourceCustomLogSourceResourceAttribute>(
               map['attributes'],
               (value) =>
                   SubscriberSourceCustomLogSourceResourceAttribute.fromMap(
                       (value as Map).cast<String, dynamic>())),
       providers: map['providers'] == null
           ? null
-          : Input.decodeList<SubscriberSourceCustomLogSourceResourceProvider>(
+          : pulumi.Input.decodeList<
+                  SubscriberSourceCustomLogSourceResourceProvider>(
               map['providers'],
               (value) =>
                   SubscriberSourceCustomLogSourceResourceProvider.fromMap(

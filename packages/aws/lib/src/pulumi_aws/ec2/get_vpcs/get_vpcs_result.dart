@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpcs_filter/get_vpcs_filter.dart';
 
 /// Result data returned by getVpcs.
@@ -27,8 +27,9 @@ class GetVpcsResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetVpcsFilter, Map<String, dynamic>>(
-          filtersValue, (value) => value.toMap());
+      map['filters'] =
+          pulumi.Input.encodeList<GetVpcsFilter, Map<String, dynamic>>(
+              filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['ids'] = ids;
@@ -41,7 +42,7 @@ class GetVpcsResult {
     return GetVpcsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVpcsFilter>(
+          : pulumi.Input.decodeList<GetVpcsFilter>(
               map['filters'],
               (value) => GetVpcsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

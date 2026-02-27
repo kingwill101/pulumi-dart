@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_broker_node_group_info_storage_info_ebs_storage_info/get_cluster_broker_node_group_info_storage_info_ebs_storage_info.dart';
 
 class GetClusterBrokerNodeGroupInfoStorageInfo {
@@ -13,7 +13,7 @@ class GetClusterBrokerNodeGroupInfoStorageInfo {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['ebsStorageInfos'] = Input.encodeList<
+    map['ebsStorageInfos'] = pulumi.Input.encodeList<
         GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo,
         Map<String, dynamic>>(ebsStorageInfos, (value) => value.toMap());
     return map;
@@ -22,7 +22,7 @@ class GetClusterBrokerNodeGroupInfoStorageInfo {
   factory GetClusterBrokerNodeGroupInfoStorageInfo.fromMap(
       Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoStorageInfo(
-      ebsStorageInfos: Input.decodeList<
+      ebsStorageInfos: pulumi.Input.decodeList<
               GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo>(
           map['ebsStorageInfos'],
           (value) =>

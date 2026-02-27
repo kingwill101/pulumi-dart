@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gcm_channel_args.dart';
 
 /// Provides a Pinpoint GCM Channel resource.
@@ -11,30 +11,30 @@ import 'gcm_channel_args.dart';
 /// ```sh
 /// $ pulumi import aws:pinpoint/gcmChannel:GcmChannel gcm application-id
 /// ```
-class GcmChannel extends CustomResource {
+class GcmChannel extends pulumi.CustomResource {
   /// Platform credential API key from Google.
-  late final Output<String?> apiKey;
+  late final pulumi.Output<String?> apiKey;
 
   /// The application ID.
-  late final Output<String> applicationId;
-  late final Output<String?> defaultAuthenticationMethod;
+  late final pulumi.Output<String> applicationId;
+  late final pulumi.Output<String?> defaultAuthenticationMethod;
 
   /// Whether the channel is enabled or disabled. Defaults to `true`.
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<String?> serviceJson;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<String?> serviceJson;
 
   GcmChannel(
     String name, {
     GcmChannelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:pinpoint/gcmChannel:GcmChannel',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiKey = registerOutput<String?>('apiKey');
     this.applicationId = registerOutput<String>('applicationId');

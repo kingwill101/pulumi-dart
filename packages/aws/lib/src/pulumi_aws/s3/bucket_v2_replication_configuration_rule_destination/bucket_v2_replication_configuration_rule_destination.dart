@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_v2_replication_configuration_rule_destination_access_control_translation/bucket_v2_replication_configuration_rule_destination_access_control_translation.dart';
 import '../bucket_v2_replication_configuration_rule_destination_metric/bucket_v2_replication_configuration_rule_destination_metric.dart';
 import '../bucket_v2_replication_configuration_rule_destination_replication_time/bucket_v2_replication_configuration_rule_destination_replication_time.dart';
@@ -45,7 +45,7 @@ class BucketV2ReplicationConfigurationRuleDestination {
     final map = <String, dynamic>{};
     final accessControlTranslationsValue = accessControlTranslations;
     if (accessControlTranslationsValue != null) {
-      map['accessControlTranslations'] = Input.encodeList<
+      map['accessControlTranslations'] = pulumi.Input.encodeList<
           BucketV2ReplicationConfigurationRuleDestinationAccessControlTranslation,
           Map<String,
               dynamic>>(accessControlTranslationsValue, (value) => value.toMap());
@@ -57,7 +57,7 @@ class BucketV2ReplicationConfigurationRuleDestination {
     map['bucket'] = bucket;
     final metricsValue = metrics;
     if (metricsValue != null) {
-      map['metrics'] = Input.encodeList<
+      map['metrics'] = pulumi.Input.encodeList<
           BucketV2ReplicationConfigurationRuleDestinationMetric,
           Map<String, dynamic>>(metricsValue, (value) => value.toMap());
     }
@@ -67,7 +67,7 @@ class BucketV2ReplicationConfigurationRuleDestination {
     }
     final replicationTimesValue = replicationTimes;
     if (replicationTimesValue != null) {
-      map['replicationTimes'] = Input.encodeList<
+      map['replicationTimes'] = pulumi.Input.encodeList<
               BucketV2ReplicationConfigurationRuleDestinationReplicationTime,
               Map<String, dynamic>>(
           replicationTimesValue, (value) => value.toMap());
@@ -84,7 +84,7 @@ class BucketV2ReplicationConfigurationRuleDestination {
     return BucketV2ReplicationConfigurationRuleDestination(
       accessControlTranslations: map['accessControlTranslations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BucketV2ReplicationConfigurationRuleDestinationAccessControlTranslation>(
               map['accessControlTranslations'],
               (value) =>
@@ -94,7 +94,7 @@ class BucketV2ReplicationConfigurationRuleDestination {
       bucket: map['bucket'] as String,
       metrics: map['metrics'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BucketV2ReplicationConfigurationRuleDestinationMetric>(
               map['metrics'],
               (value) =>
@@ -105,7 +105,7 @@ class BucketV2ReplicationConfigurationRuleDestination {
           : map['replicaKmsKeyId'] as String,
       replicationTimes: map['replicationTimes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BucketV2ReplicationConfigurationRuleDestinationReplicationTime>(
               map['replicationTimes'],
               (value) =>

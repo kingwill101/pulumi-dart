@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_definition_eks_properties_pod_properties_init_container_env/job_definition_eks_properties_pod_properties_init_container_env.dart';
 import '../job_definition_eks_properties_pod_properties_init_container_resources/job_definition_eks_properties_pod_properties_init_container_resources.dart';
 import '../job_definition_eks_properties_pod_properties_init_container_security_context/job_definition_eks_properties_pod_properties_init_container_security_context.dart';
@@ -61,7 +61,7 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainer {
     }
     final envsValue = envs;
     if (envsValue != null) {
-      map['envs'] = Input.encodeList<
+      map['envs'] = pulumi.Input.encodeList<
           JobDefinitionEksPropertiesPodPropertiesInitContainerEnv,
           Map<String, dynamic>>(envsValue, (value) => value.toMap());
     }
@@ -84,7 +84,7 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainer {
     }
     final volumeMountsValue = volumeMounts;
     if (volumeMountsValue != null) {
-      map['volumeMounts'] = Input.encodeList<
+      map['volumeMounts'] = pulumi.Input.encodeList<
           JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount,
           Map<String, dynamic>>(volumeMountsValue, (value) => value.toMap());
     }
@@ -100,7 +100,7 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainer {
           : (map['commands'] as List).cast<String>(),
       envs: map['envs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   JobDefinitionEksPropertiesPodPropertiesInitContainerEnv>(
               map['envs'],
               (value) => JobDefinitionEksPropertiesPodPropertiesInitContainerEnv
@@ -120,7 +120,7 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainer {
               .fromMap((map['securityContext'] as Map).cast<String, dynamic>()),
       volumeMounts: map['volumeMounts'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount>(
               map['volumeMounts'],
               (value) =>

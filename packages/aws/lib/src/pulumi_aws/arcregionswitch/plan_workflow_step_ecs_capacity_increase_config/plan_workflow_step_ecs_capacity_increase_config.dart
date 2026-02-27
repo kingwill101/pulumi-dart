@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_workflow_step_ecs_capacity_increase_config_service/plan_workflow_step_ecs_capacity_increase_config_service.dart';
 import '../plan_workflow_step_ecs_capacity_increase_config_ungraceful/plan_workflow_step_ecs_capacity_increase_config_ungraceful.dart';
 
@@ -33,7 +33,7 @@ class PlanWorkflowStepEcsCapacityIncreaseConfig {
     map['capacityMonitoringApproach'] = capacityMonitoringApproach;
     final servicesValue = services;
     if (servicesValue != null) {
-      map['services'] = Input.encodeList<
+      map['services'] = pulumi.Input.encodeList<
           PlanWorkflowStepEcsCapacityIncreaseConfigService,
           Map<String, dynamic>>(servicesValue, (value) => value.toMap());
     }
@@ -58,7 +58,8 @@ class PlanWorkflowStepEcsCapacityIncreaseConfig {
       capacityMonitoringApproach: map['capacityMonitoringApproach'] as String,
       services: map['services'] == null
           ? null
-          : Input.decodeList<PlanWorkflowStepEcsCapacityIncreaseConfigService>(
+          : pulumi.Input.decodeList<
+                  PlanWorkflowStepEcsCapacityIncreaseConfigService>(
               map['services'],
               (value) =>
                   PlanWorkflowStepEcsCapacityIncreaseConfigService.fromMap(

@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPrompt.
 class GetPromptArgs {
   /// Reference to the hosting Amazon Connect Instance
-  final Input<String> instanceId;
+  final pulumi.Input<String> instanceId;
 
   /// Returns information on a specific Prompt by name
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetPromptArgs({
     required this.instanceId,
@@ -32,9 +32,9 @@ class GetPromptArgs {
 
   factory GetPromptArgs.fromMap(Map<String, dynamic> map) {
     return GetPromptArgs(
-      instanceId: Input.asInput<String>(map['instanceId']),
-      name: Input.asInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

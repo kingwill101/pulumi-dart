@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VirtualMfaDevice.
 class VirtualMfaDeviceArgs {
   /// Path for the virtual MFA device.
-  final Input<String>? path;
+  final pulumi.Input<String>? path;
 
   /// Map of resource tags for the virtual mfa device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
-  final Input<String> virtualMfaDeviceName;
+  final pulumi.Input<String> virtualMfaDeviceName;
 
   VirtualMfaDeviceArgs({
     this.path,
@@ -35,9 +35,10 @@ class VirtualMfaDeviceArgs {
 
   factory VirtualMfaDeviceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMfaDeviceArgs(
-      path: Input.asOptionalInput<String>(map['path']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      virtualMfaDeviceName: Input.asInput<String>(map['virtualMfaDeviceName']),
+      path: pulumi.Input.asOptionalInput<String>(map['path']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      virtualMfaDeviceName:
+          pulumi.Input.asInput<String>(map['virtualMfaDeviceName']),
     );
   }
 }

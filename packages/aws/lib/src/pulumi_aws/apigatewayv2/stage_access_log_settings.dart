@@ -1,3 +1,3 @@
 library module_apigatewayv2_stage_access_log_settings;
 
-export 'stage_access_log_settings/stage_access_log_settings2.dart';
+export 'stage_access_log_settings/stage_access_log_settings_apigatewayv2.dart';

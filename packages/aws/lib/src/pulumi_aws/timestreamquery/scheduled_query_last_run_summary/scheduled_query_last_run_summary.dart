@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scheduled_query_last_run_summary_error_report_location/scheduled_query_last_run_summary_error_report_location.dart';
 import '../scheduled_query_last_run_summary_execution_stat/scheduled_query_last_run_summary_execution_stat.dart';
 import '../scheduled_query_last_run_summary_query_insights_response/scheduled_query_last_run_summary_query_insights_response.dart';
@@ -43,14 +43,14 @@ class ScheduledQueryLastRunSummary {
     final map = <String, dynamic>{};
     final errorReportLocationsValue = errorReportLocations;
     if (errorReportLocationsValue != null) {
-      map['errorReportLocations'] = Input.encodeList<
+      map['errorReportLocations'] = pulumi.Input.encodeList<
               ScheduledQueryLastRunSummaryErrorReportLocation,
               Map<String, dynamic>>(
           errorReportLocationsValue, (value) => value.toMap());
     }
     final executionStatsValue = executionStats;
     if (executionStatsValue != null) {
-      map['executionStats'] = Input.encodeList<
+      map['executionStats'] = pulumi.Input.encodeList<
           ScheduledQueryLastRunSummaryExecutionStat,
           Map<String, dynamic>>(executionStatsValue, (value) => value.toMap());
     }
@@ -64,7 +64,7 @@ class ScheduledQueryLastRunSummary {
     }
     final queryInsightsResponsesValue = queryInsightsResponses;
     if (queryInsightsResponsesValue != null) {
-      map['queryInsightsResponses'] = Input.encodeList<
+      map['queryInsightsResponses'] = pulumi.Input.encodeList<
               ScheduledQueryLastRunSummaryQueryInsightsResponse,
               Map<String, dynamic>>(
           queryInsightsResponsesValue, (value) => value.toMap());
@@ -84,14 +84,15 @@ class ScheduledQueryLastRunSummary {
     return ScheduledQueryLastRunSummary(
       errorReportLocations: map['errorReportLocations'] == null
           ? null
-          : Input.decodeList<ScheduledQueryLastRunSummaryErrorReportLocation>(
+          : pulumi.Input.decodeList<
+                  ScheduledQueryLastRunSummaryErrorReportLocation>(
               map['errorReportLocations'],
               (value) =>
                   ScheduledQueryLastRunSummaryErrorReportLocation.fromMap(
                       (value as Map).cast<String, dynamic>())),
       executionStats: map['executionStats'] == null
           ? null
-          : Input.decodeList<ScheduledQueryLastRunSummaryExecutionStat>(
+          : pulumi.Input.decodeList<ScheduledQueryLastRunSummaryExecutionStat>(
               map['executionStats'],
               (value) => ScheduledQueryLastRunSummaryExecutionStat.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -102,7 +103,8 @@ class ScheduledQueryLastRunSummary {
           : map['invocationTime'] as String,
       queryInsightsResponses: map['queryInsightsResponses'] == null
           ? null
-          : Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponse>(
+          : pulumi.Input.decodeList<
+                  ScheduledQueryLastRunSummaryQueryInsightsResponse>(
               map['queryInsightsResponses'],
               (value) =>
                   ScheduledQueryLastRunSummaryQueryInsightsResponse.fromMap(

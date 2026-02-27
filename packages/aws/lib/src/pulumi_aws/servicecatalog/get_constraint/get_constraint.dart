@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_constraint_args.dart';
 import 'get_constraint_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_constraint_result.dart';
 /// ### Basic Usage
 Future<GetConstraintResult> getConstraint(
   GetConstraintArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:servicecatalog/getConstraint:getConstraint',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConstraintResult.fromMap(result);
 }

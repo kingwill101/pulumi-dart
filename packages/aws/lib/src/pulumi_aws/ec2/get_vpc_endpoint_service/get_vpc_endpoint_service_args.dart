@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_endpoint_service_filter/get_vpc_endpoint_service_filter.dart';
 
 /// Arguments for getVpcEndpointService.
 class GetVpcEndpointServiceArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  final Input<List<GetVpcEndpointServiceFilter>>? filters;
+  final pulumi.Input<List<GetVpcEndpointServiceFilter>>? filters;
 
   /// Common name of an AWS service (e.g., `s3`).
-  final Input<String>? service;
+  final pulumi.Input<String>? service;
 
   /// Service name that is specified when creating a VPC endpoint. For AWS services the service name is usually in the form `com.amazonaws.<region>.<service>` (the SageMaker AI Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.<region>.notebook`).
-  final Input<String>? serviceName;
+  final pulumi.Input<String>? serviceName;
 
   /// AWS regions in which to look for services.
-  final Input<List<String>>? serviceRegions;
+  final pulumi.Input<List<String>>? serviceRegions;
 
   /// Service type, `Gateway` or `Interface`.
-  final Input<String>? serviceType;
+  final pulumi.Input<String>? serviceType;
 
   /// Map of tags, each pair of which must exactly match a pair on the desired VPC Endpoint Service.
   ///
   /// > **NOTE:** Specifying `service` will not work for non-AWS services or AWS services that don't follow the standard `service_name` pattern of `com.amazonaws.<region>.<service>`.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetVpcEndpointServiceArgs({
     this.filters,
@@ -38,10 +38,10 @@ class GetVpcEndpointServiceArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
               List<GetVpcEndpointServiceFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) => Input.encodeList<GetVpcEndpointServiceFilter,
+          (value) => pulumi.Input.encodeList<GetVpcEndpointServiceFilter,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final serviceValue = service;
@@ -69,14 +69,14 @@ class GetVpcEndpointServiceArgs {
 
   factory GetVpcEndpointServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServiceArgs(
-      filters: Input.asOptionalInput<List<GetVpcEndpointServiceFilter>>(
+      filters: pulumi.Input.asOptionalInput<List<GetVpcEndpointServiceFilter>>(
           map['filters']),
-      service: Input.asOptionalInput<String>(map['service']),
-      serviceName: Input.asOptionalInput<String>(map['serviceName']),
+      service: pulumi.Input.asOptionalInput<String>(map['service']),
+      serviceName: pulumi.Input.asOptionalInput<String>(map['serviceName']),
       serviceRegions:
-          Input.asOptionalInput<List<String>>(map['serviceRegions']),
-      serviceType: Input.asOptionalInput<String>(map['serviceType']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<List<String>>(map['serviceRegions']),
+      serviceType: pulumi.Input.asOptionalInput<String>(map['serviceType']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

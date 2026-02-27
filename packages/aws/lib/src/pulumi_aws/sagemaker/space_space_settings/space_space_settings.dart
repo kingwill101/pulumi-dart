@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../space_space_settings_code_editor_app_settings/space_space_settings_code_editor_app_settings.dart';
 import '../space_space_settings_custom_file_system/space_space_settings_custom_file_system.dart';
 import '../space_space_settings_jupyter_lab_app_settings/space_space_settings_jupyter_lab_app_settings.dart';
@@ -52,7 +52,7 @@ class SpaceSpaceSettings {
     }
     final customFileSystemsValue = customFileSystems;
     if (customFileSystemsValue != null) {
-      map['customFileSystems'] = Input.encodeList<
+      map['customFileSystems'] = pulumi.Input.encodeList<
               SpaceSpaceSettingsCustomFileSystem, Map<String, dynamic>>(
           customFileSystemsValue, (value) => value.toMap());
     }
@@ -84,7 +84,7 @@ class SpaceSpaceSettings {
               (map['codeEditorAppSettings'] as Map).cast<String, dynamic>()),
       customFileSystems: map['customFileSystems'] == null
           ? null
-          : Input.decodeList<SpaceSpaceSettingsCustomFileSystem>(
+          : pulumi.Input.decodeList<SpaceSpaceSettingsCustomFileSystem>(
               map['customFileSystems'],
               (value) => SpaceSpaceSettingsCustomFileSystem.fromMap(
                   (value as Map).cast<String, dynamic>())),

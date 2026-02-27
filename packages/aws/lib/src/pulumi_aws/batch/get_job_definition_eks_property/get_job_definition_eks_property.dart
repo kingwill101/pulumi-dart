@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_definition_eks_property_pod_property/get_job_definition_eks_property_pod_property.dart';
 
 class GetJobDefinitionEksProperty {
@@ -13,7 +13,7 @@ class GetJobDefinitionEksProperty {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['podProperties'] = Input.encodeList<
+    map['podProperties'] = pulumi.Input.encodeList<
         GetJobDefinitionEksPropertyPodProperty,
         Map<String, dynamic>>(podProperties, (value) => value.toMap());
     return map;
@@ -21,10 +21,11 @@ class GetJobDefinitionEksProperty {
 
   factory GetJobDefinitionEksProperty.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionEksProperty(
-      podProperties: Input.decodeList<GetJobDefinitionEksPropertyPodProperty>(
-          map['podProperties'],
-          (value) => GetJobDefinitionEksPropertyPodProperty.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      podProperties:
+          pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodProperty>(
+              map['podProperties'],
+              (value) => GetJobDefinitionEksPropertyPodProperty.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

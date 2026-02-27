@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../object_lambda_access_point_configuration_transformation_configuration/object_lambda_access_point_configuration_transformation_configuration.dart';
 
 class ObjectLambdaAccessPointConfiguration {
@@ -35,7 +35,7 @@ class ObjectLambdaAccessPointConfiguration {
       map['cloudWatchMetricsEnabled'] = cloudWatchMetricsEnabledValue;
     }
     map['supportingAccessPoint'] = supportingAccessPoint;
-    map['transformationConfigurations'] = Input.encodeList<
+    map['transformationConfigurations'] = pulumi.Input.encodeList<
             ObjectLambdaAccessPointConfigurationTransformationConfiguration,
             Map<String, dynamic>>(
         transformationConfigurations, (value) => value.toMap());
@@ -52,7 +52,7 @@ class ObjectLambdaAccessPointConfiguration {
           ? null
           : map['cloudWatchMetricsEnabled'] as bool,
       supportingAccessPoint: map['supportingAccessPoint'] as String,
-      transformationConfigurations: Input.decodeList<
+      transformationConfigurations: pulumi.Input.decodeList<
               ObjectLambdaAccessPointConfigurationTransformationConfiguration>(
           map['transformationConfigurations'],
           (value) =>

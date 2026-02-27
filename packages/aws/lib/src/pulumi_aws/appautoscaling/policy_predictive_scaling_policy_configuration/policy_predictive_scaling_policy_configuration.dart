@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../policy_predictive_scaling_policy_configuration_metric_specification/policy_predictive_scaling_policy_configuration_metric_specification.dart';
 
 class PolicyPredictiveScalingPolicyConfiguration {
@@ -38,7 +38,7 @@ class PolicyPredictiveScalingPolicyConfiguration {
     if (maxCapacityBufferValue != null) {
       map['maxCapacityBuffer'] = maxCapacityBufferValue;
     }
-    map['metricSpecifications'] = Input.encodeList<
+    map['metricSpecifications'] = pulumi.Input.encodeList<
         PolicyPredictiveScalingPolicyConfigurationMetricSpecification,
         Map<String, dynamic>>(metricSpecifications, (value) => value.toMap());
     final modeValue = mode;
@@ -61,7 +61,7 @@ class PolicyPredictiveScalingPolicyConfiguration {
       maxCapacityBuffer: map['maxCapacityBuffer'] == null
           ? null
           : map['maxCapacityBuffer'] as int,
-      metricSpecifications: Input.decodeList<
+      metricSpecifications: pulumi.Input.decodeList<
               PolicyPredictiveScalingPolicyConfigurationMetricSpecification>(
           map['metricSpecifications'],
           (value) =>

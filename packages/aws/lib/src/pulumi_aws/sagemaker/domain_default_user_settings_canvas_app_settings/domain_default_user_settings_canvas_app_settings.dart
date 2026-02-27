@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../domain_default_user_settings_canvas_app_settings_direct_deploy_settings/domain_default_user_settings_canvas_app_settings_direct_deploy_settings.dart';
 import '../domain_default_user_settings_canvas_app_settings_emr_serverless_settings/domain_default_user_settings_canvas_app_settings_emr_serverless_settings.dart';
 import '../domain_default_user_settings_canvas_app_settings_generative_ai_settings/domain_default_user_settings_canvas_app_settings_generative_ai_settings.dart';
@@ -69,7 +69,7 @@ class DomainDefaultUserSettingsCanvasAppSettings {
     }
     final identityProviderOauthSettingsValue = identityProviderOauthSettings;
     if (identityProviderOauthSettingsValue != null) {
-      map['identityProviderOauthSettings'] = Input.encodeList<
+      map['identityProviderOauthSettings'] = pulumi.Input.encodeList<
               DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting,
               Map<String, dynamic>>(
           identityProviderOauthSettingsValue, (value) => value.toMap());
@@ -115,7 +115,7 @@ class DomainDefaultUserSettingsCanvasAppSettings {
       identityProviderOauthSettings: map['identityProviderOauthSettings'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting>(
               map['identityProviderOauthSettings'],
               (value) =>

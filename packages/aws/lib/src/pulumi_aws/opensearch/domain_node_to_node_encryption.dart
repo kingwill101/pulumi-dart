@@ -1,3 +1,3 @@
 library module_opensearch_domain_node_to_node_encryption;
 
-export 'domain_node_to_node_encryption/domain_node_to_node_encryption2.dart';
+export 'domain_node_to_node_encryption/domain_node_to_node_encryption_opensearch.dart';

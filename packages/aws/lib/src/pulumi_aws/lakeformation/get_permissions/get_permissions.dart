@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_permissions_args.dart';
 import 'get_permissions_result.dart';
 
@@ -19,13 +19,13 @@ import 'get_permissions_result.dart';
 /// ### Permissions For Tag-Based Access Control
 Future<GetPermissionsResult> getPermissions(
   GetPermissionsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:lakeformation/getPermissions:getPermissions',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPermissionsResult.fromMap(result);
 }

@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBucket.
 class GetBucketArgs {
   /// Name of the bucket
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetBucketArgs({
     required this.bucket,
@@ -27,8 +27,8 @@ class GetBucketArgs {
 
   factory GetBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      region: Input.asOptionalInput<String>(map['region']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

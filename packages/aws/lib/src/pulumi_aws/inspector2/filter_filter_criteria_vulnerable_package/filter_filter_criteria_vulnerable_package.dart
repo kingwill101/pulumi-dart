@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../filter_filter_criteria_vulnerable_package_architecture/filter_filter_criteria_vulnerable_package_architecture.dart';
 import '../filter_filter_criteria_vulnerable_package_epoch/filter_filter_criteria_vulnerable_package_epoch.dart';
 import '../filter_filter_criteria_vulnerable_package_file_path/filter_filter_criteria_vulnerable_package_file_path.dart';
@@ -55,7 +55,7 @@ class FilterFilterCriteriaVulnerablePackage {
     }
     final epochesValue = epoches;
     if (epochesValue != null) {
-      map['epoches'] = Input.encodeList<
+      map['epoches'] = pulumi.Input.encodeList<
           FilterFilterCriteriaVulnerablePackageEpoch,
           Map<String, dynamic>>(epochesValue, (value) => value.toMap());
     }
@@ -95,7 +95,7 @@ class FilterFilterCriteriaVulnerablePackage {
               (map['architecture'] as Map).cast<String, dynamic>()),
       epoches: map['epoches'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaVulnerablePackageEpoch>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaVulnerablePackageEpoch>(
               map['epoches'],
               (value) => FilterFilterCriteriaVulnerablePackageEpoch.fromMap(
                   (value as Map).cast<String, dynamic>())),

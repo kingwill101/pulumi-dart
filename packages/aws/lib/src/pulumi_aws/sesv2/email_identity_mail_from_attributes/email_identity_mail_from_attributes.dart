@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'email_identity_mail_from_attributes_args.dart';
 
 /// Resource for managing an AWS SESv2 (Simple Email V2) Email Identity Mail From Attributes.
@@ -16,28 +16,28 @@ import 'email_identity_mail_from_attributes_args.dart';
 /// ```sh
 /// $ pulumi import aws:sesv2/emailIdentityMailFromAttributes:EmailIdentityMailFromAttributes example example.com
 /// ```
-class EmailIdentityMailFromAttributes extends CustomResource {
+class EmailIdentityMailFromAttributes extends pulumi.CustomResource {
   /// The action to take if the required MX record isn't found when you send an email. Valid values: `USE_DEFAULT_VALUE`, `REJECT_MESSAGE`.
-  late final Output<String?> behaviorOnMxFailure;
+  late final pulumi.Output<String?> behaviorOnMxFailure;
 
   /// The verified email identity.
-  late final Output<String> emailIdentity;
+  late final pulumi.Output<String> emailIdentity;
 
   /// The custom MAIL FROM domain that you want the verified identity to use. Required if `behavior_on_mx_failure` is `REJECT_MESSAGE`.
-  late final Output<String?> mailFromDomain;
+  late final pulumi.Output<String?> mailFromDomain;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   EmailIdentityMailFromAttributes(
     String name, {
     EmailIdentityMailFromAttributesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sesv2/emailIdentityMailFromAttributes:EmailIdentityMailFromAttributes',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.behaviorOnMxFailure = registerOutput<String?>('behaviorOnMxFailure');
     this.emailIdentity = registerOutput<String>('emailIdentity');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_inline_payload/agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_inline_payload.dart';
 import '../agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_s3/agentcore_gateway_target_target_configuration_mcp_lambda_tool_schema_s3.dart';
 
@@ -22,7 +22,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema {
     final map = <String, dynamic>{};
     final inlinePayloadsValue = inlinePayloads;
     if (inlinePayloadsValue != null) {
-      map['inlinePayloads'] = Input.encodeList<
+      map['inlinePayloads'] = pulumi.Input.encodeList<
           AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload,
           Map<String, dynamic>>(inlinePayloadsValue, (value) => value.toMap());
     }
@@ -38,7 +38,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchema(
       inlinePayloads: map['inlinePayloads'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload>(
               map['inlinePayloads'],
               (value) =>

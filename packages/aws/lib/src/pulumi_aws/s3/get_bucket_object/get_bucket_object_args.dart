@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBucketObject.
 class GetBucketObjectArgs {
   /// Name of the bucket to read the object from. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// Full path to the object inside the bucket
-  final Input<String> key;
-  final Input<String>? range;
+  final pulumi.Input<String> key;
+  final pulumi.Input<String>? range;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags assigned to the object.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Specific version ID of the object returned (defaults to latest version)
-  final Input<String>? versionId;
+  final pulumi.Input<String>? versionId;
 
   GetBucketObjectArgs({
     required this.bucket,
@@ -54,12 +54,12 @@ class GetBucketObjectArgs {
 
   factory GetBucketObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      key: Input.asInput<String>(map['key']),
-      range: Input.asOptionalInput<String>(map['range']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      versionId: Input.asOptionalInput<String>(map['versionId']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      key: pulumi.Input.asInput<String>(map['key']),
+      range: pulumi.Input.asOptionalInput<String>(map['range']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      versionId: pulumi.Input.asOptionalInput<String>(map['versionId']),
     );
   }
 }

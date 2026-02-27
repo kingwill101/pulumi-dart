@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../domain_default_user_settings_canvas_app_settings/domain_default_user_settings_canvas_app_settings.dart';
 import '../domain_default_user_settings_code_editor_app_settings/domain_default_user_settings_code_editor_app_settings.dart';
 import '../domain_default_user_settings_custom_file_system_config/domain_default_user_settings_custom_file_system_config.dart';
@@ -112,7 +112,7 @@ class DomainDefaultUserSettings {
     }
     final customFileSystemConfigsValue = customFileSystemConfigs;
     if (customFileSystemConfigsValue != null) {
-      map['customFileSystemConfigs'] = Input.encodeList<
+      map['customFileSystemConfigs'] = pulumi.Input.encodeList<
               DomainDefaultUserSettingsCustomFileSystemConfig,
               Map<String, dynamic>>(
           customFileSystemConfigsValue, (value) => value.toMap());
@@ -189,7 +189,8 @@ class DomainDefaultUserSettings {
               (map['codeEditorAppSettings'] as Map).cast<String, dynamic>()),
       customFileSystemConfigs: map['customFileSystemConfigs'] == null
           ? null
-          : Input.decodeList<DomainDefaultUserSettingsCustomFileSystemConfig>(
+          : pulumi.Input.decodeList<
+                  DomainDefaultUserSettingsCustomFileSystemConfig>(
               map['customFileSystemConfigs'],
               (value) =>
                   DomainDefaultUserSettingsCustomFileSystemConfig.fromMap(

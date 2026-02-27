@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../profiles_profile_timeouts/profiles_profile_timeouts.dart';
 
 /// The set of arguments for ProfilesProfile.
 class ProfilesProfileArgs {
   /// Name of the Profile.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<ProfilesProfileTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<ProfilesProfileTimeouts>? timeouts;
 
   ProfilesProfileArgs({
     this.name,
@@ -38,7 +38,8 @@ class ProfilesProfileArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<ProfilesProfileTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
+          ProfilesProfileTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
@@ -46,10 +47,11 @@ class ProfilesProfileArgs {
 
   factory ProfilesProfileArgs.fromMap(Map<String, dynamic> map) {
     return ProfilesProfileArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<ProfilesProfileTimeouts>(map['timeouts']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<ProfilesProfileTimeouts>(
+          map['timeouts']),
     );
   }
 }

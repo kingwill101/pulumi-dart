@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_node_spec_listener_tl_certificate/get_virtual_node_spec_listener_tl_certificate.dart';
 import '../get_virtual_node_spec_listener_tl_validation/get_virtual_node_spec_listener_tl_validation.dart';
 
@@ -17,11 +17,11 @@ class GetVirtualNodeSpecListenerTl {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['certificates'] = Input.encodeList<
+    map['certificates'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerTlCertificate,
         Map<String, dynamic>>(certificates, (value) => value.toMap());
     map['mode'] = mode;
-    map['validations'] = Input.encodeList<
+    map['validations'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerTlValidation,
         Map<String, dynamic>>(validations, (value) => value.toMap());
     return map;
@@ -29,15 +29,17 @@ class GetVirtualNodeSpecListenerTl {
 
   factory GetVirtualNodeSpecListenerTl.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTl(
-      certificates: Input.decodeList<GetVirtualNodeSpecListenerTlCertificate>(
-          map['certificates'],
-          (value) => GetVirtualNodeSpecListenerTlCertificate.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      certificates:
+          pulumi.Input.decodeList<GetVirtualNodeSpecListenerTlCertificate>(
+              map['certificates'],
+              (value) => GetVirtualNodeSpecListenerTlCertificate.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       mode: map['mode'] as String,
-      validations: Input.decodeList<GetVirtualNodeSpecListenerTlValidation>(
-          map['validations'],
-          (value) => GetVirtualNodeSpecListenerTlValidation.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      validations:
+          pulumi.Input.decodeList<GetVirtualNodeSpecListenerTlValidation>(
+              map['validations'],
+              (value) => GetVirtualNodeSpecListenerTlValidation.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

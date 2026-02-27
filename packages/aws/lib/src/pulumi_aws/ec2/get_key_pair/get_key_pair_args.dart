@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_key_pair_filter/get_key_pair_filter.dart';
 
 /// Arguments for getKeyPair.
@@ -10,22 +10,22 @@ class GetKeyPairArgs {
   /// The arguments of this data source act as filters for querying the available
   /// Key Pairs. The given filters must match exactly one Key Pair
   /// whose data will be exported as attributes.
-  final Input<List<GetKeyPairFilter>>? filters;
+  final pulumi.Input<List<GetKeyPairFilter>>? filters;
 
   /// Whether to include the public key material in the response.
-  final Input<bool>? includePublicKey;
+  final pulumi.Input<bool>? includePublicKey;
 
   /// Key Pair name.
-  final Input<String>? keyName;
+  final pulumi.Input<String>? keyName;
 
   /// Key Pair ID.
-  final Input<String>? keyPairId;
+  final pulumi.Input<String>? keyPairId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Any tags assigned to the Key Pair.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetKeyPairArgs({
     this.filters,
@@ -40,11 +40,12 @@ class GetKeyPairArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetKeyPairFilter>,
-              List<Map<String, dynamic>>>(
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
+              List<GetKeyPairFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) => Input.encodeList<GetKeyPairFilter, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<GetKeyPairFilter, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final includePublicKeyValue = includePublicKey;
     if (includePublicKeyValue != null) {
@@ -71,12 +72,14 @@ class GetKeyPairArgs {
 
   factory GetKeyPairArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyPairArgs(
-      filters: Input.asOptionalInput<List<GetKeyPairFilter>>(map['filters']),
-      includePublicKey: Input.asOptionalInput<bool>(map['includePublicKey']),
-      keyName: Input.asOptionalInput<String>(map['keyName']),
-      keyPairId: Input.asOptionalInput<String>(map['keyPairId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      filters:
+          pulumi.Input.asOptionalInput<List<GetKeyPairFilter>>(map['filters']),
+      includePublicKey:
+          pulumi.Input.asOptionalInput<bool>(map['includePublicKey']),
+      keyName: pulumi.Input.asOptionalInput<String>(map['keyName']),
+      keyPairId: pulumi.Input.asOptionalInput<String>(map['keyPairId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getReservedInstanceOffering.
 class GetReservedInstanceOfferingArgs {
   /// DB instance class for the reserved DB instance.
-  final Input<String> dbInstanceClass;
+  final pulumi.Input<String> dbInstanceClass;
 
   /// Duration of the reservation in years or seconds. Valid values are `1`, `3`, `31536000`, `94608000`
-  final Input<int> duration;
+  final pulumi.Input<int> duration;
 
   /// Whether the reservation applies to Multi-AZ deployments.
-  final Input<bool> multiAz;
+  final pulumi.Input<bool> multiAz;
 
   /// Offering type of this reserved DB instance. Valid values are `No Upfront`, `Partial Upfront`, `All Upfront`.
-  final Input<String> offeringType;
+  final pulumi.Input<String> offeringType;
 
   /// Description of the reserved DB instance. Example values are `postgresql`, `aurora-postgresql`, `mysql`, `aurora-mysql`, `mariadb`.
-  final Input<String> productDescription;
+  final pulumi.Input<String> productDescription;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetReservedInstanceOfferingArgs({
     required this.dbInstanceClass,
@@ -47,12 +47,13 @@ class GetReservedInstanceOfferingArgs {
 
   factory GetReservedInstanceOfferingArgs.fromMap(Map<String, dynamic> map) {
     return GetReservedInstanceOfferingArgs(
-      dbInstanceClass: Input.asInput<String>(map['dbInstanceClass']),
-      duration: Input.asInput<int>(map['duration']),
-      multiAz: Input.asInput<bool>(map['multiAz']),
-      offeringType: Input.asInput<String>(map['offeringType']),
-      productDescription: Input.asInput<String>(map['productDescription']),
-      region: Input.asOptionalInput<String>(map['region']),
+      dbInstanceClass: pulumi.Input.asInput<String>(map['dbInstanceClass']),
+      duration: pulumi.Input.asInput<int>(map['duration']),
+      multiAz: pulumi.Input.asInput<bool>(map['multiAz']),
+      offeringType: pulumi.Input.asInput<String>(map['offeringType']),
+      productDescription:
+          pulumi.Input.asInput<String>(map['productDescription']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

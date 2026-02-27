@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connection_alias_timeouts/connection_alias_timeouts.dart';
 
 /// The set of arguments for ConnectionAlias.
 class ConnectionAliasArgs {
   /// The connection string specified for the connection alias. The connection string must be in the form of a fully qualified domain name (FQDN), such as www.example.com.
-  final Input<String> connectionString;
+  final pulumi.Input<String> connectionString;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags assigned to the WorkSpaces Connection Alias. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<ConnectionAliasTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<ConnectionAliasTimeouts>? timeouts;
 
   ConnectionAliasArgs({
     required this.connectionString,
@@ -35,7 +35,8 @@ class ConnectionAliasArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<ConnectionAliasTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
+          ConnectionAliasTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
@@ -43,10 +44,11 @@ class ConnectionAliasArgs {
 
   factory ConnectionAliasArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionAliasArgs(
-      connectionString: Input.asInput<String>(map['connectionString']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<ConnectionAliasTimeouts>(map['timeouts']),
+      connectionString: pulumi.Input.asInput<String>(map['connectionString']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<ConnectionAliasTimeouts>(
+          map['timeouts']),
     );
   }
 }

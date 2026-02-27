@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_vpc_dhcp_options_args.dart';
 
 /// Provides a resource to manage the [default AWS DHCP Options Set](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html#AmazonDNS)
@@ -25,39 +25,39 @@ import 'default_vpc_dhcp_options_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/defaultVpcDhcpOptions:DefaultVpcDhcpOptions default_options dopt-d9070ebb
 /// ```
-class DefaultVpcDhcpOptions extends CustomResource {
+class DefaultVpcDhcpOptions extends pulumi.CustomResource {
   /// The ARN of the DHCP Options Set.
-  late final Output<String> arn;
-  late final Output<String> domainName;
-  late final Output<String> domainNameServers;
-  late final Output<String> ipv6AddressPreferredLeaseTime;
+  late final pulumi.Output<String> arn;
+  late final pulumi.Output<String> domainName;
+  late final pulumi.Output<String> domainNameServers;
+  late final pulumi.Output<String> ipv6AddressPreferredLeaseTime;
 
   /// List of NETBIOS name servers.
-  late final Output<String> netbiosNameServers;
+  late final pulumi.Output<String> netbiosNameServers;
 
   /// The NetBIOS node type (1, 2, 4, or 8). AWS recommends to specify 2 since broadcast and multicast are not supported in their network. For more information about these node types, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt).
-  late final Output<String> netbiosNodeType;
-  late final Output<String> ntpServers;
+  late final pulumi.Output<String> netbiosNodeType;
+  late final pulumi.Output<String> ntpServers;
 
   /// The ID of the AWS account that owns the DHCP options set.
-  late final Output<String> ownerId;
+  late final pulumi.Output<String> ownerId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   DefaultVpcDhcpOptions(
     String name, {
     DefaultVpcDhcpOptionsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/defaultVpcDhcpOptions:DefaultVpcDhcpOptions',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.domainName = registerOutput<String>('domainName');

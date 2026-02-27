@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_components_filter/get_components_filter.dart';
 
 /// Result data returned by getComponents.
@@ -32,7 +32,7 @@ class GetComponentsResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetComponentsFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetComponentsFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -50,7 +50,7 @@ class GetComponentsResult {
       arns: (map['arns'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetComponentsFilter>(
+          : pulumi.Input.decodeList<GetComponentsFilter>(
               map['filters'],
               (value) => GetComponentsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multi_region_access_point_details_public_access_block/multi_region_access_point_details_public_access_block.dart';
 import '../multi_region_access_point_details_region/multi_region_access_point_details_region.dart';
 
@@ -24,7 +24,8 @@ class MultiRegionAccessPointDetails {
     if (publicAccessBlockValue != null) {
       map['publicAccessBlock'] = publicAccessBlockValue.toMap();
     }
-    map['regions'] = Input.encodeList<MultiRegionAccessPointDetailsRegion,
+    map['regions'] = pulumi.Input.encodeList<
+        MultiRegionAccessPointDetailsRegion,
         Map<String, dynamic>>(regions, (value) => value.toMap());
     return map;
   }
@@ -36,7 +37,7 @@ class MultiRegionAccessPointDetails {
           ? null
           : MultiRegionAccessPointDetailsPublicAccessBlock.fromMap(
               (map['publicAccessBlock'] as Map).cast<String, dynamic>()),
-      regions: Input.decodeList<MultiRegionAccessPointDetailsRegion>(
+      regions: pulumi.Input.decodeList<MultiRegionAccessPointDetailsRegion>(
           map['regions'],
           (value) => MultiRegionAccessPointDetailsRegion.fromMap(
               (value as Map).cast<String, dynamic>())),

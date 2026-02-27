@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_testing_plan_recovery_point_selection/restore_testing_plan_recovery_point_selection.dart';
 
 /// The set of arguments for RestoreTestingPlan.
 class RestoreTestingPlanArgs {
   /// The name of the restore testing plan. Must be between 1 and 50 characters long and contain only alphanumeric characters and underscores.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Specifies the recovery point selection configuration. See RecoveryPointSelection section for more details.
-  final Input<RestoreTestingPlanRecoveryPointSelection> recoveryPointSelection;
+  final pulumi.Input<RestoreTestingPlanRecoveryPointSelection>
+      recoveryPointSelection;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The schedule expression for the restore testing plan.
-  final Input<String> scheduleExpression;
+  final pulumi.Input<String> scheduleExpression;
 
   /// The timezone for the schedule expression. If not provided, the state value will be used.
-  final Input<String>? scheduleExpressionTimezone;
+  final pulumi.Input<String>? scheduleExpressionTimezone;
 
   /// The number of hours in the start window for the restore testing plan. Must be between 1 and 168.
-  final Input<int>? startWindowHours;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<int>? startWindowHours;
+  final pulumi.Input<Map<String, String>>? tags;
 
   RestoreTestingPlanArgs({
     this.name,
@@ -40,7 +41,7 @@ class RestoreTestingPlanArgs {
     if (nameValue != null) {
       map['name'] = nameValue;
     }
-    map['recoveryPointSelection'] = Input.mapInputValue<
+    map['recoveryPointSelection'] = pulumi.Input.mapInputValue<
         RestoreTestingPlanRecoveryPointSelection,
         Map<String, dynamic>>(recoveryPointSelection, (value) => value.toMap());
     final regionValue = region;
@@ -65,16 +66,18 @@ class RestoreTestingPlanArgs {
 
   factory RestoreTestingPlanArgs.fromMap(Map<String, dynamic> map) {
     return RestoreTestingPlanArgs(
-      name: Input.asOptionalInput<String>(map['name']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       recoveryPointSelection:
-          Input.asInput<RestoreTestingPlanRecoveryPointSelection>(
+          pulumi.Input.asInput<RestoreTestingPlanRecoveryPointSelection>(
               map['recoveryPointSelection']),
-      region: Input.asOptionalInput<String>(map['region']),
-      scheduleExpression: Input.asInput<String>(map['scheduleExpression']),
-      scheduleExpressionTimezone:
-          Input.asOptionalInput<String>(map['scheduleExpressionTimezone']),
-      startWindowHours: Input.asOptionalInput<int>(map['startWindowHours']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      scheduleExpression:
+          pulumi.Input.asInput<String>(map['scheduleExpression']),
+      scheduleExpressionTimezone: pulumi.Input.asOptionalInput<String>(
+          map['scheduleExpressionTimezone']),
+      startWindowHours:
+          pulumi.Input.asOptionalInput<int>(map['startWindowHours']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

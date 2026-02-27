@@ -1,4 +1,4 @@
 library module_transfer_certificate;
 
-export 'certificate/certificate7.dart';
-export 'certificate/certificate_args7.dart';
+export 'certificate/certificate_transfer.dart';
+export 'certificate/certificate_transfer_args.dart';

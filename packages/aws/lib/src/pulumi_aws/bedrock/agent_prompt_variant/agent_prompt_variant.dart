@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_prompt_variant_gen_ai_resource/agent_prompt_variant_gen_ai_resource.dart';
 import '../agent_prompt_variant_inference_configuration/agent_prompt_variant_inference_configuration.dart';
 import '../agent_prompt_variant_metadata/agent_prompt_variant_metadata.dart';
@@ -58,9 +58,8 @@ class AgentPromptVariant {
     }
     final metadatasValue = metadatas;
     if (metadatasValue != null) {
-      map['metadatas'] =
-          Input.encodeList<AgentPromptVariantMetadata, Map<String, dynamic>>(
-              metadatasValue, (value) => value.toMap());
+      map['metadatas'] = pulumi.Input.encodeList<AgentPromptVariantMetadata,
+          Map<String, dynamic>>(metadatasValue, (value) => value.toMap());
     }
     final modelIdValue = modelId;
     if (modelIdValue != null) {
@@ -90,7 +89,7 @@ class AgentPromptVariant {
               (map['inferenceConfiguration'] as Map).cast<String, dynamic>()),
       metadatas: map['metadatas'] == null
           ? null
-          : Input.decodeList<AgentPromptVariantMetadata>(
+          : pulumi.Input.decodeList<AgentPromptVariantMetadata>(
               map['metadatas'],
               (value) => AgentPromptVariantMetadata.fromMap(
                   (value as Map).cast<String, dynamic>())),

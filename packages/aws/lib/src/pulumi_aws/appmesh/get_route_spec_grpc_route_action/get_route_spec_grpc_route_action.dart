@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_route_spec_grpc_route_action_weighted_target/get_route_spec_grpc_route_action_weighted_target.dart';
 
 class GetRouteSpecGrpcRouteAction {
@@ -12,7 +12,7 @@ class GetRouteSpecGrpcRouteAction {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['weightedTargets'] = Input.encodeList<
+    map['weightedTargets'] = pulumi.Input.encodeList<
         GetRouteSpecGrpcRouteActionWeightedTarget,
         Map<String, dynamic>>(weightedTargets, (value) => value.toMap());
     return map;
@@ -21,7 +21,7 @@ class GetRouteSpecGrpcRouteAction {
   factory GetRouteSpecGrpcRouteAction.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteAction(
       weightedTargets:
-          Input.decodeList<GetRouteSpecGrpcRouteActionWeightedTarget>(
+          pulumi.Input.decodeList<GetRouteSpecGrpcRouteActionWeightedTarget>(
               map['weightedTargets'],
               (value) => GetRouteSpecGrpcRouteActionWeightedTarget.fromMap(
                   (value as Map).cast<String, dynamic>())),

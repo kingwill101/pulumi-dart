@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getConfigurationSet.
 class GetConfigurationSetArgs {
   /// The name of the configuration set.
-  final Input<String> configurationSetName;
+  final pulumi.Input<String> configurationSetName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags for the container recipe.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetConfigurationSetArgs({
     required this.configurationSetName,
@@ -35,9 +35,10 @@ class GetConfigurationSetArgs {
 
   factory GetConfigurationSetArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationSetArgs(
-      configurationSetName: Input.asInput<String>(map['configurationSetName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      configurationSetName:
+          pulumi.Input.asInput<String>(map['configurationSetName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firewall_policy_encryption_configuration/firewall_policy_encryption_configuration.dart';
 import '../firewall_policy_firewall_policy/firewall_policy_firewall_policy.dart';
 
 /// The set of arguments for FirewallPolicy.
 class FirewallPolicyArgs {
   /// A friendly description of the firewall policy.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// KMS encryption configuration settings. See Encryption Configuration below for details.
-  final Input<FirewallPolicyEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<FirewallPolicyEncryptionConfiguration>?
+      encryptionConfiguration;
 
   /// A configuration block describing the rule groups and policy actions to use in the firewall policy. See Firewall Policy below for details.
-  final Input<FirewallPolicyFirewallPolicy> firewallPolicy;
+  final pulumi.Input<FirewallPolicyFirewallPolicy> firewallPolicy;
 
   /// A friendly name of the firewall policy.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   FirewallPolicyArgs({
     this.description,
@@ -41,13 +42,13 @@ class FirewallPolicyArgs {
     }
     final encryptionConfigurationValue = encryptionConfiguration;
     if (encryptionConfigurationValue != null) {
-      map['encryptionConfiguration'] = Input.mapOptionalInputValue<
+      map['encryptionConfiguration'] = pulumi.Input.mapOptionalInputValue<
               FirewallPolicyEncryptionConfiguration, Map<String, dynamic>>(
           encryptionConfigurationValue, (value) => value.toMap());
     }
-    map['firewallPolicy'] =
-        Input.mapInputValue<FirewallPolicyFirewallPolicy, Map<String, dynamic>>(
-            firewallPolicy, (value) => value.toMap());
+    map['firewallPolicy'] = pulumi.Input.mapInputValue<
+        FirewallPolicyFirewallPolicy,
+        Map<String, dynamic>>(firewallPolicy, (value) => value.toMap());
     final nameValue = name;
     if (nameValue != null) {
       map['name'] = nameValue;
@@ -65,15 +66,15 @@ class FirewallPolicyArgs {
 
   factory FirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyArgs(
-      description: Input.asOptionalInput<String>(map['description']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       encryptionConfiguration:
-          Input.asOptionalInput<FirewallPolicyEncryptionConfiguration>(
+          pulumi.Input.asOptionalInput<FirewallPolicyEncryptionConfiguration>(
               map['encryptionConfiguration']),
-      firewallPolicy:
-          Input.asInput<FirewallPolicyFirewallPolicy>(map['firewallPolicy']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      firewallPolicy: pulumi.Input.asInput<FirewallPolicyFirewallPolicy>(
+          map['firewallPolicy']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

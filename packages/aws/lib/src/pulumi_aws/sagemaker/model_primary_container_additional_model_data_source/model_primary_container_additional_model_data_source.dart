@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../model_primary_container_additional_model_data_source_s3_data_source/model_primary_container_additional_model_data_source_s3_data_source.dart';
 
 class ModelPrimaryContainerAdditionalModelDataSource {
@@ -19,7 +19,7 @@ class ModelPrimaryContainerAdditionalModelDataSource {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['channelName'] = channelName;
-    map['s3DataSources'] = Input.encodeList<
+    map['s3DataSources'] = pulumi.Input.encodeList<
         ModelPrimaryContainerAdditionalModelDataSourceS3DataSource,
         Map<String, dynamic>>(s3DataSources, (value) => value.toMap());
     return map;
@@ -29,7 +29,7 @@ class ModelPrimaryContainerAdditionalModelDataSource {
       Map<String, dynamic> map) {
     return ModelPrimaryContainerAdditionalModelDataSource(
       channelName: map['channelName'] as String,
-      s3DataSources: Input.decodeList<
+      s3DataSources: pulumi.Input.decodeList<
               ModelPrimaryContainerAdditionalModelDataSourceS3DataSource>(
           map['s3DataSources'],
           (value) => ModelPrimaryContainerAdditionalModelDataSourceS3DataSource

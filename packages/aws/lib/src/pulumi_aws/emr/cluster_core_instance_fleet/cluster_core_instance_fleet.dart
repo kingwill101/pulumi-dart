@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_core_instance_fleet_instance_type_config/cluster_core_instance_fleet_instance_type_config.dart';
 import '../cluster_core_instance_fleet_launch_specifications/cluster_core_instance_fleet_launch_specifications.dart';
 
@@ -44,7 +44,7 @@ class ClusterCoreInstanceFleet {
     }
     final instanceTypeConfigsValue = instanceTypeConfigs;
     if (instanceTypeConfigsValue != null) {
-      map['instanceTypeConfigs'] = Input.encodeList<
+      map['instanceTypeConfigs'] = pulumi.Input.encodeList<
               ClusterCoreInstanceFleetInstanceTypeConfig, Map<String, dynamic>>(
           instanceTypeConfigsValue, (value) => value.toMap());
     }
@@ -80,7 +80,7 @@ class ClusterCoreInstanceFleet {
       id: map['id'] == null ? null : map['id'] as String,
       instanceTypeConfigs: map['instanceTypeConfigs'] == null
           ? null
-          : Input.decodeList<ClusterCoreInstanceFleetInstanceTypeConfig>(
+          : pulumi.Input.decodeList<ClusterCoreInstanceFleetInstanceTypeConfig>(
               map['instanceTypeConfigs'],
               (value) => ClusterCoreInstanceFleetInstanceTypeConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

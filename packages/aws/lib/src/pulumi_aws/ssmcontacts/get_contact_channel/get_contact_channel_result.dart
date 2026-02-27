@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_contact_channel_delivery_address/get_contact_channel_delivery_address.dart';
 
 /// Result data returned by getContactChannel.
@@ -41,7 +41,7 @@ class GetContactChannelResult {
     map['activationStatus'] = activationStatus;
     map['arn'] = arn;
     map['contactId'] = contactId;
-    map['deliveryAddresses'] = Input.encodeList<
+    map['deliveryAddresses'] = pulumi.Input.encodeList<
         GetContactChannelDeliveryAddress,
         Map<String, dynamic>>(deliveryAddresses, (value) => value.toMap());
     map['id'] = id;
@@ -56,10 +56,11 @@ class GetContactChannelResult {
       activationStatus: map['activationStatus'] as String,
       arn: map['arn'] as String,
       contactId: map['contactId'] as String,
-      deliveryAddresses: Input.decodeList<GetContactChannelDeliveryAddress>(
-          map['deliveryAddresses'],
-          (value) => GetContactChannelDeliveryAddress.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      deliveryAddresses:
+          pulumi.Input.decodeList<GetContactChannelDeliveryAddress>(
+              map['deliveryAddresses'],
+              (value) => GetContactChannelDeliveryAddress.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,

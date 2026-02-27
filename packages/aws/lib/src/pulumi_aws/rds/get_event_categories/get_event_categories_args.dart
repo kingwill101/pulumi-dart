@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEventCategories.
 class GetEventCategoriesArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Type of source that will be generating the events. Valid options are db-instance, db-security-group, db-parameter-group, db-snapshot, db-cluster or db-cluster-snapshot.
-  final Input<String>? sourceType;
+  final pulumi.Input<String>? sourceType;
 
   GetEventCategoriesArgs({
     this.region,
@@ -30,8 +30,8 @@ class GetEventCategoriesArgs {
 
   factory GetEventCategoriesArgs.fromMap(Map<String, dynamic> map) {
     return GetEventCategoriesArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      sourceType: Input.asOptionalInput<String>(map['sourceType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sourceType: pulumi.Input.asOptionalInput<String>(map['sourceType']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_file_system_lifecycle_policy/get_file_system_lifecycle_policy.dart';
 import '../get_file_system_protection/get_file_system_protection.dart';
 
@@ -84,13 +84,13 @@ class GetFileSystemResult {
     map['fileSystemId'] = fileSystemId;
     map['id'] = id;
     map['kmsKeyId'] = kmsKeyId;
-    map['lifecyclePolicies'] =
-        Input.encodeList<GetFileSystemLifecyclePolicy, Map<String, dynamic>>(
-            lifecyclePolicies, (value) => value.toMap());
+    map['lifecyclePolicies'] = pulumi.Input.encodeList<
+        GetFileSystemLifecyclePolicy,
+        Map<String, dynamic>>(lifecyclePolicies, (value) => value.toMap());
     map['name'] = name;
     map['performanceMode'] = performanceMode;
     map['protections'] =
-        Input.encodeList<GetFileSystemProtection, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetFileSystemProtection, Map<String, dynamic>>(
             protections, (value) => value.toMap());
     map['provisionedThroughputInMibps'] = provisionedThroughputInMibps;
     map['region'] = region;
@@ -111,13 +111,13 @@ class GetFileSystemResult {
       fileSystemId: map['fileSystemId'] as String,
       id: map['id'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
-      lifecyclePolicies: Input.decodeList<GetFileSystemLifecyclePolicy>(
+      lifecyclePolicies: pulumi.Input.decodeList<GetFileSystemLifecyclePolicy>(
           map['lifecyclePolicies'],
           (value) => GetFileSystemLifecyclePolicy.fromMap(
               (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       performanceMode: map['performanceMode'] as String,
-      protections: Input.decodeList<GetFileSystemProtection>(
+      protections: pulumi.Input.decodeList<GetFileSystemProtection>(
           map['protections'],
           (value) => GetFileSystemProtection.fromMap(
               (value as Map).cast<String, dynamic>())),

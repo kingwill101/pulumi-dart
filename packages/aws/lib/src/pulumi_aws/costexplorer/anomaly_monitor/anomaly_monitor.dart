@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'anomaly_monitor_args.dart';
 
 /// Provides a CE Anomaly Monitor.
@@ -29,37 +29,37 @@ import 'anomaly_monitor_args.dart';
 /// ```sh
 /// $ pulumi import aws:costexplorer/anomalyMonitor:AnomalyMonitor example costAnomalyMonitorARN
 /// ```
-class AnomalyMonitor extends CustomResource {
+class AnomalyMonitor extends pulumi.CustomResource {
   /// ARN of the anomaly monitor.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The dimensions to evaluate. Valid values: `SERVICE`.
-  late final Output<String?> monitorDimension;
+  late final pulumi.Output<String?> monitorDimension;
 
   /// A valid JSON representation for the [Expression](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html) object.
-  late final Output<String?> monitorSpecification;
+  late final pulumi.Output<String?> monitorSpecification;
 
   /// The possible type values. Valid values: `DIMENSIONAL` | `CUSTOM`.
-  late final Output<String> monitorType;
+  late final pulumi.Output<String> monitorType;
 
   /// The name of the monitor.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   AnomalyMonitor(
     String name, {
     AnomalyMonitorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:costexplorer/anomalyMonitor:AnomalyMonitor',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.monitorDimension = registerOutput<String?>('monitorDimension');

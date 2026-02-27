@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'member_args.dart';
 
 /// Provides a resource to manage an [Amazon Detective Member](https://docs.aws.amazon.com/detective/latest/APIReference/API_CreateMembers.html).
@@ -14,50 +14,50 @@ import 'member_args.dart';
 /// ```sh
 /// $ pulumi import aws:detective/member:Member example arn:aws:detective:us-east-1:123456789101:graph:231684d34gh74g4bae1dbc7bd807d02d/123456789012
 /// ```
-class Member extends CustomResource {
+class Member extends pulumi.CustomResource {
   /// AWS account ID for the account.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// AWS account ID for the administrator account.
-  late final Output<String> administratorId;
+  late final pulumi.Output<String> administratorId;
 
   /// If set to true, then the root user of the invited account will _not_ receive an email notification. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. By default, this is set to `false`.
-  late final Output<bool?> disableEmailNotification;
-  late final Output<String> disabledReason;
+  late final pulumi.Output<bool?> disableEmailNotification;
+  late final pulumi.Output<String> disabledReason;
 
   /// Email address for the account.
-  late final Output<String> emailAddress;
+  late final pulumi.Output<String> emailAddress;
 
   /// ARN of the behavior graph to invite the member accounts to contribute their data to.
-  late final Output<String> graphArn;
+  late final pulumi.Output<String> graphArn;
 
   /// Date and time, in UTC and extended RFC 3339 format, when an Amazon Detective membership invitation was last sent to the account.
-  late final Output<String> invitedTime;
+  late final pulumi.Output<String> invitedTime;
 
   /// A custom message to include in the invitation. Amazon Detective adds this message to the standard content that it sends for an invitation.
-  late final Output<String?> message;
+  late final pulumi.Output<String?> message;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Current membership status of the member account.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Date and time, in UTC and extended RFC 3339 format, of the most recent change to the member account's status.
-  late final Output<String> updatedTime;
+  late final pulumi.Output<String> updatedTime;
 
   /// Data volume in bytes per day for the member account.
-  late final Output<String> volumeUsageInBytes;
+  late final pulumi.Output<String> volumeUsageInBytes;
 
   Member(
     String name, {
     MemberArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:detective/member:Member',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
     this.administratorId = registerOutput<String>('administratorId');

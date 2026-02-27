@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_share_args.dart';
 
 /// Manages a Resource Access Manager (RAM) Resource Share. To associate principals with the share, see the `aws.ram.PrincipalAssociation` resource. To associate resources with the share, see the `aws.ram.ResourceAssociation` resource.
@@ -14,37 +14,37 @@ import 'resource_share_args.dart';
 /// ```sh
 /// $ pulumi import aws:ram/resourceShare:ResourceShare example arn:aws:ram:eu-west-1:123456789012:resource-share/73da1ab9-b94a-4ba3-8eb4-45917f7f4b12
 /// ```
-class ResourceShare extends CustomResource {
+class ResourceShare extends pulumi.CustomResource {
   /// Indicates whether principals outside your organization can be associated with a resource share.
-  late final Output<bool?> allowExternalPrincipals;
+  late final pulumi.Output<bool?> allowExternalPrincipals;
 
   /// The Amazon Resource Name (ARN) of the resource share.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The name of the resource share.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Specifies the Amazon Resource Names (ARNs) of the RAM permission to associate with the resource share. If you do not specify an ARN for the permission, RAM automatically attaches the default version of the permission for each resource type. You can associate only one permission with each resource type included in the resource share.
-  late final Output<List<String>> permissionArns;
+  late final pulumi.Output<List<String>> permissionArns;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   ResourceShare(
     String name, {
     ResourceShareArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ram/resourceShare:ResourceShare',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowExternalPrincipals =
         registerOutput<bool?>('allowExternalPrincipals');

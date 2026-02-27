@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_listener_default_action_jwt_validation_additional_claim/get_listener_default_action_jwt_validation_additional_claim.dart';
 
 class GetListenerDefaultActionJwtValidation {
@@ -17,7 +17,7 @@ class GetListenerDefaultActionJwtValidation {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['additionalClaims'] = Input.encodeList<
+    map['additionalClaims'] = pulumi.Input.encodeList<
         GetListenerDefaultActionJwtValidationAdditionalClaim,
         Map<String, dynamic>>(additionalClaims, (value) => value.toMap());
     map['issuer'] = issuer;
@@ -28,7 +28,7 @@ class GetListenerDefaultActionJwtValidation {
   factory GetListenerDefaultActionJwtValidation.fromMap(
       Map<String, dynamic> map) {
     return GetListenerDefaultActionJwtValidation(
-      additionalClaims: Input.decodeList<
+      additionalClaims: pulumi.Input.decodeList<
               GetListenerDefaultActionJwtValidationAdditionalClaim>(
           map['additionalClaims'],
           (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trust_args.dart';
 
 /// Manages a trust relationship between two Active Directory Directories.
@@ -26,68 +26,68 @@ import 'trust_args.dart';
 /// ```sh
 /// $ pulumi import aws:directoryservice/trust:Trust example d-926724cf57/directory.example.com
 /// ```
-class Trust extends CustomResource {
+class Trust extends pulumi.CustomResource {
   /// Set of IPv4 addresses for the DNS server associated with the remote Directory.
   /// Can contain between 1 and 4 values.
-  late final Output<List<String>?> conditionalForwarderIpAddrs;
+  late final pulumi.Output<List<String>?> conditionalForwarderIpAddrs;
 
   /// Date and time when the Trust was created.
-  late final Output<String> createdDateTime;
+  late final pulumi.Output<String> createdDateTime;
 
   /// Whether to delete the conditional forwarder when deleting the Trust relationship.
-  late final Output<bool> deleteAssociatedConditionalForwarder;
+  late final pulumi.Output<bool> deleteAssociatedConditionalForwarder;
 
   /// ID of the Directory.
-  late final Output<String> directoryId;
+  late final pulumi.Output<String> directoryId;
 
   /// Date and time when the Trust was last updated.
-  late final Output<String> lastUpdatedDateTime;
+  late final pulumi.Output<String> lastUpdatedDateTime;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Fully qualified domain name of the remote Directory.
-  late final Output<String> remoteDomainName;
+  late final pulumi.Output<String> remoteDomainName;
 
   /// Whether to enable selective authentication.
   /// Valid values are `Enabled` and `Disabled`.
   /// Default value is `Disabled`.
-  late final Output<String> selectiveAuth;
+  late final pulumi.Output<String> selectiveAuth;
 
   /// Date and time when the Trust state in `trust_state` was last updated.
-  late final Output<String> stateLastUpdatedDateTime;
+  late final pulumi.Output<String> stateLastUpdatedDateTime;
 
   /// The direction of the Trust relationship.
   /// Valid values are `One-Way: Outgoing`, `One-Way: Incoming`, and `Two-Way`.
-  late final Output<String> trustDirection;
+  late final pulumi.Output<String> trustDirection;
 
   /// Password for the Trust.
   /// Does not need to match the passwords for either Directory.
   /// Can contain upper- and lower-case letters, numbers, and punctuation characters.
   /// May be up to 128 characters long.
-  late final Output<String> trustPassword;
+  late final pulumi.Output<String> trustPassword;
 
   /// State of the Trust relationship.
   /// One of `Created`, `VerifyFailed`,`Verified`, `UpdateFailed`,`Updated`,`Deleted`, or `Failed`.
-  late final Output<String> trustState;
+  late final pulumi.Output<String> trustState;
 
   /// Reason for the Trust state set in `trust_state`.
-  late final Output<String> trustStateReason;
+  late final pulumi.Output<String> trustStateReason;
 
   /// Type of the Trust relationship.
   /// Valid values are `Forest` and `External`.
   /// Default value is `Forest`.
-  late final Output<String> trustType;
+  late final pulumi.Output<String> trustType;
 
   Trust(
     String name, {
     TrustArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:directoryservice/trust:Trust',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.conditionalForwarderIpAddrs =
         registerOutput<List<String>?>('conditionalForwarderIpAddrs');

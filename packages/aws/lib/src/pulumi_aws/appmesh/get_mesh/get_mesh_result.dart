@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_mesh_spec/get_mesh_spec.dart';
 
 /// Result data returned by getMesh.
@@ -52,7 +52,7 @@ class GetMeshResult {
     map['name'] = name;
     map['region'] = region;
     map['resourceOwner'] = resourceOwner;
-    map['specs'] = Input.encodeList<GetMeshSpec, Map<String, dynamic>>(
+    map['specs'] = pulumi.Input.encodeList<GetMeshSpec, Map<String, dynamic>>(
         specs, (value) => value.toMap());
     map['tags'] = tags;
     return map;
@@ -68,7 +68,7 @@ class GetMeshResult {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceOwner: map['resourceOwner'] as String,
-      specs: Input.decodeList<GetMeshSpec>(
+      specs: pulumi.Input.decodeList<GetMeshSpec>(
           map['specs'],
           (value) =>
               GetMeshSpec.fromMap((value as Map).cast<String, dynamic>())),

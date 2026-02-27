@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_queue_outbound_caller_config/get_queue_outbound_caller_config.dart';
 
 /// Result data returned by getQueue.
@@ -59,9 +59,9 @@ class GetQueueResult {
     map['instanceId'] = instanceId;
     map['maxContacts'] = maxContacts;
     map['name'] = name;
-    map['outboundCallerConfigs'] =
-        Input.encodeList<GetQueueOutboundCallerConfig, Map<String, dynamic>>(
-            outboundCallerConfigs, (value) => value.toMap());
+    map['outboundCallerConfigs'] = pulumi.Input.encodeList<
+        GetQueueOutboundCallerConfig,
+        Map<String, dynamic>>(outboundCallerConfigs, (value) => value.toMap());
     map['queueId'] = queueId;
     map['region'] = region;
     map['status'] = status;
@@ -78,10 +78,11 @@ class GetQueueResult {
       instanceId: map['instanceId'] as String,
       maxContacts: map['maxContacts'] as int,
       name: map['name'] as String,
-      outboundCallerConfigs: Input.decodeList<GetQueueOutboundCallerConfig>(
-          map['outboundCallerConfigs'],
-          (value) => GetQueueOutboundCallerConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      outboundCallerConfigs:
+          pulumi.Input.decodeList<GetQueueOutboundCallerConfig>(
+              map['outboundCallerConfigs'],
+              (value) => GetQueueOutboundCallerConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       queueId: map['queueId'] as String,
       region: map['region'] as String,
       status: map['status'] as String,

@@ -1,50 +1,50 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../maintenance_window_task_target/maintenance_window_task_target.dart';
 import '../maintenance_window_task_task_invocation_parameters/maintenance_window_task_task_invocation_parameters.dart';
 
 /// The set of arguments for MaintenanceWindowTask.
 class MaintenanceWindowTaskArgs {
   /// Indicates whether tasks should continue to run after the cutoff time specified in the maintenance windows is reached. Valid values are `CONTINUE_TASK` and `CANCEL_TASK`.
-  final Input<String>? cutoffBehavior;
+  final pulumi.Input<String>? cutoffBehavior;
 
   /// The description of the maintenance window task.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The maximum number of targets this task can be run for in parallel.
-  final Input<String>? maxConcurrency;
+  final pulumi.Input<String>? maxConcurrency;
 
   /// The maximum number of errors allowed before this task stops being scheduled.
-  final Input<String>? maxErrors;
+  final pulumi.Input<String>? maxErrors;
 
   /// The name of the maintenance window task.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The priority of the task in the Maintenance Window, the lower the number the higher the priority. Tasks in a Maintenance Window are scheduled in priority order with tasks that have the same priority scheduled in parallel.
-  final Input<int>? priority;
+  final pulumi.Input<int>? priority;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The role that should be assumed when executing the task. If a role is not provided, Systems Manager uses your account's service-linked role. If no service-linked role for Systems Manager exists in your account, it is created for you.
-  final Input<String>? serviceRoleArn;
+  final pulumi.Input<String>? serviceRoleArn;
 
   /// The targets (either instances or window target ids). Instances are specified using Key=InstanceIds,Values=instanceid1,instanceid2. Window target ids are specified using Key=WindowTargetIds,Values=window target id1, window target id2.
-  final Input<List<MaintenanceWindowTaskTarget>>? targets;
+  final pulumi.Input<List<MaintenanceWindowTaskTarget>>? targets;
 
   /// The ARN of the task to execute.
-  final Input<String> taskArn;
+  final pulumi.Input<String> taskArn;
 
   /// Configuration block with parameters for task execution.
-  final Input<MaintenanceWindowTaskTaskInvocationParameters>?
+  final pulumi.Input<MaintenanceWindowTaskTaskInvocationParameters>?
       taskInvocationParameters;
 
   /// The type of task being registered. Valid values: `AUTOMATION`, `LAMBDA`, `RUN_COMMAND` or `STEP_FUNCTIONS`.
-  final Input<String> taskType;
+  final pulumi.Input<String> taskType;
 
   /// The Id of the maintenance window to register the task with.
-  final Input<String> windowId;
+  final pulumi.Input<String> windowId;
 
   MaintenanceWindowTaskArgs({
     this.cutoffBehavior,
@@ -98,16 +98,16 @@ class MaintenanceWindowTaskArgs {
     }
     final targetsValue = targets;
     if (targetsValue != null) {
-      map['targets'] = Input.mapOptionalInputValue<
+      map['targets'] = pulumi.Input.mapOptionalInputValue<
               List<MaintenanceWindowTaskTarget>, List<Map<String, dynamic>>>(
           targetsValue,
-          (value) => Input.encodeList<MaintenanceWindowTaskTarget,
+          (value) => pulumi.Input.encodeList<MaintenanceWindowTaskTarget,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['taskArn'] = taskArn;
     final taskInvocationParametersValue = taskInvocationParameters;
     if (taskInvocationParametersValue != null) {
-      map['taskInvocationParameters'] = Input.mapOptionalInputValue<
+      map['taskInvocationParameters'] = pulumi.Input.mapOptionalInputValue<
               MaintenanceWindowTaskTaskInvocationParameters,
               Map<String, dynamic>>(
           taskInvocationParametersValue, (value) => value.toMap());
@@ -119,22 +119,25 @@ class MaintenanceWindowTaskArgs {
 
   factory MaintenanceWindowTaskArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskArgs(
-      cutoffBehavior: Input.asOptionalInput<String>(map['cutoffBehavior']),
-      description: Input.asOptionalInput<String>(map['description']),
-      maxConcurrency: Input.asOptionalInput<String>(map['maxConcurrency']),
-      maxErrors: Input.asOptionalInput<String>(map['maxErrors']),
-      name: Input.asOptionalInput<String>(map['name']),
-      priority: Input.asOptionalInput<int>(map['priority']),
-      region: Input.asOptionalInput<String>(map['region']),
-      serviceRoleArn: Input.asOptionalInput<String>(map['serviceRoleArn']),
-      targets: Input.asOptionalInput<List<MaintenanceWindowTaskTarget>>(
+      cutoffBehavior:
+          pulumi.Input.asOptionalInput<String>(map['cutoffBehavior']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      maxConcurrency:
+          pulumi.Input.asOptionalInput<String>(map['maxConcurrency']),
+      maxErrors: pulumi.Input.asOptionalInput<String>(map['maxErrors']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      priority: pulumi.Input.asOptionalInput<int>(map['priority']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      serviceRoleArn:
+          pulumi.Input.asOptionalInput<String>(map['serviceRoleArn']),
+      targets: pulumi.Input.asOptionalInput<List<MaintenanceWindowTaskTarget>>(
           map['targets']),
-      taskArn: Input.asInput<String>(map['taskArn']),
-      taskInvocationParameters:
-          Input.asOptionalInput<MaintenanceWindowTaskTaskInvocationParameters>(
-              map['taskInvocationParameters']),
-      taskType: Input.asInput<String>(map['taskType']),
-      windowId: Input.asInput<String>(map['windowId']),
+      taskArn: pulumi.Input.asInput<String>(map['taskArn']),
+      taskInvocationParameters: pulumi.Input.asOptionalInput<
+              MaintenanceWindowTaskTaskInvocationParameters>(
+          map['taskInvocationParameters']),
+      taskType: pulumi.Input.asInput<String>(map['taskType']),
+      windowId: pulumi.Input.asInput<String>(map['windowId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_network_insights_path_filter/get_network_insights_path_filter.dart';
 import '../get_network_insights_path_filter_at_destination/get_network_insights_path_filter_at_destination.dart';
 import '../get_network_insights_path_filter_at_source/get_network_insights_path_filter_at_source.dart';
@@ -75,17 +75,16 @@ class GetNetworkInsightsPathResult {
     map['destinationArn'] = destinationArn;
     map['destinationIp'] = destinationIp;
     map['destinationPort'] = destinationPort;
-    map['filterAtDestinations'] = Input.encodeList<
+    map['filterAtDestinations'] = pulumi.Input.encodeList<
         GetNetworkInsightsPathFilterAtDestination,
         Map<String, dynamic>>(filterAtDestinations, (value) => value.toMap());
-    map['filterAtSources'] = Input.encodeList<
+    map['filterAtSources'] = pulumi.Input.encodeList<
         GetNetworkInsightsPathFilterAtSource,
         Map<String, dynamic>>(filterAtSources, (value) => value.toMap());
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetNetworkInsightsPathFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetNetworkInsightsPathFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['networkInsightsPathId'] = networkInsightsPathId;
@@ -106,17 +105,18 @@ class GetNetworkInsightsPathResult {
       destinationIp: map['destinationIp'] as String,
       destinationPort: map['destinationPort'] as int,
       filterAtDestinations:
-          Input.decodeList<GetNetworkInsightsPathFilterAtDestination>(
+          pulumi.Input.decodeList<GetNetworkInsightsPathFilterAtDestination>(
               map['filterAtDestinations'],
               (value) => GetNetworkInsightsPathFilterAtDestination.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      filterAtSources: Input.decodeList<GetNetworkInsightsPathFilterAtSource>(
-          map['filterAtSources'],
-          (value) => GetNetworkInsightsPathFilterAtSource.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      filterAtSources:
+          pulumi.Input.decodeList<GetNetworkInsightsPathFilterAtSource>(
+              map['filterAtSources'],
+              (value) => GetNetworkInsightsPathFilterAtSource.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetNetworkInsightsPathFilter>(
+          : pulumi.Input.decodeList<GetNetworkInsightsPathFilter>(
               map['filters'],
               (value) => GetNetworkInsightsPathFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

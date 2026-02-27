@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_theme_configuration_sheet_tile_layout_gutter/get_theme_configuration_sheet_tile_layout_gutter.dart';
 import '../get_theme_configuration_sheet_tile_layout_margin/get_theme_configuration_sheet_tile_layout_margin.dart';
 
@@ -18,10 +18,10 @@ class GetThemeConfigurationSheetTileLayout {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['gutters'] = Input.encodeList<
+    map['gutters'] = pulumi.Input.encodeList<
         GetThemeConfigurationSheetTileLayoutGutter,
         Map<String, dynamic>>(gutters, (value) => value.toMap());
-    map['margins'] = Input.encodeList<
+    map['margins'] = pulumi.Input.encodeList<
         GetThemeConfigurationSheetTileLayoutMargin,
         Map<String, dynamic>>(margins, (value) => value.toMap());
     return map;
@@ -30,14 +30,16 @@ class GetThemeConfigurationSheetTileLayout {
   factory GetThemeConfigurationSheetTileLayout.fromMap(
       Map<String, dynamic> map) {
     return GetThemeConfigurationSheetTileLayout(
-      gutters: Input.decodeList<GetThemeConfigurationSheetTileLayoutGutter>(
-          map['gutters'],
-          (value) => GetThemeConfigurationSheetTileLayoutGutter.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      margins: Input.decodeList<GetThemeConfigurationSheetTileLayoutMargin>(
-          map['margins'],
-          (value) => GetThemeConfigurationSheetTileLayoutMargin.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      gutters:
+          pulumi.Input.decodeList<GetThemeConfigurationSheetTileLayoutGutter>(
+              map['gutters'],
+              (value) => GetThemeConfigurationSheetTileLayoutGutter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      margins:
+          pulumi.Input.decodeList<GetThemeConfigurationSheetTileLayoutMargin>(
+              map['margins'],
+              (value) => GetThemeConfigurationSheetTileLayoutMargin.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

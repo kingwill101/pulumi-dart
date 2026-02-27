@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_resources_resource_tag_mapping_list/get_resources_resource_tag_mapping_list.dart';
 import '../get_resources_tag_filter/get_resources_tag_filter.dart';
 
@@ -46,7 +46,7 @@ class GetResourcesResult {
     if (resourceArnListsValue != null) {
       map['resourceArnLists'] = resourceArnListsValue;
     }
-    map['resourceTagMappingLists'] = Input.encodeList<
+    map['resourceTagMappingLists'] = pulumi.Input.encodeList<
             GetResourcesResourceTagMappingList, Map<String, dynamic>>(
         resourceTagMappingLists, (value) => value.toMap());
     final resourceTypeFiltersValue = resourceTypeFilters;
@@ -56,7 +56,7 @@ class GetResourcesResult {
     final tagFiltersValue = tagFilters;
     if (tagFiltersValue != null) {
       map['tagFilters'] =
-          Input.encodeList<GetResourcesTagFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetResourcesTagFilter, Map<String, dynamic>>(
               tagFiltersValue, (value) => value.toMap());
     }
     return map;
@@ -76,7 +76,7 @@ class GetResourcesResult {
           ? null
           : (map['resourceArnLists'] as List).cast<String>(),
       resourceTagMappingLists:
-          Input.decodeList<GetResourcesResourceTagMappingList>(
+          pulumi.Input.decodeList<GetResourcesResourceTagMappingList>(
               map['resourceTagMappingLists'],
               (value) => GetResourcesResourceTagMappingList.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -85,7 +85,7 @@ class GetResourcesResult {
           : (map['resourceTypeFilters'] as List).cast<String>(),
       tagFilters: map['tagFilters'] == null
           ? null
-          : Input.decodeList<GetResourcesTagFilter>(
+          : pulumi.Input.decodeList<GetResourcesTagFilter>(
               map['tagFilters'],
               (value) => GetResourcesTagFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

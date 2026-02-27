@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../voice_connector_streaming_media_insights_configuration/voice_connector_streaming_media_insights_configuration.dart';
 import 'voice_connector_streaming_args.dart';
 
@@ -20,35 +20,35 @@ import 'voice_connector_streaming_args.dart';
 /// ```sh
 /// $ pulumi import aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming default abcdef1ghij2klmno3pqr4
 /// ```
-class VoiceConnectorStreaming extends CustomResource {
+class VoiceConnectorStreaming extends pulumi.CustomResource {
   /// The retention period, in hours, for the Amazon Kinesis data.
-  late final Output<int> dataRetention;
+  late final pulumi.Output<int> dataRetention;
 
   /// When true, media streaming to Amazon Kinesis is turned off. Default: `false`
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// The media insights configuration. See `media_insights_configuration`.
-  late final Output<VoiceConnectorStreamingMediaInsightsConfiguration?>
+  late final pulumi.Output<VoiceConnectorStreamingMediaInsightsConfiguration?>
       mediaInsightsConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The streaming notification targets. Valid Values: `EventBridge | SNS | SQS`
-  late final Output<List<String>?> streamingNotificationTargets;
+  late final pulumi.Output<List<String>?> streamingNotificationTargets;
 
   /// The Amazon Chime Voice Connector ID.
-  late final Output<String> voiceConnectorId;
+  late final pulumi.Output<String> voiceConnectorId;
 
   VoiceConnectorStreaming(
     String name, {
     VoiceConnectorStreamingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dataRetention = registerOutput<int>('dataRetention');
     this.disabled = registerOutput<bool?>('disabled');

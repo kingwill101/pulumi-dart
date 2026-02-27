@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agentcore_gateway_authorizer_configuration/agentcore_gateway_authorizer_configuration.dart';
 import '../agentcore_gateway_interceptor_configuration/agentcore_gateway_interceptor_configuration.dart';
 import '../agentcore_gateway_protocol_configuration/agentcore_gateway_protocol_configuration.dart';
@@ -9,44 +9,46 @@ import '../agentcore_gateway_timeouts/agentcore_gateway_timeouts.dart';
 /// The set of arguments for AgentcoreGateway.
 class AgentcoreGatewayArgs {
   /// Configuration for request authorization. Required when `authorizer_type` is set to `CUSTOM_JWT`. See `authorizer_configuration` below.
-  final Input<AgentcoreGatewayAuthorizerConfiguration>? authorizerConfiguration;
+  final pulumi.Input<AgentcoreGatewayAuthorizerConfiguration>?
+      authorizerConfiguration;
 
   /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizer_configuration` block is required.
-  final Input<String> authorizerType;
+  final pulumi.Input<String> authorizerType;
 
   /// Description of the gateway.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Exception level for the gateway. Valid values: `INFO`, `WARN`, `ERROR`.
-  final Input<String>? exceptionLevel;
+  final pulumi.Input<String>? exceptionLevel;
 
   /// List of interceptor configurations for the gateway. Minimum of 1, maximum of 2. See `interceptor_configuration` below.
-  final Input<List<AgentcoreGatewayInterceptorConfiguration>>?
+  final pulumi.Input<List<AgentcoreGatewayInterceptorConfiguration>>?
       interceptorConfigurations;
 
   /// ARN of the KMS key used to encrypt the gateway data.
-  final Input<String>? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
 
   /// Name of the gateway.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Protocol-specific configuration for the gateway. See `protocol_configuration` below.
-  final Input<AgentcoreGatewayProtocolConfiguration>? protocolConfiguration;
+  final pulumi.Input<AgentcoreGatewayProtocolConfiguration>?
+      protocolConfiguration;
 
   /// Protocol type for the gateway. Valid values: `MCP`.
-  final Input<String> protocolType;
+  final pulumi.Input<String> protocolType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ARN of the IAM role that the gateway assumes to access AWS services.
   ///
   /// The following arguments are optional:
-  final Input<String> roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<AgentcoreGatewayTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<AgentcoreGatewayTimeouts>? timeouts;
 
   AgentcoreGatewayArgs({
     this.authorizerConfiguration,
@@ -68,7 +70,7 @@ class AgentcoreGatewayArgs {
     final map = <String, dynamic>{};
     final authorizerConfigurationValue = authorizerConfiguration;
     if (authorizerConfigurationValue != null) {
-      map['authorizerConfiguration'] = Input.mapOptionalInputValue<
+      map['authorizerConfiguration'] = pulumi.Input.mapOptionalInputValue<
               AgentcoreGatewayAuthorizerConfiguration, Map<String, dynamic>>(
           authorizerConfigurationValue, (value) => value.toMap());
     }
@@ -83,11 +85,12 @@ class AgentcoreGatewayArgs {
     }
     final interceptorConfigurationsValue = interceptorConfigurations;
     if (interceptorConfigurationsValue != null) {
-      map['interceptorConfigurations'] = Input.mapOptionalInputValue<
+      map['interceptorConfigurations'] = pulumi.Input.mapOptionalInputValue<
               List<AgentcoreGatewayInterceptorConfiguration>,
               List<Map<String, dynamic>>>(
           interceptorConfigurationsValue,
-          (value) => Input.encodeList<AgentcoreGatewayInterceptorConfiguration,
+          (value) => pulumi.Input.encodeList<
+              AgentcoreGatewayInterceptorConfiguration,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final kmsKeyArnValue = kmsKeyArn;
@@ -100,7 +103,7 @@ class AgentcoreGatewayArgs {
     }
     final protocolConfigurationValue = protocolConfiguration;
     if (protocolConfigurationValue != null) {
-      map['protocolConfiguration'] = Input.mapOptionalInputValue<
+      map['protocolConfiguration'] = pulumi.Input.mapOptionalInputValue<
               AgentcoreGatewayProtocolConfiguration, Map<String, dynamic>>(
           protocolConfigurationValue, (value) => value.toMap());
     }
@@ -116,7 +119,8 @@ class AgentcoreGatewayArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<AgentcoreGatewayTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
+          AgentcoreGatewayTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
@@ -125,25 +129,26 @@ class AgentcoreGatewayArgs {
   factory AgentcoreGatewayArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayArgs(
       authorizerConfiguration:
-          Input.asOptionalInput<AgentcoreGatewayAuthorizerConfiguration>(
+          pulumi.Input.asOptionalInput<AgentcoreGatewayAuthorizerConfiguration>(
               map['authorizerConfiguration']),
-      authorizerType: Input.asInput<String>(map['authorizerType']),
-      description: Input.asOptionalInput<String>(map['description']),
-      exceptionLevel: Input.asOptionalInput<String>(map['exceptionLevel']),
-      interceptorConfigurations:
-          Input.asOptionalInput<List<AgentcoreGatewayInterceptorConfiguration>>(
-              map['interceptorConfigurations']),
-      kmsKeyArn: Input.asOptionalInput<String>(map['kmsKeyArn']),
-      name: Input.asOptionalInput<String>(map['name']),
+      authorizerType: pulumi.Input.asInput<String>(map['authorizerType']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      exceptionLevel:
+          pulumi.Input.asOptionalInput<String>(map['exceptionLevel']),
+      interceptorConfigurations: pulumi.Input.asOptionalInput<
+              List<AgentcoreGatewayInterceptorConfiguration>>(
+          map['interceptorConfigurations']),
+      kmsKeyArn: pulumi.Input.asOptionalInput<String>(map['kmsKeyArn']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       protocolConfiguration:
-          Input.asOptionalInput<AgentcoreGatewayProtocolConfiguration>(
+          pulumi.Input.asOptionalInput<AgentcoreGatewayProtocolConfiguration>(
               map['protocolConfiguration']),
-      protocolType: Input.asInput<String>(map['protocolType']),
-      region: Input.asOptionalInput<String>(map['region']),
-      roleArn: Input.asInput<String>(map['roleArn']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts:
-          Input.asOptionalInput<AgentcoreGatewayTimeouts>(map['timeouts']),
+      protocolType: pulumi.Input.asInput<String>(map['protocolType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      roleArn: pulumi.Input.asInput<String>(map['roleArn']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<AgentcoreGatewayTimeouts>(
+          map['timeouts']),
     );
   }
 }

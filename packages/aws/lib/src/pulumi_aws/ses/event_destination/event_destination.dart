@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../event_destination_cloudwatch_destination/event_destination_cloudwatch_destination.dart';
 import '../event_destination_kinesis_destination/event_destination_kinesis_destination.dart';
 import '../event_destination_sns_destination/event_destination_sns_destination.dart';
@@ -27,46 +27,47 @@ import 'event_destination_args.dart';
 /// ```sh
 /// $ pulumi import aws:ses/eventDestination:EventDestination sns some-configuration-set-test/event-destination-sns
 /// ```
-class EventDestination extends CustomResource {
+class EventDestination extends pulumi.CustomResource {
   /// The SES event destination ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// CloudWatch destination for the events
-  late final Output<List<EventDestinationCloudwatchDestination>?>
+  late final pulumi.Output<List<EventDestinationCloudwatchDestination>?>
       cloudwatchDestinations;
 
   /// The name of the configuration set
-  late final Output<String> configurationSetName;
+  late final pulumi.Output<String> configurationSetName;
 
   /// If true, the event destination will be enabled
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// Send the events to a kinesis firehose destination
-  late final Output<EventDestinationKinesisDestination?> kinesisDestination;
+  late final pulumi.Output<EventDestinationKinesisDestination?>
+      kinesisDestination;
 
   /// A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
-  late final Output<List<String>> matchingTypes;
+  late final pulumi.Output<List<String>> matchingTypes;
 
   /// The name of the event destination
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Send the events to an SNS Topic destination
   ///
   /// > **NOTE:** You can specify `"cloudwatch_destination"` or `"kinesis_destination"` but not both
-  late final Output<EventDestinationSnsDestination?> snsDestination;
+  late final pulumi.Output<EventDestinationSnsDestination?> snsDestination;
 
   EventDestination(
     String name, {
     EventDestinationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ses/eventDestination:EventDestination',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.cloudwatchDestinations =

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_origin_request_policy_args.dart';
 import 'get_origin_request_policy_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_origin_request_policy_result.dart';
 /// AWS managed origin request policy names are prefixed with `Managed-`:
 Future<GetOriginRequestPolicyResult> getOriginRequestPolicy(
   GetOriginRequestPolicyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:cloudfront/getOriginRequestPolicy:getOriginRequestPolicy',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOriginRequestPolicyResult.fromMap(result);
 }

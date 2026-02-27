@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../experiment_template_target_filter/experiment_template_target_filter.dart';
 import '../experiment_template_target_resource_tag/experiment_template_target_resource_tag.dart';
 
@@ -42,7 +42,7 @@ class ExperimentTemplateTarget {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<ExperimentTemplateTargetFilter,
+      map['filters'] = pulumi.Input.encodeList<ExperimentTemplateTargetFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['name'] = name;
@@ -56,7 +56,7 @@ class ExperimentTemplateTarget {
     }
     final resourceTagsValue = resourceTags;
     if (resourceTagsValue != null) {
-      map['resourceTags'] = Input.encodeList<
+      map['resourceTags'] = pulumi.Input.encodeList<
           ExperimentTemplateTargetResourceTag,
           Map<String, dynamic>>(resourceTagsValue, (value) => value.toMap());
     }
@@ -69,7 +69,7 @@ class ExperimentTemplateTarget {
     return ExperimentTemplateTarget(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<ExperimentTemplateTargetFilter>(
+          : pulumi.Input.decodeList<ExperimentTemplateTargetFilter>(
               map['filters'],
               (value) => ExperimentTemplateTargetFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -82,7 +82,7 @@ class ExperimentTemplateTarget {
           : (map['resourceArns'] as List).cast<String>(),
       resourceTags: map['resourceTags'] == null
           ? null
-          : Input.decodeList<ExperimentTemplateTargetResourceTag>(
+          : pulumi.Input.decodeList<ExperimentTemplateTargetResourceTag>(
               map['resourceTags'],
               (value) => ExperimentTemplateTargetResourceTag.fromMap(
                   (value as Map).cast<String, dynamic>())),

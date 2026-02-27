@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_route_spec_http_route_action/get_route_spec_http_route_action.dart';
 import '../get_route_spec_http_route_match/get_route_spec_http_route_match.dart';
 import '../get_route_spec_http_route_retry_policy/get_route_spec_http_route_retry_policy.dart';
@@ -21,35 +21,33 @@ class GetRouteSpecHttpRoute {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['actions'] =
-        Input.encodeList<GetRouteSpecHttpRouteAction, Map<String, dynamic>>(
-            actions, (value) => value.toMap());
-    map['matches'] =
-        Input.encodeList<GetRouteSpecHttpRouteMatch, Map<String, dynamic>>(
-            matches, (value) => value.toMap());
-    map['retryPolicies'] = Input.encodeList<GetRouteSpecHttpRouteRetryPolicy,
+    map['actions'] = pulumi.Input.encodeList<GetRouteSpecHttpRouteAction,
+        Map<String, dynamic>>(actions, (value) => value.toMap());
+    map['matches'] = pulumi.Input.encodeList<GetRouteSpecHttpRouteMatch,
+        Map<String, dynamic>>(matches, (value) => value.toMap());
+    map['retryPolicies'] = pulumi.Input.encodeList<
+        GetRouteSpecHttpRouteRetryPolicy,
         Map<String, dynamic>>(retryPolicies, (value) => value.toMap());
-    map['timeouts'] =
-        Input.encodeList<GetRouteSpecHttpRouteTimeout, Map<String, dynamic>>(
-            timeouts, (value) => value.toMap());
+    map['timeouts'] = pulumi.Input.encodeList<GetRouteSpecHttpRouteTimeout,
+        Map<String, dynamic>>(timeouts, (value) => value.toMap());
     return map;
   }
 
   factory GetRouteSpecHttpRoute.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttpRoute(
-      actions: Input.decodeList<GetRouteSpecHttpRouteAction>(
+      actions: pulumi.Input.decodeList<GetRouteSpecHttpRouteAction>(
           map['actions'],
           (value) => GetRouteSpecHttpRouteAction.fromMap(
               (value as Map).cast<String, dynamic>())),
-      matches: Input.decodeList<GetRouteSpecHttpRouteMatch>(
+      matches: pulumi.Input.decodeList<GetRouteSpecHttpRouteMatch>(
           map['matches'],
           (value) => GetRouteSpecHttpRouteMatch.fromMap(
               (value as Map).cast<String, dynamic>())),
-      retryPolicies: Input.decodeList<GetRouteSpecHttpRouteRetryPolicy>(
+      retryPolicies: pulumi.Input.decodeList<GetRouteSpecHttpRouteRetryPolicy>(
           map['retryPolicies'],
           (value) => GetRouteSpecHttpRouteRetryPolicy.fromMap(
               (value as Map).cast<String, dynamic>())),
-      timeouts: Input.decodeList<GetRouteSpecHttpRouteTimeout>(
+      timeouts: pulumi.Input.decodeList<GetRouteSpecHttpRouteTimeout>(
           map['timeouts'],
           (value) => GetRouteSpecHttpRouteTimeout.fromMap(
               (value as Map).cast<String, dynamic>())),

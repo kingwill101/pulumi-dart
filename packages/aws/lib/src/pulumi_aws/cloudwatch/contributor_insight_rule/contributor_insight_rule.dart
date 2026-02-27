@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'contributor_insight_rule_args.dart';
 
 /// Resource for managing an AWS CloudWatch Contributor Insight Rule.
@@ -16,35 +16,35 @@ import 'contributor_insight_rule_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudwatch/contributorInsightRule:ContributorInsightRule example contributor_insight_rule-name
 /// ```
-class ContributorInsightRule extends CustomResource {
+class ContributorInsightRule extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the Contributor Insight Rule.
-  late final Output<String> resourceArn;
+  late final pulumi.Output<String> resourceArn;
 
   /// Definition of the rule, as a JSON object. For details on the valid syntax, see [Contributor Insights Rule Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights-RuleSyntax.html).
-  late final Output<String> ruleDefinition;
+  late final pulumi.Output<String> ruleDefinition;
 
   /// Unique name of the rule.
   ///
   /// The following arguments are optional:
-  late final Output<String> ruleName;
+  late final pulumi.Output<String> ruleName;
 
   /// State of the rule. Valid values are `ENABLED` and `DISABLED`.
-  late final Output<String?> ruleState;
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<String?> ruleState;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   ContributorInsightRule(
     String name, {
     ContributorInsightRuleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudwatch/contributorInsightRule:ContributorInsightRule',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.resourceArn = registerOutput<String>('resourceArn');

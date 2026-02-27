@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../role_inline_policy/role_inline_policy.dart';
 import 'role_args.dart';
 
@@ -70,65 +70,65 @@ import 'role_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/role:Role example developer_name
 /// ```
-class Role extends CustomResource {
+class Role extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) specifying the role.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Policy that grants an entity permission to assume the role.
   ///
   /// > **NOTE:** The `assume_role_policy` is very similar to but slightly different than a standard IAM policy and cannot use an `aws.iam.Policy` resource.  However, it _can_ use an `aws.iam.getPolicyDocument` data source. See the example above of how this works.
   ///
   /// The following arguments are optional:
-  late final Output<String> assumeRolePolicy;
+  late final pulumi.Output<String> assumeRolePolicy;
 
   /// Creation date of the IAM role.
-  late final Output<String> createDate;
+  late final pulumi.Output<String> createDate;
 
   /// Description of the role.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Whether to force detaching any policies the role has before destroying it. Defaults to `false`.
-  late final Output<bool?> forceDetachPolicies;
+  late final pulumi.Output<bool?> forceDetachPolicies;
 
   /// Configuration block defining an exclusive set of IAM inline policies associated with the IAM role. See below. If no blocks are configured, Pulumi will not manage any inline policies in this resource. Configuring one empty block (i.e., `inline_policy {}`) will cause Pulumi to remove _all_ inline policies added out of band on `apply`.
-  late final Output<List<RoleInlinePolicy>> inlinePolicies;
+  late final pulumi.Output<List<RoleInlinePolicy>> inlinePolicies;
 
   /// Set of exclusive IAM managed policy ARNs to attach to the IAM role. If this attribute is not configured, Pulumi will ignore policy attachments to this resource. When configured, Pulumi will align the role's managed policy attachments with this set by attaching or detaching managed policies. Configuring an empty set (i.e., `managed_policy_arns = []`) will cause Pulumi to remove _all_ managed policy attachments.
-  late final Output<List<String>> managedPolicyArns;
+  late final pulumi.Output<List<String>> managedPolicyArns;
 
   /// Maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours.
-  late final Output<int?> maxSessionDuration;
+  late final pulumi.Output<int?> maxSessionDuration;
 
   /// Friendly name of the role. If omitted, the provider will assign a random, unique name. See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Creates a unique friendly name beginning with the specified prefix. Conflicts with `name`.
-  late final Output<String> namePrefix;
+  late final pulumi.Output<String> namePrefix;
 
   /// Path to the role. See [IAM Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html) for more information.
-  late final Output<String?> path;
+  late final pulumi.Output<String?> path;
 
   /// ARN of the policy that is used to set the permissions boundary for the role.
-  late final Output<String?> permissionsBoundary;
+  late final pulumi.Output<String?> permissionsBoundary;
 
   /// Key-value mapping of tags for the IAM role. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Stable and unique string identifying the role.
-  late final Output<String> uniqueId;
+  late final pulumi.Output<String> uniqueId;
 
   Role(
     String name, {
     RoleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/role:Role',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.assumeRolePolicy = registerOutput<String>('assumeRolePolicy');

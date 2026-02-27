@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ContributorInsightRule.
 class ContributorInsightRuleArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Definition of the rule, as a JSON object. For details on the valid syntax, see [Contributor Insights Rule Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights-RuleSyntax.html).
-  final Input<String> ruleDefinition;
+  final pulumi.Input<String> ruleDefinition;
 
   /// Unique name of the rule.
   ///
   /// The following arguments are optional:
-  final Input<String> ruleName;
+  final pulumi.Input<String> ruleName;
 
   /// State of the rule. Valid values are `ENABLED` and `DISABLED`.
-  final Input<String>? ruleState;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<String>? ruleState;
+  final pulumi.Input<Map<String, String>>? tags;
 
   ContributorInsightRuleArgs({
     this.region,
@@ -48,11 +48,11 @@ class ContributorInsightRuleArgs {
 
   factory ContributorInsightRuleArgs.fromMap(Map<String, dynamic> map) {
     return ContributorInsightRuleArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      ruleDefinition: Input.asInput<String>(map['ruleDefinition']),
-      ruleName: Input.asInput<String>(map['ruleName']),
-      ruleState: Input.asOptionalInput<String>(map['ruleState']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      ruleDefinition: pulumi.Input.asInput<String>(map['ruleDefinition']),
+      ruleName: pulumi.Input.asInput<String>(map['ruleName']),
+      ruleState: pulumi.Input.asOptionalInput<String>(map['ruleState']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

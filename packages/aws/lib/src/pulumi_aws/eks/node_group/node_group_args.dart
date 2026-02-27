@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../node_group_launch_template/node_group_launch_template.dart';
 import '../node_group_node_repair_config/node_group_node_repair_config.dart';
 import '../node_group_remote_access/node_group_remote_access.dart';
@@ -11,69 +11,69 @@ import '../node_group_update_config/node_group_update_config.dart';
 /// The set of arguments for NodeGroup.
 class NodeGroupArgs {
   /// Type of Amazon Machine Image (AMI) associated with the EKS Node Group. See the [AWS documentation](https://docs.aws.amazon.com/eks/latest/APIReference/API_Nodegroup.html#AmazonEKS-Type-Nodegroup-amiType) for valid values. This provider will only perform drift detection if a configuration value is provided.
-  final Input<String>? amiType;
+  final pulumi.Input<String>? amiType;
 
   /// Type of capacity associated with the EKS Node Group. Valid values: `ON_DEMAND`, `SPOT`. This provider will only perform drift detection if a configuration value is provided.
-  final Input<String>? capacityType;
+  final pulumi.Input<String>? capacityType;
 
   /// Name of the EKS Cluster.
-  final Input<String> clusterName;
+  final pulumi.Input<String> clusterName;
 
   /// Disk size in GiB for worker nodes. Defaults to `50` for Windows, `20` all other node groups. The provider will only perform drift detection if a configuration value is provided.
-  final Input<int>? diskSize;
+  final pulumi.Input<int>? diskSize;
 
   /// Force version update if existing pods are unable to be drained due to a pod disruption budget issue.
-  final Input<bool>? forceUpdateVersion;
+  final pulumi.Input<bool>? forceUpdateVersion;
 
   /// List of instance types associated with the EKS Node Group. Defaults to `["t3.medium"]`. The provider will only perform drift detection if a configuration value is provided.
-  final Input<List<String>>? instanceTypes;
+  final pulumi.Input<List<String>>? instanceTypes;
 
   /// Key-value map of Kubernetes labels. Only labels that are applied with the EKS API are managed by this argument. Other Kubernetes labels applied to the EKS Node Group will not be managed.
-  final Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>>? labels;
 
   /// Configuration block with Launch Template settings. See `launch_template` below for details. Conflicts with `remote_access`.
-  final Input<NodeGroupLaunchTemplate>? launchTemplate;
+  final pulumi.Input<NodeGroupLaunchTemplate>? launchTemplate;
 
   /// Name of the EKS Node Group. If omitted, the provider will assign a random, unique name. Conflicts with `node_group_name_prefix`. The node group name can't be longer than 63 characters. It must start with a letter or digit, but can also include hyphens and underscores for the remaining characters.
-  final Input<String>? nodeGroupName;
+  final pulumi.Input<String>? nodeGroupName;
 
   /// Creates a unique name beginning with the specified prefix. Conflicts with `node_group_name`.
-  final Input<String>? nodeGroupNamePrefix;
+  final pulumi.Input<String>? nodeGroupNamePrefix;
 
   /// The node auto repair configuration for the node group. See `node_repair_config` below for details.
-  final Input<NodeGroupNodeRepairConfig>? nodeRepairConfig;
+  final pulumi.Input<NodeGroupNodeRepairConfig>? nodeRepairConfig;
 
   /// Amazon Resource Name (ARN) of the IAM Role that provides permissions for the EKS Node Group.
-  final Input<String> nodeRoleArn;
+  final pulumi.Input<String> nodeRoleArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// AMI version of the EKS Node Group. Defaults to latest version for Kubernetes version.
-  final Input<String>? releaseVersion;
+  final pulumi.Input<String>? releaseVersion;
 
   /// Configuration block with remote access settings. See `remote_access` below for details. Conflicts with `launch_template`.
-  final Input<NodeGroupRemoteAccess>? remoteAccess;
+  final pulumi.Input<NodeGroupRemoteAccess>? remoteAccess;
 
   /// Configuration block with scaling settings. See `scaling_config` below for details.
-  final Input<NodeGroupScalingConfig> scalingConfig;
+  final pulumi.Input<NodeGroupScalingConfig> scalingConfig;
 
   /// Identifiers of EC2 Subnets to associate with the EKS Node Group.
   ///
   /// The following arguments are optional:
-  final Input<List<String>> subnetIds;
+  final pulumi.Input<List<String>> subnetIds;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The Kubernetes taints to be applied to the nodes in the node group. Maximum of 50 taints per node group. See taint below for details.
-  final Input<List<NodeGroupTaint>>? taints;
+  final pulumi.Input<List<NodeGroupTaint>>? taints;
 
   /// Configuration block with update settings. See `update_config` below for details.
-  final Input<NodeGroupUpdateConfig>? updateConfig;
+  final pulumi.Input<NodeGroupUpdateConfig>? updateConfig;
 
   /// Kubernetes version. Defaults to EKS Cluster Kubernetes version. The provider will only perform drift detection if a configuration value is provided.
-  final Input<String>? version;
+  final pulumi.Input<String>? version;
 
   NodeGroupArgs({
     this.amiType,
@@ -128,7 +128,7 @@ class NodeGroupArgs {
     }
     final launchTemplateValue = launchTemplate;
     if (launchTemplateValue != null) {
-      map['launchTemplate'] = Input.mapOptionalInputValue<
+      map['launchTemplate'] = pulumi.Input.mapOptionalInputValue<
           NodeGroupLaunchTemplate,
           Map<String, dynamic>>(launchTemplateValue, (value) => value.toMap());
     }
@@ -142,7 +142,7 @@ class NodeGroupArgs {
     }
     final nodeRepairConfigValue = nodeRepairConfig;
     if (nodeRepairConfigValue != null) {
-      map['nodeRepairConfig'] = Input.mapOptionalInputValue<
+      map['nodeRepairConfig'] = pulumi.Input.mapOptionalInputValue<
               NodeGroupNodeRepairConfig, Map<String, dynamic>>(
           nodeRepairConfigValue, (value) => value.toMap());
     }
@@ -157,12 +157,12 @@ class NodeGroupArgs {
     }
     final remoteAccessValue = remoteAccess;
     if (remoteAccessValue != null) {
-      map['remoteAccess'] = Input.mapOptionalInputValue<NodeGroupRemoteAccess,
+      map['remoteAccess'] = pulumi.Input.mapOptionalInputValue<
+          NodeGroupRemoteAccess,
           Map<String, dynamic>>(remoteAccessValue, (value) => value.toMap());
     }
-    map['scalingConfig'] =
-        Input.mapInputValue<NodeGroupScalingConfig, Map<String, dynamic>>(
-            scalingConfig, (value) => value.toMap());
+    map['scalingConfig'] = pulumi.Input.mapInputValue<NodeGroupScalingConfig,
+        Map<String, dynamic>>(scalingConfig, (value) => value.toMap());
     map['subnetIds'] = subnetIds;
     final tagsValue = tags;
     if (tagsValue != null) {
@@ -170,15 +170,17 @@ class NodeGroupArgs {
     }
     final taintsValue = taints;
     if (taintsValue != null) {
-      map['taints'] = Input.mapOptionalInputValue<List<NodeGroupTaint>,
+      map['taints'] = pulumi.Input.mapOptionalInputValue<List<NodeGroupTaint>,
               List<Map<String, dynamic>>>(
           taintsValue,
-          (value) => Input.encodeList<NodeGroupTaint, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<NodeGroupTaint, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final updateConfigValue = updateConfig;
     if (updateConfigValue != null) {
-      map['updateConfig'] = Input.mapOptionalInputValue<NodeGroupUpdateConfig,
+      map['updateConfig'] = pulumi.Input.mapOptionalInputValue<
+          NodeGroupUpdateConfig,
           Map<String, dynamic>>(updateConfigValue, (value) => value.toMap());
     }
     final versionValue = version;
@@ -190,34 +192,36 @@ class NodeGroupArgs {
 
   factory NodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupArgs(
-      amiType: Input.asOptionalInput<String>(map['amiType']),
-      capacityType: Input.asOptionalInput<String>(map['capacityType']),
-      clusterName: Input.asInput<String>(map['clusterName']),
-      diskSize: Input.asOptionalInput<int>(map['diskSize']),
+      amiType: pulumi.Input.asOptionalInput<String>(map['amiType']),
+      capacityType: pulumi.Input.asOptionalInput<String>(map['capacityType']),
+      clusterName: pulumi.Input.asInput<String>(map['clusterName']),
+      diskSize: pulumi.Input.asOptionalInput<int>(map['diskSize']),
       forceUpdateVersion:
-          Input.asOptionalInput<bool>(map['forceUpdateVersion']),
-      instanceTypes: Input.asOptionalInput<List<String>>(map['instanceTypes']),
-      labels: Input.asOptionalInput<Map<String, String>>(map['labels']),
-      launchTemplate:
-          Input.asOptionalInput<NodeGroupLaunchTemplate>(map['launchTemplate']),
-      nodeGroupName: Input.asOptionalInput<String>(map['nodeGroupName']),
+          pulumi.Input.asOptionalInput<bool>(map['forceUpdateVersion']),
+      instanceTypes:
+          pulumi.Input.asOptionalInput<List<String>>(map['instanceTypes']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      launchTemplate: pulumi.Input.asOptionalInput<NodeGroupLaunchTemplate>(
+          map['launchTemplate']),
+      nodeGroupName: pulumi.Input.asOptionalInput<String>(map['nodeGroupName']),
       nodeGroupNamePrefix:
-          Input.asOptionalInput<String>(map['nodeGroupNamePrefix']),
-      nodeRepairConfig: Input.asOptionalInput<NodeGroupNodeRepairConfig>(
+          pulumi.Input.asOptionalInput<String>(map['nodeGroupNamePrefix']),
+      nodeRepairConfig: pulumi.Input.asOptionalInput<NodeGroupNodeRepairConfig>(
           map['nodeRepairConfig']),
-      nodeRoleArn: Input.asInput<String>(map['nodeRoleArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      releaseVersion: Input.asOptionalInput<String>(map['releaseVersion']),
-      remoteAccess:
-          Input.asOptionalInput<NodeGroupRemoteAccess>(map['remoteAccess']),
+      nodeRoleArn: pulumi.Input.asInput<String>(map['nodeRoleArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      releaseVersion:
+          pulumi.Input.asOptionalInput<String>(map['releaseVersion']),
+      remoteAccess: pulumi.Input.asOptionalInput<NodeGroupRemoteAccess>(
+          map['remoteAccess']),
       scalingConfig:
-          Input.asInput<NodeGroupScalingConfig>(map['scalingConfig']),
-      subnetIds: Input.asInput<List<String>>(map['subnetIds']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      taints: Input.asOptionalInput<List<NodeGroupTaint>>(map['taints']),
-      updateConfig:
-          Input.asOptionalInput<NodeGroupUpdateConfig>(map['updateConfig']),
-      version: Input.asOptionalInput<String>(map['version']),
+          pulumi.Input.asInput<NodeGroupScalingConfig>(map['scalingConfig']),
+      subnetIds: pulumi.Input.asInput<List<String>>(map['subnetIds']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      taints: pulumi.Input.asOptionalInput<List<NodeGroupTaint>>(map['taints']),
+      updateConfig: pulumi.Input.asOptionalInput<NodeGroupUpdateConfig>(
+          map['updateConfig']),
+      version: pulumi.Input.asOptionalInput<String>(map['version']),
     );
   }
 }

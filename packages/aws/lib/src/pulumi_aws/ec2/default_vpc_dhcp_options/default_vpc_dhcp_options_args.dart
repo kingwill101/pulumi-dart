@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DefaultVpcDhcpOptions.
 class DefaultVpcDhcpOptionsArgs {
   /// The ID of the AWS account that owns the DHCP options set.
-  final Input<String>? ownerId;
+  final pulumi.Input<String>? ownerId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the resource.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   DefaultVpcDhcpOptionsArgs({
     this.ownerId,
@@ -38,9 +38,9 @@ class DefaultVpcDhcpOptionsArgs {
 
   factory DefaultVpcDhcpOptionsArgs.fromMap(Map<String, dynamic> map) {
     return DefaultVpcDhcpOptionsArgs(
-      ownerId: Input.asOptionalInput<String>(map['ownerId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      ownerId: pulumi.Input.asOptionalInput<String>(map['ownerId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

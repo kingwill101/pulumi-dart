@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../image_recipe_block_device_mapping/image_recipe_block_device_mapping.dart';
 import '../image_recipe_component/image_recipe_component.dart';
 import '../image_recipe_systems_manager_agent/image_recipe_systems_manager_agent.dart';
@@ -24,69 +24,70 @@ import 'image_recipe_args.dart';
 /// ```sh
 /// $ pulumi import aws:imagebuilder/imageRecipe:ImageRecipe example arn:aws:imagebuilder:us-east-1:123456789012:image-recipe/example/1.0.0
 /// ```
-class ImageRecipe extends CustomResource {
+class ImageRecipe extends pulumi.CustomResource {
   /// Tags that are applied to the AMI that Image Builder creates during the Build phase prior to image distribution. Maximum of 50 tags.
-  late final Output<Map<String, String>?> amiTags;
+  late final pulumi.Output<Map<String, String>?> amiTags;
 
   /// Amazon Resource Name (ARN) of the image recipe.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Configuration block(s) with block device mappings for the image recipe. Detailed below.
-  late final Output<List<ImageRecipeBlockDeviceMapping>?> blockDeviceMappings;
+  late final pulumi.Output<List<ImageRecipeBlockDeviceMapping>?>
+      blockDeviceMappings;
 
   /// Ordered configuration block(s) with components for the image recipe. Detailed below.
-  late final Output<List<ImageRecipeComponent>> components;
+  late final pulumi.Output<List<ImageRecipeComponent>> components;
 
   /// Date the image recipe was created.
-  late final Output<String> dateCreated;
+  late final pulumi.Output<String> dateCreated;
 
   /// Description of the image recipe.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Name of the image recipe.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Owner of the image recipe.
-  late final Output<String> owner;
+  late final pulumi.Output<String> owner;
 
   /// The image recipe uses this image as a base from which to build your customized image. The value can be the base image ARN, an AMI ID, or an SSM Parameter referencing the AMI. For an SSM Parameter, enter the prefix `ssm:`, followed by the parameter name or ARN.
-  late final Output<String> parentImage;
+  late final pulumi.Output<String> parentImage;
 
   /// Platform of the image recipe.
-  late final Output<String> platform;
+  late final pulumi.Output<String> platform;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration block for the Systems Manager Agent installed by default by Image Builder. Detailed below.
-  late final Output<ImageRecipeSystemsManagerAgent> systemsManagerAgent;
+  late final pulumi.Output<ImageRecipeSystemsManagerAgent> systemsManagerAgent;
 
   /// Key-value map of resource tags for the image recipe. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Base64 encoded user data. Use this to provide commands or a command script to run when you launch your build instance.
-  late final Output<String> userDataBase64;
+  late final pulumi.Output<String> userDataBase64;
 
   /// The semantic version of the image recipe, which specifies the version in the following format, with numeric values in each position to indicate a specific version: major.minor.patch. For example: 1.0.0.
   ///
   /// The following arguments are optional:
-  late final Output<String> version;
+  late final pulumi.Output<String> version;
 
   /// The working directory to be used during build and test workflows.
-  late final Output<String?> workingDirectory;
+  late final pulumi.Output<String?> workingDirectory;
 
   ImageRecipe(
     String name, {
     ImageRecipeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:imagebuilder/imageRecipe:ImageRecipe',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.amiTags = registerOutput<Map<String, String>?>('amiTags');
     this.arn = registerOutput<String>('arn');

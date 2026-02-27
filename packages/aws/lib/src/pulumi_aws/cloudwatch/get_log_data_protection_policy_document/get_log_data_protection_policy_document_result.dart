@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_log_data_protection_policy_document_configuration/get_log_data_protection_policy_document_configuration.dart';
 import '../get_log_data_protection_policy_document_statement/get_log_data_protection_policy_document_statement.dart';
 
@@ -41,7 +41,7 @@ class GetLogDataProtectionPolicyDocumentResult {
     map['id'] = id;
     map['json'] = json;
     map['name'] = name;
-    map['statements'] = Input.encodeList<
+    map['statements'] = pulumi.Input.encodeList<
         GetLogDataProtectionPolicyDocumentStatement,
         Map<String, dynamic>>(statements, (value) => value.toMap());
     final versionValue = version;
@@ -63,10 +63,11 @@ class GetLogDataProtectionPolicyDocumentResult {
       id: map['id'] as String,
       json: map['json'] as String,
       name: map['name'] as String,
-      statements: Input.decodeList<GetLogDataProtectionPolicyDocumentStatement>(
-          map['statements'],
-          (value) => GetLogDataProtectionPolicyDocumentStatement.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      statements:
+          pulumi.Input.decodeList<GetLogDataProtectionPolicyDocumentStatement>(
+              map['statements'],
+              (value) => GetLogDataProtectionPolicyDocumentStatement.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       version: map['version'] == null ? null : map['version'] as String,
     );
   }

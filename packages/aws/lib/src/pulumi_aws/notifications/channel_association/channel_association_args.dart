@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ChannelAssociation.
 class ChannelAssociationArgs {
   /// ARN of the channel to associate with the notification configuration. Must match pattern `^arn:aws:(chatbot|consoleapp|notifications-contacts):[a-zA-Z0-9-]*:[0-9]{12}:[a-zA-Z0-9-_.@]+/[a-zA-Z0-9/_.@:-]+$`.
-  final Input<String> arn;
+  final pulumi.Input<String> arn;
 
   /// ARN of the notification configuration to associate the channel with.
-  final Input<String> notificationConfigurationArn;
+  final pulumi.Input<String> notificationConfigurationArn;
 
   ChannelAssociationArgs({
     required this.arn,
@@ -24,9 +24,9 @@ class ChannelAssociationArgs {
 
   factory ChannelAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ChannelAssociationArgs(
-      arn: Input.asInput<String>(map['arn']),
+      arn: pulumi.Input.asInput<String>(map['arn']),
       notificationConfigurationArn:
-          Input.asInput<String>(map['notificationConfigurationArn']),
+          pulumi.Input.asInput<String>(map['notificationConfigurationArn']),
     );
   }
 }

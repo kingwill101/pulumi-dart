@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SessionLoggerAssociation.
 class SessionLoggerAssociationArgs {
   /// ARN of the web portal.
-  final Input<String> portalArn;
+  final pulumi.Input<String> portalArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ARN of the session logger.
   ///
   /// The following arguments are optional:
-  final Input<String> sessionLoggerArn;
+  final pulumi.Input<String> sessionLoggerArn;
 
   SessionLoggerAssociationArgs({
     required this.portalArn,
@@ -34,9 +34,9 @@ class SessionLoggerAssociationArgs {
 
   factory SessionLoggerAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SessionLoggerAssociationArgs(
-      portalArn: Input.asInput<String>(map['portalArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      sessionLoggerArn: Input.asInput<String>(map['sessionLoggerArn']),
+      portalArn: pulumi.Input.asInput<String>(map['portalArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sessionLoggerArn: pulumi.Input.asInput<String>(map['sessionLoggerArn']),
     );
   }
 }

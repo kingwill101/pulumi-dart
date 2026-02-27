@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LogDeliveryDestinationPolicy.
 class LogDeliveryDestinationPolicyArgs {
   /// The name of the delivery destination to assign this policy to.
-  final Input<String> deliveryDestinationName;
+  final pulumi.Input<String> deliveryDestinationName;
 
   /// The contents of the policy.
-  final Input<String> deliveryDestinationPolicy;
+  final pulumi.Input<String> deliveryDestinationPolicy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   LogDeliveryDestinationPolicyArgs({
     required this.deliveryDestinationName,
@@ -33,10 +33,10 @@ class LogDeliveryDestinationPolicyArgs {
   factory LogDeliveryDestinationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LogDeliveryDestinationPolicyArgs(
       deliveryDestinationName:
-          Input.asInput<String>(map['deliveryDestinationName']),
+          pulumi.Input.asInput<String>(map['deliveryDestinationName']),
       deliveryDestinationPolicy:
-          Input.asInput<String>(map['deliveryDestinationPolicy']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asInput<String>(map['deliveryDestinationPolicy']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

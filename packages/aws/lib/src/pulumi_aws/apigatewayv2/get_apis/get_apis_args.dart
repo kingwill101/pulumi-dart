@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getApis.
 class GetApisArgs {
   /// API name.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// API protocol.
-  final Input<String>? protocolType;
+  final pulumi.Input<String>? protocolType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired APIs.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetApisArgs({
     this.name,
@@ -47,10 +47,10 @@ class GetApisArgs {
 
   factory GetApisArgs.fromMap(Map<String, dynamic> map) {
     return GetApisArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      protocolType: Input.asOptionalInput<String>(map['protocolType']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      protocolType: pulumi.Input.asOptionalInput<String>(map['protocolType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

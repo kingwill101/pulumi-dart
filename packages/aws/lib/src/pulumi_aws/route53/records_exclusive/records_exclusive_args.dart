@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../records_exclusive_resource_record_set/records_exclusive_resource_record_set.dart';
 import '../records_exclusive_timeouts/records_exclusive_timeouts.dart';
 
@@ -8,13 +8,14 @@ import '../records_exclusive_timeouts/records_exclusive_timeouts.dart';
 class RecordsExclusiveArgs {
   /// A list of all resource record sets associated with the hosted zone.
   /// See `resource_record_set` below.
-  final Input<List<RecordsExclusiveResourceRecordSet>>? resourceRecordSets;
-  final Input<RecordsExclusiveTimeouts>? timeouts;
+  final pulumi.Input<List<RecordsExclusiveResourceRecordSet>>?
+      resourceRecordSets;
+  final pulumi.Input<RecordsExclusiveTimeouts>? timeouts;
 
   /// ID of the hosted zone containing the resource record sets.
   ///
   /// The following arguments are optional:
-  final Input<String> zoneId;
+  final pulumi.Input<String> zoneId;
 
   RecordsExclusiveArgs({
     this.resourceRecordSets,
@@ -26,16 +27,17 @@ class RecordsExclusiveArgs {
     final map = <String, dynamic>{};
     final resourceRecordSetsValue = resourceRecordSets;
     if (resourceRecordSetsValue != null) {
-      map['resourceRecordSets'] = Input.mapOptionalInputValue<
+      map['resourceRecordSets'] = pulumi.Input.mapOptionalInputValue<
               List<RecordsExclusiveResourceRecordSet>,
               List<Map<String, dynamic>>>(
           resourceRecordSetsValue,
-          (value) => Input.encodeList<RecordsExclusiveResourceRecordSet,
+          (value) => pulumi.Input.encodeList<RecordsExclusiveResourceRecordSet,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<RecordsExclusiveTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
+          RecordsExclusiveTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     map['zoneId'] = zoneId;
@@ -45,11 +47,11 @@ class RecordsExclusiveArgs {
   factory RecordsExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return RecordsExclusiveArgs(
       resourceRecordSets:
-          Input.asOptionalInput<List<RecordsExclusiveResourceRecordSet>>(
+          pulumi.Input.asOptionalInput<List<RecordsExclusiveResourceRecordSet>>(
               map['resourceRecordSets']),
-      timeouts:
-          Input.asOptionalInput<RecordsExclusiveTimeouts>(map['timeouts']),
-      zoneId: Input.asInput<String>(map['zoneId']),
+      timeouts: pulumi.Input.asOptionalInput<RecordsExclusiveTimeouts>(
+          map['timeouts']),
+      zoneId: pulumi.Input.asInput<String>(map['zoneId']),
     );
   }
 }

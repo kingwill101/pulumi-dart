@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_experiment_templates_args.dart';
 import 'get_experiment_templates_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_experiment_templates_result.dart';
 /// The following shows filtering FIS experiment templates by tag
 Future<GetExperimentTemplatesResult> getExperimentTemplates(
   GetExperimentTemplatesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:fis/getExperimentTemplates:getExperimentTemplates',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExperimentTemplatesResult.fromMap(result);
 }

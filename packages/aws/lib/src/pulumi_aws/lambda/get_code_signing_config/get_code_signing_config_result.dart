@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_code_signing_config_allowed_publisher/get_code_signing_config_allowed_publisher.dart';
 import '../get_code_signing_config_policy/get_code_signing_config_policy.dart';
 
@@ -39,7 +39,7 @@ class GetCodeSigningConfigResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['allowedPublishers'] = Input.encodeList<
+    map['allowedPublishers'] = pulumi.Input.encodeList<
         GetCodeSigningConfigAllowedPublisher,
         Map<String, dynamic>>(allowedPublishers, (value) => value.toMap());
     map['arn'] = arn;
@@ -47,25 +47,25 @@ class GetCodeSigningConfigResult {
     map['description'] = description;
     map['id'] = id;
     map['lastModified'] = lastModified;
-    map['policies'] =
-        Input.encodeList<GetCodeSigningConfigPolicy, Map<String, dynamic>>(
-            policies, (value) => value.toMap());
+    map['policies'] = pulumi.Input.encodeList<GetCodeSigningConfigPolicy,
+        Map<String, dynamic>>(policies, (value) => value.toMap());
     map['region'] = region;
     return map;
   }
 
   factory GetCodeSigningConfigResult.fromMap(Map<String, dynamic> map) {
     return GetCodeSigningConfigResult(
-      allowedPublishers: Input.decodeList<GetCodeSigningConfigAllowedPublisher>(
-          map['allowedPublishers'],
-          (value) => GetCodeSigningConfigAllowedPublisher.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      allowedPublishers:
+          pulumi.Input.decodeList<GetCodeSigningConfigAllowedPublisher>(
+              map['allowedPublishers'],
+              (value) => GetCodeSigningConfigAllowedPublisher.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       arn: map['arn'] as String,
       configId: map['configId'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
       lastModified: map['lastModified'] as String,
-      policies: Input.decodeList<GetCodeSigningConfigPolicy>(
+      policies: pulumi.Input.decodeList<GetCodeSigningConfigPolicy>(
           map['policies'],
           (value) => GetCodeSigningConfigPolicy.fromMap(
               (value as Map).cast<String, dynamic>())),

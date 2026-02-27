@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ApnsSandboxChannel.
 class ApnsSandboxChannelArgs {
   /// The application ID.
-  final Input<String> applicationId;
+  final pulumi.Input<String> applicationId;
 
   /// The ID assigned to your iOS app. To find this value, choose Certificates, IDs & Profiles, choose App IDs in the Identifiers section, and choose your app.
-  final Input<String>? bundleId;
+  final pulumi.Input<String>? bundleId;
 
   /// The pem encoded TLS Certificate from Apple.
-  final Input<String>? certificate;
+  final pulumi.Input<String>? certificate;
 
   /// The default authentication method used for APNs Sandbox.
   /// __NOTE__: Amazon Pinpoint uses this default for every APNs push notification that you send using the console.
@@ -21,27 +21,27 @@ class ApnsSandboxChannelArgs {
   /// One of the following sets of credentials is also required.
   ///
   /// If you choose to use __Certificate credentials__ you will have to provide:
-  final Input<String>? defaultAuthenticationMethod;
+  final pulumi.Input<String>? defaultAuthenticationMethod;
 
   /// Whether the channel is enabled or disabled. Defaults to `true`.
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// The Certificate Private Key file (ie. `.key` file).
   ///
   /// If you choose to use __Key credentials__ you will have to provide:
-  final Input<String>? privateKey;
+  final pulumi.Input<String>? privateKey;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID assigned to your Apple developer account team. This value is provided on the Membership page.
-  final Input<String>? teamId;
+  final pulumi.Input<String>? teamId;
 
   /// The `.p8` file that you download from your Apple developer account when you create an authentication key.
-  final Input<String>? tokenKey;
+  final pulumi.Input<String>? tokenKey;
 
   /// The ID assigned to your signing key. To find this value, choose Certificates, IDs & Profiles, and choose your key in the Keys section.
-  final Input<String>? tokenKeyId;
+  final pulumi.Input<String>? tokenKeyId;
 
   ApnsSandboxChannelArgs({
     required this.applicationId,
@@ -100,17 +100,17 @@ class ApnsSandboxChannelArgs {
 
   factory ApnsSandboxChannelArgs.fromMap(Map<String, dynamic> map) {
     return ApnsSandboxChannelArgs(
-      applicationId: Input.asInput<String>(map['applicationId']),
-      bundleId: Input.asOptionalInput<String>(map['bundleId']),
-      certificate: Input.asOptionalInput<String>(map['certificate']),
-      defaultAuthenticationMethod:
-          Input.asOptionalInput<String>(map['defaultAuthenticationMethod']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
-      privateKey: Input.asOptionalInput<String>(map['privateKey']),
-      region: Input.asOptionalInput<String>(map['region']),
-      teamId: Input.asOptionalInput<String>(map['teamId']),
-      tokenKey: Input.asOptionalInput<String>(map['tokenKey']),
-      tokenKeyId: Input.asOptionalInput<String>(map['tokenKeyId']),
+      applicationId: pulumi.Input.asInput<String>(map['applicationId']),
+      bundleId: pulumi.Input.asOptionalInput<String>(map['bundleId']),
+      certificate: pulumi.Input.asOptionalInput<String>(map['certificate']),
+      defaultAuthenticationMethod: pulumi.Input.asOptionalInput<String>(
+          map['defaultAuthenticationMethod']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
+      privateKey: pulumi.Input.asOptionalInput<String>(map['privateKey']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      teamId: pulumi.Input.asOptionalInput<String>(map['teamId']),
+      tokenKey: pulumi.Input.asOptionalInput<String>(map['tokenKey']),
+      tokenKeyId: pulumi.Input.asOptionalInput<String>(map['tokenKeyId']),
     );
   }
 }

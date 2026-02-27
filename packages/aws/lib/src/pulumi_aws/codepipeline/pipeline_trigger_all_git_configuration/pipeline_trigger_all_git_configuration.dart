@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipeline_trigger_all_git_configuration_pull_request/pipeline_trigger_all_git_configuration_pull_request.dart';
 import '../pipeline_trigger_all_git_configuration_push/pipeline_trigger_all_git_configuration_push.dart';
 
@@ -24,13 +24,14 @@ class PipelineTriggerAllGitConfiguration {
     final map = <String, dynamic>{};
     final pullRequestsValue = pullRequests;
     if (pullRequestsValue != null) {
-      map['pullRequests'] = Input.encodeList<
+      map['pullRequests'] = pulumi.Input.encodeList<
           PipelineTriggerAllGitConfigurationPullRequest,
           Map<String, dynamic>>(pullRequestsValue, (value) => value.toMap());
     }
     final pushesValue = pushes;
     if (pushesValue != null) {
-      map['pushes'] = Input.encodeList<PipelineTriggerAllGitConfigurationPush,
+      map['pushes'] = pulumi.Input.encodeList<
+          PipelineTriggerAllGitConfigurationPush,
           Map<String, dynamic>>(pushesValue, (value) => value.toMap());
     }
     final sourceActionNameValue = sourceActionName;
@@ -44,13 +45,14 @@ class PipelineTriggerAllGitConfiguration {
     return PipelineTriggerAllGitConfiguration(
       pullRequests: map['pullRequests'] == null
           ? null
-          : Input.decodeList<PipelineTriggerAllGitConfigurationPullRequest>(
+          : pulumi.Input.decodeList<
+                  PipelineTriggerAllGitConfigurationPullRequest>(
               map['pullRequests'],
               (value) => PipelineTriggerAllGitConfigurationPullRequest.fromMap(
                   (value as Map).cast<String, dynamic>())),
       pushes: map['pushes'] == null
           ? null
-          : Input.decodeList<PipelineTriggerAllGitConfigurationPush>(
+          : pulumi.Input.decodeList<PipelineTriggerAllGitConfigurationPush>(
               map['pushes'],
               (value) => PipelineTriggerAllGitConfigurationPush.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_gateway_spec_logging_access_log_file_format/get_virtual_gateway_spec_logging_access_log_file_format.dart';
 
 class GetVirtualGatewaySpecLoggingAccessLogFile {
@@ -14,7 +14,7 @@ class GetVirtualGatewaySpecLoggingAccessLogFile {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['formats'] = Input.encodeList<
+    map['formats'] = pulumi.Input.encodeList<
         GetVirtualGatewaySpecLoggingAccessLogFileFormat,
         Map<String, dynamic>>(formats, (value) => value.toMap());
     map['path'] = path;
@@ -24,12 +24,11 @@ class GetVirtualGatewaySpecLoggingAccessLogFile {
   factory GetVirtualGatewaySpecLoggingAccessLogFile.fromMap(
       Map<String, dynamic> map) {
     return GetVirtualGatewaySpecLoggingAccessLogFile(
-      formats:
-          Input.decodeList<GetVirtualGatewaySpecLoggingAccessLogFileFormat>(
-              map['formats'],
-              (value) =>
-                  GetVirtualGatewaySpecLoggingAccessLogFileFormat.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      formats: pulumi.Input.decodeList<
+              GetVirtualGatewaySpecLoggingAccessLogFileFormat>(
+          map['formats'],
+          (value) => GetVirtualGatewaySpecLoggingAccessLogFileFormat.fromMap(
+              (value as Map).cast<String, dynamic>())),
       path: map['path'] as String,
     );
   }

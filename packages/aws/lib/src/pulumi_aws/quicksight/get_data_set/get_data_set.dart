@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_data_set_args.dart';
 import 'get_data_set_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_data_set_result.dart';
 /// ### Basic Usage
 Future<GetDataSetResult> getDataSet(
   GetDataSetArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:quicksight/getDataSet:getDataSet',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataSetResult.fromMap(result);
 }

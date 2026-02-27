@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_xss_match_statement_field_to_match_cookies_match_pattern/web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_xss_match_statement_field_to_match_cookies_match_pattern.dart';
 
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchCookies {
@@ -23,7 +23,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStat
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['matchPatterns'] = Input.encodeList<
+    map['matchPatterns'] = pulumi.Input.encodeList<
         WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchCookiesMatchPattern,
         Map<String, dynamic>>(matchPatterns, (value) => value.toMap());
     map['matchScope'] = matchScope;
@@ -34,7 +34,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStat
   factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchCookies.fromMap(
       Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchCookies(
-      matchPatterns: Input.decodeList<
+      matchPatterns: pulumi.Input.decodeList<
               WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchCookiesMatchPattern>(
           map['matchPatterns'],
           (value) =>

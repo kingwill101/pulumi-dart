@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DomainNameAccessAssociation.
 class DomainNameAccessAssociationArgs {
   /// The identifier of the domain name access association source. For a `VPCE`, the value is the VPC endpoint ID.
-  final Input<String> accessAssociationSource;
+  final pulumi.Input<String> accessAssociationSource;
 
   /// The type of the domain name access association source. Valid values are `VPCE`.
-  final Input<String> accessAssociationSourceType;
+  final pulumi.Input<String> accessAssociationSourceType;
 
   /// The ARN of the domain name.
-  final Input<String> domainNameArn;
+  final pulumi.Input<String> domainNameArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   DomainNameAccessAssociationArgs({
     required this.accessAssociationSource,
@@ -46,12 +46,12 @@ class DomainNameAccessAssociationArgs {
   factory DomainNameAccessAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DomainNameAccessAssociationArgs(
       accessAssociationSource:
-          Input.asInput<String>(map['accessAssociationSource']),
+          pulumi.Input.asInput<String>(map['accessAssociationSource']),
       accessAssociationSourceType:
-          Input.asInput<String>(map['accessAssociationSourceType']),
-      domainNameArn: Input.asInput<String>(map['domainNameArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asInput<String>(map['accessAssociationSourceType']),
+      domainNameArn: pulumi.Input.asInput<String>(map['domainNameArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

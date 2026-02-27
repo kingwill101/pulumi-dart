@@ -1,39 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../queue_outbound_caller_config/queue_outbound_caller_config.dart';
 
 /// The set of arguments for Queue.
 class QueueArgs {
   /// Specifies the description of the Queue.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Specifies the identifier of the Hours of Operation.
-  final Input<String> hoursOfOperationId;
+  final pulumi.Input<String> hoursOfOperationId;
 
   /// Specifies the identifier of the hosting Amazon Connect Instance.
-  final Input<String> instanceId;
+  final pulumi.Input<String> instanceId;
 
   /// Specifies the maximum number of contacts that can be in the queue before it is considered full. Minimum value of 0.
-  final Input<int>? maxContacts;
+  final pulumi.Input<int>? maxContacts;
 
   /// Specifies the name of the Queue.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// A block that defines the outbound caller ID name, number, and outbound whisper flow. The Outbound Caller Config block is documented below.
-  final Input<QueueOutboundCallerConfig>? outboundCallerConfig;
+  final pulumi.Input<QueueOutboundCallerConfig>? outboundCallerConfig;
 
   /// Specifies a list of quick connects ids that determine the quick connects available to agents who are working the queue.
-  final Input<List<String>>? quickConnectIds;
+  final pulumi.Input<List<String>>? quickConnectIds;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Specifies the description of the Queue. Valid values are `ENABLED`, `DISABLED`.
-  final Input<String>? status;
+  final pulumi.Input<String>? status;
 
   /// Tags to apply to the Queue. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   QueueArgs({
     this.description,
@@ -66,7 +66,7 @@ class QueueArgs {
     }
     final outboundCallerConfigValue = outboundCallerConfig;
     if (outboundCallerConfigValue != null) {
-      map['outboundCallerConfig'] = Input.mapOptionalInputValue<
+      map['outboundCallerConfig'] = pulumi.Input.mapOptionalInputValue<
               QueueOutboundCallerConfig, Map<String, dynamic>>(
           outboundCallerConfigValue, (value) => value.toMap());
     }
@@ -91,18 +91,20 @@ class QueueArgs {
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      hoursOfOperationId: Input.asInput<String>(map['hoursOfOperationId']),
-      instanceId: Input.asInput<String>(map['instanceId']),
-      maxContacts: Input.asOptionalInput<int>(map['maxContacts']),
-      name: Input.asOptionalInput<String>(map['name']),
-      outboundCallerConfig: Input.asOptionalInput<QueueOutboundCallerConfig>(
-          map['outboundCallerConfig']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      hoursOfOperationId:
+          pulumi.Input.asInput<String>(map['hoursOfOperationId']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      maxContacts: pulumi.Input.asOptionalInput<int>(map['maxContacts']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      outboundCallerConfig:
+          pulumi.Input.asOptionalInput<QueueOutboundCallerConfig>(
+              map['outboundCallerConfig']),
       quickConnectIds:
-          Input.asOptionalInput<List<String>>(map['quickConnectIds']),
-      region: Input.asOptionalInput<String>(map['region']),
-      status: Input.asOptionalInput<String>(map['status']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<List<String>>(map['quickConnectIds']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      status: pulumi.Input.asOptionalInput<String>(map['status']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

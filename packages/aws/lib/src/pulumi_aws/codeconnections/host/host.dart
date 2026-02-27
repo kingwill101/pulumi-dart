@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../host_timeouts/host_timeouts.dart';
 import '../host_vpc_configuration/host_vpc_configuration.dart';
 import 'host_args.dart';
@@ -27,37 +27,37 @@ import 'host_args.dart';
 /// ```sh
 /// $ pulumi import aws:codeconnections/host:Host example-host arn:aws:codeconnections:us-west-1:0123456789:host/79d4d357-a2ee-41e4-b350-2fe39ae59448
 /// ```
-class Host extends CustomResource {
+class Host extends pulumi.CustomResource {
   /// The CodeConnections Host ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The name of the host to be created. The name must be unique in the calling AWS account.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The endpoint of the infrastructure to be represented by the host after it is created.
-  late final Output<String> providerEndpoint;
+  late final pulumi.Output<String> providerEndpoint;
 
   /// The name of the external provider where your third-party code repository is configured.
-  late final Output<String> providerType;
+  late final pulumi.Output<String> providerType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<HostTimeouts?> timeouts;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<HostTimeouts?> timeouts;
 
   /// The VPC configuration to be provisioned for the host. A VPC must be configured, and the infrastructure to be represented by the host must already be connected to the VPC.
-  late final Output<HostVpcConfiguration?> vpcConfiguration;
+  late final pulumi.Output<HostVpcConfiguration?> vpcConfiguration;
 
   Host(
     String name, {
     HostArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:codeconnections/host:Host',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

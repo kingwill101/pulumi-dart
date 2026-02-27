@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../catalog_table_storage_descriptor_column/catalog_table_storage_descriptor_column.dart';
 import '../catalog_table_storage_descriptor_schema_reference/catalog_table_storage_descriptor_schema_reference.dart';
 import '../catalog_table_storage_descriptor_ser_de_info/catalog_table_storage_descriptor_ser_de_info.dart';
@@ -79,7 +79,8 @@ class CatalogTableStorageDescriptor {
     }
     final columnsValue = columns;
     if (columnsValue != null) {
-      map['columns'] = Input.encodeList<CatalogTableStorageDescriptorColumn,
+      map['columns'] = pulumi.Input.encodeList<
+          CatalogTableStorageDescriptorColumn,
           Map<String, dynamic>>(columnsValue, (value) => value.toMap());
     }
     final compressedValue = compressed;
@@ -120,7 +121,7 @@ class CatalogTableStorageDescriptor {
     }
     final sortColumnsValue = sortColumns;
     if (sortColumnsValue != null) {
-      map['sortColumns'] = Input.encodeList<
+      map['sortColumns'] = pulumi.Input.encodeList<
           CatalogTableStorageDescriptorSortColumn,
           Map<String, dynamic>>(sortColumnsValue, (value) => value.toMap());
     }
@@ -141,7 +142,7 @@ class CatalogTableStorageDescriptor {
           : (map['bucketColumns'] as List).cast<String>(),
       columns: map['columns'] == null
           ? null
-          : Input.decodeList<CatalogTableStorageDescriptorColumn>(
+          : pulumi.Input.decodeList<CatalogTableStorageDescriptorColumn>(
               map['columns'],
               (value) => CatalogTableStorageDescriptorColumn.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -170,7 +171,7 @@ class CatalogTableStorageDescriptor {
               (map['skewedInfo'] as Map).cast<String, dynamic>()),
       sortColumns: map['sortColumns'] == null
           ? null
-          : Input.decodeList<CatalogTableStorageDescriptorSortColumn>(
+          : pulumi.Input.decodeList<CatalogTableStorageDescriptorSortColumn>(
               map['sortColumns'],
               (value) => CatalogTableStorageDescriptorSortColumn.fromMap(
                   (value as Map).cast<String, dynamic>())),

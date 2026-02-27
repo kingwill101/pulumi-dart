@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../table_attribute/table_attribute.dart';
 import '../table_global_secondary_index/table_global_secondary_index.dart';
 import '../table_global_table_witness/table_global_table_witness.dart';
@@ -16,91 +16,91 @@ import '../table_warm_throughput/table_warm_throughput.dart';
 /// The set of arguments for Table.
 class TableArgs {
   /// Set of nested attribute definitions. Only required for `hash_key` and `range_key` attributes. See below.
-  final Input<List<TableAttribute>>? attributes;
+  final pulumi.Input<List<TableAttribute>>? attributes;
 
   /// Controls how you are charged for read and write throughput and how you manage capacity. The valid values are `PROVISIONED` and `PAY_PER_REQUEST`. Defaults to `PROVISIONED`.
-  final Input<String>? billingMode;
+  final pulumi.Input<String>? billingMode;
 
   /// Enables deletion protection for table. Defaults to `false`.
-  final Input<bool>? deletionProtectionEnabled;
+  final pulumi.Input<bool>? deletionProtectionEnabled;
 
   /// Describe a GSI for the table; subject to the normal limits on the number of GSIs, projected attributes, etc. See below.
-  final Input<List<TableGlobalSecondaryIndex>>? globalSecondaryIndexes;
+  final pulumi.Input<List<TableGlobalSecondaryIndex>>? globalSecondaryIndexes;
 
   /// Witness Region in a Multi-Region Strong Consistency deployment. **Note** This must be used alongside a single `replica` with `consistency_mode` set to `STRONG`. Other combinations will fail to provision. See below.
-  final Input<TableGlobalTableWitness>? globalTableWitness;
+  final pulumi.Input<TableGlobalTableWitness>? globalTableWitness;
 
   /// Attribute to use as the hash (partition) key. Must also be defined as an `attribute`. See below.
-  final Input<String>? hashKey;
+  final pulumi.Input<String>? hashKey;
 
   /// Import Amazon S3 data into a new table. See below.
-  final Input<TableImportTable>? importTable;
+  final pulumi.Input<TableImportTable>? importTable;
 
   /// Describe an LSI on the table; these can only be allocated _at creation_ so you cannot change this definition after you have created the resource. See below.
-  final Input<List<TableLocalSecondaryIndex>>? localSecondaryIndexes;
+  final pulumi.Input<List<TableLocalSecondaryIndex>>? localSecondaryIndexes;
 
   /// Unique within a region name of the table.
   ///
   /// The following arguments are optional:
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Sets the maximum number of read and write units for the specified on-demand table. See below.
-  final Input<TableOnDemandThroughput>? onDemandThroughput;
+  final pulumi.Input<TableOnDemandThroughput>? onDemandThroughput;
 
   /// Enable point-in-time recovery options. See below.
-  final Input<TablePointInTimeRecovery>? pointInTimeRecovery;
+  final pulumi.Input<TablePointInTimeRecovery>? pointInTimeRecovery;
 
   /// Attribute to use as the range (sort) key. Must also be defined as an `attribute`, see below.
-  final Input<String>? rangeKey;
+  final pulumi.Input<String>? rangeKey;
 
   /// Number of read units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
-  final Input<int>? readCapacity;
+  final pulumi.Input<int>? readCapacity;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Configuration block(s) with [DynamoDB Global Tables V2 (version 2019.11.21)](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html) replication configurations. See below.
-  final Input<List<TableReplica>>? replicas;
+  final pulumi.Input<List<TableReplica>>? replicas;
 
   /// Time of the point-in-time recovery point to restore.
-  final Input<String>? restoreDateTime;
+  final pulumi.Input<String>? restoreDateTime;
 
   /// Name of the table to restore. Must match the name of an existing table.
-  final Input<String>? restoreSourceName;
+  final pulumi.Input<String>? restoreSourceName;
 
   /// ARN of the source table to restore. Must be supplied for cross-region restores.
-  final Input<String>? restoreSourceTableArn;
+  final pulumi.Input<String>? restoreSourceTableArn;
 
   /// If set, restores table to the most recent point-in-time recovery point.
-  final Input<bool>? restoreToLatestTime;
+  final pulumi.Input<bool>? restoreToLatestTime;
 
   /// Encryption at rest options. AWS DynamoDB tables are automatically encrypted at rest with an AWS-owned Customer Master Key if this argument isn't specified. Must be supplied for cross-region restores. See below.
-  final Input<TableServerSideEncryption>? serverSideEncryption;
+  final pulumi.Input<TableServerSideEncryption>? serverSideEncryption;
 
   /// Whether Streams are enabled.
-  final Input<bool>? streamEnabled;
+  final pulumi.Input<bool>? streamEnabled;
 
   /// When an item in the table is modified, StreamViewType determines what information is written to the table's stream.
   /// Valid values are `KEYS_ONLY`, `NEW_IMAGE`, `OLD_IMAGE`, `NEW_AND_OLD_IMAGES`.
   /// Only valid when `stream_enabled` is true.
-  final Input<String>? streamViewType;
+  final pulumi.Input<String>? streamViewType;
 
   /// Storage class of the table.
   /// Valid values are `STANDARD` and `STANDARD_INFREQUENT_ACCESS`.
   /// Default value is `STANDARD`.
-  final Input<String>? tableClass;
+  final pulumi.Input<String>? tableClass;
 
   /// A map of tags to populate on the created table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Configuration block for TTL. See below.
-  final Input<TableTtl>? ttl;
+  final pulumi.Input<TableTtl>? ttl;
 
   /// Sets the number of warm read and write units for the specified table. See below.
-  final Input<TableWarmThroughput>? warmThroughput;
+  final pulumi.Input<TableWarmThroughput>? warmThroughput;
 
   /// Number of write units for this table. If the `billing_mode` is `PROVISIONED`, this field is required.
-  final Input<int>? writeCapacity;
+  final pulumi.Input<int>? writeCapacity;
 
   TableArgs({
     this.attributes,
@@ -136,11 +136,12 @@ class TableArgs {
     final map = <String, dynamic>{};
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] = Input.mapOptionalInputValue<List<TableAttribute>,
-              List<Map<String, dynamic>>>(
+      map['attributes'] = pulumi.Input.mapOptionalInputValue<
+              List<TableAttribute>, List<Map<String, dynamic>>>(
           attributesValue,
-          (value) => Input.encodeList<TableAttribute, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<TableAttribute, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final billingModeValue = billingMode;
     if (billingModeValue != null) {
@@ -152,16 +153,15 @@ class TableArgs {
     }
     final globalSecondaryIndexesValue = globalSecondaryIndexes;
     if (globalSecondaryIndexesValue != null) {
-      map['globalSecondaryIndexes'] = Input.mapOptionalInputValue<
+      map['globalSecondaryIndexes'] = pulumi.Input.mapOptionalInputValue<
               List<TableGlobalSecondaryIndex>, List<Map<String, dynamic>>>(
           globalSecondaryIndexesValue,
-          (value) =>
-              Input.encodeList<TableGlobalSecondaryIndex, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<TableGlobalSecondaryIndex,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final globalTableWitnessValue = globalTableWitness;
     if (globalTableWitnessValue != null) {
-      map['globalTableWitness'] = Input.mapOptionalInputValue<
+      map['globalTableWitness'] = pulumi.Input.mapOptionalInputValue<
               TableGlobalTableWitness, Map<String, dynamic>>(
           globalTableWitnessValue, (value) => value.toMap());
     }
@@ -171,18 +171,16 @@ class TableArgs {
     }
     final importTableValue = importTable;
     if (importTableValue != null) {
-      map['importTable'] =
-          Input.mapOptionalInputValue<TableImportTable, Map<String, dynamic>>(
-              importTableValue, (value) => value.toMap());
+      map['importTable'] = pulumi.Input.mapOptionalInputValue<TableImportTable,
+          Map<String, dynamic>>(importTableValue, (value) => value.toMap());
     }
     final localSecondaryIndexesValue = localSecondaryIndexes;
     if (localSecondaryIndexesValue != null) {
-      map['localSecondaryIndexes'] = Input.mapOptionalInputValue<
+      map['localSecondaryIndexes'] = pulumi.Input.mapOptionalInputValue<
               List<TableLocalSecondaryIndex>, List<Map<String, dynamic>>>(
           localSecondaryIndexesValue,
-          (value) =>
-              Input.encodeList<TableLocalSecondaryIndex, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<TableLocalSecondaryIndex,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -190,13 +188,13 @@ class TableArgs {
     }
     final onDemandThroughputValue = onDemandThroughput;
     if (onDemandThroughputValue != null) {
-      map['onDemandThroughput'] = Input.mapOptionalInputValue<
+      map['onDemandThroughput'] = pulumi.Input.mapOptionalInputValue<
               TableOnDemandThroughput, Map<String, dynamic>>(
           onDemandThroughputValue, (value) => value.toMap());
     }
     final pointInTimeRecoveryValue = pointInTimeRecovery;
     if (pointInTimeRecoveryValue != null) {
-      map['pointInTimeRecovery'] = Input.mapOptionalInputValue<
+      map['pointInTimeRecovery'] = pulumi.Input.mapOptionalInputValue<
               TablePointInTimeRecovery, Map<String, dynamic>>(
           pointInTimeRecoveryValue, (value) => value.toMap());
     }
@@ -214,11 +212,12 @@ class TableArgs {
     }
     final replicasValue = replicas;
     if (replicasValue != null) {
-      map['replicas'] = Input.mapOptionalInputValue<List<TableReplica>,
+      map['replicas'] = pulumi.Input.mapOptionalInputValue<List<TableReplica>,
               List<Map<String, dynamic>>>(
           replicasValue,
-          (value) => Input.encodeList<TableReplica, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<TableReplica, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final restoreDateTimeValue = restoreDateTime;
     if (restoreDateTimeValue != null) {
@@ -238,7 +237,7 @@ class TableArgs {
     }
     final serverSideEncryptionValue = serverSideEncryption;
     if (serverSideEncryptionValue != null) {
-      map['serverSideEncryption'] = Input.mapOptionalInputValue<
+      map['serverSideEncryption'] = pulumi.Input.mapOptionalInputValue<
               TableServerSideEncryption, Map<String, dynamic>>(
           serverSideEncryptionValue, (value) => value.toMap());
     }
@@ -260,12 +259,14 @@ class TableArgs {
     }
     final ttlValue = ttl;
     if (ttlValue != null) {
-      map['ttl'] = Input.mapOptionalInputValue<TableTtl, Map<String, dynamic>>(
-          ttlValue, (value) => value.toMap());
+      map['ttl'] =
+          pulumi.Input.mapOptionalInputValue<TableTtl, Map<String, dynamic>>(
+              ttlValue, (value) => value.toMap());
     }
     final warmThroughputValue = warmThroughput;
     if (warmThroughputValue != null) {
-      map['warmThroughput'] = Input.mapOptionalInputValue<TableWarmThroughput,
+      map['warmThroughput'] = pulumi.Input.mapOptionalInputValue<
+          TableWarmThroughput,
           Map<String, dynamic>>(warmThroughputValue, (value) => value.toMap());
     }
     final writeCapacityValue = writeCapacity;
@@ -278,46 +279,52 @@ class TableArgs {
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
       attributes:
-          Input.asOptionalInput<List<TableAttribute>>(map['attributes']),
-      billingMode: Input.asOptionalInput<String>(map['billingMode']),
+          pulumi.Input.asOptionalInput<List<TableAttribute>>(map['attributes']),
+      billingMode: pulumi.Input.asOptionalInput<String>(map['billingMode']),
       deletionProtectionEnabled:
-          Input.asOptionalInput<bool>(map['deletionProtectionEnabled']),
+          pulumi.Input.asOptionalInput<bool>(map['deletionProtectionEnabled']),
       globalSecondaryIndexes:
-          Input.asOptionalInput<List<TableGlobalSecondaryIndex>>(
+          pulumi.Input.asOptionalInput<List<TableGlobalSecondaryIndex>>(
               map['globalSecondaryIndexes']),
-      globalTableWitness: Input.asOptionalInput<TableGlobalTableWitness>(
+      globalTableWitness: pulumi.Input.asOptionalInput<TableGlobalTableWitness>(
           map['globalTableWitness']),
-      hashKey: Input.asOptionalInput<String>(map['hashKey']),
-      importTable: Input.asOptionalInput<TableImportTable>(map['importTable']),
+      hashKey: pulumi.Input.asOptionalInput<String>(map['hashKey']),
+      importTable:
+          pulumi.Input.asOptionalInput<TableImportTable>(map['importTable']),
       localSecondaryIndexes:
-          Input.asOptionalInput<List<TableLocalSecondaryIndex>>(
+          pulumi.Input.asOptionalInput<List<TableLocalSecondaryIndex>>(
               map['localSecondaryIndexes']),
-      name: Input.asOptionalInput<String>(map['name']),
-      onDemandThroughput: Input.asOptionalInput<TableOnDemandThroughput>(
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      onDemandThroughput: pulumi.Input.asOptionalInput<TableOnDemandThroughput>(
           map['onDemandThroughput']),
-      pointInTimeRecovery: Input.asOptionalInput<TablePointInTimeRecovery>(
-          map['pointInTimeRecovery']),
-      rangeKey: Input.asOptionalInput<String>(map['rangeKey']),
-      readCapacity: Input.asOptionalInput<int>(map['readCapacity']),
-      region: Input.asOptionalInput<String>(map['region']),
-      replicas: Input.asOptionalInput<List<TableReplica>>(map['replicas']),
-      restoreDateTime: Input.asOptionalInput<String>(map['restoreDateTime']),
+      pointInTimeRecovery:
+          pulumi.Input.asOptionalInput<TablePointInTimeRecovery>(
+              map['pointInTimeRecovery']),
+      rangeKey: pulumi.Input.asOptionalInput<String>(map['rangeKey']),
+      readCapacity: pulumi.Input.asOptionalInput<int>(map['readCapacity']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      replicas:
+          pulumi.Input.asOptionalInput<List<TableReplica>>(map['replicas']),
+      restoreDateTime:
+          pulumi.Input.asOptionalInput<String>(map['restoreDateTime']),
       restoreSourceName:
-          Input.asOptionalInput<String>(map['restoreSourceName']),
+          pulumi.Input.asOptionalInput<String>(map['restoreSourceName']),
       restoreSourceTableArn:
-          Input.asOptionalInput<String>(map['restoreSourceTableArn']),
+          pulumi.Input.asOptionalInput<String>(map['restoreSourceTableArn']),
       restoreToLatestTime:
-          Input.asOptionalInput<bool>(map['restoreToLatestTime']),
-      serverSideEncryption: Input.asOptionalInput<TableServerSideEncryption>(
-          map['serverSideEncryption']),
-      streamEnabled: Input.asOptionalInput<bool>(map['streamEnabled']),
-      streamViewType: Input.asOptionalInput<String>(map['streamViewType']),
-      tableClass: Input.asOptionalInput<String>(map['tableClass']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      ttl: Input.asOptionalInput<TableTtl>(map['ttl']),
-      warmThroughput:
-          Input.asOptionalInput<TableWarmThroughput>(map['warmThroughput']),
-      writeCapacity: Input.asOptionalInput<int>(map['writeCapacity']),
+          pulumi.Input.asOptionalInput<bool>(map['restoreToLatestTime']),
+      serverSideEncryption:
+          pulumi.Input.asOptionalInput<TableServerSideEncryption>(
+              map['serverSideEncryption']),
+      streamEnabled: pulumi.Input.asOptionalInput<bool>(map['streamEnabled']),
+      streamViewType:
+          pulumi.Input.asOptionalInput<String>(map['streamViewType']),
+      tableClass: pulumi.Input.asOptionalInput<String>(map['tableClass']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      ttl: pulumi.Input.asOptionalInput<TableTtl>(map['ttl']),
+      warmThroughput: pulumi.Input.asOptionalInput<TableWarmThroughput>(
+          map['warmThroughput']),
+      writeCapacity: pulumi.Input.asOptionalInput<int>(map['writeCapacity']),
     );
   }
 }

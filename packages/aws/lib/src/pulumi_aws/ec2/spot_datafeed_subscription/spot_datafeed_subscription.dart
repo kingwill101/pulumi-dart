@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spot_datafeed_subscription_args.dart';
 
 /// > **Note:** There is only a single subscription allowed per account.
@@ -17,25 +17,25 @@ import 'spot_datafeed_subscription_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription mysubscription spot-datafeed-subscription
 /// ```
-class SpotDatafeedSubscription extends CustomResource {
+class SpotDatafeedSubscription extends pulumi.CustomResource {
   /// The Amazon S3 bucket in which to store the Spot instance data feed.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Path of folder inside bucket to place spot pricing data.
-  late final Output<String?> prefix;
+  late final pulumi.Output<String?> prefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   SpotDatafeedSubscription(
     String name, {
     SpotDatafeedSubscriptionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.prefix = registerOutput<String?>('prefix');

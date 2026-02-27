@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_theme_configuration_data_color_palette/get_theme_configuration_data_color_palette.dart';
 import '../get_theme_configuration_sheet/get_theme_configuration_sheet.dart';
 import '../get_theme_configuration_typography/get_theme_configuration_typography.dart';
@@ -28,16 +28,15 @@ class GetThemeConfiguration {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dataColorPalettes'] = Input.encodeList<
+    map['dataColorPalettes'] = pulumi.Input.encodeList<
         GetThemeConfigurationDataColorPalette,
         Map<String, dynamic>>(dataColorPalettes, (value) => value.toMap());
-    map['sheets'] =
-        Input.encodeList<GetThemeConfigurationSheet, Map<String, dynamic>>(
-            sheets, (value) => value.toMap());
-    map['typographies'] =
-        Input.encodeList<GetThemeConfigurationTypography, Map<String, dynamic>>(
-            typographies, (value) => value.toMap());
-    map['uiColorPalettes'] = Input.encodeList<
+    map['sheets'] = pulumi.Input.encodeList<GetThemeConfigurationSheet,
+        Map<String, dynamic>>(sheets, (value) => value.toMap());
+    map['typographies'] = pulumi.Input.encodeList<
+        GetThemeConfigurationTypography,
+        Map<String, dynamic>>(typographies, (value) => value.toMap());
+    map['uiColorPalettes'] = pulumi.Input.encodeList<
         GetThemeConfigurationUiColorPalette,
         Map<String, dynamic>>(uiColorPalettes, (value) => value.toMap());
     return map;
@@ -46,22 +45,23 @@ class GetThemeConfiguration {
   factory GetThemeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetThemeConfiguration(
       dataColorPalettes:
-          Input.decodeList<GetThemeConfigurationDataColorPalette>(
+          pulumi.Input.decodeList<GetThemeConfigurationDataColorPalette>(
               map['dataColorPalettes'],
               (value) => GetThemeConfigurationDataColorPalette.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      sheets: Input.decodeList<GetThemeConfigurationSheet>(
+      sheets: pulumi.Input.decodeList<GetThemeConfigurationSheet>(
           map['sheets'],
           (value) => GetThemeConfigurationSheet.fromMap(
               (value as Map).cast<String, dynamic>())),
-      typographies: Input.decodeList<GetThemeConfigurationTypography>(
+      typographies: pulumi.Input.decodeList<GetThemeConfigurationTypography>(
           map['typographies'],
           (value) => GetThemeConfigurationTypography.fromMap(
               (value as Map).cast<String, dynamic>())),
-      uiColorPalettes: Input.decodeList<GetThemeConfigurationUiColorPalette>(
-          map['uiColorPalettes'],
-          (value) => GetThemeConfigurationUiColorPalette.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      uiColorPalettes:
+          pulumi.Input.decodeList<GetThemeConfigurationUiColorPalette>(
+              map['uiColorPalettes'],
+              (value) => GetThemeConfigurationUiColorPalette.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

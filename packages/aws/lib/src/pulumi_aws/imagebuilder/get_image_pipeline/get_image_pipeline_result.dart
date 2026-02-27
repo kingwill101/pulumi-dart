@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_image_pipeline_image_scanning_configuration/get_image_pipeline_image_scanning_configuration.dart';
 import '../get_image_pipeline_image_tests_configuration/get_image_pipeline_image_tests_configuration.dart';
 import '../get_image_pipeline_schedule/get_image_pipeline_schedule.dart';
@@ -99,10 +99,10 @@ class GetImagePipelineResult {
     map['enhancedImageMetadataEnabled'] = enhancedImageMetadataEnabled;
     map['id'] = id;
     map['imageRecipeArn'] = imageRecipeArn;
-    map['imageScanningConfigurations'] = Input.encodeList<
+    map['imageScanningConfigurations'] = pulumi.Input.encodeList<
             GetImagePipelineImageScanningConfiguration, Map<String, dynamic>>(
         imageScanningConfigurations, (value) => value.toMap());
-    map['imageTestsConfigurations'] = Input.encodeList<
+    map['imageTestsConfigurations'] = pulumi.Input.encodeList<
             GetImagePipelineImageTestsConfiguration, Map<String, dynamic>>(
         imageTestsConfigurations, (value) => value.toMap());
     map['infrastructureConfigurationArn'] = infrastructureConfigurationArn;
@@ -110,7 +110,7 @@ class GetImagePipelineResult {
     map['platform'] = platform;
     map['region'] = region;
     map['schedules'] =
-        Input.encodeList<GetImagePipelineSchedule, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetImagePipelineSchedule, Map<String, dynamic>>(
             schedules, (value) => value.toMap());
     map['status'] = status;
     map['tags'] = tags;
@@ -132,12 +132,12 @@ class GetImagePipelineResult {
       id: map['id'] as String,
       imageRecipeArn: map['imageRecipeArn'] as String,
       imageScanningConfigurations:
-          Input.decodeList<GetImagePipelineImageScanningConfiguration>(
+          pulumi.Input.decodeList<GetImagePipelineImageScanningConfiguration>(
               map['imageScanningConfigurations'],
               (value) => GetImagePipelineImageScanningConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
       imageTestsConfigurations:
-          Input.decodeList<GetImagePipelineImageTestsConfiguration>(
+          pulumi.Input.decodeList<GetImagePipelineImageTestsConfiguration>(
               map['imageTestsConfigurations'],
               (value) => GetImagePipelineImageTestsConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -146,7 +146,7 @@ class GetImagePipelineResult {
       name: map['name'] as String,
       platform: map['platform'] as String,
       region: map['region'] as String,
-      schedules: Input.decodeList<GetImagePipelineSchedule>(
+      schedules: pulumi.Input.decodeList<GetImagePipelineSchedule>(
           map['schedules'],
           (value) => GetImagePipelineSchedule.fromMap(
               (value as Map).cast<String, dynamic>())),

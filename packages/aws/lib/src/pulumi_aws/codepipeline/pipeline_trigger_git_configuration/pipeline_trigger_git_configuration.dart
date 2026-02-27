@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipeline_trigger_git_configuration_pull_request/pipeline_trigger_git_configuration_pull_request.dart';
 import '../pipeline_trigger_git_configuration_push/pipeline_trigger_git_configuration_push.dart';
 
@@ -24,13 +24,14 @@ class PipelineTriggerGitConfiguration {
     final map = <String, dynamic>{};
     final pullRequestsValue = pullRequests;
     if (pullRequestsValue != null) {
-      map['pullRequests'] = Input.encodeList<
+      map['pullRequests'] = pulumi.Input.encodeList<
           PipelineTriggerGitConfigurationPullRequest,
           Map<String, dynamic>>(pullRequestsValue, (value) => value.toMap());
     }
     final pushesValue = pushes;
     if (pushesValue != null) {
-      map['pushes'] = Input.encodeList<PipelineTriggerGitConfigurationPush,
+      map['pushes'] = pulumi.Input.encodeList<
+          PipelineTriggerGitConfigurationPush,
           Map<String, dynamic>>(pushesValue, (value) => value.toMap());
     }
     map['sourceActionName'] = sourceActionName;
@@ -41,13 +42,13 @@ class PipelineTriggerGitConfiguration {
     return PipelineTriggerGitConfiguration(
       pullRequests: map['pullRequests'] == null
           ? null
-          : Input.decodeList<PipelineTriggerGitConfigurationPullRequest>(
+          : pulumi.Input.decodeList<PipelineTriggerGitConfigurationPullRequest>(
               map['pullRequests'],
               (value) => PipelineTriggerGitConfigurationPullRequest.fromMap(
                   (value as Map).cast<String, dynamic>())),
       pushes: map['pushes'] == null
           ? null
-          : Input.decodeList<PipelineTriggerGitConfigurationPush>(
+          : pulumi.Input.decodeList<PipelineTriggerGitConfigurationPush>(
               map['pushes'],
               (value) => PipelineTriggerGitConfigurationPush.fromMap(
                   (value as Map).cast<String, dynamic>())),

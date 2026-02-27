@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../link_bandwidth/link_bandwidth.dart';
 import 'link_args.dart';
 
@@ -15,45 +15,45 @@ import 'link_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkmanager/link:Link example arn:aws:networkmanager::123456789012:link/global-network-0d47f6t230mz46dy4/link-444555aaabbb11223
 /// ```
-class Link extends CustomResource {
+class Link extends pulumi.CustomResource {
   /// Link ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Upload speed and download speed in Mbps. See below.
-  late final Output<LinkBandwidth> bandwidth;
+  late final pulumi.Output<LinkBandwidth> bandwidth;
 
   /// Description of the link.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// ID of the global network.
-  late final Output<String> globalNetworkId;
+  late final pulumi.Output<String> globalNetworkId;
 
   /// Provider of the link.
-  late final Output<String?> providerName;
+  late final pulumi.Output<String?> providerName;
 
   /// ID of the site.
   ///
   /// The following arguments are optional:
-  late final Output<String> siteId;
+  late final pulumi.Output<String> siteId;
 
   /// Key-value tags for the link. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Type of the link.
-  late final Output<String?> type;
+  late final pulumi.Output<String?> type;
 
   Link(
     String name, {
     LinkArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkmanager/link:Link',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.bandwidth = registerOutput<LinkBandwidth>('bandwidth');

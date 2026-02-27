@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VpcEndpointRouteTableAssociation.
 class VpcEndpointRouteTableAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
-  final Input<String> routeTableId;
+  final pulumi.Input<String> routeTableId;
 
   /// Identifier of the VPC Endpoint with which the EC2 Route Table will be associated.
-  final Input<String> vpcEndpointId;
+  final pulumi.Input<String> vpcEndpointId;
 
   VpcEndpointRouteTableAssociationArgs({
     this.region,
@@ -33,9 +33,9 @@ class VpcEndpointRouteTableAssociationArgs {
   factory VpcEndpointRouteTableAssociationArgs.fromMap(
       Map<String, dynamic> map) {
     return VpcEndpointRouteTableAssociationArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      routeTableId: Input.asInput<String>(map['routeTableId']),
-      vpcEndpointId: Input.asInput<String>(map['vpcEndpointId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      routeTableId: pulumi.Input.asInput<String>(map['routeTableId']),
+      vpcEndpointId: pulumi.Input.asInput<String>(map['vpcEndpointId']),
     );
   }
 }

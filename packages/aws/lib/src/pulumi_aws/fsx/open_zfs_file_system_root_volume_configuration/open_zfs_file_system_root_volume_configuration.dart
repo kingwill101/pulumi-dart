@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../open_zfs_file_system_root_volume_configuration_nfs_exports/open_zfs_file_system_root_volume_configuration_nfs_exports.dart';
 import '../open_zfs_file_system_root_volume_configuration_user_and_group_quota/open_zfs_file_system_root_volume_configuration_user_and_group_quota.dart';
 
@@ -57,7 +57,7 @@ class OpenZfsFileSystemRootVolumeConfiguration {
     }
     final userAndGroupQuotasValue = userAndGroupQuotas;
     if (userAndGroupQuotasValue != null) {
-      map['userAndGroupQuotas'] = Input.encodeList<
+      map['userAndGroupQuotas'] = pulumi.Input.encodeList<
               OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota,
               Map<String, dynamic>>(
           userAndGroupQuotasValue, (value) => value.toMap());
@@ -83,7 +83,7 @@ class OpenZfsFileSystemRootVolumeConfiguration {
           map['recordSizeKib'] == null ? null : map['recordSizeKib'] as int,
       userAndGroupQuotas: map['userAndGroupQuotas'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota>(
               map['userAndGroupQuotas'],
               (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../conformance_pack_input_parameter/conformance_pack_input_parameter.dart';
 import 'conformance_pack_args.dart';
 
@@ -28,42 +28,43 @@ import 'conformance_pack_args.dart';
 /// ```sh
 /// $ pulumi import aws:cfg/conformancePack:ConformancePack example example
 /// ```
-class ConformancePack extends CustomResource {
+class ConformancePack extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the conformance pack.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Amazon S3 bucket where AWS Config stores conformance pack templates. Maximum length of 63.
-  late final Output<String?> deliveryS3Bucket;
+  late final pulumi.Output<String?> deliveryS3Bucket;
 
   /// The prefix for the Amazon S3 bucket. Maximum length of 1024.
-  late final Output<String?> deliveryS3KeyPrefix;
+  late final pulumi.Output<String?> deliveryS3KeyPrefix;
 
   /// Set of configuration blocks describing input parameters passed to the conformance pack template. Documented below. When configured, the parameters must also be included in the `template_body` or in the template stored in Amazon S3 if using `template_s3_uri`.
-  late final Output<List<ConformancePackInputParameter>?> inputParameters;
+  late final pulumi.Output<List<ConformancePackInputParameter>?>
+      inputParameters;
 
   /// The name of the conformance pack. Must begin with a letter and contain from 1 to 256 alphanumeric characters and hyphens.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A string containing full conformance pack template body. Maximum length of 51200. Drift detection is not possible with this argument.
-  late final Output<String?> templateBody;
+  late final pulumi.Output<String?> templateBody;
 
   /// Location of file, e.g., `s3://bucketname/prefix`, containing the template body. The uri must point to the conformance pack template that is located in an Amazon S3 bucket in the same region as the conformance pack. Maximum length of 1024. Drift detection is not possible with this argument.
   ///
   /// > **Note:** If both `template_body` and `template_s3_uri` are specified, AWS Config uses the `template_s3_uri` and ignores the `template_body`.
-  late final Output<String?> templateS3Uri;
+  late final pulumi.Output<String?> templateS3Uri;
 
   ConformancePack(
     String name, {
     ConformancePackArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cfg/conformancePack:ConformancePack',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.deliveryS3Bucket = registerOutput<String?>('deliveryS3Bucket');

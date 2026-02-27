@@ -1,3 +1,3 @@
 library module_lb_listener_default_action_forward;
 
-export 'listener_default_action_forward/listener_default_action_forward2.dart';
+export 'listener_default_action_forward/listener_default_action_forward_lb.dart';

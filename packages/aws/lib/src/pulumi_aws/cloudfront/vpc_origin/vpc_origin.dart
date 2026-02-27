@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vpc_origin_timeouts/vpc_origin_timeouts.dart';
 import '../vpc_origin_vpc_origin_endpoint_config/vpc_origin_vpc_origin_endpoint_config.dart';
 import 'vpc_origin_args.dart';
@@ -23,34 +23,35 @@ import 'vpc_origin_args.dart';
 /// ```sh
 /// % pulumi import aws_cloudfront_vpc_origin vo_JQEa410sssUFoY6wMkx69j
 /// ```
-class VpcOrigin extends CustomResource {
+class VpcOrigin extends pulumi.CustomResource {
   /// The VPC origin ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The current version of the origin.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<VpcOriginTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<VpcOriginTimeouts?> timeouts;
 
   /// The VPC origin endpoint configuration.
   ///
   /// The following arguments are optional:
-  late final Output<VpcOriginVpcOriginEndpointConfig> vpcOriginEndpointConfig;
+  late final pulumi.Output<VpcOriginVpcOriginEndpointConfig>
+      vpcOriginEndpointConfig;
 
   VpcOrigin(
     String name, {
     VpcOriginArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/vpcOrigin:VpcOrigin',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.etag = registerOutput<String>('etag');

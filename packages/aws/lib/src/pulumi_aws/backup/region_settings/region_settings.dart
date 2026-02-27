@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_settings_args.dart';
 
 /// Provides an AWS Backup Region Settings resource.
@@ -14,25 +14,25 @@ import 'region_settings_args.dart';
 /// ```sh
 /// $ pulumi import aws:backup/regionSettings:RegionSettings test us-west-2
 /// ```
-class RegionSettings extends CustomResource {
+class RegionSettings extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of service names to their full management preferences for the Region. For more information, see the AWS Documentation on [what full management is](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#full-management) and [which services support full management](https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html#features-by-resource).
-  late final Output<Map<String, bool>> resourceTypeManagementPreference;
+  late final pulumi.Output<Map<String, bool>> resourceTypeManagementPreference;
 
   /// A map of service names to their opt-in preferences for the Region. See [AWS Documentation on which services support backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html).
-  late final Output<Map<String, bool>> resourceTypeOptInPreference;
+  late final pulumi.Output<Map<String, bool>> resourceTypeOptInPreference;
 
   RegionSettings(
     String name, {
     RegionSettingsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:backup/regionSettings:RegionSettings',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.resourceTypeManagementPreference =

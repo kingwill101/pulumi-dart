@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOriginAccessIdentities.
 class GetOriginAccessIdentitiesArgs {
   /// Filter origin access identities by comment.
-  final Input<List<String>>? comments;
+  final pulumi.Input<List<String>>? comments;
 
   GetOriginAccessIdentitiesArgs({
     this.comments,
@@ -22,7 +22,7 @@ class GetOriginAccessIdentitiesArgs {
 
   factory GetOriginAccessIdentitiesArgs.fromMap(Map<String, dynamic> map) {
     return GetOriginAccessIdentitiesArgs(
-      comments: Input.asOptionalInput<List<String>>(map['comments']),
+      comments: pulumi.Input.asOptionalInput<List<String>>(map['comments']),
     );
   }
 }

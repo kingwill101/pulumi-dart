@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_access_points_access_point_vpc_configuration/get_access_points_access_point_vpc_configuration.dart';
 
 class GetAccessPointsAccessPoint {
@@ -53,7 +53,7 @@ class GetAccessPointsAccessPoint {
     map['dataSourceType'] = dataSourceType;
     map['name'] = name;
     map['networkOrigin'] = networkOrigin;
-    map['vpcConfigurations'] = Input.encodeList<
+    map['vpcConfigurations'] = pulumi.Input.encodeList<
         GetAccessPointsAccessPointVpcConfiguration,
         Map<String, dynamic>>(vpcConfigurations, (value) => value.toMap());
     return map;
@@ -70,7 +70,7 @@ class GetAccessPointsAccessPoint {
       name: map['name'] as String,
       networkOrigin: map['networkOrigin'] as String,
       vpcConfigurations:
-          Input.decodeList<GetAccessPointsAccessPointVpcConfiguration>(
+          pulumi.Input.decodeList<GetAccessPointsAccessPointVpcConfiguration>(
               map['vpcConfigurations'],
               (value) => GetAccessPointsAccessPointVpcConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),

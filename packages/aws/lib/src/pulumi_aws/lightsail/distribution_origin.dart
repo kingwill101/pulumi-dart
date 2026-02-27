@@ -1,3 +1,3 @@
 library module_lightsail_distribution_origin;
 
-export 'distribution_origin/distribution_origin2.dart';
+export 'distribution_origin/distribution_origin_lightsail.dart';

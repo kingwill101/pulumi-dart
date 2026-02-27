@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'recorder_status_args.dart';
 
 /// Manages status (recording / stopped) of an AWS Config Configuration Recorder.
@@ -16,25 +16,25 @@ import 'recorder_status_args.dart';
 /// ```sh
 /// $ pulumi import aws:cfg/recorderStatus:RecorderStatus foo example
 /// ```
-class RecorderStatus extends CustomResource {
+class RecorderStatus extends pulumi.CustomResource {
   /// Whether the configuration recorder should be enabled or disabled.
-  late final Output<bool> isEnabled;
+  late final pulumi.Output<bool> isEnabled;
 
   /// The name of the recorder
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   RecorderStatus(
     String name, {
     RecorderStatusArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cfg/recorderStatus:RecorderStatus',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.isEnabled = registerOutput<bool>('isEnabled');
     this.name = registerOutput<String>('name');

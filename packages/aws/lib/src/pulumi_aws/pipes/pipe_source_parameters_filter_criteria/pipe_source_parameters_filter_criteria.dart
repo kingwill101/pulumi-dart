@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipe_source_parameters_filter_criteria_filter/pipe_source_parameters_filter_criteria_filter.dart';
 
 class PipeSourceParametersFilterCriteria {
@@ -15,7 +15,7 @@ class PipeSourceParametersFilterCriteria {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<
+      map['filters'] = pulumi.Input.encodeList<
           PipeSourceParametersFilterCriteriaFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
@@ -26,7 +26,7 @@ class PipeSourceParametersFilterCriteria {
     return PipeSourceParametersFilterCriteria(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<PipeSourceParametersFilterCriteriaFilter>(
+          : pulumi.Input.decodeList<PipeSourceParametersFilterCriteriaFilter>(
               map['filters'],
               (value) => PipeSourceParametersFilterCriteriaFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

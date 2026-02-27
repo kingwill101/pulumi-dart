@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_license_grants_filter/get_license_grants_filter.dart';
 
 /// Result data returned by getLicenseGrants.
@@ -26,7 +26,7 @@ class GetLicenseGrantsResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetLicenseGrantsFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetLicenseGrantsFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -39,7 +39,7 @@ class GetLicenseGrantsResult {
       arns: (map['arns'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetLicenseGrantsFilter>(
+          : pulumi.Input.decodeList<GetLicenseGrantsFilter>(
               map['filters'],
               (value) => GetLicenseGrantsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

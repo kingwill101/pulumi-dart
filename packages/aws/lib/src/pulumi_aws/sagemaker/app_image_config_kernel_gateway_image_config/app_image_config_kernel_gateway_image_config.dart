@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_image_config_kernel_gateway_image_config_file_system_config/app_image_config_kernel_gateway_image_config_file_system_config.dart';
 import '../app_image_config_kernel_gateway_image_config_kernel_spec/app_image_config_kernel_gateway_image_config_kernel_spec.dart';
 
@@ -23,7 +23,7 @@ class AppImageConfigKernelGatewayImageConfig {
     if (fileSystemConfigValue != null) {
       map['fileSystemConfig'] = fileSystemConfigValue.toMap();
     }
-    map['kernelSpecs'] = Input.encodeList<
+    map['kernelSpecs'] = pulumi.Input.encodeList<
         AppImageConfigKernelGatewayImageConfigKernelSpec,
         Map<String, dynamic>>(kernelSpecs, (value) => value.toMap());
     return map;
@@ -36,12 +36,11 @@ class AppImageConfigKernelGatewayImageConfig {
           ? null
           : AppImageConfigKernelGatewayImageConfigFileSystemConfig.fromMap(
               (map['fileSystemConfig'] as Map).cast<String, dynamic>()),
-      kernelSpecs:
-          Input.decodeList<AppImageConfigKernelGatewayImageConfigKernelSpec>(
-              map['kernelSpecs'],
-              (value) =>
-                  AppImageConfigKernelGatewayImageConfigKernelSpec.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      kernelSpecs: pulumi.Input.decodeList<
+              AppImageConfigKernelGatewayImageConfigKernelSpec>(
+          map['kernelSpecs'],
+          (value) => AppImageConfigKernelGatewayImageConfigKernelSpec.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

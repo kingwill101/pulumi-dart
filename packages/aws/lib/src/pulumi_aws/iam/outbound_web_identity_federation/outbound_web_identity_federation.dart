@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Manages an AWS IAM (Identity & Access Management) Outbound Web Identity Federation.
 ///
@@ -15,19 +15,19 @@ import 'package:pulumi/pulumi.dart';
 /// ```sh
 /// $ pulumi import aws:iam/outboundWebIdentityFederation:OutboundWebIdentityFederation example 123456789012
 /// ```
-class OutboundWebIdentityFederation extends CustomResource {
+class OutboundWebIdentityFederation extends pulumi.CustomResource {
   /// A unique issuer URL for your AWS account that hosts the OpenID Connect (OIDC) discovery endpoints.
-  late final Output<String> issuerIdentifier;
+  late final pulumi.Output<String> issuerIdentifier;
 
   OutboundWebIdentityFederation(
     String name, {
     Map<String, dynamic>? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/outboundWebIdentityFederation:OutboundWebIdentityFederation',
           name,
-          Input.mapToInputs(args ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.issuerIdentifier = registerOutput<String>('issuerIdentifier');
   }

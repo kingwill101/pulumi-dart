@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_report_plan_report_delivery_channel/get_report_plan_report_delivery_channel.dart';
 import '../get_report_plan_report_setting/get_report_plan_report_setting.dart';
 
@@ -54,12 +54,11 @@ class GetReportPlanResult {
     map['id'] = id;
     map['name'] = name;
     map['region'] = region;
-    map['reportDeliveryChannels'] = Input.encodeList<
+    map['reportDeliveryChannels'] = pulumi.Input.encodeList<
         GetReportPlanReportDeliveryChannel,
         Map<String, dynamic>>(reportDeliveryChannels, (value) => value.toMap());
-    map['reportSettings'] =
-        Input.encodeList<GetReportPlanReportSetting, Map<String, dynamic>>(
-            reportSettings, (value) => value.toMap());
+    map['reportSettings'] = pulumi.Input.encodeList<GetReportPlanReportSetting,
+        Map<String, dynamic>>(reportSettings, (value) => value.toMap());
     map['tags'] = tags;
     return map;
   }
@@ -74,11 +73,11 @@ class GetReportPlanResult {
       name: map['name'] as String,
       region: map['region'] as String,
       reportDeliveryChannels:
-          Input.decodeList<GetReportPlanReportDeliveryChannel>(
+          pulumi.Input.decodeList<GetReportPlanReportDeliveryChannel>(
               map['reportDeliveryChannels'],
               (value) => GetReportPlanReportDeliveryChannel.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      reportSettings: Input.decodeList<GetReportPlanReportSetting>(
+      reportSettings: pulumi.Input.decodeList<GetReportPlanReportSetting>(
           map['reportSettings'],
           (value) => GetReportPlanReportSetting.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'branch_args.dart';
 
 /// Provides an Amplify Branch resource.
@@ -24,91 +24,91 @@ import 'branch_args.dart';
 /// ```sh
 /// $ pulumi import aws:amplify/branch:Branch master d2ypk4k47z8u6/master
 /// ```
-class Branch extends CustomResource {
+class Branch extends pulumi.CustomResource {
   /// Unique ID for an Amplify app.
-  late final Output<String> appId;
+  late final pulumi.Output<String> appId;
 
   /// ARN for the branch.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// A list of custom resources that are linked to this branch.
-  late final Output<List<String>> associatedResources;
+  late final pulumi.Output<List<String>> associatedResources;
 
   /// ARN for a backend environment that is part of an Amplify app.
-  late final Output<String?> backendEnvironmentArn;
+  late final pulumi.Output<String?> backendEnvironmentArn;
 
   /// Basic authorization credentials for the branch.
-  late final Output<String?> basicAuthCredentials;
+  late final pulumi.Output<String?> basicAuthCredentials;
 
   /// Name for the branch.
-  late final Output<String> branchName;
+  late final pulumi.Output<String> branchName;
 
   /// Custom domains for the branch.
-  late final Output<List<String>> customDomains;
+  late final pulumi.Output<List<String>> customDomains;
 
   /// Description for the branch.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Destination branch if the branch is a pull request branch.
-  late final Output<String> destinationBranch;
+  late final pulumi.Output<String> destinationBranch;
 
   /// Display name for a branch. This is used as the default domain prefix.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// Enables auto building for the branch.
-  late final Output<bool?> enableAutoBuild;
+  late final pulumi.Output<bool?> enableAutoBuild;
 
   /// Enables basic authorization for the branch.
-  late final Output<bool?> enableBasicAuth;
+  late final pulumi.Output<bool?> enableBasicAuth;
 
   /// Enables notifications for the branch.
-  late final Output<bool?> enableNotification;
+  late final pulumi.Output<bool?> enableNotification;
 
   /// Enables performance mode for the branch.
-  late final Output<bool?> enablePerformanceMode;
+  late final pulumi.Output<bool?> enablePerformanceMode;
 
   /// Enables pull request previews for this branch.
-  late final Output<bool?> enablePullRequestPreview;
+  late final pulumi.Output<bool?> enablePullRequestPreview;
 
   /// Enables skew protection for the branch.
-  late final Output<bool?> enableSkewProtection;
+  late final pulumi.Output<bool?> enableSkewProtection;
 
   /// Environment variables for the branch.
-  late final Output<Map<String, String>?> environmentVariables;
+  late final pulumi.Output<Map<String, String>?> environmentVariables;
 
   /// Framework for the branch.
-  late final Output<String?> framework;
+  late final pulumi.Output<String?> framework;
 
   /// Amplify environment name for the pull request.
-  late final Output<String?> pullRequestEnvironmentName;
+  late final pulumi.Output<String?> pullRequestEnvironmentName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Source branch if the branch is a pull request branch.
-  late final Output<String> sourceBranch;
+  late final pulumi.Output<String> sourceBranch;
 
   /// Describes the current stage for the branch. Valid values: `PRODUCTION`, `BETA`, `DEVELOPMENT`, `EXPERIMENTAL`, `PULL_REQUEST`.
-  late final Output<String?> stage;
+  late final pulumi.Output<String?> stage;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Content Time To Live (TTL) for the website in seconds.
-  late final Output<String?> ttl;
+  late final pulumi.Output<String?> ttl;
 
   Branch(
     String name, {
     BranchArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:amplify/branch:Branch',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appId = registerOutput<String>('appId');
     this.arn = registerOutput<String>('arn');

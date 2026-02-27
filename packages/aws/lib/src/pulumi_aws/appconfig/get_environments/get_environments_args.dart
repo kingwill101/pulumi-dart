@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEnvironments.
 class GetEnvironmentsArgs {
   /// ID of the AppConfig Application.
-  final Input<String> applicationId;
+  final pulumi.Input<String> applicationId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetEnvironmentsArgs({
     required this.applicationId,
@@ -27,8 +27,8 @@ class GetEnvironmentsArgs {
 
   factory GetEnvironmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentsArgs(
-      applicationId: Input.asInput<String>(map['applicationId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      applicationId: pulumi.Input.asInput<String>(map['applicationId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

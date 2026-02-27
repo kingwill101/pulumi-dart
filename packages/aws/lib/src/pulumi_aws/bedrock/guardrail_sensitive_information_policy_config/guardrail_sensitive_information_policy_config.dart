@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../guardrail_sensitive_information_policy_config_pii_entities_config/guardrail_sensitive_information_policy_config_pii_entities_config.dart';
 import '../guardrail_sensitive_information_policy_config_regexes_config/guardrail_sensitive_information_policy_config_regexes_config.dart';
 
@@ -22,14 +22,14 @@ class GuardrailSensitiveInformationPolicyConfig {
     final map = <String, dynamic>{};
     final piiEntitiesConfigsValue = piiEntitiesConfigs;
     if (piiEntitiesConfigsValue != null) {
-      map['piiEntitiesConfigs'] = Input.encodeList<
+      map['piiEntitiesConfigs'] = pulumi.Input.encodeList<
               GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig,
               Map<String, dynamic>>(
           piiEntitiesConfigsValue, (value) => value.toMap());
     }
     final regexesConfigsValue = regexesConfigs;
     if (regexesConfigsValue != null) {
-      map['regexesConfigs'] = Input.encodeList<
+      map['regexesConfigs'] = pulumi.Input.encodeList<
           GuardrailSensitiveInformationPolicyConfigRegexesConfig,
           Map<String, dynamic>>(regexesConfigsValue, (value) => value.toMap());
     }
@@ -41,7 +41,7 @@ class GuardrailSensitiveInformationPolicyConfig {
     return GuardrailSensitiveInformationPolicyConfig(
       piiEntitiesConfigs: map['piiEntitiesConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig>(
               map['piiEntitiesConfigs'],
               (value) =>
@@ -49,7 +49,7 @@ class GuardrailSensitiveInformationPolicyConfig {
                       .fromMap((value as Map).cast<String, dynamic>())),
       regexesConfigs: map['regexesConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GuardrailSensitiveInformationPolicyConfigRegexesConfig>(
               map['regexesConfigs'],
               (value) => GuardrailSensitiveInformationPolicyConfigRegexesConfig

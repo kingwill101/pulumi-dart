@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_agent_memory_configuration_session_summary_configuration/agent_agent_memory_configuration_session_summary_configuration.dart';
 
 class AgentAgentMemoryConfiguration {
@@ -23,7 +23,7 @@ class AgentAgentMemoryConfiguration {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['enabledMemoryTypes'] = enabledMemoryTypes;
-    map['sessionSummaryConfigurations'] = Input.encodeList<
+    map['sessionSummaryConfigurations'] = pulumi.Input.encodeList<
             AgentAgentMemoryConfigurationSessionSummaryConfiguration,
             Map<String, dynamic>>(
         sessionSummaryConfigurations, (value) => value.toMap());
@@ -34,7 +34,7 @@ class AgentAgentMemoryConfiguration {
   factory AgentAgentMemoryConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentAgentMemoryConfiguration(
       enabledMemoryTypes: (map['enabledMemoryTypes'] as List).cast<String>(),
-      sessionSummaryConfigurations: Input.decodeList<
+      sessionSummaryConfigurations: pulumi.Input.decodeList<
               AgentAgentMemoryConfigurationSessionSummaryConfiguration>(
           map['sessionSummaryConfigurations'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../framework_control_set_control/framework_control_set_control.dart';
 
 class FrameworkControlSet {
@@ -23,9 +23,8 @@ class FrameworkControlSet {
     final map = <String, dynamic>{};
     final controlsValue = controls;
     if (controlsValue != null) {
-      map['controls'] =
-          Input.encodeList<FrameworkControlSetControl, Map<String, dynamic>>(
-              controlsValue, (value) => value.toMap());
+      map['controls'] = pulumi.Input.encodeList<FrameworkControlSetControl,
+          Map<String, dynamic>>(controlsValue, (value) => value.toMap());
     }
     final idValue = id;
     if (idValue != null) {
@@ -39,7 +38,7 @@ class FrameworkControlSet {
     return FrameworkControlSet(
       controls: map['controls'] == null
           ? null
-          : Input.decodeList<FrameworkControlSetControl>(
+          : pulumi.Input.decodeList<FrameworkControlSetControl>(
               map['controls'],
               (value) => FrameworkControlSetControl.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getMultiRegionAccessPoint.
 class GetMultiRegionAccessPointArgs {
   /// The AWS account ID of the S3 Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// The name of the Multi-Region Access Point.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetMultiRegionAccessPointArgs({
     this.accountId,
@@ -35,9 +35,9 @@ class GetMultiRegionAccessPointArgs {
 
   factory GetMultiRegionAccessPointArgs.fromMap(Map<String, dynamic> map) {
     return GetMultiRegionAccessPointArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
-      name: Input.asInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

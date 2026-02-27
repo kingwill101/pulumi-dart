@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getResolverRules.
 class GetResolverRulesArgs {
   /// Regex string to filter resolver rule names.
   /// The filtering is done locally, so could have a performance impact if the result is large.
   /// This argument should be used along with other arguments to limit the number of results returned.
-  final Input<String>? nameRegex;
+  final pulumi.Input<String>? nameRegex;
 
   /// When the desired resolver rules are shared with another AWS account, the account ID of the account that the rules are shared with.
-  final Input<String>? ownerId;
+  final pulumi.Input<String>? ownerId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the outbound resolver endpoint for the desired resolver rules.
-  final Input<String>? resolverEndpointId;
+  final pulumi.Input<String>? resolverEndpointId;
 
   /// Rule type of the desired resolver rules. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
-  final Input<String>? ruleType;
+  final pulumi.Input<String>? ruleType;
 
   /// Whether the desired resolver rules are shared and, if so, whether the current account is sharing the rules with another account, or another account is sharing the rules with the current account. Valid values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
-  final Input<String>? shareStatus;
+  final pulumi.Input<String>? shareStatus;
 
   GetResolverRulesArgs({
     this.nameRegex,
@@ -64,13 +64,13 @@ class GetResolverRulesArgs {
 
   factory GetResolverRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverRulesArgs(
-      nameRegex: Input.asOptionalInput<String>(map['nameRegex']),
-      ownerId: Input.asOptionalInput<String>(map['ownerId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      nameRegex: pulumi.Input.asOptionalInput<String>(map['nameRegex']),
+      ownerId: pulumi.Input.asOptionalInput<String>(map['ownerId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       resolverEndpointId:
-          Input.asOptionalInput<String>(map['resolverEndpointId']),
-      ruleType: Input.asOptionalInput<String>(map['ruleType']),
-      shareStatus: Input.asOptionalInput<String>(map['shareStatus']),
+          pulumi.Input.asOptionalInput<String>(map['resolverEndpointId']),
+      ruleType: pulumi.Input.asOptionalInput<String>(map['ruleType']),
+      shareStatus: pulumi.Input.asOptionalInput<String>(map['shareStatus']),
     );
   }
 }

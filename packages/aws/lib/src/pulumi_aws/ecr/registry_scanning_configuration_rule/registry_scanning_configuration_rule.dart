@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../registry_scanning_configuration_rule_repository_filter/registry_scanning_configuration_rule_repository_filter.dart';
 
 class RegistryScanningConfigurationRule {
@@ -18,7 +18,7 @@ class RegistryScanningConfigurationRule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['repositoryFilters'] = Input.encodeList<
+    map['repositoryFilters'] = pulumi.Input.encodeList<
         RegistryScanningConfigurationRuleRepositoryFilter,
         Map<String, dynamic>>(repositoryFilters, (value) => value.toMap());
     map['scanFrequency'] = scanFrequency;
@@ -27,12 +27,11 @@ class RegistryScanningConfigurationRule {
 
   factory RegistryScanningConfigurationRule.fromMap(Map<String, dynamic> map) {
     return RegistryScanningConfigurationRule(
-      repositoryFilters:
-          Input.decodeList<RegistryScanningConfigurationRuleRepositoryFilter>(
-              map['repositoryFilters'],
-              (value) =>
-                  RegistryScanningConfigurationRuleRepositoryFilter.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      repositoryFilters: pulumi.Input.decodeList<
+              RegistryScanningConfigurationRuleRepositoryFilter>(
+          map['repositoryFilters'],
+          (value) => RegistryScanningConfigurationRuleRepositoryFilter.fromMap(
+              (value as Map).cast<String, dynamic>())),
       scanFrequency: map['scanFrequency'] as String,
     );
   }

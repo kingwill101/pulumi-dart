@@ -1,39 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_snapshot_copy_timeouts/cluster_snapshot_copy_timeouts.dart';
 
 /// The set of arguments for ClusterSnapshotCopy.
 class ClusterSnapshotCopyArgs {
   /// Whether to copy existing tags. Defaults to `false`.
-  final Input<bool>? copyTags;
+  final pulumi.Input<bool>? copyTags;
 
   /// The Destination region to place snapshot copy.
-  final Input<String>? destinationRegion;
+  final pulumi.Input<String>? destinationRegion;
 
   /// KMS key ID.
-  final Input<String>? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
 
   /// URL that contains a Signature Version 4 signed request.
-  final Input<String>? presignedUrl;
+  final pulumi.Input<String>? presignedUrl;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
-  final Input<List<String>>? sharedAccounts;
+  final pulumi.Input<List<String>>? sharedAccounts;
 
   /// Identifier of the source snapshot.
-  final Input<String> sourceDbClusterSnapshotIdentifier;
+  final pulumi.Input<String> sourceDbClusterSnapshotIdentifier;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Identifier for the snapshot.
   ///
   /// The following arguments are optional:
-  final Input<String> targetDbClusterSnapshotIdentifier;
-  final Input<ClusterSnapshotCopyTimeouts>? timeouts;
+  final pulumi.Input<String> targetDbClusterSnapshotIdentifier;
+  final pulumi.Input<ClusterSnapshotCopyTimeouts>? timeouts;
 
   ClusterSnapshotCopyArgs({
     this.copyTags,
@@ -84,7 +84,8 @@ class ClusterSnapshotCopyArgs {
         targetDbClusterSnapshotIdentifier;
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<ClusterSnapshotCopyTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
+          ClusterSnapshotCopyTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
@@ -92,21 +93,21 @@ class ClusterSnapshotCopyArgs {
 
   factory ClusterSnapshotCopyArgs.fromMap(Map<String, dynamic> map) {
     return ClusterSnapshotCopyArgs(
-      copyTags: Input.asOptionalInput<bool>(map['copyTags']),
+      copyTags: pulumi.Input.asOptionalInput<bool>(map['copyTags']),
       destinationRegion:
-          Input.asOptionalInput<String>(map['destinationRegion']),
-      kmsKeyId: Input.asOptionalInput<String>(map['kmsKeyId']),
-      presignedUrl: Input.asOptionalInput<String>(map['presignedUrl']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['destinationRegion']),
+      kmsKeyId: pulumi.Input.asOptionalInput<String>(map['kmsKeyId']),
+      presignedUrl: pulumi.Input.asOptionalInput<String>(map['presignedUrl']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       sharedAccounts:
-          Input.asOptionalInput<List<String>>(map['sharedAccounts']),
-      sourceDbClusterSnapshotIdentifier:
-          Input.asInput<String>(map['sourceDbClusterSnapshotIdentifier']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      targetDbClusterSnapshotIdentifier:
-          Input.asInput<String>(map['targetDbClusterSnapshotIdentifier']),
-      timeouts:
-          Input.asOptionalInput<ClusterSnapshotCopyTimeouts>(map['timeouts']),
+          pulumi.Input.asOptionalInput<List<String>>(map['sharedAccounts']),
+      sourceDbClusterSnapshotIdentifier: pulumi.Input.asInput<String>(
+          map['sourceDbClusterSnapshotIdentifier']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      targetDbClusterSnapshotIdentifier: pulumi.Input.asInput<String>(
+          map['targetDbClusterSnapshotIdentifier']),
+      timeouts: pulumi.Input.asOptionalInput<ClusterSnapshotCopyTimeouts>(
+          map['timeouts']),
     );
   }
 }

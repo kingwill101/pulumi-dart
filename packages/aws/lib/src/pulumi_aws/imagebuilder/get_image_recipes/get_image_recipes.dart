@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_image_recipes_args.dart';
 import 'get_image_recipes_result.dart';
 
 /// Use this data source to get the ARNs and names of Image Builder Image Recipes matching the specified criteria.
 Future<GetImageRecipesResult> getImageRecipes(
   GetImageRecipesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:imagebuilder/getImageRecipes:getImageRecipes',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImageRecipesResult.fromMap(result);
 }

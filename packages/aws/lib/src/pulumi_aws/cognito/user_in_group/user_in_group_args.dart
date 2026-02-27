@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for UserInGroup.
 class UserInGroupArgs {
   /// The name of the group to which the user is to be added.
-  final Input<String> groupName;
+  final pulumi.Input<String> groupName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The user pool ID of the user and group.
-  final Input<String> userPoolId;
+  final pulumi.Input<String> userPoolId;
 
   /// The username of the user to be added to the group.
-  final Input<String> username;
+  final pulumi.Input<String> username;
 
   UserInGroupArgs({
     required this.groupName,
@@ -37,10 +37,10 @@ class UserInGroupArgs {
 
   factory UserInGroupArgs.fromMap(Map<String, dynamic> map) {
     return UserInGroupArgs(
-      groupName: Input.asInput<String>(map['groupName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      userPoolId: Input.asInput<String>(map['userPoolId']),
-      username: Input.asInput<String>(map['username']),
+      groupName: pulumi.Input.asInput<String>(map['groupName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      userPoolId: pulumi.Input.asInput<String>(map['userPoolId']),
+      username: pulumi.Input.asInput<String>(map['username']),
     );
   }
 }

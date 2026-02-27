@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Resource.
 class ResourceArgs {
   /// ID of the parent API resource
-  final Input<String> parentId;
+  final pulumi.Input<String> parentId;
 
   /// Last path segment of this API resource.
-  final Input<String> pathPart;
+  final pulumi.Input<String> pathPart;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the associated REST API
-  final Input<String> restApi;
+  final pulumi.Input<String> restApi;
 
   ResourceArgs({
     required this.parentId,
@@ -37,10 +37,10 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      parentId: Input.asInput<String>(map['parentId']),
-      pathPart: Input.asInput<String>(map['pathPart']),
-      region: Input.asOptionalInput<String>(map['region']),
-      restApi: Input.asInput<String>(map['restApi']),
+      parentId: pulumi.Input.asInput<String>(map['parentId']),
+      pathPart: pulumi.Input.asInput<String>(map['pathPart']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      restApi: pulumi.Input.asInput<String>(map['restApi']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_product_args.dart';
 import 'get_product_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_product_result.dart';
 /// This data source is only available in a us-east-1 or ap-south-1 provider.
 Future<GetProductResult> getProduct(
   GetProductArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:pricing/getProduct:getProduct',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProductResult.fromMap(result);
 }

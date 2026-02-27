@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getApiKeys.
 class GetApiKeysArgs {
   /// Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.
-  final Input<String>? customerId;
+  final pulumi.Input<String>? customerId;
 
   /// Set this value to `true` if you wish the result contains the key value. Defaults to `false`.
-  final Input<bool>? includeValues;
+  final pulumi.Input<bool>? includeValues;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetApiKeysArgs({
     this.customerId,
@@ -38,9 +38,9 @@ class GetApiKeysArgs {
 
   factory GetApiKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetApiKeysArgs(
-      customerId: Input.asOptionalInput<String>(map['customerId']),
-      includeValues: Input.asOptionalInput<bool>(map['includeValues']),
-      region: Input.asOptionalInput<String>(map['region']),
+      customerId: pulumi.Input.asOptionalInput<String>(map['customerId']),
+      includeValues: pulumi.Input.asOptionalInput<bool>(map['includeValues']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

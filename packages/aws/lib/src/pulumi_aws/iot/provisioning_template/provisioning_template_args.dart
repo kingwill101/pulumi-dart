@@ -1,36 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../provisioning_template_pre_provisioning_hook/provisioning_template_pre_provisioning_hook.dart';
 
 /// The set of arguments for ProvisioningTemplate.
 class ProvisioningTemplateArgs {
   /// The description of the fleet provisioning template.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// True to enable the fleet provisioning template, otherwise false.
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// The name of the fleet provisioning template.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a pre-provisioning hook template. Details below.
-  final Input<ProvisioningTemplatePreProvisioningHook>? preProvisioningHook;
+  final pulumi.Input<ProvisioningTemplatePreProvisioningHook>?
+      preProvisioningHook;
 
   /// The role ARN for the role associated with the fleet provisioning template. This IoT role grants permission to provision a device.
-  final Input<String> provisioningRoleArn;
+  final pulumi.Input<String> provisioningRoleArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The JSON formatted contents of the fleet provisioning template.
-  final Input<String> templateBody;
+  final pulumi.Input<String> templateBody;
 
   /// The type you define in a provisioning template.
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   ProvisioningTemplateArgs({
     this.description,
@@ -60,7 +61,7 @@ class ProvisioningTemplateArgs {
     }
     final preProvisioningHookValue = preProvisioningHook;
     if (preProvisioningHookValue != null) {
-      map['preProvisioningHook'] = Input.mapOptionalInputValue<
+      map['preProvisioningHook'] = pulumi.Input.mapOptionalInputValue<
               ProvisioningTemplatePreProvisioningHook, Map<String, dynamic>>(
           preProvisioningHookValue, (value) => value.toMap());
     }
@@ -83,17 +84,18 @@ class ProvisioningTemplateArgs {
 
   factory ProvisioningTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ProvisioningTemplateArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
-      name: Input.asOptionalInput<String>(map['name']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       preProvisioningHook:
-          Input.asOptionalInput<ProvisioningTemplatePreProvisioningHook>(
+          pulumi.Input.asOptionalInput<ProvisioningTemplatePreProvisioningHook>(
               map['preProvisioningHook']),
-      provisioningRoleArn: Input.asInput<String>(map['provisioningRoleArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      templateBody: Input.asInput<String>(map['templateBody']),
-      type: Input.asOptionalInput<String>(map['type']),
+      provisioningRoleArn:
+          pulumi.Input.asInput<String>(map['provisioningRoleArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      templateBody: pulumi.Input.asInput<String>(map['templateBody']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
     );
   }
 }

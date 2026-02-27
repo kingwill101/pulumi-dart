@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLogGroups.
 class GetLogGroupsArgs {
   /// Group prefix of the Cloudwatch log groups to list
-  final Input<String>? logGroupNamePrefix;
+  final pulumi.Input<String>? logGroupNamePrefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetLogGroupsArgs({
     this.logGroupNamePrefix,
@@ -31,8 +31,8 @@ class GetLogGroupsArgs {
   factory GetLogGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetLogGroupsArgs(
       logGroupNamePrefix:
-          Input.asOptionalInput<String>(map['logGroupNamePrefix']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['logGroupNamePrefix']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

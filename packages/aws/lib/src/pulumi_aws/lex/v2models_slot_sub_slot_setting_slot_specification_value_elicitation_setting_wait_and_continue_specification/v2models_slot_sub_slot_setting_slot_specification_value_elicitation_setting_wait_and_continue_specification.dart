@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_wait_and_continue_specification_continue_response/v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_wait_and_continue_specification_continue_response.dart';
 import '../v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_wait_and_continue_specification_still_waiting_response/v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_wait_and_continue_specification_still_waiting_response.dart';
 import '../v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_wait_and_continue_specification_waiting_response/v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_wait_and_continue_specification_waiting_response.dart';
@@ -44,21 +44,21 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndC
     }
     final continueResponsesValue = continueResponses;
     if (continueResponsesValue != null) {
-      map['continueResponses'] = Input.encodeList<
+      map['continueResponses'] = pulumi.Input.encodeList<
           V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponse,
           Map<String,
               dynamic>>(continueResponsesValue, (value) => value.toMap());
     }
     final stillWaitingResponsesValue = stillWaitingResponses;
     if (stillWaitingResponsesValue != null) {
-      map['stillWaitingResponses'] = Input.encodeList<
+      map['stillWaitingResponses'] = pulumi.Input.encodeList<
           V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse,
           Map<String,
               dynamic>>(stillWaitingResponsesValue, (value) => value.toMap());
     }
     final waitingResponsesValue = waitingResponses;
     if (waitingResponsesValue != null) {
-      map['waitingResponses'] = Input.encodeList<
+      map['waitingResponses'] = pulumi.Input.encodeList<
           V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationWaitingResponse,
           Map<String,
               dynamic>>(waitingResponsesValue, (value) => value.toMap());
@@ -72,7 +72,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndC
       active: map['active'] == null ? null : map['active'] as bool,
       continueResponses: map['continueResponses'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponse>(
               map['continueResponses'],
               (value) =>
@@ -80,7 +80,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndC
                       .fromMap((value as Map).cast<String, dynamic>())),
       stillWaitingResponses: map['stillWaitingResponses'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse>(
               map['stillWaitingResponses'],
               (value) =>
@@ -88,7 +88,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndC
                       .fromMap((value as Map).cast<String, dynamic>())),
       waitingResponses: map['waitingResponses'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationWaitingResponse>(
               map['waitingResponses'],
               (value) =>

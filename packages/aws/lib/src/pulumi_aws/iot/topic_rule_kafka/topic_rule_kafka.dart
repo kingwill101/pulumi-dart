@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../topic_rule_kafka_header/topic_rule_kafka_header.dart';
 
 class TopicRuleKafka {
@@ -38,7 +38,7 @@ class TopicRuleKafka {
     final headersValue = headers;
     if (headersValue != null) {
       map['headers'] =
-          Input.encodeList<TopicRuleKafkaHeader, Map<String, dynamic>>(
+          pulumi.Input.encodeList<TopicRuleKafkaHeader, Map<String, dynamic>>(
               headersValue, (value) => value.toMap());
     }
     final keyValue = key;
@@ -59,7 +59,7 @@ class TopicRuleKafka {
       destinationArn: map['destinationArn'] as String,
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<TopicRuleKafkaHeader>(
+          : pulumi.Input.decodeList<TopicRuleKafkaHeader>(
               map['headers'],
               (value) => TopicRuleKafkaHeader.fromMap(
                   (value as Map).cast<String, dynamic>())),

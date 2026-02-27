@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_vpc_args.dart';
 
 /// Provides a resource to manage the [default AWS VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html)
@@ -26,48 +26,48 @@ import 'default_vpc_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/defaultVpc:DefaultVpc default vpc-a01106c2
 /// ```
-class DefaultVpc extends CustomResource {
-  late final Output<String> arn;
-  late final Output<bool?> assignGeneratedIpv6CidrBlock;
+class DefaultVpc extends pulumi.CustomResource {
+  late final pulumi.Output<String> arn;
+  late final pulumi.Output<bool?> assignGeneratedIpv6CidrBlock;
 
   /// The primary IPv4 CIDR block for the VPC
-  late final Output<String> cidrBlock;
-  late final Output<String> defaultNetworkAclId;
-  late final Output<String> defaultRouteTableId;
-  late final Output<String> defaultSecurityGroupId;
-  late final Output<String> dhcpOptionsId;
-  late final Output<bool?> enableDnsHostnames;
-  late final Output<bool?> enableDnsSupport;
-  late final Output<bool> enableNetworkAddressUsageMetrics;
-  late final Output<bool> existingDefaultVpc;
+  late final pulumi.Output<String> cidrBlock;
+  late final pulumi.Output<String> defaultNetworkAclId;
+  late final pulumi.Output<String> defaultRouteTableId;
+  late final pulumi.Output<String> defaultSecurityGroupId;
+  late final pulumi.Output<String> dhcpOptionsId;
+  late final pulumi.Output<bool?> enableDnsHostnames;
+  late final pulumi.Output<bool?> enableDnsSupport;
+  late final pulumi.Output<bool> enableNetworkAddressUsageMetrics;
+  late final pulumi.Output<bool> existingDefaultVpc;
 
   /// Whether destroying the resource deletes the default VPC. Default: `false`
-  late final Output<bool?> forceDestroy;
+  late final pulumi.Output<bool?> forceDestroy;
 
   /// The allowed tenancy of instances launched into the VPC
-  late final Output<String> instanceTenancy;
-  late final Output<String> ipv6AssociationId;
-  late final Output<String> ipv6CidrBlock;
-  late final Output<String> ipv6CidrBlockNetworkBorderGroup;
-  late final Output<String?> ipv6IpamPoolId;
-  late final Output<int?> ipv6NetmaskLength;
-  late final Output<String> mainRouteTableId;
-  late final Output<String> ownerId;
+  late final pulumi.Output<String> instanceTenancy;
+  late final pulumi.Output<String> ipv6AssociationId;
+  late final pulumi.Output<String> ipv6CidrBlock;
+  late final pulumi.Output<String> ipv6CidrBlockNetworkBorderGroup;
+  late final pulumi.Output<String?> ipv6IpamPoolId;
+  late final pulumi.Output<int?> ipv6NetmaskLength;
+  late final pulumi.Output<String> mainRouteTableId;
+  late final pulumi.Output<String> ownerId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  late final Output<String> region;
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   DefaultVpc(
     String name, {
     DefaultVpcArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/defaultVpc:DefaultVpc',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.assignGeneratedIpv6CidrBlock =

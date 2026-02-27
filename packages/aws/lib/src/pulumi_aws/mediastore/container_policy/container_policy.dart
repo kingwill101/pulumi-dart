@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'container_policy_args.dart';
 
 /// Provides a MediaStore Container Policy.
@@ -18,25 +18,25 @@ import 'container_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:mediastore/containerPolicy:ContainerPolicy example example
 /// ```
-class ContainerPolicy extends CustomResource {
+class ContainerPolicy extends pulumi.CustomResource {
   /// The name of the container.
-  late final Output<String> containerName;
+  late final pulumi.Output<String> containerName;
 
   /// The contents of the policy.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ContainerPolicy(
     String name, {
     ContainerPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:mediastore/containerPolicy:ContainerPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.containerName = registerOutput<String>('containerName');
     this.policy = registerOutput<String>('policy');

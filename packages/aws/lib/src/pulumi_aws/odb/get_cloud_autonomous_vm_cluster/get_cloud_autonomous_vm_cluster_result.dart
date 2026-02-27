@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_autonomous_vm_cluster_maintenance_window/get_cloud_autonomous_vm_cluster_maintenance_window.dart';
 
 /// Result data returned by getCloudAutonomousVmCluster.
@@ -244,7 +244,7 @@ class GetCloudAutonomousVmClusterResult {
     map['id'] = id;
     map['isMtlsEnabledVmCluster'] = isMtlsEnabledVmCluster;
     map['licenseModel'] = licenseModel;
-    map['maintenanceWindows'] = Input.encodeList<
+    map['maintenanceWindows'] = pulumi.Input.encodeList<
         GetCloudAutonomousVmClusterMaintenanceWindow,
         Map<String, dynamic>>(maintenanceWindows, (value) => value.toMap());
     map['maxAcdsLowestScaledValue'] = maxAcdsLowestScaledValue;
@@ -315,7 +315,7 @@ class GetCloudAutonomousVmClusterResult {
       isMtlsEnabledVmCluster: map['isMtlsEnabledVmCluster'] as bool,
       licenseModel: map['licenseModel'] as String,
       maintenanceWindows:
-          Input.decodeList<GetCloudAutonomousVmClusterMaintenanceWindow>(
+          pulumi.Input.decodeList<GetCloudAutonomousVmClusterMaintenanceWindow>(
               map['maintenanceWindows'],
               (value) => GetCloudAutonomousVmClusterMaintenanceWindow.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scheduled_query_last_run_summary_query_insights_response_query_spatial_coverage_maxis/scheduled_query_last_run_summary_query_insights_response_query_spatial_coverage_maxis.dart';
 
 class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage {
@@ -17,7 +17,7 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage {
     final map = <String, dynamic>{};
     final maxesValue = maxes;
     if (maxesValue != null) {
-      map['maxes'] = Input.encodeList<
+      map['maxes'] = pulumi.Input.encodeList<
           ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis,
           Map<String, dynamic>>(maxesValue, (value) => value.toMap());
     }
@@ -29,7 +29,7 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage {
     return ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage(
       maxes: map['maxes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis>(
               map['maxes'],
               (value) =>

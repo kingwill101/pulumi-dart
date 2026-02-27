@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getMap.
 class GetMapArgs {
   /// Name of the map resource.
-  final Input<String> mapName;
+  final pulumi.Input<String> mapName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags for the map.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetMapArgs({
     required this.mapName,
@@ -35,9 +35,9 @@ class GetMapArgs {
 
   factory GetMapArgs.fromMap(Map<String, dynamic> map) {
     return GetMapArgs(
-      mapName: Input.asInput<String>(map['mapName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      mapName: pulumi.Input.asInput<String>(map['mapName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

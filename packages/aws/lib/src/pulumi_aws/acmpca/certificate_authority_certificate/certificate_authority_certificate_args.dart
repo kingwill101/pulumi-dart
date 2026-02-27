@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for CertificateAuthorityCertificate.
 class CertificateAuthorityCertificateArgs {
   /// PEM-encoded certificate for the Certificate Authority.
-  final Input<String> certificate;
+  final pulumi.Input<String> certificate;
 
   /// ARN of the Certificate Authority.
-  final Input<String> certificateAuthorityArn;
+  final pulumi.Input<String> certificateAuthorityArn;
 
   /// PEM-encoded certificate chain that includes any intermediate certificates and chains up to root CA. Required for subordinate Certificate Authorities. Not allowed for root Certificate Authorities.
-  final Input<String>? certificateChain;
+  final pulumi.Input<String>? certificateChain;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   CertificateAuthorityCertificateArgs({
     required this.certificate,
@@ -41,11 +41,12 @@ class CertificateAuthorityCertificateArgs {
   factory CertificateAuthorityCertificateArgs.fromMap(
       Map<String, dynamic> map) {
     return CertificateAuthorityCertificateArgs(
-      certificate: Input.asInput<String>(map['certificate']),
+      certificate: pulumi.Input.asInput<String>(map['certificate']),
       certificateAuthorityArn:
-          Input.asInput<String>(map['certificateAuthorityArn']),
-      certificateChain: Input.asOptionalInput<String>(map['certificateChain']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asInput<String>(map['certificateAuthorityArn']),
+      certificateChain:
+          pulumi.Input.asOptionalInput<String>(map['certificateChain']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

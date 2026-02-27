@@ -1,33 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_protection_settings_inline_redaction_configuration/data_protection_settings_inline_redaction_configuration.dart';
 
 /// The set of arguments for DataProtectionSettings.
 class DataProtectionSettingsArgs {
   /// Additional encryption context for the data protection settings.
-  final Input<Map<String, String>>? additionalEncryptionContext;
+  final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
 
   /// ARN of the customer managed KMS key.
-  final Input<String>? customerManagedKey;
+  final pulumi.Input<String>? customerManagedKey;
 
   /// The description of the data protection settings.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The display name of the data protection settings.
   ///
   /// The following arguments are optional:
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// The inline redaction configuration of the data protection settings. Detailed below.
-  final Input<DataProtectionSettingsInlineRedactionConfiguration>?
+  final pulumi.Input<DataProtectionSettingsInlineRedactionConfiguration>?
       inlineRedactionConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   DataProtectionSettingsArgs({
     this.additionalEncryptionContext,
@@ -56,7 +56,7 @@ class DataProtectionSettingsArgs {
     map['displayName'] = displayName;
     final inlineRedactionConfigurationValue = inlineRedactionConfiguration;
     if (inlineRedactionConfigurationValue != null) {
-      map['inlineRedactionConfiguration'] = Input.mapOptionalInputValue<
+      map['inlineRedactionConfiguration'] = pulumi.Input.mapOptionalInputValue<
               DataProtectionSettingsInlineRedactionConfiguration,
               Map<String, dynamic>>(
           inlineRedactionConfigurationValue, (value) => value.toMap());
@@ -74,17 +74,18 @@ class DataProtectionSettingsArgs {
 
   factory DataProtectionSettingsArgs.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsArgs(
-      additionalEncryptionContext: Input.asOptionalInput<Map<String, String>>(
-          map['additionalEncryptionContext']),
+      additionalEncryptionContext:
+          pulumi.Input.asOptionalInput<Map<String, String>>(
+              map['additionalEncryptionContext']),
       customerManagedKey:
-          Input.asOptionalInput<String>(map['customerManagedKey']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
-      inlineRedactionConfiguration: Input.asOptionalInput<
+          pulumi.Input.asOptionalInput<String>(map['customerManagedKey']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      inlineRedactionConfiguration: pulumi.Input.asOptionalInput<
               DataProtectionSettingsInlineRedactionConfiguration>(
           map['inlineRedactionConfiguration']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

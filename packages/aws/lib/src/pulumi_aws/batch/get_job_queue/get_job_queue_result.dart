@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_queue_compute_environment_order/get_job_queue_compute_environment_order.dart';
 import '../get_job_queue_job_state_time_limit_action/get_job_queue_job_state_time_limit_action.dart';
 
@@ -65,11 +65,11 @@ class GetJobQueueResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['computeEnvironmentOrders'] = Input.encodeList<
+    map['computeEnvironmentOrders'] = pulumi.Input.encodeList<
             GetJobQueueComputeEnvironmentOrder, Map<String, dynamic>>(
         computeEnvironmentOrders, (value) => value.toMap());
     map['id'] = id;
-    map['jobStateTimeLimitActions'] = Input.encodeList<
+    map['jobStateTimeLimitActions'] = pulumi.Input.encodeList<
             GetJobQueueJobStateTimeLimitAction, Map<String, dynamic>>(
         jobStateTimeLimitActions, (value) => value.toMap());
     map['name'] = name;
@@ -87,13 +87,13 @@ class GetJobQueueResult {
     return GetJobQueueResult(
       arn: map['arn'] as String,
       computeEnvironmentOrders:
-          Input.decodeList<GetJobQueueComputeEnvironmentOrder>(
+          pulumi.Input.decodeList<GetJobQueueComputeEnvironmentOrder>(
               map['computeEnvironmentOrders'],
               (value) => GetJobQueueComputeEnvironmentOrder.fromMap(
                   (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       jobStateTimeLimitActions:
-          Input.decodeList<GetJobQueueJobStateTimeLimitAction>(
+          pulumi.Input.decodeList<GetJobQueueJobStateTimeLimitAction>(
               map['jobStateTimeLimitActions'],
               (value) => GetJobQueueJobStateTimeLimitAction.fromMap(
                   (value as Map).cast<String, dynamic>())),

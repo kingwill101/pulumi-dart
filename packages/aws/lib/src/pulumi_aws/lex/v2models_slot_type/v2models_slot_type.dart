@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_slot_type_composite_slot_type_setting/v2models_slot_type_composite_slot_type_setting.dart';
 import '../v2models_slot_type_external_source_setting/v2models_slot_type_external_source_setting.dart';
 import '../v2models_slot_type_slot_type_value/v2models_slot_type_slot_type_value.dart';
@@ -25,66 +25,66 @@ import 'v2models_slot_type_args.dart';
 /// ```sh
 /// $ pulumi import aws:lex/v2modelsSlotType:V2modelsSlotType example bot-1234,DRAFT,en_US,slot_type-id-12345678
 /// ```
-class V2modelsSlotType extends CustomResource {
+class V2modelsSlotType extends pulumi.CustomResource {
   /// Identifier of the bot associated with this slot type.
-  late final Output<String> botId;
+  late final pulumi.Output<String> botId;
 
   /// Version of the bot associated with this slot type.
-  late final Output<String> botVersion;
+  late final pulumi.Output<String> botVersion;
 
   /// Specifications for a composite slot type.
   /// See `composite_slot_type_setting` argument reference below.
-  late final Output<List<V2modelsSlotTypeCompositeSlotTypeSetting>?>
+  late final pulumi.Output<List<V2modelsSlotTypeCompositeSlotTypeSetting>?>
       compositeSlotTypeSettings;
 
   /// Description of the slot type.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Type of external information used to create the slot type.
   /// See `external_source_setting` argument reference below.
-  late final Output<List<V2modelsSlotTypeExternalSourceSetting>?>
+  late final pulumi.Output<List<V2modelsSlotTypeExternalSourceSetting>?>
       externalSourceSettings;
 
   /// Identifier of the language and locale where this slot type is used.
   /// All of the bots, slot types, and slots used by the intent must have the same locale.
-  late final Output<String> localeId;
+  late final pulumi.Output<String> localeId;
 
   /// Name of the slot type.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Built-in slot type used as a parent of this slot type.
   /// When you define a parent slot type, the new slot type has the configuration of the parent slot type.
   /// Only `AMAZON.AlphaNumeric` is supported.
-  late final Output<String?> parentSlotTypeSignature;
+  late final pulumi.Output<String?> parentSlotTypeSignature;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Unique identifier for the slot type.
-  late final Output<String> slotTypeId;
+  late final pulumi.Output<String> slotTypeId;
 
   /// List of SlotTypeValue objects that defines the values that the slot type can take.
   /// Each value can have a list of synonyms, additional values that help train the machine learning model about the values that it resolves for a slot.
   /// See `slot_type_values` argument reference below.
-  late final Output<List<V2modelsSlotTypeSlotTypeValue>?> slotTypeValues;
-  late final Output<V2modelsSlotTypeTimeouts?> timeouts;
+  late final pulumi.Output<List<V2modelsSlotTypeSlotTypeValue>?> slotTypeValues;
+  late final pulumi.Output<V2modelsSlotTypeTimeouts?> timeouts;
 
   /// Determines the strategy that Amazon Lex uses to select a value from the list of possible values.
   /// See `value_selection_setting` argument reference below.
-  late final Output<V2modelsSlotTypeValueSelectionSetting?>
+  late final pulumi.Output<V2modelsSlotTypeValueSelectionSetting?>
       valueSelectionSetting;
 
   V2modelsSlotType(
     String name, {
     V2modelsSlotTypeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lex/v2modelsSlotType:V2modelsSlotType',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.botId = registerOutput<String>('botId');
     this.botVersion = registerOutput<String>('botVersion');

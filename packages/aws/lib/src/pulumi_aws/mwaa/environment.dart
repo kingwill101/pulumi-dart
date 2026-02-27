@@ -1,4 +1,4 @@
 library module_mwaa_environment;
 
-export 'environment/environment5.dart';
-export 'environment/environment_args5.dart';
+export 'environment/environment_mwaa.dart';
+export 'environment/environment_mwaa_args.dart';

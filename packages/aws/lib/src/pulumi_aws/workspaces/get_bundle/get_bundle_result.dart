@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bundle_compute_type/get_bundle_compute_type.dart';
 import '../get_bundle_root_storage/get_bundle_root_storage.dart';
 import '../get_bundle_user_storage/get_bundle_user_storage.dart';
@@ -51,7 +51,7 @@ class GetBundleResult {
       map['bundleId'] = bundleIdValue;
     }
     map['computeTypes'] =
-        Input.encodeList<GetBundleComputeType, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBundleComputeType, Map<String, dynamic>>(
             computeTypes, (value) => value.toMap());
     map['description'] = description;
     map['id'] = id;
@@ -65,10 +65,10 @@ class GetBundleResult {
     }
     map['region'] = region;
     map['rootStorages'] =
-        Input.encodeList<GetBundleRootStorage, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBundleRootStorage, Map<String, dynamic>>(
             rootStorages, (value) => value.toMap());
     map['userStorages'] =
-        Input.encodeList<GetBundleUserStorage, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBundleUserStorage, Map<String, dynamic>>(
             userStorages, (value) => value.toMap());
     return map;
   }
@@ -76,7 +76,7 @@ class GetBundleResult {
   factory GetBundleResult.fromMap(Map<String, dynamic> map) {
     return GetBundleResult(
       bundleId: map['bundleId'] == null ? null : map['bundleId'] as String,
-      computeTypes: Input.decodeList<GetBundleComputeType>(
+      computeTypes: pulumi.Input.decodeList<GetBundleComputeType>(
           map['computeTypes'],
           (value) => GetBundleComputeType.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -85,11 +85,11 @@ class GetBundleResult {
       name: map['name'] == null ? null : map['name'] as String,
       owner: map['owner'] == null ? null : map['owner'] as String,
       region: map['region'] as String,
-      rootStorages: Input.decodeList<GetBundleRootStorage>(
+      rootStorages: pulumi.Input.decodeList<GetBundleRootStorage>(
           map['rootStorages'],
           (value) => GetBundleRootStorage.fromMap(
               (value as Map).cast<String, dynamic>())),
-      userStorages: Input.decodeList<GetBundleUserStorage>(
+      userStorages: pulumi.Input.decodeList<GetBundleUserStorage>(
           map['userStorages'],
           (value) => GetBundleUserStorage.fromMap(
               (value as Map).cast<String, dynamic>())),

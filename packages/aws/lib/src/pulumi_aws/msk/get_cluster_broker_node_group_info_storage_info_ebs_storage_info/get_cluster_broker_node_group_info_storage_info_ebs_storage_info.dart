@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_broker_node_group_info_storage_info_ebs_storage_info_provisioned_throughput/get_cluster_broker_node_group_info_storage_info_ebs_storage_info_provisioned_throughput.dart';
 
 class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
@@ -16,7 +16,7 @@ class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['provisionedThroughputs'] = Input.encodeList<
+    map['provisionedThroughputs'] = pulumi.Input.encodeList<
         GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput,
         Map<String, dynamic>>(provisionedThroughputs, (value) => value.toMap());
     map['volumeSize'] = volumeSize;
@@ -26,7 +26,7 @@ class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
   factory GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo.fromMap(
       Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo(
-      provisionedThroughputs: Input.decodeList<
+      provisionedThroughputs: pulumi.Input.decodeList<
               GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput>(
           map['provisionedThroughputs'],
           (value) =>

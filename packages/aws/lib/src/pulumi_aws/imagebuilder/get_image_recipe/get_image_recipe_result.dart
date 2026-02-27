@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_image_recipe_block_device_mapping/get_image_recipe_block_device_mapping.dart';
 import '../get_image_recipe_component/get_image_recipe_component.dart';
 
@@ -73,11 +73,11 @@ class GetImageRecipeResult {
     final map = <String, dynamic>{};
     map['amiTags'] = amiTags;
     map['arn'] = arn;
-    map['blockDeviceMappings'] = Input.encodeList<
+    map['blockDeviceMappings'] = pulumi.Input.encodeList<
         GetImageRecipeBlockDeviceMapping,
         Map<String, dynamic>>(blockDeviceMappings, (value) => value.toMap());
     map['components'] =
-        Input.encodeList<GetImageRecipeComponent, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetImageRecipeComponent, Map<String, dynamic>>(
             components, (value) => value.toMap());
     map['dateCreated'] = dateCreated;
     map['description'] = description;
@@ -98,11 +98,12 @@ class GetImageRecipeResult {
     return GetImageRecipeResult(
       amiTags: (map['amiTags'] as Map).cast<String, String>(),
       arn: map['arn'] as String,
-      blockDeviceMappings: Input.decodeList<GetImageRecipeBlockDeviceMapping>(
-          map['blockDeviceMappings'],
-          (value) => GetImageRecipeBlockDeviceMapping.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      components: Input.decodeList<GetImageRecipeComponent>(
+      blockDeviceMappings:
+          pulumi.Input.decodeList<GetImageRecipeBlockDeviceMapping>(
+              map['blockDeviceMappings'],
+              (value) => GetImageRecipeBlockDeviceMapping.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      components: pulumi.Input.decodeList<GetImageRecipeComponent>(
           map['components'],
           (value) => GetImageRecipeComponent.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_gateway_spec_backend_default_client_policy_tl_certificate_file/get_virtual_gateway_spec_backend_default_client_policy_tl_certificate_file.dart';
 import '../get_virtual_gateway_spec_backend_default_client_policy_tl_certificate_sd/get_virtual_gateway_spec_backend_default_client_policy_tl_certificate_sd.dart';
 
@@ -17,10 +17,10 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['files'] = Input.encodeList<
+    map['files'] = pulumi.Input.encodeList<
         GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile,
         Map<String, dynamic>>(files, (value) => value.toMap());
-    map['sds'] = Input.encodeList<
+    map['sds'] = pulumi.Input.encodeList<
         GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd,
         Map<String, dynamic>>(sds, (value) => value.toMap());
     return map;
@@ -29,13 +29,13 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate {
   factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate.fromMap(
       Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate(
-      files: Input.decodeList<
+      files: pulumi.Input.decodeList<
               GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile>(
           map['files'],
           (value) =>
               GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateFile
                   .fromMap((value as Map).cast<String, dynamic>())),
-      sds: Input.decodeList<
+      sds: pulumi.Input.decodeList<
               GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd>(
           map['sds'],
           (value) =>

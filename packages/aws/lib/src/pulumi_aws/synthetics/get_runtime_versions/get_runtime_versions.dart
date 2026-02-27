@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_runtime_versions_args.dart';
 import 'get_runtime_versions_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_runtime_versions_result.dart';
 /// ### Basic Usage
 Future<GetRuntimeVersionsResult> getRuntimeVersions(
   GetRuntimeVersionsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:synthetics/getRuntimeVersions:getRuntimeVersions',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRuntimeVersionsResult.fromMap(result);
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_distribution_configuration_distribution_ami_distribution_configuration/get_distribution_configuration_distribution_ami_distribution_configuration.dart';
 import '../get_distribution_configuration_distribution_container_distribution_configuration/get_distribution_configuration_distribution_container_distribution_configuration.dart';
 import '../get_distribution_configuration_distribution_fast_launch_configuration/get_distribution_configuration_distribution_fast_launch_configuration.dart';
@@ -55,28 +55,28 @@ class GetDistributionConfigurationDistribution {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['amiDistributionConfigurations'] = Input.encodeList<
+    map['amiDistributionConfigurations'] = pulumi.Input.encodeList<
         GetDistributionConfigurationDistributionAmiDistributionConfiguration,
         Map<String,
             dynamic>>(amiDistributionConfigurations, (value) => value.toMap());
-    map['containerDistributionConfigurations'] = Input.encodeList<
+    map['containerDistributionConfigurations'] = pulumi.Input.encodeList<
             GetDistributionConfigurationDistributionContainerDistributionConfiguration,
             Map<String, dynamic>>(
         containerDistributionConfigurations, (value) => value.toMap());
-    map['fastLaunchConfigurations'] = Input.encodeList<
+    map['fastLaunchConfigurations'] = pulumi.Input.encodeList<
             GetDistributionConfigurationDistributionFastLaunchConfiguration,
             Map<String, dynamic>>(
         fastLaunchConfigurations, (value) => value.toMap());
-    map['launchTemplateConfigurations'] = Input.encodeList<
+    map['launchTemplateConfigurations'] = pulumi.Input.encodeList<
             GetDistributionConfigurationDistributionLaunchTemplateConfiguration,
             Map<String, dynamic>>(
         launchTemplateConfigurations, (value) => value.toMap());
     map['licenseConfigurationArns'] = licenseConfigurationArns;
     map['region'] = region;
-    map['s3ExportConfigurations'] = Input.encodeList<
+    map['s3ExportConfigurations'] = pulumi.Input.encodeList<
         GetDistributionConfigurationDistributionS3ExportConfiguration,
         Map<String, dynamic>>(s3ExportConfigurations, (value) => value.toMap());
-    map['ssmParameterConfigurations'] = Input.encodeList<
+    map['ssmParameterConfigurations'] = pulumi.Input.encodeList<
             GetDistributionConfigurationDistributionSsmParameterConfiguration,
             Map<String, dynamic>>(
         ssmParameterConfigurations, (value) => value.toMap());
@@ -86,25 +86,25 @@ class GetDistributionConfigurationDistribution {
   factory GetDistributionConfigurationDistribution.fromMap(
       Map<String, dynamic> map) {
     return GetDistributionConfigurationDistribution(
-      amiDistributionConfigurations: Input.decodeList<
+      amiDistributionConfigurations: pulumi.Input.decodeList<
               GetDistributionConfigurationDistributionAmiDistributionConfiguration>(
           map['amiDistributionConfigurations'],
           (value) =>
               GetDistributionConfigurationDistributionAmiDistributionConfiguration
                   .fromMap((value as Map).cast<String, dynamic>())),
-      containerDistributionConfigurations: Input.decodeList<
+      containerDistributionConfigurations: pulumi.Input.decodeList<
               GetDistributionConfigurationDistributionContainerDistributionConfiguration>(
           map['containerDistributionConfigurations'],
           (value) =>
               GetDistributionConfigurationDistributionContainerDistributionConfiguration
                   .fromMap((value as Map).cast<String, dynamic>())),
-      fastLaunchConfigurations: Input.decodeList<
+      fastLaunchConfigurations: pulumi.Input.decodeList<
               GetDistributionConfigurationDistributionFastLaunchConfiguration>(
           map['fastLaunchConfigurations'],
           (value) =>
               GetDistributionConfigurationDistributionFastLaunchConfiguration
                   .fromMap((value as Map).cast<String, dynamic>())),
-      launchTemplateConfigurations: Input.decodeList<
+      launchTemplateConfigurations: pulumi.Input.decodeList<
               GetDistributionConfigurationDistributionLaunchTemplateConfiguration>(
           map['launchTemplateConfigurations'],
           (value) =>
@@ -113,13 +113,13 @@ class GetDistributionConfigurationDistribution {
       licenseConfigurationArns:
           (map['licenseConfigurationArns'] as List).cast<String>(),
       region: map['region'] as String,
-      s3ExportConfigurations: Input.decodeList<
+      s3ExportConfigurations: pulumi.Input.decodeList<
               GetDistributionConfigurationDistributionS3ExportConfiguration>(
           map['s3ExportConfigurations'],
           (value) =>
               GetDistributionConfigurationDistributionS3ExportConfiguration
                   .fromMap((value as Map).cast<String, dynamic>())),
-      ssmParameterConfigurations: Input.decodeList<
+      ssmParameterConfigurations: pulumi.Input.decodeList<
               GetDistributionConfigurationDistributionSsmParameterConfiguration>(
           map['ssmParameterConfigurations'],
           (value) =>

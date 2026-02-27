@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_distribution_tenant_customization/get_distribution_tenant_customization.dart';
 import '../get_distribution_tenant_domain/get_distribution_tenant_domain.dart';
 import '../get_distribution_tenant_managed_certificate_request/get_distribution_tenant_managed_certificate_request.dart';
@@ -61,27 +61,26 @@ class GetDistributionTenantResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['connectionGroupId'] = connectionGroupId;
-    map['customizations'] = Input.encodeList<GetDistributionTenantCustomization,
+    map['customizations'] = pulumi.Input.encodeList<
+        GetDistributionTenantCustomization,
         Map<String, dynamic>>(customizations, (value) => value.toMap());
     map['distributionId'] = distributionId;
     final domainValue = domain;
     if (domainValue != null) {
       map['domain'] = domainValue;
     }
-    map['domains'] =
-        Input.encodeList<GetDistributionTenantDomain, Map<String, dynamic>>(
-            domains, (value) => value.toMap());
+    map['domains'] = pulumi.Input.encodeList<GetDistributionTenantDomain,
+        Map<String, dynamic>>(domains, (value) => value.toMap());
     map['enabled'] = enabled;
     map['etag'] = etag;
     map['id'] = id;
-    map['managedCertificateRequests'] = Input.encodeList<
+    map['managedCertificateRequests'] = pulumi.Input.encodeList<
             GetDistributionTenantManagedCertificateRequest,
             Map<String, dynamic>>(
         managedCertificateRequests, (value) => value.toMap());
     map['name'] = name;
-    map['parameters'] =
-        Input.encodeList<GetDistributionTenantParameter, Map<String, dynamic>>(
-            parameters, (value) => value.toMap());
+    map['parameters'] = pulumi.Input.encodeList<GetDistributionTenantParameter,
+        Map<String, dynamic>>(parameters, (value) => value.toMap());
     map['status'] = status;
     map['tags'] = tags;
     return map;
@@ -91,26 +90,27 @@ class GetDistributionTenantResult {
     return GetDistributionTenantResult(
       arn: map['arn'] as String,
       connectionGroupId: map['connectionGroupId'] as String,
-      customizations: Input.decodeList<GetDistributionTenantCustomization>(
-          map['customizations'],
-          (value) => GetDistributionTenantCustomization.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      customizations:
+          pulumi.Input.decodeList<GetDistributionTenantCustomization>(
+              map['customizations'],
+              (value) => GetDistributionTenantCustomization.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       distributionId: map['distributionId'] as String,
       domain: map['domain'] == null ? null : map['domain'] as String,
-      domains: Input.decodeList<GetDistributionTenantDomain>(
+      domains: pulumi.Input.decodeList<GetDistributionTenantDomain>(
           map['domains'],
           (value) => GetDistributionTenantDomain.fromMap(
               (value as Map).cast<String, dynamic>())),
       enabled: map['enabled'] as bool,
       etag: map['etag'] as String,
       id: map['id'] as String,
-      managedCertificateRequests:
-          Input.decodeList<GetDistributionTenantManagedCertificateRequest>(
-              map['managedCertificateRequests'],
-              (value) => GetDistributionTenantManagedCertificateRequest.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      managedCertificateRequests: pulumi.Input.decodeList<
+              GetDistributionTenantManagedCertificateRequest>(
+          map['managedCertificateRequests'],
+          (value) => GetDistributionTenantManagedCertificateRequest.fromMap(
+              (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      parameters: Input.decodeList<GetDistributionTenantParameter>(
+      parameters: pulumi.Input.decodeList<GetDistributionTenantParameter>(
           map['parameters'],
           (value) => GetDistributionTenantParameter.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_iam_roles_args.dart';
 
 /// Provides a Redshift Cluster IAM Roles resource.
@@ -16,28 +16,28 @@ import 'cluster_iam_roles_args.dart';
 /// ```sh
 /// $ pulumi import aws:redshift/clusterIamRoles:ClusterIamRoles examplegroup1 example
 /// ```
-class ClusterIamRoles extends CustomResource {
+class ClusterIamRoles extends pulumi.CustomResource {
   /// The name of the Redshift Cluster IAM Roles.
-  late final Output<String> clusterIdentifier;
+  late final pulumi.Output<String> clusterIdentifier;
 
   /// The Amazon Resource Name (ARN) for the IAM role that was set as default for the cluster when the cluster was created.
-  late final Output<String> defaultIamRoleArn;
+  late final pulumi.Output<String> defaultIamRoleArn;
 
   /// A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
-  late final Output<List<String>> iamRoleArns;
+  late final pulumi.Output<List<String>> iamRoleArns;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ClusterIamRoles(
     String name, {
     ClusterIamRolesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:redshift/clusterIamRoles:ClusterIamRoles',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
     this.defaultIamRoleArn = registerOutput<String>('defaultIamRoleArn');

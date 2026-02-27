@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lambda_function_association_args.dart';
 
 /// Provides an Amazon Connect Lambda Function Association. For more information see
@@ -15,25 +15,25 @@ import 'lambda_function_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:connect/lambdaFunctionAssociation:LambdaFunctionAssociation example aaaaaaaa-bbbb-cccc-dddd-111111111111,arn:aws:lambda:us-west-2:123456789123:function:example
 /// ```
-class LambdaFunctionAssociation extends CustomResource {
+class LambdaFunctionAssociation extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the Lambda Function, omitting any version or alias qualifier.
-  late final Output<String> functionArn;
+  late final pulumi.Output<String> functionArn;
 
   /// The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
-  late final Output<String> instanceId;
+  late final pulumi.Output<String> instanceId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   LambdaFunctionAssociation(
     String name, {
     LambdaFunctionAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:connect/lambdaFunctionAssociation:LambdaFunctionAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.functionArn = registerOutput<String>('functionArn');
     this.instanceId = registerOutput<String>('instanceId');

@@ -1,3 +1,3 @@
 library module_lb_get_listener_default_action_jwt_validation;
 
-export 'get_listener_default_action_jwt_validation/get_listener_default_action_jwt_validation2.dart';
+export 'get_listener_default_action_jwt_validation/get_listener_default_action_jwt_validation_lb.dart';

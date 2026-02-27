@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../automation_rule_criteria_aws_account_id/automation_rule_criteria_aws_account_id.dart';
 import '../automation_rule_criteria_aws_account_name/automation_rule_criteria_aws_account_name.dart';
 import '../automation_rule_criteria_company_name/automation_rule_criteria_company_name.dart';
@@ -205,221 +205,231 @@ class AutomationRuleCriteria {
     final map = <String, dynamic>{};
     final awsAccountIdsValue = awsAccountIds;
     if (awsAccountIdsValue != null) {
-      map['awsAccountIds'] = Input.encodeList<
+      map['awsAccountIds'] = pulumi.Input.encodeList<
           AutomationRuleCriteriaAwsAccountId,
           Map<String, dynamic>>(awsAccountIdsValue, (value) => value.toMap());
     }
     final awsAccountNamesValue = awsAccountNames;
     if (awsAccountNamesValue != null) {
-      map['awsAccountNames'] = Input.encodeList<
+      map['awsAccountNames'] = pulumi.Input.encodeList<
           AutomationRuleCriteriaAwsAccountName,
           Map<String, dynamic>>(awsAccountNamesValue, (value) => value.toMap());
     }
     final companyNamesValue = companyNames;
     if (companyNamesValue != null) {
-      map['companyNames'] = Input.encodeList<AutomationRuleCriteriaCompanyName,
+      map['companyNames'] = pulumi.Input.encodeList<
+          AutomationRuleCriteriaCompanyName,
           Map<String, dynamic>>(companyNamesValue, (value) => value.toMap());
     }
     final complianceAssociatedStandardsIdsValue =
         complianceAssociatedStandardsIds;
     if (complianceAssociatedStandardsIdsValue != null) {
-      map['complianceAssociatedStandardsIds'] = Input.encodeList<
+      map['complianceAssociatedStandardsIds'] = pulumi.Input.encodeList<
               AutomationRuleCriteriaComplianceAssociatedStandardsId,
               Map<String, dynamic>>(
           complianceAssociatedStandardsIdsValue, (value) => value.toMap());
     }
     final complianceSecurityControlIdsValue = complianceSecurityControlIds;
     if (complianceSecurityControlIdsValue != null) {
-      map['complianceSecurityControlIds'] = Input.encodeList<
+      map['complianceSecurityControlIds'] = pulumi.Input.encodeList<
               AutomationRuleCriteriaComplianceSecurityControlId,
               Map<String, dynamic>>(
           complianceSecurityControlIdsValue, (value) => value.toMap());
     }
     final complianceStatusesValue = complianceStatuses;
     if (complianceStatusesValue != null) {
-      map['complianceStatuses'] = Input.encodeList<
+      map['complianceStatuses'] = pulumi.Input.encodeList<
               AutomationRuleCriteriaComplianceStatus, Map<String, dynamic>>(
           complianceStatusesValue, (value) => value.toMap());
     }
     final confidencesValue = confidences;
     if (confidencesValue != null) {
-      map['confidences'] = Input.encodeList<AutomationRuleCriteriaConfidence,
+      map['confidences'] = pulumi.Input.encodeList<
+          AutomationRuleCriteriaConfidence,
           Map<String, dynamic>>(confidencesValue, (value) => value.toMap());
     }
     final createdAtsValue = createdAts;
     if (createdAtsValue != null) {
-      map['createdAts'] = Input.encodeList<AutomationRuleCriteriaCreatedAt,
+      map['createdAts'] = pulumi.Input.encodeList<
+          AutomationRuleCriteriaCreatedAt,
           Map<String, dynamic>>(createdAtsValue, (value) => value.toMap());
     }
     final criticalitiesValue = criticalities;
     if (criticalitiesValue != null) {
-      map['criticalities'] = Input.encodeList<AutomationRuleCriteriaCriticality,
+      map['criticalities'] = pulumi.Input.encodeList<
+          AutomationRuleCriteriaCriticality,
           Map<String, dynamic>>(criticalitiesValue, (value) => value.toMap());
     }
     final descriptionsValue = descriptions;
     if (descriptionsValue != null) {
-      map['descriptions'] = Input.encodeList<AutomationRuleCriteriaDescription,
+      map['descriptions'] = pulumi.Input.encodeList<
+          AutomationRuleCriteriaDescription,
           Map<String, dynamic>>(descriptionsValue, (value) => value.toMap());
     }
     final firstObservedAtsValue = firstObservedAts;
     if (firstObservedAtsValue != null) {
-      map['firstObservedAts'] = Input.encodeList<
+      map['firstObservedAts'] = pulumi.Input.encodeList<
               AutomationRuleCriteriaFirstObservedAt, Map<String, dynamic>>(
           firstObservedAtsValue, (value) => value.toMap());
     }
     final generatorIdsValue = generatorIds;
     if (generatorIdsValue != null) {
-      map['generatorIds'] = Input.encodeList<AutomationRuleCriteriaGeneratorId,
+      map['generatorIds'] = pulumi.Input.encodeList<
+          AutomationRuleCriteriaGeneratorId,
           Map<String, dynamic>>(generatorIdsValue, (value) => value.toMap());
     }
     final idsValue = ids;
     if (idsValue != null) {
-      map['ids'] =
-          Input.encodeList<AutomationRuleCriteriaId, Map<String, dynamic>>(
-              idsValue, (value) => value.toMap());
+      map['ids'] = pulumi.Input.encodeList<AutomationRuleCriteriaId,
+          Map<String, dynamic>>(idsValue, (value) => value.toMap());
     }
     final lastObservedAtsValue = lastObservedAts;
     if (lastObservedAtsValue != null) {
-      map['lastObservedAts'] = Input.encodeList<
+      map['lastObservedAts'] = pulumi.Input.encodeList<
           AutomationRuleCriteriaLastObservedAt,
           Map<String, dynamic>>(lastObservedAtsValue, (value) => value.toMap());
     }
     final noteTextsValue = noteTexts;
     if (noteTextsValue != null) {
-      map['noteTexts'] = Input.encodeList<AutomationRuleCriteriaNoteText,
+      map['noteTexts'] = pulumi.Input.encodeList<AutomationRuleCriteriaNoteText,
           Map<String, dynamic>>(noteTextsValue, (value) => value.toMap());
     }
     final noteUpdatedAtsValue = noteUpdatedAts;
     if (noteUpdatedAtsValue != null) {
-      map['noteUpdatedAts'] = Input.encodeList<
+      map['noteUpdatedAts'] = pulumi.Input.encodeList<
           AutomationRuleCriteriaNoteUpdatedAt,
           Map<String, dynamic>>(noteUpdatedAtsValue, (value) => value.toMap());
     }
     final noteUpdatedBiesValue = noteUpdatedBies;
     if (noteUpdatedBiesValue != null) {
-      map['noteUpdatedBies'] = Input.encodeList<
+      map['noteUpdatedBies'] = pulumi.Input.encodeList<
           AutomationRuleCriteriaNoteUpdatedBy,
           Map<String, dynamic>>(noteUpdatedBiesValue, (value) => value.toMap());
     }
     final productArnsValue = productArns;
     if (productArnsValue != null) {
-      map['productArns'] = Input.encodeList<AutomationRuleCriteriaProductArn,
+      map['productArns'] = pulumi.Input.encodeList<
+          AutomationRuleCriteriaProductArn,
           Map<String, dynamic>>(productArnsValue, (value) => value.toMap());
     }
     final productNamesValue = productNames;
     if (productNamesValue != null) {
-      map['productNames'] = Input.encodeList<AutomationRuleCriteriaProductName,
+      map['productNames'] = pulumi.Input.encodeList<
+          AutomationRuleCriteriaProductName,
           Map<String, dynamic>>(productNamesValue, (value) => value.toMap());
     }
     final recordStatesValue = recordStates;
     if (recordStatesValue != null) {
-      map['recordStates'] = Input.encodeList<AutomationRuleCriteriaRecordState,
+      map['recordStates'] = pulumi.Input.encodeList<
+          AutomationRuleCriteriaRecordState,
           Map<String, dynamic>>(recordStatesValue, (value) => value.toMap());
     }
     final relatedFindingsIdsValue = relatedFindingsIds;
     if (relatedFindingsIdsValue != null) {
-      map['relatedFindingsIds'] = Input.encodeList<
+      map['relatedFindingsIds'] = pulumi.Input.encodeList<
               AutomationRuleCriteriaRelatedFindingsId, Map<String, dynamic>>(
           relatedFindingsIdsValue, (value) => value.toMap());
     }
     final relatedFindingsProductArnsValue = relatedFindingsProductArns;
     if (relatedFindingsProductArnsValue != null) {
-      map['relatedFindingsProductArns'] = Input.encodeList<
+      map['relatedFindingsProductArns'] = pulumi.Input.encodeList<
               AutomationRuleCriteriaRelatedFindingsProductArn,
               Map<String, dynamic>>(
           relatedFindingsProductArnsValue, (value) => value.toMap());
     }
     final resourceApplicationArnsValue = resourceApplicationArns;
     if (resourceApplicationArnsValue != null) {
-      map['resourceApplicationArns'] = Input.encodeList<
+      map['resourceApplicationArns'] = pulumi.Input.encodeList<
               AutomationRuleCriteriaResourceApplicationArn,
               Map<String, dynamic>>(
           resourceApplicationArnsValue, (value) => value.toMap());
     }
     final resourceApplicationNamesValue = resourceApplicationNames;
     if (resourceApplicationNamesValue != null) {
-      map['resourceApplicationNames'] = Input.encodeList<
+      map['resourceApplicationNames'] = pulumi.Input.encodeList<
               AutomationRuleCriteriaResourceApplicationName,
               Map<String, dynamic>>(
           resourceApplicationNamesValue, (value) => value.toMap());
     }
     final resourceDetailsOthersValue = resourceDetailsOthers;
     if (resourceDetailsOthersValue != null) {
-      map['resourceDetailsOthers'] = Input.encodeList<
+      map['resourceDetailsOthers'] = pulumi.Input.encodeList<
               AutomationRuleCriteriaResourceDetailsOther, Map<String, dynamic>>(
           resourceDetailsOthersValue, (value) => value.toMap());
     }
     final resourceIdsValue = resourceIds;
     if (resourceIdsValue != null) {
-      map['resourceIds'] = Input.encodeList<AutomationRuleCriteriaResourceId,
+      map['resourceIds'] = pulumi.Input.encodeList<
+          AutomationRuleCriteriaResourceId,
           Map<String, dynamic>>(resourceIdsValue, (value) => value.toMap());
     }
     final resourcePartitionsValue = resourcePartitions;
     if (resourcePartitionsValue != null) {
-      map['resourcePartitions'] = Input.encodeList<
+      map['resourcePartitions'] = pulumi.Input.encodeList<
               AutomationRuleCriteriaResourcePartition, Map<String, dynamic>>(
           resourcePartitionsValue, (value) => value.toMap());
     }
     final resourceRegionsValue = resourceRegions;
     if (resourceRegionsValue != null) {
-      map['resourceRegions'] = Input.encodeList<
+      map['resourceRegions'] = pulumi.Input.encodeList<
           AutomationRuleCriteriaResourceRegion,
           Map<String, dynamic>>(resourceRegionsValue, (value) => value.toMap());
     }
     final resourceTagsValue = resourceTags;
     if (resourceTagsValue != null) {
-      map['resourceTags'] = Input.encodeList<AutomationRuleCriteriaResourceTag,
+      map['resourceTags'] = pulumi.Input.encodeList<
+          AutomationRuleCriteriaResourceTag,
           Map<String, dynamic>>(resourceTagsValue, (value) => value.toMap());
     }
     final resourceTypesValue = resourceTypes;
     if (resourceTypesValue != null) {
-      map['resourceTypes'] = Input.encodeList<
+      map['resourceTypes'] = pulumi.Input.encodeList<
           AutomationRuleCriteriaResourceType,
           Map<String, dynamic>>(resourceTypesValue, (value) => value.toMap());
     }
     final severityLabelsValue = severityLabels;
     if (severityLabelsValue != null) {
-      map['severityLabels'] = Input.encodeList<
+      map['severityLabels'] = pulumi.Input.encodeList<
           AutomationRuleCriteriaSeverityLabel,
           Map<String, dynamic>>(severityLabelsValue, (value) => value.toMap());
     }
     final sourceUrlsValue = sourceUrls;
     if (sourceUrlsValue != null) {
-      map['sourceUrls'] = Input.encodeList<AutomationRuleCriteriaSourceUrl,
+      map['sourceUrls'] = pulumi.Input.encodeList<
+          AutomationRuleCriteriaSourceUrl,
           Map<String, dynamic>>(sourceUrlsValue, (value) => value.toMap());
     }
     final titlesValue = titles;
     if (titlesValue != null) {
-      map['titles'] =
-          Input.encodeList<AutomationRuleCriteriaTitle, Map<String, dynamic>>(
-              titlesValue, (value) => value.toMap());
+      map['titles'] = pulumi.Input.encodeList<AutomationRuleCriteriaTitle,
+          Map<String, dynamic>>(titlesValue, (value) => value.toMap());
     }
     final typesValue = types;
     if (typesValue != null) {
-      map['types'] =
-          Input.encodeList<AutomationRuleCriteriaType, Map<String, dynamic>>(
-              typesValue, (value) => value.toMap());
+      map['types'] = pulumi.Input.encodeList<AutomationRuleCriteriaType,
+          Map<String, dynamic>>(typesValue, (value) => value.toMap());
     }
     final updatedAtsValue = updatedAts;
     if (updatedAtsValue != null) {
-      map['updatedAts'] = Input.encodeList<AutomationRuleCriteriaUpdatedAt,
+      map['updatedAts'] = pulumi.Input.encodeList<
+          AutomationRuleCriteriaUpdatedAt,
           Map<String, dynamic>>(updatedAtsValue, (value) => value.toMap());
     }
     final userDefinedFieldsValue = userDefinedFields;
     if (userDefinedFieldsValue != null) {
-      map['userDefinedFields'] = Input.encodeList<
+      map['userDefinedFields'] = pulumi.Input.encodeList<
               AutomationRuleCriteriaUserDefinedField, Map<String, dynamic>>(
           userDefinedFieldsValue, (value) => value.toMap());
     }
     final verificationStatesValue = verificationStates;
     if (verificationStatesValue != null) {
-      map['verificationStates'] = Input.encodeList<
+      map['verificationStates'] = pulumi.Input.encodeList<
               AutomationRuleCriteriaVerificationState, Map<String, dynamic>>(
           verificationStatesValue, (value) => value.toMap());
     }
     final workflowStatusesValue = workflowStatuses;
     if (workflowStatusesValue != null) {
-      map['workflowStatuses'] = Input.encodeList<
+      map['workflowStatuses'] = pulumi.Input.encodeList<
               AutomationRuleCriteriaWorkflowStatus, Map<String, dynamic>>(
           workflowStatusesValue, (value) => value.toMap());
     }
@@ -430,26 +440,26 @@ class AutomationRuleCriteria {
     return AutomationRuleCriteria(
       awsAccountIds: map['awsAccountIds'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaAwsAccountId>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaAwsAccountId>(
               map['awsAccountIds'],
               (value) => AutomationRuleCriteriaAwsAccountId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       awsAccountNames: map['awsAccountNames'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaAwsAccountName>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaAwsAccountName>(
               map['awsAccountNames'],
               (value) => AutomationRuleCriteriaAwsAccountName.fromMap(
                   (value as Map).cast<String, dynamic>())),
       companyNames: map['companyNames'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaCompanyName>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaCompanyName>(
               map['companyNames'],
               (value) => AutomationRuleCriteriaCompanyName.fromMap(
                   (value as Map).cast<String, dynamic>())),
       complianceAssociatedStandardsIds:
           map['complianceAssociatedStandardsIds'] == null
               ? null
-              : Input.decodeList<
+              : pulumi.Input.decodeList<
                       AutomationRuleCriteriaComplianceAssociatedStandardsId>(
                   map['complianceAssociatedStandardsIds'],
                   (value) =>
@@ -457,207 +467,211 @@ class AutomationRuleCriteria {
                           .fromMap((value as Map).cast<String, dynamic>())),
       complianceSecurityControlIds: map['complianceSecurityControlIds'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaComplianceSecurityControlId>(
+          : pulumi.Input.decodeList<
+                  AutomationRuleCriteriaComplianceSecurityControlId>(
               map['complianceSecurityControlIds'],
               (value) =>
                   AutomationRuleCriteriaComplianceSecurityControlId.fromMap(
                       (value as Map).cast<String, dynamic>())),
       complianceStatuses: map['complianceStatuses'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaComplianceStatus>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaComplianceStatus>(
               map['complianceStatuses'],
               (value) => AutomationRuleCriteriaComplianceStatus.fromMap(
                   (value as Map).cast<String, dynamic>())),
       confidences: map['confidences'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaConfidence>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaConfidence>(
               map['confidences'],
               (value) => AutomationRuleCriteriaConfidence.fromMap(
                   (value as Map).cast<String, dynamic>())),
       createdAts: map['createdAts'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaCreatedAt>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaCreatedAt>(
               map['createdAts'],
               (value) => AutomationRuleCriteriaCreatedAt.fromMap(
                   (value as Map).cast<String, dynamic>())),
       criticalities: map['criticalities'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaCriticality>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaCriticality>(
               map['criticalities'],
               (value) => AutomationRuleCriteriaCriticality.fromMap(
                   (value as Map).cast<String, dynamic>())),
       descriptions: map['descriptions'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaDescription>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaDescription>(
               map['descriptions'],
               (value) => AutomationRuleCriteriaDescription.fromMap(
                   (value as Map).cast<String, dynamic>())),
       firstObservedAts: map['firstObservedAts'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaFirstObservedAt>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaFirstObservedAt>(
               map['firstObservedAts'],
               (value) => AutomationRuleCriteriaFirstObservedAt.fromMap(
                   (value as Map).cast<String, dynamic>())),
       generatorIds: map['generatorIds'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaGeneratorId>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaGeneratorId>(
               map['generatorIds'],
               (value) => AutomationRuleCriteriaGeneratorId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ids: map['ids'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaId>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaId>(
               map['ids'],
               (value) => AutomationRuleCriteriaId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       lastObservedAts: map['lastObservedAts'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaLastObservedAt>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaLastObservedAt>(
               map['lastObservedAts'],
               (value) => AutomationRuleCriteriaLastObservedAt.fromMap(
                   (value as Map).cast<String, dynamic>())),
       noteTexts: map['noteTexts'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaNoteText>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaNoteText>(
               map['noteTexts'],
               (value) => AutomationRuleCriteriaNoteText.fromMap(
                   (value as Map).cast<String, dynamic>())),
       noteUpdatedAts: map['noteUpdatedAts'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaNoteUpdatedAt>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaNoteUpdatedAt>(
               map['noteUpdatedAts'],
               (value) => AutomationRuleCriteriaNoteUpdatedAt.fromMap(
                   (value as Map).cast<String, dynamic>())),
       noteUpdatedBies: map['noteUpdatedBies'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaNoteUpdatedBy>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaNoteUpdatedBy>(
               map['noteUpdatedBies'],
               (value) => AutomationRuleCriteriaNoteUpdatedBy.fromMap(
                   (value as Map).cast<String, dynamic>())),
       productArns: map['productArns'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaProductArn>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaProductArn>(
               map['productArns'],
               (value) => AutomationRuleCriteriaProductArn.fromMap(
                   (value as Map).cast<String, dynamic>())),
       productNames: map['productNames'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaProductName>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaProductName>(
               map['productNames'],
               (value) => AutomationRuleCriteriaProductName.fromMap(
                   (value as Map).cast<String, dynamic>())),
       recordStates: map['recordStates'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaRecordState>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaRecordState>(
               map['recordStates'],
               (value) => AutomationRuleCriteriaRecordState.fromMap(
                   (value as Map).cast<String, dynamic>())),
       relatedFindingsIds: map['relatedFindingsIds'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaRelatedFindingsId>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaRelatedFindingsId>(
               map['relatedFindingsIds'],
               (value) => AutomationRuleCriteriaRelatedFindingsId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       relatedFindingsProductArns: map['relatedFindingsProductArns'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaRelatedFindingsProductArn>(
+          : pulumi.Input.decodeList<
+                  AutomationRuleCriteriaRelatedFindingsProductArn>(
               map['relatedFindingsProductArns'],
               (value) =>
                   AutomationRuleCriteriaRelatedFindingsProductArn.fromMap(
                       (value as Map).cast<String, dynamic>())),
       resourceApplicationArns: map['resourceApplicationArns'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaResourceApplicationArn>(
+          : pulumi.Input.decodeList<
+                  AutomationRuleCriteriaResourceApplicationArn>(
               map['resourceApplicationArns'],
               (value) => AutomationRuleCriteriaResourceApplicationArn.fromMap(
                   (value as Map).cast<String, dynamic>())),
       resourceApplicationNames: map['resourceApplicationNames'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaResourceApplicationName>(
+          : pulumi.Input.decodeList<
+                  AutomationRuleCriteriaResourceApplicationName>(
               map['resourceApplicationNames'],
               (value) => AutomationRuleCriteriaResourceApplicationName.fromMap(
                   (value as Map).cast<String, dynamic>())),
       resourceDetailsOthers: map['resourceDetailsOthers'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaResourceDetailsOther>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaResourceDetailsOther>(
               map['resourceDetailsOthers'],
               (value) => AutomationRuleCriteriaResourceDetailsOther.fromMap(
                   (value as Map).cast<String, dynamic>())),
       resourceIds: map['resourceIds'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaResourceId>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaResourceId>(
               map['resourceIds'],
               (value) => AutomationRuleCriteriaResourceId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       resourcePartitions: map['resourcePartitions'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaResourcePartition>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaResourcePartition>(
               map['resourcePartitions'],
               (value) => AutomationRuleCriteriaResourcePartition.fromMap(
                   (value as Map).cast<String, dynamic>())),
       resourceRegions: map['resourceRegions'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaResourceRegion>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaResourceRegion>(
               map['resourceRegions'],
               (value) => AutomationRuleCriteriaResourceRegion.fromMap(
                   (value as Map).cast<String, dynamic>())),
       resourceTags: map['resourceTags'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaResourceTag>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaResourceTag>(
               map['resourceTags'],
               (value) => AutomationRuleCriteriaResourceTag.fromMap(
                   (value as Map).cast<String, dynamic>())),
       resourceTypes: map['resourceTypes'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaResourceType>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaResourceType>(
               map['resourceTypes'],
               (value) => AutomationRuleCriteriaResourceType.fromMap(
                   (value as Map).cast<String, dynamic>())),
       severityLabels: map['severityLabels'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaSeverityLabel>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaSeverityLabel>(
               map['severityLabels'],
               (value) => AutomationRuleCriteriaSeverityLabel.fromMap(
                   (value as Map).cast<String, dynamic>())),
       sourceUrls: map['sourceUrls'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaSourceUrl>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaSourceUrl>(
               map['sourceUrls'],
               (value) => AutomationRuleCriteriaSourceUrl.fromMap(
                   (value as Map).cast<String, dynamic>())),
       titles: map['titles'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaTitle>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaTitle>(
               map['titles'],
               (value) => AutomationRuleCriteriaTitle.fromMap(
                   (value as Map).cast<String, dynamic>())),
       types: map['types'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaType>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaType>(
               map['types'],
               (value) => AutomationRuleCriteriaType.fromMap(
                   (value as Map).cast<String, dynamic>())),
       updatedAts: map['updatedAts'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaUpdatedAt>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaUpdatedAt>(
               map['updatedAts'],
               (value) => AutomationRuleCriteriaUpdatedAt.fromMap(
                   (value as Map).cast<String, dynamic>())),
       userDefinedFields: map['userDefinedFields'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaUserDefinedField>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaUserDefinedField>(
               map['userDefinedFields'],
               (value) => AutomationRuleCriteriaUserDefinedField.fromMap(
                   (value as Map).cast<String, dynamic>())),
       verificationStates: map['verificationStates'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaVerificationState>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaVerificationState>(
               map['verificationStates'],
               (value) => AutomationRuleCriteriaVerificationState.fromMap(
                   (value as Map).cast<String, dynamic>())),
       workflowStatuses: map['workflowStatuses'] == null
           ? null
-          : Input.decodeList<AutomationRuleCriteriaWorkflowStatus>(
+          : pulumi.Input.decodeList<AutomationRuleCriteriaWorkflowStatus>(
               map['workflowStatuses'],
               (value) => AutomationRuleCriteriaWorkflowStatus.fromMap(
                   (value as Map).cast<String, dynamic>())),

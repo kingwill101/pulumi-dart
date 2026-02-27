@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../replication_config_compute_config/replication_config_compute_config.dart';
 import 'replication_config_args.dart';
 
@@ -24,58 +24,58 @@ import 'replication_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:dms/replicationConfig:ReplicationConfig example arn:aws:dms:us-east-1:123456789012:replication-config:UX6OL6MHMMJKFFOXE3H7LLJCMEKBDUG4ZV7DRSI
 /// ```
-class ReplicationConfig extends CustomResource {
+class ReplicationConfig extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) for the serverless replication config.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Configuration block for provisioning an DMS Serverless replication.
-  late final Output<ReplicationConfigComputeConfig> computeConfig;
+  late final pulumi.Output<ReplicationConfigComputeConfig> computeConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Unique identifier that you want to use to create the config.
-  late final Output<String> replicationConfigIdentifier;
+  late final pulumi.Output<String> replicationConfigIdentifier;
 
   /// An escaped JSON string that are used to provision this replication configuration. For example, [Change processing tuning settings](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.ChangeProcessingTuning.html)
-  late final Output<String> replicationSettings;
+  late final pulumi.Output<String> replicationSettings;
 
   /// The migration type. Can be one of `full-load | cdc | full-load-and-cdc`.
-  late final Output<String> replicationType;
+  late final pulumi.Output<String> replicationType;
 
   /// Unique value or name that you set for a given resource that can be used to construct an Amazon Resource Name (ARN) for that resource. For more information, see [Fine-grained access control using resource names and tags](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.FineGrainedAccess)
-  late final Output<String> resourceIdentifier;
+  late final pulumi.Output<String> resourceIdentifier;
 
   /// The Amazon Resource Name (ARN) string that uniquely identifies the source endpoint.
-  late final Output<String> sourceEndpointArn;
+  late final pulumi.Output<String> sourceEndpointArn;
 
   /// Whether to run or stop the serverless replication, default is false.
-  late final Output<bool?> startReplication;
+  late final pulumi.Output<bool?> startReplication;
 
   /// JSON settings for specifying supplemental data. For more information see [Specifying supplemental data for task settings](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.TaskData.html)
-  late final Output<String?> supplementalSettings;
+  late final pulumi.Output<String?> supplementalSettings;
 
   /// An escaped JSON string that contains the table mappings. For information on table mapping see [Using Table Mapping with an AWS Database Migration Service Task to Select and Filter Data](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
-  late final Output<String> tableMappings;
+  late final pulumi.Output<String> tableMappings;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The Amazon Resource Name (ARN) string that uniquely identifies the target endpoint.
-  late final Output<String> targetEndpointArn;
+  late final pulumi.Output<String> targetEndpointArn;
 
   ReplicationConfig(
     String name, {
     ReplicationConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:dms/replicationConfig:ReplicationConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.computeConfig =

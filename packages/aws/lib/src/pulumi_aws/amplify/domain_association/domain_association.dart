@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../domain_association_certificate_settings/domain_association_certificate_settings.dart';
 import '../domain_association_sub_domain/domain_association_sub_domain.dart';
 import 'domain_association_args.dart';
@@ -16,43 +16,44 @@ import 'domain_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:amplify/domainAssociation:DomainAssociation app d2ypk4k47z8u6/example.com
 /// ```
-class DomainAssociation extends CustomResource {
+class DomainAssociation extends pulumi.CustomResource {
   /// Unique ID for an Amplify app.
-  late final Output<String> appId;
+  late final pulumi.Output<String> appId;
 
   /// ARN for the domain association.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The type of SSL/TLS certificate to use for your custom domain. If you don't specify a certificate type, Amplify uses the default certificate that it provisions and manages for you.
-  late final Output<DomainAssociationCertificateSettings> certificateSettings;
+  late final pulumi.Output<DomainAssociationCertificateSettings>
+      certificateSettings;
 
   /// DNS records for certificate verification in a space-delimited format (`<record> CNAME <target>`).
-  late final Output<String> certificateVerificationDnsRecord;
+  late final pulumi.Output<String> certificateVerificationDnsRecord;
 
   /// Domain name for the domain association.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// Enables the automated creation of subdomains for branches.
-  late final Output<bool?> enableAutoSubDomain;
+  late final pulumi.Output<bool?> enableAutoSubDomain;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Setting for the subdomain. Documented below.
-  late final Output<List<DomainAssociationSubDomain>> subDomains;
+  late final pulumi.Output<List<DomainAssociationSubDomain>> subDomains;
 
   /// If enabled, the resource will wait for the domain association status to change to `PENDING_DEPLOYMENT` or `AVAILABLE`. Setting this to `false` will skip the process. Default: `true`.
-  late final Output<bool?> waitForVerification;
+  late final pulumi.Output<bool?> waitForVerification;
 
   DomainAssociation(
     String name, {
     DomainAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:amplify/domainAssociation:DomainAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appId = registerOutput<String>('appId');
     this.arn = registerOutput<String>('arn');

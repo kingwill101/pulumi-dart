@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../media_insights_pipeline_configuration_real_time_alert_configuration_rule/media_insights_pipeline_configuration_real_time_alert_configuration_rule.dart';
 
 class MediaInsightsPipelineConfigurationRealTimeAlertConfiguration {
@@ -22,7 +22,7 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfiguration {
     if (disabledValue != null) {
       map['disabled'] = disabledValue;
     }
-    map['rules'] = Input.encodeList<
+    map['rules'] = pulumi.Input.encodeList<
         MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule,
         Map<String, dynamic>>(rules, (value) => value.toMap());
     return map;
@@ -32,7 +32,7 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfiguration {
       Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationRealTimeAlertConfiguration(
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      rules: Input.decodeList<
+      rules: pulumi.Input.decodeList<
               MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule>(
           map['rules'],
           (value) =>

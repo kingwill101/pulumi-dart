@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_site_location/get_site_location.dart';
 
 /// Result data returned by getSite.
@@ -38,8 +38,9 @@ class GetSiteResult {
     map['description'] = description;
     map['globalNetworkId'] = globalNetworkId;
     map['id'] = id;
-    map['locations'] = Input.encodeList<GetSiteLocation, Map<String, dynamic>>(
-        locations, (value) => value.toMap());
+    map['locations'] =
+        pulumi.Input.encodeList<GetSiteLocation, Map<String, dynamic>>(
+            locations, (value) => value.toMap());
     map['siteId'] = siteId;
     map['tags'] = tags;
     return map;
@@ -51,7 +52,7 @@ class GetSiteResult {
       description: map['description'] as String,
       globalNetworkId: map['globalNetworkId'] as String,
       id: map['id'] as String,
-      locations: Input.decodeList<GetSiteLocation>(
+      locations: pulumi.Input.decodeList<GetSiteLocation>(
           map['locations'],
           (value) =>
               GetSiteLocation.fromMap((value as Map).cast<String, dynamic>())),

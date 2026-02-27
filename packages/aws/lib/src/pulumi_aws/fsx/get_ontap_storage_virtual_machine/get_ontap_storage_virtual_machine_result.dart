@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ontap_storage_virtual_machine_active_directory_configuration/get_ontap_storage_virtual_machine_active_directory_configuration.dart';
 import '../get_ontap_storage_virtual_machine_endpoint/get_ontap_storage_virtual_machine_endpoint.dart';
 import '../get_ontap_storage_virtual_machine_filter/get_ontap_storage_virtual_machine_filter.dart';
@@ -65,23 +65,25 @@ class GetOntapStorageVirtualMachineResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['activeDirectoryConfigurations'] = Input.encodeList<
+    map['activeDirectoryConfigurations'] = pulumi.Input.encodeList<
             GetOntapStorageVirtualMachineActiveDirectoryConfiguration,
             Map<String, dynamic>>(
         activeDirectoryConfigurations, (value) => value.toMap());
     map['arn'] = arn;
     map['creationTime'] = creationTime;
-    map['endpoints'] = Input.encodeList<GetOntapStorageVirtualMachineEndpoint,
+    map['endpoints'] = pulumi.Input.encodeList<
+        GetOntapStorageVirtualMachineEndpoint,
         Map<String, dynamic>>(endpoints, (value) => value.toMap());
     map['fileSystemId'] = fileSystemId;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetOntapStorageVirtualMachineFilter,
+      map['filters'] = pulumi.Input.encodeList<
+          GetOntapStorageVirtualMachineFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['lifecycleStatus'] = lifecycleStatus;
-    map['lifecycleTransitionReasons'] = Input.encodeList<
+    map['lifecycleTransitionReasons'] = pulumi.Input.encodeList<
             GetOntapStorageVirtualMachineLifecycleTransitionReason,
             Map<String, dynamic>>(
         lifecycleTransitionReasons, (value) => value.toMap());
@@ -96,7 +98,7 @@ class GetOntapStorageVirtualMachineResult {
   factory GetOntapStorageVirtualMachineResult.fromMap(
       Map<String, dynamic> map) {
     return GetOntapStorageVirtualMachineResult(
-      activeDirectoryConfigurations: Input.decodeList<
+      activeDirectoryConfigurations: pulumi.Input.decodeList<
               GetOntapStorageVirtualMachineActiveDirectoryConfiguration>(
           map['activeDirectoryConfigurations'],
           (value) =>
@@ -104,20 +106,20 @@ class GetOntapStorageVirtualMachineResult {
                   (value as Map).cast<String, dynamic>())),
       arn: map['arn'] as String,
       creationTime: map['creationTime'] as String,
-      endpoints: Input.decodeList<GetOntapStorageVirtualMachineEndpoint>(
+      endpoints: pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpoint>(
           map['endpoints'],
           (value) => GetOntapStorageVirtualMachineEndpoint.fromMap(
               (value as Map).cast<String, dynamic>())),
       fileSystemId: map['fileSystemId'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetOntapStorageVirtualMachineFilter>(
+          : pulumi.Input.decodeList<GetOntapStorageVirtualMachineFilter>(
               map['filters'],
               (value) => GetOntapStorageVirtualMachineFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       lifecycleStatus: map['lifecycleStatus'] as String,
-      lifecycleTransitionReasons: Input.decodeList<
+      lifecycleTransitionReasons: pulumi.Input.decodeList<
               GetOntapStorageVirtualMachineLifecycleTransitionReason>(
           map['lifecycleTransitionReasons'],
           (value) =>

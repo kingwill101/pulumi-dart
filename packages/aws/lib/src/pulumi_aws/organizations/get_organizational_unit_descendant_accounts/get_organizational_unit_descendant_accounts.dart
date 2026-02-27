@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_organizational_unit_descendant_accounts_args.dart';
 import 'get_organizational_unit_descendant_accounts_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_organizational_unit_descendant_accounts_result.dart';
 Future<GetOrganizationalUnitDescendantAccountsResult>
     getOrganizationalUnitDescendantAccounts(
   GetOrganizationalUnitDescendantAccountsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:organizations/getOrganizationalUnitDescendantAccounts:getOrganizationalUnitDescendantAccounts',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationalUnitDescendantAccountsResult.fromMap(result);
 }

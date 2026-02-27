@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../authorize_vpc_endpoint_access_authorized_principal/authorize_vpc_endpoint_access_authorized_principal.dart';
 import 'authorize_vpc_endpoint_access_args.dart';
 
@@ -17,29 +17,29 @@ import 'authorize_vpc_endpoint_access_args.dart';
 /// ```sh
 /// $ pulumi import aws:opensearch/authorizeVpcEndpointAccess:AuthorizeVpcEndpointAccess example authorize_vpc_endpoint_access-id-12345678,123456789012
 /// ```
-class AuthorizeVpcEndpointAccess extends CustomResource {
+class AuthorizeVpcEndpointAccess extends pulumi.CustomResource {
   /// AWS account ID to grant access to.
-  late final Output<String> account;
+  late final pulumi.Output<String> account;
 
   /// Information about the Amazon Web Services account or service that was provided access to the domain. See authorized principal attribute for further details.
-  late final Output<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>>
+  late final pulumi.Output<List<AuthorizeVpcEndpointAccessAuthorizedPrincipal>>
       authorizedPrincipals;
 
   /// Name of OpenSearch Service domain to provide access to.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   AuthorizeVpcEndpointAccess(
     String name, {
     AuthorizeVpcEndpointAccessArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:opensearch/authorizeVpcEndpointAccess:AuthorizeVpcEndpointAccess',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.account = registerOutput<String>('account');
     this.authorizedPrincipals =

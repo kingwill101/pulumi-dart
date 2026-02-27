@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../application_application_configuration_sql_application_configuration_input/application_application_configuration_sql_application_configuration_input.dart';
 import '../application_application_configuration_sql_application_configuration_output/application_application_configuration_sql_application_configuration_output.dart';
 import '../application_application_configuration_sql_application_configuration_reference_data_source/application_application_configuration_sql_application_configuration_reference_data_source.dart';
@@ -33,7 +33,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfiguration {
     }
     final outputsValue = outputs;
     if (outputsValue != null) {
-      map['outputs'] = Input.encodeList<
+      map['outputs'] = pulumi.Input.encodeList<
           ApplicationApplicationConfigurationSqlApplicationConfigurationOutput,
           Map<String, dynamic>>(outputsValue, (value) => value.toMap());
     }
@@ -53,7 +53,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfiguration {
               .fromMap((map['input'] as Map).cast<String, dynamic>()),
       outputs: map['outputs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ApplicationApplicationConfigurationSqlApplicationConfigurationOutput>(
               map['outputs'],
               (value) =>

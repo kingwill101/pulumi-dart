@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_hierarchy_structure_hierarchy_structure/user_hierarchy_structure_hierarchy_structure.dart';
 import 'user_hierarchy_structure_args.dart';
 
@@ -22,26 +22,26 @@ import 'user_hierarchy_structure_args.dart';
 /// ```sh
 /// $ pulumi import aws:connect/userHierarchyStructure:UserHierarchyStructure example f1288a1f-6193-445a-b47e-af739b2
 /// ```
-class UserHierarchyStructure extends CustomResource {
+class UserHierarchyStructure extends pulumi.CustomResource {
   /// A block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
-  late final Output<UserHierarchyStructureHierarchyStructure>
+  late final pulumi.Output<UserHierarchyStructureHierarchyStructure>
       hierarchyStructure;
 
   /// Specifies the identifier of the hosting Amazon Connect Instance.
-  late final Output<String> instanceId;
+  late final pulumi.Output<String> instanceId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   UserHierarchyStructure(
     String name, {
     UserHierarchyStructureArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:connect/userHierarchyStructure:UserHierarchyStructure',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.hierarchyStructure =
         registerOutput<UserHierarchyStructureHierarchyStructure>(

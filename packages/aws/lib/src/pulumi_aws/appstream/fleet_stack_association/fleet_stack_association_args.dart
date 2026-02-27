@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for FleetStackAssociation.
 class FleetStackAssociationArgs {
   /// Name of the fleet.
-  final Input<String> fleetName;
+  final pulumi.Input<String> fleetName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Name of the stack.
-  final Input<String> stackName;
+  final pulumi.Input<String> stackName;
 
   FleetStackAssociationArgs({
     required this.fleetName,
@@ -32,9 +32,9 @@ class FleetStackAssociationArgs {
 
   factory FleetStackAssociationArgs.fromMap(Map<String, dynamic> map) {
     return FleetStackAssociationArgs(
-      fleetName: Input.asInput<String>(map['fleetName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      stackName: Input.asInput<String>(map['stackName']),
+      fleetName: pulumi.Input.asInput<String>(map['fleetName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      stackName: pulumi.Input.asInput<String>(map['stackName']),
     );
   }
 }

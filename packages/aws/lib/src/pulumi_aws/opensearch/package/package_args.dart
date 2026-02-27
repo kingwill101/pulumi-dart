@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../package_package_source/package_package_source.dart';
 
 /// The set of arguments for Package.
 class PackageArgs {
   /// Engine version that the package is compatible with. This argument is required and only valid when `package_type` is `ZIP-PLUGIN`. Format: `OpenSearch_X.Y` or `Elasticsearch_X.Y`, where `X` and `Y` are the major and minor version numbers, respectively.
-  final Input<String>? engineVersion;
+  final pulumi.Input<String>? engineVersion;
 
   /// Description of the package.
-  final Input<String>? packageDescription;
+  final pulumi.Input<String>? packageDescription;
 
   /// Unique name for the package.
-  final Input<String> packageName;
+  final pulumi.Input<String> packageName;
 
   /// Configuration block for the package source options.
-  final Input<PackagePackageSource> packageSource;
+  final pulumi.Input<PackagePackageSource> packageSource;
 
   /// The type of package. Valid values are `TXT-DICTIONARY`, `ZIP-PLUGIN`, `PACKAGE-LICENSE` and `PACKAGE-CONFIG`.
-  final Input<String> packageType;
+  final pulumi.Input<String> packageType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   PackageArgs({
     this.engineVersion,
@@ -44,7 +44,7 @@ class PackageArgs {
     }
     map['packageName'] = packageName;
     map['packageSource'] =
-        Input.mapInputValue<PackagePackageSource, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<PackagePackageSource, Map<String, dynamic>>(
             packageSource, (value) => value.toMap());
     map['packageType'] = packageType;
     final regionValue = region;
@@ -56,13 +56,14 @@ class PackageArgs {
 
   factory PackageArgs.fromMap(Map<String, dynamic> map) {
     return PackageArgs(
-      engineVersion: Input.asOptionalInput<String>(map['engineVersion']),
+      engineVersion: pulumi.Input.asOptionalInput<String>(map['engineVersion']),
       packageDescription:
-          Input.asOptionalInput<String>(map['packageDescription']),
-      packageName: Input.asInput<String>(map['packageName']),
-      packageSource: Input.asInput<PackagePackageSource>(map['packageSource']),
-      packageType: Input.asInput<String>(map['packageType']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['packageDescription']),
+      packageName: pulumi.Input.asInput<String>(map['packageName']),
+      packageSource:
+          pulumi.Input.asInput<PackagePackageSource>(map['packageSource']),
+      packageType: pulumi.Input.asInput<String>(map['packageType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_tags_filter_and/get_tags_filter_and.dart';
 import '../get_tags_filter_cost_category/get_tags_filter_cost_category.dart';
 import '../get_tags_filter_dimension/get_tags_filter_dimension.dart';
@@ -40,8 +40,9 @@ class GetTagsFilter {
     final map = <String, dynamic>{};
     final andsValue = ands;
     if (andsValue != null) {
-      map['ands'] = Input.encodeList<GetTagsFilterAnd, Map<String, dynamic>>(
-          andsValue, (value) => value.toMap());
+      map['ands'] =
+          pulumi.Input.encodeList<GetTagsFilterAnd, Map<String, dynamic>>(
+              andsValue, (value) => value.toMap());
     }
     final costCategoryValue = costCategory;
     if (costCategoryValue != null) {
@@ -57,8 +58,9 @@ class GetTagsFilter {
     }
     final orsValue = ors;
     if (orsValue != null) {
-      map['ors'] = Input.encodeList<GetTagsFilterOr, Map<String, dynamic>>(
-          orsValue, (value) => value.toMap());
+      map['ors'] =
+          pulumi.Input.encodeList<GetTagsFilterOr, Map<String, dynamic>>(
+              orsValue, (value) => value.toMap());
     }
     final tagsValue = tags;
     if (tagsValue != null) {
@@ -71,7 +73,7 @@ class GetTagsFilter {
     return GetTagsFilter(
       ands: map['ands'] == null
           ? null
-          : Input.decodeList<GetTagsFilterAnd>(
+          : pulumi.Input.decodeList<GetTagsFilterAnd>(
               map['ands'],
               (value) => GetTagsFilterAnd.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -89,7 +91,7 @@ class GetTagsFilter {
               (map['not'] as Map).cast<String, dynamic>()),
       ors: map['ors'] == null
           ? null
-          : Input.decodeList<GetTagsFilterOr>(
+          : pulumi.Input.decodeList<GetTagsFilterOr>(
               map['ors'],
               (value) => GetTagsFilterOr.fromMap(
                   (value as Map).cast<String, dynamic>())),

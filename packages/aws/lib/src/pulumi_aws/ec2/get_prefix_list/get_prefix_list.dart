@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_prefix_list_args.dart';
 import 'get_prefix_list_result.dart';
 
@@ -19,13 +19,13 @@ import 'get_prefix_list_result.dart';
 /// ### Filter
 Future<GetPrefixListResult> getPrefixList(
   GetPrefixListArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getPrefixList:getPrefixList',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrefixListResult.fromMap(result);
 }

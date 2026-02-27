@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_statement_regex_pattern_set_reference_statement_field_to_match/rule_group_rule_statement_regex_pattern_set_reference_statement_field_to_match.dart';
 import '../rule_group_rule_statement_regex_pattern_set_reference_statement_text_transformation/rule_group_rule_statement_regex_pattern_set_reference_statement_text_transformation.dart';
 
@@ -32,7 +32,7 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatement {
     if (fieldToMatchValue != null) {
       map['fieldToMatch'] = fieldToMatchValue.toMap();
     }
-    map['textTransformations'] = Input.encodeList<
+    map['textTransformations'] = pulumi.Input.encodeList<
         RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation,
         Map<String, dynamic>>(textTransformations, (value) => value.toMap());
     return map;
@@ -46,7 +46,7 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatement {
           ? null
           : RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatch
               .fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>()),
-      textTransformations: Input.decodeList<
+      textTransformations: pulumi.Input.decodeList<
               RuleGroupRuleStatementRegexPatternSetReferenceStatementTextTransformation>(
           map['textTransformations'],
           (value) =>

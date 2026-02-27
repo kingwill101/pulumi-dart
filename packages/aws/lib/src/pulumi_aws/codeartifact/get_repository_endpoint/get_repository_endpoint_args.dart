@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRepositoryEndpoint.
 class GetRepositoryEndpointArgs {
   /// Name of the domain that contains the repository.
-  final Input<String> domain;
+  final pulumi.Input<String> domain;
 
   /// Account number of the AWS account that owns the domain.
-  final Input<String>? domainOwner;
+  final pulumi.Input<String>? domainOwner;
 
   /// Which endpoint of a repository to return. A repository has one endpoint for each package format: `npm`, `pypi`, `maven`, and `nuget`.
-  final Input<String> format;
+  final pulumi.Input<String> format;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Name of the repository.
-  final Input<String> repository;
+  final pulumi.Input<String> repository;
 
   GetRepositoryEndpointArgs({
     required this.domain,
@@ -45,11 +45,11 @@ class GetRepositoryEndpointArgs {
 
   factory GetRepositoryEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryEndpointArgs(
-      domain: Input.asInput<String>(map['domain']),
-      domainOwner: Input.asOptionalInput<String>(map['domainOwner']),
-      format: Input.asInput<String>(map['format']),
-      region: Input.asOptionalInput<String>(map['region']),
-      repository: Input.asInput<String>(map['repository']),
+      domain: pulumi.Input.asInput<String>(map['domain']),
+      domainOwner: pulumi.Input.asOptionalInput<String>(map['domainOwner']),
+      format: pulumi.Input.asInput<String>(map['format']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      repository: pulumi.Input.asInput<String>(map['repository']),
     );
   }
 }

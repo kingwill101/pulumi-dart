@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../endpoint_deployment_config_auto_rollback_configuration_alarm/endpoint_deployment_config_auto_rollback_configuration_alarm.dart';
 
 class EndpointDeploymentConfigAutoRollbackConfiguration {
@@ -15,7 +15,7 @@ class EndpointDeploymentConfigAutoRollbackConfiguration {
     final map = <String, dynamic>{};
     final alarmsValue = alarms;
     if (alarmsValue != null) {
-      map['alarms'] = Input.encodeList<
+      map['alarms'] = pulumi.Input.encodeList<
           EndpointDeploymentConfigAutoRollbackConfigurationAlarm,
           Map<String, dynamic>>(alarmsValue, (value) => value.toMap());
     }
@@ -27,7 +27,7 @@ class EndpointDeploymentConfigAutoRollbackConfiguration {
     return EndpointDeploymentConfigAutoRollbackConfiguration(
       alarms: map['alarms'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EndpointDeploymentConfigAutoRollbackConfigurationAlarm>(
               map['alarms'],
               (value) => EndpointDeploymentConfigAutoRollbackConfigurationAlarm

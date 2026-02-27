@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../delivery_channel_snapshot_delivery_properties/delivery_channel_snapshot_delivery_properties.dart';
 import 'delivery_channel_args.dart';
 
@@ -17,38 +17,38 @@ import 'delivery_channel_args.dart';
 /// ```sh
 /// $ pulumi import aws:cfg/deliveryChannel:DeliveryChannel foo example
 /// ```
-class DeliveryChannel extends CustomResource {
+class DeliveryChannel extends pulumi.CustomResource {
   /// The name of the delivery channel. Defaults to `default`. Changing it recreates the resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The name of the S3 bucket used to store the configuration history.
-  late final Output<String> s3BucketName;
+  late final pulumi.Output<String> s3BucketName;
 
   /// The prefix for the specified S3 bucket.
-  late final Output<String?> s3KeyPrefix;
+  late final pulumi.Output<String?> s3KeyPrefix;
 
   /// The ARN of the AWS KMS key used to encrypt objects delivered by AWS Config. Must belong to the same Region as the destination S3 bucket.
-  late final Output<String?> s3KmsKeyArn;
+  late final pulumi.Output<String?> s3KmsKeyArn;
 
   /// Options for how AWS Config delivers configuration snapshots. See below
-  late final Output<DeliveryChannelSnapshotDeliveryProperties?>
+  late final pulumi.Output<DeliveryChannelSnapshotDeliveryProperties?>
       snapshotDeliveryProperties;
 
   /// The ARN of the SNS topic that AWS Config delivers notifications to.
-  late final Output<String?> snsTopicArn;
+  late final pulumi.Output<String?> snsTopicArn;
 
   DeliveryChannel(
     String name, {
     DeliveryChannelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cfg/deliveryChannel:DeliveryChannel',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');

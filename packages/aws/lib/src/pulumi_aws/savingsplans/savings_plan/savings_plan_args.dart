@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../savings_plan_timeouts/savings_plan_timeouts.dart';
 
 /// The set of arguments for SavingsPlan.
@@ -8,20 +8,20 @@ class SavingsPlanArgs {
   /// The hourly commitment, in USD. This is the amount you commit to pay per hour, regardless of actual usage.
   ///
   /// The following arguments are optional:
-  final Input<String> commitment;
+  final pulumi.Input<String> commitment;
 
   /// The time at which to purchase the Savings Plan, in UTC format (YYYY-MM-DDTHH:MM:SSZ). If not specified, the plan is purchased immediately. Plans with a future purchase time are placed in `queued` state and can be deleted before they become active.
-  final Input<String>? purchaseTime;
+  final pulumi.Input<String>? purchaseTime;
 
   /// The unique ID of a Savings Plan offering. You can find available offerings using the `aws savingsplans describe-savings-plans-offerings` CLI command.
-  final Input<String> savingsPlanOfferingId;
+  final pulumi.Input<String> savingsPlanOfferingId;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<SavingsPlanTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<SavingsPlanTimeouts>? timeouts;
 
   /// The up-front payment amount.
-  final Input<String>? upfrontPaymentAmount;
+  final pulumi.Input<String>? upfrontPaymentAmount;
 
   SavingsPlanArgs({
     required this.commitment,
@@ -46,7 +46,7 @@ class SavingsPlanArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<SavingsPlanTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<SavingsPlanTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     final upfrontPaymentAmountValue = upfrontPaymentAmount;
@@ -58,14 +58,15 @@ class SavingsPlanArgs {
 
   factory SavingsPlanArgs.fromMap(Map<String, dynamic> map) {
     return SavingsPlanArgs(
-      commitment: Input.asInput<String>(map['commitment']),
-      purchaseTime: Input.asOptionalInput<String>(map['purchaseTime']),
+      commitment: pulumi.Input.asInput<String>(map['commitment']),
+      purchaseTime: pulumi.Input.asOptionalInput<String>(map['purchaseTime']),
       savingsPlanOfferingId:
-          Input.asInput<String>(map['savingsPlanOfferingId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<SavingsPlanTimeouts>(map['timeouts']),
+          pulumi.Input.asInput<String>(map['savingsPlanOfferingId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts:
+          pulumi.Input.asOptionalInput<SavingsPlanTimeouts>(map['timeouts']),
       upfrontPaymentAmount:
-          Input.asOptionalInput<String>(map['upfrontPaymentAmount']),
+          pulumi.Input.asOptionalInput<String>(map['upfrontPaymentAmount']),
     );
   }
 }

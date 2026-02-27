@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bucket_replication_configuration_rule/get_bucket_replication_configuration_rule.dart';
 
 /// Result data returned by getBucketReplicationConfiguration.
@@ -31,7 +31,8 @@ class GetBucketReplicationConfigurationResult {
     map['id'] = id;
     map['region'] = region;
     map['role'] = role;
-    map['rules'] = Input.encodeList<GetBucketReplicationConfigurationRule,
+    map['rules'] = pulumi.Input.encodeList<
+        GetBucketReplicationConfigurationRule,
         Map<String, dynamic>>(rules, (value) => value.toMap());
     return map;
   }
@@ -43,7 +44,7 @@ class GetBucketReplicationConfigurationResult {
       id: map['id'] as String,
       region: map['region'] as String,
       role: map['role'] as String,
-      rules: Input.decodeList<GetBucketReplicationConfigurationRule>(
+      rules: pulumi.Input.decodeList<GetBucketReplicationConfigurationRule>(
           map['rules'],
           (value) => GetBucketReplicationConfigurationRule.fromMap(
               (value as Map).cast<String, dynamic>())),

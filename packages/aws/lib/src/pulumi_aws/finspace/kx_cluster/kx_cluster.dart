@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../kx_cluster_auto_scaling_configuration/kx_cluster_auto_scaling_configuration.dart';
 import '../kx_cluster_cache_storage_configuration/kx_cluster_cache_storage_configuration.dart';
 import '../kx_cluster_capacity_configuration/kx_cluster_capacity_configuration.dart';
@@ -25,83 +25,84 @@ import 'kx_cluster_args.dart';
 /// ```sh
 /// $ pulumi import aws:finspace/kxCluster:KxCluster example n3ceo7wqxoxcti5tujqwzs,my-tf-kx-cluster
 /// ```
-class KxCluster extends CustomResource {
+class KxCluster extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) identifier of the KX cluster.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Configuration based on which FinSpace will scale in or scale out nodes in your cluster. See auto_scaling_configuration.
-  late final Output<KxClusterAutoScalingConfiguration?>
+  late final pulumi.Output<KxClusterAutoScalingConfiguration?>
       autoScalingConfiguration;
 
   /// The availability zone identifiers for the requested regions. Required when `az_mode` is set to SINGLE.
-  late final Output<String?> availabilityZoneId;
+  late final pulumi.Output<String?> availabilityZoneId;
 
   /// The number of availability zones you want to assign per cluster. This can be one of the following:
   /// * SINGLE - Assigns one availability zone per cluster.
   /// * MULTI - Assigns all the availability zones per cluster.
-  late final Output<String> azMode;
+  late final pulumi.Output<String> azMode;
 
   /// Configurations for a read only cache storage associated with a cluster. This cache will be stored as an FSx Lustre that reads from the S3 store. See cache_storage_configuration.
-  late final Output<List<KxClusterCacheStorageConfiguration>?>
+  late final pulumi.Output<List<KxClusterCacheStorageConfiguration>?>
       cacheStorageConfigurations;
 
   /// Structure for the metadata of a cluster. Includes information like the CPUs needed, memory of instances, and number of instances. See capacity_configuration.
-  late final Output<KxClusterCapacityConfiguration?> capacityConfiguration;
+  late final pulumi.Output<KxClusterCapacityConfiguration?>
+      capacityConfiguration;
 
   /// Details of the custom code that you want to use inside a cluster when analyzing data. Consists of the S3 source bucket, location, object version, and the relative path from where the custom code is loaded into the cluster. See code.
-  late final Output<KxClusterCode?> code;
+  late final pulumi.Output<KxClusterCode?> code;
 
   /// List of key-value pairs to make available inside the cluster.
-  late final Output<Map<String, String>?> commandLineArguments;
+  late final pulumi.Output<Map<String, String>?> commandLineArguments;
 
   /// Timestamp at which the cluster is created in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
-  late final Output<String> createdTimestamp;
+  late final pulumi.Output<String> createdTimestamp;
 
   /// KX database that will be available for querying. Defined below.
-  late final Output<List<KxClusterDatabase>?> databases;
+  late final pulumi.Output<List<KxClusterDatabase>?> databases;
 
   /// Description of the cluster.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Unique identifier for the KX environment.
-  late final Output<String> environmentId;
+  late final pulumi.Output<String> environmentId;
 
   /// An IAM role that defines a set of permissions associated with a cluster. These permissions are assumed when a cluster attempts to access another cluster.
-  late final Output<String?> executionRole;
+  late final pulumi.Output<String?> executionRole;
 
   /// Path to Q program that will be run at launch of a cluster. This is a relative path within .zip file that contains the custom code, which will be loaded on the cluster. It must include the file name itself. For example, somedir/init.q.
-  late final Output<String?> initializationScript;
+  late final pulumi.Output<String?> initializationScript;
 
   /// Last timestamp at which the cluster was updated in FinSpace. Value determined as epoch time in seconds. For example, the value for Monday, November 1, 2021 12:00:00 PM UTC is specified as 1635768000.
-  late final Output<String> lastModifiedTimestamp;
+  late final pulumi.Output<String> lastModifiedTimestamp;
 
   /// Unique name for the cluster that you want to create.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Version of FinSpace Managed kdb to run.
-  late final Output<String> releaseLabel;
+  late final pulumi.Output<String> releaseLabel;
 
   /// Size and type of the temporary storage that is used to hold data during the savedown process. This parameter is required when you choose `type` as RDB. All the data written to this storage space is lost when the cluster node is restarted. See savedown_storage_configuration.
-  late final Output<KxClusterSavedownStorageConfiguration?>
+  late final pulumi.Output<KxClusterSavedownStorageConfiguration?>
       savedownStorageConfiguration;
 
   /// The structure that stores the configuration details of a scaling group.
-  late final Output<KxClusterScalingGroupConfiguration?>
+  late final pulumi.Output<KxClusterScalingGroupConfiguration?>
       scalingGroupConfiguration;
-  late final Output<String> status;
-  late final Output<String> statusReason;
+  late final pulumi.Output<String> status;
+  late final pulumi.Output<String> statusReason;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// A configuration to store Tickerplant logs. It consists of a list of volumes that will be mounted to your cluster. For the cluster type Tickerplant , the location of the TP volume on the cluster will be available by using the global variable .aws.tp_log_path.
-  late final Output<List<KxClusterTickerplantLogConfiguration>?>
+  late final pulumi.Output<List<KxClusterTickerplantLogConfiguration>?>
       tickerplantLogConfigurations;
 
   /// Type of KDB database. The following types are available:
@@ -110,22 +111,22 @@ class KxCluster extends CustomResource {
   /// * GATEWAY - A gateway cluster allows you to access data across processes in kdb systems. It allows you to create your own routing logic using the initialization scripts and custom code. This type of cluster does not require a  writable local storage.
   /// * GP - A general purpose cluster allows you to quickly iterate on code during development by granting greater access to system commands and enabling a fast reload of custom code. This cluster type can optionally mount databases including cache and savedown storage. For this cluster type, the node count is fixed at 1. It does not support autoscaling and supports only `SINGLE` AZ mode.
   /// * Tickerplant - A tickerplant cluster allows you to subscribe to feed handlers based on IAM permissions. It can publish to RDBs, other Tickerplants, and real-time subscribers (RTS). Tickerplants can persist messages to log, which is readable by any RDB environment. It supports only single-node that is only one kdb process.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// Configuration details about the network where the Privatelink endpoint of the cluster resides. See vpc_configuration.
   ///
   /// The following arguments are optional:
-  late final Output<KxClusterVpcConfiguration> vpcConfiguration;
+  late final pulumi.Output<KxClusterVpcConfiguration> vpcConfiguration;
 
   KxCluster(
     String name, {
     KxClusterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:finspace/kxCluster:KxCluster',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.autoScalingConfiguration =

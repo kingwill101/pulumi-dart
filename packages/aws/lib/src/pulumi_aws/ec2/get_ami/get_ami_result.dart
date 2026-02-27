@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ami_block_device_mapping/get_ami_block_device_mapping.dart';
 import '../get_ami_filter/get_ami_filter.dart';
 import '../get_ami_product_code/get_ami_product_code.dart';
@@ -187,7 +187,7 @@ class GetAmiResult {
     map['architecture'] = architecture;
     map['arn'] = arn;
     map['blockDeviceMappings'] =
-        Input.encodeList<GetAmiBlockDeviceMapping, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetAmiBlockDeviceMapping, Map<String, dynamic>>(
             blockDeviceMappings, (value) => value.toMap());
     map['bootMode'] = bootMode;
     map['creationDate'] = creationDate;
@@ -200,8 +200,9 @@ class GetAmiResult {
     }
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetAmiFilter, Map<String, dynamic>>(
-          filtersValue, (value) => value.toMap());
+      map['filters'] =
+          pulumi.Input.encodeList<GetAmiFilter, Map<String, dynamic>>(
+              filtersValue, (value) => value.toMap());
     }
     map['hypervisor'] = hypervisor;
     map['id'] = id;
@@ -233,7 +234,7 @@ class GetAmiResult {
     map['platform'] = platform;
     map['platformDetails'] = platformDetails;
     map['productCodes'] =
-        Input.encodeList<GetAmiProductCode, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetAmiProductCode, Map<String, dynamic>>(
             productCodes, (value) => value.toMap());
     map['public'] = public;
     map['ramdiskId'] = ramdiskId;
@@ -262,7 +263,7 @@ class GetAmiResult {
           : map['allowUnsafeFilter'] as bool,
       architecture: map['architecture'] as String,
       arn: map['arn'] as String,
-      blockDeviceMappings: Input.decodeList<GetAmiBlockDeviceMapping>(
+      blockDeviceMappings: pulumi.Input.decodeList<GetAmiBlockDeviceMapping>(
           map['blockDeviceMappings'],
           (value) => GetAmiBlockDeviceMapping.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -276,7 +277,7 @@ class GetAmiResult {
           : (map['executableUsers'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetAmiFilter>(
+          : pulumi.Input.decodeList<GetAmiFilter>(
               map['filters'],
               (value) =>
                   GetAmiFilter.fromMap((value as Map).cast<String, dynamic>())),
@@ -300,7 +301,7 @@ class GetAmiResult {
           map['owners'] == null ? null : (map['owners'] as List).cast<String>(),
       platform: map['platform'] as String,
       platformDetails: map['platformDetails'] as String,
-      productCodes: Input.decodeList<GetAmiProductCode>(
+      productCodes: pulumi.Input.decodeList<GetAmiProductCode>(
           map['productCodes'],
           (value) => GetAmiProductCode.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_task_definition_ephemeral_storage/get_task_definition_ephemeral_storage.dart';
 import '../get_task_definition_placement_constraint/get_task_definition_placement_constraint.dart';
 import '../get_task_definition_proxy_configuration/get_task_definition_proxy_configuration.dart';
@@ -108,7 +108,7 @@ class GetTaskDefinitionResult {
     map['containerDefinitions'] = containerDefinitions;
     map['cpu'] = cpu;
     map['enableFaultInjection'] = enableFaultInjection;
-    map['ephemeralStorages'] = Input.encodeList<
+    map['ephemeralStorages'] = pulumi.Input.encodeList<
         GetTaskDefinitionEphemeralStorage,
         Map<String, dynamic>>(ephemeralStorages, (value) => value.toMap());
     map['executionRoleArn'] = executionRoleArn;
@@ -118,22 +118,23 @@ class GetTaskDefinitionResult {
     map['memory'] = memory;
     map['networkMode'] = networkMode;
     map['pidMode'] = pidMode;
-    map['placementConstraints'] = Input.encodeList<
+    map['placementConstraints'] = pulumi.Input.encodeList<
         GetTaskDefinitionPlacementConstraint,
         Map<String, dynamic>>(placementConstraints, (value) => value.toMap());
-    map['proxyConfigurations'] = Input.encodeList<
+    map['proxyConfigurations'] = pulumi.Input.encodeList<
         GetTaskDefinitionProxyConfiguration,
         Map<String, dynamic>>(proxyConfigurations, (value) => value.toMap());
     map['region'] = region;
     map['requiresCompatibilities'] = requiresCompatibilities;
     map['revision'] = revision;
-    map['runtimePlatforms'] = Input.encodeList<GetTaskDefinitionRuntimePlatform,
+    map['runtimePlatforms'] = pulumi.Input.encodeList<
+        GetTaskDefinitionRuntimePlatform,
         Map<String, dynamic>>(runtimePlatforms, (value) => value.toMap());
     map['status'] = status;
     map['taskDefinition'] = taskDefinition;
     map['taskRoleArn'] = taskRoleArn;
     map['volumes'] =
-        Input.encodeList<GetTaskDefinitionVolume, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTaskDefinitionVolume, Map<String, dynamic>>(
             volumes, (value) => value.toMap());
     return map;
   }
@@ -145,10 +146,11 @@ class GetTaskDefinitionResult {
       containerDefinitions: map['containerDefinitions'] as String,
       cpu: map['cpu'] as String,
       enableFaultInjection: map['enableFaultInjection'] as bool,
-      ephemeralStorages: Input.decodeList<GetTaskDefinitionEphemeralStorage>(
-          map['ephemeralStorages'],
-          (value) => GetTaskDefinitionEphemeralStorage.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      ephemeralStorages:
+          pulumi.Input.decodeList<GetTaskDefinitionEphemeralStorage>(
+              map['ephemeralStorages'],
+              (value) => GetTaskDefinitionEphemeralStorage.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       executionRoleArn: map['executionRoleArn'] as String,
       family: map['family'] as String,
       id: map['id'] as String,
@@ -157,12 +159,12 @@ class GetTaskDefinitionResult {
       networkMode: map['networkMode'] as String,
       pidMode: map['pidMode'] as String,
       placementConstraints:
-          Input.decodeList<GetTaskDefinitionPlacementConstraint>(
+          pulumi.Input.decodeList<GetTaskDefinitionPlacementConstraint>(
               map['placementConstraints'],
               (value) => GetTaskDefinitionPlacementConstraint.fromMap(
                   (value as Map).cast<String, dynamic>())),
       proxyConfigurations:
-          Input.decodeList<GetTaskDefinitionProxyConfiguration>(
+          pulumi.Input.decodeList<GetTaskDefinitionProxyConfiguration>(
               map['proxyConfigurations'],
               (value) => GetTaskDefinitionProxyConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -170,14 +172,15 @@ class GetTaskDefinitionResult {
       requiresCompatibilities:
           (map['requiresCompatibilities'] as List).cast<String>(),
       revision: map['revision'] as int,
-      runtimePlatforms: Input.decodeList<GetTaskDefinitionRuntimePlatform>(
-          map['runtimePlatforms'],
-          (value) => GetTaskDefinitionRuntimePlatform.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      runtimePlatforms:
+          pulumi.Input.decodeList<GetTaskDefinitionRuntimePlatform>(
+              map['runtimePlatforms'],
+              (value) => GetTaskDefinitionRuntimePlatform.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       taskDefinition: map['taskDefinition'] as String,
       taskRoleArn: map['taskRoleArn'] as String,
-      volumes: Input.decodeList<GetTaskDefinitionVolume>(
+      volumes: pulumi.Input.decodeList<GetTaskDefinitionVolume>(
           map['volumes'],
           (value) => GetTaskDefinitionVolume.fromMap(
               (value as Map).cast<String, dynamic>())),

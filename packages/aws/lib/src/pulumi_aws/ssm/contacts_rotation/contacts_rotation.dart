@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../contacts_rotation_recurrence/contacts_rotation_recurrence.dart';
 import 'contacts_rotation_args.dart';
 
@@ -34,45 +34,45 @@ import 'contacts_rotation_args.dart';
 /// ```sh
 /// $ pulumi import aws:ssm/contactsRotation:ContactsRotation example arn:aws:ssm-contacts:us-east-1:012345678910:rotation/example
 /// ```
-class ContactsRotation extends CustomResource {
+class ContactsRotation extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the rotation.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Amazon Resource Names (ARNs) of the contacts to add to the rotation. The order in which you list the contacts is their shift order in the rotation schedule.
-  late final Output<List<String>> contactIds;
+  late final pulumi.Output<List<String>> contactIds;
 
   /// The name for the rotation.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Information about when an on-call rotation is in effect and how long the rotation period lasts. Exactly one of either `daily_settings`, `monthly_settings`, or `weekly_settings` must be populated. See Recurrence for more details.
   ///
   /// The following arguments are optional:
-  late final Output<ContactsRotationRecurrence> recurrence;
+  late final pulumi.Output<ContactsRotationRecurrence> recurrence;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The date and time, in RFC 3339 format, that the rotation goes into effect.
-  late final Output<String?> startTime;
+  late final pulumi.Output<String?> startTime;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The time zone to base the rotation’s activity on in Internet Assigned Numbers Authority (IANA) format.
-  late final Output<String> timeZoneId;
+  late final pulumi.Output<String> timeZoneId;
 
   ContactsRotation(
     String name, {
     ContactsRotationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssm/contactsRotation:ContactsRotation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.contactIds = registerOutput<List<String>>('contactIds');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../configuration_policy_configuration_policy/configuration_policy_configuration_policy.dart';
 import 'configuration_policy_args.dart';
 
@@ -27,30 +27,31 @@ import 'configuration_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:securityhub/configurationPolicy:ConfigurationPolicy example "00000000-1111-2222-3333-444444444444"
 /// ```
-class ConfigurationPolicy extends CustomResource {
-  late final Output<String> arn;
+class ConfigurationPolicy extends pulumi.CustomResource {
+  late final pulumi.Output<String> arn;
 
   /// Defines how Security Hub is configured. See below.
-  late final Output<ConfigurationPolicyConfigurationPolicy> configurationPolicy;
+  late final pulumi.Output<ConfigurationPolicyConfigurationPolicy>
+      configurationPolicy;
 
   /// The description of the configuration policy.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The name of the configuration policy.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ConfigurationPolicy(
     String name, {
     ConfigurationPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:securityhub/configurationPolicy:ConfigurationPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.configurationPolicy =

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'queue_policy_args.dart';
 
 /// Allows you to set a policy of an SQS Queue while referencing the ARN of the queue within the policy.
@@ -24,25 +24,25 @@ import 'queue_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:sqs/queuePolicy:QueuePolicy test https://queue.amazonaws.com/123456789012/myqueue
 /// ```
-class QueuePolicy extends CustomResource {
+class QueuePolicy extends pulumi.CustomResource {
   /// JSON policy for the SQS queue. For more information about building AWS IAM policy documents with Terraform, see the AWS IAM Policy Document Guide. Ensure that `Version = "2012-10-17"` is set in the policy or AWS may hang in creating the queue.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// URL of the SQS Queue to which to attach the policy.
-  late final Output<String> queueUrl;
+  late final pulumi.Output<String> queueUrl;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   QueuePolicy(
     String name, {
     QueuePolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sqs/queuePolicy:QueuePolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.policy = registerOutput<String>('policy');
     this.queueUrl = registerOutput<String>('queueUrl');

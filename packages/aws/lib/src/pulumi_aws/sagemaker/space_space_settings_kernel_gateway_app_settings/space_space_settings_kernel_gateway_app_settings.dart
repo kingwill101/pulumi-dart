@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../space_space_settings_kernel_gateway_app_settings_custom_image/space_space_settings_kernel_gateway_app_settings_custom_image.dart';
 import '../space_space_settings_kernel_gateway_app_settings_default_resource_spec/space_space_settings_kernel_gateway_app_settings_default_resource_spec.dart';
 
@@ -26,7 +26,7 @@ class SpaceSpaceSettingsKernelGatewayAppSettings {
     final map = <String, dynamic>{};
     final customImagesValue = customImages;
     if (customImagesValue != null) {
-      map['customImages'] = Input.encodeList<
+      map['customImages'] = pulumi.Input.encodeList<
           SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage,
           Map<String, dynamic>>(customImagesValue, (value) => value.toMap());
     }
@@ -43,7 +43,7 @@ class SpaceSpaceSettingsKernelGatewayAppSettings {
     return SpaceSpaceSettingsKernelGatewayAppSettings(
       customImages: map['customImages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage>(
               map['customImages'],
               (value) =>

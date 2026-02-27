@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_customer_gateway_filter/get_customer_gateway_filter.dart';
 
 /// Arguments for getCustomerGateway.
@@ -8,16 +8,16 @@ class GetCustomerGatewayArgs {
   /// One or more [name-value pairs][dcg-filters] to filter by.
   ///
   /// [dcg-filters]: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCustomerGateways.html
-  final Input<List<GetCustomerGatewayFilter>>? filters;
+  final pulumi.Input<List<GetCustomerGatewayFilter>>? filters;
 
   /// ID of the gateway.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of key-value pairs assigned to the gateway.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetCustomerGatewayArgs({
     this.filters,
@@ -30,12 +30,11 @@ class GetCustomerGatewayArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
               List<GetCustomerGatewayFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetCustomerGatewayFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetCustomerGatewayFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final idValue = id;
     if (idValue != null) {
@@ -54,11 +53,11 @@ class GetCustomerGatewayArgs {
 
   factory GetCustomerGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomerGatewayArgs(
-      filters:
-          Input.asOptionalInput<List<GetCustomerGatewayFilter>>(map['filters']),
-      id: Input.asOptionalInput<String>(map['id']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      filters: pulumi.Input.asOptionalInput<List<GetCustomerGatewayFilter>>(
+          map['filters']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

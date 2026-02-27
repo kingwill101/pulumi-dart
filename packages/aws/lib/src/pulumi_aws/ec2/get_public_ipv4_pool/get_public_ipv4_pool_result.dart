@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_public_ipv4_pool_pool_address_range/get_public_ipv4_pool_pool_address_range.dart';
 
 /// Result data returned by getPublicIpv4Pool.
@@ -44,7 +44,7 @@ class GetPublicIpv4PoolResult {
     map['description'] = description;
     map['id'] = id;
     map['networkBorderGroup'] = networkBorderGroup;
-    map['poolAddressRanges'] = Input.encodeList<
+    map['poolAddressRanges'] = pulumi.Input.encodeList<
         GetPublicIpv4PoolPoolAddressRange,
         Map<String, dynamic>>(poolAddressRanges, (value) => value.toMap());
     map['poolId'] = poolId;
@@ -60,10 +60,11 @@ class GetPublicIpv4PoolResult {
       description: map['description'] as String,
       id: map['id'] as String,
       networkBorderGroup: map['networkBorderGroup'] as String,
-      poolAddressRanges: Input.decodeList<GetPublicIpv4PoolPoolAddressRange>(
-          map['poolAddressRanges'],
-          (value) => GetPublicIpv4PoolPoolAddressRange.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      poolAddressRanges:
+          pulumi.Input.decodeList<GetPublicIpv4PoolPoolAddressRange>(
+              map['poolAddressRanges'],
+              (value) => GetPublicIpv4PoolPoolAddressRange.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       poolId: map['poolId'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),

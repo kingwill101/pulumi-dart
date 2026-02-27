@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TableBucketPolicy.
 class TableBucketPolicyArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Amazon Web Services resource-based policy document in JSON format.
-  final Input<String> resourcePolicy;
+  final pulumi.Input<String> resourcePolicy;
 
   /// ARN referencing the Table Bucket that owns this policy.
-  final Input<String> tableBucketArn;
+  final pulumi.Input<String> tableBucketArn;
 
   TableBucketPolicyArgs({
     this.region,
@@ -32,9 +32,9 @@ class TableBucketPolicyArgs {
 
   factory TableBucketPolicyArgs.fromMap(Map<String, dynamic> map) {
     return TableBucketPolicyArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      resourcePolicy: Input.asInput<String>(map['resourcePolicy']),
-      tableBucketArn: Input.asInput<String>(map['tableBucketArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourcePolicy: pulumi.Input.asInput<String>(map['resourcePolicy']),
+      tableBucketArn: pulumi.Input.asInput<String>(map['tableBucketArn']),
     );
   }
 }

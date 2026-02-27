@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDelegationSet.
 class GetDelegationSetArgs {
   /// Delegation set ID.
-  final Input<String> id;
+  final pulumi.Input<String> id;
 
   GetDelegationSetArgs({
     required this.id,
@@ -19,7 +19,7 @@ class GetDelegationSetArgs {
 
   factory GetDelegationSetArgs.fromMap(Map<String, dynamic> map) {
     return GetDelegationSetArgs(
-      id: Input.asInput<String>(map['id']),
+      id: pulumi.Input.asInput<String>(map['id']),
     );
   }
 }

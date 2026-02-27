@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for UserCustomPermission.
 class UserCustomPermissionArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// Custom permissions profile name.
-  final Input<String> customPermissionsName;
+  final pulumi.Input<String> customPermissionsName;
 
   /// Namespace that the user belongs to. Defaults to `default`.
-  final Input<String>? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Username of the user.
   ///
   /// The following arguments are optional:
-  final Input<String> userName;
+  final pulumi.Input<String> userName;
 
   UserCustomPermissionArgs({
     this.awsAccountId,
@@ -50,12 +50,12 @@ class UserCustomPermissionArgs {
 
   factory UserCustomPermissionArgs.fromMap(Map<String, dynamic> map) {
     return UserCustomPermissionArgs(
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
       customPermissionsName:
-          Input.asInput<String>(map['customPermissionsName']),
-      namespace: Input.asOptionalInput<String>(map['namespace']),
-      region: Input.asOptionalInput<String>(map['region']),
-      userName: Input.asInput<String>(map['userName']),
+          pulumi.Input.asInput<String>(map['customPermissionsName']),
+      namespace: pulumi.Input.asOptionalInput<String>(map['namespace']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      userName: pulumi.Input.asInput<String>(map['userName']),
     );
   }
 }

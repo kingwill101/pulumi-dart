@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for GatewayAssociation.
 class GatewayAssociationArgs {
@@ -9,25 +9,25 @@ class GatewayAssociationArgs {
   /// > **NOTE:** `dx_gateway_id` and `associated_gateway_id` must be specified for single account Direct Connect gateway associations.
   ///
   /// > **NOTE:** If the `associated_gateway_id` is in another region, an alias in a new provider block for that region should be specified.
-  final Input<List<String>>? allowedPrefixes;
+  final pulumi.Input<List<String>>? allowedPrefixes;
 
   /// The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.
   /// Used for single account Direct Connect gateway associations.
-  final Input<String>? associatedGatewayId;
+  final pulumi.Input<String>? associatedGatewayId;
 
   /// The ID of the AWS account that owns the VGW or transit gateway with which to associate the Direct Connect gateway.
   /// Used for cross-account Direct Connect gateway associations.
-  final Input<String>? associatedGatewayOwnerAccountId;
+  final pulumi.Input<String>? associatedGatewayOwnerAccountId;
 
   /// The ID of the Direct Connect gateway.
-  final Input<String> dxGatewayId;
+  final pulumi.Input<String> dxGatewayId;
 
   /// The ID of the Direct Connect gateway association proposal.
   /// Used for cross-account Direct Connect gateway associations.
-  final Input<String>? proposalId;
+  final pulumi.Input<String>? proposalId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GatewayAssociationArgs({
     this.allowedPrefixes,
@@ -69,14 +69,14 @@ class GatewayAssociationArgs {
   factory GatewayAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GatewayAssociationArgs(
       allowedPrefixes:
-          Input.asOptionalInput<List<String>>(map['allowedPrefixes']),
+          pulumi.Input.asOptionalInput<List<String>>(map['allowedPrefixes']),
       associatedGatewayId:
-          Input.asOptionalInput<String>(map['associatedGatewayId']),
-      associatedGatewayOwnerAccountId:
-          Input.asOptionalInput<String>(map['associatedGatewayOwnerAccountId']),
-      dxGatewayId: Input.asInput<String>(map['dxGatewayId']),
-      proposalId: Input.asOptionalInput<String>(map['proposalId']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['associatedGatewayId']),
+      associatedGatewayOwnerAccountId: pulumi.Input.asOptionalInput<String>(
+          map['associatedGatewayOwnerAccountId']),
+      dxGatewayId: pulumi.Input.asInput<String>(map['dxGatewayId']),
+      proposalId: pulumi.Input.asOptionalInput<String>(map['proposalId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

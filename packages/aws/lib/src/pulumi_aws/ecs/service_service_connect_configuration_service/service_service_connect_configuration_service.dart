@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_service_connect_configuration_service_client_alias/service_service_connect_configuration_service_client_alias.dart';
 import '../service_service_connect_configuration_service_timeout/service_service_connect_configuration_service_timeout.dart';
 import '../service_service_connect_configuration_service_tls/service_service_connect_configuration_service_tls.dart';
@@ -37,7 +37,7 @@ class ServiceServiceConnectConfigurationService {
     final map = <String, dynamic>{};
     final clientAliasValue = clientAlias;
     if (clientAliasValue != null) {
-      map['clientAlias'] = Input.encodeList<
+      map['clientAlias'] = pulumi.Input.encodeList<
           ServiceServiceConnectConfigurationServiceClientAlias,
           Map<String, dynamic>>(clientAliasValue, (value) => value.toMap());
     }
@@ -66,7 +66,7 @@ class ServiceServiceConnectConfigurationService {
     return ServiceServiceConnectConfigurationService(
       clientAlias: map['clientAlias'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ServiceServiceConnectConfigurationServiceClientAlias>(
               map['clientAlias'],
               (value) =>

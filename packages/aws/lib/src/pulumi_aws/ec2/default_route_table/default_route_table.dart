@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../default_route_table_route/default_route_table_route.dart';
 import 'default_route_table_args.dart';
 
@@ -27,45 +27,45 @@ import 'default_route_table_args.dart';
 /// ```
 ///
 /// [tf-main-route-table-association]: /docs/providers/aws/r/main_route_table_association.html
-class DefaultRouteTable extends CustomResource {
+class DefaultRouteTable extends pulumi.CustomResource {
   /// The ARN of the route table.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// ID of the default route table.
   ///
   /// The following arguments are optional:
-  late final Output<String> defaultRouteTableId;
+  late final pulumi.Output<String> defaultRouteTableId;
 
   /// ID of the AWS account that owns the route table.
-  late final Output<String> ownerId;
+  late final pulumi.Output<String> ownerId;
 
   /// List of virtual gateways for propagation.
-  late final Output<List<String>?> propagatingVgws;
+  late final pulumi.Output<List<String>?> propagatingVgws;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Set of objects. Detailed below
-  late final Output<List<DefaultRouteTableRoute>> routes;
+  late final pulumi.Output<List<DefaultRouteTableRoute>> routes;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// ID of the VPC.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   DefaultRouteTable(
     String name, {
     DefaultRouteTableArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/defaultRouteTable:DefaultRouteTable',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.defaultRouteTableId = registerOutput<String>('defaultRouteTableId');

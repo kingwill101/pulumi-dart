@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_statement_sqli_match_statement_field_to_match_cookies_match_pattern/rule_group_rule_statement_sqli_match_statement_field_to_match_cookies_match_pattern.dart';
 
 class RuleGroupRuleStatementSqliMatchStatementFieldToMatchCookies {
@@ -23,7 +23,7 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchCookies {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['matchPatterns'] = Input.encodeList<
+    map['matchPatterns'] = pulumi.Input.encodeList<
         RuleGroupRuleStatementSqliMatchStatementFieldToMatchCookiesMatchPattern,
         Map<String, dynamic>>(matchPatterns, (value) => value.toMap());
     map['matchScope'] = matchScope;
@@ -34,7 +34,7 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchCookies {
   factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchCookies.fromMap(
       Map<String, dynamic> map) {
     return RuleGroupRuleStatementSqliMatchStatementFieldToMatchCookies(
-      matchPatterns: Input.decodeList<
+      matchPatterns: pulumi.Input.decodeList<
               RuleGroupRuleStatementSqliMatchStatementFieldToMatchCookiesMatchPattern>(
           map['matchPatterns'],
           (value) =>

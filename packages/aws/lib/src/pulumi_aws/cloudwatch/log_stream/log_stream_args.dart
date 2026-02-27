@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LogStream.
 class LogStreamArgs {
   /// The name of the log group under which the log stream is to be created.
-  final Input<String> logGroupName;
+  final pulumi.Input<String> logGroupName;
 
   /// The name of the log stream. Must not be longer than 512 characters and must not contain `:`
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   LogStreamArgs({
     required this.logGroupName,
@@ -35,9 +35,9 @@ class LogStreamArgs {
 
   factory LogStreamArgs.fromMap(Map<String, dynamic> map) {
     return LogStreamArgs(
-      logGroupName: Input.asInput<String>(map['logGroupName']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      logGroupName: pulumi.Input.asInput<String>(map['logGroupName']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

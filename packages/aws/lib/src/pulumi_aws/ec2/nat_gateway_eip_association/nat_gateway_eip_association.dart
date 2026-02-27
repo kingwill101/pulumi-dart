@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../nat_gateway_eip_association_timeouts/nat_gateway_eip_association_timeouts.dart';
 import 'nat_gateway_eip_association_args.dart';
 
@@ -19,29 +19,29 @@ import 'nat_gateway_eip_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/natGatewayEipAssociation:NatGatewayEipAssociation example nat-1234567890abcdef1,eipalloc-1234567890abcdef1
 /// ```
-class NatGatewayEipAssociation extends CustomResource {
+class NatGatewayEipAssociation extends pulumi.CustomResource {
   /// The ID of the Elastic IP Allocation to associate with the NAT Gateway.
-  late final Output<String> allocationId;
-  late final Output<String> associationId;
+  late final pulumi.Output<String> allocationId;
+  late final pulumi.Output<String> associationId;
 
   /// The ID of the NAT Gateway to associate the Elastic IP Allocation to.
   ///
   /// The following arguments are optional:
-  late final Output<String> natGatewayId;
+  late final pulumi.Output<String> natGatewayId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<NatGatewayEipAssociationTimeouts?> timeouts;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<NatGatewayEipAssociationTimeouts?> timeouts;
 
   NatGatewayEipAssociation(
     String name, {
     NatGatewayEipAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/natGatewayEipAssociation:NatGatewayEipAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allocationId = registerOutput<String>('allocationId');
     this.associationId = registerOutput<String>('associationId');

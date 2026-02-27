@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_ontap_storage_virtual_machines_args.dart';
 import 'get_ontap_storage_virtual_machines_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_ontap_storage_virtual_machines_result.dart';
 /// The following shows outputting all SVM IDs for a given FSx ONTAP File System.
 Future<GetOntapStorageVirtualMachinesResult> getOntapStorageVirtualMachines(
   GetOntapStorageVirtualMachinesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:fsx/getOntapStorageVirtualMachines:getOntapStorageVirtualMachines',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOntapStorageVirtualMachinesResult.fromMap(result);
 }

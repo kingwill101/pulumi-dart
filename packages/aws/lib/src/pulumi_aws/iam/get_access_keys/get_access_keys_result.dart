@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_access_keys_access_key/get_access_keys_access_key.dart';
 
 /// Result data returned by getAccessKeys.
@@ -21,7 +21,7 @@ class GetAccessKeysResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['accessKeys'] =
-        Input.encodeList<GetAccessKeysAccessKey, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetAccessKeysAccessKey, Map<String, dynamic>>(
             accessKeys, (value) => value.toMap());
     map['id'] = id;
     map['user'] = user;
@@ -30,7 +30,7 @@ class GetAccessKeysResult {
 
   factory GetAccessKeysResult.fromMap(Map<String, dynamic> map) {
     return GetAccessKeysResult(
-      accessKeys: Input.decodeList<GetAccessKeysAccessKey>(
+      accessKeys: pulumi.Input.decodeList<GetAccessKeysAccessKey>(
           map['accessKeys'],
           (value) => GetAccessKeysAccessKey.fromMap(
               (value as Map).cast<String, dynamic>())),

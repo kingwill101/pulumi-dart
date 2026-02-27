@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../option_group_option_option_setting/option_group_option_option_setting.dart';
 
 class OptionGroupOption {
@@ -40,7 +40,8 @@ class OptionGroupOption {
     map['optionName'] = optionName;
     final optionSettingsValue = optionSettings;
     if (optionSettingsValue != null) {
-      map['optionSettings'] = Input.encodeList<OptionGroupOptionOptionSetting,
+      map['optionSettings'] = pulumi.Input.encodeList<
+          OptionGroupOptionOptionSetting,
           Map<String, dynamic>>(optionSettingsValue, (value) => value.toMap());
     }
     final portValue = port;
@@ -66,7 +67,7 @@ class OptionGroupOption {
       optionName: map['optionName'] as String,
       optionSettings: map['optionSettings'] == null
           ? null
-          : Input.decodeList<OptionGroupOptionOptionSetting>(
+          : pulumi.Input.decodeList<OptionGroupOptionOptionSetting>(
               map['optionSettings'],
               (value) => OptionGroupOptionOptionSetting.fromMap(
                   (value as Map).cast<String, dynamic>())),

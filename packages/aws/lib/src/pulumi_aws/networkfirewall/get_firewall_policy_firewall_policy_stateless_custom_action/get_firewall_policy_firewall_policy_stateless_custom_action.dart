@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_firewall_policy_firewall_policy_stateless_custom_action_action_definition/get_firewall_policy_firewall_policy_stateless_custom_action_action_definition.dart';
 
 class GetFirewallPolicyFirewallPolicyStatelessCustomAction {
@@ -16,7 +16,7 @@ class GetFirewallPolicyFirewallPolicyStatelessCustomAction {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['actionDefinitions'] = Input.encodeList<
+    map['actionDefinitions'] = pulumi.Input.encodeList<
         GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition,
         Map<String, dynamic>>(actionDefinitions, (value) => value.toMap());
     map['actionName'] = actionName;
@@ -26,7 +26,7 @@ class GetFirewallPolicyFirewallPolicyStatelessCustomAction {
   factory GetFirewallPolicyFirewallPolicyStatelessCustomAction.fromMap(
       Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatelessCustomAction(
-      actionDefinitions: Input.decodeList<
+      actionDefinitions: pulumi.Input.decodeList<
               GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition>(
           map['actionDefinitions'],
           (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_resolver_firewall_domain_list_args.dart';
 import 'get_resolver_firewall_domain_list_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_resolver_firewall_domain_list_result.dart';
 /// The following example shows how to get a firewall domain list from its ID.
 Future<GetResolverFirewallDomainListResult> getResolverFirewallDomainList(
   GetResolverFirewallDomainListArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:route53/getResolverFirewallDomainList:getResolverFirewallDomainList',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResolverFirewallDomainListResult.fromMap(result);
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../signing_job_signed_object_s3/signing_job_signed_object_s3.dart';
 
 class SigningJobSignedObject {
@@ -14,9 +14,8 @@ class SigningJobSignedObject {
     final map = <String, dynamic>{};
     final s3sValue = s3s;
     if (s3sValue != null) {
-      map['s3s'] =
-          Input.encodeList<SigningJobSignedObjectS3, Map<String, dynamic>>(
-              s3sValue, (value) => value.toMap());
+      map['s3s'] = pulumi.Input.encodeList<SigningJobSignedObjectS3,
+          Map<String, dynamic>>(s3sValue, (value) => value.toMap());
     }
     return map;
   }
@@ -25,7 +24,7 @@ class SigningJobSignedObject {
     return SigningJobSignedObject(
       s3s: map['s3s'] == null
           ? null
-          : Input.decodeList<SigningJobSignedObjectS3>(
+          : pulumi.Input.decodeList<SigningJobSignedObjectS3>(
               map['s3s'],
               (value) => SigningJobSignedObjectS3.fromMap(
                   (value as Map).cast<String, dynamic>())),

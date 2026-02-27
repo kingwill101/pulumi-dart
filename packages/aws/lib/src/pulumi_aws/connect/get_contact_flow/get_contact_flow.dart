@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_contact_flow_args.dart';
 import 'get_contact_flow_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_contact_flow_result.dart';
 /// By contact_flow_id
 Future<GetContactFlowResult> getContactFlow(
   GetContactFlowArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:connect/getContactFlow:getContactFlow',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContactFlowResult.fromMap(result);
 }

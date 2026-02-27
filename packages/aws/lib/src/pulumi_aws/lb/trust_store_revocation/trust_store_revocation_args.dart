@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TrustStoreRevocation.
 class TrustStoreRevocationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// S3 Bucket name holding the client certificate CA bundle.
-  final Input<String> revocationsS3Bucket;
+  final pulumi.Input<String> revocationsS3Bucket;
 
   /// S3 object key holding the client certificate CA bundle.
-  final Input<String> revocationsS3Key;
+  final pulumi.Input<String> revocationsS3Key;
 
   /// Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
-  final Input<String>? revocationsS3ObjectVersion;
+  final pulumi.Input<String>? revocationsS3ObjectVersion;
 
   /// Trust Store ARN.
-  final Input<String> trustStoreArn;
+  final pulumi.Input<String> trustStoreArn;
 
   TrustStoreRevocationArgs({
     this.region,
@@ -45,12 +45,13 @@ class TrustStoreRevocationArgs {
 
   factory TrustStoreRevocationArgs.fromMap(Map<String, dynamic> map) {
     return TrustStoreRevocationArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      revocationsS3Bucket: Input.asInput<String>(map['revocationsS3Bucket']),
-      revocationsS3Key: Input.asInput<String>(map['revocationsS3Key']),
-      revocationsS3ObjectVersion:
-          Input.asOptionalInput<String>(map['revocationsS3ObjectVersion']),
-      trustStoreArn: Input.asInput<String>(map['trustStoreArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      revocationsS3Bucket:
+          pulumi.Input.asInput<String>(map['revocationsS3Bucket']),
+      revocationsS3Key: pulumi.Input.asInput<String>(map['revocationsS3Key']),
+      revocationsS3ObjectVersion: pulumi.Input.asOptionalInput<String>(
+          map['revocationsS3ObjectVersion']),
+      trustStoreArn: pulumi.Input.asInput<String>(map['trustStoreArn']),
     );
   }
 }

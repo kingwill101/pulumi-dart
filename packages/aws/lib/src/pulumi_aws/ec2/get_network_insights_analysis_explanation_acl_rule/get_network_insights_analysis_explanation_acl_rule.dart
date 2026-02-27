@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_network_insights_analysis_explanation_acl_rule_port_range/get_network_insights_analysis_explanation_acl_rule_port_range.dart';
 
 class GetNetworkInsightsAnalysisExplanationAclRule {
@@ -24,7 +24,7 @@ class GetNetworkInsightsAnalysisExplanationAclRule {
     final map = <String, dynamic>{};
     map['cidr'] = cidr;
     map['egress'] = egress;
-    map['portRanges'] = Input.encodeList<
+    map['portRanges'] = pulumi.Input.encodeList<
         GetNetworkInsightsAnalysisExplanationAclRulePortRange,
         Map<String, dynamic>>(portRanges, (value) => value.toMap());
     map['protocol'] = protocol;
@@ -38,7 +38,7 @@ class GetNetworkInsightsAnalysisExplanationAclRule {
     return GetNetworkInsightsAnalysisExplanationAclRule(
       cidr: map['cidr'] as String,
       egress: map['egress'] as bool,
-      portRanges: Input.decodeList<
+      portRanges: pulumi.Input.decodeList<
               GetNetworkInsightsAnalysisExplanationAclRulePortRange>(
           map['portRanges'],
           (value) =>

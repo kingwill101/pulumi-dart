@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../entity_recognizer_input_data_config_annotations/entity_recognizer_input_data_config_annotations.dart';
 import '../entity_recognizer_input_data_config_augmented_manifest/entity_recognizer_input_data_config_augmented_manifest.dart';
 import '../entity_recognizer_input_data_config_documents/entity_recognizer_input_data_config_documents.dart';
@@ -55,7 +55,7 @@ class EntityRecognizerInputDataConfig {
     }
     final augmentedManifestsValue = augmentedManifests;
     if (augmentedManifestsValue != null) {
-      map['augmentedManifests'] = Input.encodeList<
+      map['augmentedManifests'] = pulumi.Input.encodeList<
               EntityRecognizerInputDataConfigAugmentedManifest,
               Map<String, dynamic>>(
           augmentedManifestsValue, (value) => value.toMap());
@@ -72,7 +72,7 @@ class EntityRecognizerInputDataConfig {
     if (entityListValue != null) {
       map['entityList'] = entityListValue.toMap();
     }
-    map['entityTypes'] = Input.encodeList<
+    map['entityTypes'] = pulumi.Input.encodeList<
         EntityRecognizerInputDataConfigEntityType,
         Map<String, dynamic>>(entityTypes, (value) => value.toMap());
     return map;
@@ -86,7 +86,8 @@ class EntityRecognizerInputDataConfig {
               (map['annotations'] as Map).cast<String, dynamic>()),
       augmentedManifests: map['augmentedManifests'] == null
           ? null
-          : Input.decodeList<EntityRecognizerInputDataConfigAugmentedManifest>(
+          : pulumi.Input.decodeList<
+                  EntityRecognizerInputDataConfigAugmentedManifest>(
               map['augmentedManifests'],
               (value) =>
                   EntityRecognizerInputDataConfigAugmentedManifest.fromMap(
@@ -101,10 +102,11 @@ class EntityRecognizerInputDataConfig {
           ? null
           : EntityRecognizerInputDataConfigEntityList.fromMap(
               (map['entityList'] as Map).cast<String, dynamic>()),
-      entityTypes: Input.decodeList<EntityRecognizerInputDataConfigEntityType>(
-          map['entityTypes'],
-          (value) => EntityRecognizerInputDataConfigEntityType.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      entityTypes:
+          pulumi.Input.decodeList<EntityRecognizerInputDataConfigEntityType>(
+              map['entityTypes'],
+              (value) => EntityRecognizerInputDataConfigEntityType.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

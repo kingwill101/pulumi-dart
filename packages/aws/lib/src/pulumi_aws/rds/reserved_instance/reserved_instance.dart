@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../reserved_instance_recurring_charge/reserved_instance_recurring_charge.dart';
 import 'reserved_instance_args.dart';
 
@@ -19,75 +19,76 @@ import 'reserved_instance_args.dart';
 /// ```sh
 /// $ pulumi import aws:rds/reservedInstance:ReservedInstance reservation_instance CustomReservationID
 /// ```
-class ReservedInstance extends CustomResource {
+class ReservedInstance extends pulumi.CustomResource {
   /// ARN for the reserved DB instance.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Currency code for the reserved DB instance.
-  late final Output<String> currencyCode;
+  late final pulumi.Output<String> currencyCode;
 
   /// DB instance class for the reserved DB instance.
-  late final Output<String> dbInstanceClass;
+  late final pulumi.Output<String> dbInstanceClass;
 
   /// Duration of the reservation in seconds.
-  late final Output<int> duration;
+  late final pulumi.Output<int> duration;
 
   /// Fixed price charged for this reserved DB instance.
-  late final Output<double> fixedPrice;
+  late final pulumi.Output<double> fixedPrice;
 
   /// Number of instances to reserve. Default value is `1`.
-  late final Output<int?> instanceCount;
+  late final pulumi.Output<int?> instanceCount;
 
   /// Unique identifier for the lease associated with the reserved DB instance. Amazon Web Services Support might request the lease ID for an issue related to a reserved DB instance.
-  late final Output<String> leaseId;
+  late final pulumi.Output<String> leaseId;
 
   /// Whether the reservation applies to Multi-AZ deployments.
-  late final Output<bool> multiAz;
+  late final pulumi.Output<bool> multiAz;
 
   /// ID of the Reserved DB instance offering to purchase. To determine an `offering_id`, see the `aws.rds.getReservedInstanceOffering` data source.
   ///
   /// The following arguments are optional:
-  late final Output<String> offeringId;
+  late final pulumi.Output<String> offeringId;
 
   /// Offering type of this reserved DB instance.
-  late final Output<String> offeringType;
+  late final pulumi.Output<String> offeringType;
 
   /// Description of the reserved DB instance.
-  late final Output<String> productDescription;
+  late final pulumi.Output<String> productDescription;
 
   /// Recurring price charged to run this reserved DB instance.
-  late final Output<List<ReservedInstanceRecurringCharge>> recurringCharges;
+  late final pulumi.Output<List<ReservedInstanceRecurringCharge>>
+      recurringCharges;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Customer-specified identifier to track this reservation.
-  late final Output<String?> reservationId;
+  late final pulumi.Output<String?> reservationId;
 
   /// Time the reservation started.
-  late final Output<String> startTime;
+  late final pulumi.Output<String> startTime;
 
   /// State of the reserved DB instance.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Map of tags to assign to the DB reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Hourly price charged for this reserved DB instance.
-  late final Output<double> usagePrice;
+  late final pulumi.Output<double> usagePrice;
 
   ReservedInstance(
     String name, {
     ReservedInstanceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:rds/reservedInstance:ReservedInstance',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.currencyCode = registerOutput<String>('currencyCode');

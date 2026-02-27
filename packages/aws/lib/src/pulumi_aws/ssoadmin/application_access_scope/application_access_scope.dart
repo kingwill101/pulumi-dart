@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_access_scope_args.dart';
 
 /// Resource for managing an AWS SSO Admin Application Access Scope.
@@ -16,30 +16,30 @@ import 'application_access_scope_args.dart';
 /// ```sh
 /// $ pulumi import aws:ssoadmin/applicationAccessScope:ApplicationAccessScope example arn:aws:sso::123456789012:application/ssoins-123456789012/apl-123456789012,sso:account:access
 /// ```
-class ApplicationAccessScope extends CustomResource {
+class ApplicationAccessScope extends pulumi.CustomResource {
   /// Specifies the ARN of the application with the access scope with the targets to add or update.
-  late final Output<String> applicationArn;
+  late final pulumi.Output<String> applicationArn;
 
   /// Specifies an array list of ARNs that represent the authorized targets for this access scope.
-  late final Output<List<String>?> authorizedTargets;
+  late final pulumi.Output<List<String>?> authorizedTargets;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Specifies the name of the access scope to be associated with the specified targets.
   ///
   /// The following arguments are optional:
-  late final Output<String> scope;
+  late final pulumi.Output<String> scope;
 
   ApplicationAccessScope(
     String name, {
     ApplicationAccessScopeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssoadmin/applicationAccessScope:ApplicationAccessScope',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.applicationArn = registerOutput<String>('applicationArn');
     this.authorizedTargets = registerOutput<List<String>?>('authorizedTargets');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../customer_managed_policy_attachments_exclusive_customer_managed_policy_reference/customer_managed_policy_attachments_exclusive_customer_managed_policy_reference.dart';
 import '../customer_managed_policy_attachments_exclusive_timeouts/customer_managed_policy_attachments_exclusive_timeouts.dart';
 import 'customer_managed_policy_attachments_exclusive_args.dart';
@@ -44,35 +44,35 @@ import 'customer_managed_policy_attachments_exclusive_args.dart';
 /// ```sh
 /// $ pulumi import aws:ssoadmin/customerManagedPolicyAttachmentsExclusive:CustomerManagedPolicyAttachmentsExclusive example arn:aws:sso:::instance/ssoins-1234567890abcdef,arn:aws:sso:::permissionSet/ssoins-1234567890abcdef/ps-1234567890abcdef
 /// ```
-class CustomerManagedPolicyAttachmentsExclusive extends CustomResource {
+class CustomerManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
   /// Specifies the names and paths of the customer managed policies to attach. See Customer Managed Policy Reference below.
-  late final Output<
+  late final pulumi.Output<
           List<
               CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>?>
       customerManagedPolicyReferences;
 
   /// ARN of the SSO Instance.
-  late final Output<String> instanceArn;
+  late final pulumi.Output<String> instanceArn;
 
   /// ARN of the Permission Set.
   ///
   /// The following arguments are optional:
-  late final Output<String> permissionSetArn;
+  late final pulumi.Output<String> permissionSetArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<CustomerManagedPolicyAttachmentsExclusiveTimeouts?>
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<CustomerManagedPolicyAttachmentsExclusiveTimeouts?>
       timeouts;
 
   CustomerManagedPolicyAttachmentsExclusive(
     String name, {
     CustomerManagedPolicyAttachmentsExclusiveArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssoadmin/customerManagedPolicyAttachmentsExclusive:CustomerManagedPolicyAttachmentsExclusive',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.customerManagedPolicyReferences = registerOutput<
             List<

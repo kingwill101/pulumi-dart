@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TableReplica.
 class TableReplicaArgs {
   /// Whether deletion protection is enabled (true) or disabled (false) on the table replica.
-  final Input<bool>? deletionProtectionEnabled;
+  final pulumi.Input<bool>? deletionProtectionEnabled;
 
   /// ARN of the _main_ or global table which this resource will replicate.
   ///
   /// The following arguments are optional:
-  final Input<String> globalTableArn;
+  final pulumi.Input<String> globalTableArn;
 
   /// ARN of the CMK that should be used for the AWS KMS encryption. This argument should only be used if the key is different from the default KMS-managed DynamoDB key, `alias/aws/dynamodb`. **Note:** This attribute will _not_ be populated with the ARN of _default_ keys.
-  final Input<String>? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
 
   /// Whether to enable Point In Time Recovery for the table replica. Default is `false`.
-  final Input<bool>? pointInTimeRecovery;
+  final pulumi.Input<bool>? pointInTimeRecovery;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Storage class of the table replica. Valid values are `STANDARD` and `STANDARD_INFREQUENT_ACCESS`. If not used, the table replica will use the same class as the global table.
-  final Input<String>? tableClassOverride;
+  final pulumi.Input<String>? tableClassOverride;
 
   /// Map of tags to populate on the created table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   TableReplicaArgs({
     this.deletionProtectionEnabled,
@@ -70,15 +70,15 @@ class TableReplicaArgs {
   factory TableReplicaArgs.fromMap(Map<String, dynamic> map) {
     return TableReplicaArgs(
       deletionProtectionEnabled:
-          Input.asOptionalInput<bool>(map['deletionProtectionEnabled']),
-      globalTableArn: Input.asInput<String>(map['globalTableArn']),
-      kmsKeyArn: Input.asOptionalInput<String>(map['kmsKeyArn']),
+          pulumi.Input.asOptionalInput<bool>(map['deletionProtectionEnabled']),
+      globalTableArn: pulumi.Input.asInput<String>(map['globalTableArn']),
+      kmsKeyArn: pulumi.Input.asOptionalInput<String>(map['kmsKeyArn']),
       pointInTimeRecovery:
-          Input.asOptionalInput<bool>(map['pointInTimeRecovery']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<bool>(map['pointInTimeRecovery']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       tableClassOverride:
-          Input.asOptionalInput<String>(map['tableClassOverride']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<String>(map['tableClassOverride']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_transit_gateway_filter/get_transit_gateway_filter.dart';
 
 /// Result data returned by getTransitGateway.
@@ -93,9 +93,8 @@ class GetTransitGatewayResult {
     map['encryptionSupport'] = encryptionSupport;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetTransitGatewayFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetTransitGatewayFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['multicastSupport'] = multicastSupport;
@@ -125,7 +124,7 @@ class GetTransitGatewayResult {
       encryptionSupport: map['encryptionSupport'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetTransitGatewayFilter>(
+          : pulumi.Input.decodeList<GetTransitGatewayFilter>(
               map['filters'],
               (value) => GetTransitGatewayFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

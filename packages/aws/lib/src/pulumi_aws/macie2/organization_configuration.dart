@@ -1,4 +1,4 @@
 library module_macie2_organization_configuration;
 
-export 'organization_configuration/organization_configuration4.dart';
-export 'organization_configuration/organization_configuration_args4.dart';
+export 'organization_configuration/organization_configuration_macie2.dart';
+export 'organization_configuration/organization_configuration_macie2_args.dart';

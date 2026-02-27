@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_connection_args.dart';
 import 'get_connection_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_connection_result.dart';
 /// ### By Name
 Future<GetConnectionResult> getConnection(
   GetConnectionArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:codestarconnections/getConnection:getConnection',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectionResult.fromMap(result);
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_vpc_attachment_args.dart';
 import 'get_vpc_attachment_result.dart';
 
@@ -15,13 +15,13 @@ import 'get_vpc_attachment_result.dart';
 /// ### By Identifier
 Future<GetVpcAttachmentResult> getVpcAttachment(
   GetVpcAttachmentArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2transitgateway/getVpcAttachment:getVpcAttachment',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpcAttachmentResult.fromMap(result);
 }

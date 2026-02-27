@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VocabularyFilter.
 class VocabularyFilterArgs {
   /// The language code you selected for your vocabulary filter. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
-  final Input<String> languageCode;
+  final pulumi.Input<String> languageCode;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the VocabularyFilter. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The Amazon S3 location (URI) of the text file that contains your custom VocabularyFilter. Conflicts with `words` argument.
-  final Input<String>? vocabularyFilterFileUri;
+  final pulumi.Input<String>? vocabularyFilterFileUri;
 
   /// The name of the VocabularyFilter.
   ///
   /// The following arguments are optional:
-  final Input<String> vocabularyFilterName;
+  final pulumi.Input<String> vocabularyFilterName;
 
   /// A list of terms to include in the vocabulary. Conflicts with `vocabulary_filter_file_uri` argument.
-  final Input<List<String>>? words;
+  final pulumi.Input<List<String>>? words;
 
   VocabularyFilterArgs({
     required this.languageCode,
@@ -58,13 +58,14 @@ class VocabularyFilterArgs {
 
   factory VocabularyFilterArgs.fromMap(Map<String, dynamic> map) {
     return VocabularyFilterArgs(
-      languageCode: Input.asInput<String>(map['languageCode']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      languageCode: pulumi.Input.asInput<String>(map['languageCode']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
       vocabularyFilterFileUri:
-          Input.asOptionalInput<String>(map['vocabularyFilterFileUri']),
-      vocabularyFilterName: Input.asInput<String>(map['vocabularyFilterName']),
-      words: Input.asOptionalInput<List<String>>(map['words']),
+          pulumi.Input.asOptionalInput<String>(map['vocabularyFilterFileUri']),
+      vocabularyFilterName:
+          pulumi.Input.asInput<String>(map['vocabularyFilterName']),
+      words: pulumi.Input.asOptionalInput<List<String>>(map['words']),
     );
   }
 }

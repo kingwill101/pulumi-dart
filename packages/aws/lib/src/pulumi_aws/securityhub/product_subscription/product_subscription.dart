@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'product_subscription_args.dart';
 
 /// Subscribes to a Security Hub product.
@@ -14,9 +14,9 @@ import 'product_subscription_args.dart';
 /// ```sh
 /// $ pulumi import aws:securityhub/productSubscription:ProductSubscription example arn:aws:securityhub:eu-west-1:733251395267:product/alertlogic/althreatmanagement,arn:aws:securityhub:eu-west-1:123456789012:product-subscription/alertlogic/althreatmanagement
 /// ```
-class ProductSubscription extends CustomResource {
+class ProductSubscription extends pulumi.CustomResource {
   /// The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The ARN of the product that generates findings that you want to import into Security Hub - see below.
   ///
@@ -57,20 +57,20 @@ class ProductSubscription extends CustomResource {
   /// * `arn:aws:securityhub:${var.region}::product/trend-micro/deep-security`
   /// * `arn:aws:securityhub:${var.region}::product/turbot/turbot`
   /// * `arn:aws:securityhub:${var.region}::product/twistlock/twistlock-enterprise`
-  late final Output<String> productArn;
+  late final pulumi.Output<String> productArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ProductSubscription(
     String name, {
     ProductSubscriptionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:securityhub/productSubscription:ProductSubscription',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.productArn = registerOutput<String>('productArn');

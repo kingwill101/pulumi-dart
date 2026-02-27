@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Region.
 class RegionArgs {
   /// The ID of the target account when managing member accounts. Will manage current user's account by default if omitted. To use this parameter, the caller must be an identity in the organization's management account or a delegated administrator account. The specified account ID must also be a member account in the same organization. The organization must have all features enabled, and the organization must have trusted access enabled for the Account Management service, and optionally a delegated admin account assigned.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// Whether the region is enabled.
-  final Input<bool> enabled;
+  final pulumi.Input<bool> enabled;
 
   /// The region name to manage.
-  final Input<String> regionName;
+  final pulumi.Input<String> regionName;
 
   RegionArgs({
     this.accountId,
@@ -32,9 +32,9 @@ class RegionArgs {
 
   factory RegionArgs.fromMap(Map<String, dynamic> map) {
     return RegionArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
-      enabled: Input.asInput<bool>(map['enabled']),
-      regionName: Input.asInput<String>(map['regionName']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
+      enabled: pulumi.Input.asInput<bool>(map['enabled']),
+      regionName: pulumi.Input.asInput<String>(map['regionName']),
     );
   }
 }

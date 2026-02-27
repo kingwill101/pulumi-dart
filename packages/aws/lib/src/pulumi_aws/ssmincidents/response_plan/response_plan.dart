@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../response_plan_action/response_plan_action.dart';
 import '../response_plan_incident_template/response_plan_incident_template.dart';
 import '../response_plan_integration/response_plan_integration.dart';
@@ -25,49 +25,49 @@ import 'response_plan_args.dart';
 /// ```sh
 /// $ pulumi import aws:ssmincidents/responsePlan:ResponsePlan responsePlanName ARNValue
 /// ```
-class ResponsePlan extends CustomResource {
+class ResponsePlan extends pulumi.CustomResource {
   /// The actions that the response plan starts at the beginning of an incident.
-  late final Output<ResponsePlanAction?> action;
+  late final pulumi.Output<ResponsePlanAction?> action;
 
   /// The ARN of the response plan.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The Chatbot chat channel used for collaboration during an incident.
-  late final Output<List<String>?> chatChannels;
+  late final pulumi.Output<List<String>?> chatChannels;
 
   /// The long format of the response plan name. This field can contain spaces.
-  late final Output<String?> displayName;
+  late final pulumi.Output<String?> displayName;
 
   /// The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
-  late final Output<List<String>?> engagements;
+  late final pulumi.Output<List<String>?> engagements;
 
   /// The `incident_template` configuration block is required and supports the following arguments:
-  late final Output<ResponsePlanIncidentTemplate> incidentTemplate;
+  late final pulumi.Output<ResponsePlanIncidentTemplate> incidentTemplate;
 
   /// Information about third-party services integrated into the response plan. The following values are supported:
-  late final Output<ResponsePlanIntegration?> integration;
+  late final pulumi.Output<ResponsePlanIntegration?> integration;
 
   /// The name of the response plan.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The tags applied to the response plan.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   ResponsePlan(
     String name, {
     ResponsePlanArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssmincidents/responsePlan:ResponsePlan',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.action = registerOutput<ResponsePlanAction?>('action');
     this.arn = registerOutput<String>('arn');

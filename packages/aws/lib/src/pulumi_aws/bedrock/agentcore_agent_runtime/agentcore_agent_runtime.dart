@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agentcore_agent_runtime_agent_runtime_artifact/agentcore_agent_runtime_agent_runtime_artifact.dart';
 import '../agentcore_agent_runtime_authorizer_configuration/agentcore_agent_runtime_authorizer_configuration.dart';
 import '../agentcore_agent_runtime_lifecycle_configuration/agentcore_agent_runtime_lifecycle_configuration.dart';
@@ -32,77 +32,77 @@ import 'agentcore_agent_runtime_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrock/agentcoreAgentRuntime:AgentcoreAgentRuntime example agent-runtime-12345
 /// ```
-class AgentcoreAgentRuntime extends CustomResource {
+class AgentcoreAgentRuntime extends pulumi.CustomResource {
   /// ARN of the Agent Runtime.
-  late final Output<String> agentRuntimeArn;
+  late final pulumi.Output<String> agentRuntimeArn;
 
   /// Container artifact configuration. See `agent_runtime_artifact` below.
-  late final Output<AgentcoreAgentRuntimeAgentRuntimeArtifact>
+  late final pulumi.Output<AgentcoreAgentRuntimeAgentRuntimeArtifact>
       agentRuntimeArtifact;
 
   /// Unique identifier of the Agent Runtime.
-  late final Output<String> agentRuntimeId;
+  late final pulumi.Output<String> agentRuntimeId;
 
   /// Name of the agent runtime.
-  late final Output<String> agentRuntimeName;
+  late final pulumi.Output<String> agentRuntimeName;
 
   /// Version of the Agent Runtime.
-  late final Output<String> agentRuntimeVersion;
+  late final pulumi.Output<String> agentRuntimeVersion;
 
   /// Authorization configuration for authenticating incoming requests. See `authorizer_configuration` below.
-  late final Output<AgentcoreAgentRuntimeAuthorizerConfiguration?>
+  late final pulumi.Output<AgentcoreAgentRuntimeAuthorizerConfiguration?>
       authorizerConfiguration;
 
   /// Description of the agent runtime.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Map of environment variables to pass to the container.
-  late final Output<Map<String, String>?> environmentVariables;
+  late final pulumi.Output<Map<String, String>?> environmentVariables;
 
   /// Runtime session and resource lifecycle configuration for the agent runtime. See `lifecycle_configuration` below.
-  late final Output<List<AgentcoreAgentRuntimeLifecycleConfiguration>>
+  late final pulumi.Output<List<AgentcoreAgentRuntimeLifecycleConfiguration>>
       lifecycleConfigurations;
 
   /// Network configuration for the agent runtime. See `network_configuration` below.
   ///
   /// The following arguments are optional:
-  late final Output<AgentcoreAgentRuntimeNetworkConfiguration>
+  late final pulumi.Output<AgentcoreAgentRuntimeNetworkConfiguration>
       networkConfiguration;
 
   /// Protocol configuration for the agent runtime. See `protocol_configuration` below.
-  late final Output<AgentcoreAgentRuntimeProtocolConfiguration?>
+  late final pulumi.Output<AgentcoreAgentRuntimeProtocolConfiguration?>
       protocolConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration for HTTP request headers that will be passed through to the runtime. See `request_header_configuration` below.
-  late final Output<AgentcoreAgentRuntimeRequestHeaderConfiguration?>
+  late final pulumi.Output<AgentcoreAgentRuntimeRequestHeaderConfiguration?>
       requestHeaderConfiguration;
 
   /// ARN of the IAM role that the agent runtime assumes to access AWS services.
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<AgentcoreAgentRuntimeTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<AgentcoreAgentRuntimeTimeouts?> timeouts;
 
   /// Workload identity details for the agent runtime. See `workload_identity_details` below.
-  late final Output<List<AgentcoreAgentRuntimeWorkloadIdentityDetail>>
+  late final pulumi.Output<List<AgentcoreAgentRuntimeWorkloadIdentityDetail>>
       workloadIdentityDetails;
 
   AgentcoreAgentRuntime(
     String name, {
     AgentcoreAgentRuntimeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/agentcoreAgentRuntime:AgentcoreAgentRuntime',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.agentRuntimeArn = registerOutput<String>('agentRuntimeArn');
     this.agentRuntimeArtifact =

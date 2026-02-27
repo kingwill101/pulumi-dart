@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_stage_target/plan_stage_target.dart';
 
 class PlanStage {
@@ -20,8 +20,9 @@ class PlanStage {
     map['durationInMinutes'] = durationInMinutes;
     final targetsValue = targets;
     if (targetsValue != null) {
-      map['targets'] = Input.encodeList<PlanStageTarget, Map<String, dynamic>>(
-          targetsValue, (value) => value.toMap());
+      map['targets'] =
+          pulumi.Input.encodeList<PlanStageTarget, Map<String, dynamic>>(
+              targetsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -31,7 +32,7 @@ class PlanStage {
       durationInMinutes: map['durationInMinutes'] as int,
       targets: map['targets'] == null
           ? null
-          : Input.decodeList<PlanStageTarget>(
+          : pulumi.Input.decodeList<PlanStageTarget>(
               map['targets'],
               (value) => PlanStageTarget.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resource_collection_cloudformation/resource_collection_cloudformation.dart';
 import '../resource_collection_tags/resource_collection_tags.dart';
 import 'resource_collection_args.dart';
@@ -34,30 +34,30 @@ import 'resource_collection_args.dart';
 /// ```sh
 /// $ pulumi import aws:devopsguru/resourceCollection:ResourceCollection example AWS_CLOUD_FORMATION
 /// ```
-class ResourceCollection extends CustomResource {
+class ResourceCollection extends pulumi.CustomResource {
   /// A collection of AWS CloudFormation stacks. See `cloudformation` below for additional details.
-  late final Output<ResourceCollectionCloudformation?> cloudformation;
+  late final pulumi.Output<ResourceCollectionCloudformation?> cloudformation;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// AWS tags used to filter the resources in the resource collection. See `tags` below for additional details.
-  late final Output<ResourceCollectionTags?> tags;
+  late final pulumi.Output<ResourceCollectionTags?> tags;
 
   /// Type of AWS resource collection to create. Valid values are `AWS_CLOUD_FORMATION`, `AWS_SERVICE`, and `AWS_TAGS`.
   ///
   /// The following arguments are optional:
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   ResourceCollection(
     String name, {
     ResourceCollectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:devopsguru/resourceCollection:ResourceCollection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cloudformation =
         registerOutput<ResourceCollectionCloudformation?>('cloudformation');

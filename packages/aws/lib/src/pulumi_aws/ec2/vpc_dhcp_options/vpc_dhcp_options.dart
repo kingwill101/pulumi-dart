@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_dhcp_options_args.dart';
 
 /// Provides a VPC DHCP Options resource.
@@ -28,49 +28,49 @@ import 'vpc_dhcp_options_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/vpcDhcpOptions:VpcDhcpOptions my_options dopt-d9070ebb
 /// ```
-class VpcDhcpOptions extends CustomResource {
+class VpcDhcpOptions extends pulumi.CustomResource {
   /// The ARN of the DHCP Options Set.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// the suffix domain name to use by default when resolving non Fully Qualified Domain Names. In other words, this is what ends up being the `search` value in the `/etc/resolv.conf` file.
-  late final Output<String?> domainName;
+  late final pulumi.Output<String?> domainName;
 
   /// List of name servers to configure in `/etc/resolv.conf`. If you want to use the default AWS nameservers you should set this to `AmazonProvidedDNS`.
-  late final Output<List<String>?> domainNameServers;
+  late final pulumi.Output<List<String>?> domainNameServers;
 
   /// How frequently, in seconds, a running instance with an IPv6 assigned to it goes through DHCPv6 lease renewal. Acceptable values are between 140 and 2147483647 (approximately 68 years). If no value is entered, the default lease time is 140 seconds. If you use long-term addressing for EC2 instances, you can increase the lease time and avoid frequent lease renewal requests. Lease renewal typically occurs when half of the lease time has elapsed.
-  late final Output<String?> ipv6AddressPreferredLeaseTime;
+  late final pulumi.Output<String?> ipv6AddressPreferredLeaseTime;
 
   /// List of NETBIOS name servers.
-  late final Output<List<String>?> netbiosNameServers;
+  late final pulumi.Output<List<String>?> netbiosNameServers;
 
   /// The NetBIOS node type (1, 2, 4, or 8). AWS recommends to specify 2 since broadcast and multicast are not supported in their network. For more information about these node types, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt).
-  late final Output<String?> netbiosNodeType;
+  late final pulumi.Output<String?> netbiosNodeType;
 
   /// List of NTP servers to configure.
-  late final Output<List<String>?> ntpServers;
+  late final pulumi.Output<List<String>?> ntpServers;
 
   /// The ID of the AWS account that owns the DHCP options set.
-  late final Output<String> ownerId;
+  late final pulumi.Output<String> ownerId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   VpcDhcpOptions(
     String name, {
     VpcDhcpOptionsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpcDhcpOptions:VpcDhcpOptions',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.domainName = registerOutput<String?>('domainName');

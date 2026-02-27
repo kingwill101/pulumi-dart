@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_flow_definition/agent_flow_definition.dart';
 import '../agent_flow_timeouts/agent_flow_timeouts.dart';
 import 'agent_flow_args.dart';
@@ -18,58 +18,58 @@ import 'agent_flow_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrock/agentFlow:AgentFlow example ABCDEFGHIJ
 /// ```
-class AgentFlow extends CustomResource {
+class AgentFlow extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the flow.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The time at which the flow was created.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// The Amazon Resource Name (ARN) of the KMS key to encrypt the flow.
-  late final Output<String?> customerEncryptionKeyArn;
+  late final pulumi.Output<String?> customerEncryptionKeyArn;
 
   /// A definition of the nodes and connections between nodes in the flow. See Definition for more information.
-  late final Output<AgentFlowDefinition?> definition;
+  late final pulumi.Output<AgentFlowDefinition?> definition;
 
   /// A description for the flow.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The Amazon Resource Name (ARN) of the service role with permissions to create and manage a flow. For more information, see [Create a service role for flows in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-permissions.html) in the Amazon Bedrock User Guide.
   ///
   /// The following arguments are optional:
-  late final Output<String> executionRoleArn;
+  late final pulumi.Output<String> executionRoleArn;
 
   /// A name for the flow.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The status of the flow.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<AgentFlowTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<AgentFlowTimeouts?> timeouts;
 
   /// The time at which the flow was last updated.
-  late final Output<String> updatedAt;
+  late final pulumi.Output<String> updatedAt;
 
   /// The version of the flow.
-  late final Output<String> version;
+  late final pulumi.Output<String> version;
 
   AgentFlow(
     String name, {
     AgentFlowArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/agentFlow:AgentFlow',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.createdAt = registerOutput<String>('createdAt');

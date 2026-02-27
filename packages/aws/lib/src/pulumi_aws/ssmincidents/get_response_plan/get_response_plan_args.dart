@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getResponsePlan.
 class GetResponsePlanArgs {
   /// The Amazon Resource Name (ARN) of the response plan.
-  final Input<String> arn;
+  final pulumi.Input<String> arn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The tags applied to the response plan.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetResponsePlanArgs({
     required this.arn,
@@ -35,9 +35,9 @@ class GetResponsePlanArgs {
 
   factory GetResponsePlanArgs.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanArgs(
-      arn: Input.asInput<String>(map['arn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      arn: pulumi.Input.asInput<String>(map['arn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

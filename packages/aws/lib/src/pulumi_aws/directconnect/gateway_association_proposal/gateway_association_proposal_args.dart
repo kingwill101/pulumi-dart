@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for GatewayAssociationProposal.
 class GatewayAssociationProposalArgs {
   /// VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.
-  final Input<List<String>>? allowedPrefixes;
+  final pulumi.Input<List<String>>? allowedPrefixes;
 
   /// The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.
-  final Input<String> associatedGatewayId;
+  final pulumi.Input<String> associatedGatewayId;
 
   /// Direct Connect Gateway identifier.
-  final Input<String> dxGatewayId;
+  final pulumi.Input<String> dxGatewayId;
 
   /// AWS Account identifier of the Direct Connect Gateway's owner.
-  final Input<String> dxGatewayOwnerAccountId;
+  final pulumi.Input<String> dxGatewayOwnerAccountId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GatewayAssociationProposalArgs({
     this.allowedPrefixes,
@@ -46,12 +46,13 @@ class GatewayAssociationProposalArgs {
   factory GatewayAssociationProposalArgs.fromMap(Map<String, dynamic> map) {
     return GatewayAssociationProposalArgs(
       allowedPrefixes:
-          Input.asOptionalInput<List<String>>(map['allowedPrefixes']),
-      associatedGatewayId: Input.asInput<String>(map['associatedGatewayId']),
-      dxGatewayId: Input.asInput<String>(map['dxGatewayId']),
+          pulumi.Input.asOptionalInput<List<String>>(map['allowedPrefixes']),
+      associatedGatewayId:
+          pulumi.Input.asInput<String>(map['associatedGatewayId']),
+      dxGatewayId: pulumi.Input.asInput<String>(map['dxGatewayId']),
       dxGatewayOwnerAccountId:
-          Input.asInput<String>(map['dxGatewayOwnerAccountId']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asInput<String>(map['dxGatewayOwnerAccountId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

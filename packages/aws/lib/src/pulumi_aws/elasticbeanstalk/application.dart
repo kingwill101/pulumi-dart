@@ -1,4 +1,4 @@
 library module_elasticbeanstalk_application;
 
-export 'application/application4.dart';
-export 'application/application_args4.dart';
+export 'application/application_elasticbeanstalk.dart';
+export 'application/application_elasticbeanstalk_args.dart';

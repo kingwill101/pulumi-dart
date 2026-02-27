@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../event_connection_auth_parameters/event_connection_auth_parameters.dart';
 import '../event_connection_invocation_connectivity_parameters/event_connection_invocation_connectivity_parameters.dart';
 import 'event_connection_args.dart';
@@ -38,44 +38,44 @@ import 'event_connection_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudwatch/eventConnection:EventConnection test ngrok-connection
 /// ```
-class EventConnection extends CustomResource {
+class EventConnection extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the connection.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Parameters used for authorization. A maximum of 1 are allowed. Documented below.
-  late final Output<EventConnectionAuthParameters> authParameters;
+  late final pulumi.Output<EventConnectionAuthParameters> authParameters;
 
   /// Type of authorization to use for the connection. One of `API_KEY`,`BASIC`,`OAUTH_CLIENT_CREDENTIALS`.
-  late final Output<String> authorizationType;
+  late final pulumi.Output<String> authorizationType;
 
   /// Description for the connection. Maximum of 512 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Parameters to use for invoking a private API. Documented below.
-  late final Output<EventConnectionInvocationConnectivityParameters?>
+  late final pulumi.Output<EventConnectionInvocationConnectivityParameters?>
       invocationConnectivityParameters;
 
   /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt this connection. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.
-  late final Output<String?> kmsKeyIdentifier;
+  late final pulumi.Output<String?> kmsKeyIdentifier;
 
   /// The name for the connection. Maximum of 64 characters consisting of numbers, lower/upper case letters, .,-,_.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The Amazon Resource Name (ARN) of the secret created from the authorization parameters specified for the connection.
-  late final Output<String> secretArn;
+  late final pulumi.Output<String> secretArn;
 
   EventConnection(
     String name, {
     EventConnectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudwatch/eventConnection:EventConnection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.authParameters =

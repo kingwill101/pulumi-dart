@@ -1,4 +1,4 @@
 library module_appsync_api;
 
-export 'api/api2.dart';
-export 'api/api_args2.dart';
+export 'api/api_appsync.dart';
+export 'api/api_appsync_args.dart';

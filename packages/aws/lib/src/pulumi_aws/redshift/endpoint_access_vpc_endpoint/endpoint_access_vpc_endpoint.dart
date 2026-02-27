@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../endpoint_access_vpc_endpoint_network_interface/endpoint_access_vpc_endpoint_network_interface.dart';
 
 class EndpointAccessVpcEndpoint {
@@ -23,7 +23,7 @@ class EndpointAccessVpcEndpoint {
     final map = <String, dynamic>{};
     final networkInterfacesValue = networkInterfaces;
     if (networkInterfacesValue != null) {
-      map['networkInterfaces'] = Input.encodeList<
+      map['networkInterfaces'] = pulumi.Input.encodeList<
               EndpointAccessVpcEndpointNetworkInterface, Map<String, dynamic>>(
           networkInterfacesValue, (value) => value.toMap());
     }
@@ -42,7 +42,7 @@ class EndpointAccessVpcEndpoint {
     return EndpointAccessVpcEndpoint(
       networkInterfaces: map['networkInterfaces'] == null
           ? null
-          : Input.decodeList<EndpointAccessVpcEndpointNetworkInterface>(
+          : pulumi.Input.decodeList<EndpointAccessVpcEndpointNetworkInterface>(
               map['networkInterfaces'],
               (value) => EndpointAccessVpcEndpointNetworkInterface.fromMap(
                   (value as Map).cast<String, dynamic>())),

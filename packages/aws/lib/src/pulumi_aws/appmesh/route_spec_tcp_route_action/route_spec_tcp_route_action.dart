@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../route_spec_tcp_route_action_weighted_target/route_spec_tcp_route_action_weighted_target.dart';
 
 class RouteSpecTcpRouteAction {
@@ -14,7 +14,7 @@ class RouteSpecTcpRouteAction {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['weightedTargets'] = Input.encodeList<
+    map['weightedTargets'] = pulumi.Input.encodeList<
         RouteSpecTcpRouteActionWeightedTarget,
         Map<String, dynamic>>(weightedTargets, (value) => value.toMap());
     return map;
@@ -22,10 +22,11 @@ class RouteSpecTcpRouteAction {
 
   factory RouteSpecTcpRouteAction.fromMap(Map<String, dynamic> map) {
     return RouteSpecTcpRouteAction(
-      weightedTargets: Input.decodeList<RouteSpecTcpRouteActionWeightedTarget>(
-          map['weightedTargets'],
-          (value) => RouteSpecTcpRouteActionWeightedTarget.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      weightedTargets:
+          pulumi.Input.decodeList<RouteSpecTcpRouteActionWeightedTarget>(
+              map['weightedTargets'],
+              (value) => RouteSpecTcpRouteActionWeightedTarget.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

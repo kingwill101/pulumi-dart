@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../device_aws_location/device_aws_location.dart';
 import '../device_location/device_location.dart';
 import 'device_args.dart';
@@ -18,54 +18,54 @@ import 'device_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkmanager/device:Device example arn:aws:networkmanager::123456789012:device/global-network-0d47f6t230mz46dy4/device-07f6fd08867abc123
 /// ```
-class Device extends CustomResource {
+class Device extends pulumi.CustomResource {
   /// ARN of the device.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// AWS location of the device. Documented below.
-  late final Output<DeviceAwsLocation?> awsLocation;
+  late final pulumi.Output<DeviceAwsLocation?> awsLocation;
 
   /// Description of the device.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// ID of the global network.
   ///
   /// The following arguments are optional:
-  late final Output<String> globalNetworkId;
+  late final pulumi.Output<String> globalNetworkId;
 
   /// Location of the device. Documented below.
-  late final Output<DeviceLocation?> location;
+  late final pulumi.Output<DeviceLocation?> location;
 
   /// Model of device.
-  late final Output<String?> model;
+  late final pulumi.Output<String?> model;
 
   /// Serial number of the device.
-  late final Output<String?> serialNumber;
+  late final pulumi.Output<String?> serialNumber;
 
   /// ID of the site.
-  late final Output<String?> siteId;
+  late final pulumi.Output<String?> siteId;
 
   /// Key-value tags for the device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Type of device.
-  late final Output<String?> type;
+  late final pulumi.Output<String?> type;
 
   /// Vendor of the device.
-  late final Output<String?> vendor;
+  late final pulumi.Output<String?> vendor;
 
   Device(
     String name, {
     DeviceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkmanager/device:Device',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.awsLocation = registerOutput<DeviceAwsLocation?>('awsLocation');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../network_insights_analysis_return_path_component_additional_detail_component/network_insights_analysis_return_path_component_additional_detail_component.dart';
 
 class NetworkInsightsAnalysisReturnPathComponentAdditionalDetail {
@@ -22,7 +22,7 @@ class NetworkInsightsAnalysisReturnPathComponentAdditionalDetail {
     }
     final componentsValue = components;
     if (componentsValue != null) {
-      map['components'] = Input.encodeList<
+      map['components'] = pulumi.Input.encodeList<
           NetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent,
           Map<String, dynamic>>(componentsValue, (value) => value.toMap());
     }
@@ -37,7 +37,7 @@ class NetworkInsightsAnalysisReturnPathComponentAdditionalDetail {
           : map['additionalDetailType'] as String,
       components: map['components'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   NetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent>(
               map['components'],
               (value) =>

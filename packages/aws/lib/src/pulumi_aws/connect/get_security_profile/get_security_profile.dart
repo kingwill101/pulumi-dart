@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_security_profile_args.dart';
 import 'get_security_profile_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_security_profile_result.dart';
 /// By `security_profile_id`
 Future<GetSecurityProfileResult> getSecurityProfile(
   GetSecurityProfileArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:connect/getSecurityProfile:getSecurityProfile',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityProfileResult.fromMap(result);
 }

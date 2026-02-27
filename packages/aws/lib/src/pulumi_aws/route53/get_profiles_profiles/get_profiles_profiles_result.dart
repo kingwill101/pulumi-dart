@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_profiles_profiles_profile/get_profiles_profiles_profile.dart';
 
 /// Result data returned by getProfilesProfiles.
@@ -21,9 +21,8 @@ class GetProfilesProfilesResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['profiles'] =
-        Input.encodeList<GetProfilesProfilesProfile, Map<String, dynamic>>(
-            profiles, (value) => value.toMap());
+    map['profiles'] = pulumi.Input.encodeList<GetProfilesProfilesProfile,
+        Map<String, dynamic>>(profiles, (value) => value.toMap());
     map['region'] = region;
     return map;
   }
@@ -31,7 +30,7 @@ class GetProfilesProfilesResult {
   factory GetProfilesProfilesResult.fromMap(Map<String, dynamic> map) {
     return GetProfilesProfilesResult(
       id: map['id'] as String,
-      profiles: Input.decodeList<GetProfilesProfilesProfile>(
+      profiles: pulumi.Input.decodeList<GetProfilesProfilesProfile>(
           map['profiles'],
           (value) => GetProfilesProfilesProfile.fromMap(
               (value as Map).cast<String, dynamic>())),

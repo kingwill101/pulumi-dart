@@ -1,63 +1,63 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../network_timeouts/network_timeouts.dart';
 
 /// The set of arguments for Network.
 class NetworkArgs {
   /// The name of the Availability Zone (AZ) where the odb network is located. Changing this will force terraform to create new resource. Make sure availability_zone maps correctly with availability_zone_id.
-  final Input<String>? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
 
   /// The AZ ID of the AZ where the ODB network is located. Changing this will force terraform to create new resource.
-  final Input<String> availabilityZoneId;
+  final pulumi.Input<String> availabilityZoneId;
 
   /// The CIDR range of the backup subnet for the ODB network. Changing this will force terraform to create new resource.
-  final Input<String> backupSubnetCidr;
+  final pulumi.Input<String> backupSubnetCidr;
 
   /// The CIDR notation for the network resource. Changing this will force terraform to create new resource.
-  final Input<String> clientSubnetCidr;
+  final pulumi.Input<String> clientSubnetCidr;
 
   /// The name of the custom domain that the network is located. Custom_domain_name and default_dns_prefix both can't be given. Changing this will force terraform to create new resource.
-  final Input<String>? customDomainName;
+  final pulumi.Input<String>? customDomainName;
 
   /// The default DNS prefix for the network resource. Changing this will force terraform to create new resource. Changing this will force terraform to create new resource.
-  final Input<String>? defaultDnsPrefix;
+  final pulumi.Input<String>? defaultDnsPrefix;
 
   /// If set to true deletes associated OCI resources. Default false.
-  final Input<bool>? deleteAssociatedResources;
+  final pulumi.Input<bool>? deleteAssociatedResources;
 
   /// The user-friendly name for the odb network. Changing this will force terraform to create a new resource.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Specifies the configuration for KMS access from the ODB network.
-  final Input<String>? kmsAccess;
+  final pulumi.Input<String>? kmsAccess;
 
   /// Specifies the endpoint policy for KMS access from the ODB network.
-  final Input<String>? kmsPolicyDocument;
+  final pulumi.Input<String>? kmsPolicyDocument;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Specifies the configuration for Amazon S3 access from the ODB network.
-  final Input<String> s3Access;
+  final pulumi.Input<String> s3Access;
 
   /// Specifies the endpoint policy for Amazon S3 access from the ODB network.
-  final Input<String>? s3PolicyDocument;
+  final pulumi.Input<String>? s3PolicyDocument;
 
   /// Specifies the configuration for STS access from the ODB network.
-  final Input<String>? stsAccess;
+  final pulumi.Input<String>? stsAccess;
 
   /// Specifies the endpoint policy for STS access from the ODB network.
-  final Input<String>? stsPolicyDocument;
+  final pulumi.Input<String>? stsPolicyDocument;
 
   /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<NetworkTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<NetworkTimeouts>? timeouts;
 
   /// Specifies the configuration for Zero-ETL access from the ODB network.
   ///
   /// The following arguments are optional:
-  final Input<String> zeroEtlAccess;
+  final pulumi.Input<String> zeroEtlAccess;
 
   NetworkArgs({
     this.availabilityZone,
@@ -133,9 +133,8 @@ class NetworkArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] =
-          Input.mapOptionalInputValue<NetworkTimeouts, Map<String, dynamic>>(
-              timeoutsValue, (value) => value.toMap());
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<NetworkTimeouts,
+          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     map['zeroEtlAccess'] = zeroEtlAccess;
     return map;
@@ -143,27 +142,32 @@ class NetworkArgs {
 
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
-      availabilityZone: Input.asOptionalInput<String>(map['availabilityZone']),
-      availabilityZoneId: Input.asInput<String>(map['availabilityZoneId']),
-      backupSubnetCidr: Input.asInput<String>(map['backupSubnetCidr']),
-      clientSubnetCidr: Input.asInput<String>(map['clientSubnetCidr']),
-      customDomainName: Input.asOptionalInput<String>(map['customDomainName']),
-      defaultDnsPrefix: Input.asOptionalInput<String>(map['defaultDnsPrefix']),
+      availabilityZone:
+          pulumi.Input.asOptionalInput<String>(map['availabilityZone']),
+      availabilityZoneId:
+          pulumi.Input.asInput<String>(map['availabilityZoneId']),
+      backupSubnetCidr: pulumi.Input.asInput<String>(map['backupSubnetCidr']),
+      clientSubnetCidr: pulumi.Input.asInput<String>(map['clientSubnetCidr']),
+      customDomainName:
+          pulumi.Input.asOptionalInput<String>(map['customDomainName']),
+      defaultDnsPrefix:
+          pulumi.Input.asOptionalInput<String>(map['defaultDnsPrefix']),
       deleteAssociatedResources:
-          Input.asOptionalInput<bool>(map['deleteAssociatedResources']),
-      displayName: Input.asInput<String>(map['displayName']),
-      kmsAccess: Input.asOptionalInput<String>(map['kmsAccess']),
+          pulumi.Input.asOptionalInput<bool>(map['deleteAssociatedResources']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
+      kmsAccess: pulumi.Input.asOptionalInput<String>(map['kmsAccess']),
       kmsPolicyDocument:
-          Input.asOptionalInput<String>(map['kmsPolicyDocument']),
-      region: Input.asOptionalInput<String>(map['region']),
-      s3Access: Input.asInput<String>(map['s3Access']),
-      s3PolicyDocument: Input.asOptionalInput<String>(map['s3PolicyDocument']),
-      stsAccess: Input.asOptionalInput<String>(map['stsAccess']),
+          pulumi.Input.asOptionalInput<String>(map['kmsPolicyDocument']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      s3Access: pulumi.Input.asInput<String>(map['s3Access']),
+      s3PolicyDocument:
+          pulumi.Input.asOptionalInput<String>(map['s3PolicyDocument']),
+      stsAccess: pulumi.Input.asOptionalInput<String>(map['stsAccess']),
       stsPolicyDocument:
-          Input.asOptionalInput<String>(map['stsPolicyDocument']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<NetworkTimeouts>(map['timeouts']),
-      zeroEtlAccess: Input.asInput<String>(map['zeroEtlAccess']),
+          pulumi.Input.asOptionalInput<String>(map['stsPolicyDocument']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<NetworkTimeouts>(map['timeouts']),
+      zeroEtlAccess: pulumi.Input.asInput<String>(map['zeroEtlAccess']),
     );
   }
 }

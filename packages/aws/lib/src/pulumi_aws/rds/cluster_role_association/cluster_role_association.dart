@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_role_association_args.dart';
 
 /// Manages a RDS DB Cluster association with an IAM Role. Example use cases:
@@ -17,28 +17,28 @@ import 'cluster_role_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:rds/clusterRoleAssociation:ClusterRoleAssociation example my-db-cluster,arn:aws:iam::123456789012:role/my-role
 /// ```
-class ClusterRoleAssociation extends CustomResource {
+class ClusterRoleAssociation extends pulumi.CustomResource {
   /// DB Cluster Identifier to associate with the IAM Role.
-  late final Output<String> dbClusterIdentifier;
+  late final pulumi.Output<String> dbClusterIdentifier;
 
   /// Name of the feature for association. This can be found in the AWS documentation relevant to the integration or a full list is available in the `SupportedFeatureNames` list returned by [AWS CLI rds describe-db-engine-versions](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-engine-versions.html).
-  late final Output<String?> featureName;
+  late final pulumi.Output<String?> featureName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Amazon Resource Name (ARN) of the IAM Role to associate with the DB Cluster.
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   ClusterRoleAssociation(
     String name, {
     ClusterRoleAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:rds/clusterRoleAssociation:ClusterRoleAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dbClusterIdentifier = registerOutput<String>('dbClusterIdentifier');
     this.featureName = registerOutput<String?>('featureName');

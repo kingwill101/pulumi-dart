@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TemplateAlias.
 class TemplateAliasArgs {
   /// Display name of the template alias.
-  final Input<String> aliasName;
+  final pulumi.Input<String> aliasName;
 
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the template.
-  final Input<String> templateId;
+  final pulumi.Input<String> templateId;
 
   /// Version number of the template.
   ///
   /// The following arguments are optional:
-  final Input<int> templateVersionNumber;
+  final pulumi.Input<int> templateVersionNumber;
 
   TemplateAliasArgs({
     required this.aliasName,
@@ -47,11 +47,12 @@ class TemplateAliasArgs {
 
   factory TemplateAliasArgs.fromMap(Map<String, dynamic> map) {
     return TemplateAliasArgs(
-      aliasName: Input.asInput<String>(map['aliasName']),
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      templateId: Input.asInput<String>(map['templateId']),
-      templateVersionNumber: Input.asInput<int>(map['templateVersionNumber']),
+      aliasName: pulumi.Input.asInput<String>(map['aliasName']),
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      templateId: pulumi.Input.asInput<String>(map['templateId']),
+      templateVersionNumber:
+          pulumi.Input.asInput<int>(map['templateVersionNumber']),
     );
   }
 }

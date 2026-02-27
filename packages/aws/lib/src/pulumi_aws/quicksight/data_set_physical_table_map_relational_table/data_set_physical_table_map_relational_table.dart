@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_set_physical_table_map_relational_table_input_column/data_set_physical_table_map_relational_table_input_column.dart';
 
 class DataSetPhysicalTableMapRelationalTable {
@@ -34,7 +34,7 @@ class DataSetPhysicalTableMapRelationalTable {
       map['catalog'] = catalogValue;
     }
     map['dataSourceArn'] = dataSourceArn;
-    map['inputColumns'] = Input.encodeList<
+    map['inputColumns'] = pulumi.Input.encodeList<
         DataSetPhysicalTableMapRelationalTableInputColumn,
         Map<String, dynamic>>(inputColumns, (value) => value.toMap());
     map['name'] = name;
@@ -50,12 +50,11 @@ class DataSetPhysicalTableMapRelationalTable {
     return DataSetPhysicalTableMapRelationalTable(
       catalog: map['catalog'] == null ? null : map['catalog'] as String,
       dataSourceArn: map['dataSourceArn'] as String,
-      inputColumns:
-          Input.decodeList<DataSetPhysicalTableMapRelationalTableInputColumn>(
-              map['inputColumns'],
-              (value) =>
-                  DataSetPhysicalTableMapRelationalTableInputColumn.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      inputColumns: pulumi.Input.decodeList<
+              DataSetPhysicalTableMapRelationalTableInputColumn>(
+          map['inputColumns'],
+          (value) => DataSetPhysicalTableMapRelationalTableInputColumn.fromMap(
+              (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       schema: map['schema'] == null ? null : map['schema'] as String,
     );

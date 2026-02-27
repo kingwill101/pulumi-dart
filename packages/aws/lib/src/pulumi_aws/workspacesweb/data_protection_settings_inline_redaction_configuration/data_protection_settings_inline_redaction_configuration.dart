@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_protection_settings_inline_redaction_configuration_inline_redaction_pattern/data_protection_settings_inline_redaction_configuration_inline_redaction_pattern.dart';
 
 class DataProtectionSettingsInlineRedactionConfiguration {
@@ -39,7 +39,7 @@ class DataProtectionSettingsInlineRedactionConfiguration {
     if (globalExemptUrlsValue != null) {
       map['globalExemptUrls'] = globalExemptUrlsValue;
     }
-    map['inlineRedactionPatterns'] = Input.encodeList<
+    map['inlineRedactionPatterns'] = pulumi.Input.encodeList<
         DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern,
         Map<String,
             dynamic>>(inlineRedactionPatterns, (value) => value.toMap());
@@ -58,7 +58,7 @@ class DataProtectionSettingsInlineRedactionConfiguration {
       globalExemptUrls: map['globalExemptUrls'] == null
           ? null
           : (map['globalExemptUrls'] as List).cast<String>(),
-      inlineRedactionPatterns: Input.decodeList<
+      inlineRedactionPatterns: pulumi.Input.decodeList<
               DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern>(
           map['inlineRedactionPatterns'],
           (value) =>

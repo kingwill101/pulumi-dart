@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_replication_config_rule/bucket_replication_config_rule.dart';
 
 /// The set of arguments for BucketReplicationConfig.
 class BucketReplicationConfigArgs {
   /// Name of the source S3 bucket you want Amazon S3 to monitor.
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ARN of the IAM role for Amazon S3 to assume when replicating the objects.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   /// List of configuration blocks describing the rules managing the replication. See below.
   ///
@@ -22,11 +22,11 @@ class BucketReplicationConfigArgs {
   ///
   /// > **NOTE:** The `existing_object_replication` parameter is not supported by Amazon S3 at this time and should not be included in your `rule` configurations. Specifying this parameter will result in `MalformedXML` errors.
   /// To replicate existing objects, please refer to the [Replicating existing objects with S3 Batch Replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-batch-replication-batch.html) documentation in the Amazon S3 User Guide.
-  final Input<List<BucketReplicationConfigRule>> rules;
+  final pulumi.Input<List<BucketReplicationConfigRule>> rules;
 
   /// Token to allow replication to be enabled on an Object Lock-enabled bucket. You must contact AWS support for the bucket's "Object Lock token".
   /// For more details, see [Using S3 Object Lock with replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-managing.html#object-lock-managing-replication).
-  final Input<String>? token;
+  final pulumi.Input<String>? token;
 
   BucketReplicationConfigArgs({
     required this.bucket,
@@ -44,12 +44,11 @@ class BucketReplicationConfigArgs {
       map['region'] = regionValue;
     }
     map['role'] = role;
-    map['rules'] = Input.mapInputValue<List<BucketReplicationConfigRule>,
+    map['rules'] = pulumi.Input.mapInputValue<List<BucketReplicationConfigRule>,
             List<Map<String, dynamic>>>(
         rules,
-        (value) =>
-            Input.encodeList<BucketReplicationConfigRule, Map<String, dynamic>>(
-                value, (value) => value.toMap()));
+        (value) => pulumi.Input.encodeList<BucketReplicationConfigRule,
+            Map<String, dynamic>>(value, (value) => value.toMap()));
     final tokenValue = token;
     if (tokenValue != null) {
       map['token'] = tokenValue;
@@ -59,11 +58,12 @@ class BucketReplicationConfigArgs {
 
   factory BucketReplicationConfigArgs.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      region: Input.asOptionalInput<String>(map['region']),
-      role: Input.asInput<String>(map['role']),
-      rules: Input.asInput<List<BucketReplicationConfigRule>>(map['rules']),
-      token: Input.asOptionalInput<String>(map['token']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      role: pulumi.Input.asInput<String>(map['role']),
+      rules:
+          pulumi.Input.asInput<List<BucketReplicationConfigRule>>(map['rules']),
+      token: pulumi.Input.asOptionalInput<String>(map['token']),
     );
   }
 }

@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../custom_permissions_capabilities/custom_permissions_capabilities.dart';
 
 /// The set of arguments for CustomPermissions.
 class CustomPermissionsArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// Actions to include in the custom permissions profile. See capabilities.
-  final Input<CustomPermissionsCapabilities> capabilities;
+  final pulumi.Input<CustomPermissionsCapabilities> capabilities;
 
   /// Custom permissions profile name.
   ///
   /// The following arguments are optional:
-  final Input<String> customPermissionsName;
+  final pulumi.Input<String> customPermissionsName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   CustomPermissionsArgs({
     this.awsAccountId,
@@ -36,7 +36,8 @@ class CustomPermissionsArgs {
     if (awsAccountIdValue != null) {
       map['awsAccountId'] = awsAccountIdValue;
     }
-    map['capabilities'] = Input.mapInputValue<CustomPermissionsCapabilities,
+    map['capabilities'] = pulumi.Input.mapInputValue<
+        CustomPermissionsCapabilities,
         Map<String, dynamic>>(capabilities, (value) => value.toMap());
     map['customPermissionsName'] = customPermissionsName;
     final regionValue = region;
@@ -52,13 +53,13 @@ class CustomPermissionsArgs {
 
   factory CustomPermissionsArgs.fromMap(Map<String, dynamic> map) {
     return CustomPermissionsArgs(
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
-      capabilities:
-          Input.asInput<CustomPermissionsCapabilities>(map['capabilities']),
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
+      capabilities: pulumi.Input.asInput<CustomPermissionsCapabilities>(
+          map['capabilities']),
       customPermissionsName:
-          Input.asInput<String>(map['customPermissionsName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asInput<String>(map['customPermissionsName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

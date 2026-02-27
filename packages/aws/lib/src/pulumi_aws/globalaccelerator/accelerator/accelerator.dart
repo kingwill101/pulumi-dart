@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../accelerator_attributes/accelerator_attributes.dart';
 import '../accelerator_ip_set/accelerator_ip_set.dart';
 import 'accelerator_args.dart';
@@ -23,54 +23,54 @@ import 'accelerator_args.dart';
 /// ```sh
 /// $ pulumi import aws:globalaccelerator/accelerator:Accelerator example arn:aws:globalaccelerator::111111111111:accelerator/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 /// ```
-class Accelerator extends CustomResource {
+class Accelerator extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the accelerator.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The attributes of the accelerator. Fields documented below.
-  late final Output<AcceleratorAttributes?> attributes;
+  late final pulumi.Output<AcceleratorAttributes?> attributes;
 
   /// The DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
-  late final Output<String> dnsName;
+  late final pulumi.Output<String> dnsName;
 
   /// The Domain Name System (DNS) name that Global Accelerator creates that points to a dual-stack accelerator's four static IP addresses: two IPv4 addresses and two IPv6 addresses. For example, `a1234567890abcdef.dualstack.awsglobalaccelerator.com`.
-  late final Output<String> dualStackDnsName;
+  late final pulumi.Output<String> dualStackDnsName;
 
   /// Indicates whether the accelerator is enabled. Defaults to `true`. Valid values: `true`, `false`.
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// -  The Global Accelerator Route 53 zone ID that can be used to
   /// route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the Global Accelerator. This attribute
   /// is simply an alias for the zone ID `Z2BJ6XQ5FK7U4H`.
-  late final Output<String> hostedZoneId;
+  late final pulumi.Output<String> hostedZoneId;
 
   /// The value for the address type. Defaults to `IPV4`. Valid values: `IPV4`, `DUAL_STACK`.
-  late final Output<String?> ipAddressType;
+  late final pulumi.Output<String?> ipAddressType;
 
   /// The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
-  late final Output<List<String>?> ipAddresses;
+  late final pulumi.Output<List<String>?> ipAddresses;
 
   /// IP address set associated with the accelerator.
-  late final Output<List<AcceleratorIpSet>> ipSets;
+  late final pulumi.Output<List<AcceleratorIpSet>> ipSets;
 
   /// The name of the accelerator.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Accelerator(
     String name, {
     AcceleratorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:globalaccelerator/accelerator:Accelerator',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.attributes = registerOutput<AcceleratorAttributes?>('attributes');

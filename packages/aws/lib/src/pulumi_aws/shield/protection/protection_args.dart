@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Protection.
 class ProtectionArgs {
   /// A friendly name for the Protection you are creating.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ARN (Amazon Resource Name) of the resource to be protected.
-  final Input<String> resourceArn;
+  final pulumi.Input<String> resourceArn;
 
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   ProtectionArgs({
     this.name,
@@ -35,9 +35,9 @@ class ProtectionArgs {
 
   factory ProtectionArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      resourceArn: Input.asInput<String>(map['resourceArn']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      resourceArn: pulumi.Input.asInput<String>(map['resourceArn']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

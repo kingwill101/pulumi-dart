@@ -1,4 +1,4 @@
 library module_rds_instance;
 
-export 'instance/instance4.dart';
-export 'instance/instance_args4.dart';
+export 'instance/instance_rds.dart';
+export 'instance/instance_rds_args.dart';

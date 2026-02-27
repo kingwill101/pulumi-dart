@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../export_task_timeouts/export_task_timeouts.dart';
 import 'export_task_args.dart';
 
@@ -21,67 +21,67 @@ import 'export_task_args.dart';
 /// ```sh
 /// $ pulumi import aws:rds/exportTask:ExportTask example example
 /// ```
-class ExportTask extends CustomResource {
+class ExportTask extends pulumi.CustomResource {
   /// Data to be exported from the snapshot. If this parameter is not provided, all the snapshot data is exported. Valid values are documented in the [AWS StartExportTask API documentation](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_StartExportTask.html#API_StartExportTask_RequestParameters).
-  late final Output<List<String>?> exportOnlies;
+  late final pulumi.Output<List<String>?> exportOnlies;
 
   /// Unique identifier for the snapshot export task.
-  late final Output<String> exportTaskIdentifier;
+  late final pulumi.Output<String> exportTaskIdentifier;
 
   /// Reason the export failed, if it failed.
-  late final Output<String> failureCause;
+  late final pulumi.Output<String> failureCause;
 
   /// ARN of the IAM role to use for writing to the Amazon S3 bucket.
-  late final Output<String> iamRoleArn;
+  late final pulumi.Output<String> iamRoleArn;
 
   /// ID of the Amazon Web Services KMS key to use to encrypt the snapshot.
-  late final Output<String> kmsKeyId;
+  late final pulumi.Output<String> kmsKeyId;
 
   /// Progress of the snapshot export task as a percentage.
-  late final Output<int> percentProgress;
+  late final pulumi.Output<int> percentProgress;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Name of the Amazon S3 bucket to export the snapshot to.
-  late final Output<String> s3BucketName;
+  late final pulumi.Output<String> s3BucketName;
 
   /// Amazon S3 bucket prefix to use as the file name and path of the exported snapshot.
-  late final Output<String> s3Prefix;
+  late final pulumi.Output<String> s3Prefix;
 
   /// Time that the snapshot was created.
-  late final Output<String> snapshotTime;
+  late final pulumi.Output<String> snapshotTime;
 
   /// Amazon Resource Name (ARN) of the snapshot to export.
   ///
   /// The following arguments are optional:
-  late final Output<String> sourceArn;
+  late final pulumi.Output<String> sourceArn;
 
   /// Type of source for the export.
-  late final Output<String> sourceType;
+  late final pulumi.Output<String> sourceType;
 
   /// Status of the export task.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Time that the snapshot export task completed.
-  late final Output<String> taskEndTime;
+  late final pulumi.Output<String> taskEndTime;
 
   /// Time that the snapshot export task started.
-  late final Output<String> taskStartTime;
-  late final Output<ExportTaskTimeouts?> timeouts;
+  late final pulumi.Output<String> taskStartTime;
+  late final pulumi.Output<ExportTaskTimeouts?> timeouts;
 
   /// Warning about the snapshot export task, if any.
-  late final Output<String> warningMessage;
+  late final pulumi.Output<String> warningMessage;
 
   ExportTask(
     String name, {
     ExportTaskArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:rds/exportTask:ExportTask',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.exportOnlies = registerOutput<List<String>?>('exportOnlies');
     this.exportTaskIdentifier = registerOutput<String>('exportTaskIdentifier');

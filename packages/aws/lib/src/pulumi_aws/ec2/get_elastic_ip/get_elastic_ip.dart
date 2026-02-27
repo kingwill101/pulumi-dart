@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_elastic_ip_args.dart';
 import 'get_elastic_ip_result.dart';
 
@@ -21,13 +21,13 @@ import 'get_elastic_ip_result.dart';
 /// ### Search By Tags (EC2-Classic or VPC)
 Future<GetElasticIpResult> getElasticIp(
   GetElasticIpArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getElasticIp:getElasticIp',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetElasticIpResult.fromMap(result);
 }

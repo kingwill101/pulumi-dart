@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../opt_in_resource_data_catalog/opt_in_resource_data_catalog.dart';
 import '../opt_in_resource_data_data_cells_filter/opt_in_resource_data_data_cells_filter.dart';
 import '../opt_in_resource_data_data_location/opt_in_resource_data_data_location.dart';
@@ -55,21 +55,20 @@ class OptInResourceData {
     final map = <String, dynamic>{};
     final catalogsValue = catalogs;
     if (catalogsValue != null) {
-      map['catalogs'] =
-          Input.encodeList<OptInResourceDataCatalog, Map<String, dynamic>>(
-              catalogsValue, (value) => value.toMap());
+      map['catalogs'] = pulumi.Input.encodeList<OptInResourceDataCatalog,
+          Map<String, dynamic>>(catalogsValue, (value) => value.toMap());
     }
     final dataCellsFiltersValue = dataCellsFilters;
     if (dataCellsFiltersValue != null) {
-      map['dataCellsFilters'] = Input.encodeList<
+      map['dataCellsFilters'] = pulumi.Input.encodeList<
               OptInResourceDataDataCellsFilter, Map<String, dynamic>>(
           dataCellsFiltersValue, (value) => value.toMap());
     }
     final dataLocationsValue = dataLocations;
     if (dataLocationsValue != null) {
-      map['dataLocations'] =
-          Input.encodeList<OptInResourceDataDataLocation, Map<String, dynamic>>(
-              dataLocationsValue, (value) => value.toMap());
+      map['dataLocations'] = pulumi.Input.encodeList<
+          OptInResourceDataDataLocation,
+          Map<String, dynamic>>(dataLocationsValue, (value) => value.toMap());
     }
     final databaseValue = database;
     if (databaseValue != null) {
@@ -81,15 +80,15 @@ class OptInResourceData {
     }
     final lfTagExpressionsValue = lfTagExpressions;
     if (lfTagExpressionsValue != null) {
-      map['lfTagExpressions'] = Input.encodeList<
+      map['lfTagExpressions'] = pulumi.Input.encodeList<
               OptInResourceDataLfTagExpression, Map<String, dynamic>>(
           lfTagExpressionsValue, (value) => value.toMap());
     }
     final lfTagPoliciesValue = lfTagPolicies;
     if (lfTagPoliciesValue != null) {
-      map['lfTagPolicies'] =
-          Input.encodeList<OptInResourceDataLfTagPolicy, Map<String, dynamic>>(
-              lfTagPoliciesValue, (value) => value.toMap());
+      map['lfTagPolicies'] = pulumi.Input.encodeList<
+          OptInResourceDataLfTagPolicy,
+          Map<String, dynamic>>(lfTagPoliciesValue, (value) => value.toMap());
     }
     final tableValue = table;
     if (tableValue != null) {
@@ -106,19 +105,19 @@ class OptInResourceData {
     return OptInResourceData(
       catalogs: map['catalogs'] == null
           ? null
-          : Input.decodeList<OptInResourceDataCatalog>(
+          : pulumi.Input.decodeList<OptInResourceDataCatalog>(
               map['catalogs'],
               (value) => OptInResourceDataCatalog.fromMap(
                   (value as Map).cast<String, dynamic>())),
       dataCellsFilters: map['dataCellsFilters'] == null
           ? null
-          : Input.decodeList<OptInResourceDataDataCellsFilter>(
+          : pulumi.Input.decodeList<OptInResourceDataDataCellsFilter>(
               map['dataCellsFilters'],
               (value) => OptInResourceDataDataCellsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       dataLocations: map['dataLocations'] == null
           ? null
-          : Input.decodeList<OptInResourceDataDataLocation>(
+          : pulumi.Input.decodeList<OptInResourceDataDataLocation>(
               map['dataLocations'],
               (value) => OptInResourceDataDataLocation.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -132,13 +131,13 @@ class OptInResourceData {
               (map['lfTag'] as Map).cast<String, dynamic>()),
       lfTagExpressions: map['lfTagExpressions'] == null
           ? null
-          : Input.decodeList<OptInResourceDataLfTagExpression>(
+          : pulumi.Input.decodeList<OptInResourceDataLfTagExpression>(
               map['lfTagExpressions'],
               (value) => OptInResourceDataLfTagExpression.fromMap(
                   (value as Map).cast<String, dynamic>())),
       lfTagPolicies: map['lfTagPolicies'] == null
           ? null
-          : Input.decodeList<OptInResourceDataLfTagPolicy>(
+          : pulumi.Input.decodeList<OptInResourceDataLfTagPolicy>(
               map['lfTagPolicies'],
               (value) => OptInResourceDataLfTagPolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),

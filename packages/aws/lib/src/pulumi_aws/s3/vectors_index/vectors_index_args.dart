@@ -1,40 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vectors_index_encryption_configuration/vectors_index_encryption_configuration.dart';
 import '../vectors_index_metadata_configuration/vectors_index_metadata_configuration.dart';
 
 /// The set of arguments for VectorsIndex.
 class VectorsIndexArgs {
   /// Data type of the vectors to be inserted into the vector index. Valid values: `float32`.
-  final Input<String> dataType;
+  final pulumi.Input<String> dataType;
 
   /// Dimensions of the vectors to be inserted into the vector index.
-  final Input<int> dimension;
+  final pulumi.Input<int> dimension;
 
   /// Distance metric to be used for similarity search. Valid values: `cosine`, `euclidean`.
-  final Input<String> distanceMetric;
+  final pulumi.Input<String> distanceMetric;
 
   /// Block for encryption configuration for the vector index. See `encyption_configuration` block below.
-  final Input<List<VectorsIndexEncryptionConfiguration>>?
+  final pulumi.Input<List<VectorsIndexEncryptionConfiguration>>?
       encryptionConfigurations;
 
   /// Name of the vector index.
-  final Input<String> indexName;
+  final pulumi.Input<String> indexName;
 
   /// Block for metadata configuration for the vector index. See `metadata_configuration` block below.
-  final Input<VectorsIndexMetadataConfiguration>? metadataConfiguration;
+  final pulumi.Input<VectorsIndexMetadataConfiguration>? metadataConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Name of the vector bucket for the vector index.
   ///
   /// The following arguments are optional:
-  final Input<String> vectorBucketName;
+  final pulumi.Input<String> vectorBucketName;
 
   VectorsIndexArgs({
     required this.dataType,
@@ -55,17 +55,18 @@ class VectorsIndexArgs {
     map['distanceMetric'] = distanceMetric;
     final encryptionConfigurationsValue = encryptionConfigurations;
     if (encryptionConfigurationsValue != null) {
-      map['encryptionConfigurations'] = Input.mapOptionalInputValue<
+      map['encryptionConfigurations'] = pulumi.Input.mapOptionalInputValue<
               List<VectorsIndexEncryptionConfiguration>,
               List<Map<String, dynamic>>>(
           encryptionConfigurationsValue,
-          (value) => Input.encodeList<VectorsIndexEncryptionConfiguration,
+          (value) => pulumi.Input.encodeList<
+              VectorsIndexEncryptionConfiguration,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['indexName'] = indexName;
     final metadataConfigurationValue = metadataConfiguration;
     if (metadataConfigurationValue != null) {
-      map['metadataConfiguration'] = Input.mapOptionalInputValue<
+      map['metadataConfiguration'] = pulumi.Input.mapOptionalInputValue<
               VectorsIndexMetadataConfiguration, Map<String, dynamic>>(
           metadataConfigurationValue, (value) => value.toMap());
     }
@@ -83,19 +84,19 @@ class VectorsIndexArgs {
 
   factory VectorsIndexArgs.fromMap(Map<String, dynamic> map) {
     return VectorsIndexArgs(
-      dataType: Input.asInput<String>(map['dataType']),
-      dimension: Input.asInput<int>(map['dimension']),
-      distanceMetric: Input.asInput<String>(map['distanceMetric']),
-      encryptionConfigurations:
-          Input.asOptionalInput<List<VectorsIndexEncryptionConfiguration>>(
-              map['encryptionConfigurations']),
-      indexName: Input.asInput<String>(map['indexName']),
+      dataType: pulumi.Input.asInput<String>(map['dataType']),
+      dimension: pulumi.Input.asInput<int>(map['dimension']),
+      distanceMetric: pulumi.Input.asInput<String>(map['distanceMetric']),
+      encryptionConfigurations: pulumi.Input.asOptionalInput<
+              List<VectorsIndexEncryptionConfiguration>>(
+          map['encryptionConfigurations']),
+      indexName: pulumi.Input.asInput<String>(map['indexName']),
       metadataConfiguration:
-          Input.asOptionalInput<VectorsIndexMetadataConfiguration>(
+          pulumi.Input.asOptionalInput<VectorsIndexMetadataConfiguration>(
               map['metadataConfiguration']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vectorBucketName: Input.asInput<String>(map['vectorBucketName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vectorBucketName: pulumi.Input.asInput<String>(map['vectorBucketName']),
     );
   }
 }

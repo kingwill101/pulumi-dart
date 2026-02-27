@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_settings_cookie_synchronization_configuration_allowlist/user_settings_cookie_synchronization_configuration_allowlist.dart';
 import '../user_settings_cookie_synchronization_configuration_blocklist/user_settings_cookie_synchronization_configuration_blocklist.dart';
 
@@ -22,13 +22,13 @@ class UserSettingsCookieSynchronizationConfiguration {
     final map = <String, dynamic>{};
     final allowlistsValue = allowlists;
     if (allowlistsValue != null) {
-      map['allowlists'] = Input.encodeList<
+      map['allowlists'] = pulumi.Input.encodeList<
           UserSettingsCookieSynchronizationConfigurationAllowlist,
           Map<String, dynamic>>(allowlistsValue, (value) => value.toMap());
     }
     final blocklistsValue = blocklists;
     if (blocklistsValue != null) {
-      map['blocklists'] = Input.encodeList<
+      map['blocklists'] = pulumi.Input.encodeList<
           UserSettingsCookieSynchronizationConfigurationBlocklist,
           Map<String, dynamic>>(blocklistsValue, (value) => value.toMap());
     }
@@ -40,14 +40,14 @@ class UserSettingsCookieSynchronizationConfiguration {
     return UserSettingsCookieSynchronizationConfiguration(
       allowlists: map['allowlists'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   UserSettingsCookieSynchronizationConfigurationAllowlist>(
               map['allowlists'],
               (value) => UserSettingsCookieSynchronizationConfigurationAllowlist
                   .fromMap((value as Map).cast<String, dynamic>())),
       blocklists: map['blocklists'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   UserSettingsCookieSynchronizationConfigurationBlocklist>(
               map['blocklists'],
               (value) => UserSettingsCookieSynchronizationConfigurationBlocklist

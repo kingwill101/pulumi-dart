@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RouteResponse.
 class RouteResponseArgs {
   /// API identifier.
-  final Input<String> apiId;
+  final pulumi.Input<String> apiId;
 
   /// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
-  final Input<String>? modelSelectionExpression;
+  final pulumi.Input<String>? modelSelectionExpression;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Response models for the route response.
-  final Input<Map<String, String>>? responseModels;
+  final pulumi.Input<Map<String, String>>? responseModels;
 
   /// Identifier of the `aws.apigatewayv2.Route`.
-  final Input<String> routeId;
+  final pulumi.Input<String> routeId;
 
   /// Route response key.
-  final Input<String> routeResponseKey;
+  final pulumi.Input<String> routeResponseKey;
 
   RouteResponseArgs({
     required this.apiId,
@@ -53,14 +53,14 @@ class RouteResponseArgs {
 
   factory RouteResponseArgs.fromMap(Map<String, dynamic> map) {
     return RouteResponseArgs(
-      apiId: Input.asInput<String>(map['apiId']),
+      apiId: pulumi.Input.asInput<String>(map['apiId']),
       modelSelectionExpression:
-          Input.asOptionalInput<String>(map['modelSelectionExpression']),
-      region: Input.asOptionalInput<String>(map['region']),
-      responseModels:
-          Input.asOptionalInput<Map<String, String>>(map['responseModels']),
-      routeId: Input.asInput<String>(map['routeId']),
-      routeResponseKey: Input.asInput<String>(map['routeResponseKey']),
+          pulumi.Input.asOptionalInput<String>(map['modelSelectionExpression']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      responseModels: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['responseModels']),
+      routeId: pulumi.Input.asInput<String>(map['routeId']),
+      routeResponseKey: pulumi.Input.asInput<String>(map['routeResponseKey']),
     );
   }
 }

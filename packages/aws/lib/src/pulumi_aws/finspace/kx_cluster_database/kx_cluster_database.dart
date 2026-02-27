@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../kx_cluster_database_cache_configuration/kx_cluster_database_cache_configuration.dart';
 
 class KxClusterDatabase {
@@ -27,7 +27,7 @@ class KxClusterDatabase {
     final map = <String, dynamic>{};
     final cacheConfigurationsValue = cacheConfigurations;
     if (cacheConfigurationsValue != null) {
-      map['cacheConfigurations'] = Input.encodeList<
+      map['cacheConfigurations'] = pulumi.Input.encodeList<
               KxClusterDatabaseCacheConfiguration, Map<String, dynamic>>(
           cacheConfigurationsValue, (value) => value.toMap());
     }
@@ -47,7 +47,7 @@ class KxClusterDatabase {
     return KxClusterDatabase(
       cacheConfigurations: map['cacheConfigurations'] == null
           ? null
-          : Input.decodeList<KxClusterDatabaseCacheConfiguration>(
+          : pulumi.Input.decodeList<KxClusterDatabaseCacheConfiguration>(
               map['cacheConfigurations'],
               (value) => KxClusterDatabaseCacheConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),

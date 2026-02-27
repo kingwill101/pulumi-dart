@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getImage.
 class GetImageArgs {
   /// ARN of the image being searched for. Cannot be used with `name_regex` or `name`.
-  final Input<String>? arn;
+  final pulumi.Input<String>? arn;
 
   /// Boolean that if it is set to `true` and there are multiple images returned the most recent will be returned. If it is set to `false` and there are multiple images return the datasource will error.
-  final Input<bool>? mostRecent;
+  final pulumi.Input<bool>? mostRecent;
 
   /// Name of the image being searched for. Cannot be used with `name_regex` or `arn`.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Regular expression name of the image being searched for. Cannot be used with `arn` or `name`.
-  final Input<String>? nameRegex;
+  final pulumi.Input<String>? nameRegex;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The type of image which must be (`PUBLIC`, `PRIVATE`, or `SHARED`).
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   GetImageArgs({
     this.arn,
@@ -62,12 +62,12 @@ class GetImageArgs {
 
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
-      arn: Input.asOptionalInput<String>(map['arn']),
-      mostRecent: Input.asOptionalInput<bool>(map['mostRecent']),
-      name: Input.asOptionalInput<String>(map['name']),
-      nameRegex: Input.asOptionalInput<String>(map['nameRegex']),
-      region: Input.asOptionalInput<String>(map['region']),
-      type: Input.asOptionalInput<String>(map['type']),
+      arn: pulumi.Input.asOptionalInput<String>(map['arn']),
+      mostRecent: pulumi.Input.asOptionalInput<bool>(map['mostRecent']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      nameRegex: pulumi.Input.asOptionalInput<String>(map['nameRegex']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
     );
   }
 }

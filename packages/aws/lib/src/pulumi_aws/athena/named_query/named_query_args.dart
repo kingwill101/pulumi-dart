@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for NamedQuery.
 class NamedQueryArgs {
   /// Database to which the query belongs.
-  final Input<String> database;
+  final pulumi.Input<String> database;
 
   /// Brief explanation of the query. Maximum length of 1024.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Plain language name for the query. Maximum length of 128.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Text of the query itself. In other words, all query statements. Maximum length of 262144.
-  final Input<String> query;
+  final pulumi.Input<String> query;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Workgroup to which the query belongs. Defaults to `primary`
-  final Input<String>? workgroup;
+  final pulumi.Input<String>? workgroup;
 
   NamedQueryArgs({
     required this.database,
@@ -56,12 +56,12 @@ class NamedQueryArgs {
 
   factory NamedQueryArgs.fromMap(Map<String, dynamic> map) {
     return NamedQueryArgs(
-      database: Input.asInput<String>(map['database']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      query: Input.asInput<String>(map['query']),
-      region: Input.asOptionalInput<String>(map['region']),
-      workgroup: Input.asOptionalInput<String>(map['workgroup']),
+      database: pulumi.Input.asInput<String>(map['database']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      query: pulumi.Input.asInput<String>(map['query']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      workgroup: pulumi.Input.asOptionalInput<String>(map['workgroup']),
     );
   }
 }

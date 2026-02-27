@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipeline_definition_parameter_object/pipeline_definition_parameter_object.dart';
 import '../pipeline_definition_parameter_value/pipeline_definition_parameter_value.dart';
 import '../pipeline_definition_pipeline_object/pipeline_definition_pipeline_object.dart';
@@ -17,33 +17,36 @@ import 'pipeline_definition_args.dart';
 /// ```sh
 /// $ pulumi import aws:datapipeline/pipelineDefinition:PipelineDefinition example df-1234567890
 /// ```
-class PipelineDefinition extends CustomResource {
+class PipelineDefinition extends pulumi.CustomResource {
   /// Configuration block for the parameter objects used in the pipeline definition. See below
-  late final Output<List<PipelineDefinitionParameterObject>?> parameterObjects;
+  late final pulumi.Output<List<PipelineDefinitionParameterObject>?>
+      parameterObjects;
 
   /// Configuration block for the parameter values used in the pipeline definition. See below
-  late final Output<List<PipelineDefinitionParameterValue>?> parameterValues;
+  late final pulumi.Output<List<PipelineDefinitionParameterValue>?>
+      parameterValues;
 
   /// ID of the pipeline.
-  late final Output<String> pipelineId;
+  late final pulumi.Output<String> pipelineId;
 
   /// Configuration block for the objects that define the pipeline. See below
   ///
   /// The following arguments are optional:
-  late final Output<List<PipelineDefinitionPipelineObject>> pipelineObjects;
+  late final pulumi.Output<List<PipelineDefinitionPipelineObject>>
+      pipelineObjects;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   PipelineDefinition(
     String name, {
     PipelineDefinitionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:datapipeline/pipelineDefinition:PipelineDefinition',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.parameterObjects =
         registerOutput<List<PipelineDefinitionParameterObject>?>(

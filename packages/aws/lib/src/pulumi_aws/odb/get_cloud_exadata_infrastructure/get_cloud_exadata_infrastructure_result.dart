@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_exadata_infrastructure_customer_contacts_to_send_to_oci/get_cloud_exadata_infrastructure_customer_contacts_to_send_to_oci.dart';
 import '../get_cloud_exadata_infrastructure_maintenance_window/get_cloud_exadata_infrastructure_maintenance_window.dart';
 
@@ -176,7 +176,7 @@ class GetCloudExadataInfrastructureResult {
     map['computeModel'] = computeModel;
     map['cpuCount'] = cpuCount;
     map['createdAt'] = createdAt;
-    map['customerContactsToSendToOcis'] = Input.encodeList<
+    map['customerContactsToSendToOcis'] = pulumi.Input.encodeList<
             GetCloudExadataInfrastructureCustomerContactsToSendToOci,
             Map<String, dynamic>>(
         customerContactsToSendToOcis, (value) => value.toMap());
@@ -187,7 +187,7 @@ class GetCloudExadataInfrastructureResult {
     map['displayName'] = displayName;
     map['id'] = id;
     map['lastMaintenanceRunId'] = lastMaintenanceRunId;
-    map['maintenanceWindows'] = Input.encodeList<
+    map['maintenanceWindows'] = pulumi.Input.encodeList<
         GetCloudExadataInfrastructureMaintenanceWindow,
         Map<String, dynamic>>(maintenanceWindows, (value) => value.toMap());
     map['maxCpuCount'] = maxCpuCount;
@@ -227,7 +227,7 @@ class GetCloudExadataInfrastructureResult {
       computeModel: map['computeModel'] as String,
       cpuCount: map['cpuCount'] as int,
       createdAt: map['createdAt'] as String,
-      customerContactsToSendToOcis: Input.decodeList<
+      customerContactsToSendToOcis: pulumi.Input.decodeList<
               GetCloudExadataInfrastructureCustomerContactsToSendToOci>(
           map['customerContactsToSendToOcis'],
           (value) =>
@@ -240,11 +240,11 @@ class GetCloudExadataInfrastructureResult {
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       lastMaintenanceRunId: map['lastMaintenanceRunId'] as String,
-      maintenanceWindows:
-          Input.decodeList<GetCloudExadataInfrastructureMaintenanceWindow>(
-              map['maintenanceWindows'],
-              (value) => GetCloudExadataInfrastructureMaintenanceWindow.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      maintenanceWindows: pulumi.Input.decodeList<
+              GetCloudExadataInfrastructureMaintenanceWindow>(
+          map['maintenanceWindows'],
+          (value) => GetCloudExadataInfrastructureMaintenanceWindow.fromMap(
+              (value as Map).cast<String, dynamic>())),
       maxCpuCount: map['maxCpuCount'] as int,
       maxDataStorageInTbs: map['maxDataStorageInTbs'] as double,
       maxDbNodeStorageSizeInGbs: map['maxDbNodeStorageSizeInGbs'] as int,

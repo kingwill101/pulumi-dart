@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'receipt_filter_args.dart';
 
 /// Provides an SES receipt filter resource
@@ -14,31 +14,31 @@ import 'receipt_filter_args.dart';
 /// ```sh
 /// $ pulumi import aws:ses/receiptFilter:ReceiptFilter test some-filter
 /// ```
-class ReceiptFilter extends CustomResource {
+class ReceiptFilter extends pulumi.CustomResource {
   /// The SES receipt filter ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The IP address or address range to filter, in CIDR notation
-  late final Output<String> cidr;
+  late final pulumi.Output<String> cidr;
 
   /// The name of the filter
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Block or Allow
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ReceiptFilter(
     String name, {
     ReceiptFilterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ses/receiptFilter:ReceiptFilter',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.cidr = registerOutput<String>('cidr');

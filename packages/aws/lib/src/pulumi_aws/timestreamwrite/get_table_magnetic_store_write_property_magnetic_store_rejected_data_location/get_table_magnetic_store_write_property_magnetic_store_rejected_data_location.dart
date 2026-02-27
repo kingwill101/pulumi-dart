@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_table_magnetic_store_write_property_magnetic_store_rejected_data_location_s3_configuration/get_table_magnetic_store_write_property_magnetic_store_rejected_data_location_s3_configuration.dart';
 
 class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation {
@@ -15,7 +15,7 @@ class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['s3Configurations'] = Input.encodeList<
+    map['s3Configurations'] = pulumi.Input.encodeList<
         GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration,
         Map<String, dynamic>>(s3Configurations, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation {
   factory GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation.fromMap(
       Map<String, dynamic> map) {
     return GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation(
-      s3Configurations: Input.decodeList<
+      s3Configurations: pulumi.Input.decodeList<
               GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration>(
           map['s3Configurations'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_confirmation_setting_confirmation_response_message_group_variation_image_response_card_button/v2models_intent_confirmation_setting_confirmation_response_message_group_variation_image_response_card_button.dart';
 
 class V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationImageResponseCard {
@@ -29,7 +29,7 @@ class V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariation
     final map = <String, dynamic>{};
     final buttonsValue = buttons;
     if (buttonsValue != null) {
-      map['buttons'] = Input.encodeList<
+      map['buttons'] = pulumi.Input.encodeList<
           V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationImageResponseCardButton,
           Map<String, dynamic>>(buttonsValue, (value) => value.toMap());
     }
@@ -50,7 +50,7 @@ class V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariation
     return V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationImageResponseCard(
       buttons: map['buttons'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariationImageResponseCardButton>(
               map['buttons'],
               (value) =>

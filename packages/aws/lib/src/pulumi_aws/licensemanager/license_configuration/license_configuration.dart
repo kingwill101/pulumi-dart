@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'license_configuration_args.dart';
 
 /// Provides a License Manager license configuration resource.
@@ -28,49 +28,49 @@ import 'license_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:licensemanager/licenseConfiguration:LicenseConfiguration example arn:aws:license-manager:eu-west-1:123456789012:license-configuration:lic-0123456789abcdef0123456789abcdef
 /// ```
-class LicenseConfiguration extends CustomResource {
+class LicenseConfiguration extends pulumi.CustomResource {
   /// The license configuration ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Description of the license configuration.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Number of licenses managed by the license configuration.
-  late final Output<int?> licenseCount;
+  late final pulumi.Output<int?> licenseCount;
 
   /// Sets the number of available licenses as a hard limit.
-  late final Output<bool?> licenseCountHardLimit;
+  late final pulumi.Output<bool?> licenseCountHardLimit;
 
   /// Dimension to use to track license inventory. Specify either `vCPU`, `Instance`, `Core` or `Socket`.
-  late final Output<String> licenseCountingType;
+  late final pulumi.Output<String> licenseCountingType;
 
   /// Array of configured License Manager rules.
-  late final Output<List<String>?> licenseRules;
+  late final pulumi.Output<List<String>?> licenseRules;
 
   /// Name of the license configuration.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Account ID of the owner of the license configuration.
-  late final Output<String> ownerAccountId;
+  late final pulumi.Output<String> ownerAccountId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   LicenseConfiguration(
     String name, {
     LicenseConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:licensemanager/licenseConfiguration:LicenseConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../model_card_security_config/model_card_security_config.dart';
 import '../model_card_timeouts/model_card_timeouts.dart';
 import 'model_card_args.dart';
@@ -18,41 +18,41 @@ import 'model_card_args.dart';
 /// ```sh
 /// $ pulumi import aws:sagemaker/modelCard:ModelCard example my-model-card
 /// ```
-class ModelCard extends CustomResource {
+class ModelCard extends pulumi.CustomResource {
   /// Content of the model card in [model card JSON schema](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema).
-  late final Output<String> content;
+  late final pulumi.Output<String> content;
 
   /// The Amazon Resource Name (ARN) of the model card.
-  late final Output<String> modelCardArn;
+  late final pulumi.Output<String> modelCardArn;
 
   /// Name of the model card.
-  late final Output<String> modelCardName;
+  late final pulumi.Output<String> modelCardName;
 
   /// Approval status of the model card. Valid values: `Draft`, `PendingReview`, `Approved`, `Archived`.
-  late final Output<String> modelCardStatus;
+  late final pulumi.Output<String> modelCardStatus;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// KMS key to encrypt, decrypt, and re-encrypt model card content. Fields are documented below.
-  late final Output<ModelCardSecurityConfig?> securityConfig;
+  late final pulumi.Output<ModelCardSecurityConfig?> securityConfig;
 
   /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<ModelCardTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<ModelCardTimeouts?> timeouts;
 
   ModelCard(
     String name, {
     ModelCardArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sagemaker/modelCard:ModelCard',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.content = registerOutput<String>('content');
     this.modelCardArn = registerOutput<String>('modelCardArn');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../code_path_options/code_path_options.dart';
 import '../function_capacity_provider_config/function_capacity_provider_config.dart';
 import '../function_dead_letter_config/function_dead_letter_config.dart';
@@ -19,130 +19,130 @@ import '../runtime/runtime.dart';
 /// The set of arguments for CallbackFunction.
 class CallbackFunctionArgs {
   /// Instruction set architecture for your Lambda function. Valid values are `["x86_64"]` and `["arm64"]`. Default is `["x86_64"]`. Removing this attribute, function's architecture stays the same.
-  final Input<List<String>>? architectures;
+  final pulumi.Input<List<String>>? architectures;
 
   /// The Javascript function to use as the entrypoint for the AWS Lambda out of. Either callback or callbackFactory must be provided.
-  final Input<dynamic>? callback;
+  final pulumi.Input<dynamic>? callback;
 
   /// The Javascript function that will be called to produce the callback function that is the entrypoint for the AWS Lambda. Either callback or callbackFactory must be provided.
-  final Input<dynamic>? callbackFactory;
+  final pulumi.Input<dynamic>? callbackFactory;
 
   /// Configuration block for Lambda Capacity Provider. See below.
-  final Input<FunctionCapacityProviderConfig>? capacityProviderConfig;
+  final pulumi.Input<FunctionCapacityProviderConfig>? capacityProviderConfig;
 
   /// Options to control which paths/packages should be included or excluded in the zip file containing the code for the AWS lambda.
-  final Input<CodePathOptions>? codePathOptions;
+  final pulumi.Input<CodePathOptions>? codePathOptions;
 
   /// Base64-encoded representation the source code package file. Use this argument to trigger updates when the function source code changes. For OCI, this value is relayed directly from the image digest. For zip files, this value is the Base64 encoded SHA-256 hash of the `.zip` file. Layers are not included in the calculation. To trigger updates using a non-standard hashing algorithm, use the `source_code_hash` argument instead.
-  final Input<String>? codeSha256;
+  final pulumi.Input<String>? codeSha256;
 
   /// ARN of a code-signing configuration to enable code signing for this function.
-  final Input<String>? codeSigningConfigArn;
+  final pulumi.Input<String>? codeSigningConfigArn;
 
   /// Configuration block for dead letter queue. See below.
-  final Input<FunctionDeadLetterConfig>? deadLetterConfig;
+  final pulumi.Input<FunctionDeadLetterConfig>? deadLetterConfig;
 
   /// Description of what your Lambda Function does.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Configuration block for durable function settings. See below. `durable_config` may only be available in [limited regions](https://builder.aws.com/build/capabilities), including `us-east-2`.
-  final Input<FunctionDurableConfig>? durableConfig;
+  final pulumi.Input<FunctionDurableConfig>? durableConfig;
 
   /// Configuration block for environment variables. See below.
-  final Input<FunctionEnvironment>? environment;
+  final pulumi.Input<FunctionEnvironment>? environment;
 
   /// Amount of ephemeral storage (`/tmp`) to allocate for the Lambda Function. See below.
-  final Input<FunctionEphemeralStorage>? ephemeralStorage;
+  final pulumi.Input<FunctionEphemeralStorage>? ephemeralStorage;
 
   /// Configuration block for EFS file system. See below.
-  final Input<FunctionFileSystemConfig>? fileSystemConfig;
+  final pulumi.Input<FunctionFileSystemConfig>? fileSystemConfig;
 
   /// Container image configuration values. See below.
-  final Input<FunctionImageConfig>? imageConfig;
+  final pulumi.Input<FunctionImageConfig>? imageConfig;
 
   /// ECR image URI containing the function's deployment package. Conflicts with `filename` and `s3_bucket`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
-  final Input<String>? imageUri;
+  final pulumi.Input<String>? imageUri;
 
   /// ARN of the AWS Key Management Service key used to encrypt environment variables. If not provided when environment variables are in use, AWS Lambda uses a default service key. If provided when environment variables are not in use, the AWS Lambda API does not save this configuration.
-  final Input<String>? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
 
   /// List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda Function.
-  final Input<List<String>>? layers;
+  final pulumi.Input<List<String>>? layers;
 
   /// Configuration block for advanced logging settings. See below.
-  final Input<FunctionLoggingConfig>? loggingConfig;
+  final pulumi.Input<FunctionLoggingConfig>? loggingConfig;
 
   /// Amount of memory in MB your Lambda Function can use at runtime. Valid value between 128 MB to 32,768 MB (32 GB), in 1 MB increments. Defaults to 128.
-  final Input<int>? memorySize;
+  final pulumi.Input<int>? memorySize;
 
   /// Unique name for your Lambda Function.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Lambda deployment package type. Valid values are `Zip` and `Image`. Defaults to `Zip`.
-  final Input<String>? packageType;
+  final pulumi.Input<String>? packageType;
 
   /// A list of IAM policy ARNs to attach to the Function. Only one of `role` or `policies` can be provided. If neither is provided, the default policies will be used instead.
-  final Input<Map<String, String>>? policies;
+  final pulumi.Input<Map<String, String>>? policies;
 
   /// Whether to publish creation/change as new Lambda Function Version. Defaults to `false`.
-  final Input<bool>? publish;
+  final pulumi.Input<bool>? publish;
 
   /// Whether to publish to a alias or version number. Omit for regular version publishing. Option is `LATEST_PUBLISHED`.
-  final Input<String>? publishTo;
+  final pulumi.Input<String>? publishTo;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Whether to replace the security groups on the function's VPC configuration prior to destruction. Default is `false`.
-  final Input<bool>? replaceSecurityGroupsOnDestroy;
+  final pulumi.Input<bool>? replaceSecurityGroupsOnDestroy;
 
   /// List of security group IDs to assign to the function's VPC configuration prior to destruction. Required if `replace_security_groups_on_destroy` is `true`.
-  final Input<List<String>>? replacementSecurityGroupIds;
+  final pulumi.Input<List<String>>? replacementSecurityGroupIds;
 
   /// Amount of reserved concurrent executions for this lambda function. A value of `0` disables lambda from being triggered and `-1` removes any concurrency limitations. Defaults to Unreserved Concurrency Limits `-1`.
-  final Input<int>? reservedConcurrentExecutions;
+  final pulumi.Input<int>? reservedConcurrentExecutions;
 
   /// The execution role for the Lambda Function. The role provides the function's identity and access to AWS services and resources. Only one of `role` or `policies` can be provided. If neither is provided, the default policies will be used instead.
-  final Input<String>? role;
+  final pulumi.Input<String>? role;
 
   /// The Lambda runtime to use. If not provided, will default to `NodeJS20dX`.
-  final Input<Runtime>? runtime;
+  final pulumi.Input<Runtime>? runtime;
 
   /// S3 bucket location containing the function's deployment package. Conflicts with `filename` and `image_uri`. One of `filename`, `image_uri`, or `s3_bucket` must be specified.
-  final Input<String>? s3Bucket;
+  final pulumi.Input<String>? s3Bucket;
 
   /// S3 key of an object containing the function's deployment package. Required if `s3_bucket` is set.
-  final Input<String>? s3Key;
+  final pulumi.Input<String>? s3Key;
 
   /// Object version containing the function's deployment package. Conflicts with `filename` and `image_uri`.
-  final Input<String>? s3ObjectVersion;
+  final pulumi.Input<String>? s3ObjectVersion;
 
   /// Whether to retain the old version of a previously deployed Lambda Layer. Default is `false`.
-  final Input<bool>? skipDestroy;
+  final pulumi.Input<bool>? skipDestroy;
 
   /// Configuration block for snap start settings. See below.
-  final Input<FunctionSnapStart>? snapStart;
+  final pulumi.Input<FunctionSnapStart>? snapStart;
 
   /// User-defined hash of the source code package file. Use this argument to trigger updates when the local function source code changes. This is a synthetic argument tracked only by the AWS provider and does not need to match the hashing algorithm used by Lambda to compute the `CodeSha256` response value. Out-of-band changes to the source code _will not_ be captured by this argument. To include out-of-band source code changes as an update trigger, use the `code_sha256` argument instead.
-  final Input<String>? sourceCodeHash;
+  final pulumi.Input<String>? sourceCodeHash;
 
   /// ARN of the AWS Key Management Service key used to encrypt the function's `.zip` deployment package. Conflicts with `image_uri`.
-  final Input<String>? sourceKmsKeyArn;
+  final pulumi.Input<String>? sourceKmsKeyArn;
 
   /// Key-value map of tags for the Lambda function. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Configuration block for Tenancy. See below.
-  final Input<FunctionTenancyConfig>? tenancyConfig;
+  final pulumi.Input<FunctionTenancyConfig>? tenancyConfig;
 
   /// Amount of time your Lambda Function has to run in seconds. Defaults to 3. Valid between 1 and 900.
-  final Input<int>? timeout;
+  final pulumi.Input<int>? timeout;
 
   /// Configuration block for X-Ray tracing. See below.
-  final Input<FunctionTracingConfig>? tracingConfig;
+  final pulumi.Input<FunctionTracingConfig>? tracingConfig;
 
   /// Configuration block for VPC. See below.
-  final Input<FunctionVpcConfig>? vpcConfig;
+  final pulumi.Input<FunctionVpcConfig>? vpcConfig;
 
   CallbackFunctionArgs({
     this.architectures,
@@ -205,15 +205,15 @@ class CallbackFunctionArgs {
     }
     final capacityProviderConfigValue = capacityProviderConfig;
     if (capacityProviderConfigValue != null) {
-      map['capacityProviderConfig'] = Input.mapOptionalInputValue<
+      map['capacityProviderConfig'] = pulumi.Input.mapOptionalInputValue<
               FunctionCapacityProviderConfig, Map<String, dynamic>>(
           capacityProviderConfigValue, (value) => value.toMap());
     }
     final codePathOptionsValue = codePathOptions;
     if (codePathOptionsValue != null) {
-      map['codePathOptions'] =
-          Input.mapOptionalInputValue<CodePathOptions, Map<String, dynamic>>(
-              codePathOptionsValue, (value) => value.toMap());
+      map['codePathOptions'] = pulumi.Input.mapOptionalInputValue<
+          CodePathOptions,
+          Map<String, dynamic>>(codePathOptionsValue, (value) => value.toMap());
     }
     final codeSha256Value = codeSha256;
     if (codeSha256Value != null) {
@@ -225,7 +225,7 @@ class CallbackFunctionArgs {
     }
     final deadLetterConfigValue = deadLetterConfig;
     if (deadLetterConfigValue != null) {
-      map['deadLetterConfig'] = Input.mapOptionalInputValue<
+      map['deadLetterConfig'] = pulumi.Input.mapOptionalInputValue<
               FunctionDeadLetterConfig, Map<String, dynamic>>(
           deadLetterConfigValue, (value) => value.toMap());
     }
@@ -235,29 +235,32 @@ class CallbackFunctionArgs {
     }
     final durableConfigValue = durableConfig;
     if (durableConfigValue != null) {
-      map['durableConfig'] = Input.mapOptionalInputValue<FunctionDurableConfig,
+      map['durableConfig'] = pulumi.Input.mapOptionalInputValue<
+          FunctionDurableConfig,
           Map<String, dynamic>>(durableConfigValue, (value) => value.toMap());
     }
     final environmentValue = environment;
     if (environmentValue != null) {
-      map['environment'] = Input.mapOptionalInputValue<FunctionEnvironment,
+      map['environment'] = pulumi.Input.mapOptionalInputValue<
+          FunctionEnvironment,
           Map<String, dynamic>>(environmentValue, (value) => value.toMap());
     }
     final ephemeralStorageValue = ephemeralStorage;
     if (ephemeralStorageValue != null) {
-      map['ephemeralStorage'] = Input.mapOptionalInputValue<
+      map['ephemeralStorage'] = pulumi.Input.mapOptionalInputValue<
               FunctionEphemeralStorage, Map<String, dynamic>>(
           ephemeralStorageValue, (value) => value.toMap());
     }
     final fileSystemConfigValue = fileSystemConfig;
     if (fileSystemConfigValue != null) {
-      map['fileSystemConfig'] = Input.mapOptionalInputValue<
+      map['fileSystemConfig'] = pulumi.Input.mapOptionalInputValue<
               FunctionFileSystemConfig, Map<String, dynamic>>(
           fileSystemConfigValue, (value) => value.toMap());
     }
     final imageConfigValue = imageConfig;
     if (imageConfigValue != null) {
-      map['imageConfig'] = Input.mapOptionalInputValue<FunctionImageConfig,
+      map['imageConfig'] = pulumi.Input.mapOptionalInputValue<
+          FunctionImageConfig,
           Map<String, dynamic>>(imageConfigValue, (value) => value.toMap());
     }
     final imageUriValue = imageUri;
@@ -274,7 +277,8 @@ class CallbackFunctionArgs {
     }
     final loggingConfigValue = loggingConfig;
     if (loggingConfigValue != null) {
-      map['loggingConfig'] = Input.mapOptionalInputValue<FunctionLoggingConfig,
+      map['loggingConfig'] = pulumi.Input.mapOptionalInputValue<
+          FunctionLoggingConfig,
           Map<String, dynamic>>(loggingConfigValue, (value) => value.toMap());
     }
     final memorySizeValue = memorySize;
@@ -324,7 +328,7 @@ class CallbackFunctionArgs {
     }
     final runtimeValue = runtime;
     if (runtimeValue != null) {
-      map['runtime'] = Input.mapOptionalInputValue<Runtime, String>(
+      map['runtime'] = pulumi.Input.mapOptionalInputValue<Runtime, String>(
           runtimeValue, (value) => value.value);
     }
     final s3BucketValue = s3Bucket;
@@ -345,9 +349,8 @@ class CallbackFunctionArgs {
     }
     final snapStartValue = snapStart;
     if (snapStartValue != null) {
-      map['snapStart'] =
-          Input.mapOptionalInputValue<FunctionSnapStart, Map<String, dynamic>>(
-              snapStartValue, (value) => value.toMap());
+      map['snapStart'] = pulumi.Input.mapOptionalInputValue<FunctionSnapStart,
+          Map<String, dynamic>>(snapStartValue, (value) => value.toMap());
     }
     final sourceCodeHashValue = sourceCodeHash;
     if (sourceCodeHashValue != null) {
@@ -363,7 +366,8 @@ class CallbackFunctionArgs {
     }
     final tenancyConfigValue = tenancyConfig;
     if (tenancyConfigValue != null) {
-      map['tenancyConfig'] = Input.mapOptionalInputValue<FunctionTenancyConfig,
+      map['tenancyConfig'] = pulumi.Input.mapOptionalInputValue<
+          FunctionTenancyConfig,
           Map<String, dynamic>>(tenancyConfigValue, (value) => value.toMap());
     }
     final timeoutValue = timeout;
@@ -372,78 +376,86 @@ class CallbackFunctionArgs {
     }
     final tracingConfigValue = tracingConfig;
     if (tracingConfigValue != null) {
-      map['tracingConfig'] = Input.mapOptionalInputValue<FunctionTracingConfig,
+      map['tracingConfig'] = pulumi.Input.mapOptionalInputValue<
+          FunctionTracingConfig,
           Map<String, dynamic>>(tracingConfigValue, (value) => value.toMap());
     }
     final vpcConfigValue = vpcConfig;
     if (vpcConfigValue != null) {
-      map['vpcConfig'] =
-          Input.mapOptionalInputValue<FunctionVpcConfig, Map<String, dynamic>>(
-              vpcConfigValue, (value) => value.toMap());
+      map['vpcConfig'] = pulumi.Input.mapOptionalInputValue<FunctionVpcConfig,
+          Map<String, dynamic>>(vpcConfigValue, (value) => value.toMap());
     }
     return map;
   }
 
   factory CallbackFunctionArgs.fromMap(Map<String, dynamic> map) {
     return CallbackFunctionArgs(
-      architectures: Input.asOptionalInput<List<String>>(map['architectures']),
-      callback: Input.asOptionalInput<dynamic>(map['callback']),
-      callbackFactory: Input.asOptionalInput<dynamic>(map['callbackFactory']),
+      architectures:
+          pulumi.Input.asOptionalInput<List<String>>(map['architectures']),
+      callback: pulumi.Input.asOptionalInput<dynamic>(map['callback']),
+      callbackFactory:
+          pulumi.Input.asOptionalInput<dynamic>(map['callbackFactory']),
       capacityProviderConfig:
-          Input.asOptionalInput<FunctionCapacityProviderConfig>(
+          pulumi.Input.asOptionalInput<FunctionCapacityProviderConfig>(
               map['capacityProviderConfig']),
       codePathOptions:
-          Input.asOptionalInput<CodePathOptions>(map['codePathOptions']),
-      codeSha256: Input.asOptionalInput<String>(map['codeSha256']),
+          pulumi.Input.asOptionalInput<CodePathOptions>(map['codePathOptions']),
+      codeSha256: pulumi.Input.asOptionalInput<String>(map['codeSha256']),
       codeSigningConfigArn:
-          Input.asOptionalInput<String>(map['codeSigningConfigArn']),
-      deadLetterConfig: Input.asOptionalInput<FunctionDeadLetterConfig>(
+          pulumi.Input.asOptionalInput<String>(map['codeSigningConfigArn']),
+      deadLetterConfig: pulumi.Input.asOptionalInput<FunctionDeadLetterConfig>(
           map['deadLetterConfig']),
-      description: Input.asOptionalInput<String>(map['description']),
-      durableConfig:
-          Input.asOptionalInput<FunctionDurableConfig>(map['durableConfig']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      durableConfig: pulumi.Input.asOptionalInput<FunctionDurableConfig>(
+          map['durableConfig']),
       environment:
-          Input.asOptionalInput<FunctionEnvironment>(map['environment']),
-      ephemeralStorage: Input.asOptionalInput<FunctionEphemeralStorage>(
+          pulumi.Input.asOptionalInput<FunctionEnvironment>(map['environment']),
+      ephemeralStorage: pulumi.Input.asOptionalInput<FunctionEphemeralStorage>(
           map['ephemeralStorage']),
-      fileSystemConfig: Input.asOptionalInput<FunctionFileSystemConfig>(
+      fileSystemConfig: pulumi.Input.asOptionalInput<FunctionFileSystemConfig>(
           map['fileSystemConfig']),
       imageConfig:
-          Input.asOptionalInput<FunctionImageConfig>(map['imageConfig']),
-      imageUri: Input.asOptionalInput<String>(map['imageUri']),
-      kmsKeyArn: Input.asOptionalInput<String>(map['kmsKeyArn']),
-      layers: Input.asOptionalInput<List<String>>(map['layers']),
-      loggingConfig:
-          Input.asOptionalInput<FunctionLoggingConfig>(map['loggingConfig']),
-      memorySize: Input.asOptionalInput<int>(map['memorySize']),
-      name: Input.asOptionalInput<String>(map['name']),
-      packageType: Input.asOptionalInput<String>(map['packageType']),
-      policies: Input.asOptionalInput<Map<String, String>>(map['policies']),
-      publish: Input.asOptionalInput<bool>(map['publish']),
-      publishTo: Input.asOptionalInput<String>(map['publishTo']),
-      region: Input.asOptionalInput<String>(map['region']),
-      replaceSecurityGroupsOnDestroy:
-          Input.asOptionalInput<bool>(map['replaceSecurityGroupsOnDestroy']),
-      replacementSecurityGroupIds: Input.asOptionalInput<List<String>>(
+          pulumi.Input.asOptionalInput<FunctionImageConfig>(map['imageConfig']),
+      imageUri: pulumi.Input.asOptionalInput<String>(map['imageUri']),
+      kmsKeyArn: pulumi.Input.asOptionalInput<String>(map['kmsKeyArn']),
+      layers: pulumi.Input.asOptionalInput<List<String>>(map['layers']),
+      loggingConfig: pulumi.Input.asOptionalInput<FunctionLoggingConfig>(
+          map['loggingConfig']),
+      memorySize: pulumi.Input.asOptionalInput<int>(map['memorySize']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      packageType: pulumi.Input.asOptionalInput<String>(map['packageType']),
+      policies:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['policies']),
+      publish: pulumi.Input.asOptionalInput<bool>(map['publish']),
+      publishTo: pulumi.Input.asOptionalInput<String>(map['publishTo']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      replaceSecurityGroupsOnDestroy: pulumi.Input.asOptionalInput<bool>(
+          map['replaceSecurityGroupsOnDestroy']),
+      replacementSecurityGroupIds: pulumi.Input.asOptionalInput<List<String>>(
           map['replacementSecurityGroupIds']),
-      reservedConcurrentExecutions:
-          Input.asOptionalInput<int>(map['reservedConcurrentExecutions']),
-      role: Input.asOptionalInput<String>(map['role']),
-      runtime: Input.asOptionalInput<Runtime>(map['runtime']),
-      s3Bucket: Input.asOptionalInput<String>(map['s3Bucket']),
-      s3Key: Input.asOptionalInput<String>(map['s3Key']),
-      s3ObjectVersion: Input.asOptionalInput<String>(map['s3ObjectVersion']),
-      skipDestroy: Input.asOptionalInput<bool>(map['skipDestroy']),
-      snapStart: Input.asOptionalInput<FunctionSnapStart>(map['snapStart']),
-      sourceCodeHash: Input.asOptionalInput<String>(map['sourceCodeHash']),
-      sourceKmsKeyArn: Input.asOptionalInput<String>(map['sourceKmsKeyArn']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      tenancyConfig:
-          Input.asOptionalInput<FunctionTenancyConfig>(map['tenancyConfig']),
-      timeout: Input.asOptionalInput<int>(map['timeout']),
-      tracingConfig:
-          Input.asOptionalInput<FunctionTracingConfig>(map['tracingConfig']),
-      vpcConfig: Input.asOptionalInput<FunctionVpcConfig>(map['vpcConfig']),
+      reservedConcurrentExecutions: pulumi.Input.asOptionalInput<int>(
+          map['reservedConcurrentExecutions']),
+      role: pulumi.Input.asOptionalInput<String>(map['role']),
+      runtime: pulumi.Input.asOptionalInput<Runtime>(map['runtime']),
+      s3Bucket: pulumi.Input.asOptionalInput<String>(map['s3Bucket']),
+      s3Key: pulumi.Input.asOptionalInput<String>(map['s3Key']),
+      s3ObjectVersion:
+          pulumi.Input.asOptionalInput<String>(map['s3ObjectVersion']),
+      skipDestroy: pulumi.Input.asOptionalInput<bool>(map['skipDestroy']),
+      snapStart:
+          pulumi.Input.asOptionalInput<FunctionSnapStart>(map['snapStart']),
+      sourceCodeHash:
+          pulumi.Input.asOptionalInput<String>(map['sourceCodeHash']),
+      sourceKmsKeyArn:
+          pulumi.Input.asOptionalInput<String>(map['sourceKmsKeyArn']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tenancyConfig: pulumi.Input.asOptionalInput<FunctionTenancyConfig>(
+          map['tenancyConfig']),
+      timeout: pulumi.Input.asOptionalInput<int>(map['timeout']),
+      tracingConfig: pulumi.Input.asOptionalInput<FunctionTracingConfig>(
+          map['tracingConfig']),
+      vpcConfig:
+          pulumi.Input.asOptionalInput<FunctionVpcConfig>(map['vpcConfig']),
     );
   }
 }

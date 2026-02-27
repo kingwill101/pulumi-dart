@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getUserGroups.
 class GetUserGroupsArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// User pool the client belongs to.
-  final Input<String> userPoolId;
+  final pulumi.Input<String> userPoolId;
 
   GetUserGroupsArgs({
     this.region,
@@ -27,8 +27,8 @@ class GetUserGroupsArgs {
 
   factory GetUserGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetUserGroupsArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      userPoolId: Input.asInput<String>(map['userPoolId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      userPoolId: pulumi.Input.asInput<String>(map['userPoolId']),
     );
   }
 }

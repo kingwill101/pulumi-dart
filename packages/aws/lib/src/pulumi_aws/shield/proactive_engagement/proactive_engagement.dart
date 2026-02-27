@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../proactive_engagement_emergency_contact/proactive_engagement_emergency_contact.dart';
 import 'proactive_engagement_args.dart';
 
@@ -18,23 +18,23 @@ import 'proactive_engagement_args.dart';
 /// ```sh
 /// $ pulumi import aws:shield/proactiveEngagement:ProactiveEngagement example 123456789012
 /// ```
-class ProactiveEngagement extends CustomResource {
+class ProactiveEngagement extends pulumi.CustomResource {
   /// One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergency_contacts`.
-  late final Output<List<ProactiveEngagementEmergencyContact>>
+  late final pulumi.Output<List<ProactiveEngagementEmergencyContact>>
       emergencyContacts;
 
   /// Boolean value indicating if Proactive Engagement should be enabled or not.
-  late final Output<bool> enabled;
+  late final pulumi.Output<bool> enabled;
 
   ProactiveEngagement(
     String name, {
     ProactiveEngagementArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:shield/proactiveEngagement:ProactiveEngagement',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.emergencyContacts =
         registerOutput<List<ProactiveEngagementEmergencyContact>>(

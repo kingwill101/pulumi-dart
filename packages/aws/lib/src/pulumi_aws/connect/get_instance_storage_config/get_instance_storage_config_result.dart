@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_storage_config_storage_config/get_instance_storage_config_storage_config.dart';
 
 /// Result data returned by getInstanceStorageConfig.
@@ -32,7 +32,7 @@ class GetInstanceStorageConfigResult {
     map['instanceId'] = instanceId;
     map['region'] = region;
     map['resourceType'] = resourceType;
-    map['storageConfigs'] = Input.encodeList<
+    map['storageConfigs'] = pulumi.Input.encodeList<
         GetInstanceStorageConfigStorageConfig,
         Map<String, dynamic>>(storageConfigs, (value) => value.toMap());
     return map;
@@ -45,10 +45,11 @@ class GetInstanceStorageConfigResult {
       instanceId: map['instanceId'] as String,
       region: map['region'] as String,
       resourceType: map['resourceType'] as String,
-      storageConfigs: Input.decodeList<GetInstanceStorageConfigStorageConfig>(
-          map['storageConfigs'],
-          (value) => GetInstanceStorageConfigStorageConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      storageConfigs:
+          pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfig>(
+              map['storageConfigs'],
+              (value) => GetInstanceStorageConfigStorageConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_table_association_args.dart';
 
 /// Manages an EC2 Transit Gateway Policy Table association.
@@ -14,31 +14,31 @@ import 'policy_table_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2transitgateway/policyTableAssociation:PolicyTableAssociation example tgw-rtb-12345678_tgw-attach-87654321
 /// ```
-class PolicyTableAssociation extends CustomResource {
+class PolicyTableAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Identifier of the resource
-  late final Output<String> resourceId;
+  late final pulumi.Output<String> resourceId;
 
   /// Type of the resource
-  late final Output<String> resourceType;
+  late final pulumi.Output<String> resourceType;
 
   /// Identifier of EC2 Transit Gateway Attachment.
-  late final Output<String> transitGatewayAttachmentId;
+  late final pulumi.Output<String> transitGatewayAttachmentId;
 
   /// Identifier of EC2 Transit Gateway Policy Table.
-  late final Output<String> transitGatewayPolicyTableId;
+  late final pulumi.Output<String> transitGatewayPolicyTableId;
 
   PolicyTableAssociation(
     String name, {
     PolicyTableAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2transitgateway/policyTableAssociation:PolicyTableAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.resourceId = registerOutput<String>('resourceId');

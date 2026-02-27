@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_user_pool_client_analytics_configuration/get_user_pool_client_analytics_configuration.dart';
 import '../get_user_pool_client_refresh_token_rotation/get_user_pool_client_refresh_token_rotation.dart';
 import '../get_user_pool_client_token_validity_unit/get_user_pool_client_token_validity_unit.dart';
@@ -110,7 +110,7 @@ class GetUserPoolClientResult {
     map['allowedOauthFlows'] = allowedOauthFlows;
     map['allowedOauthFlowsUserPoolClient'] = allowedOauthFlowsUserPoolClient;
     map['allowedOauthScopes'] = allowedOauthScopes;
-    map['analyticsConfigurations'] = Input.encodeList<
+    map['analyticsConfigurations'] = pulumi.Input.encodeList<
             GetUserPoolClientAnalyticsConfiguration, Map<String, dynamic>>(
         analyticsConfigurations, (value) => value.toMap());
     map['callbackUrls'] = callbackUrls;
@@ -128,13 +128,13 @@ class GetUserPoolClientResult {
     map['name'] = name;
     map['preventUserExistenceErrors'] = preventUserExistenceErrors;
     map['readAttributes'] = readAttributes;
-    map['refreshTokenRotations'] = Input.encodeList<
+    map['refreshTokenRotations'] = pulumi.Input.encodeList<
         GetUserPoolClientRefreshTokenRotation,
         Map<String, dynamic>>(refreshTokenRotations, (value) => value.toMap());
     map['refreshTokenValidity'] = refreshTokenValidity;
     map['region'] = region;
     map['supportedIdentityProviders'] = supportedIdentityProviders;
-    map['tokenValidityUnits'] = Input.encodeList<
+    map['tokenValidityUnits'] = pulumi.Input.encodeList<
         GetUserPoolClientTokenValidityUnit,
         Map<String, dynamic>>(tokenValidityUnits, (value) => value.toMap());
     map['userPoolId'] = userPoolId;
@@ -150,7 +150,7 @@ class GetUserPoolClientResult {
           map['allowedOauthFlowsUserPoolClient'] as bool,
       allowedOauthScopes: (map['allowedOauthScopes'] as List).cast<String>(),
       analyticsConfigurations:
-          Input.decodeList<GetUserPoolClientAnalyticsConfiguration>(
+          pulumi.Input.decodeList<GetUserPoolClientAnalyticsConfiguration>(
               map['analyticsConfigurations'],
               (value) => GetUserPoolClientAnalyticsConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -170,7 +170,7 @@ class GetUserPoolClientResult {
       preventUserExistenceErrors: map['preventUserExistenceErrors'] as String,
       readAttributes: (map['readAttributes'] as List).cast<String>(),
       refreshTokenRotations:
-          Input.decodeList<GetUserPoolClientRefreshTokenRotation>(
+          pulumi.Input.decodeList<GetUserPoolClientRefreshTokenRotation>(
               map['refreshTokenRotations'],
               (value) => GetUserPoolClientRefreshTokenRotation.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -178,10 +178,11 @@ class GetUserPoolClientResult {
       region: map['region'] as String,
       supportedIdentityProviders:
           (map['supportedIdentityProviders'] as List).cast<String>(),
-      tokenValidityUnits: Input.decodeList<GetUserPoolClientTokenValidityUnit>(
-          map['tokenValidityUnits'],
-          (value) => GetUserPoolClientTokenValidityUnit.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      tokenValidityUnits:
+          pulumi.Input.decodeList<GetUserPoolClientTokenValidityUnit>(
+              map['tokenValidityUnits'],
+              (value) => GetUserPoolClientTokenValidityUnit.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       userPoolId: map['userPoolId'] as String,
       writeAttributes: (map['writeAttributes'] as List).cast<String>(),
     );

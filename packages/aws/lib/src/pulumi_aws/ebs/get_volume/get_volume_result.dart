@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_volume_filter/get_volume_filter.dart';
 
 /// Result data returned by getVolume.
@@ -86,8 +86,9 @@ class GetVolumeResult {
     map['encrypted'] = encrypted;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetVolumeFilter, Map<String, dynamic>>(
-          filtersValue, (value) => value.toMap());
+      map['filters'] =
+          pulumi.Input.encodeList<GetVolumeFilter, Map<String, dynamic>>(
+              filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['iops'] = iops;
@@ -117,7 +118,7 @@ class GetVolumeResult {
       encrypted: map['encrypted'] as bool,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVolumeFilter>(
+          : pulumi.Input.decodeList<GetVolumeFilter>(
               map['filters'],
               (value) => GetVolumeFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

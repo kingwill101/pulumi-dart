@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../customer_managed_policy_attachment_customer_managed_policy_reference/customer_managed_policy_attachment_customer_managed_policy_reference.dart';
 import 'customer_managed_policy_attachment_args.dart';
 
@@ -19,30 +19,30 @@ import 'customer_managed_policy_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:ssoadmin/customerManagedPolicyAttachment:CustomerManagedPolicyAttachment example TestPolicy,/,arn:aws:sso:::permissionSet/ssoins-2938j0x8920sbj72/ps-80383020jr9302rk,arn:aws:sso:::instance/ssoins-2938j0x8920sbj72
 /// ```
-class CustomerManagedPolicyAttachment extends CustomResource {
+class CustomerManagedPolicyAttachment extends pulumi.CustomResource {
   /// Specifies the name and path of a customer managed policy. See below.
-  late final Output<
-          CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>
+  late final pulumi
+      .Output<CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>
       customerManagedPolicyReference;
 
   /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
-  late final Output<String> instanceArn;
+  late final pulumi.Output<String> instanceArn;
 
   /// The Amazon Resource Name (ARN) of the Permission Set.
-  late final Output<String> permissionSetArn;
+  late final pulumi.Output<String> permissionSetArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   CustomerManagedPolicyAttachment(
     String name, {
     CustomerManagedPolicyAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssoadmin/customerManagedPolicyAttachment:CustomerManagedPolicyAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.customerManagedPolicyReference = registerOutput<
             CustomerManagedPolicyAttachmentCustomerManagedPolicyReference>(

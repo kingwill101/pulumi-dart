@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../sdkvoice_global_settings_voice_connector/sdkvoice_global_settings_voice_connector.dart';
 import 'sdkvoice_global_settings_args.dart';
 
@@ -17,19 +17,19 @@ import 'sdkvoice_global_settings_args.dart';
 /// ```sh
 /// $ pulumi import aws:chime/sdkvoiceGlobalSettings:SdkvoiceGlobalSettings example 123456789012
 /// ```
-class SdkvoiceGlobalSettings extends CustomResource {
+class SdkvoiceGlobalSettings extends pulumi.CustomResource {
   /// The Voice Connector settings. See voice_connector.
-  late final Output<SdkvoiceGlobalSettingsVoiceConnector> voiceConnector;
+  late final pulumi.Output<SdkvoiceGlobalSettingsVoiceConnector> voiceConnector;
 
   SdkvoiceGlobalSettings(
     String name, {
     SdkvoiceGlobalSettingsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:chime/sdkvoiceGlobalSettings:SdkvoiceGlobalSettings',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.voiceConnector =
         registerOutput<SdkvoiceGlobalSettingsVoiceConnector>('voiceConnector');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vpc_ingress_connection_ingress_vpc_configuration/vpc_ingress_connection_ingress_vpc_configuration.dart';
 import 'vpc_ingress_connection_args.dart';
 
@@ -22,44 +22,44 @@ import 'vpc_ingress_connection_args.dart';
 /// ```sh
 /// $ pulumi import aws:apprunner/vpcIngressConnection:VpcIngressConnection example "arn:aws:apprunner:us-west-2:837424938642:vpcingressconnection/example/b379f86381d74825832c2e82080342fa"
 /// ```
-class VpcIngressConnection extends CustomResource {
+class VpcIngressConnection extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the VPC Ingress Connection.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The domain name associated with the VPC Ingress Connection resource.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// Specifications for the customer’s Amazon VPC and the related AWS PrivateLink VPC endpoint that are used to create the VPC Ingress Connection resource. See Ingress VPC Configuration below for more details.
-  late final Output<VpcIngressConnectionIngressVpcConfiguration>
+  late final pulumi.Output<VpcIngressConnectionIngressVpcConfiguration>
       ingressVpcConfiguration;
 
   /// A name for the VPC Ingress Connection resource. It must be unique across all the active VPC Ingress Connections in your AWS account in the AWS Region.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The Amazon Resource Name (ARN) for this App Runner service that is used to create the VPC Ingress Connection resource.
-  late final Output<String> serviceArn;
+  late final pulumi.Output<String> serviceArn;
 
   /// The current status of the VPC Ingress Connection.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   VpcIngressConnection(
     String name, {
     VpcIngressConnectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apprunner/vpcIngressConnection:VpcIngressConnection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.domainName = registerOutput<String>('domainName');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'approval_rule_template_args.dart';
 
 /// Provides a CodeCommit Approval Rule Template Resource.
@@ -14,43 +14,43 @@ import 'approval_rule_template_args.dart';
 /// ```sh
 /// $ pulumi import aws:codecommit/approvalRuleTemplate:ApprovalRuleTemplate imported ExistingApprovalRuleTemplateName
 /// ```
-class ApprovalRuleTemplate extends CustomResource {
+class ApprovalRuleTemplate extends pulumi.CustomResource {
   /// The ID of the approval rule template
-  late final Output<String> approvalRuleTemplateId;
+  late final pulumi.Output<String> approvalRuleTemplateId;
 
   /// The content of the approval rule template. Maximum of 3000 characters.
-  late final Output<String> content;
+  late final pulumi.Output<String> content;
 
   /// The date the approval rule template was created, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  late final Output<String> creationDate;
+  late final pulumi.Output<String> creationDate;
 
   /// The description of the approval rule template. Maximum of 1000 characters.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The date the approval rule template was most recently changed, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  late final Output<String> lastModifiedDate;
+  late final pulumi.Output<String> lastModifiedDate;
 
   /// The Amazon Resource Name (ARN) of the user who made the most recent changes to the approval rule template.
-  late final Output<String> lastModifiedUser;
+  late final pulumi.Output<String> lastModifiedUser;
 
   /// The name for the approval rule template. Maximum of 100 characters.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The SHA-256 hash signature for the content of the approval rule template.
-  late final Output<String> ruleContentSha256;
+  late final pulumi.Output<String> ruleContentSha256;
 
   ApprovalRuleTemplate(
     String name, {
     ApprovalRuleTemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:codecommit/approvalRuleTemplate:ApprovalRuleTemplate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.approvalRuleTemplateId =
         registerOutput<String>('approvalRuleTemplateId');

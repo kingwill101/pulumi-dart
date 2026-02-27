@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'listener_certificate_args.dart';
 
 /// Provides a Load Balancer Listener Certificate resource.
@@ -18,25 +18,25 @@ import 'listener_certificate_args.dart';
 /// ```sh
 /// $ pulumi import aws:alb/listenerCertificate:ListenerCertificate example arn:aws:elasticloadbalancing:us-west-2:123456789012:listener/app/test/8e4497da625e2d8a/9ab28ade35828f96/67b3d2d36dd7c26b_arn:aws:iam::123456789012:server-certificate/tf-acc-test-6453083910015726063
 /// ```
-class ListenerCertificate extends CustomResource {
+class ListenerCertificate extends pulumi.CustomResource {
   /// The ARN of the certificate to attach to the listener.
-  late final Output<String> certificateArn;
+  late final pulumi.Output<String> certificateArn;
 
   /// The ARN of the listener to which to attach the certificate.
-  late final Output<String> listenerArn;
+  late final pulumi.Output<String> listenerArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ListenerCertificate(
     String name, {
     ListenerCertificateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:alb/listenerCertificate:ListenerCertificate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.certificateArn = registerOutput<String>('certificateArn');
     this.listenerArn = registerOutput<String>('listenerArn');

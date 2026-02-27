@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_public_ipv4_pools_filter/get_public_ipv4_pools_filter.dart';
 
 /// Result data returned by getPublicIpv4Pools.
@@ -27,9 +27,8 @@ class GetPublicIpv4PoolsResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetPublicIpv4PoolsFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetPublicIpv4PoolsFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['poolIds'] = poolIds;
@@ -42,7 +41,7 @@ class GetPublicIpv4PoolsResult {
     return GetPublicIpv4PoolsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetPublicIpv4PoolsFilter>(
+          : pulumi.Input.decodeList<GetPublicIpv4PoolsFilter>(
               map['filters'],
               (value) => GetPublicIpv4PoolsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

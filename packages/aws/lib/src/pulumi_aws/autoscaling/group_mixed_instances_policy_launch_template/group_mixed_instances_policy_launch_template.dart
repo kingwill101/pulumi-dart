@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../group_mixed_instances_policy_launch_template_launch_template_specification/group_mixed_instances_policy_launch_template_launch_template_specification.dart';
 import '../group_mixed_instances_policy_launch_template_override/group_mixed_instances_policy_launch_template_override.dart';
 
@@ -22,7 +22,7 @@ class GroupMixedInstancesPolicyLaunchTemplate {
     map['launchTemplateSpecification'] = launchTemplateSpecification.toMap();
     final overridesValue = overrides;
     if (overridesValue != null) {
-      map['overrides'] = Input.encodeList<
+      map['overrides'] = pulumi.Input.encodeList<
           GroupMixedInstancesPolicyLaunchTemplateOverride,
           Map<String, dynamic>>(overridesValue, (value) => value.toMap());
     }
@@ -38,7 +38,8 @@ class GroupMixedInstancesPolicyLaunchTemplate {
                   .cast<String, dynamic>()),
       overrides: map['overrides'] == null
           ? null
-          : Input.decodeList<GroupMixedInstancesPolicyLaunchTemplateOverride>(
+          : pulumi.Input.decodeList<
+                  GroupMixedInstancesPolicyLaunchTemplateOverride>(
               map['overrides'],
               (value) =>
                   GroupMixedInstancesPolicyLaunchTemplateOverride.fromMap(

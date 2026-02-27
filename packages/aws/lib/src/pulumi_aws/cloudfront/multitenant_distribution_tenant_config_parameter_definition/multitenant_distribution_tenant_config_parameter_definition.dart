@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multitenant_distribution_tenant_config_parameter_definition_definition/multitenant_distribution_tenant_config_parameter_definition_definition.dart';
 
 class MultitenantDistributionTenantConfigParameterDefinition {
@@ -20,7 +20,7 @@ class MultitenantDistributionTenantConfigParameterDefinition {
     final map = <String, dynamic>{};
     final definitionsValue = definitions;
     if (definitionsValue != null) {
-      map['definitions'] = Input.encodeList<
+      map['definitions'] = pulumi.Input.encodeList<
           MultitenantDistributionTenantConfigParameterDefinitionDefinition,
           Map<String, dynamic>>(definitionsValue, (value) => value.toMap());
     }
@@ -33,7 +33,7 @@ class MultitenantDistributionTenantConfigParameterDefinition {
     return MultitenantDistributionTenantConfigParameterDefinition(
       definitions: map['definitions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   MultitenantDistributionTenantConfigParameterDefinitionDefinition>(
               map['definitions'],
               (value) =>

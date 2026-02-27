@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../capability_configuration_argo_cd_rbac_role_mapping_identity/capability_configuration_argo_cd_rbac_role_mapping_identity.dart';
 
 class CapabilityConfigurationArgoCdRbacRoleMapping {
@@ -17,7 +17,7 @@ class CapabilityConfigurationArgoCdRbacRoleMapping {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['identities'] = Input.encodeList<
+    map['identities'] = pulumi.Input.encodeList<
         CapabilityConfigurationArgoCdRbacRoleMappingIdentity,
         Map<String, dynamic>>(identities, (value) => value.toMap());
     map['role'] = role;
@@ -27,7 +27,7 @@ class CapabilityConfigurationArgoCdRbacRoleMapping {
   factory CapabilityConfigurationArgoCdRbacRoleMapping.fromMap(
       Map<String, dynamic> map) {
     return CapabilityConfigurationArgoCdRbacRoleMapping(
-      identities: Input.decodeList<
+      identities: pulumi.Input.decodeList<
               CapabilityConfigurationArgoCdRbacRoleMappingIdentity>(
           map['identities'],
           (value) =>

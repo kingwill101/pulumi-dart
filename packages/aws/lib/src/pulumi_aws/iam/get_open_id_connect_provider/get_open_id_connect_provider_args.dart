@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOpenIdConnectProvider.
 class GetOpenIdConnectProviderArgs {
   /// ARN of the OpenID Connect provider.
-  final Input<String>? arn;
+  final pulumi.Input<String>? arn;
 
   /// Map of resource tags for the IAM OIDC provider.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// URL of the OpenID Connect provider.
-  final Input<String>? url;
+  final pulumi.Input<String>? url;
 
   GetOpenIdConnectProviderArgs({
     this.arn,
@@ -38,9 +38,9 @@ class GetOpenIdConnectProviderArgs {
 
   factory GetOpenIdConnectProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetOpenIdConnectProviderArgs(
-      arn: Input.asOptionalInput<String>(map['arn']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      url: Input.asOptionalInput<String>(map['url']),
+      arn: pulumi.Input.asOptionalInput<String>(map['arn']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      url: pulumi.Input.asOptionalInput<String>(map['url']),
     );
   }
 }

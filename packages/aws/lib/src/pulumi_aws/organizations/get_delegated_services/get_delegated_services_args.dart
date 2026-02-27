@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDelegatedServices.
 class GetDelegatedServicesArgs {
   /// Account ID number of a delegated administrator account in the organization.
-  final Input<String> accountId;
+  final pulumi.Input<String> accountId;
 
   GetDelegatedServicesArgs({
     required this.accountId,
@@ -19,7 +19,7 @@ class GetDelegatedServicesArgs {
 
   factory GetDelegatedServicesArgs.fromMap(Map<String, dynamic> map) {
     return GetDelegatedServicesArgs(
-      accountId: Input.asInput<String>(map['accountId']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
     );
   }
 }

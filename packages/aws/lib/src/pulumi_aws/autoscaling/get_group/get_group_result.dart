@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_group_instance_maintenance_policy/get_group_instance_maintenance_policy.dart';
 import '../get_group_launch_template/get_group_launch_template.dart';
 import '../get_group_mixed_instances_policy/get_group_mixed_instances_policy.dart';
@@ -146,20 +146,20 @@ class GetGroupResult {
     map['healthCheckGracePeriod'] = healthCheckGracePeriod;
     map['healthCheckType'] = healthCheckType;
     map['id'] = id;
-    map['instanceMaintenancePolicies'] = Input.encodeList<
+    map['instanceMaintenancePolicies'] = pulumi.Input.encodeList<
             GetGroupInstanceMaintenancePolicy, Map<String, dynamic>>(
         instanceMaintenancePolicies, (value) => value.toMap());
     map['launchConfiguration'] = launchConfiguration;
     map['launchTemplates'] =
-        Input.encodeList<GetGroupLaunchTemplate, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetGroupLaunchTemplate, Map<String, dynamic>>(
             launchTemplates, (value) => value.toMap());
     map['loadBalancers'] = loadBalancers;
     map['maxInstanceLifetime'] = maxInstanceLifetime;
     map['maxSize'] = maxSize;
     map['minSize'] = minSize;
-    map['mixedInstancesPolicies'] =
-        Input.encodeList<GetGroupMixedInstancesPolicy, Map<String, dynamic>>(
-            mixedInstancesPolicies, (value) => value.toMap());
+    map['mixedInstancesPolicies'] = pulumi.Input.encodeList<
+        GetGroupMixedInstancesPolicy,
+        Map<String, dynamic>>(mixedInstancesPolicies, (value) => value.toMap());
     map['name'] = name;
     map['newInstancesProtectedFromScaleIn'] = newInstancesProtectedFromScaleIn;
     map['placementGroup'] = placementGroup;
@@ -168,17 +168,18 @@ class GetGroupResult {
     map['serviceLinkedRoleArn'] = serviceLinkedRoleArn;
     map['status'] = status;
     map['suspendedProcesses'] = suspendedProcesses;
-    map['tags'] = Input.encodeList<GetGroupTag, Map<String, dynamic>>(
+    map['tags'] = pulumi.Input.encodeList<GetGroupTag, Map<String, dynamic>>(
         tags, (value) => value.toMap());
     map['targetGroupArns'] = targetGroupArns;
     map['terminationPolicies'] = terminationPolicies;
     map['trafficSources'] =
-        Input.encodeList<GetGroupTrafficSource, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetGroupTrafficSource, Map<String, dynamic>>(
             trafficSources, (value) => value.toMap());
     map['vpcZoneIdentifier'] = vpcZoneIdentifier;
     map['warmPoolSize'] = warmPoolSize;
-    map['warmPools'] = Input.encodeList<GetGroupWarmPool, Map<String, dynamic>>(
-        warmPools, (value) => value.toMap());
+    map['warmPools'] =
+        pulumi.Input.encodeList<GetGroupWarmPool, Map<String, dynamic>>(
+            warmPools, (value) => value.toMap());
     return map;
   }
 
@@ -194,12 +195,12 @@ class GetGroupResult {
       healthCheckType: map['healthCheckType'] as String,
       id: map['id'] as String,
       instanceMaintenancePolicies:
-          Input.decodeList<GetGroupInstanceMaintenancePolicy>(
+          pulumi.Input.decodeList<GetGroupInstanceMaintenancePolicy>(
               map['instanceMaintenancePolicies'],
               (value) => GetGroupInstanceMaintenancePolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),
       launchConfiguration: map['launchConfiguration'] as String,
-      launchTemplates: Input.decodeList<GetGroupLaunchTemplate>(
+      launchTemplates: pulumi.Input.decodeList<GetGroupLaunchTemplate>(
           map['launchTemplates'],
           (value) => GetGroupLaunchTemplate.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -207,10 +208,11 @@ class GetGroupResult {
       maxInstanceLifetime: map['maxInstanceLifetime'] as int,
       maxSize: map['maxSize'] as int,
       minSize: map['minSize'] as int,
-      mixedInstancesPolicies: Input.decodeList<GetGroupMixedInstancesPolicy>(
-          map['mixedInstancesPolicies'],
-          (value) => GetGroupMixedInstancesPolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      mixedInstancesPolicies:
+          pulumi.Input.decodeList<GetGroupMixedInstancesPolicy>(
+              map['mixedInstancesPolicies'],
+              (value) => GetGroupMixedInstancesPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       newInstancesProtectedFromScaleIn:
           map['newInstancesProtectedFromScaleIn'] as bool,
@@ -220,19 +222,19 @@ class GetGroupResult {
       serviceLinkedRoleArn: map['serviceLinkedRoleArn'] as String,
       status: map['status'] as String,
       suspendedProcesses: (map['suspendedProcesses'] as List).cast<String>(),
-      tags: Input.decodeList<GetGroupTag>(
+      tags: pulumi.Input.decodeList<GetGroupTag>(
           map['tags'],
           (value) =>
               GetGroupTag.fromMap((value as Map).cast<String, dynamic>())),
       targetGroupArns: (map['targetGroupArns'] as List).cast<String>(),
       terminationPolicies: (map['terminationPolicies'] as List).cast<String>(),
-      trafficSources: Input.decodeList<GetGroupTrafficSource>(
+      trafficSources: pulumi.Input.decodeList<GetGroupTrafficSource>(
           map['trafficSources'],
           (value) => GetGroupTrafficSource.fromMap(
               (value as Map).cast<String, dynamic>())),
       vpcZoneIdentifier: map['vpcZoneIdentifier'] as String,
       warmPoolSize: map['warmPoolSize'] as int,
-      warmPools: Input.decodeList<GetGroupWarmPool>(
+      warmPools: pulumi.Input.decodeList<GetGroupWarmPool>(
           map['warmPools'],
           (value) =>
               GetGroupWarmPool.fromMap((value as Map).cast<String, dynamic>())),

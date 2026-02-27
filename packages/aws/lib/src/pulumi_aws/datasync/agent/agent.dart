@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_args.dart';
 
 /// Manages an AWS DataSync Agent deployed on premises.
@@ -28,49 +28,49 @@ import 'agent_args.dart';
 /// ```sh
 /// $ pulumi import aws:datasync/agent:Agent example arn:aws:datasync:us-east-1:123456789012:agent/agent-12345678901234567
 /// ```
-class Agent extends CustomResource {
+class Agent extends pulumi.CustomResource {
   /// DataSync Agent activation key during resource creation. Conflicts with `ip_address`. If an `ip_address` is provided instead, the provider will retrieve the `activation_key` as part of the resource creation.
-  late final Output<String> activationKey;
+  late final pulumi.Output<String> activationKey;
 
   /// Amazon Resource Name (ARN) of the DataSync Agent.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// DataSync Agent IP address to retrieve activation key during resource creation. Conflicts with `activation_key`. DataSync Agent must be accessible on port 80 from where the provider is running.
-  late final Output<String> ipAddress;
+  late final pulumi.Output<String> ipAddress;
 
   /// Name of the DataSync Agent.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The IP address of the VPC endpoint the agent should connect to when retrieving an activation key during resource creation. Conflicts with `activation_key`.
-  late final Output<String> privateLinkEndpoint;
+  late final pulumi.Output<String> privateLinkEndpoint;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ARNs of the security groups used to protect your data transfer task subnets.
-  late final Output<List<String>?> securityGroupArns;
+  late final pulumi.Output<List<String>?> securityGroupArns;
 
   /// The Amazon Resource Names (ARNs) of the subnets in which DataSync will create elastic network interfaces for each data transfer task.
-  late final Output<List<String>?> subnetArns;
+  late final pulumi.Output<List<String>?> subnetArns;
 
   /// Key-value pairs of resource tags to assign to the DataSync Agent. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The ID of the VPC (virtual private cloud) endpoint that the agent has access to.
-  late final Output<String?> vpcEndpointId;
+  late final pulumi.Output<String?> vpcEndpointId;
 
   Agent(
     String name, {
     AgentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:datasync/agent:Agent',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.activationKey = registerOutput<String>('activationKey');
     this.arn = registerOutput<String>('arn');

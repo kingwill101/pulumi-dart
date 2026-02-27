@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for GroupPolicyAttachment.
 class GroupPolicyAttachmentArgs {
   /// The group the policy should be applied to
-  final Input<String> group;
+  final pulumi.Input<String> group;
 
   /// The ARN of the policy you want to apply
-  final Input<String> policyArn;
+  final pulumi.Input<String> policyArn;
 
   GroupPolicyAttachmentArgs({
     required this.group,
@@ -24,8 +24,8 @@ class GroupPolicyAttachmentArgs {
 
   factory GroupPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAttachmentArgs(
-      group: Input.asInput<String>(map['group']),
-      policyArn: Input.asInput<String>(map['policyArn']),
+      group: pulumi.Input.asInput<String>(map['group']),
+      policyArn: pulumi.Input.asInput<String>(map['policyArn']),
     );
   }
 }

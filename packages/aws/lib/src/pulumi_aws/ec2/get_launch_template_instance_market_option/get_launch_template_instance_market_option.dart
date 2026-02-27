@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_launch_template_instance_market_option_spot_option/get_launch_template_instance_market_option_spot_option.dart';
 
 class GetLaunchTemplateInstanceMarketOption {
@@ -15,7 +15,7 @@ class GetLaunchTemplateInstanceMarketOption {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['marketType'] = marketType;
-    map['spotOptions'] = Input.encodeList<
+    map['spotOptions'] = pulumi.Input.encodeList<
         GetLaunchTemplateInstanceMarketOptionSpotOption,
         Map<String, dynamic>>(spotOptions, (value) => value.toMap());
     return map;
@@ -25,12 +25,11 @@ class GetLaunchTemplateInstanceMarketOption {
       Map<String, dynamic> map) {
     return GetLaunchTemplateInstanceMarketOption(
       marketType: map['marketType'] as String,
-      spotOptions:
-          Input.decodeList<GetLaunchTemplateInstanceMarketOptionSpotOption>(
-              map['spotOptions'],
-              (value) =>
-                  GetLaunchTemplateInstanceMarketOptionSpotOption.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      spotOptions: pulumi.Input.decodeList<
+              GetLaunchTemplateInstanceMarketOptionSpotOption>(
+          map['spotOptions'],
+          (value) => GetLaunchTemplateInstanceMarketOptionSpotOption.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

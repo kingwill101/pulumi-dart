@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vectors_vector_bucket_policy_args.dart';
 
 /// Resource for managing an Amazon S3 Vectors Vector Bucket policy.
@@ -16,27 +16,27 @@ import 'vectors_vector_bucket_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3/vectorsVectorBucketPolicy:VectorsVectorBucketPolicy example arn:aws:s3vectors:us-west-2:123456789012:bucket/example-bucket
 /// ```
-class VectorsVectorBucketPolicy extends CustomResource {
+class VectorsVectorBucketPolicy extends pulumi.CustomResource {
   /// The policy document.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the vector bucket.
   ///
   /// The following arguments are optional:
-  late final Output<String> vectorBucketArn;
+  late final pulumi.Output<String> vectorBucketArn;
 
   VectorsVectorBucketPolicy(
     String name, {
     VectorsVectorBucketPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/vectorsVectorBucketPolicy:VectorsVectorBucketPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.policy = registerOutput<String>('policy');
     this.region = registerOutput<String>('region');

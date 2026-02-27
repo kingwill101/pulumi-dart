@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getConnection.
 class GetConnectionArgs {
   /// CodeStar Connection ARN.
-  final Input<String>? arn;
+  final pulumi.Input<String>? arn;
 
   /// CodeStar Connection name.
   ///
   /// > **NOTE:** When both `arn` and `name` are specified, `arn` takes precedence.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of key-value resource tags to associate with the resource.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetConnectionArgs({
     this.arn,
@@ -48,10 +48,10 @@ class GetConnectionArgs {
 
   factory GetConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionArgs(
-      arn: Input.asOptionalInput<String>(map['arn']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      arn: pulumi.Input.asOptionalInput<String>(map['arn']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

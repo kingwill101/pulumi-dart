@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../intent_confirmation_prompt_message/intent_confirmation_prompt_message.dart';
 
 class IntentConfirmationPrompt {
@@ -18,9 +18,8 @@ class IntentConfirmationPrompt {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['maxAttempts'] = maxAttempts;
-    map['messages'] =
-        Input.encodeList<IntentConfirmationPromptMessage, Map<String, dynamic>>(
-            messages, (value) => value.toMap());
+    map['messages'] = pulumi.Input.encodeList<IntentConfirmationPromptMessage,
+        Map<String, dynamic>>(messages, (value) => value.toMap());
     final responseCardValue = responseCard;
     if (responseCardValue != null) {
       map['responseCard'] = responseCardValue;
@@ -31,7 +30,7 @@ class IntentConfirmationPrompt {
   factory IntentConfirmationPrompt.fromMap(Map<String, dynamic> map) {
     return IntentConfirmationPrompt(
       maxAttempts: map['maxAttempts'] as int,
-      messages: Input.decodeList<IntentConfirmationPromptMessage>(
+      messages: pulumi.Input.decodeList<IntentConfirmationPromptMessage>(
           map['messages'],
           (value) => IntentConfirmationPromptMessage.fromMap(
               (value as Map).cast<String, dynamic>())),

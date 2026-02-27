@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getUserHierarchyStructure.
 class GetUserHierarchyStructureArgs {
   /// Reference to the hosting Amazon Connect Instance
-  final Input<String> instanceId;
+  final pulumi.Input<String> instanceId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetUserHierarchyStructureArgs({
     required this.instanceId,
@@ -27,8 +27,8 @@ class GetUserHierarchyStructureArgs {
 
   factory GetUserHierarchyStructureArgs.fromMap(Map<String, dynamic> map) {
     return GetUserHierarchyStructureArgs(
-      instanceId: Input.asInput<String>(map['instanceId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

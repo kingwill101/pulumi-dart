@@ -1,35 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for CustomDataIdentifier.
 class CustomDataIdentifierArgs {
   /// A custom description of the custom data identifier. The description can contain as many as 512 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// An array that lists specific character sequences (ignore words) to exclude from the results. If the text matched by the regular expression is the same as any string in this array, Amazon Macie ignores it. The array can contain as many as 10 ignore words. Each ignore word can contain 4 - 90 characters. Ignore words are case sensitive.
-  final Input<List<String>>? ignoreWords;
+  final pulumi.Input<List<String>>? ignoreWords;
 
   /// An array that lists specific character sequences (keywords), one of which must be within proximity (`maximum_match_distance`) of the regular expression to match. The array can contain as many as 50 keywords. Each keyword can contain 3 - 90 characters. Keywords aren't case sensitive.
-  final Input<List<String>>? keywords;
+  final pulumi.Input<List<String>>? keywords;
 
   /// The maximum number of characters that can exist between text that matches the regex pattern and the character sequences specified by the keywords array. Macie includes or excludes a result based on the proximity of a keyword to text that matches the regex pattern. The distance can be 1 - 300 characters. The default value is 50.
-  final Input<int>? maximumMatchDistance;
+  final pulumi.Input<int>? maximumMatchDistance;
 
   /// A custom name for the custom data identifier. The name can contain as many as 128 characters. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// The regular expression (regex) that defines the pattern to match. The expression can contain as many as 512 characters.
-  final Input<String>? regex;
+  final pulumi.Input<String>? regex;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   CustomDataIdentifierArgs({
     this.description,
@@ -86,16 +86,17 @@ class CustomDataIdentifierArgs {
 
   factory CustomDataIdentifierArgs.fromMap(Map<String, dynamic> map) {
     return CustomDataIdentifierArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      ignoreWords: Input.asOptionalInput<List<String>>(map['ignoreWords']),
-      keywords: Input.asOptionalInput<List<String>>(map['keywords']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      ignoreWords:
+          pulumi.Input.asOptionalInput<List<String>>(map['ignoreWords']),
+      keywords: pulumi.Input.asOptionalInput<List<String>>(map['keywords']),
       maximumMatchDistance:
-          Input.asOptionalInput<int>(map['maximumMatchDistance']),
-      name: Input.asOptionalInput<String>(map['name']),
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
-      regex: Input.asOptionalInput<String>(map['regex']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<int>(map['maximumMatchDistance']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
+      regex: pulumi.Input.asOptionalInput<String>(map['regex']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

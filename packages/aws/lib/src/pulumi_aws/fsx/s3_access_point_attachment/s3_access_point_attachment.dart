@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../s3_access_point_attachment_openzfs_configuration/s3_access_point_attachment_openzfs_configuration.dart';
 import '../s3_access_point_attachment_s3_access_point/s3_access_point_attachment_s3_access_point.dart';
 import '../s3_access_point_attachment_timeouts/s3_access_point_attachment_timeouts.dart';
@@ -17,41 +17,41 @@ import 's3_access_point_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:fsx/s3AccessPointAttachment:S3AccessPointAttachment example example-attachment
 /// ```
-class S3AccessPointAttachment extends CustomResource {
+class S3AccessPointAttachment extends pulumi.CustomResource {
   /// Name of the S3 access point.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfs_configuration` Block for details.
-  late final Output<S3AccessPointAttachmentOpenzfsConfiguration>
+  late final pulumi.Output<S3AccessPointAttachmentOpenzfsConfiguration>
       openzfsConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// S3 access point configuration. See `s3_access_point` Block for details.
-  late final Output<S3AccessPointAttachmentS3AccessPoint?> s3AccessPoint;
+  late final pulumi.Output<S3AccessPointAttachmentS3AccessPoint?> s3AccessPoint;
 
   /// S3 access point's alias.
-  late final Output<String> s3AccessPointAlias;
+  late final pulumi.Output<String> s3AccessPointAlias;
 
   /// S3 access point's ARN.
-  late final Output<String> s3AccessPointArn;
-  late final Output<S3AccessPointAttachmentTimeouts?> timeouts;
+  late final pulumi.Output<String> s3AccessPointArn;
+  late final pulumi.Output<S3AccessPointAttachmentTimeouts?> timeouts;
 
   /// Type of S3 access point. Valid values: `OpenZFS`.
   ///
   /// The following arguments are optional:
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   S3AccessPointAttachment(
     String name, {
     S3AccessPointAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:fsx/s3AccessPointAttachment:S3AccessPointAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
     this.openzfsConfiguration =

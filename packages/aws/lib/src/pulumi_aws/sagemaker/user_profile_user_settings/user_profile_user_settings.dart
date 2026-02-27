@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_profile_user_settings_canvas_app_settings/user_profile_user_settings_canvas_app_settings.dart';
 import '../user_profile_user_settings_code_editor_app_settings/user_profile_user_settings_code_editor_app_settings.dart';
 import '../user_profile_user_settings_custom_file_system_config/user_profile_user_settings_custom_file_system_config.dart';
@@ -111,7 +111,7 @@ class UserProfileUserSettings {
     }
     final customFileSystemConfigsValue = customFileSystemConfigs;
     if (customFileSystemConfigsValue != null) {
-      map['customFileSystemConfigs'] = Input.encodeList<
+      map['customFileSystemConfigs'] = pulumi.Input.encodeList<
               UserProfileUserSettingsCustomFileSystemConfig,
               Map<String, dynamic>>(
           customFileSystemConfigsValue, (value) => value.toMap());
@@ -188,7 +188,8 @@ class UserProfileUserSettings {
               (map['codeEditorAppSettings'] as Map).cast<String, dynamic>()),
       customFileSystemConfigs: map['customFileSystemConfigs'] == null
           ? null
-          : Input.decodeList<UserProfileUserSettingsCustomFileSystemConfig>(
+          : pulumi.Input.decodeList<
+                  UserProfileUserSettingsCustomFileSystemConfig>(
               map['customFileSystemConfigs'],
               (value) => UserProfileUserSettingsCustomFileSystemConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_parameter_group_parameter/get_parameter_group_parameter.dart';
 
 /// Result data returned by getParameterGroup.
@@ -45,9 +45,8 @@ class GetParameterGroupResult {
     map['family'] = family;
     map['id'] = id;
     map['name'] = name;
-    map['parameters'] =
-        Input.encodeList<GetParameterGroupParameter, Map<String, dynamic>>(
-            parameters, (value) => value.toMap());
+    map['parameters'] = pulumi.Input.encodeList<GetParameterGroupParameter,
+        Map<String, dynamic>>(parameters, (value) => value.toMap());
     map['region'] = region;
     map['tags'] = tags;
     return map;
@@ -60,7 +59,7 @@ class GetParameterGroupResult {
       family: map['family'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      parameters: Input.decodeList<GetParameterGroupParameter>(
+      parameters: pulumi.Input.decodeList<GetParameterGroupParameter>(
           map['parameters'],
           (value) => GetParameterGroupParameter.fromMap(
               (value as Map).cast<String, dynamic>())),

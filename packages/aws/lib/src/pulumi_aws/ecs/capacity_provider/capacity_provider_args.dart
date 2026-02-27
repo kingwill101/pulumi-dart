@@ -1,30 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../capacity_provider_auto_scaling_group_provider/capacity_provider_auto_scaling_group_provider.dart';
 import '../capacity_provider_managed_instances_provider/capacity_provider_managed_instances_provider.dart';
 
 /// The set of arguments for CapacityProvider.
 class CapacityProviderArgs {
   /// Configuration block for the provider for the ECS auto scaling group. Detailed below. Exactly one of `auto_scaling_group_provider` or `managed_instances_provider` must be specified.
-  final Input<CapacityProviderAutoScalingGroupProvider>?
+  final pulumi.Input<CapacityProviderAutoScalingGroupProvider>?
       autoScalingGroupProvider;
 
   /// Name of the ECS cluster. Required when using `managed_instances_provider`. Must not be set when using `auto_scaling_group_provider`.
-  final Input<String>? cluster;
+  final pulumi.Input<String>? cluster;
 
   /// Configuration block for the managed instances provider. Detailed below. Exactly one of `auto_scaling_group_provider` or `managed_instances_provider` must be specified.
-  final Input<CapacityProviderManagedInstancesProvider>?
+  final pulumi.Input<CapacityProviderManagedInstancesProvider>?
       managedInstancesProvider;
 
   /// Name of the capacity provider.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   CapacityProviderArgs({
     this.autoScalingGroupProvider,
@@ -39,7 +39,7 @@ class CapacityProviderArgs {
     final map = <String, dynamic>{};
     final autoScalingGroupProviderValue = autoScalingGroupProvider;
     if (autoScalingGroupProviderValue != null) {
-      map['autoScalingGroupProvider'] = Input.mapOptionalInputValue<
+      map['autoScalingGroupProvider'] = pulumi.Input.mapOptionalInputValue<
               CapacityProviderAutoScalingGroupProvider, Map<String, dynamic>>(
           autoScalingGroupProviderValue, (value) => value.toMap());
     }
@@ -49,7 +49,7 @@ class CapacityProviderArgs {
     }
     final managedInstancesProviderValue = managedInstancesProvider;
     if (managedInstancesProviderValue != null) {
-      map['managedInstancesProvider'] = Input.mapOptionalInputValue<
+      map['managedInstancesProvider'] = pulumi.Input.mapOptionalInputValue<
               CapacityProviderManagedInstancesProvider, Map<String, dynamic>>(
           managedInstancesProviderValue, (value) => value.toMap());
     }
@@ -70,16 +70,16 @@ class CapacityProviderArgs {
 
   factory CapacityProviderArgs.fromMap(Map<String, dynamic> map) {
     return CapacityProviderArgs(
-      autoScalingGroupProvider:
-          Input.asOptionalInput<CapacityProviderAutoScalingGroupProvider>(
-              map['autoScalingGroupProvider']),
-      cluster: Input.asOptionalInput<String>(map['cluster']),
-      managedInstancesProvider:
-          Input.asOptionalInput<CapacityProviderManagedInstancesProvider>(
-              map['managedInstancesProvider']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      autoScalingGroupProvider: pulumi.Input.asOptionalInput<
+              CapacityProviderAutoScalingGroupProvider>(
+          map['autoScalingGroupProvider']),
+      cluster: pulumi.Input.asOptionalInput<String>(map['cluster']),
+      managedInstancesProvider: pulumi.Input.asOptionalInput<
+              CapacityProviderManagedInstancesProvider>(
+          map['managedInstancesProvider']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DomainDkim.
 class DomainDkimArgs {
   /// Verified domain name to generate DKIM tokens for.
-  final Input<String> domain;
+  final pulumi.Input<String> domain;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   DomainDkimArgs({
     required this.domain,
@@ -27,8 +27,8 @@ class DomainDkimArgs {
 
   factory DomainDkimArgs.fromMap(Map<String, dynamic> map) {
     return DomainDkimArgs(
-      domain: Input.asInput<String>(map['domain']),
-      region: Input.asOptionalInput<String>(map['region']),
+      domain: pulumi.Input.asInput<String>(map['domain']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

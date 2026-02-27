@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lifecycle_policy_policy_details_action_cross_region_copy/lifecycle_policy_policy_details_action_cross_region_copy.dart';
 
 class LifecyclePolicyPolicyDetailsAction {
@@ -16,7 +16,7 @@ class LifecyclePolicyPolicyDetailsAction {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['crossRegionCopies'] = Input.encodeList<
+    map['crossRegionCopies'] = pulumi.Input.encodeList<
         LifecyclePolicyPolicyDetailsActionCrossRegionCopy,
         Map<String, dynamic>>(crossRegionCopies, (value) => value.toMap());
     map['name'] = name;
@@ -25,12 +25,11 @@ class LifecyclePolicyPolicyDetailsAction {
 
   factory LifecyclePolicyPolicyDetailsAction.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsAction(
-      crossRegionCopies:
-          Input.decodeList<LifecyclePolicyPolicyDetailsActionCrossRegionCopy>(
-              map['crossRegionCopies'],
-              (value) =>
-                  LifecyclePolicyPolicyDetailsActionCrossRegionCopy.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      crossRegionCopies: pulumi.Input.decodeList<
+              LifecyclePolicyPolicyDetailsActionCrossRegionCopy>(
+          map['crossRegionCopies'],
+          (value) => LifecyclePolicyPolicyDetailsActionCrossRegionCopy.fromMap(
+              (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
     );
   }

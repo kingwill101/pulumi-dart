@@ -1,35 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../access_grant_access_grants_location_configuration/access_grant_access_grants_location_configuration.dart';
 import '../access_grant_grantee/access_grant_grantee.dart';
 
 /// The set of arguments for AccessGrant.
 class AccessGrantArgs {
   /// See Location Configuration below for more details.
-  final Input<AccessGrantAccessGrantsLocationConfiguration>?
+  final pulumi.Input<AccessGrantAccessGrantsLocationConfiguration>?
       accessGrantsLocationConfiguration;
 
   /// The ID of the S3 Access Grants location to with the access grant is giving access.
-  final Input<String> accessGrantsLocationId;
+  final pulumi.Input<String> accessGrantsLocationId;
 
   /// The AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// See Grantee below for more details.
-  final Input<AccessGrantGrantee> grantee;
+  final pulumi.Input<AccessGrantGrantee> grantee;
 
   /// The access grant's level of access. Valid values: `READ`, `WRITE`, `READWRITE`.
-  final Input<String> permission;
+  final pulumi.Input<String> permission;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// If you are creating an access grant that grants access to only one object, set this to `Object`. Valid values: `Object`.
-  final Input<String>? s3PrefixType;
+  final pulumi.Input<String>? s3PrefixType;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   AccessGrantArgs({
     this.accessGrantsLocationConfiguration,
@@ -47,10 +47,11 @@ class AccessGrantArgs {
     final accessGrantsLocationConfigurationValue =
         accessGrantsLocationConfiguration;
     if (accessGrantsLocationConfigurationValue != null) {
-      map['accessGrantsLocationConfiguration'] = Input.mapOptionalInputValue<
-              AccessGrantAccessGrantsLocationConfiguration,
-              Map<String, dynamic>>(
-          accessGrantsLocationConfigurationValue, (value) => value.toMap());
+      map['accessGrantsLocationConfiguration'] =
+          pulumi.Input.mapOptionalInputValue<
+                  AccessGrantAccessGrantsLocationConfiguration,
+                  Map<String, dynamic>>(
+              accessGrantsLocationConfigurationValue, (value) => value.toMap());
     }
     map['accessGrantsLocationId'] = accessGrantsLocationId;
     final accountIdValue = accountId;
@@ -58,7 +59,7 @@ class AccessGrantArgs {
       map['accountId'] = accountIdValue;
     }
     map['grantee'] =
-        Input.mapInputValue<AccessGrantGrantee, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<AccessGrantGrantee, Map<String, dynamic>>(
             grantee, (value) => value.toMap());
     map['permission'] = permission;
     final regionValue = region;
@@ -78,17 +79,17 @@ class AccessGrantArgs {
 
   factory AccessGrantArgs.fromMap(Map<String, dynamic> map) {
     return AccessGrantArgs(
-      accessGrantsLocationConfiguration:
-          Input.asOptionalInput<AccessGrantAccessGrantsLocationConfiguration>(
-              map['accessGrantsLocationConfiguration']),
+      accessGrantsLocationConfiguration: pulumi.Input.asOptionalInput<
+              AccessGrantAccessGrantsLocationConfiguration>(
+          map['accessGrantsLocationConfiguration']),
       accessGrantsLocationId:
-          Input.asInput<String>(map['accessGrantsLocationId']),
-      accountId: Input.asOptionalInput<String>(map['accountId']),
-      grantee: Input.asInput<AccessGrantGrantee>(map['grantee']),
-      permission: Input.asInput<String>(map['permission']),
-      region: Input.asOptionalInput<String>(map['region']),
-      s3PrefixType: Input.asOptionalInput<String>(map['s3PrefixType']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asInput<String>(map['accessGrantsLocationId']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
+      grantee: pulumi.Input.asInput<AccessGrantGrantee>(map['grantee']),
+      permission: pulumi.Input.asInput<String>(map['permission']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      s3PrefixType: pulumi.Input.asOptionalInput<String>(map['s3PrefixType']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

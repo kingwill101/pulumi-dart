@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_firewall_policy_firewall_policy_stateful_engine_option_flow_timeout/get_firewall_policy_firewall_policy_stateful_engine_option_flow_timeout.dart';
 
 class GetFirewallPolicyFirewallPolicyStatefulEngineOption {
@@ -17,7 +17,7 @@ class GetFirewallPolicyFirewallPolicyStatefulEngineOption {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['flowTimeouts'] = Input.encodeList<
+    map['flowTimeouts'] = pulumi.Input.encodeList<
         GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout,
         Map<String, dynamic>>(flowTimeouts, (value) => value.toMap());
     map['ruleOrder'] = ruleOrder;
@@ -28,7 +28,7 @@ class GetFirewallPolicyFirewallPolicyStatefulEngineOption {
   factory GetFirewallPolicyFirewallPolicyStatefulEngineOption.fromMap(
       Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatefulEngineOption(
-      flowTimeouts: Input.decodeList<
+      flowTimeouts: pulumi.Input.decodeList<
               GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout>(
           map['flowTimeouts'],
           (value) =>

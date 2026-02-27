@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_open_id_connect_provider_args.dart';
 import 'get_open_id_connect_provider_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_open_id_connect_provider_result.dart';
 /// the resource information by either its `arn` or `url`.
 Future<GetOpenIdConnectProviderResult> getOpenIdConnectProvider(
   GetOpenIdConnectProviderArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:iam/getOpenIdConnectProvider:getOpenIdConnectProvider',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOpenIdConnectProviderResult.fromMap(result);
 }

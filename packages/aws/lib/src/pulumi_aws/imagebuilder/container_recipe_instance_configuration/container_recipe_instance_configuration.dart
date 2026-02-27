@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../container_recipe_instance_configuration_block_device_mapping/container_recipe_instance_configuration_block_device_mapping.dart';
 
 class ContainerRecipeInstanceConfiguration {
@@ -20,7 +20,7 @@ class ContainerRecipeInstanceConfiguration {
     final map = <String, dynamic>{};
     final blockDeviceMappingsValue = blockDeviceMappings;
     if (blockDeviceMappingsValue != null) {
-      map['blockDeviceMappings'] = Input.encodeList<
+      map['blockDeviceMappings'] = pulumi.Input.encodeList<
               ContainerRecipeInstanceConfigurationBlockDeviceMapping,
               Map<String, dynamic>>(
           blockDeviceMappingsValue, (value) => value.toMap());
@@ -37,7 +37,7 @@ class ContainerRecipeInstanceConfiguration {
     return ContainerRecipeInstanceConfiguration(
       blockDeviceMappings: map['blockDeviceMappings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ContainerRecipeInstanceConfigurationBlockDeviceMapping>(
               map['blockDeviceMappings'],
               (value) => ContainerRecipeInstanceConfigurationBlockDeviceMapping

@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TagOption.
 class TagOptionArgs {
   /// Whether tag option is active. Default is `true`.
-  final Input<bool>? active;
+  final pulumi.Input<bool>? active;
 
   /// Tag option key.
-  final Input<String> key;
+  final pulumi.Input<String> key;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Tag option value.
   ///
   /// The following arguments are optional:
-  final Input<String> value;
+  final pulumi.Input<String> value;
 
   TagOptionArgs({
     this.active,
@@ -42,10 +42,10 @@ class TagOptionArgs {
 
   factory TagOptionArgs.fromMap(Map<String, dynamic> map) {
     return TagOptionArgs(
-      active: Input.asOptionalInput<bool>(map['active']),
-      key: Input.asInput<String>(map['key']),
-      region: Input.asOptionalInput<String>(map['region']),
-      value: Input.asInput<String>(map['value']),
+      active: pulumi.Input.asOptionalInput<bool>(map['active']),
+      key: pulumi.Input.asInput<String>(map['key']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      value: pulumi.Input.asInput<String>(map['value']),
     );
   }
 }

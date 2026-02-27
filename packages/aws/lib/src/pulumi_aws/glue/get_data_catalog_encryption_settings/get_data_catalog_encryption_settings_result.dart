@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_data_catalog_encryption_settings_data_catalog_encryption_setting/get_data_catalog_encryption_settings_data_catalog_encryption_setting.dart';
 
 /// Result data returned by getDataCatalogEncryptionSettings.
@@ -25,7 +25,7 @@ class GetDataCatalogEncryptionSettingsResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['catalogId'] = catalogId;
-    map['dataCatalogEncryptionSettings'] = Input.encodeList<
+    map['dataCatalogEncryptionSettings'] = pulumi.Input.encodeList<
             GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting,
             Map<String, dynamic>>(
         dataCatalogEncryptionSettings, (value) => value.toMap());
@@ -38,7 +38,7 @@ class GetDataCatalogEncryptionSettingsResult {
       Map<String, dynamic> map) {
     return GetDataCatalogEncryptionSettingsResult(
       catalogId: map['catalogId'] as String,
-      dataCatalogEncryptionSettings: Input.decodeList<
+      dataCatalogEncryptionSettings: pulumi.Input.decodeList<
               GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting>(
           map['dataCatalogEncryptionSettings'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_received_license_consumption_configuration/get_received_license_consumption_configuration.dart';
 import '../get_received_license_entitlement/get_received_license_entitlement.dart';
 import '../get_received_license_issuer/get_received_license_issuer.dart';
@@ -82,33 +82,31 @@ class GetReceivedLicenseResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['beneficiary'] = beneficiary;
-    map['consumptionConfigurations'] = Input.encodeList<
+    map['consumptionConfigurations'] = pulumi.Input.encodeList<
             GetReceivedLicenseConsumptionConfiguration, Map<String, dynamic>>(
         consumptionConfigurations, (value) => value.toMap());
     map['createTime'] = createTime;
-    map['entitlements'] =
-        Input.encodeList<GetReceivedLicenseEntitlement, Map<String, dynamic>>(
-            entitlements, (value) => value.toMap());
+    map['entitlements'] = pulumi.Input.encodeList<GetReceivedLicenseEntitlement,
+        Map<String, dynamic>>(entitlements, (value) => value.toMap());
     map['homeRegion'] = homeRegion;
     map['id'] = id;
     map['issuers'] =
-        Input.encodeList<GetReceivedLicenseIssuer, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetReceivedLicenseIssuer, Map<String, dynamic>>(
             issuers, (value) => value.toMap());
     map['licenseArn'] = licenseArn;
-    map['licenseMetadatas'] = Input.encodeList<
+    map['licenseMetadatas'] = pulumi.Input.encodeList<
         GetReceivedLicenseLicenseMetadata,
         Map<String, dynamic>>(licenseMetadatas, (value) => value.toMap());
     map['licenseName'] = licenseName;
     map['productName'] = productName;
     map['productSku'] = productSku;
-    map['receivedMetadatas'] = Input.encodeList<
+    map['receivedMetadatas'] = pulumi.Input.encodeList<
         GetReceivedLicenseReceivedMetadata,
         Map<String, dynamic>>(receivedMetadatas, (value) => value.toMap());
     map['region'] = region;
     map['status'] = status;
-    map['validities'] =
-        Input.encodeList<GetReceivedLicenseValidity, Map<String, dynamic>>(
-            validities, (value) => value.toMap());
+    map['validities'] = pulumi.Input.encodeList<GetReceivedLicenseValidity,
+        Map<String, dynamic>>(validities, (value) => value.toMap());
     map['version'] = version;
     return map;
   }
@@ -117,36 +115,38 @@ class GetReceivedLicenseResult {
     return GetReceivedLicenseResult(
       beneficiary: map['beneficiary'] as String,
       consumptionConfigurations:
-          Input.decodeList<GetReceivedLicenseConsumptionConfiguration>(
+          pulumi.Input.decodeList<GetReceivedLicenseConsumptionConfiguration>(
               map['consumptionConfigurations'],
               (value) => GetReceivedLicenseConsumptionConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
       createTime: map['createTime'] as String,
-      entitlements: Input.decodeList<GetReceivedLicenseEntitlement>(
+      entitlements: pulumi.Input.decodeList<GetReceivedLicenseEntitlement>(
           map['entitlements'],
           (value) => GetReceivedLicenseEntitlement.fromMap(
               (value as Map).cast<String, dynamic>())),
       homeRegion: map['homeRegion'] as String,
       id: map['id'] as String,
-      issuers: Input.decodeList<GetReceivedLicenseIssuer>(
+      issuers: pulumi.Input.decodeList<GetReceivedLicenseIssuer>(
           map['issuers'],
           (value) => GetReceivedLicenseIssuer.fromMap(
               (value as Map).cast<String, dynamic>())),
       licenseArn: map['licenseArn'] as String,
-      licenseMetadatas: Input.decodeList<GetReceivedLicenseLicenseMetadata>(
-          map['licenseMetadatas'],
-          (value) => GetReceivedLicenseLicenseMetadata.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      licenseMetadatas:
+          pulumi.Input.decodeList<GetReceivedLicenseLicenseMetadata>(
+              map['licenseMetadatas'],
+              (value) => GetReceivedLicenseLicenseMetadata.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       licenseName: map['licenseName'] as String,
       productName: map['productName'] as String,
       productSku: map['productSku'] as String,
-      receivedMetadatas: Input.decodeList<GetReceivedLicenseReceivedMetadata>(
-          map['receivedMetadatas'],
-          (value) => GetReceivedLicenseReceivedMetadata.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      receivedMetadatas:
+          pulumi.Input.decodeList<GetReceivedLicenseReceivedMetadata>(
+              map['receivedMetadatas'],
+              (value) => GetReceivedLicenseReceivedMetadata.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       status: map['status'] as String,
-      validities: Input.decodeList<GetReceivedLicenseValidity>(
+      validities: pulumi.Input.decodeList<GetReceivedLicenseValidity>(
           map['validities'],
           (value) => GetReceivedLicenseValidity.fromMap(
               (value as Map).cast<String, dynamic>())),

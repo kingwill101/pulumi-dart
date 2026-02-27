@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_formation_stack_args.dart';
 
 /// Deploys an Application CloudFormation Stack from the Serverless Application Repository.
@@ -14,43 +14,43 @@ import 'cloud_formation_stack_args.dart';
 /// ```sh
 /// $ pulumi import aws:serverlessrepository/cloudFormationStack:CloudFormationStack example serverlessrepo-postgres-rotator
 /// ```
-class CloudFormationStack extends CustomResource {
+class CloudFormationStack extends pulumi.CustomResource {
   /// The ARN of the application from the Serverless Application Repository.
-  late final Output<String> applicationId;
+  late final pulumi.Output<String> applicationId;
 
   /// A list of capabilities. Valid values are `CAPABILITY_IAM`, `CAPABILITY_NAMED_IAM`, `CAPABILITY_RESOURCE_POLICY`, or `CAPABILITY_AUTO_EXPAND`
-  late final Output<List<String>> capabilities;
+  late final pulumi.Output<List<String>> capabilities;
 
   /// The name of the stack to create. The resource deployed in AWS will be prefixed with `serverlessrepo-`
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// A map of outputs from the stack.
-  late final Output<Map<String, String>> outputs;
+  late final pulumi.Output<Map<String, String>> outputs;
 
   /// A map of Parameter structures that specify input parameters for the stack.
-  late final Output<Map<String, String>> parameters;
+  late final pulumi.Output<Map<String, String>> parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The version of the application to deploy. If not supplied, deploys the latest version.
-  late final Output<String> semanticVersion;
+  late final pulumi.Output<String> semanticVersion;
 
   /// A list of tags to associate with this stack. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   CloudFormationStack(
     String name, {
     CloudFormationStackArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:serverlessrepository/cloudFormationStack:CloudFormationStack',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.applicationId = registerOutput<String>('applicationId');
     this.capabilities = registerOutput<List<String>>('capabilities');

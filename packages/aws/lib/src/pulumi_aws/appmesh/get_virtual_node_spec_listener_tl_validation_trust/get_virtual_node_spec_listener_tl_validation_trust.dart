@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_node_spec_listener_tl_validation_trust_file/get_virtual_node_spec_listener_tl_validation_trust_file.dart';
 import '../get_virtual_node_spec_listener_tl_validation_trust_sd/get_virtual_node_spec_listener_tl_validation_trust_sd.dart';
 
@@ -15,10 +15,11 @@ class GetVirtualNodeSpecListenerTlValidationTrust {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['files'] = Input.encodeList<
+    map['files'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerTlValidationTrustFile,
         Map<String, dynamic>>(files, (value) => value.toMap());
-    map['sds'] = Input.encodeList<GetVirtualNodeSpecListenerTlValidationTrustSd,
+    map['sds'] = pulumi.Input.encodeList<
+        GetVirtualNodeSpecListenerTlValidationTrustSd,
         Map<String, dynamic>>(sds, (value) => value.toMap());
     return map;
   }
@@ -26,11 +27,13 @@ class GetVirtualNodeSpecListenerTlValidationTrust {
   factory GetVirtualNodeSpecListenerTlValidationTrust.fromMap(
       Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTlValidationTrust(
-      files: Input.decodeList<GetVirtualNodeSpecListenerTlValidationTrustFile>(
+      files: pulumi.Input.decodeList<
+              GetVirtualNodeSpecListenerTlValidationTrustFile>(
           map['files'],
           (value) => GetVirtualNodeSpecListenerTlValidationTrustFile.fromMap(
               (value as Map).cast<String, dynamic>())),
-      sds: Input.decodeList<GetVirtualNodeSpecListenerTlValidationTrustSd>(
+      sds: pulumi.Input.decodeList<
+              GetVirtualNodeSpecListenerTlValidationTrustSd>(
           map['sds'],
           (value) => GetVirtualNodeSpecListenerTlValidationTrustSd.fromMap(
               (value as Map).cast<String, dynamic>())),

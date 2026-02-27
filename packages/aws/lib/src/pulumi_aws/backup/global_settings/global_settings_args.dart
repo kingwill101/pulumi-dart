@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for GlobalSettings.
 class GlobalSettingsArgs {
   /// A list of resources along with the opt-in preferences for the account. For a list of inputs, see [UpdateGlobalSettings](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_UpdateGlobalSettings.html) in the AWS Backup Developer Guide.
-  final Input<Map<String, String>> globalSettings;
+  final pulumi.Input<Map<String, String>> globalSettings;
 
   GlobalSettingsArgs({
     required this.globalSettings,
@@ -19,7 +19,8 @@ class GlobalSettingsArgs {
 
   factory GlobalSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GlobalSettingsArgs(
-      globalSettings: Input.asInput<Map<String, String>>(map['globalSettings']),
+      globalSettings:
+          pulumi.Input.asInput<Map<String, String>>(map['globalSettings']),
     );
   }
 }

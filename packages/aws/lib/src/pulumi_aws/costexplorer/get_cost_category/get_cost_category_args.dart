@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCostCategory.
 class GetCostCategoryArgs {
   /// Unique name for the Cost Category.
-  final Input<String> costCategoryArn;
+  final pulumi.Input<String> costCategoryArn;
 
   /// Configuration block for the specific `Tag` to use for `Expression`. See below.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetCostCategoryArgs({
     required this.costCategoryArn,
@@ -27,8 +27,8 @@ class GetCostCategoryArgs {
 
   factory GetCostCategoryArgs.fromMap(Map<String, dynamic> map) {
     return GetCostCategoryArgs(
-      costCategoryArn: Input.asInput<String>(map['costCategoryArn']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      costCategoryArn: pulumi.Input.asInput<String>(map['costCategoryArn']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

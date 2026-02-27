@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOriginRequestPolicy.
 class GetOriginRequestPolicyArgs {
   /// Identifier for the origin request policy.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Unique name to identify the origin request policy.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   GetOriginRequestPolicyArgs({
     this.id,
@@ -30,8 +30,8 @@ class GetOriginRequestPolicyArgs {
 
   factory GetOriginRequestPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOriginRequestPolicyArgs(
-      id: Input.asOptionalInput<String>(map['id']),
-      name: Input.asOptionalInput<String>(map['name']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
     );
   }
 }

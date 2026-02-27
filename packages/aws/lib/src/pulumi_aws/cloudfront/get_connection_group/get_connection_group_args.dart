@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getConnectionGroup.
 class GetConnectionGroupArgs {
   /// Identifier for the connection group. For example: `EDFDVBD632BHDS5`. Exactly one of `id` or `routing_endpoint` must be specified.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Routing endpoint for the connection group. For example: `d111111abcdef8.cloudfront.net`. Exactly one of `id` or `routing_endpoint` must be specified.
-  final Input<String>? routingEndpoint;
+  final pulumi.Input<String>? routingEndpoint;
 
   GetConnectionGroupArgs({
     this.id,
@@ -30,8 +30,9 @@ class GetConnectionGroupArgs {
 
   factory GetConnectionGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionGroupArgs(
-      id: Input.asOptionalInput<String>(map['id']),
-      routingEndpoint: Input.asOptionalInput<String>(map['routingEndpoint']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      routingEndpoint:
+          pulumi.Input.asOptionalInput<String>(map['routingEndpoint']),
     );
   }
 }

@@ -1,48 +1,48 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../product_provisioning_artifact_parameters/product_provisioning_artifact_parameters.dart';
 
 /// The set of arguments for Product.
 class ProductArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  final Input<String>? acceptLanguage;
+  final pulumi.Input<String>? acceptLanguage;
 
   /// Description of the product.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Distributor (i.e., vendor) of the product.
-  final Input<String>? distributor;
+  final pulumi.Input<String>? distributor;
 
   /// Name of the product.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Owner of the product.
-  final Input<String> owner;
+  final pulumi.Input<String> owner;
 
   /// Configuration block for provisioning artifact (i.e., version) parameters. See `provisioning_artifact_parameters` Block for details.
-  final Input<ProductProvisioningArtifactParameters>
+  final pulumi.Input<ProductProvisioningArtifactParameters>
       provisioningArtifactParameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Support information about the product.
-  final Input<String>? supportDescription;
+  final pulumi.Input<String>? supportDescription;
 
   /// Contact email for product support.
-  final Input<String>? supportEmail;
+  final pulumi.Input<String>? supportEmail;
 
   /// Contact URL for product support.
-  final Input<String>? supportUrl;
+  final pulumi.Input<String>? supportUrl;
 
   /// Tags to apply to the product. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Type of product. See [AWS Docs](https://docs.aws.amazon.com/servicecatalog/latest/dg/API_CreateProduct.html#API_CreateProduct_RequestSyntax) for valid list of values.
   ///
   /// The following arguments are optional:
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   ProductArgs({
     this.acceptLanguage,
@@ -78,7 +78,7 @@ class ProductArgs {
       map['name'] = nameValue;
     }
     map['owner'] = owner;
-    map['provisioningArtifactParameters'] = Input.mapInputValue<
+    map['provisioningArtifactParameters'] = pulumi.Input.mapInputValue<
             ProductProvisioningArtifactParameters, Map<String, dynamic>>(
         provisioningArtifactParameters, (value) => value.toMap());
     final regionValue = region;
@@ -107,21 +107,22 @@ class ProductArgs {
 
   factory ProductArgs.fromMap(Map<String, dynamic> map) {
     return ProductArgs(
-      acceptLanguage: Input.asOptionalInput<String>(map['acceptLanguage']),
-      description: Input.asOptionalInput<String>(map['description']),
-      distributor: Input.asOptionalInput<String>(map['distributor']),
-      name: Input.asOptionalInput<String>(map['name']),
-      owner: Input.asInput<String>(map['owner']),
+      acceptLanguage:
+          pulumi.Input.asOptionalInput<String>(map['acceptLanguage']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      distributor: pulumi.Input.asOptionalInput<String>(map['distributor']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      owner: pulumi.Input.asInput<String>(map['owner']),
       provisioningArtifactParameters:
-          Input.asInput<ProductProvisioningArtifactParameters>(
+          pulumi.Input.asInput<ProductProvisioningArtifactParameters>(
               map['provisioningArtifactParameters']),
-      region: Input.asOptionalInput<String>(map['region']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       supportDescription:
-          Input.asOptionalInput<String>(map['supportDescription']),
-      supportEmail: Input.asOptionalInput<String>(map['supportEmail']),
-      supportUrl: Input.asOptionalInput<String>(map['supportUrl']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      type: Input.asInput<String>(map['type']),
+          pulumi.Input.asOptionalInput<String>(map['supportDescription']),
+      supportEmail: pulumi.Input.asOptionalInput<String>(map['supportEmail']),
+      supportUrl: pulumi.Input.asOptionalInput<String>(map['supportUrl']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

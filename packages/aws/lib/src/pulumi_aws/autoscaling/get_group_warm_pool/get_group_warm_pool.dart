@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_group_warm_pool_instance_reuse_policy/get_group_warm_pool_instance_reuse_policy.dart';
 
 class GetGroupWarmPool {
@@ -23,7 +23,7 @@ class GetGroupWarmPool {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['instanceReusePolicies'] = Input.encodeList<
+    map['instanceReusePolicies'] = pulumi.Input.encodeList<
         GetGroupWarmPoolInstanceReusePolicy,
         Map<String, dynamic>>(instanceReusePolicies, (value) => value.toMap());
     map['maxGroupPreparedCapacity'] = maxGroupPreparedCapacity;
@@ -35,7 +35,7 @@ class GetGroupWarmPool {
   factory GetGroupWarmPool.fromMap(Map<String, dynamic> map) {
     return GetGroupWarmPool(
       instanceReusePolicies:
-          Input.decodeList<GetGroupWarmPoolInstanceReusePolicy>(
+          pulumi.Input.decodeList<GetGroupWarmPoolInstanceReusePolicy>(
               map['instanceReusePolicies'],
               (value) => GetGroupWarmPoolInstanceReusePolicy.fromMap(
                   (value as Map).cast<String, dynamic>())),

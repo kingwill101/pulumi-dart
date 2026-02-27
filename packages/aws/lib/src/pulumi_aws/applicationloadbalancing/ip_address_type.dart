@@ -1,3 +1,3 @@
 library module_applicationloadbalancing_ip_address_type;
 
-export 'ip_address_type/ip_address_type2.dart';
+export 'ip_address_type/ip_address_type_applicationloadbalancing.dart';

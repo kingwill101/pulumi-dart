@@ -1,3 +1,3 @@
 library module_memorydb_user_authentication_mode;
 
-export 'user_authentication_mode/user_authentication_mode2.dart';
+export 'user_authentication_mode/user_authentication_mode_memorydb.dart';

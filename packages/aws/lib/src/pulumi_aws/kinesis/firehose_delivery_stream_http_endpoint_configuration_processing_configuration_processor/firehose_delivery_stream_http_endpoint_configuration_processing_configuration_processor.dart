@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firehose_delivery_stream_http_endpoint_configuration_processing_configuration_processor_parameter/firehose_delivery_stream_http_endpoint_configuration_processing_configuration_processor_parameter.dart';
 
 class FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessor {
@@ -21,7 +21,7 @@ class FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProc
     final map = <String, dynamic>{};
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<
+      map['parameters'] = pulumi.Input.encodeList<
           FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessorParameter,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
@@ -34,7 +34,7 @@ class FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProc
     return FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessor(
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfigurationProcessorParameter>(
               map['parameters'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_inference_profiles_inference_profile_summary_model/get_inference_profiles_inference_profile_summary_model.dart';
 
 class GetInferenceProfilesInferenceProfileSummary {
@@ -50,7 +50,7 @@ class GetInferenceProfilesInferenceProfileSummary {
     map['inferenceProfileArn'] = inferenceProfileArn;
     map['inferenceProfileId'] = inferenceProfileId;
     map['inferenceProfileName'] = inferenceProfileName;
-    map['models'] = Input.encodeList<
+    map['models'] = pulumi.Input.encodeList<
         GetInferenceProfilesInferenceProfileSummaryModel,
         Map<String, dynamic>>(models, (value) => value.toMap());
     map['status'] = status;
@@ -67,12 +67,11 @@ class GetInferenceProfilesInferenceProfileSummary {
       inferenceProfileArn: map['inferenceProfileArn'] as String,
       inferenceProfileId: map['inferenceProfileId'] as String,
       inferenceProfileName: map['inferenceProfileName'] as String,
-      models:
-          Input.decodeList<GetInferenceProfilesInferenceProfileSummaryModel>(
-              map['models'],
-              (value) =>
-                  GetInferenceProfilesInferenceProfileSummaryModel.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      models: pulumi.Input.decodeList<
+              GetInferenceProfilesInferenceProfileSummaryModel>(
+          map['models'],
+          (value) => GetInferenceProfilesInferenceProfileSummaryModel.fromMap(
+              (value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       type: map['type'] as String,
       updatedAt: map['updatedAt'] as String,

@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ObjectLambdaAccessPointPolicy.
 class ObjectLambdaAccessPointPolicyArgs {
   /// The AWS account ID for the account that owns the Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// The name of the Object Lambda Access Point.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The Object Lambda Access Point resource policy document.
-  final Input<String> policy;
+  final pulumi.Input<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   ObjectLambdaAccessPointPolicyArgs({
     this.accountId,
@@ -43,10 +43,10 @@ class ObjectLambdaAccessPointPolicyArgs {
 
   factory ObjectLambdaAccessPointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointPolicyArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      policy: Input.asInput<String>(map['policy']),
-      region: Input.asOptionalInput<String>(map['region']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      policy: pulumi.Input.asInput<String>(map['policy']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

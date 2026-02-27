@@ -1,3 +1,3 @@
 library module_rds_get_instances_filter;
 
-export 'get_instances_filter/get_instances_filter2.dart';
+export 'get_instances_filter/get_instances_filter_rds.dart';

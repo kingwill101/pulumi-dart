@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_action/rule_group_rule_action.dart';
 import '../rule_group_rule_captcha_config/rule_group_rule_captcha_config.dart';
 import '../rule_group_rule_rule_label/rule_group_rule_rule_label.dart';
@@ -51,7 +51,7 @@ class RuleGroupRule {
     final ruleLabelsValue = ruleLabels;
     if (ruleLabelsValue != null) {
       map['ruleLabels'] =
-          Input.encodeList<RuleGroupRuleRuleLabel, Map<String, dynamic>>(
+          pulumi.Input.encodeList<RuleGroupRuleRuleLabel, Map<String, dynamic>>(
               ruleLabelsValue, (value) => value.toMap());
     }
     map['statement'] = statement.toMap();
@@ -71,7 +71,7 @@ class RuleGroupRule {
       priority: map['priority'] as int,
       ruleLabels: map['ruleLabels'] == null
           ? null
-          : Input.decodeList<RuleGroupRuleRuleLabel>(
+          : pulumi.Input.decodeList<RuleGroupRuleRuleLabel>(
               map['ruleLabels'],
               (value) => RuleGroupRuleRuleLabel.fromMap(
                   (value as Map).cast<String, dynamic>())),

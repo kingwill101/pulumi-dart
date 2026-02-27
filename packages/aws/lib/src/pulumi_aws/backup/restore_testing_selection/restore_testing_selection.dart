@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_testing_selection_protected_resource_conditions/restore_testing_selection_protected_resource_conditions.dart';
 import 'restore_testing_selection_args.dart';
 
@@ -21,44 +21,44 @@ import 'restore_testing_selection_args.dart';
 /// ```sh
 /// $ pulumi import aws:backup/restoreTestingSelection:RestoreTestingSelection example restore_testing_selection_12345678:restore_testing_plan_12345678
 /// ```
-class RestoreTestingSelection extends CustomResource {
+class RestoreTestingSelection extends pulumi.CustomResource {
   /// The ARN of the IAM role.
-  late final Output<String> iamRoleArn;
+  late final pulumi.Output<String> iamRoleArn;
 
   /// The name of the backup restore testing selection.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ARNs for the protected resources.
-  late final Output<List<String>> protectedResourceArns;
+  late final pulumi.Output<List<String>> protectedResourceArns;
 
   /// The conditions for the protected resource.
-  late final Output<RestoreTestingSelectionProtectedResourceConditions?>
+  late final pulumi.Output<RestoreTestingSelectionProtectedResourceConditions?>
       protectedResourceConditions;
 
   /// The type of the protected resource.
-  late final Output<String> protectedResourceType;
+  late final pulumi.Output<String> protectedResourceType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Override certain restore metadata keys. See the complete list of [restore testing inferred metadata](https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html) .
-  late final Output<Map<String, String>> restoreMetadataOverrides;
+  late final pulumi.Output<Map<String, String>> restoreMetadataOverrides;
 
   /// The name of the restore testing plan.
-  late final Output<String> restoreTestingPlanName;
+  late final pulumi.Output<String> restoreTestingPlanName;
 
   /// The amount of hours available to run a validation script on the data. Valid range is `1` to `168`.
-  late final Output<int> validationWindowHours;
+  late final pulumi.Output<int> validationWindowHours;
 
   RestoreTestingSelection(
     String name, {
     RestoreTestingSelectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:backup/restoreTestingSelection:RestoreTestingSelection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.iamRoleArn = registerOutput<String>('iamRoleArn');
     this.name = registerOutput<String>('name');

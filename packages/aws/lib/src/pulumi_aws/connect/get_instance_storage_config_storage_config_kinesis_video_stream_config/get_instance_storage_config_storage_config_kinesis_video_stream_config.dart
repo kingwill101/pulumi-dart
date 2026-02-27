@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_storage_config_storage_config_kinesis_video_stream_config_encryption_config/get_instance_storage_config_storage_config_kinesis_video_stream_config_encryption_config.dart';
 
 class GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig {
@@ -23,7 +23,7 @@ class GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['encryptionConfigs'] = Input.encodeList<
+    map['encryptionConfigs'] = pulumi.Input.encodeList<
         GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig,
         Map<String, dynamic>>(encryptionConfigs, (value) => value.toMap());
     map['prefix'] = prefix;
@@ -34,7 +34,7 @@ class GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig {
   factory GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig.fromMap(
       Map<String, dynamic> map) {
     return GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig(
-      encryptionConfigs: Input.decodeList<
+      encryptionConfigs: pulumi.Input.decodeList<
               GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig>(
           map['encryptionConfigs'],
           (value) =>

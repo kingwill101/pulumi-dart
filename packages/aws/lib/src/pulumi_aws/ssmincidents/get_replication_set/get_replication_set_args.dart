@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getReplicationSet.
 class GetReplicationSetArgs {
   /// All tags applied to the replication set.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetReplicationSetArgs({
     this.tags,
@@ -22,7 +22,7 @@ class GetReplicationSetArgs {
 
   factory GetReplicationSetArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationSetArgs(
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

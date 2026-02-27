@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for CidrCollection.
 class CidrCollectionArgs {
   /// Unique name for the CIDR collection.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   CidrCollectionArgs({
     this.name,
@@ -22,7 +22,7 @@ class CidrCollectionArgs {
 
   factory CidrCollectionArgs.fromMap(Map<String, dynamic> map) {
     return CidrCollectionArgs(
-      name: Input.asOptionalInput<String>(map['name']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
     );
   }
 }

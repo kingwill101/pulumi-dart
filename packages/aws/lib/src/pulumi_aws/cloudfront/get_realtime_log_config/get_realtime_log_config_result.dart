@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_realtime_log_config_endpoint/get_realtime_log_config_endpoint.dart';
 
 /// Result data returned by getRealtimeLogConfig.
@@ -33,9 +33,8 @@ class GetRealtimeLogConfigResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['endpoints'] =
-        Input.encodeList<GetRealtimeLogConfigEndpoint, Map<String, dynamic>>(
-            endpoints, (value) => value.toMap());
+    map['endpoints'] = pulumi.Input.encodeList<GetRealtimeLogConfigEndpoint,
+        Map<String, dynamic>>(endpoints, (value) => value.toMap());
     map['fields'] = fields;
     map['id'] = id;
     map['name'] = name;
@@ -46,7 +45,7 @@ class GetRealtimeLogConfigResult {
   factory GetRealtimeLogConfigResult.fromMap(Map<String, dynamic> map) {
     return GetRealtimeLogConfigResult(
       arn: map['arn'] as String,
-      endpoints: Input.decodeList<GetRealtimeLogConfigEndpoint>(
+      endpoints: pulumi.Input.decodeList<GetRealtimeLogConfigEndpoint>(
           map['endpoints'],
           (value) => GetRealtimeLogConfigEndpoint.fromMap(
               (value as Map).cast<String, dynamic>())),

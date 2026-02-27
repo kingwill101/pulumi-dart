@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../domain_registrant_contact_extra_param/domain_registrant_contact_extra_param.dart';
 
 class DomainRegistrantContact {
@@ -91,7 +91,8 @@ class DomainRegistrantContact {
     }
     final extraParamsValue = extraParams;
     if (extraParamsValue != null) {
-      map['extraParams'] = Input.encodeList<DomainRegistrantContactExtraParam,
+      map['extraParams'] = pulumi.Input.encodeList<
+          DomainRegistrantContactExtraParam,
           Map<String, dynamic>>(extraParamsValue, (value) => value.toMap());
     }
     final faxValue = fax;
@@ -139,7 +140,7 @@ class DomainRegistrantContact {
       email: map['email'] == null ? null : map['email'] as String,
       extraParams: map['extraParams'] == null
           ? null
-          : Input.decodeList<DomainRegistrantContactExtraParam>(
+          : pulumi.Input.decodeList<DomainRegistrantContactExtraParam>(
               map['extraParams'],
               (value) => DomainRegistrantContactExtraParam.fromMap(
                   (value as Map).cast<String, dynamic>())),

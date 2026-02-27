@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RouteTableAssociation.
 class RouteTableAssociationArgs {
   /// The gateway ID to create an association. Conflicts with `subnet_id`.
-  final Input<String>? gatewayId;
+  final pulumi.Input<String>? gatewayId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of the routing table to associate with.
   ///
   /// > **NOTE:** Please note that one of either `subnet_id` or `gateway_id` is required.
-  final Input<String> routeTableId;
+  final pulumi.Input<String> routeTableId;
 
   /// The subnet ID to create an association. Conflicts with `gateway_id`.
-  final Input<String>? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   RouteTableAssociationArgs({
     this.gatewayId,
@@ -45,10 +45,10 @@ class RouteTableAssociationArgs {
 
   factory RouteTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RouteTableAssociationArgs(
-      gatewayId: Input.asOptionalInput<String>(map['gatewayId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      routeTableId: Input.asInput<String>(map['routeTableId']),
-      subnetId: Input.asOptionalInput<String>(map['subnetId']),
+      gatewayId: pulumi.Input.asOptionalInput<String>(map['gatewayId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      routeTableId: pulumi.Input.asInput<String>(map['routeTableId']),
+      subnetId: pulumi.Input.asOptionalInput<String>(map['subnetId']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../catalog_table_optimizer_configuration/catalog_table_optimizer_configuration.dart';
 import 'catalog_table_optimizer_args.dart';
 
@@ -25,34 +25,34 @@ import 'catalog_table_optimizer_args.dart';
 /// ```sh
 /// $ pulumi import aws:glue/catalogTableOptimizer:CatalogTableOptimizer example 123456789012,example_database,example_table,compaction
 /// ```
-class CatalogTableOptimizer extends CustomResource {
+class CatalogTableOptimizer extends pulumi.CustomResource {
   /// The Catalog ID of the table.
-  late final Output<String> catalogId;
+  late final pulumi.Output<String> catalogId;
 
   /// A configuration block that defines the table optimizer settings. See Configuration for additional details.
-  late final Output<CatalogTableOptimizerConfiguration> configuration;
+  late final pulumi.Output<CatalogTableOptimizerConfiguration> configuration;
 
   /// The name of the database in the catalog in which the table resides.
-  late final Output<String> databaseName;
+  late final pulumi.Output<String> databaseName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The name of the table.
-  late final Output<String> tableName;
+  late final pulumi.Output<String> tableName;
 
   /// The type of table optimizer. Valid values are `compaction`, `retention`, and `orphan_file_deletion`.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   CatalogTableOptimizer(
     String name, {
     CatalogTableOptimizerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:glue/catalogTableOptimizer:CatalogTableOptimizer',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.catalogId = registerOutput<String>('catalogId');
     this.configuration =

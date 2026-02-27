@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_policies_exclusive_args.dart';
 
 /// > **NOTE:**: To reliably detect drift between customer managed inline policies listed in this resource and actual policies attached to the role in the cloud, you currently need to run Pulumi with `pulumi up --refresh`. See [#4766](https://github.com/pulumi/pulumi-aws/issues/4766) for tracking making this work with regular `pulumi up` invocations.
@@ -30,22 +30,22 @@ import 'role_policies_exclusive_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/rolePoliciesExclusive:RolePoliciesExclusive example MyRole
 /// ```
-class RolePoliciesExclusive extends CustomResource {
+class RolePoliciesExclusive extends pulumi.CustomResource {
   /// A list of inline policy names to be assigned to the role. Policies attached to this role but not configured in this argument will be removed.
-  late final Output<List<String>> policyNames;
+  late final pulumi.Output<List<String>> policyNames;
 
   /// IAM role name.
-  late final Output<String> roleName;
+  late final pulumi.Output<String> roleName;
 
   RolePoliciesExclusive(
     String name, {
     RolePoliciesExclusiveArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/rolePoliciesExclusive:RolePoliciesExclusive',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.policyNames = registerOutput<List<String>>('policyNames');
     this.roleName = registerOutput<String>('roleName');

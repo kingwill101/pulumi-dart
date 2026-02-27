@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_access_point_args.dart';
 import 'get_access_point_result.dart';
 
 /// Provides information about an Elastic File System (EFS) Access Point.
 Future<GetAccessPointResult> getAccessPoint(
   GetAccessPointArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:efs/getAccessPoint:getAccessPoint',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccessPointResult.fromMap(result);
 }

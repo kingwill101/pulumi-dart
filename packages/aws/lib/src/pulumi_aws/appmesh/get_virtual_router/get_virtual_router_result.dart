@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_router_spec/get_virtual_router_spec.dart';
 
 /// Result data returned by getVirtualRouter.
@@ -55,8 +55,9 @@ class GetVirtualRouterResult {
     map['name'] = name;
     map['region'] = region;
     map['resourceOwner'] = resourceOwner;
-    map['specs'] = Input.encodeList<GetVirtualRouterSpec, Map<String, dynamic>>(
-        specs, (value) => value.toMap());
+    map['specs'] =
+        pulumi.Input.encodeList<GetVirtualRouterSpec, Map<String, dynamic>>(
+            specs, (value) => value.toMap());
     map['tags'] = tags;
     return map;
   }
@@ -72,7 +73,7 @@ class GetVirtualRouterResult {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceOwner: map['resourceOwner'] as String,
-      specs: Input.decodeList<GetVirtualRouterSpec>(
+      specs: pulumi.Input.decodeList<GetVirtualRouterSpec>(
           map['specs'],
           (value) => GetVirtualRouterSpec.fromMap(
               (value as Map).cast<String, dynamic>())),

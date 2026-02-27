@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'delegation_set_args.dart';
 
 /// Provides a [Route53 Delegation Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API-actions-by-function.html#actions-by-function-reusable-delegation-sets) resource.
@@ -14,27 +14,27 @@ import 'delegation_set_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53/delegationSet:DelegationSet set1 N1PA6795SAMPLE
 /// ```
-class DelegationSet extends CustomResource {
+class DelegationSet extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the Delegation Set.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// A list of authoritative name servers for the hosted zone
   /// (effectively a list of NS records).
-  late final Output<List<String>> nameServers;
+  late final pulumi.Output<List<String>> nameServers;
 
   /// This is a reference name used in Caller Reference
   /// (helpful for identifying single delegation set amongst others)
-  late final Output<String?> referenceName;
+  late final pulumi.Output<String?> referenceName;
 
   DelegationSet(
     String name, {
     DelegationSetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53/delegationSet:DelegationSet',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.nameServers = registerOutput<List<String>>('nameServers');

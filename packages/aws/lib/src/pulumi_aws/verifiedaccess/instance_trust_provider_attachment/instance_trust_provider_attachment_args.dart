@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for InstanceTrustProviderAttachment.
 class InstanceTrustProviderAttachmentArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of the Verified Access instance to attach the Trust Provider to.
-  final Input<String> verifiedaccessInstanceId;
+  final pulumi.Input<String> verifiedaccessInstanceId;
 
   /// The ID of the Verified Access trust provider.
-  final Input<String> verifiedaccessTrustProviderId;
+  final pulumi.Input<String> verifiedaccessTrustProviderId;
 
   InstanceTrustProviderAttachmentArgs({
     this.region,
@@ -33,11 +33,11 @@ class InstanceTrustProviderAttachmentArgs {
   factory InstanceTrustProviderAttachmentArgs.fromMap(
       Map<String, dynamic> map) {
     return InstanceTrustProviderAttachmentArgs(
-      region: Input.asOptionalInput<String>(map['region']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       verifiedaccessInstanceId:
-          Input.asInput<String>(map['verifiedaccessInstanceId']),
+          pulumi.Input.asInput<String>(map['verifiedaccessInstanceId']),
       verifiedaccessTrustProviderId:
-          Input.asInput<String>(map['verifiedaccessTrustProviderId']),
+          pulumi.Input.asInput<String>(map['verifiedaccessTrustProviderId']),
     );
   }
 }

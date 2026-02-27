@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tls_inspection_configuration_tls_inspection_configuration_server_certificate_configuration_scope_destination/tls_inspection_configuration_tls_inspection_configuration_server_certificate_configuration_scope_destination.dart';
 import '../tls_inspection_configuration_tls_inspection_configuration_server_certificate_configuration_scope_destination_port/tls_inspection_configuration_tls_inspection_configuration_server_certificate_configuration_scope_destination_port.dart';
 import '../tls_inspection_configuration_tls_inspection_configuration_server_certificate_configuration_scope_source/tls_inspection_configuration_tls_inspection_configuration_server_certificate_configuration_scope_source.dart';
@@ -42,24 +42,24 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
     final map = <String, dynamic>{};
     final destinationPortsValue = destinationPorts;
     if (destinationPortsValue != null) {
-      map['destinationPorts'] = Input.encodeList<
+      map['destinationPorts'] = pulumi.Input.encodeList<
           TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort,
           Map<String,
               dynamic>>(destinationPortsValue, (value) => value.toMap());
     }
-    map['destinations'] = Input.encodeList<
+    map['destinations'] = pulumi.Input.encodeList<
         TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination,
         Map<String, dynamic>>(destinations, (value) => value.toMap());
     map['protocols'] = protocols;
     final sourcePortsValue = sourcePorts;
     if (sourcePortsValue != null) {
-      map['sourcePorts'] = Input.encodeList<
+      map['sourcePorts'] = pulumi.Input.encodeList<
           TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort,
           Map<String, dynamic>>(sourcePortsValue, (value) => value.toMap());
     }
     final sourcesValue = sources;
     if (sourcesValue != null) {
-      map['sources'] = Input.encodeList<
+      map['sources'] = pulumi.Input.encodeList<
           TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource,
           Map<String, dynamic>>(sourcesValue, (value) => value.toMap());
     }
@@ -71,13 +71,13 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope(
       destinationPorts: map['destinationPorts'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort>(
               map['destinationPorts'],
               (value) =>
                   TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestinationPort
                       .fromMap((value as Map).cast<String, dynamic>())),
-      destinations: Input.decodeList<
+      destinations: pulumi.Input.decodeList<
               TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination>(
           map['destinations'],
           (value) =>
@@ -86,7 +86,7 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
       protocols: (map['protocols'] as List).cast<int>(),
       sourcePorts: map['sourcePorts'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort>(
               map['sourcePorts'],
               (value) =>
@@ -94,7 +94,7 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
                       .fromMap((value as Map).cast<String, dynamic>())),
       sources: map['sources'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSource>(
               map['sources'],
               (value) =>

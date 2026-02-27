@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dev_endpoint_args.dart';
 
 /// Provides a Glue Development Endpoint resource.
@@ -16,94 +16,94 @@ import 'dev_endpoint_args.dart';
 /// ```sh
 /// $ pulumi import aws:glue/devEndpoint:DevEndpoint example foo
 /// ```
-class DevEndpoint extends CustomResource {
+class DevEndpoint extends pulumi.CustomResource {
   /// A map of arguments used to configure the endpoint.
-  late final Output<Map<String, String>?> arguments;
+  late final pulumi.Output<Map<String, String>?> arguments;
 
   /// The ARN of the endpoint.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The AWS availability zone where this endpoint is located.
-  late final Output<String> availabilityZone;
+  late final pulumi.Output<String> availabilityZone;
 
   /// Path to one or more Java Jars in an S3 bucket that should be loaded in this endpoint.
-  late final Output<String?> extraJarsS3Path;
+  late final pulumi.Output<String?> extraJarsS3Path;
 
   /// Path(s) to one or more Python libraries in an S3 bucket that should be loaded in this endpoint. Multiple values must be complete paths separated by a comma.
-  late final Output<String?> extraPythonLibsS3Path;
+  late final pulumi.Output<String?> extraPythonLibsS3Path;
 
   /// The reason for a current failure in this endpoint.
-  late final Output<String> failureReason;
+  late final pulumi.Output<String> failureReason;
 
   /// Specifies the versions of Python and Apache Spark to use. Defaults to AWS Glue version 0.9.
-  late final Output<String?> glueVersion;
+  late final pulumi.Output<String?> glueVersion;
 
   /// The name of this endpoint. It must be unique in your account.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `worker_type`.
-  late final Output<int?> numberOfNodes;
+  late final pulumi.Output<int?> numberOfNodes;
 
   /// The number of workers of a defined worker type that are allocated to this endpoint. This field is available only when you choose worker type G.1X or G.2X.
-  late final Output<int?> numberOfWorkers;
+  late final pulumi.Output<int?> numberOfWorkers;
 
   /// A private IP address to access the endpoint within a VPC, if this endpoint is created within one.
-  late final Output<String> privateAddress;
+  late final pulumi.Output<String> privateAddress;
 
   /// The public IP address used by this endpoint. The PublicAddress field is present only when you create a non-VPC endpoint.
-  late final Output<String> publicAddress;
+  late final pulumi.Output<String> publicAddress;
 
   /// The public key to be used by this endpoint for authentication.
-  late final Output<String?> publicKey;
+  late final pulumi.Output<String?> publicKey;
 
   /// A list of public keys to be used by this endpoint for authentication.
-  late final Output<List<String>?> publicKeys;
+  late final pulumi.Output<List<String>?> publicKeys;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The IAM role for this endpoint.
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   /// The name of the Security Configuration structure to be used with this endpoint.
-  late final Output<String?> securityConfiguration;
+  late final pulumi.Output<String?> securityConfiguration;
 
   /// Security group IDs for the security groups to be used by this endpoint.
-  late final Output<List<String>?> securityGroupIds;
+  late final pulumi.Output<List<String>?> securityGroupIds;
 
   /// The current status of this endpoint.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// The subnet ID for the new endpoint to use.
-  late final Output<String?> subnetId;
+  late final pulumi.Output<String?> subnetId;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// he ID of the VPC used by this endpoint.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   /// The type of predefined worker that is allocated to this endpoint. Accepts a value of Standard, G.1X, or G.2X.
-  late final Output<String?> workerType;
+  late final pulumi.Output<String?> workerType;
 
   /// The YARN endpoint address used by this endpoint.
-  late final Output<String> yarnEndpointAddress;
+  late final pulumi.Output<String> yarnEndpointAddress;
 
   /// The Apache Zeppelin port for the remote Apache Spark interpreter.
-  late final Output<int> zeppelinRemoteSparkInterpreterPort;
+  late final pulumi.Output<int> zeppelinRemoteSparkInterpreterPort;
 
   DevEndpoint(
     String name, {
     DevEndpointArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:glue/devEndpoint:DevEndpoint',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arguments = registerOutput<Map<String, String>?>('arguments');
     this.arn = registerOutput<String>('arn');

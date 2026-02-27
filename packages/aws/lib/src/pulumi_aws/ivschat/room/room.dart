@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../room_message_review_handler/room_message_review_handler.dart';
 import 'room_args.dart';
 
@@ -20,48 +20,48 @@ import 'room_args.dart';
 /// ```sh
 /// $ pulumi import aws:ivschat/room:Room example arn:aws:ivschat:us-west-2:326937407773:room/GoXEXyB4VwHb
 /// ```
-class Room extends CustomResource {
+class Room extends pulumi.CustomResource {
   /// ARN of the Room.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// List of Logging Configuration
   /// ARNs to attach to the room.
-  late final Output<List<String>?> loggingConfigurationIdentifiers;
+  late final pulumi.Output<List<String>?> loggingConfigurationIdentifiers;
 
   /// Maximum number of characters in a single
   /// message. Messages are expected to be UTF-8 encoded and this limit applies
   /// specifically to rune/code-point count, not number of bytes.
-  late final Output<int> maximumMessageLength;
+  late final pulumi.Output<int> maximumMessageLength;
 
   /// Maximum number of messages per
   /// second that can be sent to the room (by all clients).
-  late final Output<int> maximumMessageRatePerSecond;
+  late final pulumi.Output<int> maximumMessageRatePerSecond;
 
   /// Configuration information for optional
   /// review of messages.
-  late final Output<RoomMessageReviewHandler?> messageReviewHandler;
+  late final pulumi.Output<RoomMessageReviewHandler?> messageReviewHandler;
 
   /// Room name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Room(
     String name, {
     RoomArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ivschat/room:Room',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.loggingConfigurationIdentifiers =

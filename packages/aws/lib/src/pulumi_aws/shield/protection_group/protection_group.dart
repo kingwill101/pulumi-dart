@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'protection_group_args.dart';
 
 /// Creates a grouping of protected resources so they can be handled as a collective.
@@ -26,40 +26,40 @@ import 'protection_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:shield/protectionGroup:ProtectionGroup example example
 /// ```
-class ProtectionGroup extends CustomResource {
+class ProtectionGroup extends pulumi.CustomResource {
   /// Defines how AWS Shield combines resource data for the group in order to detect, mitigate, and report events.
-  late final Output<String> aggregation;
+  late final pulumi.Output<String> aggregation;
 
   /// The Amazon Resource Names (ARNs) of the resources to include in the protection group. You must set this when you set `pattern` to ARBITRARY and you must not set it for any other `pattern` setting.
-  late final Output<List<String>?> members;
+  late final pulumi.Output<List<String>?> members;
 
   /// The criteria to use to choose the protected resources for inclusion in the group.
-  late final Output<String> pattern;
+  late final pulumi.Output<String> pattern;
 
   /// The ARN (Amazon Resource Name) of the protection group.
-  late final Output<String> protectionGroupArn;
+  late final pulumi.Output<String> protectionGroupArn;
 
   /// The name of the protection group.
-  late final Output<String> protectionGroupId;
+  late final pulumi.Output<String> protectionGroupId;
 
   /// The resource type to include in the protection group. You must set this when you set `pattern` to BY_RESOURCE_TYPE and you must not set it for any other `pattern` setting.
-  late final Output<String?> resourceType;
+  late final pulumi.Output<String?> resourceType;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   ProtectionGroup(
     String name, {
     ProtectionGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:shield/protectionGroup:ProtectionGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.aggregation = registerOutput<String>('aggregation');
     this.members = registerOutput<List<String>?>('members');

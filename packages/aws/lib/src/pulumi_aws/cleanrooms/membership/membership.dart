@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../membership_default_result_configuration/membership_default_result_configuration.dart';
 import '../membership_payment_configuration/membership_payment_configuration.dart';
 import 'membership_args.dart';
@@ -18,61 +18,62 @@ import 'membership_args.dart';
 /// ```sh
 /// $ pulumi import aws:cleanrooms/membership:Membership membership 1234abcd-12ab-34cd-56ef-1234567890ab
 /// ```
-class Membership extends CustomResource {
+class Membership extends pulumi.CustomResource {
   /// The ARN of the membership.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The ARN of the joined collaboration.
-  late final Output<String> collaborationArn;
+  late final pulumi.Output<String> collaborationArn;
 
   /// The account ID of the collaboration's creator.
-  late final Output<String> collaborationCreatorAccountId;
+  late final pulumi.Output<String> collaborationCreatorAccountId;
 
   /// The display name of the collaboration's creator.
-  late final Output<String> collaborationCreatorDisplayName;
+  late final pulumi.Output<String> collaborationCreatorDisplayName;
 
   /// The ID of the collaboration to which the member was invited.
-  late final Output<String> collaborationId;
+  late final pulumi.Output<String> collaborationId;
 
   /// The name of the joined collaboration.
-  late final Output<String> collaborationName;
+  late final pulumi.Output<String> collaborationName;
 
   /// The date and time the membership was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The default configuration for a query result.
-  late final Output<MembershipDefaultResultConfiguration?>
+  late final pulumi.Output<MembershipDefaultResultConfiguration?>
       defaultResultConfiguration;
 
   /// The list of abilities for the invited member.
-  late final Output<List<String>> memberAbilities;
-  late final Output<MembershipPaymentConfiguration?> paymentConfiguration;
+  late final pulumi.Output<List<String>> memberAbilities;
+  late final pulumi.Output<MembershipPaymentConfiguration?>
+      paymentConfiguration;
 
   /// An indicator as to whether query logging has been enabled or disabled for the membership.
-  late final Output<String> queryLogStatus;
+  late final pulumi.Output<String> queryLogStatus;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The status of the membership.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Key value pairs which tag the membership.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The date and time the membership was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Membership(
     String name, {
     MembershipArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cleanrooms/membership:Membership',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.collaborationArn = registerOutput<String>('collaborationArn');

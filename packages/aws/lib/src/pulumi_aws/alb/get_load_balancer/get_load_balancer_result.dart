@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_load_balancer_access_logs/get_load_balancer_access_logs.dart';
 import '../get_load_balancer_connection_log/get_load_balancer_connection_log.dart';
 import '../get_load_balancer_health_check_log/get_load_balancer_health_check_log.dart';
@@ -93,9 +93,9 @@ class GetLoadBalancerResult {
     map['arn'] = arn;
     map['arnSuffix'] = arnSuffix;
     map['clientKeepAlive'] = clientKeepAlive;
-    map['connectionLogs'] =
-        Input.encodeList<GetLoadBalancerConnectionLog, Map<String, dynamic>>(
-            connectionLogs, (value) => value.toMap());
+    map['connectionLogs'] = pulumi.Input.encodeList<
+        GetLoadBalancerConnectionLog,
+        Map<String, dynamic>>(connectionLogs, (value) => value.toMap());
     map['customerOwnedIpv4Pool'] = customerOwnedIpv4Pool;
     map['desyncMitigationMode'] = desyncMitigationMode;
     map['dnsName'] = dnsName;
@@ -111,15 +111,15 @@ class GetLoadBalancerResult {
     map['enableZonalShift'] = enableZonalShift;
     map['enforceSecurityGroupInboundRulesOnPrivateLinkTraffic'] =
         enforceSecurityGroupInboundRulesOnPrivateLinkTraffic;
-    map['healthCheckLogs'] =
-        Input.encodeList<GetLoadBalancerHealthCheckLog, Map<String, dynamic>>(
-            healthCheckLogs, (value) => value.toMap());
+    map['healthCheckLogs'] = pulumi.Input.encodeList<
+        GetLoadBalancerHealthCheckLog,
+        Map<String, dynamic>>(healthCheckLogs, (value) => value.toMap());
     map['id'] = id;
     map['idleTimeout'] = idleTimeout;
     map['internal'] = internal;
     map['ipAddressType'] = ipAddressType;
     map['ipamPools'] =
-        Input.encodeList<GetLoadBalancerIpamPool, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetLoadBalancerIpamPool, Map<String, dynamic>>(
             ipamPools, (value) => value.toMap());
     map['loadBalancerType'] = loadBalancerType;
     map['name'] = name;
@@ -128,9 +128,9 @@ class GetLoadBalancerResult {
     map['secondaryIpsAutoAssignedPerSubnet'] =
         secondaryIpsAutoAssignedPerSubnet;
     map['securityGroups'] = securityGroups;
-    map['subnetMappings'] =
-        Input.encodeList<GetLoadBalancerSubnetMapping, Map<String, dynamic>>(
-            subnetMappings, (value) => value.toMap());
+    map['subnetMappings'] = pulumi.Input.encodeList<
+        GetLoadBalancerSubnetMapping,
+        Map<String, dynamic>>(subnetMappings, (value) => value.toMap());
     map['subnets'] = subnets;
     map['tags'] = tags;
     map['vpcId'] = vpcId;
@@ -146,7 +146,7 @@ class GetLoadBalancerResult {
       arn: map['arn'] as String,
       arnSuffix: map['arnSuffix'] as String,
       clientKeepAlive: map['clientKeepAlive'] as int,
-      connectionLogs: Input.decodeList<GetLoadBalancerConnectionLog>(
+      connectionLogs: pulumi.Input.decodeList<GetLoadBalancerConnectionLog>(
           map['connectionLogs'],
           (value) => GetLoadBalancerConnectionLog.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -166,7 +166,7 @@ class GetLoadBalancerResult {
       enableZonalShift: map['enableZonalShift'] as bool,
       enforceSecurityGroupInboundRulesOnPrivateLinkTraffic:
           map['enforceSecurityGroupInboundRulesOnPrivateLinkTraffic'] as String,
-      healthCheckLogs: Input.decodeList<GetLoadBalancerHealthCheckLog>(
+      healthCheckLogs: pulumi.Input.decodeList<GetLoadBalancerHealthCheckLog>(
           map['healthCheckLogs'],
           (value) => GetLoadBalancerHealthCheckLog.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -174,7 +174,7 @@ class GetLoadBalancerResult {
       idleTimeout: map['idleTimeout'] as int,
       internal: map['internal'] as bool,
       ipAddressType: map['ipAddressType'] as String,
-      ipamPools: Input.decodeList<GetLoadBalancerIpamPool>(
+      ipamPools: pulumi.Input.decodeList<GetLoadBalancerIpamPool>(
           map['ipamPools'],
           (value) => GetLoadBalancerIpamPool.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -185,7 +185,7 @@ class GetLoadBalancerResult {
       secondaryIpsAutoAssignedPerSubnet:
           map['secondaryIpsAutoAssignedPerSubnet'] as int,
       securityGroups: (map['securityGroups'] as List).cast<String>(),
-      subnetMappings: Input.decodeList<GetLoadBalancerSubnetMapping>(
+      subnetMappings: pulumi.Input.decodeList<GetLoadBalancerSubnetMapping>(
           map['subnetMappings'],
           (value) => GetLoadBalancerSubnetMapping.fromMap(
               (value as Map).cast<String, dynamic>())),

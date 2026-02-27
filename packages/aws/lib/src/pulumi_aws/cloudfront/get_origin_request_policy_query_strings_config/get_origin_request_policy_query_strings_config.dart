@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_origin_request_policy_query_strings_config_query_string/get_origin_request_policy_query_strings_config_query_string.dart';
 
 class GetOriginRequestPolicyQueryStringsConfig {
@@ -15,7 +15,7 @@ class GetOriginRequestPolicyQueryStringsConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['queryStringBehavior'] = queryStringBehavior;
-    map['queryStrings'] = Input.encodeList<
+    map['queryStrings'] = pulumi.Input.encodeList<
         GetOriginRequestPolicyQueryStringsConfigQueryString,
         Map<String, dynamic>>(queryStrings, (value) => value.toMap());
     return map;
@@ -25,12 +25,12 @@ class GetOriginRequestPolicyQueryStringsConfig {
       Map<String, dynamic> map) {
     return GetOriginRequestPolicyQueryStringsConfig(
       queryStringBehavior: map['queryStringBehavior'] as String,
-      queryStrings:
-          Input.decodeList<GetOriginRequestPolicyQueryStringsConfigQueryString>(
-              map['queryStrings'],
-              (value) =>
-                  GetOriginRequestPolicyQueryStringsConfigQueryString.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      queryStrings: pulumi.Input.decodeList<
+              GetOriginRequestPolicyQueryStringsConfigQueryString>(
+          map['queryStrings'],
+          (value) =>
+              GetOriginRequestPolicyQueryStringsConfigQueryString.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

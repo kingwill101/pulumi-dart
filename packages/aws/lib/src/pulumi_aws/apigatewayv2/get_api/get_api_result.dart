@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_api_cors_configuration/get_api_cors_configuration.dart';
 
 /// Result data returned by getApi.
@@ -77,7 +77,7 @@ class GetApiResult {
     map['apiKeySelectionExpression'] = apiKeySelectionExpression;
     map['arn'] = arn;
     map['corsConfigurations'] =
-        Input.encodeList<GetApiCorsConfiguration, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetApiCorsConfiguration, Map<String, dynamic>>(
             corsConfigurations, (value) => value.toMap());
     map['description'] = description;
     map['disableExecuteApiEndpoint'] = disableExecuteApiEndpoint;
@@ -99,7 +99,7 @@ class GetApiResult {
       apiId: map['apiId'] as String,
       apiKeySelectionExpression: map['apiKeySelectionExpression'] as String,
       arn: map['arn'] as String,
-      corsConfigurations: Input.decodeList<GetApiCorsConfiguration>(
+      corsConfigurations: pulumi.Input.decodeList<GetApiCorsConfiguration>(
           map['corsConfigurations'],
           (value) => GetApiCorsConfiguration.fromMap(
               (value as Map).cast<String, dynamic>())),

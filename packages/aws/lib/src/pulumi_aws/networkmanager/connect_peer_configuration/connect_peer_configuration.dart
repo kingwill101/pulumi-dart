@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connect_peer_configuration_bgp_configuration/connect_peer_configuration_bgp_configuration.dart';
 
 class ConnectPeerConfiguration {
@@ -30,7 +30,7 @@ class ConnectPeerConfiguration {
     final map = <String, dynamic>{};
     final bgpConfigurationsValue = bgpConfigurations;
     if (bgpConfigurationsValue != null) {
-      map['bgpConfigurations'] = Input.encodeList<
+      map['bgpConfigurations'] = pulumi.Input.encodeList<
               ConnectPeerConfigurationBgpConfiguration, Map<String, dynamic>>(
           bgpConfigurationsValue, (value) => value.toMap());
     }
@@ -57,7 +57,7 @@ class ConnectPeerConfiguration {
     return ConnectPeerConfiguration(
       bgpConfigurations: map['bgpConfigurations'] == null
           ? null
-          : Input.decodeList<ConnectPeerConfigurationBgpConfiguration>(
+          : pulumi.Input.decodeList<ConnectPeerConfigurationBgpConfiguration>(
               map['bgpConfigurations'],
               (value) => ConnectPeerConfigurationBgpConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),

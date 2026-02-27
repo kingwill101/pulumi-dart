@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEndpointAssociations.
 class GetEndpointAssociationsArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the specific VPC Endpoint to retrieve.
-  final Input<String> vpcEndpointId;
+  final pulumi.Input<String> vpcEndpointId;
 
   GetEndpointAssociationsArgs({
     this.region,
@@ -27,8 +27,8 @@ class GetEndpointAssociationsArgs {
 
   factory GetEndpointAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointAssociationsArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      vpcEndpointId: Input.asInput<String>(map['vpcEndpointId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      vpcEndpointId: pulumi.Input.asInput<String>(map['vpcEndpointId']),
     );
   }
 }

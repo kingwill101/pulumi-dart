@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stack_instances_deployment_targets/stack_instances_deployment_targets.dart';
 import '../stack_instances_operation_preferences/stack_instances_operation_preferences.dart';
 import '../stack_instances_stack_instance_summary/stack_instances_stack_instance_summary.dart';
@@ -42,52 +42,53 @@ import 'stack_instances_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudformation/stackInstances:StackInstances example example,SELF,OU
 /// ```
-class StackInstances extends CustomResource {
+class StackInstances extends pulumi.CustomResource {
   /// Accounts where you want to create stack instances in the specified `regions`. You can specify either `accounts` or `deployment_targets`, but not both.
-  late final Output<List<String>> accounts;
+  late final pulumi.Output<List<String>> accounts;
 
   /// Whether you are acting as an account administrator in the organization's management account or as a delegated administrator in a member account. Valid values: `SELF` (default), `DELEGATED_ADMIN`.
-  late final Output<String?> callAs;
+  late final pulumi.Output<String?> callAs;
 
   /// AWS Organizations accounts for which to create stack instances in the `regions`. stack sets doesn't deploy stack instances to the organization management account, even if the organization management account is in your organization or in an OU in your organization. Drift detection is not possible for most of this argument. See deployment_targets below.
-  late final Output<StackInstancesDeploymentTargets?> deploymentTargets;
+  late final pulumi.Output<StackInstancesDeploymentTargets?> deploymentTargets;
 
   /// Preferences for how AWS CloudFormation performs a stack set operation. See operation_preferences below.
-  late final Output<StackInstancesOperationPreferences?> operationPreferences;
+  late final pulumi.Output<StackInstancesOperationPreferences?>
+      operationPreferences;
 
   /// Key-value map of input parameters to override from the stack set for these instances. This argument's drift detection is limited to the first account and region since each instance can have unique parameters.
-  late final Output<Map<String, String>?> parameterOverrides;
+  late final pulumi.Output<Map<String, String>?> parameterOverrides;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Regions where you want to create stack instances in the specified `accounts`.
-  late final Output<List<String>> regions;
+  late final pulumi.Output<List<String>> regions;
 
   /// Whether to remove the stack instances from the stack set, but not delete the stacks. You can't reassociate a retained stack or add an existing, saved stack to a new stack set. To retain the stack, ensure `retain_stacks = true` has been successfully applied _before_ an apply that would destroy the resource. Defaults to `false`.
-  late final Output<bool?> retainStacks;
+  late final pulumi.Output<bool?> retainStacks;
 
   /// List of stack instances created from an organizational unit deployment target. This may not always be set depending on whether CloudFormation returns summaries for your configuration. See `stack_instance_summaries`.
-  late final Output<List<StackInstancesStackInstanceSummary>>
+  late final pulumi.Output<List<StackInstancesStackInstanceSummary>>
       stackInstanceSummaries;
 
   /// Name or unique ID of the stack set that the stack instance is associated with.
-  late final Output<String> stackSetId;
+  late final pulumi.Output<String> stackSetId;
 
   /// Name of the stack set.
   ///
   /// The following arguments are optional:
-  late final Output<String> stackSetName;
+  late final pulumi.Output<String> stackSetName;
 
   StackInstances(
     String name, {
     StackInstancesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudformation/stackInstances:StackInstances',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accounts = registerOutput<List<String>>('accounts');
     this.callAs = registerOutput<String?>('callAs');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../repository_external_connections/repository_external_connections.dart';
 import '../repository_upstream/repository_upstream.dart';
 import 'repository_args.dart';
@@ -33,49 +33,49 @@ import 'repository_args.dart';
 /// ```sh
 /// $ pulumi import aws:codeartifact/repository:Repository example arn:aws:codeartifact:us-west-2:012345678912:repository/tf-acc-test-6968272603913957763/tf-acc-test-6968272603913957763
 /// ```
-class Repository extends CustomResource {
+class Repository extends pulumi.CustomResource {
   /// The account number of the AWS account that manages the repository.
-  late final Output<String> administratorAccount;
+  late final pulumi.Output<String> administratorAccount;
 
   /// The ARN of the repository.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The description of the repository.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The domain that contains the created repository.
-  late final Output<String> domain;
+  late final pulumi.Output<String> domain;
 
   /// The account number of the AWS account that owns the domain.
-  late final Output<String> domainOwner;
+  late final pulumi.Output<String> domainOwner;
 
   /// An array of external connections associated with the repository. Only one external connection can be set per repository. see External Connections.
-  late final Output<RepositoryExternalConnections?> externalConnections;
+  late final pulumi.Output<RepositoryExternalConnections?> externalConnections;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The name of the repository to create.
-  late final Output<String> repository;
+  late final pulumi.Output<String> repository;
 
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// A list of upstream repositories to associate with the repository. The order of the upstream repositories in the list determines their priority order when AWS CodeArtifact looks for a requested package version. see Upstream
-  late final Output<List<RepositoryUpstream>?> upstreams;
+  late final pulumi.Output<List<RepositoryUpstream>?> upstreams;
 
   Repository(
     String name, {
     RepositoryArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:codeartifact/repository:Repository',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.administratorAccount = registerOutput<String>('administratorAccount');
     this.arn = registerOutput<String>('arn');

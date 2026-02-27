@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_notification_topic_args.dart';
 
 /// Resource for managing SES Identity Notification Topics
@@ -14,31 +14,31 @@ import 'identity_notification_topic_args.dart';
 /// ```sh
 /// $ pulumi import aws:ses/identityNotificationTopic:IdentityNotificationTopic test 'example.com|Bounce'
 /// ```
-class IdentityNotificationTopic extends CustomResource {
+class IdentityNotificationTopic extends pulumi.CustomResource {
   /// The identity for which the Amazon SNS topic will be set. You can specify an identity by using its name or by using its Amazon Resource Name (ARN).
-  late final Output<String> identity;
+  late final pulumi.Output<String> identity;
 
   /// Whether SES should include original email headers in SNS notifications of this type. `false` by default.
-  late final Output<bool?> includeOriginalHeaders;
+  late final pulumi.Output<bool?> includeOriginalHeaders;
 
   /// The type of notifications that will be published to the specified Amazon SNS topic. Valid Values: `Bounce`, `Complaint` or `Delivery`.
-  late final Output<String> notificationType;
+  late final pulumi.Output<String> notificationType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The Amazon Resource Name (ARN) of the Amazon SNS topic. Can be set to `""` (an empty string) to disable publishing.
-  late final Output<String?> topicArn;
+  late final pulumi.Output<String?> topicArn;
 
   IdentityNotificationTopic(
     String name, {
     IdentityNotificationTopicArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ses/identityNotificationTopic:IdentityNotificationTopic',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.identity = registerOutput<String>('identity');
     this.includeOriginalHeaders =

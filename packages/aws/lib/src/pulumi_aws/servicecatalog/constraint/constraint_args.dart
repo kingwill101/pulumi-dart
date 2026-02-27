@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Constraint.
 class ConstraintArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  final Input<String>? acceptLanguage;
+  final pulumi.Input<String>? acceptLanguage;
 
   /// Description of the constraint.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Constraint parameters in JSON format. The syntax depends on the constraint type. See details below.
-  final Input<String> parameters;
+  final pulumi.Input<String> parameters;
 
   /// Portfolio identifier.
-  final Input<String> portfolioId;
+  final pulumi.Input<String> portfolioId;
 
   /// Product identifier.
-  final Input<String> productId;
+  final pulumi.Input<String> productId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`.
   ///
   /// The following arguments are optional:
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   ConstraintArgs({
     this.acceptLanguage,
@@ -60,13 +60,14 @@ class ConstraintArgs {
 
   factory ConstraintArgs.fromMap(Map<String, dynamic> map) {
     return ConstraintArgs(
-      acceptLanguage: Input.asOptionalInput<String>(map['acceptLanguage']),
-      description: Input.asOptionalInput<String>(map['description']),
-      parameters: Input.asInput<String>(map['parameters']),
-      portfolioId: Input.asInput<String>(map['portfolioId']),
-      productId: Input.asInput<String>(map['productId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      type: Input.asInput<String>(map['type']),
+      acceptLanguage:
+          pulumi.Input.asOptionalInput<String>(map['acceptLanguage']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      parameters: pulumi.Input.asInput<String>(map['parameters']),
+      portfolioId: pulumi.Input.asInput<String>(map['portfolioId']),
+      productId: pulumi.Input.asInput<String>(map['productId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

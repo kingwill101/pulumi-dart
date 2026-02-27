@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_metadata_configuration_metadata_configuration_destination/bucket_metadata_configuration_metadata_configuration_destination.dart';
 import '../bucket_metadata_configuration_metadata_configuration_inventory_table_configuration/bucket_metadata_configuration_metadata_configuration_inventory_table_configuration.dart';
 import '../bucket_metadata_configuration_metadata_configuration_journal_table_configuration/bucket_metadata_configuration_metadata_configuration_journal_table_configuration.dart';
@@ -28,7 +28,7 @@ class BucketMetadataConfigurationMetadataConfiguration {
     final map = <String, dynamic>{};
     final destinationsValue = destinations;
     if (destinationsValue != null) {
-      map['destinations'] = Input.encodeList<
+      map['destinations'] = pulumi.Input.encodeList<
           BucketMetadataConfigurationMetadataConfigurationDestination,
           Map<String, dynamic>>(destinationsValue, (value) => value.toMap());
     }
@@ -42,7 +42,7 @@ class BucketMetadataConfigurationMetadataConfiguration {
     return BucketMetadataConfigurationMetadataConfiguration(
       destinations: map['destinations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BucketMetadataConfigurationMetadataConfigurationDestination>(
               map['destinations'],
               (value) =>

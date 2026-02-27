@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../drt_access_log_bucket_association_timeouts/drt_access_log_bucket_association_timeouts.dart';
 import 'drt_access_log_bucket_association_args.dart';
 
@@ -18,23 +18,23 @@ import 'drt_access_log_bucket_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:shield/drtAccessLogBucketAssociation:DrtAccessLogBucketAssociation example example-bucket
 /// ```
-class DrtAccessLogBucketAssociation extends CustomResource {
+class DrtAccessLogBucketAssociation extends pulumi.CustomResource {
   /// The Amazon S3 bucket that contains the logs that you want to share.
-  late final Output<String> logBucket;
+  late final pulumi.Output<String> logBucket;
 
   /// The ID of the Role Arn association used for allowing Shield DRT Access.
-  late final Output<String> roleArnAssociationId;
-  late final Output<DrtAccessLogBucketAssociationTimeouts?> timeouts;
+  late final pulumi.Output<String> roleArnAssociationId;
+  late final pulumi.Output<DrtAccessLogBucketAssociationTimeouts?> timeouts;
 
   DrtAccessLogBucketAssociation(
     String name, {
     DrtAccessLogBucketAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:shield/drtAccessLogBucketAssociation:DrtAccessLogBucketAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.logBucket = registerOutput<String>('logBucket');
     this.roleArnAssociationId = registerOutput<String>('roleArnAssociationId');

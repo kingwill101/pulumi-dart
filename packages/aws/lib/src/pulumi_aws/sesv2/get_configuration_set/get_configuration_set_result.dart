@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_configuration_set_delivery_option/get_configuration_set_delivery_option.dart';
 import '../get_configuration_set_reputation_option/get_configuration_set_reputation_option.dart';
 import '../get_configuration_set_sending_option/get_configuration_set_sending_option.dart';
@@ -56,24 +56,26 @@ class GetConfigurationSetResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['configurationSetName'] = configurationSetName;
-    map['deliveryOptions'] = Input.encodeList<GetConfigurationSetDeliveryOption,
+    map['deliveryOptions'] = pulumi.Input.encodeList<
+        GetConfigurationSetDeliveryOption,
         Map<String, dynamic>>(deliveryOptions, (value) => value.toMap());
     map['id'] = id;
     map['region'] = region;
-    map['reputationOptions'] = Input.encodeList<
+    map['reputationOptions'] = pulumi.Input.encodeList<
         GetConfigurationSetReputationOption,
         Map<String, dynamic>>(reputationOptions, (value) => value.toMap());
-    map['sendingOptions'] = Input.encodeList<GetConfigurationSetSendingOption,
+    map['sendingOptions'] = pulumi.Input.encodeList<
+        GetConfigurationSetSendingOption,
         Map<String, dynamic>>(sendingOptions, (value) => value.toMap());
-    map['suppressionOptions'] = Input.encodeList<
+    map['suppressionOptions'] = pulumi.Input.encodeList<
         GetConfigurationSetSuppressionOption,
         Map<String, dynamic>>(suppressionOptions, (value) => value.toMap());
     map['tags'] = tags;
-    map['trackingOptions'] = Input.encodeList<GetConfigurationSetTrackingOption,
+    map['trackingOptions'] = pulumi.Input.encodeList<
+        GetConfigurationSetTrackingOption,
         Map<String, dynamic>>(trackingOptions, (value) => value.toMap());
-    map['vdmOptions'] =
-        Input.encodeList<GetConfigurationSetVdmOption, Map<String, dynamic>>(
-            vdmOptions, (value) => value.toMap());
+    map['vdmOptions'] = pulumi.Input.encodeList<GetConfigurationSetVdmOption,
+        Map<String, dynamic>>(vdmOptions, (value) => value.toMap());
     return map;
   }
 
@@ -81,31 +83,34 @@ class GetConfigurationSetResult {
     return GetConfigurationSetResult(
       arn: map['arn'] as String,
       configurationSetName: map['configurationSetName'] as String,
-      deliveryOptions: Input.decodeList<GetConfigurationSetDeliveryOption>(
-          map['deliveryOptions'],
-          (value) => GetConfigurationSetDeliveryOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      deliveryOptions:
+          pulumi.Input.decodeList<GetConfigurationSetDeliveryOption>(
+              map['deliveryOptions'],
+              (value) => GetConfigurationSetDeliveryOption.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
-      reputationOptions: Input.decodeList<GetConfigurationSetReputationOption>(
-          map['reputationOptions'],
-          (value) => GetConfigurationSetReputationOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      sendingOptions: Input.decodeList<GetConfigurationSetSendingOption>(
+      reputationOptions:
+          pulumi.Input.decodeList<GetConfigurationSetReputationOption>(
+              map['reputationOptions'],
+              (value) => GetConfigurationSetReputationOption.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      sendingOptions: pulumi.Input.decodeList<GetConfigurationSetSendingOption>(
           map['sendingOptions'],
           (value) => GetConfigurationSetSendingOption.fromMap(
               (value as Map).cast<String, dynamic>())),
       suppressionOptions:
-          Input.decodeList<GetConfigurationSetSuppressionOption>(
+          pulumi.Input.decodeList<GetConfigurationSetSuppressionOption>(
               map['suppressionOptions'],
               (value) => GetConfigurationSetSuppressionOption.fromMap(
                   (value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
-      trackingOptions: Input.decodeList<GetConfigurationSetTrackingOption>(
-          map['trackingOptions'],
-          (value) => GetConfigurationSetTrackingOption.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      vdmOptions: Input.decodeList<GetConfigurationSetVdmOption>(
+      trackingOptions:
+          pulumi.Input.decodeList<GetConfigurationSetTrackingOption>(
+              map['trackingOptions'],
+              (value) => GetConfigurationSetTrackingOption.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      vdmOptions: pulumi.Input.decodeList<GetConfigurationSetVdmOption>(
           map['vdmOptions'],
           (value) => GetConfigurationSetVdmOption.fromMap(
               (value as Map).cast<String, dynamic>())),

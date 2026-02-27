@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ingestion_args.dart';
 
 /// Resource for managing an AWS AppFabric Ingestion.
@@ -16,41 +16,41 @@ import 'ingestion_args.dart';
 /// ```sh
 /// $ pulumi import aws:appfabric/ingestion:Ingestion example arn:aws:appfabric:[region]:[account]:appbundle/a9b91477-8831-43c0-970c-xxxxxxxxxx,arn:aws:appfabric:[region]:[account]:appbundle/a9b91477-8831-43c0-970c-xxxxxxxxxx/ingestion/32251416-710b-4425-96ca-xxxxxxxxxx
 /// ```
-class Ingestion extends CustomResource {
+class Ingestion extends pulumi.CustomResource {
   /// Name of the application.
   /// Refer to the AWS Documentation for the [list of valid values](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateIngestion.html#appfabric-CreateIngestion-request-app)
-  late final Output<String> app;
+  late final pulumi.Output<String> app;
 
   /// Amazon Resource Name (ARN) of the app bundle to use for the request.
-  late final Output<String> appBundleArn;
+  late final pulumi.Output<String> appBundleArn;
 
   /// ARN of the Ingestion.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Ingestion type. Valid values are `auditLog`.
-  late final Output<String> ingestionType;
+  late final pulumi.Output<String> ingestionType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// ID of the application tenant.
-  late final Output<String> tenantId;
+  late final pulumi.Output<String> tenantId;
 
   Ingestion(
     String name, {
     IngestionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:appfabric/ingestion:Ingestion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.app = registerOutput<String>('app');
     this.appBundleArn = registerOutput<String>('appBundleArn');

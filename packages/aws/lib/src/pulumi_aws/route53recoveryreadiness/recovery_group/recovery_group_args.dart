@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RecoveryGroup.
 class RecoveryGroupArgs {
   /// List of cell arns to add as nested fault domains within this recovery group
-  final Input<List<String>>? cells;
+  final pulumi.Input<List<String>>? cells;
 
   /// A unique name describing the recovery group.
   ///
   /// The following arguments are optional:
-  final Input<String> recoveryGroupName;
+  final pulumi.Input<String> recoveryGroupName;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   RecoveryGroupArgs({
     this.cells,
@@ -37,9 +37,9 @@ class RecoveryGroupArgs {
 
   factory RecoveryGroupArgs.fromMap(Map<String, dynamic> map) {
     return RecoveryGroupArgs(
-      cells: Input.asOptionalInput<List<String>>(map['cells']),
-      recoveryGroupName: Input.asInput<String>(map['recoveryGroupName']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      cells: pulumi.Input.asOptionalInput<List<String>>(map['cells']),
+      recoveryGroupName: pulumi.Input.asInput<String>(map['recoveryGroupName']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../dashboard_source_entity_source_template_data_set_reference/dashboard_source_entity_source_template_data_set_reference.dart';
 
 class DashboardSourceEntitySourceTemplate {
@@ -19,7 +19,7 @@ class DashboardSourceEntitySourceTemplate {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['dataSetReferences'] = Input.encodeList<
+    map['dataSetReferences'] = pulumi.Input.encodeList<
         DashboardSourceEntitySourceTemplateDataSetReference,
         Map<String, dynamic>>(dataSetReferences, (value) => value.toMap());
     return map;
@@ -29,12 +29,12 @@ class DashboardSourceEntitySourceTemplate {
       Map<String, dynamic> map) {
     return DashboardSourceEntitySourceTemplate(
       arn: map['arn'] as String,
-      dataSetReferences:
-          Input.decodeList<DashboardSourceEntitySourceTemplateDataSetReference>(
-              map['dataSetReferences'],
-              (value) =>
-                  DashboardSourceEntitySourceTemplateDataSetReference.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      dataSetReferences: pulumi.Input.decodeList<
+              DashboardSourceEntitySourceTemplateDataSetReference>(
+          map['dataSetReferences'],
+          (value) =>
+              DashboardSourceEntitySourceTemplateDataSetReference.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

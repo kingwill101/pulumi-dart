@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../managed_policy_attachments_exclusive_timeouts/managed_policy_attachments_exclusive_timeouts.dart';
 import 'managed_policy_attachments_exclusive_args.dart';
 
@@ -43,31 +43,31 @@ import 'managed_policy_attachments_exclusive_args.dart';
 /// ```sh
 /// $ pulumi import aws:ssoadmin/managedPolicyAttachmentsExclusive:ManagedPolicyAttachmentsExclusive example arn:aws:sso:::instance/ssoins-1234567890abcdef,arn:aws:sso:::permissionSet/ssoins-1234567890abcdef/ps-1234567890abcdef
 /// ```
-class ManagedPolicyAttachmentsExclusive extends CustomResource {
+class ManagedPolicyAttachmentsExclusive extends pulumi.CustomResource {
   /// ARN of the SSO Instance.
-  late final Output<String> instanceArn;
+  late final pulumi.Output<String> instanceArn;
 
   /// Set of ARNs of IAM managed policies to attach to the Permission Set.
-  late final Output<List<String>> managedPolicyArns;
+  late final pulumi.Output<List<String>> managedPolicyArns;
 
   /// ARN of the Permission Set.
   ///
   /// The following arguments are optional:
-  late final Output<String> permissionSetArn;
+  late final pulumi.Output<String> permissionSetArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<ManagedPolicyAttachmentsExclusiveTimeouts?> timeouts;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<ManagedPolicyAttachmentsExclusiveTimeouts?> timeouts;
 
   ManagedPolicyAttachmentsExclusive(
     String name, {
     ManagedPolicyAttachmentsExclusiveArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssoadmin/managedPolicyAttachmentsExclusive:ManagedPolicyAttachmentsExclusive',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.instanceArn = registerOutput<String>('instanceArn');
     this.managedPolicyArns = registerOutput<List<String>>('managedPolicyArns');

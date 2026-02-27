@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instances_filter/get_instances_filter.dart';
 
 /// Result data returned by getInstances.
@@ -42,7 +42,7 @@ class GetInstancesResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetInstancesFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetInstancesFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -63,7 +63,7 @@ class GetInstancesResult {
     return GetInstancesResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetInstancesFilter>(
+          : pulumi.Input.decodeList<GetInstancesFilter>(
               map['filters'],
               (value) => GetInstancesFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

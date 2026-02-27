@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipe_target_parameters_ecs_task_parameters_overrides_container_override/pipe_target_parameters_ecs_task_parameters_overrides_container_override.dart';
 import '../pipe_target_parameters_ecs_task_parameters_overrides_ephemeral_storage/pipe_target_parameters_ecs_task_parameters_overrides_ephemeral_storage.dart';
 import '../pipe_target_parameters_ecs_task_parameters_overrides_inference_accelerator_override/pipe_target_parameters_ecs_task_parameters_overrides_inference_accelerator_override.dart';
@@ -45,7 +45,7 @@ class PipeTargetParametersEcsTaskParametersOverrides {
     final map = <String, dynamic>{};
     final containerOverridesValue = containerOverrides;
     if (containerOverridesValue != null) {
-      map['containerOverrides'] = Input.encodeList<
+      map['containerOverrides'] = pulumi.Input.encodeList<
               PipeTargetParametersEcsTaskParametersOverridesContainerOverride,
               Map<String, dynamic>>(
           containerOverridesValue, (value) => value.toMap());
@@ -64,7 +64,7 @@ class PipeTargetParametersEcsTaskParametersOverrides {
     }
     final inferenceAcceleratorOverridesValue = inferenceAcceleratorOverrides;
     if (inferenceAcceleratorOverridesValue != null) {
-      map['inferenceAcceleratorOverrides'] = Input.encodeList<
+      map['inferenceAcceleratorOverrides'] = pulumi.Input.encodeList<
               PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride,
               Map<String, dynamic>>(
           inferenceAcceleratorOverridesValue, (value) => value.toMap());
@@ -85,7 +85,7 @@ class PipeTargetParametersEcsTaskParametersOverrides {
     return PipeTargetParametersEcsTaskParametersOverrides(
       containerOverrides: map['containerOverrides'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PipeTargetParametersEcsTaskParametersOverridesContainerOverride>(
               map['containerOverrides'],
               (value) =>
@@ -103,7 +103,7 @@ class PipeTargetParametersEcsTaskParametersOverrides {
       inferenceAcceleratorOverrides: map['inferenceAcceleratorOverrides'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride>(
               map['inferenceAcceleratorOverrides'],
               (value) =>

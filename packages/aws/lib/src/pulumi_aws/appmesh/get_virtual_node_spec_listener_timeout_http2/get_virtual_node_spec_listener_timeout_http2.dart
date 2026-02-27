@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_node_spec_listener_timeout_http2_idle/get_virtual_node_spec_listener_timeout_http2_idle.dart';
 import '../get_virtual_node_spec_listener_timeout_http2_per_request/get_virtual_node_spec_listener_timeout_http2_per_request.dart';
 
@@ -15,9 +15,10 @@ class GetVirtualNodeSpecListenerTimeoutHttp2 {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['idles'] = Input.encodeList<GetVirtualNodeSpecListenerTimeoutHttp2Idle,
+    map['idles'] = pulumi.Input.encodeList<
+        GetVirtualNodeSpecListenerTimeoutHttp2Idle,
         Map<String, dynamic>>(idles, (value) => value.toMap());
-    map['perRequests'] = Input.encodeList<
+    map['perRequests'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerTimeoutHttp2PerRequest,
         Map<String, dynamic>>(perRequests, (value) => value.toMap());
     return map;
@@ -26,16 +27,16 @@ class GetVirtualNodeSpecListenerTimeoutHttp2 {
   factory GetVirtualNodeSpecListenerTimeoutHttp2.fromMap(
       Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTimeoutHttp2(
-      idles: Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2Idle>(
-          map['idles'],
-          (value) => GetVirtualNodeSpecListenerTimeoutHttp2Idle.fromMap(
+      idles:
+          pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2Idle>(
+              map['idles'],
+              (value) => GetVirtualNodeSpecListenerTimeoutHttp2Idle.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      perRequests: pulumi.Input.decodeList<
+              GetVirtualNodeSpecListenerTimeoutHttp2PerRequest>(
+          map['perRequests'],
+          (value) => GetVirtualNodeSpecListenerTimeoutHttp2PerRequest.fromMap(
               (value as Map).cast<String, dynamic>())),
-      perRequests:
-          Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2PerRequest>(
-              map['perRequests'],
-              (value) =>
-                  GetVirtualNodeSpecListenerTimeoutHttp2PerRequest.fromMap(
-                      (value as Map).cast<String, dynamic>())),
     );
   }
 }

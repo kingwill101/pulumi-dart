@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'function_recursion_config_args.dart';
 
 /// Manages an AWS Lambda Function Recursion Config. Use this resource to control how Lambda handles recursive function invocations to prevent infinite loops.
@@ -22,27 +22,27 @@ import 'function_recursion_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:lambda/functionRecursionConfig:FunctionRecursionConfig example recursive_processor
 /// ```
-class FunctionRecursionConfig extends CustomResource {
+class FunctionRecursionConfig extends pulumi.CustomResource {
   /// Name of the Lambda function.
-  late final Output<String> functionName;
+  late final pulumi.Output<String> functionName;
 
   /// Lambda function recursion configuration. Valid values are `Allow` or `Terminate`.
   ///
   /// The following arguments are optional:
-  late final Output<String> recursiveLoop;
+  late final pulumi.Output<String> recursiveLoop;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   FunctionRecursionConfig(
     String name, {
     FunctionRecursionConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lambda/functionRecursionConfig:FunctionRecursionConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.functionName = registerOutput<String>('functionName');
     this.recursiveLoop = registerOutput<String>('recursiveLoop');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../template_source_entity_source_analysis_data_set_reference/template_source_entity_source_analysis_data_set_reference.dart';
 
 class TemplateSourceEntitySourceAnalysis {
@@ -19,7 +19,7 @@ class TemplateSourceEntitySourceAnalysis {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['dataSetReferences'] = Input.encodeList<
+    map['dataSetReferences'] = pulumi.Input.encodeList<
         TemplateSourceEntitySourceAnalysisDataSetReference,
         Map<String, dynamic>>(dataSetReferences, (value) => value.toMap());
     return map;
@@ -28,12 +28,11 @@ class TemplateSourceEntitySourceAnalysis {
   factory TemplateSourceEntitySourceAnalysis.fromMap(Map<String, dynamic> map) {
     return TemplateSourceEntitySourceAnalysis(
       arn: map['arn'] as String,
-      dataSetReferences:
-          Input.decodeList<TemplateSourceEntitySourceAnalysisDataSetReference>(
-              map['dataSetReferences'],
-              (value) =>
-                  TemplateSourceEntitySourceAnalysisDataSetReference.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      dataSetReferences: pulumi.Input.decodeList<
+              TemplateSourceEntitySourceAnalysisDataSetReference>(
+          map['dataSetReferences'],
+          (value) => TemplateSourceEntitySourceAnalysisDataSetReference.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

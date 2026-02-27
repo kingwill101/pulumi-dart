@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TargetAccountConfiguration.
 class TargetAccountConfigurationArgs {
   /// Account ID of the target account.
-  final Input<String> accountId;
+  final pulumi.Input<String> accountId;
 
   /// Description of the target account.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Experiment Template ID.
   ///
   /// The following arguments are optional:
-  final Input<String> experimentTemplateId;
+  final pulumi.Input<String> experimentTemplateId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ARN of the IAM Role for the target account.
-  final Input<String>? roleArn;
+  final pulumi.Input<String>? roleArn;
 
   TargetAccountConfigurationArgs({
     required this.accountId,
@@ -50,11 +50,12 @@ class TargetAccountConfigurationArgs {
 
   factory TargetAccountConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return TargetAccountConfigurationArgs(
-      accountId: Input.asInput<String>(map['accountId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      experimentTemplateId: Input.asInput<String>(map['experimentTemplateId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      roleArn: Input.asOptionalInput<String>(map['roleArn']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      experimentTemplateId:
+          pulumi.Input.asInput<String>(map['experimentTemplateId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      roleArn: pulumi.Input.asOptionalInput<String>(map['roleArn']),
     );
   }
 }

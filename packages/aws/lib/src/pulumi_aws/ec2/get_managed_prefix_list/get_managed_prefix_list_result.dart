@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_managed_prefix_list_entry/get_managed_prefix_list_entry.dart';
 import '../get_managed_prefix_list_filter/get_managed_prefix_list_filter.dart';
 
@@ -51,14 +51,12 @@ class GetManagedPrefixListResult {
     final map = <String, dynamic>{};
     map['addressFamily'] = addressFamily;
     map['arn'] = arn;
-    map['entries'] =
-        Input.encodeList<GetManagedPrefixListEntry, Map<String, dynamic>>(
-            entries, (value) => value.toMap());
+    map['entries'] = pulumi.Input.encodeList<GetManagedPrefixListEntry,
+        Map<String, dynamic>>(entries, (value) => value.toMap());
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetManagedPrefixListFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetManagedPrefixListFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['maxEntries'] = maxEntries;
@@ -74,13 +72,13 @@ class GetManagedPrefixListResult {
     return GetManagedPrefixListResult(
       addressFamily: map['addressFamily'] as String,
       arn: map['arn'] as String,
-      entries: Input.decodeList<GetManagedPrefixListEntry>(
+      entries: pulumi.Input.decodeList<GetManagedPrefixListEntry>(
           map['entries'],
           (value) => GetManagedPrefixListEntry.fromMap(
               (value as Map).cast<String, dynamic>())),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetManagedPrefixListFilter>(
+          : pulumi.Input.decodeList<GetManagedPrefixListFilter>(
               map['filters'],
               (value) => GetManagedPrefixListFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

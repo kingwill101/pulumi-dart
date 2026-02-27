@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_policy_args.dart';
 
 /// Provides an IAM policy attached to a user.
@@ -16,28 +16,28 @@ import 'user_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/userPolicy:UserPolicy mypolicy user_of_mypolicy_name:mypolicy_name
 /// ```
-class UserPolicy extends CustomResource {
+class UserPolicy extends pulumi.CustomResource {
   /// The name of the policy. If omitted, the provider will assign a random, unique name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  late final Output<String> namePrefix;
+  late final pulumi.Output<String> namePrefix;
 
   /// The policy document. This is a JSON formatted string.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// IAM user to which to attach this policy.
-  late final Output<String> user;
+  late final pulumi.Output<String> user;
 
   UserPolicy(
     String name, {
     UserPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/userPolicy:UserPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
     this.namePrefix = registerOutput<String>('namePrefix');

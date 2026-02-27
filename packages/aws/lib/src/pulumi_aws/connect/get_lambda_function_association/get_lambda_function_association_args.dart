@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLambdaFunctionAssociation.
 class GetLambdaFunctionAssociationArgs {
   /// ARN of the Lambda Function, omitting any version or alias qualifier.
-  final Input<String> functionArn;
+  final pulumi.Input<String> functionArn;
 
   /// Identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
-  final Input<String> instanceId;
+  final pulumi.Input<String> instanceId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetLambdaFunctionAssociationArgs({
     required this.functionArn,
@@ -32,9 +32,9 @@ class GetLambdaFunctionAssociationArgs {
 
   factory GetLambdaFunctionAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetLambdaFunctionAssociationArgs(
-      functionArn: Input.asInput<String>(map['functionArn']),
-      instanceId: Input.asInput<String>(map['instanceId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      functionArn: pulumi.Input.asInput<String>(map['functionArn']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

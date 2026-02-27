@@ -1,4 +1,4 @@
 library module_ses_template;
 
-export 'template/template3.dart';
-export 'template/template_args3.dart';
+export 'template/template_ses.dart';
+export 'template/template_ses_args.dart';

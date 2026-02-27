@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../export_export/export_export.dart';
 import '../export_timeouts/export_timeouts.dart';
 import 'export_args.dart';
@@ -25,28 +25,28 @@ import 'export_args.dart';
 /// ```sh
 /// $ pulumi import aws:bcmdata/export:Export example arn:aws:bcm-data-exports:us-east-1:123456789012:export/CostUsageReport-9f1c75f3-f982-4d9a-b936-1e7ecab814b7
 /// ```
-class Export extends CustomResource {
+class Export extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) for this export.
   /// * `export[0].export_arn` - Amazon Resource Name (ARN) for this export.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
-  late final Output<ExportExport?> export;
+  late final pulumi.Output<ExportExport?> export;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<ExportTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<ExportTimeouts?> timeouts;
 
   Export(
     String name, {
     ExportArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bcmdata/export:Export',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.export = registerOutput<ExportExport?>('export');

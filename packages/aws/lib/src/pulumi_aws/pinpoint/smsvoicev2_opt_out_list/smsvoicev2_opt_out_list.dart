@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'smsvoicev2_opt_out_list_args.dart';
 
 /// Manages an AWS End User Messaging SMS opt-out list.
@@ -14,31 +14,31 @@ import 'smsvoicev2_opt_out_list_args.dart';
 /// ```sh
 /// $ pulumi import aws:pinpoint/smsvoicev2OptOutList:Smsvoicev2OptOutList example example-opt-out-list
 /// ```
-class Smsvoicev2OptOutList extends CustomResource {
+class Smsvoicev2OptOutList extends pulumi.CustomResource {
   /// ARN of the opt-out list.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The name of the opt-out list.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Smsvoicev2OptOutList(
     String name, {
     Smsvoicev2OptOutListArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:pinpoint/smsvoicev2OptOutList:Smsvoicev2OptOutList',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

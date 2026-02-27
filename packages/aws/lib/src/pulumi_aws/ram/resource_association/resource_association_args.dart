@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ResourceAssociation.
 class ResourceAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
-  final Input<String> resourceArn;
+  final pulumi.Input<String> resourceArn;
 
   /// Amazon Resource Name (ARN) of the RAM Resource Share.
-  final Input<String> resourceShareArn;
+  final pulumi.Input<String> resourceShareArn;
 
   ResourceAssociationArgs({
     this.region,
@@ -32,9 +32,9 @@ class ResourceAssociationArgs {
 
   factory ResourceAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ResourceAssociationArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      resourceArn: Input.asInput<String>(map['resourceArn']),
-      resourceShareArn: Input.asInput<String>(map['resourceShareArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourceArn: pulumi.Input.asInput<String>(map['resourceArn']),
+      resourceShareArn: pulumi.Input.asInput<String>(map['resourceShareArn']),
     );
   }
 }

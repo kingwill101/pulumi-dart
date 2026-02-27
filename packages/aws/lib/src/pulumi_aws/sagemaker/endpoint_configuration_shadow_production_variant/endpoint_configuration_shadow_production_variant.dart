@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../endpoint_configuration_shadow_production_variant_core_dump_config/endpoint_configuration_shadow_production_variant_core_dump_config.dart';
 import '../endpoint_configuration_shadow_production_variant_managed_instance_scaling/endpoint_configuration_shadow_production_variant_managed_instance_scaling.dart';
 import '../endpoint_configuration_shadow_production_variant_routing_config/endpoint_configuration_shadow_production_variant_routing_config.dart';
@@ -126,7 +126,7 @@ class EndpointConfigurationShadowProductionVariant {
     }
     final routingConfigsValue = routingConfigs;
     if (routingConfigsValue != null) {
-      map['routingConfigs'] = Input.encodeList<
+      map['routingConfigs'] = pulumi.Input.encodeList<
           EndpointConfigurationShadowProductionVariantRoutingConfig,
           Map<String, dynamic>>(routingConfigsValue, (value) => value.toMap());
     }
@@ -185,7 +185,7 @@ class EndpointConfigurationShadowProductionVariant {
       modelName: map['modelName'] == null ? null : map['modelName'] as String,
       routingConfigs: map['routingConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EndpointConfigurationShadowProductionVariantRoutingConfig>(
               map['routingConfigs'],
               (value) =>

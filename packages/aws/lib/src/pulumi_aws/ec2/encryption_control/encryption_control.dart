@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../encryption_control_resource_exclusions/encryption_control_resource_exclusions.dart';
 import '../encryption_control_timeouts/encryption_control_timeouts.dart';
 import 'encryption_control_args.dart';
@@ -18,94 +18,95 @@ import 'encryption_control_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/encryptionControl:EncryptionControl example vpcec-12345678901234567
 /// ```
-class EncryptionControl extends CustomResource {
+class EncryptionControl extends pulumi.CustomResource {
   /// Whether to exclude Egress-Only Internet Gateways from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  late final Output<String> egressOnlyInternetGatewayExclusion;
+  late final pulumi.Output<String> egressOnlyInternetGatewayExclusion;
 
   /// Whether to exclude Elastic File System (EFS) from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  late final Output<String> elasticFileSystemExclusion;
+  late final pulumi.Output<String> elasticFileSystemExclusion;
 
   /// Whether to exclude Internet Gateways from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  late final Output<String> internetGatewayExclusion;
+  late final pulumi.Output<String> internetGatewayExclusion;
 
   /// Whether to exclude Lambda Functions from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  late final Output<String> lambdaExclusion;
+  late final pulumi.Output<String> lambdaExclusion;
 
   /// Mode to enable for VPC Encryption Control.
   /// Valid values are `monitor` or `enforce`.
-  late final Output<String> mode;
+  late final pulumi.Output<String> mode;
 
   /// Whether to exclude NAT Gateways from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  late final Output<String> natGatewayExclusion;
+  late final pulumi.Output<String> natGatewayExclusion;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// State of exclusions from encryption enforcement.
   /// Will be `nil` if `mode` is `monitor`.
   /// See `resource_exclusions` below
-  late final Output<EncryptionControlResourceExclusions> resourceExclusions;
+  late final pulumi.Output<EncryptionControlResourceExclusions>
+      resourceExclusions;
 
   /// The current state of the VPC Encryption Control.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// A message providing additional information about the state of the VPC Encryption Control.
-  late final Output<String> stateMessage;
+  late final pulumi.Output<String> stateMessage;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<EncryptionControlTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<EncryptionControlTimeouts?> timeouts;
 
   /// Whether to exclude Virtual Private Gateways from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  late final Output<String> virtualPrivateGatewayExclusion;
+  late final pulumi.Output<String> virtualPrivateGatewayExclusion;
 
   /// The ID of the VPC the VPC Encryption Control is linked to.
   ///
   /// The following arguments are optional:
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   /// Whether to exclude VPC Lattice from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  late final Output<String> vpcLatticeExclusion;
+  late final pulumi.Output<String> vpcLatticeExclusion;
 
   /// Whether to exclude peered VPCs from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  late final Output<String> vpcPeeringExclusion;
+  late final pulumi.Output<String> vpcPeeringExclusion;
 
   EncryptionControl(
     String name, {
     EncryptionControlArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/encryptionControl:EncryptionControl',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.egressOnlyInternetGatewayExclusion =
         registerOutput<String>('egressOnlyInternetGatewayExclusion');

@@ -1,51 +1,51 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../route_request_parameter/route_request_parameter.dart';
 
 /// The set of arguments for Route.
 class RouteArgs {
   /// API identifier.
-  final Input<String> apiId;
+  final pulumi.Input<String> apiId;
 
   /// Boolean whether an API key is required for the route. Defaults to `false`. Supported only for WebSocket APIs.
-  final Input<bool>? apiKeyRequired;
+  final pulumi.Input<bool>? apiKeyRequired;
 
   /// Authorization scopes supported by this route. The scopes are used with a JWT authorizer to authorize the method invocation.
-  final Input<List<String>>? authorizationScopes;
+  final pulumi.Input<List<String>>? authorizationScopes;
 
   /// Authorization type for the route.
   /// For WebSocket APIs, valid values are `NONE` for open access, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer.
   /// For HTTP APIs, valid values are `NONE` for open access, `JWT` for using JSON Web Tokens, `AWS_IAM` for using AWS IAM permissions, and `CUSTOM` for using a Lambda authorizer.
   /// Defaults to `NONE`.
-  final Input<String>? authorizationType;
+  final pulumi.Input<String>? authorizationType;
 
   /// Identifier of the `aws.apigatewayv2.Authorizer` resource to be associated with this route.
-  final Input<String>? authorizerId;
+  final pulumi.Input<String>? authorizerId;
 
   /// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route. Supported only for WebSocket APIs.
-  final Input<String>? modelSelectionExpression;
+  final pulumi.Input<String>? modelSelectionExpression;
 
   /// Operation name for the route. Must be between 1 and 64 characters in length.
-  final Input<String>? operationName;
+  final pulumi.Input<String>? operationName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Request models for the route. Supported only for WebSocket APIs.
-  final Input<Map<String, String>>? requestModels;
+  final pulumi.Input<Map<String, String>>? requestModels;
 
   /// Request parameters for the route. Supported only for WebSocket APIs.
-  final Input<List<RouteRequestParameter>>? requestParameters;
+  final pulumi.Input<List<RouteRequestParameter>>? requestParameters;
 
   /// Route key for the route. For HTTP APIs, the route key can be either `$default`, or a combination of an HTTP method and resource path, for example, `GET /pets`.
-  final Input<String> routeKey;
+  final pulumi.Input<String> routeKey;
 
   /// The [route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route. Supported only for WebSocket APIs.
-  final Input<String>? routeResponseSelectionExpression;
+  final pulumi.Input<String>? routeResponseSelectionExpression;
 
   /// Target for the route, of the form `integrations/`*`IntegrationID`*, where *`IntegrationID`* is the identifier of an `aws.apigatewayv2.Integration` resource.
-  final Input<String>? target;
+  final pulumi.Input<String>? target;
 
   RouteArgs({
     required this.apiId,
@@ -100,12 +100,11 @@ class RouteArgs {
     }
     final requestParametersValue = requestParameters;
     if (requestParametersValue != null) {
-      map['requestParameters'] = Input.mapOptionalInputValue<
+      map['requestParameters'] = pulumi.Input.mapOptionalInputValue<
               List<RouteRequestParameter>, List<Map<String, dynamic>>>(
           requestParametersValue,
-          (value) =>
-              Input.encodeList<RouteRequestParameter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<RouteRequestParameter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['routeKey'] = routeKey;
     final routeResponseSelectionExpressionValue =
@@ -123,25 +122,26 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      apiId: Input.asInput<String>(map['apiId']),
-      apiKeyRequired: Input.asOptionalInput<bool>(map['apiKeyRequired']),
-      authorizationScopes:
-          Input.asOptionalInput<List<String>>(map['authorizationScopes']),
+      apiId: pulumi.Input.asInput<String>(map['apiId']),
+      apiKeyRequired: pulumi.Input.asOptionalInput<bool>(map['apiKeyRequired']),
+      authorizationScopes: pulumi.Input.asOptionalInput<List<String>>(
+          map['authorizationScopes']),
       authorizationType:
-          Input.asOptionalInput<String>(map['authorizationType']),
-      authorizerId: Input.asOptionalInput<String>(map['authorizerId']),
+          pulumi.Input.asOptionalInput<String>(map['authorizationType']),
+      authorizerId: pulumi.Input.asOptionalInput<String>(map['authorizerId']),
       modelSelectionExpression:
-          Input.asOptionalInput<String>(map['modelSelectionExpression']),
-      operationName: Input.asOptionalInput<String>(map['operationName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      requestModels:
-          Input.asOptionalInput<Map<String, String>>(map['requestModels']),
-      requestParameters: Input.asOptionalInput<List<RouteRequestParameter>>(
-          map['requestParameters']),
-      routeKey: Input.asInput<String>(map['routeKey']),
-      routeResponseSelectionExpression: Input.asOptionalInput<String>(
+          pulumi.Input.asOptionalInput<String>(map['modelSelectionExpression']),
+      operationName: pulumi.Input.asOptionalInput<String>(map['operationName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      requestModels: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['requestModels']),
+      requestParameters:
+          pulumi.Input.asOptionalInput<List<RouteRequestParameter>>(
+              map['requestParameters']),
+      routeKey: pulumi.Input.asInput<String>(map['routeKey']),
+      routeResponseSelectionExpression: pulumi.Input.asOptionalInput<String>(
           map['routeResponseSelectionExpression']),
-      target: Input.asOptionalInput<String>(map['target']),
+      target: pulumi.Input.asOptionalInput<String>(map['target']),
     );
   }
 }

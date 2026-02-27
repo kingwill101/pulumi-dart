@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_detector_feature/get_detector_feature.dart';
 
 /// Result data returned by getDetector.
@@ -40,7 +40,7 @@ class GetDetectorResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['features'] =
-        Input.encodeList<GetDetectorFeature, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDetectorFeature, Map<String, dynamic>>(
             features, (value) => value.toMap());
     map['findingPublishingFrequency'] = findingPublishingFrequency;
     map['id'] = id;
@@ -54,7 +54,7 @@ class GetDetectorResult {
   factory GetDetectorResult.fromMap(Map<String, dynamic> map) {
     return GetDetectorResult(
       arn: map['arn'] as String,
-      features: Input.decodeList<GetDetectorFeature>(
+      features: pulumi.Input.decodeList<GetDetectorFeature>(
           map['features'],
           (value) => GetDetectorFeature.fromMap(
               (value as Map).cast<String, dynamic>())),

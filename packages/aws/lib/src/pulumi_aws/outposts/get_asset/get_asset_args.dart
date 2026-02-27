@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAsset.
 class GetAssetArgs {
   /// Outpost ARN.
-  final Input<String> arn;
+  final pulumi.Input<String> arn;
 
   /// ID of the asset.
-  final Input<String> assetId;
+  final pulumi.Input<String> assetId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetAssetArgs({
     required this.arn,
@@ -32,9 +32,9 @@ class GetAssetArgs {
 
   factory GetAssetArgs.fromMap(Map<String, dynamic> map) {
     return GetAssetArgs(
-      arn: Input.asInput<String>(map['arn']),
-      assetId: Input.asInput<String>(map['assetId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      arn: pulumi.Input.asInput<String>(map['arn']),
+      assetId: pulumi.Input.asInput<String>(map['assetId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

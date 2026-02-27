@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../trust_provider_device_options/trust_provider_device_options.dart';
 import '../trust_provider_native_application_oidc_options/trust_provider_native_application_oidc_options.dart';
 import '../trust_provider_oidc_options/trust_provider_oidc_options.dart';
@@ -9,38 +9,38 @@ import '../trust_provider_sse_specification/trust_provider_sse_specification.dar
 /// The set of arguments for TrustProvider.
 class TrustProviderArgs {
   /// A description for the AWS Verified Access trust provider.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// A block of options for device identity based trust providers.
-  final Input<TrustProviderDeviceOptions>? deviceOptions;
+  final pulumi.Input<TrustProviderDeviceOptions>? deviceOptions;
 
   /// The type of device-based trust provider.
-  final Input<String>? deviceTrustProviderType;
+  final pulumi.Input<String>? deviceTrustProviderType;
 
   /// The OpenID Connect details for an Native Application OIDC, user-identity based trust provider.
-  final Input<TrustProviderNativeApplicationOidcOptions>?
+  final pulumi.Input<TrustProviderNativeApplicationOidcOptions>?
       nativeApplicationOidcOptions;
 
   /// The OpenID Connect details for an oidc-type, user-identity based trust provider.
-  final Input<TrustProviderOidcOptions>? oidcOptions;
+  final pulumi.Input<TrustProviderOidcOptions>? oidcOptions;
 
   /// The identifier to be used when working with policy rules.
-  final Input<String> policyReferenceName;
+  final pulumi.Input<String> policyReferenceName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
-  final Input<TrustProviderSseSpecification>? sseSpecification;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<TrustProviderSseSpecification>? sseSpecification;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The type of trust provider can be either user or device-based.
   ///
   /// The following arguments are optional:
-  final Input<String> trustProviderType;
+  final pulumi.Input<String> trustProviderType;
 
   /// The type of user-based trust provider.
-  final Input<String>? userTrustProviderType;
+  final pulumi.Input<String>? userTrustProviderType;
 
   TrustProviderArgs({
     this.description,
@@ -64,7 +64,7 @@ class TrustProviderArgs {
     }
     final deviceOptionsValue = deviceOptions;
     if (deviceOptionsValue != null) {
-      map['deviceOptions'] = Input.mapOptionalInputValue<
+      map['deviceOptions'] = pulumi.Input.mapOptionalInputValue<
           TrustProviderDeviceOptions,
           Map<String, dynamic>>(deviceOptionsValue, (value) => value.toMap());
     }
@@ -74,13 +74,14 @@ class TrustProviderArgs {
     }
     final nativeApplicationOidcOptionsValue = nativeApplicationOidcOptions;
     if (nativeApplicationOidcOptionsValue != null) {
-      map['nativeApplicationOidcOptions'] = Input.mapOptionalInputValue<
+      map['nativeApplicationOidcOptions'] = pulumi.Input.mapOptionalInputValue<
               TrustProviderNativeApplicationOidcOptions, Map<String, dynamic>>(
           nativeApplicationOidcOptionsValue, (value) => value.toMap());
     }
     final oidcOptionsValue = oidcOptions;
     if (oidcOptionsValue != null) {
-      map['oidcOptions'] = Input.mapOptionalInputValue<TrustProviderOidcOptions,
+      map['oidcOptions'] = pulumi.Input.mapOptionalInputValue<
+          TrustProviderOidcOptions,
           Map<String, dynamic>>(oidcOptionsValue, (value) => value.toMap());
     }
     map['policyReferenceName'] = policyReferenceName;
@@ -90,7 +91,7 @@ class TrustProviderArgs {
     }
     final sseSpecificationValue = sseSpecification;
     if (sseSpecificationValue != null) {
-      map['sseSpecification'] = Input.mapOptionalInputValue<
+      map['sseSpecification'] = pulumi.Input.mapOptionalInputValue<
               TrustProviderSseSpecification, Map<String, dynamic>>(
           sseSpecificationValue, (value) => value.toMap());
     }
@@ -108,24 +109,26 @@ class TrustProviderArgs {
 
   factory TrustProviderArgs.fromMap(Map<String, dynamic> map) {
     return TrustProviderArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      deviceOptions: Input.asOptionalInput<TrustProviderDeviceOptions>(
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      deviceOptions: pulumi.Input.asOptionalInput<TrustProviderDeviceOptions>(
           map['deviceOptions']),
       deviceTrustProviderType:
-          Input.asOptionalInput<String>(map['deviceTrustProviderType']),
-      nativeApplicationOidcOptions:
-          Input.asOptionalInput<TrustProviderNativeApplicationOidcOptions>(
-              map['nativeApplicationOidcOptions']),
-      oidcOptions:
-          Input.asOptionalInput<TrustProviderOidcOptions>(map['oidcOptions']),
-      policyReferenceName: Input.asInput<String>(map['policyReferenceName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      sseSpecification: Input.asOptionalInput<TrustProviderSseSpecification>(
-          map['sseSpecification']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      trustProviderType: Input.asInput<String>(map['trustProviderType']),
+          pulumi.Input.asOptionalInput<String>(map['deviceTrustProviderType']),
+      nativeApplicationOidcOptions: pulumi.Input.asOptionalInput<
+              TrustProviderNativeApplicationOidcOptions>(
+          map['nativeApplicationOidcOptions']),
+      oidcOptions: pulumi.Input.asOptionalInput<TrustProviderOidcOptions>(
+          map['oidcOptions']),
+      policyReferenceName:
+          pulumi.Input.asInput<String>(map['policyReferenceName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sseSpecification:
+          pulumi.Input.asOptionalInput<TrustProviderSseSpecification>(
+              map['sseSpecification']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      trustProviderType: pulumi.Input.asInput<String>(map['trustProviderType']),
       userTrustProviderType:
-          Input.asOptionalInput<String>(map['userTrustProviderType']),
+          pulumi.Input.asOptionalInput<String>(map['userTrustProviderType']),
     );
   }
 }

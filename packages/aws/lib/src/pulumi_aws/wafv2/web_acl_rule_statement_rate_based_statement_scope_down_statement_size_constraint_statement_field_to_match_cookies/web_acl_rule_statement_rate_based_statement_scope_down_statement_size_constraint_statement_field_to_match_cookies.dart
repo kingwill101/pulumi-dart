@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_rate_based_statement_scope_down_statement_size_constraint_statement_field_to_match_cookies_match_pattern/web_acl_rule_statement_rate_based_statement_scope_down_statement_size_constraint_statement_field_to_match_cookies_match_pattern.dart';
 
 class WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchCookies {
@@ -23,7 +23,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintState
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['matchPatterns'] = Input.encodeList<
+    map['matchPatterns'] = pulumi.Input.encodeList<
         WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchCookiesMatchPattern,
         Map<String, dynamic>>(matchPatterns, (value) => value.toMap());
     map['matchScope'] = matchScope;
@@ -34,7 +34,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintState
   factory WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchCookies.fromMap(
       Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchCookies(
-      matchPatterns: Input.decodeList<
+      matchPatterns: pulumi.Input.decodeList<
               WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchCookiesMatchPattern>(
           map['matchPatterns'],
           (value) =>

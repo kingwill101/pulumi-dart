@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_resolver_firewall_rules_firewall_rule/get_resolver_firewall_rules_firewall_rule.dart';
 
 /// Result data returned by getResolverFirewallRules.
@@ -37,7 +37,7 @@ class GetResolverFirewallRulesResult {
       map['action'] = actionValue;
     }
     map['firewallRuleGroupId'] = firewallRuleGroupId;
-    map['firewallRules'] = Input.encodeList<
+    map['firewallRules'] = pulumi.Input.encodeList<
         GetResolverFirewallRulesFirewallRule,
         Map<String, dynamic>>(firewallRules, (value) => value.toMap());
     map['id'] = id;
@@ -53,10 +53,11 @@ class GetResolverFirewallRulesResult {
     return GetResolverFirewallRulesResult(
       action: map['action'] == null ? null : map['action'] as String,
       firewallRuleGroupId: map['firewallRuleGroupId'] as String,
-      firewallRules: Input.decodeList<GetResolverFirewallRulesFirewallRule>(
-          map['firewallRules'],
-          (value) => GetResolverFirewallRulesFirewallRule.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      firewallRules:
+          pulumi.Input.decodeList<GetResolverFirewallRulesFirewallRule>(
+              map['firewallRules'],
+              (value) => GetResolverFirewallRulesFirewallRule.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       priority: map['priority'] == null ? null : map['priority'] as int,
       region: map['region'] as String,

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_pool_provider_principal_tag_args.dart';
 
 /// Provides an AWS Cognito Identity Principal Mapping.
@@ -14,31 +14,31 @@ import 'identity_pool_provider_principal_tag_args.dart';
 /// ```sh
 /// $ pulumi import aws:cognito/identityPoolProviderPrincipalTag:IdentityPoolProviderPrincipalTag example us-west-2_abc123:CorpAD
 /// ```
-class IdentityPoolProviderPrincipalTag extends CustomResource {
+class IdentityPoolProviderPrincipalTag extends pulumi.CustomResource {
   /// An identity pool ID.
-  late final Output<String> identityPoolId;
+  late final pulumi.Output<String> identityPoolId;
 
   /// The name of the identity provider.
-  late final Output<String> identityProviderName;
+  late final pulumi.Output<String> identityProviderName;
 
   /// String to string map of variables.
-  late final Output<Map<String, String>?> principalTags;
+  late final pulumi.Output<Map<String, String>?> principalTags;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// use default (username and clientID) attribute mappings.
-  late final Output<bool?> useDefaults;
+  late final pulumi.Output<bool?> useDefaults;
 
   IdentityPoolProviderPrincipalTag(
     String name, {
     IdentityPoolProviderPrincipalTagArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cognito/identityPoolProviderPrincipalTag:IdentityPoolProviderPrincipalTag',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.identityPoolId = registerOutput<String>('identityPoolId');
     this.identityProviderName = registerOutput<String>('identityProviderName');

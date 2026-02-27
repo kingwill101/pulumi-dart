@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_dedicated_ip_pool_dedicated_ip/get_dedicated_ip_pool_dedicated_ip.dart';
 
 /// Result data returned by getDedicatedIpPool.
@@ -35,9 +35,8 @@ class GetDedicatedIpPoolResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['dedicatedIps'] =
-        Input.encodeList<GetDedicatedIpPoolDedicatedIp, Map<String, dynamic>>(
-            dedicatedIps, (value) => value.toMap());
+    map['dedicatedIps'] = pulumi.Input.encodeList<GetDedicatedIpPoolDedicatedIp,
+        Map<String, dynamic>>(dedicatedIps, (value) => value.toMap());
     map['id'] = id;
     map['poolName'] = poolName;
     map['region'] = region;
@@ -49,7 +48,7 @@ class GetDedicatedIpPoolResult {
   factory GetDedicatedIpPoolResult.fromMap(Map<String, dynamic> map) {
     return GetDedicatedIpPoolResult(
       arn: map['arn'] as String,
-      dedicatedIps: Input.decodeList<GetDedicatedIpPoolDedicatedIp>(
+      dedicatedIps: pulumi.Input.decodeList<GetDedicatedIpPoolDedicatedIp>(
           map['dedicatedIps'],
           (value) => GetDedicatedIpPoolDedicatedIp.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../maintenance_window_target_target/maintenance_window_target_target.dart';
 import 'maintenance_window_target_args.dart';
 
@@ -34,38 +34,38 @@ import 'maintenance_window_target_args.dart';
 /// ```sh
 /// $ pulumi import aws:ssm/maintenanceWindowTarget:MaintenanceWindowTarget example mw-0c50858d01EXAMPLE/23639a0b-ddbc-4bca-9e72-78d96EXAMPLE
 /// ```
-class MaintenanceWindowTarget extends CustomResource {
+class MaintenanceWindowTarget extends pulumi.CustomResource {
   /// The description of the maintenance window target.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The name of the maintenance window target.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
-  late final Output<String?> ownerInformation;
+  late final pulumi.Output<String?> ownerInformation;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The type of target being registered with the Maintenance Window. Possible values are `INSTANCE` and `RESOURCE_GROUP`.
-  late final Output<String> resourceType;
+  late final pulumi.Output<String> resourceType;
 
   /// The targets to register with the maintenance window. In other words, the instances to run commands on when the maintenance window runs. You can specify targets using instance IDs, resource group names, or tags that have been applied to instances. For more information about these examples formats see
   /// (https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html)
-  late final Output<List<MaintenanceWindowTargetTarget>> targets;
+  late final pulumi.Output<List<MaintenanceWindowTargetTarget>> targets;
 
   /// The Id of the maintenance window to register the target with.
-  late final Output<String> windowId;
+  late final pulumi.Output<String> windowId;
 
   MaintenanceWindowTarget(
     String name, {
     MaintenanceWindowTargetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssm/maintenanceWindowTarget:MaintenanceWindowTarget',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

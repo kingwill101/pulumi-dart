@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_key_pair_args.dart';
 import 'get_key_pair_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_key_pair_result.dart';
 /// The following example shows how to get a EC2 Key Pair including the public key material from its name.
 Future<GetKeyPairResult> getKeyPair(
   GetKeyPairArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getKeyPair:getKeyPair',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKeyPairResult.fromMap(result);
 }

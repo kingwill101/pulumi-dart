@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ami_filter/get_ami_filter.dart';
 
 /// Arguments for getAmi.
@@ -9,23 +9,23 @@ class GetAmiArgs {
   /// filters and `most_recent` set to `true`, a third party may introduce a new image which
   /// will be returned by this data source. Consider filtering by owner or image ID rather
   /// than setting this argument.
-  final Input<bool>? allowUnsafeFilter;
+  final pulumi.Input<bool>? allowUnsafeFilter;
 
   /// Limit search to users with *explicit* launch permission on
   /// the image. Valid items are the numeric account ID or `self`.
-  final Input<List<String>>? executableUsers;
+  final pulumi.Input<List<String>>? executableUsers;
 
   /// One or more name/value pairs to filter off of. There are
   /// several valid keys, for a full reference, check out
   /// [describe-images in the AWS CLI reference][1].
-  final Input<List<GetAmiFilter>>? filters;
+  final pulumi.Input<List<GetAmiFilter>>? filters;
 
   /// If true, all deprecated AMIs are included in the response. If false, no deprecated AMIs are included in the response. If no value is specified, the default value is false.
-  final Input<bool>? includeDeprecated;
+  final pulumi.Input<bool>? includeDeprecated;
 
   /// If more than one result is returned, use the most
   /// recent AMI.
-  final Input<bool>? mostRecent;
+  final pulumi.Input<bool>? mostRecent;
 
   /// Regex string to apply to the AMI list returned
   /// by AWS. This allows more advanced filtering not supported from the AWS API. This
@@ -37,21 +37,21 @@ class GetAmiArgs {
   /// this call will fail. Ensure that your search is specific enough to return
   /// a single AMI ID only, or use `most_recent` to choose the most recent one. If
   /// you want to match multiple AMIs, use the `aws.ec2.getAmiIds` data source instead.
-  final Input<String>? nameRegex;
+  final pulumi.Input<String>? nameRegex;
 
   /// List of AMI owners to limit search. Valid values: an AWS account ID, `self` (the current account), or an AWS owner alias (e.g., `amazon`, `aws-marketplace`, `microsoft`).
-  final Input<List<String>>? owners;
+  final pulumi.Input<List<String>>? owners;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Any tags assigned to the image.
   /// * `tags.#.key` - Key name of the tag.
   /// * `tags.#.value` - Value of the tag.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// (Optional) Base64 representation of the non-volatile UEFI variable store.
-  final Input<String>? uefiData;
+  final pulumi.Input<String>? uefiData;
 
   GetAmiArgs({
     this.allowUnsafeFilter,
@@ -78,11 +78,12 @@ class GetAmiArgs {
     }
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetAmiFilter>,
+      map['filters'] = pulumi.Input.mapOptionalInputValue<List<GetAmiFilter>,
               List<Map<String, dynamic>>>(
           filtersValue,
-          (value) => Input.encodeList<GetAmiFilter, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<GetAmiFilter, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final includeDeprecatedValue = includeDeprecated;
     if (includeDeprecatedValue != null) {
@@ -117,17 +118,19 @@ class GetAmiArgs {
 
   factory GetAmiArgs.fromMap(Map<String, dynamic> map) {
     return GetAmiArgs(
-      allowUnsafeFilter: Input.asOptionalInput<bool>(map['allowUnsafeFilter']),
+      allowUnsafeFilter:
+          pulumi.Input.asOptionalInput<bool>(map['allowUnsafeFilter']),
       executableUsers:
-          Input.asOptionalInput<List<String>>(map['executableUsers']),
-      filters: Input.asOptionalInput<List<GetAmiFilter>>(map['filters']),
-      includeDeprecated: Input.asOptionalInput<bool>(map['includeDeprecated']),
-      mostRecent: Input.asOptionalInput<bool>(map['mostRecent']),
-      nameRegex: Input.asOptionalInput<String>(map['nameRegex']),
-      owners: Input.asOptionalInput<List<String>>(map['owners']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      uefiData: Input.asOptionalInput<String>(map['uefiData']),
+          pulumi.Input.asOptionalInput<List<String>>(map['executableUsers']),
+      filters: pulumi.Input.asOptionalInput<List<GetAmiFilter>>(map['filters']),
+      includeDeprecated:
+          pulumi.Input.asOptionalInput<bool>(map['includeDeprecated']),
+      mostRecent: pulumi.Input.asOptionalInput<bool>(map['mostRecent']),
+      nameRegex: pulumi.Input.asOptionalInput<String>(map['nameRegex']),
+      owners: pulumi.Input.asOptionalInput<List<String>>(map['owners']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      uefiData: pulumi.Input.asOptionalInput<String>(map['uefiData']),
     );
   }
 }

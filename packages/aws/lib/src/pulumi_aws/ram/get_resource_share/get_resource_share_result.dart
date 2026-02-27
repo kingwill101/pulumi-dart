@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_resource_share_filter/get_resource_share_filter.dart';
 
 /// Result data returned by getResourceShare.
@@ -48,7 +48,7 @@ class GetResourceShareResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetResourceShareFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetResourceShareFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -71,7 +71,7 @@ class GetResourceShareResult {
       arn: map['arn'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetResourceShareFilter>(
+          : pulumi.Input.decodeList<GetResourceShareFilter>(
               map['filters'],
               (value) => GetResourceShareFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

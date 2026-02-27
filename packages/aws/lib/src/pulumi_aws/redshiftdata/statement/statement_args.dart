@@ -1,39 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../statement_parameter/statement_parameter.dart';
 
 /// The set of arguments for Statement.
 class StatementArgs {
   /// The cluster identifier. This parameter is required when connecting to a cluster and authenticating using either Secrets Manager or temporary credentials.
-  final Input<String>? clusterIdentifier;
+  final pulumi.Input<String>? clusterIdentifier;
 
   /// The name of the database.
-  final Input<String> database;
+  final pulumi.Input<String> database;
 
   /// The database user name.
-  final Input<String>? dbUser;
-  final Input<List<StatementParameter>>? parameters;
+  final pulumi.Input<String>? dbUser;
+  final pulumi.Input<List<StatementParameter>>? parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The name or ARN of the secret that enables access to the database.
-  final Input<String>? secretArn;
+  final pulumi.Input<String>? secretArn;
 
   /// The SQL statement text to run.
   ///
   /// The following arguments are optional:
-  final Input<String> sql;
+  final pulumi.Input<String> sql;
 
   /// The name of the SQL statement. You can name the SQL statement when you create it to identify the query.
-  final Input<String>? statementName;
+  final pulumi.Input<String>? statementName;
 
   /// A value that indicates whether to send an event to the Amazon EventBridge event bus after the SQL statement runs.
-  final Input<bool>? withEvent;
+  final pulumi.Input<bool>? withEvent;
 
   /// The serverless workgroup name. This parameter is required when connecting to a serverless workgroup and authenticating using either Secrets Manager or temporary credentials.
-  final Input<String>? workgroupName;
+  final pulumi.Input<String>? workgroupName;
 
   StatementArgs({
     this.clusterIdentifier,
@@ -61,11 +61,12 @@ class StatementArgs {
     }
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.mapOptionalInputValue<List<StatementParameter>,
-              List<Map<String, dynamic>>>(
+      map['parameters'] = pulumi.Input.mapOptionalInputValue<
+              List<StatementParameter>, List<Map<String, dynamic>>>(
           parametersValue,
-          (value) => Input.encodeList<StatementParameter, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<StatementParameter, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final regionValue = region;
     if (regionValue != null) {
@@ -94,17 +95,17 @@ class StatementArgs {
   factory StatementArgs.fromMap(Map<String, dynamic> map) {
     return StatementArgs(
       clusterIdentifier:
-          Input.asOptionalInput<String>(map['clusterIdentifier']),
-      database: Input.asInput<String>(map['database']),
-      dbUser: Input.asOptionalInput<String>(map['dbUser']),
-      parameters:
-          Input.asOptionalInput<List<StatementParameter>>(map['parameters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      secretArn: Input.asOptionalInput<String>(map['secretArn']),
-      sql: Input.asInput<String>(map['sql']),
-      statementName: Input.asOptionalInput<String>(map['statementName']),
-      withEvent: Input.asOptionalInput<bool>(map['withEvent']),
-      workgroupName: Input.asOptionalInput<String>(map['workgroupName']),
+          pulumi.Input.asOptionalInput<String>(map['clusterIdentifier']),
+      database: pulumi.Input.asInput<String>(map['database']),
+      dbUser: pulumi.Input.asOptionalInput<String>(map['dbUser']),
+      parameters: pulumi.Input.asOptionalInput<List<StatementParameter>>(
+          map['parameters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      secretArn: pulumi.Input.asOptionalInput<String>(map['secretArn']),
+      sql: pulumi.Input.asInput<String>(map['sql']),
+      statementName: pulumi.Input.asOptionalInput<String>(map['statementName']),
+      withEvent: pulumi.Input.asOptionalInput<bool>(map['withEvent']),
+      workgroupName: pulumi.Input.asOptionalInput<String>(map['workgroupName']),
     );
   }
 }

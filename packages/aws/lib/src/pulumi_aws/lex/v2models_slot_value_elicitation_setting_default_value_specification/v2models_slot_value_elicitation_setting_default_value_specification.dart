@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_slot_value_elicitation_setting_default_value_specification_default_value_list/v2models_slot_value_elicitation_setting_default_value_specification_default_value_list.dart';
 
 class V2modelsSlotValueElicitationSettingDefaultValueSpecification {
@@ -17,7 +17,7 @@ class V2modelsSlotValueElicitationSettingDefaultValueSpecification {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['defaultValueLists'] = Input.encodeList<
+    map['defaultValueLists'] = pulumi.Input.encodeList<
         V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList,
         Map<String, dynamic>>(defaultValueLists, (value) => value.toMap());
     return map;
@@ -26,7 +26,7 @@ class V2modelsSlotValueElicitationSettingDefaultValueSpecification {
   factory V2modelsSlotValueElicitationSettingDefaultValueSpecification.fromMap(
       Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingDefaultValueSpecification(
-      defaultValueLists: Input.decodeList<
+      defaultValueLists: pulumi.Input.decodeList<
               V2modelsSlotValueElicitationSettingDefaultValueSpecificationDefaultValueList>(
           map['defaultValueLists'],
           (value) =>

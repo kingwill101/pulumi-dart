@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lifecycle_hook_args.dart';
 
 /// Provides an AutoScaling Lifecycle Hook resource.
@@ -26,43 +26,43 @@ import 'lifecycle_hook_args.dart';
 /// ```sh
 /// $ pulumi import aws:autoscaling/lifecycleHook:LifecycleHook test-lifecycle-hook asg-name/lifecycle-hook-name
 /// ```
-class LifecycleHook extends CustomResource {
+class LifecycleHook extends pulumi.CustomResource {
   /// Name of the Auto Scaling group to which you want to assign the lifecycle hook
-  late final Output<String> autoscalingGroupName;
+  late final pulumi.Output<String> autoscalingGroupName;
 
   /// Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. The value for this parameter can be either CONTINUE or ABANDON. The default value for this parameter is ABANDON.
-  late final Output<String> defaultResult;
+  late final pulumi.Output<String> defaultResult;
 
   /// Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the DefaultResult parameter
-  late final Output<int?> heartbeatTimeout;
+  late final pulumi.Output<int?> heartbeatTimeout;
 
   /// Instance state to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see [describe-lifecycle-hook-types](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/describe-lifecycle-hook-types.html#examples)
-  late final Output<String> lifecycleTransition;
+  late final pulumi.Output<String> lifecycleTransition;
 
   /// Name of the lifecycle hook.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Contains additional information that you want to include any time Auto Scaling sends a message to the notification target.
-  late final Output<String?> notificationMetadata;
+  late final pulumi.Output<String?> notificationMetadata;
 
   /// ARN of the notification target that Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This ARN target can be either an SQS queue, an SNS topic, or a Lambda function.
-  late final Output<String?> notificationTargetArn;
+  late final pulumi.Output<String?> notificationTargetArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.
-  late final Output<String?> roleArn;
+  late final pulumi.Output<String?> roleArn;
 
   LifecycleHook(
     String name, {
     LifecycleHookArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:autoscaling/lifecycleHook:LifecycleHook',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     this.defaultResult = registerOutput<String>('defaultResult');

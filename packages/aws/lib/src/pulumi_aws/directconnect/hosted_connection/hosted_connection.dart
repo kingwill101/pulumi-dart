@@ -1,65 +1,65 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hosted_connection_args.dart';
 
 /// Provides a hosted connection on the specified interconnect or a link aggregation group (LAG) of interconnects. Intended for use by AWS Direct Connect Partners only.
-class HostedConnection extends CustomResource {
+class HostedConnection extends pulumi.CustomResource {
   /// The Direct Connect endpoint on which the physical connection terminates.
-  late final Output<String> awsDevice;
+  late final pulumi.Output<String> awsDevice;
 
   /// The bandwidth of the connection. Valid values for dedicated connections: 1Gbps, 10Gbps. Valid values for hosted connections: 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, 10Gbps, and 25Gbps. Case sensitive. Refer to the AWS Direct Connection supported bandwidths for [Hosted Connections](https://docs.aws.amazon.com/directconnect/latest/UserGuide/hosted_connection.html).
-  late final Output<String> bandwidth;
+  late final pulumi.Output<String> bandwidth;
 
   /// The ID of the interconnect or LAG.
-  late final Output<String> connectionId;
+  late final pulumi.Output<String> connectionId;
 
   /// The AWS Region where the connection is located.
-  late final Output<String> connectionRegion;
+  late final pulumi.Output<String> connectionRegion;
 
   /// Indicates whether the connection supports a secondary BGP peer in the same address family (IPv4/IPv6).
-  late final Output<String> hasLogicalRedundancy;
+  late final pulumi.Output<String> hasLogicalRedundancy;
 
   /// Boolean value representing if jumbo frames have been enabled for this connection.
-  late final Output<bool> jumboFrameCapable;
+  late final pulumi.Output<bool> jumboFrameCapable;
 
   /// The ID of the LAG.
-  late final Output<String> lagId;
+  late final pulumi.Output<String> lagId;
 
   /// The time of the most recent call to [DescribeLoa](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_DescribeLoa.html) for this connection.
-  late final Output<String> loaIssueTime;
+  late final pulumi.Output<String> loaIssueTime;
 
   /// The location of the connection.
-  late final Output<String> location;
+  late final pulumi.Output<String> location;
 
   /// The name of the connection.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ID of the AWS account of the customer for the connection.
-  late final Output<String> ownerAccountId;
+  late final pulumi.Output<String> ownerAccountId;
 
   /// The name of the AWS Direct Connect service provider associated with the connection.
-  late final Output<String> partnerName;
+  late final pulumi.Output<String> partnerName;
 
   /// The name of the service provider associated with the connection.
-  late final Output<String> providerName;
+  late final pulumi.Output<String> providerName;
 
   /// (**Deprecated**) The AWS Region where the connection is located. Use `connection_region` instead.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The state of the connection. Possible values include: ordering, requested, pending, available, down, deleting, deleted, rejected, unknown. See [AllocateHostedConnection](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_AllocateHostedConnection.html) for a description of each connection state.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The dedicated VLAN provisioned to the hosted connection.
-  late final Output<int> vlan;
+  late final pulumi.Output<int> vlan;
 
   HostedConnection(
     String name, {
     HostedConnectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:directconnect/hostedConnection:HostedConnection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.awsDevice = registerOutput<String>('awsDevice');
     this.bandwidth = registerOutput<String>('bandwidth');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scheduled_query_last_run_summary_error_report_location_s3_report_location/scheduled_query_last_run_summary_error_report_location_s3_report_location.dart';
 
 class ScheduledQueryLastRunSummaryErrorReportLocation {
@@ -16,7 +16,7 @@ class ScheduledQueryLastRunSummaryErrorReportLocation {
     final map = <String, dynamic>{};
     final s3ReportLocationsValue = s3ReportLocations;
     if (s3ReportLocationsValue != null) {
-      map['s3ReportLocations'] = Input.encodeList<
+      map['s3ReportLocations'] = pulumi.Input.encodeList<
               ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation,
               Map<String, dynamic>>(
           s3ReportLocationsValue, (value) => value.toMap());
@@ -29,7 +29,7 @@ class ScheduledQueryLastRunSummaryErrorReportLocation {
     return ScheduledQueryLastRunSummaryErrorReportLocation(
       s3ReportLocations: map['s3ReportLocations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation>(
               map['s3ReportLocations'],
               (value) =>

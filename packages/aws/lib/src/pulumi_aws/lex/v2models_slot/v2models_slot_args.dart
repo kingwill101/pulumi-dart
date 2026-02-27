@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_slot_multiple_values_setting/v2models_slot_multiple_values_setting.dart';
 import '../v2models_slot_obfuscation_setting/v2models_slot_obfuscation_setting.dart';
 import '../v2models_slot_sub_slot_setting/v2models_slot_sub_slot_setting.dart';
@@ -10,41 +10,42 @@ import '../v2models_slot_value_elicitation_setting/v2models_slot_value_elicitati
 /// The set of arguments for V2modelsSlot.
 class V2modelsSlotArgs {
   /// Identifier of the bot associated with the slot.
-  final Input<String> botId;
+  final pulumi.Input<String> botId;
 
   /// Version of the bot associated with the slot.
-  final Input<String> botVersion;
+  final pulumi.Input<String> botVersion;
 
   /// Description of the slot.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Identifier of the intent that contains the slot.
-  final Input<String> intentId;
+  final pulumi.Input<String> intentId;
 
   /// Identifier of the language and locale that the slot will be used in.
-  final Input<String> localeId;
+  final pulumi.Input<String> localeId;
 
   /// Whether the slot returns multiple values in one response.
   /// See the `multiple_values_setting` argument reference below.
-  final Input<List<V2modelsSlotMultipleValuesSetting>>? multipleValuesSettings;
+  final pulumi.Input<List<V2modelsSlotMultipleValuesSetting>>?
+      multipleValuesSettings;
 
   /// Name of the slot.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Determines how slot values are used in Amazon CloudWatch logs.
   /// See the `obfuscation_setting` argument reference below.
-  final Input<List<V2modelsSlotObfuscationSetting>>? obfuscationSettings;
+  final pulumi.Input<List<V2modelsSlotObfuscationSetting>>? obfuscationSettings;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Unique identifier for the slot type associated with this slot.
-  final Input<String>? slotTypeId;
+  final pulumi.Input<String>? slotTypeId;
 
   /// Specifications for the constituent sub slots and the expression for the composite slot.
   /// See the `sub_slot_setting` argument reference below.
-  final Input<List<V2modelsSlotSubSlotSetting>>? subSlotSettings;
-  final Input<V2modelsSlotTimeouts>? timeouts;
+  final pulumi.Input<List<V2modelsSlotSubSlotSetting>>? subSlotSettings;
+  final pulumi.Input<V2modelsSlotTimeouts>? timeouts;
 
   /// Prompts that Amazon Lex sends to the user to elicit a response that provides the value for the slot.
   /// If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default `prompt_attempts_specification` blocks for the initial prompt (map key `Initial`) and each retry attempt (map keys `Retry1`, `Retry2`, etc.).
@@ -53,7 +54,8 @@ class V2modelsSlotArgs {
   /// See the `value_elicitation_setting` argument reference below.
   ///
   /// The following arguments are optional:
-  final Input<V2modelsSlotValueElicitationSetting> valueElicitationSetting;
+  final pulumi.Input<V2modelsSlotValueElicitationSetting>
+      valueElicitationSetting;
 
   V2modelsSlotArgs({
     required this.botId,
@@ -83,11 +85,11 @@ class V2modelsSlotArgs {
     map['localeId'] = localeId;
     final multipleValuesSettingsValue = multipleValuesSettings;
     if (multipleValuesSettingsValue != null) {
-      map['multipleValuesSettings'] = Input.mapOptionalInputValue<
+      map['multipleValuesSettings'] = pulumi.Input.mapOptionalInputValue<
               List<V2modelsSlotMultipleValuesSetting>,
               List<Map<String, dynamic>>>(
           multipleValuesSettingsValue,
-          (value) => Input.encodeList<V2modelsSlotMultipleValuesSetting,
+          (value) => pulumi.Input.encodeList<V2modelsSlotMultipleValuesSetting,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final nameValue = name;
@@ -96,10 +98,10 @@ class V2modelsSlotArgs {
     }
     final obfuscationSettingsValue = obfuscationSettings;
     if (obfuscationSettingsValue != null) {
-      map['obfuscationSettings'] = Input.mapOptionalInputValue<
+      map['obfuscationSettings'] = pulumi.Input.mapOptionalInputValue<
               List<V2modelsSlotObfuscationSetting>, List<Map<String, dynamic>>>(
           obfuscationSettingsValue,
-          (value) => Input.encodeList<V2modelsSlotObfuscationSetting,
+          (value) => pulumi.Input.encodeList<V2modelsSlotObfuscationSetting,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final regionValue = region;
@@ -112,18 +114,18 @@ class V2modelsSlotArgs {
     }
     final subSlotSettingsValue = subSlotSettings;
     if (subSlotSettingsValue != null) {
-      map['subSlotSettings'] = Input.mapOptionalInputValue<
+      map['subSlotSettings'] = pulumi.Input.mapOptionalInputValue<
               List<V2modelsSlotSubSlotSetting>, List<Map<String, dynamic>>>(
           subSlotSettingsValue,
-          (value) => Input.encodeList<V2modelsSlotSubSlotSetting,
+          (value) => pulumi.Input.encodeList<V2modelsSlotSubSlotSetting,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<V2modelsSlotTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<V2modelsSlotTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
-    map['valueElicitationSetting'] = Input.mapInputValue<
+    map['valueElicitationSetting'] = pulumi.Input.mapInputValue<
             V2modelsSlotValueElicitationSetting, Map<String, dynamic>>(
         valueElicitationSetting, (value) => value.toMap());
     return map;
@@ -131,25 +133,27 @@ class V2modelsSlotArgs {
 
   factory V2modelsSlotArgs.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotArgs(
-      botId: Input.asInput<String>(map['botId']),
-      botVersion: Input.asInput<String>(map['botVersion']),
-      description: Input.asOptionalInput<String>(map['description']),
-      intentId: Input.asInput<String>(map['intentId']),
-      localeId: Input.asInput<String>(map['localeId']),
+      botId: pulumi.Input.asInput<String>(map['botId']),
+      botVersion: pulumi.Input.asInput<String>(map['botVersion']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      intentId: pulumi.Input.asInput<String>(map['intentId']),
+      localeId: pulumi.Input.asInput<String>(map['localeId']),
       multipleValuesSettings:
-          Input.asOptionalInput<List<V2modelsSlotMultipleValuesSetting>>(
+          pulumi.Input.asOptionalInput<List<V2modelsSlotMultipleValuesSetting>>(
               map['multipleValuesSettings']),
-      name: Input.asOptionalInput<String>(map['name']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       obfuscationSettings:
-          Input.asOptionalInput<List<V2modelsSlotObfuscationSetting>>(
+          pulumi.Input.asOptionalInput<List<V2modelsSlotObfuscationSetting>>(
               map['obfuscationSettings']),
-      region: Input.asOptionalInput<String>(map['region']),
-      slotTypeId: Input.asOptionalInput<String>(map['slotTypeId']),
-      subSlotSettings: Input.asOptionalInput<List<V2modelsSlotSubSlotSetting>>(
-          map['subSlotSettings']),
-      timeouts: Input.asOptionalInput<V2modelsSlotTimeouts>(map['timeouts']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      slotTypeId: pulumi.Input.asOptionalInput<String>(map['slotTypeId']),
+      subSlotSettings:
+          pulumi.Input.asOptionalInput<List<V2modelsSlotSubSlotSetting>>(
+              map['subSlotSettings']),
+      timeouts:
+          pulumi.Input.asOptionalInput<V2modelsSlotTimeouts>(map['timeouts']),
       valueElicitationSetting:
-          Input.asInput<V2modelsSlotValueElicitationSetting>(
+          pulumi.Input.asInput<V2modelsSlotValueElicitationSetting>(
               map['valueElicitationSetting']),
     );
   }

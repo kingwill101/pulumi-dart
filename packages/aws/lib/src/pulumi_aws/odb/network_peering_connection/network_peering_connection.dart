@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../network_peering_connection_timeouts/network_peering_connection_timeouts.dart';
 import 'network_peering_connection_args.dart';
 
@@ -19,60 +19,60 @@ import 'network_peering_connection_args.dart';
 /// ```sh
 /// $ pulumi import aws:odb/networkPeeringConnection:NetworkPeeringConnection example example
 /// ```
-class NetworkPeeringConnection extends CustomResource {
-  late final Output<String> arn;
+class NetworkPeeringConnection extends pulumi.CustomResource {
+  late final pulumi.Output<String> arn;
 
   /// Created time of the ODB network peering connection.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// Display name of the ODB network peering connection. Changing this will force Terraform to create a new resource.
   ///
   /// The following arguments are optional:
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// ARN of the ODB network that initiates the peering connection. Changing this will force Terraform to create a new resource. Either odb_network_id or odb_network_arn should be used.
-  late final Output<String> odbNetworkArn;
+  late final pulumi.Output<String> odbNetworkArn;
 
   /// The unique identifier of the ODB network that initiates the peering connection. A sample ID is `odbpcx-abcdefgh12345678`. Changing this will force Terraform to create a new resource.
-  late final Output<String> odbNetworkId;
+  late final pulumi.Output<String> odbNetworkId;
 
   /// Type of the ODB peering connection.
-  late final Output<String> odbPeeringConnectionType;
+  late final pulumi.Output<String> odbPeeringConnectionType;
 
   /// ARN of the peer network peering connection.
-  late final Output<String> peerNetworkArn;
+  late final pulumi.Output<String> peerNetworkArn;
 
   /// The unique identifier of the ODB peering connection. Changing this will force Terraform to create a new resource. Either odb_network_id or odb_network_arn should be used.
-  late final Output<String> peerNetworkId;
+  late final pulumi.Output<String> peerNetworkId;
 
   /// Progress of the ODB network peering connection.
-  late final Output<double> percentProgress;
+  late final pulumi.Output<double> percentProgress;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Status of the ODB network peering connection.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// The reason for the current status of the ODB peering connection.
-  late final Output<String> statusReason;
+  late final pulumi.Output<String> statusReason;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including inherited tags.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<NetworkPeeringConnectionTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<NetworkPeeringConnectionTimeouts?> timeouts;
 
   NetworkPeeringConnection(
     String name, {
     NetworkPeeringConnectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:odb/networkPeeringConnection:NetworkPeeringConnection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.createdAt = registerOutput<String>('createdAt');

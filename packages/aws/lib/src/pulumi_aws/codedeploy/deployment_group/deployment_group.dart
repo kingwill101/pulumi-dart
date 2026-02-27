@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../deployment_group_alarm_configuration/deployment_group_alarm_configuration.dart';
 import '../deployment_group_auto_rollback_configuration/deployment_group_auto_rollback_configuration.dart';
 import '../deployment_group_blue_green_deployment_config/deployment_group_blue_green_deployment_config.dart';
@@ -36,89 +36,90 @@ import 'deployment_group_args.dart';
 /// ```
 ///
 /// [1]: http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html
-class DeploymentGroup extends CustomResource {
+class DeploymentGroup extends pulumi.CustomResource {
   /// Configuration block of alarms associated with the deployment group (documented below).
-  late final Output<DeploymentGroupAlarmConfiguration?> alarmConfiguration;
+  late final pulumi.Output<DeploymentGroupAlarmConfiguration?>
+      alarmConfiguration;
 
   /// The name of the application.
-  late final Output<String> appName;
+  late final pulumi.Output<String> appName;
 
   /// The ARN of the CodeDeploy deployment group.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Configuration block of the automatic rollback configuration associated with the deployment group (documented below).
-  late final Output<DeploymentGroupAutoRollbackConfiguration?>
+  late final pulumi.Output<DeploymentGroupAutoRollbackConfiguration?>
       autoRollbackConfiguration;
 
   /// Autoscaling groups associated with the deployment group.
-  late final Output<List<String>?> autoscalingGroups;
+  late final pulumi.Output<List<String>?> autoscalingGroups;
 
   /// Configuration block of the blue/green deployment options for a deployment group (documented below).
-  late final Output<DeploymentGroupBlueGreenDeploymentConfig>
+  late final pulumi.Output<DeploymentGroupBlueGreenDeploymentConfig>
       blueGreenDeploymentConfig;
 
   /// The destination platform type for the deployment.
-  late final Output<String> computePlatform;
+  late final pulumi.Output<String> computePlatform;
 
   /// The name of the group's deployment config. The default is "CodeDeployDefault.OneAtATime".
-  late final Output<String?> deploymentConfigName;
+  late final pulumi.Output<String?> deploymentConfigName;
 
   /// The ID of the CodeDeploy deployment group.
-  late final Output<String> deploymentGroupId;
+  late final pulumi.Output<String> deploymentGroupId;
 
   /// The name of the deployment group.
-  late final Output<String> deploymentGroupName;
+  late final pulumi.Output<String> deploymentGroupName;
 
   /// Configuration block of the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer (documented below).
-  late final Output<DeploymentGroupDeploymentStyle?> deploymentStyle;
+  late final pulumi.Output<DeploymentGroupDeploymentStyle?> deploymentStyle;
 
   /// Tag filters associated with the deployment group. See the AWS docs for details.
-  late final Output<List<DeploymentGroupEc2TagFilter>?> ec2TagFilters;
+  late final pulumi.Output<List<DeploymentGroupEc2TagFilter>?> ec2TagFilters;
 
   /// Configuration block(s) of Tag filters associated with the deployment group, which are also referred to as tag groups (documented below). See the AWS docs for details.
-  late final Output<List<DeploymentGroupEc2TagSet>?> ec2TagSets;
+  late final pulumi.Output<List<DeploymentGroupEc2TagSet>?> ec2TagSets;
 
   /// Configuration block(s) of the ECS services for a deployment group (documented below).
-  late final Output<DeploymentGroupEcsService?> ecsService;
+  late final pulumi.Output<DeploymentGroupEcsService?> ecsService;
 
   /// Single configuration block of the load balancer to use in a blue/green deployment (documented below).
-  late final Output<DeploymentGroupLoadBalancerInfo?> loadBalancerInfo;
+  late final pulumi.Output<DeploymentGroupLoadBalancerInfo?> loadBalancerInfo;
 
   /// On premise tag filters associated with the group. See the AWS docs for details.
-  late final Output<List<DeploymentGroupOnPremisesInstanceTagFilter>?>
+  late final pulumi.Output<List<DeploymentGroupOnPremisesInstanceTagFilter>?>
       onPremisesInstanceTagFilters;
 
   /// Configuration block of Indicates what happens when new Amazon EC2 instances are launched mid-deployment and do not receive the deployed application revision. Valid values are `UPDATE` and `IGNORE`. Defaults to `UPDATE`.
-  late final Output<String?> outdatedInstancesStrategy;
+  late final pulumi.Output<String?> outdatedInstancesStrategy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The service role ARN that allows deployments.
-  late final Output<String> serviceRoleArn;
+  late final pulumi.Output<String> serviceRoleArn;
 
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Indicates whether the deployment group was configured to have CodeDeploy install a termination hook into an Auto Scaling group.
-  late final Output<bool?> terminationHookEnabled;
+  late final pulumi.Output<bool?> terminationHookEnabled;
 
   /// Configuration block(s) of the triggers for the deployment group (documented below).
-  late final Output<List<DeploymentGroupTriggerConfiguration>?>
+  late final pulumi.Output<List<DeploymentGroupTriggerConfiguration>?>
       triggerConfigurations;
 
   DeploymentGroup(
     String name, {
     DeploymentGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:codedeploy/deploymentGroup:DeploymentGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.alarmConfiguration =
         registerOutput<DeploymentGroupAlarmConfiguration?>(

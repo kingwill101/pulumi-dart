@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resiliency_policy_policy/resiliency_policy_policy.dart';
 import '../resiliency_policy_timeouts/resiliency_policy_timeouts.dart';
 import 'resiliency_policy_args.dart';
@@ -16,53 +16,53 @@ import 'resiliency_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:resiliencehub/resiliencyPolicy:ResiliencyPolicy example arn:aws:resiliencehub:us-east-1:123456789012:resiliency-policy/8c1cfa29-d1dd-4421-aa68-c9f64cced4c2
 /// ```
-class ResiliencyPolicy extends CustomResource {
+class ResiliencyPolicy extends pulumi.CustomResource {
   /// ARN of the Resiliency Policy.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Data Location Constraint of the Policy.
   /// Valid values are `AnyLocation`, `SameContinent`, and `SameCountry`.
-  late final Output<String> dataLocationConstraint;
+  late final pulumi.Output<String> dataLocationConstraint;
 
   /// Description of Resiliency Policy.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Estimated Cost Tier of the Resiliency Policy.
-  late final Output<String> estimatedCostTier;
+  late final pulumi.Output<String> estimatedCostTier;
 
   /// Name of Resiliency Policy.
   /// Must be between 2 and 60 characters long.
   /// Must start with an alphanumeric character and contain alphanumeric characters, underscores, or hyphens.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The type of resiliency policy to be created, including the recovery time objective (RTO) and recovery point objective (RPO) in seconds. See `policy`.
   ///
   /// The following arguments are optional:
-  late final Output<ResiliencyPolicyPolicy?> policy;
+  late final pulumi.Output<ResiliencyPolicyPolicy?> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Resiliency Policy Tier.
   /// Valid values are `MissionCritical`, `Critical`, `Important`, `CoreServices`, `NonCritical`, and `NotApplicable`.
-  late final Output<String> tier;
-  late final Output<ResiliencyPolicyTimeouts?> timeouts;
+  late final pulumi.Output<String> tier;
+  late final pulumi.Output<ResiliencyPolicyTimeouts?> timeouts;
 
   ResiliencyPolicy(
     String name, {
     ResiliencyPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:resiliencehub/resiliencyPolicy:ResiliencyPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.dataLocationConstraint =

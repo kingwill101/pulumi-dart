@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_service_access_policy_args.dart';
 
 /// Provides an CloudSearch domain service access policy resource.
@@ -16,25 +16,25 @@ import 'domain_service_access_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudsearch/domainServiceAccessPolicy:DomainServiceAccessPolicy example example-domain
 /// ```
-class DomainServiceAccessPolicy extends CustomResource {
+class DomainServiceAccessPolicy extends pulumi.CustomResource {
   /// The access rules you want to configure. These rules replace any existing rules. See the [AWS documentation](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html) for details.
-  late final Output<String> accessPolicy;
+  late final pulumi.Output<String> accessPolicy;
 
   /// The CloudSearch domain name the policy applies to.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   DomainServiceAccessPolicy(
     String name, {
     DomainServiceAccessPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudsearch/domainServiceAccessPolicy:DomainServiceAccessPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessPolicy = registerOutput<String>('accessPolicy');
     this.domainName = registerOutput<String>('domainName');

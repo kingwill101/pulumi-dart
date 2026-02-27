@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../metric_stream_statistics_configuration_include_metric/metric_stream_statistics_configuration_include_metric.dart';
 
 class MetricStreamStatisticsConfiguration {
@@ -18,7 +18,7 @@ class MetricStreamStatisticsConfiguration {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['additionalStatistics'] = additionalStatistics;
-    map['includeMetrics'] = Input.encodeList<
+    map['includeMetrics'] = pulumi.Input.encodeList<
         MetricStreamStatisticsConfigurationIncludeMetric,
         Map<String, dynamic>>(includeMetrics, (value) => value.toMap());
     return map;
@@ -29,12 +29,11 @@ class MetricStreamStatisticsConfiguration {
     return MetricStreamStatisticsConfiguration(
       additionalStatistics:
           (map['additionalStatistics'] as List).cast<String>(),
-      includeMetrics:
-          Input.decodeList<MetricStreamStatisticsConfigurationIncludeMetric>(
-              map['includeMetrics'],
-              (value) =>
-                  MetricStreamStatisticsConfigurationIncludeMetric.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      includeMetrics: pulumi.Input.decodeList<
+              MetricStreamStatisticsConfigurationIncludeMetric>(
+          map['includeMetrics'],
+          (value) => MetricStreamStatisticsConfigurationIncludeMetric.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

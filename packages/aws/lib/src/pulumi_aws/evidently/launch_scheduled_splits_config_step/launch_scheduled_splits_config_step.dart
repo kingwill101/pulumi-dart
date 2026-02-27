@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../launch_scheduled_splits_config_step_segment_override/launch_scheduled_splits_config_step_segment_override.dart';
 
 class LaunchScheduledSplitsConfigStep {
@@ -24,7 +24,7 @@ class LaunchScheduledSplitsConfigStep {
     map['groupWeights'] = groupWeights;
     final segmentOverridesValue = segmentOverrides;
     if (segmentOverridesValue != null) {
-      map['segmentOverrides'] = Input.encodeList<
+      map['segmentOverrides'] = pulumi.Input.encodeList<
               LaunchScheduledSplitsConfigStepSegmentOverride,
               Map<String, dynamic>>(
           segmentOverridesValue, (value) => value.toMap());
@@ -38,7 +38,8 @@ class LaunchScheduledSplitsConfigStep {
       groupWeights: (map['groupWeights'] as Map).cast<String, int>(),
       segmentOverrides: map['segmentOverrides'] == null
           ? null
-          : Input.decodeList<LaunchScheduledSplitsConfigStepSegmentOverride>(
+          : pulumi.Input.decodeList<
+                  LaunchScheduledSplitsConfigStepSegmentOverride>(
               map['segmentOverrides'],
               (value) => LaunchScheduledSplitsConfigStepSegmentOverride.fromMap(
                   (value as Map).cast<String, dynamic>())),

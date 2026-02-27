@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../launch_execution/launch_execution.dart';
 import '../launch_group/launch_group.dart';
 import '../launch_metric_monitor/launch_metric_monitor.dart';
@@ -57,67 +57,67 @@ import 'launch_args.dart';
 /// ```sh
 /// $ pulumi import aws:evidently/launch:Launch example exampleLaunchName:arn:aws:evidently:us-east-1:123456789012:project/exampleProjectName
 /// ```
-class Launch extends CustomResource {
+class Launch extends pulumi.CustomResource {
   /// The ARN of the launch.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The date and time that the launch is created.
-  late final Output<String> createdTime;
+  late final pulumi.Output<String> createdTime;
 
   /// Specifies the description of the launch.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// A block that contains information about the start and end times of the launch. Detailed below
-  late final Output<List<LaunchExecution>> executions;
+  late final pulumi.Output<List<LaunchExecution>> executions;
 
   /// One or up to five blocks that contain the feature and variations that are to be used for the launch. Detailed below.
-  late final Output<List<LaunchGroup>> groups;
+  late final pulumi.Output<List<LaunchGroup>> groups;
 
   /// The date and time that the launch was most recently updated.
-  late final Output<String> lastUpdatedTime;
+  late final pulumi.Output<String> lastUpdatedTime;
 
   /// One or up to three blocks that define the metrics that will be used to monitor the launch performance. Detailed below.
-  late final Output<List<LaunchMetricMonitor>?> metricMonitors;
+  late final pulumi.Output<List<LaunchMetricMonitor>?> metricMonitors;
 
   /// The name for the new launch. Minimum length of `1`. Maximum length of `127`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The name or ARN of the project that is to contain the new launch.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// When Evidently assigns a particular user session to a launch, it must use a randomization ID to determine which variation the user session is served. This randomization ID is a combination of the entity ID and randomizationSalt. If you omit randomizationSalt, Evidently uses the launch name as the randomizationSalt.
-  late final Output<String?> randomizationSalt;
+  late final pulumi.Output<String?> randomizationSalt;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A block that defines the traffic allocation percentages among the feature variations during each step of the launch. Detailed below.
-  late final Output<LaunchScheduledSplitsConfig?> scheduledSplitsConfig;
+  late final pulumi.Output<LaunchScheduledSplitsConfig?> scheduledSplitsConfig;
 
   /// The current state of the launch. Valid values are `CREATED`, `UPDATING`, `RUNNING`, `COMPLETED`, and `CANCELLED`.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// If the launch was stopped, this is the string that was entered by the person who stopped the launch, to explain why it was stopped.
-  late final Output<String> statusReason;
+  late final pulumi.Output<String> statusReason;
 
   /// Tags to apply to the launch. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The type of launch.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   Launch(
     String name, {
     LaunchArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:evidently/launch:Launch',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.createdTime = registerOutput<String>('createdTime');

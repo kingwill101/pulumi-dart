@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../profile_address/profile_address.dart';
 import '../profile_billing_address/profile_billing_address.dart';
 import '../profile_mailing_address/profile_mailing_address.dart';
@@ -9,75 +9,75 @@ import '../profile_shipping_address/profile_shipping_address.dart';
 /// The set of arguments for Profile.
 class ProfileArgs {
   /// A unique account number that you have given to the customer.
-  final Input<String>? accountNumber;
+  final pulumi.Input<String>? accountNumber;
 
   /// Any additional information relevant to the customer’s profile.
-  final Input<String>? additionalInformation;
+  final pulumi.Input<String>? additionalInformation;
 
   /// A block that specifies a generic address associated with the customer that is not mailing, shipping, or billing. Documented below.
-  final Input<ProfileAddress>? address;
+  final pulumi.Input<ProfileAddress>? address;
 
   /// A key value pair of attributes of a customer profile.
-  final Input<Map<String, String>>? attributes;
+  final pulumi.Input<Map<String, String>>? attributes;
 
   /// A block that specifies the customer’s billing address. Documented below.
-  final Input<ProfileBillingAddress>? billingAddress;
+  final pulumi.Input<ProfileBillingAddress>? billingAddress;
 
   /// The customer’s birth date.
-  final Input<String>? birthDate;
+  final pulumi.Input<String>? birthDate;
 
   /// The customer’s business email address.
-  final Input<String>? businessEmailAddress;
+  final pulumi.Input<String>? businessEmailAddress;
 
   /// The name of the customer’s business.
-  final Input<String>? businessName;
+  final pulumi.Input<String>? businessName;
 
   /// The customer’s business phone number.
-  final Input<String>? businessPhoneNumber;
+  final pulumi.Input<String>? businessPhoneNumber;
 
   /// The name of your Customer Profile domain. It must be unique for your AWS account.
   ///
   /// The following arguments are optional:
-  final Input<String> domainName;
+  final pulumi.Input<String> domainName;
 
   /// The customer’s email address, which has not been specified as a personal or business address.
-  final Input<String>? emailAddress;
+  final pulumi.Input<String>? emailAddress;
 
   /// The customer’s first name.
-  final Input<String>? firstName;
+  final pulumi.Input<String>? firstName;
 
   /// The gender with which the customer identifies.
-  final Input<String>? genderString;
+  final pulumi.Input<String>? genderString;
 
   /// The customer’s home phone number.
-  final Input<String>? homePhoneNumber;
+  final pulumi.Input<String>? homePhoneNumber;
 
   /// The customer’s last name.
-  final Input<String>? lastName;
+  final pulumi.Input<String>? lastName;
 
   /// A block that specifies the customer’s mailing address. Documented below.
-  final Input<ProfileMailingAddress>? mailingAddress;
+  final pulumi.Input<ProfileMailingAddress>? mailingAddress;
 
   /// The customer’s middle name.
-  final Input<String>? middleName;
+  final pulumi.Input<String>? middleName;
 
   /// The customer’s mobile phone number.
-  final Input<String>? mobilePhoneNumber;
+  final pulumi.Input<String>? mobilePhoneNumber;
 
   /// The type of profile used to describe the customer.
-  final Input<String>? partyTypeString;
+  final pulumi.Input<String>? partyTypeString;
 
   /// The customer’s personal email address.
-  final Input<String>? personalEmailAddress;
+  final pulumi.Input<String>? personalEmailAddress;
 
   /// The customer’s phone number, which has not been specified as a mobile, home, or business number.
-  final Input<String>? phoneNumber;
+  final pulumi.Input<String>? phoneNumber;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A block that specifies the customer’s shipping address. Documented below.
-  final Input<ProfileShippingAddress>? shippingAddress;
+  final pulumi.Input<ProfileShippingAddress>? shippingAddress;
 
   ProfileArgs({
     this.accountNumber,
@@ -117,9 +117,8 @@ class ProfileArgs {
     }
     final addressValue = address;
     if (addressValue != null) {
-      map['address'] =
-          Input.mapOptionalInputValue<ProfileAddress, Map<String, dynamic>>(
-              addressValue, (value) => value.toMap());
+      map['address'] = pulumi.Input.mapOptionalInputValue<ProfileAddress,
+          Map<String, dynamic>>(addressValue, (value) => value.toMap());
     }
     final attributesValue = attributes;
     if (attributesValue != null) {
@@ -127,7 +126,8 @@ class ProfileArgs {
     }
     final billingAddressValue = billingAddress;
     if (billingAddressValue != null) {
-      map['billingAddress'] = Input.mapOptionalInputValue<ProfileBillingAddress,
+      map['billingAddress'] = pulumi.Input.mapOptionalInputValue<
+          ProfileBillingAddress,
           Map<String, dynamic>>(billingAddressValue, (value) => value.toMap());
     }
     final birthDateValue = birthDate;
@@ -169,7 +169,8 @@ class ProfileArgs {
     }
     final mailingAddressValue = mailingAddress;
     if (mailingAddressValue != null) {
-      map['mailingAddress'] = Input.mapOptionalInputValue<ProfileMailingAddress,
+      map['mailingAddress'] = pulumi.Input.mapOptionalInputValue<
+          ProfileMailingAddress,
           Map<String, dynamic>>(mailingAddressValue, (value) => value.toMap());
     }
     final middleNameValue = middleName;
@@ -198,7 +199,7 @@ class ProfileArgs {
     }
     final shippingAddressValue = shippingAddress;
     if (shippingAddressValue != null) {
-      map['shippingAddress'] = Input.mapOptionalInputValue<
+      map['shippingAddress'] = pulumi.Input.mapOptionalInputValue<
           ProfileShippingAddress,
           Map<String, dynamic>>(shippingAddressValue, (value) => value.toMap());
     }
@@ -207,37 +208,40 @@ class ProfileArgs {
 
   factory ProfileArgs.fromMap(Map<String, dynamic> map) {
     return ProfileArgs(
-      accountNumber: Input.asOptionalInput<String>(map['accountNumber']),
+      accountNumber: pulumi.Input.asOptionalInput<String>(map['accountNumber']),
       additionalInformation:
-          Input.asOptionalInput<String>(map['additionalInformation']),
-      address: Input.asOptionalInput<ProfileAddress>(map['address']),
-      attributes: Input.asOptionalInput<Map<String, String>>(map['attributes']),
-      billingAddress:
-          Input.asOptionalInput<ProfileBillingAddress>(map['billingAddress']),
-      birthDate: Input.asOptionalInput<String>(map['birthDate']),
+          pulumi.Input.asOptionalInput<String>(map['additionalInformation']),
+      address: pulumi.Input.asOptionalInput<ProfileAddress>(map['address']),
+      attributes:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['attributes']),
+      billingAddress: pulumi.Input.asOptionalInput<ProfileBillingAddress>(
+          map['billingAddress']),
+      birthDate: pulumi.Input.asOptionalInput<String>(map['birthDate']),
       businessEmailAddress:
-          Input.asOptionalInput<String>(map['businessEmailAddress']),
-      businessName: Input.asOptionalInput<String>(map['businessName']),
+          pulumi.Input.asOptionalInput<String>(map['businessEmailAddress']),
+      businessName: pulumi.Input.asOptionalInput<String>(map['businessName']),
       businessPhoneNumber:
-          Input.asOptionalInput<String>(map['businessPhoneNumber']),
-      domainName: Input.asInput<String>(map['domainName']),
-      emailAddress: Input.asOptionalInput<String>(map['emailAddress']),
-      firstName: Input.asOptionalInput<String>(map['firstName']),
-      genderString: Input.asOptionalInput<String>(map['genderString']),
-      homePhoneNumber: Input.asOptionalInput<String>(map['homePhoneNumber']),
-      lastName: Input.asOptionalInput<String>(map['lastName']),
-      mailingAddress:
-          Input.asOptionalInput<ProfileMailingAddress>(map['mailingAddress']),
-      middleName: Input.asOptionalInput<String>(map['middleName']),
+          pulumi.Input.asOptionalInput<String>(map['businessPhoneNumber']),
+      domainName: pulumi.Input.asInput<String>(map['domainName']),
+      emailAddress: pulumi.Input.asOptionalInput<String>(map['emailAddress']),
+      firstName: pulumi.Input.asOptionalInput<String>(map['firstName']),
+      genderString: pulumi.Input.asOptionalInput<String>(map['genderString']),
+      homePhoneNumber:
+          pulumi.Input.asOptionalInput<String>(map['homePhoneNumber']),
+      lastName: pulumi.Input.asOptionalInput<String>(map['lastName']),
+      mailingAddress: pulumi.Input.asOptionalInput<ProfileMailingAddress>(
+          map['mailingAddress']),
+      middleName: pulumi.Input.asOptionalInput<String>(map['middleName']),
       mobilePhoneNumber:
-          Input.asOptionalInput<String>(map['mobilePhoneNumber']),
-      partyTypeString: Input.asOptionalInput<String>(map['partyTypeString']),
+          pulumi.Input.asOptionalInput<String>(map['mobilePhoneNumber']),
+      partyTypeString:
+          pulumi.Input.asOptionalInput<String>(map['partyTypeString']),
       personalEmailAddress:
-          Input.asOptionalInput<String>(map['personalEmailAddress']),
-      phoneNumber: Input.asOptionalInput<String>(map['phoneNumber']),
-      region: Input.asOptionalInput<String>(map['region']),
-      shippingAddress:
-          Input.asOptionalInput<ProfileShippingAddress>(map['shippingAddress']),
+          pulumi.Input.asOptionalInput<String>(map['personalEmailAddress']),
+      phoneNumber: pulumi.Input.asOptionalInput<String>(map['phoneNumber']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      shippingAddress: pulumi.Input.asOptionalInput<ProfileShippingAddress>(
+          map['shippingAddress']),
     );
   }
 }

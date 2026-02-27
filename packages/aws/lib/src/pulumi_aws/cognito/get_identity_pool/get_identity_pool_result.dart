@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_identity_pool_cognito_identity_provider/get_identity_pool_cognito_identity_provider.dart';
 
 /// Result data returned by getIdentityPool.
@@ -57,7 +57,7 @@ class GetIdentityPoolResult {
     map['allowClassicFlow'] = allowClassicFlow;
     map['allowUnauthenticatedIdentities'] = allowUnauthenticatedIdentities;
     map['arn'] = arn;
-    map['cognitoIdentityProviders'] = Input.encodeList<
+    map['cognitoIdentityProviders'] = pulumi.Input.encodeList<
             GetIdentityPoolCognitoIdentityProvider, Map<String, dynamic>>(
         cognitoIdentityProviders, (value) => value.toMap());
     map['developerProviderName'] = developerProviderName;
@@ -78,7 +78,7 @@ class GetIdentityPoolResult {
           map['allowUnauthenticatedIdentities'] as bool,
       arn: map['arn'] as String,
       cognitoIdentityProviders:
-          Input.decodeList<GetIdentityPoolCognitoIdentityProvider>(
+          pulumi.Input.decodeList<GetIdentityPoolCognitoIdentityProvider>(
               map['cognitoIdentityProviders'],
               (value) => GetIdentityPoolCognitoIdentityProvider.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../listener_rule_match_http_match_header_match/listener_rule_match_http_match_header_match.dart';
 import '../listener_rule_match_http_match_path_match/listener_rule_match_http_match_path_match.dart';
 
@@ -27,7 +27,7 @@ class ListenerRuleMatchHttpMatch {
     final map = <String, dynamic>{};
     final headerMatchesValue = headerMatches;
     if (headerMatchesValue != null) {
-      map['headerMatches'] = Input.encodeList<
+      map['headerMatches'] = pulumi.Input.encodeList<
           ListenerRuleMatchHttpMatchHeaderMatch,
           Map<String, dynamic>>(headerMatchesValue, (value) => value.toMap());
     }
@@ -46,7 +46,7 @@ class ListenerRuleMatchHttpMatch {
     return ListenerRuleMatchHttpMatch(
       headerMatches: map['headerMatches'] == null
           ? null
-          : Input.decodeList<ListenerRuleMatchHttpMatchHeaderMatch>(
+          : pulumi.Input.decodeList<ListenerRuleMatchHttpMatchHeaderMatch>(
               map['headerMatches'],
               (value) => ListenerRuleMatchHttpMatchHeaderMatch.fromMap(
                   (value as Map).cast<String, dynamic>())),

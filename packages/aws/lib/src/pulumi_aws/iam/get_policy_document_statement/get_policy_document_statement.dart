@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_policy_document_statement_condition/get_policy_document_statement_condition.dart';
 import '../get_policy_document_statement_not_principal/get_policy_document_statement_not_principal.dart';
 import '../get_policy_document_statement_principal/get_policy_document_statement_principal.dart';
@@ -53,7 +53,8 @@ class GetPolicyDocumentStatement {
     }
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] = Input.encodeList<GetPolicyDocumentStatementCondition,
+      map['conditions'] = pulumi.Input.encodeList<
+          GetPolicyDocumentStatementCondition,
           Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
     final effectValue = effect;
@@ -66,7 +67,7 @@ class GetPolicyDocumentStatement {
     }
     final notPrincipalsValue = notPrincipals;
     if (notPrincipalsValue != null) {
-      map['notPrincipals'] = Input.encodeList<
+      map['notPrincipals'] = pulumi.Input.encodeList<
           GetPolicyDocumentStatementNotPrincipal,
           Map<String, dynamic>>(notPrincipalsValue, (value) => value.toMap());
     }
@@ -76,7 +77,8 @@ class GetPolicyDocumentStatement {
     }
     final principalsValue = principals;
     if (principalsValue != null) {
-      map['principals'] = Input.encodeList<GetPolicyDocumentStatementPrincipal,
+      map['principals'] = pulumi.Input.encodeList<
+          GetPolicyDocumentStatementPrincipal,
           Map<String, dynamic>>(principalsValue, (value) => value.toMap());
     }
     final resourcesValue = resources;
@@ -97,7 +99,7 @@ class GetPolicyDocumentStatement {
           : (map['actions'] as List).cast<String>(),
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<GetPolicyDocumentStatementCondition>(
+          : pulumi.Input.decodeList<GetPolicyDocumentStatementCondition>(
               map['conditions'],
               (value) => GetPolicyDocumentStatementCondition.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -107,7 +109,7 @@ class GetPolicyDocumentStatement {
           : (map['notActions'] as List).cast<String>(),
       notPrincipals: map['notPrincipals'] == null
           ? null
-          : Input.decodeList<GetPolicyDocumentStatementNotPrincipal>(
+          : pulumi.Input.decodeList<GetPolicyDocumentStatementNotPrincipal>(
               map['notPrincipals'],
               (value) => GetPolicyDocumentStatementNotPrincipal.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -116,7 +118,7 @@ class GetPolicyDocumentStatement {
           : (map['notResources'] as List).cast<String>(),
       principals: map['principals'] == null
           ? null
-          : Input.decodeList<GetPolicyDocumentStatementPrincipal>(
+          : pulumi.Input.decodeList<GetPolicyDocumentStatementPrincipal>(
               map['principals'],
               (value) => GetPolicyDocumentStatementPrincipal.fromMap(
                   (value as Map).cast<String, dynamic>())),

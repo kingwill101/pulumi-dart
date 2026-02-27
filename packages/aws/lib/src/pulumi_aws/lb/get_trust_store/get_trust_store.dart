@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_trust_store_args.dart';
 import 'get_trust_store_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_trust_store_result.dart';
 /// an LB Trust Store for use in other resources, given LB Trust Store name.
 Future<GetTrustStoreResult> getTrustStore(
   GetTrustStoreArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:lb/getTrustStore:getTrustStore',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTrustStoreResult.fromMap(result);
 }

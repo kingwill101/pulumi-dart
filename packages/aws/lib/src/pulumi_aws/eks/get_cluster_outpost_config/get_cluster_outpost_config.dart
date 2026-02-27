@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_outpost_config_control_plane_placement/get_cluster_outpost_config_control_plane_placement.dart';
 
 class GetClusterOutpostConfig {
@@ -23,7 +23,7 @@ class GetClusterOutpostConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['controlPlaneInstanceType'] = controlPlaneInstanceType;
-    map['controlPlanePlacements'] = Input.encodeList<
+    map['controlPlanePlacements'] = pulumi.Input.encodeList<
         GetClusterOutpostConfigControlPlanePlacement,
         Map<String, dynamic>>(controlPlanePlacements, (value) => value.toMap());
     map['outpostArns'] = outpostArns;
@@ -34,7 +34,7 @@ class GetClusterOutpostConfig {
     return GetClusterOutpostConfig(
       controlPlaneInstanceType: map['controlPlaneInstanceType'] as String,
       controlPlanePlacements:
-          Input.decodeList<GetClusterOutpostConfigControlPlanePlacement>(
+          pulumi.Input.decodeList<GetClusterOutpostConfigControlPlanePlacement>(
               map['controlPlanePlacements'],
               (value) => GetClusterOutpostConfigControlPlanePlacement.fromMap(
                   (value as Map).cast<String, dynamic>())),

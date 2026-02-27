@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipeline_artifact_store/pipeline_artifact_store.dart';
 import '../pipeline_stage/pipeline_stage.dart';
 import '../pipeline_trigger/pipeline_trigger.dart';
@@ -19,57 +19,57 @@ import 'pipeline_args.dart';
 /// ```sh
 /// $ pulumi import aws:codepipeline/pipeline:Pipeline example example-pipeline
 /// ```
-class Pipeline extends CustomResource {
+class Pipeline extends pulumi.CustomResource {
   /// Codepipeline ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// One or more artifact_store blocks. Artifact stores are documented below.
-  late final Output<List<PipelineArtifactStore>> artifactStores;
+  late final pulumi.Output<List<PipelineArtifactStore>> artifactStores;
 
   /// The method that the pipeline will use to handle multiple executions. The default mode is `SUPERSEDED`. For value values, refer to the [AWS documentation](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineDeclaration.html#CodePipeline-Type-PipelineDeclaration-executionMode).
-  late final Output<String?> executionMode;
+  late final pulumi.Output<String?> executionMode;
 
   /// The name of the pipeline.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Type of the pipeline. Possible values are: `V1` and `V2`. Default value is `V1`.
-  late final Output<String?> pipelineType;
+  late final pulumi.Output<String?> pipelineType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A service role Amazon Resource Name (ARN) that grants AWS CodePipeline permission to make calls to AWS services on your behalf.
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   /// A stage block. Stages are documented below.
-  late final Output<List<PipelineStage>> stages;
+  late final pulumi.Output<List<PipelineStage>> stages;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// A list of all triggers present on the pipeline, including default triggers added by AWS for `V2` pipelines which omit an explicit `trigger` definition.
-  late final Output<List<PipelineTriggerAll>> triggerAlls;
+  late final pulumi.Output<List<PipelineTriggerAll>> triggerAlls;
 
   /// A trigger block. Valid only when `pipeline_type` is `V2`. Triggers are documented below.
-  late final Output<List<PipelineTrigger>?> triggers;
+  late final pulumi.Output<List<PipelineTrigger>?> triggers;
 
   /// A pipeline-level variable block. Valid only when `pipeline_type` is `V2`. Variable are documented below.
   ///
   /// **Note:** `QUEUED` or `PARALLEL` mode can only be used with V2 pipelines.
-  late final Output<List<PipelineVariable>?> variables;
+  late final pulumi.Output<List<PipelineVariable>?> variables;
 
   Pipeline(
     String name, {
     PipelineArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:codepipeline/pipeline:Pipeline',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.artifactStores =

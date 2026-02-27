@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_interface_security_group_attachment_args.dart';
 
 /// This resource attaches a security group to an Elastic Network Interface (ENI).
@@ -35,25 +35,25 @@ import 'network_interface_security_group_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/networkInterfaceSecurityGroupAttachment:NetworkInterfaceSecurityGroupAttachment sg_attachment eni-1234567890abcdef0_sg-1234567890abcdef0
 /// ```
-class NetworkInterfaceSecurityGroupAttachment extends CustomResource {
+class NetworkInterfaceSecurityGroupAttachment extends pulumi.CustomResource {
   /// The ID of the network interface to attach to.
-  late final Output<String> networkInterfaceId;
+  late final pulumi.Output<String> networkInterfaceId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the security group.
-  late final Output<String> securityGroupId;
+  late final pulumi.Output<String> securityGroupId;
 
   NetworkInterfaceSecurityGroupAttachment(
     String name, {
     NetworkInterfaceSecurityGroupAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/networkInterfaceSecurityGroupAttachment:NetworkInterfaceSecurityGroupAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
     this.region = registerOutput<String>('region');

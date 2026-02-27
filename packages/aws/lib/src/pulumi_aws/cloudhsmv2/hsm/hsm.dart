@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hsm_args.dart';
 
 /// Creates an HSM module in Amazon CloudHSM v2 cluster.
@@ -16,42 +16,42 @@ import 'hsm_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudhsmv2/hsm:Hsm bar hsm-quo8dahtaca
 /// ```
-class Hsm extends CustomResource {
+class Hsm extends pulumi.CustomResource {
   /// The IDs of AZ in which HSM module will be located. Conflicts with `subnet_id`.
-  late final Output<String> availabilityZone;
+  late final pulumi.Output<String> availabilityZone;
 
   /// The ID of Cloud HSM v2 cluster to which HSM will be added.
-  late final Output<String> clusterId;
+  late final pulumi.Output<String> clusterId;
 
   /// The id of the ENI interface allocated for HSM module.
-  late final Output<String> hsmEniId;
+  late final pulumi.Output<String> hsmEniId;
 
   /// The id of the HSM module.
-  late final Output<String> hsmId;
+  late final pulumi.Output<String> hsmId;
 
   /// The state of the HSM module.
-  late final Output<String> hsmState;
+  late final pulumi.Output<String> hsmState;
 
   /// The IP address of HSM module. Must be within the CIDR of selected subnet.
   ///
   /// > **NOTE:** Either `subnet_id` or `availability_zone` must be specified.
-  late final Output<String> ipAddress;
+  late final pulumi.Output<String> ipAddress;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of subnet in which HSM module will be located. Conflicts with `availability_zone`.
-  late final Output<String> subnetId;
+  late final pulumi.Output<String> subnetId;
 
   Hsm(
     String name, {
     HsmArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudhsmv2/hsm:Hsm',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.availabilityZone = registerOutput<String>('availabilityZone');
     this.clusterId = registerOutput<String>('clusterId');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_workflow_step_parallel_config_step/plan_workflow_step_parallel_config_step.dart';
 
 class PlanWorkflowStepParallelConfig {
@@ -15,7 +15,7 @@ class PlanWorkflowStepParallelConfig {
     final map = <String, dynamic>{};
     final stepsValue = steps;
     if (stepsValue != null) {
-      map['steps'] = Input.encodeList<PlanWorkflowStepParallelConfigStep,
+      map['steps'] = pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStep,
           Map<String, dynamic>>(stepsValue, (value) => value.toMap());
     }
     return map;
@@ -25,7 +25,7 @@ class PlanWorkflowStepParallelConfig {
     return PlanWorkflowStepParallelConfig(
       steps: map['steps'] == null
           ? null
-          : Input.decodeList<PlanWorkflowStepParallelConfigStep>(
+          : pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStep>(
               map['steps'],
               (value) => PlanWorkflowStepParallelConfigStep.fromMap(
                   (value as Map).cast<String, dynamic>())),

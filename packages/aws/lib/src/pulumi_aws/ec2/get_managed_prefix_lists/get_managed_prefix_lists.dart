@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_managed_prefix_lists_args.dart';
 import 'get_managed_prefix_lists_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_managed_prefix_lists_result.dart';
 /// The following returns all managed prefix lists filtered by tags
 Future<GetManagedPrefixListsResult> getManagedPrefixLists(
   GetManagedPrefixListsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getManagedPrefixLists:getManagedPrefixLists',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedPrefixListsResult.fromMap(result);
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_license_grants_args.dart';
 import 'get_license_grants_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_license_grants_result.dart';
 /// The following shows getting all license grant ARNs granted to your account.
 Future<GetLicenseGrantsResult> getLicenseGrants(
   GetLicenseGrantsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:licensemanager/getLicenseGrants:getLicenseGrants',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLicenseGrantsResult.fromMap(result);
 }

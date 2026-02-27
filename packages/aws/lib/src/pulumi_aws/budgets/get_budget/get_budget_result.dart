@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_budget_auto_adjust_data/get_budget_auto_adjust_data.dart';
 import '../get_budget_budget_limit/get_budget_budget_limit.dart';
 import '../get_budget_calculated_spend/get_budget_calculated_spend.dart';
@@ -88,22 +88,22 @@ class GetBudgetResult {
     map['accountId'] = accountId;
     map['arn'] = arn;
     map['autoAdjustDatas'] =
-        Input.encodeList<GetBudgetAutoAdjustData, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBudgetAutoAdjustData, Map<String, dynamic>>(
             autoAdjustDatas, (value) => value.toMap());
     map['billingViewArn'] = billingViewArn;
     map['budgetExceeded'] = budgetExceeded;
     map['budgetLimits'] =
-        Input.encodeList<GetBudgetBudgetLimit, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBudgetBudgetLimit, Map<String, dynamic>>(
             budgetLimits, (value) => value.toMap());
     map['budgetType'] = budgetType;
     map['calculatedSpends'] =
-        Input.encodeList<GetBudgetCalculatedSpend, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBudgetCalculatedSpend, Map<String, dynamic>>(
             calculatedSpends, (value) => value.toMap());
     map['costFilters'] =
-        Input.encodeList<GetBudgetCostFilter, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBudgetCostFilter, Map<String, dynamic>>(
             costFilters, (value) => value.toMap());
     map['costTypes'] =
-        Input.encodeList<GetBudgetCostType, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBudgetCostType, Map<String, dynamic>>(
             costTypes, (value) => value.toMap());
     map['id'] = id;
     map['name'] = name;
@@ -112,10 +112,10 @@ class GetBudgetResult {
       map['namePrefix'] = namePrefixValue;
     }
     map['notifications'] =
-        Input.encodeList<GetBudgetNotification, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBudgetNotification, Map<String, dynamic>>(
             notifications, (value) => value.toMap());
     map['plannedLimits'] =
-        Input.encodeList<GetBudgetPlannedLimit, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBudgetPlannedLimit, Map<String, dynamic>>(
             plannedLimits, (value) => value.toMap());
     map['tags'] = tags;
     map['timePeriodEnd'] = timePeriodEnd;
@@ -128,26 +128,26 @@ class GetBudgetResult {
     return GetBudgetResult(
       accountId: map['accountId'] as String,
       arn: map['arn'] as String,
-      autoAdjustDatas: Input.decodeList<GetBudgetAutoAdjustData>(
+      autoAdjustDatas: pulumi.Input.decodeList<GetBudgetAutoAdjustData>(
           map['autoAdjustDatas'],
           (value) => GetBudgetAutoAdjustData.fromMap(
               (value as Map).cast<String, dynamic>())),
       billingViewArn: map['billingViewArn'] as String,
       budgetExceeded: map['budgetExceeded'] as bool,
-      budgetLimits: Input.decodeList<GetBudgetBudgetLimit>(
+      budgetLimits: pulumi.Input.decodeList<GetBudgetBudgetLimit>(
           map['budgetLimits'],
           (value) => GetBudgetBudgetLimit.fromMap(
               (value as Map).cast<String, dynamic>())),
       budgetType: map['budgetType'] as String,
-      calculatedSpends: Input.decodeList<GetBudgetCalculatedSpend>(
+      calculatedSpends: pulumi.Input.decodeList<GetBudgetCalculatedSpend>(
           map['calculatedSpends'],
           (value) => GetBudgetCalculatedSpend.fromMap(
               (value as Map).cast<String, dynamic>())),
-      costFilters: Input.decodeList<GetBudgetCostFilter>(
+      costFilters: pulumi.Input.decodeList<GetBudgetCostFilter>(
           map['costFilters'],
           (value) => GetBudgetCostFilter.fromMap(
               (value as Map).cast<String, dynamic>())),
-      costTypes: Input.decodeList<GetBudgetCostType>(
+      costTypes: pulumi.Input.decodeList<GetBudgetCostType>(
           map['costTypes'],
           (value) => GetBudgetCostType.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -155,11 +155,11 @@ class GetBudgetResult {
       name: map['name'] as String,
       namePrefix:
           map['namePrefix'] == null ? null : map['namePrefix'] as String,
-      notifications: Input.decodeList<GetBudgetNotification>(
+      notifications: pulumi.Input.decodeList<GetBudgetNotification>(
           map['notifications'],
           (value) => GetBudgetNotification.fromMap(
               (value as Map).cast<String, dynamic>())),
-      plannedLimits: Input.decodeList<GetBudgetPlannedLimit>(
+      plannedLimits: pulumi.Input.decodeList<GetBudgetPlannedLimit>(
           map['plannedLimits'],
           (value) => GetBudgetPlannedLimit.fromMap(
               (value as Map).cast<String, dynamic>())),

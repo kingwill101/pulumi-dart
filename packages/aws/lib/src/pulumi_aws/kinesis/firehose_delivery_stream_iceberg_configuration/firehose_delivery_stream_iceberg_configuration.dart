@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firehose_delivery_stream_iceberg_configuration_cloudwatch_logging_options/firehose_delivery_stream_iceberg_configuration_cloudwatch_logging_options.dart';
 import '../firehose_delivery_stream_iceberg_configuration_destination_table_configuration/firehose_delivery_stream_iceberg_configuration_destination_table_configuration.dart';
 import '../firehose_delivery_stream_iceberg_configuration_processing_configuration/firehose_delivery_stream_iceberg_configuration_processing_configuration.dart';
@@ -77,7 +77,7 @@ class FirehoseDeliveryStreamIcebergConfiguration {
     }
     final destinationTableConfigurationsValue = destinationTableConfigurations;
     if (destinationTableConfigurationsValue != null) {
-      map['destinationTableConfigurations'] = Input.encodeList<
+      map['destinationTableConfigurations'] = pulumi.Input.encodeList<
               FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration,
               Map<String, dynamic>>(
           destinationTableConfigurationsValue, (value) => value.toMap());
@@ -117,7 +117,7 @@ class FirehoseDeliveryStreamIcebergConfiguration {
       destinationTableConfigurations: map['destinationTableConfigurations'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration>(
               map['destinationTableConfigurations'],
               (value) =>

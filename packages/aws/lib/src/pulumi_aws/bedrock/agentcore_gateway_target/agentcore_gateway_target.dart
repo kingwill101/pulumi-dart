@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agentcore_gateway_target_credential_provider_configuration/agentcore_gateway_target_credential_provider_configuration.dart';
 import '../agentcore_gateway_target_target_configuration/agentcore_gateway_target_target_configuration.dart';
 import '../agentcore_gateway_target_timeouts/agentcore_gateway_target_timeouts.dart';
@@ -31,42 +31,43 @@ import 'agentcore_gateway_target_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrock/agentcoreGatewayTarget:AgentcoreGatewayTarget example GATEWAY1234567890,TARGET0987654321
 /// ```
-class AgentcoreGatewayTarget extends CustomResource {
+class AgentcoreGatewayTarget extends pulumi.CustomResource {
   /// Configuration for authenticating requests to the target. Required when using `lambda`, `open_api_schema` and `smithy_model` in `mcp` block. If using `mcp_server` in `mcp` block with no authorization, it should not be specified. See `credential_provider_configuration` below.
-  late final Output<AgentcoreGatewayTargetCredentialProviderConfiguration?>
+  late final pulumi
+      .Output<AgentcoreGatewayTargetCredentialProviderConfiguration?>
       credentialProviderConfiguration;
 
   /// Description of the gateway target.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Identifier of the gateway that this target belongs to.
-  late final Output<String> gatewayIdentifier;
+  late final pulumi.Output<String> gatewayIdentifier;
 
   /// Name of the gateway target.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// AWS region where the resource will be created. If not provided, the region from the provider configuration will be used.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration for the target endpoint. See `target_configuration` below.
   ///
   /// The following arguments are optional:
-  late final Output<AgentcoreGatewayTargetTargetConfiguration>
+  late final pulumi.Output<AgentcoreGatewayTargetTargetConfiguration>
       targetConfiguration;
 
   /// Unique identifier of the gateway target.
-  late final Output<String> targetId;
-  late final Output<AgentcoreGatewayTargetTimeouts?> timeouts;
+  late final pulumi.Output<String> targetId;
+  late final pulumi.Output<AgentcoreGatewayTargetTimeouts?> timeouts;
 
   AgentcoreGatewayTarget(
     String name, {
     AgentcoreGatewayTargetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/agentcoreGatewayTarget:AgentcoreGatewayTarget',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.credentialProviderConfiguration =
         registerOutput<AgentcoreGatewayTargetCredentialProviderConfiguration?>(

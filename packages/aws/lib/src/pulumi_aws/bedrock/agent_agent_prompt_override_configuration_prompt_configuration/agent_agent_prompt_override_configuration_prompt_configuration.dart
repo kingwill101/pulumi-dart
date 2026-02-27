@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_agent_prompt_override_configuration_prompt_configuration_inference_configuration/agent_agent_prompt_override_configuration_prompt_configuration_inference_configuration.dart';
 
 class AgentAgentPromptOverrideConfigurationPromptConfiguration {
@@ -36,7 +36,7 @@ class AgentAgentPromptOverrideConfigurationPromptConfiguration {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['basePromptTemplate'] = basePromptTemplate;
-    map['inferenceConfigurations'] = Input.encodeList<
+    map['inferenceConfigurations'] = pulumi.Input.encodeList<
         AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration,
         Map<String,
             dynamic>>(inferenceConfigurations, (value) => value.toMap());
@@ -51,7 +51,7 @@ class AgentAgentPromptOverrideConfigurationPromptConfiguration {
       Map<String, dynamic> map) {
     return AgentAgentPromptOverrideConfigurationPromptConfiguration(
       basePromptTemplate: map['basePromptTemplate'] as String,
-      inferenceConfigurations: Input.decodeList<
+      inferenceConfigurations: pulumi.Input.decodeList<
               AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration>(
           map['inferenceConfigurations'],
           (value) =>

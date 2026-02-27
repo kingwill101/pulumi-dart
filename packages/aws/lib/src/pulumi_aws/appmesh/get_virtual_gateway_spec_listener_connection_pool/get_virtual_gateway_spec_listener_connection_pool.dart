@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_gateway_spec_listener_connection_pool_grpc/get_virtual_gateway_spec_listener_connection_pool_grpc.dart';
 import '../get_virtual_gateway_spec_listener_connection_pool_http/get_virtual_gateway_spec_listener_connection_pool_http.dart';
 import '../get_virtual_gateway_spec_listener_connection_pool_http2/get_virtual_gateway_spec_listener_connection_pool_http2.dart';
@@ -18,13 +18,13 @@ class GetVirtualGatewaySpecListenerConnectionPool {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['grpcs'] = Input.encodeList<
+    map['grpcs'] = pulumi.Input.encodeList<
         GetVirtualGatewaySpecListenerConnectionPoolGrpc,
         Map<String, dynamic>>(grpcs, (value) => value.toMap());
-    map['http2s'] = Input.encodeList<
+    map['http2s'] = pulumi.Input.encodeList<
         GetVirtualGatewaySpecListenerConnectionPoolHttp2,
         Map<String, dynamic>>(http2s, (value) => value.toMap());
-    map['https'] = Input.encodeList<
+    map['https'] = pulumi.Input.encodeList<
         GetVirtualGatewaySpecListenerConnectionPoolHttp,
         Map<String, dynamic>>(https, (value) => value.toMap());
     return map;
@@ -33,17 +33,18 @@ class GetVirtualGatewaySpecListenerConnectionPool {
   factory GetVirtualGatewaySpecListenerConnectionPool.fromMap(
       Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerConnectionPool(
-      grpcs: Input.decodeList<GetVirtualGatewaySpecListenerConnectionPoolGrpc>(
+      grpcs: pulumi.Input.decodeList<
+              GetVirtualGatewaySpecListenerConnectionPoolGrpc>(
           map['grpcs'],
           (value) => GetVirtualGatewaySpecListenerConnectionPoolGrpc.fromMap(
               (value as Map).cast<String, dynamic>())),
-      http2s:
-          Input.decodeList<GetVirtualGatewaySpecListenerConnectionPoolHttp2>(
-              map['http2s'],
-              (value) =>
-                  GetVirtualGatewaySpecListenerConnectionPoolHttp2.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      https: Input.decodeList<GetVirtualGatewaySpecListenerConnectionPoolHttp>(
+      http2s: pulumi.Input.decodeList<
+              GetVirtualGatewaySpecListenerConnectionPoolHttp2>(
+          map['http2s'],
+          (value) => GetVirtualGatewaySpecListenerConnectionPoolHttp2.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      https: pulumi.Input.decodeList<
+              GetVirtualGatewaySpecListenerConnectionPoolHttp>(
           map['https'],
           (value) => GetVirtualGatewaySpecListenerConnectionPoolHttp.fromMap(
               (value as Map).cast<String, dynamic>())),

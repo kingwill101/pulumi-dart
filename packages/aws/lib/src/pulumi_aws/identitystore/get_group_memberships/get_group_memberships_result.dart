@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_group_memberships_group_membership/get_group_memberships_group_membership.dart';
 
 /// Result data returned by getGroupMemberships.
@@ -29,7 +29,7 @@ class GetGroupMembershipsResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['groupId'] = groupId;
-    map['groupMemberships'] = Input.encodeList<
+    map['groupMemberships'] = pulumi.Input.encodeList<
         GetGroupMembershipsGroupMembership,
         Map<String, dynamic>>(groupMemberships, (value) => value.toMap());
     map['id'] = id;
@@ -41,10 +41,11 @@ class GetGroupMembershipsResult {
   factory GetGroupMembershipsResult.fromMap(Map<String, dynamic> map) {
     return GetGroupMembershipsResult(
       groupId: map['groupId'] as String,
-      groupMemberships: Input.decodeList<GetGroupMembershipsGroupMembership>(
-          map['groupMemberships'],
-          (value) => GetGroupMembershipsGroupMembership.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      groupMemberships:
+          pulumi.Input.decodeList<GetGroupMembershipsGroupMembership>(
+              map['groupMemberships'],
+              (value) => GetGroupMembershipsGroupMembership.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       identityStoreId: map['identityStoreId'] as String,
       region: map['region'] as String,

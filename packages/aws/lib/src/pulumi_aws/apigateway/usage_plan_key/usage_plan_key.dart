@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'usage_plan_key_args.dart';
 
 /// Provides an API Gateway Usage Plan Key.
@@ -14,34 +14,34 @@ import 'usage_plan_key_args.dart';
 /// ```sh
 /// $ pulumi import aws:apigateway/usagePlanKey:UsagePlanKey key 12345abcde/zzz
 /// ```
-class UsagePlanKey extends CustomResource {
+class UsagePlanKey extends pulumi.CustomResource {
   /// Identifier of the API key resource.
-  late final Output<String> keyId;
+  late final pulumi.Output<String> keyId;
 
   /// Type of the API key resource. Currently, the valid key type is API_KEY.
-  late final Output<String> keyType;
+  late final pulumi.Output<String> keyType;
 
   /// Name of a usage plan key.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Id of the usage plan resource representing to associate the key to.
-  late final Output<String> usagePlanId;
+  late final pulumi.Output<String> usagePlanId;
 
   /// Value of a usage plan key.
-  late final Output<String> value;
+  late final pulumi.Output<String> value;
 
   UsagePlanKey(
     String name, {
     UsagePlanKeyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigateway/usagePlanKey:UsagePlanKey',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.keyId = registerOutput<String>('keyId');
     this.keyType = registerOutput<String>('keyType');

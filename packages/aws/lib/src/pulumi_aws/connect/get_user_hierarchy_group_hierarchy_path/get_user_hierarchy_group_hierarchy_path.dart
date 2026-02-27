@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_user_hierarchy_group_hierarchy_path_level_fife/get_user_hierarchy_group_hierarchy_path_level_fife.dart';
 import '../get_user_hierarchy_group_hierarchy_path_level_four/get_user_hierarchy_group_hierarchy_path_level_four.dart';
 import '../get_user_hierarchy_group_hierarchy_path_level_one/get_user_hierarchy_group_hierarchy_path_level_one.dart';
@@ -33,19 +33,19 @@ class GetUserHierarchyGroupHierarchyPath {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['levelFives'] = Input.encodeList<
+    map['levelFives'] = pulumi.Input.encodeList<
         GetUserHierarchyGroupHierarchyPathLevelFife,
         Map<String, dynamic>>(levelFives, (value) => value.toMap());
-    map['levelFours'] = Input.encodeList<
+    map['levelFours'] = pulumi.Input.encodeList<
         GetUserHierarchyGroupHierarchyPathLevelFour,
         Map<String, dynamic>>(levelFours, (value) => value.toMap());
-    map['levelOnes'] = Input.encodeList<
+    map['levelOnes'] = pulumi.Input.encodeList<
         GetUserHierarchyGroupHierarchyPathLevelOne,
         Map<String, dynamic>>(levelOnes, (value) => value.toMap());
-    map['levelThrees'] = Input.encodeList<
+    map['levelThrees'] = pulumi.Input.encodeList<
         GetUserHierarchyGroupHierarchyPathLevelThree,
         Map<String, dynamic>>(levelThrees, (value) => value.toMap());
-    map['levelTwos'] = Input.encodeList<
+    map['levelTwos'] = pulumi.Input.encodeList<
         GetUserHierarchyGroupHierarchyPathLevelTwo,
         Map<String, dynamic>>(levelTwos, (value) => value.toMap());
     return map;
@@ -53,27 +53,31 @@ class GetUserHierarchyGroupHierarchyPath {
 
   factory GetUserHierarchyGroupHierarchyPath.fromMap(Map<String, dynamic> map) {
     return GetUserHierarchyGroupHierarchyPath(
-      levelFives: Input.decodeList<GetUserHierarchyGroupHierarchyPathLevelFife>(
-          map['levelFives'],
-          (value) => GetUserHierarchyGroupHierarchyPathLevelFife.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      levelFours: Input.decodeList<GetUserHierarchyGroupHierarchyPathLevelFour>(
-          map['levelFours'],
-          (value) => GetUserHierarchyGroupHierarchyPathLevelFour.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      levelOnes: Input.decodeList<GetUserHierarchyGroupHierarchyPathLevelOne>(
-          map['levelOnes'],
-          (value) => GetUserHierarchyGroupHierarchyPathLevelOne.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      levelFives:
+          pulumi.Input.decodeList<GetUserHierarchyGroupHierarchyPathLevelFife>(
+              map['levelFives'],
+              (value) => GetUserHierarchyGroupHierarchyPathLevelFife.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      levelFours:
+          pulumi.Input.decodeList<GetUserHierarchyGroupHierarchyPathLevelFour>(
+              map['levelFours'],
+              (value) => GetUserHierarchyGroupHierarchyPathLevelFour.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      levelOnes:
+          pulumi.Input.decodeList<GetUserHierarchyGroupHierarchyPathLevelOne>(
+              map['levelOnes'],
+              (value) => GetUserHierarchyGroupHierarchyPathLevelOne.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       levelThrees:
-          Input.decodeList<GetUserHierarchyGroupHierarchyPathLevelThree>(
+          pulumi.Input.decodeList<GetUserHierarchyGroupHierarchyPathLevelThree>(
               map['levelThrees'],
               (value) => GetUserHierarchyGroupHierarchyPathLevelThree.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      levelTwos: Input.decodeList<GetUserHierarchyGroupHierarchyPathLevelTwo>(
-          map['levelTwos'],
-          (value) => GetUserHierarchyGroupHierarchyPathLevelTwo.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      levelTwos:
+          pulumi.Input.decodeList<GetUserHierarchyGroupHierarchyPathLevelTwo>(
+              map['levelTwos'],
+              (value) => GetUserHierarchyGroupHierarchyPathLevelTwo.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vpc_encryption_control_timeouts/vpc_encryption_control_timeouts.dart';
 
 /// The set of arguments for VpcEncryptionControl.
@@ -9,65 +9,65 @@ class VpcEncryptionControlArgs {
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final Input<String>? egressOnlyInternetGatewayExclusion;
+  final pulumi.Input<String>? egressOnlyInternetGatewayExclusion;
 
   /// Whether to exclude Elastic File System (EFS) from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final Input<String>? elasticFileSystemExclusion;
+  final pulumi.Input<String>? elasticFileSystemExclusion;
 
   /// Whether to exclude Internet Gateways from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final Input<String>? internetGatewayExclusion;
+  final pulumi.Input<String>? internetGatewayExclusion;
 
   /// Whether to exclude Lambda Functions from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final Input<String>? lambdaExclusion;
+  final pulumi.Input<String>? lambdaExclusion;
 
   /// Mode to enable for VPC Encryption Control.
   /// Valid values are `monitor` or `enforce`.
-  final Input<String> mode;
+  final pulumi.Input<String> mode;
 
   /// Whether to exclude NAT Gateways from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final Input<String>? natGatewayExclusion;
+  final pulumi.Input<String>? natGatewayExclusion;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<VpcEncryptionControlTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<VpcEncryptionControlTimeouts>? timeouts;
 
   /// Whether to exclude Virtual Private Gateways from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final Input<String>? virtualPrivateGatewayExclusion;
+  final pulumi.Input<String>? virtualPrivateGatewayExclusion;
 
   /// The ID of the VPC the VPC Encryption Control is linked to.
   ///
   /// The following arguments are optional:
-  final Input<String> vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// Whether to exclude VPC Lattice from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final Input<String>? vpcLatticeExclusion;
+  final pulumi.Input<String>? vpcLatticeExclusion;
 
   /// Whether to exclude peered VPCs from encryption enforcement.
   /// Valid values are `disable` or `enable`.
   /// Default is `disable`.
   /// Only valid when `mode` is `enforce`.
-  final Input<String>? vpcPeeringExclusion;
+  final pulumi.Input<String>? vpcPeeringExclusion;
 
   VpcEncryptionControlArgs({
     this.egressOnlyInternetGatewayExclusion,
@@ -120,7 +120,7 @@ class VpcEncryptionControlArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           VpcEncryptionControlTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -143,27 +143,28 @@ class VpcEncryptionControlArgs {
 
   factory VpcEncryptionControlArgs.fromMap(Map<String, dynamic> map) {
     return VpcEncryptionControlArgs(
-      egressOnlyInternetGatewayExclusion: Input.asOptionalInput<String>(
+      egressOnlyInternetGatewayExclusion: pulumi.Input.asOptionalInput<String>(
           map['egressOnlyInternetGatewayExclusion']),
-      elasticFileSystemExclusion:
-          Input.asOptionalInput<String>(map['elasticFileSystemExclusion']),
+      elasticFileSystemExclusion: pulumi.Input.asOptionalInput<String>(
+          map['elasticFileSystemExclusion']),
       internetGatewayExclusion:
-          Input.asOptionalInput<String>(map['internetGatewayExclusion']),
-      lambdaExclusion: Input.asOptionalInput<String>(map['lambdaExclusion']),
-      mode: Input.asInput<String>(map['mode']),
+          pulumi.Input.asOptionalInput<String>(map['internetGatewayExclusion']),
+      lambdaExclusion:
+          pulumi.Input.asOptionalInput<String>(map['lambdaExclusion']),
+      mode: pulumi.Input.asInput<String>(map['mode']),
       natGatewayExclusion:
-          Input.asOptionalInput<String>(map['natGatewayExclusion']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts:
-          Input.asOptionalInput<VpcEncryptionControlTimeouts>(map['timeouts']),
-      virtualPrivateGatewayExclusion:
-          Input.asOptionalInput<String>(map['virtualPrivateGatewayExclusion']),
-      vpcId: Input.asInput<String>(map['vpcId']),
+          pulumi.Input.asOptionalInput<String>(map['natGatewayExclusion']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<VpcEncryptionControlTimeouts>(
+          map['timeouts']),
+      virtualPrivateGatewayExclusion: pulumi.Input.asOptionalInput<String>(
+          map['virtualPrivateGatewayExclusion']),
+      vpcId: pulumi.Input.asInput<String>(map['vpcId']),
       vpcLatticeExclusion:
-          Input.asOptionalInput<String>(map['vpcLatticeExclusion']),
+          pulumi.Input.asOptionalInput<String>(map['vpcLatticeExclusion']),
       vpcPeeringExclusion:
-          Input.asOptionalInput<String>(map['vpcPeeringExclusion']),
+          pulumi.Input.asOptionalInput<String>(map['vpcPeeringExclusion']),
     );
   }
 }

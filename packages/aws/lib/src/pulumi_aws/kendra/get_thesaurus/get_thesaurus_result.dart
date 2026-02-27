@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_thesaurus_source_s3_path/get_thesaurus_source_s3_path.dart';
 
 /// Result data returned by getThesaurus.
@@ -83,7 +83,7 @@ class GetThesaurusResult {
     map['region'] = region;
     map['roleArn'] = roleArn;
     map['sourceS3Paths'] =
-        Input.encodeList<GetThesaurusSourceS3Path, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetThesaurusSourceS3Path, Map<String, dynamic>>(
             sourceS3Paths, (value) => value.toMap());
     map['status'] = status;
     map['synonymRuleCount'] = synonymRuleCount;
@@ -106,7 +106,7 @@ class GetThesaurusResult {
       name: map['name'] as String,
       region: map['region'] as String,
       roleArn: map['roleArn'] as String,
-      sourceS3Paths: Input.decodeList<GetThesaurusSourceS3Path>(
+      sourceS3Paths: pulumi.Input.decodeList<GetThesaurusSourceS3Path>(
           map['sourceS3Paths'],
           (value) => GetThesaurusSourceS3Path.fromMap(
               (value as Map).cast<String, dynamic>())),

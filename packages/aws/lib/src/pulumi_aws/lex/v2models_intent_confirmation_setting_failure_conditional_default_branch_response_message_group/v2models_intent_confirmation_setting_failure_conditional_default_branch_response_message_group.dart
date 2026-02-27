@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_confirmation_setting_failure_conditional_default_branch_response_message_group_message/v2models_intent_confirmation_setting_failure_conditional_default_branch_response_message_group_message.dart';
 import '../v2models_intent_confirmation_setting_failure_conditional_default_branch_response_message_group_variation/v2models_intent_confirmation_setting_failure_conditional_default_branch_response_message_group_variation.dart';
 
@@ -27,7 +27,7 @@ class V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMe
     }
     final variationsValue = variations;
     if (variationsValue != null) {
-      map['variations'] = Input.encodeList<
+      map['variations'] = pulumi.Input.encodeList<
           V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMessageGroupVariation,
           Map<String, dynamic>>(variationsValue, (value) => value.toMap());
     }
@@ -43,7 +43,7 @@ class V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMe
               .fromMap((map['message'] as Map).cast<String, dynamic>()),
       variations: map['variations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMessageGroupVariation>(
               map['variations'],
               (value) =>

@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VpnGateway.
 class VpnGatewayArgs {
   /// The Autonomous System Number (ASN) for the Amazon side of the gateway. If you don't specify an ASN, the virtual private gateway is created with the default ASN.
-  final Input<String>? amazonSideAsn;
+  final pulumi.Input<String>? amazonSideAsn;
 
   /// The Availability Zone for the virtual private gateway.
-  final Input<String>? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The VPC ID to create in.
-  final Input<String>? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   VpnGatewayArgs({
     this.amazonSideAsn,
@@ -54,11 +54,12 @@ class VpnGatewayArgs {
 
   factory VpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return VpnGatewayArgs(
-      amazonSideAsn: Input.asOptionalInput<String>(map['amazonSideAsn']),
-      availabilityZone: Input.asOptionalInput<String>(map['availabilityZone']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vpcId: Input.asOptionalInput<String>(map['vpcId']),
+      amazonSideAsn: pulumi.Input.asOptionalInput<String>(map['amazonSideAsn']),
+      availabilityZone:
+          pulumi.Input.asOptionalInput<String>(map['availabilityZone']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpcId: pulumi.Input.asOptionalInput<String>(map['vpcId']),
     );
   }
 }

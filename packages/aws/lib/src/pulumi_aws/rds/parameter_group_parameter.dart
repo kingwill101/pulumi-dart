@@ -1,3 +1,3 @@
 library module_rds_parameter_group_parameter;
 
-export 'parameter_group_parameter/parameter_group_parameter5.dart';
+export 'parameter_group_parameter/parameter_group_parameter_rds.dart';

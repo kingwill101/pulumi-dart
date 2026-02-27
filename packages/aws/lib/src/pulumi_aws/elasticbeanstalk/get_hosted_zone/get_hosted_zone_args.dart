@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getHostedZone.
 class GetHostedZoneArgs {
   /// Name of the Region whose hosted zone is desired. Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetHostedZoneArgs({
     this.region,
@@ -22,7 +22,7 @@ class GetHostedZoneArgs {
 
   factory GetHostedZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetHostedZoneArgs(
-      region: Input.asOptionalInput<String>(map['region']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

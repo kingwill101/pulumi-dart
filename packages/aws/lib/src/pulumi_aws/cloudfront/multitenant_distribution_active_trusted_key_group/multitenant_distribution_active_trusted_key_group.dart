@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multitenant_distribution_active_trusted_key_group_item/multitenant_distribution_active_trusted_key_group_item.dart';
 
 class MultitenantDistributionActiveTrustedKeyGroup {
@@ -23,7 +23,7 @@ class MultitenantDistributionActiveTrustedKeyGroup {
     }
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] = Input.encodeList<
+      map['items'] = pulumi.Input.encodeList<
           MultitenantDistributionActiveTrustedKeyGroupItem,
           Map<String, dynamic>>(itemsValue, (value) => value.toMap());
     }
@@ -36,7 +36,8 @@ class MultitenantDistributionActiveTrustedKeyGroup {
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       items: map['items'] == null
           ? null
-          : Input.decodeList<MultitenantDistributionActiveTrustedKeyGroupItem>(
+          : pulumi.Input.decodeList<
+                  MultitenantDistributionActiveTrustedKeyGroupItem>(
               map['items'],
               (value) =>
                   MultitenantDistributionActiveTrustedKeyGroupItem.fromMap(

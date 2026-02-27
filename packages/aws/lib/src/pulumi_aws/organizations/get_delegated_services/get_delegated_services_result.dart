@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_delegated_services_delegated_service/get_delegated_services_delegated_service.dart';
 
 /// Result data returned by getDelegatedServices.
@@ -22,7 +22,7 @@ class GetDelegatedServicesResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['accountId'] = accountId;
-    map['delegatedServices'] = Input.encodeList<
+    map['delegatedServices'] = pulumi.Input.encodeList<
         GetDelegatedServicesDelegatedService,
         Map<String, dynamic>>(delegatedServices, (value) => value.toMap());
     map['id'] = id;
@@ -32,10 +32,11 @@ class GetDelegatedServicesResult {
   factory GetDelegatedServicesResult.fromMap(Map<String, dynamic> map) {
     return GetDelegatedServicesResult(
       accountId: map['accountId'] as String,
-      delegatedServices: Input.decodeList<GetDelegatedServicesDelegatedService>(
-          map['delegatedServices'],
-          (value) => GetDelegatedServicesDelegatedService.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      delegatedServices:
+          pulumi.Input.decodeList<GetDelegatedServicesDelegatedService>(
+              map['delegatedServices'],
+              (value) => GetDelegatedServicesDelegatedService.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
     );
   }

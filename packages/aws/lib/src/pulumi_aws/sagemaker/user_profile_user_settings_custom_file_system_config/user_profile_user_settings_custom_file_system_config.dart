@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_profile_user_settings_custom_file_system_config_efs_file_system_config/user_profile_user_settings_custom_file_system_config_efs_file_system_config.dart';
 
 class UserProfileUserSettingsCustomFileSystemConfig {
@@ -16,7 +16,7 @@ class UserProfileUserSettingsCustomFileSystemConfig {
     final map = <String, dynamic>{};
     final efsFileSystemConfigsValue = efsFileSystemConfigs;
     if (efsFileSystemConfigsValue != null) {
-      map['efsFileSystemConfigs'] = Input.encodeList<
+      map['efsFileSystemConfigs'] = pulumi.Input.encodeList<
               UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig,
               Map<String, dynamic>>(
           efsFileSystemConfigsValue, (value) => value.toMap());
@@ -29,7 +29,7 @@ class UserProfileUserSettingsCustomFileSystemConfig {
     return UserProfileUserSettingsCustomFileSystemConfig(
       efsFileSystemConfigs: map['efsFileSystemConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig>(
               map['efsFileSystemConfigs'],
               (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multi_region_cluster_timeouts/multi_region_cluster_timeouts.dart';
 import 'multi_region_cluster_args.dart';
 
@@ -17,60 +17,60 @@ import 'multi_region_cluster_args.dart';
 /// ```sh
 /// $ pulumi import aws:memorydb/multiRegionCluster:MultiRegionCluster example virxk-example
 /// ```
-class MultiRegionCluster extends CustomResource {
+class MultiRegionCluster extends pulumi.CustomResource {
   /// The ARN of the multi-region cluster.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// description for the multi-region cluster.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The name of the engine to be used for the multi-region cluster. Valid values are `redis` and `valkey`.
-  late final Output<String> engine;
+  late final pulumi.Output<String> engine;
 
   /// The version of the engine to be used for the multi-region cluster. Downgrades are not supported.
-  late final Output<String> engineVersion;
+  late final pulumi.Output<String> engineVersion;
 
   /// The name of the multi-region cluster.
-  late final Output<String> multiRegionClusterName;
+  late final pulumi.Output<String> multiRegionClusterName;
 
   /// A suffix to be added to the multi-region cluster name. An AWS generated prefix is automatically applied to the multi-region cluster name when it is created.
-  late final Output<String> multiRegionClusterNameSuffix;
+  late final pulumi.Output<String> multiRegionClusterNameSuffix;
 
   /// The name of the multi-region parameter group to be associated with the cluster.
-  late final Output<String> multiRegionParameterGroupName;
+  late final pulumi.Output<String> multiRegionParameterGroupName;
 
   /// The node type to be used for the multi-region cluster.
   ///
   /// The following arguments are optional:
-  late final Output<String> nodeType;
+  late final pulumi.Output<String> nodeType;
 
   /// The number of shards for the multi-region cluster.
-  late final Output<int> numShards;
+  late final pulumi.Output<int> numShards;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<String> status;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<String> status;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<MultiRegionClusterTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<MultiRegionClusterTimeouts?> timeouts;
 
   /// A flag to enable in-transit encryption on the cluster.
-  late final Output<bool> tlsEnabled;
-  late final Output<String?> updateStrategy;
+  late final pulumi.Output<bool> tlsEnabled;
+  late final pulumi.Output<String?> updateStrategy;
 
   MultiRegionCluster(
     String name, {
     MultiRegionClusterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:memorydb/multiRegionCluster:MultiRegionCluster',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');

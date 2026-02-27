@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_key_multi_region_configuration_primary_key/get_key_multi_region_configuration_primary_key.dart';
 import '../get_key_multi_region_configuration_replica_key/get_key_multi_region_configuration_replica_key.dart';
 
@@ -23,10 +23,10 @@ class GetKeyMultiRegionConfiguration {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['multiRegionKeyType'] = multiRegionKeyType;
-    map['primaryKeys'] = Input.encodeList<
+    map['primaryKeys'] = pulumi.Input.encodeList<
         GetKeyMultiRegionConfigurationPrimaryKey,
         Map<String, dynamic>>(primaryKeys, (value) => value.toMap());
-    map['replicaKeys'] = Input.encodeList<
+    map['replicaKeys'] = pulumi.Input.encodeList<
         GetKeyMultiRegionConfigurationReplicaKey,
         Map<String, dynamic>>(replicaKeys, (value) => value.toMap());
     return map;
@@ -35,14 +35,16 @@ class GetKeyMultiRegionConfiguration {
   factory GetKeyMultiRegionConfiguration.fromMap(Map<String, dynamic> map) {
     return GetKeyMultiRegionConfiguration(
       multiRegionKeyType: map['multiRegionKeyType'] as String,
-      primaryKeys: Input.decodeList<GetKeyMultiRegionConfigurationPrimaryKey>(
-          map['primaryKeys'],
-          (value) => GetKeyMultiRegionConfigurationPrimaryKey.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      replicaKeys: Input.decodeList<GetKeyMultiRegionConfigurationReplicaKey>(
-          map['replicaKeys'],
-          (value) => GetKeyMultiRegionConfigurationReplicaKey.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      primaryKeys:
+          pulumi.Input.decodeList<GetKeyMultiRegionConfigurationPrimaryKey>(
+              map['primaryKeys'],
+              (value) => GetKeyMultiRegionConfigurationPrimaryKey.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      replicaKeys:
+          pulumi.Input.decodeList<GetKeyMultiRegionConfigurationReplicaKey>(
+              map['replicaKeys'],
+              (value) => GetKeyMultiRegionConfigurationReplicaKey.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

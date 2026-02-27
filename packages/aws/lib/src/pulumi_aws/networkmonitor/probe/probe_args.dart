@@ -1,32 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Probe.
 class ProbeArgs {
   /// The destination IP address. This must be either IPV4 or IPV6.
-  final Input<String> destination;
+  final pulumi.Input<String> destination;
 
   /// The port associated with the destination. This is required only if the protocol is TCP and must be a number between 1 and 65536.
-  final Input<int>? destinationPort;
+  final pulumi.Input<int>? destinationPort;
 
   /// The name of the monitor.
-  final Input<String> monitorName;
+  final pulumi.Input<String> monitorName;
 
   /// The size of the packets sent between the source and destination. This must be a number between 56 and 8500.
-  final Input<int>? packetSize;
+  final pulumi.Input<int>? packetSize;
 
   /// The protocol used for the network traffic between the source and destination. This must be either TCP or ICMP.
-  final Input<String> protocol;
+  final pulumi.Input<String> protocol;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ARN of the subnet.
-  final Input<String> sourceArn;
+  final pulumi.Input<String> sourceArn;
 
   /// Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   ProbeArgs({
     required this.destination,
@@ -66,14 +66,15 @@ class ProbeArgs {
 
   factory ProbeArgs.fromMap(Map<String, dynamic> map) {
     return ProbeArgs(
-      destination: Input.asInput<String>(map['destination']),
-      destinationPort: Input.asOptionalInput<int>(map['destinationPort']),
-      monitorName: Input.asInput<String>(map['monitorName']),
-      packetSize: Input.asOptionalInput<int>(map['packetSize']),
-      protocol: Input.asInput<String>(map['protocol']),
-      region: Input.asOptionalInput<String>(map['region']),
-      sourceArn: Input.asInput<String>(map['sourceArn']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      destination: pulumi.Input.asInput<String>(map['destination']),
+      destinationPort:
+          pulumi.Input.asOptionalInput<int>(map['destinationPort']),
+      monitorName: pulumi.Input.asInput<String>(map['monitorName']),
+      packetSize: pulumi.Input.asOptionalInput<int>(map['packetSize']),
+      protocol: pulumi.Input.asInput<String>(map['protocol']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sourceArn: pulumi.Input.asInput<String>(map['sourceArn']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

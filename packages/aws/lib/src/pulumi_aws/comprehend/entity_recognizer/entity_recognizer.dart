@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../entity_recognizer_input_data_config/entity_recognizer_input_data_config.dart';
 import '../entity_recognizer_vpc_config/entity_recognizer_vpc_config.dart';
 import 'entity_recognizer_args.dart';
@@ -25,39 +25,39 @@ import 'entity_recognizer_args.dart';
 /// ```sh
 /// $ pulumi import aws:comprehend/entityRecognizer:EntityRecognizer example arn:aws:comprehend:us-west-2:123456789012:entity-recognizer/example
 /// ```
-class EntityRecognizer extends CustomResource {
+class EntityRecognizer extends pulumi.CustomResource {
   /// ARN of the Entity Recognizer version.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The ARN for an IAM Role which allows Comprehend to read the training and testing data.
-  late final Output<String> dataAccessRoleArn;
+  late final pulumi.Output<String> dataAccessRoleArn;
 
   /// Configuration for the training and testing data.
   /// See the `input_data_config` Configuration Block section below.
-  late final Output<EntityRecognizerInputDataConfig> inputDataConfig;
+  late final pulumi.Output<EntityRecognizerInputDataConfig> inputDataConfig;
 
   /// Two-letter language code for the language.
   /// One of `en`, `es`, `fr`, `it`, `de`, or `pt`.
-  late final Output<String> languageCode;
+  late final pulumi.Output<String> languageCode;
 
   /// The ID or ARN of a KMS Key used to encrypt trained Entity Recognizers.
-  late final Output<String?> modelKmsKeyId;
+  late final pulumi.Output<String?> modelKmsKeyId;
 
   /// Name for the Entity Recognizer.
   /// Has a maximum length of 63 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` Configuration Block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Name for the version of the Entity Recognizer.
   /// Each version must have a unique name within the Entity Recognizer.
@@ -66,30 +66,30 @@ class EntityRecognizer extends CustomResource {
   /// Has a maximum length of 63 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
   /// Conflicts with `version_name_prefix`.
-  late final Output<String> versionName;
+  late final pulumi.Output<String> versionName;
 
   /// Creates a unique version name beginning with the specified prefix.
   /// Has a maximum length of 37 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
   /// Conflicts with `version_name`.
-  late final Output<String> versionNamePrefix;
+  late final pulumi.Output<String> versionNamePrefix;
 
   /// ID or ARN of a KMS Key used to encrypt storage volumes during job processing.
-  late final Output<String?> volumeKmsKeyId;
+  late final pulumi.Output<String?> volumeKmsKeyId;
 
   /// Configuration parameters for VPC to contain Entity Recognizer resources.
   /// See the `vpc_config` Configuration Block section below.
-  late final Output<EntityRecognizerVpcConfig?> vpcConfig;
+  late final pulumi.Output<EntityRecognizerVpcConfig?> vpcConfig;
 
   EntityRecognizer(
     String name, {
     EntityRecognizerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:comprehend/entityRecognizer:EntityRecognizer',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');

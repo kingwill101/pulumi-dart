@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_node_spec/get_virtual_node_spec.dart';
 
 /// Result data returned by getVirtualNode.
@@ -55,8 +55,9 @@ class GetVirtualNodeResult {
     map['name'] = name;
     map['region'] = region;
     map['resourceOwner'] = resourceOwner;
-    map['specs'] = Input.encodeList<GetVirtualNodeSpec, Map<String, dynamic>>(
-        specs, (value) => value.toMap());
+    map['specs'] =
+        pulumi.Input.encodeList<GetVirtualNodeSpec, Map<String, dynamic>>(
+            specs, (value) => value.toMap());
     map['tags'] = tags;
     return map;
   }
@@ -72,7 +73,7 @@ class GetVirtualNodeResult {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceOwner: map['resourceOwner'] as String,
-      specs: Input.decodeList<GetVirtualNodeSpec>(
+      specs: pulumi.Input.decodeList<GetVirtualNodeSpec>(
           map['specs'],
           (value) => GetVirtualNodeSpec.fromMap(
               (value as Map).cast<String, dynamic>())),

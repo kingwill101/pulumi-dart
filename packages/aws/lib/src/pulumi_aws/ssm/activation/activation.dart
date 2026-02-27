@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'activation_args.dart';
 
 /// Registers an on-premises server or virtual machine with Amazon EC2 so that it can be managed using Run Command.
@@ -16,49 +16,49 @@ import 'activation_args.dart';
 /// ```
 ///
 /// > **Note:** The `activation_code` attribute cannot be imported.
-class Activation extends CustomResource {
+class Activation extends pulumi.CustomResource {
   /// The code the system generates when it processes the activation.
-  late final Output<String> activationCode;
+  late final pulumi.Output<String> activationCode;
 
   /// The description of the resource that you want to register.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// UTC timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) by which this activation request should expire. The default value is 24 hours from resource creation time. This provider will only perform drift detection of its value when present in a configuration.
-  late final Output<String> expirationDate;
+  late final pulumi.Output<String> expirationDate;
 
   /// If the current activation has expired.
-  late final Output<bool> expired;
+  late final pulumi.Output<bool> expired;
 
   /// The IAM Role to attach to the managed instance.
-  late final Output<String> iamRole;
+  late final pulumi.Output<String> iamRole;
 
   /// The default name of the registered managed instance.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The number of managed instances that are currently registered using this activation.
-  late final Output<int> registrationCount;
+  late final pulumi.Output<int> registrationCount;
 
   /// The maximum number of managed instances you want to register. The default value is 1 instance.
-  late final Output<int?> registrationLimit;
+  late final pulumi.Output<int?> registrationLimit;
 
   /// A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Activation(
     String name, {
     ActivationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssm/activation:Activation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.activationCode = registerOutput<String>('activationCode');
     this.description = registerOutput<String?>('description');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_agent_collaborator_agent_descriptor/agent_agent_collaborator_agent_descriptor.dart';
 import '../agent_agent_collaborator_timeouts/agent_agent_collaborator_timeouts.dart';
 import 'agent_agent_collaborator_args.dart';
@@ -18,43 +18,44 @@ import 'agent_agent_collaborator_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrock/agentAgentCollaborator:AgentAgentCollaborator example 9LSJO0BFI8,DRAFT,AG3TN4RQIY
 /// ```
-class AgentAgentCollaborator extends CustomResource {
-  late final Output<AgentAgentCollaboratorAgentDescriptor> agentDescriptor;
+class AgentAgentCollaborator extends pulumi.CustomResource {
+  late final pulumi.Output<AgentAgentCollaboratorAgentDescriptor>
+      agentDescriptor;
 
   /// ID if the agent to associate the collaborator.
-  late final Output<String> agentId;
-  late final Output<String> agentVersion;
+  late final pulumi.Output<String> agentId;
+  late final pulumi.Output<String> agentVersion;
 
   /// Instruction to give the collaborator.
-  late final Output<String> collaborationInstruction;
+  late final pulumi.Output<String> collaborationInstruction;
 
   /// ID of the Agent Collaborator.
-  late final Output<String> collaboratorId;
+  late final pulumi.Output<String> collaboratorId;
 
   /// Name of this collaborator.
   ///
   /// The following arguments are optional:
-  late final Output<String> collaboratorName;
+  late final pulumi.Output<String> collaboratorName;
 
   /// Whether to prepare the agent after creation or modification. Defaults to `true`.
-  late final Output<bool> prepareAgent;
+  late final pulumi.Output<bool> prepareAgent;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configure relaying the history to the collaborator.
-  late final Output<String> relayConversationHistory;
-  late final Output<AgentAgentCollaboratorTimeouts?> timeouts;
+  late final pulumi.Output<String> relayConversationHistory;
+  late final pulumi.Output<AgentAgentCollaboratorTimeouts?> timeouts;
 
   AgentAgentCollaborator(
     String name, {
     AgentAgentCollaboratorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/agentAgentCollaborator:AgentAgentCollaborator',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.agentDescriptor =
         registerOutput<AgentAgentCollaboratorAgentDescriptor>(

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../repository_association_s3_repository_detail_code_artifact/repository_association_s3_repository_detail_code_artifact.dart';
 
 class RepositoryAssociationS3RepositoryDetail {
@@ -22,7 +22,7 @@ class RepositoryAssociationS3RepositoryDetail {
     }
     final codeArtifactsValue = codeArtifacts;
     if (codeArtifactsValue != null) {
-      map['codeArtifacts'] = Input.encodeList<
+      map['codeArtifacts'] = pulumi.Input.encodeList<
           RepositoryAssociationS3RepositoryDetailCodeArtifact,
           Map<String, dynamic>>(codeArtifactsValue, (value) => value.toMap());
     }
@@ -36,7 +36,7 @@ class RepositoryAssociationS3RepositoryDetail {
           map['bucketName'] == null ? null : map['bucketName'] as String,
       codeArtifacts: map['codeArtifacts'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RepositoryAssociationS3RepositoryDetailCodeArtifact>(
               map['codeArtifacts'],
               (value) =>

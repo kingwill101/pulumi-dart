@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../backup_policy_backup_policy/backup_policy_backup_policy.dart';
 import 'backup_policy_args.dart';
 
@@ -16,25 +16,25 @@ import 'backup_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:efs/backupPolicy:BackupPolicy example fs-6fa144c6
 /// ```
-class BackupPolicy extends CustomResource {
+class BackupPolicy extends pulumi.CustomResource {
   /// A backup_policy object (documented below).
-  late final Output<BackupPolicyBackupPolicy> backupPolicy;
+  late final pulumi.Output<BackupPolicyBackupPolicy> backupPolicy;
 
   /// The ID of the EFS file system.
-  late final Output<String> fileSystemId;
+  late final pulumi.Output<String> fileSystemId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   BackupPolicy(
     String name, {
     BackupPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:efs/backupPolicy:BackupPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backupPolicy =
         registerOutput<BackupPolicyBackupPolicy>('backupPolicy');

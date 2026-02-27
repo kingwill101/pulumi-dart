@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../thing_group_metadata/thing_group_metadata.dart';
 import '../thing_group_properties/thing_group_properties.dart';
 import 'thing_group_args.dart';
@@ -16,39 +16,39 @@ import 'thing_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:iot/thingGroup:ThingGroup example example
 /// ```
-class ThingGroup extends CustomResource {
+class ThingGroup extends pulumi.CustomResource {
   /// The ARN of the Thing Group.
-  late final Output<String> arn;
-  late final Output<List<ThingGroupMetadata>> metadatas;
+  late final pulumi.Output<String> arn;
+  late final pulumi.Output<List<ThingGroupMetadata>> metadatas;
 
   /// The name of the Thing Group.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The name of the parent Thing Group.
-  late final Output<String?> parentGroupName;
+  late final pulumi.Output<String?> parentGroupName;
 
   /// The Thing Group properties. Defined below.
-  late final Output<ThingGroupProperties?> properties;
+  late final pulumi.Output<ThingGroupProperties?> properties;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value mapping of resource tags
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The current version of the Thing Group record in the registry.
-  late final Output<int> version;
+  late final pulumi.Output<int> version;
 
   ThingGroup(
     String name, {
     ThingGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iot/thingGroup:ThingGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.metadatas = registerOutput<List<ThingGroupMetadata>>('metadatas');

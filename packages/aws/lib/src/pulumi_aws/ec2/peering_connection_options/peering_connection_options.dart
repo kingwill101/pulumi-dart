@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../peering_connection_options_accepter/peering_connection_options_accepter.dart';
 import '../peering_connection_options_requester/peering_connection_options_requester.dart';
 import 'peering_connection_options_args.dart';
@@ -31,28 +31,28 @@ import 'peering_connection_options_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/peeringConnectionOptions:PeeringConnectionOptions foo pcx-111aaa111
 /// ```
-class PeeringConnectionOptions extends CustomResource {
+class PeeringConnectionOptions extends pulumi.CustomResource {
   /// An optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that accepts the peering connection (a maximum of one).
-  late final Output<PeeringConnectionOptionsAccepter> accepter;
+  late final pulumi.Output<PeeringConnectionOptionsAccepter> accepter;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that requests the peering connection (a maximum of one).
-  late final Output<PeeringConnectionOptionsRequester> requester;
+  late final pulumi.Output<PeeringConnectionOptionsRequester> requester;
 
   /// The ID of the requester VPC peering connection.
-  late final Output<String> vpcPeeringConnectionId;
+  late final pulumi.Output<String> vpcPeeringConnectionId;
 
   PeeringConnectionOptions(
     String name, {
     PeeringConnectionOptionsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/peeringConnectionOptions:PeeringConnectionOptions',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accepter =
         registerOutput<PeeringConnectionOptionsAccepter>('accepter');

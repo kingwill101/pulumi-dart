@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../custom_action_type_configuration_property/custom_action_type_configuration_property.dart';
 import '../custom_action_type_input_artifact_details/custom_action_type_input_artifact_details.dart';
 import '../custom_action_type_output_artifact_details/custom_action_type_output_artifact_details.dart';
@@ -18,42 +18,43 @@ import 'custom_action_type_args.dart';
 /// ```sh
 /// $ pulumi import aws:codepipeline/customActionType:CustomActionType example Build:pulumi:1
 /// ```
-class CustomActionType extends CustomResource {
+class CustomActionType extends pulumi.CustomResource {
   /// The action ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The category of the custom action. Valid values: `Source`, `Build`, `Deploy`, `Test`, `Invoke`, `Approval`
-  late final Output<String> category;
+  late final pulumi.Output<String> category;
 
   /// The configuration properties for the custom action. Max 10 items.
-  late final Output<List<CustomActionTypeConfigurationProperty>?>
+  late final pulumi.Output<List<CustomActionTypeConfigurationProperty>?>
       configurationProperties;
-  late final Output<CustomActionTypeInputArtifactDetails> inputArtifactDetails;
-  late final Output<CustomActionTypeOutputArtifactDetails>
+  late final pulumi.Output<CustomActionTypeInputArtifactDetails>
+      inputArtifactDetails;
+  late final pulumi.Output<CustomActionTypeOutputArtifactDetails>
       outputArtifactDetails;
 
   /// The creator of the action being called.
-  late final Output<String> owner;
-  late final Output<String> providerName;
+  late final pulumi.Output<String> owner;
+  late final pulumi.Output<String> providerName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<CustomActionTypeSettings?> settings;
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<CustomActionTypeSettings?> settings;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<String> version;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<String> version;
 
   CustomActionType(
     String name, {
     CustomActionTypeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:codepipeline/customActionType:CustomActionType',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.category = registerOutput<String>('category');

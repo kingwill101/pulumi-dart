@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../channel_encoder_settings_audio_description_audio_watermark_settings_nielsen_watermarks_settings_nielsen_cbet_settings/channel_encoder_settings_audio_description_audio_watermark_settings_nielsen_watermarks_settings_nielsen_cbet_settings.dart';
 import '../channel_encoder_settings_audio_description_audio_watermark_settings_nielsen_watermarks_settings_nielsen_naes_ii_nw_setting/channel_encoder_settings_audio_description_audio_watermark_settings_nielsen_watermarks_settings_nielsen_naes_ii_nw_setting.dart';
 
@@ -35,7 +35,7 @@ class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWaterma
     }
     final nielsenNaesIiNwSettingsValue = nielsenNaesIiNwSettings;
     if (nielsenNaesIiNwSettingsValue != null) {
-      map['nielsenNaesIiNwSettings'] = Input.encodeList<
+      map['nielsenNaesIiNwSettings'] = pulumi.Input.encodeList<
           ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting,
           Map<String,
               dynamic>>(nielsenNaesIiNwSettingsValue, (value) => value.toMap());
@@ -56,7 +56,7 @@ class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWaterma
           : map['nielsenDistributionType'] as String,
       nielsenNaesIiNwSettings: map['nielsenNaesIiNwSettings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting>(
               map['nielsenNaesIiNwSettings'],
               (value) =>

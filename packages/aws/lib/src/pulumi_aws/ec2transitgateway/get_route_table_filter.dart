@@ -1,3 +1,3 @@
 library module_ec2transitgateway_get_route_table_filter;
 
-export 'get_route_table_filter/get_route_table_filter2.dart';
+export 'get_route_table_filter/get_route_table_filter_ec2transitgateway.dart';

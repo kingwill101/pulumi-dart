@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_logging_configuration_logging_filter_filter/web_acl_logging_configuration_logging_filter_filter.dart';
 
 class WebAclLoggingConfigurationLoggingFilter {
@@ -18,7 +18,7 @@ class WebAclLoggingConfigurationLoggingFilter {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['defaultBehavior'] = defaultBehavior;
-    map['filters'] = Input.encodeList<
+    map['filters'] = pulumi.Input.encodeList<
         WebAclLoggingConfigurationLoggingFilterFilter,
         Map<String, dynamic>>(filters, (value) => value.toMap());
     return map;
@@ -28,7 +28,8 @@ class WebAclLoggingConfigurationLoggingFilter {
       Map<String, dynamic> map) {
     return WebAclLoggingConfigurationLoggingFilter(
       defaultBehavior: map['defaultBehavior'] as String,
-      filters: Input.decodeList<WebAclLoggingConfigurationLoggingFilterFilter>(
+      filters: pulumi.Input.decodeList<
+              WebAclLoggingConfigurationLoggingFilterFilter>(
           map['filters'],
           (value) => WebAclLoggingConfigurationLoggingFilterFilter.fromMap(
               (value as Map).cast<String, dynamic>())),

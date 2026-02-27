@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBootstrapBrokers.
 class GetBootstrapBrokersArgs {
   /// ARN of the cluster the nodes belong to.
-  final Input<String> clusterArn;
+  final pulumi.Input<String> clusterArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetBootstrapBrokersArgs({
     required this.clusterArn,
@@ -27,8 +27,8 @@ class GetBootstrapBrokersArgs {
 
   factory GetBootstrapBrokersArgs.fromMap(Map<String, dynamic> map) {
     return GetBootstrapBrokersArgs(
-      clusterArn: Input.asInput<String>(map['clusterArn']),
-      region: Input.asOptionalInput<String>(map['region']),
+      clusterArn: pulumi.Input.asInput<String>(map['clusterArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cloud_vm_cluster_data_collection_options/cloud_vm_cluster_data_collection_options.dart';
 import '../cloud_vm_cluster_iorm_config_cache/cloud_vm_cluster_iorm_config_cache.dart';
 import '../cloud_vm_cluster_timeouts/cloud_vm_cluster_timeouts.dart';
@@ -21,161 +21,163 @@ import 'cloud_vm_cluster_args.dart';
 /// ```sh
 /// $ pulumi import aws:odb/cloudVmCluster:CloudVmCluster example example
 /// ```
-class CloudVmCluster extends CustomResource {
+class CloudVmCluster extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) for the cloud vm cluster.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The ARN of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
-  late final Output<String> cloudExadataInfrastructureArn;
+  late final pulumi.Output<String> cloudExadataInfrastructureArn;
 
   /// The unique identifier of the Exadata infrastructure for this VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
-  late final Output<String> cloudExadataInfrastructureId;
+  late final pulumi.Output<String> cloudExadataInfrastructureId;
 
   /// The name of the Grid Infrastructure (GI) cluster. Changing this will create a new resource.
-  late final Output<String> clusterName;
+  late final pulumi.Output<String> clusterName;
 
   /// The compute model used when the instance is created or cloned — either ECPU or OCPU. ECPU is a virtualized compute unit; OCPU is a physical processor core with hyper-threading.
-  late final Output<String> computeModel;
+  late final pulumi.Output<String> computeModel;
 
   /// The number of CPU cores to enable on the VM cluster. Changing this will create a new resource.
-  late final Output<int> cpuCoreCount;
+  late final pulumi.Output<int> cpuCoreCount;
 
   /// The timestamp when the VM cluster was created.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// The set of preferences for the various diagnostic collection options for the VM cluster.
-  late final Output<CloudVmClusterDataCollectionOptions> dataCollectionOptions;
+  late final pulumi.Output<CloudVmClusterDataCollectionOptions>
+      dataCollectionOptions;
 
   /// The size of the data disk group, in terabytes (TBs), to allocate for the VM cluster. Changing this will create a new resource.
   ///
   /// The following arguments are optional:
-  late final Output<double> dataStorageSizeInTbs;
+  late final pulumi.Output<double> dataStorageSizeInTbs;
 
   /// The amount of local node storage, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
-  late final Output<int> dbNodeStorageSizeInGbs;
+  late final pulumi.Output<int> dbNodeStorageSizeInGbs;
 
   /// The list of database servers for the VM cluster. Changing this will create a new resource.
-  late final Output<List<String>> dbServers;
+  late final pulumi.Output<List<String>> dbServers;
 
   /// The type of redundancy for the VM cluster: NORMAL (2-way) or HIGH (3-way).
   /// * `AttrDomain` - The domain name associated with the VM cluster.
-  late final Output<String> diskRedundancy;
+  late final pulumi.Output<String> diskRedundancy;
 
   /// A user-friendly name for the VM cluster. Changing this will create a new resource.
-  late final Output<String> displayName;
+  late final pulumi.Output<String> displayName;
 
   /// The domain name associated with the VM cluster.
-  late final Output<String> domain;
+  late final pulumi.Output<String> domain;
 
   /// A valid software version of Oracle Grid Infrastructure (GI). To get the list of valid values, use the ListGiVersions operation and specify the shape of the Exadata infrastructure. Example: 19.0.0.0 Changing this will create a new resource.
-  late final Output<String> giVersion;
+  late final pulumi.Output<String> giVersion;
 
   /// A complete software version of Oracle Grid Infrastructure (GI).
-  late final Output<String> giVersionComputed;
+  late final pulumi.Output<String> giVersionComputed;
 
   /// The host name prefix for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - The maximum length of the combined hostname and domain is 63 characters. - The hostname must be unique within the subnet. Changing this will create a new resource.
-  late final Output<String> hostnamePrefix;
+  late final pulumi.Output<String> hostnamePrefix;
 
   /// The host name for the VM cluster. Constraints: - Can't be "localhost" or "hostname". - Can't contain "-version". - The maximum length of the combined hostname and domain is 63 characters. - The hostname must be unique within the subnet. This member is required. Changing this will create a new resource.
-  late final Output<String> hostnamePrefixComputed;
+  late final pulumi.Output<String> hostnamePrefixComputed;
 
   /// The Exadata IORM (I/O Resource Manager) configuration cache details for the VM cluster.
-  late final Output<List<CloudVmClusterIormConfigCache>> iormConfigCaches;
+  late final pulumi.Output<List<CloudVmClusterIormConfigCache>>
+      iormConfigCaches;
 
   /// Specifies whether to enable database backups to local Exadata storage for the VM cluster. Changing this will create a new resource.
-  late final Output<bool> isLocalBackupEnabled;
+  late final pulumi.Output<bool> isLocalBackupEnabled;
 
   /// Specifies whether to create a sparse disk group for the VM cluster. Changing this will create a new resource.
-  late final Output<bool> isSparseDiskgroupEnabled;
+  late final pulumi.Output<bool> isSparseDiskgroupEnabled;
 
   /// The OCID of the most recent maintenance update history entry.
-  late final Output<String> lastUpdateHistoryEntryId;
+  late final pulumi.Output<String> lastUpdateHistoryEntryId;
 
   /// The Oracle license model to apply to the VM cluster. Default: LICENSE_INCLUDED. Changing this will create a new resource.
-  late final Output<String> licenseModel;
+  late final pulumi.Output<String> licenseModel;
 
   /// The listener port number configured on the VM cluster.
-  late final Output<int> listenerPort;
+  late final pulumi.Output<int> listenerPort;
 
   /// The amount of memory, in gigabytes (GBs), to allocate for the VM cluster. Changing this will create a new resource.
-  late final Output<int> memorySizeInGbs;
+  late final pulumi.Output<int> memorySizeInGbs;
 
   /// The total number of nodes in the VM cluster.
-  late final Output<int> nodeCount;
+  late final pulumi.Output<int> nodeCount;
 
   /// The name of the OCI resource anchor associated with the VM cluster.
-  late final Output<String> ociResourceAnchorName;
+  late final pulumi.Output<String> ociResourceAnchorName;
 
   /// The HTTPS link to the VM cluster resource in OCI.
-  late final Output<String> ociUrl;
+  late final pulumi.Output<String> ociUrl;
 
   /// The OCID (Oracle Cloud Identifier) of the VM cluster.
-  late final Output<String> ocid;
+  late final pulumi.Output<String> ocid;
 
   /// The ARN of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
-  late final Output<String> odbNetworkArn;
+  late final pulumi.Output<String> odbNetworkArn;
 
   /// The unique identifier of the ODB network for the VM cluster. Changing this will create a new resource. Either the combination of cloud_exadata_infrastructure_id and odb_network_id or cloud_exadata_infrastructure_arn and odb_network_arn must be used.
-  late final Output<String> odbNetworkId;
+  late final pulumi.Output<String> odbNetworkId;
 
   /// The percentage of progress made on the current operation for the VM cluster.
-  late final Output<double> percentProgress;
+  late final pulumi.Output<double> percentProgress;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The fully qualified domain name (FQDN) for the SCAN IP addresses associated with the VM cluster.
-  late final Output<String> scanDnsName;
+  late final pulumi.Output<String> scanDnsName;
 
   /// The OCID of the DNS record for the SCAN IPs linked to the VM cluster.
-  late final Output<String> scanDnsRecordId;
+  late final pulumi.Output<String> scanDnsRecordId;
 
   /// The list of OCIDs for SCAN IP addresses associated with the VM cluster.
-  late final Output<List<String>> scanIpIds;
+  late final pulumi.Output<List<String>> scanIpIds;
 
   /// The port number for TCP connections to the single client access name (SCAN) listener. Valid values: 1024–8999, except 2484, 6100, 6200, 7060, 7070, 7085, and 7879. Default: 1521. Changing this will create a new resource.
-  late final Output<int> scanListenerPortTcp;
+  late final pulumi.Output<int> scanListenerPortTcp;
 
   /// The hardware model name of the Exadata infrastructure running the VM cluster.
-  late final Output<String> shape;
+  late final pulumi.Output<String> shape;
 
   /// The public key portion of one or more key pairs used for SSH access to the VM cluster. Changing this will create a new resource.
-  late final Output<List<String>> sshPublicKeys;
+  late final pulumi.Output<List<String>> sshPublicKeys;
 
   /// The current lifecycle status of the VM cluster.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Additional information regarding the current status of the VM cluster.
-  late final Output<String> statusReason;
+  late final pulumi.Output<String> statusReason;
 
   /// The local node storage allocated to the VM cluster, in gigabytes (GB).
-  late final Output<int> storageSizeInGbs;
+  late final pulumi.Output<int> storageSizeInGbs;
 
   /// The operating system version of the image chosen for the VM cluster.
-  late final Output<String> systemVersion;
+  late final pulumi.Output<String> systemVersion;
 
   /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// The combined set of user-defined and provider-defined tags.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<CloudVmClusterTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<CloudVmClusterTimeouts?> timeouts;
 
   /// The configured time zone of the VM cluster. Changing this will create a new resource.
-  late final Output<String> timezone;
+  late final pulumi.Output<String> timezone;
 
   /// The virtual IP (VIP) addresses assigned to the VM cluster. CRS assigns one VIP per node for failover support.
-  late final Output<List<String>> vipIds;
+  late final pulumi.Output<List<String>> vipIds;
 
   CloudVmCluster(
     String name, {
     CloudVmClusterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:odb/cloudVmCluster:CloudVmCluster',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.cloudExadataInfrastructureArn =

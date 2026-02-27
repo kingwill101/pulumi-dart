@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_contacts_rotation_recurrence_shift_coverage_coverage_time/get_contacts_rotation_recurrence_shift_coverage_coverage_time.dart';
 
 class GetContactsRotationRecurrenceShiftCoverage {
@@ -15,7 +15,7 @@ class GetContactsRotationRecurrenceShiftCoverage {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['coverageTimes'] = Input.encodeList<
+    map['coverageTimes'] = pulumi.Input.encodeList<
         GetContactsRotationRecurrenceShiftCoverageCoverageTime,
         Map<String, dynamic>>(coverageTimes, (value) => value.toMap());
     map['mapBlockKey'] = mapBlockKey;
@@ -25,7 +25,7 @@ class GetContactsRotationRecurrenceShiftCoverage {
   factory GetContactsRotationRecurrenceShiftCoverage.fromMap(
       Map<String, dynamic> map) {
     return GetContactsRotationRecurrenceShiftCoverage(
-      coverageTimes: Input.decodeList<
+      coverageTimes: pulumi.Input.decodeList<
               GetContactsRotationRecurrenceShiftCoverageCoverageTime>(
           map['coverageTimes'],
           (value) =>

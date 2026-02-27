@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOutpost.
 class GetOutpostArgs {
   /// ARN.
-  final Input<String>? arn;
+  final pulumi.Input<String>? arn;
 
   /// Identifier of the Outpost.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Name of the Outpost.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// AWS Account identifier of the Outpost owner.
-  final Input<String>? ownerId;
+  final pulumi.Input<String>? ownerId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The Outpost tags.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetOutpostArgs({
     this.arn,
@@ -62,12 +62,12 @@ class GetOutpostArgs {
 
   factory GetOutpostArgs.fromMap(Map<String, dynamic> map) {
     return GetOutpostArgs(
-      arn: Input.asOptionalInput<String>(map['arn']),
-      id: Input.asOptionalInput<String>(map['id']),
-      name: Input.asOptionalInput<String>(map['name']),
-      ownerId: Input.asOptionalInput<String>(map['ownerId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      arn: pulumi.Input.asOptionalInput<String>(map['arn']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      ownerId: pulumi.Input.asOptionalInput<String>(map['ownerId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

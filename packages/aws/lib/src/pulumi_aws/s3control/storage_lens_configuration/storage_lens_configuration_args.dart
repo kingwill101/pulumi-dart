@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../storage_lens_configuration_storage_lens_configuration/storage_lens_configuration_storage_lens_configuration.dart';
 
 /// The set of arguments for StorageLensConfiguration.
 class StorageLensConfigurationArgs {
   /// The AWS account ID for the S3 Storage Lens configuration. Defaults to automatically determined account ID of the AWS provider.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// The ID of the S3 Storage Lens configuration.
-  final Input<String> configId;
+  final pulumi.Input<String> configId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The S3 Storage Lens configuration. See Storage Lens Configuration below for more details.
-  final Input<StorageLensConfigurationStorageLensConfiguration>
+  final pulumi.Input<StorageLensConfigurationStorageLensConfiguration>
       storageLensConfiguration;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   StorageLensConfigurationArgs({
     this.accountId,
@@ -40,7 +40,7 @@ class StorageLensConfigurationArgs {
     if (regionValue != null) {
       map['region'] = regionValue;
     }
-    map['storageLensConfiguration'] = Input.mapInputValue<
+    map['storageLensConfiguration'] = pulumi.Input.mapInputValue<
             StorageLensConfigurationStorageLensConfiguration,
             Map<String, dynamic>>(
         storageLensConfiguration, (value) => value.toMap());
@@ -53,13 +53,13 @@ class StorageLensConfigurationArgs {
 
   factory StorageLensConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
-      configId: Input.asInput<String>(map['configId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      storageLensConfiguration:
-          Input.asInput<StorageLensConfigurationStorageLensConfiguration>(
-              map['storageLensConfiguration']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
+      configId: pulumi.Input.asInput<String>(map['configId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      storageLensConfiguration: pulumi.Input.asInput<
+              StorageLensConfigurationStorageLensConfiguration>(
+          map['storageLensConfiguration']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

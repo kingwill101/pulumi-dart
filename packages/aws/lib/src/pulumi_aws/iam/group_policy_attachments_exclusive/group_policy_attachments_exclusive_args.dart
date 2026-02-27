@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for GroupPolicyAttachmentsExclusive.
 class GroupPolicyAttachmentsExclusiveArgs {
   /// IAM group name.
-  final Input<String> groupName;
+  final pulumi.Input<String> groupName;
 
   /// A list of managed IAM policy ARNs to be attached to the group. Policies attached to this group but not configured in this argument will be removed.
-  final Input<List<String>> policyArns;
+  final pulumi.Input<List<String>> policyArns;
 
   GroupPolicyAttachmentsExclusiveArgs({
     required this.groupName,
@@ -25,8 +25,8 @@ class GroupPolicyAttachmentsExclusiveArgs {
   factory GroupPolicyAttachmentsExclusiveArgs.fromMap(
       Map<String, dynamic> map) {
     return GroupPolicyAttachmentsExclusiveArgs(
-      groupName: Input.asInput<String>(map['groupName']),
-      policyArns: Input.asInput<List<String>>(map['policyArns']),
+      groupName: pulumi.Input.asInput<String>(map['groupName']),
+      policyArns: pulumi.Input.asInput<List<String>>(map['policyArns']),
     );
   }
 }

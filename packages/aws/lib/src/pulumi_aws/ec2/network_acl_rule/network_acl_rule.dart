@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_acl_rule_args.dart';
 
 /// Creates an entry (a rule) in a network ACL with the specified rule number.
@@ -33,15 +33,15 @@ import 'network_acl_rule_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/networkAclRule:NetworkAclRule my_rule acl-7aaabd18:100:6:false
 /// ```
-class NetworkAclRule extends CustomResource {
+class NetworkAclRule extends pulumi.CustomResource {
   /// The network range to allow or deny, in CIDR notation (for example 172.16.0.0/24 ).
-  late final Output<String?> cidrBlock;
+  late final pulumi.Output<String?> cidrBlock;
 
   /// Indicates whether this is an egress rule (rule is applied to traffic leaving the subnet). Default `false`.
-  late final Output<bool?> egress;
+  late final pulumi.Output<bool?> egress;
 
   /// The from port to match.
-  late final Output<int?> fromPort;
+  late final pulumi.Output<int?> fromPort;
 
   /// ICMP protocol: The ICMP code. Required if specifying ICMP for the protocolE.g., -1
   ///
@@ -50,41 +50,41 @@ class NetworkAclRule extends CustomResource {
   /// > **NOTE:** If the value of `icmp_type` is `-1` (which results in a wildcard ICMP type), the `icmp_code` must also be set to `-1` (wildcard ICMP code).
   ///
   /// > Note: For more information on ICMP types and codes, see here: https://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml
-  late final Output<int?> icmpCode;
+  late final pulumi.Output<int?> icmpCode;
 
   /// ICMP protocol: The ICMP type. Required if specifying ICMP for the protocolE.g., -1
-  late final Output<int?> icmpType;
+  late final pulumi.Output<int?> icmpType;
 
   /// The IPv6 CIDR block to allow or deny.
-  late final Output<String?> ipv6CidrBlock;
+  late final pulumi.Output<String?> ipv6CidrBlock;
 
   /// The ID of the network ACL.
-  late final Output<String> networkAclId;
+  late final pulumi.Output<String> networkAclId;
 
   /// The protocol. A value of -1 means all protocols.
-  late final Output<String> protocol;
+  late final pulumi.Output<String> protocol;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Indicates whether to allow or deny the traffic that matches the rule. Accepted values: `allow` | `deny`
-  late final Output<String> ruleAction;
+  late final pulumi.Output<String> ruleAction;
 
   /// The rule number for the entry (for example, 100). ACL entries are processed in ascending order by rule number.
-  late final Output<int> ruleNumber;
+  late final pulumi.Output<int> ruleNumber;
 
   /// The to port to match.
-  late final Output<int?> toPort;
+  late final pulumi.Output<int?> toPort;
 
   NetworkAclRule(
     String name, {
     NetworkAclRuleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/networkAclRule:NetworkAclRule',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cidrBlock = registerOutput<String?>('cidrBlock');
     this.egress = registerOutput<bool?>('egress');

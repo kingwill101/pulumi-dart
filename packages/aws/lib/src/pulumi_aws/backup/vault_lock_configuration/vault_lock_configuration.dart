@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vault_lock_configuration_args.dart';
 
 /// Provides an AWS Backup vault lock configuration resource.
@@ -14,34 +14,34 @@ import 'vault_lock_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:backup/vaultLockConfiguration:VaultLockConfiguration test TestVault
 /// ```
-class VaultLockConfiguration extends CustomResource {
+class VaultLockConfiguration extends pulumi.CustomResource {
   /// The ARN of the vault.
-  late final Output<String> backupVaultArn;
+  late final pulumi.Output<String> backupVaultArn;
 
   /// Name of the backup vault to add a lock configuration for.
-  late final Output<String> backupVaultName;
+  late final pulumi.Output<String> backupVaultName;
 
   /// The number of days before the lock date. If omitted creates a vault lock in `governance` mode, otherwise it will create a vault lock in `compliance` mode.
-  late final Output<int?> changeableForDays;
+  late final pulumi.Output<int?> changeableForDays;
 
   /// The maximum retention period that the vault retains its recovery points.
-  late final Output<int?> maxRetentionDays;
+  late final pulumi.Output<int?> maxRetentionDays;
 
   /// The minimum retention period that the vault retains its recovery points.
-  late final Output<int?> minRetentionDays;
+  late final pulumi.Output<int?> minRetentionDays;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   VaultLockConfiguration(
     String name, {
     VaultLockConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:backup/vaultLockConfiguration:VaultLockConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.backupVaultArn = registerOutput<String>('backupVaultArn');
     this.backupVaultName = registerOutput<String>('backupVaultName');

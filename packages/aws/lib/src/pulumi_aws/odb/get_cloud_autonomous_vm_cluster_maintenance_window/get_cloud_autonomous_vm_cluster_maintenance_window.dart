@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_autonomous_vm_cluster_maintenance_window_days_of_week/get_cloud_autonomous_vm_cluster_maintenance_window_days_of_week.dart';
 import '../get_cloud_autonomous_vm_cluster_maintenance_window_month/get_cloud_autonomous_vm_cluster_maintenance_window_month.dart';
 
@@ -24,12 +24,12 @@ class GetCloudAutonomousVmClusterMaintenanceWindow {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['daysOfWeeks'] = Input.encodeList<
+    map['daysOfWeeks'] = pulumi.Input.encodeList<
         GetCloudAutonomousVmClusterMaintenanceWindowDaysOfWeek,
         Map<String, dynamic>>(daysOfWeeks, (value) => value.toMap());
     map['hoursOfDays'] = hoursOfDays;
     map['leadTimeInWeeks'] = leadTimeInWeeks;
-    map['months'] = Input.encodeList<
+    map['months'] = pulumi.Input.encodeList<
         GetCloudAutonomousVmClusterMaintenanceWindowMonth,
         Map<String, dynamic>>(months, (value) => value.toMap());
     map['preference'] = preference;
@@ -40,7 +40,7 @@ class GetCloudAutonomousVmClusterMaintenanceWindow {
   factory GetCloudAutonomousVmClusterMaintenanceWindow.fromMap(
       Map<String, dynamic> map) {
     return GetCloudAutonomousVmClusterMaintenanceWindow(
-      daysOfWeeks: Input.decodeList<
+      daysOfWeeks: pulumi.Input.decodeList<
               GetCloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>(
           map['daysOfWeeks'],
           (value) =>
@@ -48,12 +48,11 @@ class GetCloudAutonomousVmClusterMaintenanceWindow {
                   (value as Map).cast<String, dynamic>())),
       hoursOfDays: (map['hoursOfDays'] as List).cast<int>(),
       leadTimeInWeeks: map['leadTimeInWeeks'] as int,
-      months:
-          Input.decodeList<GetCloudAutonomousVmClusterMaintenanceWindowMonth>(
-              map['months'],
-              (value) =>
-                  GetCloudAutonomousVmClusterMaintenanceWindowMonth.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      months: pulumi.Input.decodeList<
+              GetCloudAutonomousVmClusterMaintenanceWindowMonth>(
+          map['months'],
+          (value) => GetCloudAutonomousVmClusterMaintenanceWindowMonth.fromMap(
+              (value as Map).cast<String, dynamic>())),
       preference: map['preference'] as String,
       weeksOfMonths: (map['weeksOfMonths'] as List).cast<int>(),
     );

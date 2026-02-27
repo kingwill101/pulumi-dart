@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_regex_pattern_set_regular_expression/get_regex_pattern_set_regular_expression.dart';
 
 /// Result data returned by getRegexPatternSet.
@@ -37,7 +37,7 @@ class GetRegexPatternSetResult {
     map['id'] = id;
     map['name'] = name;
     map['region'] = region;
-    map['regularExpressions'] = Input.encodeList<
+    map['regularExpressions'] = pulumi.Input.encodeList<
         GetRegexPatternSetRegularExpression,
         Map<String, dynamic>>(regularExpressions, (value) => value.toMap());
     map['scope'] = scope;
@@ -51,10 +51,11 @@ class GetRegexPatternSetResult {
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
-      regularExpressions: Input.decodeList<GetRegexPatternSetRegularExpression>(
-          map['regularExpressions'],
-          (value) => GetRegexPatternSetRegularExpression.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      regularExpressions:
+          pulumi.Input.decodeList<GetRegexPatternSetRegularExpression>(
+              map['regularExpressions'],
+              (value) => GetRegexPatternSetRegularExpression.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       scope: map['scope'] as String,
     );
   }

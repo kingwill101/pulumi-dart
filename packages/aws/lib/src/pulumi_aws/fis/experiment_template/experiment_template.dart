@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../experiment_template_action/experiment_template_action.dart';
 import '../experiment_template_experiment_options/experiment_template_experiment_options.dart';
 import '../experiment_template_experiment_report_configuration/experiment_template_experiment_report_configuration.dart';
@@ -29,50 +29,53 @@ import 'experiment_template_args.dart';
 /// ```sh
 /// $ pulumi import aws:fis/experimentTemplate:ExperimentTemplate template EXT123AbCdEfGhIjK
 /// ```
-class ExperimentTemplate extends CustomResource {
+class ExperimentTemplate extends pulumi.CustomResource {
   /// Action to be performed during an experiment. See below.
-  late final Output<List<ExperimentTemplateAction>> actions;
+  late final pulumi.Output<List<ExperimentTemplateAction>> actions;
 
   /// Description for the experiment template.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// The experiment options for the experiment template. See experiment_options below for more details!
-  late final Output<ExperimentTemplateExperimentOptions> experimentOptions;
+  late final pulumi.Output<ExperimentTemplateExperimentOptions>
+      experimentOptions;
 
   /// The configuration for [experiment reporting](https://docs.aws.amazon.com/fis/latest/userguide/experiment-report-configuration.html). See below.
-  late final Output<ExperimentTemplateExperimentReportConfiguration?>
+  late final pulumi.Output<ExperimentTemplateExperimentReportConfiguration?>
       experimentReportConfiguration;
 
   /// The configuration for experiment logging. See below.
-  late final Output<ExperimentTemplateLogConfiguration?> logConfiguration;
+  late final pulumi.Output<ExperimentTemplateLogConfiguration?>
+      logConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of an IAM role that grants the AWS FIS service permission to perform service actions on your behalf.
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   /// When an ongoing experiment should be stopped. See below.
   ///
   /// The following arguments are optional:
-  late final Output<List<ExperimentTemplateStopCondition>> stopConditions;
+  late final pulumi.Output<List<ExperimentTemplateStopCondition>>
+      stopConditions;
 
   /// Key-value mapping of tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Target of an action. See below.
-  late final Output<List<ExperimentTemplateTarget>?> targets;
+  late final pulumi.Output<List<ExperimentTemplateTarget>?> targets;
 
   ExperimentTemplate(
     String name, {
     ExperimentTemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:fis/experimentTemplate:ExperimentTemplate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.actions = registerOutput<List<ExperimentTemplateAction>>('actions');
     this.description = registerOutput<String>('description');

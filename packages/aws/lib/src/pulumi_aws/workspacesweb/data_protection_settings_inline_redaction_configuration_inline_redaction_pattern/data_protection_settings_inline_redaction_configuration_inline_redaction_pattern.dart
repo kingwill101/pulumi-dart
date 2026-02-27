@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_protection_settings_inline_redaction_configuration_inline_redaction_pattern_custom_pattern/data_protection_settings_inline_redaction_configuration_inline_redaction_pattern_custom_pattern.dart';
 import '../data_protection_settings_inline_redaction_configuration_inline_redaction_pattern_redaction_place_holder/data_protection_settings_inline_redaction_configuration_inline_redaction_pattern_redaction_place_holder.dart';
 
@@ -59,7 +59,7 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern {
     }
     final redactionPlaceHoldersValue = redactionPlaceHolders;
     if (redactionPlaceHoldersValue != null) {
-      map['redactionPlaceHolders'] = Input.encodeList<
+      map['redactionPlaceHolders'] = pulumi.Input.encodeList<
           DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder,
           Map<String,
               dynamic>>(redactionPlaceHoldersValue, (value) => value.toMap());
@@ -87,7 +87,7 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern {
           : (map['exemptUrls'] as List).cast<String>(),
       redactionPlaceHolders: map['redactionPlaceHolders'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternRedactionPlaceHolder>(
               map['redactionPlaceHolders'],
               (value) =>

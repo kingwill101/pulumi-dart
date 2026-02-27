@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDbSystemShapes.
 class GetDbSystemShapesArgs {
   /// The physical ID of the AZ, for example, use1-az4. This ID persists across accounts.
-  final Input<String>? availabilityZoneId;
+  final pulumi.Input<String>? availabilityZoneId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetDbSystemShapesArgs({
     this.availabilityZoneId,
@@ -31,8 +31,8 @@ class GetDbSystemShapesArgs {
   factory GetDbSystemShapesArgs.fromMap(Map<String, dynamic> map) {
     return GetDbSystemShapesArgs(
       availabilityZoneId:
-          Input.asOptionalInput<String>(map['availabilityZoneId']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['availabilityZoneId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

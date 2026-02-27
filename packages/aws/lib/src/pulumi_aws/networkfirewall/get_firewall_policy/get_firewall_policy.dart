@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_firewall_policy_args.dart';
 import 'get_firewall_policy_result.dart';
 
@@ -23,13 +23,13 @@ import 'get_firewall_policy_result.dart';
 /// > **Note:** If there are multiple firewall policies in an account with the same `name`, and `arn` is not specified, the default behavior will return the firewall policy with `name` that was created in the account.
 Future<GetFirewallPolicyResult> getFirewallPolicy(
   GetFirewallPolicyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:networkfirewall/getFirewallPolicy:getFirewallPolicy',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallPolicyResult.fromMap(result);
 }

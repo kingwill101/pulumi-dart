@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_availability_zone_filter/get_availability_zone_filter.dart';
 
 /// Arguments for getAvailabilityZone.
 class GetAvailabilityZoneArgs {
   /// Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.
-  final Input<bool>? allAvailabilityZones;
+  final pulumi.Input<bool>? allAvailabilityZones;
 
   /// Configuration block(s) for filtering. Detailed below.
-  final Input<List<GetAvailabilityZoneFilter>>? filters;
+  final pulumi.Input<List<GetAvailabilityZoneFilter>>? filters;
 
   /// Full name of the availability zone to select.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Specific availability zone state to require. May be any of `"available"`, `"information"` or `"impaired"`.
-  final Input<String>? state;
+  final pulumi.Input<String>? state;
 
   /// Zone ID of the availability zone to select.
   ///
   /// The arguments of this data source act as filters for querying the available
   /// availability zones. The given filters must match exactly one availability
   /// zone whose data will be exported as attributes.
-  final Input<String>? zoneId;
+  final pulumi.Input<String>? zoneId;
 
   GetAvailabilityZoneArgs({
     this.allAvailabilityZones,
@@ -44,12 +44,11 @@ class GetAvailabilityZoneArgs {
     }
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
               List<GetAvailabilityZoneFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetAvailabilityZoneFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetAvailabilityZoneFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -73,13 +72,13 @@ class GetAvailabilityZoneArgs {
   factory GetAvailabilityZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetAvailabilityZoneArgs(
       allAvailabilityZones:
-          Input.asOptionalInput<bool>(map['allAvailabilityZones']),
-      filters: Input.asOptionalInput<List<GetAvailabilityZoneFilter>>(
+          pulumi.Input.asOptionalInput<bool>(map['allAvailabilityZones']),
+      filters: pulumi.Input.asOptionalInput<List<GetAvailabilityZoneFilter>>(
           map['filters']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      state: Input.asOptionalInput<String>(map['state']),
-      zoneId: Input.asOptionalInput<String>(map['zoneId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      state: pulumi.Input.asOptionalInput<String>(map['state']),
+      zoneId: pulumi.Input.asOptionalInput<String>(map['zoneId']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'static_ip_args.dart';
 
 /// Manages a static IP address.
@@ -18,33 +18,33 @@ import 'static_ip_args.dart';
 /// ```sh
 /// $ pulumi import aws:lightsail/staticIp:StaticIp example example
 /// ```
-class StaticIp extends CustomResource {
+class StaticIp extends pulumi.CustomResource {
   /// ARN of the Lightsail static IP.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Allocated static IP address.
-  late final Output<String> ipAddress;
+  late final pulumi.Output<String> ipAddress;
 
   /// Name for the allocated static IP.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Support code for the static IP. Include this code in your email to support when you have questions about a static IP in Lightsail. This code enables our support team to look up your Lightsail information more easily.
-  late final Output<String> supportCode;
+  late final pulumi.Output<String> supportCode;
 
   StaticIp(
     String name, {
     StaticIpArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lightsail/staticIp:StaticIp',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.ipAddress = registerOutput<String>('ipAddress');

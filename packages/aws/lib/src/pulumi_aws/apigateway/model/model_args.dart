@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Model.
 class ModelArgs {
   /// Content type of the model
-  final Input<String> contentType;
+  final pulumi.Input<String> contentType;
 
   /// Description of the model
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the model
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the associated REST API
-  final Input<String> restApi;
+  final pulumi.Input<String> restApi;
 
   /// Schema of the model in a JSON form
-  final Input<String>? schema;
+  final pulumi.Input<String>? schema;
 
   ModelArgs({
     required this.contentType,
@@ -56,12 +56,12 @@ class ModelArgs {
 
   factory ModelArgs.fromMap(Map<String, dynamic> map) {
     return ModelArgs(
-      contentType: Input.asInput<String>(map['contentType']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      restApi: Input.asInput<String>(map['restApi']),
-      schema: Input.asOptionalInput<String>(map['schema']),
+      contentType: pulumi.Input.asInput<String>(map['contentType']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      restApi: pulumi.Input.asInput<String>(map['restApi']),
+      schema: pulumi.Input.asOptionalInput<String>(map['schema']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_supported_instance_types_args.dart';
 import 'get_supported_instance_types_result.dart';
 
@@ -15,13 +15,13 @@ import 'get_supported_instance_types_result.dart';
 /// This data source can be used with a lifecycle precondition to ensure a given instance type is supported by EMR.
 Future<GetSupportedInstanceTypesResult> getSupportedInstanceTypes(
   GetSupportedInstanceTypesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:emr/getSupportedInstanceTypes:getSupportedInstanceTypes',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSupportedInstanceTypesResult.fromMap(result);
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_hours_of_operation_config/get_hours_of_operation_config.dart';
 
 /// Result data returned by getHoursOfOperation.
@@ -49,9 +49,8 @@ class GetHoursOfOperationResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['configs'] =
-        Input.encodeList<GetHoursOfOperationConfig, Map<String, dynamic>>(
-            configs, (value) => value.toMap());
+    map['configs'] = pulumi.Input.encodeList<GetHoursOfOperationConfig,
+        Map<String, dynamic>>(configs, (value) => value.toMap());
     map['description'] = description;
     map['hoursOfOperationId'] = hoursOfOperationId;
     map['id'] = id;
@@ -66,7 +65,7 @@ class GetHoursOfOperationResult {
   factory GetHoursOfOperationResult.fromMap(Map<String, dynamic> map) {
     return GetHoursOfOperationResult(
       arn: map['arn'] as String,
-      configs: Input.decodeList<GetHoursOfOperationConfig>(
+      configs: pulumi.Input.decodeList<GetHoursOfOperationConfig>(
           map['configs'],
           (value) => GetHoursOfOperationConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

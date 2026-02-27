@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getUser.
 class GetUserArgs {
   /// Reference to the hosting Amazon Connect Instance
-  final Input<String> instanceId;
+  final pulumi.Input<String> instanceId;
 
   /// Returns information on a specific User by name
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the User.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Returns information on a specific User by User id
   ///
   /// > **NOTE:** `instance_id` and one of either `name` or `user_id` is required.
-  final Input<String>? userId;
+  final pulumi.Input<String>? userId;
 
   GetUserArgs({
     required this.instanceId,
@@ -53,11 +53,11 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      instanceId: Input.asInput<String>(map['instanceId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      userId: Input.asOptionalInput<String>(map['userId']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      userId: pulumi.Input.asOptionalInput<String>(map['userId']),
     );
   }
 }

@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SubnetGroup.
 class SubnetGroupArgs {
   /// A description of the subnet group.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The name of the subnet group.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A list of VPC subnet IDs for the subnet group.
-  final Input<List<String>> subnetIds;
+  final pulumi.Input<List<String>> subnetIds;
 
   SubnetGroupArgs({
     this.description,
@@ -43,10 +43,10 @@ class SubnetGroupArgs {
 
   factory SubnetGroupArgs.fromMap(Map<String, dynamic> map) {
     return SubnetGroupArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      subnetIds: Input.asInput<List<String>>(map['subnetIds']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      subnetIds: pulumi.Input.asInput<List<String>>(map['subnetIds']),
     );
   }
 }

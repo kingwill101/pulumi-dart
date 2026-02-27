@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VaultPolicy.
 class VaultPolicyArgs {
   /// Name of the backup vault to add policy for.
-  final Input<String> backupVaultName;
+  final pulumi.Input<String> backupVaultName;
 
   /// The backup vault access policy document in JSON format.
-  final Input<String> policy;
+  final pulumi.Input<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   VaultPolicyArgs({
     required this.backupVaultName,
@@ -32,9 +32,9 @@ class VaultPolicyArgs {
 
   factory VaultPolicyArgs.fromMap(Map<String, dynamic> map) {
     return VaultPolicyArgs(
-      backupVaultName: Input.asInput<String>(map['backupVaultName']),
-      policy: Input.asInput<String>(map['policy']),
-      region: Input.asOptionalInput<String>(map['region']),
+      backupVaultName: pulumi.Input.asInput<String>(map['backupVaultName']),
+      policy: pulumi.Input.asInput<String>(map['policy']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

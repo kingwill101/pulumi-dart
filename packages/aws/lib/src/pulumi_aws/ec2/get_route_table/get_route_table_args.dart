@@ -1,30 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_route_table_filter/get_route_table_filter.dart';
 
 /// Arguments for getRouteTable.
 class GetRouteTableArgs {
   /// Configuration block. Detailed below.
-  final Input<List<GetRouteTableFilter>>? filters;
+  final pulumi.Input<List<GetRouteTableFilter>>? filters;
 
   /// ID of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
-  final Input<String>? gatewayId;
+  final pulumi.Input<String>? gatewayId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the specific Route Table to retrieve.
-  final Input<String>? routeTableId;
+  final pulumi.Input<String>? routeTableId;
 
   /// ID of a Subnet which is connected to the Route Table (not exported if not passed as a parameter).
-  final Input<String>? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Map of tags, each pair of which must exactly match a pair on the desired Route Table.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// ID of the VPC that the desired Route Table belongs to.
-  final Input<String>? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   GetRouteTableArgs({
     this.filters,
@@ -40,12 +40,11 @@ class GetRouteTableArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetRouteTableFilter>,
-              List<Map<String, dynamic>>>(
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
+              List<GetRouteTableFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetRouteTableFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetRouteTableFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final gatewayIdValue = gatewayId;
     if (gatewayIdValue != null) {
@@ -76,13 +75,14 @@ class GetRouteTableArgs {
 
   factory GetRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteTableArgs(
-      filters: Input.asOptionalInput<List<GetRouteTableFilter>>(map['filters']),
-      gatewayId: Input.asOptionalInput<String>(map['gatewayId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      routeTableId: Input.asOptionalInput<String>(map['routeTableId']),
-      subnetId: Input.asOptionalInput<String>(map['subnetId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vpcId: Input.asOptionalInput<String>(map['vpcId']),
+      filters: pulumi.Input.asOptionalInput<List<GetRouteTableFilter>>(
+          map['filters']),
+      gatewayId: pulumi.Input.asOptionalInput<String>(map['gatewayId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      routeTableId: pulumi.Input.asOptionalInput<String>(map['routeTableId']),
+      subnetId: pulumi.Input.asOptionalInput<String>(map['subnetId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpcId: pulumi.Input.asOptionalInput<String>(map['vpcId']),
     );
   }
 }

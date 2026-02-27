@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_mfa_device_args.dart';
 
 /// Provides an IAM Virtual MFA Device.
@@ -21,46 +21,46 @@ import 'virtual_mfa_device_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/virtualMfaDevice:VirtualMfaDevice example arn:aws:iam::123456789012:mfa/example
 /// ```
-class VirtualMfaDevice extends CustomResource {
+class VirtualMfaDevice extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN), which is also the serial number, of the virtual MFA device.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Base32 seed defined as specified in [RFC3548](https://tools.ietf.org/html/rfc3548.txt). The `base_32_string_seed` is base64-encoded.
-  late final Output<String> base32StringSeed;
+  late final pulumi.Output<String> base32StringSeed;
 
   /// Date and time when the virtual MFA device was enabled.
-  late final Output<String> enableDate;
+  late final pulumi.Output<String> enableDate;
 
   /// Path for the virtual MFA device.
-  late final Output<String?> path;
+  late final pulumi.Output<String?> path;
 
   /// QR code PNG image that encodes `otpauth://totp/$virtualMFADeviceName@$AccountName?secret=$Base32String` where `$virtualMFADeviceName` is one of the create call arguments. `AccountName` is the user name if set (otherwise, the account ID), and `Base32String` is the seed in base32 format.
-  late final Output<String> qrCodePng;
+  late final pulumi.Output<String> qrCodePng;
 
   /// Serial number associated with the virtual MFA device.
-  late final Output<String> serialNumber;
+  late final pulumi.Output<String> serialNumber;
 
   /// Map of resource tags for the virtual mfa device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Name of the IAM user associated with this virtual MFA device.
-  late final Output<String> userName;
+  late final pulumi.Output<String> userName;
 
   /// Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
-  late final Output<String> virtualMfaDeviceName;
+  late final pulumi.Output<String> virtualMfaDeviceName;
 
   VirtualMfaDevice(
     String name, {
     VirtualMfaDeviceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/virtualMfaDevice:VirtualMfaDevice',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.base32StringSeed = registerOutput<String>('base32StringSeed');

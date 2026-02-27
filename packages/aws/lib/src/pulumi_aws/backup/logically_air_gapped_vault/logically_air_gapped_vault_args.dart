@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../logically_air_gapped_vault_timeouts/logically_air_gapped_vault_timeouts.dart';
 
 /// The set of arguments for LogicallyAirGappedVault.
 class LogicallyAirGappedVaultArgs {
   /// The AWS KMS key identifier (ARN) used to encrypt the backups in the logically air-gapped vault.
-  final Input<String>? encryptionKeyArn;
+  final pulumi.Input<String>? encryptionKeyArn;
 
   /// Maximum retention period that the Logically Air Gapped Backup Vault retains recovery points.
-  final Input<int> maxRetentionDays;
+  final pulumi.Input<int> maxRetentionDays;
 
   /// Minimum retention period that the Logically Air Gapped Backup Vault retains recovery points.
-  final Input<int> minRetentionDays;
+  final pulumi.Input<int> minRetentionDays;
 
   /// Name of the Logically Air Gapped Backup Vault to create.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Metadata that you can assign to help organize the resources that you create. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<LogicallyAirGappedVaultTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<LogicallyAirGappedVaultTimeouts>? timeouts;
 
   LogicallyAirGappedVaultArgs({
     this.encryptionKeyArn,
@@ -56,7 +56,7 @@ class LogicallyAirGappedVaultArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           LogicallyAirGappedVaultTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -65,13 +65,14 @@ class LogicallyAirGappedVaultArgs {
 
   factory LogicallyAirGappedVaultArgs.fromMap(Map<String, dynamic> map) {
     return LogicallyAirGappedVaultArgs(
-      encryptionKeyArn: Input.asOptionalInput<String>(map['encryptionKeyArn']),
-      maxRetentionDays: Input.asInput<int>(map['maxRetentionDays']),
-      minRetentionDays: Input.asInput<int>(map['minRetentionDays']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<LogicallyAirGappedVaultTimeouts>(
+      encryptionKeyArn:
+          pulumi.Input.asOptionalInput<String>(map['encryptionKeyArn']),
+      maxRetentionDays: pulumi.Input.asInput<int>(map['maxRetentionDays']),
+      minRetentionDays: pulumi.Input.asInput<int>(map['minRetentionDays']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<LogicallyAirGappedVaultTimeouts>(
           map['timeouts']),
     );
   }

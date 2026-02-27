@@ -1,32 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agentcore_code_interpreter_network_configuration/agentcore_code_interpreter_network_configuration.dart';
 import '../agentcore_code_interpreter_timeouts/agentcore_code_interpreter_timeouts.dart';
 
 /// The set of arguments for AgentcoreCodeInterpreter.
 class AgentcoreCodeInterpreterArgs {
   /// Description of the code interpreter.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// ARN of the IAM role that the code interpreter assumes for execution. Required when using `SANDBOX` network mode.
-  final Input<String>? executionRoleArn;
+  final pulumi.Input<String>? executionRoleArn;
 
   /// Name of the code interpreter.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Network configuration for the code interpreter. See `network_configuration` below.
   ///
   /// The following arguments are optional:
-  final Input<AgentcoreCodeInterpreterNetworkConfiguration>
+  final pulumi.Input<AgentcoreCodeInterpreterNetworkConfiguration>
       networkConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<AgentcoreCodeInterpreterTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<AgentcoreCodeInterpreterTimeouts>? timeouts;
 
   AgentcoreCodeInterpreterArgs({
     this.description,
@@ -52,7 +52,7 @@ class AgentcoreCodeInterpreterArgs {
     if (nameValue != null) {
       map['name'] = nameValue;
     }
-    map['networkConfiguration'] = Input.mapInputValue<
+    map['networkConfiguration'] = pulumi.Input.mapInputValue<
         AgentcoreCodeInterpreterNetworkConfiguration,
         Map<String, dynamic>>(networkConfiguration, (value) => value.toMap());
     final regionValue = region;
@@ -65,7 +65,7 @@ class AgentcoreCodeInterpreterArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           AgentcoreCodeInterpreterTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -74,15 +74,16 @@ class AgentcoreCodeInterpreterArgs {
 
   factory AgentcoreCodeInterpreterArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreCodeInterpreterArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      executionRoleArn: Input.asOptionalInput<String>(map['executionRoleArn']),
-      name: Input.asOptionalInput<String>(map['name']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      executionRoleArn:
+          pulumi.Input.asOptionalInput<String>(map['executionRoleArn']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       networkConfiguration:
-          Input.asInput<AgentcoreCodeInterpreterNetworkConfiguration>(
+          pulumi.Input.asInput<AgentcoreCodeInterpreterNetworkConfiguration>(
               map['networkConfiguration']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<AgentcoreCodeInterpreterTimeouts>(
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<AgentcoreCodeInterpreterTimeouts>(
           map['timeouts']),
     );
   }

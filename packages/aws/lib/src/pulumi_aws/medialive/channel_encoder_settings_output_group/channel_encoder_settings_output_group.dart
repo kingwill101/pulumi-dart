@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../channel_encoder_settings_output_group_output/channel_encoder_settings_output_group_output.dart';
 import '../channel_encoder_settings_output_group_output_group_settings/channel_encoder_settings_output_group_output_group_settings.dart';
 
@@ -28,7 +28,8 @@ class ChannelEncoderSettingsOutputGroup {
       map['name'] = nameValue;
     }
     map['outputGroupSettings'] = outputGroupSettings.toMap();
-    map['outputs'] = Input.encodeList<ChannelEncoderSettingsOutputGroupOutput,
+    map['outputs'] = pulumi.Input.encodeList<
+        ChannelEncoderSettingsOutputGroupOutput,
         Map<String, dynamic>>(outputs, (value) => value.toMap());
     return map;
   }
@@ -39,7 +40,7 @@ class ChannelEncoderSettingsOutputGroup {
       outputGroupSettings:
           ChannelEncoderSettingsOutputGroupOutputGroupSettings.fromMap(
               (map['outputGroupSettings'] as Map).cast<String, dynamic>()),
-      outputs: Input.decodeList<ChannelEncoderSettingsOutputGroupOutput>(
+      outputs: pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroupOutput>(
           map['outputs'],
           (value) => ChannelEncoderSettingsOutputGroupOutput.fromMap(
               (value as Map).cast<String, dynamic>())),

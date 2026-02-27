@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_resource_collection_cloudformation/get_resource_collection_cloudformation.dart';
 import '../get_resource_collection_tag/get_resource_collection_tag.dart';
 
@@ -27,13 +27,13 @@ class GetResourceCollectionResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cloudformations'] = Input.encodeList<
+    map['cloudformations'] = pulumi.Input.encodeList<
         GetResourceCollectionCloudformation,
         Map<String, dynamic>>(cloudformations, (value) => value.toMap());
     map['id'] = id;
     map['region'] = region;
     map['tags'] =
-        Input.encodeList<GetResourceCollectionTag, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetResourceCollectionTag, Map<String, dynamic>>(
             tags, (value) => value.toMap());
     map['type'] = type;
     return map;
@@ -41,13 +41,14 @@ class GetResourceCollectionResult {
 
   factory GetResourceCollectionResult.fromMap(Map<String, dynamic> map) {
     return GetResourceCollectionResult(
-      cloudformations: Input.decodeList<GetResourceCollectionCloudformation>(
-          map['cloudformations'],
-          (value) => GetResourceCollectionCloudformation.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      cloudformations:
+          pulumi.Input.decodeList<GetResourceCollectionCloudformation>(
+              map['cloudformations'],
+              (value) => GetResourceCollectionCloudformation.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
-      tags: Input.decodeList<GetResourceCollectionTag>(
+      tags: pulumi.Input.decodeList<GetResourceCollectionTag>(
           map['tags'],
           (value) => GetResourceCollectionTag.fromMap(
               (value as Map).cast<String, dynamic>())),

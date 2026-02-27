@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_rule_group_reference_statement_rule_action_override/web_acl_rule_statement_rule_group_reference_statement_rule_action_override.dart';
 
 class WebAclRuleStatementRuleGroupReferenceStatement {
@@ -21,7 +21,7 @@ class WebAclRuleStatementRuleGroupReferenceStatement {
     map['arn'] = arn;
     final ruleActionOverridesValue = ruleActionOverrides;
     if (ruleActionOverridesValue != null) {
-      map['ruleActionOverrides'] = Input.encodeList<
+      map['ruleActionOverrides'] = pulumi.Input.encodeList<
               WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverride,
               Map<String, dynamic>>(
           ruleActionOverridesValue, (value) => value.toMap());
@@ -35,7 +35,7 @@ class WebAclRuleStatementRuleGroupReferenceStatement {
       arn: map['arn'] as String,
       ruleActionOverrides: map['ruleActionOverrides'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverride>(
               map['ruleActionOverrides'],
               (value) =>

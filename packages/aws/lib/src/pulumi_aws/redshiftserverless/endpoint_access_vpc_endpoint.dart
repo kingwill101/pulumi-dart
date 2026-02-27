@@ -1,3 +1,3 @@
 library module_redshiftserverless_endpoint_access_vpc_endpoint;
 
-export 'endpoint_access_vpc_endpoint/endpoint_access_vpc_endpoint2.dart';
+export 'endpoint_access_vpc_endpoint/endpoint_access_vpc_endpoint_redshiftserverless.dart';

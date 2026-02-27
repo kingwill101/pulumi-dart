@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_data_set_logical_table_map_source_join_instruction/get_data_set_logical_table_map_source_join_instruction.dart';
 
 class GetDataSetLogicalTableMapSource {
@@ -17,7 +17,7 @@ class GetDataSetLogicalTableMapSource {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['dataSetArn'] = dataSetArn;
-    map['joinInstructions'] = Input.encodeList<
+    map['joinInstructions'] = pulumi.Input.encodeList<
         GetDataSetLogicalTableMapSourceJoinInstruction,
         Map<String, dynamic>>(joinInstructions, (value) => value.toMap());
     map['physicalTableId'] = physicalTableId;
@@ -27,11 +27,11 @@ class GetDataSetLogicalTableMapSource {
   factory GetDataSetLogicalTableMapSource.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapSource(
       dataSetArn: map['dataSetArn'] as String,
-      joinInstructions:
-          Input.decodeList<GetDataSetLogicalTableMapSourceJoinInstruction>(
-              map['joinInstructions'],
-              (value) => GetDataSetLogicalTableMapSourceJoinInstruction.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      joinInstructions: pulumi.Input.decodeList<
+              GetDataSetLogicalTableMapSourceJoinInstruction>(
+          map['joinInstructions'],
+          (value) => GetDataSetLogicalTableMapSourceJoinInstruction.fromMap(
+              (value as Map).cast<String, dynamic>())),
       physicalTableId: map['physicalTableId'] as String,
     );
   }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_origin_request_policy_cookies_config/get_origin_request_policy_cookies_config.dart';
 import '../get_origin_request_policy_headers_config/get_origin_request_policy_headers_config.dart';
 import '../get_origin_request_policy_query_strings_config/get_origin_request_policy_query_strings_config.dart';
@@ -42,11 +42,11 @@ class GetOriginRequestPolicyResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['comment'] = comment;
-    map['cookiesConfigs'] = Input.encodeList<
+    map['cookiesConfigs'] = pulumi.Input.encodeList<
         GetOriginRequestPolicyCookiesConfig,
         Map<String, dynamic>>(cookiesConfigs, (value) => value.toMap());
     map['etag'] = etag;
-    map['headersConfigs'] = Input.encodeList<
+    map['headersConfigs'] = pulumi.Input.encodeList<
         GetOriginRequestPolicyHeadersConfig,
         Map<String, dynamic>>(headersConfigs, (value) => value.toMap());
     final idValue = id;
@@ -57,7 +57,7 @@ class GetOriginRequestPolicyResult {
     if (nameValue != null) {
       map['name'] = nameValue;
     }
-    map['queryStringsConfigs'] = Input.encodeList<
+    map['queryStringsConfigs'] = pulumi.Input.encodeList<
         GetOriginRequestPolicyQueryStringsConfig,
         Map<String, dynamic>>(queryStringsConfigs, (value) => value.toMap());
     return map;
@@ -67,19 +67,21 @@ class GetOriginRequestPolicyResult {
     return GetOriginRequestPolicyResult(
       arn: map['arn'] as String,
       comment: map['comment'] as String,
-      cookiesConfigs: Input.decodeList<GetOriginRequestPolicyCookiesConfig>(
-          map['cookiesConfigs'],
-          (value) => GetOriginRequestPolicyCookiesConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      cookiesConfigs:
+          pulumi.Input.decodeList<GetOriginRequestPolicyCookiesConfig>(
+              map['cookiesConfigs'],
+              (value) => GetOriginRequestPolicyCookiesConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       etag: map['etag'] as String,
-      headersConfigs: Input.decodeList<GetOriginRequestPolicyHeadersConfig>(
-          map['headersConfigs'],
-          (value) => GetOriginRequestPolicyHeadersConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      headersConfigs:
+          pulumi.Input.decodeList<GetOriginRequestPolicyHeadersConfig>(
+              map['headersConfigs'],
+              (value) => GetOriginRequestPolicyHeadersConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] == null ? null : map['id'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       queryStringsConfigs:
-          Input.decodeList<GetOriginRequestPolicyQueryStringsConfig>(
+          pulumi.Input.decodeList<GetOriginRequestPolicyQueryStringsConfig>(
               map['queryStringsConfigs'],
               (value) => GetOriginRequestPolicyQueryStringsConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

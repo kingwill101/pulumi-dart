@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_parameter_args.dart';
 import 'get_parameter_result.dart';
 
@@ -17,13 +17,13 @@ import 'get_parameter_result.dart';
 /// > **Note:** The unencrypted value of a SecureString will be stored in the raw state as plain-text.
 Future<GetParameterResult> getParameter(
   GetParameterArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ssm/getParameter:getParameter',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetParameterResult.fromMap(result);
 }

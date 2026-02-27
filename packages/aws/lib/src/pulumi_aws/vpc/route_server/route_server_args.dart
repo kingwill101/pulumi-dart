@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../route_server_timeouts/route_server_timeouts.dart';
 
 /// The set of arguments for RouteServer.
@@ -8,23 +8,23 @@ class RouteServerArgs {
   /// The Border Gateway Protocol (BGP) Autonomous System Number (ASN) for the appliance. Valid values are from 1 to 4294967295.
   ///
   /// The following arguments are optional:
-  final Input<int> amazonSideAsn;
+  final pulumi.Input<int> amazonSideAsn;
 
   /// Indicates whether routes should be persisted after all BGP sessions are terminated. Valid values are `enable`, `disable`, `reset`
-  final Input<String>? persistRoutes;
+  final pulumi.Input<String>? persistRoutes;
 
   /// The number of minutes a route server will wait after BGP is re-established to unpersist the routes in the FIB and RIB. Value must be in the range of 1-5. Required if `persist_routes` is enabled.
-  final Input<int>? persistRoutesDuration;
+  final pulumi.Input<int>? persistRoutesDuration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Indicates whether SNS notifications should be enabled for route server events. Enabling SNS notifications persists BGP status changes to an SNS topic provisioned by AWS`.
-  final Input<bool>? snsNotificationsEnabled;
+  final pulumi.Input<bool>? snsNotificationsEnabled;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<RouteServerTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<RouteServerTimeouts>? timeouts;
 
   RouteServerArgs({
     required this.amazonSideAsn,
@@ -61,7 +61,7 @@ class RouteServerArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<RouteServerTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<RouteServerTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
@@ -69,15 +69,16 @@ class RouteServerArgs {
 
   factory RouteServerArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerArgs(
-      amazonSideAsn: Input.asInput<int>(map['amazonSideAsn']),
-      persistRoutes: Input.asOptionalInput<String>(map['persistRoutes']),
+      amazonSideAsn: pulumi.Input.asInput<int>(map['amazonSideAsn']),
+      persistRoutes: pulumi.Input.asOptionalInput<String>(map['persistRoutes']),
       persistRoutesDuration:
-          Input.asOptionalInput<int>(map['persistRoutesDuration']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<int>(map['persistRoutesDuration']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       snsNotificationsEnabled:
-          Input.asOptionalInput<bool>(map['snsNotificationsEnabled']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<RouteServerTimeouts>(map['timeouts']),
+          pulumi.Input.asOptionalInput<bool>(map['snsNotificationsEnabled']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts:
+          pulumi.Input.asOptionalInput<RouteServerTimeouts>(map['timeouts']),
     );
   }
 }

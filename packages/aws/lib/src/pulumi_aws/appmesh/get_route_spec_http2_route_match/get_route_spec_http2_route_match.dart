@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_route_spec_http2_route_match_header/get_route_spec_http2_route_match_header.dart';
 import '../get_route_spec_http2_route_match_path/get_route_spec_http2_route_match_path.dart';
 import '../get_route_spec_http2_route_match_query_parameter/get_route_spec_http2_route_match_query_parameter.dart';
@@ -26,15 +26,14 @@ class GetRouteSpecHttp2RouteMatch {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['headers'] = Input.encodeList<GetRouteSpecHttp2RouteMatchHeader,
+    map['headers'] = pulumi.Input.encodeList<GetRouteSpecHttp2RouteMatchHeader,
         Map<String, dynamic>>(headers, (value) => value.toMap());
     map['method'] = method;
-    map['paths'] =
-        Input.encodeList<GetRouteSpecHttp2RouteMatchPath, Map<String, dynamic>>(
-            paths, (value) => value.toMap());
+    map['paths'] = pulumi.Input.encodeList<GetRouteSpecHttp2RouteMatchPath,
+        Map<String, dynamic>>(paths, (value) => value.toMap());
     map['port'] = port;
     map['prefix'] = prefix;
-    map['queryParameters'] = Input.encodeList<
+    map['queryParameters'] = pulumi.Input.encodeList<
         GetRouteSpecHttp2RouteMatchQueryParameter,
         Map<String, dynamic>>(queryParameters, (value) => value.toMap());
     map['scheme'] = scheme;
@@ -43,19 +42,19 @@ class GetRouteSpecHttp2RouteMatch {
 
   factory GetRouteSpecHttp2RouteMatch.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttp2RouteMatch(
-      headers: Input.decodeList<GetRouteSpecHttp2RouteMatchHeader>(
+      headers: pulumi.Input.decodeList<GetRouteSpecHttp2RouteMatchHeader>(
           map['headers'],
           (value) => GetRouteSpecHttp2RouteMatchHeader.fromMap(
               (value as Map).cast<String, dynamic>())),
       method: map['method'] as String,
-      paths: Input.decodeList<GetRouteSpecHttp2RouteMatchPath>(
+      paths: pulumi.Input.decodeList<GetRouteSpecHttp2RouteMatchPath>(
           map['paths'],
           (value) => GetRouteSpecHttp2RouteMatchPath.fromMap(
               (value as Map).cast<String, dynamic>())),
       port: map['port'] as int,
       prefix: map['prefix'] as String,
       queryParameters:
-          Input.decodeList<GetRouteSpecHttp2RouteMatchQueryParameter>(
+          pulumi.Input.decodeList<GetRouteSpecHttp2RouteMatchQueryParameter>(
               map['queryParameters'],
               (value) => GetRouteSpecHttp2RouteMatchQueryParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

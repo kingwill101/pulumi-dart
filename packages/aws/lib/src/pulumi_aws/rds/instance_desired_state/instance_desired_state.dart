@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_desired_state_timeouts/instance_desired_state_timeouts.dart';
 import 'instance_desired_state_args.dart';
 
@@ -19,26 +19,26 @@ import 'instance_desired_state_args.dart';
 /// ```sh
 /// $ pulumi import aws:rds/instanceDesiredState:InstanceDesiredState example rds_instance_state-id-12345678
 /// ```
-class InstanceDesiredState extends CustomResource {
+class InstanceDesiredState extends pulumi.CustomResource {
   /// DB Instance Identifier
-  late final Output<String> identifier;
+  late final pulumi.Output<String> identifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configured state of the DB Instance. Valid values are `available` and `stopped`.
-  late final Output<String> state;
-  late final Output<InstanceDesiredStateTimeouts?> timeouts;
+  late final pulumi.Output<String> state;
+  late final pulumi.Output<InstanceDesiredStateTimeouts?> timeouts;
 
   InstanceDesiredState(
     String name, {
     InstanceDesiredStateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:rds/instanceDesiredState:InstanceDesiredState',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.identifier = registerOutput<String>('identifier');
     this.region = registerOutput<String>('region');

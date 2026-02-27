@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../subscriber_notification_configuration/subscriber_notification_configuration.dart';
 import 'subscriber_notification_args.dart';
 
@@ -11,31 +11,31 @@ import 'subscriber_notification_args.dart';
 ///
 ///
 /// ### HTTPS Notification
-class SubscriberNotification extends CustomResource {
+class SubscriberNotification extends pulumi.CustomResource {
   /// Specify the configuration using which you want to create the subscriber notification..
-  late final Output<SubscriberNotificationConfiguration> configuration;
+  late final pulumi.Output<SubscriberNotificationConfiguration> configuration;
 
   /// (**Deprecated**) The subscriber endpoint to which exception messages are posted.
-  late final Output<String> endpointId;
+  late final pulumi.Output<String> endpointId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The subscriber endpoint to which exception messages are posted.
-  late final Output<String> subscriberEndpoint;
+  late final pulumi.Output<String> subscriberEndpoint;
 
   /// The subscriber ID for the notification subscription.
-  late final Output<String> subscriberId;
+  late final pulumi.Output<String> subscriberId;
 
   SubscriberNotification(
     String name, {
     SubscriberNotificationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:securitylake/subscriberNotification:SubscriberNotification',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.configuration =
         registerOutput<SubscriberNotificationConfiguration>('configuration');

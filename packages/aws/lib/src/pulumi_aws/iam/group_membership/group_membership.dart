@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_membership_args.dart';
 
 /// > **WARNING:** Multiple aws.iam.GroupMembership resources with the same group name will produce inconsistent behavior!
@@ -9,25 +9,25 @@ import 'group_membership_args.dart';
 ///
 /// > **Note:** `aws.iam.GroupMembership` will conflict with itself if used more than once with the same group. To non-exclusively manage the users in a group, see the
 /// `aws.iam.UserGroupMembership` resource.
-class GroupMembership extends CustomResource {
+class GroupMembership extends pulumi.CustomResource {
   /// The IAM Group name to attach the list of `users` to
-  late final Output<String> group;
+  late final pulumi.Output<String> group;
 
   /// The name to identify the Group Membership
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// A list of IAM User names to associate with the Group
-  late final Output<List<String>> users;
+  late final pulumi.Output<List<String>> users;
 
   GroupMembership(
     String name, {
     GroupMembershipArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/groupMembership:GroupMembership',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');

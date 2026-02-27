@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_connect_peer_args.dart';
 import 'get_connect_peer_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_connect_peer_result.dart';
 /// ### By Identifier
 Future<GetConnectPeerResult> getConnectPeer(
   GetConnectPeerArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2transitgateway/getConnectPeer:getConnectPeer',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectPeerResult.fromMap(result);
 }

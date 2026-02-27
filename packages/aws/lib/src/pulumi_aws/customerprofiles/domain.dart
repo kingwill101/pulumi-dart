@@ -1,4 +1,4 @@
 library module_customerprofiles_domain;
 
-export 'domain/domain3.dart';
-export 'domain/domain_args3.dart';
+export 'domain/domain_customerprofiles.dart';
+export 'domain/domain_customerprofiles_args.dart';

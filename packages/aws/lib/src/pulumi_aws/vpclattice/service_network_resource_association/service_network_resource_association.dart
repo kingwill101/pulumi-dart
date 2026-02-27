@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_network_resource_association_dns_entry/service_network_resource_association_dns_entry.dart';
 import '../service_network_resource_association_timeouts/service_network_resource_association_timeouts.dart';
 import 'service_network_resource_association_args.dart';
@@ -18,43 +18,44 @@ import 'service_network_resource_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:vpclattice/serviceNetworkResourceAssociation:ServiceNetworkResourceAssociation example snra-1234567890abcef12
 /// ```
-class ServiceNetworkResourceAssociation extends CustomResource {
+class ServiceNetworkResourceAssociation extends pulumi.CustomResource {
   /// ARN of the Service Network Resource Association.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// DNS entry of the association in the service network.
-  late final Output<List<ServiceNetworkResourceAssociationDnsEntry>> dnsEntries;
+  late final pulumi.Output<List<ServiceNetworkResourceAssociationDnsEntry>>
+      dnsEntries;
 
   /// Boolean indicating whether private DNS is enabled for the service network resource association. Defaults to `false`. When set to `true`, the resource configuration identified by `resource_configuration_identifier` must have a custom domain name or a group domain for private DNS.
-  late final Output<bool> privateDnsEnabled;
+  late final pulumi.Output<bool> privateDnsEnabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Identifier of Resource Configuration to associate to the Service Network.
-  late final Output<String> resourceConfigurationIdentifier;
+  late final pulumi.Output<String> resourceConfigurationIdentifier;
 
   /// Identifier of the Service Network to associate the Resource to.
   ///
   /// The following arguments are optional:
-  late final Output<String> serviceNetworkIdentifier;
+  late final pulumi.Output<String> serviceNetworkIdentifier;
 
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<ServiceNetworkResourceAssociationTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<ServiceNetworkResourceAssociationTimeouts?> timeouts;
 
   ServiceNetworkResourceAssociation(
     String name, {
     ServiceNetworkResourceAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:vpclattice/serviceNetworkResourceAssociation:ServiceNetworkResourceAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.dnsEntries =

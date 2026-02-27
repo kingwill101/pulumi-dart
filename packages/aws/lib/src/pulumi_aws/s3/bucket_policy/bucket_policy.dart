@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_policy_args.dart';
 
 /// Attaches a policy to an S3 bucket resource.
@@ -32,25 +32,25 @@ import 'bucket_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3/bucketPolicy:BucketPolicy example my-tf-test-bucket
 /// ```
-class BucketPolicy extends CustomResource {
+class BucketPolicy extends pulumi.CustomResource {
   /// Name of the bucket to which to apply the policy.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Text of the policy. Although this is a bucket policy rather than an IAM policy, the `aws.iam.getPolicyDocument` data source may be used, so long as it specifies a principal. For more information about building AWS IAM policy documents, see the AWS IAM Policy Document Guide. Note: Bucket policies are limited to 20 KB in size.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   BucketPolicy(
     String name, {
     BucketPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/bucketPolicy:BucketPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.policy = registerOutput<String>('policy');

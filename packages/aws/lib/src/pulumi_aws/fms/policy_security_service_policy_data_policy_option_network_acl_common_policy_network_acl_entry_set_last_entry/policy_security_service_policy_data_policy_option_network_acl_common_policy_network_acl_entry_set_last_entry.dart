@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set_last_entry_icmp_type_code/policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set_last_entry_icmp_type_code.dart';
 import '../policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set_last_entry_port_range/policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set_last_entry_port_range.dart';
 
@@ -49,7 +49,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
     map['egress'] = egress;
     final icmpTypeCodesValue = icmpTypeCodes;
     if (icmpTypeCodesValue != null) {
-      map['icmpTypeCodes'] = Input.encodeList<
+      map['icmpTypeCodes'] = pulumi.Input.encodeList<
           PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntryIcmpTypeCode,
           Map<String, dynamic>>(icmpTypeCodesValue, (value) => value.toMap());
     }
@@ -59,7 +59,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
     }
     final portRangesValue = portRanges;
     if (portRangesValue != null) {
-      map['portRanges'] = Input.encodeList<
+      map['portRanges'] = pulumi.Input.encodeList<
           PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntryPortRange,
           Map<String, dynamic>>(portRangesValue, (value) => value.toMap());
     }
@@ -75,7 +75,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
       egress: map['egress'] as bool,
       icmpTypeCodes: map['icmpTypeCodes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntryIcmpTypeCode>(
               map['icmpTypeCodes'],
               (value) =>
@@ -85,7 +85,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
           map['ipv6CidrBlock'] == null ? null : map['ipv6CidrBlock'] as String,
       portRanges: map['portRanges'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntryPortRange>(
               map['portRanges'],
               (value) =>

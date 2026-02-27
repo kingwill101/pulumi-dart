@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LogIndexPolicy.
 class LogIndexPolicyArgs {
   /// Log group name to set the policy for.
-  final Input<String> logGroupName;
+  final pulumi.Input<String> logGroupName;
 
   /// JSON policy document. This is a JSON formatted string.
-  final Input<String> policyDocument;
+  final pulumi.Input<String> policyDocument;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   LogIndexPolicyArgs({
     required this.logGroupName,
@@ -32,9 +32,9 @@ class LogIndexPolicyArgs {
 
   factory LogIndexPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LogIndexPolicyArgs(
-      logGroupName: Input.asInput<String>(map['logGroupName']),
-      policyDocument: Input.asInput<String>(map['policyDocument']),
-      region: Input.asOptionalInput<String>(map['region']),
+      logGroupName: pulumi.Input.asInput<String>(map['logGroupName']),
+      policyDocument: pulumi.Input.asInput<String>(map['policyDocument']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

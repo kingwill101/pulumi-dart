@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_association_args.dart';
 
 /// Provides network associations for AWS Client VPN endpoints. For more information on usage, please see the
@@ -15,31 +15,31 @@ import 'network_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2clientvpn/networkAssociation:NetworkAssociation example cvpn-endpoint-0ac3a1abbccddd666,cvpn-assoc-0b8db902465d069ad
 /// ```
-class NetworkAssociation extends CustomResource {
+class NetworkAssociation extends pulumi.CustomResource {
   /// The unique ID of the target network association.
-  late final Output<String> associationId;
+  late final pulumi.Output<String> associationId;
 
   /// The ID of the Client VPN endpoint.
-  late final Output<String> clientVpnEndpointId;
+  late final pulumi.Output<String> clientVpnEndpointId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the subnet to associate with the Client VPN endpoint.
-  late final Output<String> subnetId;
+  late final pulumi.Output<String> subnetId;
 
   /// The ID of the VPC in which the target subnet is located.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   NetworkAssociation(
     String name, {
     NetworkAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2clientvpn/networkAssociation:NetworkAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.associationId = registerOutput<String>('associationId');
     this.clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');

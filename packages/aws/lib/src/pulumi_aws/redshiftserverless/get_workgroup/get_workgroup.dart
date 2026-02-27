@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_workgroup_args.dart';
 import 'get_workgroup_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_workgroup_result.dart';
 /// ### Basic Usage
 Future<GetWorkgroupResult> getWorkgroup(
   GetWorkgroupArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:redshiftserverless/getWorkgroup:getWorkgroup',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkgroupResult.fromMap(result);
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../image_image_scanning_configuration/image_image_scanning_configuration.dart';
 import '../image_image_tests_configuration/image_image_tests_configuration.dart';
 import '../image_logging_configuration/image_logging_configuration.dart';
@@ -26,78 +26,80 @@ import 'image_args.dart';
 /// ```sh
 /// $ pulumi import aws:imagebuilder/image:Image example arn:aws:imagebuilder:us-east-1:123456789012:image/example/1.0.0/1
 /// ```
-class Image extends CustomResource {
+class Image extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the image.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Amazon Resource Name (ARN) of the container recipe.
-  late final Output<String?> containerRecipeArn;
+  late final pulumi.Output<String?> containerRecipeArn;
 
   /// Date the image was created.
-  late final Output<String> dateCreated;
+  late final pulumi.Output<String> dateCreated;
 
   /// Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
-  late final Output<String?> distributionConfigurationArn;
+  late final pulumi.Output<String?> distributionConfigurationArn;
 
   /// Whether additional information about the image being created is collected. Defaults to `true`.
-  late final Output<bool?> enhancedImageMetadataEnabled;
+  late final pulumi.Output<bool?> enhancedImageMetadataEnabled;
 
   /// Amazon Resource Name (ARN) of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
-  late final Output<String> executionRole;
+  late final pulumi.Output<String> executionRole;
 
   /// Amazon Resource Name (ARN) of the image recipe.
-  late final Output<String?> imageRecipeArn;
+  late final pulumi.Output<String?> imageRecipeArn;
 
   /// Configuration block with image scanning configuration. Detailed below.
-  late final Output<ImageImageScanningConfiguration> imageScanningConfiguration;
+  late final pulumi.Output<ImageImageScanningConfiguration>
+      imageScanningConfiguration;
 
   /// Configuration block with image tests configuration. Detailed below.
-  late final Output<ImageImageTestsConfiguration> imageTestsConfiguration;
+  late final pulumi.Output<ImageImageTestsConfiguration>
+      imageTestsConfiguration;
 
   /// Amazon Resource Name (ARN) of the Image Builder Infrastructure Configuration.
   ///
   /// The following arguments are optional:
-  late final Output<String> infrastructureConfigurationArn;
+  late final pulumi.Output<String> infrastructureConfigurationArn;
 
   /// Configuration block with logging configuration. Detailed below.
-  late final Output<ImageLoggingConfiguration?> loggingConfiguration;
+  late final pulumi.Output<ImageLoggingConfiguration?> loggingConfiguration;
 
   /// Name of the AMI.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Operating System version of the image.
-  late final Output<String> osVersion;
+  late final pulumi.Output<String> osVersion;
 
   /// List of objects with resources created by the image.
-  late final Output<List<ImageOutputResource>> outputResources;
+  late final pulumi.Output<List<ImageOutputResource>> outputResources;
 
   /// Platform of the image.
-  late final Output<String> platform;
+  late final pulumi.Output<String> platform;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags for the Image Builder Image. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Version of the image.
-  late final Output<String> version;
+  late final pulumi.Output<String> version;
 
   /// Configuration block with the workflow configuration. Detailed below.
-  late final Output<List<ImageWorkflow>> workflows;
+  late final pulumi.Output<List<ImageWorkflow>> workflows;
 
   Image(
     String name, {
     ImageArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:imagebuilder/image:Image',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.containerRecipeArn = registerOutput<String?>('containerRecipeArn');

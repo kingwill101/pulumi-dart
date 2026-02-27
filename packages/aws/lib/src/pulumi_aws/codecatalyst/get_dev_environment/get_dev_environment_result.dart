@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_dev_environment_ide/get_dev_environment_ide.dart';
 import '../get_dev_environment_persistent_storage/get_dev_environment_persistent_storage.dart';
 import '../get_dev_environment_repository/get_dev_environment_repository.dart';
@@ -76,21 +76,21 @@ class GetDevEnvironmentResult {
     }
     map['envId'] = envId;
     map['id'] = id;
-    map['ides'] = Input.encodeList<GetDevEnvironmentIde, Map<String, dynamic>>(
-        ides, (value) => value.toMap());
+    map['ides'] =
+        pulumi.Input.encodeList<GetDevEnvironmentIde, Map<String, dynamic>>(
+            ides, (value) => value.toMap());
     map['inactivityTimeoutMinutes'] = inactivityTimeoutMinutes;
     map['instanceType'] = instanceType;
     map['lastUpdatedTime'] = lastUpdatedTime;
-    map['persistentStorages'] = Input.encodeList<
+    map['persistentStorages'] = pulumi.Input.encodeList<
         GetDevEnvironmentPersistentStorage,
         Map<String, dynamic>>(persistentStorages, (value) => value.toMap());
     map['projectName'] = projectName;
     map['region'] = region;
     final repositoriesValue = repositories;
     if (repositoriesValue != null) {
-      map['repositories'] =
-          Input.encodeList<GetDevEnvironmentRepository, Map<String, dynamic>>(
-              repositoriesValue, (value) => value.toMap());
+      map['repositories'] = pulumi.Input.encodeList<GetDevEnvironmentRepository,
+          Map<String, dynamic>>(repositoriesValue, (value) => value.toMap());
     }
     map['spaceName'] = spaceName;
     map['status'] = status;
@@ -105,22 +105,23 @@ class GetDevEnvironmentResult {
       creatorId: map['creatorId'] == null ? null : map['creatorId'] as String,
       envId: map['envId'] as String,
       id: map['id'] as String,
-      ides: Input.decodeList<GetDevEnvironmentIde>(
+      ides: pulumi.Input.decodeList<GetDevEnvironmentIde>(
           map['ides'],
           (value) => GetDevEnvironmentIde.fromMap(
               (value as Map).cast<String, dynamic>())),
       inactivityTimeoutMinutes: map['inactivityTimeoutMinutes'] as int,
       instanceType: map['instanceType'] as String,
       lastUpdatedTime: map['lastUpdatedTime'] as String,
-      persistentStorages: Input.decodeList<GetDevEnvironmentPersistentStorage>(
-          map['persistentStorages'],
-          (value) => GetDevEnvironmentPersistentStorage.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      persistentStorages:
+          pulumi.Input.decodeList<GetDevEnvironmentPersistentStorage>(
+              map['persistentStorages'],
+              (value) => GetDevEnvironmentPersistentStorage.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       projectName: map['projectName'] as String,
       region: map['region'] as String,
       repositories: map['repositories'] == null
           ? null
-          : Input.decodeList<GetDevEnvironmentRepository>(
+          : pulumi.Input.decodeList<GetDevEnvironmentRepository>(
               map['repositories'],
               (value) => GetDevEnvironmentRepository.fromMap(
                   (value as Map).cast<String, dynamic>())),

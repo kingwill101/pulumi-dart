@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_function_capacity_provider_config_lambda_managed_instances_capacity_provider_config/get_function_capacity_provider_config_lambda_managed_instances_capacity_provider_config.dart';
 
 class GetFunctionCapacityProviderConfig {
@@ -15,7 +15,8 @@ class GetFunctionCapacityProviderConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['lambdaManagedInstancesCapacityProviderConfigs'] = Input.encodeList<
+    map['lambdaManagedInstancesCapacityProviderConfigs'] = pulumi
+        .Input.encodeList<
             GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig,
             Map<String, dynamic>>(lambdaManagedInstancesCapacityProviderConfigs,
         (value) => value.toMap());
@@ -24,7 +25,7 @@ class GetFunctionCapacityProviderConfig {
 
   factory GetFunctionCapacityProviderConfig.fromMap(Map<String, dynamic> map) {
     return GetFunctionCapacityProviderConfig(
-      lambdaManagedInstancesCapacityProviderConfigs: Input.decodeList<
+      lambdaManagedInstancesCapacityProviderConfigs: pulumi.Input.decodeList<
               GetFunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig>(
           map['lambdaManagedInstancesCapacityProviderConfigs'],
           (value) =>

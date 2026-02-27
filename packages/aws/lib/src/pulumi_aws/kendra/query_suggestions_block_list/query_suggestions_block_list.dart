@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../query_suggestions_block_list_source_s3_path/query_suggestions_block_list_source_s3_path.dart';
 import 'query_suggestions_block_list_args.dart';
 
@@ -17,43 +17,43 @@ import 'query_suggestions_block_list_args.dart';
 /// ```sh
 /// $ pulumi import aws:kendra/querySuggestionsBlockList:QuerySuggestionsBlockList example blocklist-123456780/idx-8012925589
 /// ```
-class QuerySuggestionsBlockList extends CustomResource {
+class QuerySuggestionsBlockList extends pulumi.CustomResource {
   /// ARN of the block list.
-  late final Output<String> arn;
-  late final Output<String?> description;
+  late final pulumi.Output<String> arn;
+  late final pulumi.Output<String?> description;
 
   /// Identifier of the index for a block list.
-  late final Output<String> indexId;
+  late final pulumi.Output<String> indexId;
 
   /// Name for the block list.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Unique identifier of the block list.
-  late final Output<String> querySuggestionsBlockListId;
+  late final pulumi.Output<String> querySuggestionsBlockListId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// IAM (Identity and Access Management) role used to access the block list text file in S3.
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   /// S3 path where your block list text file is located. See details below.
-  late final Output<QuerySuggestionsBlockListSourceS3Path> sourceS3Path;
-  late final Output<String> status;
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<QuerySuggestionsBlockListSourceS3Path> sourceS3Path;
+  late final pulumi.Output<String> status;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider's default_tags configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   QuerySuggestionsBlockList(
     String name, {
     QuerySuggestionsBlockListArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:kendra/querySuggestionsBlockList:QuerySuggestionsBlockList',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');

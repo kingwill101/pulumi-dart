@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_policy_association_args.dart';
 
 /// Manages Security Hub configuration policy associations.
@@ -16,25 +16,25 @@ import 'configuration_policy_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation example_account_association 123456789012
 /// ```
-class ConfigurationPolicyAssociation extends CustomResource {
+class ConfigurationPolicyAssociation extends pulumi.CustomResource {
   /// The universally unique identifier (UUID) of the configuration policy.
-  late final Output<String> policyId;
+  late final pulumi.Output<String> policyId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The identifier of the target account, organizational unit, or the root to associate with the specified configuration.
-  late final Output<String> targetId;
+  late final pulumi.Output<String> targetId;
 
   ConfigurationPolicyAssociation(
     String name, {
     ConfigurationPolicyAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:securityhub/configurationPolicyAssociation:ConfigurationPolicyAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.policyId = registerOutput<String>('policyId');
     this.region = registerOutput<String>('region');

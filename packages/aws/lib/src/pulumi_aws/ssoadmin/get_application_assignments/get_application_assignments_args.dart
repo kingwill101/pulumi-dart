@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getApplicationAssignments.
 class GetApplicationAssignmentsArgs {
   /// ARN of the application.
-  final Input<String> applicationArn;
+  final pulumi.Input<String> applicationArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetApplicationAssignmentsArgs({
     required this.applicationArn,
@@ -27,8 +27,8 @@ class GetApplicationAssignmentsArgs {
 
   factory GetApplicationAssignmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationAssignmentsArgs(
-      applicationArn: Input.asInput<String>(map['applicationArn']),
-      region: Input.asOptionalInput<String>(map['region']),
+      applicationArn: pulumi.Input.asInput<String>(map['applicationArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

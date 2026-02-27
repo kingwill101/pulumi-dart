@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AccountAlias.
 class AccountAliasArgs {
   /// The account alias
-  final Input<String> accountAlias;
+  final pulumi.Input<String> accountAlias;
 
   AccountAliasArgs({
     required this.accountAlias,
@@ -19,7 +19,7 @@ class AccountAliasArgs {
 
   factory AccountAliasArgs.fromMap(Map<String, dynamic> map) {
     return AccountAliasArgs(
-      accountAlias: Input.asInput<String>(map['accountAlias']),
+      accountAlias: pulumi.Input.asInput<String>(map['accountAlias']),
     );
   }
 }

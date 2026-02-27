@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stack_set_instance_deployment_targets/stack_set_instance_deployment_targets.dart';
 import '../stack_set_instance_operation_preferences/stack_set_instance_operation_preferences.dart';
 import '../stack_set_instance_stack_instance_summary/stack_set_instance_stack_instance_summary.dart';
@@ -49,53 +49,55 @@ import 'stack_set_instance_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudformation/stackSetInstance:StackSetInstance example example,ou-sdas-123123123/ou-sdas-789789789,us-east-1,DELEGATED_ADMIN
 /// ```
-class StackSetInstance extends CustomResource {
+class StackSetInstance extends pulumi.CustomResource {
   /// Target AWS Account ID to create a Stack based on the StackSet. Defaults to current account.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// Specifies whether you are acting as an account administrator in the organization's management account or as a delegated administrator in a member account. Valid values: `SELF` (default), `DELEGATED_ADMIN`.
-  late final Output<String?> callAs;
+  late final pulumi.Output<String?> callAs;
 
   /// AWS Organizations accounts to which StackSets deploys. StackSets doesn't deploy stack instances to the organization management account, even if the organization management account is in your organization or in an OU in your organization. Drift detection is not possible for this argument. See deployment_targets below.
-  late final Output<StackSetInstanceDeploymentTargets?> deploymentTargets;
+  late final pulumi.Output<StackSetInstanceDeploymentTargets?>
+      deploymentTargets;
 
   /// Preferences for how AWS CloudFormation performs a stack set operation.
-  late final Output<StackSetInstanceOperationPreferences?> operationPreferences;
+  late final pulumi.Output<StackSetInstanceOperationPreferences?>
+      operationPreferences;
 
   /// Organizational unit ID in which the stack is deployed.
-  late final Output<String> organizationalUnitId;
+  late final pulumi.Output<String> organizationalUnitId;
 
   /// Key-value map of input parameters to override from the StackSet for this Instance.
-  late final Output<Map<String, String>?> parameterOverrides;
+  late final pulumi.Output<Map<String, String>?> parameterOverrides;
 
   /// Target AWS Region to create a Stack based on the StackSet. Defaults to current region. Use `stack_set_instance_region` instead.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// During resource destroy, remove Instance from StackSet while keeping the Stack and its associated resources. Must be enabled in the state _before_ destroy operation to take effect. You cannot reassociate a retained Stack or add an existing, saved Stack to a new StackSet. Defaults to `false`.
-  late final Output<bool?> retainStack;
+  late final pulumi.Output<bool?> retainStack;
 
   /// Stack identifier.
-  late final Output<String> stackId;
+  late final pulumi.Output<String> stackId;
 
   /// List of stack instances created from an organizational unit deployment target. This will only be populated when `deployment_targets` is set. See `stack_instance_summaries`.
-  late final Output<List<StackSetInstanceStackInstanceSummary>>
+  late final pulumi.Output<List<StackSetInstanceStackInstanceSummary>>
       stackInstanceSummaries;
 
   /// Target AWS Region to create a Stack based on the StackSet. Defaults to current region.
-  late final Output<String> stackSetInstanceRegion;
+  late final pulumi.Output<String> stackSetInstanceRegion;
 
   /// Name of the StackSet.
-  late final Output<String> stackSetName;
+  late final pulumi.Output<String> stackSetName;
 
   StackSetInstance(
     String name, {
     StackSetInstanceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudformation/stackSetInstance:StackSetInstance',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
     this.callAs = registerOutput<String?>('callAs');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_broker_node_group_info_connectivity_info/get_cluster_broker_node_group_info_connectivity_info.dart';
 import '../get_cluster_broker_node_group_info_storage_info/get_cluster_broker_node_group_info_storage_info.dart';
 
@@ -25,12 +25,12 @@ class GetClusterBrokerNodeGroupInfo {
     final map = <String, dynamic>{};
     map['azDistribution'] = azDistribution;
     map['clientSubnets'] = clientSubnets;
-    map['connectivityInfos'] = Input.encodeList<
+    map['connectivityInfos'] = pulumi.Input.encodeList<
         GetClusterBrokerNodeGroupInfoConnectivityInfo,
         Map<String, dynamic>>(connectivityInfos, (value) => value.toMap());
     map['instanceType'] = instanceType;
     map['securityGroups'] = securityGroups;
-    map['storageInfos'] = Input.encodeList<
+    map['storageInfos'] = pulumi.Input.encodeList<
         GetClusterBrokerNodeGroupInfoStorageInfo,
         Map<String, dynamic>>(storageInfos, (value) => value.toMap());
     return map;
@@ -40,17 +40,18 @@ class GetClusterBrokerNodeGroupInfo {
     return GetClusterBrokerNodeGroupInfo(
       azDistribution: map['azDistribution'] as String,
       clientSubnets: (map['clientSubnets'] as List).cast<String>(),
-      connectivityInfos:
-          Input.decodeList<GetClusterBrokerNodeGroupInfoConnectivityInfo>(
-              map['connectivityInfos'],
-              (value) => GetClusterBrokerNodeGroupInfoConnectivityInfo.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      connectivityInfos: pulumi.Input.decodeList<
+              GetClusterBrokerNodeGroupInfoConnectivityInfo>(
+          map['connectivityInfos'],
+          (value) => GetClusterBrokerNodeGroupInfoConnectivityInfo.fromMap(
+              (value as Map).cast<String, dynamic>())),
       instanceType: map['instanceType'] as String,
       securityGroups: (map['securityGroups'] as List).cast<String>(),
-      storageInfos: Input.decodeList<GetClusterBrokerNodeGroupInfoStorageInfo>(
-          map['storageInfos'],
-          (value) => GetClusterBrokerNodeGroupInfoStorageInfo.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      storageInfos:
+          pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoStorageInfo>(
+              map['storageInfos'],
+              (value) => GetClusterBrokerNodeGroupInfoStorageInfo.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

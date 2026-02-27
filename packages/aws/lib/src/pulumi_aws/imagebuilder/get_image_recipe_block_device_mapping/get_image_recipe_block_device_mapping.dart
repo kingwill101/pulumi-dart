@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_image_recipe_block_device_mapping_eb/get_image_recipe_block_device_mapping_eb.dart';
 
 class GetImageRecipeBlockDeviceMapping {
@@ -26,7 +26,7 @@ class GetImageRecipeBlockDeviceMapping {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['deviceName'] = deviceName;
-    map['ebs'] = Input.encodeList<GetImageRecipeBlockDeviceMappingEb,
+    map['ebs'] = pulumi.Input.encodeList<GetImageRecipeBlockDeviceMappingEb,
         Map<String, dynamic>>(ebs, (value) => value.toMap());
     map['noDevice'] = noDevice;
     map['virtualName'] = virtualName;
@@ -36,7 +36,7 @@ class GetImageRecipeBlockDeviceMapping {
   factory GetImageRecipeBlockDeviceMapping.fromMap(Map<String, dynamic> map) {
     return GetImageRecipeBlockDeviceMapping(
       deviceName: map['deviceName'] as String,
-      ebs: Input.decodeList<GetImageRecipeBlockDeviceMappingEb>(
+      ebs: pulumi.Input.decodeList<GetImageRecipeBlockDeviceMappingEb>(
           map['ebs'],
           (value) => GetImageRecipeBlockDeviceMappingEb.fromMap(
               (value as Map).cast<String, dynamic>())),

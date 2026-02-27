@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPolicies.
 class GetPoliciesArgs {
   /// The type of policies to be returned in the response. Valid values are `AISERVICES_OPT_OUT_POLICY | BACKUP_POLICY | CHATBOT_POLICY | DECLARATIVE_POLICY_EC2 | RESOURCE_CONTROL_POLICY | SERVICE_CONTROL_POLICY | TAG_POLICY`
-  final Input<String> filter;
+  final pulumi.Input<String> filter;
 
   GetPoliciesArgs({
     required this.filter,
@@ -19,7 +19,7 @@ class GetPoliciesArgs {
 
   factory GetPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetPoliciesArgs(
-      filter: Input.asInput<String>(map['filter']),
+      filter: pulumi.Input.asInput<String>(map['filter']),
     );
   }
 }

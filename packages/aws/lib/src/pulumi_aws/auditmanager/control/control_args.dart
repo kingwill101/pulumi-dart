@@ -1,35 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../control_control_mapping_source/control_control_mapping_source.dart';
 
 /// The set of arguments for Control.
 class ControlArgs {
   /// Recommended actions to carry out if the control isn't fulfilled.
-  final Input<String>? actionPlanInstructions;
+  final pulumi.Input<String>? actionPlanInstructions;
 
   /// Title of the action plan for remediating the control.
-  final Input<String>? actionPlanTitle;
+  final pulumi.Input<String>? actionPlanTitle;
 
   /// Data mapping sources. See `control_mapping_sources` below.
   ///
   /// The following arguments are optional:
-  final Input<List<ControlControlMappingSource>>? controlMappingSources;
+  final pulumi.Input<List<ControlControlMappingSource>>? controlMappingSources;
 
   /// Description of the control.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the control.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the control. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Steps to follow to determine if the control is satisfied.
-  final Input<String>? testingInformation;
+  final pulumi.Input<String>? testingInformation;
 
   ControlArgs({
     this.actionPlanInstructions,
@@ -54,10 +54,10 @@ class ControlArgs {
     }
     final controlMappingSourcesValue = controlMappingSources;
     if (controlMappingSourcesValue != null) {
-      map['controlMappingSources'] = Input.mapOptionalInputValue<
+      map['controlMappingSources'] = pulumi.Input.mapOptionalInputValue<
               List<ControlControlMappingSource>, List<Map<String, dynamic>>>(
           controlMappingSourcesValue,
-          (value) => Input.encodeList<ControlControlMappingSource,
+          (value) => pulumi.Input.encodeList<ControlControlMappingSource,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final descriptionValue = description;
@@ -86,17 +86,18 @@ class ControlArgs {
   factory ControlArgs.fromMap(Map<String, dynamic> map) {
     return ControlArgs(
       actionPlanInstructions:
-          Input.asOptionalInput<String>(map['actionPlanInstructions']),
-      actionPlanTitle: Input.asOptionalInput<String>(map['actionPlanTitle']),
+          pulumi.Input.asOptionalInput<String>(map['actionPlanInstructions']),
+      actionPlanTitle:
+          pulumi.Input.asOptionalInput<String>(map['actionPlanTitle']),
       controlMappingSources:
-          Input.asOptionalInput<List<ControlControlMappingSource>>(
+          pulumi.Input.asOptionalInput<List<ControlControlMappingSource>>(
               map['controlMappingSources']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
       testingInformation:
-          Input.asOptionalInput<String>(map['testingInformation']),
+          pulumi.Input.asOptionalInput<String>(map['testingInformation']),
     );
   }
 }

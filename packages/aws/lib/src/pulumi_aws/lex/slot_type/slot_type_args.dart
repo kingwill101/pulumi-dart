@@ -1,34 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../slot_type_enumeration_value/slot_type_enumeration_value.dart';
 
 /// The set of arguments for SlotType.
 class SlotTypeArgs {
   /// Determines if a new slot type version is created when the initial resource is created and on each
   /// update. Defaults to `false`.
-  final Input<bool>? createVersion;
+  final pulumi.Input<bool>? createVersion;
 
   /// A description of the slot type. Must be less than or equal to 200 characters in length.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// A list of EnumerationValue objects that defines the values that
   /// the slot type can take. Each value can have a list of synonyms, which are additional values that help
   /// train the machine learning model about the values that it resolves for a slot. Attributes are
   /// documented under enumeration_value.
-  final Input<List<SlotTypeEnumerationValue>> enumerationValues;
+  final pulumi.Input<List<SlotTypeEnumerationValue>> enumerationValues;
 
   /// The name of the slot type. The name is not case sensitive. Must be less than or equal to 100 characters in length.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Determines the slot resolution strategy that Amazon Lex
   /// uses to return slot type values. `ORIGINAL_VALUE` returns the value entered by the user if the user
   /// value is similar to the slot value. `TOP_RESOLUTION` returns the first value in the resolution list
   /// if there is a resolution list for the slot, otherwise null is returned. Defaults to `ORIGINAL_VALUE`.
-  final Input<String>? valueSelectionStrategy;
+  final pulumi.Input<String>? valueSelectionStrategy;
 
   SlotTypeArgs({
     this.createVersion,
@@ -49,12 +49,11 @@ class SlotTypeArgs {
     if (descriptionValue != null) {
       map['description'] = descriptionValue;
     }
-    map['enumerationValues'] = Input.mapInputValue<
+    map['enumerationValues'] = pulumi.Input.mapInputValue<
             List<SlotTypeEnumerationValue>, List<Map<String, dynamic>>>(
         enumerationValues,
-        (value) =>
-            Input.encodeList<SlotTypeEnumerationValue, Map<String, dynamic>>(
-                value, (value) => value.toMap()));
+        (value) => pulumi.Input.encodeList<SlotTypeEnumerationValue,
+            Map<String, dynamic>>(value, (value) => value.toMap()));
     final nameValue = name;
     if (nameValue != null) {
       map['name'] = nameValue;
@@ -72,14 +71,14 @@ class SlotTypeArgs {
 
   factory SlotTypeArgs.fromMap(Map<String, dynamic> map) {
     return SlotTypeArgs(
-      createVersion: Input.asOptionalInput<bool>(map['createVersion']),
-      description: Input.asOptionalInput<String>(map['description']),
-      enumerationValues: Input.asInput<List<SlotTypeEnumerationValue>>(
+      createVersion: pulumi.Input.asOptionalInput<bool>(map['createVersion']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      enumerationValues: pulumi.Input.asInput<List<SlotTypeEnumerationValue>>(
           map['enumerationValues']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       valueSelectionStrategy:
-          Input.asOptionalInput<String>(map['valueSelectionStrategy']),
+          pulumi.Input.asOptionalInput<String>(map['valueSelectionStrategy']),
     );
   }
 }

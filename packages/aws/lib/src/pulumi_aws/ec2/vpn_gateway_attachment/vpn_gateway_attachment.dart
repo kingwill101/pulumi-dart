@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpn_gateway_attachment_args.dart';
 
 /// Provides a Virtual Private Gateway attachment resource, allowing for an existing
@@ -19,25 +19,25 @@ import 'vpn_gateway_attachment_args.dart';
 /// ## Import
 ///
 /// You cannot import this resource.
-class VpnGatewayAttachment extends CustomResource {
+class VpnGatewayAttachment extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the VPC.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   /// The ID of the Virtual Private Gateway.
-  late final Output<String> vpnGatewayId;
+  late final pulumi.Output<String> vpnGatewayId;
 
   VpnGatewayAttachment(
     String name, {
     VpnGatewayAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.vpcId = registerOutput<String>('vpcId');

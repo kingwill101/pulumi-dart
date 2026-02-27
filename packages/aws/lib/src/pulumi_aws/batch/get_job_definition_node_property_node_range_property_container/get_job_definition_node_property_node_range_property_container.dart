@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_definition_node_property_node_range_property_container_environment/get_job_definition_node_property_node_range_property_container_environment.dart';
 import '../get_job_definition_node_property_node_range_property_container_ephemeral_storage/get_job_definition_node_property_node_range_property_container_ephemeral_storage.dart';
 import '../get_job_definition_node_property_node_range_property_container_fargate_platform_configuration/get_job_definition_node_property_node_range_property_container_fargate_platform_configuration.dart';
@@ -120,48 +120,48 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainer {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['commands'] = commands;
-    map['environments'] = Input.encodeList<
+    map['environments'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerEnvironment,
         Map<String, dynamic>>(environments, (value) => value.toMap());
-    map['ephemeralStorages'] = Input.encodeList<
+    map['ephemeralStorages'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage,
         Map<String, dynamic>>(ephemeralStorages, (value) => value.toMap());
     map['executionRoleArn'] = executionRoleArn;
-    map['fargatePlatformConfigurations'] = Input.encodeList<
+    map['fargatePlatformConfigurations'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration,
         Map<String,
             dynamic>>(fargatePlatformConfigurations, (value) => value.toMap());
     map['image'] = image;
     map['instanceType'] = instanceType;
     map['jobRoleArn'] = jobRoleArn;
-    map['linuxParameters'] = Input.encodeList<
+    map['linuxParameters'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter,
         Map<String, dynamic>>(linuxParameters, (value) => value.toMap());
-    map['logConfigurations'] = Input.encodeList<
+    map['logConfigurations'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration,
         Map<String, dynamic>>(logConfigurations, (value) => value.toMap());
-    map['mountPoints'] = Input.encodeList<
+    map['mountPoints'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint,
         Map<String, dynamic>>(mountPoints, (value) => value.toMap());
-    map['networkConfigurations'] = Input.encodeList<
+    map['networkConfigurations'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration,
         Map<String, dynamic>>(networkConfigurations, (value) => value.toMap());
     map['privileged'] = privileged;
     map['readonlyRootFilesystem'] = readonlyRootFilesystem;
-    map['resourceRequirements'] = Input.encodeList<
+    map['resourceRequirements'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement,
         Map<String, dynamic>>(resourceRequirements, (value) => value.toMap());
-    map['runtimePlatforms'] = Input.encodeList<
+    map['runtimePlatforms'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform,
         Map<String, dynamic>>(runtimePlatforms, (value) => value.toMap());
-    map['secrets'] = Input.encodeList<
+    map['secrets'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerSecret,
         Map<String, dynamic>>(secrets, (value) => value.toMap());
-    map['ulimits'] = Input.encodeList<
+    map['ulimits'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit,
         Map<String, dynamic>>(ulimits, (value) => value.toMap());
     map['user'] = user;
-    map['volumes'] = Input.encodeList<
+    map['volumes'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume,
         Map<String, dynamic>>(volumes, (value) => value.toMap());
     return map;
@@ -171,20 +171,20 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainer {
       Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainer(
       commands: (map['commands'] as List).cast<String>(),
-      environments: Input.decodeList<
+      environments: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerEnvironment>(
           map['environments'],
           (value) =>
               GetJobDefinitionNodePropertyNodeRangePropertyContainerEnvironment
                   .fromMap((value as Map).cast<String, dynamic>())),
-      ephemeralStorages: Input.decodeList<
+      ephemeralStorages: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage>(
           map['ephemeralStorages'],
           (value) =>
               GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage
                   .fromMap((value as Map).cast<String, dynamic>())),
       executionRoleArn: map['executionRoleArn'] as String,
-      fargatePlatformConfigurations: Input.decodeList<
+      fargatePlatformConfigurations: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration>(
           map['fargatePlatformConfigurations'],
           (value) =>
@@ -193,25 +193,25 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainer {
       image: map['image'] as String,
       instanceType: map['instanceType'] as String,
       jobRoleArn: map['jobRoleArn'] as String,
-      linuxParameters: Input.decodeList<
+      linuxParameters: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter>(
           map['linuxParameters'],
           (value) =>
               GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter
                   .fromMap((value as Map).cast<String, dynamic>())),
-      logConfigurations: Input.decodeList<
+      logConfigurations: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration>(
           map['logConfigurations'],
           (value) =>
               GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration
                   .fromMap((value as Map).cast<String, dynamic>())),
-      mountPoints: Input.decodeList<
+      mountPoints: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint>(
           map['mountPoints'],
           (value) =>
               GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint
                   .fromMap((value as Map).cast<String, dynamic>())),
-      networkConfigurations: Input.decodeList<
+      networkConfigurations: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerNetworkConfiguration>(
           map['networkConfigurations'],
           (value) =>
@@ -219,32 +219,32 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainer {
                   .fromMap((value as Map).cast<String, dynamic>())),
       privileged: map['privileged'] as bool,
       readonlyRootFilesystem: map['readonlyRootFilesystem'] as bool,
-      resourceRequirements: Input.decodeList<
+      resourceRequirements: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement>(
           map['resourceRequirements'],
           (value) =>
               GetJobDefinitionNodePropertyNodeRangePropertyContainerResourceRequirement
                   .fromMap((value as Map).cast<String, dynamic>())),
-      runtimePlatforms: Input.decodeList<
+      runtimePlatforms: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform>(
           map['runtimePlatforms'],
           (value) =>
               GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform
                   .fromMap((value as Map).cast<String, dynamic>())),
-      secrets: Input.decodeList<
+      secrets: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerSecret>(
           map['secrets'],
           (value) =>
               GetJobDefinitionNodePropertyNodeRangePropertyContainerSecret
                   .fromMap((value as Map).cast<String, dynamic>())),
-      ulimits: Input.decodeList<
+      ulimits: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit>(
           map['ulimits'],
           (value) =>
               GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit
                   .fromMap((value as Map).cast<String, dynamic>())),
       user: map['user'] as String,
-      volumes: Input.decodeList<
+      volumes: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume>(
           map['volumes'],
           (value) =>

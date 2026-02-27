@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_flow_definition_node_configuration_condition_condition/agent_flow_definition_node_configuration_condition_condition.dart';
 
 class AgentFlowDefinitionNodeConfigurationCondition {
@@ -15,7 +15,7 @@ class AgentFlowDefinitionNodeConfigurationCondition {
     final map = <String, dynamic>{};
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] = Input.encodeList<
+      map['conditions'] = pulumi.Input.encodeList<
           AgentFlowDefinitionNodeConfigurationConditionCondition,
           Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
@@ -27,7 +27,7 @@ class AgentFlowDefinitionNodeConfigurationCondition {
     return AgentFlowDefinitionNodeConfigurationCondition(
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentFlowDefinitionNodeConfigurationConditionCondition>(
               map['conditions'],
               (value) => AgentFlowDefinitionNodeConfigurationConditionCondition

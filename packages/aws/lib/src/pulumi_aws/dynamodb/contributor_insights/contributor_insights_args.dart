@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ContributorInsights.
 class ContributorInsightsArgs {
   /// The global secondary index name
-  final Input<String>? indexName;
+  final pulumi.Input<String>? indexName;
 
   /// argument to specify the [CloudWatch contributor insights mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/contributorinsights_HowItWorks.html#contributorinsights_HowItWorks.Modes)
-  final Input<String>? mode;
+  final pulumi.Input<String>? mode;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The name of the table to enable contributor insights
-  final Input<String> tableName;
+  final pulumi.Input<String> tableName;
 
   ContributorInsightsArgs({
     this.indexName,
@@ -43,10 +43,10 @@ class ContributorInsightsArgs {
 
   factory ContributorInsightsArgs.fromMap(Map<String, dynamic> map) {
     return ContributorInsightsArgs(
-      indexName: Input.asOptionalInput<String>(map['indexName']),
-      mode: Input.asOptionalInput<String>(map['mode']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tableName: Input.asInput<String>(map['tableName']),
+      indexName: pulumi.Input.asOptionalInput<String>(map['indexName']),
+      mode: pulumi.Input.asOptionalInput<String>(map['mode']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tableName: pulumi.Input.asInput<String>(map['tableName']),
     );
   }
 }

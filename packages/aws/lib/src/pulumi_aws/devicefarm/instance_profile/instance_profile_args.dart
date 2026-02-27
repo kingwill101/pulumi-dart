@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for InstanceProfile.
 class InstanceProfileArgs {
   /// The description of the instance profile.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// An array of strings that specifies the list of app packages that should not be cleaned up from the device after a test run.
-  final Input<List<String>>? excludeAppPackagesFromCleanups;
+  final pulumi.Input<List<String>>? excludeAppPackagesFromCleanups;
 
   /// The name for the instance profile.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// When set to `true`, Device Farm removes app packages after a test run. The default value is `false` for private devices.
-  final Input<bool>? packageCleanup;
+  final pulumi.Input<bool>? packageCleanup;
 
   /// When set to `true`, Device Farm reboots the instance after a test run. The default value is `true`.
-  final Input<bool>? rebootAfterUse;
+  final pulumi.Input<bool>? rebootAfterUse;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   InstanceProfileArgs({
     this.description,
@@ -71,14 +71,15 @@ class InstanceProfileArgs {
 
   factory InstanceProfileArgs.fromMap(Map<String, dynamic> map) {
     return InstanceProfileArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      excludeAppPackagesFromCleanups: Input.asOptionalInput<List<String>>(
-          map['excludeAppPackagesFromCleanups']),
-      name: Input.asOptionalInput<String>(map['name']),
-      packageCleanup: Input.asOptionalInput<bool>(map['packageCleanup']),
-      rebootAfterUse: Input.asOptionalInput<bool>(map['rebootAfterUse']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      excludeAppPackagesFromCleanups:
+          pulumi.Input.asOptionalInput<List<String>>(
+              map['excludeAppPackagesFromCleanups']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      packageCleanup: pulumi.Input.asOptionalInput<bool>(map['packageCleanup']),
+      rebootAfterUse: pulumi.Input.asOptionalInput<bool>(map['rebootAfterUse']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

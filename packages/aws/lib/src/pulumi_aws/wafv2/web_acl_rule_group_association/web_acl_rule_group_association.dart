@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_group_association_managed_rule_group/web_acl_rule_group_association_managed_rule_group.dart';
 import '../web_acl_rule_group_association_rule_group_reference/web_acl_rule_group_association_rule_group_reference.dart';
 import '../web_acl_rule_group_association_timeouts/web_acl_rule_group_association_timeouts.dart';
@@ -47,42 +47,42 @@ import 'web_acl_rule_group_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation managed_example "arn:aws:wafv2:us-east-1:123456789012:regional/webacl/example-web-acl/12345678-1234-1234-1234-123456789012,AWS:AWSManagedRulesCommonRuleSet,aws-common-rule-set"
 /// ```
-class WebAclRuleGroupAssociation extends CustomResource {
+class WebAclRuleGroupAssociation extends pulumi.CustomResource {
   /// Managed Rule Group configuration. One of `rule_group_reference` or `managed_rule_group` is required. Conflicts with `rule_group_reference`. See below.
-  late final Output<WebAclRuleGroupAssociationManagedRuleGroup?>
+  late final pulumi.Output<WebAclRuleGroupAssociationManagedRuleGroup?>
       managedRuleGroup;
 
   /// Override action for the rule group. Valid values are `none` and `count`. Defaults to `none`. When set to `count`, the actions defined in the rule group rules are overridden to count matches instead of blocking or allowing requests.
-  late final Output<String> overrideAction;
+  late final pulumi.Output<String> overrideAction;
 
   /// Priority of the rule within the Web ACL. Rules are evaluated in order of priority, with lower numbers evaluated first.
-  late final Output<int> priority;
+  late final pulumi.Output<int> priority;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Custom Rule Group reference configuration. One of `rule_group_reference` or `managed_rule_group` is required. Conflicts with `managed_rule_group`. See below.
-  late final Output<WebAclRuleGroupAssociationRuleGroupReference?>
+  late final pulumi.Output<WebAclRuleGroupAssociationRuleGroupReference?>
       ruleGroupReference;
 
   /// Name of the rule to create in the Web ACL that references the rule group. Must be between 1 and 128 characters.
-  late final Output<String> ruleName;
-  late final Output<WebAclRuleGroupAssociationTimeouts?> timeouts;
+  late final pulumi.Output<String> ruleName;
+  late final pulumi.Output<WebAclRuleGroupAssociationTimeouts?> timeouts;
 
   /// ARN of the Web ACL to associate the Rule Group with.
   ///
   /// The following arguments are optional:
-  late final Output<String> webAclArn;
+  late final pulumi.Output<String> webAclArn;
 
   WebAclRuleGroupAssociation(
     String name, {
     WebAclRuleGroupAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:wafv2/webAclRuleGroupAssociation:WebAclRuleGroupAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.managedRuleGroup =
         registerOutput<WebAclRuleGroupAssociationManagedRuleGroup?>(

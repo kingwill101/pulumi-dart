@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_image_application/get_image_application.dart';
 import '../get_image_image_permission/get_image_image_permission.dart';
 import '../get_image_state_change_reason/get_image_state_change_reason.dart';
@@ -79,7 +79,7 @@ class GetImageResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['applications'] =
-        Input.encodeList<GetImageApplication, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetImageApplication, Map<String, dynamic>>(
             applications, (value) => value.toMap());
     map['appstreamAgentVersion'] = appstreamAgentVersion;
     map['arn'] = arn;
@@ -91,7 +91,7 @@ class GetImageResult {
     map['imageBuilderName'] = imageBuilderName;
     map['imageBuilderSupported'] = imageBuilderSupported;
     map['imagePermissions'] =
-        Input.encodeList<GetImageImagePermission, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetImageImagePermission, Map<String, dynamic>>(
             imagePermissions, (value) => value.toMap());
     final mostRecentValue = mostRecent;
     if (mostRecentValue != null) {
@@ -106,9 +106,9 @@ class GetImageResult {
     map['publicBaseImageReleasedDate'] = publicBaseImageReleasedDate;
     map['region'] = region;
     map['state'] = state;
-    map['stateChangeReasons'] =
-        Input.encodeList<GetImageStateChangeReason, Map<String, dynamic>>(
-            stateChangeReasons, (value) => value.toMap());
+    map['stateChangeReasons'] = pulumi.Input.encodeList<
+        GetImageStateChangeReason,
+        Map<String, dynamic>>(stateChangeReasons, (value) => value.toMap());
     final typeValue = type;
     if (typeValue != null) {
       map['type'] = typeValue;
@@ -118,7 +118,7 @@ class GetImageResult {
 
   factory GetImageResult.fromMap(Map<String, dynamic> map) {
     return GetImageResult(
-      applications: Input.decodeList<GetImageApplication>(
+      applications: pulumi.Input.decodeList<GetImageApplication>(
           map['applications'],
           (value) => GetImageApplication.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -131,7 +131,7 @@ class GetImageResult {
       id: map['id'] as String,
       imageBuilderName: map['imageBuilderName'] as String,
       imageBuilderSupported: map['imageBuilderSupported'] as bool,
-      imagePermissions: Input.decodeList<GetImageImagePermission>(
+      imagePermissions: pulumi.Input.decodeList<GetImageImagePermission>(
           map['imagePermissions'],
           (value) => GetImageImagePermission.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -142,7 +142,7 @@ class GetImageResult {
       publicBaseImageReleasedDate: map['publicBaseImageReleasedDate'] as String,
       region: map['region'] as String,
       state: map['state'] as String,
-      stateChangeReasons: Input.decodeList<GetImageStateChangeReason>(
+      stateChangeReasons: pulumi.Input.decodeList<GetImageStateChangeReason>(
           map['stateChangeReasons'],
           (value) => GetImageStateChangeReason.fromMap(
               (value as Map).cast<String, dynamic>())),

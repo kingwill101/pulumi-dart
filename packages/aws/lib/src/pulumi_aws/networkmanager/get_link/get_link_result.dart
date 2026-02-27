@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_link_bandwidth/get_link_bandwidth.dart';
 
 /// Result data returned by getLink.
@@ -48,7 +48,7 @@ class GetLinkResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['bandwidths'] =
-        Input.encodeList<GetLinkBandwidth, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetLinkBandwidth, Map<String, dynamic>>(
             bandwidths, (value) => value.toMap());
     map['description'] = description;
     map['globalNetworkId'] = globalNetworkId;
@@ -64,7 +64,7 @@ class GetLinkResult {
   factory GetLinkResult.fromMap(Map<String, dynamic> map) {
     return GetLinkResult(
       arn: map['arn'] as String,
-      bandwidths: Input.decodeList<GetLinkBandwidth>(
+      bandwidths: pulumi.Input.decodeList<GetLinkBandwidth>(
           map['bandwidths'],
           (value) =>
               GetLinkBandwidth.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../object_lambda_access_point_configuration/object_lambda_access_point_configuration.dart';
 import 'object_lambda_access_point_args.dart';
 
@@ -16,34 +16,34 @@ import 'object_lambda_access_point_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3control/objectLambdaAccessPoint:ObjectLambdaAccessPoint example 123456789012:example
 /// ```
-class ObjectLambdaAccessPoint extends CustomResource {
+class ObjectLambdaAccessPoint extends pulumi.CustomResource {
   /// The AWS account ID for the owner of the bucket for which you want to create an Object Lambda Access Point. Defaults to automatically determined account ID of the AWS provider.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// Alias for the S3 Object Lambda Access Point.
-  late final Output<String> alias;
+  late final pulumi.Output<String> alias;
 
   /// Amazon Resource Name (ARN) of the Object Lambda Access Point.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// A configuration block containing details about the Object Lambda Access Point. See Configuration below for more details.
-  late final Output<ObjectLambdaAccessPointConfiguration> configuration;
+  late final pulumi.Output<ObjectLambdaAccessPointConfiguration> configuration;
 
   /// The name for this Object Lambda Access Point.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ObjectLambdaAccessPoint(
     String name, {
     ObjectLambdaAccessPointArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3control/objectLambdaAccessPoint:ObjectLambdaAccessPoint',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
     this.alias = registerOutput<String>('alias');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dedicated_ip_pool_args.dart';
 
 /// Resource for managing an AWS SESv2 (Simple Email V2) Dedicated IP Pool.
@@ -20,34 +20,34 @@ import 'dedicated_ip_pool_args.dart';
 /// ```sh
 /// $ pulumi import aws:sesv2/dedicatedIpPool:DedicatedIpPool example my-pool
 /// ```
-class DedicatedIpPool extends CustomResource {
+class DedicatedIpPool extends pulumi.CustomResource {
   /// ARN of the Dedicated IP Pool.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Name of the dedicated IP pool.
   ///
   /// The following arguments are optional:
-  late final Output<String> poolName;
+  late final pulumi.Output<String> poolName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// IP pool scaling mode. Valid values: `STANDARD`, `MANAGED`. If omitted, the AWS API will default to a standard pool.
-  late final Output<String> scalingMode;
+  late final pulumi.Output<String> scalingMode;
 
   /// A map of tags to assign to the pool. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   DedicatedIpPool(
     String name, {
     DedicatedIpPoolArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sesv2/dedicatedIpPool:DedicatedIpPool',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.poolName = registerOutput<String>('poolName');

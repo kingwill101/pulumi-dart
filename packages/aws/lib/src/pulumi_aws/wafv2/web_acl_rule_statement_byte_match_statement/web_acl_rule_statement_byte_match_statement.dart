@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_byte_match_statement_field_to_match/web_acl_rule_statement_byte_match_statement_field_to_match.dart';
 import '../web_acl_rule_statement_byte_match_statement_text_transformation/web_acl_rule_statement_byte_match_statement_text_transformation.dart';
 
@@ -33,7 +33,7 @@ class WebAclRuleStatementByteMatchStatement {
     }
     map['positionalConstraint'] = positionalConstraint;
     map['searchString'] = searchString;
-    map['textTransformations'] = Input.encodeList<
+    map['textTransformations'] = pulumi.Input.encodeList<
         WebAclRuleStatementByteMatchStatementTextTransformation,
         Map<String, dynamic>>(textTransformations, (value) => value.toMap());
     return map;
@@ -48,7 +48,7 @@ class WebAclRuleStatementByteMatchStatement {
               (map['fieldToMatch'] as Map).cast<String, dynamic>()),
       positionalConstraint: map['positionalConstraint'] as String,
       searchString: map['searchString'] as String,
-      textTransformations: Input.decodeList<
+      textTransformations: pulumi.Input.decodeList<
               WebAclRuleStatementByteMatchStatementTextTransformation>(
           map['textTransformations'],
           (value) =>

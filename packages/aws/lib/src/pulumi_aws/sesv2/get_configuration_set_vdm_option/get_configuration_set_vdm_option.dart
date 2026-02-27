@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_configuration_set_vdm_option_dashboard_option/get_configuration_set_vdm_option_dashboard_option.dart';
 import '../get_configuration_set_vdm_option_guardian_option/get_configuration_set_vdm_option_guardian_option.dart';
 
@@ -18,10 +18,10 @@ class GetConfigurationSetVdmOption {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dashboardOptions'] = Input.encodeList<
+    map['dashboardOptions'] = pulumi.Input.encodeList<
         GetConfigurationSetVdmOptionDashboardOption,
         Map<String, dynamic>>(dashboardOptions, (value) => value.toMap());
-    map['guardianOptions'] = Input.encodeList<
+    map['guardianOptions'] = pulumi.Input.encodeList<
         GetConfigurationSetVdmOptionGuardianOption,
         Map<String, dynamic>>(guardianOptions, (value) => value.toMap());
     return map;
@@ -30,12 +30,12 @@ class GetConfigurationSetVdmOption {
   factory GetConfigurationSetVdmOption.fromMap(Map<String, dynamic> map) {
     return GetConfigurationSetVdmOption(
       dashboardOptions:
-          Input.decodeList<GetConfigurationSetVdmOptionDashboardOption>(
+          pulumi.Input.decodeList<GetConfigurationSetVdmOptionDashboardOption>(
               map['dashboardOptions'],
               (value) => GetConfigurationSetVdmOptionDashboardOption.fromMap(
                   (value as Map).cast<String, dynamic>())),
       guardianOptions:
-          Input.decodeList<GetConfigurationSetVdmOptionGuardianOption>(
+          pulumi.Input.decodeList<GetConfigurationSetVdmOptionGuardianOption>(
               map['guardianOptions'],
               (value) => GetConfigurationSetVdmOptionGuardianOption.fromMap(
                   (value as Map).cast<String, dynamic>())),

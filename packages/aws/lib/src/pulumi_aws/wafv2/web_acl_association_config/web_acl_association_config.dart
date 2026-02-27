@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_association_config_request_body/web_acl_association_config_request_body.dart';
 
 class WebAclAssociationConfig {
@@ -15,7 +15,7 @@ class WebAclAssociationConfig {
     final map = <String, dynamic>{};
     final requestBodiesValue = requestBodies;
     if (requestBodiesValue != null) {
-      map['requestBodies'] = Input.encodeList<
+      map['requestBodies'] = pulumi.Input.encodeList<
           WebAclAssociationConfigRequestBody,
           Map<String, dynamic>>(requestBodiesValue, (value) => value.toMap());
     }
@@ -26,7 +26,7 @@ class WebAclAssociationConfig {
     return WebAclAssociationConfig(
       requestBodies: map['requestBodies'] == null
           ? null
-          : Input.decodeList<WebAclAssociationConfigRequestBody>(
+          : pulumi.Input.decodeList<WebAclAssociationConfigRequestBody>(
               map['requestBodies'],
               (value) => WebAclAssociationConfigRequestBody.fromMap(
                   (value as Map).cast<String, dynamic>())),

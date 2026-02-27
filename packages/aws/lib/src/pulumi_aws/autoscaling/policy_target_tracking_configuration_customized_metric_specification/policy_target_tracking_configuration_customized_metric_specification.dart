@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../policy_target_tracking_configuration_customized_metric_specification_metric/policy_target_tracking_configuration_customized_metric_specification_metric.dart';
 import '../policy_target_tracking_configuration_customized_metric_specification_metric_dimension/policy_target_tracking_configuration_customized_metric_specification_metric_dimension.dart';
 
@@ -44,7 +44,7 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecification {
     final map = <String, dynamic>{};
     final metricDimensionsValue = metricDimensions;
     if (metricDimensionsValue != null) {
-      map['metricDimensions'] = Input.encodeList<
+      map['metricDimensions'] = pulumi.Input.encodeList<
           PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension,
           Map<String,
               dynamic>>(metricDimensionsValue, (value) => value.toMap());
@@ -55,7 +55,7 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecification {
     }
     final metricsValue = metrics;
     if (metricsValue != null) {
-      map['metrics'] = Input.encodeList<
+      map['metrics'] = pulumi.Input.encodeList<
           PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric,
           Map<String, dynamic>>(metricsValue, (value) => value.toMap());
     }
@@ -83,7 +83,7 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecification {
     return PolicyTargetTrackingConfigurationCustomizedMetricSpecification(
       metricDimensions: map['metricDimensions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension>(
               map['metricDimensions'],
               (value) =>
@@ -93,7 +93,7 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecification {
           map['metricName'] == null ? null : map['metricName'] as String,
       metrics: map['metrics'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric>(
               map['metrics'],
               (value) =>

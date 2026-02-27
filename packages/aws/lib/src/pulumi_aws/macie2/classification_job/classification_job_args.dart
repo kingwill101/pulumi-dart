@@ -1,46 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../classification_job_s3_job_definition/classification_job_s3_job_definition.dart';
 import '../classification_job_schedule_frequency/classification_job_schedule_frequency.dart';
 
 /// The set of arguments for ClassificationJob.
 class ClassificationJobArgs {
   /// The custom data identifiers to use for data analysis and classification.
-  final Input<List<String>>? customDataIdentifierIds;
+  final pulumi.Input<List<String>>? customDataIdentifierIds;
 
   /// A custom description of the job. The description can contain as many as 200 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Specifies whether to analyze all existing, eligible objects immediately after the job is created.
-  final Input<bool>? initialRun;
+  final pulumi.Input<bool>? initialRun;
 
   /// The status for the job. Valid values are: `CANCELLED`, `RUNNING` and `USER_PAUSED`
-  final Input<String>? jobStatus;
+  final pulumi.Input<String>? jobStatus;
 
   /// The schedule for running the job. Valid values are: `ONE_TIME` - Run the job only once. If you specify this value, don't specify a value for the `schedule_frequency` property. `SCHEDULED` - Run the job on a daily, weekly, or monthly basis. If you specify this value, use the `schedule_frequency` property to define the recurrence pattern for the job.
-  final Input<String> jobType;
+  final pulumi.Input<String> jobType;
 
   /// A custom name for the job. The name can contain as many as 500 characters. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The S3 buckets that contain the objects to analyze, and the scope of that analysis. (documented below)
-  final Input<ClassificationJobS3JobDefinition> s3JobDefinition;
+  final pulumi.Input<ClassificationJobS3JobDefinition> s3JobDefinition;
 
   /// The sampling depth, as a percentage, to apply when processing objects. This value determines the percentage of eligible objects that the job analyzes. If this value is less than 100, Amazon Macie selects the objects to analyze at random, up to the specified percentage, and analyzes all the data in those objects.
-  final Input<int>? samplingPercentage;
+  final pulumi.Input<int>? samplingPercentage;
 
   /// The recurrence pattern for running the job. To run the job only once, don't specify a value for this property and set the value for the `job_type` property to `ONE_TIME`. (documented below)
-  final Input<ClassificationJobScheduleFrequency>? scheduleFrequency;
+  final pulumi.Input<ClassificationJobScheduleFrequency>? scheduleFrequency;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   ClassificationJobArgs({
     this.customDataIdentifierIds,
@@ -88,7 +88,7 @@ class ClassificationJobArgs {
     if (regionValue != null) {
       map['region'] = regionValue;
     }
-    map['s3JobDefinition'] = Input.mapInputValue<
+    map['s3JobDefinition'] = pulumi.Input.mapInputValue<
         ClassificationJobS3JobDefinition,
         Map<String, dynamic>>(s3JobDefinition, (value) => value.toMap());
     final samplingPercentageValue = samplingPercentage;
@@ -97,7 +97,7 @@ class ClassificationJobArgs {
     }
     final scheduleFrequencyValue = scheduleFrequency;
     if (scheduleFrequencyValue != null) {
-      map['scheduleFrequency'] = Input.mapOptionalInputValue<
+      map['scheduleFrequency'] = pulumi.Input.mapOptionalInputValue<
               ClassificationJobScheduleFrequency, Map<String, dynamic>>(
           scheduleFrequencyValue, (value) => value.toMap());
     }
@@ -110,22 +110,23 @@ class ClassificationJobArgs {
 
   factory ClassificationJobArgs.fromMap(Map<String, dynamic> map) {
     return ClassificationJobArgs(
-      customDataIdentifierIds:
-          Input.asOptionalInput<List<String>>(map['customDataIdentifierIds']),
-      description: Input.asOptionalInput<String>(map['description']),
-      initialRun: Input.asOptionalInput<bool>(map['initialRun']),
-      jobStatus: Input.asOptionalInput<String>(map['jobStatus']),
-      jobType: Input.asInput<String>(map['jobType']),
-      name: Input.asOptionalInput<String>(map['name']),
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
-      region: Input.asOptionalInput<String>(map['region']),
-      s3JobDefinition: Input.asInput<ClassificationJobS3JobDefinition>(
+      customDataIdentifierIds: pulumi.Input.asOptionalInput<List<String>>(
+          map['customDataIdentifierIds']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      initialRun: pulumi.Input.asOptionalInput<bool>(map['initialRun']),
+      jobStatus: pulumi.Input.asOptionalInput<String>(map['jobStatus']),
+      jobType: pulumi.Input.asInput<String>(map['jobType']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      s3JobDefinition: pulumi.Input.asInput<ClassificationJobS3JobDefinition>(
           map['s3JobDefinition']),
-      samplingPercentage: Input.asOptionalInput<int>(map['samplingPercentage']),
+      samplingPercentage:
+          pulumi.Input.asOptionalInput<int>(map['samplingPercentage']),
       scheduleFrequency:
-          Input.asOptionalInput<ClassificationJobScheduleFrequency>(
+          pulumi.Input.asOptionalInput<ClassificationJobScheduleFrequency>(
               map['scheduleFrequency']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

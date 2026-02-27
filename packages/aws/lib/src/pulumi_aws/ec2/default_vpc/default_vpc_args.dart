@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DefaultVpc.
 class DefaultVpcArgs {
-  final Input<bool>? assignGeneratedIpv6CidrBlock;
-  final Input<bool>? enableDnsHostnames;
-  final Input<bool>? enableDnsSupport;
-  final Input<bool>? enableNetworkAddressUsageMetrics;
+  final pulumi.Input<bool>? assignGeneratedIpv6CidrBlock;
+  final pulumi.Input<bool>? enableDnsHostnames;
+  final pulumi.Input<bool>? enableDnsSupport;
+  final pulumi.Input<bool>? enableNetworkAddressUsageMetrics;
 
   /// Whether destroying the resource deletes the default VPC. Default: `false`
-  final Input<bool>? forceDestroy;
-  final Input<String>? ipv6CidrBlock;
-  final Input<String>? ipv6CidrBlockNetworkBorderGroup;
-  final Input<String>? ipv6IpamPoolId;
-  final Input<int>? ipv6NetmaskLength;
+  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<String>? ipv6CidrBlock;
+  final pulumi.Input<String>? ipv6CidrBlockNetworkBorderGroup;
+  final pulumi.Input<String>? ipv6IpamPoolId;
+  final pulumi.Input<int>? ipv6NetmaskLength;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  final Input<String>? region;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<Map<String, String>>? tags;
 
   DefaultVpcArgs({
     this.assignGeneratedIpv6CidrBlock,
@@ -89,21 +89,24 @@ class DefaultVpcArgs {
 
   factory DefaultVpcArgs.fromMap(Map<String, dynamic> map) {
     return DefaultVpcArgs(
-      assignGeneratedIpv6CidrBlock:
-          Input.asOptionalInput<bool>(map['assignGeneratedIpv6CidrBlock']),
+      assignGeneratedIpv6CidrBlock: pulumi.Input.asOptionalInput<bool>(
+          map['assignGeneratedIpv6CidrBlock']),
       enableDnsHostnames:
-          Input.asOptionalInput<bool>(map['enableDnsHostnames']),
-      enableDnsSupport: Input.asOptionalInput<bool>(map['enableDnsSupport']),
-      enableNetworkAddressUsageMetrics:
-          Input.asOptionalInput<bool>(map['enableNetworkAddressUsageMetrics']),
-      forceDestroy: Input.asOptionalInput<bool>(map['forceDestroy']),
-      ipv6CidrBlock: Input.asOptionalInput<String>(map['ipv6CidrBlock']),
-      ipv6CidrBlockNetworkBorderGroup:
-          Input.asOptionalInput<String>(map['ipv6CidrBlockNetworkBorderGroup']),
-      ipv6IpamPoolId: Input.asOptionalInput<String>(map['ipv6IpamPoolId']),
-      ipv6NetmaskLength: Input.asOptionalInput<int>(map['ipv6NetmaskLength']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<bool>(map['enableDnsHostnames']),
+      enableDnsSupport:
+          pulumi.Input.asOptionalInput<bool>(map['enableDnsSupport']),
+      enableNetworkAddressUsageMetrics: pulumi.Input.asOptionalInput<bool>(
+          map['enableNetworkAddressUsageMetrics']),
+      forceDestroy: pulumi.Input.asOptionalInput<bool>(map['forceDestroy']),
+      ipv6CidrBlock: pulumi.Input.asOptionalInput<String>(map['ipv6CidrBlock']),
+      ipv6CidrBlockNetworkBorderGroup: pulumi.Input.asOptionalInput<String>(
+          map['ipv6CidrBlockNetworkBorderGroup']),
+      ipv6IpamPoolId:
+          pulumi.Input.asOptionalInput<String>(map['ipv6IpamPoolId']),
+      ipv6NetmaskLength:
+          pulumi.Input.asOptionalInput<int>(map['ipv6NetmaskLength']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

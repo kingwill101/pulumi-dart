@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_node_spec_listener_connection_pool/get_virtual_node_spec_listener_connection_pool.dart';
 import '../get_virtual_node_spec_listener_health_check/get_virtual_node_spec_listener_health_check.dart';
 import '../get_virtual_node_spec_listener_outlier_detection/get_virtual_node_spec_listener_outlier_detection.dart';
@@ -27,51 +27,52 @@ class GetVirtualNodeSpecListener {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['connectionPools'] = Input.encodeList<
+    map['connectionPools'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerConnectionPool,
         Map<String, dynamic>>(connectionPools, (value) => value.toMap());
-    map['healthChecks'] = Input.encodeList<
+    map['healthChecks'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerHealthCheck,
         Map<String, dynamic>>(healthChecks, (value) => value.toMap());
-    map['outlierDetections'] = Input.encodeList<
+    map['outlierDetections'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerOutlierDetection,
         Map<String, dynamic>>(outlierDetections, (value) => value.toMap());
-    map['portMappings'] = Input.encodeList<
+    map['portMappings'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerPortMapping,
         Map<String, dynamic>>(portMappings, (value) => value.toMap());
-    map['timeouts'] = Input.encodeList<GetVirtualNodeSpecListenerTimeout,
+    map['timeouts'] = pulumi.Input.encodeList<GetVirtualNodeSpecListenerTimeout,
         Map<String, dynamic>>(timeouts, (value) => value.toMap());
-    map['tls'] =
-        Input.encodeList<GetVirtualNodeSpecListenerTl, Map<String, dynamic>>(
-            tls, (value) => value.toMap());
+    map['tls'] = pulumi.Input.encodeList<GetVirtualNodeSpecListenerTl,
+        Map<String, dynamic>>(tls, (value) => value.toMap());
     return map;
   }
 
   factory GetVirtualNodeSpecListener.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListener(
       connectionPools:
-          Input.decodeList<GetVirtualNodeSpecListenerConnectionPool>(
+          pulumi.Input.decodeList<GetVirtualNodeSpecListenerConnectionPool>(
               map['connectionPools'],
               (value) => GetVirtualNodeSpecListenerConnectionPool.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      healthChecks: Input.decodeList<GetVirtualNodeSpecListenerHealthCheck>(
-          map['healthChecks'],
-          (value) => GetVirtualNodeSpecListenerHealthCheck.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      healthChecks:
+          pulumi.Input.decodeList<GetVirtualNodeSpecListenerHealthCheck>(
+              map['healthChecks'],
+              (value) => GetVirtualNodeSpecListenerHealthCheck.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       outlierDetections:
-          Input.decodeList<GetVirtualNodeSpecListenerOutlierDetection>(
+          pulumi.Input.decodeList<GetVirtualNodeSpecListenerOutlierDetection>(
               map['outlierDetections'],
               (value) => GetVirtualNodeSpecListenerOutlierDetection.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      portMappings: Input.decodeList<GetVirtualNodeSpecListenerPortMapping>(
-          map['portMappings'],
-          (value) => GetVirtualNodeSpecListenerPortMapping.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      timeouts: Input.decodeList<GetVirtualNodeSpecListenerTimeout>(
+      portMappings:
+          pulumi.Input.decodeList<GetVirtualNodeSpecListenerPortMapping>(
+              map['portMappings'],
+              (value) => GetVirtualNodeSpecListenerPortMapping.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      timeouts: pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeout>(
           map['timeouts'],
           (value) => GetVirtualNodeSpecListenerTimeout.fromMap(
               (value as Map).cast<String, dynamic>())),
-      tls: Input.decodeList<GetVirtualNodeSpecListenerTl>(
+      tls: pulumi.Input.decodeList<GetVirtualNodeSpecListenerTl>(
           map['tls'],
           (value) => GetVirtualNodeSpecListenerTl.fromMap(
               (value as Map).cast<String, dynamic>())),

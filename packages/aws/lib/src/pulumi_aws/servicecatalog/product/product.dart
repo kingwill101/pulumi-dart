@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../product_provisioning_artifact_parameters/product_provisioning_artifact_parameters.dart';
 import 'product_args.dart';
 
@@ -21,70 +21,70 @@ import 'product_args.dart';
 /// ```sh
 /// $ pulumi import aws:servicecatalog/product:Product example prod-dnigbtea24ste
 /// ```
-class Product extends CustomResource {
+class Product extends pulumi.CustomResource {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  late final Output<String?> acceptLanguage;
+  late final pulumi.Output<String?> acceptLanguage;
 
   /// ARN of the product.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Time when the product was created.
-  late final Output<String> createdTime;
+  late final pulumi.Output<String> createdTime;
 
   /// Description of the product.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Distributor (i.e., vendor) of the product.
-  late final Output<String> distributor;
+  late final pulumi.Output<String> distributor;
 
   /// Whether the product has a default path. If the product does not have a default path, call `ListLaunchPaths` to disambiguate between paths.  Otherwise, `ListLaunchPaths` is not required, and the output of ProductViewSummary can be used directly with `DescribeProvisioningParameters`.
-  late final Output<bool> hasDefaultPath;
+  late final pulumi.Output<bool> hasDefaultPath;
 
   /// Name of the product.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Owner of the product.
-  late final Output<String> owner;
+  late final pulumi.Output<String> owner;
 
   /// Configuration block for provisioning artifact (i.e., version) parameters. See `provisioning_artifact_parameters` Block for details.
-  late final Output<ProductProvisioningArtifactParameters>
+  late final pulumi.Output<ProductProvisioningArtifactParameters>
       provisioningArtifactParameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Status of the product.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Support information about the product.
-  late final Output<String> supportDescription;
+  late final pulumi.Output<String> supportDescription;
 
   /// Contact email for product support.
-  late final Output<String> supportEmail;
+  late final pulumi.Output<String> supportEmail;
 
   /// Contact URL for product support.
-  late final Output<String> supportUrl;
+  late final pulumi.Output<String> supportUrl;
 
   /// Tags to apply to the product. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Type of product. See [AWS Docs](https://docs.aws.amazon.com/servicecatalog/latest/dg/API_CreateProduct.html#API_CreateProduct_RequestSyntax) for valid list of values.
   ///
   /// The following arguments are optional:
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   Product(
     String name, {
     ProductArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:servicecatalog/product:Product',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.acceptLanguage = registerOutput<String?>('acceptLanguage');
     this.arn = registerOutput<String>('arn');

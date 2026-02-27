@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_version_args.dart';
 
 /// Provides an Elastic Beanstalk Application Version Resource. Elastic Beanstalk allows
@@ -12,51 +12,51 @@ import 'application_version_args.dart';
 /// Elastic Beanstalk Environments it is possible that an error may be returned
 /// when attempting to delete an Application Version while it is still in use by a different environment.
 /// To work around this you can either create each environment in a separate AWS account or create your `aws.elasticbeanstalk.ApplicationVersion` resources with a unique names in your Elastic Beanstalk Application. For example &lt;revision&gt;-&lt;environment&gt;.
-class ApplicationVersion extends CustomResource {
+class ApplicationVersion extends pulumi.CustomResource {
   /// Name of the Beanstalk Application the version is associated with.
-  late final Output<String> application;
+  late final pulumi.Output<String> application;
 
   /// ARN assigned by AWS for this Elastic Beanstalk Application.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// S3 bucket that contains the Application Version source bundle.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Short description of the Application Version.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// On delete, force an Application Version to be deleted when it may be in use by multiple Elastic Beanstalk Environments.
-  late final Output<bool?> forceDelete;
+  late final pulumi.Output<bool?> forceDelete;
 
   /// S3 object that is the Application Version source bundle.
-  late final Output<String> key;
+  late final pulumi.Output<String> key;
 
   /// Unique name for the this Application Version.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Pre-processes and validates the environment manifest (env.yaml ) and configuration files (*.config files in the .ebextensions folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment. You must turn processing on for application versions that you create using AWS CodeBuild or AWS CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional. It validates Elastic Beanstalk configuration files. It doesn’t validate your application’s configuration files, like proxy server or Docker configuration.
-  late final Output<bool?> process;
+  late final pulumi.Output<bool?> process;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of tags for the Elastic Beanstalk Application Version. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   ApplicationVersion(
     String name, {
     ApplicationVersionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:elasticbeanstalk/applicationVersion:ApplicationVersion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.application = registerOutput<String>('application');
     this.arn = registerOutput<String>('arn');

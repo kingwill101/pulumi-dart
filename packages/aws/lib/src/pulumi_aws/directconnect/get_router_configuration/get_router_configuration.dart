@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_router_configuration_args.dart';
 import 'get_router_configuration_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_router_configuration_result.dart';
 /// ### Basic Usage
 Future<GetRouterConfigurationResult> getRouterConfiguration(
   GetRouterConfigurationArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:directconnect/getRouterConfiguration:getRouterConfiguration',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouterConfigurationResult.fromMap(result);
 }

@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VaultLockConfiguration.
 class VaultLockConfigurationArgs {
   /// Name of the backup vault to add a lock configuration for.
-  final Input<String> backupVaultName;
+  final pulumi.Input<String> backupVaultName;
 
   /// The number of days before the lock date. If omitted creates a vault lock in `governance` mode, otherwise it will create a vault lock in `compliance` mode.
-  final Input<int>? changeableForDays;
+  final pulumi.Input<int>? changeableForDays;
 
   /// The maximum retention period that the vault retains its recovery points.
-  final Input<int>? maxRetentionDays;
+  final pulumi.Input<int>? maxRetentionDays;
 
   /// The minimum retention period that the vault retains its recovery points.
-  final Input<int>? minRetentionDays;
+  final pulumi.Input<int>? minRetentionDays;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   VaultLockConfigurationArgs({
     required this.backupVaultName,
@@ -51,11 +51,14 @@ class VaultLockConfigurationArgs {
 
   factory VaultLockConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return VaultLockConfigurationArgs(
-      backupVaultName: Input.asInput<String>(map['backupVaultName']),
-      changeableForDays: Input.asOptionalInput<int>(map['changeableForDays']),
-      maxRetentionDays: Input.asOptionalInput<int>(map['maxRetentionDays']),
-      minRetentionDays: Input.asOptionalInput<int>(map['minRetentionDays']),
-      region: Input.asOptionalInput<String>(map['region']),
+      backupVaultName: pulumi.Input.asInput<String>(map['backupVaultName']),
+      changeableForDays:
+          pulumi.Input.asOptionalInput<int>(map['changeableForDays']),
+      maxRetentionDays:
+          pulumi.Input.asOptionalInput<int>(map['maxRetentionDays']),
+      minRetentionDays:
+          pulumi.Input.asOptionalInput<int>(map['minRetentionDays']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

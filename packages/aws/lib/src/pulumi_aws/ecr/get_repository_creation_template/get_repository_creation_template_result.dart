@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_repository_creation_template_encryption_configuration/get_repository_creation_template_encryption_configuration.dart';
 import '../get_repository_creation_template_image_tag_mutability_exclusion_filter/get_repository_creation_template_image_tag_mutability_exclusion_filter.dart';
 
@@ -64,13 +64,13 @@ class GetRepositoryCreationTemplateResult {
     map['appliedFors'] = appliedFors;
     map['customRoleArn'] = customRoleArn;
     map['description'] = description;
-    map['encryptionConfigurations'] = Input.encodeList<
+    map['encryptionConfigurations'] = pulumi.Input.encodeList<
             GetRepositoryCreationTemplateEncryptionConfiguration,
             Map<String, dynamic>>(
         encryptionConfigurations, (value) => value.toMap());
     map['id'] = id;
     map['imageTagMutability'] = imageTagMutability;
-    map['imageTagMutabilityExclusionFilters'] = Input.encodeList<
+    map['imageTagMutabilityExclusionFilters'] = pulumi.Input.encodeList<
             GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter,
             Map<String, dynamic>>(
         imageTagMutabilityExclusionFilters, (value) => value.toMap());
@@ -89,7 +89,7 @@ class GetRepositoryCreationTemplateResult {
       appliedFors: (map['appliedFors'] as List).cast<String>(),
       customRoleArn: map['customRoleArn'] as String,
       description: map['description'] as String,
-      encryptionConfigurations: Input.decodeList<
+      encryptionConfigurations: pulumi.Input.decodeList<
               GetRepositoryCreationTemplateEncryptionConfiguration>(
           map['encryptionConfigurations'],
           (value) =>
@@ -97,7 +97,7 @@ class GetRepositoryCreationTemplateResult {
                   (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       imageTagMutability: map['imageTagMutability'] as String,
-      imageTagMutabilityExclusionFilters: Input.decodeList<
+      imageTagMutabilityExclusionFilters: pulumi.Input.decodeList<
               GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter>(
           map['imageTagMutabilityExclusionFilters'],
           (value) =>

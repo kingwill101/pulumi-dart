@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEntityPath.
 class GetEntityPathArgs {
   /// Entity ID. Must be an organizational unit (OU) or AWS account ID.
-  final Input<String> entityId;
+  final pulumi.Input<String> entityId;
 
   GetEntityPathArgs({
     required this.entityId,
@@ -19,7 +19,7 @@ class GetEntityPathArgs {
 
   factory GetEntityPathArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityPathArgs(
-      entityId: Input.asInput<String>(map['entityId']),
+      entityId: pulumi.Input.asInput<String>(map['entityId']),
     );
   }
 }

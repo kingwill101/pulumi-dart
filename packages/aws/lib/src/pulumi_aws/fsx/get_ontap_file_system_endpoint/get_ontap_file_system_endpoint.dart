@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ontap_file_system_endpoint_intercluster/get_ontap_file_system_endpoint_intercluster.dart';
 import '../get_ontap_file_system_endpoint_management/get_ontap_file_system_endpoint_management.dart';
 
@@ -18,24 +18,27 @@ class GetOntapFileSystemEndpoint {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['interclusters'] = Input.encodeList<
+    map['interclusters'] = pulumi.Input.encodeList<
         GetOntapFileSystemEndpointIntercluster,
         Map<String, dynamic>>(interclusters, (value) => value.toMap());
-    map['managements'] = Input.encodeList<GetOntapFileSystemEndpointManagement,
+    map['managements'] = pulumi.Input.encodeList<
+        GetOntapFileSystemEndpointManagement,
         Map<String, dynamic>>(managements, (value) => value.toMap());
     return map;
   }
 
   factory GetOntapFileSystemEndpoint.fromMap(Map<String, dynamic> map) {
     return GetOntapFileSystemEndpoint(
-      interclusters: Input.decodeList<GetOntapFileSystemEndpointIntercluster>(
-          map['interclusters'],
-          (value) => GetOntapFileSystemEndpointIntercluster.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      managements: Input.decodeList<GetOntapFileSystemEndpointManagement>(
-          map['managements'],
-          (value) => GetOntapFileSystemEndpointManagement.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      interclusters:
+          pulumi.Input.decodeList<GetOntapFileSystemEndpointIntercluster>(
+              map['interclusters'],
+              (value) => GetOntapFileSystemEndpointIntercluster.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      managements:
+          pulumi.Input.decodeList<GetOntapFileSystemEndpointManagement>(
+              map['managements'],
+              (value) => GetOntapFileSystemEndpointManagement.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

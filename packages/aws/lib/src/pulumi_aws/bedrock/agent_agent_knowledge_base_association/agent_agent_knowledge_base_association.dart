@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_agent_knowledge_base_association_timeouts/agent_agent_knowledge_base_association_timeouts.dart';
 import 'agent_agent_knowledge_base_association_args.dart';
 
@@ -17,37 +17,38 @@ import 'agent_agent_knowledge_base_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrock/agentAgentKnowledgeBaseAssociation:AgentAgentKnowledgeBaseAssociation example GGRRAED6JP,DRAFT,EMDPPAYPZI
 /// ```
-class AgentAgentKnowledgeBaseAssociation extends CustomResource {
+class AgentAgentKnowledgeBaseAssociation extends pulumi.CustomResource {
   /// Unique identifier of the agent with which you want to associate the knowledge base.
-  late final Output<String> agentId;
+  late final pulumi.Output<String> agentId;
 
   /// Version of the agent with which you want to associate the knowledge base. Valid values: `DRAFT`.
-  late final Output<String> agentVersion;
+  late final pulumi.Output<String> agentVersion;
 
   /// Description of what the agent should use the knowledge base for.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Unique identifier of the knowledge base to associate with the agent.
-  late final Output<String> knowledgeBaseId;
+  late final pulumi.Output<String> knowledgeBaseId;
 
   /// Whether to use the knowledge base when sending an [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html) request. Valid values: `ENABLED`, `DISABLED`.
   ///
   /// The following arguments are optional:
-  late final Output<String> knowledgeBaseState;
+  late final pulumi.Output<String> knowledgeBaseState;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<AgentAgentKnowledgeBaseAssociationTimeouts?> timeouts;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<AgentAgentKnowledgeBaseAssociationTimeouts?>
+      timeouts;
 
   AgentAgentKnowledgeBaseAssociation(
     String name, {
     AgentAgentKnowledgeBaseAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/agentAgentKnowledgeBaseAssociation:AgentAgentKnowledgeBaseAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.agentId = registerOutput<String>('agentId');
     this.agentVersion = registerOutput<String>('agentVersion');

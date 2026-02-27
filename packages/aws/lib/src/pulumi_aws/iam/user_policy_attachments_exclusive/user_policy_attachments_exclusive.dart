@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_policy_attachments_exclusive_args.dart';
 
 /// Resource for maintaining exclusive management of managed IAM policies assigned to an AWS IAM (Identity & Access Management) user.
@@ -28,22 +28,22 @@ import 'user_policy_attachments_exclusive_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/userPolicyAttachmentsExclusive:UserPolicyAttachmentsExclusive example MyUser
 /// ```
-class UserPolicyAttachmentsExclusive extends CustomResource {
+class UserPolicyAttachmentsExclusive extends pulumi.CustomResource {
   /// A list of managed IAM policy ARNs to be attached to the user. Policies attached to this user but not configured in this argument will be removed.
-  late final Output<List<String>> policyArns;
+  late final pulumi.Output<List<String>> policyArns;
 
   /// IAM user name.
-  late final Output<String> userName;
+  late final pulumi.Output<String> userName;
 
   UserPolicyAttachmentsExclusive(
     String name, {
     UserPolicyAttachmentsExclusiveArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/userPolicyAttachmentsExclusive:UserPolicyAttachmentsExclusive',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.policyArns = registerOutput<List<String>>('policyArns');
     this.userName = registerOutput<String>('userName');

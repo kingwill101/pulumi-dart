@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_node_group_launch_template/get_node_group_launch_template.dart';
 import '../get_node_group_remote_access/get_node_group_remote_access.dart';
 import '../get_node_group_resource/get_node_group_resource.dart';
@@ -103,29 +103,28 @@ class GetNodeGroupResult {
     map['id'] = id;
     map['instanceTypes'] = instanceTypes;
     map['labels'] = labels;
-    map['launchTemplates'] =
-        Input.encodeList<GetNodeGroupLaunchTemplate, Map<String, dynamic>>(
-            launchTemplates, (value) => value.toMap());
+    map['launchTemplates'] = pulumi.Input.encodeList<GetNodeGroupLaunchTemplate,
+        Map<String, dynamic>>(launchTemplates, (value) => value.toMap());
     map['nodeGroupName'] = nodeGroupName;
     map['nodeRoleArn'] = nodeRoleArn;
     map['region'] = region;
     map['releaseVersion'] = releaseVersion;
     map['remoteAccesses'] =
-        Input.encodeList<GetNodeGroupRemoteAccess, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetNodeGroupRemoteAccess, Map<String, dynamic>>(
             remoteAccesses, (value) => value.toMap());
     map['resources'] =
-        Input.encodeList<GetNodeGroupResource, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetNodeGroupResource, Map<String, dynamic>>(
             resources, (value) => value.toMap());
-    map['scalingConfigs'] =
-        Input.encodeList<GetNodeGroupScalingConfig, Map<String, dynamic>>(
-            scalingConfigs, (value) => value.toMap());
+    map['scalingConfigs'] = pulumi.Input.encodeList<GetNodeGroupScalingConfig,
+        Map<String, dynamic>>(scalingConfigs, (value) => value.toMap());
     map['status'] = status;
     map['subnetIds'] = subnetIds;
     map['tags'] = tags;
-    map['taints'] = Input.encodeList<GetNodeGroupTaint, Map<String, dynamic>>(
-        taints, (value) => value.toMap());
+    map['taints'] =
+        pulumi.Input.encodeList<GetNodeGroupTaint, Map<String, dynamic>>(
+            taints, (value) => value.toMap());
     map['updateConfigs'] =
-        Input.encodeList<GetNodeGroupUpdateConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetNodeGroupUpdateConfig, Map<String, dynamic>>(
             updateConfigs, (value) => value.toMap());
     map['version'] = version;
     return map;
@@ -141,7 +140,7 @@ class GetNodeGroupResult {
       id: map['id'] as String,
       instanceTypes: (map['instanceTypes'] as List).cast<String>(),
       labels: (map['labels'] as Map).cast<String, String>(),
-      launchTemplates: Input.decodeList<GetNodeGroupLaunchTemplate>(
+      launchTemplates: pulumi.Input.decodeList<GetNodeGroupLaunchTemplate>(
           map['launchTemplates'],
           (value) => GetNodeGroupLaunchTemplate.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -149,26 +148,26 @@ class GetNodeGroupResult {
       nodeRoleArn: map['nodeRoleArn'] as String,
       region: map['region'] as String,
       releaseVersion: map['releaseVersion'] as String,
-      remoteAccesses: Input.decodeList<GetNodeGroupRemoteAccess>(
+      remoteAccesses: pulumi.Input.decodeList<GetNodeGroupRemoteAccess>(
           map['remoteAccesses'],
           (value) => GetNodeGroupRemoteAccess.fromMap(
               (value as Map).cast<String, dynamic>())),
-      resources: Input.decodeList<GetNodeGroupResource>(
+      resources: pulumi.Input.decodeList<GetNodeGroupResource>(
           map['resources'],
           (value) => GetNodeGroupResource.fromMap(
               (value as Map).cast<String, dynamic>())),
-      scalingConfigs: Input.decodeList<GetNodeGroupScalingConfig>(
+      scalingConfigs: pulumi.Input.decodeList<GetNodeGroupScalingConfig>(
           map['scalingConfigs'],
           (value) => GetNodeGroupScalingConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       subnetIds: (map['subnetIds'] as List).cast<String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
-      taints: Input.decodeList<GetNodeGroupTaint>(
+      taints: pulumi.Input.decodeList<GetNodeGroupTaint>(
           map['taints'],
           (value) => GetNodeGroupTaint.fromMap(
               (value as Map).cast<String, dynamic>())),
-      updateConfigs: Input.decodeList<GetNodeGroupUpdateConfig>(
+      updateConfigs: pulumi.Input.decodeList<GetNodeGroupUpdateConfig>(
           map['updateConfigs'],
           (value) => GetNodeGroupUpdateConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

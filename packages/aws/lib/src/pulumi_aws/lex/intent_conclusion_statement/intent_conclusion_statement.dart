@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../intent_conclusion_statement_message/intent_conclusion_statement_message.dart';
 
 class IntentConclusionStatement {
@@ -14,7 +14,7 @@ class IntentConclusionStatement {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['messages'] = Input.encodeList<IntentConclusionStatementMessage,
+    map['messages'] = pulumi.Input.encodeList<IntentConclusionStatementMessage,
         Map<String, dynamic>>(messages, (value) => value.toMap());
     final responseCardValue = responseCard;
     if (responseCardValue != null) {
@@ -25,7 +25,7 @@ class IntentConclusionStatement {
 
   factory IntentConclusionStatement.fromMap(Map<String, dynamic> map) {
     return IntentConclusionStatement(
-      messages: Input.decodeList<IntentConclusionStatementMessage>(
+      messages: pulumi.Input.decodeList<IntentConclusionStatementMessage>(
           map['messages'],
           (value) => IntentConclusionStatementMessage.fromMap(
               (value as Map).cast<String, dynamic>())),

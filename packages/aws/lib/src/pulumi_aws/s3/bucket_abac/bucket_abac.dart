@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_abac_abac_status/bucket_abac_abac_status.dart';
 import 'bucket_abac_args.dart';
 
@@ -29,30 +29,30 @@ import 'bucket_abac_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3/bucketAbac:BucketAbac example bucket-name,123456789012
 /// ```
-class BucketAbac extends CustomResource {
+class BucketAbac extends pulumi.CustomResource {
   /// ABAC status configuration. See `abac_status` Block for details.
   ///
   /// The following arguments are optional:
-  late final Output<BucketAbacAbacStatus> abacStatus;
+  late final pulumi.Output<BucketAbacAbacStatus> abacStatus;
 
   /// General purpose bucket that you want to create the metadata configuration for.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Account ID of the expected bucket owner.
-  late final Output<String?> expectedBucketOwner;
+  late final pulumi.Output<String?> expectedBucketOwner;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   BucketAbac(
     String name, {
     BucketAbacArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/bucketAbac:BucketAbac',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.abacStatus = registerOutput<BucketAbacAbacStatus>('abacStatus');
     this.bucket = registerOutput<String>('bucket');

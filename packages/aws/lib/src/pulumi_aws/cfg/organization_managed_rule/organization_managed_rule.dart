@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'organization_managed_rule_args.dart';
 
 /// Manages a Config Organization Managed Rule. More information about these rules can be found in the [Enabling AWS Config Rules Across all Accounts in Your Organization](https://docs.aws.amazon.com/config/latest/developerguide/config-rule-multi-account-deployment.html) and [AWS Config Managed Rules](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html) documentation. For working with Organization Custom Rules (those invoking a custom Lambda Function), see the `aws.cfg.OrganizationCustomRule` resource.
@@ -18,52 +18,52 @@ import 'organization_managed_rule_args.dart';
 /// ```sh
 /// $ pulumi import aws:cfg/organizationManagedRule:OrganizationManagedRule example example
 /// ```
-class OrganizationManagedRule extends CustomResource {
+class OrganizationManagedRule extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the rule
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Description of the rule
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// List of AWS account identifiers to exclude from the rule
-  late final Output<List<String>?> excludedAccounts;
+  late final pulumi.Output<List<String>?> excludedAccounts;
 
   /// A string in JSON format that is passed to the AWS Config Rule Lambda Function
-  late final Output<String?> inputParameters;
+  late final pulumi.Output<String?> inputParameters;
 
   /// The maximum frequency with which AWS Config runs evaluations for a rule, if the rule is triggered at a periodic frequency. Defaults to `TwentyFour_Hours` for periodic frequency triggered rules. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, or `TwentyFour_Hours`.
-  late final Output<String?> maximumExecutionFrequency;
+  late final pulumi.Output<String?> maximumExecutionFrequency;
 
   /// The name of the rule
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Identifier of the AWS resource to evaluate
-  late final Output<String?> resourceIdScope;
+  late final pulumi.Output<String?> resourceIdScope;
 
   /// List of types of AWS resources to evaluate
-  late final Output<List<String>?> resourceTypesScopes;
+  late final pulumi.Output<List<String>?> resourceTypesScopes;
 
   /// Identifier of an available AWS Config Managed Rule to call. For available values, see the [List of AWS Config Managed Rules](https://docs.aws.amazon.com/config/latest/developerguide/managed-rules-by-aws-config.html) documentation
-  late final Output<String> ruleIdentifier;
+  late final pulumi.Output<String> ruleIdentifier;
 
   /// Tag key of AWS resources to evaluate
-  late final Output<String?> tagKeyScope;
+  late final pulumi.Output<String?> tagKeyScope;
 
   /// Tag value of AWS resources to evaluate
-  late final Output<String?> tagValueScope;
+  late final pulumi.Output<String?> tagValueScope;
 
   OrganizationManagedRule(
     String name, {
     OrganizationManagedRuleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cfg/organizationManagedRule:OrganizationManagedRule',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');

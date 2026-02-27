@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_views_billing_view/get_views_billing_view.dart';
 
 /// Result data returned by getViews.
@@ -26,7 +26,7 @@ class GetViewsResult {
       map['billingViewTypes'] = billingViewTypesValue;
     }
     map['billingViews'] =
-        Input.encodeList<GetViewsBillingView, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetViewsBillingView, Map<String, dynamic>>(
             billingViews, (value) => value.toMap());
     map['id'] = id;
     return map;
@@ -37,7 +37,7 @@ class GetViewsResult {
       billingViewTypes: map['billingViewTypes'] == null
           ? null
           : (map['billingViewTypes'] as List).cast<String>(),
-      billingViews: Input.decodeList<GetViewsBillingView>(
+      billingViews: pulumi.Input.decodeList<GetViewsBillingView>(
           map['billingViews'],
           (value) => GetViewsBillingView.fromMap(
               (value as Map).cast<String, dynamic>())),

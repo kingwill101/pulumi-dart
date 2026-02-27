@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_domain_auto_tune_option_maintenance_schedule/get_domain_auto_tune_option_maintenance_schedule.dart';
 
 class GetDomainAutoTuneOption {
@@ -22,7 +22,7 @@ class GetDomainAutoTuneOption {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['desiredState'] = desiredState;
-    map['maintenanceSchedules'] = Input.encodeList<
+    map['maintenanceSchedules'] = pulumi.Input.encodeList<
         GetDomainAutoTuneOptionMaintenanceSchedule,
         Map<String, dynamic>>(maintenanceSchedules, (value) => value.toMap());
     map['rollbackOnDisable'] = rollbackOnDisable;
@@ -33,7 +33,7 @@ class GetDomainAutoTuneOption {
     return GetDomainAutoTuneOption(
       desiredState: map['desiredState'] as String,
       maintenanceSchedules:
-          Input.decodeList<GetDomainAutoTuneOptionMaintenanceSchedule>(
+          pulumi.Input.decodeList<GetDomainAutoTuneOptionMaintenanceSchedule>(
               map['maintenanceSchedules'],
               (value) => GetDomainAutoTuneOptionMaintenanceSchedule.fromMap(
                   (value as Map).cast<String, dynamic>())),

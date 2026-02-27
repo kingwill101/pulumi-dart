@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_framework_control_set/get_framework_control_set.dart';
 
 /// Result data returned by getFramework.
@@ -32,7 +32,7 @@ class GetFrameworkResult {
     map['arn'] = arn;
     map['complianceType'] = complianceType;
     map['controlSets'] =
-        Input.encodeList<GetFrameworkControlSet, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetFrameworkControlSet, Map<String, dynamic>>(
             controlSets, (value) => value.toMap());
     map['description'] = description;
     map['frameworkType'] = frameworkType;
@@ -47,7 +47,7 @@ class GetFrameworkResult {
     return GetFrameworkResult(
       arn: map['arn'] as String,
       complianceType: map['complianceType'] as String,
-      controlSets: Input.decodeList<GetFrameworkControlSet>(
+      controlSets: pulumi.Input.decodeList<GetFrameworkControlSet>(
           map['controlSets'],
           (value) => GetFrameworkControlSet.fromMap(
               (value as Map).cast<String, dynamic>())),

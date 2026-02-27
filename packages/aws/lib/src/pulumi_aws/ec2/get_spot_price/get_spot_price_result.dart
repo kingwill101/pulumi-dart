@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_spot_price_filter/get_spot_price_filter.dart';
 
 /// Result data returned by getSpotPrice.
@@ -38,7 +38,7 @@ class GetSpotPriceResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetSpotPriceFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetSpotPriceFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -59,7 +59,7 @@ class GetSpotPriceResult {
           : map['availabilityZone'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetSpotPriceFilter>(
+          : pulumi.Input.decodeList<GetSpotPriceFilter>(
               map['filters'],
               (value) => GetSpotPriceFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

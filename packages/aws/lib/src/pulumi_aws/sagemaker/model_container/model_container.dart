@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../model_container_additional_model_data_source/model_container_additional_model_data_source.dart';
 import '../model_container_image_config/model_container_image_config.dart';
 import '../model_container_model_data_source/model_container_model_data_source.dart';
@@ -60,7 +60,7 @@ class ModelContainer {
     final map = <String, dynamic>{};
     final additionalModelDataSourcesValue = additionalModelDataSources;
     if (additionalModelDataSourcesValue != null) {
-      map['additionalModelDataSources'] = Input.encodeList<
+      map['additionalModelDataSources'] = pulumi.Input.encodeList<
               ModelContainerAdditionalModelDataSource, Map<String, dynamic>>(
           additionalModelDataSourcesValue, (value) => value.toMap());
     }
@@ -111,7 +111,7 @@ class ModelContainer {
     return ModelContainer(
       additionalModelDataSources: map['additionalModelDataSources'] == null
           ? null
-          : Input.decodeList<ModelContainerAdditionalModelDataSource>(
+          : pulumi.Input.decodeList<ModelContainerAdditionalModelDataSource>(
               map['additionalModelDataSources'],
               (value) => ModelContainerAdditionalModelDataSource.fromMap(
                   (value as Map).cast<String, dynamic>())),

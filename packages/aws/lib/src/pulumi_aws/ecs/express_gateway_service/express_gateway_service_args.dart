@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../express_gateway_service_network_configuration/express_gateway_service_network_configuration.dart';
 import '../express_gateway_service_primary_container/express_gateway_service_primary_container.dart';
 import '../express_gateway_service_scaling_target/express_gateway_service_scaling_target.dart';
@@ -9,44 +9,44 @@ import '../express_gateway_service_timeouts/express_gateway_service_timeouts.dar
 /// The set of arguments for ExpressGatewayService.
 class ExpressGatewayServiceArgs {
   /// Name or ARN of the ECS cluster. Defaults to `default`.
-  final Input<String>? cluster;
+  final pulumi.Input<String>? cluster;
 
   /// Number of CPU units used by the task. Valid values are powers of 2 between 256 and 4096.
-  final Input<String>? cpu;
+  final pulumi.Input<String>? cpu;
 
   /// ARN of the IAM role that allows ECS to pull container images and publish container logs to Amazon CloudWatch.
-  final Input<String> executionRoleArn;
+  final pulumi.Input<String> executionRoleArn;
 
   /// Path for health check requests. Defaults to `/ping`.
-  final Input<String>? healthCheckPath;
+  final pulumi.Input<String>? healthCheckPath;
 
   /// ARN of the IAM role that allows ECS to manage AWS infrastructure on your behalf. **Important:** The infrastructure role cannot be modified after the service is created. Changing this forces a new resource to be created.
   ///
   /// The following arguments are optional:
-  final Input<String> infrastructureRoleArn;
+  final pulumi.Input<String> infrastructureRoleArn;
 
   /// Amount of memory (in MiB) used by the task. Valid values are between 512 and 8192.
-  final Input<String>? memory;
-  final Input<List<ExpressGatewayServiceNetworkConfiguration>>?
+  final pulumi.Input<String>? memory;
+  final pulumi.Input<List<ExpressGatewayServiceNetworkConfiguration>>?
       networkConfigurations;
-  final Input<ExpressGatewayServicePrimaryContainer> primaryContainer;
+  final pulumi.Input<ExpressGatewayServicePrimaryContainer> primaryContainer;
 
   /// AWS region where the service will be created. If not specified, the region configured in the provider will be used.
-  final Input<String>? region;
-  final Input<List<ExpressGatewayServiceScalingTarget>>? scalingTargets;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<List<ExpressGatewayServiceScalingTarget>>? scalingTargets;
 
   /// Name of the service. If not specified, a name will be generated. Changing this forces a new resource to be created.
-  final Input<String>? serviceName;
+  final pulumi.Input<String>? serviceName;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// ARN of the IAM role that allows your Amazon ECS container task to make calls to other AWS services.
-  final Input<String>? taskRoleArn;
-  final Input<ExpressGatewayServiceTimeouts>? timeouts;
+  final pulumi.Input<String>? taskRoleArn;
+  final pulumi.Input<ExpressGatewayServiceTimeouts>? timeouts;
 
   /// Whether to wait for the service to reach a steady state before considering the operation complete. Defaults to `false`.
-  final Input<bool>? waitForSteadyState;
+  final pulumi.Input<bool>? waitForSteadyState;
 
   ExpressGatewayServiceArgs({
     this.cluster,
@@ -88,14 +88,15 @@ class ExpressGatewayServiceArgs {
     }
     final networkConfigurationsValue = networkConfigurations;
     if (networkConfigurationsValue != null) {
-      map['networkConfigurations'] = Input.mapOptionalInputValue<
+      map['networkConfigurations'] = pulumi.Input.mapOptionalInputValue<
               List<ExpressGatewayServiceNetworkConfiguration>,
               List<Map<String, dynamic>>>(
           networkConfigurationsValue,
-          (value) => Input.encodeList<ExpressGatewayServiceNetworkConfiguration,
+          (value) => pulumi.Input.encodeList<
+              ExpressGatewayServiceNetworkConfiguration,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
-    map['primaryContainer'] = Input.mapInputValue<
+    map['primaryContainer'] = pulumi.Input.mapInputValue<
         ExpressGatewayServicePrimaryContainer,
         Map<String, dynamic>>(primaryContainer, (value) => value.toMap());
     final regionValue = region;
@@ -104,11 +105,11 @@ class ExpressGatewayServiceArgs {
     }
     final scalingTargetsValue = scalingTargets;
     if (scalingTargetsValue != null) {
-      map['scalingTargets'] = Input.mapOptionalInputValue<
+      map['scalingTargets'] = pulumi.Input.mapOptionalInputValue<
               List<ExpressGatewayServiceScalingTarget>,
               List<Map<String, dynamic>>>(
           scalingTargetsValue,
-          (value) => Input.encodeList<ExpressGatewayServiceScalingTarget,
+          (value) => pulumi.Input.encodeList<ExpressGatewayServiceScalingTarget,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final serviceNameValue = serviceName;
@@ -125,7 +126,7 @@ class ExpressGatewayServiceArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           ExpressGatewayServiceTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -138,29 +139,30 @@ class ExpressGatewayServiceArgs {
 
   factory ExpressGatewayServiceArgs.fromMap(Map<String, dynamic> map) {
     return ExpressGatewayServiceArgs(
-      cluster: Input.asOptionalInput<String>(map['cluster']),
-      cpu: Input.asOptionalInput<String>(map['cpu']),
-      executionRoleArn: Input.asInput<String>(map['executionRoleArn']),
-      healthCheckPath: Input.asOptionalInput<String>(map['healthCheckPath']),
+      cluster: pulumi.Input.asOptionalInput<String>(map['cluster']),
+      cpu: pulumi.Input.asOptionalInput<String>(map['cpu']),
+      executionRoleArn: pulumi.Input.asInput<String>(map['executionRoleArn']),
+      healthCheckPath:
+          pulumi.Input.asOptionalInput<String>(map['healthCheckPath']),
       infrastructureRoleArn:
-          Input.asInput<String>(map['infrastructureRoleArn']),
-      memory: Input.asOptionalInput<String>(map['memory']),
-      networkConfigurations: Input.asOptionalInput<
+          pulumi.Input.asInput<String>(map['infrastructureRoleArn']),
+      memory: pulumi.Input.asOptionalInput<String>(map['memory']),
+      networkConfigurations: pulumi.Input.asOptionalInput<
               List<ExpressGatewayServiceNetworkConfiguration>>(
           map['networkConfigurations']),
-      primaryContainer: Input.asInput<ExpressGatewayServicePrimaryContainer>(
-          map['primaryContainer']),
-      region: Input.asOptionalInput<String>(map['region']),
-      scalingTargets:
-          Input.asOptionalInput<List<ExpressGatewayServiceScalingTarget>>(
-              map['scalingTargets']),
-      serviceName: Input.asOptionalInput<String>(map['serviceName']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      taskRoleArn: Input.asOptionalInput<String>(map['taskRoleArn']),
-      timeouts:
-          Input.asOptionalInput<ExpressGatewayServiceTimeouts>(map['timeouts']),
+      primaryContainer:
+          pulumi.Input.asInput<ExpressGatewayServicePrimaryContainer>(
+              map['primaryContainer']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      scalingTargets: pulumi.Input.asOptionalInput<
+          List<ExpressGatewayServiceScalingTarget>>(map['scalingTargets']),
+      serviceName: pulumi.Input.asOptionalInput<String>(map['serviceName']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      taskRoleArn: pulumi.Input.asOptionalInput<String>(map['taskRoleArn']),
+      timeouts: pulumi.Input.asOptionalInput<ExpressGatewayServiceTimeouts>(
+          map['timeouts']),
       waitForSteadyState:
-          Input.asOptionalInput<bool>(map['waitForSteadyState']),
+          pulumi.Input.asOptionalInput<bool>(map['waitForSteadyState']),
     );
   }
 }

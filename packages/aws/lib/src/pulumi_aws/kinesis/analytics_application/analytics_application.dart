@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../analytics_application_cloudwatch_logging_options/analytics_application_cloudwatch_logging_options.dart';
 import '../analytics_application_inputs/analytics_application_inputs.dart';
 import '../analytics_application_output/analytics_application_output.dart';
@@ -31,69 +31,69 @@ import 'analytics_application_args.dart';
 /// ```sh
 /// $ pulumi import aws:kinesis/analyticsApplication:AnalyticsApplication example arn:aws:kinesisanalytics:us-west-2:1234567890:application/example
 /// ```
-class AnalyticsApplication extends CustomResource {
+class AnalyticsApplication extends pulumi.CustomResource {
   /// The ARN of the Kinesis Analytics Appliation.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The CloudWatch log stream options to monitor application errors.
   /// See CloudWatch Logging Options below for more details.
-  late final Output<AnalyticsApplicationCloudwatchLoggingOptions?>
+  late final pulumi.Output<AnalyticsApplicationCloudwatchLoggingOptions?>
       cloudwatchLoggingOptions;
 
   /// SQL Code to transform input data, and generate output.
-  late final Output<String?> code;
+  late final pulumi.Output<String?> code;
 
   /// The Timestamp when the application version was created.
-  late final Output<String> createTimestamp;
+  late final pulumi.Output<String> createTimestamp;
 
   /// Description of the application.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Input configuration of the application. See Inputs below for more details.
-  late final Output<AnalyticsApplicationInputs?> inputs;
+  late final pulumi.Output<AnalyticsApplicationInputs?> inputs;
 
   /// The Timestamp when the application was last updated.
-  late final Output<String> lastUpdateTimestamp;
+  late final pulumi.Output<String> lastUpdateTimestamp;
 
   /// Name of the Kinesis Analytics Application.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Output destination configuration of the application. See Outputs below for more details.
-  late final Output<List<AnalyticsApplicationOutput>?> outputs;
+  late final pulumi.Output<List<AnalyticsApplicationOutput>?> outputs;
 
   /// An S3 Reference Data Source for the application.
   /// See Reference Data Sources below for more details.
-  late final Output<AnalyticsApplicationReferenceDataSources?>
+  late final pulumi.Output<AnalyticsApplicationReferenceDataSources?>
       referenceDataSources;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined `starting_position` must be configured.
   /// To modify an application's starting position, first stop the application by setting `start_application = false`, then update `starting_position` and set `start_application = true`.
-  late final Output<bool?> startApplication;
+  late final pulumi.Output<bool?> startApplication;
 
   /// The Status of the application.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Key-value map of tags for the Kinesis Analytics Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The Version of the application.
-  late final Output<int> version;
+  late final pulumi.Output<int> version;
 
   AnalyticsApplication(
     String name, {
     AnalyticsApplicationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:kinesis/analyticsApplication:AnalyticsApplication',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.cloudwatchLoggingOptions =

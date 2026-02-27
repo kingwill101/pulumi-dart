@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_container_recipe_instance_configuration_block_device_mapping_eb/get_container_recipe_instance_configuration_block_device_mapping_eb.dart';
 
 class GetContainerRecipeInstanceConfigurationBlockDeviceMapping {
@@ -26,7 +26,7 @@ class GetContainerRecipeInstanceConfigurationBlockDeviceMapping {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['deviceName'] = deviceName;
-    map['ebs'] = Input.encodeList<
+    map['ebs'] = pulumi.Input.encodeList<
         GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb,
         Map<String, dynamic>>(ebs, (value) => value.toMap());
     map['noDevice'] = noDevice;
@@ -38,7 +38,7 @@ class GetContainerRecipeInstanceConfigurationBlockDeviceMapping {
       Map<String, dynamic> map) {
     return GetContainerRecipeInstanceConfigurationBlockDeviceMapping(
       deviceName: map['deviceName'] as String,
-      ebs: Input.decodeList<
+      ebs: pulumi.Input.decodeList<
               GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb>(
           map['ebs'],
           (value) => GetContainerRecipeInstanceConfigurationBlockDeviceMappingEb

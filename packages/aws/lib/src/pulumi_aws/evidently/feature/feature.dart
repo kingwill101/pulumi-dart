@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../feature_evaluation_rule/feature_evaluation_rule.dart';
 import '../feature_variation/feature_variation.dart';
 import 'feature_args.dart';
@@ -32,64 +32,64 @@ import 'feature_args.dart';
 /// ```sh
 /// $ pulumi import aws:evidently/feature:Feature example exampleFeatureName:arn:aws:evidently:us-east-1:123456789012:project/example
 /// ```
-class Feature extends CustomResource {
+class Feature extends pulumi.CustomResource {
   /// The ARN of the feature.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The date and time that the feature is created.
-  late final Output<String> createdTime;
+  late final pulumi.Output<String> createdTime;
 
   /// The name of the variation to use as the default variation. The default variation is served to users who are not allocated to any ongoing launches or experiments of this feature. This variation must also be listed in the `variations` structure. If you omit `default_variation`, the first variation listed in the `variations` structure is used as the default variation.
-  late final Output<String> defaultVariation;
+  late final pulumi.Output<String> defaultVariation;
 
   /// Specifies the description of the feature.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Specify users that should always be served a specific variation of a feature. Each user is specified by a key-value pair . For each key, specify a user by entering their user ID, account ID, or some other identifier. For the value, specify the name of the variation that they are to be served.
-  late final Output<Map<String, String>?> entityOverrides;
+  late final pulumi.Output<Map<String, String>?> entityOverrides;
 
   /// One or more blocks that define the evaluation rules for the feature. Detailed below
-  late final Output<List<FeatureEvaluationRule>> evaluationRules;
+  late final pulumi.Output<List<FeatureEvaluationRule>> evaluationRules;
 
   /// Specify `ALL_RULES` to activate the traffic allocation specified by any ongoing launches or experiments. Specify `DEFAULT_VARIATION` to serve the default variation to all users instead.
-  late final Output<String> evaluationStrategy;
+  late final pulumi.Output<String> evaluationStrategy;
 
   /// The date and time that the feature was most recently updated.
-  late final Output<String> lastUpdatedTime;
+  late final pulumi.Output<String> lastUpdatedTime;
 
   /// The name for the new feature. Minimum length of `1`. Maximum length of `127`.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The name or ARN of the project that is to contain the new feature.
-  late final Output<String> project;
+  late final pulumi.Output<String> project;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The current state of the feature. Valid values are `AVAILABLE` and `UPDATING`.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Tags to apply to the feature. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Defines the type of value used to define the different feature variations. Valid Values: `STRING`, `LONG`, `DOUBLE`, `BOOLEAN`.
-  late final Output<String> valueType;
+  late final pulumi.Output<String> valueType;
 
   /// One or more blocks that contain the configuration of the feature's different variations. Detailed below
-  late final Output<List<FeatureVariation>> variations;
+  late final pulumi.Output<List<FeatureVariation>> variations;
 
   Feature(
     String name, {
     FeatureArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:evidently/feature:Feature',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.createdTime = registerOutput<String>('createdTime');

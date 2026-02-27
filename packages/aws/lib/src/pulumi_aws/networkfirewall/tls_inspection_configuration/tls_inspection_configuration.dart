@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tls_inspection_configuration_certificate/tls_inspection_configuration_certificate.dart';
 import '../tls_inspection_configuration_certificate_authority/tls_inspection_configuration_certificate_authority.dart';
 import '../tls_inspection_configuration_encryption_configuration/tls_inspection_configuration_encryption_configuration.dart';
@@ -46,57 +46,59 @@ import 'tls_inspection_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkfirewall/tlsInspectionConfiguration:TlsInspectionConfiguration example arn:aws:network-firewall::<region>:<account_id>:tls-configuration/example
 /// ```
-class TlsInspectionConfiguration extends CustomResource {
+class TlsInspectionConfiguration extends pulumi.CustomResource {
   /// ARN of the TLS Inspection Configuration.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Certificate Manager certificate block. See Certificate Authority below for details.
-  late final Output<List<TlsInspectionConfigurationCertificateAuthority>>
+  late final pulumi.Output<List<TlsInspectionConfigurationCertificateAuthority>>
       certificateAuthorities;
 
   /// List of certificate blocks describing certificates associated with the TLS inspection configuration. See Certificates below for details.
-  late final Output<List<TlsInspectionConfigurationCertificate>> certificates;
+  late final pulumi.Output<List<TlsInspectionConfigurationCertificate>>
+      certificates;
 
   /// Description of the TLS inspection configuration.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Encryption configuration block. Detailed below.
-  late final Output<List<TlsInspectionConfigurationEncryptionConfiguration>>
+  late final pulumi
+      .Output<List<TlsInspectionConfigurationEncryptionConfiguration>>
       encryptionConfigurations;
 
   /// Descriptive name of the TLS inspection configuration.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Number of firewall policies that use this TLS inspection configuration.
-  late final Output<int> numberOfAssociations;
+  late final pulumi.Output<int> numberOfAssociations;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<TlsInspectionConfigurationTimeouts?> timeouts;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<TlsInspectionConfigurationTimeouts?> timeouts;
 
   /// TLS inspection configuration block. Detailed below.
   ///
   /// The following arguments are optional:
-  late final Output<TlsInspectionConfigurationTlsInspectionConfiguration>
+  late final pulumi.Output<TlsInspectionConfigurationTlsInspectionConfiguration>
       tlsInspectionConfiguration;
 
   /// A unique identifier for the TLS inspection configuration.
-  late final Output<String> tlsInspectionConfigurationId;
+  late final pulumi.Output<String> tlsInspectionConfigurationId;
 
   /// String token used when updating the rule group.
-  late final Output<String> updateToken;
+  late final pulumi.Output<String> updateToken;
 
   TlsInspectionConfiguration(
     String name, {
     TlsInspectionConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkfirewall/tlsInspectionConfiguration:TlsInspectionConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.certificateAuthorities =

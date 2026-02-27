@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for StandardsSubscription.
 class StandardsSubscriptionArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ARN of a standard - see below.
   ///
@@ -22,7 +22,7 @@ class StandardsSubscriptionArgs {
   /// | NIST SP 800-171 Rev. 2                   | `arn:${var.partition}:securityhub:${var.region}::standards/nist-800-171/v/2.0.0`                             |
   /// | PCI DSS  v3.2.1                          | `arn:${var.partition}:securityhub:${var.region}::standards/pci-dss/v/3.2.1`                                  |
   /// | PCI DSS  v4.0.1                          | `arn:${var.partition}:securityhub:${var.region}::standards/pci-dss/v/4.0.1`                                  |
-  final Input<String> standardsArn;
+  final pulumi.Input<String> standardsArn;
 
   StandardsSubscriptionArgs({
     this.region,
@@ -41,8 +41,8 @@ class StandardsSubscriptionArgs {
 
   factory StandardsSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return StandardsSubscriptionArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      standardsArn: Input.asInput<String>(map['standardsArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      standardsArn: pulumi.Input.asInput<String>(map['standardsArn']),
     );
   }
 }

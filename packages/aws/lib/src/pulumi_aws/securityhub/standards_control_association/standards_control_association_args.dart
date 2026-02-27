@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for StandardsControlAssociation.
 class StandardsControlAssociationArgs {
   /// The desired enablement status of the control in the standard. Valid values: `ENABLED`, `DISABLED`.
-  final Input<String> associationStatus;
+  final pulumi.Input<String> associationStatus;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The unique identifier for the security control whose enablement status you want to update.
-  final Input<String> securityControlId;
+  final pulumi.Input<String> securityControlId;
 
   /// The Amazon Resource Name (ARN) of the standard in which you want to update the control's enablement status.
   ///
   /// The following arguments are optional:
-  final Input<String> standardsArn;
+  final pulumi.Input<String> standardsArn;
 
   /// The reason for updating the control's enablement status in the standard. Required when `association_status` is `DISABLED`.
-  final Input<String>? updatedReason;
+  final pulumi.Input<String>? updatedReason;
 
   StandardsControlAssociationArgs({
     required this.associationStatus,
@@ -47,11 +47,11 @@ class StandardsControlAssociationArgs {
 
   factory StandardsControlAssociationArgs.fromMap(Map<String, dynamic> map) {
     return StandardsControlAssociationArgs(
-      associationStatus: Input.asInput<String>(map['associationStatus']),
-      region: Input.asOptionalInput<String>(map['region']),
-      securityControlId: Input.asInput<String>(map['securityControlId']),
-      standardsArn: Input.asInput<String>(map['standardsArn']),
-      updatedReason: Input.asOptionalInput<String>(map['updatedReason']),
+      associationStatus: pulumi.Input.asInput<String>(map['associationStatus']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      securityControlId: pulumi.Input.asInput<String>(map['securityControlId']),
+      standardsArn: pulumi.Input.asInput<String>(map['standardsArn']),
+      updatedReason: pulumi.Input.asOptionalInput<String>(map['updatedReason']),
     );
   }
 }

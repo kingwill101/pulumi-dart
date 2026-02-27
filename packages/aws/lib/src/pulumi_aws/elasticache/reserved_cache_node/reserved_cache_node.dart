@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../reserved_cache_node_recurring_charge/reserved_cache_node_recurring_charge.dart';
 import '../reserved_cache_node_timeouts/reserved_cache_node_timeouts.dart';
 import 'reserved_cache_node_args.dart';
@@ -20,66 +20,67 @@ import 'reserved_cache_node_args.dart';
 /// ```sh
 /// $ pulumi import aws:elasticache/reservedCacheNode:ReservedCacheNode example CustomReservationID
 /// ```
-class ReservedCacheNode extends CustomResource {
+class ReservedCacheNode extends pulumi.CustomResource {
   /// ARN for the reserved cache node.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Number of cache node instances to reserve.
   /// Default value is `1`.
-  late final Output<int> cacheNodeCount;
+  late final pulumi.Output<int> cacheNodeCount;
 
   /// Node type for the reserved cache nodes.
-  late final Output<String> cacheNodeType;
+  late final pulumi.Output<String> cacheNodeType;
 
   /// Duration of the reservation as an RFC3339 duration.
-  late final Output<String> duration;
+  late final pulumi.Output<String> duration;
 
   /// Fixed price charged for this reserved cache node.
-  late final Output<double> fixedPrice;
+  late final pulumi.Output<double> fixedPrice;
 
   /// Offering type of this reserved cache node.
-  late final Output<String> offeringType;
+  late final pulumi.Output<String> offeringType;
 
   /// Engine type for the reserved cache node.
-  late final Output<String> productDescription;
+  late final pulumi.Output<String> productDescription;
 
   /// Recurring price charged to run this reserved cache node.
-  late final Output<List<ReservedCacheNodeRecurringCharge>> recurringCharges;
+  late final pulumi.Output<List<ReservedCacheNodeRecurringCharge>>
+      recurringCharges;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ID of the reserved cache node offering to purchase.
   /// To determine an `reserved_cache_nodes_offering_id`, see the `aws.elasticache.getReservedCacheNodeOffering` data source.
   ///
   /// The following arguments are optional:
-  late final Output<String> reservedCacheNodesOfferingId;
+  late final pulumi.Output<String> reservedCacheNodesOfferingId;
 
   /// Time the reservation started.
-  late final Output<String> startTime;
+  late final pulumi.Output<String> startTime;
 
   /// State of the reserved cache node.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Map of tags to assign to the reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<ReservedCacheNodeTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<ReservedCacheNodeTimeouts?> timeouts;
 
   /// Hourly price charged for this reserved cache node.
-  late final Output<double> usagePrice;
+  late final pulumi.Output<double> usagePrice;
 
   ReservedCacheNode(
     String name, {
     ReservedCacheNodeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:elasticache/reservedCacheNode:ReservedCacheNode',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.cacheNodeCount = registerOutput<int>('cacheNodeCount');

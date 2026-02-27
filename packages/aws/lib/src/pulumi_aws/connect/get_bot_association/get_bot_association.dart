@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_bot_association_args.dart';
 import 'get_bot_association_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_bot_association_result.dart';
 /// ### By name
 Future<GetBotAssociationResult> getBotAssociation(
   GetBotAssociationArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:connect/getBotAssociation:getBotAssociation',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBotAssociationResult.fromMap(result);
 }

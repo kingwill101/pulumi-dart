@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tls_inspection_configuration_encryption_configuration/tls_inspection_configuration_encryption_configuration.dart';
 import '../tls_inspection_configuration_timeouts/tls_inspection_configuration_timeouts.dart';
 import '../tls_inspection_configuration_tls_inspection_configuration/tls_inspection_configuration_tls_inspection_configuration.dart';
@@ -8,24 +8,24 @@ import '../tls_inspection_configuration_tls_inspection_configuration/tls_inspect
 /// The set of arguments for TlsInspectionConfiguration.
 class TlsInspectionConfigurationArgs {
   /// Description of the TLS inspection configuration.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Encryption configuration block. Detailed below.
-  final Input<List<TlsInspectionConfigurationEncryptionConfiguration>>?
+  final pulumi.Input<List<TlsInspectionConfigurationEncryptionConfiguration>>?
       encryptionConfigurations;
 
   /// Descriptive name of the TLS inspection configuration.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
-  final Input<Map<String, String>>? tags;
-  final Input<TlsInspectionConfigurationTimeouts>? timeouts;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<TlsInspectionConfigurationTimeouts>? timeouts;
 
   /// TLS inspection configuration block. Detailed below.
   ///
   /// The following arguments are optional:
-  final Input<TlsInspectionConfigurationTlsInspectionConfiguration>
+  final pulumi.Input<TlsInspectionConfigurationTlsInspectionConfiguration>
       tlsInspectionConfiguration;
 
   TlsInspectionConfigurationArgs({
@@ -46,11 +46,11 @@ class TlsInspectionConfigurationArgs {
     }
     final encryptionConfigurationsValue = encryptionConfigurations;
     if (encryptionConfigurationsValue != null) {
-      map['encryptionConfigurations'] = Input.mapOptionalInputValue<
+      map['encryptionConfigurations'] = pulumi.Input.mapOptionalInputValue<
               List<TlsInspectionConfigurationEncryptionConfiguration>,
               List<Map<String, dynamic>>>(
           encryptionConfigurationsValue,
-          (value) => Input.encodeList<
+          (value) => pulumi.Input.encodeList<
               TlsInspectionConfigurationEncryptionConfiguration,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
@@ -68,11 +68,11 @@ class TlsInspectionConfigurationArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           TlsInspectionConfigurationTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
-    map['tlsInspectionConfiguration'] = Input.mapInputValue<
+    map['tlsInspectionConfiguration'] = pulumi.Input.mapInputValue<
             TlsInspectionConfigurationTlsInspectionConfiguration,
             Map<String, dynamic>>(
         tlsInspectionConfiguration, (value) => value.toMap());
@@ -81,18 +81,19 @@ class TlsInspectionConfigurationArgs {
 
   factory TlsInspectionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      encryptionConfigurations: Input.asOptionalInput<
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      encryptionConfigurations: pulumi.Input.asOptionalInput<
               List<TlsInspectionConfigurationEncryptionConfiguration>>(
           map['encryptionConfigurations']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<TlsInspectionConfigurationTimeouts>(
-          map['timeouts']),
-      tlsInspectionConfiguration:
-          Input.asInput<TlsInspectionConfigurationTlsInspectionConfiguration>(
-              map['tlsInspectionConfiguration']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts:
+          pulumi.Input.asOptionalInput<TlsInspectionConfigurationTimeouts>(
+              map['timeouts']),
+      tlsInspectionConfiguration: pulumi.Input.asInput<
+              TlsInspectionConfigurationTlsInspectionConfiguration>(
+          map['tlsInspectionConfiguration']),
     );
   }
 }

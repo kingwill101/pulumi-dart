@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../origin_request_policy_cookies_config/origin_request_policy_cookies_config.dart';
 import '../origin_request_policy_headers_config/origin_request_policy_headers_config.dart';
 import '../origin_request_policy_query_strings_config/origin_request_policy_query_strings_config.dart';
@@ -17,37 +17,38 @@ import 'origin_request_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudfront/originRequestPolicy:OriginRequestPolicy policy ccca32ef-dce3-4df3-80df-1bd3000bc4d3
 /// ```
-class OriginRequestPolicy extends CustomResource {
+class OriginRequestPolicy extends pulumi.CustomResource {
   /// The origin request policy ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Comment to describe the origin request policy.
-  late final Output<String?> comment;
+  late final pulumi.Output<String?> comment;
 
   /// Object that determines whether any cookies in viewer requests (and if so, which cookies) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Cookies Config for more information.
-  late final Output<OriginRequestPolicyCookiesConfig> cookiesConfig;
+  late final pulumi.Output<OriginRequestPolicyCookiesConfig> cookiesConfig;
 
   /// The current version of the origin request policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Object that determines whether any HTTP headers (and if so, which headers) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Headers Config for more information.
-  late final Output<OriginRequestPolicyHeadersConfig> headersConfig;
+  late final pulumi.Output<OriginRequestPolicyHeadersConfig> headersConfig;
 
   /// Unique name to identify the origin request policy.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Object that determines whether any URL query strings in viewer requests (and if so, which query strings) are included in the origin request key and automatically included in requests that CloudFront sends to the origin. See Query String Config for more information.
-  late final Output<OriginRequestPolicyQueryStringsConfig> queryStringsConfig;
+  late final pulumi.Output<OriginRequestPolicyQueryStringsConfig>
+      queryStringsConfig;
 
   OriginRequestPolicy(
     String name, {
     OriginRequestPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/originRequestPolicy:OriginRequestPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.comment = registerOutput<String?>('comment');

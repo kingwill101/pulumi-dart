@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../event_destination_cloudwatch_destination/event_destination_cloudwatch_destination.dart';
 import '../event_destination_kinesis_destination/event_destination_kinesis_destination.dart';
 import '../event_destination_sns_destination/event_destination_sns_destination.dart';
@@ -8,31 +8,31 @@ import '../event_destination_sns_destination/event_destination_sns_destination.d
 /// The set of arguments for EventDestination.
 class EventDestinationArgs {
   /// CloudWatch destination for the events
-  final Input<List<EventDestinationCloudwatchDestination>>?
+  final pulumi.Input<List<EventDestinationCloudwatchDestination>>?
       cloudwatchDestinations;
 
   /// The name of the configuration set
-  final Input<String> configurationSetName;
+  final pulumi.Input<String> configurationSetName;
 
   /// If true, the event destination will be enabled
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Send the events to a kinesis firehose destination
-  final Input<EventDestinationKinesisDestination>? kinesisDestination;
+  final pulumi.Input<EventDestinationKinesisDestination>? kinesisDestination;
 
   /// A list of matching types. May be any of `"send"`, `"reject"`, `"bounce"`, `"complaint"`, `"delivery"`, `"open"`, `"click"`, or `"renderingFailure"`.
-  final Input<List<String>> matchingTypes;
+  final pulumi.Input<List<String>> matchingTypes;
 
   /// The name of the event destination
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Send the events to an SNS Topic destination
   ///
   /// > **NOTE:** You can specify `"cloudwatch_destination"` or `"kinesis_destination"` but not both
-  final Input<EventDestinationSnsDestination>? snsDestination;
+  final pulumi.Input<EventDestinationSnsDestination>? snsDestination;
 
   EventDestinationArgs({
     this.cloudwatchDestinations,
@@ -49,11 +49,12 @@ class EventDestinationArgs {
     final map = <String, dynamic>{};
     final cloudwatchDestinationsValue = cloudwatchDestinations;
     if (cloudwatchDestinationsValue != null) {
-      map['cloudwatchDestinations'] = Input.mapOptionalInputValue<
+      map['cloudwatchDestinations'] = pulumi.Input.mapOptionalInputValue<
               List<EventDestinationCloudwatchDestination>,
               List<Map<String, dynamic>>>(
           cloudwatchDestinationsValue,
-          (value) => Input.encodeList<EventDestinationCloudwatchDestination,
+          (value) => pulumi.Input.encodeList<
+              EventDestinationCloudwatchDestination,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['configurationSetName'] = configurationSetName;
@@ -63,7 +64,7 @@ class EventDestinationArgs {
     }
     final kinesisDestinationValue = kinesisDestination;
     if (kinesisDestinationValue != null) {
-      map['kinesisDestination'] = Input.mapOptionalInputValue<
+      map['kinesisDestination'] = pulumi.Input.mapOptionalInputValue<
               EventDestinationKinesisDestination, Map<String, dynamic>>(
           kinesisDestinationValue, (value) => value.toMap());
     }
@@ -78,7 +79,7 @@ class EventDestinationArgs {
     }
     final snsDestinationValue = snsDestination;
     if (snsDestinationValue != null) {
-      map['snsDestination'] = Input.mapOptionalInputValue<
+      map['snsDestination'] = pulumi.Input.mapOptionalInputValue<
           EventDestinationSnsDestination,
           Map<String, dynamic>>(snsDestinationValue, (value) => value.toMap());
     }
@@ -87,19 +88,21 @@ class EventDestinationArgs {
 
   factory EventDestinationArgs.fromMap(Map<String, dynamic> map) {
     return EventDestinationArgs(
-      cloudwatchDestinations:
-          Input.asOptionalInput<List<EventDestinationCloudwatchDestination>>(
-              map['cloudwatchDestinations']),
-      configurationSetName: Input.asInput<String>(map['configurationSetName']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
+      cloudwatchDestinations: pulumi.Input.asOptionalInput<
+              List<EventDestinationCloudwatchDestination>>(
+          map['cloudwatchDestinations']),
+      configurationSetName:
+          pulumi.Input.asInput<String>(map['configurationSetName']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
       kinesisDestination:
-          Input.asOptionalInput<EventDestinationKinesisDestination>(
+          pulumi.Input.asOptionalInput<EventDestinationKinesisDestination>(
               map['kinesisDestination']),
-      matchingTypes: Input.asInput<List<String>>(map['matchingTypes']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      snsDestination: Input.asOptionalInput<EventDestinationSnsDestination>(
-          map['snsDestination']),
+      matchingTypes: pulumi.Input.asInput<List<String>>(map['matchingTypes']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      snsDestination:
+          pulumi.Input.asOptionalInput<EventDestinationSnsDestination>(
+              map['snsDestination']),
     );
   }
 }

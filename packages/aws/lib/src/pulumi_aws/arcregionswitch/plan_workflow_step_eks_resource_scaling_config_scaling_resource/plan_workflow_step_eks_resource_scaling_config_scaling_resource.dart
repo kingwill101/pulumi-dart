@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_workflow_step_eks_resource_scaling_config_scaling_resource_resource/plan_workflow_step_eks_resource_scaling_config_scaling_resource_resource.dart';
 
 class PlanWorkflowStepEksResourceScalingConfigScalingResource {
@@ -21,7 +21,7 @@ class PlanWorkflowStepEksResourceScalingConfigScalingResource {
     map['namespace'] = namespace;
     final resourcesValue = resources;
     if (resourcesValue != null) {
-      map['resources'] = Input.encodeList<
+      map['resources'] = pulumi.Input.encodeList<
           PlanWorkflowStepEksResourceScalingConfigScalingResourceResource,
           Map<String, dynamic>>(resourcesValue, (value) => value.toMap());
     }
@@ -34,7 +34,7 @@ class PlanWorkflowStepEksResourceScalingConfigScalingResource {
       namespace: map['namespace'] as String,
       resources: map['resources'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepEksResourceScalingConfigScalingResourceResource>(
               map['resources'],
               (value) =>

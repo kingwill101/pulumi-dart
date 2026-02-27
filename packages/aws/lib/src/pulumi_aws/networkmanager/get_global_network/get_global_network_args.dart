@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGlobalNetwork.
 class GetGlobalNetworkArgs {
   /// ID of the specific global network to retrieve.
-  final Input<String> globalNetworkId;
+  final pulumi.Input<String> globalNetworkId;
 
   /// Map of resource tags.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetGlobalNetworkArgs({
     required this.globalNetworkId,
@@ -27,8 +27,8 @@ class GetGlobalNetworkArgs {
 
   factory GetGlobalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalNetworkArgs(
-      globalNetworkId: Input.asInput<String>(map['globalNetworkId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      globalNetworkId: pulumi.Input.asInput<String>(map['globalNetworkId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

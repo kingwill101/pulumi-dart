@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../findings_filter_finding_criteria_criterion/findings_filter_finding_criteria_criterion.dart';
 
 class FindingsFilterFindingCriteria {
@@ -15,7 +15,7 @@ class FindingsFilterFindingCriteria {
     final map = <String, dynamic>{};
     final criterionsValue = criterions;
     if (criterionsValue != null) {
-      map['criterions'] = Input.encodeList<
+      map['criterions'] = pulumi.Input.encodeList<
           FindingsFilterFindingCriteriaCriterion,
           Map<String, dynamic>>(criterionsValue, (value) => value.toMap());
     }
@@ -26,7 +26,7 @@ class FindingsFilterFindingCriteria {
     return FindingsFilterFindingCriteria(
       criterions: map['criterions'] == null
           ? null
-          : Input.decodeList<FindingsFilterFindingCriteriaCriterion>(
+          : pulumi.Input.decodeList<FindingsFilterFindingCriteriaCriterion>(
               map['criterions'],
               (value) => FindingsFilterFindingCriteriaCriterion.fromMap(
                   (value as Map).cast<String, dynamic>())),

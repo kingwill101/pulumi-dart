@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../virtual_router_spec/virtual_router_spec.dart';
 
 /// The set of arguments for VirtualRouter.
 class VirtualRouterArgs {
   /// Name of the service mesh in which to create the virtual router. Must be between 1 and 255 characters in length.
-  final Input<String> meshName;
+  final pulumi.Input<String> meshName;
 
   /// AWS account ID of the service mesh's owner. Defaults to the account ID the AWS provider is currently connected to.
-  final Input<String>? meshOwner;
+  final pulumi.Input<String>? meshOwner;
 
   /// Name to use for the virtual router. Must be between 1 and 255 characters in length.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Virtual router specification to apply.
-  final Input<VirtualRouterSpec> spec;
+  final pulumi.Input<VirtualRouterSpec> spec;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   VirtualRouterArgs({
     required this.meshName,
@@ -47,8 +47,9 @@ class VirtualRouterArgs {
     if (regionValue != null) {
       map['region'] = regionValue;
     }
-    map['spec'] = Input.mapInputValue<VirtualRouterSpec, Map<String, dynamic>>(
-        spec, (value) => value.toMap());
+    map['spec'] =
+        pulumi.Input.mapInputValue<VirtualRouterSpec, Map<String, dynamic>>(
+            spec, (value) => value.toMap());
     final tagsValue = tags;
     if (tagsValue != null) {
       map['tags'] = tagsValue;
@@ -58,12 +59,12 @@ class VirtualRouterArgs {
 
   factory VirtualRouterArgs.fromMap(Map<String, dynamic> map) {
     return VirtualRouterArgs(
-      meshName: Input.asInput<String>(map['meshName']),
-      meshOwner: Input.asOptionalInput<String>(map['meshOwner']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      spec: Input.asInput<VirtualRouterSpec>(map['spec']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      meshName: pulumi.Input.asInput<String>(map['meshName']),
+      meshOwner: pulumi.Input.asOptionalInput<String>(map['meshOwner']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      spec: pulumi.Input.asInput<VirtualRouterSpec>(map['spec']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

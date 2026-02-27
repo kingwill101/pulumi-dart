@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_statement_rate_based_statement_custom_key_query_string_text_transformation/rule_group_rule_statement_rate_based_statement_custom_key_query_string_text_transformation.dart';
 
 class RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString {
@@ -15,7 +15,7 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['textTransformations'] = Input.encodeList<
+    map['textTransformations'] = pulumi.Input.encodeList<
         RuleGroupRuleStatementRateBasedStatementCustomKeyQueryStringTextTransformation,
         Map<String, dynamic>>(textTransformations, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString {
   factory RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString.fromMap(
       Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString(
-      textTransformations: Input.decodeList<
+      textTransformations: pulumi.Input.decodeList<
               RuleGroupRuleStatementRateBasedStatementCustomKeyQueryStringTextTransformation>(
           map['textTransformations'],
           (value) =>

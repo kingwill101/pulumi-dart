@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multiplex_multiplex_settings/multiplex_multiplex_settings.dart';
 import 'multiplex_args.dart';
 
@@ -17,40 +17,40 @@ import 'multiplex_args.dart';
 /// ```sh
 /// $ pulumi import aws:medialive/multiplex:Multiplex example 12345678
 /// ```
-class Multiplex extends CustomResource {
+class Multiplex extends pulumi.CustomResource {
   /// ARN of the Multiplex.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// A list of availability zones. You must specify exactly two.
-  late final Output<List<String>> availabilityZones;
+  late final pulumi.Output<List<String>> availabilityZones;
 
   /// Multiplex settings. See Multiplex Settings for more details.
-  late final Output<MultiplexMultiplexSettings?> multiplexSettings;
+  late final pulumi.Output<MultiplexMultiplexSettings?> multiplexSettings;
 
   /// name of Multiplex.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Whether to start the Multiplex. Defaults to `false`.
-  late final Output<bool?> startMultiplex;
+  late final pulumi.Output<bool?> startMultiplex;
 
   /// A map of tags to assign to the Multiplex. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Multiplex(
     String name, {
     MultiplexArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:medialive/multiplex:Multiplex',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.availabilityZones = registerOutput<List<String>>('availabilityZones');

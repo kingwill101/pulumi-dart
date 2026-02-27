@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RouteTablePropagation.
 class RouteTablePropagationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Identifier of EC2 Transit Gateway Attachment.
-  final Input<String> transitGatewayAttachmentId;
+  final pulumi.Input<String> transitGatewayAttachmentId;
 
   /// Identifier of EC2 Transit Gateway Route Table.
-  final Input<String> transitGatewayRouteTableId;
+  final pulumi.Input<String> transitGatewayRouteTableId;
 
   RouteTablePropagationArgs({
     this.region,
@@ -32,11 +32,11 @@ class RouteTablePropagationArgs {
 
   factory RouteTablePropagationArgs.fromMap(Map<String, dynamic> map) {
     return RouteTablePropagationArgs(
-      region: Input.asOptionalInput<String>(map['region']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       transitGatewayAttachmentId:
-          Input.asInput<String>(map['transitGatewayAttachmentId']),
+          pulumi.Input.asInput<String>(map['transitGatewayAttachmentId']),
       transitGatewayRouteTableId:
-          Input.asInput<String>(map['transitGatewayRouteTableId']),
+          pulumi.Input.asInput<String>(map['transitGatewayRouteTableId']),
     );
   }
 }

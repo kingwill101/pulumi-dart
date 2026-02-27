@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_function_url_args.dart';
 import 'get_function_url_result.dart';
 
@@ -17,13 +17,13 @@ import 'get_function_url_result.dart';
 /// ### Retrieve CORS Configuration
 Future<GetFunctionUrlResult> getFunctionUrl(
   GetFunctionUrlArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:lambda/getFunctionUrl:getFunctionUrl',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFunctionUrlResult.fromMap(result);
 }

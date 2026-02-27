@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_statement_rate_based_statement_scope_down_statement_regex_match_statement_field_to_match_cookies_match_pattern/rule_group_rule_statement_rate_based_statement_scope_down_statement_regex_match_statement_field_to_match_cookies_match_pattern.dart';
 
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchCookies {
@@ -23,7 +23,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatem
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['matchPatterns'] = Input.encodeList<
+    map['matchPatterns'] = pulumi.Input.encodeList<
         RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchCookiesMatchPattern,
         Map<String, dynamic>>(matchPatterns, (value) => value.toMap());
     map['matchScope'] = matchScope;
@@ -34,7 +34,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatem
   factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchCookies.fromMap(
       Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchCookies(
-      matchPatterns: Input.decodeList<
+      matchPatterns: pulumi.Input.decodeList<
               RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchCookiesMatchPattern>(
           map['matchPatterns'],
           (value) =>

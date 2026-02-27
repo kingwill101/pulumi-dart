@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_capacity_providers_default_capacity_provider_strategy/cluster_capacity_providers_default_capacity_provider_strategy.dart';
 import 'cluster_capacity_providers_args.dart';
 
@@ -17,30 +17,30 @@ import 'cluster_capacity_providers_args.dart';
 /// ```sh
 /// $ pulumi import aws:ecs/clusterCapacityProviders:ClusterCapacityProviders example my-cluster
 /// ```
-class ClusterCapacityProviders extends CustomResource {
+class ClusterCapacityProviders extends pulumi.CustomResource {
   /// Set of names of one or more capacity providers to associate with the cluster. Valid values also include `FARGATE` and `FARGATE_SPOT`.
-  late final Output<List<String>?> capacityProviders;
+  late final pulumi.Output<List<String>?> capacityProviders;
 
   /// Name of the ECS cluster to manage capacity providers for.
-  late final Output<String> clusterName;
+  late final pulumi.Output<String> clusterName;
 
   /// Set of capacity provider strategies to use by default for the cluster. Detailed below.
-  late final Output<
-          List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>?>
+  late final pulumi
+      .Output<List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>?>
       defaultCapacityProviderStrategies;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ClusterCapacityProviders(
     String name, {
     ClusterCapacityProvidersArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ecs/clusterCapacityProviders:ClusterCapacityProviders',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.capacityProviders = registerOutput<List<String>?>('capacityProviders');
     this.clusterName = registerOutput<String>('clusterName');

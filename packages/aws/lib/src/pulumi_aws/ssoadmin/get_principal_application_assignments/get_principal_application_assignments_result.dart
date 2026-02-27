@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_principal_application_assignments_application_assignment/get_principal_application_assignments_application_assignment.dart';
 
 /// Result data returned by getPrincipalApplicationAssignments.
@@ -31,7 +31,7 @@ class GetPrincipalApplicationAssignmentsResult {
     final map = <String, dynamic>{};
     final applicationAssignmentsValue = applicationAssignments;
     if (applicationAssignmentsValue != null) {
-      map['applicationAssignments'] = Input.encodeList<
+      map['applicationAssignments'] = pulumi.Input.encodeList<
               GetPrincipalApplicationAssignmentsApplicationAssignment,
               Map<String, dynamic>>(
           applicationAssignmentsValue, (value) => value.toMap());
@@ -49,7 +49,7 @@ class GetPrincipalApplicationAssignmentsResult {
     return GetPrincipalApplicationAssignmentsResult(
       applicationAssignments: map['applicationAssignments'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GetPrincipalApplicationAssignmentsApplicationAssignment>(
               map['applicationAssignments'],
               (value) => GetPrincipalApplicationAssignmentsApplicationAssignment

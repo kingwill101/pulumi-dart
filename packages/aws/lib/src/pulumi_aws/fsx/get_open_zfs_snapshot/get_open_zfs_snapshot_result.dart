@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_open_zfs_snapshot_filter/get_open_zfs_snapshot_filter.dart';
 
 /// Result data returned by getOpenZfsSnapshot.
@@ -50,9 +50,8 @@ class GetOpenZfsSnapshotResult {
     map['creationTime'] = creationTime;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetOpenZfsSnapshotFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetOpenZfsSnapshotFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     final mostRecentValue = mostRecent;
@@ -80,7 +79,7 @@ class GetOpenZfsSnapshotResult {
       creationTime: map['creationTime'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetOpenZfsSnapshotFilter>(
+          : pulumi.Input.decodeList<GetOpenZfsSnapshotFilter>(
               map['filters'],
               (value) => GetOpenZfsSnapshotFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

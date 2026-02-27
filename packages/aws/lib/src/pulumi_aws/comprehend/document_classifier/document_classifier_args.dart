@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../document_classifier_input_data_config/document_classifier_input_data_config.dart';
 import '../document_classifier_output_data_config/document_classifier_output_data_config.dart';
 import '../document_classifier_vpc_config/document_classifier_vpc_config.dart';
@@ -8,41 +8,41 @@ import '../document_classifier_vpc_config/document_classifier_vpc_config.dart';
 /// The set of arguments for DocumentClassifier.
 class DocumentClassifierArgs {
   /// The ARN for an IAM Role which allows Comprehend to read the training and testing data.
-  final Input<String> dataAccessRoleArn;
+  final pulumi.Input<String> dataAccessRoleArn;
 
   /// Configuration for the training and testing data.
   /// See the `input_data_config` Configuration Block section below.
-  final Input<DocumentClassifierInputDataConfig> inputDataConfig;
+  final pulumi.Input<DocumentClassifierInputDataConfig> inputDataConfig;
 
   /// Two-letter language code for the language.
   /// One of `en`, `es`, `fr`, `it`, `de`, or `pt`.
-  final Input<String> languageCode;
+  final pulumi.Input<String> languageCode;
 
   /// The document classification mode.
   /// One of `MULTI_CLASS` or `MULTI_LABEL`.
   /// `MULTI_CLASS` is also known as "Single Label" in the AWS Console.
-  final Input<String>? mode;
+  final pulumi.Input<String>? mode;
 
   /// KMS Key used to encrypt trained Document Classifiers.
   /// Can be a KMS Key ID or a KMS Key ARN.
-  final Input<String>? modelKmsKeyId;
+  final pulumi.Input<String>? modelKmsKeyId;
 
   /// Name for the Document Classifier.
   /// Has a maximum length of 63 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
   ///
   /// The following arguments are optional:
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Configuration for the output results of training.
   /// See the `output_data_config` Configuration Block section below.
-  final Input<DocumentClassifierOutputDataConfig>? outputDataConfig;
+  final pulumi.Input<DocumentClassifierOutputDataConfig>? outputDataConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` Configuration Block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Name for the version of the Document Classifier.
   /// Each version must have a unique name within the Document Classifier.
@@ -51,21 +51,21 @@ class DocumentClassifierArgs {
   /// Has a maximum length of 63 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
   /// Conflicts with `version_name_prefix`.
-  final Input<String>? versionName;
+  final pulumi.Input<String>? versionName;
 
   /// Creates a unique version name beginning with the specified prefix.
   /// Has a maximum length of 37 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
   /// Conflicts with `version_name`.
-  final Input<String>? versionNamePrefix;
+  final pulumi.Input<String>? versionNamePrefix;
 
   /// KMS Key used to encrypt storage volumes during job processing.
   /// Can be a KMS Key ID or a KMS Key ARN.
-  final Input<String>? volumeKmsKeyId;
+  final pulumi.Input<String>? volumeKmsKeyId;
 
   /// Configuration parameters for VPC to contain Document Classifier resources.
   /// See the `vpc_config` Configuration Block section below.
-  final Input<DocumentClassifierVpcConfig>? vpcConfig;
+  final pulumi.Input<DocumentClassifierVpcConfig>? vpcConfig;
 
   DocumentClassifierArgs({
     required this.dataAccessRoleArn,
@@ -86,7 +86,7 @@ class DocumentClassifierArgs {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['dataAccessRoleArn'] = dataAccessRoleArn;
-    map['inputDataConfig'] = Input.mapInputValue<
+    map['inputDataConfig'] = pulumi.Input.mapInputValue<
         DocumentClassifierInputDataConfig,
         Map<String, dynamic>>(inputDataConfig, (value) => value.toMap());
     map['languageCode'] = languageCode;
@@ -104,7 +104,7 @@ class DocumentClassifierArgs {
     }
     final outputDataConfigValue = outputDataConfig;
     if (outputDataConfigValue != null) {
-      map['outputDataConfig'] = Input.mapOptionalInputValue<
+      map['outputDataConfig'] = pulumi.Input.mapOptionalInputValue<
               DocumentClassifierOutputDataConfig, Map<String, dynamic>>(
           outputDataConfigValue, (value) => value.toMap());
     }
@@ -130,7 +130,7 @@ class DocumentClassifierArgs {
     }
     final vpcConfigValue = vpcConfig;
     if (vpcConfigValue != null) {
-      map['vpcConfig'] = Input.mapOptionalInputValue<
+      map['vpcConfig'] = pulumi.Input.mapOptionalInputValue<
           DocumentClassifierVpcConfig,
           Map<String, dynamic>>(vpcConfigValue, (value) => value.toMap());
     }
@@ -139,24 +139,25 @@ class DocumentClassifierArgs {
 
   factory DocumentClassifierArgs.fromMap(Map<String, dynamic> map) {
     return DocumentClassifierArgs(
-      dataAccessRoleArn: Input.asInput<String>(map['dataAccessRoleArn']),
-      inputDataConfig: Input.asInput<DocumentClassifierInputDataConfig>(
+      dataAccessRoleArn: pulumi.Input.asInput<String>(map['dataAccessRoleArn']),
+      inputDataConfig: pulumi.Input.asInput<DocumentClassifierInputDataConfig>(
           map['inputDataConfig']),
-      languageCode: Input.asInput<String>(map['languageCode']),
-      mode: Input.asOptionalInput<String>(map['mode']),
-      modelKmsKeyId: Input.asOptionalInput<String>(map['modelKmsKeyId']),
-      name: Input.asOptionalInput<String>(map['name']),
+      languageCode: pulumi.Input.asInput<String>(map['languageCode']),
+      mode: pulumi.Input.asOptionalInput<String>(map['mode']),
+      modelKmsKeyId: pulumi.Input.asOptionalInput<String>(map['modelKmsKeyId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       outputDataConfig:
-          Input.asOptionalInput<DocumentClassifierOutputDataConfig>(
+          pulumi.Input.asOptionalInput<DocumentClassifierOutputDataConfig>(
               map['outputDataConfig']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      versionName: Input.asOptionalInput<String>(map['versionName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      versionName: pulumi.Input.asOptionalInput<String>(map['versionName']),
       versionNamePrefix:
-          Input.asOptionalInput<String>(map['versionNamePrefix']),
-      volumeKmsKeyId: Input.asOptionalInput<String>(map['volumeKmsKeyId']),
-      vpcConfig:
-          Input.asOptionalInput<DocumentClassifierVpcConfig>(map['vpcConfig']),
+          pulumi.Input.asOptionalInput<String>(map['versionNamePrefix']),
+      volumeKmsKeyId:
+          pulumi.Input.asOptionalInput<String>(map['volumeKmsKeyId']),
+      vpcConfig: pulumi.Input.asOptionalInput<DocumentClassifierVpcConfig>(
+          map['vpcConfig']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_grants_location_args.dart';
 
 /// Provides a resource to manage an S3 Access Grants location.
@@ -17,41 +17,41 @@ import 'access_grants_location_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3control/accessGrantsLocation:AccessGrantsLocation example 123456789012,default
 /// ```
-class AccessGrantsLocation extends CustomResource {
+class AccessGrantsLocation extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the S3 Access Grants location.
-  late final Output<String> accessGrantsLocationArn;
+  late final pulumi.Output<String> accessGrantsLocationArn;
 
   /// Unique ID of the S3 Access Grants location.
-  late final Output<String> accessGrantsLocationId;
+  late final pulumi.Output<String> accessGrantsLocationId;
 
   /// The AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// The ARN of the IAM role that S3 Access Grants should use when fulfilling runtime access
   /// requests to the location.
-  late final Output<String> iamRoleArn;
+  late final pulumi.Output<String> iamRoleArn;
 
   /// The default S3 URI `s3://` or the URI to a custom location, a specific bucket or prefix.
-  late final Output<String> locationScope;
+  late final pulumi.Output<String> locationScope;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   AccessGrantsLocation(
     String name, {
     AccessGrantsLocationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3control/accessGrantsLocation:AccessGrantsLocation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessGrantsLocationArn =
         registerOutput<String>('accessGrantsLocationArn');

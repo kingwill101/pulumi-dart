@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LocationFsxLustre.
 class LocationFsxLustreArgs {
   /// The Amazon Resource Name (ARN) for the FSx for Lustre file system.
-  final Input<String> fsxFilesystemArn;
+  final pulumi.Input<String> fsxFilesystemArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Lustre file system.
-  final Input<List<String>> securityGroupArns;
+  final pulumi.Input<List<String>> securityGroupArns;
 
   /// Subdirectory to perform actions as source or destination.
-  final Input<String>? subdirectory;
+  final pulumi.Input<String>? subdirectory;
 
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   LocationFsxLustreArgs({
     required this.fsxFilesystemArn,
@@ -48,11 +48,12 @@ class LocationFsxLustreArgs {
 
   factory LocationFsxLustreArgs.fromMap(Map<String, dynamic> map) {
     return LocationFsxLustreArgs(
-      fsxFilesystemArn: Input.asInput<String>(map['fsxFilesystemArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      securityGroupArns: Input.asInput<List<String>>(map['securityGroupArns']),
-      subdirectory: Input.asOptionalInput<String>(map['subdirectory']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      fsxFilesystemArn: pulumi.Input.asInput<String>(map['fsxFilesystemArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      securityGroupArns:
+          pulumi.Input.asInput<List<String>>(map['securityGroupArns']),
+      subdirectory: pulumi.Input.asOptionalInput<String>(map['subdirectory']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

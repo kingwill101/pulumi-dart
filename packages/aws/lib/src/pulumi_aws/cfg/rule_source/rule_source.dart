@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_source_custom_policy_details/rule_source_custom_policy_details.dart';
 import '../rule_source_source_detail/rule_source_source_detail.dart';
 
@@ -34,7 +34,7 @@ class RuleSource {
     final sourceDetailsValue = sourceDetails;
     if (sourceDetailsValue != null) {
       map['sourceDetails'] =
-          Input.encodeList<RuleSourceSourceDetail, Map<String, dynamic>>(
+          pulumi.Input.encodeList<RuleSourceSourceDetail, Map<String, dynamic>>(
               sourceDetailsValue, (value) => value.toMap());
     }
     final sourceIdentifierValue = sourceIdentifier;
@@ -53,7 +53,7 @@ class RuleSource {
       owner: map['owner'] as String,
       sourceDetails: map['sourceDetails'] == null
           ? null
-          : Input.decodeList<RuleSourceSourceDetail>(
+          : pulumi.Input.decodeList<RuleSourceSourceDetail>(
               map['sourceDetails'],
               (value) => RuleSourceSourceDetail.fromMap(
                   (value as Map).cast<String, dynamic>())),

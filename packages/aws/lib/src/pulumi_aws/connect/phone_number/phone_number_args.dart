@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for PhoneNumber.
 class PhoneNumberArgs {
   /// The ISO country code. For a list of Valid values, refer to [PhoneNumberCountryCode](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchAvailablePhoneNumbers.html#connect-SearchAvailablePhoneNumbers-request-PhoneNumberCountryCode).
-  final Input<String> countryCode;
+  final pulumi.Input<String> countryCode;
 
   /// The description of the phone number.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The prefix of the phone number that is used to filter available phone numbers. If provided, it must contain `+` as part of the country code. Do not specify this argument when importing the resource.
-  final Input<String>? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Tags to apply to the Phone Number. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The Amazon Resource Name (ARN) for Amazon Connect instances that phone numbers are claimed to.
-  final Input<String> targetArn;
+  final pulumi.Input<String> targetArn;
 
   /// The type of phone number. Valid Values: `TOLL_FREE` | `DID`.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   PhoneNumberArgs({
     required this.countryCode,
@@ -61,13 +61,13 @@ class PhoneNumberArgs {
 
   factory PhoneNumberArgs.fromMap(Map<String, dynamic> map) {
     return PhoneNumberArgs(
-      countryCode: Input.asInput<String>(map['countryCode']),
-      description: Input.asOptionalInput<String>(map['description']),
-      prefix: Input.asOptionalInput<String>(map['prefix']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      targetArn: Input.asInput<String>(map['targetArn']),
-      type: Input.asInput<String>(map['type']),
+      countryCode: pulumi.Input.asInput<String>(map['countryCode']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      prefix: pulumi.Input.asOptionalInput<String>(map['prefix']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      targetArn: pulumi.Input.asInput<String>(map['targetArn']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

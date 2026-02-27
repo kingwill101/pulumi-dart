@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCredentials.
 class GetCredentialsArgs {
   /// The name of the database to get temporary authorization to log on to.
-  final Input<String>? dbName;
+  final pulumi.Input<String>? dbName;
 
   /// The number of seconds until the returned temporary password expires. The minimum is 900 seconds, and the maximum is 3600 seconds.
-  final Input<int>? durationSeconds;
+  final pulumi.Input<int>? durationSeconds;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The name of the workgroup associated with the database.
-  final Input<String> workgroupName;
+  final pulumi.Input<String> workgroupName;
 
   GetCredentialsArgs({
     this.dbName,
@@ -43,10 +43,11 @@ class GetCredentialsArgs {
 
   factory GetCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return GetCredentialsArgs(
-      dbName: Input.asOptionalInput<String>(map['dbName']),
-      durationSeconds: Input.asOptionalInput<int>(map['durationSeconds']),
-      region: Input.asOptionalInput<String>(map['region']),
-      workgroupName: Input.asInput<String>(map['workgroupName']),
+      dbName: pulumi.Input.asOptionalInput<String>(map['dbName']),
+      durationSeconds:
+          pulumi.Input.asOptionalInput<int>(map['durationSeconds']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      workgroupName: pulumi.Input.asInput<String>(map['workgroupName']),
     );
   }
 }

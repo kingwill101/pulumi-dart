@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../custom_model_output_data_config/custom_model_output_data_config.dart';
 import '../custom_model_timeouts/custom_model_timeouts.dart';
 import '../custom_model_training_data_config/custom_model_training_data_config.dart';
@@ -41,74 +41,75 @@ import 'custom_model_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrock/customModel:CustomModel example arn:aws:bedrock:us-west-2:123456789012:model-customization-job/amazon.titan-text-express-v1:0:8k/1y5n57gh5y2e
 /// ```
-class CustomModel extends CustomResource {
+class CustomModel extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the base model.
-  late final Output<String> baseModelIdentifier;
+  late final pulumi.Output<String> baseModelIdentifier;
 
   /// The ARN of the output model.
-  late final Output<String> customModelArn;
+  late final pulumi.Output<String> customModelArn;
 
   /// The custom model is encrypted at rest using this key. Specify the key ARN.
-  late final Output<String?> customModelKmsKeyId;
+  late final pulumi.Output<String?> customModelKmsKeyId;
 
   /// Name for the custom model.
-  late final Output<String> customModelName;
+  late final pulumi.Output<String> customModelName;
 
   /// The customization type. Valid values: `FINE_TUNING`, `CONTINUED_PRE_TRAINING`.
-  late final Output<String> customizationType;
+  late final pulumi.Output<String> customizationType;
 
   /// [Parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models-hp.html) related to tuning the model.
-  late final Output<Map<String, String>> hyperparameters;
+  late final pulumi.Output<Map<String, String>> hyperparameters;
 
   /// The ARN of the customization job.
-  late final Output<String> jobArn;
+  late final pulumi.Output<String> jobArn;
 
   /// A name for the customization job.
-  late final Output<String> jobName;
+  late final pulumi.Output<String> jobName;
 
   /// The status of the customization job. A successful job transitions from `InProgress` to `Completed` when the output model is ready to use.
-  late final Output<String> jobStatus;
+  late final pulumi.Output<String> jobStatus;
 
   /// S3 location for the output data.
-  late final Output<CustomModelOutputDataConfig> outputDataConfig;
+  late final pulumi.Output<CustomModelOutputDataConfig> outputDataConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The Amazon Resource Name (ARN) of an IAM role that Bedrock can assume to perform tasks on your behalf.
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   /// A map of tags to assign to the customization job and custom model. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<CustomModelTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<CustomModelTimeouts?> timeouts;
 
   /// Information about the training dataset.
-  late final Output<CustomModelTrainingDataConfig> trainingDataConfig;
+  late final pulumi.Output<CustomModelTrainingDataConfig> trainingDataConfig;
 
   /// Metrics associated with the customization job.
-  late final Output<List<CustomModelTrainingMetric>> trainingMetrics;
+  late final pulumi.Output<List<CustomModelTrainingMetric>> trainingMetrics;
 
   /// Information about the validation dataset.
-  late final Output<CustomModelValidationDataConfig?> validationDataConfig;
+  late final pulumi.Output<CustomModelValidationDataConfig?>
+      validationDataConfig;
 
   /// The loss metric for each validator that you provided.
-  late final Output<List<CustomModelValidationMetric>> validationMetrics;
+  late final pulumi.Output<List<CustomModelValidationMetric>> validationMetrics;
 
   /// Configuration parameters for the private Virtual Private Cloud (VPC) that contains the resources you are using for this job.
-  late final Output<CustomModelVpcConfig?> vpcConfig;
+  late final pulumi.Output<CustomModelVpcConfig?> vpcConfig;
 
   CustomModel(
     String name, {
     CustomModelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/customModel:CustomModel',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.baseModelIdentifier = registerOutput<String>('baseModelIdentifier');
     this.customModelArn = registerOutput<String>('customModelArn');

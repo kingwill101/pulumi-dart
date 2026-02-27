@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hosted_zone_dns_sec_args.dart';
 
 /// Manages Route 53 Hosted Zone Domain Name System Security Extensions (DNSSEC). For more information about managing DNSSEC in Route 53, see the [Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec.html).
@@ -18,24 +18,24 @@ import 'hosted_zone_dns_sec_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53/hostedZoneDnsSec:HostedZoneDnsSec example Z1D633PJN98FT9
 /// ```
-class HostedZoneDnsSec extends CustomResource {
+class HostedZoneDnsSec extends pulumi.CustomResource {
   /// Identifier of the Route 53 Hosted Zone.
   ///
   /// The following arguments are optional:
-  late final Output<String> hostedZoneId;
+  late final pulumi.Output<String> hostedZoneId;
 
   /// Hosted Zone signing status. Valid values: `SIGNING`, `NOT_SIGNING`. Defaults to `SIGNING`.
-  late final Output<String?> signingStatus;
+  late final pulumi.Output<String?> signingStatus;
 
   HostedZoneDnsSec(
     String name, {
     HostedZoneDnsSecArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53/hostedZoneDnsSec:HostedZoneDnsSec',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.hostedZoneId = registerOutput<String>('hostedZoneId');
     this.signingStatus = registerOutput<String?>('signingStatus');

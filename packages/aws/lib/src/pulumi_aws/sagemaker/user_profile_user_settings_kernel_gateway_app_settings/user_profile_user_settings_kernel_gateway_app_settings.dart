@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_profile_user_settings_kernel_gateway_app_settings_custom_image/user_profile_user_settings_kernel_gateway_app_settings_custom_image.dart';
 import '../user_profile_user_settings_kernel_gateway_app_settings_default_resource_spec/user_profile_user_settings_kernel_gateway_app_settings_default_resource_spec.dart';
 
@@ -26,7 +26,7 @@ class UserProfileUserSettingsKernelGatewayAppSettings {
     final map = <String, dynamic>{};
     final customImagesValue = customImages;
     if (customImagesValue != null) {
-      map['customImages'] = Input.encodeList<
+      map['customImages'] = pulumi.Input.encodeList<
           UserProfileUserSettingsKernelGatewayAppSettingsCustomImage,
           Map<String, dynamic>>(customImagesValue, (value) => value.toMap());
     }
@@ -46,7 +46,7 @@ class UserProfileUserSettingsKernelGatewayAppSettings {
     return UserProfileUserSettingsKernelGatewayAppSettings(
       customImages: map['customImages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   UserProfileUserSettingsKernelGatewayAppSettingsCustomImage>(
               map['customImages'],
               (value) =>

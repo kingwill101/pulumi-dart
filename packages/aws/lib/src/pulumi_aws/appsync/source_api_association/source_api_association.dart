@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../source_api_association_source_api_association_config/source_api_association_source_api_association_config.dart';
 import '../source_api_association_timeouts/source_api_association_timeouts.dart';
 import 'source_api_association_args.dart';
@@ -18,43 +18,43 @@ import 'source_api_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:appsync/sourceApiAssociation:SourceApiAssociation example gzos6bteufdunffzzifiowisoe,243685a0-9347-4a1a-89c1-9b57dea01e31
 /// ```
-class SourceApiAssociation extends CustomResource {
+class SourceApiAssociation extends pulumi.CustomResource {
   /// ARN of the Source API Association.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// ID of the Source API Association.
-  late final Output<String> associationId;
+  late final pulumi.Output<String> associationId;
 
   /// Description of the source API being merged.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// ARN of the merged API. One of `merged_api_arn` or `merged_api_id` must be specified.
-  late final Output<String> mergedApiArn;
+  late final pulumi.Output<String> mergedApiArn;
 
   /// ID of the merged API. One of `merged_api_arn` or `merged_api_id` must be specified.
-  late final Output<String> mergedApiId;
+  late final pulumi.Output<String> mergedApiId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the source API. One of `source_api_arn` or `source_api_id` must be specified.
-  late final Output<String> sourceApiArn;
-  late final Output<List<SourceApiAssociationSourceApiAssociationConfig>>
+  late final pulumi.Output<String> sourceApiArn;
+  late final pulumi.Output<List<SourceApiAssociationSourceApiAssociationConfig>>
       sourceApiAssociationConfigs;
 
   /// ID of the source API. One of `source_api_arn` or `source_api_id` must be specified.
-  late final Output<String> sourceApiId;
-  late final Output<SourceApiAssociationTimeouts?> timeouts;
+  late final pulumi.Output<String> sourceApiId;
+  late final pulumi.Output<SourceApiAssociationTimeouts?> timeouts;
 
   SourceApiAssociation(
     String name, {
     SourceApiAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:appsync/sourceApiAssociation:SourceApiAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.associationId = registerOutput<String>('associationId');

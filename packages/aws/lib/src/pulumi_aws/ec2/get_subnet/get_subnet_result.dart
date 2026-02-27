@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_subnet_filter/get_subnet_filter.dart';
 
 /// Result data returned by getSubnet.
@@ -108,8 +108,9 @@ class GetSubnetResult {
         enableResourceNameDnsAaaaRecordOnLaunch;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetSubnetFilter, Map<String, dynamic>>(
-          filtersValue, (value) => value.toMap());
+      map['filters'] =
+          pulumi.Input.encodeList<GetSubnetFilter, Map<String, dynamic>>(
+              filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['ipv6CidrBlock'] = ipv6CidrBlock;
@@ -145,7 +146,7 @@ class GetSubnetResult {
           map['enableResourceNameDnsAaaaRecordOnLaunch'] as bool,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetSubnetFilter>(
+          : pulumi.Input.decodeList<GetSubnetFilter>(
               map['filters'],
               (value) => GetSubnetFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

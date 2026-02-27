@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOriginAccessControl.
 class GetOriginAccessControlArgs {
   /// The identifier for the origin access control settings. For example: `E2T5VTFBZJ3BJB`.
-  final Input<String> id;
+  final pulumi.Input<String> id;
 
   GetOriginAccessControlArgs({
     required this.id,
@@ -19,7 +19,7 @@ class GetOriginAccessControlArgs {
 
   factory GetOriginAccessControlArgs.fromMap(Map<String, dynamic> map) {
     return GetOriginAccessControlArgs(
-      id: Input.asInput<String>(map['id']),
+      id: pulumi.Input.asInput<String>(map['id']),
     );
   }
 }

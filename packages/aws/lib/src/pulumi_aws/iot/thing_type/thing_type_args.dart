@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../thing_type_properties/thing_type_properties.dart';
 
 /// The set of arguments for ThingType.
 class ThingTypeArgs {
   /// Whether the thing type is deprecated. If true, no new things could be associated with this type.
-  final Input<bool>? deprecated;
+  final pulumi.Input<bool>? deprecated;
 
   /// The name of the thing type.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// , Configuration block that can contain the following properties of the thing type:
-  final Input<ThingTypeProperties>? properties;
+  final pulumi.Input<ThingTypeProperties>? properties;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   ThingTypeArgs({
     this.deprecated,
@@ -40,7 +40,8 @@ class ThingTypeArgs {
     }
     final propertiesValue = properties;
     if (propertiesValue != null) {
-      map['properties'] = Input.mapOptionalInputValue<ThingTypeProperties,
+      map['properties'] = pulumi.Input.mapOptionalInputValue<
+          ThingTypeProperties,
           Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
     }
     final regionValue = region;
@@ -56,11 +57,12 @@ class ThingTypeArgs {
 
   factory ThingTypeArgs.fromMap(Map<String, dynamic> map) {
     return ThingTypeArgs(
-      deprecated: Input.asOptionalInput<bool>(map['deprecated']),
-      name: Input.asOptionalInput<String>(map['name']),
-      properties: Input.asOptionalInput<ThingTypeProperties>(map['properties']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      deprecated: pulumi.Input.asOptionalInput<bool>(map['deprecated']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      properties:
+          pulumi.Input.asOptionalInput<ThingTypeProperties>(map['properties']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

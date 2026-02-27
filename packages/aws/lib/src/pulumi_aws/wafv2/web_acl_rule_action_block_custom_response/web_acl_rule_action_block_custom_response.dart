@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_action_block_custom_response_response_header/web_acl_rule_action_block_custom_response_response_header.dart';
 
 class WebAclRuleActionBlockCustomResponse {
@@ -29,7 +29,7 @@ class WebAclRuleActionBlockCustomResponse {
     map['responseCode'] = responseCode;
     final responseHeadersValue = responseHeaders;
     if (responseHeadersValue != null) {
-      map['responseHeaders'] = Input.encodeList<
+      map['responseHeaders'] = pulumi.Input.encodeList<
           WebAclRuleActionBlockCustomResponseResponseHeader,
           Map<String, dynamic>>(responseHeadersValue, (value) => value.toMap());
     }
@@ -45,7 +45,8 @@ class WebAclRuleActionBlockCustomResponse {
       responseCode: map['responseCode'] as int,
       responseHeaders: map['responseHeaders'] == null
           ? null
-          : Input.decodeList<WebAclRuleActionBlockCustomResponseResponseHeader>(
+          : pulumi.Input.decodeList<
+                  WebAclRuleActionBlockCustomResponseResponseHeader>(
               map['responseHeaders'],
               (value) =>
                   WebAclRuleActionBlockCustomResponseResponseHeader.fromMap(

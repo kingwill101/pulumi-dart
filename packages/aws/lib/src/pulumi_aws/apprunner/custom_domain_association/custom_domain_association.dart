@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../custom_domain_association_certificate_validation_record/custom_domain_association_certificate_validation_record.dart';
 import 'custom_domain_association_args.dart';
 
@@ -17,38 +17,39 @@ import 'custom_domain_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:apprunner/customDomainAssociation:CustomDomainAssociation example example.com,arn:aws:apprunner:us-east-1:123456789012:service/example-app/8fe1e10304f84fd2b0df550fe98a71fa
 /// ```
-class CustomDomainAssociation extends CustomResource {
+class CustomDomainAssociation extends pulumi.CustomResource {
   /// A set of certificate CNAME records used for this domain name. See Certificate Validation Records below for more details.
-  late final Output<List<CustomDomainAssociationCertificateValidationRecord>>
+  late final pulumi
+      .Output<List<CustomDomainAssociationCertificateValidationRecord>>
       certificateValidationRecords;
 
   /// App Runner subdomain of the App Runner service. The custom domain name is mapped to this target name. Attribute only available if resource created (not imported) with this provider.
-  late final Output<String> dnsTarget;
+  late final pulumi.Output<String> dnsTarget;
 
   /// Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`.
-  late final Output<bool?> enableWwwSubdomain;
+  late final pulumi.Output<bool?> enableWwwSubdomain;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the App Runner service.
-  late final Output<String> serviceArn;
+  late final pulumi.Output<String> serviceArn;
 
   /// Current state of the certificate CNAME record validation. It should change to `SUCCESS` after App Runner completes validation with your DNS.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   CustomDomainAssociation(
     String name, {
     CustomDomainAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apprunner/customDomainAssociation:CustomDomainAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.certificateValidationRecords = registerOutput<
             List<CustomDomainAssociationCertificateValidationRecord>>(

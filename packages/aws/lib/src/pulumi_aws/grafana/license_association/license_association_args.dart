@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LicenseAssociation.
 class LicenseAssociationArgs {
   /// A token from Grafana Labs that ties your AWS account with a Grafana Labs account.
-  final Input<String>? grafanaToken;
+  final pulumi.Input<String>? grafanaToken;
 
   /// The type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
-  final Input<String> licenseType;
+  final pulumi.Input<String> licenseType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The workspace id.
-  final Input<String> workspaceId;
+  final pulumi.Input<String> workspaceId;
 
   LicenseAssociationArgs({
     this.grafanaToken,
@@ -40,10 +40,10 @@ class LicenseAssociationArgs {
 
   factory LicenseAssociationArgs.fromMap(Map<String, dynamic> map) {
     return LicenseAssociationArgs(
-      grafanaToken: Input.asOptionalInput<String>(map['grafanaToken']),
-      licenseType: Input.asInput<String>(map['licenseType']),
-      region: Input.asOptionalInput<String>(map['region']),
-      workspaceId: Input.asInput<String>(map['workspaceId']),
+      grafanaToken: pulumi.Input.asOptionalInput<String>(map['grafanaToken']),
+      licenseType: pulumi.Input.asInput<String>(map['licenseType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      workspaceId: pulumi.Input.asInput<String>(map['workspaceId']),
     );
   }
 }

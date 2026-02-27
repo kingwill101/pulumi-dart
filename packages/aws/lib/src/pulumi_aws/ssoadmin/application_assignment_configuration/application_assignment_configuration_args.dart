@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ApplicationAssignmentConfiguration.
 class ApplicationAssignmentConfigurationArgs {
   /// ARN of the application.
-  final Input<String> applicationArn;
+  final pulumi.Input<String> applicationArn;
 
   /// Indicates whether users must have an explicit assignment to access the application. If `false`, all users have access to the application.
-  final Input<bool> assignmentRequired;
+  final pulumi.Input<bool> assignmentRequired;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   ApplicationAssignmentConfigurationArgs({
     required this.applicationArn,
@@ -33,9 +33,9 @@ class ApplicationAssignmentConfigurationArgs {
   factory ApplicationAssignmentConfigurationArgs.fromMap(
       Map<String, dynamic> map) {
     return ApplicationAssignmentConfigurationArgs(
-      applicationArn: Input.asInput<String>(map['applicationArn']),
-      assignmentRequired: Input.asInput<bool>(map['assignmentRequired']),
-      region: Input.asOptionalInput<String>(map['region']),
+      applicationArn: pulumi.Input.asInput<String>(map['applicationArn']),
+      assignmentRequired: pulumi.Input.asInput<bool>(map['assignmentRequired']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

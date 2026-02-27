@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_user_pool_lambda_config_custom_email_sender/get_user_pool_lambda_config_custom_email_sender.dart';
 import '../get_user_pool_lambda_config_custom_sms_sender/get_user_pool_lambda_config_custom_sms_sender.dart';
 import '../get_user_pool_lambda_config_pre_token_generation_config/get_user_pool_lambda_config_pre_token_generation_config.dart';
@@ -42,11 +42,11 @@ class GetUserPoolLambdaConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['createAuthChallenge'] = createAuthChallenge;
-    map['customEmailSenders'] = Input.encodeList<
+    map['customEmailSenders'] = pulumi.Input.encodeList<
         GetUserPoolLambdaConfigCustomEmailSender,
         Map<String, dynamic>>(customEmailSenders, (value) => value.toMap());
     map['customMessage'] = customMessage;
-    map['customSmsSenders'] = Input.encodeList<
+    map['customSmsSenders'] = pulumi.Input.encodeList<
         GetUserPoolLambdaConfigCustomSmsSender,
         Map<String, dynamic>>(customSmsSenders, (value) => value.toMap());
     map['defineAuthChallenge'] = defineAuthChallenge;
@@ -56,7 +56,7 @@ class GetUserPoolLambdaConfig {
     map['preAuthentication'] = preAuthentication;
     map['preSignUp'] = preSignUp;
     map['preTokenGeneration'] = preTokenGeneration;
-    map['preTokenGenerationConfigs'] = Input.encodeList<
+    map['preTokenGenerationConfigs'] = pulumi.Input.encodeList<
             GetUserPoolLambdaConfigPreTokenGenerationConfig,
             Map<String, dynamic>>(
         preTokenGenerationConfigs, (value) => value.toMap());
@@ -69,13 +69,13 @@ class GetUserPoolLambdaConfig {
     return GetUserPoolLambdaConfig(
       createAuthChallenge: map['createAuthChallenge'] as String,
       customEmailSenders:
-          Input.decodeList<GetUserPoolLambdaConfigCustomEmailSender>(
+          pulumi.Input.decodeList<GetUserPoolLambdaConfigCustomEmailSender>(
               map['customEmailSenders'],
               (value) => GetUserPoolLambdaConfigCustomEmailSender.fromMap(
                   (value as Map).cast<String, dynamic>())),
       customMessage: map['customMessage'] as String,
       customSmsSenders:
-          Input.decodeList<GetUserPoolLambdaConfigCustomSmsSender>(
+          pulumi.Input.decodeList<GetUserPoolLambdaConfigCustomSmsSender>(
               map['customSmsSenders'],
               (value) => GetUserPoolLambdaConfigCustomSmsSender.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -86,12 +86,11 @@ class GetUserPoolLambdaConfig {
       preAuthentication: map['preAuthentication'] as String,
       preSignUp: map['preSignUp'] as String,
       preTokenGeneration: map['preTokenGeneration'] as String,
-      preTokenGenerationConfigs:
-          Input.decodeList<GetUserPoolLambdaConfigPreTokenGenerationConfig>(
-              map['preTokenGenerationConfigs'],
-              (value) =>
-                  GetUserPoolLambdaConfigPreTokenGenerationConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      preTokenGenerationConfigs: pulumi.Input.decodeList<
+              GetUserPoolLambdaConfigPreTokenGenerationConfig>(
+          map['preTokenGenerationConfigs'],
+          (value) => GetUserPoolLambdaConfigPreTokenGenerationConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       userMigration: map['userMigration'] as String,
       verifyAuthChallengeResponse: map['verifyAuthChallengeResponse'] as String,
     );

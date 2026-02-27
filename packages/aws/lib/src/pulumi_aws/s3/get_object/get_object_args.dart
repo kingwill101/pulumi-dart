@@ -1,30 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getObject.
 class GetObjectArgs {
   /// Name of the bucket to read the object from. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// To retrieve the object's checksum, this argument must be `ENABLED`. If you enable `checksum_mode` and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `ENABLED`
-  final Input<String>? checksumMode;
+  final pulumi.Input<String>? checksumMode;
 
   /// Set to `true` to always download object data to `body_base64` attribute. If unset and conditions described above are met, `body` will be available but `body_base64` will not be. If set to `false`, the body is not downloaded and neither `body` nor `body_base64` is available, which may improve performance.
-  final Input<String>? downloadBody;
+  final pulumi.Input<String>? downloadBody;
 
   /// Full path to the object inside the bucket
-  final Input<String> key;
-  final Input<String>? range;
+  final pulumi.Input<String> key;
+  final pulumi.Input<String>? range;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags assigned to the object.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Specific version ID of the object returned (defaults to latest version)
-  final Input<String>? versionId;
+  final pulumi.Input<String>? versionId;
 
   GetObjectArgs({
     required this.bucket,
@@ -70,14 +70,14 @@ class GetObjectArgs {
 
   factory GetObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      checksumMode: Input.asOptionalInput<String>(map['checksumMode']),
-      downloadBody: Input.asOptionalInput<String>(map['downloadBody']),
-      key: Input.asInput<String>(map['key']),
-      range: Input.asOptionalInput<String>(map['range']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      versionId: Input.asOptionalInput<String>(map['versionId']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      checksumMode: pulumi.Input.asOptionalInput<String>(map['checksumMode']),
+      downloadBody: pulumi.Input.asOptionalInput<String>(map['downloadBody']),
+      key: pulumi.Input.asInput<String>(map['key']),
+      range: pulumi.Input.asOptionalInput<String>(map['range']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      versionId: pulumi.Input.asOptionalInput<String>(map['versionId']),
     );
   }
 }

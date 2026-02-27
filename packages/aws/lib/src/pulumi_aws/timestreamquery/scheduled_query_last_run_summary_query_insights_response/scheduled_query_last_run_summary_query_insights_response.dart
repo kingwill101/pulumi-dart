@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scheduled_query_last_run_summary_query_insights_response_query_spatial_coverage/scheduled_query_last_run_summary_query_insights_response_query_spatial_coverage.dart';
 import '../scheduled_query_last_run_summary_query_insights_response_query_temporal_range/scheduled_query_last_run_summary_query_insights_response_query_temporal_range.dart';
 
@@ -44,7 +44,7 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponse {
     }
     final querySpatialCoveragesValue = querySpatialCoverages;
     if (querySpatialCoveragesValue != null) {
-      map['querySpatialCoverages'] = Input.encodeList<
+      map['querySpatialCoverages'] = pulumi.Input.encodeList<
           ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage,
           Map<String,
               dynamic>>(querySpatialCoveragesValue, (value) => value.toMap());
@@ -55,7 +55,7 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponse {
     }
     final queryTemporalRangesValue = queryTemporalRanges;
     if (queryTemporalRangesValue != null) {
-      map['queryTemporalRanges'] = Input.encodeList<
+      map['queryTemporalRanges'] = pulumi.Input.encodeList<
           ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange,
           Map<String,
               dynamic>>(queryTemporalRangesValue, (value) => value.toMap());
@@ -71,7 +71,7 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponse {
       outputRows: map['outputRows'] == null ? null : map['outputRows'] as int,
       querySpatialCoverages: map['querySpatialCoverages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage>(
               map['querySpatialCoverages'],
               (value) =>
@@ -81,7 +81,7 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponse {
           map['queryTableCount'] == null ? null : map['queryTableCount'] as int,
       queryTemporalRanges: map['queryTemporalRanges'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange>(
               map['queryTemporalRanges'],
               (value) =>

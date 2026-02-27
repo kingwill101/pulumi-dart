@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_workgroup_endpoint_vpc_endpoint/get_workgroup_endpoint_vpc_endpoint.dart';
 
 class GetWorkgroupEndpoint {
@@ -23,9 +23,9 @@ class GetWorkgroupEndpoint {
     final map = <String, dynamic>{};
     map['address'] = address;
     map['port'] = port;
-    map['vpcEndpoints'] =
-        Input.encodeList<GetWorkgroupEndpointVpcEndpoint, Map<String, dynamic>>(
-            vpcEndpoints, (value) => value.toMap());
+    map['vpcEndpoints'] = pulumi.Input.encodeList<
+        GetWorkgroupEndpointVpcEndpoint,
+        Map<String, dynamic>>(vpcEndpoints, (value) => value.toMap());
     return map;
   }
 
@@ -33,7 +33,7 @@ class GetWorkgroupEndpoint {
     return GetWorkgroupEndpoint(
       address: map['address'] as String,
       port: map['port'] as int,
-      vpcEndpoints: Input.decodeList<GetWorkgroupEndpointVpcEndpoint>(
+      vpcEndpoints: pulumi.Input.decodeList<GetWorkgroupEndpointVpcEndpoint>(
           map['vpcEndpoints'],
           (value) => GetWorkgroupEndpointVpcEndpoint.fromMap(
               (value as Map).cast<String, dynamic>())),

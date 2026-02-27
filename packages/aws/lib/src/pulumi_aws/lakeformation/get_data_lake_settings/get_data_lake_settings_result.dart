@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_data_lake_settings_create_database_default_permission/get_data_lake_settings_create_database_default_permission.dart';
 import '../get_data_lake_settings_create_table_default_permission/get_data_lake_settings_create_table_default_permission.dart';
 
@@ -69,11 +69,11 @@ class GetDataLakeSettingsResult {
     if (catalogIdValue != null) {
       map['catalogId'] = catalogIdValue;
     }
-    map['createDatabaseDefaultPermissions'] = Input.encodeList<
+    map['createDatabaseDefaultPermissions'] = pulumi.Input.encodeList<
             GetDataLakeSettingsCreateDatabaseDefaultPermission,
             Map<String, dynamic>>(
         createDatabaseDefaultPermissions, (value) => value.toMap());
-    map['createTableDefaultPermissions'] = Input.encodeList<
+    map['createTableDefaultPermissions'] = pulumi.Input.encodeList<
             GetDataLakeSettingsCreateTableDefaultPermission,
             Map<String, dynamic>>(
         createTableDefaultPermissions, (value) => value.toMap());
@@ -95,18 +95,16 @@ class GetDataLakeSettingsResult {
       authorizedSessionTagValueLists:
           (map['authorizedSessionTagValueLists'] as List).cast<String>(),
       catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
-      createDatabaseDefaultPermissions:
-          Input.decodeList<GetDataLakeSettingsCreateDatabaseDefaultPermission>(
-              map['createDatabaseDefaultPermissions'],
-              (value) =>
-                  GetDataLakeSettingsCreateDatabaseDefaultPermission.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      createTableDefaultPermissions:
-          Input.decodeList<GetDataLakeSettingsCreateTableDefaultPermission>(
-              map['createTableDefaultPermissions'],
-              (value) =>
-                  GetDataLakeSettingsCreateTableDefaultPermission.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      createDatabaseDefaultPermissions: pulumi.Input.decodeList<
+              GetDataLakeSettingsCreateDatabaseDefaultPermission>(
+          map['createDatabaseDefaultPermissions'],
+          (value) => GetDataLakeSettingsCreateDatabaseDefaultPermission.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      createTableDefaultPermissions: pulumi.Input.decodeList<
+              GetDataLakeSettingsCreateTableDefaultPermission>(
+          map['createTableDefaultPermissions'],
+          (value) => GetDataLakeSettingsCreateTableDefaultPermission.fromMap(
+              (value as Map).cast<String, dynamic>())),
       externalDataFilteringAllowLists:
           (map['externalDataFilteringAllowLists'] as List).cast<String>(),
       id: map['id'] as String,

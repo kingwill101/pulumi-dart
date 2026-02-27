@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_security_group_args.dart';
 import 'get_security_group_result.dart';
 
@@ -14,13 +14,13 @@ import 'get_security_group_result.dart';
 /// and use this data source to obtain the data necessary to create a subnet.
 Future<GetSecurityGroupResult> getSecurityGroup(
   GetSecurityGroupArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getSecurityGroup:getSecurityGroup',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityGroupResult.fromMap(result);
 }

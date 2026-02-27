@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_core_instance_fleet_instance_type_config_configuration/cluster_core_instance_fleet_instance_type_config_configuration.dart';
 import '../cluster_core_instance_fleet_instance_type_config_ebs_config/cluster_core_instance_fleet_instance_type_config_ebs_config.dart';
 
@@ -47,13 +47,13 @@ class ClusterCoreInstanceFleetInstanceTypeConfig {
     }
     final configurationsValue = configurations;
     if (configurationsValue != null) {
-      map['configurations'] = Input.encodeList<
+      map['configurations'] = pulumi.Input.encodeList<
           ClusterCoreInstanceFleetInstanceTypeConfigConfiguration,
           Map<String, dynamic>>(configurationsValue, (value) => value.toMap());
     }
     final ebsConfigsValue = ebsConfigs;
     if (ebsConfigsValue != null) {
-      map['ebsConfigs'] = Input.encodeList<
+      map['ebsConfigs'] = pulumi.Input.encodeList<
           ClusterCoreInstanceFleetInstanceTypeConfigEbsConfig,
           Map<String, dynamic>>(ebsConfigsValue, (value) => value.toMap());
     }
@@ -75,14 +75,14 @@ class ClusterCoreInstanceFleetInstanceTypeConfig {
               : map['bidPriceAsPercentageOfOnDemandPrice'] as double,
       configurations: map['configurations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ClusterCoreInstanceFleetInstanceTypeConfigConfiguration>(
               map['configurations'],
               (value) => ClusterCoreInstanceFleetInstanceTypeConfigConfiguration
                   .fromMap((value as Map).cast<String, dynamic>())),
       ebsConfigs: map['ebsConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ClusterCoreInstanceFleetInstanceTypeConfigEbsConfig>(
               map['ebsConfigs'],
               (value) =>

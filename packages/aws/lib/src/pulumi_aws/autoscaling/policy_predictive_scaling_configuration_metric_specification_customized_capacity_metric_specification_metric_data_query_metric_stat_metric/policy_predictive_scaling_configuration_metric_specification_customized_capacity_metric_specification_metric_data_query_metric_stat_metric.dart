@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../policy_predictive_scaling_configuration_metric_specification_customized_capacity_metric_specification_metric_data_query_metric_stat_metric_dimension/policy_predictive_scaling_configuration_metric_specification_customized_capacity_metric_specification_metric_data_query_metric_stat_metric_dimension.dart';
 
 class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetric {
@@ -25,7 +25,7 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityM
     final map = <String, dynamic>{};
     final dimensionsValue = dimensions;
     if (dimensionsValue != null) {
-      map['dimensions'] = Input.encodeList<
+      map['dimensions'] = pulumi.Input.encodeList<
           PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetricDimension,
           Map<String, dynamic>>(dimensionsValue, (value) => value.toMap());
     }
@@ -39,7 +39,7 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityM
     return PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetric(
       dimensions: map['dimensions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStatMetricDimension>(
               map['dimensions'],
               (value) =>

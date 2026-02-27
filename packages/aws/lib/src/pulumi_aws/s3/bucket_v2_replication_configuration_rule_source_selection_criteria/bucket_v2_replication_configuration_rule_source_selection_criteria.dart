@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_v2_replication_configuration_rule_source_selection_criteria_sse_kms_encrypted_object/bucket_v2_replication_configuration_rule_source_selection_criteria_sse_kms_encrypted_object.dart';
 
 class BucketV2ReplicationConfigurationRuleSourceSelectionCriteria {
@@ -18,7 +18,7 @@ class BucketV2ReplicationConfigurationRuleSourceSelectionCriteria {
     final map = <String, dynamic>{};
     final sseKmsEncryptedObjectsValue = sseKmsEncryptedObjects;
     if (sseKmsEncryptedObjectsValue != null) {
-      map['sseKmsEncryptedObjects'] = Input.encodeList<
+      map['sseKmsEncryptedObjects'] = pulumi.Input.encodeList<
           BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject,
           Map<String,
               dynamic>>(sseKmsEncryptedObjectsValue, (value) => value.toMap());
@@ -31,7 +31,7 @@ class BucketV2ReplicationConfigurationRuleSourceSelectionCriteria {
     return BucketV2ReplicationConfigurationRuleSourceSelectionCriteria(
       sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject>(
               map['sseKmsEncryptedObjects'],
               (value) =>

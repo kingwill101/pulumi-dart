@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subscription_args.dart';
 
 /// Resource for managing an AWS Shield Subscription.
@@ -20,22 +20,22 @@ import 'subscription_args.dart';
 /// ```sh
 /// $ pulumi import aws:shield/subscription:Subscription example 123456789012
 /// ```
-class Subscription extends CustomResource {
+class Subscription extends pulumi.CustomResource {
   /// Toggle for automated renewal of the subscription. Valid values are `ENABLED` or `DISABLED`. Default is `ENABLED`.
-  late final Output<String> autoRenew;
+  late final pulumi.Output<String> autoRenew;
 
   /// Skip attempting to disable automated renewal upon destruction. If set to `true`, the `auto_renew` value will be left as-is and the resource will simply be removed from state.
-  late final Output<bool?> skipDestroy;
+  late final pulumi.Output<bool?> skipDestroy;
 
   Subscription(
     String name, {
     SubscriptionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:shield/subscription:Subscription',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.autoRenew = registerOutput<String>('autoRenew');
     this.skipDestroy = registerOutput<bool?>('skipDestroy');

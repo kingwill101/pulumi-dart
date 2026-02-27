@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_network_args.dart';
 
 /// Manages a Network Manager Global Network.
@@ -16,28 +16,28 @@ import 'global_network_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkmanager/globalNetwork:GlobalNetwork example global-network-0d47f6t230mz46dy4
 /// ```
-class GlobalNetwork extends CustomResource {
+class GlobalNetwork extends pulumi.CustomResource {
   /// Global Network ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Description of the Global Network.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Key-value tags for the Global Network. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   GlobalNetwork(
     String name, {
     GlobalNetworkArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkmanager/globalNetwork:GlobalNetwork',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');

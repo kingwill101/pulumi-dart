@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_global_cluster_args.dart';
 import 'get_global_cluster_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_global_cluster_result.dart';
 /// ### Basic Usage
 Future<GetGlobalClusterResult> getGlobalCluster(
   GetGlobalClusterArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:rds/getGlobalCluster:getGlobalCluster',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalClusterResult.fromMap(result);
 }

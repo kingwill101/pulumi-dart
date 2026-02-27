@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_node_spec_listener_connection_pool_grpc/get_virtual_node_spec_listener_connection_pool_grpc.dart';
 import '../get_virtual_node_spec_listener_connection_pool_http/get_virtual_node_spec_listener_connection_pool_http.dart';
 import '../get_virtual_node_spec_listener_connection_pool_http2/get_virtual_node_spec_listener_connection_pool_http2.dart';
@@ -21,16 +21,17 @@ class GetVirtualNodeSpecListenerConnectionPool {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['grpcs'] = Input.encodeList<
+    map['grpcs'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerConnectionPoolGrpc,
         Map<String, dynamic>>(grpcs, (value) => value.toMap());
-    map['http2s'] = Input.encodeList<
+    map['http2s'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerConnectionPoolHttp2,
         Map<String, dynamic>>(http2s, (value) => value.toMap());
-    map['https'] = Input.encodeList<
+    map['https'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerConnectionPoolHttp,
         Map<String, dynamic>>(https, (value) => value.toMap());
-    map['tcps'] = Input.encodeList<GetVirtualNodeSpecListenerConnectionPoolTcp,
+    map['tcps'] = pulumi.Input.encodeList<
+        GetVirtualNodeSpecListenerConnectionPoolTcp,
         Map<String, dynamic>>(tcps, (value) => value.toMap());
     return map;
   }
@@ -38,22 +39,26 @@ class GetVirtualNodeSpecListenerConnectionPool {
   factory GetVirtualNodeSpecListenerConnectionPool.fromMap(
       Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerConnectionPool(
-      grpcs: Input.decodeList<GetVirtualNodeSpecListenerConnectionPoolGrpc>(
-          map['grpcs'],
-          (value) => GetVirtualNodeSpecListenerConnectionPoolGrpc.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      http2s: Input.decodeList<GetVirtualNodeSpecListenerConnectionPoolHttp2>(
+      grpcs:
+          pulumi.Input.decodeList<GetVirtualNodeSpecListenerConnectionPoolGrpc>(
+              map['grpcs'],
+              (value) => GetVirtualNodeSpecListenerConnectionPoolGrpc.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      http2s: pulumi.Input.decodeList<
+              GetVirtualNodeSpecListenerConnectionPoolHttp2>(
           map['http2s'],
           (value) => GetVirtualNodeSpecListenerConnectionPoolHttp2.fromMap(
               (value as Map).cast<String, dynamic>())),
-      https: Input.decodeList<GetVirtualNodeSpecListenerConnectionPoolHttp>(
-          map['https'],
-          (value) => GetVirtualNodeSpecListenerConnectionPoolHttp.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      tcps: Input.decodeList<GetVirtualNodeSpecListenerConnectionPoolTcp>(
-          map['tcps'],
-          (value) => GetVirtualNodeSpecListenerConnectionPoolTcp.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      https:
+          pulumi.Input.decodeList<GetVirtualNodeSpecListenerConnectionPoolHttp>(
+              map['https'],
+              (value) => GetVirtualNodeSpecListenerConnectionPoolHttp.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      tcps:
+          pulumi.Input.decodeList<GetVirtualNodeSpecListenerConnectionPoolTcp>(
+              map['tcps'],
+              (value) => GetVirtualNodeSpecListenerConnectionPoolTcp.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

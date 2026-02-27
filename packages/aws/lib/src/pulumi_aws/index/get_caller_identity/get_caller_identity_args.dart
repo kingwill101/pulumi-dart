@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCallerIdentity.
 class GetCallerIdentityArgs {
   /// Account ID number of the account that owns or contains the calling entity.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   GetCallerIdentityArgs({
     this.id,
@@ -22,7 +22,7 @@ class GetCallerIdentityArgs {
 
   factory GetCallerIdentityArgs.fromMap(Map<String, dynamic> map) {
     return GetCallerIdentityArgs(
-      id: Input.asOptionalInput<String>(map['id']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
     );
   }
 }

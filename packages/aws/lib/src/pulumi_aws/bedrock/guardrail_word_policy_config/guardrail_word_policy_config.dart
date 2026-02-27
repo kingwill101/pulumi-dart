@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../guardrail_word_policy_config_managed_word_lists_config/guardrail_word_policy_config_managed_word_lists_config.dart';
 import '../guardrail_word_policy_config_words_config/guardrail_word_policy_config_words_config.dart';
 
@@ -21,14 +21,14 @@ class GuardrailWordPolicyConfig {
     final map = <String, dynamic>{};
     final managedWordListsConfigsValue = managedWordListsConfigs;
     if (managedWordListsConfigsValue != null) {
-      map['managedWordListsConfigs'] = Input.encodeList<
+      map['managedWordListsConfigs'] = pulumi.Input.encodeList<
               GuardrailWordPolicyConfigManagedWordListsConfig,
               Map<String, dynamic>>(
           managedWordListsConfigsValue, (value) => value.toMap());
     }
     final wordsConfigsValue = wordsConfigs;
     if (wordsConfigsValue != null) {
-      map['wordsConfigs'] = Input.encodeList<
+      map['wordsConfigs'] = pulumi.Input.encodeList<
           GuardrailWordPolicyConfigWordsConfig,
           Map<String, dynamic>>(wordsConfigsValue, (value) => value.toMap());
     }
@@ -39,14 +39,15 @@ class GuardrailWordPolicyConfig {
     return GuardrailWordPolicyConfig(
       managedWordListsConfigs: map['managedWordListsConfigs'] == null
           ? null
-          : Input.decodeList<GuardrailWordPolicyConfigManagedWordListsConfig>(
+          : pulumi.Input.decodeList<
+                  GuardrailWordPolicyConfigManagedWordListsConfig>(
               map['managedWordListsConfigs'],
               (value) =>
                   GuardrailWordPolicyConfigManagedWordListsConfig.fromMap(
                       (value as Map).cast<String, dynamic>())),
       wordsConfigs: map['wordsConfigs'] == null
           ? null
-          : Input.decodeList<GuardrailWordPolicyConfigWordsConfig>(
+          : pulumi.Input.decodeList<GuardrailWordPolicyConfigWordsConfig>(
               map['wordsConfigs'],
               (value) => GuardrailWordPolicyConfigWordsConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

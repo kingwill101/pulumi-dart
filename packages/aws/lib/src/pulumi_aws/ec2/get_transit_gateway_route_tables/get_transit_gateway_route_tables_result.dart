@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_transit_gateway_route_tables_filter/get_transit_gateway_route_tables_filter.dart';
 
 /// Result data returned by getTransitGatewayRouteTables.
@@ -27,7 +27,8 @@ class GetTransitGatewayRouteTablesResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetTransitGatewayRouteTablesFilter,
+      map['filters'] = pulumi.Input.encodeList<
+          GetTransitGatewayRouteTablesFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -41,7 +42,7 @@ class GetTransitGatewayRouteTablesResult {
     return GetTransitGatewayRouteTablesResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetTransitGatewayRouteTablesFilter>(
+          : pulumi.Input.decodeList<GetTransitGatewayRouteTablesFilter>(
               map['filters'],
               (value) => GetTransitGatewayRouteTablesFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

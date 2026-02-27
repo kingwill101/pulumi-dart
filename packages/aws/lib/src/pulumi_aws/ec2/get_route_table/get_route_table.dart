@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_route_table_args.dart';
 import 'get_route_table_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_route_table_result.dart';
 /// The following example shows how one might accept a Route Table ID as a variable and use this data source to obtain the data necessary to create a route.
 Future<GetRouteTableResult> getRouteTable(
   GetRouteTableArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getRouteTable:getRouteTable',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouteTableResult.fromMap(result);
 }

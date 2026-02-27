@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'transit_gateway_peering_args.dart';
 
 /// Manages a Network Manager transit gateway peering connection. Creates a peering connection between an AWS Cloud WAN core network and an AWS Transit Gateway.
@@ -14,51 +14,51 @@ import 'transit_gateway_peering_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkmanager/transitGatewayPeering:TransitGatewayPeering example peering-444555aaabbb11223
 /// ```
-class TransitGatewayPeering extends CustomResource {
+class TransitGatewayPeering extends pulumi.CustomResource {
   /// Peering ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// ARN of the core network.
-  late final Output<String> coreNetworkArn;
+  late final pulumi.Output<String> coreNetworkArn;
 
   /// ID of a core network.
-  late final Output<String> coreNetworkId;
+  late final pulumi.Output<String> coreNetworkId;
 
   /// Edge location for the peer.
-  late final Output<String> edgeLocation;
+  late final pulumi.Output<String> edgeLocation;
 
   /// ID of the account owner.
-  late final Output<String> ownerAccountId;
+  late final pulumi.Output<String> ownerAccountId;
 
   /// Type of peering. This will be `TRANSIT_GATEWAY`.
-  late final Output<String> peeringType;
+  late final pulumi.Output<String> peeringType;
 
   /// Resource ARN of the peer.
-  late final Output<String> resourceArn;
+  late final pulumi.Output<String> resourceArn;
 
   /// Key-value tags for the peering. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// ARN of the transit gateway for the peering request.
   ///
   /// The following arguments are optional:
-  late final Output<String> transitGatewayArn;
+  late final pulumi.Output<String> transitGatewayArn;
 
   /// ID of the transit gateway peering attachment.
-  late final Output<String> transitGatewayPeeringAttachmentId;
+  late final pulumi.Output<String> transitGatewayPeeringAttachmentId;
 
   TransitGatewayPeering(
     String name, {
     TransitGatewayPeeringArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkmanager/transitGatewayPeering:TransitGatewayPeering',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.coreNetworkArn = registerOutput<String>('coreNetworkArn');

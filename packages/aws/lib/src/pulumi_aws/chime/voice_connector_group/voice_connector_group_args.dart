@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../voice_connector_group_connector/voice_connector_group_connector.dart';
 
 /// The set of arguments for VoiceConnectorGroup.
 class VoiceConnectorGroupArgs {
   /// The Amazon Chime Voice Connectors to route inbound calls to.
-  final Input<List<VoiceConnectorGroupConnector>>? connectors;
+  final pulumi.Input<List<VoiceConnectorGroupConnector>>? connectors;
 
   /// The name of the Amazon Chime Voice Connector group.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   VoiceConnectorGroupArgs({
     this.connectors,
@@ -24,10 +24,10 @@ class VoiceConnectorGroupArgs {
     final map = <String, dynamic>{};
     final connectorsValue = connectors;
     if (connectorsValue != null) {
-      map['connectors'] = Input.mapOptionalInputValue<
+      map['connectors'] = pulumi.Input.mapOptionalInputValue<
               List<VoiceConnectorGroupConnector>, List<Map<String, dynamic>>>(
           connectorsValue,
-          (value) => Input.encodeList<VoiceConnectorGroupConnector,
+          (value) => pulumi.Input.encodeList<VoiceConnectorGroupConnector,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final nameValue = name;
@@ -43,10 +43,11 @@ class VoiceConnectorGroupArgs {
 
   factory VoiceConnectorGroupArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorGroupArgs(
-      connectors: Input.asOptionalInput<List<VoiceConnectorGroupConnector>>(
-          map['connectors']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      connectors:
+          pulumi.Input.asOptionalInput<List<VoiceConnectorGroupConnector>>(
+              map['connectors']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

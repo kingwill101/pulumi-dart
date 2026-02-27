@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_stream_stream_mode_detail/get_stream_stream_mode_detail.dart';
 
 /// Result data returned by getStream.
@@ -81,9 +81,9 @@ class GetStreamResult {
     map['retentionPeriod'] = retentionPeriod;
     map['shardLevelMetrics'] = shardLevelMetrics;
     map['status'] = status;
-    map['streamModeDetails'] =
-        Input.encodeList<GetStreamStreamModeDetail, Map<String, dynamic>>(
-            streamModeDetails, (value) => value.toMap());
+    map['streamModeDetails'] = pulumi.Input.encodeList<
+        GetStreamStreamModeDetail,
+        Map<String, dynamic>>(streamModeDetails, (value) => value.toMap());
     map['tags'] = tags;
     return map;
   }
@@ -103,7 +103,7 @@ class GetStreamResult {
       retentionPeriod: map['retentionPeriod'] as int,
       shardLevelMetrics: (map['shardLevelMetrics'] as List).cast<String>(),
       status: map['status'] as String,
-      streamModeDetails: Input.decodeList<GetStreamStreamModeDetail>(
+      streamModeDetails: pulumi.Input.decodeList<GetStreamStreamModeDetail>(
           map['streamModeDetails'],
           (value) => GetStreamStreamModeDetail.fromMap(
               (value as Map).cast<String, dynamic>())),

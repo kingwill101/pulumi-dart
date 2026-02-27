@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_cells_filter_table_data/data_cells_filter_table_data.dart';
 import '../data_cells_filter_timeouts/data_cells_filter_timeouts.dart';
 import 'data_cells_filter_args.dart';
@@ -34,23 +34,23 @@ import 'data_cells_filter_args.dart';
 /// ```sh
 /// $ pulumi import aws:lakeformation/dataCellsFilter:DataCellsFilter example database_name,name,table_catalog_id,table_name
 /// ```
-class DataCellsFilter extends CustomResource {
+class DataCellsFilter extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Information about the data cells filter. See Table Data below for details.
-  late final Output<DataCellsFilterTableData> tableData;
-  late final Output<DataCellsFilterTimeouts?> timeouts;
+  late final pulumi.Output<DataCellsFilterTableData> tableData;
+  late final pulumi.Output<DataCellsFilterTimeouts?> timeouts;
 
   DataCellsFilter(
     String name, {
     DataCellsFilterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lakeformation/dataCellsFilter:DataCellsFilter',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.tableData = registerOutput<DataCellsFilterTableData>('tableData');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../registered_domain_admin_contact/registered_domain_admin_contact.dart';
 import '../registered_domain_billing_contact/registered_domain_billing_contact.dart';
 import '../registered_domain_name_server/registered_domain_name_server.dart';
@@ -23,90 +23,90 @@ import 'registered_domain_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53domains/registeredDomain:RegisteredDomain example example.com
 /// ```
-class RegisteredDomain extends CustomResource {
+class RegisteredDomain extends pulumi.CustomResource {
   /// Email address to contact to report incorrect contact information for a domain, to report that the domain is being used to send spam, to report that someone is cybersquatting on a domain name, or report some other type of abuse.
-  late final Output<String> abuseContactEmail;
+  late final pulumi.Output<String> abuseContactEmail;
 
   /// Phone number for reporting abuse.
-  late final Output<String> abuseContactPhone;
+  late final pulumi.Output<String> abuseContactPhone;
 
   /// Details about the domain administrative contact. See Contact Blocks for more details.
-  late final Output<RegisteredDomainAdminContact> adminContact;
+  late final pulumi.Output<RegisteredDomainAdminContact> adminContact;
 
   /// Whether domain administrative contact information is concealed from WHOIS queries. Default: `true`.
-  late final Output<bool?> adminPrivacy;
+  late final pulumi.Output<bool?> adminPrivacy;
 
   /// Whether the domain registration is set to renew automatically. Default: `true`.
-  late final Output<bool?> autoRenew;
+  late final pulumi.Output<bool?> autoRenew;
 
   /// Details about the domain billing contact. See Contact Blocks for more details.
-  late final Output<RegisteredDomainBillingContact> billingContact;
+  late final pulumi.Output<RegisteredDomainBillingContact> billingContact;
 
   /// Whether domain billing contact information is concealed from WHOIS queries. Default: `true`.
-  late final Output<bool?> billingPrivacy;
+  late final pulumi.Output<bool?> billingPrivacy;
 
   /// The date when the domain was created as found in the response to a WHOIS query.
-  late final Output<String> creationDate;
+  late final pulumi.Output<String> creationDate;
 
   /// The name of the registered domain.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// The date when the registration for the domain is set to expire.
-  late final Output<String> expirationDate;
+  late final pulumi.Output<String> expirationDate;
 
   /// The list of nameservers for the domain. See `name_server` Blocks for more details.
-  late final Output<List<RegisteredDomainNameServer>> nameServers;
+  late final pulumi.Output<List<RegisteredDomainNameServer>> nameServers;
 
   /// Details about the domain registrant. See Contact Blocks for more details.
-  late final Output<RegisteredDomainRegistrantContact> registrantContact;
+  late final pulumi.Output<RegisteredDomainRegistrantContact> registrantContact;
 
   /// Whether domain registrant contact information is concealed from WHOIS queries. Default: `true`.
-  late final Output<bool?> registrantPrivacy;
+  late final pulumi.Output<bool?> registrantPrivacy;
 
   /// Name of the registrar of the domain as identified in the registry.
-  late final Output<String> registrarName;
+  late final pulumi.Output<String> registrarName;
 
   /// Web address of the registrar.
-  late final Output<String> registrarUrl;
+  late final pulumi.Output<String> registrarUrl;
 
   /// Reseller of the domain.
-  late final Output<String> reseller;
+  late final pulumi.Output<String> reseller;
 
   /// List of [domain name status codes](https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en).
-  late final Output<List<String>> statusLists;
+  late final pulumi.Output<List<String>> statusLists;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Details about the domain technical contact. See Contact Blocks for more details.
-  late final Output<RegisteredDomainTechContact> techContact;
+  late final pulumi.Output<RegisteredDomainTechContact> techContact;
 
   /// Whether domain technical contact information is concealed from WHOIS queries. Default: `true`.
-  late final Output<bool?> techPrivacy;
+  late final pulumi.Output<bool?> techPrivacy;
 
   /// Whether the domain is locked for transfer. Default: `true`.
   ///
   /// > **NOTE:** You must specify the same privacy setting for `admin_privacy`, `registrant_privacy` and `tech_privacy`.
-  late final Output<bool?> transferLock;
+  late final pulumi.Output<bool?> transferLock;
 
   /// The last updated date of the domain as found in the response to a WHOIS query.
-  late final Output<String> updatedDate;
+  late final pulumi.Output<String> updatedDate;
 
   /// The fully qualified name of the WHOIS server that can answer the WHOIS query for the domain.
-  late final Output<String> whoisServer;
+  late final pulumi.Output<String> whoisServer;
 
   RegisteredDomain(
     String name, {
     RegisteredDomainArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53domains/registeredDomain:RegisteredDomain',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.abuseContactEmail = registerOutput<String>('abuseContactEmail');
     this.abuseContactPhone = registerOutput<String>('abuseContactPhone');

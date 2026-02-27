@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Tracker.
 class TrackerArgs {
   /// The optional description for the tracker resource.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// A key identifier for an AWS KMS customer managed key assigned to the Amazon Location resource.
-  final Input<String>? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
 
   /// The position filtering method of the tracker resource. Valid values: `TimeBased`, `DistanceBased`, `AccuracyBased`. Default: `TimeBased`.
-  final Input<String>? positionFiltering;
+  final pulumi.Input<String>? positionFiltering;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value tags for the tracker. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The name of the tracker resource.
   ///
   /// The following arguments are optional:
-  final Input<String> trackerName;
+  final pulumi.Input<String> trackerName;
 
   TrackerArgs({
     this.description,
@@ -61,13 +61,13 @@ class TrackerArgs {
 
   factory TrackerArgs.fromMap(Map<String, dynamic> map) {
     return TrackerArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      kmsKeyId: Input.asOptionalInput<String>(map['kmsKeyId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      kmsKeyId: pulumi.Input.asOptionalInput<String>(map['kmsKeyId']),
       positionFiltering:
-          Input.asOptionalInput<String>(map['positionFiltering']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      trackerName: Input.asInput<String>(map['trackerName']),
+          pulumi.Input.asOptionalInput<String>(map['positionFiltering']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      trackerName: pulumi.Input.asInput<String>(map['trackerName']),
     );
   }
 }

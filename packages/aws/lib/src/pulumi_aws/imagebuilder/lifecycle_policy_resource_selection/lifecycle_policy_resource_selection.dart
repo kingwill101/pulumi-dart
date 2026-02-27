@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lifecycle_policy_resource_selection_recipe/lifecycle_policy_resource_selection_recipe.dart';
 
 class LifecyclePolicyResourceSelection {
@@ -19,7 +19,8 @@ class LifecyclePolicyResourceSelection {
     final map = <String, dynamic>{};
     final recipesValue = recipes;
     if (recipesValue != null) {
-      map['recipes'] = Input.encodeList<LifecyclePolicyResourceSelectionRecipe,
+      map['recipes'] = pulumi.Input.encodeList<
+          LifecyclePolicyResourceSelectionRecipe,
           Map<String, dynamic>>(recipesValue, (value) => value.toMap());
     }
     final tagMapValue = tagMap;
@@ -33,7 +34,7 @@ class LifecyclePolicyResourceSelection {
     return LifecyclePolicyResourceSelection(
       recipes: map['recipes'] == null
           ? null
-          : Input.decodeList<LifecyclePolicyResourceSelectionRecipe>(
+          : pulumi.Input.decodeList<LifecyclePolicyResourceSelectionRecipe>(
               map['recipes'],
               (value) => LifecyclePolicyResourceSelectionRecipe.fromMap(
                   (value as Map).cast<String, dynamic>())),

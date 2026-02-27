@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../partition_storage_descriptor_column/partition_storage_descriptor_column.dart';
 import '../partition_storage_descriptor_ser_de_info/partition_storage_descriptor_ser_de_info.dart';
 import '../partition_storage_descriptor_skewed_info/partition_storage_descriptor_skewed_info.dart';
@@ -74,7 +74,7 @@ class PartitionStorageDescriptor {
     }
     final columnsValue = columns;
     if (columnsValue != null) {
-      map['columns'] = Input.encodeList<PartitionStorageDescriptorColumn,
+      map['columns'] = pulumi.Input.encodeList<PartitionStorageDescriptorColumn,
           Map<String, dynamic>>(columnsValue, (value) => value.toMap());
     }
     final compressedValue = compressed;
@@ -111,7 +111,7 @@ class PartitionStorageDescriptor {
     }
     final sortColumnsValue = sortColumns;
     if (sortColumnsValue != null) {
-      map['sortColumns'] = Input.encodeList<
+      map['sortColumns'] = pulumi.Input.encodeList<
           PartitionStorageDescriptorSortColumn,
           Map<String, dynamic>>(sortColumnsValue, (value) => value.toMap());
     }
@@ -132,7 +132,7 @@ class PartitionStorageDescriptor {
           : (map['bucketColumns'] as List).cast<String>(),
       columns: map['columns'] == null
           ? null
-          : Input.decodeList<PartitionStorageDescriptorColumn>(
+          : pulumi.Input.decodeList<PartitionStorageDescriptorColumn>(
               map['columns'],
               (value) => PartitionStorageDescriptorColumn.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -157,7 +157,7 @@ class PartitionStorageDescriptor {
               (map['skewedInfo'] as Map).cast<String, dynamic>()),
       sortColumns: map['sortColumns'] == null
           ? null
-          : Input.decodeList<PartitionStorageDescriptorSortColumn>(
+          : pulumi.Input.decodeList<PartitionStorageDescriptorSortColumn>(
               map['sortColumns'],
               (value) => PartitionStorageDescriptorSortColumn.fromMap(
                   (value as Map).cast<String, dynamic>())),

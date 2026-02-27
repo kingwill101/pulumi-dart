@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for GeofenceCollection.
 class GeofenceCollectionArgs {
   /// The name of the geofence collection.
   ///
   /// The following arguments are optional:
-  final Input<String> collectionName;
+  final pulumi.Input<String> collectionName;
 
   /// The optional description for the geofence collection.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// A key identifier for an AWS KMS customer managed key assigned to the Amazon Location resource.
-  final Input<String>? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value tags for the geofence collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GeofenceCollectionArgs({
     required this.collectionName,
@@ -53,11 +53,11 @@ class GeofenceCollectionArgs {
 
   factory GeofenceCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GeofenceCollectionArgs(
-      collectionName: Input.asInput<String>(map['collectionName']),
-      description: Input.asOptionalInput<String>(map['description']),
-      kmsKeyId: Input.asOptionalInput<String>(map['kmsKeyId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      collectionName: pulumi.Input.asInput<String>(map['collectionName']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      kmsKeyId: pulumi.Input.asOptionalInput<String>(map['kmsKeyId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

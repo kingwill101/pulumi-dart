@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_regex_pattern_set_reference_statement_field_to_match/web_acl_rule_statement_regex_pattern_set_reference_statement_field_to_match.dart';
 import '../web_acl_rule_statement_regex_pattern_set_reference_statement_text_transformation/web_acl_rule_statement_regex_pattern_set_reference_statement_text_transformation.dart';
 
@@ -30,7 +30,7 @@ class WebAclRuleStatementRegexPatternSetReferenceStatement {
     if (fieldToMatchValue != null) {
       map['fieldToMatch'] = fieldToMatchValue.toMap();
     }
-    map['textTransformations'] = Input.encodeList<
+    map['textTransformations'] = pulumi.Input.encodeList<
         WebAclRuleStatementRegexPatternSetReferenceStatementTextTransformation,
         Map<String, dynamic>>(textTransformations, (value) => value.toMap());
     return map;
@@ -44,7 +44,7 @@ class WebAclRuleStatementRegexPatternSetReferenceStatement {
           ? null
           : WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatch
               .fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>()),
-      textTransformations: Input.decodeList<
+      textTransformations: pulumi.Input.decodeList<
               WebAclRuleStatementRegexPatternSetReferenceStatementTextTransformation>(
           map['textTransformations'],
           (value) =>

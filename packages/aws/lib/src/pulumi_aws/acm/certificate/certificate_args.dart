@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_options/certificate_options.dart';
 import '../certificate_validation_option/certificate_validation_option.dart';
 
 /// The set of arguments for Certificate.
 class CertificateArgs {
-  final Input<String>? certificateAuthorityArn;
-  final Input<String>? certificateBody;
-  final Input<String>? certificateChain;
+  final pulumi.Input<String>? certificateAuthorityArn;
+  final pulumi.Input<String>? certificateBody;
+  final pulumi.Input<String>? certificateChain;
 
   /// Fully qualified domain name (FQDN) in the certificate.
-  final Input<String>? domainName;
-  final Input<String>? earlyRenewalDuration;
-  final Input<String>? keyAlgorithm;
-  final Input<CertificateOptions>? options;
-  final Input<String>? privateKey;
+  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String>? earlyRenewalDuration;
+  final pulumi.Input<String>? keyAlgorithm;
+  final pulumi.Input<CertificateOptions>? options;
+  final pulumi.Input<String>? privateKey;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// * Creating an Amazon issued certificate
-  final Input<String>? region;
-  final Input<List<String>>? subjectAlternativeNames;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<List<String>>? subjectAlternativeNames;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<String>? validationMethod;
-  final Input<List<CertificateValidationOption>>? validationOptions;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String>? validationMethod;
+  final pulumi.Input<List<CertificateValidationOption>>? validationOptions;
 
   CertificateArgs({
     this.certificateAuthorityArn,
@@ -71,9 +71,8 @@ class CertificateArgs {
     }
     final optionsValue = options;
     if (optionsValue != null) {
-      map['options'] =
-          Input.mapOptionalInputValue<CertificateOptions, Map<String, dynamic>>(
-              optionsValue, (value) => value.toMap());
+      map['options'] = pulumi.Input.mapOptionalInputValue<CertificateOptions,
+          Map<String, dynamic>>(optionsValue, (value) => value.toMap());
     }
     final privateKeyValue = privateKey;
     if (privateKeyValue != null) {
@@ -97,10 +96,10 @@ class CertificateArgs {
     }
     final validationOptionsValue = validationOptions;
     if (validationOptionsValue != null) {
-      map['validationOptions'] = Input.mapOptionalInputValue<
+      map['validationOptions'] = pulumi.Input.mapOptionalInputValue<
               List<CertificateValidationOption>, List<Map<String, dynamic>>>(
           validationOptionsValue,
-          (value) => Input.encodeList<CertificateValidationOption,
+          (value) => pulumi.Input.encodeList<CertificateValidationOption,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     return map;
@@ -109,22 +108,25 @@ class CertificateArgs {
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
       certificateAuthorityArn:
-          Input.asOptionalInput<String>(map['certificateAuthorityArn']),
-      certificateBody: Input.asOptionalInput<String>(map['certificateBody']),
-      certificateChain: Input.asOptionalInput<String>(map['certificateChain']),
-      domainName: Input.asOptionalInput<String>(map['domainName']),
+          pulumi.Input.asOptionalInput<String>(map['certificateAuthorityArn']),
+      certificateBody:
+          pulumi.Input.asOptionalInput<String>(map['certificateBody']),
+      certificateChain:
+          pulumi.Input.asOptionalInput<String>(map['certificateChain']),
+      domainName: pulumi.Input.asOptionalInput<String>(map['domainName']),
       earlyRenewalDuration:
-          Input.asOptionalInput<String>(map['earlyRenewalDuration']),
-      keyAlgorithm: Input.asOptionalInput<String>(map['keyAlgorithm']),
-      options: Input.asOptionalInput<CertificateOptions>(map['options']),
-      privateKey: Input.asOptionalInput<String>(map['privateKey']),
-      region: Input.asOptionalInput<String>(map['region']),
-      subjectAlternativeNames:
-          Input.asOptionalInput<List<String>>(map['subjectAlternativeNames']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      validationMethod: Input.asOptionalInput<String>(map['validationMethod']),
+          pulumi.Input.asOptionalInput<String>(map['earlyRenewalDuration']),
+      keyAlgorithm: pulumi.Input.asOptionalInput<String>(map['keyAlgorithm']),
+      options: pulumi.Input.asOptionalInput<CertificateOptions>(map['options']),
+      privateKey: pulumi.Input.asOptionalInput<String>(map['privateKey']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      subjectAlternativeNames: pulumi.Input.asOptionalInput<List<String>>(
+          map['subjectAlternativeNames']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      validationMethod:
+          pulumi.Input.asOptionalInput<String>(map['validationMethod']),
       validationOptions:
-          Input.asOptionalInput<List<CertificateValidationOption>>(
+          pulumi.Input.asOptionalInput<List<CertificateValidationOption>>(
               map['validationOptions']),
     );
   }

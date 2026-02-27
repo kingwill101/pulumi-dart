@@ -1,33 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DefaultSubnet.
 class DefaultSubnetArgs {
-  final Input<bool>? assignIpv6AddressOnCreation;
+  final pulumi.Input<bool>? assignIpv6AddressOnCreation;
 
   /// is required
   /// * The `availability_zone_id`, `cidr_block` and `vpc_id` arguments become computed attributes
   /// * The default value for `map_public_ip_on_launch` is `true`
   ///
   /// This resource supports the following additional arguments:
-  final Input<String> availabilityZone;
-  final Input<String>? customerOwnedIpv4Pool;
-  final Input<bool>? enableDns64;
-  final Input<bool>? enableResourceNameDnsARecordOnLaunch;
-  final Input<bool>? enableResourceNameDnsAaaaRecordOnLaunch;
+  final pulumi.Input<String> availabilityZone;
+  final pulumi.Input<String>? customerOwnedIpv4Pool;
+  final pulumi.Input<bool>? enableDns64;
+  final pulumi.Input<bool>? enableResourceNameDnsARecordOnLaunch;
+  final pulumi.Input<bool>? enableResourceNameDnsAaaaRecordOnLaunch;
 
   /// Whether destroying the resource deletes the default subnet. Default: `false`
-  final Input<bool>? forceDestroy;
-  final Input<String>? ipv6CidrBlock;
-  final Input<bool>? ipv6Native;
-  final Input<bool>? mapCustomerOwnedIpOnLaunch;
-  final Input<bool>? mapPublicIpOnLaunch;
-  final Input<String>? privateDnsHostnameTypeOnLaunch;
+  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<String>? ipv6CidrBlock;
+  final pulumi.Input<bool>? ipv6Native;
+  final pulumi.Input<bool>? mapCustomerOwnedIpOnLaunch;
+  final pulumi.Input<bool>? mapPublicIpOnLaunch;
+  final pulumi.Input<String>? privateDnsHostnameTypeOnLaunch;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  final Input<String>? region;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<Map<String, String>>? tags;
 
   DefaultSubnetArgs({
     this.assignIpv6AddressOnCreation,
@@ -111,27 +111,28 @@ class DefaultSubnetArgs {
 
   factory DefaultSubnetArgs.fromMap(Map<String, dynamic> map) {
     return DefaultSubnetArgs(
-      assignIpv6AddressOnCreation:
-          Input.asOptionalInput<bool>(map['assignIpv6AddressOnCreation']),
-      availabilityZone: Input.asInput<String>(map['availabilityZone']),
+      assignIpv6AddressOnCreation: pulumi.Input.asOptionalInput<bool>(
+          map['assignIpv6AddressOnCreation']),
+      availabilityZone: pulumi.Input.asInput<String>(map['availabilityZone']),
       customerOwnedIpv4Pool:
-          Input.asOptionalInput<String>(map['customerOwnedIpv4Pool']),
-      enableDns64: Input.asOptionalInput<bool>(map['enableDns64']),
-      enableResourceNameDnsARecordOnLaunch: Input.asOptionalInput<bool>(
+          pulumi.Input.asOptionalInput<String>(map['customerOwnedIpv4Pool']),
+      enableDns64: pulumi.Input.asOptionalInput<bool>(map['enableDns64']),
+      enableResourceNameDnsARecordOnLaunch: pulumi.Input.asOptionalInput<bool>(
           map['enableResourceNameDnsARecordOnLaunch']),
-      enableResourceNameDnsAaaaRecordOnLaunch: Input.asOptionalInput<bool>(
-          map['enableResourceNameDnsAaaaRecordOnLaunch']),
-      forceDestroy: Input.asOptionalInput<bool>(map['forceDestroy']),
-      ipv6CidrBlock: Input.asOptionalInput<String>(map['ipv6CidrBlock']),
-      ipv6Native: Input.asOptionalInput<bool>(map['ipv6Native']),
+      enableResourceNameDnsAaaaRecordOnLaunch:
+          pulumi.Input.asOptionalInput<bool>(
+              map['enableResourceNameDnsAaaaRecordOnLaunch']),
+      forceDestroy: pulumi.Input.asOptionalInput<bool>(map['forceDestroy']),
+      ipv6CidrBlock: pulumi.Input.asOptionalInput<String>(map['ipv6CidrBlock']),
+      ipv6Native: pulumi.Input.asOptionalInput<bool>(map['ipv6Native']),
       mapCustomerOwnedIpOnLaunch:
-          Input.asOptionalInput<bool>(map['mapCustomerOwnedIpOnLaunch']),
+          pulumi.Input.asOptionalInput<bool>(map['mapCustomerOwnedIpOnLaunch']),
       mapPublicIpOnLaunch:
-          Input.asOptionalInput<bool>(map['mapPublicIpOnLaunch']),
-      privateDnsHostnameTypeOnLaunch:
-          Input.asOptionalInput<String>(map['privateDnsHostnameTypeOnLaunch']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<bool>(map['mapPublicIpOnLaunch']),
+      privateDnsHostnameTypeOnLaunch: pulumi.Input.asOptionalInput<String>(
+          map['privateDnsHostnameTypeOnLaunch']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

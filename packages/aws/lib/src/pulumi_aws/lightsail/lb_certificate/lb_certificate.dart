@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lb_certificate_domain_validation_record/lb_certificate_domain_validation_record.dart';
 import 'lb_certificate_args.dart';
 
@@ -17,46 +17,46 @@ import 'lb_certificate_args.dart';
 /// ```sh
 /// $ pulumi import aws:lightsail/lbCertificate:LbCertificate example example-load-balancer,example-load-balancer-certificate
 /// ```
-class LbCertificate extends CustomResource {
+class LbCertificate extends pulumi.CustomResource {
   /// ARN of the lightsail certificate.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Timestamp when the instance was created.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// Domain name (e.g., example.com) for your SSL/TLS certificate.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// Set of domain validation objects which can be used to complete certificate validation. Can have more than one element, e.g., if SANs are defined.
-  late final Output<List<LbCertificateDomainValidationRecord>>
+  late final pulumi.Output<List<LbCertificateDomainValidationRecord>>
       domainValidationRecords;
 
   /// Load balancer name where you want to create the SSL/TLS certificate.
-  late final Output<String> lbName;
+  late final pulumi.Output<String> lbName;
 
   /// SSL/TLS certificate name.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Set of domains that should be SANs in the issued certificate. `domain_name` attribute is automatically added as a Subject Alternative Name.
-  late final Output<List<String>> subjectAlternativeNames;
+  late final pulumi.Output<List<String>> subjectAlternativeNames;
 
   /// Support code for the certificate.
-  late final Output<String> supportCode;
+  late final pulumi.Output<String> supportCode;
 
   LbCertificate(
     String name, {
     LbCertificateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lightsail/lbCertificate:LbCertificate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.createdAt = registerOutput<String>('createdAt');

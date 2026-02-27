@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_data_protection_policy_args.dart';
 
 /// Provides a CloudWatch Log Data Protection Policy resource.
@@ -16,25 +16,25 @@ import 'log_data_protection_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudwatch/logDataProtectionPolicy:LogDataProtectionPolicy example my-log-group
 /// ```
-class LogDataProtectionPolicy extends CustomResource {
+class LogDataProtectionPolicy extends pulumi.CustomResource {
   /// The name of the log group under which the log stream is to be created.
-  late final Output<String> logGroupName;
+  late final pulumi.Output<String> logGroupName;
 
   /// Specifies the data protection policy in JSON. Read more at [Data protection policy syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data-start.html#mask-sensitive-log-data-policysyntax).
-  late final Output<String> policyDocument;
+  late final pulumi.Output<String> policyDocument;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   LogDataProtectionPolicy(
     String name, {
     LogDataProtectionPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudwatch/logDataProtectionPolicy:LogDataProtectionPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.logGroupName = registerOutput<String>('logGroupName');
     this.policyDocument = registerOutput<String>('policyDocument');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_closing_setting/v2models_intent_closing_setting.dart';
 import '../v2models_intent_confirmation_setting/v2models_intent_confirmation_setting.dart';
 import '../v2models_intent_dialog_code_hook/v2models_intent_dialog_code_hook.dart';
@@ -38,84 +38,88 @@ import 'v2models_intent_args.dart';
 /// ```sh
 /// $ pulumi import aws:lex/v2modelsIntent:V2modelsIntent example intent-42874:bot-11376:DRAFT:en_US
 /// ```
-class V2modelsIntent extends CustomResource {
+class V2modelsIntent extends pulumi.CustomResource {
   /// Identifier of the bot associated with this intent.
-  late final Output<String> botId;
+  late final pulumi.Output<String> botId;
 
   /// Version of the bot associated with this intent.
-  late final Output<String> botVersion;
+  late final pulumi.Output<String> botVersion;
 
   /// Configuration block for the response that Amazon Lex sends to the user when the intent is closed. See `closing_setting`.
-  late final Output<V2modelsIntentClosingSetting?> closingSetting;
+  late final pulumi.Output<V2modelsIntentClosingSetting?> closingSetting;
 
   /// Configuration block for prompts that Amazon Lex sends to the user to confirm the completion of an intent. If the user answers "no," the settings contain a statement that is sent to the user to end the intent. If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default configurations for `Initial` and `Retry1` `prompt_attempts_specification`s. This will cause Terraform to report differences. Use the `confirmation_setting` configuration above in the Basic Usage example to avoid differences resulting from AWS default configuration. See `confirmation_setting`.
-  late final Output<V2modelsIntentConfirmationSetting?> confirmationSetting;
+  late final pulumi.Output<V2modelsIntentConfirmationSetting?>
+      confirmationSetting;
 
   /// Timestamp of the date and time that the intent was created.
-  late final Output<String> creationDateTime;
+  late final pulumi.Output<String> creationDateTime;
 
   /// Description of the intent. Use the description to help identify the intent in lists.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Configuration block for invoking the alias Lambda function for each user input. You can invoke this Lambda function to personalize user interaction. See `dialog_code_hook`.
-  late final Output<V2modelsIntentDialogCodeHook?> dialogCodeHook;
+  late final pulumi.Output<V2modelsIntentDialogCodeHook?> dialogCodeHook;
 
   /// Configuration block for invoking the alias Lambda function when the intent is ready for fulfillment. You can invoke this function to complete the bot's transaction with the user. See `fulfillment_code_hook`.
-  late final Output<V2modelsIntentFulfillmentCodeHook?> fulfillmentCodeHook;
+  late final pulumi.Output<V2modelsIntentFulfillmentCodeHook?>
+      fulfillmentCodeHook;
 
   /// Configuration block for the response that is sent to the user at the beginning of a conversation, before eliciting slot values. See `initial_response_setting`.
-  late final Output<V2modelsIntentInitialResponseSetting?>
+  late final pulumi.Output<V2modelsIntentInitialResponseSetting?>
       initialResponseSetting;
 
   /// Configuration blocks for contexts that must be active for this intent to be considered by Amazon Lex. When an intent has an input context list, Amazon Lex only considers using the intent in an interaction with the user when the specified contexts are included in the active context list for the session. If the contexts are not active, then Amazon Lex will not use the intent. A context can be automatically activated using the outputContexts property or it can be set at runtime. See `input_context`.
-  late final Output<List<V2modelsIntentInputContext>?> inputContexts;
+  late final pulumi.Output<List<V2modelsIntentInputContext>?> inputContexts;
 
   /// Unique identifier for the intent.
-  late final Output<String> intentId;
+  late final pulumi.Output<String> intentId;
 
   /// Configuration block for information required to use the AMAZON.KendraSearchIntent intent to connect to an Amazon Kendra index. The AMAZON.KendraSearchIntent intent is called when Amazon Lex can't determine another intent to invoke. Cannot be used with `qna_intent_configuration`. See `kendra_configuration`.
-  late final Output<V2modelsIntentKendraConfiguration?> kendraConfiguration;
+  late final pulumi.Output<V2modelsIntentKendraConfiguration?>
+      kendraConfiguration;
 
   /// Timestamp of the last time that the intent was modified.
-  late final Output<String> lastUpdatedDateTime;
+  late final pulumi.Output<String> lastUpdatedDateTime;
 
   /// Identifier of the language and locale where this intent is used. All of the bots, slot types, and slots used by the intent must have the same locale.
-  late final Output<String> localeId;
+  late final pulumi.Output<String> localeId;
 
   /// Name of the intent. Intent names must be unique in the locale that contains the intent and cannot match the name of any built-in intent.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Configuration blocks for contexts that the intent activates when it is fulfilled. You can use an output context to indicate the intents that Amazon Lex should consider for the next turn of the conversation with a customer. When you use the outputContextsList property, all of the contexts specified in the list are activated when the intent is fulfilled. You can set up to 10 output contexts. You can also set the number of conversation turns that the context should be active, or the length of time that the context should be active. See `output_context`.
-  late final Output<List<V2modelsIntentOutputContext>?> outputContexts;
+  late final pulumi.Output<List<V2modelsIntentOutputContext>?> outputContexts;
 
   /// Identifier for the built-in intent to base this intent on.
-  late final Output<String?> parentIntentSignature;
+  late final pulumi.Output<String?> parentIntentSignature;
 
   /// Configuration block for QnA intent settings. This is used when `parent_intent_signature` is set to `AMAZON.QnAIntent`. Cannot be used with `kendra_configuration`. See `qna_intent_configuration`.
-  late final Output<V2modelsIntentQnaIntentConfiguration?>
+  late final pulumi.Output<V2modelsIntentQnaIntentConfiguration?>
       qnaIntentConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration block for strings that a user might say to signal the intent. See `sample_utterance`.
-  late final Output<List<V2modelsIntentSampleUtterance>?> sampleUtterances;
+  late final pulumi.Output<List<V2modelsIntentSampleUtterance>?>
+      sampleUtterances;
 
   /// Configuration block for a new list of slots and their priorities that are contained by the intent. This is ignored on create and only valid for updates. See `slot_priority`.
-  late final Output<List<V2modelsIntentSlotPriority>?> slotPriorities;
-  late final Output<V2modelsIntentTimeouts?> timeouts;
+  late final pulumi.Output<List<V2modelsIntentSlotPriority>?> slotPriorities;
+  late final pulumi.Output<V2modelsIntentTimeouts?> timeouts;
 
   V2modelsIntent(
     String name, {
     V2modelsIntentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lex/v2modelsIntent:V2modelsIntent',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.botId = registerOutput<String>('botId');
     this.botVersion = registerOutput<String>('botVersion');

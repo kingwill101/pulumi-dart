@@ -1,4 +1,4 @@
 library module_cloudcontrol_resource;
 
-export 'resource/resource_args2.dart';
-export 'resource/resource_type2.dart';
+export 'resource/resource_cloudcontrol.dart';
+export 'resource/resource_cloudcontrol_args.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../log_delivery_configuration_log_configuration/log_delivery_configuration_log_configuration.dart';
 import 'log_delivery_configuration_args.dart';
 
@@ -37,28 +37,28 @@ import 'log_delivery_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration example us-west-2_example123
 /// ```
-class LogDeliveryConfiguration extends CustomResource {
+class LogDeliveryConfiguration extends pulumi.CustomResource {
   /// Configuration block for log delivery. At least one configuration block is required. See Log Configurations below.
-  late final Output<List<LogDeliveryConfigurationLogConfiguration>>
+  late final pulumi.Output<List<LogDeliveryConfigurationLogConfiguration>>
       logConfigurations;
 
   /// The AWS region.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the user pool for which to configure log delivery.
   ///
   /// The following arguments are optional:
-  late final Output<String> userPoolId;
+  late final pulumi.Output<String> userPoolId;
 
   LogDeliveryConfiguration(
     String name, {
     LogDeliveryConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cognito/logDeliveryConfiguration:LogDeliveryConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.logConfigurations =
         registerOutput<List<LogDeliveryConfigurationLogConfiguration>>(

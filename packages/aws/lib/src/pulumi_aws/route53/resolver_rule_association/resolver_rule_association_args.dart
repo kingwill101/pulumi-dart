@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ResolverRuleAssociation.
 class ResolverRuleAssociationArgs {
   /// A name for the association that you're creating between a resolver rule and a VPC.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of the resolver rule that you want to associate with the VPC.
-  final Input<String> resolverRuleId;
+  final pulumi.Input<String> resolverRuleId;
 
   /// The ID of the VPC that you want to associate the resolver rule with.
-  final Input<String> vpcId;
+  final pulumi.Input<String> vpcId;
 
   ResolverRuleAssociationArgs({
     this.name,
@@ -40,10 +40,10 @@ class ResolverRuleAssociationArgs {
 
   factory ResolverRuleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ResolverRuleAssociationArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      resolverRuleId: Input.asInput<String>(map['resolverRuleId']),
-      vpcId: Input.asInput<String>(map['vpcId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resolverRuleId: pulumi.Input.asInput<String>(map['resolverRuleId']),
+      vpcId: pulumi.Input.asInput<String>(map['vpcId']),
     );
   }
 }

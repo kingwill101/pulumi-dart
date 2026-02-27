@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getApplication.
 class GetApplicationArgs {
   /// ID of the Application. Either `id` or `name` must be specified.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// AWS AppConfig Application name. Either `name` or `id` must be specified.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetApplicationArgs({
     this.id,
@@ -38,9 +38,9 @@ class GetApplicationArgs {
 
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationArgs(
-      id: Input.asOptionalInput<String>(map['id']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_windows_file_system_audit_log_configuration/get_windows_file_system_audit_log_configuration.dart';
 import '../get_windows_file_system_disk_iops_configuration/get_windows_file_system_disk_iops_configuration.dart';
 
@@ -112,7 +112,7 @@ class GetWindowsFileSystemResult {
     map['activeDirectoryId'] = activeDirectoryId;
     map['aliases'] = aliases;
     map['arn'] = arn;
-    map['auditLogConfigurations'] = Input.encodeList<
+    map['auditLogConfigurations'] = pulumi.Input.encodeList<
         GetWindowsFileSystemAuditLogConfiguration,
         Map<String, dynamic>>(auditLogConfigurations, (value) => value.toMap());
     map['automaticBackupRetentionDays'] = automaticBackupRetentionDays;
@@ -120,7 +120,7 @@ class GetWindowsFileSystemResult {
     map['copyTagsToBackups'] = copyTagsToBackups;
     map['dailyAutomaticBackupStartTime'] = dailyAutomaticBackupStartTime;
     map['deploymentType'] = deploymentType;
-    map['diskIopsConfigurations'] = Input.encodeList<
+    map['diskIopsConfigurations'] = pulumi.Input.encodeList<
         GetWindowsFileSystemDiskIopsConfiguration,
         Map<String, dynamic>>(diskIopsConfigurations, (value) => value.toMap());
     map['dnsName'] = dnsName;
@@ -149,7 +149,7 @@ class GetWindowsFileSystemResult {
       aliases: (map['aliases'] as List).cast<String>(),
       arn: map['arn'] as String,
       auditLogConfigurations:
-          Input.decodeList<GetWindowsFileSystemAuditLogConfiguration>(
+          pulumi.Input.decodeList<GetWindowsFileSystemAuditLogConfiguration>(
               map['auditLogConfigurations'],
               (value) => GetWindowsFileSystemAuditLogConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -160,7 +160,7 @@ class GetWindowsFileSystemResult {
           map['dailyAutomaticBackupStartTime'] as String,
       deploymentType: map['deploymentType'] as String,
       diskIopsConfigurations:
-          Input.decodeList<GetWindowsFileSystemDiskIopsConfiguration>(
+          pulumi.Input.decodeList<GetWindowsFileSystemDiskIopsConfiguration>(
               map['diskIopsConfigurations'],
               (value) => GetWindowsFileSystemDiskIopsConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),

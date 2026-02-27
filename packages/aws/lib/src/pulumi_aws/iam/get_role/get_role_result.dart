@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_role_role_last_used/get_role_role_last_used.dart';
 
 /// Result data returned by getRole.
@@ -66,7 +66,7 @@ class GetRoleResult {
     map['path'] = path;
     map['permissionsBoundary'] = permissionsBoundary;
     map['roleLastUseds'] =
-        Input.encodeList<GetRoleRoleLastUsed, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetRoleRoleLastUsed, Map<String, dynamic>>(
             roleLastUseds, (value) => value.toMap());
     map['tags'] = tags;
     map['uniqueId'] = uniqueId;
@@ -84,7 +84,7 @@ class GetRoleResult {
       name: map['name'] as String,
       path: map['path'] as String,
       permissionsBoundary: map['permissionsBoundary'] as String,
-      roleLastUseds: Input.decodeList<GetRoleRoleLastUsed>(
+      roleLastUseds: pulumi.Input.decodeList<GetRoleRoleLastUsed>(
           map['roleLastUseds'],
           (value) => GetRoleRoleLastUsed.fromMap(
               (value as Map).cast<String, dynamic>())),

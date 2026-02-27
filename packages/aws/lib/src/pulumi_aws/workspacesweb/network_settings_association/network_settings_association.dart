@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_settings_association_args.dart';
 
 /// Resource for managing an AWS WorkSpaces Web Network Settings Association.
@@ -6,27 +6,27 @@ import 'network_settings_association_args.dart';
 /// ## Example Usage
 ///
 /// ### Basic Usage
-class NetworkSettingsAssociation extends CustomResource {
+class NetworkSettingsAssociation extends pulumi.CustomResource {
   /// ARN of the network settings to associate with the portal. Forces replacement if changed.
-  late final Output<String> networkSettingsArn;
+  late final pulumi.Output<String> networkSettingsArn;
 
   /// ARN of the portal to associate with the network settings. Forces replacement if changed.
   ///
   /// The following arguments are optional:
-  late final Output<String> portalArn;
+  late final pulumi.Output<String> portalArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   NetworkSettingsAssociation(
     String name, {
     NetworkSettingsAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:workspacesweb/networkSettingsAssociation:NetworkSettingsAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.networkSettingsArn = registerOutput<String>('networkSettingsArn');
     this.portalArn = registerOutput<String>('portalArn');

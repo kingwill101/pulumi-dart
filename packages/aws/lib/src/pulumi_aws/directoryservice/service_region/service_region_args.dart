@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_region_vpc_settings/service_region_vpc_settings.dart';
 
 /// The set of arguments for ServiceRegion.
 class ServiceRegionArgs {
   /// The number of domain controllers desired in the replicated directory. Minimum value of `2`.
-  final Input<int>? desiredNumberOfDomainControllers;
+  final pulumi.Input<int>? desiredNumberOfDomainControllers;
 
   /// The identifier of the directory to which you want to add Region replication.
-  final Input<String> directoryId;
+  final pulumi.Input<String> directoryId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The name of the Region where you want to add domain controllers for replication.
-  final Input<String> regionName;
+  final pulumi.Input<String> regionName;
 
   /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// VPC information in the replicated Region. Detailed below.
-  final Input<ServiceRegionVpcSettings> vpcSettings;
+  final pulumi.Input<ServiceRegionVpcSettings> vpcSettings;
 
   ServiceRegionArgs({
     this.desiredNumberOfDomainControllers,
@@ -50,21 +50,21 @@ class ServiceRegionArgs {
     if (tagsValue != null) {
       map['tags'] = tagsValue;
     }
-    map['vpcSettings'] =
-        Input.mapInputValue<ServiceRegionVpcSettings, Map<String, dynamic>>(
-            vpcSettings, (value) => value.toMap());
+    map['vpcSettings'] = pulumi.Input.mapInputValue<ServiceRegionVpcSettings,
+        Map<String, dynamic>>(vpcSettings, (value) => value.toMap());
     return map;
   }
 
   factory ServiceRegionArgs.fromMap(Map<String, dynamic> map) {
     return ServiceRegionArgs(
-      desiredNumberOfDomainControllers:
-          Input.asOptionalInput<int>(map['desiredNumberOfDomainControllers']),
-      directoryId: Input.asInput<String>(map['directoryId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      regionName: Input.asInput<String>(map['regionName']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vpcSettings: Input.asInput<ServiceRegionVpcSettings>(map['vpcSettings']),
+      desiredNumberOfDomainControllers: pulumi.Input.asOptionalInput<int>(
+          map['desiredNumberOfDomainControllers']),
+      directoryId: pulumi.Input.asInput<String>(map['directoryId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      regionName: pulumi.Input.asInput<String>(map['regionName']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpcSettings:
+          pulumi.Input.asInput<ServiceRegionVpcSettings>(map['vpcSettings']),
     );
   }
 }

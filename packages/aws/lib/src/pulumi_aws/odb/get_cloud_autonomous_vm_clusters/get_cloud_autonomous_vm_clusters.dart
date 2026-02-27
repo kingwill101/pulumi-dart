@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_cloud_autonomous_vm_clusters_args.dart';
 import 'get_cloud_autonomous_vm_clusters_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_cloud_autonomous_vm_clusters_result.dart';
 /// ### Basic Usage
 Future<GetCloudAutonomousVmClustersResult> getCloudAutonomousVmClusters(
   GetCloudAutonomousVmClustersArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:odb/getCloudAutonomousVmClusters:getCloudAutonomousVmClusters',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudAutonomousVmClustersResult.fromMap(result);
 }

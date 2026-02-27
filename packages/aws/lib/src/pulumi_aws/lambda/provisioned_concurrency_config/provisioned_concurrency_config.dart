@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'provisioned_concurrency_config_args.dart';
 
 /// Manages an AWS Lambda Provisioned Concurrency Configuration. Use this resource to configure provisioned concurrency for Lambda functions.
@@ -22,33 +22,33 @@ import 'provisioned_concurrency_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:lambda/provisionedConcurrencyConfig:ProvisionedConcurrencyConfig example example,production
 /// ```
-class ProvisionedConcurrencyConfig extends CustomResource {
+class ProvisionedConcurrencyConfig extends pulumi.CustomResource {
   /// Name or Amazon Resource Name (ARN) of the Lambda Function.
-  late final Output<String> functionName;
+  late final pulumi.Output<String> functionName;
 
   /// Amount of capacity to allocate. Must be greater than or equal to 1.
-  late final Output<int> provisionedConcurrentExecutions;
+  late final pulumi.Output<int> provisionedConcurrentExecutions;
 
   /// Lambda Function version or Lambda Alias name.
   ///
   /// The following arguments are optional:
-  late final Output<String> qualifier;
+  late final pulumi.Output<String> qualifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Whether to retain the provisioned concurrency configuration upon destruction. Defaults to `false`. If set to `true`, the resource is simply removed from state instead.
-  late final Output<bool?> skipDestroy;
+  late final pulumi.Output<bool?> skipDestroy;
 
   ProvisionedConcurrencyConfig(
     String name, {
     ProvisionedConcurrencyConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lambda/provisionedConcurrencyConfig:ProvisionedConcurrencyConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.functionName = registerOutput<String>('functionName');
     this.provisionedConcurrentExecutions =

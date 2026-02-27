@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Partner.
 class PartnerArgs {
   /// The Amazon Web Services account ID that owns the cluster.
-  final Input<String> accountId;
+  final pulumi.Input<String> accountId;
 
   /// The cluster identifier of the cluster that receives data from the partner.
-  final Input<String> clusterIdentifier;
+  final pulumi.Input<String> clusterIdentifier;
 
   /// The name of the database that receives data from the partner.
-  final Input<String> databaseName;
+  final pulumi.Input<String> databaseName;
 
   /// The name of the partner that is authorized to send data.
-  final Input<String> partnerName;
+  final pulumi.Input<String> partnerName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   PartnerArgs({
     required this.accountId,
@@ -42,11 +42,11 @@ class PartnerArgs {
 
   factory PartnerArgs.fromMap(Map<String, dynamic> map) {
     return PartnerArgs(
-      accountId: Input.asInput<String>(map['accountId']),
-      clusterIdentifier: Input.asInput<String>(map['clusterIdentifier']),
-      databaseName: Input.asInput<String>(map['databaseName']),
-      partnerName: Input.asInput<String>(map['partnerName']),
-      region: Input.asOptionalInput<String>(map['region']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
+      clusterIdentifier: pulumi.Input.asInput<String>(map['clusterIdentifier']),
+      databaseName: pulumi.Input.asInput<String>(map['databaseName']),
+      partnerName: pulumi.Input.asInput<String>(map['partnerName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

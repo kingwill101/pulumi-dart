@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../internet_monitor_health_events_config/internet_monitor_health_events_config.dart';
 import '../internet_monitor_internet_measurements_log_delivery/internet_monitor_internet_measurements_log_delivery.dart';
 import 'internet_monitor_args.dart';
@@ -16,52 +16,53 @@ import 'internet_monitor_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudwatch/internetMonitor:InternetMonitor some some-monitor
 /// ```
-class InternetMonitor extends CustomResource {
+class InternetMonitor extends pulumi.CustomResource {
   /// ARN of the Monitor.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Health event thresholds. A health event threshold percentage, for performance and availability, determines when Internet Monitor creates a health event when there's an internet issue that affects your application end users. See Health Events Config below.
-  late final Output<InternetMonitorHealthEventsConfig?> healthEventsConfig;
+  late final pulumi.Output<InternetMonitorHealthEventsConfig?>
+      healthEventsConfig;
 
   /// Publish internet measurements for Internet Monitor to an Amazon S3 bucket in addition to CloudWatch Logs.
-  late final Output<InternetMonitorInternetMeasurementsLogDelivery?>
+  late final pulumi.Output<InternetMonitorInternetMeasurementsLogDelivery?>
       internetMeasurementsLogDelivery;
 
   /// The maximum number of city-networks to monitor for your resources. A city-network is the location (city) where clients access your application resources from and the network or ASN, such as an internet service provider (ISP), that clients access the resources through. This limit helps control billing costs.
-  late final Output<int?> maxCityNetworksToMonitor;
+  late final pulumi.Output<int?> maxCityNetworksToMonitor;
 
   /// The name of the monitor.
   ///
   /// The following arguments are optional:
-  late final Output<String> monitorName;
+  late final pulumi.Output<String> monitorName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The resources to include in a monitor, which you provide as a set of Amazon Resource Names (ARNs).
-  late final Output<List<String>?> resources;
+  late final pulumi.Output<List<String>?> resources;
 
   /// The status for a monitor. The accepted values for Status with the UpdateMonitor API call are the following: `ACTIVE` and `INACTIVE`.
-  late final Output<String?> status;
+  late final pulumi.Output<String?> status;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The percentage of the internet-facing traffic for your application that you want to monitor with this monitor.
-  late final Output<int?> trafficPercentageToMonitor;
+  late final pulumi.Output<int?> trafficPercentageToMonitor;
 
   InternetMonitor(
     String name, {
     InternetMonitorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudwatch/internetMonitor:InternetMonitor',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.healthEventsConfig =

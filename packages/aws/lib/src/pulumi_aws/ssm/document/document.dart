@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../document_attachments_source/document_attachments_source.dart';
 import '../document_parameter/document_parameter.dart';
 import 'document_args.dart';
@@ -39,88 +39,88 @@ import 'document_args.dart';
 /// ```
 ///
 /// The `attachments_source` argument does not have an SSM API method for reading the attachment information detail after creation. If the argument is set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignore_changes` to hide the difference. For example:
-class Document extends CustomResource {
+class Document extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the document.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// One or more configuration blocks describing attachments sources to a version of a document. See `attachments_source` block below for details.
-  late final Output<List<DocumentAttachmentsSource>?> attachmentsSources;
+  late final pulumi.Output<List<DocumentAttachmentsSource>?> attachmentsSources;
 
   /// The content for the SSM document in JSON or YAML format. The content of the document must not exceed 64KB. This quota also includes the content specified for input parameters at runtime. We recommend storing the contents for your new document in an external JSON or YAML file and referencing the file in a command.
-  late final Output<String> content;
+  late final pulumi.Output<String> content;
 
   /// The date the document was created.
-  late final Output<String> createdDate;
+  late final pulumi.Output<String> createdDate;
 
   /// The default version of the document.
-  late final Output<String> defaultVersion;
+  late final pulumi.Output<String> defaultVersion;
 
   /// A description of what the parameter does, how to use it, the default value, and whether or not the parameter is optional.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// The format of the document. Valid values: `JSON`, `TEXT`, `YAML`.
-  late final Output<String?> documentFormat;
+  late final pulumi.Output<String?> documentFormat;
 
   /// The type of the document. For a list of valid values, see the [API Reference](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_CreateDocument.html#systemsmanager-CreateDocument-request-DocumentType).
-  late final Output<String> documentType;
+  late final pulumi.Output<String> documentType;
 
   /// The document version.
-  late final Output<String> documentVersion;
+  late final pulumi.Output<String> documentVersion;
 
   /// The Sha256 or Sha1 hash created by the system when the document was created.
-  late final Output<String> hash;
+  late final pulumi.Output<String> hash;
 
   /// The hash type of the document. Valid values: `Sha256`, `Sha1`.
-  late final Output<String> hashType;
+  late final pulumi.Output<String> hashType;
 
   /// The latest version of the document.
-  late final Output<String> latestVersion;
+  late final pulumi.Output<String> latestVersion;
 
   /// The name of the document.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The Amazon Web Services user that created the document.
-  late final Output<String> owner;
+  late final pulumi.Output<String> owner;
 
   /// One or more configuration blocks describing the parameters for the document. See `parameter` block below for details.
-  late final Output<List<DocumentParameter>> parameters;
+  late final pulumi.Output<List<DocumentParameter>> parameters;
 
   /// Additional permissions to attach to the document. See Permissions below for details.
-  late final Output<Map<String, String>?> permissions;
+  late final pulumi.Output<Map<String, String>?> permissions;
 
   /// The list of operating system (OS) platforms compatible with this SSM document. Valid values: `Windows`, `Linux`, `MacOS`.
-  late final Output<List<String>> platformTypes;
+  late final pulumi.Output<List<String>> platformTypes;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The schema version of the document.
-  late final Output<String> schemaVersion;
+  late final pulumi.Output<String> schemaVersion;
 
   /// The status of the SSM document. Valid values: `Creating`, `Active`, `Updating`, `Deleting`, `Failed`.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The target type which defines the kinds of resources the document can run on. For example, `/AWS::EC2::Instance`. For a list of valid resource types, see [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
-  late final Output<String?> targetType;
+  late final pulumi.Output<String?> targetType;
 
   /// The version of the artifact associated with the document. For example, `12.6`. This value is unique across all versions of a document, and can't be changed.
-  late final Output<String?> versionName;
+  late final pulumi.Output<String?> versionName;
 
   Document(
     String name, {
     DocumentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssm/document:Document',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.attachmentsSources =

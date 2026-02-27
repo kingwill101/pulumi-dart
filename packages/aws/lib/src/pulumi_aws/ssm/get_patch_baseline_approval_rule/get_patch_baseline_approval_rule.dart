@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_patch_baseline_approval_rule_patch_filter/get_patch_baseline_approval_rule_patch_filter.dart';
 
 class GetPatchBaselineApprovalRule {
@@ -33,7 +33,7 @@ class GetPatchBaselineApprovalRule {
     map['approveUntilDate'] = approveUntilDate;
     map['complianceLevel'] = complianceLevel;
     map['enableNonSecurity'] = enableNonSecurity;
-    map['patchFilters'] = Input.encodeList<
+    map['patchFilters'] = pulumi.Input.encodeList<
         GetPatchBaselineApprovalRulePatchFilter,
         Map<String, dynamic>>(patchFilters, (value) => value.toMap());
     return map;
@@ -45,10 +45,11 @@ class GetPatchBaselineApprovalRule {
       approveUntilDate: map['approveUntilDate'] as String,
       complianceLevel: map['complianceLevel'] as String,
       enableNonSecurity: map['enableNonSecurity'] as bool,
-      patchFilters: Input.decodeList<GetPatchBaselineApprovalRulePatchFilter>(
-          map['patchFilters'],
-          (value) => GetPatchBaselineApprovalRulePatchFilter.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      patchFilters:
+          pulumi.Input.decodeList<GetPatchBaselineApprovalRulePatchFilter>(
+              map['patchFilters'],
+              (value) => GetPatchBaselineApprovalRulePatchFilter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

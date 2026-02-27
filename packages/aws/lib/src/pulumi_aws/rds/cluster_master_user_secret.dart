@@ -1,3 +1,3 @@
 library module_rds_cluster_master_user_secret;
 
-export 'cluster_master_user_secret/cluster_master_user_secret2.dart';
+export 'cluster_master_user_secret/cluster_master_user_secret_rds.dart';

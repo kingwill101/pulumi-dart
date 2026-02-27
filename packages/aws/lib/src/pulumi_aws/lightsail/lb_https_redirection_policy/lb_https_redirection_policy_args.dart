@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LbHttpsRedirectionPolicy.
 class LbHttpsRedirectionPolicyArgs {
   /// Whether to enable HTTP to HTTPS redirection. `true` to activate HTTP to HTTPS redirection or `false` to deactivate HTTP to HTTPS redirection.
-  final Input<bool> enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Name of the load balancer to which you want to enable HTTP to HTTPS redirection.
   ///
   /// The following arguments are optional:
-  final Input<String> lbName;
+  final pulumi.Input<String> lbName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   LbHttpsRedirectionPolicyArgs({
     required this.enabled,
@@ -34,9 +34,9 @@ class LbHttpsRedirectionPolicyArgs {
 
   factory LbHttpsRedirectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LbHttpsRedirectionPolicyArgs(
-      enabled: Input.asInput<bool>(map['enabled']),
-      lbName: Input.asInput<String>(map['lbName']),
-      region: Input.asOptionalInput<String>(map['region']),
+      enabled: pulumi.Input.asInput<bool>(map['enabled']),
+      lbName: pulumi.Input.asInput<String>(map['lbName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client_authentication_sasl/get_cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client_authentication_sasl.dart';
 
 class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication {
@@ -16,7 +16,7 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenti
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['sasls'] = Input.encodeList<
+    map['sasls'] = pulumi.Input.encodeList<
         GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl,
         Map<String, dynamic>>(sasls, (value) => value.toMap());
     map['tls'] = tls;
@@ -26,7 +26,7 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenti
   factory GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap(
       Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication(
-      sasls: Input.decodeList<
+      sasls: pulumi.Input.decodeList<
               GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl>(
           map['sasls'],
           (value) =>

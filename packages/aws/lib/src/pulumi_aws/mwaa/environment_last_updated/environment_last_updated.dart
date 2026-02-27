@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../environment_last_updated_error/environment_last_updated_error.dart';
 
 class EnvironmentLastUpdated {
@@ -25,9 +25,8 @@ class EnvironmentLastUpdated {
     }
     final errorsValue = errors;
     if (errorsValue != null) {
-      map['errors'] =
-          Input.encodeList<EnvironmentLastUpdatedError, Map<String, dynamic>>(
-              errorsValue, (value) => value.toMap());
+      map['errors'] = pulumi.Input.encodeList<EnvironmentLastUpdatedError,
+          Map<String, dynamic>>(errorsValue, (value) => value.toMap());
     }
     final statusValue = status;
     if (statusValue != null) {
@@ -41,7 +40,7 @@ class EnvironmentLastUpdated {
       createdAt: map['createdAt'] == null ? null : map['createdAt'] as String,
       errors: map['errors'] == null
           ? null
-          : Input.decodeList<EnvironmentLastUpdatedError>(
+          : pulumi.Input.decodeList<EnvironmentLastUpdatedError>(
               map['errors'],
               (value) => EnvironmentLastUpdatedError.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,38 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../idc_application_authorized_token_issuer/idc_application_authorized_token_issuer.dart';
 import '../idc_application_service_integration/idc_application_service_integration.dart';
 
 /// The set of arguments for IdcApplication.
 class IdcApplicationArgs {
   /// Type of application being created. Valid values are `None` or `Lakehouse`.
-  final Input<String>? applicationType;
+  final pulumi.Input<String>? applicationType;
 
   /// Token issuer list for the Amazon Redshift IAM Identity Center application instance. Refer to the authorized_token_issuer documentation for more details.
-  final Input<IdcApplicationAuthorizedTokenIssuer>? authorizedTokenIssuer;
+  final pulumi.Input<IdcApplicationAuthorizedTokenIssuer>?
+      authorizedTokenIssuer;
 
   /// IAM role ARN for the Amazon Redshift IAM Identity Center application instance.
-  final Input<String> iamRoleArn;
+  final pulumi.Input<String> iamRoleArn;
 
   /// Display name for the Amazon Redshift IAM Identity Center application instance.
-  final Input<String> idcDisplayName;
+  final pulumi.Input<String> idcDisplayName;
 
   /// ARN of the IAM Identity Center instance where Amazon Redshift creates a new managed application.
-  final Input<String> idcInstanceArn;
+  final pulumi.Input<String> idcInstanceArn;
 
   /// Namespace for the Amazon Redshift IAM Identity Center application instance.
-  final Input<String>? identityNamespace;
+  final pulumi.Input<String>? identityNamespace;
 
   /// Name of the Redshift application in IAM Identity Center.
-  final Input<String> redshiftIdcApplicationName;
+  final pulumi.Input<String> redshiftIdcApplicationName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Collection of service integrations for the Redshift IAM Identity Center application. Refer to the service_integration documentation for more details.
-  final Input<IdcApplicationServiceIntegration>? serviceIntegration;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<IdcApplicationServiceIntegration>? serviceIntegration;
+  final pulumi.Input<Map<String, String>>? tags;
 
   IdcApplicationArgs({
     this.applicationType,
@@ -55,7 +56,7 @@ class IdcApplicationArgs {
     }
     final authorizedTokenIssuerValue = authorizedTokenIssuer;
     if (authorizedTokenIssuerValue != null) {
-      map['authorizedTokenIssuer'] = Input.mapOptionalInputValue<
+      map['authorizedTokenIssuer'] = pulumi.Input.mapOptionalInputValue<
               IdcApplicationAuthorizedTokenIssuer, Map<String, dynamic>>(
           authorizedTokenIssuerValue, (value) => value.toMap());
     }
@@ -73,7 +74,7 @@ class IdcApplicationArgs {
     }
     final serviceIntegrationValue = serviceIntegration;
     if (serviceIntegrationValue != null) {
-      map['serviceIntegration'] = Input.mapOptionalInputValue<
+      map['serviceIntegration'] = pulumi.Input.mapOptionalInputValue<
               IdcApplicationServiceIntegration, Map<String, dynamic>>(
           serviceIntegrationValue, (value) => value.toMap());
     }
@@ -86,22 +87,23 @@ class IdcApplicationArgs {
 
   factory IdcApplicationArgs.fromMap(Map<String, dynamic> map) {
     return IdcApplicationArgs(
-      applicationType: Input.asOptionalInput<String>(map['applicationType']),
+      applicationType:
+          pulumi.Input.asOptionalInput<String>(map['applicationType']),
       authorizedTokenIssuer:
-          Input.asOptionalInput<IdcApplicationAuthorizedTokenIssuer>(
+          pulumi.Input.asOptionalInput<IdcApplicationAuthorizedTokenIssuer>(
               map['authorizedTokenIssuer']),
-      iamRoleArn: Input.asInput<String>(map['iamRoleArn']),
-      idcDisplayName: Input.asInput<String>(map['idcDisplayName']),
-      idcInstanceArn: Input.asInput<String>(map['idcInstanceArn']),
+      iamRoleArn: pulumi.Input.asInput<String>(map['iamRoleArn']),
+      idcDisplayName: pulumi.Input.asInput<String>(map['idcDisplayName']),
+      idcInstanceArn: pulumi.Input.asInput<String>(map['idcInstanceArn']),
       identityNamespace:
-          Input.asOptionalInput<String>(map['identityNamespace']),
+          pulumi.Input.asOptionalInput<String>(map['identityNamespace']),
       redshiftIdcApplicationName:
-          Input.asInput<String>(map['redshiftIdcApplicationName']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asInput<String>(map['redshiftIdcApplicationName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       serviceIntegration:
-          Input.asOptionalInput<IdcApplicationServiceIntegration>(
+          pulumi.Input.asOptionalInput<IdcApplicationServiceIntegration>(
               map['serviceIntegration']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

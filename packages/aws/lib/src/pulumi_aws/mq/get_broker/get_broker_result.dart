@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_broker_configuration/get_broker_configuration.dart';
 import '../get_broker_encryption_option/get_broker_encryption_option.dart';
 import '../get_broker_instance/get_broker_instance.dart';
@@ -109,19 +109,19 @@ class GetBrokerResult {
     map['brokerName'] = brokerName;
     map['configuration'] = configuration.toMap();
     map['deploymentMode'] = deploymentMode;
-    map['encryptionOptions'] =
-        Input.encodeList<GetBrokerEncryptionOption, Map<String, dynamic>>(
-            encryptionOptions, (value) => value.toMap());
+    map['encryptionOptions'] = pulumi.Input.encodeList<
+        GetBrokerEncryptionOption,
+        Map<String, dynamic>>(encryptionOptions, (value) => value.toMap());
     map['engineType'] = engineType;
     map['engineVersion'] = engineVersion;
     map['hostInstanceType'] = hostInstanceType;
     map['id'] = id;
     map['instances'] =
-        Input.encodeList<GetBrokerInstance, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetBrokerInstance, Map<String, dynamic>>(
             instances, (value) => value.toMap());
-    map['ldapServerMetadatas'] =
-        Input.encodeList<GetBrokerLdapServerMetadata, Map<String, dynamic>>(
-            ldapServerMetadatas, (value) => value.toMap());
+    map['ldapServerMetadatas'] = pulumi.Input.encodeList<
+        GetBrokerLdapServerMetadata,
+        Map<String, dynamic>>(ldapServerMetadatas, (value) => value.toMap());
     map['logs'] = logs.toMap();
     map['maintenanceWindowStartTime'] = maintenanceWindowStartTime.toMap();
     map['publiclyAccessible'] = publiclyAccessible;
@@ -130,7 +130,7 @@ class GetBrokerResult {
     map['storageType'] = storageType;
     map['subnetIds'] = subnetIds;
     map['tags'] = tags;
-    map['users'] = Input.encodeList<GetBrokerUser, Map<String, dynamic>>(
+    map['users'] = pulumi.Input.encodeList<GetBrokerUser, Map<String, dynamic>>(
         users, (value) => value.toMap());
     return map;
   }
@@ -145,7 +145,7 @@ class GetBrokerResult {
       configuration: GetBrokerConfiguration.fromMap(
           (map['configuration'] as Map).cast<String, dynamic>()),
       deploymentMode: map['deploymentMode'] as String,
-      encryptionOptions: Input.decodeList<GetBrokerEncryptionOption>(
+      encryptionOptions: pulumi.Input.decodeList<GetBrokerEncryptionOption>(
           map['encryptionOptions'],
           (value) => GetBrokerEncryptionOption.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -153,11 +153,11 @@ class GetBrokerResult {
       engineVersion: map['engineVersion'] as String,
       hostInstanceType: map['hostInstanceType'] as String,
       id: map['id'] as String,
-      instances: Input.decodeList<GetBrokerInstance>(
+      instances: pulumi.Input.decodeList<GetBrokerInstance>(
           map['instances'],
           (value) => GetBrokerInstance.fromMap(
               (value as Map).cast<String, dynamic>())),
-      ldapServerMetadatas: Input.decodeList<GetBrokerLdapServerMetadata>(
+      ldapServerMetadatas: pulumi.Input.decodeList<GetBrokerLdapServerMetadata>(
           map['ldapServerMetadatas'],
           (value) => GetBrokerLdapServerMetadata.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -170,7 +170,7 @@ class GetBrokerResult {
       storageType: map['storageType'] as String,
       subnetIds: (map['subnetIds'] as List).cast<String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
-      users: Input.decodeList<GetBrokerUser>(
+      users: pulumi.Input.decodeList<GetBrokerUser>(
           map['users'],
           (value) =>
               GetBrokerUser.fromMap((value as Map).cast<String, dynamic>())),

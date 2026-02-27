@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../object_copy_grant/object_copy_grant.dart';
 import '../object_copy_override_provider/object_copy_override_provider.dart';
 import 'object_copy_args.dart';
@@ -13,176 +13,176 @@ import 'object_copy_args.dart';
 ///
 /// S3 objects support a [maximum of 10 tags](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html).
 /// If the resource's own `tags` and the provider-level `default_tags` would together lead to more than 10 tags on an S3 object copy, use the `override_provider` configuration block to suppress any provider-level `default_tags`.
-class ObjectCopy extends CustomResource {
+class ObjectCopy extends pulumi.CustomResource {
   /// [Canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl) to apply. Valid values are `private`, `public-read`, `public-read-write`, `authenticated-read`, `aws-exec-read`, `bucket-owner-read`, and `bucket-owner-full-control`. Conflicts with `grant`.
-  late final Output<String> acl;
+  late final pulumi.Output<String> acl;
 
   /// ARN of the object.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Name of the bucket to put the file in.
-  late final Output<String> bucket;
-  late final Output<bool> bucketKeyEnabled;
+  late final pulumi.Output<String> bucket;
+  late final pulumi.Output<bool> bucketKeyEnabled;
 
   /// Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
-  late final Output<String> cacheControl;
+  late final pulumi.Output<String> cacheControl;
 
   /// Indicates the algorithm used to create the checksum for the object. If a value is specified and the object is encrypted with KMS, you must have permission to use the `kms:Decrypt` action. Valid values: `CRC32`, `CRC32C`, `CRC64NVME` `SHA1`, `SHA256`.
-  late final Output<String?> checksumAlgorithm;
+  late final pulumi.Output<String?> checksumAlgorithm;
 
   /// The base64-encoded, 32-bit CRC32 checksum of the object.
-  late final Output<String> checksumCrc32;
+  late final pulumi.Output<String> checksumCrc32;
 
   /// The base64-encoded, 32-bit CRC32C checksum of the object.
-  late final Output<String> checksumCrc32c;
+  late final pulumi.Output<String> checksumCrc32c;
 
   /// The base64-encoded, 64-bit CRC64NVME checksum of the object.
-  late final Output<String> checksumCrc64nvme;
+  late final pulumi.Output<String> checksumCrc64nvme;
 
   /// The base64-encoded, 160-bit SHA-1 digest of the object.
-  late final Output<String> checksumSha1;
+  late final pulumi.Output<String> checksumSha1;
 
   /// The base64-encoded, 256-bit SHA-256 digest of the object.
-  late final Output<String> checksumSha256;
+  late final pulumi.Output<String> checksumSha256;
 
   /// Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
-  late final Output<String> contentDisposition;
+  late final pulumi.Output<String> contentDisposition;
 
   /// Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
-  late final Output<String> contentEncoding;
+  late final pulumi.Output<String> contentEncoding;
 
   /// Language the content is in e.g., en-US or en-GB.
-  late final Output<String> contentLanguage;
+  late final pulumi.Output<String> contentLanguage;
 
   /// Standard MIME type describing the format of the object data, e.g., `application/octet-stream`. All Valid MIME Types are valid for this input.
-  late final Output<String> contentType;
+  late final pulumi.Output<String> contentType;
 
   /// Copies the object if its entity tag (ETag) matches the specified tag.
-  late final Output<String?> copyIfMatch;
+  late final pulumi.Output<String?> copyIfMatch;
 
   /// Copies the object if it has been modified since the specified time, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  late final Output<String?> copyIfModifiedSince;
+  late final pulumi.Output<String?> copyIfModifiedSince;
 
   /// Copies the object if its entity tag (ETag) is different than the specified ETag.
-  late final Output<String?> copyIfNoneMatch;
+  late final pulumi.Output<String?> copyIfNoneMatch;
 
   /// Copies the object if it hasn't been modified since the specified time, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  late final Output<String?> copyIfUnmodifiedSince;
+  late final pulumi.Output<String?> copyIfUnmodifiedSince;
 
   /// Specifies the algorithm to use to when encrypting the object (for example, AES256).
-  late final Output<String> customerAlgorithm;
+  late final pulumi.Output<String> customerAlgorithm;
 
   /// Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This value is used to store the object and then it is discarded; Amazon S3 does not store the encryption key. The key must be appropriate for use with the algorithm specified in the x-amz-server-side-encryption-customer-algorithm header.
-  late final Output<String?> customerKey;
+  late final pulumi.Output<String?> customerKey;
 
   /// Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure that the encryption key was transmitted without error.
-  late final Output<String> customerKeyMd5;
+  late final pulumi.Output<String> customerKeyMd5;
 
   /// ETag generated for the object (an MD5 sum of the object content). For plaintext objects or objects encrypted with an AWS-managed key, the hash is an MD5 digest of the object data. For objects encrypted with a KMS key or objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5 digest, regardless of the method of encryption. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Account id of the expected destination bucket owner. If the destination bucket is owned by a different account, the request will fail with an HTTP 403 (Access Denied) error.
-  late final Output<String?> expectedBucketOwner;
+  late final pulumi.Output<String?> expectedBucketOwner;
 
   /// Account id of the expected source bucket owner. If the source bucket is owned by a different account, the request will fail with an HTTP 403 (Access Denied) error.
-  late final Output<String?> expectedSourceBucketOwner;
+  late final pulumi.Output<String?> expectedSourceBucketOwner;
 
   /// If the object expiration is configured, this attribute will be set.
-  late final Output<String> expiration;
+  late final pulumi.Output<String> expiration;
 
   /// Date and time at which the object is no longer cacheable, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  late final Output<String?> expires;
+  late final pulumi.Output<String?> expires;
 
   /// Allow the object to be deleted by removing any legal hold on any object version. Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
-  late final Output<bool?> forceDestroy;
+  late final pulumi.Output<bool?> forceDestroy;
 
   /// Configuration block for header grants. Documented below. Conflicts with `acl`.
-  late final Output<List<ObjectCopyGrant>?> grants;
+  late final pulumi.Output<List<ObjectCopyGrant>?> grants;
 
   /// Name of the object once it is in the bucket.
-  late final Output<String> key;
+  late final pulumi.Output<String> key;
 
   /// Specifies the AWS KMS Encryption Context to use for object encryption. The value is a base64-encoded UTF-8 string holding JSON with the encryption context key-value pairs.
-  late final Output<String> kmsEncryptionContext;
+  late final pulumi.Output<String> kmsEncryptionContext;
 
   /// Specifies the AWS KMS Key ARN to use for object encryption. This value is a fully qualified **ARN** of the KMS Key. If using `aws.kms.Key`, use the exported `arn` attribute: `kms_key_id = aws_kms_key.foo.arn`
-  late final Output<String> kmsKeyId;
+  late final pulumi.Output<String> kmsKeyId;
 
   /// Returns the date that the object was last modified, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  late final Output<String> lastModified;
+  late final pulumi.Output<String> lastModified;
 
   /// Map of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
-  late final Output<Map<String, String>> metadata;
+  late final pulumi.Output<Map<String, String>> metadata;
 
   /// Specifies whether the metadata is copied from the source object or replaced with metadata provided in the request. Valid values are `COPY` and `REPLACE`.
-  late final Output<String?> metadataDirective;
+  late final pulumi.Output<String?> metadataDirective;
 
   /// The [legal hold](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-legal-holds) status that you want to apply to the specified object. Valid values are `ON` and `OFF`.
-  late final Output<String> objectLockLegalHoldStatus;
+  late final pulumi.Output<String> objectLockLegalHoldStatus;
 
   /// Object lock [retention mode](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-retention-modes) that you want to apply to this object. Valid values are `GOVERNANCE` and `COMPLIANCE`.
-  late final Output<String> objectLockMode;
+  late final pulumi.Output<String> objectLockMode;
 
   /// Date and time, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8), when this object's object lock will [expire](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html#object-lock-retention-periods).
-  late final Output<String> objectLockRetainUntilDate;
-  late final Output<ObjectCopyOverrideProvider?> overrideProvider;
+  late final pulumi.Output<String> objectLockRetainUntilDate;
+  late final pulumi.Output<ObjectCopyOverrideProvider?> overrideProvider;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// If present, indicates that the requester was successfully charged for the request.
-  late final Output<bool> requestCharged;
+  late final pulumi.Output<bool> requestCharged;
 
   /// Confirms that the requester knows that they will be charged for the request. Bucket owners need not specify this parameter in their requests. For information about downloading objects from requester pays buckets, see Downloading Objects in Requestor Pays Buckets (https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectsinRequesterPaysBuckets.html) in the Amazon S3 Developer Guide. If included, the only valid value is `requester`.
-  late final Output<String?> requestPayer;
+  late final pulumi.Output<String?> requestPayer;
 
   /// Specifies server-side encryption of the object in S3. Valid values are `AES256` and `aws:kms`.
-  late final Output<String> serverSideEncryption;
+  late final pulumi.Output<String> serverSideEncryption;
 
   /// Specifies the source object for the copy operation. You specify the value in one of two formats. For objects not accessed through an access point, specify the name of the source bucket and the key of the source object, separated by a slash (`/`). For example, `testbucket/test1.json`. For objects accessed through access points, specify the ARN of the object as accessed through the access point, in the format `arn:aws:s3:<Region>:<account-id>:accesspoint/<access-point-name>/object/<key>`. For example, `arn:aws:s3:us-west-2:9999912999:accesspoint/my-access-point/object/testbucket/test1.json`.
   ///
   /// The following arguments are optional:
-  late final Output<String> source;
+  late final pulumi.Output<String> source;
 
   /// Specifies the algorithm to use when decrypting the source object (for example, AES256).
-  late final Output<String?> sourceCustomerAlgorithm;
+  late final pulumi.Output<String?> sourceCustomerAlgorithm;
 
   /// Specifies the customer-provided encryption key for Amazon S3 to use to decrypt the source object. The encryption key provided in this header must be one that was used when the source object was created.
-  late final Output<String?> sourceCustomerKey;
+  late final pulumi.Output<String?> sourceCustomerKey;
 
   /// Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321. Amazon S3 uses this header for a message integrity check to ensure that the encryption key was transmitted without error.
-  late final Output<String?> sourceCustomerKeyMd5;
+  late final pulumi.Output<String?> sourceCustomerKeyMd5;
 
   /// Version of the copied object in the source bucket.
-  late final Output<String> sourceVersionId;
+  late final pulumi.Output<String> sourceVersionId;
 
   /// Specifies the desired [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html#AmazonS3-CopyObject-request-header-StorageClass) for the object. Defaults to `STANDARD`.
-  late final Output<String> storageClass;
+  late final pulumi.Output<String> storageClass;
 
   /// Specifies whether the object tag-set are copied from the source object or replaced with tag-set provided in the request. Valid values are `COPY` and `REPLACE`.
-  late final Output<String?> taggingDirective;
+  late final pulumi.Output<String?> taggingDirective;
 
   /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Version ID of the newly created copy.
-  late final Output<String> versionId;
+  late final pulumi.Output<String> versionId;
 
   /// Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
-  late final Output<String> websiteRedirect;
+  late final pulumi.Output<String> websiteRedirect;
 
   ObjectCopy(
     String name, {
     ObjectCopyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/objectCopy:ObjectCopy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.acl = registerOutput<String>('acl');
     this.arn = registerOutput<String>('arn');

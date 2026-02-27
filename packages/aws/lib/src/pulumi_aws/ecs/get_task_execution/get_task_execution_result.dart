@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_task_execution_capacity_provider_strategy/get_task_execution_capacity_provider_strategy.dart';
 import '../get_task_execution_network_configuration/get_task_execution_network_configuration.dart';
 import '../get_task_execution_overrides/get_task_execution_overrides.dart';
@@ -64,7 +64,7 @@ class GetTaskExecutionResult {
     final map = <String, dynamic>{};
     final capacityProviderStrategiesValue = capacityProviderStrategies;
     if (capacityProviderStrategiesValue != null) {
-      map['capacityProviderStrategies'] = Input.encodeList<
+      map['capacityProviderStrategies'] = pulumi.Input.encodeList<
               GetTaskExecutionCapacityProviderStrategy, Map<String, dynamic>>(
           capacityProviderStrategiesValue, (value) => value.toMap());
     }
@@ -104,13 +104,13 @@ class GetTaskExecutionResult {
     }
     final placementConstraintsValue = placementConstraints;
     if (placementConstraintsValue != null) {
-      map['placementConstraints'] = Input.encodeList<
+      map['placementConstraints'] = pulumi.Input.encodeList<
               GetTaskExecutionPlacementConstraint, Map<String, dynamic>>(
           placementConstraintsValue, (value) => value.toMap());
     }
     final placementStrategiesValue = placementStrategies;
     if (placementStrategiesValue != null) {
-      map['placementStrategies'] = Input.encodeList<
+      map['placementStrategies'] = pulumi.Input.encodeList<
               GetTaskExecutionPlacementStrategy, Map<String, dynamic>>(
           placementStrategiesValue, (value) => value.toMap());
     }
@@ -144,7 +144,7 @@ class GetTaskExecutionResult {
     return GetTaskExecutionResult(
       capacityProviderStrategies: map['capacityProviderStrategies'] == null
           ? null
-          : Input.decodeList<GetTaskExecutionCapacityProviderStrategy>(
+          : pulumi.Input.decodeList<GetTaskExecutionCapacityProviderStrategy>(
               map['capacityProviderStrategies'],
               (value) => GetTaskExecutionCapacityProviderStrategy.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -173,13 +173,13 @@ class GetTaskExecutionResult {
               (map['overrides'] as Map).cast<String, dynamic>()),
       placementConstraints: map['placementConstraints'] == null
           ? null
-          : Input.decodeList<GetTaskExecutionPlacementConstraint>(
+          : pulumi.Input.decodeList<GetTaskExecutionPlacementConstraint>(
               map['placementConstraints'],
               (value) => GetTaskExecutionPlacementConstraint.fromMap(
                   (value as Map).cast<String, dynamic>())),
       placementStrategies: map['placementStrategies'] == null
           ? null
-          : Input.decodeList<GetTaskExecutionPlacementStrategy>(
+          : pulumi.Input.decodeList<GetTaskExecutionPlacementStrategy>(
               map['placementStrategies'],
               (value) => GetTaskExecutionPlacementStrategy.fromMap(
                   (value as Map).cast<String, dynamic>())),

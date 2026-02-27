@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAccountPublicAccessBlock.
 class GetAccountPublicAccessBlockArgs {
   /// AWS account ID to configure. Defaults to automatically determined account ID of the AWS provider.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   GetAccountPublicAccessBlockArgs({
     this.accountId,
@@ -22,7 +22,7 @@ class GetAccountPublicAccessBlockArgs {
 
   factory GetAccountPublicAccessBlockArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountPublicAccessBlockArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
     );
   }
 }

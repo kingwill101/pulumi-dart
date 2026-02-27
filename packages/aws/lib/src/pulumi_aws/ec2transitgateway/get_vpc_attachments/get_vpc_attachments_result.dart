@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_attachments_filter/get_vpc_attachments_filter.dart';
 
 /// Result data returned by getVpcAttachments.
@@ -25,9 +25,8 @@ class GetVpcAttachmentsResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetVpcAttachmentsFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetVpcAttachmentsFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['ids'] = ids;
@@ -39,7 +38,7 @@ class GetVpcAttachmentsResult {
     return GetVpcAttachmentsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVpcAttachmentsFilter>(
+          : pulumi.Input.decodeList<GetVpcAttachmentsFilter>(
               map['filters'],
               (value) => GetVpcAttachmentsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../distribution_origin_group_failover_criteria/distribution_origin_group_failover_criteria.dart';
 import '../distribution_origin_group_member/distribution_origin_group_member.dart';
 
@@ -21,9 +21,8 @@ class DistributionOriginGroup {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['failoverCriteria'] = failoverCriteria.toMap();
-    map['members'] =
-        Input.encodeList<DistributionOriginGroupMember, Map<String, dynamic>>(
-            members, (value) => value.toMap());
+    map['members'] = pulumi.Input.encodeList<DistributionOriginGroupMember,
+        Map<String, dynamic>>(members, (value) => value.toMap());
     map['originId'] = originId;
     return map;
   }
@@ -32,7 +31,7 @@ class DistributionOriginGroup {
     return DistributionOriginGroup(
       failoverCriteria: DistributionOriginGroupFailoverCriteria.fromMap(
           (map['failoverCriteria'] as Map).cast<String, dynamic>()),
-      members: Input.decodeList<DistributionOriginGroupMember>(
+      members: pulumi.Input.decodeList<DistributionOriginGroupMember>(
           map['members'],
           (value) => DistributionOriginGroupMember.fromMap(
               (value as Map).cast<String, dynamic>())),

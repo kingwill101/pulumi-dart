@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_definition_node_property_node_range_property_container/get_job_definition_node_property_node_range_property_container.dart';
 
 class GetJobDefinitionNodePropertyNodeRangeProperty {
@@ -17,7 +17,7 @@ class GetJobDefinitionNodePropertyNodeRangeProperty {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['containers'] = Input.encodeList<
+    map['containers'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainer,
         Map<String, dynamic>>(containers, (value) => value.toMap());
     map['targetNodes'] = targetNodes;
@@ -27,7 +27,7 @@ class GetJobDefinitionNodePropertyNodeRangeProperty {
   factory GetJobDefinitionNodePropertyNodeRangeProperty.fromMap(
       Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangeProperty(
-      containers: Input.decodeList<
+      containers: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainer>(
           map['containers'],
           (value) =>

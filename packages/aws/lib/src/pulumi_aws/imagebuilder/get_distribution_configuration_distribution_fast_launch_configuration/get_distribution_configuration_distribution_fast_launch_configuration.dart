@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_distribution_configuration_distribution_fast_launch_configuration_launch_template/get_distribution_configuration_distribution_fast_launch_configuration_launch_template.dart';
 import '../get_distribution_configuration_distribution_fast_launch_configuration_snapshot_configuration/get_distribution_configuration_distribution_fast_launch_configuration_snapshot_configuration.dart';
 
@@ -36,11 +36,11 @@ class GetDistributionConfigurationDistributionFastLaunchConfiguration {
     final map = <String, dynamic>{};
     map['accountId'] = accountId;
     map['enabled'] = enabled;
-    map['launchTemplates'] = Input.encodeList<
+    map['launchTemplates'] = pulumi.Input.encodeList<
         GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate,
         Map<String, dynamic>>(launchTemplates, (value) => value.toMap());
     map['maxParallelLaunches'] = maxParallelLaunches;
-    map['snapshotConfigurations'] = Input.encodeList<
+    map['snapshotConfigurations'] = pulumi.Input.encodeList<
         GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration,
         Map<String, dynamic>>(snapshotConfigurations, (value) => value.toMap());
     return map;
@@ -51,14 +51,14 @@ class GetDistributionConfigurationDistributionFastLaunchConfiguration {
     return GetDistributionConfigurationDistributionFastLaunchConfiguration(
       accountId: map['accountId'] as String,
       enabled: map['enabled'] as bool,
-      launchTemplates: Input.decodeList<
+      launchTemplates: pulumi.Input.decodeList<
               GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate>(
           map['launchTemplates'],
           (value) =>
               GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate
                   .fromMap((value as Map).cast<String, dynamic>())),
       maxParallelLaunches: map['maxParallelLaunches'] as int,
-      snapshotConfigurations: Input.decodeList<
+      snapshotConfigurations: pulumi.Input.decodeList<
               GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration>(
           map['snapshotConfigurations'],
           (value) =>

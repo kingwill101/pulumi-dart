@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../domain_rule_based_matching_attribute_types_selector/domain_rule_based_matching_attribute_types_selector.dart';
 import '../domain_rule_based_matching_conflict_resolution/domain_rule_based_matching_conflict_resolution.dart';
 import '../domain_rule_based_matching_exporting_config/domain_rule_based_matching_exporting_config.dart';
@@ -57,7 +57,7 @@ class DomainRuleBasedMatching {
     }
     final matchingRulesValue = matchingRules;
     if (matchingRulesValue != null) {
-      map['matchingRules'] = Input.encodeList<
+      map['matchingRules'] = pulumi.Input.encodeList<
           DomainRuleBasedMatchingMatchingRule,
           Map<String, dynamic>>(matchingRulesValue, (value) => value.toMap());
     }
@@ -94,7 +94,7 @@ class DomainRuleBasedMatching {
               (map['exportingConfig'] as Map).cast<String, dynamic>()),
       matchingRules: map['matchingRules'] == null
           ? null
-          : Input.decodeList<DomainRuleBasedMatchingMatchingRule>(
+          : pulumi.Input.decodeList<DomainRuleBasedMatchingMatchingRule>(
               map['matchingRules'],
               (value) => DomainRuleBasedMatchingMatchingRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

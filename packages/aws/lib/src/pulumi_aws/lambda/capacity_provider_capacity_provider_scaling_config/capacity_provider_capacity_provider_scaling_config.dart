@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../capacity_provider_capacity_provider_scaling_config_scaling_policy/capacity_provider_capacity_provider_scaling_config_scaling_policy.dart';
 
 class CapacityProviderCapacityProviderScalingConfig {
@@ -24,7 +24,7 @@ class CapacityProviderCapacityProviderScalingConfig {
     final map = <String, dynamic>{};
     map['maxVcpuCount'] = maxVcpuCount;
     map['scalingMode'] = scalingMode;
-    map['scalingPolicies'] = Input.encodeList<
+    map['scalingPolicies'] = pulumi.Input.encodeList<
         CapacityProviderCapacityProviderScalingConfigScalingPolicy,
         Map<String, dynamic>>(scalingPolicies, (value) => value.toMap());
     return map;
@@ -35,7 +35,7 @@ class CapacityProviderCapacityProviderScalingConfig {
     return CapacityProviderCapacityProviderScalingConfig(
       maxVcpuCount: map['maxVcpuCount'] as int,
       scalingMode: map['scalingMode'] as String,
-      scalingPolicies: Input.decodeList<
+      scalingPolicies: pulumi.Input.decodeList<
               CapacityProviderCapacityProviderScalingConfigScalingPolicy>(
           map['scalingPolicies'],
           (value) => CapacityProviderCapacityProviderScalingConfigScalingPolicy

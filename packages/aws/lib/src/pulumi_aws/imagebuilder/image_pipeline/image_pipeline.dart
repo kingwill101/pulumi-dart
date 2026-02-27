@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../image_pipeline_image_scanning_configuration/image_pipeline_image_scanning_configuration.dart';
 import '../image_pipeline_image_tests_configuration/image_pipeline_image_tests_configuration.dart';
 import '../image_pipeline_logging_configuration/image_pipeline_logging_configuration.dart';
@@ -20,89 +20,90 @@ import 'image_pipeline_args.dart';
 /// ```sh
 /// $ pulumi import aws:imagebuilder/imagePipeline:ImagePipeline example arn:aws:imagebuilder:us-east-1:123456789012:image-pipeline/example
 /// ```
-class ImagePipeline extends CustomResource {
+class ImagePipeline extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the image pipeline.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Amazon Resource Name (ARN) of the container recipe.
-  late final Output<String?> containerRecipeArn;
+  late final pulumi.Output<String?> containerRecipeArn;
 
   /// Date the image pipeline was created.
-  late final Output<String> dateCreated;
+  late final pulumi.Output<String> dateCreated;
 
   /// Date the image pipeline was last run.
-  late final Output<String> dateLastRun;
+  late final pulumi.Output<String> dateLastRun;
 
   /// Date the image pipeline will run next.
-  late final Output<String> dateNextRun;
+  late final pulumi.Output<String> dateNextRun;
 
   /// Date the image pipeline was updated.
-  late final Output<String> dateUpdated;
+  late final pulumi.Output<String> dateUpdated;
 
   /// Description of the image pipeline.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
-  late final Output<String?> distributionConfigurationArn;
+  late final pulumi.Output<String?> distributionConfigurationArn;
 
   /// Whether additional information about the image being created is collected. Defaults to `true`.
-  late final Output<bool?> enhancedImageMetadataEnabled;
+  late final pulumi.Output<bool?> enhancedImageMetadataEnabled;
 
   /// Amazon Resource Name (ARN) of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
-  late final Output<String?> executionRole;
+  late final pulumi.Output<String?> executionRole;
 
   /// Amazon Resource Name (ARN) of the image recipe.
-  late final Output<String?> imageRecipeArn;
+  late final pulumi.Output<String?> imageRecipeArn;
 
   /// Configuration block with image scanning configuration. Detailed below.
-  late final Output<ImagePipelineImageScanningConfiguration>
+  late final pulumi.Output<ImagePipelineImageScanningConfiguration>
       imageScanningConfiguration;
 
   /// Configuration block with image tests configuration. Detailed below.
-  late final Output<ImagePipelineImageTestsConfiguration>
+  late final pulumi.Output<ImagePipelineImageTestsConfiguration>
       imageTestsConfiguration;
 
   /// Amazon Resource Name (ARN) of the Image Builder Infrastructure Configuration.
-  late final Output<String> infrastructureConfigurationArn;
+  late final pulumi.Output<String> infrastructureConfigurationArn;
 
   /// Configuration block with logging configuration. Detailed below.
-  late final Output<ImagePipelineLoggingConfiguration?> loggingConfiguration;
+  late final pulumi.Output<ImagePipelineLoggingConfiguration?>
+      loggingConfiguration;
 
   /// Name of the image pipeline.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Platform of the image pipeline.
-  late final Output<String> platform;
+  late final pulumi.Output<String> platform;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration block with schedule settings. Detailed below.
-  late final Output<ImagePipelineSchedule?> schedule;
+  late final pulumi.Output<ImagePipelineSchedule?> schedule;
 
   /// Status of the image pipeline. Valid values are `DISABLED` and `ENABLED`. Defaults to `ENABLED`.
-  late final Output<String?> status;
+  late final pulumi.Output<String?> status;
 
   /// Key-value map of resource tags for the image pipeline. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Configuration block with the workflow configuration. Detailed below.
-  late final Output<List<ImagePipelineWorkflow>> workflows;
+  late final pulumi.Output<List<ImagePipelineWorkflow>> workflows;
 
   ImagePipeline(
     String name, {
     ImagePipelineArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:imagebuilder/imagePipeline:ImagePipeline',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.containerRecipeArn = registerOutput<String?>('containerRecipeArn');

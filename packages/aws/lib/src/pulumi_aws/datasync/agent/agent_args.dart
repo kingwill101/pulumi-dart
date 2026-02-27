@@ -1,35 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Agent.
 class AgentArgs {
   /// DataSync Agent activation key during resource creation. Conflicts with `ip_address`. If an `ip_address` is provided instead, the provider will retrieve the `activation_key` as part of the resource creation.
-  final Input<String>? activationKey;
+  final pulumi.Input<String>? activationKey;
 
   /// DataSync Agent IP address to retrieve activation key during resource creation. Conflicts with `activation_key`. DataSync Agent must be accessible on port 80 from where the provider is running.
-  final Input<String>? ipAddress;
+  final pulumi.Input<String>? ipAddress;
 
   /// Name of the DataSync Agent.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The IP address of the VPC endpoint the agent should connect to when retrieving an activation key during resource creation. Conflicts with `activation_key`.
-  final Input<String>? privateLinkEndpoint;
+  final pulumi.Input<String>? privateLinkEndpoint;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ARNs of the security groups used to protect your data transfer task subnets.
-  final Input<List<String>>? securityGroupArns;
+  final pulumi.Input<List<String>>? securityGroupArns;
 
   /// The Amazon Resource Names (ARNs) of the subnets in which DataSync will create elastic network interfaces for each data transfer task.
-  final Input<List<String>>? subnetArns;
+  final pulumi.Input<List<String>>? subnetArns;
 
   /// Key-value pairs of resource tags to assign to the DataSync Agent. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The ID of the VPC (virtual private cloud) endpoint that the agent has access to.
-  final Input<String>? vpcEndpointId;
+  final pulumi.Input<String>? vpcEndpointId;
 
   AgentArgs({
     this.activationKey,
@@ -86,17 +86,17 @@ class AgentArgs {
 
   factory AgentArgs.fromMap(Map<String, dynamic> map) {
     return AgentArgs(
-      activationKey: Input.asOptionalInput<String>(map['activationKey']),
-      ipAddress: Input.asOptionalInput<String>(map['ipAddress']),
-      name: Input.asOptionalInput<String>(map['name']),
+      activationKey: pulumi.Input.asOptionalInput<String>(map['activationKey']),
+      ipAddress: pulumi.Input.asOptionalInput<String>(map['ipAddress']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       privateLinkEndpoint:
-          Input.asOptionalInput<String>(map['privateLinkEndpoint']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['privateLinkEndpoint']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       securityGroupArns:
-          Input.asOptionalInput<List<String>>(map['securityGroupArns']),
-      subnetArns: Input.asOptionalInput<List<String>>(map['subnetArns']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vpcEndpointId: Input.asOptionalInput<String>(map['vpcEndpointId']),
+          pulumi.Input.asOptionalInput<List<String>>(map['securityGroupArns']),
+      subnetArns: pulumi.Input.asOptionalInput<List<String>>(map['subnetArns']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpcEndpointId: pulumi.Input.asOptionalInput<String>(map['vpcEndpointId']),
     );
   }
 }

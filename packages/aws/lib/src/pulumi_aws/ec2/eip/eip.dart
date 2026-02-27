@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'eip_args.dart';
 
 /// Provides an Elastic IP resource.
@@ -36,65 +36,65 @@ import 'eip_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/eip:Eip bar eipalloc-00a10e96
 /// ```
-class Eip extends CustomResource {
+class Eip extends pulumi.CustomResource {
   /// IP address from an EC2 BYOIP pool. This option is only available for VPC EIPs.
-  late final Output<String?> address;
+  late final pulumi.Output<String?> address;
 
   /// ID that AWS assigns to represent the allocation of the Elastic IP address for use with instances in a VPC.
-  late final Output<String> allocationId;
-  late final Output<String> arn;
+  late final pulumi.Output<String> allocationId;
+  late final pulumi.Output<String> arn;
 
   /// User-specified primary or secondary private IP address to associate with the Elastic IP address. If no private IP address is specified, the Elastic IP address is associated with the primary private IP address.
-  late final Output<String?> associateWithPrivateIp;
+  late final pulumi.Output<String?> associateWithPrivateIp;
 
   /// ID representing the association of the address with an instance in a VPC.
-  late final Output<String> associationId;
+  late final pulumi.Output<String> associationId;
 
   /// Carrier IP address.
-  late final Output<String> carrierIp;
+  late final pulumi.Output<String> carrierIp;
 
   /// Customer owned IP.
-  late final Output<String> customerOwnedIp;
+  late final pulumi.Output<String> customerOwnedIp;
 
   /// ID  of a customer-owned address pool. For more on customer owned IP addressed check out [Customer-owned IP addresses guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing).
-  late final Output<String?> customerOwnedIpv4Pool;
+  late final pulumi.Output<String?> customerOwnedIpv4Pool;
 
   /// Indicates if this EIP is for use in VPC (`vpc`).
-  late final Output<String> domain;
+  late final pulumi.Output<String> domain;
 
   /// EC2 instance ID.
-  late final Output<String> instance;
+  late final pulumi.Output<String> instance;
 
   /// The ID of an IPAM pool which has an Amazon-provided or BYOIP public IPv4 CIDR provisioned to it.
-  late final Output<String> ipamPoolId;
+  late final pulumi.Output<String> ipamPoolId;
 
   /// Location from which the IP address is advertised. Use this parameter to limit the address to this location.
-  late final Output<String> networkBorderGroup;
+  late final pulumi.Output<String> networkBorderGroup;
 
   /// Network interface ID to associate with.
-  late final Output<String> networkInterface;
+  late final pulumi.Output<String> networkInterface;
 
   /// The Private DNS associated with the Elastic IP address (if in VPC).
-  late final Output<String> privateDns;
+  late final pulumi.Output<String> privateDns;
 
   /// Contains the private IP address (if in VPC).
-  late final Output<String> privateIp;
+  late final pulumi.Output<String> privateIp;
 
   /// The DNS pointer (PTR) record for the IP address.
-  late final Output<String> ptrRecord;
+  late final pulumi.Output<String> ptrRecord;
 
   /// Public DNS associated with the Elastic IP address.
-  late final Output<String> publicDns;
+  late final pulumi.Output<String> publicDns;
 
   /// Contains the public IP address.
-  late final Output<String> publicIp;
+  late final pulumi.Output<String> publicIp;
 
   /// EC2 IPv4 address pool identifier or `amazon`.
   /// This option is only available for VPC EIPs.
-  late final Output<String> publicIpv4Pool;
+  late final pulumi.Output<String> publicIpv4Pool;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Map of tags to assign to the resource. Tags can only be applied to EIPs in a VPC. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
@@ -103,20 +103,20 @@ class Eip extends CustomResource {
   /// See the relevant [AssociateAddress API Call][1] for more information.
   ///
   /// > **NOTE:** Specifying both `public_ipv4_pool` and `address` won't cause an error, however, only `address` will be used if both options are defined as the API only requires one of the two.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Eip(
     String name, {
     EipArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/eip:Eip',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.address = registerOutput<String?>('address');
     this.allocationId = registerOutput<String>('allocationId');

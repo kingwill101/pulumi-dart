@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for EnvironmentMembership.
 class EnvironmentMembershipArgs {
   /// The ID of the environment that contains the environment member you want to add.
-  final Input<String> environmentId;
+  final pulumi.Input<String> environmentId;
 
   /// The type of environment member permissions you want to associate with this environment member. Allowed values are `read-only` and `read-write` .
-  final Input<String> permissions;
+  final pulumi.Input<String> permissions;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The Amazon Resource Name (ARN) of the environment member you want to add.
-  final Input<String> userArn;
+  final pulumi.Input<String> userArn;
 
   EnvironmentMembershipArgs({
     required this.environmentId,
@@ -37,10 +37,10 @@ class EnvironmentMembershipArgs {
 
   factory EnvironmentMembershipArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentMembershipArgs(
-      environmentId: Input.asInput<String>(map['environmentId']),
-      permissions: Input.asInput<String>(map['permissions']),
-      region: Input.asOptionalInput<String>(map['region']),
-      userArn: Input.asInput<String>(map['userArn']),
+      environmentId: pulumi.Input.asInput<String>(map['environmentId']),
+      permissions: pulumi.Input.asInput<String>(map['permissions']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      userArn: pulumi.Input.asInput<String>(map['userArn']),
     );
   }
 }

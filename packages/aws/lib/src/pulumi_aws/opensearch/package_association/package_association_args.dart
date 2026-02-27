@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for PackageAssociation.
 class PackageAssociationArgs {
   /// Name of the domain to associate the package with.
-  final Input<String> domainName;
+  final pulumi.Input<String> domainName;
 
   /// Internal ID of the package to associate with a domain.
-  final Input<String> packageId;
+  final pulumi.Input<String> packageId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   PackageAssociationArgs({
     required this.domainName,
@@ -32,9 +32,9 @@ class PackageAssociationArgs {
 
   factory PackageAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PackageAssociationArgs(
-      domainName: Input.asInput<String>(map['domainName']),
-      packageId: Input.asInput<String>(map['packageId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      domainName: pulumi.Input.asInput<String>(map['domainName']),
+      packageId: pulumi.Input.asInput<String>(map['packageId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

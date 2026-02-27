@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_intelligent_tiering_configuration_filter/bucket_intelligent_tiering_configuration_filter.dart';
 import '../bucket_intelligent_tiering_configuration_tiering/bucket_intelligent_tiering_configuration_tiering.dart';
 import 'bucket_intelligent_tiering_configuration_args.dart';
@@ -24,35 +24,35 @@ import 'bucket_intelligent_tiering_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3/bucketIntelligentTieringConfiguration:BucketIntelligentTieringConfiguration my-bucket-entire-bucket my-bucket:EntireBucket
 /// ```
-class BucketIntelligentTieringConfiguration extends CustomResource {
+class BucketIntelligentTieringConfiguration extends pulumi.CustomResource {
   /// Name of the bucket this intelligent tiering configuration is associated with.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Bucket filter. The configuration only includes objects that meet the filter's criteria (documented below).
-  late final Output<BucketIntelligentTieringConfigurationFilter?> filter;
+  late final pulumi.Output<BucketIntelligentTieringConfigurationFilter?> filter;
 
   /// Unique name used to identify the S3 Intelligent-Tiering configuration for the bucket.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Specifies the status of the configuration. Valid values: `Enabled`, `Disabled`.
-  late final Output<String?> status;
+  late final pulumi.Output<String?> status;
 
   /// S3 Intelligent-Tiering storage class tiers of the configuration (documented below).
-  late final Output<List<BucketIntelligentTieringConfigurationTiering>>
+  late final pulumi.Output<List<BucketIntelligentTieringConfigurationTiering>>
       tierings;
 
   BucketIntelligentTieringConfiguration(
     String name, {
     BucketIntelligentTieringConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/bucketIntelligentTieringConfiguration:BucketIntelligentTieringConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.filter =

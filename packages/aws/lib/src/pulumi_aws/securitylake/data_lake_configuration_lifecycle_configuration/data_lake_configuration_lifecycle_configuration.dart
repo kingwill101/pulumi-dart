@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_lake_configuration_lifecycle_configuration_expiration/data_lake_configuration_lifecycle_configuration_expiration.dart';
 import '../data_lake_configuration_lifecycle_configuration_transition/data_lake_configuration_lifecycle_configuration_transition.dart';
 
@@ -25,7 +25,7 @@ class DataLakeConfigurationLifecycleConfiguration {
     }
     final transitionsValue = transitions;
     if (transitionsValue != null) {
-      map['transitions'] = Input.encodeList<
+      map['transitions'] = pulumi.Input.encodeList<
           DataLakeConfigurationLifecycleConfigurationTransition,
           Map<String, dynamic>>(transitionsValue, (value) => value.toMap());
     }
@@ -41,7 +41,7 @@ class DataLakeConfigurationLifecycleConfiguration {
               (map['expiration'] as Map).cast<String, dynamic>()),
       transitions: map['transitions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DataLakeConfigurationLifecycleConfigurationTransition>(
               map['transitions'],
               (value) =>

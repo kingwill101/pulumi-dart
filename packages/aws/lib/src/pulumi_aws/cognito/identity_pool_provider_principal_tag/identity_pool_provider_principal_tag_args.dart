@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for IdentityPoolProviderPrincipalTag.
 class IdentityPoolProviderPrincipalTagArgs {
   /// An identity pool ID.
-  final Input<String> identityPoolId;
+  final pulumi.Input<String> identityPoolId;
 
   /// The name of the identity provider.
-  final Input<String> identityProviderName;
+  final pulumi.Input<String> identityProviderName;
 
   /// String to string map of variables.
-  final Input<Map<String, String>>? principalTags;
+  final pulumi.Input<Map<String, String>>? principalTags;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// use default (username and clientID) attribute mappings.
-  final Input<bool>? useDefaults;
+  final pulumi.Input<bool>? useDefaults;
 
   IdentityPoolProviderPrincipalTagArgs({
     required this.identityPoolId,
@@ -49,12 +49,13 @@ class IdentityPoolProviderPrincipalTagArgs {
   factory IdentityPoolProviderPrincipalTagArgs.fromMap(
       Map<String, dynamic> map) {
     return IdentityPoolProviderPrincipalTagArgs(
-      identityPoolId: Input.asInput<String>(map['identityPoolId']),
-      identityProviderName: Input.asInput<String>(map['identityProviderName']),
-      principalTags:
-          Input.asOptionalInput<Map<String, String>>(map['principalTags']),
-      region: Input.asOptionalInput<String>(map['region']),
-      useDefaults: Input.asOptionalInput<bool>(map['useDefaults']),
+      identityPoolId: pulumi.Input.asInput<String>(map['identityPoolId']),
+      identityProviderName:
+          pulumi.Input.asInput<String>(map['identityProviderName']),
+      principalTags: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['principalTags']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      useDefaults: pulumi.Input.asOptionalInput<bool>(map['useDefaults']),
     );
   }
 }

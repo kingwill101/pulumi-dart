@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'base_path_mapping_args.dart';
 
 /// Connects a custom domain name registered via `aws.apigateway.DomainName`
@@ -32,34 +32,34 @@ import 'base_path_mapping_args.dart';
 /// ```sh
 /// $ pulumi import aws:apigateway/basePathMapping:BasePathMapping example api.internal.example.com/base-path/abcde12345
 /// ```
-class BasePathMapping extends CustomResource {
+class BasePathMapping extends pulumi.CustomResource {
   /// Path segment that must be prepended to the path when accessing the API via this mapping. If omitted, the API is exposed at the root of the given domain.
-  late final Output<String?> basePath;
+  late final pulumi.Output<String?> basePath;
 
   /// Already-registered domain name to connect the API to.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// The identifier for the domain name resource. Supported only for private custom domain names.
-  late final Output<String?> domainNameId;
+  late final pulumi.Output<String?> domainNameId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ID of the API to connect.
-  late final Output<String> restApi;
+  late final pulumi.Output<String> restApi;
 
   /// Name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.
-  late final Output<String?> stageName;
+  late final pulumi.Output<String?> stageName;
 
   BasePathMapping(
     String name, {
     BasePathMappingArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigateway/basePathMapping:BasePathMapping',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.basePath = registerOutput<String?>('basePath');
     this.domainName = registerOutput<String>('domainName');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_workflow_step_parallel_config_step_global_aurora_config_ungraceful/plan_workflow_step_parallel_config_step_global_aurora_config_ungraceful.dart';
 
 class PlanWorkflowStepParallelConfigStepGlobalAuroraConfig {
@@ -55,7 +55,7 @@ class PlanWorkflowStepParallelConfigStepGlobalAuroraConfig {
     }
     final ungracefulsValue = ungracefuls;
     if (ungracefulsValue != null) {
-      map['ungracefuls'] = Input.encodeList<
+      map['ungracefuls'] = pulumi.Input.encodeList<
           PlanWorkflowStepParallelConfigStepGlobalAuroraConfigUngraceful,
           Map<String, dynamic>>(ungracefulsValue, (value) => value.toMap());
     }
@@ -77,7 +77,7 @@ class PlanWorkflowStepParallelConfigStepGlobalAuroraConfig {
           map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
       ungracefuls: map['ungracefuls'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepGlobalAuroraConfigUngraceful>(
               map['ungracefuls'],
               (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../flow_log_destination_options/flow_log_destination_options.dart';
 import 'flow_log_args.dart';
 
@@ -37,74 +37,74 @@ import 'flow_log_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/flowLog:FlowLog test_flow_log fl-1a2b3c4d
 /// ```
-class FlowLog extends CustomResource {
+class FlowLog extends pulumi.CustomResource {
   /// ARN of the Flow Log.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// ARN of the IAM role in the destination account used for cross-account delivery of flow logs.
-  late final Output<String?> deliverCrossAccountRole;
+  late final pulumi.Output<String?> deliverCrossAccountRole;
 
   /// Describes the destination options for a flow log. More details below.
-  late final Output<FlowLogDestinationOptions?> destinationOptions;
+  late final pulumi.Output<FlowLogDestinationOptions?> destinationOptions;
 
   /// Elastic Network Interface ID to attach to.
-  late final Output<String?> eniId;
+  late final pulumi.Output<String?> eniId;
 
   /// ARN of the IAM role used to post flow logs. Corresponds to `DeliverLogsPermissionArn` in the [AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFlowLogs.html).
-  late final Output<String?> iamRoleArn;
+  late final pulumi.Output<String?> iamRoleArn;
 
   /// ARN of the logging destination.
-  late final Output<String> logDestination;
+  late final pulumi.Output<String> logDestination;
 
   /// Logging destination type. Valid values: `cloud-watch-logs`, `s3`, `kinesis-data-firehose`. Default: `cloud-watch-logs`.
-  late final Output<String?> logDestinationType;
+  late final pulumi.Output<String?> logDestinationType;
 
   /// The fields to include in the flow log record. Accepted format example: `"$${interface-id} $${srcaddr} $${dstaddr} $${srcport} $${dstport}"`.
-  late final Output<String> logFormat;
+  late final pulumi.Output<String> logFormat;
 
   /// The maximum interval of time during which a flow of packets is captured and aggregated into a flow log record.
   /// Valid Values: `60` seconds (1 minute) or `600` seconds (10 minutes). Default: `600`.
   /// When `transit_gateway_id` or `transit_gateway_attachment_id` is specified, `max_aggregation_interval` *must* be 60 seconds (1 minute).
-  late final Output<int?> maxAggregationInterval;
+  late final pulumi.Output<int?> maxAggregationInterval;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Regional NAT Gateway ID to attach to.
-  late final Output<String?> regionalNatGatewayId;
+  late final pulumi.Output<String?> regionalNatGatewayId;
 
   /// Subnet ID to attach to.
-  late final Output<String?> subnetId;
+  late final pulumi.Output<String?> subnetId;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The type of traffic to capture. Valid values: `ACCEPT`,`REJECT`, `ALL`. Required if `eni_id`, `regional_nat_gateway_id`, `subnet_id`, or `vpc_id` is specified.
-  late final Output<String?> trafficType;
+  late final pulumi.Output<String?> trafficType;
 
   /// Transit Gateway Attachment ID to attach to.
-  late final Output<String?> transitGatewayAttachmentId;
+  late final pulumi.Output<String?> transitGatewayAttachmentId;
 
   /// Transit Gateway ID to attach to.
-  late final Output<String?> transitGatewayId;
+  late final pulumi.Output<String?> transitGatewayId;
 
   /// VPC ID to attach to.
   ///
   /// > **NOTE:** One of `eni_id`, `regional_nat_gateway_id`, `subnet_id`, `transit_gateway_id`, `transit_gateway_attachment_id`, or `vpc_id` must be specified.
-  late final Output<String?> vpcId;
+  late final pulumi.Output<String?> vpcId;
 
   FlowLog(
     String name, {
     FlowLogArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/flowLog:FlowLog',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.deliverCrossAccountRole =

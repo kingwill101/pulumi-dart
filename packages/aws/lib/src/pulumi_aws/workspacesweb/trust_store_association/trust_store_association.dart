@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trust_store_association_args.dart';
 
 /// Resource for managing an AWS WorkSpaces Web Trust Store Association.
@@ -16,27 +16,27 @@ import 'trust_store_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:workspacesweb/trustStoreAssociation:TrustStoreAssociation example arn:aws:workspaces-web:us-west-2:123456789012:trustStore/trust_store-id-12345678,arn:aws:workspaces-web:us-west-2:123456789012:portal/portal-id-12345678
 /// ```
-class TrustStoreAssociation extends CustomResource {
+class TrustStoreAssociation extends pulumi.CustomResource {
   /// ARN of the portal to associate with the trust store. Forces replacement if changed.
   ///
   /// The following arguments are optional:
-  late final Output<String> portalArn;
+  late final pulumi.Output<String> portalArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the trust store to associate with the portal. Forces replacement if changed.
-  late final Output<String> trustStoreArn;
+  late final pulumi.Output<String> trustStoreArn;
 
   TrustStoreAssociation(
     String name, {
     TrustStoreAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:workspacesweb/trustStoreAssociation:TrustStoreAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.portalArn = registerOutput<String>('portalArn');
     this.region = registerOutput<String>('region');

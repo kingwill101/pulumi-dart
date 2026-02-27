@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_quick_connect_quick_connect_config/get_quick_connect_quick_connect_config.dart';
 
 /// Result data returned by getQuickConnect.
@@ -45,7 +45,7 @@ class GetQuickConnectResult {
     map['id'] = id;
     map['instanceId'] = instanceId;
     map['name'] = name;
-    map['quickConnectConfigs'] = Input.encodeList<
+    map['quickConnectConfigs'] = pulumi.Input.encodeList<
         GetQuickConnectQuickConnectConfig,
         Map<String, dynamic>>(quickConnectConfigs, (value) => value.toMap());
     map['quickConnectId'] = quickConnectId;
@@ -61,10 +61,11 @@ class GetQuickConnectResult {
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
       name: map['name'] as String,
-      quickConnectConfigs: Input.decodeList<GetQuickConnectQuickConnectConfig>(
-          map['quickConnectConfigs'],
-          (value) => GetQuickConnectQuickConnectConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      quickConnectConfigs:
+          pulumi.Input.decodeList<GetQuickConnectQuickConnectConfig>(
+              map['quickConnectConfigs'],
+              (value) => GetQuickConnectQuickConnectConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       quickConnectId: map['quickConnectId'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),

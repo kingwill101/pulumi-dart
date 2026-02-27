@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_contributor_managed_insight_rules_managed_rule/get_contributor_managed_insight_rules_managed_rule.dart';
 
 /// Result data returned by getContributorManagedInsightRules.
@@ -25,7 +25,7 @@ class GetContributorManagedInsightRulesResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['managedRules'] = Input.encodeList<
+    map['managedRules'] = pulumi.Input.encodeList<
         GetContributorManagedInsightRulesManagedRule,
         Map<String, dynamic>>(managedRules, (value) => value.toMap());
     map['region'] = region;
@@ -38,7 +38,7 @@ class GetContributorManagedInsightRulesResult {
     return GetContributorManagedInsightRulesResult(
       id: map['id'] as String,
       managedRules:
-          Input.decodeList<GetContributorManagedInsightRulesManagedRule>(
+          pulumi.Input.decodeList<GetContributorManagedInsightRulesManagedRule>(
               map['managedRules'],
               (value) => GetContributorManagedInsightRulesManagedRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

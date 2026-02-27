@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_regex_match_statement_field_to_match_cookies_match_pattern/web_acl_rule_statement_regex_match_statement_field_to_match_cookies_match_pattern.dart';
 
 class WebAclRuleStatementRegexMatchStatementFieldToMatchCookies {
@@ -23,7 +23,7 @@ class WebAclRuleStatementRegexMatchStatementFieldToMatchCookies {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['matchPatterns'] = Input.encodeList<
+    map['matchPatterns'] = pulumi.Input.encodeList<
         WebAclRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern,
         Map<String, dynamic>>(matchPatterns, (value) => value.toMap());
     map['matchScope'] = matchScope;
@@ -34,7 +34,7 @@ class WebAclRuleStatementRegexMatchStatementFieldToMatchCookies {
   factory WebAclRuleStatementRegexMatchStatementFieldToMatchCookies.fromMap(
       Map<String, dynamic> map) {
     return WebAclRuleStatementRegexMatchStatementFieldToMatchCookies(
-      matchPatterns: Input.decodeList<
+      matchPatterns: pulumi.Input.decodeList<
               WebAclRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern>(
           map['matchPatterns'],
           (value) =>

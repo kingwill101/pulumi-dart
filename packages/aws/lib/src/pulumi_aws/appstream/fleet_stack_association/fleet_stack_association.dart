@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fleet_stack_association_args.dart';
 
 /// Manages an AppStream Fleet Stack association.
@@ -14,25 +14,25 @@ import 'fleet_stack_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:appstream/fleetStackAssociation:FleetStackAssociation example fleetName/stackName
 /// ```
-class FleetStackAssociation extends CustomResource {
+class FleetStackAssociation extends pulumi.CustomResource {
   /// Name of the fleet.
-  late final Output<String> fleetName;
+  late final pulumi.Output<String> fleetName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Name of the stack.
-  late final Output<String> stackName;
+  late final pulumi.Output<String> stackName;
 
   FleetStackAssociation(
     String name, {
     FleetStackAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:appstream/fleetStackAssociation:FleetStackAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.fleetName = registerOutput<String>('fleetName');
     this.region = registerOutput<String>('region');

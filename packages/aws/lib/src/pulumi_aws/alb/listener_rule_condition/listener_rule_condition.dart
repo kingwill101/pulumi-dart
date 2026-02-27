@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../listener_rule_condition_host_header/listener_rule_condition_host_header.dart';
 import '../listener_rule_condition_http_header/listener_rule_condition_http_header.dart';
 import '../listener_rule_condition_http_request_method/listener_rule_condition_http_request_method.dart';
@@ -58,7 +58,8 @@ class ListenerRuleCondition {
     }
     final queryStringsValue = queryStrings;
     if (queryStringsValue != null) {
-      map['queryStrings'] = Input.encodeList<ListenerRuleConditionQueryString,
+      map['queryStrings'] = pulumi.Input.encodeList<
+          ListenerRuleConditionQueryString,
           Map<String, dynamic>>(queryStringsValue, (value) => value.toMap());
     }
     final sourceIpValue = sourceIp;
@@ -88,7 +89,7 @@ class ListenerRuleCondition {
               (map['pathPattern'] as Map).cast<String, dynamic>()),
       queryStrings: map['queryStrings'] == null
           ? null
-          : Input.decodeList<ListenerRuleConditionQueryString>(
+          : pulumi.Input.decodeList<ListenerRuleConditionQueryString>(
               map['queryStrings'],
               (value) => ListenerRuleConditionQueryString.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../serverless_vpc_endpoint_timeouts/serverless_vpc_endpoint_timeouts.dart';
 
 /// The set of arguments for ServerlessVpcEndpoint.
 class ServerlessVpcEndpointArgs {
   /// Name of the interface endpoint.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// One or more security groups that define the ports, protocols, and sources for inbound traffic that you are authorizing into your endpoint. Up to 5 security groups can be provided.
-  final Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>>? securityGroupIds;
 
   /// One or more subnet IDs from which you'll access OpenSearch Serverless. Up to 6 subnets can be provided.
-  final Input<List<String>> subnetIds;
-  final Input<ServerlessVpcEndpointTimeouts>? timeouts;
+  final pulumi.Input<List<String>> subnetIds;
+  final pulumi.Input<ServerlessVpcEndpointTimeouts>? timeouts;
 
   /// ID of the VPC from which you'll access OpenSearch Serverless.
   ///
   /// The following arguments are optional:
-  final Input<String> vpcId;
+  final pulumi.Input<String> vpcId;
 
   ServerlessVpcEndpointArgs({
     this.name,
@@ -49,7 +49,7 @@ class ServerlessVpcEndpointArgs {
     map['subnetIds'] = subnetIds;
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           ServerlessVpcEndpointTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -59,14 +59,14 @@ class ServerlessVpcEndpointArgs {
 
   factory ServerlessVpcEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessVpcEndpointArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       securityGroupIds:
-          Input.asOptionalInput<List<String>>(map['securityGroupIds']),
-      subnetIds: Input.asInput<List<String>>(map['subnetIds']),
-      timeouts:
-          Input.asOptionalInput<ServerlessVpcEndpointTimeouts>(map['timeouts']),
-      vpcId: Input.asInput<String>(map['vpcId']),
+          pulumi.Input.asOptionalInput<List<String>>(map['securityGroupIds']),
+      subnetIds: pulumi.Input.asInput<List<String>>(map['subnetIds']),
+      timeouts: pulumi.Input.asOptionalInput<ServerlessVpcEndpointTimeouts>(
+          map['timeouts']),
+      vpcId: pulumi.Input.asInput<String>(map['vpcId']),
     );
   }
 }

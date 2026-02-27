@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'response_args.dart';
 
 /// Provides an API Gateway Gateway Response for a REST API Gateway.
@@ -14,34 +14,34 @@ import 'response_args.dart';
 /// ```sh
 /// $ pulumi import aws:apigateway/response:Response example 12345abcde/UNAUTHORIZED
 /// ```
-class Response extends CustomResource {
+class Response extends pulumi.CustomResource {
   /// Region where this resource will be managed. See the [AWS Documentation](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) for supported values. Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Map of parameters (paths, query strings and headers) of the Gateway Response.
-  late final Output<Map<String, String>?> responseParameters;
+  late final pulumi.Output<Map<String, String>?> responseParameters;
 
   /// Map of templates used to transform the response body.
-  late final Output<Map<String, String>?> responseTemplates;
+  late final pulumi.Output<Map<String, String>?> responseTemplates;
 
   /// Response type of the associated GatewayResponse. See the [AWS Documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/supported-gateway-response-types.html) for supported values.
-  late final Output<String> responseType;
+  late final pulumi.Output<String> responseType;
 
   /// String identifier of the associated REST API.
-  late final Output<String> restApiId;
+  late final pulumi.Output<String> restApiId;
 
   /// HTTP status code of the Gateway Response.
-  late final Output<String?> statusCode;
+  late final pulumi.Output<String?> statusCode;
 
   Response(
     String name, {
     ResponseArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigateway/response:Response',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.responseParameters =

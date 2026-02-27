@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_fleet_scaling_configuration_target_tracking_scaling_config/get_fleet_scaling_configuration_target_tracking_scaling_config.dart';
 
 class GetFleetScalingConfiguration {
@@ -29,7 +29,7 @@ class GetFleetScalingConfiguration {
     map['desiredCapacity'] = desiredCapacity;
     map['maxCapacity'] = maxCapacity;
     map['scalingType'] = scalingType;
-    map['targetTrackingScalingConfigs'] = Input.encodeList<
+    map['targetTrackingScalingConfigs'] = pulumi.Input.encodeList<
             GetFleetScalingConfigurationTargetTrackingScalingConfig,
             Map<String, dynamic>>(
         targetTrackingScalingConfigs, (value) => value.toMap());
@@ -41,7 +41,7 @@ class GetFleetScalingConfiguration {
       desiredCapacity: map['desiredCapacity'] as int,
       maxCapacity: map['maxCapacity'] as int,
       scalingType: map['scalingType'] as String,
-      targetTrackingScalingConfigs: Input.decodeList<
+      targetTrackingScalingConfigs: pulumi.Input.decodeList<
               GetFleetScalingConfigurationTargetTrackingScalingConfig>(
           map['targetTrackingScalingConfigs'],
           (value) =>

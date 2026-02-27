@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../channel_encoder_settings_output_group_output_group_settings_archive_group_setting/channel_encoder_settings_output_group_output_group_settings_archive_group_setting.dart';
 import '../channel_encoder_settings_output_group_output_group_settings_frame_capture_group_settings/channel_encoder_settings_output_group_output_group_settings_frame_capture_group_settings.dart';
 import '../channel_encoder_settings_output_group_output_group_settings_hls_group_settings/channel_encoder_settings_output_group_output_group_settings_hls_group_settings.dart';
@@ -47,7 +47,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettings {
     final map = <String, dynamic>{};
     final archiveGroupSettingsValue = archiveGroupSettings;
     if (archiveGroupSettingsValue != null) {
-      map['archiveGroupSettings'] = Input.encodeList<
+      map['archiveGroupSettings'] = pulumi.Input.encodeList<
           ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting,
           Map<String,
               dynamic>>(archiveGroupSettingsValue, (value) => value.toMap());
@@ -88,7 +88,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettings {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettings(
       archiveGroupSettings: map['archiveGroupSettings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting>(
               map['archiveGroupSettings'],
               (value) =>

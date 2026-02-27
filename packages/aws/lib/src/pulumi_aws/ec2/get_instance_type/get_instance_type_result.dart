@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_type_fpga/get_instance_type_fpga.dart';
 import '../get_instance_type_gpus/get_instance_type_gpus.dart';
 import '../get_instance_type_inference_accelerator/get_instance_type_inference_accelerator.dart';
@@ -326,20 +326,21 @@ class GetInstanceTypeResult {
     map['enaSrdSupported'] = enaSrdSupported;
     map['enaSupport'] = enaSupport;
     map['encryptionInTransitSupported'] = encryptionInTransitSupported;
-    map['fpgas'] = Input.encodeList<GetInstanceTypeFpga, Map<String, dynamic>>(
-        fpgas, (value) => value.toMap());
+    map['fpgas'] =
+        pulumi.Input.encodeList<GetInstanceTypeFpga, Map<String, dynamic>>(
+            fpgas, (value) => value.toMap());
     map['freeTierEligible'] = freeTierEligible;
-    map['gpuses'] = Input.encodeList<GetInstanceTypeGpus, Map<String, dynamic>>(
-        gpuses, (value) => value.toMap());
+    map['gpuses'] =
+        pulumi.Input.encodeList<GetInstanceTypeGpus, Map<String, dynamic>>(
+            gpuses, (value) => value.toMap());
     map['hibernationSupported'] = hibernationSupported;
     map['hypervisor'] = hypervisor;
     map['id'] = id;
-    map['inferenceAccelerators'] = Input.encodeList<
+    map['inferenceAccelerators'] = pulumi.Input.encodeList<
         GetInstanceTypeInferenceAccelerator,
         Map<String, dynamic>>(inferenceAccelerators, (value) => value.toMap());
-    map['instanceDisks'] =
-        Input.encodeList<GetInstanceTypeInstanceDisk, Map<String, dynamic>>(
-            instanceDisks, (value) => value.toMap());
+    map['instanceDisks'] = pulumi.Input.encodeList<GetInstanceTypeInstanceDisk,
+        Map<String, dynamic>>(instanceDisks, (value) => value.toMap());
     map['instanceStorageSupported'] = instanceStorageSupported;
     map['instanceType'] = instanceType;
     map['ipv6Supported'] = ipv6Supported;
@@ -347,17 +348,15 @@ class GetInstanceTypeResult {
     map['maximumIpv6AddressesPerInterface'] = maximumIpv6AddressesPerInterface;
     map['maximumNetworkCards'] = maximumNetworkCards;
     map['maximumNetworkInterfaces'] = maximumNetworkInterfaces;
-    map['mediaAccelerators'] =
-        Input.encodeList<GetInstanceTypeMediaAccelerator, Map<String, dynamic>>(
-            mediaAccelerators, (value) => value.toMap());
+    map['mediaAccelerators'] = pulumi.Input.encodeList<
+        GetInstanceTypeMediaAccelerator,
+        Map<String, dynamic>>(mediaAccelerators, (value) => value.toMap());
     map['memorySize'] = memorySize;
-    map['networkCards'] =
-        Input.encodeList<GetInstanceTypeNetworkCard, Map<String, dynamic>>(
-            networkCards, (value) => value.toMap());
+    map['networkCards'] = pulumi.Input.encodeList<GetInstanceTypeNetworkCard,
+        Map<String, dynamic>>(networkCards, (value) => value.toMap());
     map['networkPerformance'] = networkPerformance;
-    map['neuronDevices'] =
-        Input.encodeList<GetInstanceTypeNeuronDevice, Map<String, dynamic>>(
-            neuronDevices, (value) => value.toMap());
+    map['neuronDevices'] = pulumi.Input.encodeList<GetInstanceTypeNeuronDevice,
+        Map<String, dynamic>>(neuronDevices, (value) => value.toMap());
     map['nitroEnclavesSupport'] = nitroEnclavesSupport;
     map['nitroTpmSupport'] = nitroTpmSupport;
     map['nitroTpmSupportedVersions'] = nitroTpmSupportedVersions;
@@ -413,12 +412,12 @@ class GetInstanceTypeResult {
       enaSrdSupported: map['enaSrdSupported'] as bool,
       enaSupport: map['enaSupport'] as String,
       encryptionInTransitSupported: map['encryptionInTransitSupported'] as bool,
-      fpgas: Input.decodeList<GetInstanceTypeFpga>(
+      fpgas: pulumi.Input.decodeList<GetInstanceTypeFpga>(
           map['fpgas'],
           (value) => GetInstanceTypeFpga.fromMap(
               (value as Map).cast<String, dynamic>())),
       freeTierEligible: map['freeTierEligible'] as bool,
-      gpuses: Input.decodeList<GetInstanceTypeGpus>(
+      gpuses: pulumi.Input.decodeList<GetInstanceTypeGpus>(
           map['gpuses'],
           (value) => GetInstanceTypeGpus.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -426,11 +425,11 @@ class GetInstanceTypeResult {
       hypervisor: map['hypervisor'] as String,
       id: map['id'] as String,
       inferenceAccelerators:
-          Input.decodeList<GetInstanceTypeInferenceAccelerator>(
+          pulumi.Input.decodeList<GetInstanceTypeInferenceAccelerator>(
               map['inferenceAccelerators'],
               (value) => GetInstanceTypeInferenceAccelerator.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      instanceDisks: Input.decodeList<GetInstanceTypeInstanceDisk>(
+      instanceDisks: pulumi.Input.decodeList<GetInstanceTypeInstanceDisk>(
           map['instanceDisks'],
           (value) => GetInstanceTypeInstanceDisk.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -443,17 +442,18 @@ class GetInstanceTypeResult {
           map['maximumIpv6AddressesPerInterface'] as int,
       maximumNetworkCards: map['maximumNetworkCards'] as int,
       maximumNetworkInterfaces: map['maximumNetworkInterfaces'] as int,
-      mediaAccelerators: Input.decodeList<GetInstanceTypeMediaAccelerator>(
-          map['mediaAccelerators'],
-          (value) => GetInstanceTypeMediaAccelerator.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      mediaAccelerators:
+          pulumi.Input.decodeList<GetInstanceTypeMediaAccelerator>(
+              map['mediaAccelerators'],
+              (value) => GetInstanceTypeMediaAccelerator.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       memorySize: map['memorySize'] as int,
-      networkCards: Input.decodeList<GetInstanceTypeNetworkCard>(
+      networkCards: pulumi.Input.decodeList<GetInstanceTypeNetworkCard>(
           map['networkCards'],
           (value) => GetInstanceTypeNetworkCard.fromMap(
               (value as Map).cast<String, dynamic>())),
       networkPerformance: map['networkPerformance'] as String,
-      neuronDevices: Input.decodeList<GetInstanceTypeNeuronDevice>(
+      neuronDevices: pulumi.Input.decodeList<GetInstanceTypeNeuronDevice>(
           map['neuronDevices'],
           (value) => GetInstanceTypeNeuronDevice.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_signing_profile_revocation_record/get_signing_profile_revocation_record.dart';
 import '../get_signing_profile_signature_validity_period/get_signing_profile_signature_validity_period.dart';
 import '../get_signing_profile_signing_material/get_signing_profile_signing_material.dart';
@@ -70,13 +70,14 @@ class GetSigningProfileResult {
     map['platformDisplayName'] = platformDisplayName;
     map['platformId'] = platformId;
     map['region'] = region;
-    map['revocationRecords'] = Input.encodeList<
+    map['revocationRecords'] = pulumi.Input.encodeList<
         GetSigningProfileRevocationRecord,
         Map<String, dynamic>>(revocationRecords, (value) => value.toMap());
-    map['signatureValidityPeriods'] = Input.encodeList<
+    map['signatureValidityPeriods'] = pulumi.Input.encodeList<
             GetSigningProfileSignatureValidityPeriod, Map<String, dynamic>>(
         signatureValidityPeriods, (value) => value.toMap());
-    map['signingMaterials'] = Input.encodeList<GetSigningProfileSigningMaterial,
+    map['signingMaterials'] = pulumi.Input.encodeList<
+        GetSigningProfileSigningMaterial,
         Map<String, dynamic>>(signingMaterials, (value) => value.toMap());
     map['signingParameters'] = signingParameters;
     map['status'] = status;
@@ -94,19 +95,21 @@ class GetSigningProfileResult {
       platformDisplayName: map['platformDisplayName'] as String,
       platformId: map['platformId'] as String,
       region: map['region'] as String,
-      revocationRecords: Input.decodeList<GetSigningProfileRevocationRecord>(
-          map['revocationRecords'],
-          (value) => GetSigningProfileRevocationRecord.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      revocationRecords:
+          pulumi.Input.decodeList<GetSigningProfileRevocationRecord>(
+              map['revocationRecords'],
+              (value) => GetSigningProfileRevocationRecord.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       signatureValidityPeriods:
-          Input.decodeList<GetSigningProfileSignatureValidityPeriod>(
+          pulumi.Input.decodeList<GetSigningProfileSignatureValidityPeriod>(
               map['signatureValidityPeriods'],
               (value) => GetSigningProfileSignatureValidityPeriod.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      signingMaterials: Input.decodeList<GetSigningProfileSigningMaterial>(
-          map['signingMaterials'],
-          (value) => GetSigningProfileSigningMaterial.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      signingMaterials:
+          pulumi.Input.decodeList<GetSigningProfileSigningMaterial>(
+              map['signingMaterials'],
+              (value) => GetSigningProfileSigningMaterial.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       signingParameters:
           (map['signingParameters'] as Map).cast<String, String>(),
       status: map['status'] as String,

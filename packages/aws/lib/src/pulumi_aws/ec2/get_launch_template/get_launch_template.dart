@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_launch_template_args.dart';
 import 'get_launch_template_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_launch_template_result.dart';
 /// ### Filter
 Future<GetLaunchTemplateResult> getLaunchTemplate(
   GetLaunchTemplateArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getLaunchTemplate:getLaunchTemplate',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLaunchTemplateResult.fromMap(result);
 }

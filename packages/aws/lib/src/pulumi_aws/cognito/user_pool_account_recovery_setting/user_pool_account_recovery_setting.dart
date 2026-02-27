@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_pool_account_recovery_setting_recovery_mechanism/user_pool_account_recovery_setting_recovery_mechanism.dart';
 
 class UserPoolAccountRecoverySetting {
@@ -16,7 +16,7 @@ class UserPoolAccountRecoverySetting {
     final map = <String, dynamic>{};
     final recoveryMechanismsValue = recoveryMechanisms;
     if (recoveryMechanismsValue != null) {
-      map['recoveryMechanisms'] = Input.encodeList<
+      map['recoveryMechanisms'] = pulumi.Input.encodeList<
               UserPoolAccountRecoverySettingRecoveryMechanism,
               Map<String, dynamic>>(
           recoveryMechanismsValue, (value) => value.toMap());
@@ -28,7 +28,8 @@ class UserPoolAccountRecoverySetting {
     return UserPoolAccountRecoverySetting(
       recoveryMechanisms: map['recoveryMechanisms'] == null
           ? null
-          : Input.decodeList<UserPoolAccountRecoverySettingRecoveryMechanism>(
+          : pulumi.Input.decodeList<
+                  UserPoolAccountRecoverySettingRecoveryMechanism>(
               map['recoveryMechanisms'],
               (value) =>
                   UserPoolAccountRecoverySettingRecoveryMechanism.fromMap(

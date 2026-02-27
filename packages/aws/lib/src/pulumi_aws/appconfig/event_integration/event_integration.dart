@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../event_integration_event_filter/event_integration_event_filter.dart';
 import 'event_integration_args.dart';
 
@@ -15,40 +15,40 @@ import 'event_integration_args.dart';
 /// ```sh
 /// $ pulumi import aws:appconfig/eventIntegration:EventIntegration example example-name
 /// ```
-class EventIntegration extends CustomResource {
+class EventIntegration extends pulumi.CustomResource {
   /// ARN of the Event Integration.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Description of the Event Integration.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Block that defines the configuration information for the event filter. The Event Filter block is documented below.
-  late final Output<EventIntegrationEventFilter> eventFilter;
+  late final pulumi.Output<EventIntegrationEventFilter> eventFilter;
 
   /// EventBridge bus.
-  late final Output<String> eventbridgeBus;
+  late final pulumi.Output<String> eventbridgeBus;
 
   /// Name of the Event Integration.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Tags to apply to the Event Integration. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   EventIntegration(
     String name, {
     EventIntegrationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:appconfig/eventIntegration:EventIntegration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');

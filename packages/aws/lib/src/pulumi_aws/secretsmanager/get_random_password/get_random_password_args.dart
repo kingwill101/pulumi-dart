@@ -1,35 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRandomPassword.
 class GetRandomPasswordArgs {
   /// String of the characters that you don't want in the password.
-  final Input<String>? excludeCharacters;
+  final pulumi.Input<String>? excludeCharacters;
 
   /// Specifies whether to exclude lowercase letters from the password.
-  final Input<bool>? excludeLowercase;
+  final pulumi.Input<bool>? excludeLowercase;
 
   /// Specifies whether to exclude numbers from the password.
-  final Input<bool>? excludeNumbers;
+  final pulumi.Input<bool>? excludeNumbers;
 
   /// Specifies whether to exclude the following punctuation characters from the password: ``! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~ .``
-  final Input<bool>? excludePunctuation;
+  final pulumi.Input<bool>? excludePunctuation;
 
   /// Specifies whether to exclude uppercase letters from the password.
-  final Input<bool>? excludeUppercase;
+  final pulumi.Input<bool>? excludeUppercase;
 
   /// Specifies whether to include the space character.
-  final Input<bool>? includeSpace;
+  final pulumi.Input<bool>? includeSpace;
 
   /// Length of the password.
-  final Input<int>? passwordLength;
+  final pulumi.Input<int>? passwordLength;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation.
-  final Input<bool>? requireEachIncludedType;
+  final pulumi.Input<bool>? requireEachIncludedType;
 
   GetRandomPasswordArgs({
     this.excludeCharacters,
@@ -87,17 +87,19 @@ class GetRandomPasswordArgs {
   factory GetRandomPasswordArgs.fromMap(Map<String, dynamic> map) {
     return GetRandomPasswordArgs(
       excludeCharacters:
-          Input.asOptionalInput<String>(map['excludeCharacters']),
-      excludeLowercase: Input.asOptionalInput<bool>(map['excludeLowercase']),
-      excludeNumbers: Input.asOptionalInput<bool>(map['excludeNumbers']),
+          pulumi.Input.asOptionalInput<String>(map['excludeCharacters']),
+      excludeLowercase:
+          pulumi.Input.asOptionalInput<bool>(map['excludeLowercase']),
+      excludeNumbers: pulumi.Input.asOptionalInput<bool>(map['excludeNumbers']),
       excludePunctuation:
-          Input.asOptionalInput<bool>(map['excludePunctuation']),
-      excludeUppercase: Input.asOptionalInput<bool>(map['excludeUppercase']),
-      includeSpace: Input.asOptionalInput<bool>(map['includeSpace']),
-      passwordLength: Input.asOptionalInput<int>(map['passwordLength']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<bool>(map['excludePunctuation']),
+      excludeUppercase:
+          pulumi.Input.asOptionalInput<bool>(map['excludeUppercase']),
+      includeSpace: pulumi.Input.asOptionalInput<bool>(map['includeSpace']),
+      passwordLength: pulumi.Input.asOptionalInput<int>(map['passwordLength']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       requireEachIncludedType:
-          Input.asOptionalInput<bool>(map['requireEachIncludedType']),
+          pulumi.Input.asOptionalInput<bool>(map['requireEachIncludedType']),
     );
   }
 }

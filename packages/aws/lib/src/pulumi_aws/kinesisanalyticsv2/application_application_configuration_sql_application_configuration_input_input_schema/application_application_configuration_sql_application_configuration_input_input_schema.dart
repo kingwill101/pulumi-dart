@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../application_application_configuration_sql_application_configuration_input_input_schema_record_column/application_application_configuration_sql_application_configuration_input_input_schema_record_column.dart';
 import '../application_application_configuration_sql_application_configuration_input_input_schema_record_format/application_application_configuration_sql_application_configuration_input_input_schema_record_format.dart';
 
@@ -25,7 +25,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['recordColumns'] = Input.encodeList<
+    map['recordColumns'] = pulumi.Input.encodeList<
         ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn,
         Map<String, dynamic>>(recordColumns, (value) => value.toMap());
     final recordEncodingValue = recordEncoding;
@@ -39,7 +39,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema.fromMap(
       Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema(
-      recordColumns: Input.decodeList<
+      recordColumns: pulumi.Input.decodeList<
               ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn>(
           map['recordColumns'],
           (value) =>

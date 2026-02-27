@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_association_args.dart';
 
 /// Provides a Synthetics Group Association resource.
@@ -16,29 +16,29 @@ import 'group_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:synthetics/groupAssociation:GroupAssociation example arn:aws:synthetics:us-west-2:123456789012:canary:tf-acc-test-abcd1234,examplename
 /// ```
-class GroupAssociation extends CustomResource {
+class GroupAssociation extends pulumi.CustomResource {
   /// ARN of the canary.
-  late final Output<String> canaryArn;
-  late final Output<String> groupArn;
+  late final pulumi.Output<String> canaryArn;
+  late final pulumi.Output<String> groupArn;
 
   /// ID of the Group.
-  late final Output<String> groupId;
+  late final pulumi.Output<String> groupId;
 
   /// Name of the group that the canary will be associated with.
-  late final Output<String> groupName;
+  late final pulumi.Output<String> groupName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   GroupAssociation(
     String name, {
     GroupAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:synthetics/groupAssociation:GroupAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.canaryArn = registerOutput<String>('canaryArn');
     this.groupArn = registerOutput<String>('groupArn');

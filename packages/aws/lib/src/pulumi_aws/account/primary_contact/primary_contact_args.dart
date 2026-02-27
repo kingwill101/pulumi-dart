@@ -1,47 +1,47 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for PrimaryContact.
 class PrimaryContactArgs {
   /// The ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// The first line of the primary contact address.
-  final Input<String> addressLine1;
+  final pulumi.Input<String> addressLine1;
 
   /// The second line of the primary contact address, if any.
-  final Input<String>? addressLine2;
+  final pulumi.Input<String>? addressLine2;
 
   /// The third line of the primary contact address, if any.
-  final Input<String>? addressLine3;
+  final pulumi.Input<String>? addressLine3;
 
   /// The city of the primary contact address.
-  final Input<String> city;
+  final pulumi.Input<String> city;
 
   /// The name of the company associated with the primary contact information, if any.
-  final Input<String>? companyName;
+  final pulumi.Input<String>? companyName;
 
   /// The ISO-3166 two-letter country code for the primary contact address.
-  final Input<String> countryCode;
+  final pulumi.Input<String> countryCode;
 
   /// The district or county of the primary contact address, if any.
-  final Input<String>? districtOrCounty;
+  final pulumi.Input<String>? districtOrCounty;
 
   /// The full name of the primary contact address.
-  final Input<String> fullName;
+  final pulumi.Input<String> fullName;
 
   /// The phone number of the primary contact information. The number will be validated and, in some countries, checked for activation.
-  final Input<String> phoneNumber;
+  final pulumi.Input<String> phoneNumber;
 
   /// The postal code of the primary contact address.
-  final Input<String> postalCode;
+  final pulumi.Input<String> postalCode;
 
   /// The state or region of the primary contact address. This field is required in selected countries.
-  final Input<String>? stateOrRegion;
+  final pulumi.Input<String>? stateOrRegion;
 
   /// The URL of the website associated with the primary contact information, if any.
-  final Input<String>? websiteUrl;
+  final pulumi.Input<String>? websiteUrl;
 
   PrimaryContactArgs({
     this.accountId,
@@ -100,19 +100,20 @@ class PrimaryContactArgs {
 
   factory PrimaryContactArgs.fromMap(Map<String, dynamic> map) {
     return PrimaryContactArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
-      addressLine1: Input.asInput<String>(map['addressLine1']),
-      addressLine2: Input.asOptionalInput<String>(map['addressLine2']),
-      addressLine3: Input.asOptionalInput<String>(map['addressLine3']),
-      city: Input.asInput<String>(map['city']),
-      companyName: Input.asOptionalInput<String>(map['companyName']),
-      countryCode: Input.asInput<String>(map['countryCode']),
-      districtOrCounty: Input.asOptionalInput<String>(map['districtOrCounty']),
-      fullName: Input.asInput<String>(map['fullName']),
-      phoneNumber: Input.asInput<String>(map['phoneNumber']),
-      postalCode: Input.asInput<String>(map['postalCode']),
-      stateOrRegion: Input.asOptionalInput<String>(map['stateOrRegion']),
-      websiteUrl: Input.asOptionalInput<String>(map['websiteUrl']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
+      addressLine1: pulumi.Input.asInput<String>(map['addressLine1']),
+      addressLine2: pulumi.Input.asOptionalInput<String>(map['addressLine2']),
+      addressLine3: pulumi.Input.asOptionalInput<String>(map['addressLine3']),
+      city: pulumi.Input.asInput<String>(map['city']),
+      companyName: pulumi.Input.asOptionalInput<String>(map['companyName']),
+      countryCode: pulumi.Input.asInput<String>(map['countryCode']),
+      districtOrCounty:
+          pulumi.Input.asOptionalInput<String>(map['districtOrCounty']),
+      fullName: pulumi.Input.asInput<String>(map['fullName']),
+      phoneNumber: pulumi.Input.asInput<String>(map['phoneNumber']),
+      postalCode: pulumi.Input.asInput<String>(map['postalCode']),
+      stateOrRegion: pulumi.Input.asOptionalInput<String>(map['stateOrRegion']),
+      websiteUrl: pulumi.Input.asOptionalInput<String>(map['websiteUrl']),
     );
   }
 }

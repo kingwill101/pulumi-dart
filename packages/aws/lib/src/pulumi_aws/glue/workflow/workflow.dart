@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workflow_args.dart';
 
 /// Provides a Glue Workflow resource.
@@ -16,40 +16,40 @@ import 'workflow_args.dart';
 /// ```sh
 /// $ pulumi import aws:glue/workflow:Workflow MyWorkflow MyWorkflow
 /// ```
-class Workflow extends CustomResource {
+class Workflow extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of Glue Workflow
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// A map of default run properties for this workflow. These properties are passed to all jobs associated to the workflow.
-  late final Output<Map<String, String>?> defaultRunProperties;
+  late final pulumi.Output<Map<String, String>?> defaultRunProperties;
 
   /// Description of the workflow.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Prevents exceeding the maximum number of concurrent runs of any of the component jobs. If you leave this parameter blank, there is no limit to the number of concurrent workflow runs.
-  late final Output<int?> maxConcurrentRuns;
+  late final pulumi.Output<int?> maxConcurrentRuns;
 
   /// The name you assign to this workflow.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Workflow(
     String name, {
     WorkflowArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:glue/workflow:Workflow',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.defaultRunProperties =

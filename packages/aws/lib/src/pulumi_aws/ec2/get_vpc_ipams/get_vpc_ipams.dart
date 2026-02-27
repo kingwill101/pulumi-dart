@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_vpc_ipams_args.dart';
 import 'get_vpc_ipams_result.dart';
 
@@ -17,13 +17,13 @@ import 'get_vpc_ipams_result.dart';
 /// ### Filter by `tier`
 Future<GetVpcIpamsResult> getVpcIpams(
   GetVpcIpamsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getVpcIpams:getVpcIpams',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpcIpamsResult.fromMap(result);
 }

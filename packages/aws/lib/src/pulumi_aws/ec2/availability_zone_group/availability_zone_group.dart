@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'availability_zone_group_args.dart';
 
 /// Manages an EC2 Availability Zone Group, such as updating its opt-in status.
@@ -16,25 +16,25 @@ import 'availability_zone_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/availabilityZoneGroup:AvailabilityZoneGroup example us-west-2-lax-1
 /// ```
-class AvailabilityZoneGroup extends CustomResource {
+class AvailabilityZoneGroup extends pulumi.CustomResource {
   /// Name of the Availability Zone Group.
-  late final Output<String> groupName;
+  late final pulumi.Output<String> groupName;
 
   /// Indicates whether to enable or disable Availability Zone Group. Valid values: `opted-in` or `not-opted-in`.
-  late final Output<String> optInStatus;
+  late final pulumi.Output<String> optInStatus;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   AvailabilityZoneGroup(
     String name, {
     AvailabilityZoneGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/availabilityZoneGroup:AvailabilityZoneGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.groupName = registerOutput<String>('groupName');
     this.optInStatus = registerOutput<String>('optInStatus');

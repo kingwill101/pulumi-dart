@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_quality_ruleset_target_table/data_quality_ruleset_target_table.dart';
 
 /// The set of arguments for DataQualityRuleset.
 class DataQualityRulesetArgs {
   /// Description of the data quality ruleset.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the data quality ruleset.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
-  final Input<String> ruleset;
+  final pulumi.Input<String> ruleset;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// A Configuration block specifying a target table associated with the data quality ruleset. See `target_table` below.
-  final Input<DataQualityRulesetTargetTable>? targetTable;
+  final pulumi.Input<DataQualityRulesetTargetTable>? targetTable;
 
   DataQualityRulesetArgs({
     this.description,
@@ -53,7 +53,7 @@ class DataQualityRulesetArgs {
     }
     final targetTableValue = targetTable;
     if (targetTableValue != null) {
-      map['targetTable'] = Input.mapOptionalInputValue<
+      map['targetTable'] = pulumi.Input.mapOptionalInputValue<
           DataQualityRulesetTargetTable,
           Map<String, dynamic>>(targetTableValue, (value) => value.toMap());
     }
@@ -62,12 +62,12 @@ class DataQualityRulesetArgs {
 
   factory DataQualityRulesetArgs.fromMap(Map<String, dynamic> map) {
     return DataQualityRulesetArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      ruleset: Input.asInput<String>(map['ruleset']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      targetTable: Input.asOptionalInput<DataQualityRulesetTargetTable>(
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      ruleset: pulumi.Input.asInput<String>(map['ruleset']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      targetTable: pulumi.Input.asOptionalInput<DataQualityRulesetTargetTable>(
           map['targetTable']),
     );
   }

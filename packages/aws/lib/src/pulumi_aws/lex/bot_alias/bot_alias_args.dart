@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bot_alias_conversation_logs/bot_alias_conversation_logs.dart';
 
 /// The set of arguments for BotAlias.
 class BotAliasArgs {
   /// The name of the bot.
-  final Input<String> botName;
+  final pulumi.Input<String> botName;
 
   /// The version of the bot.
-  final Input<String> botVersion;
+  final pulumi.Input<String> botVersion;
 
   /// The settings that determine how Amazon Lex uses conversation logs for the alias. Attributes are documented under conversation_logs.
-  final Input<BotAliasConversationLogs>? conversationLogs;
+  final pulumi.Input<BotAliasConversationLogs>? conversationLogs;
 
   /// A description of the alias. Must be less than or equal to 200 characters in length.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The name of the alias. The name is not case sensitive. Must be less than or equal to 100 characters in length.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   BotAliasArgs({
     required this.botName,
@@ -38,7 +38,7 @@ class BotAliasArgs {
     map['botVersion'] = botVersion;
     final conversationLogsValue = conversationLogs;
     if (conversationLogsValue != null) {
-      map['conversationLogs'] = Input.mapOptionalInputValue<
+      map['conversationLogs'] = pulumi.Input.mapOptionalInputValue<
               BotAliasConversationLogs, Map<String, dynamic>>(
           conversationLogsValue, (value) => value.toMap());
     }
@@ -59,13 +59,13 @@ class BotAliasArgs {
 
   factory BotAliasArgs.fromMap(Map<String, dynamic> map) {
     return BotAliasArgs(
-      botName: Input.asInput<String>(map['botName']),
-      botVersion: Input.asInput<String>(map['botVersion']),
-      conversationLogs: Input.asOptionalInput<BotAliasConversationLogs>(
+      botName: pulumi.Input.asInput<String>(map['botName']),
+      botVersion: pulumi.Input.asInput<String>(map['botVersion']),
+      conversationLogs: pulumi.Input.asOptionalInput<BotAliasConversationLogs>(
           map['conversationLogs']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

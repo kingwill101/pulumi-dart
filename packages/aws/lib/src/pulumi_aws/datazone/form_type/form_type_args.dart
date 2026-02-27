@@ -1,32 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../form_type_model/form_type_model.dart';
 import '../form_type_timeouts/form_type_timeouts.dart';
 
 /// The set of arguments for FormType.
 class FormTypeArgs {
   /// Description of form type. Must have a length of between 1 and 2048 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Identifier of the domain.
-  final Input<String> domainIdentifier;
+  final pulumi.Input<String> domainIdentifier;
 
   /// Object of the model of the form type that contains the following attributes.
-  final Input<FormTypeModel> model;
+  final pulumi.Input<FormTypeModel> model;
 
   /// Name of the form type. Must be the name of the structure in smithy document.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Identifier of project that owns the form type. Must follow regex of ^[a-zA-Z0-9_-]{1,36}.
-  final Input<String> owningProjectIdentifier;
+  final pulumi.Input<String> owningProjectIdentifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Status of form type. Must be "ENABLED" or "DISABLED" If status is set to "ENABLED" terraform cannot delete the resource until it is manually changed in the AWS console.
-  final Input<String>? status;
-  final Input<FormTypeTimeouts>? timeouts;
+  final pulumi.Input<String>? status;
+  final pulumi.Input<FormTypeTimeouts>? timeouts;
 
   FormTypeArgs({
     this.description,
@@ -46,8 +46,9 @@ class FormTypeArgs {
       map['description'] = descriptionValue;
     }
     map['domainIdentifier'] = domainIdentifier;
-    map['model'] = Input.mapInputValue<FormTypeModel, Map<String, dynamic>>(
-        model, (value) => value.toMap());
+    map['model'] =
+        pulumi.Input.mapInputValue<FormTypeModel, Map<String, dynamic>>(
+            model, (value) => value.toMap());
     final nameValue = name;
     if (nameValue != null) {
       map['name'] = nameValue;
@@ -63,24 +64,23 @@ class FormTypeArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] =
-          Input.mapOptionalInputValue<FormTypeTimeouts, Map<String, dynamic>>(
-              timeoutsValue, (value) => value.toMap());
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<FormTypeTimeouts,
+          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
   }
 
   factory FormTypeArgs.fromMap(Map<String, dynamic> map) {
     return FormTypeArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      domainIdentifier: Input.asInput<String>(map['domainIdentifier']),
-      model: Input.asInput<FormTypeModel>(map['model']),
-      name: Input.asOptionalInput<String>(map['name']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      domainIdentifier: pulumi.Input.asInput<String>(map['domainIdentifier']),
+      model: pulumi.Input.asInput<FormTypeModel>(map['model']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       owningProjectIdentifier:
-          Input.asInput<String>(map['owningProjectIdentifier']),
-      region: Input.asOptionalInput<String>(map['region']),
-      status: Input.asOptionalInput<String>(map['status']),
-      timeouts: Input.asOptionalInput<FormTypeTimeouts>(map['timeouts']),
+          pulumi.Input.asInput<String>(map['owningProjectIdentifier']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      status: pulumi.Input.asOptionalInput<String>(map['status']),
+      timeouts: pulumi.Input.asOptionalInput<FormTypeTimeouts>(map['timeouts']),
     );
   }
 }

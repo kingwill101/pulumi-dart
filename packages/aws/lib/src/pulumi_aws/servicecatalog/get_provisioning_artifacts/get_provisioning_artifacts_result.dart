@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_provisioning_artifacts_provisioning_artifact_detail/get_provisioning_artifacts_provisioning_artifact_detail.dart';
 
 /// Result data returned by getProvisioningArtifacts.
@@ -32,7 +32,7 @@ class GetProvisioningArtifactsResult {
     }
     map['id'] = id;
     map['productId'] = productId;
-    map['provisioningArtifactDetails'] = Input.encodeList<
+    map['provisioningArtifactDetails'] = pulumi.Input.encodeList<
             GetProvisioningArtifactsProvisioningArtifactDetail,
             Map<String, dynamic>>(
         provisioningArtifactDetails, (value) => value.toMap());
@@ -47,12 +47,11 @@ class GetProvisioningArtifactsResult {
           : map['acceptLanguage'] as String,
       id: map['id'] as String,
       productId: map['productId'] as String,
-      provisioningArtifactDetails:
-          Input.decodeList<GetProvisioningArtifactsProvisioningArtifactDetail>(
-              map['provisioningArtifactDetails'],
-              (value) =>
-                  GetProvisioningArtifactsProvisioningArtifactDetail.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      provisioningArtifactDetails: pulumi.Input.decodeList<
+              GetProvisioningArtifactsProvisioningArtifactDetail>(
+          map['provisioningArtifactDetails'],
+          (value) => GetProvisioningArtifactsProvisioningArtifactDetail.fromMap(
+              (value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }

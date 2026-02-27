@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_configurations_args.dart';
 
 /// Manages IoT event configurations.
@@ -16,22 +16,22 @@ import 'event_configurations_args.dart';
 /// ```sh
 /// $ pulumi import aws:iot/eventConfigurations:EventConfigurations example us-west-2
 /// ```
-class EventConfigurations extends CustomResource {
+class EventConfigurations extends pulumi.CustomResource {
   /// Map. The new event configuration values. You can use only these strings as keys: `THING_GROUP_HIERARCHY`, `THING_GROUP_MEMBERSHIP`, `THING_TYPE`, `THING_TYPE_ASSOCIATION`, `THING_GROUP`, `THING`, `POLICY`, `CA_CERTIFICATE`, `JOB_EXECUTION`, `CERTIFICATE`, `JOB`. Use boolean for values of mapping.
-  late final Output<Map<String, bool>> eventConfigurations;
+  late final pulumi.Output<Map<String, bool>> eventConfigurations;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   EventConfigurations(
     String name, {
     EventConfigurationsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iot/eventConfigurations:EventConfigurations',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.eventConfigurations =
         registerOutput<Map<String, bool>>('eventConfigurations');

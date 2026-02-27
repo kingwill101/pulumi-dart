@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_endpoint_service_filter/get_vpc_endpoint_service_filter.dart';
 
 /// Result data returned by getVpcEndpointService.
@@ -86,9 +86,8 @@ class GetVpcEndpointServiceResult {
     map['baseEndpointDnsNames'] = baseEndpointDnsNames;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetVpcEndpointServiceFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetVpcEndpointServiceFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['managesVpcEndpoints'] = managesVpcEndpoints;
@@ -123,7 +122,7 @@ class GetVpcEndpointServiceResult {
           (map['baseEndpointDnsNames'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVpcEndpointServiceFilter>(
+          : pulumi.Input.decodeList<GetVpcEndpointServiceFilter>(
               map['filters'],
               (value) => GetVpcEndpointServiceFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

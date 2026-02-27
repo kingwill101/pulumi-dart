@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_data_set_row_level_permission_tag_configuration_tag_rule/get_data_set_row_level_permission_tag_configuration_tag_rule.dart';
 
 class GetDataSetRowLevelPermissionTagConfiguration {
@@ -15,7 +15,7 @@ class GetDataSetRowLevelPermissionTagConfiguration {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['status'] = status;
-    map['tagRules'] = Input.encodeList<
+    map['tagRules'] = pulumi.Input.encodeList<
         GetDataSetRowLevelPermissionTagConfigurationTagRule,
         Map<String, dynamic>>(tagRules, (value) => value.toMap());
     return map;
@@ -25,12 +25,12 @@ class GetDataSetRowLevelPermissionTagConfiguration {
       Map<String, dynamic> map) {
     return GetDataSetRowLevelPermissionTagConfiguration(
       status: map['status'] as String,
-      tagRules:
-          Input.decodeList<GetDataSetRowLevelPermissionTagConfigurationTagRule>(
-              map['tagRules'],
-              (value) =>
-                  GetDataSetRowLevelPermissionTagConfigurationTagRule.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      tagRules: pulumi.Input.decodeList<
+              GetDataSetRowLevelPermissionTagConfigurationTagRule>(
+          map['tagRules'],
+          (value) =>
+              GetDataSetRowLevelPermissionTagConfigurationTagRule.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

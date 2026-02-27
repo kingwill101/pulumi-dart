@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_group_rules_source_stateless_rules_and_custom_actions_custom_action/rule_group_rule_group_rules_source_stateless_rules_and_custom_actions_custom_action.dart';
 import '../rule_group_rule_group_rules_source_stateless_rules_and_custom_actions_stateless_rule/rule_group_rule_group_rules_source_stateless_rules_and_custom_actions_stateless_rule.dart';
 
@@ -24,11 +24,11 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions {
     final map = <String, dynamic>{};
     final customActionsValue = customActions;
     if (customActionsValue != null) {
-      map['customActions'] = Input.encodeList<
+      map['customActions'] = pulumi.Input.encodeList<
           RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction,
           Map<String, dynamic>>(customActionsValue, (value) => value.toMap());
     }
-    map['statelessRules'] = Input.encodeList<
+    map['statelessRules'] = pulumi.Input.encodeList<
         RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule,
         Map<String, dynamic>>(statelessRules, (value) => value.toMap());
     return map;
@@ -39,13 +39,13 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions {
     return RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions(
       customActions: map['customActions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction>(
               map['customActions'],
               (value) =>
                   RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction
                       .fromMap((value as Map).cast<String, dynamic>())),
-      statelessRules: Input.decodeList<
+      statelessRules: pulumi.Input.decodeList<
               RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule>(
           map['statelessRules'],
           (value) =>

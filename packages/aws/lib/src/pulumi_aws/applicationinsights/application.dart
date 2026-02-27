@@ -1,4 +1,4 @@
 library module_applicationinsights_application;
 
-export 'application/application2.dart';
-export 'application/application_args2.dart';
+export 'application/application_applicationinsights.dart';
+export 'application/application_applicationinsights_args.dart';

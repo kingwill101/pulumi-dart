@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_core_network_policy_document_attachment_policy_action/get_core_network_policy_document_attachment_policy_action.dart';
 import '../get_core_network_policy_document_attachment_policy_condition/get_core_network_policy_document_attachment_policy_condition.dart';
 
@@ -35,7 +35,7 @@ class GetCoreNetworkPolicyDocumentAttachmentPolicy {
     if (conditionLogicValue != null) {
       map['conditionLogic'] = conditionLogicValue;
     }
-    map['conditions'] = Input.encodeList<
+    map['conditions'] = pulumi.Input.encodeList<
         GetCoreNetworkPolicyDocumentAttachmentPolicyCondition,
         Map<String, dynamic>>(conditions, (value) => value.toMap());
     final descriptionValue = description;
@@ -54,7 +54,7 @@ class GetCoreNetworkPolicyDocumentAttachmentPolicy {
       conditionLogic: map['conditionLogic'] == null
           ? null
           : map['conditionLogic'] as String,
-      conditions: Input.decodeList<
+      conditions: pulumi.Input.decodeList<
               GetCoreNetworkPolicyDocumentAttachmentPolicyCondition>(
           map['conditions'],
           (value) =>

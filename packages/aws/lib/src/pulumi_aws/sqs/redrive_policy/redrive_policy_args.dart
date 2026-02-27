@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RedrivePolicy.
 class RedrivePolicyArgs {
   /// The URL of the SQS Queue to which to attach the policy
-  final Input<String> queueUrl;
+  final pulumi.Input<String> queueUrl;
 
   /// The JSON redrive policy for the SQS queue. Accepts two key/val pairs: `deadLetterTargetArn` and `maxReceiveCount`. Learn more in the [Amazon SQS dead-letter queues documentation](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html).
-  final Input<String> redrivePolicy;
+  final pulumi.Input<String> redrivePolicy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   RedrivePolicyArgs({
     required this.queueUrl,
@@ -32,9 +32,9 @@ class RedrivePolicyArgs {
 
   factory RedrivePolicyArgs.fromMap(Map<String, dynamic> map) {
     return RedrivePolicyArgs(
-      queueUrl: Input.asInput<String>(map['queueUrl']),
-      redrivePolicy: Input.asInput<String>(map['redrivePolicy']),
-      region: Input.asOptionalInput<String>(map['region']),
+      queueUrl: pulumi.Input.asInput<String>(map['queueUrl']),
+      redrivePolicy: pulumi.Input.asInput<String>(map['redrivePolicy']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

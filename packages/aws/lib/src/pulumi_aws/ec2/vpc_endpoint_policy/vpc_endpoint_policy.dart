@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_endpoint_policy_args.dart';
 
 /// Provides a VPC Endpoint Policy resource.
@@ -14,25 +14,25 @@ import 'vpc_endpoint_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/vpcEndpointPolicy:VpcEndpointPolicy example vpce-3ecf2a57
 /// ```
-class VpcEndpointPolicy extends CustomResource {
+class VpcEndpointPolicy extends pulumi.CustomResource {
   /// A policy to attach to the endpoint that controls access to the service. Defaults to full access. All `Gateway` and some `Interface` endpoints support policies - see the [relevant AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-access.html) for more details.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The VPC Endpoint ID.
-  late final Output<String> vpcEndpointId;
+  late final pulumi.Output<String> vpcEndpointId;
 
   VpcEndpointPolicy(
     String name, {
     VpcEndpointPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpcEndpointPolicy:VpcEndpointPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.policy = registerOutput<String>('policy');
     this.region = registerOutput<String>('region');

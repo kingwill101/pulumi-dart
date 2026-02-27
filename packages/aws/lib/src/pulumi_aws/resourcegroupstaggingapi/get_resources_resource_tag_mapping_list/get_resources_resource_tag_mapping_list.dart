@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_resources_resource_tag_mapping_list_compliance_detail/get_resources_resource_tag_mapping_list_compliance_detail.dart';
 
 class GetResourcesResourceTagMappingList {
@@ -22,7 +22,7 @@ class GetResourcesResourceTagMappingList {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['complianceDetails'] = Input.encodeList<
+    map['complianceDetails'] = pulumi.Input.encodeList<
         GetResourcesResourceTagMappingListComplianceDetail,
         Map<String, dynamic>>(complianceDetails, (value) => value.toMap());
     map['resourceArn'] = resourceArn;
@@ -32,12 +32,11 @@ class GetResourcesResourceTagMappingList {
 
   factory GetResourcesResourceTagMappingList.fromMap(Map<String, dynamic> map) {
     return GetResourcesResourceTagMappingList(
-      complianceDetails:
-          Input.decodeList<GetResourcesResourceTagMappingListComplianceDetail>(
-              map['complianceDetails'],
-              (value) =>
-                  GetResourcesResourceTagMappingListComplianceDetail.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      complianceDetails: pulumi.Input.decodeList<
+              GetResourcesResourceTagMappingListComplianceDetail>(
+          map['complianceDetails'],
+          (value) => GetResourcesResourceTagMappingListComplianceDetail.fromMap(
+              (value as Map).cast<String, dynamic>())),
       resourceArn: map['resourceArn'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );

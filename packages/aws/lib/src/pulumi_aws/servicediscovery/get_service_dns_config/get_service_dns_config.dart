@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_dns_config_dns_record/get_service_dns_config_dns_record.dart';
 
 class GetServiceDnsConfig {
@@ -21,9 +21,8 @@ class GetServiceDnsConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dnsRecords'] =
-        Input.encodeList<GetServiceDnsConfigDnsRecord, Map<String, dynamic>>(
-            dnsRecords, (value) => value.toMap());
+    map['dnsRecords'] = pulumi.Input.encodeList<GetServiceDnsConfigDnsRecord,
+        Map<String, dynamic>>(dnsRecords, (value) => value.toMap());
     map['namespaceId'] = namespaceId;
     map['routingPolicy'] = routingPolicy;
     return map;
@@ -31,7 +30,7 @@ class GetServiceDnsConfig {
 
   factory GetServiceDnsConfig.fromMap(Map<String, dynamic> map) {
     return GetServiceDnsConfig(
-      dnsRecords: Input.decodeList<GetServiceDnsConfigDnsRecord>(
+      dnsRecords: pulumi.Input.decodeList<GetServiceDnsConfigDnsRecord>(
           map['dnsRecords'],
           (value) => GetServiceDnsConfigDnsRecord.fromMap(
               (value as Map).cast<String, dynamic>())),

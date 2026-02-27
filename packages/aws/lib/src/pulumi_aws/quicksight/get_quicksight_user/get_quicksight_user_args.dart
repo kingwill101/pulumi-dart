@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getQuicksightUser.
 class GetQuicksightUserArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// QuickSight namespace. Defaults to `default`.
-  final Input<String>? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The name of the user that you want to match.
   ///
   /// The following arguments are optional:
-  final Input<String> userName;
+  final pulumi.Input<String> userName;
 
   GetQuicksightUserArgs({
     this.awsAccountId,
@@ -45,10 +45,10 @@ class GetQuicksightUserArgs {
 
   factory GetQuicksightUserArgs.fromMap(Map<String, dynamic> map) {
     return GetQuicksightUserArgs(
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
-      namespace: Input.asOptionalInput<String>(map['namespace']),
-      region: Input.asOptionalInput<String>(map['region']),
-      userName: Input.asInput<String>(map['userName']),
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
+      namespace: pulumi.Input.asOptionalInput<String>(map['namespace']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      userName: pulumi.Input.asInput<String>(map['userName']),
     );
   }
 }

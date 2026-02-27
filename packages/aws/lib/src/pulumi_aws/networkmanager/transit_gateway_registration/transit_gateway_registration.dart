@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'transit_gateway_registration_args.dart';
 
 /// Manages a Network Manager transit gateway registration. Registers a transit gateway to a global network. The transit gateway can be in any AWS Region, but it must be owned by the same AWS account that owns the global network. You cannot register a transit gateway in more than one global network.
@@ -14,22 +14,22 @@ import 'transit_gateway_registration_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkmanager/transitGatewayRegistration:TransitGatewayRegistration example global-network-0d47f6t230mz46dy4,arn:aws:ec2:us-west-2:123456789012:transit-gateway/tgw-123abc05e04123abc
 /// ```
-class TransitGatewayRegistration extends CustomResource {
+class TransitGatewayRegistration extends pulumi.CustomResource {
   /// ID of the Global Network to register to.
-  late final Output<String> globalNetworkId;
+  late final pulumi.Output<String> globalNetworkId;
 
   /// ARN of the Transit Gateway to register.
-  late final Output<String> transitGatewayArn;
+  late final pulumi.Output<String> transitGatewayArn;
 
   TransitGatewayRegistration(
     String name, {
     TransitGatewayRegistrationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkmanager/transitGatewayRegistration:TransitGatewayRegistration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.globalNetworkId = registerOutput<String>('globalNetworkId');
     this.transitGatewayArn = registerOutput<String>('transitGatewayArn');

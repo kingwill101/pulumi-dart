@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_image_recipe_component_parameter/get_image_recipe_component_parameter.dart';
 
 class GetImageRecipeComponent {
@@ -18,7 +18,8 @@ class GetImageRecipeComponent {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['componentArn'] = componentArn;
-    map['parameters'] = Input.encodeList<GetImageRecipeComponentParameter,
+    map['parameters'] = pulumi.Input.encodeList<
+        GetImageRecipeComponentParameter,
         Map<String, dynamic>>(parameters, (value) => value.toMap());
     return map;
   }
@@ -26,7 +27,7 @@ class GetImageRecipeComponent {
   factory GetImageRecipeComponent.fromMap(Map<String, dynamic> map) {
     return GetImageRecipeComponent(
       componentArn: map['componentArn'] as String,
-      parameters: Input.decodeList<GetImageRecipeComponentParameter>(
+      parameters: pulumi.Input.decodeList<GetImageRecipeComponentParameter>(
           map['parameters'],
           (value) => GetImageRecipeComponentParameter.fromMap(
               (value as Map).cast<String, dynamic>())),

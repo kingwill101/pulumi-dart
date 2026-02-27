@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_route_table_associations_filter/get_route_table_associations_filter.dart';
 
 /// Result data returned by getRouteTableAssociations.
@@ -27,7 +27,7 @@ class GetRouteTableAssociationsResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetRouteTableAssociationsFilter,
+      map['filters'] = pulumi.Input.encodeList<GetRouteTableAssociationsFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -41,7 +41,7 @@ class GetRouteTableAssociationsResult {
     return GetRouteTableAssociationsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetRouteTableAssociationsFilter>(
+          : pulumi.Input.decodeList<GetRouteTableAssociationsFilter>(
               map['filters'],
               (value) => GetRouteTableAssociationsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

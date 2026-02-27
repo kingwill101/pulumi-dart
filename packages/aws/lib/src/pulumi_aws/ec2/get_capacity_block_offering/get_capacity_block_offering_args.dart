@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCapacityBlockOffering.
 class GetCapacityBlockOfferingArgs {
   /// The amount of time of the Capacity Block reservation in hours.
-  final Input<int> capacityDurationHours;
+  final pulumi.Input<int> capacityDurationHours;
 
   /// The date and time at which the Capacity Block Reservation expires. When a Capacity Reservation expires, the reserved capacity is released and you can no longer launch instances into it. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
-  final Input<String>? endDateRange;
+  final pulumi.Input<String>? endDateRange;
 
   /// The number of instances for which to reserve capacity.
-  final Input<int> instanceCount;
+  final pulumi.Input<int> instanceCount;
 
   /// The instance type for which to reserve capacity.
-  final Input<String> instanceType;
+  final pulumi.Input<String> instanceType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The date and time at which the Capacity Block Reservation starts. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
-  final Input<String>? startDateRange;
+  final pulumi.Input<String>? startDateRange;
 
   GetCapacityBlockOfferingArgs({
     required this.capacityDurationHours,
@@ -53,12 +53,14 @@ class GetCapacityBlockOfferingArgs {
 
   factory GetCapacityBlockOfferingArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityBlockOfferingArgs(
-      capacityDurationHours: Input.asInput<int>(map['capacityDurationHours']),
-      endDateRange: Input.asOptionalInput<String>(map['endDateRange']),
-      instanceCount: Input.asInput<int>(map['instanceCount']),
-      instanceType: Input.asInput<String>(map['instanceType']),
-      region: Input.asOptionalInput<String>(map['region']),
-      startDateRange: Input.asOptionalInput<String>(map['startDateRange']),
+      capacityDurationHours:
+          pulumi.Input.asInput<int>(map['capacityDurationHours']),
+      endDateRange: pulumi.Input.asOptionalInput<String>(map['endDateRange']),
+      instanceCount: pulumi.Input.asInput<int>(map['instanceCount']),
+      instanceType: pulumi.Input.asInput<String>(map['instanceType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      startDateRange:
+          pulumi.Input.asOptionalInput<String>(map['startDateRange']),
     );
   }
 }

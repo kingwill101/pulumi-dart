@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_records_args.dart';
 import 'get_records_result.dart';
 
@@ -17,13 +17,13 @@ import 'get_records_result.dart';
 /// Return the records that starts with `www`.
 Future<GetRecordsResult> getRecords(
   GetRecordsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:route53/getRecords:getRecords',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRecordsResult.fromMap(result);
 }

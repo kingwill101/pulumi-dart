@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_control_args.dart';
 import 'get_control_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_control_result.dart';
 /// ### With Framework Resource
 Future<GetControlResult> getControl(
   GetControlArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:auditmanager/getControl:getControl',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetControlResult.fromMap(result);
 }

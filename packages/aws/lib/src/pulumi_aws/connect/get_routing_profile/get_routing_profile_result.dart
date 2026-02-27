@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_routing_profile_media_concurrency/get_routing_profile_media_concurrency.dart';
 import '../get_routing_profile_queue_config/get_routing_profile_queue_config.dart';
 
@@ -52,13 +52,12 @@ class GetRoutingProfileResult {
     map['description'] = description;
     map['id'] = id;
     map['instanceId'] = instanceId;
-    map['mediaConcurrencies'] = Input.encodeList<
+    map['mediaConcurrencies'] = pulumi.Input.encodeList<
         GetRoutingProfileMediaConcurrency,
         Map<String, dynamic>>(mediaConcurrencies, (value) => value.toMap());
     map['name'] = name;
-    map['queueConfigs'] =
-        Input.encodeList<GetRoutingProfileQueueConfig, Map<String, dynamic>>(
-            queueConfigs, (value) => value.toMap());
+    map['queueConfigs'] = pulumi.Input.encodeList<GetRoutingProfileQueueConfig,
+        Map<String, dynamic>>(queueConfigs, (value) => value.toMap());
     map['region'] = region;
     map['routingProfileId'] = routingProfileId;
     map['tags'] = tags;
@@ -72,12 +71,13 @@ class GetRoutingProfileResult {
       description: map['description'] as String,
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
-      mediaConcurrencies: Input.decodeList<GetRoutingProfileMediaConcurrency>(
-          map['mediaConcurrencies'],
-          (value) => GetRoutingProfileMediaConcurrency.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      mediaConcurrencies:
+          pulumi.Input.decodeList<GetRoutingProfileMediaConcurrency>(
+              map['mediaConcurrencies'],
+              (value) => GetRoutingProfileMediaConcurrency.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      queueConfigs: Input.decodeList<GetRoutingProfileQueueConfig>(
+      queueConfigs: pulumi.Input.decodeList<GetRoutingProfileQueueConfig>(
           map['queueConfigs'],
           (value) => GetRoutingProfileQueueConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

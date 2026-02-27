@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_runtime_versions_runtime_version/get_runtime_versions_runtime_version.dart';
 
 /// Result data returned by getRuntimeVersions.
@@ -22,7 +22,8 @@ class GetRuntimeVersionsResult {
     final map = <String, dynamic>{};
     map['id'] = id;
     map['region'] = region;
-    map['runtimeVersions'] = Input.encodeList<GetRuntimeVersionsRuntimeVersion,
+    map['runtimeVersions'] = pulumi.Input.encodeList<
+        GetRuntimeVersionsRuntimeVersion,
         Map<String, dynamic>>(runtimeVersions, (value) => value.toMap());
     return map;
   }
@@ -31,10 +32,11 @@ class GetRuntimeVersionsResult {
     return GetRuntimeVersionsResult(
       id: map['id'] as String,
       region: map['region'] as String,
-      runtimeVersions: Input.decodeList<GetRuntimeVersionsRuntimeVersion>(
-          map['runtimeVersions'],
-          (value) => GetRuntimeVersionsRuntimeVersion.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      runtimeVersions:
+          pulumi.Input.decodeList<GetRuntimeVersionsRuntimeVersion>(
+              map['runtimeVersions'],
+              (value) => GetRuntimeVersionsRuntimeVersion.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

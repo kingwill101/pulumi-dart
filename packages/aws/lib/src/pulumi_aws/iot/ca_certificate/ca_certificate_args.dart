@@ -1,34 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ca_certificate_registration_config/ca_certificate_registration_config.dart';
 
 /// The set of arguments for CaCertificate.
 class CaCertificateArgs {
   /// Boolean flag to indicate if the certificate should be active for device authentication.
-  final Input<bool> active;
+  final pulumi.Input<bool> active;
 
   /// Boolean flag to indicate if the certificate should be active for device regisration.
-  final Input<bool> allowAutoRegistration;
+  final pulumi.Input<bool> allowAutoRegistration;
 
   /// PEM encoded CA certificate.
-  final Input<String> caCertificatePem;
+  final pulumi.Input<String> caCertificatePem;
 
   /// The certificate mode in which the CA will be registered. Valid values: `DEFAULT` and `SNI_ONLY`. Default: `DEFAULT`.
-  final Input<String>? certificateMode;
+  final pulumi.Input<String>? certificateMode;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Information about the registration configuration. See below.
-  final Input<CaCertificateRegistrationConfig>? registrationConfig;
+  final pulumi.Input<CaCertificateRegistrationConfig>? registrationConfig;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// PEM encoded verification certificate containing the common name of a registration code. Review
   /// [CreateVerificationCSR](https://docs.aws.amazon.com/iot/latest/developerguide/register-CA-cert.html). Required if `certificate_mode` is `DEFAULT`.
-  final Input<String>? verificationCertificatePem;
+  final pulumi.Input<String>? verificationCertificatePem;
 
   CaCertificateArgs({
     required this.active,
@@ -56,7 +56,7 @@ class CaCertificateArgs {
     }
     final registrationConfigValue = registrationConfig;
     if (registrationConfigValue != null) {
-      map['registrationConfig'] = Input.mapOptionalInputValue<
+      map['registrationConfig'] = pulumi.Input.mapOptionalInputValue<
               CaCertificateRegistrationConfig, Map<String, dynamic>>(
           registrationConfigValue, (value) => value.toMap());
     }
@@ -73,17 +73,19 @@ class CaCertificateArgs {
 
   factory CaCertificateArgs.fromMap(Map<String, dynamic> map) {
     return CaCertificateArgs(
-      active: Input.asInput<bool>(map['active']),
-      allowAutoRegistration: Input.asInput<bool>(map['allowAutoRegistration']),
-      caCertificatePem: Input.asInput<String>(map['caCertificatePem']),
-      certificateMode: Input.asOptionalInput<String>(map['certificateMode']),
-      region: Input.asOptionalInput<String>(map['region']),
+      active: pulumi.Input.asInput<bool>(map['active']),
+      allowAutoRegistration:
+          pulumi.Input.asInput<bool>(map['allowAutoRegistration']),
+      caCertificatePem: pulumi.Input.asInput<String>(map['caCertificatePem']),
+      certificateMode:
+          pulumi.Input.asOptionalInput<String>(map['certificateMode']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       registrationConfig:
-          Input.asOptionalInput<CaCertificateRegistrationConfig>(
+          pulumi.Input.asOptionalInput<CaCertificateRegistrationConfig>(
               map['registrationConfig']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      verificationCertificatePem:
-          Input.asOptionalInput<String>(map['verificationCertificatePem']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      verificationCertificatePem: pulumi.Input.asOptionalInput<String>(
+          map['verificationCertificatePem']),
     );
   }
 }

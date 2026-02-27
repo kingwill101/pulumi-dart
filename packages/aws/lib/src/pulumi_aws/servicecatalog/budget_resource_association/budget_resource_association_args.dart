@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for BudgetResourceAssociation.
 class BudgetResourceAssociationArgs {
   /// Budget name.
-  final Input<String> budgetName;
+  final pulumi.Input<String> budgetName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Resource identifier.
-  final Input<String> resourceId;
+  final pulumi.Input<String> resourceId;
 
   BudgetResourceAssociationArgs({
     required this.budgetName,
@@ -32,9 +32,9 @@ class BudgetResourceAssociationArgs {
 
   factory BudgetResourceAssociationArgs.fromMap(Map<String, dynamic> map) {
     return BudgetResourceAssociationArgs(
-      budgetName: Input.asInput<String>(map['budgetName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      resourceId: Input.asInput<String>(map['resourceId']),
+      budgetName: pulumi.Input.asInput<String>(map['budgetName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourceId: pulumi.Input.asInput<String>(map['resourceId']),
     );
   }
 }

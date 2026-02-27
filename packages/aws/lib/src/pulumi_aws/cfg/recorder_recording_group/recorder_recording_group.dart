@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../recorder_recording_group_exclusion_by_resource_type/recorder_recording_group_exclusion_by_resource_type.dart';
 import '../recorder_recording_group_recording_strategy/recorder_recording_group_recording_strategy.dart';
 
@@ -37,7 +37,7 @@ class RecorderRecordingGroup {
     }
     final exclusionByResourceTypesValue = exclusionByResourceTypes;
     if (exclusionByResourceTypesValue != null) {
-      map['exclusionByResourceTypes'] = Input.encodeList<
+      map['exclusionByResourceTypes'] = pulumi.Input.encodeList<
               RecorderRecordingGroupExclusionByResourceType,
               Map<String, dynamic>>(
           exclusionByResourceTypesValue, (value) => value.toMap());
@@ -48,7 +48,7 @@ class RecorderRecordingGroup {
     }
     final recordingStrategiesValue = recordingStrategies;
     if (recordingStrategiesValue != null) {
-      map['recordingStrategies'] = Input.encodeList<
+      map['recordingStrategies'] = pulumi.Input.encodeList<
               RecorderRecordingGroupRecordingStrategy, Map<String, dynamic>>(
           recordingStrategiesValue, (value) => value.toMap());
     }
@@ -65,7 +65,8 @@ class RecorderRecordingGroup {
           map['allSupported'] == null ? null : map['allSupported'] as bool,
       exclusionByResourceTypes: map['exclusionByResourceTypes'] == null
           ? null
-          : Input.decodeList<RecorderRecordingGroupExclusionByResourceType>(
+          : pulumi.Input.decodeList<
+                  RecorderRecordingGroupExclusionByResourceType>(
               map['exclusionByResourceTypes'],
               (value) => RecorderRecordingGroupExclusionByResourceType.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -74,7 +75,7 @@ class RecorderRecordingGroup {
           : map['includeGlobalResourceTypes'] as bool,
       recordingStrategies: map['recordingStrategies'] == null
           ? null
-          : Input.decodeList<RecorderRecordingGroupRecordingStrategy>(
+          : pulumi.Input.decodeList<RecorderRecordingGroupRecordingStrategy>(
               map['recordingStrategies'],
               (value) => RecorderRecordingGroupRecordingStrategy.fromMap(
                   (value as Map).cast<String, dynamic>())),

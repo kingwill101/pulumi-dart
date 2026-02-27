@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_mount_target_args.dart';
 import 'get_mount_target_result.dart';
 
 /// Provides information about an Elastic File System Mount Target (EFS).
 Future<GetMountTargetResult> getMountTarget(
   GetMountTargetArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:efs/getMountTarget:getMountTarget',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMountTargetResult.fromMap(result);
 }

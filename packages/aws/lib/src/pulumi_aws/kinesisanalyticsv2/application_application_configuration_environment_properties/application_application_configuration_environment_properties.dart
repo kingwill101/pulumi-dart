@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../application_application_configuration_environment_properties_property_group/application_application_configuration_environment_properties_property_group.dart';
 
 class ApplicationApplicationConfigurationEnvironmentProperties {
@@ -15,7 +15,7 @@ class ApplicationApplicationConfigurationEnvironmentProperties {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['propertyGroups'] = Input.encodeList<
+    map['propertyGroups'] = pulumi.Input.encodeList<
         ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup,
         Map<String, dynamic>>(propertyGroups, (value) => value.toMap());
     return map;
@@ -24,7 +24,7 @@ class ApplicationApplicationConfigurationEnvironmentProperties {
   factory ApplicationApplicationConfigurationEnvironmentProperties.fromMap(
       Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationEnvironmentProperties(
-      propertyGroups: Input.decodeList<
+      propertyGroups: pulumi.Input.decodeList<
               ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup>(
           map['propertyGroups'],
           (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_public_ipv4_pools_args.dart';
 import 'get_public_ipv4_pools_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_public_ipv4_pools_result.dart';
 /// ### Usage with Filter
 Future<GetPublicIpv4PoolsResult> getPublicIpv4Pools(
   GetPublicIpv4PoolsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getPublicIpv4Pools:getPublicIpv4Pools',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPublicIpv4PoolsResult.fromMap(result);
 }

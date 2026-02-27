@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firehose_delivery_stream_opensearchserverless_configuration_processing_configuration_processor_parameter/firehose_delivery_stream_opensearchserverless_configuration_processing_configuration_processor_parameter.dart';
 
 class FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessor {
@@ -21,7 +21,7 @@ class FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigura
     final map = <String, dynamic>{};
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<
+      map['parameters'] = pulumi.Input.encodeList<
           FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorParameter,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
@@ -34,7 +34,7 @@ class FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigura
     return FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessor(
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfigurationProcessorParameter>(
               map['parameters'],
               (value) =>

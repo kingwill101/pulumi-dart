@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_key_args.dart';
 import 'get_key_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_key_result.dart';
 /// example to supply credentials for a dependency microservice.
 Future<GetKeyResult> getKey(
   GetKeyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:apigateway/getKey:getKey',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKeyResult.fromMap(result);
 }

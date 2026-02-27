@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'primary_contact_args.dart';
 
 /// Manages the specified primary contact information associated with an AWS Account.
@@ -14,55 +14,55 @@ import 'primary_contact_args.dart';
 /// ```sh
 /// $ pulumi import aws:account/primaryContact:PrimaryContact test 1234567890
 /// ```
-class PrimaryContact extends CustomResource {
+class PrimaryContact extends pulumi.CustomResource {
   /// The ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
-  late final Output<String?> accountId;
+  late final pulumi.Output<String?> accountId;
 
   /// The first line of the primary contact address.
-  late final Output<String> addressLine1;
+  late final pulumi.Output<String> addressLine1;
 
   /// The second line of the primary contact address, if any.
-  late final Output<String?> addressLine2;
+  late final pulumi.Output<String?> addressLine2;
 
   /// The third line of the primary contact address, if any.
-  late final Output<String?> addressLine3;
+  late final pulumi.Output<String?> addressLine3;
 
   /// The city of the primary contact address.
-  late final Output<String> city;
+  late final pulumi.Output<String> city;
 
   /// The name of the company associated with the primary contact information, if any.
-  late final Output<String?> companyName;
+  late final pulumi.Output<String?> companyName;
 
   /// The ISO-3166 two-letter country code for the primary contact address.
-  late final Output<String> countryCode;
+  late final pulumi.Output<String> countryCode;
 
   /// The district or county of the primary contact address, if any.
-  late final Output<String?> districtOrCounty;
+  late final pulumi.Output<String?> districtOrCounty;
 
   /// The full name of the primary contact address.
-  late final Output<String> fullName;
+  late final pulumi.Output<String> fullName;
 
   /// The phone number of the primary contact information. The number will be validated and, in some countries, checked for activation.
-  late final Output<String> phoneNumber;
+  late final pulumi.Output<String> phoneNumber;
 
   /// The postal code of the primary contact address.
-  late final Output<String> postalCode;
+  late final pulumi.Output<String> postalCode;
 
   /// The state or region of the primary contact address. This field is required in selected countries.
-  late final Output<String?> stateOrRegion;
+  late final pulumi.Output<String?> stateOrRegion;
 
   /// The URL of the website associated with the primary contact information, if any.
-  late final Output<String?> websiteUrl;
+  late final pulumi.Output<String?> websiteUrl;
 
   PrimaryContact(
     String name, {
     PrimaryContactArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:account/primaryContact:PrimaryContact',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String?>('accountId');
     this.addressLine1 = registerOutput<String>('addressLine1');

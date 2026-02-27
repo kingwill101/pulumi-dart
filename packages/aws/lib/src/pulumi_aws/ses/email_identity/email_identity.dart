@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'email_identity_args.dart';
 
 /// Provides an SES email identity resource
@@ -14,25 +14,25 @@ import 'email_identity_args.dart';
 /// ```sh
 /// $ pulumi import aws:ses/emailIdentity:EmailIdentity example email@example.com
 /// ```
-class EmailIdentity extends CustomResource {
+class EmailIdentity extends pulumi.CustomResource {
   /// The ARN of the email identity.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The email address to assign to SES.
-  late final Output<String> email;
+  late final pulumi.Output<String> email;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   EmailIdentity(
     String name, {
     EmailIdentityArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ses/emailIdentity:EmailIdentity',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.email = registerOutput<String>('email');

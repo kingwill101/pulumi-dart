@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrderableCluster.
 class GetOrderableClusterArgs {
   /// Reshift Cluster typeE.g., `multi-node` or `single-node`
-  final Input<String>? clusterType;
+  final pulumi.Input<String>? clusterType;
 
   /// Redshift Cluster versionE.g., `1.0`
-  final Input<String>? clusterVersion;
+  final pulumi.Input<String>? clusterVersion;
 
   /// Redshift Cluster node typeE.g., `dc2.8xlarge`
-  final Input<String>? nodeType;
+  final pulumi.Input<String>? nodeType;
 
   /// Ordered list of preferred Redshift Cluster node types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
-  final Input<List<String>>? preferredNodeTypes;
+  final pulumi.Input<List<String>>? preferredNodeTypes;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetOrderableClusterArgs({
     this.clusterType,
@@ -54,12 +54,13 @@ class GetOrderableClusterArgs {
 
   factory GetOrderableClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetOrderableClusterArgs(
-      clusterType: Input.asOptionalInput<String>(map['clusterType']),
-      clusterVersion: Input.asOptionalInput<String>(map['clusterVersion']),
-      nodeType: Input.asOptionalInput<String>(map['nodeType']),
+      clusterType: pulumi.Input.asOptionalInput<String>(map['clusterType']),
+      clusterVersion:
+          pulumi.Input.asOptionalInput<String>(map['clusterVersion']),
+      nodeType: pulumi.Input.asOptionalInput<String>(map['nodeType']),
       preferredNodeTypes:
-          Input.asOptionalInput<List<String>>(map['preferredNodeTypes']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<List<String>>(map['preferredNodeTypes']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

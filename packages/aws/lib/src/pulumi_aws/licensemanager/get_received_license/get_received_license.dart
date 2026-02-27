@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_received_license_args.dart';
 import 'get_received_license_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_received_license_result.dart';
 /// The following shows getting the received license data using and ARN.
 Future<GetReceivedLicenseResult> getReceivedLicense(
   GetReceivedLicenseArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:licensemanager/getReceivedLicense:getReceivedLicense',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReceivedLicenseResult.fromMap(result);
 }

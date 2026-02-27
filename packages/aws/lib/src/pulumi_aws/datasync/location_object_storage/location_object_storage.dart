@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'location_object_storage_args.dart';
 
 /// Manages a Object Storage Location within AWS DataSync.
@@ -23,58 +23,58 @@ import 'location_object_storage_args.dart';
 /// ```sh
 /// $ pulumi import aws:datasync/locationObjectStorage:LocationObjectStorage example arn:aws:datasync:us-east-1:123456789012:location/loc-12345678901234567
 /// ```
-class LocationObjectStorage extends CustomResource {
+class LocationObjectStorage extends pulumi.CustomResource {
   /// The access key is used if credentials are required to access the self-managed object storage server. If your object storage requires a user name and password to authenticate, use `access_key` and `secret_key` to provide the user name and password, respectively.
-  late final Output<String?> accessKey;
+  late final pulumi.Output<String?> accessKey;
 
   /// A list of DataSync Agent ARNs with which this location will be associated. For agentless cross-cloud transfers, this parameter does not need to be specified.
-  late final Output<List<String>?> agentArns;
+  late final pulumi.Output<List<String>?> agentArns;
 
   /// Amazon Resource Name (ARN) of the DataSync Location.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The bucket on the self-managed object storage server that is used to read data from.
-  late final Output<String> bucketName;
+  late final pulumi.Output<String> bucketName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The secret key is used if credentials are required to access the self-managed object storage server. If your object storage requires a user name and password to authenticate, use `access_key` and `secret_key` to provide the user name and password, respectively.
-  late final Output<String?> secretKey;
+  late final pulumi.Output<String?> secretKey;
 
   /// Specifies a certificate to authenticate with an object storage system that uses a private or self-signed certificate authority (CA). You must specify a Base64-encoded .pem string. The certificate can be up to 32768 bytes (before Base64 encoding).
-  late final Output<String?> serverCertificate;
+  late final pulumi.Output<String?> serverCertificate;
 
   /// The name of the self-managed object storage server. This value is the IP address or Domain Name Service (DNS) name of the object storage server. An agent uses this host name to mount the object storage server in a network.
-  late final Output<String> serverHostname;
+  late final pulumi.Output<String> serverHostname;
 
   /// The port that your self-managed object storage server accepts inbound network traffic on. The server port is set by default to TCP 80 (`HTTP`) or TCP 443 (`HTTPS`). You can specify a custom port if your self-managed object storage server requires one.
-  late final Output<int?> serverPort;
+  late final pulumi.Output<int?> serverPort;
 
   /// The protocol that the object storage server uses to communicate. Valid values are `HTTP` or `HTTPS`.
-  late final Output<String?> serverProtocol;
+  late final pulumi.Output<String?> serverProtocol;
 
   /// A subdirectory in the HDFS cluster. This subdirectory is used to read data from or write data to the HDFS cluster. If the subdirectory isn't specified, it will default to /.
-  late final Output<String> subdirectory;
+  late final pulumi.Output<String> subdirectory;
 
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The URL of the Object Storage location that was described.
-  late final Output<String> uri;
+  late final pulumi.Output<String> uri;
 
   LocationObjectStorage(
     String name, {
     LocationObjectStorageArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:datasync/locationObjectStorage:LocationObjectStorage',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessKey = registerOutput<String?>('accessKey');
     this.agentArns = registerOutput<List<String>?>('agentArns');

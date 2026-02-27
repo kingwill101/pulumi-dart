@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../distribution_tenant_customizations/distribution_tenant_customizations.dart';
 import '../distribution_tenant_domain/distribution_tenant_domain.dart';
 import '../distribution_tenant_managed_certificate_request/distribution_tenant_managed_certificate_request.dart';
@@ -29,60 +29,60 @@ import 'distribution_tenant_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudfront/distributionTenant:DistributionTenant example TENANT123EXAMPLE
 /// ```
-class DistributionTenant extends CustomResource {
+class DistributionTenant extends pulumi.CustomResource {
   /// ARN of the distribution tenant.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// ID of the connection group for the distribution tenant. If not specified, CloudFront uses the default connection group.
-  late final Output<String> connectionGroupId;
+  late final pulumi.Output<String> connectionGroupId;
 
   /// Customizations for the distribution tenant (maximum one).
-  late final Output<DistributionTenantCustomizations?> customizations;
+  late final pulumi.Output<DistributionTenantCustomizations?> customizations;
 
   /// ID of the multi-tenant distribution.
-  late final Output<String> distributionId;
+  late final pulumi.Output<String> distributionId;
 
   /// Set of domains associated with the distribution tenant.
-  late final Output<List<DistributionTenantDomain>?> domains;
+  late final pulumi.Output<List<DistributionTenantDomain>?> domains;
 
   /// Whether the distribution tenant is enabled to serve traffic. Defaults to `true`.
-  late final Output<bool> enabled;
+  late final pulumi.Output<bool> enabled;
 
   /// Current version of the distribution tenant.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Managed certificate request for CloudFront managed ACM certificate (maximum one).
-  late final Output<DistributionTenantManagedCertificateRequest?>
+  late final pulumi.Output<DistributionTenantManagedCertificateRequest?>
       managedCertificateRequest;
 
   /// Name of the distribution tenant.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Set of parameter values for the distribution tenant.
-  late final Output<List<DistributionTenantParameter>?> parameters;
+  late final pulumi.Output<List<DistributionTenantParameter>?> parameters;
 
   /// Current status of the distribution tenant.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<DistributionTenantTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<DistributionTenantTimeouts?> timeouts;
 
   /// If enabled, the resource will wait for the distribution tenant status to change from `InProgress` to `Deployed`. Setting this to `false` will skip the process. Default: `true`.
-  late final Output<bool> waitForDeployment;
+  late final pulumi.Output<bool> waitForDeployment;
 
   DistributionTenant(
     String name, {
     DistributionTenantArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/distributionTenant:DistributionTenant',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.connectionGroupId = registerOutput<String>('connectionGroupId');

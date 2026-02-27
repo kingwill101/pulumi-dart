@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../usage_plan_api_stage_throttle/usage_plan_api_stage_throttle.dart';
 
 class UsagePlanApiStage {
@@ -25,9 +25,8 @@ class UsagePlanApiStage {
     map['stage'] = stage;
     final throttlesValue = throttles;
     if (throttlesValue != null) {
-      map['throttles'] =
-          Input.encodeList<UsagePlanApiStageThrottle, Map<String, dynamic>>(
-              throttlesValue, (value) => value.toMap());
+      map['throttles'] = pulumi.Input.encodeList<UsagePlanApiStageThrottle,
+          Map<String, dynamic>>(throttlesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -38,7 +37,7 @@ class UsagePlanApiStage {
       stage: map['stage'] as String,
       throttles: map['throttles'] == null
           ? null
-          : Input.decodeList<UsagePlanApiStageThrottle>(
+          : pulumi.Input.decodeList<UsagePlanApiStageThrottle>(
               map['throttles'],
               (value) => UsagePlanApiStageThrottle.fromMap(
                   (value as Map).cast<String, dynamic>())),

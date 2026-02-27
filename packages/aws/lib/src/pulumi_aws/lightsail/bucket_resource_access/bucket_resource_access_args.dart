@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for BucketResourceAccess.
 class BucketResourceAccessArgs {
   /// Name of the bucket to grant access to.
-  final Input<String> bucketName;
+  final pulumi.Input<String> bucketName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Name of the resource to grant bucket access.
-  final Input<String> resourceName;
+  final pulumi.Input<String> resourceName;
 
   BucketResourceAccessArgs({
     required this.bucketName,
@@ -32,9 +32,9 @@ class BucketResourceAccessArgs {
 
   factory BucketResourceAccessArgs.fromMap(Map<String, dynamic> map) {
     return BucketResourceAccessArgs(
-      bucketName: Input.asInput<String>(map['bucketName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      resourceName: Input.asInput<String>(map['resourceName']),
+      bucketName: pulumi.Input.asInput<String>(map['bucketName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourceName: pulumi.Input.asInput<String>(map['resourceName']),
     );
   }
 }

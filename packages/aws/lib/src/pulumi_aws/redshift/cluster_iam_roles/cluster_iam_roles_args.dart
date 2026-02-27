@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ClusterIamRoles.
 class ClusterIamRolesArgs {
   /// The name of the Redshift Cluster IAM Roles.
-  final Input<String> clusterIdentifier;
+  final pulumi.Input<String> clusterIdentifier;
 
   /// The Amazon Resource Name (ARN) for the IAM role that was set as default for the cluster when the cluster was created.
-  final Input<String>? defaultIamRoleArn;
+  final pulumi.Input<String>? defaultIamRoleArn;
 
   /// A list of IAM Role ARNs to associate with the cluster. A Maximum of 10 can be associated to the cluster at any time.
-  final Input<List<String>>? iamRoleArns;
+  final pulumi.Input<List<String>>? iamRoleArns;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   ClusterIamRolesArgs({
     required this.clusterIdentifier,
@@ -43,11 +43,12 @@ class ClusterIamRolesArgs {
 
   factory ClusterIamRolesArgs.fromMap(Map<String, dynamic> map) {
     return ClusterIamRolesArgs(
-      clusterIdentifier: Input.asInput<String>(map['clusterIdentifier']),
+      clusterIdentifier: pulumi.Input.asInput<String>(map['clusterIdentifier']),
       defaultIamRoleArn:
-          Input.asOptionalInput<String>(map['defaultIamRoleArn']),
-      iamRoleArns: Input.asOptionalInput<List<String>>(map['iamRoleArns']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['defaultIamRoleArn']),
+      iamRoleArns:
+          pulumi.Input.asOptionalInput<List<String>>(map['iamRoleArns']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

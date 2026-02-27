@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_initial_response_setting_conditional_default_branch_next_step_intent_slot/v2models_intent_initial_response_setting_conditional_default_branch_next_step_intent_slot.dart';
 
 class V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStepIntent {
@@ -25,7 +25,7 @@ class V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStepIntent
     }
     final slotsValue = slots;
     if (slotsValue != null) {
-      map['slots'] = Input.encodeList<
+      map['slots'] = pulumi.Input.encodeList<
           V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStepIntentSlot,
           Map<String, dynamic>>(slotsValue, (value) => value.toMap());
     }
@@ -38,7 +38,7 @@ class V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStepIntent
       name: map['name'] == null ? null : map['name'] as String,
       slots: map['slots'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStepIntentSlot>(
               map['slots'],
               (value) =>

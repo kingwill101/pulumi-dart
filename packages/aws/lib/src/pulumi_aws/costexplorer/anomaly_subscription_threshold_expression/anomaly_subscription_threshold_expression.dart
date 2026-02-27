@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../anomaly_subscription_threshold_expression_and/anomaly_subscription_threshold_expression_and.dart';
 import '../anomaly_subscription_threshold_expression_cost_category/anomaly_subscription_threshold_expression_cost_category.dart';
 import '../anomaly_subscription_threshold_expression_dimension/anomaly_subscription_threshold_expression_dimension.dart';
@@ -40,7 +40,8 @@ class AnomalySubscriptionThresholdExpression {
     final map = <String, dynamic>{};
     final andsValue = ands;
     if (andsValue != null) {
-      map['ands'] = Input.encodeList<AnomalySubscriptionThresholdExpressionAnd,
+      map['ands'] = pulumi.Input.encodeList<
+          AnomalySubscriptionThresholdExpressionAnd,
           Map<String, dynamic>>(andsValue, (value) => value.toMap());
     }
     final costCategoryValue = costCategory;
@@ -57,7 +58,8 @@ class AnomalySubscriptionThresholdExpression {
     }
     final orsValue = ors;
     if (orsValue != null) {
-      map['ors'] = Input.encodeList<AnomalySubscriptionThresholdExpressionOr,
+      map['ors'] = pulumi.Input.encodeList<
+          AnomalySubscriptionThresholdExpressionOr,
           Map<String, dynamic>>(orsValue, (value) => value.toMap());
     }
     final tagsValue = tags;
@@ -72,7 +74,7 @@ class AnomalySubscriptionThresholdExpression {
     return AnomalySubscriptionThresholdExpression(
       ands: map['ands'] == null
           ? null
-          : Input.decodeList<AnomalySubscriptionThresholdExpressionAnd>(
+          : pulumi.Input.decodeList<AnomalySubscriptionThresholdExpressionAnd>(
               map['ands'],
               (value) => AnomalySubscriptionThresholdExpressionAnd.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -90,7 +92,7 @@ class AnomalySubscriptionThresholdExpression {
               (map['not'] as Map).cast<String, dynamic>()),
       ors: map['ors'] == null
           ? null
-          : Input.decodeList<AnomalySubscriptionThresholdExpressionOr>(
+          : pulumi.Input.decodeList<AnomalySubscriptionThresholdExpressionOr>(
               map['ors'],
               (value) => AnomalySubscriptionThresholdExpressionOr.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_action_definition/service_action_definition.dart';
 import 'service_action_args.dart';
 
@@ -17,33 +17,33 @@ import 'service_action_args.dart';
 /// ```sh
 /// $ pulumi import aws:servicecatalog/serviceAction:ServiceAction example act-f1w12eperfslh
 /// ```
-class ServiceAction extends CustomResource {
+class ServiceAction extends pulumi.CustomResource {
   /// Language code. Valid values are `en` (English), `jp` (Japanese), and `zh` (Chinese). Default is `en`.
-  late final Output<String?> acceptLanguage;
+  late final pulumi.Output<String?> acceptLanguage;
 
   /// Self-service action definition configuration block. Detailed below.
-  late final Output<ServiceActionDefinition> definition;
+  late final pulumi.Output<ServiceActionDefinition> definition;
 
   /// Self-service action description.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Self-service action name.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ServiceAction(
     String name, {
     ServiceActionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:servicecatalog/serviceAction:ServiceAction',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.acceptLanguage = registerOutput<String?>('acceptLanguage');
     this.definition = registerOutput<ServiceActionDefinition>('definition');

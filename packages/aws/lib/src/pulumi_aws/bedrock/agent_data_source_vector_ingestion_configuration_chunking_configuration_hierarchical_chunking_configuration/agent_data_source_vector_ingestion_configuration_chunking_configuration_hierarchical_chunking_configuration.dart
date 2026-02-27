@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_data_source_vector_ingestion_configuration_chunking_configuration_hierarchical_chunking_configuration_level_configuration/agent_data_source_vector_ingestion_configuration_chunking_configuration_hierarchical_chunking_configuration_level_configuration.dart';
 
 class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration {
@@ -21,7 +21,7 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchic
     final map = <String, dynamic>{};
     final levelConfigurationsValue = levelConfigurations;
     if (levelConfigurationsValue != null) {
-      map['levelConfigurations'] = Input.encodeList<
+      map['levelConfigurations'] = pulumi.Input.encodeList<
           AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration,
           Map<String,
               dynamic>>(levelConfigurationsValue, (value) => value.toMap());
@@ -35,7 +35,7 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchic
     return AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration(
       levelConfigurations: map['levelConfigurations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration>(
               map['levelConfigurations'],
               (value) =>

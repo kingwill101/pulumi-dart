@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../global_table_replica/global_table_replica.dart';
 
 /// The set of arguments for GlobalTable.
 class GlobalTableArgs {
   /// The name of the global table. Must match underlying DynamoDB Table names in all regions.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Underlying DynamoDB Table. At least 1 replica must be defined. See below.
-  final Input<List<GlobalTableReplica>> replicas;
+  final pulumi.Input<List<GlobalTableReplica>> replicas;
 
   GlobalTableArgs({
     this.name,
@@ -30,19 +30,20 @@ class GlobalTableArgs {
     if (regionValue != null) {
       map['region'] = regionValue;
     }
-    map['replicas'] = Input.mapInputValue<List<GlobalTableReplica>,
+    map['replicas'] = pulumi.Input.mapInputValue<List<GlobalTableReplica>,
             List<Map<String, dynamic>>>(
         replicas,
-        (value) => Input.encodeList<GlobalTableReplica, Map<String, dynamic>>(
-            value, (value) => value.toMap()));
+        (value) =>
+            pulumi.Input.encodeList<GlobalTableReplica, Map<String, dynamic>>(
+                value, (value) => value.toMap()));
     return map;
   }
 
   factory GlobalTableArgs.fromMap(Map<String, dynamic> map) {
     return GlobalTableArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      replicas: Input.asInput<List<GlobalTableReplica>>(map['replicas']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      replicas: pulumi.Input.asInput<List<GlobalTableReplica>>(map['replicas']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_origin_access_identities_args.dart';
 import 'get_origin_access_identities_result.dart';
 
@@ -15,13 +15,13 @@ import 'get_origin_access_identities_result.dart';
 /// Origin access identities whose comments are `example-comment1`, `example-comment2`
 Future<GetOriginAccessIdentitiesResult> getOriginAccessIdentities(
   GetOriginAccessIdentitiesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:cloudfront/getOriginAccessIdentities:getOriginAccessIdentities',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOriginAccessIdentitiesResult.fromMap(result);
 }

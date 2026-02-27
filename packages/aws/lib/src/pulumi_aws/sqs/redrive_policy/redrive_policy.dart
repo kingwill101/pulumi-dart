@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'redrive_policy_args.dart';
 
 /// Allows you to set a redrive policy of an SQS Queue
@@ -19,25 +19,25 @@ import 'redrive_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:sqs/redrivePolicy:RedrivePolicy test https://queue.amazonaws.com/123456789012/myqueue
 /// ```
-class RedrivePolicy extends CustomResource {
+class RedrivePolicy extends pulumi.CustomResource {
   /// The URL of the SQS Queue to which to attach the policy
-  late final Output<String> queueUrl;
+  late final pulumi.Output<String> queueUrl;
 
   /// The JSON redrive policy for the SQS queue. Accepts two key/val pairs: `deadLetterTargetArn` and `maxReceiveCount`. Learn more in the [Amazon SQS dead-letter queues documentation](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html).
-  late final Output<String> redrivePolicy;
+  late final pulumi.Output<String> redrivePolicy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   RedrivePolicy(
     String name, {
     RedrivePolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sqs/redrivePolicy:RedrivePolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.queueUrl = registerOutput<String>('queueUrl');
     this.redrivePolicy = registerOutput<String>('redrivePolicy');

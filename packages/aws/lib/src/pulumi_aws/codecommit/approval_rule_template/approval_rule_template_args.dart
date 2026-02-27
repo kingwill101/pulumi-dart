@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ApprovalRuleTemplate.
 class ApprovalRuleTemplateArgs {
   /// The content of the approval rule template. Maximum of 3000 characters.
-  final Input<String> content;
+  final pulumi.Input<String> content;
 
   /// The description of the approval rule template. Maximum of 1000 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The name for the approval rule template. Maximum of 100 characters.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   ApprovalRuleTemplateArgs({
     required this.content,
@@ -43,10 +43,10 @@ class ApprovalRuleTemplateArgs {
 
   factory ApprovalRuleTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ApprovalRuleTemplateArgs(
-      content: Input.asInput<String>(map['content']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      content: pulumi.Input.asInput<String>(map['content']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

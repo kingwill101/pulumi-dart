@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_replication_group_args.dart';
 import 'get_replication_group_result.dart';
 
 /// Use this data source to get information about an ElastiCache Replication Group.
 Future<GetReplicationGroupResult> getReplicationGroup(
   GetReplicationGroupArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:elasticache/getReplicationGroup:getReplicationGroup',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReplicationGroupResult.fromMap(result);
 }

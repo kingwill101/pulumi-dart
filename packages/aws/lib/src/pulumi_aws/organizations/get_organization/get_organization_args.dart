@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganization.
 class GetOrganizationArgs {
   /// Return (as attributes) only the results of the [`DescribeOrganization`](https://docs.aws.amazon.com/organizations/latest/APIReference/API_DescribeOrganization.html) API to avoid [API limits](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html#throttling-limits). When configured to `true` only the `arn`, `feature_set`, `master_account_arn`, `master_account_email` and `master_account_id` attributes will be returned. All others will be empty. Default: `false`.
-  final Input<bool>? returnOrganizationOnly;
+  final pulumi.Input<bool>? returnOrganizationOnly;
 
   GetOrganizationArgs({
     this.returnOrganizationOnly,
@@ -23,7 +23,7 @@ class GetOrganizationArgs {
   factory GetOrganizationArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationArgs(
       returnOrganizationOnly:
-          Input.asOptionalInput<bool>(map['returnOrganizationOnly']),
+          pulumi.Input.asOptionalInput<bool>(map['returnOrganizationOnly']),
     );
   }
 }

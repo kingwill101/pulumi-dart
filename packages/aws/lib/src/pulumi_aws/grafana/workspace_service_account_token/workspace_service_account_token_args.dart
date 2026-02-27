@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for WorkspaceServiceAccountToken.
 class WorkspaceServiceAccountTokenArgs {
   /// A name for the token to create. The name must be unique within the workspace.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Sets how long the token will be valid, in seconds. You can set the time up to 30 days in the future.
-  final Input<int> secondsToLive;
+  final pulumi.Input<int> secondsToLive;
 
   /// The ID of the service account for which to create a token.
-  final Input<String> serviceAccountId;
+  final pulumi.Input<String> serviceAccountId;
 
   /// The Grafana workspace with which the service account token is associated.
-  final Input<String> workspaceId;
+  final pulumi.Input<String> workspaceId;
 
   WorkspaceServiceAccountTokenArgs({
     this.name,
@@ -45,11 +45,11 @@ class WorkspaceServiceAccountTokenArgs {
 
   factory WorkspaceServiceAccountTokenArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceServiceAccountTokenArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      secondsToLive: Input.asInput<int>(map['secondsToLive']),
-      serviceAccountId: Input.asInput<String>(map['serviceAccountId']),
-      workspaceId: Input.asInput<String>(map['workspaceId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      secondsToLive: pulumi.Input.asInput<int>(map['secondsToLive']),
+      serviceAccountId: pulumi.Input.asInput<String>(map['serviceAccountId']),
+      workspaceId: pulumi.Input.asInput<String>(map['workspaceId']),
     );
   }
 }

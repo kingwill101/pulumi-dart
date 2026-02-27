@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting/v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting.dart';
 
 class V2modelsSlotSubSlotSettingSlotSpecification {
@@ -27,7 +27,7 @@ class V2modelsSlotSubSlotSettingSlotSpecification {
     map['slotTypeId'] = slotTypeId;
     final valueElicitationSettingsValue = valueElicitationSettings;
     if (valueElicitationSettingsValue != null) {
-      map['valueElicitationSettings'] = Input.encodeList<
+      map['valueElicitationSettings'] = pulumi.Input.encodeList<
               V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting,
               Map<String, dynamic>>(
           valueElicitationSettingsValue, (value) => value.toMap());
@@ -42,7 +42,7 @@ class V2modelsSlotSubSlotSettingSlotSpecification {
       slotTypeId: map['slotTypeId'] as String,
       valueElicitationSettings: map['valueElicitationSettings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSetting>(
               map['valueElicitationSettings'],
               (value) =>

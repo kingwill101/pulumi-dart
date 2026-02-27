@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipe_target_parameters_ecs_task_parameters_overrides_container_override_environment/pipe_target_parameters_ecs_task_parameters_overrides_container_override_environment.dart';
 import '../pipe_target_parameters_ecs_task_parameters_overrides_container_override_environment_file/pipe_target_parameters_ecs_task_parameters_overrides_container_override_environment_file.dart';
 import '../pipe_target_parameters_ecs_task_parameters_overrides_container_override_resource_requirement/pipe_target_parameters_ecs_task_parameters_overrides_container_override_resource_requirement.dart';
@@ -59,14 +59,14 @@ class PipeTargetParametersEcsTaskParametersOverridesContainerOverride {
     }
     final environmentFilesValue = environmentFiles;
     if (environmentFilesValue != null) {
-      map['environmentFiles'] = Input.encodeList<
+      map['environmentFiles'] = pulumi.Input.encodeList<
           PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile,
           Map<String,
               dynamic>>(environmentFilesValue, (value) => value.toMap());
     }
     final environmentsValue = environments;
     if (environmentsValue != null) {
-      map['environments'] = Input.encodeList<
+      map['environments'] = pulumi.Input.encodeList<
           PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment,
           Map<String, dynamic>>(environmentsValue, (value) => value.toMap());
     }
@@ -84,7 +84,7 @@ class PipeTargetParametersEcsTaskParametersOverridesContainerOverride {
     }
     final resourceRequirementsValue = resourceRequirements;
     if (resourceRequirementsValue != null) {
-      map['resourceRequirements'] = Input.encodeList<
+      map['resourceRequirements'] = pulumi.Input.encodeList<
           PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement,
           Map<String,
               dynamic>>(resourceRequirementsValue, (value) => value.toMap());
@@ -101,7 +101,7 @@ class PipeTargetParametersEcsTaskParametersOverridesContainerOverride {
       cpu: map['cpu'] == null ? null : map['cpu'] as int,
       environmentFiles: map['environmentFiles'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile>(
               map['environmentFiles'],
               (value) =>
@@ -109,7 +109,7 @@ class PipeTargetParametersEcsTaskParametersOverridesContainerOverride {
                       .fromMap((value as Map).cast<String, dynamic>())),
       environments: map['environments'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment>(
               map['environments'],
               (value) =>
@@ -122,7 +122,7 @@ class PipeTargetParametersEcsTaskParametersOverridesContainerOverride {
       name: map['name'] == null ? null : map['name'] as String,
       resourceRequirements: map['resourceRequirements'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement>(
               map['resourceRequirements'],
               (value) =>

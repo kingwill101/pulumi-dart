@@ -1,4 +1,4 @@
 library module_quicksight_ingestion;
 
-export 'ingestion/ingestion2.dart';
-export 'ingestion/ingestion_args2.dart';
+export 'ingestion/ingestion_quicksight.dart';
+export 'ingestion/ingestion_quicksight_args.dart';

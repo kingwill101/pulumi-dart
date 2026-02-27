@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'topic_policy_args.dart';
 
 /// Provides an SNS topic policy resource
@@ -23,28 +23,28 @@ import 'topic_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:sns/topicPolicy:TopicPolicy user_updates arn:aws:sns:us-west-2:123456789012:my-topic
 /// ```
-class TopicPolicy extends CustomResource {
+class TopicPolicy extends pulumi.CustomResource {
   /// The ARN of the SNS topic
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The AWS Account ID of the SNS topic owner
-  late final Output<String> owner;
+  late final pulumi.Output<String> owner;
 
   /// The fully-formed AWS policy as JSON.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   TopicPolicy(
     String name, {
     TopicPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sns/topicPolicy:TopicPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.owner = registerOutput<String>('owner');

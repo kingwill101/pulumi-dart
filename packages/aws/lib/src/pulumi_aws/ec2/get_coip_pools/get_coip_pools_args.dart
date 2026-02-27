@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_coip_pools_filter/get_coip_pools_filter.dart';
 
 /// Arguments for getCoipPools.
@@ -9,14 +9,14 @@ class GetCoipPoolsArgs {
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
-  final Input<List<GetCoipPoolsFilter>>? filters;
+  final pulumi.Input<List<GetCoipPoolsFilter>>? filters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Mapping of tags, each pair of which must exactly match
   /// a pair on the desired aws_ec2_coip_pools.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetCoipPoolsArgs({
     this.filters,
@@ -28,11 +28,12 @@ class GetCoipPoolsArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetCoipPoolsFilter>,
-              List<Map<String, dynamic>>>(
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
+              List<GetCoipPoolsFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) => Input.encodeList<GetCoipPoolsFilter, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<GetCoipPoolsFilter, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final regionValue = region;
     if (regionValue != null) {
@@ -47,9 +48,10 @@ class GetCoipPoolsArgs {
 
   factory GetCoipPoolsArgs.fromMap(Map<String, dynamic> map) {
     return GetCoipPoolsArgs(
-      filters: Input.asOptionalInput<List<GetCoipPoolsFilter>>(map['filters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      filters: pulumi.Input.asOptionalInput<List<GetCoipPoolsFilter>>(
+          map['filters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

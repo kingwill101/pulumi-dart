@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_profile_user_settings_jupyter_server_app_settings_code_repository/user_profile_user_settings_jupyter_server_app_settings_code_repository.dart';
 import '../user_profile_user_settings_jupyter_server_app_settings_default_resource_spec/user_profile_user_settings_jupyter_server_app_settings_default_resource_spec.dart';
 
@@ -26,7 +26,7 @@ class UserProfileUserSettingsJupyterServerAppSettings {
     final map = <String, dynamic>{};
     final codeRepositoriesValue = codeRepositories;
     if (codeRepositoriesValue != null) {
-      map['codeRepositories'] = Input.encodeList<
+      map['codeRepositories'] = pulumi.Input.encodeList<
               UserProfileUserSettingsJupyterServerAppSettingsCodeRepository,
               Map<String, dynamic>>(
           codeRepositoriesValue, (value) => value.toMap());
@@ -47,7 +47,7 @@ class UserProfileUserSettingsJupyterServerAppSettings {
     return UserProfileUserSettingsJupyterServerAppSettings(
       codeRepositories: map['codeRepositories'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   UserProfileUserSettingsJupyterServerAppSettingsCodeRepository>(
               map['codeRepositories'],
               (value) =>

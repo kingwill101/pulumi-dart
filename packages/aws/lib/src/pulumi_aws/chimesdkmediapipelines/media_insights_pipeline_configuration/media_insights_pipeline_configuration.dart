@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../media_insights_pipeline_configuration_element/media_insights_pipeline_configuration_element.dart';
 import '../media_insights_pipeline_configuration_real_time_alert_configuration/media_insights_pipeline_configuration_real_time_alert_configuration.dart';
 import 'media_insights_pipeline_configuration_args.dart';
@@ -48,40 +48,41 @@ import 'media_insights_pipeline_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:chimesdkmediapipelines/mediaInsightsPipelineConfiguration:MediaInsightsPipelineConfiguration example abcdef123456
 /// ```
-class MediaInsightsPipelineConfiguration extends CustomResource {
+class MediaInsightsPipelineConfiguration extends pulumi.CustomResource {
   /// ARN of the Media Insights Pipeline Configuration.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Collection of processors and sinks to transform media and deliver data.
-  late final Output<List<MediaInsightsPipelineConfigurationElement>> elements;
+  late final pulumi.Output<List<MediaInsightsPipelineConfigurationElement>>
+      elements;
 
   /// Configuration name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Configuration for real-time alert rules to send EventBridge notifications when certain conditions are met.
-  late final Output<
-          MediaInsightsPipelineConfigurationRealTimeAlertConfiguration?>
+  late final pulumi
+      .Output<MediaInsightsPipelineConfigurationRealTimeAlertConfiguration?>
       realTimeAlertConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of IAM Role used by service to invoke processors and sinks specified by configuration elements.
-  late final Output<String> resourceAccessRoleArn;
+  late final pulumi.Output<String> resourceAccessRoleArn;
 
   /// Key-value map of tags for the resource.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   MediaInsightsPipelineConfiguration(
     String name, {
     MediaInsightsPipelineConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:chimesdkmediapipelines/mediaInsightsPipelineConfiguration:MediaInsightsPipelineConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.elements =

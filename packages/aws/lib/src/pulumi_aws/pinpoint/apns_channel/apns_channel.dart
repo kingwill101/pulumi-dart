@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apns_channel_args.dart';
 
 /// Provides a Pinpoint APNs Channel resource.
@@ -15,15 +15,15 @@ import 'apns_channel_args.dart';
 /// ```sh
 /// $ pulumi import aws:pinpoint/apnsChannel:ApnsChannel apns application-id
 /// ```
-class ApnsChannel extends CustomResource {
+class ApnsChannel extends pulumi.CustomResource {
   /// The application ID.
-  late final Output<String> applicationId;
+  late final pulumi.Output<String> applicationId;
 
   /// The ID assigned to your iOS app. To find this value, choose Certificates, IDs & Profiles, choose App IDs in the Identifiers section, and choose your app.
-  late final Output<String?> bundleId;
+  late final pulumi.Output<String?> bundleId;
 
   /// The pem encoded TLS Certificate from Apple.
-  late final Output<String?> certificate;
+  late final pulumi.Output<String?> certificate;
 
   /// The default authentication method used for APNs.
   /// __NOTE__: Amazon Pinpoint uses this default for every APNs push notification that you send using the console.
@@ -33,37 +33,37 @@ class ApnsChannel extends CustomResource {
   /// One of the following sets of credentials is also required.
   ///
   /// If you choose to use __Certificate credentials__ you will have to provide:
-  late final Output<String?> defaultAuthenticationMethod;
+  late final pulumi.Output<String?> defaultAuthenticationMethod;
 
   /// Whether the channel is enabled or disabled. Defaults to `true`.
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// The Certificate Private Key file (ie. `.key` file).
   ///
   /// If you choose to use __Key credentials__ you will have to provide:
-  late final Output<String?> privateKey;
+  late final pulumi.Output<String?> privateKey;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID assigned to your Apple developer account team. This value is provided on the Membership page.
-  late final Output<String?> teamId;
+  late final pulumi.Output<String?> teamId;
 
   /// The `.p8` file that you download from your Apple developer account when you create an authentication key.
-  late final Output<String?> tokenKey;
+  late final pulumi.Output<String?> tokenKey;
 
   /// The ID assigned to your signing key. To find this value, choose Certificates, IDs & Profiles, and choose your key in the Keys section.
-  late final Output<String?> tokenKeyId;
+  late final pulumi.Output<String?> tokenKeyId;
 
   ApnsChannel(
     String name, {
     ApnsChannelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:pinpoint/apnsChannel:ApnsChannel',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.applicationId = registerOutput<String>('applicationId');
     this.bundleId = registerOutput<String?>('bundleId');

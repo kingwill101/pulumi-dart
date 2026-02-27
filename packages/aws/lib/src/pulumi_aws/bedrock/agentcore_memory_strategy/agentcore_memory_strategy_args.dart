@@ -1,35 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agentcore_memory_strategy_configuration/agentcore_memory_strategy_configuration.dart';
 import '../agentcore_memory_strategy_timeouts/agentcore_memory_strategy_timeouts.dart';
 
 /// The set of arguments for AgentcoreMemoryStrategy.
 class AgentcoreMemoryStrategyArgs {
   /// Custom configuration block. Required when `type` is `CUSTOM`, must be omitted for other types. See `configuration` below.
-  final Input<AgentcoreMemoryStrategyConfiguration>? configuration;
+  final pulumi.Input<AgentcoreMemoryStrategyConfiguration>? configuration;
 
   /// Description of the memory strategy.
-  final Input<String>? description;
-  final Input<String>? memoryExecutionRoleArn;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<String>? memoryExecutionRoleArn;
 
   /// ID of the memory to associate with this strategy. Changing this forces a new resource.
-  final Input<String> memoryId;
+  final pulumi.Input<String> memoryId;
 
   /// Name of the memory strategy.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Set of namespace identifiers where this strategy applies. Namespaces help organize and scope memory content.
   ///
   /// The following arguments are optional:
-  final Input<List<String>> namespaces;
+  final pulumi.Input<List<String>> namespaces;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
-  final Input<AgentcoreMemoryStrategyTimeouts>? timeouts;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<AgentcoreMemoryStrategyTimeouts>? timeouts;
 
   /// Type of memory strategy. Valid values: `SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `CUSTOM`. Changing this forces a new resource. Note that only one strategy of each built-in type (`SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`) can exist per memory.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   AgentcoreMemoryStrategyArgs({
     this.configuration,
@@ -47,7 +47,7 @@ class AgentcoreMemoryStrategyArgs {
     final map = <String, dynamic>{};
     final configurationValue = configuration;
     if (configurationValue != null) {
-      map['configuration'] = Input.mapOptionalInputValue<
+      map['configuration'] = pulumi.Input.mapOptionalInputValue<
           AgentcoreMemoryStrategyConfiguration,
           Map<String, dynamic>>(configurationValue, (value) => value.toMap());
     }
@@ -71,7 +71,7 @@ class AgentcoreMemoryStrategyArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           AgentcoreMemoryStrategyTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -82,18 +82,18 @@ class AgentcoreMemoryStrategyArgs {
   factory AgentcoreMemoryStrategyArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreMemoryStrategyArgs(
       configuration:
-          Input.asOptionalInput<AgentcoreMemoryStrategyConfiguration>(
+          pulumi.Input.asOptionalInput<AgentcoreMemoryStrategyConfiguration>(
               map['configuration']),
-      description: Input.asOptionalInput<String>(map['description']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       memoryExecutionRoleArn:
-          Input.asOptionalInput<String>(map['memoryExecutionRoleArn']),
-      memoryId: Input.asInput<String>(map['memoryId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      namespaces: Input.asInput<List<String>>(map['namespaces']),
-      region: Input.asOptionalInput<String>(map['region']),
-      timeouts: Input.asOptionalInput<AgentcoreMemoryStrategyTimeouts>(
+          pulumi.Input.asOptionalInput<String>(map['memoryExecutionRoleArn']),
+      memoryId: pulumi.Input.asInput<String>(map['memoryId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      namespaces: pulumi.Input.asInput<List<String>>(map['namespaces']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      timeouts: pulumi.Input.asOptionalInput<AgentcoreMemoryStrategyTimeouts>(
           map['timeouts']),
-      type: Input.asInput<String>(map['type']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

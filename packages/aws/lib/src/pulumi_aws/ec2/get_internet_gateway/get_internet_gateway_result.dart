@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_internet_gateway_attachment/get_internet_gateway_attachment.dart';
 import '../get_internet_gateway_filter/get_internet_gateway_filter.dart';
 
@@ -34,14 +34,12 @@ class GetInternetGatewayResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['attachments'] =
-        Input.encodeList<GetInternetGatewayAttachment, Map<String, dynamic>>(
-            attachments, (value) => value.toMap());
+    map['attachments'] = pulumi.Input.encodeList<GetInternetGatewayAttachment,
+        Map<String, dynamic>>(attachments, (value) => value.toMap());
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetInternetGatewayFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetInternetGatewayFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['internetGatewayId'] = internetGatewayId;
@@ -54,13 +52,13 @@ class GetInternetGatewayResult {
   factory GetInternetGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetInternetGatewayResult(
       arn: map['arn'] as String,
-      attachments: Input.decodeList<GetInternetGatewayAttachment>(
+      attachments: pulumi.Input.decodeList<GetInternetGatewayAttachment>(
           map['attachments'],
           (value) => GetInternetGatewayAttachment.fromMap(
               (value as Map).cast<String, dynamic>())),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetInternetGatewayFilter>(
+          : pulumi.Input.decodeList<GetInternetGatewayFilter>(
               map['filters'],
               (value) => GetInternetGatewayFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

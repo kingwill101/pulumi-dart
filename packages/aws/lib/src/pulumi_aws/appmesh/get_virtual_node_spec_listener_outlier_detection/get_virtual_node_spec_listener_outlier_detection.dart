@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_node_spec_listener_outlier_detection_base_ejection_duration/get_virtual_node_spec_listener_outlier_detection_base_ejection_duration.dart';
 import '../get_virtual_node_spec_listener_outlier_detection_interval/get_virtual_node_spec_listener_outlier_detection_interval.dart';
 
@@ -20,10 +20,10 @@ class GetVirtualNodeSpecListenerOutlierDetection {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['baseEjectionDurations'] = Input.encodeList<
+    map['baseEjectionDurations'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration,
         Map<String, dynamic>>(baseEjectionDurations, (value) => value.toMap());
-    map['intervals'] = Input.encodeList<
+    map['intervals'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecListenerOutlierDetectionInterval,
         Map<String, dynamic>>(intervals, (value) => value.toMap());
     map['maxEjectionPercent'] = maxEjectionPercent;
@@ -34,18 +34,17 @@ class GetVirtualNodeSpecListenerOutlierDetection {
   factory GetVirtualNodeSpecListenerOutlierDetection.fromMap(
       Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerOutlierDetection(
-      baseEjectionDurations: Input.decodeList<
+      baseEjectionDurations: pulumi.Input.decodeList<
               GetVirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration>(
           map['baseEjectionDurations'],
           (value) =>
               GetVirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration
                   .fromMap((value as Map).cast<String, dynamic>())),
-      intervals:
-          Input.decodeList<GetVirtualNodeSpecListenerOutlierDetectionInterval>(
-              map['intervals'],
-              (value) =>
-                  GetVirtualNodeSpecListenerOutlierDetectionInterval.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      intervals: pulumi.Input.decodeList<
+              GetVirtualNodeSpecListenerOutlierDetectionInterval>(
+          map['intervals'],
+          (value) => GetVirtualNodeSpecListenerOutlierDetectionInterval.fromMap(
+              (value as Map).cast<String, dynamic>())),
       maxEjectionPercent: map['maxEjectionPercent'] as int,
       maxServerErrors: map['maxServerErrors'] as int,
     );

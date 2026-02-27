@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for BaiduChannel.
 class BaiduChannelArgs {
   /// Platform credential API key from Baidu.
-  final Input<String> apiKey;
+  final pulumi.Input<String> apiKey;
 
   /// The application ID.
-  final Input<String> applicationId;
+  final pulumi.Input<String> applicationId;
 
   /// Specifies whether to enable the channel. Defaults to `true`.
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Platform credential Secret key from Baidu.
-  final Input<String> secretKey;
+  final pulumi.Input<String> secretKey;
 
   BaiduChannelArgs({
     required this.apiKey,
@@ -45,11 +45,11 @@ class BaiduChannelArgs {
 
   factory BaiduChannelArgs.fromMap(Map<String, dynamic> map) {
     return BaiduChannelArgs(
-      apiKey: Input.asInput<String>(map['apiKey']),
-      applicationId: Input.asInput<String>(map['applicationId']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
-      region: Input.asOptionalInput<String>(map['region']),
-      secretKey: Input.asInput<String>(map['secretKey']),
+      apiKey: pulumi.Input.asInput<String>(map['apiKey']),
+      applicationId: pulumi.Input.asInput<String>(map['applicationId']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      secretKey: pulumi.Input.asInput<String>(map['secretKey']),
     );
   }
 }

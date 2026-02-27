@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_formation_type_logging_config/get_cloud_formation_type_logging_config.dart';
 
 /// Result data returned by getCloudFormationType.
@@ -79,7 +79,8 @@ class GetCloudFormationTypeResult {
     map['executionRoleArn'] = executionRoleArn;
     map['id'] = id;
     map['isDefaultVersion'] = isDefaultVersion;
-    map['loggingConfigs'] = Input.encodeList<GetCloudFormationTypeLoggingConfig,
+    map['loggingConfigs'] = pulumi.Input.encodeList<
+        GetCloudFormationTypeLoggingConfig,
         Map<String, dynamic>>(loggingConfigs, (value) => value.toMap());
     map['provisioningType'] = provisioningType;
     map['region'] = region;
@@ -106,10 +107,11 @@ class GetCloudFormationTypeResult {
       executionRoleArn: map['executionRoleArn'] as String,
       id: map['id'] as String,
       isDefaultVersion: map['isDefaultVersion'] as bool,
-      loggingConfigs: Input.decodeList<GetCloudFormationTypeLoggingConfig>(
-          map['loggingConfigs'],
-          (value) => GetCloudFormationTypeLoggingConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      loggingConfigs:
+          pulumi.Input.decodeList<GetCloudFormationTypeLoggingConfig>(
+              map['loggingConfigs'],
+              (value) => GetCloudFormationTypeLoggingConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       provisioningType: map['provisioningType'] as String,
       region: map['region'] as String,
       schema: map['schema'] as String,

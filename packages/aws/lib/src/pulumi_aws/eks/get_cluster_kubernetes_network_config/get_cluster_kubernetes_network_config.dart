@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_kubernetes_network_config_elastic_load_balancing/get_cluster_kubernetes_network_config_elastic_load_balancing.dart';
 
 class GetClusterKubernetesNetworkConfig {
@@ -26,7 +26,7 @@ class GetClusterKubernetesNetworkConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['elasticLoadBalancings'] = Input.encodeList<
+    map['elasticLoadBalancings'] = pulumi.Input.encodeList<
         GetClusterKubernetesNetworkConfigElasticLoadBalancing,
         Map<String, dynamic>>(elasticLoadBalancings, (value) => value.toMap());
     map['ipFamily'] = ipFamily;
@@ -37,7 +37,7 @@ class GetClusterKubernetesNetworkConfig {
 
   factory GetClusterKubernetesNetworkConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterKubernetesNetworkConfig(
-      elasticLoadBalancings: Input.decodeList<
+      elasticLoadBalancings: pulumi.Input.decodeList<
               GetClusterKubernetesNetworkConfigElasticLoadBalancing>(
           map['elasticLoadBalancings'],
           (value) =>

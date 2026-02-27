@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ClusterActivityStream.
 class ClusterActivityStreamArgs {
@@ -8,19 +8,19 @@ class ClusterActivityStreamArgs {
   ///
   /// For more detailed documentation about each argument, refer to
   /// the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/start-activity-stream.html).
-  final Input<bool>? engineNativeAuditFieldsIncluded;
+  final pulumi.Input<bool>? engineNativeAuditFieldsIncluded;
 
   /// The AWS KMS key identifier for encrypting messages in the database activity stream. The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias name for the KMS key.
-  final Input<String> kmsKeyId;
+  final pulumi.Input<String> kmsKeyId;
 
   /// Specifies the mode of the database activity stream. Database events such as a change or access generate an activity stream event. The database session can handle these events either synchronously or asynchronously. One of: `sync`, `async`.
-  final Input<String> mode;
+  final pulumi.Input<String> mode;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The Amazon Resource Name (ARN) of the DB cluster.
-  final Input<String> resourceArn;
+  final pulumi.Input<String> resourceArn;
 
   ClusterActivityStreamArgs({
     this.engineNativeAuditFieldsIncluded,
@@ -50,12 +50,12 @@ class ClusterActivityStreamArgs {
 
   factory ClusterActivityStreamArgs.fromMap(Map<String, dynamic> map) {
     return ClusterActivityStreamArgs(
-      engineNativeAuditFieldsIncluded:
-          Input.asOptionalInput<bool>(map['engineNativeAuditFieldsIncluded']),
-      kmsKeyId: Input.asInput<String>(map['kmsKeyId']),
-      mode: Input.asInput<String>(map['mode']),
-      region: Input.asOptionalInput<String>(map['region']),
-      resourceArn: Input.asInput<String>(map['resourceArn']),
+      engineNativeAuditFieldsIncluded: pulumi.Input.asOptionalInput<bool>(
+          map['engineNativeAuditFieldsIncluded']),
+      kmsKeyId: pulumi.Input.asInput<String>(map['kmsKeyId']),
+      mode: pulumi.Input.asInput<String>(map['mode']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourceArn: pulumi.Input.asInput<String>(map['resourceArn']),
     );
   }
 }

@@ -1,39 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Authorizer.
 class AuthorizerArgs {
   /// Credentials required for the authorizer. To specify an IAM Role for API Gateway to assume, use the IAM Role ARN.
-  final Input<String>? authorizerCredentials;
+  final pulumi.Input<String>? authorizerCredentials;
 
   /// TTL of cached authorizer results in seconds. Defaults to `300`.
-  final Input<int>? authorizerResultTtlInSeconds;
+  final pulumi.Input<int>? authorizerResultTtlInSeconds;
 
   /// Authorizer's Uniform Resource Identifier (URI). This must be a well-formed Lambda function URI in the form of `arn:aws:apigateway:{region}:lambda:path/{service_api}`,
   /// e.g., `arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:012345678912:function:my-function/invocations`
-  final Input<String>? authorizerUri;
+  final pulumi.Input<String>? authorizerUri;
 
   /// Source of the identity in an incoming request. Defaults to `method.request.header.Authorization`. For `REQUEST` type, this may be a comma-separated list of values, including headers, query string parameters and stage variables - e.g., `"method.request.header.SomeHeaderName,method.request.querystring.SomeQueryStringName,stageVariables.SomeStageVariableName"`
-  final Input<String>? identitySource;
+  final pulumi.Input<String>? identitySource;
 
   /// Validation expression for the incoming identity. For `TOKEN` type, this value should be a regular expression. The incoming token from the client is matched against this expression, and will proceed if the token matches. If the token doesn't match, the client receives a 401 Unauthorized response.
-  final Input<String>? identityValidationExpression;
+  final pulumi.Input<String>? identityValidationExpression;
 
   /// Name of the authorizer
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// List of the Amazon Cognito user pool ARNs. Each element is of this format: `arn:aws:cognito-idp:{region}:{account_id}:userpool/{user_pool_id}`.
-  final Input<List<String>>? providerArns;
+  final pulumi.Input<List<String>>? providerArns;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the associated REST API
-  final Input<String> restApi;
+  final pulumi.Input<String> restApi;
 
   /// Type of the authorizer. Possible values are `TOKEN` for a Lambda function using a single authorization token submitted in a custom header, `REQUEST` for a Lambda function using incoming request parameters, or `COGNITO_USER_POOLS` for using an Amazon Cognito user pool. Defaults to `TOKEN`.
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   AuthorizerArgs({
     this.authorizerCredentials,
@@ -93,18 +93,20 @@ class AuthorizerArgs {
   factory AuthorizerArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizerArgs(
       authorizerCredentials:
-          Input.asOptionalInput<String>(map['authorizerCredentials']),
-      authorizerResultTtlInSeconds:
-          Input.asOptionalInput<int>(map['authorizerResultTtlInSeconds']),
-      authorizerUri: Input.asOptionalInput<String>(map['authorizerUri']),
-      identitySource: Input.asOptionalInput<String>(map['identitySource']),
-      identityValidationExpression:
-          Input.asOptionalInput<String>(map['identityValidationExpression']),
-      name: Input.asOptionalInput<String>(map['name']),
-      providerArns: Input.asOptionalInput<List<String>>(map['providerArns']),
-      region: Input.asOptionalInput<String>(map['region']),
-      restApi: Input.asInput<String>(map['restApi']),
-      type: Input.asOptionalInput<String>(map['type']),
+          pulumi.Input.asOptionalInput<String>(map['authorizerCredentials']),
+      authorizerResultTtlInSeconds: pulumi.Input.asOptionalInput<int>(
+          map['authorizerResultTtlInSeconds']),
+      authorizerUri: pulumi.Input.asOptionalInput<String>(map['authorizerUri']),
+      identitySource:
+          pulumi.Input.asOptionalInput<String>(map['identitySource']),
+      identityValidationExpression: pulumi.Input.asOptionalInput<String>(
+          map['identityValidationExpression']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      providerArns:
+          pulumi.Input.asOptionalInput<List<String>>(map['providerArns']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      restApi: pulumi.Input.asInput<String>(map['restApi']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
     );
   }
 }

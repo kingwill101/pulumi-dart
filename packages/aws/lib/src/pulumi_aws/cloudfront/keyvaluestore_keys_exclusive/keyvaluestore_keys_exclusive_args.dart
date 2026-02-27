@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../keyvaluestore_keys_exclusive_resource_key_value_pair/keyvaluestore_keys_exclusive_resource_key_value_pair.dart';
 
 /// The set of arguments for KeyvaluestoreKeysExclusive.
@@ -8,14 +8,14 @@ class KeyvaluestoreKeysExclusiveArgs {
   /// Amazon Resource Name (ARN) of the Key Value Store.
   ///
   /// The following arguments are optional:
-  final Input<String> keyValueStoreArn;
+  final pulumi.Input<String> keyValueStoreArn;
 
   /// Maximum resource key values pairs that will update in a single API request. AWS has a default quota of 50 keys or a 3 MB payload, whichever is reached first. Defaults to `50`.
-  final Input<int>? maxBatchSize;
+  final pulumi.Input<int>? maxBatchSize;
 
   /// A list of all resource key value pairs associated with the KeyValueStore.
   /// See `resource_key_value_pair` below.
-  final Input<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>>?
+  final pulumi.Input<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>>?
       resourceKeyValuePairs;
 
   KeyvaluestoreKeysExclusiveArgs({
@@ -33,11 +33,11 @@ class KeyvaluestoreKeysExclusiveArgs {
     }
     final resourceKeyValuePairsValue = resourceKeyValuePairs;
     if (resourceKeyValuePairsValue != null) {
-      map['resourceKeyValuePairs'] = Input.mapOptionalInputValue<
+      map['resourceKeyValuePairs'] = pulumi.Input.mapOptionalInputValue<
               List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>,
               List<Map<String, dynamic>>>(
           resourceKeyValuePairsValue,
-          (value) => Input.encodeList<
+          (value) => pulumi.Input.encodeList<
               KeyvaluestoreKeysExclusiveResourceKeyValuePair,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
@@ -46,9 +46,9 @@ class KeyvaluestoreKeysExclusiveArgs {
 
   factory KeyvaluestoreKeysExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return KeyvaluestoreKeysExclusiveArgs(
-      keyValueStoreArn: Input.asInput<String>(map['keyValueStoreArn']),
-      maxBatchSize: Input.asOptionalInput<int>(map['maxBatchSize']),
-      resourceKeyValuePairs: Input.asOptionalInput<
+      keyValueStoreArn: pulumi.Input.asInput<String>(map['keyValueStoreArn']),
+      maxBatchSize: pulumi.Input.asOptionalInput<int>(map['maxBatchSize']),
+      resourceKeyValuePairs: pulumi.Input.asOptionalInput<
               List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>>(
           map['resourceKeyValuePairs']),
     );

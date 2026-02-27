@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agentcore_token_vault_cmk_kms_configuration/agentcore_token_vault_cmk_kms_configuration.dart';
 import 'agentcore_token_vault_cmk_args.dart';
 
@@ -17,25 +17,26 @@ import 'agentcore_token_vault_cmk_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrock/agentcoreTokenVaultCmk:AgentcoreTokenVaultCmk example "default"
 /// ```
-class AgentcoreTokenVaultCmk extends CustomResource {
+class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
   /// KMS configuration for the token vault. See `kms_configuration` below.
-  late final Output<AgentcoreTokenVaultCmkKmsConfiguration> kmsConfiguration;
+  late final pulumi.Output<AgentcoreTokenVaultCmkKmsConfiguration>
+      kmsConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Token vault ID. Defaults to `default`.
-  late final Output<String> tokenVaultId;
+  late final pulumi.Output<String> tokenVaultId;
 
   AgentcoreTokenVaultCmk(
     String name, {
     AgentcoreTokenVaultCmkArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/agentcoreTokenVaultCmk:AgentcoreTokenVaultCmk',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.kmsConfiguration =
         registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>(

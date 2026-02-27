@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_environment_monitor/get_environment_monitor.dart';
 
 /// Result data returned by getEnvironment.
@@ -52,7 +52,7 @@ class GetEnvironmentResult {
     map['environmentId'] = environmentId;
     map['id'] = id;
     map['monitors'] =
-        Input.encodeList<GetEnvironmentMonitor, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetEnvironmentMonitor, Map<String, dynamic>>(
             monitors, (value) => value.toMap());
     map['name'] = name;
     map['region'] = region;
@@ -68,7 +68,7 @@ class GetEnvironmentResult {
       description: map['description'] as String,
       environmentId: map['environmentId'] as String,
       id: map['id'] as String,
-      monitors: Input.decodeList<GetEnvironmentMonitor>(
+      monitors: pulumi.Input.decodeList<GetEnvironmentMonitor>(
           map['monitors'],
           (value) => GetEnvironmentMonitor.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../budget_filter_expression_or_and/budget_filter_expression_or_and.dart';
 import '../budget_filter_expression_or_cost_categories/budget_filter_expression_or_cost_categories.dart';
 import '../budget_filter_expression_or_dimensions/budget_filter_expression_or_dimensions.dart';
@@ -40,9 +40,8 @@ class BudgetFilterExpressionOr {
     final map = <String, dynamic>{};
     final andsValue = ands;
     if (andsValue != null) {
-      map['ands'] =
-          Input.encodeList<BudgetFilterExpressionOrAnd, Map<String, dynamic>>(
-              andsValue, (value) => value.toMap());
+      map['ands'] = pulumi.Input.encodeList<BudgetFilterExpressionOrAnd,
+          Map<String, dynamic>>(andsValue, (value) => value.toMap());
     }
     final costCategoriesValue = costCategories;
     if (costCategoriesValue != null) {
@@ -58,9 +57,8 @@ class BudgetFilterExpressionOr {
     }
     final orsValue = ors;
     if (orsValue != null) {
-      map['ors'] =
-          Input.encodeList<BudgetFilterExpressionOrOr, Map<String, dynamic>>(
-              orsValue, (value) => value.toMap());
+      map['ors'] = pulumi.Input.encodeList<BudgetFilterExpressionOrOr,
+          Map<String, dynamic>>(orsValue, (value) => value.toMap());
     }
     final tagsValue = tags;
     if (tagsValue != null) {
@@ -73,7 +71,7 @@ class BudgetFilterExpressionOr {
     return BudgetFilterExpressionOr(
       ands: map['ands'] == null
           ? null
-          : Input.decodeList<BudgetFilterExpressionOrAnd>(
+          : pulumi.Input.decodeList<BudgetFilterExpressionOrAnd>(
               map['ands'],
               (value) => BudgetFilterExpressionOrAnd.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -91,7 +89,7 @@ class BudgetFilterExpressionOr {
               (map['not'] as Map).cast<String, dynamic>()),
       ors: map['ors'] == null
           ? null
-          : Input.decodeList<BudgetFilterExpressionOrOr>(
+          : pulumi.Input.decodeList<BudgetFilterExpressionOrOr>(
               map['ors'],
               (value) => BudgetFilterExpressionOrOr.fromMap(
                   (value as Map).cast<String, dynamic>())),

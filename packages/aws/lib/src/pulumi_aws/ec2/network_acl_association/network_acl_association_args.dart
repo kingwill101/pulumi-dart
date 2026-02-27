@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for NetworkAclAssociation.
 class NetworkAclAssociationArgs {
   /// The ID of the network ACL.
-  final Input<String> networkAclId;
+  final pulumi.Input<String> networkAclId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of the associated Subnet.
-  final Input<String> subnetId;
+  final pulumi.Input<String> subnetId;
 
   NetworkAclAssociationArgs({
     required this.networkAclId,
@@ -32,9 +32,9 @@ class NetworkAclAssociationArgs {
 
   factory NetworkAclAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAclAssociationArgs(
-      networkAclId: Input.asInput<String>(map['networkAclId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      subnetId: Input.asInput<String>(map['subnetId']),
+      networkAclId: pulumi.Input.asInput<String>(map['networkAclId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      subnetId: pulumi.Input.asInput<String>(map['subnetId']),
     );
   }
 }

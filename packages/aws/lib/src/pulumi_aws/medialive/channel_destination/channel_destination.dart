@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../channel_destination_media_package_setting/channel_destination_media_package_setting.dart';
 import '../channel_destination_multiplex_settings/channel_destination_multiplex_settings.dart';
 import '../channel_destination_setting/channel_destination_setting.dart';
@@ -30,7 +30,7 @@ class ChannelDestination {
     map['id'] = id;
     final mediaPackageSettingsValue = mediaPackageSettings;
     if (mediaPackageSettingsValue != null) {
-      map['mediaPackageSettings'] = Input.encodeList<
+      map['mediaPackageSettings'] = pulumi.Input.encodeList<
               ChannelDestinationMediaPackageSetting, Map<String, dynamic>>(
           mediaPackageSettingsValue, (value) => value.toMap());
     }
@@ -40,9 +40,8 @@ class ChannelDestination {
     }
     final settingsValue = settings;
     if (settingsValue != null) {
-      map['settings'] =
-          Input.encodeList<ChannelDestinationSetting, Map<String, dynamic>>(
-              settingsValue, (value) => value.toMap());
+      map['settings'] = pulumi.Input.encodeList<ChannelDestinationSetting,
+          Map<String, dynamic>>(settingsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -52,7 +51,7 @@ class ChannelDestination {
       id: map['id'] as String,
       mediaPackageSettings: map['mediaPackageSettings'] == null
           ? null
-          : Input.decodeList<ChannelDestinationMediaPackageSetting>(
+          : pulumi.Input.decodeList<ChannelDestinationMediaPackageSetting>(
               map['mediaPackageSettings'],
               (value) => ChannelDestinationMediaPackageSetting.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -62,7 +61,7 @@ class ChannelDestination {
               (map['multiplexSettings'] as Map).cast<String, dynamic>()),
       settings: map['settings'] == null
           ? null
-          : Input.decodeList<ChannelDestinationSetting>(
+          : pulumi.Input.decodeList<ChannelDestinationSetting>(
               map['settings'],
               (value) => ChannelDestinationSetting.fromMap(
                   (value as Map).cast<String, dynamic>())),

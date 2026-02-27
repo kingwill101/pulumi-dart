@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_lake_configuration_encryption_configuration/data_lake_configuration_encryption_configuration.dart';
 import '../data_lake_configuration_lifecycle_configuration/data_lake_configuration_lifecycle_configuration.dart';
 import '../data_lake_configuration_replication_configuration/data_lake_configuration_replication_configuration.dart';
@@ -30,7 +30,7 @@ class DataLakeConfiguration {
     final map = <String, dynamic>{};
     final encryptionConfigurationsValue = encryptionConfigurations;
     if (encryptionConfigurationsValue != null) {
-      map['encryptionConfigurations'] = Input.encodeList<
+      map['encryptionConfigurations'] = pulumi.Input.encodeList<
               DataLakeConfigurationEncryptionConfiguration,
               Map<String, dynamic>>(
           encryptionConfigurationsValue, (value) => value.toMap());
@@ -51,7 +51,8 @@ class DataLakeConfiguration {
     return DataLakeConfiguration(
       encryptionConfigurations: map['encryptionConfigurations'] == null
           ? null
-          : Input.decodeList<DataLakeConfigurationEncryptionConfiguration>(
+          : pulumi.Input.decodeList<
+                  DataLakeConfigurationEncryptionConfiguration>(
               map['encryptionConfigurations'],
               (value) => DataLakeConfigurationEncryptionConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_resolver_firewall_rule_group_association_args.dart';
 import 'get_resolver_firewall_rule_group_association_result.dart';
 
@@ -12,13 +12,13 @@ import 'get_resolver_firewall_rule_group_association_result.dart';
 Future<GetResolverFirewallRuleGroupAssociationResult>
     getResolverFirewallRuleGroupAssociation(
   GetResolverFirewallRuleGroupAssociationArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:route53/getResolverFirewallRuleGroupAssociation:getResolverFirewallRuleGroupAssociation',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResolverFirewallRuleGroupAssociationResult.fromMap(result);
 }

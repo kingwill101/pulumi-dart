@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_response_headers_policy_args.dart';
 import 'get_response_headers_policy_result.dart';
 
@@ -15,13 +15,13 @@ import 'get_response_headers_policy_result.dart';
 /// AWS managed response header policy names are prefixed with `Managed-`:
 Future<GetResponseHeadersPolicyResult> getResponseHeadersPolicy(
   GetResponseHeadersPolicyArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:cloudfront/getResponseHeadersPolicy:getResponseHeadersPolicy',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResponseHeadersPolicyResult.fromMap(result);
 }

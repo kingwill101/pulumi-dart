@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../directory_config_certificate_based_auth_properties/directory_config_certificate_based_auth_properties.dart';
 import '../directory_config_service_account_credentials/directory_config_service_account_credentials.dart';
 import 'directory_config_args.dart';
@@ -16,36 +16,36 @@ import 'directory_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:appstream/directoryConfig:DirectoryConfig example directoryNameExample
 /// ```
-class DirectoryConfig extends CustomResource {
+class DirectoryConfig extends pulumi.CustomResource {
   /// Configuration block for the certificate-based authentication properties used to authenticate SAML 2.0 Identity Provider (IdP) user identities to Active Directory domain-joined streaming instances. See `certificate_based_auth_properties` below.
-  late final Output<DirectoryConfigCertificateBasedAuthProperties?>
+  late final pulumi.Output<DirectoryConfigCertificateBasedAuthProperties?>
       certificateBasedAuthProperties;
 
   /// Date and time, in UTC and extended RFC 3339 format, when the directory config was created.
-  late final Output<String> createdTime;
+  late final pulumi.Output<String> createdTime;
 
   /// Fully qualified name of the directory.
-  late final Output<String> directoryName;
+  late final pulumi.Output<String> directoryName;
 
   /// Distinguished names of the organizational units for computer accounts.
-  late final Output<List<String>> organizationalUnitDistinguishedNames;
+  late final pulumi.Output<List<String>> organizationalUnitDistinguishedNames;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration block for the name of the directory and organizational unit (OU) to use to join the directory config to a Microsoft Active Directory domain. See `service_account_credentials` below.
-  late final Output<DirectoryConfigServiceAccountCredentials>
+  late final pulumi.Output<DirectoryConfigServiceAccountCredentials>
       serviceAccountCredentials;
 
   DirectoryConfig(
     String name, {
     DirectoryConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:appstream/directoryConfig:DirectoryConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.certificateBasedAuthProperties =
         registerOutput<DirectoryConfigCertificateBasedAuthProperties?>(

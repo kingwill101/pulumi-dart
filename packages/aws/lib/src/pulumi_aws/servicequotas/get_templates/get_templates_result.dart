@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_templates_template/get_templates_template.dart';
 
 /// Result data returned by getTemplates.
@@ -33,7 +33,7 @@ class GetTemplatesResult {
       map['region'] = regionValue;
     }
     map['templates'] =
-        Input.encodeList<GetTemplatesTemplate, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTemplatesTemplate, Map<String, dynamic>>(
             templates, (value) => value.toMap());
     return map;
   }
@@ -43,7 +43,7 @@ class GetTemplatesResult {
       awsRegion: map['awsRegion'] == null ? null : map['awsRegion'] as String,
       id: map['id'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      templates: Input.decodeList<GetTemplatesTemplate>(
+      templates: pulumi.Input.decodeList<GetTemplatesTemplate>(
           map['templates'],
           (value) => GetTemplatesTemplate.fromMap(
               (value as Map).cast<String, dynamic>())),

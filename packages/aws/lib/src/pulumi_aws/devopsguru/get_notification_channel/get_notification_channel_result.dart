@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_notification_channel_filter/get_notification_channel_filter.dart';
 import '../get_notification_channel_sn/get_notification_channel_sn.dart';
 
@@ -25,17 +25,15 @@ class GetNotificationChannelResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetNotificationChannelFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetNotificationChannelFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['region'] = region;
     final snsValue = sns;
     if (snsValue != null) {
-      map['sns'] =
-          Input.encodeList<GetNotificationChannelSn, Map<String, dynamic>>(
-              snsValue, (value) => value.toMap());
+      map['sns'] = pulumi.Input.encodeList<GetNotificationChannelSn,
+          Map<String, dynamic>>(snsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -44,7 +42,7 @@ class GetNotificationChannelResult {
     return GetNotificationChannelResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetNotificationChannelFilter>(
+          : pulumi.Input.decodeList<GetNotificationChannelFilter>(
               map['filters'],
               (value) => GetNotificationChannelFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -52,7 +50,7 @@ class GetNotificationChannelResult {
       region: map['region'] as String,
       sns: map['sns'] == null
           ? null
-          : Input.decodeList<GetNotificationChannelSn>(
+          : pulumi.Input.decodeList<GetNotificationChannelSn>(
               map['sns'],
               (value) => GetNotificationChannelSn.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ontap_file_system_endpoint_intercluster/ontap_file_system_endpoint_intercluster.dart';
 import '../ontap_file_system_endpoint_management/ontap_file_system_endpoint_management.dart';
 
@@ -20,13 +20,14 @@ class OntapFileSystemEndpoint {
     final map = <String, dynamic>{};
     final interclustersValue = interclusters;
     if (interclustersValue != null) {
-      map['interclusters'] = Input.encodeList<
+      map['interclusters'] = pulumi.Input.encodeList<
           OntapFileSystemEndpointIntercluster,
           Map<String, dynamic>>(interclustersValue, (value) => value.toMap());
     }
     final managementsValue = managements;
     if (managementsValue != null) {
-      map['managements'] = Input.encodeList<OntapFileSystemEndpointManagement,
+      map['managements'] = pulumi.Input.encodeList<
+          OntapFileSystemEndpointManagement,
           Map<String, dynamic>>(managementsValue, (value) => value.toMap());
     }
     return map;
@@ -36,13 +37,13 @@ class OntapFileSystemEndpoint {
     return OntapFileSystemEndpoint(
       interclusters: map['interclusters'] == null
           ? null
-          : Input.decodeList<OntapFileSystemEndpointIntercluster>(
+          : pulumi.Input.decodeList<OntapFileSystemEndpointIntercluster>(
               map['interclusters'],
               (value) => OntapFileSystemEndpointIntercluster.fromMap(
                   (value as Map).cast<String, dynamic>())),
       managements: map['managements'] == null
           ? null
-          : Input.decodeList<OntapFileSystemEndpointManagement>(
+          : pulumi.Input.decodeList<OntapFileSystemEndpointManagement>(
               map['managements'],
               (value) => OntapFileSystemEndpointManagement.fromMap(
                   (value as Map).cast<String, dynamic>())),

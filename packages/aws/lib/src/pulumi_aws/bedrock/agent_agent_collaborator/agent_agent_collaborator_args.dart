@@ -1,34 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_agent_collaborator_agent_descriptor/agent_agent_collaborator_agent_descriptor.dart';
 import '../agent_agent_collaborator_timeouts/agent_agent_collaborator_timeouts.dart';
 
 /// The set of arguments for AgentAgentCollaborator.
 class AgentAgentCollaboratorArgs {
-  final Input<AgentAgentCollaboratorAgentDescriptor> agentDescriptor;
+  final pulumi.Input<AgentAgentCollaboratorAgentDescriptor> agentDescriptor;
 
   /// ID if the agent to associate the collaborator.
-  final Input<String> agentId;
-  final Input<String>? agentVersion;
+  final pulumi.Input<String> agentId;
+  final pulumi.Input<String>? agentVersion;
 
   /// Instruction to give the collaborator.
-  final Input<String> collaborationInstruction;
+  final pulumi.Input<String> collaborationInstruction;
 
   /// Name of this collaborator.
   ///
   /// The following arguments are optional:
-  final Input<String> collaboratorName;
+  final pulumi.Input<String> collaboratorName;
 
   /// Whether to prepare the agent after creation or modification. Defaults to `true`.
-  final Input<bool>? prepareAgent;
+  final pulumi.Input<bool>? prepareAgent;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Configure relaying the history to the collaborator.
-  final Input<String>? relayConversationHistory;
-  final Input<AgentAgentCollaboratorTimeouts>? timeouts;
+  final pulumi.Input<String>? relayConversationHistory;
+  final pulumi.Input<AgentAgentCollaboratorTimeouts>? timeouts;
 
   AgentAgentCollaboratorArgs({
     required this.agentDescriptor,
@@ -44,7 +44,7 @@ class AgentAgentCollaboratorArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['agentDescriptor'] = Input.mapInputValue<
+    map['agentDescriptor'] = pulumi.Input.mapInputValue<
         AgentAgentCollaboratorAgentDescriptor,
         Map<String, dynamic>>(agentDescriptor, (value) => value.toMap());
     map['agentId'] = agentId;
@@ -68,7 +68,7 @@ class AgentAgentCollaboratorArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           AgentAgentCollaboratorTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -77,18 +77,19 @@ class AgentAgentCollaboratorArgs {
 
   factory AgentAgentCollaboratorArgs.fromMap(Map<String, dynamic> map) {
     return AgentAgentCollaboratorArgs(
-      agentDescriptor: Input.asInput<AgentAgentCollaboratorAgentDescriptor>(
-          map['agentDescriptor']),
-      agentId: Input.asInput<String>(map['agentId']),
-      agentVersion: Input.asOptionalInput<String>(map['agentVersion']),
+      agentDescriptor:
+          pulumi.Input.asInput<AgentAgentCollaboratorAgentDescriptor>(
+              map['agentDescriptor']),
+      agentId: pulumi.Input.asInput<String>(map['agentId']),
+      agentVersion: pulumi.Input.asOptionalInput<String>(map['agentVersion']),
       collaborationInstruction:
-          Input.asInput<String>(map['collaborationInstruction']),
-      collaboratorName: Input.asInput<String>(map['collaboratorName']),
-      prepareAgent: Input.asOptionalInput<bool>(map['prepareAgent']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asInput<String>(map['collaborationInstruction']),
+      collaboratorName: pulumi.Input.asInput<String>(map['collaboratorName']),
+      prepareAgent: pulumi.Input.asOptionalInput<bool>(map['prepareAgent']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       relayConversationHistory:
-          Input.asOptionalInput<String>(map['relayConversationHistory']),
-      timeouts: Input.asOptionalInput<AgentAgentCollaboratorTimeouts>(
+          pulumi.Input.asOptionalInput<String>(map['relayConversationHistory']),
+      timeouts: pulumi.Input.asOptionalInput<AgentAgentCollaboratorTimeouts>(
           map['timeouts']),
     );
   }

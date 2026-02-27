@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../managed_user_pool_client_analytics_configuration/managed_user_pool_client_analytics_configuration.dart';
 import '../managed_user_pool_client_refresh_token_rotation/managed_user_pool_client_refresh_token_rotation.dart';
 import '../managed_user_pool_client_token_validity_units/managed_user_pool_client_token_validity_units.dart';
@@ -8,79 +8,81 @@ import '../managed_user_pool_client_token_validity_units/managed_user_pool_clien
 /// The set of arguments for ManagedUserPoolClient.
 class ManagedUserPoolClientArgs {
   /// Time limit, between 5 minutes and 1 day, after which the access token is no longer valid and cannot be used. By default, the unit is hours. The unit can be overridden by a value in `token_validity_units.access_token`.
-  final Input<int>? accessTokenValidity;
+  final pulumi.Input<int>? accessTokenValidity;
 
   /// List of allowed OAuth flows, including `code`, `implicit`, and `client_credentials`. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
-  final Input<List<String>>? allowedOauthFlows;
+  final pulumi.Input<List<String>>? allowedOauthFlows;
 
   /// Whether the client is allowed to use OAuth 2.0 features. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure the following arguments: `callback_urls`, `logout_urls`, `allowed_oauth_scopes` and `allowed_oauth_flows`.
-  final Input<bool>? allowedOauthFlowsUserPoolClient;
+  final pulumi.Input<bool>? allowedOauthFlowsUserPoolClient;
 
   /// List of allowed OAuth scopes, including `phone`, `email`, `openid`, `profile`, and `aws.cognito.signin.user.admin`. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
-  final Input<List<String>>? allowedOauthScopes;
+  final pulumi.Input<List<String>>? allowedOauthScopes;
 
   /// Configuration block for Amazon Pinpoint analytics that collects metrics for this user pool. See details below.
-  final Input<ManagedUserPoolClientAnalyticsConfiguration>?
+  final pulumi.Input<ManagedUserPoolClientAnalyticsConfiguration>?
       analyticsConfiguration;
 
   /// Duration, in minutes, of the session token created by Amazon Cognito for each API request in an authentication flow. The session token must be responded to by the native user of the user pool before it expires. Valid values for `auth_session_validity` are between `3` and `15`, with a default value of `3`.
-  final Input<int>? authSessionValidity;
+  final pulumi.Input<int>? authSessionValidity;
 
   /// List of allowed callback URLs for the identity providers. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
-  final Input<List<String>>? callbackUrls;
+  final pulumi.Input<List<String>>? callbackUrls;
 
   /// Default redirect URI and must be included in the list of callback URLs.
-  final Input<String>? defaultRedirectUri;
+  final pulumi.Input<String>? defaultRedirectUri;
 
   /// Enables the propagation of additional user context data.
-  final Input<bool>? enablePropagateAdditionalUserContextData;
+  final pulumi.Input<bool>? enablePropagateAdditionalUserContextData;
 
   /// Enables or disables token revocation.
-  final Input<bool>? enableTokenRevocation;
+  final pulumi.Input<bool>? enableTokenRevocation;
 
   /// List of authentication flows. The available options include ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH, ALLOW_ADMIN_USER_PASSWORD_AUTH, ALLOW_CUSTOM_AUTH, ALLOW_USER_PASSWORD_AUTH, ALLOW_USER_SRP_AUTH, and ALLOW_REFRESH_TOKEN_AUTH.
-  final Input<List<String>>? explicitAuthFlows;
+  final pulumi.Input<List<String>>? explicitAuthFlows;
 
   /// Time limit, between 5 minutes and 1 day, after which the ID token is no longer valid and cannot be used. By default, the unit is hours. The unit can be overridden by a value in `token_validity_units.id_token`.
-  final Input<int>? idTokenValidity;
+  final pulumi.Input<int>? idTokenValidity;
 
   /// List of allowed logout URLs for the identity providers. `allowed_oauth_flows_user_pool_client` must be set to `true` before you can configure this option.
-  final Input<List<String>>? logoutUrls;
+  final pulumi.Input<List<String>>? logoutUrls;
 
   /// Regular expression that matches the name of the existing User Pool Client to be managed. It must only match one User Pool Client.
-  final Input<String>? namePattern;
+  final pulumi.Input<String>? namePattern;
 
   /// String that matches the beginning of the name of the  existing User Pool Client to be managed. It must match only one User Pool Client.
   ///
   /// The following arguments are optional:
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// Setting determines the errors and responses returned by Cognito APIs when a user does not exist in the user pool during authentication, account confirmation, and password recovery.
-  final Input<String>? preventUserExistenceErrors;
+  final pulumi.Input<String>? preventUserExistenceErrors;
 
   /// List of user pool attributes that the application client can read from.
-  final Input<List<String>>? readAttributes;
+  final pulumi.Input<List<String>>? readAttributes;
 
   /// A block that specifies the configuration of refresh token rotation. Detailed below.
-  final Input<ManagedUserPoolClientRefreshTokenRotation>? refreshTokenRotation;
+  final pulumi.Input<ManagedUserPoolClientRefreshTokenRotation>?
+      refreshTokenRotation;
 
   /// Time limit, between 60 minutes and 10 years, after which the refresh token is no longer valid and cannot be used. By default, the unit is days. The unit can be overridden by a value in `token_validity_units.refresh_token`.
-  final Input<int>? refreshTokenValidity;
+  final pulumi.Input<int>? refreshTokenValidity;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// List of provider names for the identity providers that are supported on this client. It uses the `provider_name` attribute of the `aws.cognito.IdentityProvider` resource(s), or the equivalent string(s).
-  final Input<List<String>>? supportedIdentityProviders;
+  final pulumi.Input<List<String>>? supportedIdentityProviders;
 
   /// Configuration block for representing the validity times in units. See details below. Detailed below.
-  final Input<ManagedUserPoolClientTokenValidityUnits>? tokenValidityUnits;
+  final pulumi.Input<ManagedUserPoolClientTokenValidityUnits>?
+      tokenValidityUnits;
 
   /// User pool that the client belongs to.
-  final Input<String> userPoolId;
+  final pulumi.Input<String> userPoolId;
 
   /// List of user pool attributes that the application client can write to.
-  final Input<List<String>>? writeAttributes;
+  final pulumi.Input<List<String>>? writeAttributes;
 
   ManagedUserPoolClientArgs({
     this.accessTokenValidity,
@@ -131,7 +133,7 @@ class ManagedUserPoolClientArgs {
     }
     final analyticsConfigurationValue = analyticsConfiguration;
     if (analyticsConfigurationValue != null) {
-      map['analyticsConfiguration'] = Input.mapOptionalInputValue<
+      map['analyticsConfiguration'] = pulumi.Input.mapOptionalInputValue<
               ManagedUserPoolClientAnalyticsConfiguration,
               Map<String, dynamic>>(
           analyticsConfigurationValue, (value) => value.toMap());
@@ -188,7 +190,7 @@ class ManagedUserPoolClientArgs {
     }
     final refreshTokenRotationValue = refreshTokenRotation;
     if (refreshTokenRotationValue != null) {
-      map['refreshTokenRotation'] = Input.mapOptionalInputValue<
+      map['refreshTokenRotation'] = pulumi.Input.mapOptionalInputValue<
               ManagedUserPoolClientRefreshTokenRotation, Map<String, dynamic>>(
           refreshTokenRotationValue, (value) => value.toMap());
     }
@@ -206,7 +208,7 @@ class ManagedUserPoolClientArgs {
     }
     final tokenValidityUnitsValue = tokenValidityUnits;
     if (tokenValidityUnitsValue != null) {
-      map['tokenValidityUnits'] = Input.mapOptionalInputValue<
+      map['tokenValidityUnits'] = pulumi.Input.mapOptionalInputValue<
               ManagedUserPoolClientTokenValidityUnits, Map<String, dynamic>>(
           tokenValidityUnitsValue, (value) => value.toMap());
     }
@@ -221,49 +223,52 @@ class ManagedUserPoolClientArgs {
   factory ManagedUserPoolClientArgs.fromMap(Map<String, dynamic> map) {
     return ManagedUserPoolClientArgs(
       accessTokenValidity:
-          Input.asOptionalInput<int>(map['accessTokenValidity']),
+          pulumi.Input.asOptionalInput<int>(map['accessTokenValidity']),
       allowedOauthFlows:
-          Input.asOptionalInput<List<String>>(map['allowedOauthFlows']),
-      allowedOauthFlowsUserPoolClient:
-          Input.asOptionalInput<bool>(map['allowedOauthFlowsUserPoolClient']),
+          pulumi.Input.asOptionalInput<List<String>>(map['allowedOauthFlows']),
+      allowedOauthFlowsUserPoolClient: pulumi.Input.asOptionalInput<bool>(
+          map['allowedOauthFlowsUserPoolClient']),
       allowedOauthScopes:
-          Input.asOptionalInput<List<String>>(map['allowedOauthScopes']),
-      analyticsConfiguration:
-          Input.asOptionalInput<ManagedUserPoolClientAnalyticsConfiguration>(
-              map['analyticsConfiguration']),
+          pulumi.Input.asOptionalInput<List<String>>(map['allowedOauthScopes']),
+      analyticsConfiguration: pulumi.Input.asOptionalInput<
+              ManagedUserPoolClientAnalyticsConfiguration>(
+          map['analyticsConfiguration']),
       authSessionValidity:
-          Input.asOptionalInput<int>(map['authSessionValidity']),
-      callbackUrls: Input.asOptionalInput<List<String>>(map['callbackUrls']),
+          pulumi.Input.asOptionalInput<int>(map['authSessionValidity']),
+      callbackUrls:
+          pulumi.Input.asOptionalInput<List<String>>(map['callbackUrls']),
       defaultRedirectUri:
-          Input.asOptionalInput<String>(map['defaultRedirectUri']),
-      enablePropagateAdditionalUserContextData: Input.asOptionalInput<bool>(
-          map['enablePropagateAdditionalUserContextData']),
+          pulumi.Input.asOptionalInput<String>(map['defaultRedirectUri']),
+      enablePropagateAdditionalUserContextData:
+          pulumi.Input.asOptionalInput<bool>(
+              map['enablePropagateAdditionalUserContextData']),
       enableTokenRevocation:
-          Input.asOptionalInput<bool>(map['enableTokenRevocation']),
+          pulumi.Input.asOptionalInput<bool>(map['enableTokenRevocation']),
       explicitAuthFlows:
-          Input.asOptionalInput<List<String>>(map['explicitAuthFlows']),
-      idTokenValidity: Input.asOptionalInput<int>(map['idTokenValidity']),
-      logoutUrls: Input.asOptionalInput<List<String>>(map['logoutUrls']),
-      namePattern: Input.asOptionalInput<String>(map['namePattern']),
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
-      preventUserExistenceErrors:
-          Input.asOptionalInput<String>(map['preventUserExistenceErrors']),
+          pulumi.Input.asOptionalInput<List<String>>(map['explicitAuthFlows']),
+      idTokenValidity:
+          pulumi.Input.asOptionalInput<int>(map['idTokenValidity']),
+      logoutUrls: pulumi.Input.asOptionalInput<List<String>>(map['logoutUrls']),
+      namePattern: pulumi.Input.asOptionalInput<String>(map['namePattern']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
+      preventUserExistenceErrors: pulumi.Input.asOptionalInput<String>(
+          map['preventUserExistenceErrors']),
       readAttributes:
-          Input.asOptionalInput<List<String>>(map['readAttributes']),
-      refreshTokenRotation:
-          Input.asOptionalInput<ManagedUserPoolClientRefreshTokenRotation>(
-              map['refreshTokenRotation']),
+          pulumi.Input.asOptionalInput<List<String>>(map['readAttributes']),
+      refreshTokenRotation: pulumi.Input.asOptionalInput<
+              ManagedUserPoolClientRefreshTokenRotation>(
+          map['refreshTokenRotation']),
       refreshTokenValidity:
-          Input.asOptionalInput<int>(map['refreshTokenValidity']),
-      region: Input.asOptionalInput<String>(map['region']),
-      supportedIdentityProviders: Input.asOptionalInput<List<String>>(
+          pulumi.Input.asOptionalInput<int>(map['refreshTokenValidity']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      supportedIdentityProviders: pulumi.Input.asOptionalInput<List<String>>(
           map['supportedIdentityProviders']),
       tokenValidityUnits:
-          Input.asOptionalInput<ManagedUserPoolClientTokenValidityUnits>(
+          pulumi.Input.asOptionalInput<ManagedUserPoolClientTokenValidityUnits>(
               map['tokenValidityUnits']),
-      userPoolId: Input.asInput<String>(map['userPoolId']),
+      userPoolId: pulumi.Input.asInput<String>(map['userPoolId']),
       writeAttributes:
-          Input.asOptionalInput<List<String>>(map['writeAttributes']),
+          pulumi.Input.asOptionalInput<List<String>>(map['writeAttributes']),
     );
   }
 }

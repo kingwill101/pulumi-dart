@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_definition_retry_strategy_evaluate_on_exit/job_definition_retry_strategy_evaluate_on_exit.dart';
 
 class JobDefinitionRetryStrategy {
@@ -23,7 +23,7 @@ class JobDefinitionRetryStrategy {
     }
     final evaluateOnExitsValue = evaluateOnExits;
     if (evaluateOnExitsValue != null) {
-      map['evaluateOnExits'] = Input.encodeList<
+      map['evaluateOnExits'] = pulumi.Input.encodeList<
           JobDefinitionRetryStrategyEvaluateOnExit,
           Map<String, dynamic>>(evaluateOnExitsValue, (value) => value.toMap());
     }
@@ -35,7 +35,7 @@ class JobDefinitionRetryStrategy {
       attempts: map['attempts'] == null ? null : map['attempts'] as int,
       evaluateOnExits: map['evaluateOnExits'] == null
           ? null
-          : Input.decodeList<JobDefinitionRetryStrategyEvaluateOnExit>(
+          : pulumi.Input.decodeList<JobDefinitionRetryStrategyEvaluateOnExit>(
               map['evaluateOnExits'],
               (value) => JobDefinitionRetryStrategyEvaluateOnExit.fromMap(
                   (value as Map).cast<String, dynamic>())),

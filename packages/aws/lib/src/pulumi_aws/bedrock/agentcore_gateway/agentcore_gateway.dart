@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agentcore_gateway_authorizer_configuration/agentcore_gateway_authorizer_configuration.dart';
 import '../agentcore_gateway_interceptor_configuration/agentcore_gateway_interceptor_configuration.dart';
 import '../agentcore_gateway_protocol_configuration/agentcore_gateway_protocol_configuration.dart';
@@ -29,74 +29,74 @@ import 'agentcore_gateway_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrock/agentcoreGateway:AgentcoreGateway example GATEWAY1234567890
 /// ```
-class AgentcoreGateway extends CustomResource {
+class AgentcoreGateway extends pulumi.CustomResource {
   /// Configuration for request authorization. Required when `authorizer_type` is set to `CUSTOM_JWT`. See `authorizer_configuration` below.
-  late final Output<AgentcoreGatewayAuthorizerConfiguration?>
+  late final pulumi.Output<AgentcoreGatewayAuthorizerConfiguration?>
       authorizerConfiguration;
 
   /// Type of authorizer to use. Valid values: `CUSTOM_JWT`, `AWS_IAM`. When set to `CUSTOM_JWT`, `authorizer_configuration` block is required.
-  late final Output<String> authorizerType;
+  late final pulumi.Output<String> authorizerType;
 
   /// Description of the gateway.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Exception level for the gateway. Valid values: `INFO`, `WARN`, `ERROR`.
-  late final Output<String?> exceptionLevel;
+  late final pulumi.Output<String?> exceptionLevel;
 
   /// ARN of the Gateway.
-  late final Output<String> gatewayArn;
+  late final pulumi.Output<String> gatewayArn;
 
   /// Unique identifier of the Gateway.
-  late final Output<String> gatewayId;
+  late final pulumi.Output<String> gatewayId;
 
   /// URL endpoint for the gateway.
-  late final Output<String> gatewayUrl;
+  late final pulumi.Output<String> gatewayUrl;
 
   /// List of interceptor configurations for the gateway. Minimum of 1, maximum of 2. See `interceptor_configuration` below.
-  late final Output<List<AgentcoreGatewayInterceptorConfiguration>?>
+  late final pulumi.Output<List<AgentcoreGatewayInterceptorConfiguration>?>
       interceptorConfigurations;
 
   /// ARN of the KMS key used to encrypt the gateway data.
-  late final Output<String?> kmsKeyArn;
+  late final pulumi.Output<String?> kmsKeyArn;
 
   /// Name of the gateway.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Protocol-specific configuration for the gateway. See `protocol_configuration` below.
-  late final Output<AgentcoreGatewayProtocolConfiguration?>
+  late final pulumi.Output<AgentcoreGatewayProtocolConfiguration?>
       protocolConfiguration;
 
   /// Protocol type for the gateway. Valid values: `MCP`.
-  late final Output<String> protocolType;
+  late final pulumi.Output<String> protocolType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the IAM role that the gateway assumes to access AWS services.
   ///
   /// The following arguments are optional:
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<AgentcoreGatewayTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<AgentcoreGatewayTimeouts?> timeouts;
 
   /// Workload identity details for the gateway. See `workload_identity_details` below.
-  late final Output<List<AgentcoreGatewayWorkloadIdentityDetail>>
+  late final pulumi.Output<List<AgentcoreGatewayWorkloadIdentityDetail>>
       workloadIdentityDetails;
 
   AgentcoreGateway(
     String name, {
     AgentcoreGatewayArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/agentcoreGateway:AgentcoreGateway',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.authorizerConfiguration =
         registerOutput<AgentcoreGatewayAuthorizerConfiguration?>(

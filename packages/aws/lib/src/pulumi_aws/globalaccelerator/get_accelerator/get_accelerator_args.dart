@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAccelerator.
 class GetAcceleratorArgs {
   /// Full ARN of the Global Accelerator.
-  final Input<String>? arn;
+  final pulumi.Input<String>? arn;
 
   /// Unique name of the Global Accelerator.
   ///
   /// > **NOTE:** When both `arn` and `name` are specified, `arn` takes precedence.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   GetAcceleratorArgs({
     this.arn,
@@ -32,8 +32,8 @@ class GetAcceleratorArgs {
 
   factory GetAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return GetAcceleratorArgs(
-      arn: Input.asOptionalInput<String>(map['arn']),
-      name: Input.asOptionalInput<String>(map['name']),
+      arn: pulumi.Input.asOptionalInput<String>(map['arn']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
     );
   }
 }

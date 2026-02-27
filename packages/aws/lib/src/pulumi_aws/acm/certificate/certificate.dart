@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../certificate_domain_validation_option/certificate_domain_validation_option.dart';
 import '../certificate_options/certificate_options.dart';
 import '../certificate_renewal_summary/certificate_renewal_summary.dart';
@@ -74,72 +74,73 @@ import 'certificate_args.dart';
 /// ```sh
 /// $ pulumi import aws:acm/certificate:Certificate example arn:aws:acm:eu-central-1:123456789012:certificate/7e7a28d2-163f-4b8f-b9cd-822f96c08d6a
 /// ```
-class Certificate extends CustomResource {
+class Certificate extends pulumi.CustomResource {
   /// ARN of the certificate
-  late final Output<String> arn;
-  late final Output<String?> certificateAuthorityArn;
-  late final Output<String?> certificateBody;
-  late final Output<String?> certificateChain;
+  late final pulumi.Output<String> arn;
+  late final pulumi.Output<String?> certificateAuthorityArn;
+  late final pulumi.Output<String?> certificateBody;
+  late final pulumi.Output<String?> certificateChain;
 
   /// Fully qualified domain name (FQDN) in the certificate.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// Set of domain validation objects which can be used to complete certificate validation.
   /// Can have more than one element, e.g., if SANs are defined.
   /// Only set if `DNS`-validation was used.
-  late final Output<List<CertificateDomainValidationOption>>
+  late final pulumi.Output<List<CertificateDomainValidationOption>>
       domainValidationOptions;
-  late final Output<String?> earlyRenewalDuration;
-  late final Output<String> keyAlgorithm;
+  late final pulumi.Output<String?> earlyRenewalDuration;
+  late final pulumi.Output<String> keyAlgorithm;
 
   /// Expiration date and time of the certificate.
-  late final Output<String> notAfter;
+  late final pulumi.Output<String> notAfter;
 
   /// Start of the validity period of the certificate.
-  late final Output<String> notBefore;
-  late final Output<CertificateOptions> options;
+  late final pulumi.Output<String> notBefore;
+  late final pulumi.Output<CertificateOptions> options;
 
   /// `true` if a Private certificate eligible for managed renewal is within the `early_renewal_duration` period.
-  late final Output<bool> pendingRenewal;
-  late final Output<String?> privateKey;
+  late final pulumi.Output<bool> pendingRenewal;
+  late final pulumi.Output<String?> privateKey;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// * Creating an Amazon issued certificate
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Whether the certificate is eligible for managed renewal.
-  late final Output<String> renewalEligibility;
+  late final pulumi.Output<String> renewalEligibility;
 
   /// Contains information about the status of ACM's [managed renewal](https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for the certificate.
-  late final Output<List<CertificateRenewalSummary>> renewalSummaries;
+  late final pulumi.Output<List<CertificateRenewalSummary>> renewalSummaries;
 
   /// Status of the certificate.
-  late final Output<String> status;
-  late final Output<List<String>> subjectAlternativeNames;
+  late final pulumi.Output<String> status;
+  late final pulumi.Output<List<String>> subjectAlternativeNames;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Source of the certificate.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// List of addresses that received a validation email. Only set if `EMAIL` validation was used.
-  late final Output<List<String>> validationEmails;
-  late final Output<String> validationMethod;
-  late final Output<List<CertificateValidationOption>?> validationOptions;
+  late final pulumi.Output<List<String>> validationEmails;
+  late final pulumi.Output<String> validationMethod;
+  late final pulumi.Output<List<CertificateValidationOption>?>
+      validationOptions;
 
   Certificate(
     String name, {
     CertificateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:acm/certificate:Certificate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.certificateAuthorityArn =

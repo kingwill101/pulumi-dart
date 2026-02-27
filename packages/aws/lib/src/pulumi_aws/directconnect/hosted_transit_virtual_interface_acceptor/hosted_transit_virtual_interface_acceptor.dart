@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hosted_transit_virtual_interface_acceptor_args.dart';
 
 /// Provides a resource to manage the accepter's side of a Direct Connect hosted transit virtual interface.
@@ -17,34 +17,34 @@ import 'hosted_transit_virtual_interface_acceptor_args.dart';
 /// ```sh
 /// $ pulumi import aws:directconnect/hostedTransitVirtualInterfaceAcceptor:HostedTransitVirtualInterfaceAcceptor test dxvif-33cc44dd
 /// ```
-class HostedTransitVirtualInterfaceAcceptor extends CustomResource {
+class HostedTransitVirtualInterfaceAcceptor extends pulumi.CustomResource {
   /// The ARN of the virtual interface.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The ID of the Direct Connect gateway to which to connect the virtual interface.
-  late final Output<String> dxGatewayId;
+  late final pulumi.Output<String> dxGatewayId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The ID of the Direct Connect virtual interface to accept.
-  late final Output<String> virtualInterfaceId;
+  late final pulumi.Output<String> virtualInterfaceId;
 
   HostedTransitVirtualInterfaceAcceptor(
     String name, {
     HostedTransitVirtualInterfaceAcceptorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:directconnect/hostedTransitVirtualInterfaceAcceptor:HostedTransitVirtualInterfaceAcceptor',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.dxGatewayId = registerOutput<String>('dxGatewayId');

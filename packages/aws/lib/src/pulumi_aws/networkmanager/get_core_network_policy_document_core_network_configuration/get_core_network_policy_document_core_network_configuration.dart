@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_core_network_policy_document_core_network_configuration_edge_location/get_core_network_policy_document_core_network_configuration_edge_location.dart';
 
 class GetCoreNetworkPolicyDocumentCoreNetworkConfiguration {
@@ -39,7 +39,7 @@ class GetCoreNetworkPolicyDocumentCoreNetworkConfiguration {
     if (dnsSupportValue != null) {
       map['dnsSupport'] = dnsSupportValue;
     }
-    map['edgeLocations'] = Input.encodeList<
+    map['edgeLocations'] = pulumi.Input.encodeList<
         GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation,
         Map<String, dynamic>>(edgeLocations, (value) => value.toMap());
     final insideCidrBlocksValue = insideCidrBlocks;
@@ -64,7 +64,7 @@ class GetCoreNetworkPolicyDocumentCoreNetworkConfiguration {
     return GetCoreNetworkPolicyDocumentCoreNetworkConfiguration(
       asnRanges: (map['asnRanges'] as List).cast<String>(),
       dnsSupport: map['dnsSupport'] == null ? null : map['dnsSupport'] as bool,
-      edgeLocations: Input.decodeList<
+      edgeLocations: pulumi.Input.decodeList<
               GetCoreNetworkPolicyDocumentCoreNetworkConfigurationEdgeLocation>(
           map['edgeLocations'],
           (value) =>

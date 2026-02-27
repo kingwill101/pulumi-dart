@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../allowed_images_settings_image_criterion/allowed_images_settings_image_criterion.dart';
 import 'allowed_images_settings_args.dart';
 
@@ -27,25 +27,26 @@ import 'allowed_images_settings_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/allowedImagesSettings:AllowedImagesSettings example us-east-1
 /// ```
-class AllowedImagesSettings extends CustomResource {
+class AllowedImagesSettings extends pulumi.CustomResource {
   /// List of image criteria. Maximum of 10 criterion blocks allowed. See `image_criterion` below.
-  late final Output<List<AllowedImagesSettingsImageCriterion>?> imageCriterions;
+  late final pulumi.Output<List<AllowedImagesSettingsImageCriterion>?>
+      imageCriterions;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// State of the allowed images settings. Valid values are `enabled` or `audit-mode`.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   AllowedImagesSettings(
     String name, {
     AllowedImagesSettingsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/allowedImagesSettings:AllowedImagesSettings',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.imageCriterions =
         registerOutput<List<AllowedImagesSettingsImageCriterion>?>(

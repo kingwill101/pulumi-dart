@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_resolver_endpoint_filter/get_resolver_endpoint_filter.dart';
 
 /// Result data returned by getResolverEndpoint.
@@ -62,9 +62,8 @@ class GetResolverEndpointResult {
     map['direction'] = direction;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetResolverEndpointFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetResolverEndpointFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['ipAddresses'] = ipAddresses;
@@ -89,7 +88,7 @@ class GetResolverEndpointResult {
       direction: map['direction'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetResolverEndpointFilter>(
+          : pulumi.Input.decodeList<GetResolverEndpointFilter>(
               map['filters'],
               (value) => GetResolverEndpointFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

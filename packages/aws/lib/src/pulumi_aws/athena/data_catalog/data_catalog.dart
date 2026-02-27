@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_catalog_args.dart';
 
 /// Provides an Athena data catalog.
@@ -30,40 +30,40 @@ import 'data_catalog_args.dart';
 /// ```sh
 /// $ pulumi import aws:athena/dataCatalog:DataCatalog example example-data-catalog
 /// ```
-class DataCatalog extends CustomResource {
+class DataCatalog extends pulumi.CustomResource {
   /// ARN of the data catalog.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Description of the data catalog.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Name of the data catalog. The catalog name must be unique for the AWS account and can use a maximum of 128 alphanumeric, underscore, at sign, or hyphen characters.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Key value pairs that specifies the Lambda function or functions to use for the data catalog. The mapping used depends on the catalog type.
-  late final Output<Map<String, String>> parameters;
+  late final pulumi.Output<Map<String, String>> parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Type of data catalog: `LAMBDA` for a federated catalog, `GLUE` for AWS Glue Catalog, or `HIVE` for an external hive metastore.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   DataCatalog(
     String name, {
     DataCatalogArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:athena/dataCatalog:DataCatalog',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String>('description');

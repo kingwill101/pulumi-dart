@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_lifecycle_policy_document_args.dart';
 import 'get_lifecycle_policy_document_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_lifecycle_policy_document_result.dart';
 /// > For more information about building AWS ECR lifecycle policy documents, see the [AWS ECR Lifecycle Policy Document Guide](https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
 Future<GetLifecyclePolicyDocumentResult> getLifecyclePolicyDocument(
   GetLifecyclePolicyDocumentArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ecr/getLifecyclePolicyDocument:getLifecyclePolicyDocument',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLifecyclePolicyDocumentResult.fromMap(result);
 }

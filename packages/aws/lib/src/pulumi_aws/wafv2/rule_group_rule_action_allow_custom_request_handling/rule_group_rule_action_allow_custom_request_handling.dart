@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_action_allow_custom_request_handling_insert_header/rule_group_rule_action_allow_custom_request_handling_insert_header.dart';
 
 class RuleGroupRuleActionAllowCustomRequestHandling {
@@ -14,7 +14,7 @@ class RuleGroupRuleActionAllowCustomRequestHandling {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['insertHeaders'] = Input.encodeList<
+    map['insertHeaders'] = pulumi.Input.encodeList<
         RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader,
         Map<String, dynamic>>(insertHeaders, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class RuleGroupRuleActionAllowCustomRequestHandling {
   factory RuleGroupRuleActionAllowCustomRequestHandling.fromMap(
       Map<String, dynamic> map) {
     return RuleGroupRuleActionAllowCustomRequestHandling(
-      insertHeaders: Input.decodeList<
+      insertHeaders: pulumi.Input.decodeList<
               RuleGroupRuleActionAllowCustomRequestHandlingInsertHeader>(
           map['insertHeaders'],
           (value) =>

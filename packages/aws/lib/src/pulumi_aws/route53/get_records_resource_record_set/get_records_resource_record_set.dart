@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_records_resource_record_set_alias_target/get_records_resource_record_set_alias_target.dart';
 import '../get_records_resource_record_set_cidr_routing_config/get_records_resource_record_set_cidr_routing_config.dart';
 import '../get_records_resource_record_set_geolocation/get_records_resource_record_set_geolocation.dart';
@@ -82,7 +82,7 @@ class GetRecordsResourceRecordSet {
     map['multiValueAnswer'] = multiValueAnswer;
     map['name'] = name;
     map['region'] = region;
-    map['resourceRecords'] = Input.encodeList<
+    map['resourceRecords'] = pulumi.Input.encodeList<
         GetRecordsResourceRecordSetResourceRecord,
         Map<String, dynamic>>(resourceRecords, (value) => value.toMap());
     map['setIdentifier'] = setIdentifier;
@@ -110,7 +110,7 @@ class GetRecordsResourceRecordSet {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceRecords:
-          Input.decodeList<GetRecordsResourceRecordSetResourceRecord>(
+          pulumi.Input.decodeList<GetRecordsResourceRecordSetResourceRecord>(
               map['resourceRecords'],
               (value) => GetRecordsResourceRecordSetResourceRecord.fromMap(
                   (value as Map).cast<String, dynamic>())),

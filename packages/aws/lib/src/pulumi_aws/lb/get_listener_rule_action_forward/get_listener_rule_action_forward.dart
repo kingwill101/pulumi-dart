@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_listener_rule_action_forward_stickiness/get_listener_rule_action_forward_stickiness.dart';
 import '../get_listener_rule_action_forward_target_group/get_listener_rule_action_forward_target_group.dart';
 
@@ -22,13 +22,13 @@ class GetListenerRuleActionForward {
     final map = <String, dynamic>{};
     final stickinessesValue = stickinesses;
     if (stickinessesValue != null) {
-      map['stickinesses'] = Input.encodeList<
+      map['stickinesses'] = pulumi.Input.encodeList<
           GetListenerRuleActionForwardStickiness,
           Map<String, dynamic>>(stickinessesValue, (value) => value.toMap());
     }
     final targetGroupsValue = targetGroups;
     if (targetGroupsValue != null) {
-      map['targetGroups'] = Input.encodeList<
+      map['targetGroups'] = pulumi.Input.encodeList<
           GetListenerRuleActionForwardTargetGroup,
           Map<String, dynamic>>(targetGroupsValue, (value) => value.toMap());
     }
@@ -39,13 +39,13 @@ class GetListenerRuleActionForward {
     return GetListenerRuleActionForward(
       stickinesses: map['stickinesses'] == null
           ? null
-          : Input.decodeList<GetListenerRuleActionForwardStickiness>(
+          : pulumi.Input.decodeList<GetListenerRuleActionForwardStickiness>(
               map['stickinesses'],
               (value) => GetListenerRuleActionForwardStickiness.fromMap(
                   (value as Map).cast<String, dynamic>())),
       targetGroups: map['targetGroups'] == null
           ? null
-          : Input.decodeList<GetListenerRuleActionForwardTargetGroup>(
+          : pulumi.Input.decodeList<GetListenerRuleActionForwardTargetGroup>(
               map['targetGroups'],
               (value) => GetListenerRuleActionForwardTargetGroup.fromMap(
                   (value as Map).cast<String, dynamic>())),

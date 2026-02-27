@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../domain_default_space_settings_custom_file_system_config/domain_default_space_settings_custom_file_system_config.dart';
 import '../domain_default_space_settings_custom_posix_user_config/domain_default_space_settings_custom_posix_user_config.dart';
 import '../domain_default_space_settings_jupyter_lab_app_settings/domain_default_space_settings_jupyter_lab_app_settings.dart';
@@ -51,7 +51,7 @@ class DomainDefaultSpaceSettings {
     final map = <String, dynamic>{};
     final customFileSystemConfigsValue = customFileSystemConfigs;
     if (customFileSystemConfigsValue != null) {
-      map['customFileSystemConfigs'] = Input.encodeList<
+      map['customFileSystemConfigs'] = pulumi.Input.encodeList<
               DomainDefaultSpaceSettingsCustomFileSystemConfig,
               Map<String, dynamic>>(
           customFileSystemConfigsValue, (value) => value.toMap());
@@ -88,7 +88,8 @@ class DomainDefaultSpaceSettings {
     return DomainDefaultSpaceSettings(
       customFileSystemConfigs: map['customFileSystemConfigs'] == null
           ? null
-          : Input.decodeList<DomainDefaultSpaceSettingsCustomFileSystemConfig>(
+          : pulumi.Input.decodeList<
+                  DomainDefaultSpaceSettingsCustomFileSystemConfig>(
               map['customFileSystemConfigs'],
               (value) =>
                   DomainDefaultSpaceSettingsCustomFileSystemConfig.fromMap(

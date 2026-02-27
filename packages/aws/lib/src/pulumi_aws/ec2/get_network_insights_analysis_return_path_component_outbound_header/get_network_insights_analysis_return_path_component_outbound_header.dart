@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_network_insights_analysis_return_path_component_outbound_header_destination_port_range/get_network_insights_analysis_return_path_component_outbound_header_destination_port_range.dart';
 import '../get_network_insights_analysis_return_path_component_outbound_header_source_port_range/get_network_insights_analysis_return_path_component_outbound_header_source_port_range.dart';
 
@@ -26,12 +26,12 @@ class GetNetworkInsightsAnalysisReturnPathComponentOutboundHeader {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['destinationAddresses'] = destinationAddresses;
-    map['destinationPortRanges'] = Input.encodeList<
+    map['destinationPortRanges'] = pulumi.Input.encodeList<
         GetNetworkInsightsAnalysisReturnPathComponentOutboundHeaderDestinationPortRange,
         Map<String, dynamic>>(destinationPortRanges, (value) => value.toMap());
     map['protocol'] = protocol;
     map['sourceAddresses'] = sourceAddresses;
-    map['sourcePortRanges'] = Input.encodeList<
+    map['sourcePortRanges'] = pulumi.Input.encodeList<
         GetNetworkInsightsAnalysisReturnPathComponentOutboundHeaderSourcePortRange,
         Map<String, dynamic>>(sourcePortRanges, (value) => value.toMap());
     return map;
@@ -42,7 +42,7 @@ class GetNetworkInsightsAnalysisReturnPathComponentOutboundHeader {
     return GetNetworkInsightsAnalysisReturnPathComponentOutboundHeader(
       destinationAddresses:
           (map['destinationAddresses'] as List).cast<String>(),
-      destinationPortRanges: Input.decodeList<
+      destinationPortRanges: pulumi.Input.decodeList<
               GetNetworkInsightsAnalysisReturnPathComponentOutboundHeaderDestinationPortRange>(
           map['destinationPortRanges'],
           (value) =>
@@ -50,7 +50,7 @@ class GetNetworkInsightsAnalysisReturnPathComponentOutboundHeader {
                   .fromMap((value as Map).cast<String, dynamic>())),
       protocol: map['protocol'] as String,
       sourceAddresses: (map['sourceAddresses'] as List).cast<String>(),
-      sourcePortRanges: Input.decodeList<
+      sourcePortRanges: pulumi.Input.decodeList<
               GetNetworkInsightsAnalysisReturnPathComponentOutboundHeaderSourcePortRange>(
           map['sourcePortRanges'],
           (value) =>

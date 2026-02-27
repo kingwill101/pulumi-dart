@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_prompt_specification_message_group/v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_prompt_specification_message_group.dart';
 import '../v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_prompt_specification_prompt_attempts_specification/v2models_slot_sub_slot_setting_slot_specification_value_elicitation_setting_prompt_specification_prompt_attempts_specification.dart';
 
@@ -32,7 +32,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
     map['maxRetries'] = maxRetries;
     final messageGroupsValue = messageGroups;
     if (messageGroupsValue != null) {
-      map['messageGroups'] = Input.encodeList<
+      map['messageGroups'] = pulumi.Input.encodeList<
           V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroup,
           Map<String, dynamic>>(messageGroupsValue, (value) => value.toMap());
     }
@@ -42,7 +42,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
     }
     final promptAttemptsSpecificationsValue = promptAttemptsSpecifications;
     if (promptAttemptsSpecificationsValue != null) {
-      map['promptAttemptsSpecifications'] = Input.encodeList<
+      map['promptAttemptsSpecifications'] = pulumi.Input.encodeList<
               V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification,
               Map<String, dynamic>>(
           promptAttemptsSpecificationsValue, (value) => value.toMap());
@@ -58,7 +58,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
       maxRetries: map['maxRetries'] as int,
       messageGroups: map['messageGroups'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroup>(
               map['messageGroups'],
               (value) =>
@@ -69,7 +69,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
           : map['messageSelectionStrategy'] as String,
       promptAttemptsSpecifications: map['promptAttemptsSpecifications'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification>(
               map['promptAttemptsSpecifications'],
               (value) =>

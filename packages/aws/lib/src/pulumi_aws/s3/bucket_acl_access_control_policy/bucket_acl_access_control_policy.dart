@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_acl_access_control_policy_grant/bucket_acl_access_control_policy_grant.dart';
 import '../bucket_acl_access_control_policy_owner/bucket_acl_access_control_policy_owner.dart';
 
@@ -20,7 +20,7 @@ class BucketAclAccessControlPolicy {
     final map = <String, dynamic>{};
     final grantsValue = grants;
     if (grantsValue != null) {
-      map['grants'] = Input.encodeList<BucketAclAccessControlPolicyGrant,
+      map['grants'] = pulumi.Input.encodeList<BucketAclAccessControlPolicyGrant,
           Map<String, dynamic>>(grantsValue, (value) => value.toMap());
     }
     map['owner'] = owner.toMap();
@@ -31,7 +31,7 @@ class BucketAclAccessControlPolicy {
     return BucketAclAccessControlPolicy(
       grants: map['grants'] == null
           ? null
-          : Input.decodeList<BucketAclAccessControlPolicyGrant>(
+          : pulumi.Input.decodeList<BucketAclAccessControlPolicyGrant>(
               map['grants'],
               (value) => BucketAclAccessControlPolicyGrant.fromMap(
                   (value as Map).cast<String, dynamic>())),

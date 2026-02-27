@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_user_args.dart';
 import 'get_user_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_user_result.dart';
 /// By `user_id`
 Future<GetUserResult> getUser(
   GetUserArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:connect/getUser:getUser',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserResult.fromMap(result);
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vpc_endpoint_association_subnet_mapping/vpc_endpoint_association_subnet_mapping.dart';
 import '../vpc_endpoint_association_timeouts/vpc_endpoint_association_timeouts.dart';
 import '../vpc_endpoint_association_vpc_endpoint_association_status/vpc_endpoint_association_vpc_endpoint_association_status.dart';
@@ -21,48 +21,49 @@ import 'vpc_endpoint_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkfirewall/vpcEndpointAssociation:VpcEndpointAssociation example arn:aws:network-firewall:us-west-1:123456789012:vpc-endpoint-association/example
 /// ```
-class VpcEndpointAssociation extends CustomResource {
+class VpcEndpointAssociation extends pulumi.CustomResource {
   /// A description of the VPC endpoint association.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The Amazon Resource Name (ARN) that identifies the firewall.
-  late final Output<String> firewallArn;
+  late final pulumi.Output<String> firewallArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID for a subnet that's used in an association with a firewall. See Subnet Mapping below for details.
-  late final Output<VpcEndpointAssociationSubnetMapping> subnetMapping;
+  late final pulumi.Output<VpcEndpointAssociationSubnetMapping> subnetMapping;
 
   /// Map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<VpcEndpointAssociationTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<VpcEndpointAssociationTimeouts?> timeouts;
 
   /// ARN of the VPC Endpoint Association.
-  late final Output<String> vpcEndpointAssociationArn;
+  late final pulumi.Output<String> vpcEndpointAssociationArn;
 
   /// The unique identifier of the VPC endpoint association.
-  late final Output<String> vpcEndpointAssociationId;
+  late final pulumi.Output<String> vpcEndpointAssociationId;
 
   /// Nested list of information about the current status of the VPC Endpoint Association.
-  late final Output<List<VpcEndpointAssociationVpcEndpointAssociationStatus>>
+  late final pulumi
+      .Output<List<VpcEndpointAssociationVpcEndpointAssociationStatus>>
       vpcEndpointAssociationStatuses;
 
   /// The unique identifier of the VPC for the endpoint association.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   VpcEndpointAssociation(
     String name, {
     VpcEndpointAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkfirewall/vpcEndpointAssociation:VpcEndpointAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.firewallArn = registerOutput<String>('firewallArn');

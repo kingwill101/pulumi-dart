@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client_authentication/get_cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client_authentication.dart';
 
 class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity {
@@ -14,7 +14,7 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['clientAuthentications'] = Input.encodeList<
+    map['clientAuthentications'] = pulumi.Input.encodeList<
         GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication,
         Map<String, dynamic>>(clientAuthentications, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity {
   factory GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity.fromMap(
       Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity(
-      clientAuthentications: Input.decodeList<
+      clientAuthentications: pulumi.Input.decodeList<
               GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication>(
           map['clientAuthentications'],
           (value) =>

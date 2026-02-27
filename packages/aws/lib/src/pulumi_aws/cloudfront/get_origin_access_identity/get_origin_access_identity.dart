@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_origin_access_identity_args.dart';
 import 'get_origin_access_identity_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_origin_access_identity_result.dart';
 /// The following example below creates a CloudFront origin access identity.
 Future<GetOriginAccessIdentityResult> getOriginAccessIdentity(
   GetOriginAccessIdentityArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:cloudfront/getOriginAccessIdentity:getOriginAccessIdentity',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOriginAccessIdentityResult.fromMap(result);
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_custom_model_output_data_config/get_custom_model_output_data_config.dart';
 import '../get_custom_model_training_data_config/get_custom_model_training_data_config.dart';
 import '../get_custom_model_training_metric/get_custom_model_training_metric.dart';
@@ -92,22 +92,22 @@ class GetCustomModelResult {
     map['modelKmsKeyArn'] = modelKmsKeyArn;
     map['modelName'] = modelName;
     map['modelTags'] = modelTags;
-    map['outputDataConfigs'] =
-        Input.encodeList<GetCustomModelOutputDataConfig, Map<String, dynamic>>(
-            outputDataConfigs, (value) => value.toMap());
+    map['outputDataConfigs'] = pulumi.Input.encodeList<
+        GetCustomModelOutputDataConfig,
+        Map<String, dynamic>>(outputDataConfigs, (value) => value.toMap());
     map['region'] = region;
-    map['trainingDataConfigs'] = Input.encodeList<
+    map['trainingDataConfigs'] = pulumi.Input.encodeList<
         GetCustomModelTrainingDataConfig,
         Map<String, dynamic>>(trainingDataConfigs, (value) => value.toMap());
-    map['trainingMetrics'] =
-        Input.encodeList<GetCustomModelTrainingMetric, Map<String, dynamic>>(
-            trainingMetrics, (value) => value.toMap());
-    map['validationDataConfigs'] = Input.encodeList<
+    map['trainingMetrics'] = pulumi.Input.encodeList<
+        GetCustomModelTrainingMetric,
+        Map<String, dynamic>>(trainingMetrics, (value) => value.toMap());
+    map['validationDataConfigs'] = pulumi.Input.encodeList<
         GetCustomModelValidationDataConfig,
         Map<String, dynamic>>(validationDataConfigs, (value) => value.toMap());
-    map['validationMetrics'] =
-        Input.encodeList<GetCustomModelValidationMetric, Map<String, dynamic>>(
-            validationMetrics, (value) => value.toMap());
+    map['validationMetrics'] = pulumi.Input.encodeList<
+        GetCustomModelValidationMetric,
+        Map<String, dynamic>>(validationMetrics, (value) => value.toMap());
     return map;
   }
 
@@ -125,28 +125,31 @@ class GetCustomModelResult {
       modelKmsKeyArn: map['modelKmsKeyArn'] as String,
       modelName: map['modelName'] as String,
       modelTags: (map['modelTags'] as Map).cast<String, String>(),
-      outputDataConfigs: Input.decodeList<GetCustomModelOutputDataConfig>(
-          map['outputDataConfigs'],
-          (value) => GetCustomModelOutputDataConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      outputDataConfigs:
+          pulumi.Input.decodeList<GetCustomModelOutputDataConfig>(
+              map['outputDataConfigs'],
+              (value) => GetCustomModelOutputDataConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
-      trainingDataConfigs: Input.decodeList<GetCustomModelTrainingDataConfig>(
-          map['trainingDataConfigs'],
-          (value) => GetCustomModelTrainingDataConfig.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      trainingMetrics: Input.decodeList<GetCustomModelTrainingMetric>(
+      trainingDataConfigs:
+          pulumi.Input.decodeList<GetCustomModelTrainingDataConfig>(
+              map['trainingDataConfigs'],
+              (value) => GetCustomModelTrainingDataConfig.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      trainingMetrics: pulumi.Input.decodeList<GetCustomModelTrainingMetric>(
           map['trainingMetrics'],
           (value) => GetCustomModelTrainingMetric.fromMap(
               (value as Map).cast<String, dynamic>())),
       validationDataConfigs:
-          Input.decodeList<GetCustomModelValidationDataConfig>(
+          pulumi.Input.decodeList<GetCustomModelValidationDataConfig>(
               map['validationDataConfigs'],
               (value) => GetCustomModelValidationDataConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      validationMetrics: Input.decodeList<GetCustomModelValidationMetric>(
-          map['validationMetrics'],
-          (value) => GetCustomModelValidationMetric.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      validationMetrics:
+          pulumi.Input.decodeList<GetCustomModelValidationMetric>(
+              map['validationMetrics'],
+              (value) => GetCustomModelValidationMetric.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

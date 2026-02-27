@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../quicksetup_configuration_manager_configuration_definition/quicksetup_configuration_manager_configuration_definition.dart';
 import '../quicksetup_configuration_manager_timeouts/quicksetup_configuration_manager_timeouts.dart';
 
 /// The set of arguments for QuicksetupConfigurationManager.
 class QuicksetupConfigurationManagerArgs {
   /// Definition of the Quick Setup configuration that the configuration manager deploys. See `configuration_definition` below.
-  final Input<QuicksetupConfigurationManagerConfigurationDefinition>
+  final pulumi.Input<QuicksetupConfigurationManagerConfigurationDefinition>
       configurationDefinition;
 
   /// Description of the configuration manager.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Configuration manager name.
   ///
   /// The following arguments are optional:
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<QuicksetupConfigurationManagerTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<QuicksetupConfigurationManagerTimeouts>? timeouts;
 
   QuicksetupConfigurationManagerArgs({
     required this.configurationDefinition,
@@ -36,7 +36,7 @@ class QuicksetupConfigurationManagerArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['configurationDefinition'] = Input.mapInputValue<
+    map['configurationDefinition'] = pulumi.Input.mapInputValue<
             QuicksetupConfigurationManagerConfigurationDefinition,
             Map<String, dynamic>>(
         configurationDefinition, (value) => value.toMap());
@@ -58,7 +58,7 @@ class QuicksetupConfigurationManagerArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           QuicksetupConfigurationManagerTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -67,15 +67,16 @@ class QuicksetupConfigurationManagerArgs {
 
   factory QuicksetupConfigurationManagerArgs.fromMap(Map<String, dynamic> map) {
     return QuicksetupConfigurationManagerArgs(
-      configurationDefinition:
-          Input.asInput<QuicksetupConfigurationManagerConfigurationDefinition>(
-              map['configurationDefinition']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<QuicksetupConfigurationManagerTimeouts>(
-          map['timeouts']),
+      configurationDefinition: pulumi.Input.asInput<
+              QuicksetupConfigurationManagerConfigurationDefinition>(
+          map['configurationDefinition']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts:
+          pulumi.Input.asOptionalInput<QuicksetupConfigurationManagerTimeouts>(
+              map['timeouts']),
     );
   }
 }

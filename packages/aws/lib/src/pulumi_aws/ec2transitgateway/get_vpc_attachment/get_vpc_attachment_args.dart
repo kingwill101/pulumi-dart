@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_attachment_filter/get_vpc_attachment_filter.dart';
 
 /// Arguments for getVpcAttachment.
 class GetVpcAttachmentArgs {
   /// One or more configuration blocks containing name-values filters. Detailed below.
-  final Input<List<GetVpcAttachmentFilter>>? filters;
+  final pulumi.Input<List<GetVpcAttachmentFilter>>? filters;
 
   /// Identifier of the EC2 Transit Gateway VPC Attachment.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value tags for the EC2 Transit Gateway VPC Attachment
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetVpcAttachmentArgs({
     this.filters,
@@ -28,12 +28,11 @@ class GetVpcAttachmentArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetVpcAttachmentFilter>,
-              List<Map<String, dynamic>>>(
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
+              List<GetVpcAttachmentFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetVpcAttachmentFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetVpcAttachmentFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final idValue = id;
     if (idValue != null) {
@@ -52,11 +51,11 @@ class GetVpcAttachmentArgs {
 
   factory GetVpcAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcAttachmentArgs(
-      filters:
-          Input.asOptionalInput<List<GetVpcAttachmentFilter>>(map['filters']),
-      id: Input.asOptionalInput<String>(map['id']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      filters: pulumi.Input.asOptionalInput<List<GetVpcAttachmentFilter>>(
+          map['filters']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

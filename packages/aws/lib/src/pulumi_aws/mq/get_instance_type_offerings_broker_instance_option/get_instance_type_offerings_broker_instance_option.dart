@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_type_offerings_broker_instance_option_availability_zone/get_instance_type_offerings_broker_instance_option_availability_zone.dart';
 
 class GetInstanceTypeOfferingsBrokerInstanceOption {
@@ -34,7 +34,7 @@ class GetInstanceTypeOfferingsBrokerInstanceOption {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['availabilityZones'] = Input.encodeList<
+    map['availabilityZones'] = pulumi.Input.encodeList<
         GetInstanceTypeOfferingsBrokerInstanceOptionAvailabilityZone,
         Map<String, dynamic>>(availabilityZones, (value) => value.toMap());
     map['engineType'] = engineType;
@@ -48,7 +48,7 @@ class GetInstanceTypeOfferingsBrokerInstanceOption {
   factory GetInstanceTypeOfferingsBrokerInstanceOption.fromMap(
       Map<String, dynamic> map) {
     return GetInstanceTypeOfferingsBrokerInstanceOption(
-      availabilityZones: Input.decodeList<
+      availabilityZones: pulumi.Input.decodeList<
               GetInstanceTypeOfferingsBrokerInstanceOptionAvailabilityZone>(
           map['availabilityZones'],
           (value) =>

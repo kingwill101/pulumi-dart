@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_ipams_ipam_operating_region/get_vpc_ipams_ipam_operating_region.dart';
 
 class GetVpcIpamsIpam {
@@ -84,9 +84,9 @@ class GetVpcIpamsIpam {
     map['id'] = id;
     map['ipamRegion'] = ipamRegion;
     map['meteredAccount'] = meteredAccount;
-    map['operatingRegions'] =
-        Input.encodeList<GetVpcIpamsIpamOperatingRegion, Map<String, dynamic>>(
-            operatingRegions, (value) => value.toMap());
+    map['operatingRegions'] = pulumi.Input.encodeList<
+        GetVpcIpamsIpamOperatingRegion,
+        Map<String, dynamic>>(operatingRegions, (value) => value.toMap());
     map['ownerId'] = ownerId;
     map['privateDefaultScopeId'] = privateDefaultScopeId;
     map['publicDefaultScopeId'] = publicDefaultScopeId;
@@ -110,7 +110,7 @@ class GetVpcIpamsIpam {
       id: map['id'] as String,
       ipamRegion: map['ipamRegion'] as String,
       meteredAccount: map['meteredAccount'] as String,
-      operatingRegions: Input.decodeList<GetVpcIpamsIpamOperatingRegion>(
+      operatingRegions: pulumi.Input.decodeList<GetVpcIpamsIpamOperatingRegion>(
           map['operatingRegions'],
           (value) => GetVpcIpamsIpamOperatingRegion.fromMap(
               (value as Map).cast<String, dynamic>())),

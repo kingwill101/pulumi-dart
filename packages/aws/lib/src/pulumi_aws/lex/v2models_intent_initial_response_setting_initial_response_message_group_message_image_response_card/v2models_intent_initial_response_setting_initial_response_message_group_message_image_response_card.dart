@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_initial_response_setting_initial_response_message_group_message_image_response_card_button/v2models_intent_initial_response_setting_initial_response_message_group_message_image_response_card_button.dart';
 
 class V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageImageResponseCard {
@@ -29,7 +29,7 @@ class V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageImag
     final map = <String, dynamic>{};
     final buttonsValue = buttons;
     if (buttonsValue != null) {
-      map['buttons'] = Input.encodeList<
+      map['buttons'] = pulumi.Input.encodeList<
           V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageImageResponseCardButton,
           Map<String, dynamic>>(buttonsValue, (value) => value.toMap());
     }
@@ -50,7 +50,7 @@ class V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageImag
     return V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageImageResponseCard(
       buttons: map['buttons'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageImageResponseCardButton>(
               map['buttons'],
               (value) =>

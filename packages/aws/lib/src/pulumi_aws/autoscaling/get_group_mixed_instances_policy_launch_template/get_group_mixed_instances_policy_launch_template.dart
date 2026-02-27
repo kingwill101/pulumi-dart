@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_group_mixed_instances_policy_launch_template_launch_template_specification/get_group_mixed_instances_policy_launch_template_launch_template_specification.dart';
 import '../get_group_mixed_instances_policy_launch_template_override/get_group_mixed_instances_policy_launch_template_override.dart';
 
@@ -20,11 +20,11 @@ class GetGroupMixedInstancesPolicyLaunchTemplate {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['launchTemplateSpecifications'] = Input.encodeList<
+    map['launchTemplateSpecifications'] = pulumi.Input.encodeList<
         GetGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification,
         Map<String,
             dynamic>>(launchTemplateSpecifications, (value) => value.toMap());
-    map['overrides'] = Input.encodeList<
+    map['overrides'] = pulumi.Input.encodeList<
         GetGroupMixedInstancesPolicyLaunchTemplateOverride,
         Map<String, dynamic>>(overrides, (value) => value.toMap());
     return map;
@@ -33,18 +33,17 @@ class GetGroupMixedInstancesPolicyLaunchTemplate {
   factory GetGroupMixedInstancesPolicyLaunchTemplate.fromMap(
       Map<String, dynamic> map) {
     return GetGroupMixedInstancesPolicyLaunchTemplate(
-      launchTemplateSpecifications: Input.decodeList<
+      launchTemplateSpecifications: pulumi.Input.decodeList<
               GetGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification>(
           map['launchTemplateSpecifications'],
           (value) =>
               GetGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification
                   .fromMap((value as Map).cast<String, dynamic>())),
-      overrides:
-          Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverride>(
-              map['overrides'],
-              (value) =>
-                  GetGroupMixedInstancesPolicyLaunchTemplateOverride.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      overrides: pulumi.Input.decodeList<
+              GetGroupMixedInstancesPolicyLaunchTemplateOverride>(
+          map['overrides'],
+          (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverride.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

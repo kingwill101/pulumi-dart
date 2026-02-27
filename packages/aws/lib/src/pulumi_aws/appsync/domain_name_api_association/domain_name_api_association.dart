@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_name_api_association_args.dart';
 
 /// Provides an AppSync API Association.
@@ -14,25 +14,25 @@ import 'domain_name_api_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:appsync/domainNameApiAssociation:DomainNameApiAssociation example example.com
 /// ```
-class DomainNameApiAssociation extends CustomResource {
+class DomainNameApiAssociation extends pulumi.CustomResource {
   /// API ID.
-  late final Output<String> apiId;
+  late final pulumi.Output<String> apiId;
 
   /// Appsync domain name.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   DomainNameApiAssociation(
     String name, {
     DomainNameApiAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:appsync/domainNameApiAssociation:DomainNameApiAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiId = registerOutput<String>('apiId');
     this.domainName = registerOutput<String>('domainName');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_query_strings_config_query_string/get_cache_policy_parameters_in_cache_key_and_forwarded_to_origin_query_strings_config_query_string.dart';
 
 class GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig {
@@ -20,7 +20,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['queryStringBehavior'] = queryStringBehavior;
-    map['queryStrings'] = Input.encodeList<
+    map['queryStrings'] = pulumi.Input.encodeList<
         GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryString,
         Map<String, dynamic>>(queryStrings, (value) => value.toMap());
     return map;
@@ -30,7 +30,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig {
       Map<String, dynamic> map) {
     return GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig(
       queryStringBehavior: map['queryStringBehavior'] as String,
-      queryStrings: Input.decodeList<
+      queryStrings: pulumi.Input.decodeList<
               GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryString>(
           map['queryStrings'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../fleet_launch_template_config_launch_template_specification/fleet_launch_template_config_launch_template_specification.dart';
 import '../fleet_launch_template_config_override/fleet_launch_template_config_override.dart';
 
@@ -26,7 +26,8 @@ class FleetLaunchTemplateConfig {
     }
     final overridesValue = overrides;
     if (overridesValue != null) {
-      map['overrides'] = Input.encodeList<FleetLaunchTemplateConfigOverride,
+      map['overrides'] = pulumi.Input.encodeList<
+          FleetLaunchTemplateConfigOverride,
           Map<String, dynamic>>(overridesValue, (value) => value.toMap());
     }
     return map;
@@ -41,7 +42,7 @@ class FleetLaunchTemplateConfig {
                   .cast<String, dynamic>()),
       overrides: map['overrides'] == null
           ? null
-          : Input.decodeList<FleetLaunchTemplateConfigOverride>(
+          : pulumi.Input.decodeList<FleetLaunchTemplateConfigOverride>(
               map['overrides'],
               (value) => FleetLaunchTemplateConfigOverride.fromMap(
                   (value as Map).cast<String, dynamic>())),

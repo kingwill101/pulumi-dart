@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_custom_key_store_args.dart';
 import 'get_custom_key_store_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_custom_key_store_result.dart';
 /// without having to hard code the ID as input.
 Future<GetCustomKeyStoreResult> getCustomKeyStore(
   GetCustomKeyStoreArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:kms/getCustomKeyStore:getCustomKeyStore',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomKeyStoreResult.fromMap(result);
 }

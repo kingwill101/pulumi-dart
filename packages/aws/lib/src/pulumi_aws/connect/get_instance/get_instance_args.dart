@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInstance.
 class GetInstanceArgs {
   /// Returns information on a specific connect instance by alias
   ///
   /// > **NOTE:** One of either `instance_id` or `instance_alias` is required.
-  final Input<String>? instanceAlias;
+  final pulumi.Input<String>? instanceAlias;
 
   /// Returns information on a specific connect instance by id
-  final Input<String>? instanceId;
+  final pulumi.Input<String>? instanceId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assigned to the instance.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetInstanceArgs({
     this.instanceAlias,
@@ -48,10 +48,10 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      instanceAlias: Input.asOptionalInput<String>(map['instanceAlias']),
-      instanceId: Input.asOptionalInput<String>(map['instanceId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      instanceAlias: pulumi.Input.asOptionalInput<String>(map['instanceAlias']),
+      instanceId: pulumi.Input.asOptionalInput<String>(map['instanceId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

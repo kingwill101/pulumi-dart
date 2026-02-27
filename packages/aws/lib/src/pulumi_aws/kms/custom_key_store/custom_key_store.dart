@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../custom_key_store_xks_proxy_authentication_credential/custom_key_store_xks_proxy_authentication_credential.dart';
 import 'custom_key_store_args.dart';
 
@@ -25,37 +25,37 @@ import 'custom_key_store_args.dart';
 /// ```sh
 /// $ pulumi import aws:kms/customKeyStore:CustomKeyStore example cks-5ebd4ef395a96288e
 /// ```
-class CustomKeyStore extends CustomResource {
-  late final Output<String?> cloudHsmClusterId;
+class CustomKeyStore extends pulumi.CustomResource {
+  late final pulumi.Output<String?> cloudHsmClusterId;
 
   /// Unique name for Custom Key Store.
   ///
   /// The following arguments are optional:
-  late final Output<String> customKeyStoreName;
+  late final pulumi.Output<String> customKeyStoreName;
 
   /// Specifies the type of key store to create. Valid values are `AWS_CLOUDHSM` and `EXTERNAL_KEY_STORE`. If omitted, AWS will default the value to `AWS_CLOUDHSM`.
-  late final Output<String> customKeyStoreType;
-  late final Output<String?> keyStorePassword;
+  late final pulumi.Output<String> customKeyStoreType;
+  late final pulumi.Output<String?> keyStorePassword;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<String?> trustAnchorCertificate;
-  late final Output<CustomKeyStoreXksProxyAuthenticationCredential?>
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<String?> trustAnchorCertificate;
+  late final pulumi.Output<CustomKeyStoreXksProxyAuthenticationCredential?>
       xksProxyAuthenticationCredential;
-  late final Output<String?> xksProxyConnectivity;
-  late final Output<String?> xksProxyUriEndpoint;
-  late final Output<String?> xksProxyUriPath;
-  late final Output<String?> xksProxyVpcEndpointServiceName;
+  late final pulumi.Output<String?> xksProxyConnectivity;
+  late final pulumi.Output<String?> xksProxyUriEndpoint;
+  late final pulumi.Output<String?> xksProxyUriPath;
+  late final pulumi.Output<String?> xksProxyVpcEndpointServiceName;
 
   CustomKeyStore(
     String name, {
     CustomKeyStoreArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:kms/customKeyStore:CustomKeyStore',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cloudHsmClusterId = registerOutput<String?>('cloudHsmClusterId');
     this.customKeyStoreName = registerOutput<String>('customKeyStoreName');

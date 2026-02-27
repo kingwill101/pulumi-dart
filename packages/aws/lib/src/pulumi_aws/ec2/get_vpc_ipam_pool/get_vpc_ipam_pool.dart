@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_vpc_ipam_pool_args.dart';
 import 'get_vpc_ipam_pool_result.dart';
 
@@ -15,13 +15,13 @@ import 'get_vpc_ipam_pool_result.dart';
 /// AWS IPAM.
 Future<GetVpcIpamPoolResult> getVpcIpamPool(
   GetVpcIpamPoolArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getVpcIpamPool:getVpcIpamPool',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpcIpamPoolResult.fromMap(result);
 }

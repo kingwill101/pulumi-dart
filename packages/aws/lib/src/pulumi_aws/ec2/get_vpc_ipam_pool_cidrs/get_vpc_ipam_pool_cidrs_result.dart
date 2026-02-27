@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_ipam_pool_cidrs_filter/get_vpc_ipam_pool_cidrs_filter.dart';
 import '../get_vpc_ipam_pool_cidrs_ipam_pool_cidr/get_vpc_ipam_pool_cidrs_ipam_pool_cidr.dart';
 
@@ -28,14 +28,13 @@ class GetVpcIpamPoolCidrsResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetVpcIpamPoolCidrsFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetVpcIpamPoolCidrsFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
-    map['ipamPoolCidrs'] =
-        Input.encodeList<GetVpcIpamPoolCidrsIpamPoolCidr, Map<String, dynamic>>(
-            ipamPoolCidrs, (value) => value.toMap());
+    map['ipamPoolCidrs'] = pulumi.Input.encodeList<
+        GetVpcIpamPoolCidrsIpamPoolCidr,
+        Map<String, dynamic>>(ipamPoolCidrs, (value) => value.toMap());
     map['ipamPoolId'] = ipamPoolId;
     map['region'] = region;
     return map;
@@ -45,12 +44,12 @@ class GetVpcIpamPoolCidrsResult {
     return GetVpcIpamPoolCidrsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVpcIpamPoolCidrsFilter>(
+          : pulumi.Input.decodeList<GetVpcIpamPoolCidrsFilter>(
               map['filters'],
               (value) => GetVpcIpamPoolCidrsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      ipamPoolCidrs: Input.decodeList<GetVpcIpamPoolCidrsIpamPoolCidr>(
+      ipamPoolCidrs: pulumi.Input.decodeList<GetVpcIpamPoolCidrsIpamPoolCidr>(
           map['ipamPoolCidrs'],
           (value) => GetVpcIpamPoolCidrsIpamPoolCidr.fromMap(
               (value as Map).cast<String, dynamic>())),

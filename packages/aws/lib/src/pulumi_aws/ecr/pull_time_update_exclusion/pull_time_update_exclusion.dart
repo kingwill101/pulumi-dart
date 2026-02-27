@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pull_time_update_exclusion_args.dart';
 
 /// Manages an AWS ECR (Elastic Container Registry) Pull Time Update Exclusion.
@@ -20,24 +20,24 @@ import 'pull_time_update_exclusion_args.dart';
 /// ```sh
 /// $ pulumi import aws:ecr/pullTimeUpdateExclusion:PullTimeUpdateExclusion example arn:aws:iam::123456789012:role/example-role
 /// ```
-class PullTimeUpdateExclusion extends CustomResource {
+class PullTimeUpdateExclusion extends pulumi.CustomResource {
   /// ARN of the IAM principal to exclude from having image pull times recorded.
   ///
   /// The following arguments are optional:
-  late final Output<String> principalArn;
+  late final pulumi.Output<String> principalArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   PullTimeUpdateExclusion(
     String name, {
     PullTimeUpdateExclusionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ecr/pullTimeUpdateExclusion:PullTimeUpdateExclusion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.principalArn = registerOutput<String>('principalArn');
     this.region = registerOutput<String>('region');

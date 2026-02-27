@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDocument.
 class GetDocumentArgs {
   /// The format of the document. Valid values: `JSON`, `TEXT`, `YAML`.
-  final Input<String>? documentFormat;
+  final pulumi.Input<String>? documentFormat;
 
   /// The document version.
-  final Input<String>? documentVersion;
+  final pulumi.Input<String>? documentVersion;
 
   /// The name of the document.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetDocumentArgs({
     this.documentFormat,
@@ -43,10 +43,12 @@ class GetDocumentArgs {
 
   factory GetDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetDocumentArgs(
-      documentFormat: Input.asOptionalInput<String>(map['documentFormat']),
-      documentVersion: Input.asOptionalInput<String>(map['documentVersion']),
-      name: Input.asInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      documentFormat:
+          pulumi.Input.asOptionalInput<String>(map['documentFormat']),
+      documentVersion:
+          pulumi.Input.asOptionalInput<String>(map['documentVersion']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

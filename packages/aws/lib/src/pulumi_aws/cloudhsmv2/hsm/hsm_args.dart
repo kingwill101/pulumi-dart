@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Hsm.
 class HsmArgs {
   /// The IDs of AZ in which HSM module will be located. Conflicts with `subnet_id`.
-  final Input<String>? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
 
   /// The ID of Cloud HSM v2 cluster to which HSM will be added.
-  final Input<String> clusterId;
+  final pulumi.Input<String> clusterId;
 
   /// The IP address of HSM module. Must be within the CIDR of selected subnet.
   ///
   /// > **NOTE:** Either `subnet_id` or `availability_zone` must be specified.
-  final Input<String>? ipAddress;
+  final pulumi.Input<String>? ipAddress;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of subnet in which HSM module will be located. Conflicts with `availability_zone`.
-  final Input<String>? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   HsmArgs({
     this.availabilityZone,
@@ -53,11 +53,12 @@ class HsmArgs {
 
   factory HsmArgs.fromMap(Map<String, dynamic> map) {
     return HsmArgs(
-      availabilityZone: Input.asOptionalInput<String>(map['availabilityZone']),
-      clusterId: Input.asInput<String>(map['clusterId']),
-      ipAddress: Input.asOptionalInput<String>(map['ipAddress']),
-      region: Input.asOptionalInput<String>(map['region']),
-      subnetId: Input.asOptionalInput<String>(map['subnetId']),
+      availabilityZone:
+          pulumi.Input.asOptionalInput<String>(map['availabilityZone']),
+      clusterId: pulumi.Input.asInput<String>(map['clusterId']),
+      ipAddress: pulumi.Input.asOptionalInput<String>(map['ipAddress']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      subnetId: pulumi.Input.asOptionalInput<String>(map['subnetId']),
     );
   }
 }

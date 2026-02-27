@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'webhook_args.dart';
 
 /// Provides an Amplify Webhook resource.
@@ -14,34 +14,34 @@ import 'webhook_args.dart';
 /// ```sh
 /// $ pulumi import aws:amplify/webhook:Webhook master a26b22a0-748b-4b57-b9a0-ae7e601fe4b1
 /// ```
-class Webhook extends CustomResource {
+class Webhook extends pulumi.CustomResource {
   /// Unique ID for an Amplify app.
-  late final Output<String> appId;
+  late final pulumi.Output<String> appId;
 
   /// ARN for the webhook.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Name for a branch that is part of the Amplify app.
-  late final Output<String> branchName;
+  late final pulumi.Output<String> branchName;
 
   /// Description for a webhook.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// URL of the webhook.
-  late final Output<String> url;
+  late final pulumi.Output<String> url;
 
   Webhook(
     String name, {
     WebhookArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:amplify/webhook:Webhook',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appId = registerOutput<String>('appId');
     this.arn = registerOutput<String>('arn');

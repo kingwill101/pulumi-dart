@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'approval_rule_template_association_args.dart';
 
 /// Associates a CodeCommit Approval Rule Template with a Repository.
@@ -14,25 +14,25 @@ import 'approval_rule_template_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:codecommit/approvalRuleTemplateAssociation:ApprovalRuleTemplateAssociation example approver-rule-for-example,MyExampleRepo
 /// ```
-class ApprovalRuleTemplateAssociation extends CustomResource {
+class ApprovalRuleTemplateAssociation extends pulumi.CustomResource {
   /// The name for the approval rule template.
-  late final Output<String> approvalRuleTemplateName;
+  late final pulumi.Output<String> approvalRuleTemplateName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The name of the repository that you want to associate with the template.
-  late final Output<String> repositoryName;
+  late final pulumi.Output<String> repositoryName;
 
   ApprovalRuleTemplateAssociation(
     String name, {
     ApprovalRuleTemplateAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:codecommit/approvalRuleTemplateAssociation:ApprovalRuleTemplateAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.approvalRuleTemplateName =
         registerOutput<String>('approvalRuleTemplateName');

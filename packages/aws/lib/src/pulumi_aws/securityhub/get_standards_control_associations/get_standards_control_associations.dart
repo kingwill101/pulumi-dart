@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_standards_control_associations_args.dart';
 import 'get_standards_control_associations_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_standards_control_associations_result.dart';
 /// ### Basic Usage
 Future<GetStandardsControlAssociationsResult> getStandardsControlAssociations(
   GetStandardsControlAssociationsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:securityhub/getStandardsControlAssociations:getStandardsControlAssociations',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStandardsControlAssociationsResult.fromMap(result);
 }

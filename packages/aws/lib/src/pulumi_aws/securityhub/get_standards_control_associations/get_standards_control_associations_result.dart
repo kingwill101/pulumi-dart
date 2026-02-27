@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_standards_control_associations_standards_control_association/get_standards_control_associations_standards_control_association.dart';
 
 /// Result data returned by getStandardsControlAssociations.
@@ -28,7 +28,7 @@ class GetStandardsControlAssociationsResult {
     map['id'] = id;
     map['region'] = region;
     map['securityControlId'] = securityControlId;
-    map['standardsControlAssociations'] = Input.encodeList<
+    map['standardsControlAssociations'] = pulumi.Input.encodeList<
             GetStandardsControlAssociationsStandardsControlAssociation,
             Map<String, dynamic>>(
         standardsControlAssociations, (value) => value.toMap());
@@ -41,7 +41,7 @@ class GetStandardsControlAssociationsResult {
       id: map['id'] as String,
       region: map['region'] as String,
       securityControlId: map['securityControlId'] as String,
-      standardsControlAssociations: Input.decodeList<
+      standardsControlAssociations: pulumi.Input.decodeList<
               GetStandardsControlAssociationsStandardsControlAssociation>(
           map['standardsControlAssociations'],
           (value) => GetStandardsControlAssociationsStandardsControlAssociation

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_group_association_managed_rule_group_rule_action_override_action_to_use_allow_custom_request_handling_insert_header/web_acl_rule_group_association_managed_rule_group_rule_action_override_action_to_use_allow_custom_request_handling_insert_header.dart';
 
 class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllowCustomRequestHandling {
@@ -17,7 +17,7 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAll
     final map = <String, dynamic>{};
     final insertHeadersValue = insertHeaders;
     if (insertHeadersValue != null) {
-      map['insertHeaders'] = Input.encodeList<
+      map['insertHeaders'] = pulumi.Input.encodeList<
           WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllowCustomRequestHandlingInsertHeader,
           Map<String, dynamic>>(insertHeadersValue, (value) => value.toMap());
     }
@@ -29,7 +29,7 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAll
     return WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllowCustomRequestHandling(
       insertHeaders: map['insertHeaders'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllowCustomRequestHandlingInsertHeader>(
               map['insertHeaders'],
               (value) =>

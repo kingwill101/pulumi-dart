@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_action_block_custom_response_response_header/rule_group_rule_action_block_custom_response_response_header.dart';
 
 class RuleGroupRuleActionBlockCustomResponse {
@@ -29,7 +29,7 @@ class RuleGroupRuleActionBlockCustomResponse {
     map['responseCode'] = responseCode;
     final responseHeadersValue = responseHeaders;
     if (responseHeadersValue != null) {
-      map['responseHeaders'] = Input.encodeList<
+      map['responseHeaders'] = pulumi.Input.encodeList<
           RuleGroupRuleActionBlockCustomResponseResponseHeader,
           Map<String, dynamic>>(responseHeadersValue, (value) => value.toMap());
     }
@@ -45,7 +45,7 @@ class RuleGroupRuleActionBlockCustomResponse {
       responseCode: map['responseCode'] as int,
       responseHeaders: map['responseHeaders'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RuleGroupRuleActionBlockCustomResponseResponseHeader>(
               map['responseHeaders'],
               (value) =>

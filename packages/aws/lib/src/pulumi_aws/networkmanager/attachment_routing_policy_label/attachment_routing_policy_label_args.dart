@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AttachmentRoutingPolicyLabel.
 class AttachmentRoutingPolicyLabelArgs {
   /// The ID of the attachment to apply the routing policy label to.
-  final Input<String> attachmentId;
+  final pulumi.Input<String> attachmentId;
 
   /// The ID of the core network containing the attachment.
-  final Input<String> coreNetworkId;
+  final pulumi.Input<String> coreNetworkId;
 
   /// The routing policy label to apply to the attachment.
-  final Input<String> routingPolicyLabel;
+  final pulumi.Input<String> routingPolicyLabel;
 
   AttachmentRoutingPolicyLabelArgs({
     required this.attachmentId,
@@ -29,9 +29,10 @@ class AttachmentRoutingPolicyLabelArgs {
 
   factory AttachmentRoutingPolicyLabelArgs.fromMap(Map<String, dynamic> map) {
     return AttachmentRoutingPolicyLabelArgs(
-      attachmentId: Input.asInput<String>(map['attachmentId']),
-      coreNetworkId: Input.asInput<String>(map['coreNetworkId']),
-      routingPolicyLabel: Input.asInput<String>(map['routingPolicyLabel']),
+      attachmentId: pulumi.Input.asInput<String>(map['attachmentId']),
+      coreNetworkId: pulumi.Input.asInput<String>(map['coreNetworkId']),
+      routingPolicyLabel:
+          pulumi.Input.asInput<String>(map['routingPolicyLabel']),
     );
   }
 }

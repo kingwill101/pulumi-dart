@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_users_user_address/get_users_user_address.dart';
 import '../get_users_user_email/get_users_user_email.dart';
 import '../get_users_user_external_id/get_users_user_external_id.dart';
@@ -78,21 +78,23 @@ class GetUsersUser {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['addresses'] =
-        Input.encodeList<GetUsersUserAddress, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetUsersUserAddress, Map<String, dynamic>>(
             addresses, (value) => value.toMap());
     map['displayName'] = displayName;
-    map['emails'] = Input.encodeList<GetUsersUserEmail, Map<String, dynamic>>(
-        emails, (value) => value.toMap());
+    map['emails'] =
+        pulumi.Input.encodeList<GetUsersUserEmail, Map<String, dynamic>>(
+            emails, (value) => value.toMap());
     map['externalIds'] =
-        Input.encodeList<GetUsersUserExternalId, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetUsersUserExternalId, Map<String, dynamic>>(
             externalIds, (value) => value.toMap());
     map['identityStoreId'] = identityStoreId;
     map['locale'] = locale;
-    map['names'] = Input.encodeList<GetUsersUserName, Map<String, dynamic>>(
-        names, (value) => value.toMap());
+    map['names'] =
+        pulumi.Input.encodeList<GetUsersUserName, Map<String, dynamic>>(
+            names, (value) => value.toMap());
     map['nickname'] = nickname;
     map['phoneNumbers'] =
-        Input.encodeList<GetUsersUserPhoneNumber, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetUsersUserPhoneNumber, Map<String, dynamic>>(
             phoneNumbers, (value) => value.toMap());
     map['preferredLanguage'] = preferredLanguage;
     map['profileUrl'] = profileUrl;
@@ -106,27 +108,27 @@ class GetUsersUser {
 
   factory GetUsersUser.fromMap(Map<String, dynamic> map) {
     return GetUsersUser(
-      addresses: Input.decodeList<GetUsersUserAddress>(
+      addresses: pulumi.Input.decodeList<GetUsersUserAddress>(
           map['addresses'],
           (value) => GetUsersUserAddress.fromMap(
               (value as Map).cast<String, dynamic>())),
       displayName: map['displayName'] as String,
-      emails: Input.decodeList<GetUsersUserEmail>(
+      emails: pulumi.Input.decodeList<GetUsersUserEmail>(
           map['emails'],
           (value) => GetUsersUserEmail.fromMap(
               (value as Map).cast<String, dynamic>())),
-      externalIds: Input.decodeList<GetUsersUserExternalId>(
+      externalIds: pulumi.Input.decodeList<GetUsersUserExternalId>(
           map['externalIds'],
           (value) => GetUsersUserExternalId.fromMap(
               (value as Map).cast<String, dynamic>())),
       identityStoreId: map['identityStoreId'] as String,
       locale: map['locale'] as String,
-      names: Input.decodeList<GetUsersUserName>(
+      names: pulumi.Input.decodeList<GetUsersUserName>(
           map['names'],
           (value) =>
               GetUsersUserName.fromMap((value as Map).cast<String, dynamic>())),
       nickname: map['nickname'] as String,
-      phoneNumbers: Input.decodeList<GetUsersUserPhoneNumber>(
+      phoneNumbers: pulumi.Input.decodeList<GetUsersUserPhoneNumber>(
           map['phoneNumbers'],
           (value) => GetUsersUserPhoneNumber.fromMap(
               (value as Map).cast<String, dynamic>())),

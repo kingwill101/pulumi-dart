@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'location_fsx_lustre_args.dart';
 
 /// Manages an AWS DataSync FSx Lustre Location.
@@ -14,43 +14,43 @@ import 'location_fsx_lustre_args.dart';
 /// ```sh
 /// $ pulumi import aws:datasync/locationFsxLustre:LocationFsxLustre example arn:aws:datasync:us-west-2:123456789012:location/loc-12345678901234567#arn:aws:fsx:us-west-2:476956259333:file-system/fs-08e04cd442c1bb94a
 /// ```
-class LocationFsxLustre extends CustomResource {
+class LocationFsxLustre extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the DataSync Location.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The time that the FSx for Lustre location was created.
-  late final Output<String> creationTime;
+  late final pulumi.Output<String> creationTime;
 
   /// The Amazon Resource Name (ARN) for the FSx for Lustre file system.
-  late final Output<String> fsxFilesystemArn;
+  late final pulumi.Output<String> fsxFilesystemArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Lustre file system.
-  late final Output<List<String>> securityGroupArns;
+  late final pulumi.Output<List<String>> securityGroupArns;
 
   /// Subdirectory to perform actions as source or destination.
-  late final Output<String> subdirectory;
+  late final pulumi.Output<String> subdirectory;
 
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The URL of the FSx for Lustre location that was described.
-  late final Output<String> uri;
+  late final pulumi.Output<String> uri;
 
   LocationFsxLustre(
     String name, {
     LocationFsxLustreArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:datasync/locationFsxLustre:LocationFsxLustre',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.creationTime = registerOutput<String>('creationTime');

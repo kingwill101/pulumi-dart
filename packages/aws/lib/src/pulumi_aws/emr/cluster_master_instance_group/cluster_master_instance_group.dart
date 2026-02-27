@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_master_instance_group_ebs_config/cluster_master_instance_group_ebs_config.dart';
 
 class ClusterMasterInstanceGroup {
@@ -39,7 +39,8 @@ class ClusterMasterInstanceGroup {
     }
     final ebsConfigsValue = ebsConfigs;
     if (ebsConfigsValue != null) {
-      map['ebsConfigs'] = Input.encodeList<ClusterMasterInstanceGroupEbsConfig,
+      map['ebsConfigs'] = pulumi.Input.encodeList<
+          ClusterMasterInstanceGroupEbsConfig,
           Map<String, dynamic>>(ebsConfigsValue, (value) => value.toMap());
     }
     final idValue = id;
@@ -63,7 +64,7 @@ class ClusterMasterInstanceGroup {
       bidPrice: map['bidPrice'] == null ? null : map['bidPrice'] as String,
       ebsConfigs: map['ebsConfigs'] == null
           ? null
-          : Input.decodeList<ClusterMasterInstanceGroupEbsConfig>(
+          : pulumi.Input.decodeList<ClusterMasterInstanceGroupEbsConfig>(
               map['ebsConfigs'],
               (value) => ClusterMasterInstanceGroupEbsConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

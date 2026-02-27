@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_workflow_step_parallel_config_step_custom_action_lambda_config_lambda/plan_workflow_step_parallel_config_step_custom_action_lambda_config_lambda.dart';
 import '../plan_workflow_step_parallel_config_step_custom_action_lambda_config_ungraceful/plan_workflow_step_parallel_config_step_custom_action_lambda_config_ungraceful.dart';
 
@@ -35,7 +35,7 @@ class PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig {
     final map = <String, dynamic>{};
     final lambdasValue = lambdas;
     if (lambdasValue != null) {
-      map['lambdas'] = Input.encodeList<
+      map['lambdas'] = pulumi.Input.encodeList<
           PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda,
           Map<String, dynamic>>(lambdasValue, (value) => value.toMap());
     }
@@ -47,7 +47,7 @@ class PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig {
     }
     final ungracefulsValue = ungracefuls;
     if (ungracefulsValue != null) {
-      map['ungracefuls'] = Input.encodeList<
+      map['ungracefuls'] = pulumi.Input.encodeList<
           PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful,
           Map<String, dynamic>>(ungracefulsValue, (value) => value.toMap());
     }
@@ -59,7 +59,7 @@ class PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig {
     return PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig(
       lambdas: map['lambdas'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda>(
               map['lambdas'],
               (value) =>
@@ -71,7 +71,7 @@ class PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig {
           map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
       ungracefuls: map['ungracefuls'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigUngraceful>(
               map['ungracefuls'],
               (value) =>

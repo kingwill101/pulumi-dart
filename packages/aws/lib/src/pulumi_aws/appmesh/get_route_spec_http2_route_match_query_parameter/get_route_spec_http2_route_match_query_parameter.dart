@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_route_spec_http2_route_match_query_parameter_match/get_route_spec_http2_route_match_query_parameter_match.dart';
 
 class GetRouteSpecHttp2RouteMatchQueryParameter {
@@ -16,7 +16,7 @@ class GetRouteSpecHttp2RouteMatchQueryParameter {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['matches'] = Input.encodeList<
+    map['matches'] = pulumi.Input.encodeList<
         GetRouteSpecHttp2RouteMatchQueryParameterMatch,
         Map<String, dynamic>>(matches, (value) => value.toMap());
     map['name'] = name;
@@ -26,7 +26,8 @@ class GetRouteSpecHttp2RouteMatchQueryParameter {
   factory GetRouteSpecHttp2RouteMatchQueryParameter.fromMap(
       Map<String, dynamic> map) {
     return GetRouteSpecHttp2RouteMatchQueryParameter(
-      matches: Input.decodeList<GetRouteSpecHttp2RouteMatchQueryParameterMatch>(
+      matches: pulumi.Input.decodeList<
+              GetRouteSpecHttp2RouteMatchQueryParameterMatch>(
           map['matches'],
           (value) => GetRouteSpecHttp2RouteMatchQueryParameterMatch.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_definition_node_property_node_range_property_container_volume_efs_volume_configuration_authorization_config/get_job_definition_node_property_node_range_property_container_volume_efs_volume_configuration_authorization_config.dart';
 
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration {
@@ -31,7 +31,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfi
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['authorizationConfigs'] = Input.encodeList<
+    map['authorizationConfigs'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig,
         Map<String, dynamic>>(authorizationConfigs, (value) => value.toMap());
     map['fileSystemId'] = fileSystemId;
@@ -44,7 +44,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfi
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration.fromMap(
       Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration(
-      authorizationConfigs: Input.decodeList<
+      authorizationConfigs: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfigurationAuthorizationConfig>(
           map['authorizationConfigs'],
           (value) =>

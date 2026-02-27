@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config/web_acl_rule_statement_managed_rule_group_statement_managed_rule_group_config.dart';
 import '../web_acl_rule_statement_managed_rule_group_statement_rule_action_override/web_acl_rule_statement_managed_rule_group_statement_rule_action_override.dart';
 import '../web_acl_rule_statement_managed_rule_group_statement_scope_down_statement/web_acl_rule_statement_managed_rule_group_statement_scope_down_statement.dart';
@@ -41,7 +41,7 @@ class WebAclRuleStatementManagedRuleGroupStatement {
     final map = <String, dynamic>{};
     final managedRuleGroupConfigsValue = managedRuleGroupConfigs;
     if (managedRuleGroupConfigsValue != null) {
-      map['managedRuleGroupConfigs'] = Input.encodeList<
+      map['managedRuleGroupConfigs'] = pulumi.Input.encodeList<
           WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig,
           Map<String,
               dynamic>>(managedRuleGroupConfigsValue, (value) => value.toMap());
@@ -49,7 +49,7 @@ class WebAclRuleStatementManagedRuleGroupStatement {
     map['name'] = name;
     final ruleActionOverridesValue = ruleActionOverrides;
     if (ruleActionOverridesValue != null) {
-      map['ruleActionOverrides'] = Input.encodeList<
+      map['ruleActionOverrides'] = pulumi.Input.encodeList<
               WebAclRuleStatementManagedRuleGroupStatementRuleActionOverride,
               Map<String, dynamic>>(
           ruleActionOverridesValue, (value) => value.toMap());
@@ -71,7 +71,7 @@ class WebAclRuleStatementManagedRuleGroupStatement {
     return WebAclRuleStatementManagedRuleGroupStatement(
       managedRuleGroupConfigs: map['managedRuleGroupConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig>(
               map['managedRuleGroupConfigs'],
               (value) =>
@@ -80,7 +80,7 @@ class WebAclRuleStatementManagedRuleGroupStatement {
       name: map['name'] as String,
       ruleActionOverrides: map['ruleActionOverrides'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WebAclRuleStatementManagedRuleGroupStatementRuleActionOverride>(
               map['ruleActionOverrides'],
               (value) =>

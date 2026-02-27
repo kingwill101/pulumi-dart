@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../channel_input_attachment_input_settings_audio_selector_selector_settings_audio_track_selection_dolby_edecode/channel_input_attachment_input_settings_audio_selector_selector_settings_audio_track_selection_dolby_edecode.dart';
 import '../channel_input_attachment_input_settings_audio_selector_selector_settings_audio_track_selection_track/channel_input_attachment_input_settings_audio_selector_selector_settings_audio_track_selection_track.dart';
 
@@ -25,7 +25,7 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrack
     if (dolbyEDecodeValue != null) {
       map['dolbyEDecode'] = dolbyEDecodeValue.toMap();
     }
-    map['tracks'] = Input.encodeList<
+    map['tracks'] = pulumi.Input.encodeList<
         ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack,
         Map<String, dynamic>>(tracks, (value) => value.toMap());
     return map;
@@ -38,7 +38,7 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrack
           ? null
           : ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionDolbyEDecode
               .fromMap((map['dolbyEDecode'] as Map).cast<String, dynamic>()),
-      tracks: Input.decodeList<
+      tracks: pulumi.Input.decodeList<
               ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack>(
           map['tracks'],
           (value) =>

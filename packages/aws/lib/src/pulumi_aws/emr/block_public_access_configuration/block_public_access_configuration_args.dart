@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../block_public_access_configuration_permitted_public_security_group_rule_range/block_public_access_configuration_permitted_public_security_group_rule_range.dart';
 
 /// The set of arguments for BlockPublicAccessConfiguration.
@@ -8,16 +8,16 @@ class BlockPublicAccessConfigurationArgs {
   /// Enable or disable EMR Block Public Access.
   ///
   /// The following arguments are optional:
-  final Input<bool> blockPublicSecurityGroupRules;
+  final pulumi.Input<bool> blockPublicSecurityGroupRules;
 
   /// Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `block_public_security_group_rules` is set to `true`.
-  final Input<
+  final pulumi.Input<
           List<
               BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>>?
       permittedPublicSecurityGroupRuleRanges;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   BlockPublicAccessConfigurationArgs({
     required this.blockPublicSecurityGroupRules,
@@ -31,12 +31,13 @@ class BlockPublicAccessConfigurationArgs {
     final permittedPublicSecurityGroupRuleRangesValue =
         permittedPublicSecurityGroupRuleRanges;
     if (permittedPublicSecurityGroupRuleRangesValue != null) {
-      map['permittedPublicSecurityGroupRuleRanges'] = Input.mapOptionalInputValue<
+      map['permittedPublicSecurityGroupRuleRanges'] = pulumi
+          .Input.mapOptionalInputValue<
               List<
                   BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>,
               List<Map<String, dynamic>>>(
           permittedPublicSecurityGroupRuleRangesValue,
-          (value) => Input.encodeList<
+          (value) => pulumi.Input.encodeList<
               BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
@@ -50,12 +51,12 @@ class BlockPublicAccessConfigurationArgs {
   factory BlockPublicAccessConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return BlockPublicAccessConfigurationArgs(
       blockPublicSecurityGroupRules:
-          Input.asInput<bool>(map['blockPublicSecurityGroupRules']),
-      permittedPublicSecurityGroupRuleRanges: Input.asOptionalInput<
+          pulumi.Input.asInput<bool>(map['blockPublicSecurityGroupRules']),
+      permittedPublicSecurityGroupRuleRanges: pulumi.Input.asOptionalInput<
               List<
                   BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>>(
           map['permittedPublicSecurityGroupRuleRanges']),
-      region: Input.asOptionalInput<String>(map['region']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

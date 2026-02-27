@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'schedule_args.dart';
 
 /// Provides an AutoScaling Schedule resource.
@@ -14,53 +14,53 @@ import 'schedule_args.dart';
 /// ```sh
 /// $ pulumi import aws:autoscaling/schedule:Schedule resource-name auto-scaling-group-name/scheduled-action-name
 /// ```
-class Schedule extends CustomResource {
+class Schedule extends pulumi.CustomResource {
   /// ARN assigned by AWS to the autoscaling schedule.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The name of the Auto Scaling group.
-  late final Output<String> autoscalingGroupName;
+  late final pulumi.Output<String> autoscalingGroupName;
 
   /// The initial capacity of the Auto Scaling group after the scheduled action runs and the capacity it attempts to maintain. Set to `-1` if you don't want to change the desired capacity at the scheduled time. Defaults to `0`.
-  late final Output<int> desiredCapacity;
+  late final pulumi.Output<int> desiredCapacity;
 
   /// The date and time for the recurring schedule to end, in UTC with the format `"YYYY-MM-DDThh:mm:ssZ"` (e.g. `"2021-06-01T00:00:00Z"`).
-  late final Output<String> endTime;
+  late final pulumi.Output<String> endTime;
 
   /// The maximum size of the Auto Scaling group. Set to `-1` if you don't want to change the maximum size at the scheduled time. Defaults to `0`.
-  late final Output<int> maxSize;
+  late final pulumi.Output<int> maxSize;
 
   /// The minimum size of the Auto Scaling group. Set to `-1` if you don't want to change the minimum size at the scheduled time. Defaults to `0`.
-  late final Output<int> minSize;
+  late final pulumi.Output<int> minSize;
 
   /// The recurring schedule for this action specified using the Unix cron syntax format.
-  late final Output<String> recurrence;
+  late final pulumi.Output<String> recurrence;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The name of this scaling action.
   ///
   /// The following arguments are optional:
-  late final Output<String> scheduledActionName;
+  late final pulumi.Output<String> scheduledActionName;
 
   /// The date and time for the recurring schedule to start, in UTC with the format `"YYYY-MM-DDThh:mm:ssZ"` (e.g. `"2021-06-01T00:00:00Z"`).
-  late final Output<String> startTime;
+  late final pulumi.Output<String> startTime;
 
   /// Specifies the time zone for a cron expression. Valid values are the canonical names of the IANA time zones (such as `Etc/GMT+9` or `Pacific/Tahiti`).
   ///
   /// > **NOTE:** When `start_time` and `end_time` are specified with `recurrence` , they form the boundaries of when the recurring action will start and stop.
-  late final Output<String> timeZone;
+  late final pulumi.Output<String> timeZone;
 
   Schedule(
     String name, {
     ScheduleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:autoscaling/schedule:Schedule',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');

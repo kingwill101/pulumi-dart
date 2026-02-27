@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../monitoring_subscription_monitoring_subscription/monitoring_subscription_monitoring_subscription.dart';
 import 'monitoring_subscription_args.dart';
 
@@ -15,23 +15,23 @@ import 'monitoring_subscription_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudfront/monitoringSubscription:MonitoringSubscription example E3QYSUHO4VYRGB
 /// ```
-class MonitoringSubscription extends CustomResource {
+class MonitoringSubscription extends pulumi.CustomResource {
   /// The ID of the distribution that you are enabling metrics for.
-  late final Output<String> distributionId;
+  late final pulumi.Output<String> distributionId;
 
   /// A monitoring subscription. This structure contains information about whether additional CloudWatch metrics are enabled for a given CloudFront distribution.
-  late final Output<MonitoringSubscriptionMonitoringSubscription>
+  late final pulumi.Output<MonitoringSubscriptionMonitoringSubscription>
       monitoringSubscription;
 
   MonitoringSubscription(
     String name, {
     MonitoringSubscriptionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/monitoringSubscription:MonitoringSubscription',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.distributionId = registerOutput<String>('distributionId');
     this.monitoringSubscription =

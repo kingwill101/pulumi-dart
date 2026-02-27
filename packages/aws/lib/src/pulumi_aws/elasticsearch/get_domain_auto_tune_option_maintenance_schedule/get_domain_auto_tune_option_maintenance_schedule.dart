@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_domain_auto_tune_option_maintenance_schedule_duration/get_domain_auto_tune_option_maintenance_schedule_duration.dart';
 
 class GetDomainAutoTuneOptionMaintenanceSchedule {
@@ -22,7 +22,7 @@ class GetDomainAutoTuneOptionMaintenanceSchedule {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['cronExpressionForRecurrence'] = cronExpressionForRecurrence;
-    map['durations'] = Input.encodeList<
+    map['durations'] = pulumi.Input.encodeList<
         GetDomainAutoTuneOptionMaintenanceScheduleDuration,
         Map<String, dynamic>>(durations, (value) => value.toMap());
     map['startAt'] = startAt;
@@ -33,12 +33,11 @@ class GetDomainAutoTuneOptionMaintenanceSchedule {
       Map<String, dynamic> map) {
     return GetDomainAutoTuneOptionMaintenanceSchedule(
       cronExpressionForRecurrence: map['cronExpressionForRecurrence'] as String,
-      durations:
-          Input.decodeList<GetDomainAutoTuneOptionMaintenanceScheduleDuration>(
-              map['durations'],
-              (value) =>
-                  GetDomainAutoTuneOptionMaintenanceScheduleDuration.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      durations: pulumi.Input.decodeList<
+              GetDomainAutoTuneOptionMaintenanceScheduleDuration>(
+          map['durations'],
+          (value) => GetDomainAutoTuneOptionMaintenanceScheduleDuration.fromMap(
+              (value as Map).cast<String, dynamic>())),
       startAt: map['startAt'] as String,
     );
   }

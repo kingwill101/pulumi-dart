@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../preset_audio/preset_audio.dart';
 import '../preset_audio_codec_options/preset_audio_codec_options.dart';
 import '../preset_thumbnails/preset_thumbnails.dart';
@@ -21,52 +21,52 @@ import 'preset_args.dart';
 /// ```sh
 /// $ pulumi import aws:elastictranscoder/preset:Preset basic_preset 1407981661351-cttk8b
 /// ```
-class Preset extends CustomResource {
+class Preset extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the Elastic Transcoder Preset.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Audio parameters object (documented below).
-  late final Output<PresetAudio?> audio;
+  late final pulumi.Output<PresetAudio?> audio;
 
   /// Codec options for the audio parameters (documented below)
-  late final Output<PresetAudioCodecOptions> audioCodecOptions;
+  late final pulumi.Output<PresetAudioCodecOptions> audioCodecOptions;
 
   /// The container type for the output file. Valid values are `flac`, `flv`, `fmp4`, `gif`, `mp3`, `mp4`, `mpg`, `mxf`, `oga`, `ogg`, `ts`, and `webm`.
-  late final Output<String> container;
+  late final pulumi.Output<String> container;
 
   /// A description of the preset (maximum 255 characters)
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The name of the preset. (maximum 40 characters)
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Thumbnail parameters object (documented below)
-  late final Output<PresetThumbnails?> thumbnails;
-  late final Output<String> type;
+  late final pulumi.Output<PresetThumbnails?> thumbnails;
+  late final pulumi.Output<String> type;
 
   /// Video parameters object (documented below)
-  late final Output<PresetVideo?> video;
+  late final pulumi.Output<PresetVideo?> video;
 
   /// Codec options for the video parameters
   ///
   /// See ["Create Preset"](http://docs.aws.amazon.com/elastictranscoder/latest/developerguide/create-preset.html) in the AWS docs for reference.
-  late final Output<Map<String, String>?> videoCodecOptions;
+  late final pulumi.Output<Map<String, String>?> videoCodecOptions;
 
   /// Watermark parameters for the video parameters (documented below)
-  late final Output<List<PresetVideoWatermark>?> videoWatermarks;
+  late final pulumi.Output<List<PresetVideoWatermark>?> videoWatermarks;
 
   Preset(
     String name, {
     PresetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:elastictranscoder/preset:Preset',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.audio = registerOutput<PresetAudio?>('audio');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_local_gateway_args.dart';
 import 'get_local_gateway_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_local_gateway_result.dart';
 /// The following example shows how one might accept a local gateway id as a variable.
 Future<GetLocalGatewayResult> getLocalGateway(
   GetLocalGatewayArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getLocalGateway:getLocalGateway',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocalGatewayResult.fromMap(result);
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../guardrail_content_policy_config/guardrail_content_policy_config.dart';
 import '../guardrail_contextual_grounding_policy_config/guardrail_contextual_grounding_policy_config.dart';
 import '../guardrail_cross_region_config/guardrail_cross_region_config.dart';
@@ -23,74 +23,74 @@ import 'guardrail_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrock/guardrail:Guardrail example guardrail-id-12345678,DRAFT
 /// ```
-class Guardrail extends CustomResource {
+class Guardrail extends pulumi.CustomResource {
   /// Message to return when the guardrail blocks a prompt.
-  late final Output<String> blockedInputMessaging;
+  late final pulumi.Output<String> blockedInputMessaging;
 
   /// Message to return when the guardrail blocks a model response.
-  late final Output<String> blockedOutputsMessaging;
+  late final pulumi.Output<String> blockedOutputsMessaging;
 
   /// Content policy config for a guardrail. See Content Policy Config for more information.
-  late final Output<GuardrailContentPolicyConfig?> contentPolicyConfig;
+  late final pulumi.Output<GuardrailContentPolicyConfig?> contentPolicyConfig;
 
   /// Contextual grounding policy config for a guardrail. See Contextual Grounding Policy Config for more information.
-  late final Output<GuardrailContextualGroundingPolicyConfig?>
+  late final pulumi.Output<GuardrailContextualGroundingPolicyConfig?>
       contextualGroundingPolicyConfig;
 
   /// Unix epoch timestamp in seconds for when the Guardrail was created.
-  late final Output<String> createdAt;
-  late final Output<GuardrailCrossRegionConfig?> crossRegionConfig;
+  late final pulumi.Output<String> createdAt;
+  late final pulumi.Output<GuardrailCrossRegionConfig?> crossRegionConfig;
 
   /// Description of the guardrail or its version.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// ARN of the Guardrail.
-  late final Output<String> guardrailArn;
+  late final pulumi.Output<String> guardrailArn;
 
   /// ID of the Guardrail.
-  late final Output<String> guardrailId;
+  late final pulumi.Output<String> guardrailId;
 
   /// The KMS key with which the guardrail was encrypted at rest.
-  late final Output<String?> kmsKeyArn;
+  late final pulumi.Output<String?> kmsKeyArn;
 
   /// Name of the guardrail.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Sensitive information policy config for a guardrail. See Sensitive Information Policy Config for more information.
-  late final Output<GuardrailSensitiveInformationPolicyConfig?>
+  late final pulumi.Output<GuardrailSensitiveInformationPolicyConfig?>
       sensitiveInformationPolicyConfig;
 
   /// Status of the Bedrock Guardrail. One of `READY`, `FAILED`.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<GuardrailTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<GuardrailTimeouts?> timeouts;
 
   /// Topic policy config for a guardrail. See Topic Policy Config for more information.
-  late final Output<GuardrailTopicPolicyConfig?> topicPolicyConfig;
+  late final pulumi.Output<GuardrailTopicPolicyConfig?> topicPolicyConfig;
 
   /// Version of the Guardrail.
-  late final Output<String> version;
+  late final pulumi.Output<String> version;
 
   /// Word policy config for a guardrail. See Word Policy Config for more information.
-  late final Output<GuardrailWordPolicyConfig?> wordPolicyConfig;
+  late final pulumi.Output<GuardrailWordPolicyConfig?> wordPolicyConfig;
 
   Guardrail(
     String name, {
     GuardrailArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/guardrail:Guardrail',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.blockedInputMessaging =
         registerOutput<String>('blockedInputMessaging');

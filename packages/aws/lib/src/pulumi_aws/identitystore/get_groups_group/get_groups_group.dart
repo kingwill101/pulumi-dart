@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_groups_group_external_id/get_groups_group_external_id.dart';
 
 class GetGroupsGroup {
@@ -32,7 +32,7 @@ class GetGroupsGroup {
     map['description'] = description;
     map['displayName'] = displayName;
     map['externalIds'] =
-        Input.encodeList<GetGroupsGroupExternalId, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetGroupsGroupExternalId, Map<String, dynamic>>(
             externalIds, (value) => value.toMap());
     map['groupId'] = groupId;
     map['identityStoreId'] = identityStoreId;
@@ -43,7 +43,7 @@ class GetGroupsGroup {
     return GetGroupsGroup(
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      externalIds: Input.decodeList<GetGroupsGroupExternalId>(
+      externalIds: pulumi.Input.decodeList<GetGroupsGroupExternalId>(
           map['externalIds'],
           (value) => GetGroupsGroupExternalId.fromMap(
               (value as Map).cast<String, dynamic>())),

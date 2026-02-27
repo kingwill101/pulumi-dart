@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_statement_rate_based_statement_custom_key/rule_group_rule_statement_rate_based_statement_custom_key.dart';
 import '../rule_group_rule_statement_rate_based_statement_forwarded_ip_config/rule_group_rule_statement_rate_based_statement_forwarded_ip_config.dart';
 import '../rule_group_rule_statement_rate_based_statement_scope_down_statement/rule_group_rule_statement_rate_based_statement_scope_down_statement.dart';
@@ -45,7 +45,7 @@ class RuleGroupRuleStatementRateBasedStatement {
     }
     final customKeysValue = customKeys;
     if (customKeysValue != null) {
-      map['customKeys'] = Input.encodeList<
+      map['customKeys'] = pulumi.Input.encodeList<
           RuleGroupRuleStatementRateBasedStatementCustomKey,
           Map<String, dynamic>>(customKeysValue, (value) => value.toMap());
     }
@@ -73,7 +73,8 @@ class RuleGroupRuleStatementRateBasedStatement {
           : map['aggregateKeyType'] as String,
       customKeys: map['customKeys'] == null
           ? null
-          : Input.decodeList<RuleGroupRuleStatementRateBasedStatementCustomKey>(
+          : pulumi.Input.decodeList<
+                  RuleGroupRuleStatementRateBasedStatementCustomKey>(
               map['customKeys'],
               (value) =>
                   RuleGroupRuleStatementRateBasedStatementCustomKey.fromMap(

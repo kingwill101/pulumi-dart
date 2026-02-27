@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../endpoint_load_balancer_options_port_range/endpoint_load_balancer_options_port_range.dart';
 
 class EndpointLoadBalancerOptions {
@@ -30,7 +30,8 @@ class EndpointLoadBalancerOptions {
     }
     final portRangesValue = portRanges;
     if (portRangesValue != null) {
-      map['portRanges'] = Input.encodeList<EndpointLoadBalancerOptionsPortRange,
+      map['portRanges'] = pulumi.Input.encodeList<
+          EndpointLoadBalancerOptionsPortRange,
           Map<String, dynamic>>(portRangesValue, (value) => value.toMap());
     }
     final protocolValue = protocol;
@@ -52,7 +53,7 @@ class EndpointLoadBalancerOptions {
       port: map['port'] == null ? null : map['port'] as int,
       portRanges: map['portRanges'] == null
           ? null
-          : Input.decodeList<EndpointLoadBalancerOptionsPortRange>(
+          : pulumi.Input.decodeList<EndpointLoadBalancerOptionsPortRange>(
               map['portRanges'],
               (value) => EndpointLoadBalancerOptionsPortRange.fromMap(
                   (value as Map).cast<String, dynamic>())),

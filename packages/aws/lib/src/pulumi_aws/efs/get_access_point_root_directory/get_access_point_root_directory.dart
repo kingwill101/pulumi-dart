@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_access_point_root_directory_creation_info/get_access_point_root_directory_creation_info.dart';
 
 class GetAccessPointRootDirectory {
@@ -17,7 +17,7 @@ class GetAccessPointRootDirectory {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['creationInfos'] = Input.encodeList<
+    map['creationInfos'] = pulumi.Input.encodeList<
         GetAccessPointRootDirectoryCreationInfo,
         Map<String, dynamic>>(creationInfos, (value) => value.toMap());
     map['path'] = path;
@@ -26,10 +26,11 @@ class GetAccessPointRootDirectory {
 
   factory GetAccessPointRootDirectory.fromMap(Map<String, dynamic> map) {
     return GetAccessPointRootDirectory(
-      creationInfos: Input.decodeList<GetAccessPointRootDirectoryCreationInfo>(
-          map['creationInfos'],
-          (value) => GetAccessPointRootDirectoryCreationInfo.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      creationInfos:
+          pulumi.Input.decodeList<GetAccessPointRootDirectoryCreationInfo>(
+              map['creationInfos'],
+              (value) => GetAccessPointRootDirectoryCreationInfo.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       path: map['path'] as String,
     );
   }

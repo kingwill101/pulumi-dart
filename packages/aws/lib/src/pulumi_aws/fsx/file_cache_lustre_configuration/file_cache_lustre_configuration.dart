@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../file_cache_lustre_configuration_log_configuration/file_cache_lustre_configuration_log_configuration.dart';
 import '../file_cache_lustre_configuration_metadata_configuration/file_cache_lustre_configuration_metadata_configuration.dart';
 
@@ -34,12 +34,12 @@ class FileCacheLustreConfiguration {
     map['deploymentType'] = deploymentType;
     final logConfigurationsValue = logConfigurations;
     if (logConfigurationsValue != null) {
-      map['logConfigurations'] = Input.encodeList<
+      map['logConfigurations'] = pulumi.Input.encodeList<
               FileCacheLustreConfigurationLogConfiguration,
               Map<String, dynamic>>(
           logConfigurationsValue, (value) => value.toMap());
     }
-    map['metadataConfigurations'] = Input.encodeList<
+    map['metadataConfigurations'] = pulumi.Input.encodeList<
         FileCacheLustreConfigurationMetadataConfiguration,
         Map<String, dynamic>>(metadataConfigurations, (value) => value.toMap());
     final mountNameValue = mountName;
@@ -59,16 +59,16 @@ class FileCacheLustreConfiguration {
       deploymentType: map['deploymentType'] as String,
       logConfigurations: map['logConfigurations'] == null
           ? null
-          : Input.decodeList<FileCacheLustreConfigurationLogConfiguration>(
+          : pulumi.Input.decodeList<
+                  FileCacheLustreConfigurationLogConfiguration>(
               map['logConfigurations'],
               (value) => FileCacheLustreConfigurationLogConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      metadataConfigurations:
-          Input.decodeList<FileCacheLustreConfigurationMetadataConfiguration>(
-              map['metadataConfigurations'],
-              (value) =>
-                  FileCacheLustreConfigurationMetadataConfiguration.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      metadataConfigurations: pulumi.Input.decodeList<
+              FileCacheLustreConfigurationMetadataConfiguration>(
+          map['metadataConfigurations'],
+          (value) => FileCacheLustreConfigurationMetadataConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>())),
       mountName: map['mountName'] == null ? null : map['mountName'] as String,
       perUnitStorageThroughput: map['perUnitStorageThroughput'] as int,
       weeklyMaintenanceStartTime: map['weeklyMaintenanceStartTime'] == null

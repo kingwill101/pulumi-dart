@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cost_category_rule_rule_and/get_cost_category_rule_rule_and.dart';
 import '../get_cost_category_rule_rule_cost_category/get_cost_category_rule_rule_cost_category.dart';
 import '../get_cost_category_rule_rule_dimension/get_cost_category_rule_rule_dimension.dart';
@@ -38,49 +38,47 @@ class GetCostCategoryRuleRule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['ands'] =
-        Input.encodeList<GetCostCategoryRuleRuleAnd, Map<String, dynamic>>(
-            ands, (value) => value.toMap());
-    map['costCategories'] = Input.encodeList<
+    map['ands'] = pulumi.Input.encodeList<GetCostCategoryRuleRuleAnd,
+        Map<String, dynamic>>(ands, (value) => value.toMap());
+    map['costCategories'] = pulumi.Input.encodeList<
         GetCostCategoryRuleRuleCostCategory,
         Map<String, dynamic>>(costCategories, (value) => value.toMap());
-    map['dimensions'] = Input.encodeList<GetCostCategoryRuleRuleDimension,
+    map['dimensions'] = pulumi.Input.encodeList<
+        GetCostCategoryRuleRuleDimension,
         Map<String, dynamic>>(dimensions, (value) => value.toMap());
-    map['nots'] =
-        Input.encodeList<GetCostCategoryRuleRuleNot, Map<String, dynamic>>(
-            nots, (value) => value.toMap());
-    map['ors'] =
-        Input.encodeList<GetCostCategoryRuleRuleOr, Map<String, dynamic>>(
-            ors, (value) => value.toMap());
-    map['tags'] =
-        Input.encodeList<GetCostCategoryRuleRuleTag, Map<String, dynamic>>(
-            tags, (value) => value.toMap());
+    map['nots'] = pulumi.Input.encodeList<GetCostCategoryRuleRuleNot,
+        Map<String, dynamic>>(nots, (value) => value.toMap());
+    map['ors'] = pulumi.Input.encodeList<GetCostCategoryRuleRuleOr,
+        Map<String, dynamic>>(ors, (value) => value.toMap());
+    map['tags'] = pulumi.Input.encodeList<GetCostCategoryRuleRuleTag,
+        Map<String, dynamic>>(tags, (value) => value.toMap());
     return map;
   }
 
   factory GetCostCategoryRuleRule.fromMap(Map<String, dynamic> map) {
     return GetCostCategoryRuleRule(
-      ands: Input.decodeList<GetCostCategoryRuleRuleAnd>(
+      ands: pulumi.Input.decodeList<GetCostCategoryRuleRuleAnd>(
           map['ands'],
           (value) => GetCostCategoryRuleRuleAnd.fromMap(
               (value as Map).cast<String, dynamic>())),
-      costCategories: Input.decodeList<GetCostCategoryRuleRuleCostCategory>(
-          map['costCategories'],
-          (value) => GetCostCategoryRuleRuleCostCategory.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      dimensions: Input.decodeList<GetCostCategoryRuleRuleDimension>(
+      costCategories:
+          pulumi.Input.decodeList<GetCostCategoryRuleRuleCostCategory>(
+              map['costCategories'],
+              (value) => GetCostCategoryRuleRuleCostCategory.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      dimensions: pulumi.Input.decodeList<GetCostCategoryRuleRuleDimension>(
           map['dimensions'],
           (value) => GetCostCategoryRuleRuleDimension.fromMap(
               (value as Map).cast<String, dynamic>())),
-      nots: Input.decodeList<GetCostCategoryRuleRuleNot>(
+      nots: pulumi.Input.decodeList<GetCostCategoryRuleRuleNot>(
           map['nots'],
           (value) => GetCostCategoryRuleRuleNot.fromMap(
               (value as Map).cast<String, dynamic>())),
-      ors: Input.decodeList<GetCostCategoryRuleRuleOr>(
+      ors: pulumi.Input.decodeList<GetCostCategoryRuleRuleOr>(
           map['ors'],
           (value) => GetCostCategoryRuleRuleOr.fromMap(
               (value as Map).cast<String, dynamic>())),
-      tags: Input.decodeList<GetCostCategoryRuleRuleTag>(
+      tags: pulumi.Input.decodeList<GetCostCategoryRuleRuleTag>(
           map['tags'],
           (value) => GetCostCategoryRuleRuleTag.fromMap(
               (value as Map).cast<String, dynamic>())),

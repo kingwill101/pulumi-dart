@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_alias_args.dart';
 
 /// > **Note:** There is only a single account alias per AWS account.
@@ -16,19 +16,19 @@ import 'account_alias_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/accountAlias:AccountAlias alias my-account-alias
 /// ```
-class AccountAlias extends CustomResource {
+class AccountAlias extends pulumi.CustomResource {
   /// The account alias
-  late final Output<String> accountAlias;
+  late final pulumi.Output<String> accountAlias;
 
   AccountAlias(
     String name, {
     AccountAliasArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/accountAlias:AccountAlias',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountAlias = registerOutput<String>('accountAlias');
   }

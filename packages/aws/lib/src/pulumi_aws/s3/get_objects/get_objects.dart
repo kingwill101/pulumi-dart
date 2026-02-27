@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_objects_args.dart';
 import 'get_objects_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_objects_result.dart';
 /// The objects data source returns keys (i.e., file names) and other metadata about objects in an S3 bucket.
 Future<GetObjectsResult> getObjects(
   GetObjectsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:s3/getObjects:getObjects',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetObjectsResult.fromMap(result);
 }

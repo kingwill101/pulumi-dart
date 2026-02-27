@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipeline_trigger_all_git_configuration/pipeline_trigger_all_git_configuration.dart';
 
 class PipelineTriggerAll {
@@ -19,7 +19,7 @@ class PipelineTriggerAll {
     final map = <String, dynamic>{};
     final gitConfigurationsValue = gitConfigurations;
     if (gitConfigurationsValue != null) {
-      map['gitConfigurations'] = Input.encodeList<
+      map['gitConfigurations'] = pulumi.Input.encodeList<
               PipelineTriggerAllGitConfiguration, Map<String, dynamic>>(
           gitConfigurationsValue, (value) => value.toMap());
     }
@@ -34,7 +34,7 @@ class PipelineTriggerAll {
     return PipelineTriggerAll(
       gitConfigurations: map['gitConfigurations'] == null
           ? null
-          : Input.decodeList<PipelineTriggerAllGitConfiguration>(
+          : pulumi.Input.decodeList<PipelineTriggerAllGitConfiguration>(
               map['gitConfigurations'],
               (value) => PipelineTriggerAllGitConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),

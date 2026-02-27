@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cache_policy_parameters_in_cache_key_and_forwarded_to_origin/cache_policy_parameters_in_cache_key_and_forwarded_to_origin.dart';
 import 'cache_policy_args.dart';
 
@@ -15,41 +15,41 @@ import 'cache_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudfront/cachePolicy:CachePolicy policy 658327ea-f89d-4fab-a63d-7e88639e58f6
 /// ```
-class CachePolicy extends CustomResource {
+class CachePolicy extends pulumi.CustomResource {
   /// The cache policy ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Description for the cache policy.
-  late final Output<String?> comment;
+  late final pulumi.Output<String?> comment;
 
   /// Amount of time, in seconds, that objects are allowed to remain in the CloudFront cache before CloudFront sends a new request to the origin server to check if the object has been updated.
-  late final Output<int?> defaultTtl;
+  late final pulumi.Output<int?> defaultTtl;
 
   /// Current version of the cache policy.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Maximum amount of time, in seconds, that objects stay in the CloudFront cache before CloudFront sends another request to the origin to see if the object has been updated.
-  late final Output<int?> maxTtl;
+  late final pulumi.Output<int?> maxTtl;
 
   /// Minimum amount of time, in seconds, that objects should remain in the CloudFront cache before a new request is sent to the origin to check for updates.
-  late final Output<int?> minTtl;
+  late final pulumi.Output<int?> minTtl;
 
   /// Unique name used to identify the cache policy.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Configuration for including HTTP headers, cookies, and URL query strings in the cache key. For more information, refer to the Parameters In Cache Key And Forwarded To Origin section.
-  late final Output<CachePolicyParametersInCacheKeyAndForwardedToOrigin>
+  late final pulumi.Output<CachePolicyParametersInCacheKeyAndForwardedToOrigin>
       parametersInCacheKeyAndForwardedToOrigin;
 
   CachePolicy(
     String name, {
     CachePolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/cachePolicy:CachePolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.comment = registerOutput<String?>('comment');

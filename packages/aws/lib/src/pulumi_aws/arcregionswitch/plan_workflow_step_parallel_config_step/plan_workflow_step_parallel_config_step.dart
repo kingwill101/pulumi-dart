@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_workflow_step_parallel_config_step_arc_routing_control_config/plan_workflow_step_parallel_config_step_arc_routing_control_config.dart';
 import '../plan_workflow_step_parallel_config_step_custom_action_lambda_config/plan_workflow_step_parallel_config_step_custom_action_lambda_config.dart';
 import '../plan_workflow_step_parallel_config_step_document_db_config/plan_workflow_step_parallel_config_step_document_db_config.dart';
@@ -80,14 +80,14 @@ class PlanWorkflowStepParallelConfigStep {
     final map = <String, dynamic>{};
     final arcRoutingControlConfigsValue = arcRoutingControlConfigs;
     if (arcRoutingControlConfigsValue != null) {
-      map['arcRoutingControlConfigs'] = Input.encodeList<
+      map['arcRoutingControlConfigs'] = pulumi.Input.encodeList<
               PlanWorkflowStepParallelConfigStepArcRoutingControlConfig,
               Map<String, dynamic>>(
           arcRoutingControlConfigsValue, (value) => value.toMap());
     }
     final customActionLambdaConfigsValue = customActionLambdaConfigs;
     if (customActionLambdaConfigsValue != null) {
-      map['customActionLambdaConfigs'] = Input.encodeList<
+      map['customActionLambdaConfigs'] = pulumi.Input.encodeList<
               PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig,
               Map<String, dynamic>>(
           customActionLambdaConfigsValue, (value) => value.toMap());
@@ -98,35 +98,35 @@ class PlanWorkflowStepParallelConfigStep {
     }
     final documentDbConfigsValue = documentDbConfigs;
     if (documentDbConfigsValue != null) {
-      map['documentDbConfigs'] = Input.encodeList<
+      map['documentDbConfigs'] = pulumi.Input.encodeList<
               PlanWorkflowStepParallelConfigStepDocumentDbConfig,
               Map<String, dynamic>>(
           documentDbConfigsValue, (value) => value.toMap());
     }
     final ec2AsgCapacityIncreaseConfigsValue = ec2AsgCapacityIncreaseConfigs;
     if (ec2AsgCapacityIncreaseConfigsValue != null) {
-      map['ec2AsgCapacityIncreaseConfigs'] = Input.encodeList<
+      map['ec2AsgCapacityIncreaseConfigs'] = pulumi.Input.encodeList<
               PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfig,
               Map<String, dynamic>>(
           ec2AsgCapacityIncreaseConfigsValue, (value) => value.toMap());
     }
     final ecsCapacityIncreaseConfigsValue = ecsCapacityIncreaseConfigs;
     if (ecsCapacityIncreaseConfigsValue != null) {
-      map['ecsCapacityIncreaseConfigs'] = Input.encodeList<
+      map['ecsCapacityIncreaseConfigs'] = pulumi.Input.encodeList<
               PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig,
               Map<String, dynamic>>(
           ecsCapacityIncreaseConfigsValue, (value) => value.toMap());
     }
     final eksResourceScalingConfigsValue = eksResourceScalingConfigs;
     if (eksResourceScalingConfigsValue != null) {
-      map['eksResourceScalingConfigs'] = Input.encodeList<
+      map['eksResourceScalingConfigs'] = pulumi.Input.encodeList<
               PlanWorkflowStepParallelConfigStepEksResourceScalingConfig,
               Map<String, dynamic>>(
           eksResourceScalingConfigsValue, (value) => value.toMap());
     }
     final executionApprovalConfigsValue = executionApprovalConfigs;
     if (executionApprovalConfigsValue != null) {
-      map['executionApprovalConfigs'] = Input.encodeList<
+      map['executionApprovalConfigs'] = pulumi.Input.encodeList<
               PlanWorkflowStepParallelConfigStepExecutionApprovalConfig,
               Map<String, dynamic>>(
           executionApprovalConfigsValue, (value) => value.toMap());
@@ -134,7 +134,7 @@ class PlanWorkflowStepParallelConfigStep {
     map['executionBlockType'] = executionBlockType;
     final globalAuroraConfigsValue = globalAuroraConfigs;
     if (globalAuroraConfigsValue != null) {
-      map['globalAuroraConfigs'] = Input.encodeList<
+      map['globalAuroraConfigs'] = pulumi.Input.encodeList<
               PlanWorkflowStepParallelConfigStepGlobalAuroraConfig,
               Map<String, dynamic>>(
           globalAuroraConfigsValue, (value) => value.toMap());
@@ -142,14 +142,14 @@ class PlanWorkflowStepParallelConfigStep {
     map['name'] = name;
     final regionSwitchPlanConfigsValue = regionSwitchPlanConfigs;
     if (regionSwitchPlanConfigsValue != null) {
-      map['regionSwitchPlanConfigs'] = Input.encodeList<
+      map['regionSwitchPlanConfigs'] = pulumi.Input.encodeList<
               PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig,
               Map<String, dynamic>>(
           regionSwitchPlanConfigsValue, (value) => value.toMap());
     }
     final route53HealthCheckConfigsValue = route53HealthCheckConfigs;
     if (route53HealthCheckConfigsValue != null) {
-      map['route53HealthCheckConfigs'] = Input.encodeList<
+      map['route53HealthCheckConfigs'] = pulumi.Input.encodeList<
               PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig,
               Map<String, dynamic>>(
           route53HealthCheckConfigsValue, (value) => value.toMap());
@@ -161,7 +161,7 @@ class PlanWorkflowStepParallelConfigStep {
     return PlanWorkflowStepParallelConfigStep(
       arcRoutingControlConfigs: map['arcRoutingControlConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepArcRoutingControlConfig>(
               map['arcRoutingControlConfigs'],
               (value) =>
@@ -169,7 +169,7 @@ class PlanWorkflowStepParallelConfigStep {
                       .fromMap((value as Map).cast<String, dynamic>())),
       customActionLambdaConfigs: map['customActionLambdaConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig>(
               map['customActionLambdaConfigs'],
               (value) =>
@@ -179,7 +179,7 @@ class PlanWorkflowStepParallelConfigStep {
           map['description'] == null ? null : map['description'] as String,
       documentDbConfigs: map['documentDbConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepDocumentDbConfig>(
               map['documentDbConfigs'],
               (value) =>
@@ -188,7 +188,7 @@ class PlanWorkflowStepParallelConfigStep {
       ec2AsgCapacityIncreaseConfigs: map['ec2AsgCapacityIncreaseConfigs'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfig>(
               map['ec2AsgCapacityIncreaseConfigs'],
               (value) =>
@@ -196,7 +196,7 @@ class PlanWorkflowStepParallelConfigStep {
                       .fromMap((value as Map).cast<String, dynamic>())),
       ecsCapacityIncreaseConfigs: map['ecsCapacityIncreaseConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig>(
               map['ecsCapacityIncreaseConfigs'],
               (value) =>
@@ -204,7 +204,7 @@ class PlanWorkflowStepParallelConfigStep {
                       .fromMap((value as Map).cast<String, dynamic>())),
       eksResourceScalingConfigs: map['eksResourceScalingConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepEksResourceScalingConfig>(
               map['eksResourceScalingConfigs'],
               (value) =>
@@ -212,7 +212,7 @@ class PlanWorkflowStepParallelConfigStep {
                       .fromMap((value as Map).cast<String, dynamic>())),
       executionApprovalConfigs: map['executionApprovalConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepExecutionApprovalConfig>(
               map['executionApprovalConfigs'],
               (value) =>
@@ -221,7 +221,7 @@ class PlanWorkflowStepParallelConfigStep {
       executionBlockType: map['executionBlockType'] as String,
       globalAuroraConfigs: map['globalAuroraConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepGlobalAuroraConfig>(
               map['globalAuroraConfigs'],
               (value) =>
@@ -230,7 +230,7 @@ class PlanWorkflowStepParallelConfigStep {
       name: map['name'] as String,
       regionSwitchPlanConfigs: map['regionSwitchPlanConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepRegionSwitchPlanConfig>(
               map['regionSwitchPlanConfigs'],
               (value) =>
@@ -238,7 +238,7 @@ class PlanWorkflowStepParallelConfigStep {
                       .fromMap((value as Map).cast<String, dynamic>())),
       route53HealthCheckConfigs: map['route53HealthCheckConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig>(
               map['route53HealthCheckConfigs'],
               (value) =>

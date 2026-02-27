@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_dedicated_host_args.dart';
 import 'get_dedicated_host_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_dedicated_host_result.dart';
 /// ### Filter Example
 Future<GetDedicatedHostResult> getDedicatedHost(
   GetDedicatedHostArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getDedicatedHost:getDedicatedHost',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDedicatedHostResult.fromMap(result);
 }

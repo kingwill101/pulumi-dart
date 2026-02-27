@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../crawler_catalog_target/crawler_catalog_target.dart';
 import '../crawler_delta_target/crawler_delta_target.dart';
 import '../crawler_dynamodb_target/crawler_dynamodb_target.dart';
@@ -17,75 +17,76 @@ import '../crawler_schema_change_policy/crawler_schema_change_policy.dart';
 /// The set of arguments for Crawler.
 class CrawlerArgs {
   /// List of nested AWS Glue Data Catalog target arguments. See Catalog Target below.
-  final Input<List<CrawlerCatalogTarget>>? catalogTargets;
+  final pulumi.Input<List<CrawlerCatalogTarget>>? catalogTargets;
 
   /// List of custom classifiers. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
-  final Input<List<String>>? classifiers;
+  final pulumi.Input<List<String>>? classifiers;
 
   /// JSON string of configuration information. For more details see [Setting Crawler Configuration Options](https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
-  final Input<String>? configuration;
+  final pulumi.Input<String>? configuration;
 
   /// Glue database where results are written.
-  final Input<String> databaseName;
+  final pulumi.Input<String> databaseName;
 
   /// List of nested Delta Lake target arguments. See Delta Target below.
-  final Input<List<CrawlerDeltaTarget>>? deltaTargets;
+  final pulumi.Input<List<CrawlerDeltaTarget>>? deltaTargets;
 
   /// Description of the crawler.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// List of nested DynamoDB target arguments. See Dynamodb Target below.
-  final Input<List<CrawlerDynamodbTarget>>? dynamodbTargets;
+  final pulumi.Input<List<CrawlerDynamodbTarget>>? dynamodbTargets;
 
   /// List of nested Hudi target arguments. See Iceberg Target below.
-  final Input<List<CrawlerHudiTarget>>? hudiTargets;
+  final pulumi.Input<List<CrawlerHudiTarget>>? hudiTargets;
 
   /// List of nested Iceberg target arguments. See Iceberg Target below.
-  final Input<List<CrawlerIcebergTarget>>? icebergTargets;
+  final pulumi.Input<List<CrawlerIcebergTarget>>? icebergTargets;
 
   /// List of nested JDBC target arguments. See JDBC Target below.
-  final Input<List<CrawlerJdbcTarget>>? jdbcTargets;
+  final pulumi.Input<List<CrawlerJdbcTarget>>? jdbcTargets;
 
   /// Specifies Lake Formation configuration settings for the crawler. See Lake Formation Configuration below.
-  final Input<CrawlerLakeFormationConfiguration>? lakeFormationConfiguration;
+  final pulumi.Input<CrawlerLakeFormationConfiguration>?
+      lakeFormationConfiguration;
 
   /// Specifies data lineage configuration settings for the crawler. See Lineage Configuration below.
-  final Input<CrawlerLineageConfiguration>? lineageConfiguration;
+  final pulumi.Input<CrawlerLineageConfiguration>? lineageConfiguration;
 
   /// List of nested MongoDB target arguments. See MongoDB Target below.
-  final Input<List<CrawlerMongodbTarget>>? mongodbTargets;
+  final pulumi.Input<List<CrawlerMongodbTarget>>? mongodbTargets;
 
   /// Name of the crawler.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// A policy that specifies whether to crawl the entire dataset again, or to crawl only folders that were added since the last crawler run.. See Recrawl Policy below.
-  final Input<CrawlerRecrawlPolicy>? recrawlPolicy;
+  final pulumi.Input<CrawlerRecrawlPolicy>? recrawlPolicy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The IAM role friendly name (including path without leading slash), or ARN of an IAM role, used by the crawler to access other resources.
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   /// List of nested Amazon S3 target arguments. See S3 Target below.
-  final Input<List<CrawlerS3Target>>? s3Targets;
+  final pulumi.Input<List<CrawlerS3Target>>? s3Targets;
 
   /// A cron expression used to specify the schedule. For more information, see [Time-Based Schedules for Jobs and Crawlers](https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html). For example, to run something every day at 12:15 UTC, you would specify: `cron(15 12 * * ? *)`.
-  final Input<String>? schedule;
+  final pulumi.Input<String>? schedule;
 
   /// Policy for the crawler's update and deletion behavior. See Schema Change Policy below.
-  final Input<CrawlerSchemaChangePolicy>? schemaChangePolicy;
+  final pulumi.Input<CrawlerSchemaChangePolicy>? schemaChangePolicy;
 
   /// The name of Security Configuration to be used by the crawler
-  final Input<String>? securityConfiguration;
+  final pulumi.Input<String>? securityConfiguration;
 
   /// The table prefix used for catalog tables that are created.
-  final Input<String>? tablePrefix;
+  final pulumi.Input<String>? tablePrefix;
 
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// > **NOTE:** Must specify at least one of `dynamodb_target`, `jdbc_target`, `s3_target`, `mongodb_target` or `catalog_target`.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   CrawlerArgs({
     this.catalogTargets,
@@ -117,12 +118,11 @@ class CrawlerArgs {
     final map = <String, dynamic>{};
     final catalogTargetsValue = catalogTargets;
     if (catalogTargetsValue != null) {
-      map['catalogTargets'] = Input.mapOptionalInputValue<
+      map['catalogTargets'] = pulumi.Input.mapOptionalInputValue<
               List<CrawlerCatalogTarget>, List<Map<String, dynamic>>>(
           catalogTargetsValue,
-          (value) =>
-              Input.encodeList<CrawlerCatalogTarget, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<CrawlerCatalogTarget,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final classifiersValue = classifiers;
     if (classifiersValue != null) {
@@ -135,11 +135,12 @@ class CrawlerArgs {
     map['databaseName'] = databaseName;
     final deltaTargetsValue = deltaTargets;
     if (deltaTargetsValue != null) {
-      map['deltaTargets'] = Input.mapOptionalInputValue<
+      map['deltaTargets'] = pulumi.Input.mapOptionalInputValue<
               List<CrawlerDeltaTarget>, List<Map<String, dynamic>>>(
           deltaTargetsValue,
-          (value) => Input.encodeList<CrawlerDeltaTarget, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<CrawlerDeltaTarget, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final descriptionValue = description;
     if (descriptionValue != null) {
@@ -147,58 +148,57 @@ class CrawlerArgs {
     }
     final dynamodbTargetsValue = dynamodbTargets;
     if (dynamodbTargetsValue != null) {
-      map['dynamodbTargets'] = Input.mapOptionalInputValue<
+      map['dynamodbTargets'] = pulumi.Input.mapOptionalInputValue<
               List<CrawlerDynamodbTarget>, List<Map<String, dynamic>>>(
           dynamodbTargetsValue,
-          (value) =>
-              Input.encodeList<CrawlerDynamodbTarget, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<CrawlerDynamodbTarget,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final hudiTargetsValue = hudiTargets;
     if (hudiTargetsValue != null) {
-      map['hudiTargets'] = Input.mapOptionalInputValue<List<CrawlerHudiTarget>,
-              List<Map<String, dynamic>>>(
+      map['hudiTargets'] = pulumi.Input.mapOptionalInputValue<
+              List<CrawlerHudiTarget>, List<Map<String, dynamic>>>(
           hudiTargetsValue,
-          (value) => Input.encodeList<CrawlerHudiTarget, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<CrawlerHudiTarget, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final icebergTargetsValue = icebergTargets;
     if (icebergTargetsValue != null) {
-      map['icebergTargets'] = Input.mapOptionalInputValue<
+      map['icebergTargets'] = pulumi.Input.mapOptionalInputValue<
               List<CrawlerIcebergTarget>, List<Map<String, dynamic>>>(
           icebergTargetsValue,
-          (value) =>
-              Input.encodeList<CrawlerIcebergTarget, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<CrawlerIcebergTarget,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final jdbcTargetsValue = jdbcTargets;
     if (jdbcTargetsValue != null) {
-      map['jdbcTargets'] = Input.mapOptionalInputValue<List<CrawlerJdbcTarget>,
-              List<Map<String, dynamic>>>(
+      map['jdbcTargets'] = pulumi.Input.mapOptionalInputValue<
+              List<CrawlerJdbcTarget>, List<Map<String, dynamic>>>(
           jdbcTargetsValue,
-          (value) => Input.encodeList<CrawlerJdbcTarget, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<CrawlerJdbcTarget, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final lakeFormationConfigurationValue = lakeFormationConfiguration;
     if (lakeFormationConfigurationValue != null) {
-      map['lakeFormationConfiguration'] = Input.mapOptionalInputValue<
+      map['lakeFormationConfiguration'] = pulumi.Input.mapOptionalInputValue<
               CrawlerLakeFormationConfiguration, Map<String, dynamic>>(
           lakeFormationConfigurationValue, (value) => value.toMap());
     }
     final lineageConfigurationValue = lineageConfiguration;
     if (lineageConfigurationValue != null) {
-      map['lineageConfiguration'] = Input.mapOptionalInputValue<
+      map['lineageConfiguration'] = pulumi.Input.mapOptionalInputValue<
               CrawlerLineageConfiguration, Map<String, dynamic>>(
           lineageConfigurationValue, (value) => value.toMap());
     }
     final mongodbTargetsValue = mongodbTargets;
     if (mongodbTargetsValue != null) {
-      map['mongodbTargets'] = Input.mapOptionalInputValue<
+      map['mongodbTargets'] = pulumi.Input.mapOptionalInputValue<
               List<CrawlerMongodbTarget>, List<Map<String, dynamic>>>(
           mongodbTargetsValue,
-          (value) =>
-              Input.encodeList<CrawlerMongodbTarget, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<CrawlerMongodbTarget,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -206,7 +206,8 @@ class CrawlerArgs {
     }
     final recrawlPolicyValue = recrawlPolicy;
     if (recrawlPolicyValue != null) {
-      map['recrawlPolicy'] = Input.mapOptionalInputValue<CrawlerRecrawlPolicy,
+      map['recrawlPolicy'] = pulumi.Input.mapOptionalInputValue<
+          CrawlerRecrawlPolicy,
           Map<String, dynamic>>(recrawlPolicyValue, (value) => value.toMap());
     }
     final regionValue = region;
@@ -216,11 +217,12 @@ class CrawlerArgs {
     map['role'] = role;
     final s3TargetsValue = s3Targets;
     if (s3TargetsValue != null) {
-      map['s3Targets'] = Input.mapOptionalInputValue<List<CrawlerS3Target>,
-              List<Map<String, dynamic>>>(
+      map['s3Targets'] = pulumi.Input.mapOptionalInputValue<
+              List<CrawlerS3Target>, List<Map<String, dynamic>>>(
           s3TargetsValue,
-          (value) => Input.encodeList<CrawlerS3Target, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<CrawlerS3Target, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final scheduleValue = schedule;
     if (scheduleValue != null) {
@@ -228,7 +230,7 @@ class CrawlerArgs {
     }
     final schemaChangePolicyValue = schemaChangePolicy;
     if (schemaChangePolicyValue != null) {
-      map['schemaChangePolicy'] = Input.mapOptionalInputValue<
+      map['schemaChangePolicy'] = pulumi.Input.mapOptionalInputValue<
               CrawlerSchemaChangePolicy, Map<String, dynamic>>(
           schemaChangePolicyValue, (value) => value.toMap());
     }
@@ -249,42 +251,47 @@ class CrawlerArgs {
 
   factory CrawlerArgs.fromMap(Map<String, dynamic> map) {
     return CrawlerArgs(
-      catalogTargets: Input.asOptionalInput<List<CrawlerCatalogTarget>>(
+      catalogTargets: pulumi.Input.asOptionalInput<List<CrawlerCatalogTarget>>(
           map['catalogTargets']),
-      classifiers: Input.asOptionalInput<List<String>>(map['classifiers']),
-      configuration: Input.asOptionalInput<String>(map['configuration']),
-      databaseName: Input.asInput<String>(map['databaseName']),
-      deltaTargets:
-          Input.asOptionalInput<List<CrawlerDeltaTarget>>(map['deltaTargets']),
-      description: Input.asOptionalInput<String>(map['description']),
-      dynamodbTargets: Input.asOptionalInput<List<CrawlerDynamodbTarget>>(
-          map['dynamodbTargets']),
-      hudiTargets:
-          Input.asOptionalInput<List<CrawlerHudiTarget>>(map['hudiTargets']),
-      icebergTargets: Input.asOptionalInput<List<CrawlerIcebergTarget>>(
+      classifiers:
+          pulumi.Input.asOptionalInput<List<String>>(map['classifiers']),
+      configuration: pulumi.Input.asOptionalInput<String>(map['configuration']),
+      databaseName: pulumi.Input.asInput<String>(map['databaseName']),
+      deltaTargets: pulumi.Input.asOptionalInput<List<CrawlerDeltaTarget>>(
+          map['deltaTargets']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      dynamodbTargets:
+          pulumi.Input.asOptionalInput<List<CrawlerDynamodbTarget>>(
+              map['dynamodbTargets']),
+      hudiTargets: pulumi.Input.asOptionalInput<List<CrawlerHudiTarget>>(
+          map['hudiTargets']),
+      icebergTargets: pulumi.Input.asOptionalInput<List<CrawlerIcebergTarget>>(
           map['icebergTargets']),
-      jdbcTargets:
-          Input.asOptionalInput<List<CrawlerJdbcTarget>>(map['jdbcTargets']),
+      jdbcTargets: pulumi.Input.asOptionalInput<List<CrawlerJdbcTarget>>(
+          map['jdbcTargets']),
       lakeFormationConfiguration:
-          Input.asOptionalInput<CrawlerLakeFormationConfiguration>(
+          pulumi.Input.asOptionalInput<CrawlerLakeFormationConfiguration>(
               map['lakeFormationConfiguration']),
-      lineageConfiguration: Input.asOptionalInput<CrawlerLineageConfiguration>(
-          map['lineageConfiguration']),
-      mongodbTargets: Input.asOptionalInput<List<CrawlerMongodbTarget>>(
+      lineageConfiguration:
+          pulumi.Input.asOptionalInput<CrawlerLineageConfiguration>(
+              map['lineageConfiguration']),
+      mongodbTargets: pulumi.Input.asOptionalInput<List<CrawlerMongodbTarget>>(
           map['mongodbTargets']),
-      name: Input.asOptionalInput<String>(map['name']),
-      recrawlPolicy:
-          Input.asOptionalInput<CrawlerRecrawlPolicy>(map['recrawlPolicy']),
-      region: Input.asOptionalInput<String>(map['region']),
-      role: Input.asInput<String>(map['role']),
-      s3Targets: Input.asOptionalInput<List<CrawlerS3Target>>(map['s3Targets']),
-      schedule: Input.asOptionalInput<String>(map['schedule']),
-      schemaChangePolicy: Input.asOptionalInput<CrawlerSchemaChangePolicy>(
-          map['schemaChangePolicy']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      recrawlPolicy: pulumi.Input.asOptionalInput<CrawlerRecrawlPolicy>(
+          map['recrawlPolicy']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      role: pulumi.Input.asInput<String>(map['role']),
+      s3Targets:
+          pulumi.Input.asOptionalInput<List<CrawlerS3Target>>(map['s3Targets']),
+      schedule: pulumi.Input.asOptionalInput<String>(map['schedule']),
+      schemaChangePolicy:
+          pulumi.Input.asOptionalInput<CrawlerSchemaChangePolicy>(
+              map['schemaChangePolicy']),
       securityConfiguration:
-          Input.asOptionalInput<String>(map['securityConfiguration']),
-      tablePrefix: Input.asOptionalInput<String>(map['tablePrefix']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<String>(map['securityConfiguration']),
+      tablePrefix: pulumi.Input.asOptionalInput<String>(map['tablePrefix']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

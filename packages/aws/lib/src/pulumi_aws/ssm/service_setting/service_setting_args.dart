@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ServiceSetting.
 class ServiceSettingArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the service setting. Valid values are shown in the [AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_GetServiceSetting.html#API_GetServiceSetting_RequestSyntax).
-  final Input<String> settingId;
+  final pulumi.Input<String> settingId;
 
   /// Value of the service setting.
-  final Input<String> settingValue;
+  final pulumi.Input<String> settingValue;
 
   ServiceSettingArgs({
     this.region,
@@ -32,9 +32,9 @@ class ServiceSettingArgs {
 
   factory ServiceSettingArgs.fromMap(Map<String, dynamic> map) {
     return ServiceSettingArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      settingId: Input.asInput<String>(map['settingId']),
-      settingValue: Input.asInput<String>(map['settingValue']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      settingId: pulumi.Input.asInput<String>(map['settingId']),
+      settingValue: pulumi.Input.asInput<String>(map['settingValue']),
     );
   }
 }

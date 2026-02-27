@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../configuration_policy_configuration_policy_security_controls_configuration_security_control_custom_parameter_parameter/configuration_policy_configuration_policy_security_controls_configuration_security_control_custom_parameter_parameter.dart';
 
 class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter {
@@ -19,7 +19,7 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['parameters'] = Input.encodeList<
+    map['parameters'] = pulumi.Input.encodeList<
         ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter,
         Map<String, dynamic>>(parameters, (value) => value.toMap());
     map['securityControlId'] = securityControlId;
@@ -29,7 +29,7 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
   factory ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter.fromMap(
       Map<String, dynamic> map) {
     return ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter(
-      parameters: Input.decodeList<
+      parameters: pulumi.Input.decodeList<
               ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter>(
           map['parameters'],
           (value) =>

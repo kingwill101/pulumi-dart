@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_confirmation_setting_declination_response_message_group/v2models_intent_confirmation_setting_declination_response_message_group.dart';
 
 class V2modelsIntentConfirmationSettingDeclinationResponse {
@@ -24,7 +24,7 @@ class V2modelsIntentConfirmationSettingDeclinationResponse {
     }
     final messageGroupsValue = messageGroups;
     if (messageGroupsValue != null) {
-      map['messageGroups'] = Input.encodeList<
+      map['messageGroups'] = pulumi.Input.encodeList<
           V2modelsIntentConfirmationSettingDeclinationResponseMessageGroup,
           Map<String, dynamic>>(messageGroupsValue, (value) => value.toMap());
     }
@@ -38,7 +38,7 @@ class V2modelsIntentConfirmationSettingDeclinationResponse {
           map['allowInterrupt'] == null ? null : map['allowInterrupt'] as bool,
       messageGroups: map['messageGroups'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsIntentConfirmationSettingDeclinationResponseMessageGroup>(
               map['messageGroups'],
               (value) =>

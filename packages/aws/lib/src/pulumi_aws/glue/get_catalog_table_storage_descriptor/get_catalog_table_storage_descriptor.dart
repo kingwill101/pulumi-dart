@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_catalog_table_storage_descriptor_column/get_catalog_table_storage_descriptor_column.dart';
 import '../get_catalog_table_storage_descriptor_schema_reference/get_catalog_table_storage_descriptor_schema_reference.dart';
 import '../get_catalog_table_storage_descriptor_ser_de_info/get_catalog_table_storage_descriptor_ser_de_info.dart';
@@ -71,7 +71,8 @@ class GetCatalogTableStorageDescriptor {
     final map = <String, dynamic>{};
     map['additionalLocations'] = additionalLocations;
     map['bucketColumns'] = bucketColumns;
-    map['columns'] = Input.encodeList<GetCatalogTableStorageDescriptorColumn,
+    map['columns'] = pulumi.Input.encodeList<
+        GetCatalogTableStorageDescriptorColumn,
         Map<String, dynamic>>(columns, (value) => value.toMap());
     map['compressed'] = compressed;
     map['inputFormat'] = inputFormat;
@@ -79,16 +80,16 @@ class GetCatalogTableStorageDescriptor {
     map['numberOfBuckets'] = numberOfBuckets;
     map['outputFormat'] = outputFormat;
     map['parameters'] = parameters;
-    map['schemaReferences'] = Input.encodeList<
+    map['schemaReferences'] = pulumi.Input.encodeList<
         GetCatalogTableStorageDescriptorSchemaReference,
         Map<String, dynamic>>(schemaReferences, (value) => value.toMap());
-    map['serDeInfos'] = Input.encodeList<
+    map['serDeInfos'] = pulumi.Input.encodeList<
         GetCatalogTableStorageDescriptorSerDeInfo,
         Map<String, dynamic>>(serDeInfos, (value) => value.toMap());
-    map['skewedInfos'] = Input.encodeList<
+    map['skewedInfos'] = pulumi.Input.encodeList<
         GetCatalogTableStorageDescriptorSkewedInfo,
         Map<String, dynamic>>(skewedInfos, (value) => value.toMap());
-    map['sortColumns'] = Input.encodeList<
+    map['sortColumns'] = pulumi.Input.encodeList<
         GetCatalogTableStorageDescriptorSortColumn,
         Map<String, dynamic>>(sortColumns, (value) => value.toMap());
     map['storedAsSubDirectories'] = storedAsSubDirectories;
@@ -99,7 +100,7 @@ class GetCatalogTableStorageDescriptor {
     return GetCatalogTableStorageDescriptor(
       additionalLocations: (map['additionalLocations'] as List).cast<String>(),
       bucketColumns: (map['bucketColumns'] as List).cast<String>(),
-      columns: Input.decodeList<GetCatalogTableStorageDescriptorColumn>(
+      columns: pulumi.Input.decodeList<GetCatalogTableStorageDescriptorColumn>(
           map['columns'],
           (value) => GetCatalogTableStorageDescriptorColumn.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -109,24 +110,26 @@ class GetCatalogTableStorageDescriptor {
       numberOfBuckets: map['numberOfBuckets'] as int,
       outputFormat: map['outputFormat'] as String,
       parameters: (map['parameters'] as Map).cast<String, String>(),
-      schemaReferences:
-          Input.decodeList<GetCatalogTableStorageDescriptorSchemaReference>(
-              map['schemaReferences'],
-              (value) =>
-                  GetCatalogTableStorageDescriptorSchemaReference.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      serDeInfos: Input.decodeList<GetCatalogTableStorageDescriptorSerDeInfo>(
-          map['serDeInfos'],
-          (value) => GetCatalogTableStorageDescriptorSerDeInfo.fromMap(
+      schemaReferences: pulumi.Input.decodeList<
+              GetCatalogTableStorageDescriptorSchemaReference>(
+          map['schemaReferences'],
+          (value) => GetCatalogTableStorageDescriptorSchemaReference.fromMap(
               (value as Map).cast<String, dynamic>())),
-      skewedInfos: Input.decodeList<GetCatalogTableStorageDescriptorSkewedInfo>(
-          map['skewedInfos'],
-          (value) => GetCatalogTableStorageDescriptorSkewedInfo.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      sortColumns: Input.decodeList<GetCatalogTableStorageDescriptorSortColumn>(
-          map['sortColumns'],
-          (value) => GetCatalogTableStorageDescriptorSortColumn.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      serDeInfos:
+          pulumi.Input.decodeList<GetCatalogTableStorageDescriptorSerDeInfo>(
+              map['serDeInfos'],
+              (value) => GetCatalogTableStorageDescriptorSerDeInfo.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      skewedInfos:
+          pulumi.Input.decodeList<GetCatalogTableStorageDescriptorSkewedInfo>(
+              map['skewedInfos'],
+              (value) => GetCatalogTableStorageDescriptorSkewedInfo.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      sortColumns:
+          pulumi.Input.decodeList<GetCatalogTableStorageDescriptorSortColumn>(
+              map['sortColumns'],
+              (value) => GetCatalogTableStorageDescriptorSortColumn.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       storedAsSubDirectories: map['storedAsSubDirectories'] as bool,
     );
   }

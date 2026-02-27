@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DelegatedAdminAccount.
 class DelegatedAdminAccountArgs {
   /// Account to enable as delegated admin account.
-  final Input<String> accountId;
+  final pulumi.Input<String> accountId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   DelegatedAdminAccountArgs({
     required this.accountId,
@@ -27,8 +27,8 @@ class DelegatedAdminAccountArgs {
 
   factory DelegatedAdminAccountArgs.fromMap(Map<String, dynamic> map) {
     return DelegatedAdminAccountArgs(
-      accountId: Input.asInput<String>(map['accountId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_vpn_connection_args.dart';
 import 'get_vpn_connection_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_vpn_connection_result.dart';
 /// ### Find by VPN Connection ID
 Future<GetVpnConnectionResult> getVpnConnection(
   GetVpnConnectionArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getVpnConnection:getVpnConnection',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpnConnectionResult.fromMap(result);
 }

@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_object_lock_configuration_rule/bucket_object_lock_configuration_rule.dart';
 
 /// The set of arguments for BucketObjectLockConfiguration.
 class BucketObjectLockConfigurationArgs {
   /// Name of the bucket.
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// Account ID of the expected bucket owner.
-  final Input<String>? expectedBucketOwner;
+  final pulumi.Input<String>? expectedBucketOwner;
 
   /// Indicates whether this bucket has an Object Lock configuration enabled. Defaults to `Enabled`. Valid values: `Enabled`.
-  final Input<String>? objectLockEnabled;
+  final pulumi.Input<String>? objectLockEnabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Configuration block for specifying the Object Lock rule for the specified object. See below.
-  final Input<BucketObjectLockConfigurationRule>? rule;
+  final pulumi.Input<BucketObjectLockConfigurationRule>? rule;
 
   /// This argument is deprecated and no longer needed to enable Object Lock.
   /// To enable Object Lock for an existing bucket, you must first enable versioning on the bucket and then enable Object Lock. For more details on versioning, see the `aws.s3.BucketVersioning` resource.
-  final Input<String>? token;
+  final pulumi.Input<String>? token;
 
   BucketObjectLockConfigurationArgs({
     required this.bucket,
@@ -50,7 +50,7 @@ class BucketObjectLockConfigurationArgs {
     }
     final ruleValue = rule;
     if (ruleValue != null) {
-      map['rule'] = Input.mapOptionalInputValue<
+      map['rule'] = pulumi.Input.mapOptionalInputValue<
           BucketObjectLockConfigurationRule,
           Map<String, dynamic>>(ruleValue, (value) => value.toMap());
     }
@@ -63,15 +63,15 @@ class BucketObjectLockConfigurationArgs {
 
   factory BucketObjectLockConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return BucketObjectLockConfigurationArgs(
-      bucket: Input.asInput<String>(map['bucket']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
       expectedBucketOwner:
-          Input.asOptionalInput<String>(map['expectedBucketOwner']),
+          pulumi.Input.asOptionalInput<String>(map['expectedBucketOwner']),
       objectLockEnabled:
-          Input.asOptionalInput<String>(map['objectLockEnabled']),
-      region: Input.asOptionalInput<String>(map['region']),
-      rule:
-          Input.asOptionalInput<BucketObjectLockConfigurationRule>(map['rule']),
-      token: Input.asOptionalInput<String>(map['token']),
+          pulumi.Input.asOptionalInput<String>(map['objectLockEnabled']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      rule: pulumi.Input.asOptionalInput<BucketObjectLockConfigurationRule>(
+          map['rule']),
+      token: pulumi.Input.asOptionalInput<String>(map['token']),
     );
   }
 }

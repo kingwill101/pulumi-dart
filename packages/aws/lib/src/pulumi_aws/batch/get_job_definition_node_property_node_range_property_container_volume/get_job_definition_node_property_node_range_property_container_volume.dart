@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_definition_node_property_node_range_property_container_volume_efs_volume_configuration/get_job_definition_node_property_node_range_property_container_volume_efs_volume_configuration.dart';
 import '../get_job_definition_node_property_node_range_property_container_volume_host/get_job_definition_node_property_node_range_property_container_volume_host.dart';
 
@@ -25,11 +25,11 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['efsVolumeConfigurations'] = Input.encodeList<
+    map['efsVolumeConfigurations'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration,
         Map<String,
             dynamic>>(efsVolumeConfigurations, (value) => value.toMap());
-    map['hosts'] = Input.encodeList<
+    map['hosts'] = pulumi.Input.encodeList<
         GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost,
         Map<String, dynamic>>(hosts, (value) => value.toMap());
     map['name'] = name;
@@ -39,13 +39,13 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume {
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume.fromMap(
       Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume(
-      efsVolumeConfigurations: Input.decodeList<
+      efsVolumeConfigurations: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration>(
           map['efsVolumeConfigurations'],
           (value) =>
               GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration
                   .fromMap((value as Map).cast<String, dynamic>())),
-      hosts: Input.decodeList<
+      hosts: pulumi.Input.decodeList<
               GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost>(
           map['hosts'],
           (value) =>

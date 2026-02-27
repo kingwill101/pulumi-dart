@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_shard_node_endpoint/get_cluster_shard_node_endpoint.dart';
 
 class GetClusterShardNode {
@@ -25,9 +25,8 @@ class GetClusterShardNode {
     final map = <String, dynamic>{};
     map['availabilityZone'] = availabilityZone;
     map['createTime'] = createTime;
-    map['endpoints'] =
-        Input.encodeList<GetClusterShardNodeEndpoint, Map<String, dynamic>>(
-            endpoints, (value) => value.toMap());
+    map['endpoints'] = pulumi.Input.encodeList<GetClusterShardNodeEndpoint,
+        Map<String, dynamic>>(endpoints, (value) => value.toMap());
     map['name'] = name;
     return map;
   }
@@ -36,7 +35,7 @@ class GetClusterShardNode {
     return GetClusterShardNode(
       availabilityZone: map['availabilityZone'] as String,
       createTime: map['createTime'] as String,
-      endpoints: Input.decodeList<GetClusterShardNodeEndpoint>(
+      endpoints: pulumi.Input.decodeList<GetClusterShardNodeEndpoint>(
           map['endpoints'],
           (value) => GetClusterShardNodeEndpoint.fromMap(
               (value as Map).cast<String, dynamic>())),

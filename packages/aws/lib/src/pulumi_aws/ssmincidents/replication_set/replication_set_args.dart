@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../replication_set_region/replication_set_region.dart';
 
 /// The set of arguments for ReplicationSet.
 class ReplicationSetArgs {
   /// The replication set's Regions. Use `regions` instead.
-  final Input<List<ReplicationSetRegion>>? region;
+  final pulumi.Input<List<ReplicationSetRegion>>? region;
 
   /// The replication set's Regions.
-  final Input<List<ReplicationSetRegion>>? regions;
+  final pulumi.Input<List<ReplicationSetRegion>>? regions;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
@@ -24,7 +24,7 @@ class ReplicationSetArgs {
   /// > **NOTE:** You must either use AWS-owned keys on all regions of a replication set, or customer managed keys. To change between an AWS owned key and a customer managed key, a replication set and it associated data must be deleted and recreated.
   ///
   /// > **NOTE:** If possible, create all the customer managed keys you need (using the deploy command) before you create the replication set, or create the keys and replication set in the same deploy command. Otherwise, to delete a replication set, you must run one deploy command to delete the replication set and another to delete the AWS KMS keys used by the replication set. Deleting the AWS KMS keys before deleting the replication set results in an error. In that case, you must manually reenable the deleted key using the AWS Management Console before you can delete the replication set.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   ReplicationSetArgs({
     this.region,
@@ -36,21 +36,19 @@ class ReplicationSetArgs {
     final map = <String, dynamic>{};
     final regionValue = region;
     if (regionValue != null) {
-      map['region'] = Input.mapOptionalInputValue<List<ReplicationSetRegion>,
-              List<Map<String, dynamic>>>(
+      map['region'] = pulumi.Input.mapOptionalInputValue<
+              List<ReplicationSetRegion>, List<Map<String, dynamic>>>(
           regionValue,
-          (value) =>
-              Input.encodeList<ReplicationSetRegion, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<ReplicationSetRegion,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final regionsValue = regions;
     if (regionsValue != null) {
-      map['regions'] = Input.mapOptionalInputValue<List<ReplicationSetRegion>,
-              List<Map<String, dynamic>>>(
+      map['regions'] = pulumi.Input.mapOptionalInputValue<
+              List<ReplicationSetRegion>, List<Map<String, dynamic>>>(
           regionsValue,
-          (value) =>
-              Input.encodeList<ReplicationSetRegion, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<ReplicationSetRegion,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final tagsValue = tags;
     if (tagsValue != null) {
@@ -61,10 +59,11 @@ class ReplicationSetArgs {
 
   factory ReplicationSetArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationSetArgs(
-      region: Input.asOptionalInput<List<ReplicationSetRegion>>(map['region']),
-      regions:
-          Input.asOptionalInput<List<ReplicationSetRegion>>(map['regions']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      region: pulumi.Input.asOptionalInput<List<ReplicationSetRegion>>(
+          map['region']),
+      regions: pulumi.Input.asOptionalInput<List<ReplicationSetRegion>>(
+          map['regions']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

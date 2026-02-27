@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_template_job_template_data/job_template_job_template_data.dart';
 
 /// The set of arguments for JobTemplate.
 class JobTemplateArgs {
   /// The job template data which holds values of StartJobRun API request.
-  final Input<JobTemplateJobTemplateData> jobTemplateData;
+  final pulumi.Input<JobTemplateJobTemplateData> jobTemplateData;
 
   /// The KMS key ARN used to encrypt the job template.
-  final Input<String>? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
 
   /// The specified name of the job template.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   JobTemplateArgs({
     required this.jobTemplateData,
@@ -30,9 +30,9 @@ class JobTemplateArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['jobTemplateData'] =
-        Input.mapInputValue<JobTemplateJobTemplateData, Map<String, dynamic>>(
-            jobTemplateData, (value) => value.toMap());
+    map['jobTemplateData'] = pulumi.Input.mapInputValue<
+        JobTemplateJobTemplateData,
+        Map<String, dynamic>>(jobTemplateData, (value) => value.toMap());
     final kmsKeyArnValue = kmsKeyArn;
     if (kmsKeyArnValue != null) {
       map['kmsKeyArn'] = kmsKeyArnValue;
@@ -54,12 +54,12 @@ class JobTemplateArgs {
 
   factory JobTemplateArgs.fromMap(Map<String, dynamic> map) {
     return JobTemplateArgs(
-      jobTemplateData:
-          Input.asInput<JobTemplateJobTemplateData>(map['jobTemplateData']),
-      kmsKeyArn: Input.asOptionalInput<String>(map['kmsKeyArn']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      jobTemplateData: pulumi.Input.asInput<JobTemplateJobTemplateData>(
+          map['jobTemplateData']),
+      kmsKeyArn: pulumi.Input.asOptionalInput<String>(map['kmsKeyArn']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

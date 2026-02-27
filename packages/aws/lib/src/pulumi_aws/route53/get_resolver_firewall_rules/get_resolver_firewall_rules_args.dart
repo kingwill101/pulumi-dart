@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getResolverFirewallRules.
 class GetResolverFirewallRulesArgs {
   /// The action that DNS Firewall should take on a DNS query when it matches one of the domains in the rule's domain list.
-  final Input<String>? action;
+  final pulumi.Input<String>? action;
 
   /// The unique identifier of the firewall rule group that you want to retrieve the rules for.
-  final Input<String> firewallRuleGroupId;
+  final pulumi.Input<String> firewallRuleGroupId;
 
   /// The setting that determines the processing order of the rules in a rule group.
-  final Input<int>? priority;
+  final pulumi.Input<int>? priority;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetResolverFirewallRulesArgs({
     this.action,
@@ -43,10 +43,11 @@ class GetResolverFirewallRulesArgs {
 
   factory GetResolverFirewallRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallRulesArgs(
-      action: Input.asOptionalInput<String>(map['action']),
-      firewallRuleGroupId: Input.asInput<String>(map['firewallRuleGroupId']),
-      priority: Input.asOptionalInput<int>(map['priority']),
-      region: Input.asOptionalInput<String>(map['region']),
+      action: pulumi.Input.asOptionalInput<String>(map['action']),
+      firewallRuleGroupId:
+          pulumi.Input.asInput<String>(map['firewallRuleGroupId']),
+      priority: pulumi.Input.asOptionalInput<int>(map['priority']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

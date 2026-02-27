@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cost_category_rule_rule_and/cost_category_rule_rule_and.dart';
 import '../cost_category_rule_rule_cost_category/cost_category_rule_rule_cost_category.dart';
 import '../cost_category_rule_rule_dimension/cost_category_rule_rule_dimension.dart';
@@ -40,9 +40,8 @@ class CostCategoryRuleRule {
     final map = <String, dynamic>{};
     final andsValue = ands;
     if (andsValue != null) {
-      map['ands'] =
-          Input.encodeList<CostCategoryRuleRuleAnd, Map<String, dynamic>>(
-              andsValue, (value) => value.toMap());
+      map['ands'] = pulumi.Input.encodeList<CostCategoryRuleRuleAnd,
+          Map<String, dynamic>>(andsValue, (value) => value.toMap());
     }
     final costCategoryValue = costCategory;
     if (costCategoryValue != null) {
@@ -59,7 +58,7 @@ class CostCategoryRuleRule {
     final orsValue = ors;
     if (orsValue != null) {
       map['ors'] =
-          Input.encodeList<CostCategoryRuleRuleOr, Map<String, dynamic>>(
+          pulumi.Input.encodeList<CostCategoryRuleRuleOr, Map<String, dynamic>>(
               orsValue, (value) => value.toMap());
     }
     final tagsValue = tags;
@@ -73,7 +72,7 @@ class CostCategoryRuleRule {
     return CostCategoryRuleRule(
       ands: map['ands'] == null
           ? null
-          : Input.decodeList<CostCategoryRuleRuleAnd>(
+          : pulumi.Input.decodeList<CostCategoryRuleRuleAnd>(
               map['ands'],
               (value) => CostCategoryRuleRuleAnd.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -91,7 +90,7 @@ class CostCategoryRuleRule {
               (map['not'] as Map).cast<String, dynamic>()),
       ors: map['ors'] == null
           ? null
-          : Input.decodeList<CostCategoryRuleRuleOr>(
+          : pulumi.Input.decodeList<CostCategoryRuleRuleOr>(
               map['ors'],
               (value) => CostCategoryRuleRuleOr.fromMap(
                   (value as Map).cast<String, dynamic>())),

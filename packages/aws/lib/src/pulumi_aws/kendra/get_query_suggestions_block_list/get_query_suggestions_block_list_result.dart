@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_query_suggestions_block_list_source_s3_path/get_query_suggestions_block_list_source_s3_path.dart';
 
 /// Result data returned by getQuerySuggestionsBlockList.
@@ -80,7 +80,7 @@ class GetQuerySuggestionsBlockListResult {
     map['querySuggestionsBlockListId'] = querySuggestionsBlockListId;
     map['region'] = region;
     map['roleArn'] = roleArn;
-    map['sourceS3Paths'] = Input.encodeList<
+    map['sourceS3Paths'] = pulumi.Input.encodeList<
         GetQuerySuggestionsBlockListSourceS3Path,
         Map<String, dynamic>>(sourceS3Paths, (value) => value.toMap());
     map['status'] = status;
@@ -103,10 +103,11 @@ class GetQuerySuggestionsBlockListResult {
       querySuggestionsBlockListId: map['querySuggestionsBlockListId'] as String,
       region: map['region'] as String,
       roleArn: map['roleArn'] as String,
-      sourceS3Paths: Input.decodeList<GetQuerySuggestionsBlockListSourceS3Path>(
-          map['sourceS3Paths'],
-          (value) => GetQuerySuggestionsBlockListSourceS3Path.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      sourceS3Paths:
+          pulumi.Input.decodeList<GetQuerySuggestionsBlockListSourceS3Path>(
+              map['sourceS3Paths'],
+              (value) => GetQuerySuggestionsBlockListSourceS3Path.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       updatedAt: map['updatedAt'] as String,

@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SmsChannel.
 class SmsChannelArgs {
   /// ID of the application.
-  final Input<String> applicationId;
+  final pulumi.Input<String> applicationId;
 
   /// Whether the channel is enabled or disabled. By default, it is set to `true`.
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Identifier of the sender for your messages.
-  final Input<String>? senderId;
+  final pulumi.Input<String>? senderId;
 
   /// Short Code registered with the phone provider.
-  final Input<String>? shortCode;
+  final pulumi.Input<String>? shortCode;
 
   SmsChannelArgs({
     required this.applicationId,
@@ -51,11 +51,11 @@ class SmsChannelArgs {
 
   factory SmsChannelArgs.fromMap(Map<String, dynamic> map) {
     return SmsChannelArgs(
-      applicationId: Input.asInput<String>(map['applicationId']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
-      region: Input.asOptionalInput<String>(map['region']),
-      senderId: Input.asOptionalInput<String>(map['senderId']),
-      shortCode: Input.asOptionalInput<String>(map['shortCode']),
+      applicationId: pulumi.Input.asInput<String>(map['applicationId']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      senderId: pulumi.Input.asOptionalInput<String>(map['senderId']),
+      shortCode: pulumi.Input.asOptionalInput<String>(map['shortCode']),
     );
   }
 }

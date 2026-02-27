@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../route_server_vpc_association_timeouts/route_server_vpc_association_timeouts.dart';
 
 /// The set of arguments for RouteServerVpcAssociation.
 class RouteServerVpcAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The unique identifier for the route server to be associated.
-  final Input<String> routeServerId;
-  final Input<RouteServerVpcAssociationTimeouts>? timeouts;
+  final pulumi.Input<String> routeServerId;
+  final pulumi.Input<RouteServerVpcAssociationTimeouts>? timeouts;
 
   /// The ID of the VPC to associate with the route server.
   ///
   /// The following arguments are optional:
-  final Input<String> vpcId;
+  final pulumi.Input<String> vpcId;
 
   RouteServerVpcAssociationArgs({
     this.region,
@@ -33,7 +33,7 @@ class RouteServerVpcAssociationArgs {
     map['routeServerId'] = routeServerId;
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           RouteServerVpcAssociationTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -43,11 +43,11 @@ class RouteServerVpcAssociationArgs {
 
   factory RouteServerVpcAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerVpcAssociationArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      routeServerId: Input.asInput<String>(map['routeServerId']),
-      timeouts: Input.asOptionalInput<RouteServerVpcAssociationTimeouts>(
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      routeServerId: pulumi.Input.asInput<String>(map['routeServerId']),
+      timeouts: pulumi.Input.asOptionalInput<RouteServerVpcAssociationTimeouts>(
           map['timeouts']),
-      vpcId: Input.asInput<String>(map['vpcId']),
+      vpcId: pulumi.Input.asInput<String>(map['vpcId']),
     );
   }
 }

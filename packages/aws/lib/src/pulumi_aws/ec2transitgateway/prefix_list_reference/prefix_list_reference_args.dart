@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for PrefixListReference.
 class PrefixListReferenceArgs {
   /// Indicates whether to drop traffic that matches the Prefix List. Defaults to `false`.
-  final Input<bool>? blackhole;
+  final pulumi.Input<bool>? blackhole;
 
   /// Identifier of EC2 Prefix List.
-  final Input<String> prefixListId;
+  final pulumi.Input<String> prefixListId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Identifier of EC2 Transit Gateway Attachment.
-  final Input<String>? transitGatewayAttachmentId;
+  final pulumi.Input<String>? transitGatewayAttachmentId;
 
   /// Identifier of EC2 Transit Gateway Route Table.
   ///
   /// The following arguments are optional:
-  final Input<String> transitGatewayRouteTableId;
+  final pulumi.Input<String> transitGatewayRouteTableId;
 
   PrefixListReferenceArgs({
     this.blackhole,
@@ -50,13 +50,13 @@ class PrefixListReferenceArgs {
 
   factory PrefixListReferenceArgs.fromMap(Map<String, dynamic> map) {
     return PrefixListReferenceArgs(
-      blackhole: Input.asOptionalInput<bool>(map['blackhole']),
-      prefixListId: Input.asInput<String>(map['prefixListId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      transitGatewayAttachmentId:
-          Input.asOptionalInput<String>(map['transitGatewayAttachmentId']),
+      blackhole: pulumi.Input.asOptionalInput<bool>(map['blackhole']),
+      prefixListId: pulumi.Input.asInput<String>(map['prefixListId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      transitGatewayAttachmentId: pulumi.Input.asOptionalInput<String>(
+          map['transitGatewayAttachmentId']),
       transitGatewayRouteTableId:
-          Input.asInput<String>(map['transitGatewayRouteTableId']),
+          pulumi.Input.asInput<String>(map['transitGatewayRouteTableId']),
     );
   }
 }

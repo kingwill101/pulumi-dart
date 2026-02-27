@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_cluster_certificate/cluster_cluster_certificate.dart';
 import 'cluster_args.dart';
 
@@ -26,52 +26,52 @@ import 'cluster_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudhsmv2/cluster:Cluster test_cluster cluster-aeb282a201
 /// ```
-class Cluster extends CustomResource {
+class Cluster extends pulumi.CustomResource {
   /// The list of cluster certificates.
-  late final Output<List<ClusterClusterCertificate>> clusterCertificates;
+  late final pulumi.Output<List<ClusterClusterCertificate>> clusterCertificates;
 
   /// The id of the CloudHSM cluster.
-  late final Output<String> clusterId;
+  late final pulumi.Output<String> clusterId;
 
   /// The state of the CloudHSM cluster.
-  late final Output<String> clusterState;
+  late final pulumi.Output<String> clusterState;
 
   /// The type of HSM module in the cluster. Currently, `hsm1.medium` and `hsm2m.medium` are supported.
-  late final Output<String> hsmType;
+  late final pulumi.Output<String> hsmType;
 
   /// The mode to use in the cluster. The allowed values are `FIPS` and `NON_FIPS`. This field is required if `hsm_type` is `hsm2m.medium`.
-  late final Output<String> mode;
+  late final pulumi.Output<String> mode;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the security group associated with the CloudHSM cluster.
-  late final Output<String> securityGroupId;
+  late final pulumi.Output<String> securityGroupId;
 
   /// ID of Cloud HSM v2 cluster backup to be restored.
-  late final Output<String?> sourceBackupIdentifier;
+  late final pulumi.Output<String?> sourceBackupIdentifier;
 
   /// The IDs of subnets in which cluster will operate.
-  late final Output<List<String>> subnetIds;
+  late final pulumi.Output<List<String>> subnetIds;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The id of the VPC that the CloudHSM cluster resides in.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   Cluster(
     String name, {
     ClusterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudhsmv2/cluster:Cluster',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.clusterCertificates =
         registerOutput<List<ClusterClusterCertificate>>('clusterCertificates');

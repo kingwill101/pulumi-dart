@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../classification_job_s3_job_definition_bucket_criteria/classification_job_s3_job_definition_bucket_criteria.dart';
 import '../classification_job_s3_job_definition_bucket_definition/classification_job_s3_job_definition_bucket_definition.dart';
 import '../classification_job_s3_job_definition_scoping/classification_job_s3_job_definition_scoping.dart';
@@ -30,7 +30,7 @@ class ClassificationJobS3JobDefinition {
     }
     final bucketDefinitionsValue = bucketDefinitions;
     if (bucketDefinitionsValue != null) {
-      map['bucketDefinitions'] = Input.encodeList<
+      map['bucketDefinitions'] = pulumi.Input.encodeList<
               ClassificationJobS3JobDefinitionBucketDefinition,
               Map<String, dynamic>>(
           bucketDefinitionsValue, (value) => value.toMap());
@@ -50,7 +50,8 @@ class ClassificationJobS3JobDefinition {
               (map['bucketCriteria'] as Map).cast<String, dynamic>()),
       bucketDefinitions: map['bucketDefinitions'] == null
           ? null
-          : Input.decodeList<ClassificationJobS3JobDefinitionBucketDefinition>(
+          : pulumi.Input.decodeList<
+                  ClassificationJobS3JobDefinitionBucketDefinition>(
               map['bucketDefinitions'],
               (value) =>
                   ClassificationJobS3JobDefinitionBucketDefinition.fromMap(

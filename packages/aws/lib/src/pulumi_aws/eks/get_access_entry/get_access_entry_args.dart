@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAccessEntry.
 class GetAccessEntryArgs {
   /// Name of the EKS Cluster.
-  final Input<String> clusterName;
+  final pulumi.Input<String> clusterName;
 
   /// The IAM Principal ARN which requires Authentication access to the EKS cluster.
-  final Input<String> principalArn;
+  final pulumi.Input<String> principalArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
-  final Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<Map<String, String>>? tagsAll;
 
   GetAccessEntryArgs({
     required this.clusterName,
@@ -46,11 +46,12 @@ class GetAccessEntryArgs {
 
   factory GetAccessEntryArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessEntryArgs(
-      clusterName: Input.asInput<String>(map['clusterName']),
-      principalArn: Input.asInput<String>(map['principalArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      tagsAll: Input.asOptionalInput<Map<String, String>>(map['tagsAll']),
+      clusterName: pulumi.Input.asInput<String>(map['clusterName']),
+      principalArn: pulumi.Input.asInput<String>(map['principalArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tagsAll:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['tagsAll']),
     );
   }
 }

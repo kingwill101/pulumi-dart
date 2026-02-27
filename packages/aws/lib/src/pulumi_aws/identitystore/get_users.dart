@@ -1,5 +1,5 @@
 library module_identitystore_get_users;
 
-export 'get_users/get_users2.dart';
-export 'get_users/get_users_args2.dart';
-export 'get_users/get_users_result2.dart';
+export 'get_users/get_users_identitystore.dart';
+export 'get_users/get_users_identitystore_args.dart';
+export 'get_users/get_users_identitystore_result.dart';

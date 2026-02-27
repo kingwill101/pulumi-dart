@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_group_args.dart';
 
 /// Provides a DAX Subnet Group resource.
@@ -14,31 +14,31 @@ import 'subnet_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:dax/subnetGroup:SubnetGroup example my_dax_sg
 /// ```
-class SubnetGroup extends CustomResource {
+class SubnetGroup extends pulumi.CustomResource {
   /// A description of the subnet group.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The name of the subnet group.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A list of VPC subnet IDs for the subnet group.
-  late final Output<List<String>> subnetIds;
+  late final pulumi.Output<List<String>> subnetIds;
 
   /// VPC ID of the subnet group.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   SubnetGroup(
     String name, {
     SubnetGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:dax/subnetGroup:SubnetGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

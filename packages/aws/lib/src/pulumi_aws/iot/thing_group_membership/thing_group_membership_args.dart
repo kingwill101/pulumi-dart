@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ThingGroupMembership.
 class ThingGroupMembershipArgs {
   /// Override dynamic thing groups with static thing groups when 10-group limit is reached. If a thing belongs to 10 thing groups, and one or more of those groups are dynamic thing groups, adding a thing to a static group removes the thing from the last dynamic group.
-  final Input<bool>? overrideDynamicGroup;
+  final pulumi.Input<bool>? overrideDynamicGroup;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The name of the group to which you are adding a thing.
-  final Input<String> thingGroupName;
+  final pulumi.Input<String> thingGroupName;
 
   /// The name of the thing to add to a group.
-  final Input<String> thingName;
+  final pulumi.Input<String> thingName;
 
   ThingGroupMembershipArgs({
     this.overrideDynamicGroup,
@@ -41,10 +41,10 @@ class ThingGroupMembershipArgs {
   factory ThingGroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return ThingGroupMembershipArgs(
       overrideDynamicGroup:
-          Input.asOptionalInput<bool>(map['overrideDynamicGroup']),
-      region: Input.asOptionalInput<String>(map['region']),
-      thingGroupName: Input.asInput<String>(map['thingGroupName']),
-      thingName: Input.asInput<String>(map['thingName']),
+          pulumi.Input.asOptionalInput<bool>(map['overrideDynamicGroup']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      thingGroupName: pulumi.Input.asInput<String>(map['thingGroupName']),
+      thingName: pulumi.Input.asInput<String>(map['thingName']),
     );
   }
 }

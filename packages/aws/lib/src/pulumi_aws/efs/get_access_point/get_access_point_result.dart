@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_access_point_posix_user/get_access_point_posix_user.dart';
 import '../get_access_point_root_directory/get_access_point_root_directory.dart';
 
@@ -53,12 +53,12 @@ class GetAccessPointResult {
     map['id'] = id;
     map['ownerId'] = ownerId;
     map['posixUsers'] =
-        Input.encodeList<GetAccessPointPosixUser, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetAccessPointPosixUser, Map<String, dynamic>>(
             posixUsers, (value) => value.toMap());
     map['region'] = region;
-    map['rootDirectories'] =
-        Input.encodeList<GetAccessPointRootDirectory, Map<String, dynamic>>(
-            rootDirectories, (value) => value.toMap());
+    map['rootDirectories'] = pulumi.Input.encodeList<
+        GetAccessPointRootDirectory,
+        Map<String, dynamic>>(rootDirectories, (value) => value.toMap());
     map['tags'] = tags;
     return map;
   }
@@ -71,12 +71,12 @@ class GetAccessPointResult {
       fileSystemId: map['fileSystemId'] as String,
       id: map['id'] as String,
       ownerId: map['ownerId'] as String,
-      posixUsers: Input.decodeList<GetAccessPointPosixUser>(
+      posixUsers: pulumi.Input.decodeList<GetAccessPointPosixUser>(
           map['posixUsers'],
           (value) => GetAccessPointPosixUser.fromMap(
               (value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
-      rootDirectories: Input.decodeList<GetAccessPointRootDirectory>(
+      rootDirectories: pulumi.Input.decodeList<GetAccessPointRootDirectory>(
           map['rootDirectories'],
           (value) => GetAccessPointRootDirectory.fromMap(
               (value as Map).cast<String, dynamic>())),

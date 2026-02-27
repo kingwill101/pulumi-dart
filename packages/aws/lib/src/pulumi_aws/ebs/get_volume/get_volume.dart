@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_volume_args.dart';
 import 'get_volume_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_volume_result.dart';
 /// resources.
 Future<GetVolumeResult> getVolume(
   GetVolumeArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ebs/getVolume:getVolume',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVolumeResult.fromMap(result);
 }

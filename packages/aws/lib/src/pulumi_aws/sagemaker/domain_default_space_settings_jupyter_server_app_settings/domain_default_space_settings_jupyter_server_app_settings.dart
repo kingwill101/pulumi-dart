@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../domain_default_space_settings_jupyter_server_app_settings_code_repository/domain_default_space_settings_jupyter_server_app_settings_code_repository.dart';
 import '../domain_default_space_settings_jupyter_server_app_settings_default_resource_spec/domain_default_space_settings_jupyter_server_app_settings_default_resource_spec.dart';
 
@@ -26,7 +26,7 @@ class DomainDefaultSpaceSettingsJupyterServerAppSettings {
     final map = <String, dynamic>{};
     final codeRepositoriesValue = codeRepositories;
     if (codeRepositoriesValue != null) {
-      map['codeRepositories'] = Input.encodeList<
+      map['codeRepositories'] = pulumi.Input.encodeList<
               DomainDefaultSpaceSettingsJupyterServerAppSettingsCodeRepository,
               Map<String, dynamic>>(
           codeRepositoriesValue, (value) => value.toMap());
@@ -47,7 +47,7 @@ class DomainDefaultSpaceSettingsJupyterServerAppSettings {
     return DomainDefaultSpaceSettingsJupyterServerAppSettings(
       codeRepositories: map['codeRepositories'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DomainDefaultSpaceSettingsJupyterServerAppSettingsCodeRepository>(
               map['codeRepositories'],
               (value) =>

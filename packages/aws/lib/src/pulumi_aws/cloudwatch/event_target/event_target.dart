@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../event_target_appsync_target/event_target_appsync_target.dart';
 import '../event_target_batch_target/event_target_batch_target.dart';
 import '../event_target_dead_letter_config/event_target_dead_letter_config.dart';
@@ -86,83 +86,84 @@ import 'event_target_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudwatch/eventTarget:EventTarget example rule-name/target-id
 /// ```
-class EventTarget extends CustomResource {
+class EventTarget extends pulumi.CustomResource {
   /// Parameters used when you are using the rule to invoke an AppSync GraphQL API mutation. Documented below. A maximum of 1 are allowed.
-  late final Output<EventTargetAppsyncTarget?> appsyncTarget;
+  late final pulumi.Output<EventTargetAppsyncTarget?> appsyncTarget;
 
   /// The Amazon Resource Name (ARN) of the target.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Parameters used when you are using the rule to invoke an Amazon Batch Job. Documented below. A maximum of 1 are allowed.
-  late final Output<EventTargetBatchTarget?> batchTarget;
+  late final pulumi.Output<EventTargetBatchTarget?> batchTarget;
 
   /// Parameters used when you are providing a dead letter config. Documented below. A maximum of 1 are allowed.
-  late final Output<EventTargetDeadLetterConfig?> deadLetterConfig;
+  late final pulumi.Output<EventTargetDeadLetterConfig?> deadLetterConfig;
 
   /// Parameters used when you are using the rule to invoke Amazon ECS Task. Documented below. A maximum of 1 are allowed.
-  late final Output<EventTargetEcsTarget?> ecsTarget;
+  late final pulumi.Output<EventTargetEcsTarget?> ecsTarget;
 
   /// The name or ARN of the event bus to associate with the rule.
   /// If you omit this, the `default` event bus is used.
-  late final Output<String?> eventBusName;
+  late final pulumi.Output<String?> eventBusName;
 
   /// Used to delete managed rules created by AWS. Defaults to `false`.
-  late final Output<bool?> forceDestroy;
+  late final pulumi.Output<bool?> forceDestroy;
 
   /// Parameters used when you are using the rule to invoke an API Gateway REST endpoint. Documented below. A maximum of 1 is allowed.
-  late final Output<EventTargetHttpTarget?> httpTarget;
+  late final pulumi.Output<EventTargetHttpTarget?> httpTarget;
 
   /// Valid JSON text passed to the target. Conflicts with `input_path` and `input_transformer`.
-  late final Output<String?> input;
+  late final pulumi.Output<String?> input;
 
   /// The value of the [JSONPath](http://goessner.net/articles/JsonPath/) that is used for extracting part of the matched event when passing it to the target. Conflicts with `input` and `input_transformer`.
-  late final Output<String?> inputPath;
+  late final pulumi.Output<String?> inputPath;
 
   /// Parameters used when you are providing a custom input to a target based on certain event data. Conflicts with `input` and `input_path`.
-  late final Output<EventTargetInputTransformer?> inputTransformer;
+  late final pulumi.Output<EventTargetInputTransformer?> inputTransformer;
 
   /// Parameters used when you are using the rule to invoke an Amazon Kinesis Stream. Documented below. A maximum of 1 are allowed.
-  late final Output<EventTargetKinesisTarget?> kinesisTarget;
+  late final pulumi.Output<EventTargetKinesisTarget?> kinesisTarget;
 
   /// Parameters used when you are using the rule to invoke an Amazon Redshift Statement. Documented below. A maximum of 1 are allowed.
-  late final Output<EventTargetRedshiftTarget?> redshiftTarget;
+  late final pulumi.Output<EventTargetRedshiftTarget?> redshiftTarget;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Parameters used when you are providing retry policies. Documented below. A maximum of 1 are allowed.
-  late final Output<EventTargetRetryPolicy?> retryPolicy;
+  late final pulumi.Output<EventTargetRetryPolicy?> retryPolicy;
 
   /// The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if `ecs_target` is used or target in `arn` is EC2 instance, Kinesis data stream, Step Functions state machine, or Event Bus in different account or region.
-  late final Output<String?> roleArn;
+  late final pulumi.Output<String?> roleArn;
 
   /// The name of the rule you want to add targets to.
   ///
   /// The following arguments are optional:
-  late final Output<String> rule;
+  late final pulumi.Output<String> rule;
 
   /// Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
-  late final Output<List<EventTargetRunCommandTarget>?> runCommandTargets;
+  late final pulumi.Output<List<EventTargetRunCommandTarget>?>
+      runCommandTargets;
 
   /// Parameters used when you are using the rule to invoke an Amazon SageMaker AI Pipeline. Documented below. A maximum of 1 are allowed.
-  late final Output<EventTargetSagemakerPipelineTarget?>
+  late final pulumi.Output<EventTargetSagemakerPipelineTarget?>
       sagemakerPipelineTarget;
 
   /// Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-  late final Output<EventTargetSqsTarget?> sqsTarget;
+  late final pulumi.Output<EventTargetSqsTarget?> sqsTarget;
 
   /// The unique target assignment ID. If missing, will generate a random, unique id.
-  late final Output<String> targetId;
+  late final pulumi.Output<String> targetId;
 
   EventTarget(
     String name, {
     EventTargetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudwatch/eventTarget:EventTarget',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appsyncTarget =
         registerOutput<EventTargetAppsyncTarget?>('appsyncTarget');

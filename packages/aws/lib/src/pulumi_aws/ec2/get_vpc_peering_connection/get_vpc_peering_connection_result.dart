@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_peering_connection_cidr_block_set/get_vpc_peering_connection_cidr_block_set.dart';
 import '../get_vpc_peering_connection_filter/get_vpc_peering_connection_filter.dart';
 import '../get_vpc_peering_connection_ipv6_cidr_block_set/get_vpc_peering_connection_ipv6_cidr_block_set.dart';
@@ -76,24 +76,24 @@ class GetVpcPeeringConnectionResult {
     final map = <String, dynamic>{};
     map['accepter'] = accepter;
     map['cidrBlock'] = cidrBlock;
-    map['cidrBlockSets'] = Input.encodeList<GetVpcPeeringConnectionCidrBlockSet,
+    map['cidrBlockSets'] = pulumi.Input.encodeList<
+        GetVpcPeeringConnectionCidrBlockSet,
         Map<String, dynamic>>(cidrBlockSets, (value) => value.toMap());
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetVpcPeeringConnectionFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetVpcPeeringConnectionFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
-    map['ipv6CidrBlockSets'] = Input.encodeList<
+    map['ipv6CidrBlockSets'] = pulumi.Input.encodeList<
         GetVpcPeeringConnectionIpv6CidrBlockSet,
         Map<String, dynamic>>(ipv6CidrBlockSets, (value) => value.toMap());
     map['ownerId'] = ownerId;
     map['peerCidrBlock'] = peerCidrBlock;
-    map['peerCidrBlockSets'] = Input.encodeList<
+    map['peerCidrBlockSets'] = pulumi.Input.encodeList<
         GetVpcPeeringConnectionPeerCidrBlockSet,
         Map<String, dynamic>>(peerCidrBlockSets, (value) => value.toMap());
-    map['peerIpv6CidrBlockSets'] = Input.encodeList<
+    map['peerIpv6CidrBlockSets'] = pulumi.Input.encodeList<
         GetVpcPeeringConnectionPeerIpv6CidrBlockSet,
         Map<String, dynamic>>(peerIpv6CidrBlockSets, (value) => value.toMap());
     map['peerOwnerId'] = peerOwnerId;
@@ -112,31 +112,32 @@ class GetVpcPeeringConnectionResult {
     return GetVpcPeeringConnectionResult(
       accepter: (map['accepter'] as Map).cast<String, bool>(),
       cidrBlock: map['cidrBlock'] as String,
-      cidrBlockSets: Input.decodeList<GetVpcPeeringConnectionCidrBlockSet>(
-          map['cidrBlockSets'],
-          (value) => GetVpcPeeringConnectionCidrBlockSet.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      cidrBlockSets:
+          pulumi.Input.decodeList<GetVpcPeeringConnectionCidrBlockSet>(
+              map['cidrBlockSets'],
+              (value) => GetVpcPeeringConnectionCidrBlockSet.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVpcPeeringConnectionFilter>(
+          : pulumi.Input.decodeList<GetVpcPeeringConnectionFilter>(
               map['filters'],
               (value) => GetVpcPeeringConnectionFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipv6CidrBlockSets:
-          Input.decodeList<GetVpcPeeringConnectionIpv6CidrBlockSet>(
+          pulumi.Input.decodeList<GetVpcPeeringConnectionIpv6CidrBlockSet>(
               map['ipv6CidrBlockSets'],
               (value) => GetVpcPeeringConnectionIpv6CidrBlockSet.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ownerId: map['ownerId'] as String,
       peerCidrBlock: map['peerCidrBlock'] as String,
       peerCidrBlockSets:
-          Input.decodeList<GetVpcPeeringConnectionPeerCidrBlockSet>(
+          pulumi.Input.decodeList<GetVpcPeeringConnectionPeerCidrBlockSet>(
               map['peerCidrBlockSets'],
               (value) => GetVpcPeeringConnectionPeerCidrBlockSet.fromMap(
                   (value as Map).cast<String, dynamic>())),
       peerIpv6CidrBlockSets:
-          Input.decodeList<GetVpcPeeringConnectionPeerIpv6CidrBlockSet>(
+          pulumi.Input.decodeList<GetVpcPeeringConnectionPeerIpv6CidrBlockSet>(
               map['peerIpv6CidrBlockSets'],
               (value) => GetVpcPeeringConnectionPeerIpv6CidrBlockSet.fromMap(
                   (value as Map).cast<String, dynamic>())),

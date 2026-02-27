@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_item_args.dart';
 
 /// Provides a DynamoDB table item resource
@@ -13,33 +13,33 @@ import 'table_item_args.dart';
 /// ## Import
 ///
 /// You cannot import DynamoDB table items.
-class TableItem extends CustomResource {
+class TableItem extends pulumi.CustomResource {
   /// Hash key to use for lookups and identification of the item
-  late final Output<String> hashKey;
+  late final pulumi.Output<String> hashKey;
 
   /// JSON representation of a map of attribute name/value pairs, one for each attribute. Only the primary key attributes are required; you can optionally provide other attribute name-value pairs for the item.
-  late final Output<String> item;
+  late final pulumi.Output<String> item;
 
   /// Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
-  late final Output<String?> rangeKey;
+  late final pulumi.Output<String?> rangeKey;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Name or ARN of the table to contain the item.
   ///
   /// > **Note:** Names included in `item` are represented internally with everything but letters removed. There is the possibility of collisions if two names, once filtered, are the same. For example, the names `your-name-here` and `yournamehere` will overlap and cause an error.
-  late final Output<String> tableName;
+  late final pulumi.Output<String> tableName;
 
   TableItem(
     String name, {
     TableItemArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:dynamodb/tableItem:TableItem',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.hashKey = registerOutput<String>('hashKey');
     this.item = registerOutput<String>('item');

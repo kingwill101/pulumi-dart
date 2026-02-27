@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_dhcp_options_filter/get_vpc_dhcp_options_filter.dart';
 
 /// Arguments for getVpcDhcpOptions.
 class GetVpcDhcpOptionsArgs {
   /// EC2 DHCP Options ID.
-  final Input<String>? dhcpOptionsId;
+  final pulumi.Input<String>? dhcpOptionsId;
 
   /// List of custom filters as described below.
-  final Input<List<GetVpcDhcpOptionsFilter>>? filters;
+  final pulumi.Input<List<GetVpcDhcpOptionsFilter>>? filters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags assigned to the resource.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetVpcDhcpOptionsArgs({
     this.dhcpOptionsId,
@@ -32,12 +32,11 @@ class GetVpcDhcpOptionsArgs {
     }
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
               List<GetVpcDhcpOptionsFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetVpcDhcpOptionsFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetVpcDhcpOptionsFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final regionValue = region;
     if (regionValue != null) {
@@ -52,11 +51,11 @@ class GetVpcDhcpOptionsArgs {
 
   factory GetVpcDhcpOptionsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcDhcpOptionsArgs(
-      dhcpOptionsId: Input.asOptionalInput<String>(map['dhcpOptionsId']),
-      filters:
-          Input.asOptionalInput<List<GetVpcDhcpOptionsFilter>>(map['filters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      dhcpOptionsId: pulumi.Input.asOptionalInput<String>(map['dhcpOptionsId']),
+      filters: pulumi.Input.asOptionalInput<List<GetVpcDhcpOptionsFilter>>(
+          map['filters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

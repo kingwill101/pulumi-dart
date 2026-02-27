@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../gateway_route_spec_http2_route_match_header/gateway_route_spec_http2_route_match_header.dart';
 import '../gateway_route_spec_http2_route_match_hostname/gateway_route_spec_http2_route_match_hostname.dart';
 import '../gateway_route_spec_http2_route_match_path/gateway_route_spec_http2_route_match_path.dart';
@@ -38,7 +38,8 @@ class GatewayRouteSpecHttp2RouteMatch {
     final map = <String, dynamic>{};
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] = Input.encodeList<GatewayRouteSpecHttp2RouteMatchHeader,
+      map['headers'] = pulumi.Input.encodeList<
+          GatewayRouteSpecHttp2RouteMatchHeader,
           Map<String, dynamic>>(headersValue, (value) => value.toMap());
     }
     final hostnameValue = hostname;
@@ -59,7 +60,7 @@ class GatewayRouteSpecHttp2RouteMatch {
     }
     final queryParametersValue = queryParameters;
     if (queryParametersValue != null) {
-      map['queryParameters'] = Input.encodeList<
+      map['queryParameters'] = pulumi.Input.encodeList<
           GatewayRouteSpecHttp2RouteMatchQueryParameter,
           Map<String, dynamic>>(queryParametersValue, (value) => value.toMap());
     }
@@ -70,7 +71,7 @@ class GatewayRouteSpecHttp2RouteMatch {
     return GatewayRouteSpecHttp2RouteMatch(
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<GatewayRouteSpecHttp2RouteMatchHeader>(
+          : pulumi.Input.decodeList<GatewayRouteSpecHttp2RouteMatchHeader>(
               map['headers'],
               (value) => GatewayRouteSpecHttp2RouteMatchHeader.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -86,7 +87,8 @@ class GatewayRouteSpecHttp2RouteMatch {
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
       queryParameters: map['queryParameters'] == null
           ? null
-          : Input.decodeList<GatewayRouteSpecHttp2RouteMatchQueryParameter>(
+          : pulumi.Input.decodeList<
+                  GatewayRouteSpecHttp2RouteMatchQueryParameter>(
               map['queryParameters'],
               (value) => GatewayRouteSpecHttp2RouteMatchQueryParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

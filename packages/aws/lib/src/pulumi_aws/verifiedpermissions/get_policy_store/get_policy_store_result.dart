@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_policy_store_validation_setting/get_policy_store_validation_setting.dart';
 
 /// Result data returned by getPolicyStore.
@@ -48,9 +48,9 @@ class GetPolicyStoreResult {
     map['lastUpdatedDate'] = lastUpdatedDate;
     map['region'] = region;
     map['tags'] = tags;
-    map['validationSettings'] =
-        Input.encodeList<GetPolicyStoreValidationSetting, Map<String, dynamic>>(
-            validationSettings, (value) => value.toMap());
+    map['validationSettings'] = pulumi.Input.encodeList<
+        GetPolicyStoreValidationSetting,
+        Map<String, dynamic>>(validationSettings, (value) => value.toMap());
     return map;
   }
 
@@ -64,10 +64,11 @@ class GetPolicyStoreResult {
       lastUpdatedDate: map['lastUpdatedDate'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      validationSettings: Input.decodeList<GetPolicyStoreValidationSetting>(
-          map['validationSettings'],
-          (value) => GetPolicyStoreValidationSetting.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      validationSettings:
+          pulumi.Input.decodeList<GetPolicyStoreValidationSetting>(
+              map['validationSettings'],
+              (value) => GetPolicyStoreValidationSetting.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

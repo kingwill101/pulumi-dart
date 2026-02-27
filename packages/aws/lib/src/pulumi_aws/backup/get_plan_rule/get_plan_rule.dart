@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_plan_rule_copy_action/get_plan_rule_copy_action.dart';
 import '../get_plan_rule_lifecycle/get_plan_rule_lifecycle.dart';
 import '../get_plan_rule_scan_action/get_plan_rule_scan_action.dart';
@@ -38,11 +38,11 @@ class GetPlanRule {
     final map = <String, dynamic>{};
     map['completionWindow'] = completionWindow;
     map['copyActions'] =
-        Input.encodeList<GetPlanRuleCopyAction, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetPlanRuleCopyAction, Map<String, dynamic>>(
             copyActions, (value) => value.toMap());
     map['enableContinuousBackup'] = enableContinuousBackup;
     map['lifecycles'] =
-        Input.encodeList<GetPlanRuleLifecycle, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetPlanRuleLifecycle, Map<String, dynamic>>(
             lifecycles, (value) => value.toMap());
     final recoveryPointTagsValue = recoveryPointTags;
     if (recoveryPointTagsValue != null) {
@@ -50,7 +50,7 @@ class GetPlanRule {
     }
     map['ruleName'] = ruleName;
     map['scanActions'] =
-        Input.encodeList<GetPlanRuleScanAction, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetPlanRuleScanAction, Map<String, dynamic>>(
             scanActions, (value) => value.toMap());
     map['schedule'] = schedule;
     map['scheduleExpressionTimezone'] = scheduleExpressionTimezone;
@@ -64,12 +64,12 @@ class GetPlanRule {
   factory GetPlanRule.fromMap(Map<String, dynamic> map) {
     return GetPlanRule(
       completionWindow: map['completionWindow'] as int,
-      copyActions: Input.decodeList<GetPlanRuleCopyAction>(
+      copyActions: pulumi.Input.decodeList<GetPlanRuleCopyAction>(
           map['copyActions'],
           (value) => GetPlanRuleCopyAction.fromMap(
               (value as Map).cast<String, dynamic>())),
       enableContinuousBackup: map['enableContinuousBackup'] as bool,
-      lifecycles: Input.decodeList<GetPlanRuleLifecycle>(
+      lifecycles: pulumi.Input.decodeList<GetPlanRuleLifecycle>(
           map['lifecycles'],
           (value) => GetPlanRuleLifecycle.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -77,7 +77,7 @@ class GetPlanRule {
           ? null
           : (map['recoveryPointTags'] as Map).cast<String, String>(),
       ruleName: map['ruleName'] as String,
-      scanActions: Input.decodeList<GetPlanRuleScanAction>(
+      scanActions: pulumi.Input.decodeList<GetPlanRuleScanAction>(
           map['scanActions'],
           (value) => GetPlanRuleScanAction.fromMap(
               (value as Map).cast<String, dynamic>())),

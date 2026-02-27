@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_request_payment_configuration_args.dart';
 
 /// Provides an S3 bucket request payment configuration resource. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html).
@@ -29,28 +29,28 @@ import 'bucket_request_payment_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3/bucketRequestPaymentConfiguration:BucketRequestPaymentConfiguration example bucket-name,123456789012
 /// ```
-class BucketRequestPaymentConfiguration extends CustomResource {
+class BucketRequestPaymentConfiguration extends pulumi.CustomResource {
   /// Name of the bucket.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Account ID of the expected bucket owner.
-  late final Output<String?> expectedBucketOwner;
+  late final pulumi.Output<String?> expectedBucketOwner;
 
   /// Specifies who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
-  late final Output<String> payer;
+  late final pulumi.Output<String> payer;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   BucketRequestPaymentConfiguration(
     String name, {
     BucketRequestPaymentConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/bucketRequestPaymentConfiguration:BucketRequestPaymentConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');

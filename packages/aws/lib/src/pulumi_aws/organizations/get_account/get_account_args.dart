@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAccount.
 class GetAccountArgs {
   /// Account ID number of a delegated administrator account in the organization.
-  final Input<String> accountId;
+  final pulumi.Input<String> accountId;
 
   /// Map of tags for the resource.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetAccountArgs({
     required this.accountId,
@@ -27,8 +27,8 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      accountId: Input.asInput<String>(map['accountId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getQuicksightGroup.
 class GetQuicksightGroupArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// The name of the group that you want to match.
   ///
   /// The following arguments are optional:
-  final Input<String> groupName;
+  final pulumi.Input<String> groupName;
 
   /// QuickSight namespace. Defaults to `default`.
-  final Input<String>? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetQuicksightGroupArgs({
     this.awsAccountId,
@@ -45,10 +45,10 @@ class GetQuicksightGroupArgs {
 
   factory GetQuicksightGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetQuicksightGroupArgs(
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
-      groupName: Input.asInput<String>(map['groupName']),
-      namespace: Input.asOptionalInput<String>(map['namespace']),
-      region: Input.asOptionalInput<String>(map['region']),
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
+      groupName: pulumi.Input.asInput<String>(map['groupName']),
+      namespace: pulumi.Input.asOptionalInput<String>(map['namespace']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

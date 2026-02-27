@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../labeling_job_human_task_config/labeling_job_human_task_config.dart';
 import '../labeling_job_input_config/labeling_job_input_config.dart';
 import '../labeling_job_label_counter/labeling_job_label_counter.dart';
@@ -22,68 +22,69 @@ import 'labeling_job_args.dart';
 /// ```sh
 /// $ pulumi import aws:sagemaker/labelingJob:LabelingJob example my-labeling-job
 /// ```
-class LabelingJob extends CustomResource {
+class LabelingJob extends pulumi.CustomResource {
   /// If the job failed, the reason that it failed.
-  late final Output<String> failureReason;
+  late final pulumi.Output<String> failureReason;
 
   /// Configuration information required for human workers to complete a labeling task. Fields are documented below.
-  late final Output<LabelingJobHumanTaskConfig> humanTaskConfig;
+  late final pulumi.Output<LabelingJobHumanTaskConfig> humanTaskConfig;
 
   /// Input data for the labeling job. Fields are documented below.
-  late final Output<LabelingJobInputConfig> inputConfig;
+  late final pulumi.Output<LabelingJobInputConfig> inputConfig;
 
   /// Unique identifier for work done as part of a labeling job.
-  late final Output<String> jobReferenceCode;
+  late final pulumi.Output<String> jobReferenceCode;
 
   /// Attribute name to use for the label in the output manifest file.
-  late final Output<String> labelAttributeName;
+  late final pulumi.Output<String> labelAttributeName;
 
   /// S3 URI of the file that defines the categories used to label the data objects.
-  late final Output<String?> labelCategoryConfigS3Uri;
+  late final pulumi.Output<String?> labelCategoryConfigS3Uri;
 
   /// A breakdown of the number of objects labeled.
-  late final Output<List<LabelingJobLabelCounter>> labelCounters;
+  late final pulumi.Output<List<LabelingJobLabelCounter>> labelCounters;
 
   /// Information required to perform automated data labeling.. Fields are documented below.
-  late final Output<LabelingJobLabelingJobAlgorithmsConfig?>
+  late final pulumi.Output<LabelingJobLabelingJobAlgorithmsConfig?>
       labelingJobAlgorithmsConfig;
 
   /// ARN of the labeling job.
-  late final Output<String> labelingJobArn;
+  late final pulumi.Output<String> labelingJobArn;
 
   /// Name of the labeling job.
-  late final Output<String> labelingJobName;
+  late final pulumi.Output<String> labelingJobName;
 
   /// Processing status of the labeling job.
-  late final Output<String> labelingJobStatus;
+  late final pulumi.Output<String> labelingJobStatus;
 
   /// Location of the output data. Fields are documented below.
-  late final Output<LabelingJobOutputConfig> outputConfig;
+  late final pulumi.Output<LabelingJobOutputConfig> outputConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of IAM role that Amazon SageMaker assumes to perform tasks during data labeling.
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   /// Conditions for stopping a labeling job. If any of the conditions are met, the job is automatically stopped. Fields are documented below.
-  late final Output<List<LabelingJobStoppingCondition>> stoppingConditions;
+  late final pulumi.Output<List<LabelingJobStoppingCondition>>
+      stoppingConditions;
 
   /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   LabelingJob(
     String name, {
     LabelingJobArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sagemaker/labelingJob:LabelingJob',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.failureReason = registerOutput<String>('failureReason');
     this.humanTaskConfig =

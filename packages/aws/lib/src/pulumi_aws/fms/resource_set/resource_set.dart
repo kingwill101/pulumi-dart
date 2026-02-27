@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resource_set_resource_set/resource_set_resource_set.dart';
 import '../resource_set_timeouts/resource_set_timeouts.dart';
 import 'resource_set_args.dart';
@@ -18,28 +18,28 @@ import 'resource_set_args.dart';
 /// ```sh
 /// $ pulumi import aws:fms/resourceSet:ResourceSet example resource_set-id-12345678
 /// ```
-class ResourceSet extends CustomResource {
+class ResourceSet extends pulumi.CustomResource {
   /// ARN of the Resource Set.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Details about the resource set to be created or updated. See `resource_set` Attribute Reference below.
-  late final Output<List<ResourceSetResourceSet>?> resourceSets;
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<ResourceSetTimeouts?> timeouts;
+  late final pulumi.Output<List<ResourceSetResourceSet>?> resourceSets;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<ResourceSetTimeouts?> timeouts;
 
   ResourceSet(
     String name, {
     ResourceSetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:fms/resourceSet:ResourceSet',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.region = registerOutput<String>('region');

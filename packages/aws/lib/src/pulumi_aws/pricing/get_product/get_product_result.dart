@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_product_filter/get_product_filter.dart';
 
 /// Result data returned by getProduct.
@@ -23,8 +23,9 @@ class GetProductResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['filters'] = Input.encodeList<GetProductFilter, Map<String, dynamic>>(
-        filters, (value) => value.toMap());
+    map['filters'] =
+        pulumi.Input.encodeList<GetProductFilter, Map<String, dynamic>>(
+            filters, (value) => value.toMap());
     map['id'] = id;
     map['result'] = result;
     map['serviceCode'] = serviceCode;
@@ -33,7 +34,7 @@ class GetProductResult {
 
   factory GetProductResult.fromMap(Map<String, dynamic> map) {
     return GetProductResult(
-      filters: Input.decodeList<GetProductFilter>(
+      filters: pulumi.Input.decodeList<GetProductFilter>(
           map['filters'],
           (value) =>
               GetProductFilter.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,5 +1,5 @@
 library module_iam_get_user;
 
-export 'get_user/get_user3.dart';
-export 'get_user/get_user_args3.dart';
-export 'get_user/get_user_result3.dart';
+export 'get_user/get_user_iam.dart';
+export 'get_user/get_user_iam_args.dart';
+export 'get_user/get_user_iam_result.dart';

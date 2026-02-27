@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scaling_plan_application_source_tag_filter/scaling_plan_application_source_tag_filter.dart';
 
 class ScalingPlanApplicationSource {
@@ -23,7 +23,7 @@ class ScalingPlanApplicationSource {
     }
     final tagFiltersValue = tagFilters;
     if (tagFiltersValue != null) {
-      map['tagFilters'] = Input.encodeList<
+      map['tagFilters'] = pulumi.Input.encodeList<
           ScalingPlanApplicationSourceTagFilter,
           Map<String, dynamic>>(tagFiltersValue, (value) => value.toMap());
     }
@@ -37,7 +37,7 @@ class ScalingPlanApplicationSource {
           : map['cloudformationStackArn'] as String,
       tagFilters: map['tagFilters'] == null
           ? null
-          : Input.decodeList<ScalingPlanApplicationSourceTagFilter>(
+          : pulumi.Input.decodeList<ScalingPlanApplicationSourceTagFilter>(
               map['tagFilters'],
               (value) => ScalingPlanApplicationSourceTagFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

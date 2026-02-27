@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getResourceCollection.
 class GetResourceCollectionArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Type of AWS resource collection to create. Valid values are `AWS_CLOUD_FORMATION`, `AWS_SERVICE`, and `AWS_TAGS`.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   GetResourceCollectionArgs({
     this.region,
@@ -27,8 +27,8 @@ class GetResourceCollectionArgs {
 
   factory GetResourceCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceCollectionArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      type: Input.asInput<String>(map['type']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

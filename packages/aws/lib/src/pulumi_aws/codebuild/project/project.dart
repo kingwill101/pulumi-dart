@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../project_artifacts/project_artifacts.dart';
 import '../project_build_batch_config/project_build_batch_config.dart';
 import '../project_cache/project_cache.dart';
@@ -41,122 +41,123 @@ import 'project_args.dart';
 /// ```sh
 /// $ pulumi import aws:codebuild/project:Project name project-name
 /// ```
-class Project extends CustomResource {
+class Project extends pulumi.CustomResource {
   /// ARN of the CodeBuild project.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Configuration block. Detailed below.
-  late final Output<ProjectArtifacts> artifacts;
+  late final pulumi.Output<ProjectArtifacts> artifacts;
 
   /// Specify a maximum number of additional automatic retries after a failed build.
   /// The default is 0.
-  late final Output<int> autoRetryLimit;
+  late final pulumi.Output<int> autoRetryLimit;
 
   /// Generates a publicly-accessible URL for the projects build badge. Available as
   /// `badge_url` attribute when enabled.
-  late final Output<bool?> badgeEnabled;
+  late final pulumi.Output<bool?> badgeEnabled;
 
   /// URL of the build badge when `badge_enabled` is enabled.
-  late final Output<String> badgeUrl;
+  late final pulumi.Output<String> badgeUrl;
 
   /// Defines the batch build options for the project.
-  late final Output<ProjectBuildBatchConfig?> buildBatchConfig;
+  late final pulumi.Output<ProjectBuildBatchConfig?> buildBatchConfig;
 
   /// Number of minutes, from 5 to 2160 (36 hours), for AWS CodeBuild to wait until timing out
   /// any related build that does not get marked as completed. The default is 60 minutes. The `build_timeout` property is
   /// not available on the `Lambda` compute type.
-  late final Output<int?> buildTimeout;
+  late final pulumi.Output<int?> buildTimeout;
 
   /// Configuration block. Detailed below.
-  late final Output<ProjectCache?> cache;
+  late final pulumi.Output<ProjectCache?> cache;
 
   /// Specify a maximum number of concurrent builds for the project. The value
   /// specified must be greater than 0 and less than the account concurrent running builds limit.
-  late final Output<int?> concurrentBuildLimit;
+  late final pulumi.Output<int?> concurrentBuildLimit;
 
   /// Short description of the project.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting
   /// the build project's build output artifacts.
-  late final Output<String> encryptionKey;
+  late final pulumi.Output<String> encryptionKey;
 
   /// Configuration block. Detailed below.
-  late final Output<ProjectEnvironment> environment;
+  late final pulumi.Output<ProjectEnvironment> environment;
 
   /// A set of file system locations to mount inside the build. File system locations
   /// are documented below.
-  late final Output<List<ProjectFileSystemLocation>?> fileSystemLocations;
+  late final pulumi.Output<List<ProjectFileSystemLocation>?>
+      fileSystemLocations;
 
   /// Configuration block. Detailed below.
-  late final Output<ProjectLogsConfig?> logsConfig;
+  late final pulumi.Output<ProjectLogsConfig?> logsConfig;
 
   /// Project's name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Specifies the visibility of the project's builds. Possible values are: `PUBLIC_READ`
   /// and `PRIVATE`. Default value is `PRIVATE`.
-  late final Output<String?> projectVisibility;
+  late final pulumi.Output<String?> projectVisibility;
 
   /// The project identifier used with the public build APIs.
-  late final Output<String> publicProjectAlias;
+  late final pulumi.Output<String> publicProjectAlias;
 
   /// Number of minutes, from 5 to 480 (8 hours), a build is allowed to be queued before it
   /// times out. The default is 8 hours. The `queued_timeout` property is not available on the `Lambda` compute type.
-  late final Output<int?> queuedTimeout;
+  late final pulumi.Output<int?> queuedTimeout;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ARN of the IAM role that enables CodeBuild to access the CloudWatch Logs and
   /// Amazon S3 artifacts for the project's builds in order to display them publicly. Only applicable if
   /// `project_visibility` is `PUBLIC_READ`.
-  late final Output<String?> resourceAccessRole;
+  late final pulumi.Output<String?> resourceAccessRole;
 
   /// Configuration block. Detailed below.
-  late final Output<List<ProjectSecondaryArtifact>?> secondaryArtifacts;
+  late final pulumi.Output<List<ProjectSecondaryArtifact>?> secondaryArtifacts;
 
   /// Configuration block. Detailed below.
-  late final Output<List<ProjectSecondarySourceVersion>?>
+  late final pulumi.Output<List<ProjectSecondarySourceVersion>?>
       secondarySourceVersions;
 
   /// Configuration block. Detailed below.
-  late final Output<List<ProjectSecondarySource>?> secondarySources;
+  late final pulumi.Output<List<ProjectSecondarySource>?> secondarySources;
 
   /// Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that
   /// enables AWS CodeBuild to interact with dependent AWS services on behalf of the AWS account.
-  late final Output<String> serviceRole;
+  late final pulumi.Output<String> serviceRole;
 
   /// Configuration block. Detailed below.
   ///
   /// The following arguments are optional:
-  late final Output<ProjectSource> source;
+  late final pulumi.Output<ProjectSource> source;
 
   /// Version of the build input to be built for this project. If not specified, the latest
   /// version is used.
-  late final Output<String?> sourceVersion;
+  late final pulumi.Output<String?> sourceVersion;
 
   /// Map of tags to assign to the resource. If configured with a provider
   /// `default_tags` configuration block
   /// present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider
   /// `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Configuration block. Detailed below.
-  late final Output<ProjectVpcConfig?> vpcConfig;
+  late final pulumi.Output<ProjectVpcConfig?> vpcConfig;
 
   Project(
     String name, {
     ProjectArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:codebuild/project:Project',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.artifacts = registerOutput<ProjectArtifacts>('artifacts');

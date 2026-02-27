@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'permission_set_inline_policy_args.dart';
 
 /// Provides an IAM inline policy for a Single Sign-On (SSO) Permission Set resource
@@ -19,28 +19,28 @@ import 'permission_set_inline_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:ssoadmin/permissionSetInlinePolicy:PermissionSetInlinePolicy example arn:aws:sso:::permissionSet/ssoins-2938j0x8920sbj72/ps-80383020jr9302rk,arn:aws:sso:::instance/ssoins-2938j0x8920sbj72
 /// ```
-class PermissionSetInlinePolicy extends CustomResource {
+class PermissionSetInlinePolicy extends pulumi.CustomResource {
   /// The IAM inline policy to attach to a Permission Set.
-  late final Output<String> inlinePolicy;
+  late final pulumi.Output<String> inlinePolicy;
 
   /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
-  late final Output<String> instanceArn;
+  late final pulumi.Output<String> instanceArn;
 
   /// The Amazon Resource Name (ARN) of the Permission Set.
-  late final Output<String> permissionSetArn;
+  late final pulumi.Output<String> permissionSetArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   PermissionSetInlinePolicy(
     String name, {
     PermissionSetInlinePolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssoadmin/permissionSetInlinePolicy:PermissionSetInlinePolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.inlinePolicy = registerOutput<String>('inlinePolicy');
     this.instanceArn = registerOutput<String>('instanceArn');

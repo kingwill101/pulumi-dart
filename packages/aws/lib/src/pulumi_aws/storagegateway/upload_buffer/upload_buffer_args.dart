@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for UploadBuffer.
 class UploadBufferArgs {
   /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
-  final Input<String>? diskId;
+  final pulumi.Input<String>? diskId;
 
   /// Local disk path. For example, `/dev/nvme1n1`.
-  final Input<String>? diskPath;
+  final pulumi.Input<String>? diskPath;
 
   /// The Amazon Resource Name (ARN) of the gateway.
-  final Input<String> gatewayArn;
+  final pulumi.Input<String> gatewayArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   UploadBufferArgs({
     this.diskId,
@@ -43,10 +43,10 @@ class UploadBufferArgs {
 
   factory UploadBufferArgs.fromMap(Map<String, dynamic> map) {
     return UploadBufferArgs(
-      diskId: Input.asOptionalInput<String>(map['diskId']),
-      diskPath: Input.asOptionalInput<String>(map['diskPath']),
-      gatewayArn: Input.asInput<String>(map['gatewayArn']),
-      region: Input.asOptionalInput<String>(map['region']),
+      diskId: pulumi.Input.asOptionalInput<String>(map['diskId']),
+      diskPath: pulumi.Input.asOptionalInput<String>(map['diskPath']),
+      gatewayArn: pulumi.Input.asInput<String>(map['gatewayArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

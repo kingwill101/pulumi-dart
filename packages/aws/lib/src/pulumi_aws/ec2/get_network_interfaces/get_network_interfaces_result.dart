@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_network_interfaces_filter/get_network_interfaces_filter.dart';
 
 /// Result data returned by getNetworkInterfaces.
@@ -27,9 +27,8 @@ class GetNetworkInterfacesResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetNetworkInterfacesFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetNetworkInterfacesFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['ids'] = ids;
@@ -42,7 +41,7 @@ class GetNetworkInterfacesResult {
     return GetNetworkInterfacesResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetNetworkInterfacesFilter>(
+          : pulumi.Input.decodeList<GetNetworkInterfacesFilter>(
               map['filters'],
               (value) => GetNetworkInterfacesFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

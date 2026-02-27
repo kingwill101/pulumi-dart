@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_user_pool_admin_create_user_config_invite_message_template/get_user_pool_admin_create_user_config_invite_message_template.dart';
 
 class GetUserPoolAdminCreateUserConfig {
@@ -22,7 +22,7 @@ class GetUserPoolAdminCreateUserConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['allowAdminCreateUserOnly'] = allowAdminCreateUserOnly;
-    map['inviteMessageTemplates'] = Input.encodeList<
+    map['inviteMessageTemplates'] = pulumi.Input.encodeList<
         GetUserPoolAdminCreateUserConfigInviteMessageTemplate,
         Map<String, dynamic>>(inviteMessageTemplates, (value) => value.toMap());
     map['unusedAccountValidityDays'] = unusedAccountValidityDays;
@@ -32,7 +32,7 @@ class GetUserPoolAdminCreateUserConfig {
   factory GetUserPoolAdminCreateUserConfig.fromMap(Map<String, dynamic> map) {
     return GetUserPoolAdminCreateUserConfig(
       allowAdminCreateUserOnly: map['allowAdminCreateUserOnly'] as bool,
-      inviteMessageTemplates: Input.decodeList<
+      inviteMessageTemplates: pulumi.Input.decodeList<
               GetUserPoolAdminCreateUserConfigInviteMessageTemplate>(
           map['inviteMessageTemplates'],
           (value) =>

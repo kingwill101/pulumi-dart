@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_container_recipes_filter/get_container_recipes_filter.dart';
 
 /// Result data returned by getContainerRecipes.
@@ -31,9 +31,8 @@ class GetContainerRecipesResult {
     map['arns'] = arns;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetContainerRecipesFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetContainerRecipesFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['names'] = names;
@@ -50,7 +49,7 @@ class GetContainerRecipesResult {
       arns: (map['arns'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetContainerRecipesFilter>(
+          : pulumi.Input.decodeList<GetContainerRecipesFilter>(
               map['filters'],
               (value) => GetContainerRecipesFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

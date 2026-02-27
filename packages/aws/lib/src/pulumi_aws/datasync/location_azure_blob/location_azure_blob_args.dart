@@ -1,36 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../location_azure_blob_sas_configuration/location_azure_blob_sas_configuration.dart';
 
 /// The set of arguments for LocationAzureBlob.
 class LocationAzureBlobArgs {
   /// The access tier that you want your objects or files transferred into. Valid values: `HOT`, `COOL` and `ARCHIVE`. Default: `HOT`.
-  final Input<String>? accessTier;
+  final pulumi.Input<String>? accessTier;
 
   /// A list of DataSync Agent ARNs with which this location will be associated.
-  final Input<List<String>> agentArns;
+  final pulumi.Input<List<String>> agentArns;
 
   /// The authentication method DataSync uses to access your Azure Blob Storage. Valid values: `SAS`.
-  final Input<String> authenticationType;
+  final pulumi.Input<String> authenticationType;
 
   /// The type of blob that you want your objects or files to be when transferring them into Azure Blob Storage. Valid values: `BLOB`. Default: `BLOB`.
-  final Input<String>? blobType;
+  final pulumi.Input<String>? blobType;
 
   /// The URL of the Azure Blob Storage container involved in your transfer.
-  final Input<String> containerUrl;
+  final pulumi.Input<String> containerUrl;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The SAS configuration that allows DataSync to access your Azure Blob Storage. See configuration below.
-  final Input<LocationAzureBlobSasConfiguration>? sasConfiguration;
+  final pulumi.Input<LocationAzureBlobSasConfiguration>? sasConfiguration;
 
   /// Path segments if you want to limit your transfer to a virtual directory in the container.
-  final Input<String>? subdirectory;
+  final pulumi.Input<String>? subdirectory;
 
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   LocationAzureBlobArgs({
     this.accessTier,
@@ -63,7 +63,7 @@ class LocationAzureBlobArgs {
     }
     final sasConfigurationValue = sasConfiguration;
     if (sasConfigurationValue != null) {
-      map['sasConfiguration'] = Input.mapOptionalInputValue<
+      map['sasConfiguration'] = pulumi.Input.mapOptionalInputValue<
               LocationAzureBlobSasConfiguration, Map<String, dynamic>>(
           sasConfigurationValue, (value) => value.toMap());
     }
@@ -80,17 +80,18 @@ class LocationAzureBlobArgs {
 
   factory LocationAzureBlobArgs.fromMap(Map<String, dynamic> map) {
     return LocationAzureBlobArgs(
-      accessTier: Input.asOptionalInput<String>(map['accessTier']),
-      agentArns: Input.asInput<List<String>>(map['agentArns']),
-      authenticationType: Input.asInput<String>(map['authenticationType']),
-      blobType: Input.asOptionalInput<String>(map['blobType']),
-      containerUrl: Input.asInput<String>(map['containerUrl']),
-      region: Input.asOptionalInput<String>(map['region']),
+      accessTier: pulumi.Input.asOptionalInput<String>(map['accessTier']),
+      agentArns: pulumi.Input.asInput<List<String>>(map['agentArns']),
+      authenticationType:
+          pulumi.Input.asInput<String>(map['authenticationType']),
+      blobType: pulumi.Input.asOptionalInput<String>(map['blobType']),
+      containerUrl: pulumi.Input.asInput<String>(map['containerUrl']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       sasConfiguration:
-          Input.asOptionalInput<LocationAzureBlobSasConfiguration>(
+          pulumi.Input.asOptionalInput<LocationAzureBlobSasConfiguration>(
               map['sasConfiguration']),
-      subdirectory: Input.asOptionalInput<String>(map['subdirectory']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      subdirectory: pulumi.Input.asOptionalInput<String>(map['subdirectory']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

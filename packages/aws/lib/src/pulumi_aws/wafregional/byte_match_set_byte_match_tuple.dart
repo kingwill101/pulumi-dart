@@ -1,3 +1,3 @@
 library module_wafregional_byte_match_set_byte_match_tuple;
 
-export 'byte_match_set_byte_match_tuple/byte_match_set_byte_match_tuple2.dart';
+export 'byte_match_set_byte_match_tuple/byte_match_set_byte_match_tuple_wafregional.dart';

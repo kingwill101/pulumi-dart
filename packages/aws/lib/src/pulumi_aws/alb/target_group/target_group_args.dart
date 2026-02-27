@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../target_group_health_check/target_group_health_check.dart';
 import '../target_group_stickiness/target_group_stickiness.dart';
 import '../target_group_target_failover/target_group_target_failover.dart';
@@ -10,76 +10,76 @@ import '../target_group_target_health_state/target_group_target_health_state.dar
 /// The set of arguments for TargetGroup.
 class TargetGroupArgs {
   /// Whether to terminate connections at the end of the deregistration timeout on Network Load Balancers. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#deregistration-delay) for more information. Default is `false`.
-  final Input<bool>? connectionTermination;
+  final pulumi.Input<bool>? connectionTermination;
 
   /// Amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from draining to unused. The range is 0-3600 seconds. The default value is 300 seconds.
-  final Input<int>? deregistrationDelay;
+  final pulumi.Input<int>? deregistrationDelay;
 
   /// Health Check configuration block. Detailed below.
-  final Input<TargetGroupHealthCheck>? healthCheck;
+  final pulumi.Input<TargetGroupHealthCheck>? healthCheck;
 
   /// The type of IP addresses used by the target group, only supported when target type is set to `ip`. Possible values are `ipv4` or `ipv6`.
-  final Input<String>? ipAddressType;
+  final pulumi.Input<String>? ipAddressType;
 
   /// Whether the request and response headers exchanged between the load balancer and the Lambda function include arrays of values or strings. Only applies when `target_type` is `lambda`. Default is `false`.
-  final Input<bool>? lambdaMultiValueHeadersEnabled;
+  final pulumi.Input<bool>? lambdaMultiValueHeadersEnabled;
 
   /// Determines how the load balancer selects targets when routing requests. Only applicable for Application Load Balancer Target Groups. The value is `round_robin`, `least_outstanding_requests`, or `weighted_random`. The default is `round_robin`.
-  final Input<String>? loadBalancingAlgorithmType;
+  final pulumi.Input<String>? loadBalancingAlgorithmType;
 
   /// Determines whether to enable target anomaly mitigation.  Target anomaly mitigation is only supported by the `weighted_random` load balancing algorithm type.  See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#automatic-target-weights) for more information.  The value is `"on"` or `"off"`. The default is `"off"`.
-  final Input<String>? loadBalancingAnomalyMitigation;
+  final pulumi.Input<String>? loadBalancingAnomalyMitigation;
 
   /// Indicates whether cross zone load balancing is enabled. The value is `"true"`, `"false"` or `"use_load_balancer_configuration"`. The default is `"use_load_balancer_configuration"`.
-  final Input<String>? loadBalancingCrossZoneEnabled;
+  final pulumi.Input<String>? loadBalancingCrossZoneEnabled;
 
   /// Name of the target group. If omitted, this provider will assign a random, unique name. This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`. Cannot be longer than 6 characters.
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// Port on which targets receive traffic, unless overridden when registering a specific target. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
-  final Input<int>? port;
+  final pulumi.Input<int>? port;
 
   /// Whether client IP preservation is enabled. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#client-ip-preservation) for more information.
-  final Input<String>? preserveClientIp;
+  final pulumi.Input<String>? preserveClientIp;
 
   /// Protocol to use for routing traffic to the targets.
   /// Should be one of `GENEVE`, `HTTP`, `HTTPS`, `TCP`, `TCP_UDP`, `TLS`, `UDP`, `QUIC`, or `TCP_QUIC`.
   /// Required when `target_type` is `instance`, `ip`, or `alb`.
   /// Does not apply when `target_type` is `lambda`.
-  final Input<String>? protocol;
+  final pulumi.Input<String>? protocol;
 
   /// Only applicable when `protocol` is `HTTP` or `HTTPS`. The protocol version. Specify `GRPC` to send requests to targets using gRPC. Specify `HTTP2` to send requests to targets using HTTP/2. The default is `HTTP1`, which sends requests to targets using HTTP/1.1
-  final Input<String>? protocolVersion;
+  final pulumi.Input<String>? protocolVersion;
 
   /// Whether to enable support for proxy protocol v2 on Network Load Balancers. See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#proxy-protocol) for more information. Default is `false`.
-  final Input<bool>? proxyProtocolV2;
+  final pulumi.Input<bool>? proxyProtocolV2;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Amount time for targets to warm up before the load balancer sends them a full share of requests. The range is 30-900 seconds or 0 to disable. The default value is 0 seconds.
-  final Input<int>? slowStart;
+  final pulumi.Input<int>? slowStart;
 
   /// Stickiness configuration block. Detailed below.
-  final Input<TargetGroupStickiness>? stickiness;
+  final pulumi.Input<TargetGroupStickiness>? stickiness;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Port on which the target control agent and application load balancer exchange management traffic for the target optimizer feature. Only applicable for Application Load Balancer target groups when `target_type` is `instance` or `ip`.
-  final Input<int>? targetControlPort;
+  final pulumi.Input<int>? targetControlPort;
 
   /// Target failover block. Only applicable for Gateway Load Balancer target groups. See target_failover for more information.
-  final Input<List<TargetGroupTargetFailover>>? targetFailovers;
+  final pulumi.Input<List<TargetGroupTargetFailover>>? targetFailovers;
 
   /// Target health requirements block. See target_group_health for more information.
-  final Input<TargetGroupTargetGroupHealth>? targetGroupHealth;
+  final pulumi.Input<TargetGroupTargetGroupHealth>? targetGroupHealth;
 
   /// Target health state block. Only applicable for Network Load Balancer target groups when `protocol` is `TCP` or `TLS`. See target_health_state for more information.
-  final Input<List<TargetGroupTargetHealthState>>? targetHealthStates;
+  final pulumi.Input<List<TargetGroupTargetHealthState>>? targetHealthStates;
 
   /// Type of target that you must specify when registering targets with this target group.
   /// See [doc](https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_CreateTargetGroup.html) for supported values.
@@ -92,10 +92,10 @@ class TargetGroupArgs {
   /// Network Load Balancers do not support the `lambda` target type.
   ///
   /// Application Load Balancers do not support the `alb` target type.
-  final Input<String>? targetType;
+  final pulumi.Input<String>? targetType;
 
   /// Identifier of the VPC in which to create the target group. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
-  final Input<String>? vpcId;
+  final pulumi.Input<String>? vpcId;
 
   TargetGroupArgs({
     this.connectionTermination,
@@ -137,7 +137,8 @@ class TargetGroupArgs {
     }
     final healthCheckValue = healthCheck;
     if (healthCheckValue != null) {
-      map['healthCheck'] = Input.mapOptionalInputValue<TargetGroupHealthCheck,
+      map['healthCheck'] = pulumi.Input.mapOptionalInputValue<
+          TargetGroupHealthCheck,
           Map<String, dynamic>>(healthCheckValue, (value) => value.toMap());
     }
     final ipAddressTypeValue = ipAddressType;
@@ -200,7 +201,8 @@ class TargetGroupArgs {
     }
     final stickinessValue = stickiness;
     if (stickinessValue != null) {
-      map['stickiness'] = Input.mapOptionalInputValue<TargetGroupStickiness,
+      map['stickiness'] = pulumi.Input.mapOptionalInputValue<
+          TargetGroupStickiness,
           Map<String, dynamic>>(stickinessValue, (value) => value.toMap());
     }
     final tagsValue = tags;
@@ -213,25 +215,24 @@ class TargetGroupArgs {
     }
     final targetFailoversValue = targetFailovers;
     if (targetFailoversValue != null) {
-      map['targetFailovers'] = Input.mapOptionalInputValue<
+      map['targetFailovers'] = pulumi.Input.mapOptionalInputValue<
               List<TargetGroupTargetFailover>, List<Map<String, dynamic>>>(
           targetFailoversValue,
-          (value) =>
-              Input.encodeList<TargetGroupTargetFailover, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<TargetGroupTargetFailover,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final targetGroupHealthValue = targetGroupHealth;
     if (targetGroupHealthValue != null) {
-      map['targetGroupHealth'] = Input.mapOptionalInputValue<
+      map['targetGroupHealth'] = pulumi.Input.mapOptionalInputValue<
               TargetGroupTargetGroupHealth, Map<String, dynamic>>(
           targetGroupHealthValue, (value) => value.toMap());
     }
     final targetHealthStatesValue = targetHealthStates;
     if (targetHealthStatesValue != null) {
-      map['targetHealthStates'] = Input.mapOptionalInputValue<
+      map['targetHealthStates'] = pulumi.Input.mapOptionalInputValue<
               List<TargetGroupTargetHealthState>, List<Map<String, dynamic>>>(
           targetHealthStatesValue,
-          (value) => Input.encodeList<TargetGroupTargetHealthState,
+          (value) => pulumi.Input.encodeList<TargetGroupTargetHealthState,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final targetTypeValue = targetType;
@@ -248,42 +249,48 @@ class TargetGroupArgs {
   factory TargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return TargetGroupArgs(
       connectionTermination:
-          Input.asOptionalInput<bool>(map['connectionTermination']),
+          pulumi.Input.asOptionalInput<bool>(map['connectionTermination']),
       deregistrationDelay:
-          Input.asOptionalInput<int>(map['deregistrationDelay']),
-      healthCheck:
-          Input.asOptionalInput<TargetGroupHealthCheck>(map['healthCheck']),
-      ipAddressType: Input.asOptionalInput<String>(map['ipAddressType']),
-      lambdaMultiValueHeadersEnabled:
-          Input.asOptionalInput<bool>(map['lambdaMultiValueHeadersEnabled']),
-      loadBalancingAlgorithmType:
-          Input.asOptionalInput<String>(map['loadBalancingAlgorithmType']),
-      loadBalancingAnomalyMitigation:
-          Input.asOptionalInput<String>(map['loadBalancingAnomalyMitigation']),
-      loadBalancingCrossZoneEnabled:
-          Input.asOptionalInput<String>(map['loadBalancingCrossZoneEnabled']),
-      name: Input.asOptionalInput<String>(map['name']),
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
-      port: Input.asOptionalInput<int>(map['port']),
-      preserveClientIp: Input.asOptionalInput<String>(map['preserveClientIp']),
-      protocol: Input.asOptionalInput<String>(map['protocol']),
-      protocolVersion: Input.asOptionalInput<String>(map['protocolVersion']),
-      proxyProtocolV2: Input.asOptionalInput<bool>(map['proxyProtocolV2']),
-      region: Input.asOptionalInput<String>(map['region']),
-      slowStart: Input.asOptionalInput<int>(map['slowStart']),
-      stickiness:
-          Input.asOptionalInput<TargetGroupStickiness>(map['stickiness']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      targetControlPort: Input.asOptionalInput<int>(map['targetControlPort']),
-      targetFailovers: Input.asOptionalInput<List<TargetGroupTargetFailover>>(
-          map['targetFailovers']),
-      targetGroupHealth: Input.asOptionalInput<TargetGroupTargetGroupHealth>(
-          map['targetGroupHealth']),
+          pulumi.Input.asOptionalInput<int>(map['deregistrationDelay']),
+      healthCheck: pulumi.Input.asOptionalInput<TargetGroupHealthCheck>(
+          map['healthCheck']),
+      ipAddressType: pulumi.Input.asOptionalInput<String>(map['ipAddressType']),
+      lambdaMultiValueHeadersEnabled: pulumi.Input.asOptionalInput<bool>(
+          map['lambdaMultiValueHeadersEnabled']),
+      loadBalancingAlgorithmType: pulumi.Input.asOptionalInput<String>(
+          map['loadBalancingAlgorithmType']),
+      loadBalancingAnomalyMitigation: pulumi.Input.asOptionalInput<String>(
+          map['loadBalancingAnomalyMitigation']),
+      loadBalancingCrossZoneEnabled: pulumi.Input.asOptionalInput<String>(
+          map['loadBalancingCrossZoneEnabled']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
+      port: pulumi.Input.asOptionalInput<int>(map['port']),
+      preserveClientIp:
+          pulumi.Input.asOptionalInput<String>(map['preserveClientIp']),
+      protocol: pulumi.Input.asOptionalInput<String>(map['protocol']),
+      protocolVersion:
+          pulumi.Input.asOptionalInput<String>(map['protocolVersion']),
+      proxyProtocolV2:
+          pulumi.Input.asOptionalInput<bool>(map['proxyProtocolV2']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      slowStart: pulumi.Input.asOptionalInput<int>(map['slowStart']),
+      stickiness: pulumi.Input.asOptionalInput<TargetGroupStickiness>(
+          map['stickiness']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      targetControlPort:
+          pulumi.Input.asOptionalInput<int>(map['targetControlPort']),
+      targetFailovers:
+          pulumi.Input.asOptionalInput<List<TargetGroupTargetFailover>>(
+              map['targetFailovers']),
+      targetGroupHealth:
+          pulumi.Input.asOptionalInput<TargetGroupTargetGroupHealth>(
+              map['targetGroupHealth']),
       targetHealthStates:
-          Input.asOptionalInput<List<TargetGroupTargetHealthState>>(
+          pulumi.Input.asOptionalInput<List<TargetGroupTargetHealthState>>(
               map['targetHealthStates']),
-      targetType: Input.asOptionalInput<String>(map['targetType']),
-      vpcId: Input.asOptionalInput<String>(map['vpcId']),
+      targetType: pulumi.Input.asOptionalInput<String>(map['targetType']),
+      vpcId: pulumi.Input.asOptionalInput<String>(map['vpcId']),
     );
   }
 }

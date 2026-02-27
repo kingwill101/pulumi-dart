@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../anomaly_subscription_subscriber/anomaly_subscription_subscriber.dart';
 import '../anomaly_subscription_threshold_expression/anomaly_subscription_threshold_expression.dart';
 import 'anomaly_subscription_args.dart';
@@ -39,43 +39,44 @@ import 'anomaly_subscription_args.dart';
 /// ```sh
 /// $ pulumi import aws:costexplorer/anomalySubscription:AnomalySubscription example AnomalySubscriptionARN
 /// ```
-class AnomalySubscription extends CustomResource {
+class AnomalySubscription extends pulumi.CustomResource {
   /// The unique identifier for the AWS account in which the anomaly subscription ought to be created.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// ARN of the anomaly subscription.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The frequency that anomaly reports are sent. Valid Values: `DAILY` | `IMMEDIATE` | `WEEKLY`.
-  late final Output<String> frequency;
+  late final pulumi.Output<String> frequency;
 
   /// A list of cost anomaly monitors.
-  late final Output<List<String>> monitorArnLists;
+  late final pulumi.Output<List<String>> monitorArnLists;
 
   /// The name for the subscription.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// A subscriber configuration. Multiple subscribers can be defined.
-  late final Output<List<AnomalySubscriptionSubscriber>> subscribers;
+  late final pulumi.Output<List<AnomalySubscriptionSubscriber>> subscribers;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// An Expression object used to specify the anomalies that you want to generate alerts for. See Threshold Expression.
-  late final Output<AnomalySubscriptionThresholdExpression> thresholdExpression;
+  late final pulumi.Output<AnomalySubscriptionThresholdExpression>
+      thresholdExpression;
 
   AnomalySubscription(
     String name, {
     AnomalySubscriptionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:costexplorer/anomalySubscription:AnomalySubscription',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
     this.arn = registerOutput<String>('arn');

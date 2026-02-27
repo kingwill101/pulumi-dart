@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connection_args.dart';
 
 /// Manages an App Runner Connection.
@@ -16,37 +16,37 @@ import 'connection_args.dart';
 /// ```sh
 /// $ pulumi import aws:apprunner/connection:Connection example example
 /// ```
-class Connection extends CustomResource {
+class Connection extends pulumi.CustomResource {
   /// ARN of the connection.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Name of the connection.
-  late final Output<String> connectionName;
+  late final pulumi.Output<String> connectionName;
 
   /// Source repository provider. Valid values: `GITHUB`.
-  late final Output<String> providerType;
+  late final pulumi.Output<String> providerType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Current state of the App Runner connection. When the state is `AVAILABLE`, you can use the connection to create an `aws.apprunner.Service` resource.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Connection(
     String name, {
     ConnectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apprunner/connection:Connection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.connectionName = registerOutput<String>('connectionName');

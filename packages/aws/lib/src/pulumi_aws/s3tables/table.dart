@@ -1,4 +1,4 @@
 library module_s3tables_table;
 
-export 'table/table3.dart';
-export 'table/table_args3.dart';
+export 'table/table_s3tables.dart';
+export 'table/table_s3tables_args.dart';

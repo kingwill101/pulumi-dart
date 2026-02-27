@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../experiment_template_action_parameter/experiment_template_action_parameter.dart';
 import '../experiment_template_action_target/experiment_template_action_target.dart';
 
@@ -42,7 +42,8 @@ class ExperimentTemplateAction {
     map['name'] = name;
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<ExperimentTemplateActionParameter,
+      map['parameters'] = pulumi.Input.encodeList<
+          ExperimentTemplateActionParameter,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
     final startAftersValue = startAfters;
@@ -64,7 +65,7 @@ class ExperimentTemplateAction {
       name: map['name'] as String,
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<ExperimentTemplateActionParameter>(
+          : pulumi.Input.decodeList<ExperimentTemplateActionParameter>(
               map['parameters'],
               (value) => ExperimentTemplateActionParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

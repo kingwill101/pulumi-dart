@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firewall_policy_firewall_policy_policy_variables/firewall_policy_firewall_policy_policy_variables.dart';
 import '../firewall_policy_firewall_policy_stateful_engine_options/firewall_policy_firewall_policy_stateful_engine_options.dart';
 import '../firewall_policy_firewall_policy_stateful_rule_group_reference/firewall_policy_firewall_policy_stateful_rule_group_reference.dart';
@@ -69,14 +69,14 @@ class FirewallPolicyFirewallPolicy {
     }
     final statefulRuleGroupReferencesValue = statefulRuleGroupReferences;
     if (statefulRuleGroupReferencesValue != null) {
-      map['statefulRuleGroupReferences'] = Input.encodeList<
+      map['statefulRuleGroupReferences'] = pulumi.Input.encodeList<
               FirewallPolicyFirewallPolicyStatefulRuleGroupReference,
               Map<String, dynamic>>(
           statefulRuleGroupReferencesValue, (value) => value.toMap());
     }
     final statelessCustomActionsValue = statelessCustomActions;
     if (statelessCustomActionsValue != null) {
-      map['statelessCustomActions'] = Input.encodeList<
+      map['statelessCustomActions'] = pulumi.Input.encodeList<
               FirewallPolicyFirewallPolicyStatelessCustomAction,
               Map<String, dynamic>>(
           statelessCustomActionsValue, (value) => value.toMap());
@@ -85,7 +85,7 @@ class FirewallPolicyFirewallPolicy {
     map['statelessFragmentDefaultActions'] = statelessFragmentDefaultActions;
     final statelessRuleGroupReferencesValue = statelessRuleGroupReferences;
     if (statelessRuleGroupReferencesValue != null) {
-      map['statelessRuleGroupReferences'] = Input.encodeList<
+      map['statelessRuleGroupReferences'] = pulumi.Input.encodeList<
               FirewallPolicyFirewallPolicyStatelessRuleGroupReference,
               Map<String, dynamic>>(
           statelessRuleGroupReferencesValue, (value) => value.toMap());
@@ -112,14 +112,15 @@ class FirewallPolicyFirewallPolicy {
               (map['statefulEngineOptions'] as Map).cast<String, dynamic>()),
       statefulRuleGroupReferences: map['statefulRuleGroupReferences'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FirewallPolicyFirewallPolicyStatefulRuleGroupReference>(
               map['statefulRuleGroupReferences'],
               (value) => FirewallPolicyFirewallPolicyStatefulRuleGroupReference
                   .fromMap((value as Map).cast<String, dynamic>())),
       statelessCustomActions: map['statelessCustomActions'] == null
           ? null
-          : Input.decodeList<FirewallPolicyFirewallPolicyStatelessCustomAction>(
+          : pulumi.Input.decodeList<
+                  FirewallPolicyFirewallPolicyStatelessCustomAction>(
               map['statelessCustomActions'],
               (value) =>
                   FirewallPolicyFirewallPolicyStatelessCustomAction.fromMap(
@@ -130,7 +131,7 @@ class FirewallPolicyFirewallPolicy {
           (map['statelessFragmentDefaultActions'] as List).cast<String>(),
       statelessRuleGroupReferences: map['statelessRuleGroupReferences'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FirewallPolicyFirewallPolicyStatelessRuleGroupReference>(
               map['statelessRuleGroupReferences'],
               (value) => FirewallPolicyFirewallPolicyStatelessRuleGroupReference

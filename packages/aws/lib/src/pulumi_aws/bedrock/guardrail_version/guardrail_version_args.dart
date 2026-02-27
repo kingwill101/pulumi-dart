@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../guardrail_version_timeouts/guardrail_version_timeouts.dart';
 
 /// The set of arguments for GuardrailVersion.
 class GuardrailVersionArgs {
   /// Description of the Guardrail version.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Guardrail ARN.
   ///
   /// The following arguments are optional:
-  final Input<String> guardrailArn;
+  final pulumi.Input<String> guardrailArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Whether to retain the old version of a previously deployed Guardrail. Default is `false`
-  final Input<bool>? skipDestroy;
-  final Input<GuardrailVersionTimeouts>? timeouts;
+  final pulumi.Input<bool>? skipDestroy;
+  final pulumi.Input<GuardrailVersionTimeouts>? timeouts;
 
   GuardrailVersionArgs({
     this.description,
@@ -45,7 +45,8 @@ class GuardrailVersionArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<GuardrailVersionTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
+          GuardrailVersionTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
@@ -53,12 +54,12 @@ class GuardrailVersionArgs {
 
   factory GuardrailVersionArgs.fromMap(Map<String, dynamic> map) {
     return GuardrailVersionArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      guardrailArn: Input.asInput<String>(map['guardrailArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      skipDestroy: Input.asOptionalInput<bool>(map['skipDestroy']),
-      timeouts:
-          Input.asOptionalInput<GuardrailVersionTimeouts>(map['timeouts']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      guardrailArn: pulumi.Input.asInput<String>(map['guardrailArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      skipDestroy: pulumi.Input.asOptionalInput<bool>(map['skipDestroy']),
+      timeouts: pulumi.Input.asOptionalInput<GuardrailVersionTimeouts>(
+          map['timeouts']),
     );
   }
 }

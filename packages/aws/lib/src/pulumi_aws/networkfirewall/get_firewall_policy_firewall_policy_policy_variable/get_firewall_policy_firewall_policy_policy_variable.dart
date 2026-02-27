@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_firewall_policy_firewall_policy_policy_variable_rule_variable/get_firewall_policy_firewall_policy_policy_variable_rule_variable.dart';
 
 class GetFirewallPolicyFirewallPolicyPolicyVariable {
@@ -13,7 +13,7 @@ class GetFirewallPolicyFirewallPolicyPolicyVariable {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['ruleVariables'] = Input.encodeList<
+    map['ruleVariables'] = pulumi.Input.encodeList<
         GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariable,
         Map<String, dynamic>>(ruleVariables, (value) => value.toMap());
     return map;
@@ -22,7 +22,7 @@ class GetFirewallPolicyFirewallPolicyPolicyVariable {
   factory GetFirewallPolicyFirewallPolicyPolicyVariable.fromMap(
       Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyPolicyVariable(
-      ruleVariables: Input.decodeList<
+      ruleVariables: pulumi.Input.decodeList<
               GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariable>(
           map['ruleVariables'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../deployment_group_ec2_tag_set_ec2_tag_filter/deployment_group_ec2_tag_set_ec2_tag_filter.dart';
 
 class DeploymentGroupEc2TagSet {
@@ -15,7 +15,7 @@ class DeploymentGroupEc2TagSet {
     final map = <String, dynamic>{};
     final ec2TagFiltersValue = ec2TagFilters;
     if (ec2TagFiltersValue != null) {
-      map['ec2TagFilters'] = Input.encodeList<
+      map['ec2TagFilters'] = pulumi.Input.encodeList<
           DeploymentGroupEc2TagSetEc2TagFilter,
           Map<String, dynamic>>(ec2TagFiltersValue, (value) => value.toMap());
     }
@@ -26,7 +26,7 @@ class DeploymentGroupEc2TagSet {
     return DeploymentGroupEc2TagSet(
       ec2TagFilters: map['ec2TagFilters'] == null
           ? null
-          : Input.decodeList<DeploymentGroupEc2TagSetEc2TagFilter>(
+          : pulumi.Input.decodeList<DeploymentGroupEc2TagSetEc2TagFilter>(
               map['ec2TagFilters'],
               (value) => DeploymentGroupEc2TagSetEc2TagFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

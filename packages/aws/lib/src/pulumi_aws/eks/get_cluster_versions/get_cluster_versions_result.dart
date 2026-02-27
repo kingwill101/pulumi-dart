@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cluster_versions_cluster_version/get_cluster_versions_cluster_version.dart';
 
 /// Result data returned by getClusterVersions.
@@ -38,7 +38,8 @@ class GetClusterVersionsResult {
     if (clusterTypeValue != null) {
       map['clusterType'] = clusterTypeValue;
     }
-    map['clusterVersions'] = Input.encodeList<GetClusterVersionsClusterVersion,
+    map['clusterVersions'] = pulumi.Input.encodeList<
+        GetClusterVersionsClusterVersion,
         Map<String, dynamic>>(clusterVersions, (value) => value.toMap());
     final clusterVersionsOnliesValue = clusterVersionsOnlies;
     if (clusterVersionsOnliesValue != null) {
@@ -65,10 +66,11 @@ class GetClusterVersionsResult {
     return GetClusterVersionsResult(
       clusterType:
           map['clusterType'] == null ? null : map['clusterType'] as String,
-      clusterVersions: Input.decodeList<GetClusterVersionsClusterVersion>(
-          map['clusterVersions'],
-          (value) => GetClusterVersionsClusterVersion.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      clusterVersions:
+          pulumi.Input.decodeList<GetClusterVersionsClusterVersion>(
+              map['clusterVersions'],
+              (value) => GetClusterVersionsClusterVersion.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       clusterVersionsOnlies: map['clusterVersionsOnlies'] == null
           ? null
           : (map['clusterVersionsOnlies'] as List).cast<String>(),

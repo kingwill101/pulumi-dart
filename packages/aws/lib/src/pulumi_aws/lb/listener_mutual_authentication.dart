@@ -1,3 +1,3 @@
 library module_lb_listener_mutual_authentication;
 
-export 'listener_mutual_authentication/listener_mutual_authentication2.dart';
+export 'listener_mutual_authentication/listener_mutual_authentication_lb.dart';

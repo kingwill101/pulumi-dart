@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_delivery_destination_policy_args.dart';
 
 /// Resource for managing an AWS CloudWatch Logs Delivery Destination Policy.
@@ -16,25 +16,25 @@ import 'log_delivery_destination_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudwatch/logDeliveryDestinationPolicy:LogDeliveryDestinationPolicy example example
 /// ```
-class LogDeliveryDestinationPolicy extends CustomResource {
+class LogDeliveryDestinationPolicy extends pulumi.CustomResource {
   /// The name of the delivery destination to assign this policy to.
-  late final Output<String> deliveryDestinationName;
+  late final pulumi.Output<String> deliveryDestinationName;
 
   /// The contents of the policy.
-  late final Output<String> deliveryDestinationPolicy;
+  late final pulumi.Output<String> deliveryDestinationPolicy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   LogDeliveryDestinationPolicy(
     String name, {
     LogDeliveryDestinationPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudwatch/logDeliveryDestinationPolicy:LogDeliveryDestinationPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.deliveryDestinationName =
         registerOutput<String>('deliveryDestinationName');

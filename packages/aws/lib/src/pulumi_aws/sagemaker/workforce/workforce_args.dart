@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workforce_cognito_config/workforce_cognito_config.dart';
 import '../workforce_oidc_config/workforce_oidc_config.dart';
 import '../workforce_source_ip_config/workforce_source_ip_config.dart';
@@ -9,22 +9,22 @@ import '../workforce_workforce_vpc_config/workforce_workforce_vpc_config.dart';
 /// The set of arguments for Workforce.
 class WorkforceArgs {
   /// Use this parameter to configure an Amazon Cognito private workforce. A single Cognito workforce is created using and corresponds to a single Amazon Cognito user pool. Conflicts with `oidc_config`. see Cognito Config details below.
-  final Input<WorkforceCognitoConfig>? cognitoConfig;
+  final pulumi.Input<WorkforceCognitoConfig>? cognitoConfig;
 
   /// Use this parameter to configure a private workforce using your own OIDC Identity Provider. Conflicts with `cognito_config`. see OIDC Config details below.
-  final Input<WorkforceOidcConfig>? oidcConfig;
+  final pulumi.Input<WorkforceOidcConfig>? oidcConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A list of IP address ranges Used to create an allow list of IP addresses for a private workforce. By default, a workforce isn't restricted to specific IP addresses. see Source Ip Config details below.
-  final Input<WorkforceSourceIpConfig>? sourceIpConfig;
+  final pulumi.Input<WorkforceSourceIpConfig>? sourceIpConfig;
 
   /// The name of the Workforce (must be unique).
-  final Input<String> workforceName;
+  final pulumi.Input<String> workforceName;
 
   /// configure a workforce using VPC. see Workforce VPC Config details below.
-  final Input<WorkforceWorkforceVpcConfig>? workforceVpcConfig;
+  final pulumi.Input<WorkforceWorkforceVpcConfig>? workforceVpcConfig;
 
   WorkforceArgs({
     this.cognitoConfig,
@@ -39,12 +39,14 @@ class WorkforceArgs {
     final map = <String, dynamic>{};
     final cognitoConfigValue = cognitoConfig;
     if (cognitoConfigValue != null) {
-      map['cognitoConfig'] = Input.mapOptionalInputValue<WorkforceCognitoConfig,
+      map['cognitoConfig'] = pulumi.Input.mapOptionalInputValue<
+          WorkforceCognitoConfig,
           Map<String, dynamic>>(cognitoConfigValue, (value) => value.toMap());
     }
     final oidcConfigValue = oidcConfig;
     if (oidcConfigValue != null) {
-      map['oidcConfig'] = Input.mapOptionalInputValue<WorkforceOidcConfig,
+      map['oidcConfig'] = pulumi.Input.mapOptionalInputValue<
+          WorkforceOidcConfig,
           Map<String, dynamic>>(oidcConfigValue, (value) => value.toMap());
     }
     final regionValue = region;
@@ -53,14 +55,14 @@ class WorkforceArgs {
     }
     final sourceIpConfigValue = sourceIpConfig;
     if (sourceIpConfigValue != null) {
-      map['sourceIpConfig'] = Input.mapOptionalInputValue<
+      map['sourceIpConfig'] = pulumi.Input.mapOptionalInputValue<
           WorkforceSourceIpConfig,
           Map<String, dynamic>>(sourceIpConfigValue, (value) => value.toMap());
     }
     map['workforceName'] = workforceName;
     final workforceVpcConfigValue = workforceVpcConfig;
     if (workforceVpcConfigValue != null) {
-      map['workforceVpcConfig'] = Input.mapOptionalInputValue<
+      map['workforceVpcConfig'] = pulumi.Input.mapOptionalInputValue<
               WorkforceWorkforceVpcConfig, Map<String, dynamic>>(
           workforceVpcConfigValue, (value) => value.toMap());
     }
@@ -69,15 +71,17 @@ class WorkforceArgs {
 
   factory WorkforceArgs.fromMap(Map<String, dynamic> map) {
     return WorkforceArgs(
-      cognitoConfig:
-          Input.asOptionalInput<WorkforceCognitoConfig>(map['cognitoConfig']),
-      oidcConfig: Input.asOptionalInput<WorkforceOidcConfig>(map['oidcConfig']),
-      region: Input.asOptionalInput<String>(map['region']),
-      sourceIpConfig:
-          Input.asOptionalInput<WorkforceSourceIpConfig>(map['sourceIpConfig']),
-      workforceName: Input.asInput<String>(map['workforceName']),
-      workforceVpcConfig: Input.asOptionalInput<WorkforceWorkforceVpcConfig>(
-          map['workforceVpcConfig']),
+      cognitoConfig: pulumi.Input.asOptionalInput<WorkforceCognitoConfig>(
+          map['cognitoConfig']),
+      oidcConfig:
+          pulumi.Input.asOptionalInput<WorkforceOidcConfig>(map['oidcConfig']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sourceIpConfig: pulumi.Input.asOptionalInput<WorkforceSourceIpConfig>(
+          map['sourceIpConfig']),
+      workforceName: pulumi.Input.asInput<String>(map['workforceName']),
+      workforceVpcConfig:
+          pulumi.Input.asOptionalInput<WorkforceWorkforceVpcConfig>(
+              map['workforceVpcConfig']),
     );
   }
 }

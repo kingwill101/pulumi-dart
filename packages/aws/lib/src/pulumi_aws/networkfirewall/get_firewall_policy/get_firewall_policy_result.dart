@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_firewall_policy_firewall_policy/get_firewall_policy_firewall_policy.dart';
 
 /// Result data returned by getFirewallPolicy.
@@ -42,9 +42,9 @@ class GetFirewallPolicyResult {
       map['arn'] = arnValue;
     }
     map['description'] = description;
-    map['firewallPolicies'] =
-        Input.encodeList<GetFirewallPolicyFirewallPolicy, Map<String, dynamic>>(
-            firewallPolicies, (value) => value.toMap());
+    map['firewallPolicies'] = pulumi.Input.encodeList<
+        GetFirewallPolicyFirewallPolicy,
+        Map<String, dynamic>>(firewallPolicies, (value) => value.toMap());
     map['id'] = id;
     final nameValue = name;
     if (nameValue != null) {
@@ -60,10 +60,11 @@ class GetFirewallPolicyResult {
     return GetFirewallPolicyResult(
       arn: map['arn'] == null ? null : map['arn'] as String,
       description: map['description'] as String,
-      firewallPolicies: Input.decodeList<GetFirewallPolicyFirewallPolicy>(
-          map['firewallPolicies'],
-          (value) => GetFirewallPolicyFirewallPolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      firewallPolicies:
+          pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicy>(
+              map['firewallPolicies'],
+              (value) => GetFirewallPolicyFirewallPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] as String,

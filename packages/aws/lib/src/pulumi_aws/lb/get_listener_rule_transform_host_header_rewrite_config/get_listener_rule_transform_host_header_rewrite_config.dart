@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_listener_rule_transform_host_header_rewrite_config_rewrite/get_listener_rule_transform_host_header_rewrite_config_rewrite.dart';
 
 class GetListenerRuleTransformHostHeaderRewriteConfig {
@@ -15,7 +15,7 @@ class GetListenerRuleTransformHostHeaderRewriteConfig {
     final map = <String, dynamic>{};
     final rewritesValue = rewrites;
     if (rewritesValue != null) {
-      map['rewrites'] = Input.encodeList<
+      map['rewrites'] = pulumi.Input.encodeList<
           GetListenerRuleTransformHostHeaderRewriteConfigRewrite,
           Map<String, dynamic>>(rewritesValue, (value) => value.toMap());
     }
@@ -27,7 +27,7 @@ class GetListenerRuleTransformHostHeaderRewriteConfig {
     return GetListenerRuleTransformHostHeaderRewriteConfig(
       rewrites: map['rewrites'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GetListenerRuleTransformHostHeaderRewriteConfigRewrite>(
               map['rewrites'],
               (value) => GetListenerRuleTransformHostHeaderRewriteConfigRewrite

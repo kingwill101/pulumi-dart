@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_policies_args.dart';
 import 'get_policies_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_policies_result.dart';
 /// ### Basic Usage
 Future<GetPoliciesResult> getPolicies(
   GetPoliciesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:organizations/getPolicies:getPolicies',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPoliciesResult.fromMap(result);
 }

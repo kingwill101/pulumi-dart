@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_function_url_cor/get_function_url_cor.dart';
 
 /// Result data returned by getFunctionUrl.
@@ -53,8 +53,9 @@ class GetFunctionUrlResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['authorizationType'] = authorizationType;
-    map['cors'] = Input.encodeList<GetFunctionUrlCor, Map<String, dynamic>>(
-        cors, (value) => value.toMap());
+    map['cors'] =
+        pulumi.Input.encodeList<GetFunctionUrlCor, Map<String, dynamic>>(
+            cors, (value) => value.toMap());
     map['creationTime'] = creationTime;
     map['functionArn'] = functionArn;
     map['functionName'] = functionName;
@@ -74,7 +75,7 @@ class GetFunctionUrlResult {
   factory GetFunctionUrlResult.fromMap(Map<String, dynamic> map) {
     return GetFunctionUrlResult(
       authorizationType: map['authorizationType'] as String,
-      cors: Input.decodeList<GetFunctionUrlCor>(
+      cors: pulumi.Input.decodeList<GetFunctionUrlCor>(
           map['cors'],
           (value) => GetFunctionUrlCor.fromMap(
               (value as Map).cast<String, dynamic>())),

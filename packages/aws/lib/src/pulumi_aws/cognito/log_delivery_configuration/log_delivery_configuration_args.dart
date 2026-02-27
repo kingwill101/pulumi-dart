@@ -1,20 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../log_delivery_configuration_log_configuration/log_delivery_configuration_log_configuration.dart';
 
 /// The set of arguments for LogDeliveryConfiguration.
 class LogDeliveryConfigurationArgs {
   /// Configuration block for log delivery. At least one configuration block is required. See Log Configurations below.
-  final Input<List<LogDeliveryConfigurationLogConfiguration>> logConfigurations;
+  final pulumi.Input<List<LogDeliveryConfigurationLogConfiguration>>
+      logConfigurations;
 
   /// The AWS region.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of the user pool for which to configure log delivery.
   ///
   /// The following arguments are optional:
-  final Input<String> userPoolId;
+  final pulumi.Input<String> userPoolId;
 
   LogDeliveryConfigurationArgs({
     required this.logConfigurations,
@@ -24,11 +25,12 @@ class LogDeliveryConfigurationArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['logConfigurations'] = Input.mapInputValue<
+    map['logConfigurations'] = pulumi.Input.mapInputValue<
             List<LogDeliveryConfigurationLogConfiguration>,
             List<Map<String, dynamic>>>(
         logConfigurations,
-        (value) => Input.encodeList<LogDeliveryConfigurationLogConfiguration,
+        (value) => pulumi.Input.encodeList<
+            LogDeliveryConfigurationLogConfiguration,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     final regionValue = region;
     if (regionValue != null) {
@@ -41,10 +43,10 @@ class LogDeliveryConfigurationArgs {
   factory LogDeliveryConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return LogDeliveryConfigurationArgs(
       logConfigurations:
-          Input.asInput<List<LogDeliveryConfigurationLogConfiguration>>(
+          pulumi.Input.asInput<List<LogDeliveryConfigurationLogConfiguration>>(
               map['logConfigurations']),
-      region: Input.asOptionalInput<String>(map['region']),
-      userPoolId: Input.asInput<String>(map['userPoolId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      userPoolId: pulumi.Input.asInput<String>(map['userPoolId']),
     );
   }
 }

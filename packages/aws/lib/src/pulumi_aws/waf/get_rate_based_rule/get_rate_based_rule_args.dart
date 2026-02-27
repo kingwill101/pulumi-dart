@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRateBasedRule.
 class GetRateBasedRuleArgs {
   /// Name of the WAF rate based rule.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   GetRateBasedRuleArgs({
     required this.name,
@@ -19,7 +19,7 @@ class GetRateBasedRuleArgs {
 
   factory GetRateBasedRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetRateBasedRuleArgs(
-      name: Input.asInput<String>(map['name']),
+      name: pulumi.Input.asInput<String>(map['name']),
     );
   }
 }

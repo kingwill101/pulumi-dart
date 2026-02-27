@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getCatalogTable.
 class GetCatalogTableArgs {
   /// ID of the Glue Catalog and database where the table metadata resides. If omitted, this defaults to the current AWS Account ID.
-  final Input<String>? catalogId;
+  final pulumi.Input<String>? catalogId;
 
   /// Name of the metadata database where the table metadata resides.
-  final Input<String> databaseName;
+  final pulumi.Input<String> databaseName;
 
   /// Name of the table.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// The time as of when to read the table contents. If not set, the most recent transaction commit time will be used. Cannot be specified along with `transaction_id`. Specified in RFC 3339 format, e.g. `2006-01-02T15:04:05Z07:00`.
-  final Input<String>? queryAsOfTime;
+  final pulumi.Input<String>? queryAsOfTime;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The transaction ID at which to read the table contents.
-  final Input<int>? transactionId;
+  final pulumi.Input<int>? transactionId;
 
   GetCatalogTableArgs({
     this.catalogId,
@@ -56,12 +56,12 @@ class GetCatalogTableArgs {
 
   factory GetCatalogTableArgs.fromMap(Map<String, dynamic> map) {
     return GetCatalogTableArgs(
-      catalogId: Input.asOptionalInput<String>(map['catalogId']),
-      databaseName: Input.asInput<String>(map['databaseName']),
-      name: Input.asInput<String>(map['name']),
-      queryAsOfTime: Input.asOptionalInput<String>(map['queryAsOfTime']),
-      region: Input.asOptionalInput<String>(map['region']),
-      transactionId: Input.asOptionalInput<int>(map['transactionId']),
+      catalogId: pulumi.Input.asOptionalInput<String>(map['catalogId']),
+      databaseName: pulumi.Input.asInput<String>(map['databaseName']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      queryAsOfTime: pulumi.Input.asOptionalInput<String>(map['queryAsOfTime']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      transactionId: pulumi.Input.asOptionalInput<int>(map['transactionId']),
     );
   }
 }

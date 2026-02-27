@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_state_machine_args.dart';
 import 'get_state_machine_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_state_machine_result.dart';
 /// state machine without having to hard code the ARNs as input.
 Future<GetStateMachineResult> getStateMachine(
   GetStateMachineArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:sfn/getStateMachine:getStateMachine',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStateMachineResult.fromMap(result);
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_v2_replication_configuration_rule_destination/bucket_v2_replication_configuration_rule_destination.dart';
 import '../bucket_v2_replication_configuration_rule_filter/bucket_v2_replication_configuration_rule_filter.dart';
 import '../bucket_v2_replication_configuration_rule_source_selection_criteria/bucket_v2_replication_configuration_rule_source_selection_criteria.dart';
@@ -48,12 +48,12 @@ class BucketV2ReplicationConfigurationRule {
     if (deleteMarkerReplicationStatusValue != null) {
       map['deleteMarkerReplicationStatus'] = deleteMarkerReplicationStatusValue;
     }
-    map['destinations'] = Input.encodeList<
+    map['destinations'] = pulumi.Input.encodeList<
         BucketV2ReplicationConfigurationRuleDestination,
         Map<String, dynamic>>(destinations, (value) => value.toMap());
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<
+      map['filters'] = pulumi.Input.encodeList<
           BucketV2ReplicationConfigurationRuleFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
@@ -71,7 +71,7 @@ class BucketV2ReplicationConfigurationRule {
     }
     final sourceSelectionCriteriasValue = sourceSelectionCriterias;
     if (sourceSelectionCriteriasValue != null) {
-      map['sourceSelectionCriterias'] = Input.encodeList<
+      map['sourceSelectionCriterias'] = pulumi.Input.encodeList<
               BucketV2ReplicationConfigurationRuleSourceSelectionCriteria,
               Map<String, dynamic>>(
           sourceSelectionCriteriasValue, (value) => value.toMap());
@@ -87,15 +87,14 @@ class BucketV2ReplicationConfigurationRule {
           map['deleteMarkerReplicationStatus'] == null
               ? null
               : map['deleteMarkerReplicationStatus'] as String,
-      destinations:
-          Input.decodeList<BucketV2ReplicationConfigurationRuleDestination>(
-              map['destinations'],
-              (value) =>
-                  BucketV2ReplicationConfigurationRuleDestination.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      destinations: pulumi.Input.decodeList<
+              BucketV2ReplicationConfigurationRuleDestination>(
+          map['destinations'],
+          (value) => BucketV2ReplicationConfigurationRuleDestination.fromMap(
+              (value as Map).cast<String, dynamic>())),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<BucketV2ReplicationConfigurationRuleFilter>(
+          : pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleFilter>(
               map['filters'],
               (value) => BucketV2ReplicationConfigurationRuleFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -104,7 +103,7 @@ class BucketV2ReplicationConfigurationRule {
       priority: map['priority'] == null ? null : map['priority'] as int,
       sourceSelectionCriterias: map['sourceSelectionCriterias'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   BucketV2ReplicationConfigurationRuleSourceSelectionCriteria>(
               map['sourceSelectionCriterias'],
               (value) =>

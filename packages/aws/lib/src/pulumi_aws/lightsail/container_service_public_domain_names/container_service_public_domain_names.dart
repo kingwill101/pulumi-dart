@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../container_service_public_domain_names_certificate/container_service_public_domain_names_certificate.dart';
 
 class ContainerServicePublicDomainNames {
@@ -13,7 +13,7 @@ class ContainerServicePublicDomainNames {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['certificates'] = Input.encodeList<
+    map['certificates'] = pulumi.Input.encodeList<
         ContainerServicePublicDomainNamesCertificate,
         Map<String, dynamic>>(certificates, (value) => value.toMap());
     return map;
@@ -22,7 +22,7 @@ class ContainerServicePublicDomainNames {
   factory ContainerServicePublicDomainNames.fromMap(Map<String, dynamic> map) {
     return ContainerServicePublicDomainNames(
       certificates:
-          Input.decodeList<ContainerServicePublicDomainNamesCertificate>(
+          pulumi.Input.decodeList<ContainerServicePublicDomainNamesCertificate>(
               map['certificates'],
               (value) => ContainerServicePublicDomainNamesCertificate.fromMap(
                   (value as Map).cast<String, dynamic>())),

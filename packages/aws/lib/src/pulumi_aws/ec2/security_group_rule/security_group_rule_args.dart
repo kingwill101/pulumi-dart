@@ -1,48 +1,48 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SecurityGroupRule.
 class SecurityGroupRuleArgs {
   /// List of CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
-  final Input<List<String>>? cidrBlocks;
+  final pulumi.Input<List<String>>? cidrBlocks;
 
   /// Description of the rule.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Start port (or ICMP type number if protocol is "icmp" or "icmpv6").
-  final Input<int> fromPort;
+  final pulumi.Input<int> fromPort;
 
   /// List of IPv6 CIDR blocks. Cannot be specified with `source_security_group_id` or `self`.
-  final Input<List<String>>? ipv6CidrBlocks;
+  final pulumi.Input<List<String>>? ipv6CidrBlocks;
 
   /// List of Prefix List IDs.
-  final Input<List<String>>? prefixListIds;
+  final pulumi.Input<List<String>>? prefixListIds;
 
   /// Protocol. If not icmp, icmpv6, tcp, udp, or all use the [protocol number](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
-  final Input<String> protocol;
+  final pulumi.Input<String> protocol;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// > **Note** Although `cidr_blocks`, `ipv6_cidr_blocks`, `prefix_list_ids`, and `source_security_group_id` are all marked as optional, you _must_ provide one of them in order to configure the source of the traffic.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Security group to apply this rule to.
-  final Input<String> securityGroupId;
+  final pulumi.Input<String> securityGroupId;
 
   /// Whether the security group itself will be added as a source to this ingress rule. Cannot be specified with `cidr_blocks`, `ipv6_cidr_blocks`, or `source_security_group_id`.
-  final Input<bool>? self;
+  final pulumi.Input<bool>? self;
 
   /// Security group id to allow access to/from, depending on the `type`. Cannot be specified with `cidr_blocks`, `ipv6_cidr_blocks`, or `self`.
-  final Input<String>? sourceSecurityGroupId;
+  final pulumi.Input<String>? sourceSecurityGroupId;
 
   /// End port (or ICMP code if protocol is "icmp").
-  final Input<int> toPort;
+  final pulumi.Input<int> toPort;
 
   /// Type of rule being created. Valid options are `ingress` (inbound)
   /// or `egress` (outbound).
   ///
   /// The following arguments are optional:
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   SecurityGroupRuleArgs({
     this.cidrBlocks,
@@ -99,20 +99,21 @@ class SecurityGroupRuleArgs {
 
   factory SecurityGroupRuleArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGroupRuleArgs(
-      cidrBlocks: Input.asOptionalInput<List<String>>(map['cidrBlocks']),
-      description: Input.asOptionalInput<String>(map['description']),
-      fromPort: Input.asInput<int>(map['fromPort']),
+      cidrBlocks: pulumi.Input.asOptionalInput<List<String>>(map['cidrBlocks']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      fromPort: pulumi.Input.asInput<int>(map['fromPort']),
       ipv6CidrBlocks:
-          Input.asOptionalInput<List<String>>(map['ipv6CidrBlocks']),
-      prefixListIds: Input.asOptionalInput<List<String>>(map['prefixListIds']),
-      protocol: Input.asInput<String>(map['protocol']),
-      region: Input.asOptionalInput<String>(map['region']),
-      securityGroupId: Input.asInput<String>(map['securityGroupId']),
-      self: Input.asOptionalInput<bool>(map['self']),
+          pulumi.Input.asOptionalInput<List<String>>(map['ipv6CidrBlocks']),
+      prefixListIds:
+          pulumi.Input.asOptionalInput<List<String>>(map['prefixListIds']),
+      protocol: pulumi.Input.asInput<String>(map['protocol']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      securityGroupId: pulumi.Input.asInput<String>(map['securityGroupId']),
+      self: pulumi.Input.asOptionalInput<bool>(map['self']),
       sourceSecurityGroupId:
-          Input.asOptionalInput<String>(map['sourceSecurityGroupId']),
-      toPort: Input.asInput<int>(map['toPort']),
-      type: Input.asInput<String>(map['type']),
+          pulumi.Input.asOptionalInput<String>(map['sourceSecurityGroupId']),
+      toPort: pulumi.Input.asInput<int>(map['toPort']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

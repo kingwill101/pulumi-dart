@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_user_hierarchy_structure_hierarchy_structure_level_fife/get_user_hierarchy_structure_hierarchy_structure_level_fife.dart';
 import '../get_user_hierarchy_structure_hierarchy_structure_level_four/get_user_hierarchy_structure_hierarchy_structure_level_four.dart';
 import '../get_user_hierarchy_structure_hierarchy_structure_level_one/get_user_hierarchy_structure_hierarchy_structure_level_one.dart';
@@ -33,19 +33,19 @@ class GetUserHierarchyStructureHierarchyStructure {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['levelFives'] = Input.encodeList<
+    map['levelFives'] = pulumi.Input.encodeList<
         GetUserHierarchyStructureHierarchyStructureLevelFife,
         Map<String, dynamic>>(levelFives, (value) => value.toMap());
-    map['levelFours'] = Input.encodeList<
+    map['levelFours'] = pulumi.Input.encodeList<
         GetUserHierarchyStructureHierarchyStructureLevelFour,
         Map<String, dynamic>>(levelFours, (value) => value.toMap());
-    map['levelOnes'] = Input.encodeList<
+    map['levelOnes'] = pulumi.Input.encodeList<
         GetUserHierarchyStructureHierarchyStructureLevelOne,
         Map<String, dynamic>>(levelOnes, (value) => value.toMap());
-    map['levelThrees'] = Input.encodeList<
+    map['levelThrees'] = pulumi.Input.encodeList<
         GetUserHierarchyStructureHierarchyStructureLevelThree,
         Map<String, dynamic>>(levelThrees, (value) => value.toMap());
-    map['levelTwos'] = Input.encodeList<
+    map['levelTwos'] = pulumi.Input.encodeList<
         GetUserHierarchyStructureHierarchyStructureLevelTwo,
         Map<String, dynamic>>(levelTwos, (value) => value.toMap());
     return map;
@@ -54,36 +54,36 @@ class GetUserHierarchyStructureHierarchyStructure {
   factory GetUserHierarchyStructureHierarchyStructure.fromMap(
       Map<String, dynamic> map) {
     return GetUserHierarchyStructureHierarchyStructure(
-      levelFives: Input.decodeList<
+      levelFives: pulumi.Input.decodeList<
               GetUserHierarchyStructureHierarchyStructureLevelFife>(
           map['levelFives'],
           (value) =>
               GetUserHierarchyStructureHierarchyStructureLevelFife.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      levelFours: Input.decodeList<
+      levelFours: pulumi.Input.decodeList<
               GetUserHierarchyStructureHierarchyStructureLevelFour>(
           map['levelFours'],
           (value) =>
               GetUserHierarchyStructureHierarchyStructureLevelFour.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      levelOnes:
-          Input.decodeList<GetUserHierarchyStructureHierarchyStructureLevelOne>(
-              map['levelOnes'],
-              (value) =>
-                  GetUserHierarchyStructureHierarchyStructureLevelOne.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      levelThrees: Input.decodeList<
+      levelOnes: pulumi.Input.decodeList<
+              GetUserHierarchyStructureHierarchyStructureLevelOne>(
+          map['levelOnes'],
+          (value) =>
+              GetUserHierarchyStructureHierarchyStructureLevelOne.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      levelThrees: pulumi.Input.decodeList<
               GetUserHierarchyStructureHierarchyStructureLevelThree>(
           map['levelThrees'],
           (value) =>
               GetUserHierarchyStructureHierarchyStructureLevelThree.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      levelTwos:
-          Input.decodeList<GetUserHierarchyStructureHierarchyStructureLevelTwo>(
-              map['levelTwos'],
-              (value) =>
-                  GetUserHierarchyStructureHierarchyStructureLevelTwo.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      levelTwos: pulumi.Input.decodeList<
+              GetUserHierarchyStructureHierarchyStructureLevelTwo>(
+          map['levelTwos'],
+          (value) =>
+              GetUserHierarchyStructureHierarchyStructureLevelTwo.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

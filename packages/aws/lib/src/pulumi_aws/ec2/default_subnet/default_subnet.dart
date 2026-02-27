@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_subnet_args.dart';
 
 /// Provides a resource to manage a [default subnet](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/default-vpc.html#default-vpc-basics) in the current region.
@@ -21,57 +21,57 @@ import 'default_subnet_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/defaultSubnet:DefaultSubnet public_subnet subnet-9d4a7b6c
 /// ```
-class DefaultSubnet extends CustomResource {
-  late final Output<String> arn;
-  late final Output<bool?> assignIpv6AddressOnCreation;
+class DefaultSubnet extends pulumi.CustomResource {
+  late final pulumi.Output<String> arn;
+  late final pulumi.Output<bool?> assignIpv6AddressOnCreation;
 
   /// is required
   /// * The `availability_zone_id`, `cidr_block` and `vpc_id` arguments become computed attributes
   /// * The default value for `map_public_ip_on_launch` is `true`
   ///
   /// This resource supports the following additional arguments:
-  late final Output<String> availabilityZone;
+  late final pulumi.Output<String> availabilityZone;
 
   /// The AZ ID of the subnet
-  late final Output<String> availabilityZoneId;
+  late final pulumi.Output<String> availabilityZoneId;
 
   /// The IPv4 CIDR block assigned to the subnet
-  late final Output<String> cidrBlock;
-  late final Output<String?> customerOwnedIpv4Pool;
-  late final Output<bool?> enableDns64;
-  late final Output<int> enableLniAtDeviceIndex;
-  late final Output<bool?> enableResourceNameDnsARecordOnLaunch;
-  late final Output<bool?> enableResourceNameDnsAaaaRecordOnLaunch;
-  late final Output<bool> existingDefaultSubnet;
+  late final pulumi.Output<String> cidrBlock;
+  late final pulumi.Output<String?> customerOwnedIpv4Pool;
+  late final pulumi.Output<bool?> enableDns64;
+  late final pulumi.Output<int> enableLniAtDeviceIndex;
+  late final pulumi.Output<bool?> enableResourceNameDnsARecordOnLaunch;
+  late final pulumi.Output<bool?> enableResourceNameDnsAaaaRecordOnLaunch;
+  late final pulumi.Output<bool> existingDefaultSubnet;
 
   /// Whether destroying the resource deletes the default subnet. Default: `false`
-  late final Output<bool?> forceDestroy;
-  late final Output<String> ipv6CidrBlock;
-  late final Output<String> ipv6CidrBlockAssociationId;
-  late final Output<bool?> ipv6Native;
-  late final Output<bool?> mapCustomerOwnedIpOnLaunch;
-  late final Output<bool?> mapPublicIpOnLaunch;
-  late final Output<String> outpostArn;
-  late final Output<String> ownerId;
-  late final Output<String> privateDnsHostnameTypeOnLaunch;
+  late final pulumi.Output<bool?> forceDestroy;
+  late final pulumi.Output<String> ipv6CidrBlock;
+  late final pulumi.Output<String> ipv6CidrBlockAssociationId;
+  late final pulumi.Output<bool?> ipv6Native;
+  late final pulumi.Output<bool?> mapCustomerOwnedIpOnLaunch;
+  late final pulumi.Output<bool?> mapPublicIpOnLaunch;
+  late final pulumi.Output<String> outpostArn;
+  late final pulumi.Output<String> ownerId;
+  late final pulumi.Output<String> privateDnsHostnameTypeOnLaunch;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
-  late final Output<String> region;
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The ID of the VPC the subnet is in
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   DefaultSubnet(
     String name, {
     DefaultSubnetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/defaultSubnet:DefaultSubnet',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.assignIpv6AddressOnCreation =

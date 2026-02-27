@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../event_sources_config_event_source_amazon_code_guru_profiler/event_sources_config_event_source_amazon_code_guru_profiler.dart';
 
 class EventSourcesConfigEventSource {
@@ -14,7 +14,7 @@ class EventSourcesConfigEventSource {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['amazonCodeGuruProfilers'] = Input.encodeList<
+    map['amazonCodeGuruProfilers'] = pulumi.Input.encodeList<
             EventSourcesConfigEventSourceAmazonCodeGuruProfiler,
             Map<String, dynamic>>(
         amazonCodeGuruProfilers, (value) => value.toMap());
@@ -23,12 +23,12 @@ class EventSourcesConfigEventSource {
 
   factory EventSourcesConfigEventSource.fromMap(Map<String, dynamic> map) {
     return EventSourcesConfigEventSource(
-      amazonCodeGuruProfilers:
-          Input.decodeList<EventSourcesConfigEventSourceAmazonCodeGuruProfiler>(
-              map['amazonCodeGuruProfilers'],
-              (value) =>
-                  EventSourcesConfigEventSourceAmazonCodeGuruProfiler.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      amazonCodeGuruProfilers: pulumi.Input.decodeList<
+              EventSourcesConfigEventSourceAmazonCodeGuruProfiler>(
+          map['amazonCodeGuruProfilers'],
+          (value) =>
+              EventSourcesConfigEventSourceAmazonCodeGuruProfiler.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

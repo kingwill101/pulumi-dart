@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../sql_injection_match_set_sql_injection_match_tuple/sql_injection_match_set_sql_injection_match_tuple.dart';
 
 /// The set of arguments for SqlInjectionMatchSet.
 class SqlInjectionMatchSetArgs {
   /// The name or description of the SQL Injection Match Set.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
-  final Input<List<SqlInjectionMatchSetSqlInjectionMatchTuple>>?
+  final pulumi.Input<List<SqlInjectionMatchSetSqlInjectionMatchTuple>>?
       sqlInjectionMatchTuples;
 
   SqlInjectionMatchSetArgs({
@@ -25,11 +25,11 @@ class SqlInjectionMatchSetArgs {
     }
     final sqlInjectionMatchTuplesValue = sqlInjectionMatchTuples;
     if (sqlInjectionMatchTuplesValue != null) {
-      map['sqlInjectionMatchTuples'] = Input.mapOptionalInputValue<
+      map['sqlInjectionMatchTuples'] = pulumi.Input.mapOptionalInputValue<
               List<SqlInjectionMatchSetSqlInjectionMatchTuple>,
               List<Map<String, dynamic>>>(
           sqlInjectionMatchTuplesValue,
-          (value) => Input.encodeList<
+          (value) => pulumi.Input.encodeList<
               SqlInjectionMatchSetSqlInjectionMatchTuple,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
@@ -38,8 +38,8 @@ class SqlInjectionMatchSetArgs {
 
   factory SqlInjectionMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return SqlInjectionMatchSetArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      sqlInjectionMatchTuples: Input.asOptionalInput<
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      sqlInjectionMatchTuples: pulumi.Input.asOptionalInput<
               List<SqlInjectionMatchSetSqlInjectionMatchTuple>>(
           map['sqlInjectionMatchTuples']),
     );

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_document_args.dart';
 import 'get_document_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_document_result.dart';
 /// To get the contents of the custom document.
 Future<GetDocumentResult> getDocument(
   GetDocumentArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ssm/getDocument:getDocument',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDocumentResult.fromMap(result);
 }

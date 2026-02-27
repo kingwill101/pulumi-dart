@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'core_network_policy_attachment_args.dart';
 
 /// Manages a Network Manager Core Network Policy Attachment.
@@ -50,25 +50,25 @@ import 'core_network_policy_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkmanager/coreNetworkPolicyAttachment:CoreNetworkPolicyAttachment example core-network-0d47f6t230mz46dy4
 /// ```
-class CoreNetworkPolicyAttachment extends CustomResource {
+class CoreNetworkPolicyAttachment extends pulumi.CustomResource {
   /// ID of the core network that a policy will be attached to and made `LIVE`.
-  late final Output<String> coreNetworkId;
+  late final pulumi.Output<String> coreNetworkId;
 
   /// Policy document for creating a core network. Note that updating this argument will result in the new policy document version being set as the `LATEST` and `LIVE` policy document. Refer to the [Core network policies documentation](https://docs.aws.amazon.com/network-manager/latest/cloudwan/cloudwan-policy-change-sets.html) for more information.
-  late final Output<String> policyDocument;
+  late final pulumi.Output<String> policyDocument;
 
   /// Current state of a core network.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   CoreNetworkPolicyAttachment(
     String name, {
     CoreNetworkPolicyAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkmanager/coreNetworkPolicyAttachment:CoreNetworkPolicyAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.coreNetworkId = registerOutput<String>('coreNetworkId');
     this.policyDocument = registerOutput<String>('policyDocument');

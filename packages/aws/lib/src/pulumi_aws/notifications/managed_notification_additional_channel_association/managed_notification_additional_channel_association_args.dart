@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ManagedNotificationAdditionalChannelAssociation.
 class ManagedNotificationAdditionalChannelAssociationArgs {
   /// ARN of the channel to associate with the managed notification.
-  final Input<String> channelArn;
+  final pulumi.Input<String> channelArn;
 
   /// ARN of the managed notification to associate the channel with.
-  final Input<String> managedNotificationArn;
+  final pulumi.Input<String> managedNotificationArn;
 
   ManagedNotificationAdditionalChannelAssociationArgs({
     required this.channelArn,
@@ -25,9 +25,9 @@ class ManagedNotificationAdditionalChannelAssociationArgs {
   factory ManagedNotificationAdditionalChannelAssociationArgs.fromMap(
       Map<String, dynamic> map) {
     return ManagedNotificationAdditionalChannelAssociationArgs(
-      channelArn: Input.asInput<String>(map['channelArn']),
+      channelArn: pulumi.Input.asInput<String>(map['channelArn']),
       managedNotificationArn:
-          Input.asInput<String>(map['managedNotificationArn']),
+          pulumi.Input.asInput<String>(map['managedNotificationArn']),
     );
   }
 }

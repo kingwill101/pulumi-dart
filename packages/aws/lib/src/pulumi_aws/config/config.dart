@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'dart:convert';
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assume_role_with_web_identity/assume_role_with_web_identity.dart';
 import 'assume_roles/assume_roles.dart';
 import 'default_tags/default_tags.dart';
@@ -44,12 +44,12 @@ class AwsConfig {
   const AwsConfig();
 
   String? _raw(String key) {
-    final deployment = Deployment.instance;
+    final deployment = pulumi.Deployment.instance;
     return deployment.getConfig(key);
   }
 
   bool _isSecret(String key) {
-    final deployment = Deployment.instance;
+    final deployment = pulumi.Deployment.instance;
     return deployment.isConfigSecret(key);
   }
 
@@ -84,7 +84,7 @@ class AwsConfig {
     final raw = _raw('assumeRoles');
     return raw == null
         ? null
-        : Input.decodeList<AssumeRoles>(
+        : pulumi.Input.decodeList<AssumeRoles>(
             jsonDecode(raw),
             (value) =>
                 AssumeRoles.fromMap((value as Map).cast<String, dynamic>()));
@@ -132,7 +132,7 @@ class AwsConfig {
     final raw = _raw('endpoints');
     return raw == null
         ? null
-        : Input.decodeList<Endpoints>(
+        : pulumi.Input.decodeList<Endpoints>(
             jsonDecode(raw),
             (value) =>
                 Endpoints.fromMap((value as Map).cast<String, dynamic>()));

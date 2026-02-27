@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpn_attachment_filter/get_vpn_attachment_filter.dart';
 
 /// Result data returned by getVpnAttachment.
@@ -30,7 +30,7 @@ class GetVpnAttachmentResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetVpnAttachmentFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetVpnAttachmentFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -51,7 +51,7 @@ class GetVpnAttachmentResult {
     return GetVpnAttachmentResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVpnAttachmentFilter>(
+          : pulumi.Input.decodeList<GetVpnAttachmentFilter>(
               map['filters'],
               (value) => GetVpnAttachmentFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

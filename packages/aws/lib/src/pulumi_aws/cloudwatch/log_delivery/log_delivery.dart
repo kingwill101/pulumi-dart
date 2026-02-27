@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../log_delivery_s3_delivery_configuration/log_delivery_s3_delivery_configuration.dart';
 import 'log_delivery_args.dart';
 
@@ -17,44 +17,44 @@ import 'log_delivery_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudwatch/logDelivery:LogDelivery example jsoGVi4Zq8VlYp9n
 /// ```
-class LogDelivery extends CustomResource {
+class LogDelivery extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the delivery.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The ARN of the delivery destination to use for this delivery.
-  late final Output<String> deliveryDestinationArn;
+  late final pulumi.Output<String> deliveryDestinationArn;
 
   /// The name of the delivery source to use for this delivery.
-  late final Output<String> deliverySourceName;
+  late final pulumi.Output<String> deliverySourceName;
 
   /// The field delimiter to use between record fields when the final output format of a delivery is in `plain`, `w3c`, or `raw` format.
-  late final Output<String> fieldDelimiter;
+  late final pulumi.Output<String> fieldDelimiter;
 
   /// The list of record fields to be delivered to the destination, in order.
-  late final Output<List<String>> recordFields;
+  late final pulumi.Output<List<String>> recordFields;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Parameters that are valid only when the delivery's delivery destination is an S3 bucket.
-  late final Output<List<LogDeliveryS3DeliveryConfiguration>>
+  late final pulumi.Output<List<LogDeliveryS3DeliveryConfiguration>>
       s3DeliveryConfigurations;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   LogDelivery(
     String name, {
     LogDeliveryArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudwatch/logDelivery:LogDelivery',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.deliveryDestinationArn =

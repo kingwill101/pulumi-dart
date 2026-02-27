@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../replication_configuration_replication_configuration/replication_configuration_replication_configuration.dart';
 
 /// The set of arguments for ReplicationConfiguration.
 class ReplicationConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Replication configuration for a registry. See Replication Configuration.
-  final Input<ReplicationConfigurationReplicationConfiguration>?
+  final pulumi.Input<ReplicationConfigurationReplicationConfiguration>?
       replicationConfiguration;
 
   ReplicationConfigurationArgs({
@@ -25,7 +25,7 @@ class ReplicationConfigurationArgs {
     }
     final replicationConfigurationValue = replicationConfiguration;
     if (replicationConfigurationValue != null) {
-      map['replicationConfiguration'] = Input.mapOptionalInputValue<
+      map['replicationConfiguration'] = pulumi.Input.mapOptionalInputValue<
               ReplicationConfigurationReplicationConfiguration,
               Map<String, dynamic>>(
           replicationConfigurationValue, (value) => value.toMap());
@@ -35,8 +35,8 @@ class ReplicationConfigurationArgs {
 
   factory ReplicationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      replicationConfiguration: Input.asOptionalInput<
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      replicationConfiguration: pulumi.Input.asOptionalInput<
               ReplicationConfigurationReplicationConfiguration>(
           map['replicationConfiguration']),
     );

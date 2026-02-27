@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_gateway_route_spec_http_route_match_header_match/get_gateway_route_spec_http_route_match_header_match.dart';
 
 class GetGatewayRouteSpecHttpRouteMatchHeader {
@@ -19,7 +19,7 @@ class GetGatewayRouteSpecHttpRouteMatchHeader {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['invert'] = invert;
-    map['matches'] = Input.encodeList<
+    map['matches'] = pulumi.Input.encodeList<
         GetGatewayRouteSpecHttpRouteMatchHeaderMatch,
         Map<String, dynamic>>(matches, (value) => value.toMap());
     map['name'] = name;
@@ -30,10 +30,11 @@ class GetGatewayRouteSpecHttpRouteMatchHeader {
       Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttpRouteMatchHeader(
       invert: map['invert'] as bool,
-      matches: Input.decodeList<GetGatewayRouteSpecHttpRouteMatchHeaderMatch>(
-          map['matches'],
-          (value) => GetGatewayRouteSpecHttpRouteMatchHeaderMatch.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      matches:
+          pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteMatchHeaderMatch>(
+              map['matches'],
+              (value) => GetGatewayRouteSpecHttpRouteMatchHeaderMatch.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
     );
   }

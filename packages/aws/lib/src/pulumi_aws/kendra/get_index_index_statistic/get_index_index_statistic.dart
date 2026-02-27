@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_index_index_statistic_faq_statistic/get_index_index_statistic_faq_statistic.dart';
 import '../get_index_index_statistic_text_document_statistic/get_index_index_statistic_text_document_statistic.dart';
 
@@ -19,9 +19,10 @@ class GetIndexIndexStatistic {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['faqStatistics'] = Input.encodeList<GetIndexIndexStatisticFaqStatistic,
+    map['faqStatistics'] = pulumi.Input.encodeList<
+        GetIndexIndexStatisticFaqStatistic,
         Map<String, dynamic>>(faqStatistics, (value) => value.toMap());
-    map['textDocumentStatistics'] = Input.encodeList<
+    map['textDocumentStatistics'] = pulumi.Input.encodeList<
         GetIndexIndexStatisticTextDocumentStatistic,
         Map<String, dynamic>>(textDocumentStatistics, (value) => value.toMap());
     return map;
@@ -29,12 +30,13 @@ class GetIndexIndexStatistic {
 
   factory GetIndexIndexStatistic.fromMap(Map<String, dynamic> map) {
     return GetIndexIndexStatistic(
-      faqStatistics: Input.decodeList<GetIndexIndexStatisticFaqStatistic>(
-          map['faqStatistics'],
-          (value) => GetIndexIndexStatisticFaqStatistic.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      faqStatistics:
+          pulumi.Input.decodeList<GetIndexIndexStatisticFaqStatistic>(
+              map['faqStatistics'],
+              (value) => GetIndexIndexStatisticFaqStatistic.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       textDocumentStatistics:
-          Input.decodeList<GetIndexIndexStatisticTextDocumentStatistic>(
+          pulumi.Input.decodeList<GetIndexIndexStatisticTextDocumentStatistic>(
               map['textDocumentStatistics'],
               (value) => GetIndexIndexStatisticTextDocumentStatistic.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_launch_template_capacity_reservation_specification_capacity_reservation_target/get_launch_template_capacity_reservation_specification_capacity_reservation_target.dart';
 
 class GetLaunchTemplateCapacityReservationSpecification {
@@ -17,7 +17,7 @@ class GetLaunchTemplateCapacityReservationSpecification {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['capacityReservationPreference'] = capacityReservationPreference;
-    map['capacityReservationTargets'] = Input.encodeList<
+    map['capacityReservationTargets'] = pulumi.Input.encodeList<
         GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget,
         Map<String,
             dynamic>>(capacityReservationTargets, (value) => value.toMap());
@@ -29,7 +29,7 @@ class GetLaunchTemplateCapacityReservationSpecification {
     return GetLaunchTemplateCapacityReservationSpecification(
       capacityReservationPreference:
           map['capacityReservationPreference'] as String,
-      capacityReservationTargets: Input.decodeList<
+      capacityReservationTargets: pulumi.Input.decodeList<
               GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget>(
           map['capacityReservationTargets'],
           (value) =>

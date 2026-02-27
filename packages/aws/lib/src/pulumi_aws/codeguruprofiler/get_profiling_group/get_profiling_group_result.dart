@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_profiling_group_agent_orchestration_config/get_profiling_group_agent_orchestration_config.dart';
 import '../get_profiling_group_profiling_status/get_profiling_group_profiling_status.dart';
 
@@ -46,7 +46,7 @@ class GetProfilingGroupResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['agentOrchestrationConfigs'] = Input.encodeList<
+    map['agentOrchestrationConfigs'] = pulumi.Input.encodeList<
             GetProfilingGroupAgentOrchestrationConfig, Map<String, dynamic>>(
         agentOrchestrationConfigs, (value) => value.toMap());
     map['arn'] = arn;
@@ -54,7 +54,7 @@ class GetProfilingGroupResult {
     map['createdAt'] = createdAt;
     map['id'] = id;
     map['name'] = name;
-    map['profilingStatuses'] = Input.encodeList<
+    map['profilingStatuses'] = pulumi.Input.encodeList<
         GetProfilingGroupProfilingStatus,
         Map<String, dynamic>>(profilingStatuses, (value) => value.toMap());
     map['region'] = region;
@@ -66,7 +66,7 @@ class GetProfilingGroupResult {
   factory GetProfilingGroupResult.fromMap(Map<String, dynamic> map) {
     return GetProfilingGroupResult(
       agentOrchestrationConfigs:
-          Input.decodeList<GetProfilingGroupAgentOrchestrationConfig>(
+          pulumi.Input.decodeList<GetProfilingGroupAgentOrchestrationConfig>(
               map['agentOrchestrationConfigs'],
               (value) => GetProfilingGroupAgentOrchestrationConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -75,10 +75,11 @@ class GetProfilingGroupResult {
       createdAt: map['createdAt'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      profilingStatuses: Input.decodeList<GetProfilingGroupProfilingStatus>(
-          map['profilingStatuses'],
-          (value) => GetProfilingGroupProfilingStatus.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      profilingStatuses:
+          pulumi.Input.decodeList<GetProfilingGroupProfilingStatus>(
+              map['profilingStatuses'],
+              (value) => GetProfilingGroupProfilingStatus.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       updatedAt: map['updatedAt'] as String,

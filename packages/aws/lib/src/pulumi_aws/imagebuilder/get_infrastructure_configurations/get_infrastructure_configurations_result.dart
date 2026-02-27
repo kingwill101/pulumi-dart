@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_infrastructure_configurations_filter/get_infrastructure_configurations_filter.dart';
 
 /// Result data returned by getInfrastructureConfigurations.
@@ -29,7 +29,8 @@ class GetInfrastructureConfigurationsResult {
     map['arns'] = arns;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetInfrastructureConfigurationsFilter,
+      map['filters'] = pulumi.Input.encodeList<
+          GetInfrastructureConfigurationsFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -44,7 +45,7 @@ class GetInfrastructureConfigurationsResult {
       arns: (map['arns'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetInfrastructureConfigurationsFilter>(
+          : pulumi.Input.decodeList<GetInfrastructureConfigurationsFilter>(
               map['filters'],
               (value) => GetInfrastructureConfigurationsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

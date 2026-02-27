@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../route_server_endpoint_timeouts/route_server_endpoint_timeouts.dart';
 import 'route_server_endpoint_args.dart';
 
@@ -17,49 +17,49 @@ import 'route_server_endpoint_args.dart';
 /// ```sh
 /// $ pulumi import aws:vpc/routeServerEndpoint:RouteServerEndpoint example rse-12345678
 /// ```
-class RouteServerEndpoint extends CustomResource {
+class RouteServerEndpoint extends pulumi.CustomResource {
   /// The ARN of the route server endpoint.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The IP address of the Elastic network interface for the endpoint.
-  late final Output<String> eniAddress;
+  late final pulumi.Output<String> eniAddress;
 
   /// The ID of the Elastic network interface for the endpoint.
-  late final Output<String> eniId;
+  late final pulumi.Output<String> eniId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The unique identifier of the route server endpoint.
-  late final Output<String> routeServerEndpointId;
+  late final pulumi.Output<String> routeServerEndpointId;
 
   /// The ID of the route server for which to create an endpoint.
-  late final Output<String> routeServerId;
+  late final pulumi.Output<String> routeServerId;
 
   /// The ID of the subnet in which to create the route server endpoint.
   ///
   /// The following arguments are optional:
-  late final Output<String> subnetId;
+  late final pulumi.Output<String> subnetId;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<RouteServerEndpointTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<RouteServerEndpointTimeouts?> timeouts;
 
   /// The ID of the VPC containing the endpoint.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   RouteServerEndpoint(
     String name, {
     RouteServerEndpointArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:vpc/routeServerEndpoint:RouteServerEndpoint',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.eniAddress = registerOutput<String>('eniAddress');

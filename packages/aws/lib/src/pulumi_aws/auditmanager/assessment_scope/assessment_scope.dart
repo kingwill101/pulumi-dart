@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../assessment_scope_aws_account/assessment_scope_aws_account.dart';
 import '../assessment_scope_aws_service/assessment_scope_aws_service.dart';
 
@@ -20,15 +20,13 @@ class AssessmentScope {
     final map = <String, dynamic>{};
     final awsAccountsValue = awsAccounts;
     if (awsAccountsValue != null) {
-      map['awsAccounts'] =
-          Input.encodeList<AssessmentScopeAwsAccount, Map<String, dynamic>>(
-              awsAccountsValue, (value) => value.toMap());
+      map['awsAccounts'] = pulumi.Input.encodeList<AssessmentScopeAwsAccount,
+          Map<String, dynamic>>(awsAccountsValue, (value) => value.toMap());
     }
     final awsServicesValue = awsServices;
     if (awsServicesValue != null) {
-      map['awsServices'] =
-          Input.encodeList<AssessmentScopeAwsService, Map<String, dynamic>>(
-              awsServicesValue, (value) => value.toMap());
+      map['awsServices'] = pulumi.Input.encodeList<AssessmentScopeAwsService,
+          Map<String, dynamic>>(awsServicesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -37,13 +35,13 @@ class AssessmentScope {
     return AssessmentScope(
       awsAccounts: map['awsAccounts'] == null
           ? null
-          : Input.decodeList<AssessmentScopeAwsAccount>(
+          : pulumi.Input.decodeList<AssessmentScopeAwsAccount>(
               map['awsAccounts'],
               (value) => AssessmentScopeAwsAccount.fromMap(
                   (value as Map).cast<String, dynamic>())),
       awsServices: map['awsServices'] == null
           ? null
-          : Input.decodeList<AssessmentScopeAwsService>(
+          : pulumi.Input.decodeList<AssessmentScopeAwsService>(
               map['awsServices'],
               (value) => AssessmentScopeAwsService.fromMap(
                   (value as Map).cast<String, dynamic>())),

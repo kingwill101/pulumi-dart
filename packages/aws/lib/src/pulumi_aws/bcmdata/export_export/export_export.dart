@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../export_export_data_query/export_export_data_query.dart';
 import '../export_export_destination_configuration/export_export_destination_configuration.dart';
 import '../export_export_refresh_cadence/export_export_refresh_cadence.dart';
@@ -36,7 +36,7 @@ class ExportExport {
     final dataQueriesValue = dataQueries;
     if (dataQueriesValue != null) {
       map['dataQueries'] =
-          Input.encodeList<ExportExportDataQuery, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ExportExportDataQuery, Map<String, dynamic>>(
               dataQueriesValue, (value) => value.toMap());
     }
     final descriptionValue = description;
@@ -45,7 +45,7 @@ class ExportExport {
     }
     final destinationConfigurationsValue = destinationConfigurations;
     if (destinationConfigurationsValue != null) {
-      map['destinationConfigurations'] = Input.encodeList<
+      map['destinationConfigurations'] = pulumi.Input.encodeList<
               ExportExportDestinationConfiguration, Map<String, dynamic>>(
           destinationConfigurationsValue, (value) => value.toMap());
     }
@@ -56,9 +56,9 @@ class ExportExport {
     map['name'] = name;
     final refreshCadencesValue = refreshCadences;
     if (refreshCadencesValue != null) {
-      map['refreshCadences'] =
-          Input.encodeList<ExportExportRefreshCadence, Map<String, dynamic>>(
-              refreshCadencesValue, (value) => value.toMap());
+      map['refreshCadences'] = pulumi.Input.encodeList<
+          ExportExportRefreshCadence,
+          Map<String, dynamic>>(refreshCadencesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -67,7 +67,7 @@ class ExportExport {
     return ExportExport(
       dataQueries: map['dataQueries'] == null
           ? null
-          : Input.decodeList<ExportExportDataQuery>(
+          : pulumi.Input.decodeList<ExportExportDataQuery>(
               map['dataQueries'],
               (value) => ExportExportDataQuery.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -75,7 +75,7 @@ class ExportExport {
           map['description'] == null ? null : map['description'] as String,
       destinationConfigurations: map['destinationConfigurations'] == null
           ? null
-          : Input.decodeList<ExportExportDestinationConfiguration>(
+          : pulumi.Input.decodeList<ExportExportDestinationConfiguration>(
               map['destinationConfigurations'],
               (value) => ExportExportDestinationConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -83,7 +83,7 @@ class ExportExport {
       name: map['name'] as String,
       refreshCadences: map['refreshCadences'] == null
           ? null
-          : Input.decodeList<ExportExportRefreshCadence>(
+          : pulumi.Input.decodeList<ExportExportRefreshCadence>(
               map['refreshCadences'],
               (value) => ExportExportRefreshCadence.fromMap(
                   (value as Map).cast<String, dynamic>())),

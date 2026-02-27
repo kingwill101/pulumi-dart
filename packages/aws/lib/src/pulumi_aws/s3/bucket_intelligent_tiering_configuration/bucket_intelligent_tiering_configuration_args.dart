@@ -1,28 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_intelligent_tiering_configuration_filter/bucket_intelligent_tiering_configuration_filter.dart';
 import '../bucket_intelligent_tiering_configuration_tiering/bucket_intelligent_tiering_configuration_tiering.dart';
 
 /// The set of arguments for BucketIntelligentTieringConfiguration.
 class BucketIntelligentTieringConfigurationArgs {
   /// Name of the bucket this intelligent tiering configuration is associated with.
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// Bucket filter. The configuration only includes objects that meet the filter's criteria (documented below).
-  final Input<BucketIntelligentTieringConfigurationFilter>? filter;
+  final pulumi.Input<BucketIntelligentTieringConfigurationFilter>? filter;
 
   /// Unique name used to identify the S3 Intelligent-Tiering configuration for the bucket.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Specifies the status of the configuration. Valid values: `Enabled`, `Disabled`.
-  final Input<String>? status;
+  final pulumi.Input<String>? status;
 
   /// S3 Intelligent-Tiering storage class tiers of the configuration (documented below).
-  final Input<List<BucketIntelligentTieringConfigurationTiering>> tierings;
+  final pulumi.Input<List<BucketIntelligentTieringConfigurationTiering>>
+      tierings;
 
   BucketIntelligentTieringConfigurationArgs({
     required this.bucket,
@@ -38,7 +39,7 @@ class BucketIntelligentTieringConfigurationArgs {
     map['bucket'] = bucket;
     final filterValue = filter;
     if (filterValue != null) {
-      map['filter'] = Input.mapOptionalInputValue<
+      map['filter'] = pulumi.Input.mapOptionalInputValue<
           BucketIntelligentTieringConfigurationFilter,
           Map<String, dynamic>>(filterValue, (value) => value.toMap());
     }
@@ -54,11 +55,11 @@ class BucketIntelligentTieringConfigurationArgs {
     if (statusValue != null) {
       map['status'] = statusValue;
     }
-    map['tierings'] = Input.mapInputValue<
+    map['tierings'] = pulumi.Input.mapInputValue<
             List<BucketIntelligentTieringConfigurationTiering>,
             List<Map<String, dynamic>>>(
         tierings,
-        (value) => Input.encodeList<
+        (value) => pulumi.Input.encodeList<
             BucketIntelligentTieringConfigurationTiering,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     return map;
@@ -67,16 +68,14 @@ class BucketIntelligentTieringConfigurationArgs {
   factory BucketIntelligentTieringConfigurationArgs.fromMap(
       Map<String, dynamic> map) {
     return BucketIntelligentTieringConfigurationArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      filter:
-          Input.asOptionalInput<BucketIntelligentTieringConfigurationFilter>(
-              map['filter']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      status: Input.asOptionalInput<String>(map['status']),
-      tierings:
-          Input.asInput<List<BucketIntelligentTieringConfigurationTiering>>(
-              map['tierings']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      filter: pulumi.Input.asOptionalInput<
+          BucketIntelligentTieringConfigurationFilter>(map['filter']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      status: pulumi.Input.asOptionalInput<String>(map['status']),
+      tierings: pulumi.Input.asInput<
+          List<BucketIntelligentTieringConfigurationTiering>>(map['tierings']),
     );
   }
 }

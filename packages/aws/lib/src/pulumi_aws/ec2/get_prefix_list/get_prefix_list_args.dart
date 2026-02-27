@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_prefix_list_filter/get_prefix_list_filter.dart';
 
 /// Arguments for getPrefixList.
@@ -10,16 +10,16 @@ class GetPrefixListArgs {
   /// The arguments of this data source act as filters for querying the available
   /// prefix lists. The given filters must match exactly one prefix list
   /// whose data will be exported as attributes.
-  final Input<List<GetPrefixListFilter>>? filters;
+  final pulumi.Input<List<GetPrefixListFilter>>? filters;
 
   /// Name of the prefix list to select.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// ID of the prefix list to select.
-  final Input<String>? prefixListId;
+  final pulumi.Input<String>? prefixListId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetPrefixListArgs({
     this.filters,
@@ -32,12 +32,11 @@ class GetPrefixListArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetPrefixListFilter>,
-              List<Map<String, dynamic>>>(
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
+              List<GetPrefixListFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetPrefixListFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetPrefixListFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final nameValue = name;
     if (nameValue != null) {
@@ -56,10 +55,11 @@ class GetPrefixListArgs {
 
   factory GetPrefixListArgs.fromMap(Map<String, dynamic> map) {
     return GetPrefixListArgs(
-      filters: Input.asOptionalInput<List<GetPrefixListFilter>>(map['filters']),
-      name: Input.asOptionalInput<String>(map['name']),
-      prefixListId: Input.asOptionalInput<String>(map['prefixListId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      filters: pulumi.Input.asOptionalInput<List<GetPrefixListFilter>>(
+          map['filters']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      prefixListId: pulumi.Input.asOptionalInput<String>(map['prefixListId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

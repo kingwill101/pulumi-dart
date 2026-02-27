@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../maintenance_window_task_task_invocation_parameters_automation_parameters_parameter/maintenance_window_task_task_invocation_parameters_automation_parameters_parameter.dart';
 
 class MaintenanceWindowTaskTaskInvocationParametersAutomationParameters {
@@ -25,7 +25,7 @@ class MaintenanceWindowTaskTaskInvocationParametersAutomationParameters {
     }
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<
+      map['parameters'] = pulumi.Input.encodeList<
           MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
@@ -40,7 +40,7 @@ class MaintenanceWindowTaskTaskInvocationParametersAutomationParameters {
           : map['documentVersion'] as String,
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter>(
               map['parameters'],
               (value) =>

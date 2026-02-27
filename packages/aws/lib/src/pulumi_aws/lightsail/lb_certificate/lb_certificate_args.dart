@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LbCertificate.
 class LbCertificateArgs {
   /// Domain name (e.g., example.com) for your SSL/TLS certificate.
-  final Input<String>? domainName;
+  final pulumi.Input<String>? domainName;
 
   /// Load balancer name where you want to create the SSL/TLS certificate.
-  final Input<String> lbName;
+  final pulumi.Input<String> lbName;
 
   /// SSL/TLS certificate name.
   ///
   /// The following arguments are optional:
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Set of domains that should be SANs in the issued certificate. `domain_name` attribute is automatically added as a Subject Alternative Name.
-  final Input<List<String>>? subjectAlternativeNames;
+  final pulumi.Input<List<String>>? subjectAlternativeNames;
 
   LbCertificateArgs({
     this.domainName,
@@ -53,12 +53,12 @@ class LbCertificateArgs {
 
   factory LbCertificateArgs.fromMap(Map<String, dynamic> map) {
     return LbCertificateArgs(
-      domainName: Input.asOptionalInput<String>(map['domainName']),
-      lbName: Input.asInput<String>(map['lbName']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      subjectAlternativeNames:
-          Input.asOptionalInput<List<String>>(map['subjectAlternativeNames']),
+      domainName: pulumi.Input.asOptionalInput<String>(map['domainName']),
+      lbName: pulumi.Input.asInput<String>(map['lbName']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      subjectAlternativeNames: pulumi.Input.asOptionalInput<List<String>>(
+          map['subjectAlternativeNames']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../project_service_catalog_provisioning_details_provisioning_parameter/project_service_catalog_provisioning_details_provisioning_parameter.dart';
 
 class ProjectServiceCatalogProvisioningDetails {
@@ -37,7 +37,7 @@ class ProjectServiceCatalogProvisioningDetails {
     }
     final provisioningParametersValue = provisioningParameters;
     if (provisioningParametersValue != null) {
-      map['provisioningParameters'] = Input.encodeList<
+      map['provisioningParameters'] = pulumi.Input.encodeList<
               ProjectServiceCatalogProvisioningDetailsProvisioningParameter,
               Map<String, dynamic>>(
           provisioningParametersValue, (value) => value.toMap());
@@ -55,7 +55,7 @@ class ProjectServiceCatalogProvisioningDetails {
           : map['provisioningArtifactId'] as String,
       provisioningParameters: map['provisioningParameters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ProjectServiceCatalogProvisioningDetailsProvisioningParameter>(
               map['provisioningParameters'],
               (value) =>

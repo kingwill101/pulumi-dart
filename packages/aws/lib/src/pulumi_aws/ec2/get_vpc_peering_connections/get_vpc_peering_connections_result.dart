@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_peering_connections_filter/get_vpc_peering_connections_filter.dart';
 
 /// Result data returned by getVpcPeeringConnections.
@@ -27,7 +27,7 @@ class GetVpcPeeringConnectionsResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetVpcPeeringConnectionsFilter,
+      map['filters'] = pulumi.Input.encodeList<GetVpcPeeringConnectionsFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -41,7 +41,7 @@ class GetVpcPeeringConnectionsResult {
     return GetVpcPeeringConnectionsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVpcPeeringConnectionsFilter>(
+          : pulumi.Input.decodeList<GetVpcPeeringConnectionsFilter>(
               map['filters'],
               (value) => GetVpcPeeringConnectionsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

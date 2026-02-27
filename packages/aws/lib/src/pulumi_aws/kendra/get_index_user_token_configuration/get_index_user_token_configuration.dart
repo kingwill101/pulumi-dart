@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_index_user_token_configuration_json_token_type_configuration/get_index_user_token_configuration_json_token_type_configuration.dart';
 import '../get_index_user_token_configuration_jwt_token_type_configuration/get_index_user_token_configuration_jwt_token_type_configuration.dart';
 
@@ -20,11 +20,11 @@ class GetIndexUserTokenConfiguration {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['jsonTokenTypeConfigurations'] = Input.encodeList<
+    map['jsonTokenTypeConfigurations'] = pulumi.Input.encodeList<
             GetIndexUserTokenConfigurationJsonTokenTypeConfiguration,
             Map<String, dynamic>>(
         jsonTokenTypeConfigurations, (value) => value.toMap());
-    map['jwtTokenTypeConfigurations'] = Input.encodeList<
+    map['jwtTokenTypeConfigurations'] = pulumi.Input.encodeList<
             GetIndexUserTokenConfigurationJwtTokenTypeConfiguration,
             Map<String, dynamic>>(
         jwtTokenTypeConfigurations, (value) => value.toMap());
@@ -33,13 +33,13 @@ class GetIndexUserTokenConfiguration {
 
   factory GetIndexUserTokenConfiguration.fromMap(Map<String, dynamic> map) {
     return GetIndexUserTokenConfiguration(
-      jsonTokenTypeConfigurations: Input.decodeList<
+      jsonTokenTypeConfigurations: pulumi.Input.decodeList<
               GetIndexUserTokenConfigurationJsonTokenTypeConfiguration>(
           map['jsonTokenTypeConfigurations'],
           (value) =>
               GetIndexUserTokenConfigurationJsonTokenTypeConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      jwtTokenTypeConfigurations: Input.decodeList<
+      jwtTokenTypeConfigurations: pulumi.Input.decodeList<
               GetIndexUserTokenConfigurationJwtTokenTypeConfiguration>(
           map['jwtTokenTypeConfigurations'],
           (value) =>

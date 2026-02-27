@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLinks.
 class GetLinksArgs {
   /// ID of the Global Network of the links to retrieve.
-  final Input<String> globalNetworkId;
+  final pulumi.Input<String> globalNetworkId;
 
   /// Link provider to retrieve.
-  final Input<String>? providerName;
+  final pulumi.Input<String>? providerName;
 
   /// ID of the site of the links to retrieve.
-  final Input<String>? siteId;
+  final pulumi.Input<String>? siteId;
 
   /// Restricts the list to the links with these tags.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Link type to retrieve.
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   GetLinksArgs({
     required this.globalNetworkId,
@@ -51,11 +51,11 @@ class GetLinksArgs {
 
   factory GetLinksArgs.fromMap(Map<String, dynamic> map) {
     return GetLinksArgs(
-      globalNetworkId: Input.asInput<String>(map['globalNetworkId']),
-      providerName: Input.asOptionalInput<String>(map['providerName']),
-      siteId: Input.asOptionalInput<String>(map['siteId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      type: Input.asOptionalInput<String>(map['type']),
+      globalNetworkId: pulumi.Input.asInput<String>(map['globalNetworkId']),
+      providerName: pulumi.Input.asOptionalInput<String>(map['providerName']),
+      siteId: pulumi.Input.asOptionalInput<String>(map['siteId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
     );
   }
 }

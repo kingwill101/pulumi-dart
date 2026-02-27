@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_text_cache_point/agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_text_cache_point.dart';
 import '../agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_text_input_variable/agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_text_input_variable.dart';
 
@@ -26,7 +26,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
     }
     final inputVariablesValue = inputVariables;
     if (inputVariablesValue != null) {
-      map['inputVariables'] = Input.encodeList<
+      map['inputVariables'] = pulumi.Input.encodeList<
           AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariable,
           Map<String, dynamic>>(inputVariablesValue, (value) => value.toMap());
     }
@@ -43,7 +43,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
               .fromMap((map['cachePoint'] as Map).cast<String, dynamic>()),
       inputVariables: map['inputVariables'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariable>(
               map['inputVariables'],
               (value) =>

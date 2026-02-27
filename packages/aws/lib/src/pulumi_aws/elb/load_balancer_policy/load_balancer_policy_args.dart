@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../load_balancer_policy_policy_attribute/load_balancer_policy_policy_attribute.dart';
 
 /// The set of arguments for LoadBalancerPolicy.
 class LoadBalancerPolicyArgs {
   /// The load balancer on which the policy is defined.
-  final Input<String> loadBalancerName;
+  final pulumi.Input<String> loadBalancerName;
 
   /// Policy attribute to apply to the policy.
-  final Input<List<LoadBalancerPolicyPolicyAttribute>>? policyAttributes;
+  final pulumi.Input<List<LoadBalancerPolicyPolicyAttribute>>? policyAttributes;
 
   /// The name of the load balancer policy.
-  final Input<String> policyName;
+  final pulumi.Input<String> policyName;
 
   /// The policy type.
-  final Input<String> policyTypeName;
+  final pulumi.Input<String> policyTypeName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   LoadBalancerPolicyArgs({
     required this.loadBalancerName,
@@ -33,11 +33,11 @@ class LoadBalancerPolicyArgs {
     map['loadBalancerName'] = loadBalancerName;
     final policyAttributesValue = policyAttributes;
     if (policyAttributesValue != null) {
-      map['policyAttributes'] = Input.mapOptionalInputValue<
+      map['policyAttributes'] = pulumi.Input.mapOptionalInputValue<
               List<LoadBalancerPolicyPolicyAttribute>,
               List<Map<String, dynamic>>>(
           policyAttributesValue,
-          (value) => Input.encodeList<LoadBalancerPolicyPolicyAttribute,
+          (value) => pulumi.Input.encodeList<LoadBalancerPolicyPolicyAttribute,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['policyName'] = policyName;
@@ -51,13 +51,13 @@ class LoadBalancerPolicyArgs {
 
   factory LoadBalancerPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerPolicyArgs(
-      loadBalancerName: Input.asInput<String>(map['loadBalancerName']),
+      loadBalancerName: pulumi.Input.asInput<String>(map['loadBalancerName']),
       policyAttributes:
-          Input.asOptionalInput<List<LoadBalancerPolicyPolicyAttribute>>(
+          pulumi.Input.asOptionalInput<List<LoadBalancerPolicyPolicyAttribute>>(
               map['policyAttributes']),
-      policyName: Input.asInput<String>(map['policyName']),
-      policyTypeName: Input.asInput<String>(map['policyTypeName']),
-      region: Input.asOptionalInput<String>(map['region']),
+      policyName: pulumi.Input.asInput<String>(map['policyName']),
+      policyTypeName: pulumi.Input.asInput<String>(map['policyTypeName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../virtual_gateway_spec_backend_defaults/virtual_gateway_spec_backend_defaults.dart';
 import '../virtual_gateway_spec_listener/virtual_gateway_spec_listener.dart';
 import '../virtual_gateway_spec_logging/virtual_gateway_spec_logging.dart';
@@ -27,9 +27,8 @@ class VirtualGatewaySpec {
     if (backendDefaultsValue != null) {
       map['backendDefaults'] = backendDefaultsValue.toMap();
     }
-    map['listeners'] =
-        Input.encodeList<VirtualGatewaySpecListener, Map<String, dynamic>>(
-            listeners, (value) => value.toMap());
+    map['listeners'] = pulumi.Input.encodeList<VirtualGatewaySpecListener,
+        Map<String, dynamic>>(listeners, (value) => value.toMap());
     final loggingValue = logging;
     if (loggingValue != null) {
       map['logging'] = loggingValue.toMap();
@@ -43,7 +42,7 @@ class VirtualGatewaySpec {
           ? null
           : VirtualGatewaySpecBackendDefaults.fromMap(
               (map['backendDefaults'] as Map).cast<String, dynamic>()),
-      listeners: Input.decodeList<VirtualGatewaySpecListener>(
+      listeners: pulumi.Input.decodeList<VirtualGatewaySpecListener>(
           map['listeners'],
           (value) => VirtualGatewaySpecListener.fromMap(
               (value as Map).cast<String, dynamic>())),

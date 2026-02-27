@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AssessmentTarget.
 class AssessmentTargetArgs {
   /// The name of the assessment target.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
-  final Input<String>? resourceGroupArn;
+  final pulumi.Input<String>? resourceGroupArn;
 
   AssessmentTargetArgs({
     this.name,
@@ -38,9 +38,10 @@ class AssessmentTargetArgs {
 
   factory AssessmentTargetArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentTargetArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      resourceGroupArn: Input.asOptionalInput<String>(map['resourceGroupArn']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourceGroupArn:
+          pulumi.Input.asOptionalInput<String>(map['resourceGroupArn']),
     );
   }
 }

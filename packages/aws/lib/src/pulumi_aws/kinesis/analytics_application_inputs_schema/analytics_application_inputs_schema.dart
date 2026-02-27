@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../analytics_application_inputs_schema_record_column/analytics_application_inputs_schema_record_column.dart';
 import '../analytics_application_inputs_schema_record_format/analytics_application_inputs_schema_record_format.dart';
 
@@ -24,7 +24,7 @@ class AnalyticsApplicationInputsSchema {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['recordColumns'] = Input.encodeList<
+    map['recordColumns'] = pulumi.Input.encodeList<
         AnalyticsApplicationInputsSchemaRecordColumn,
         Map<String, dynamic>>(recordColumns, (value) => value.toMap());
     final recordEncodingValue = recordEncoding;
@@ -38,7 +38,7 @@ class AnalyticsApplicationInputsSchema {
   factory AnalyticsApplicationInputsSchema.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsSchema(
       recordColumns:
-          Input.decodeList<AnalyticsApplicationInputsSchemaRecordColumn>(
+          pulumi.Input.decodeList<AnalyticsApplicationInputsSchemaRecordColumn>(
               map['recordColumns'],
               (value) => AnalyticsApplicationInputsSchemaRecordColumn.fromMap(
                   (value as Map).cast<String, dynamic>())),

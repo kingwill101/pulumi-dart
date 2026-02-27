@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipeline_stage_on_failure_condition_rule/pipeline_stage_on_failure_condition_rule.dart';
 
 class PipelineStageOnFailureCondition {
@@ -21,7 +21,7 @@ class PipelineStageOnFailureCondition {
     if (resultValue != null) {
       map['result'] = resultValue;
     }
-    map['rules'] = Input.encodeList<PipelineStageOnFailureConditionRule,
+    map['rules'] = pulumi.Input.encodeList<PipelineStageOnFailureConditionRule,
         Map<String, dynamic>>(rules, (value) => value.toMap());
     return map;
   }
@@ -29,7 +29,7 @@ class PipelineStageOnFailureCondition {
   factory PipelineStageOnFailureCondition.fromMap(Map<String, dynamic> map) {
     return PipelineStageOnFailureCondition(
       result: map['result'] == null ? null : map['result'] as String,
-      rules: Input.decodeList<PipelineStageOnFailureConditionRule>(
+      rules: pulumi.Input.decodeList<PipelineStageOnFailureConditionRule>(
           map['rules'],
           (value) => PipelineStageOnFailureConditionRule.fromMap(
               (value as Map).cast<String, dynamic>())),

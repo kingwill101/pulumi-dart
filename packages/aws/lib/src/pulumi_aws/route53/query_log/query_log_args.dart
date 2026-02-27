@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for QueryLog.
 class QueryLogArgs {
   /// CloudWatch log group ARN to send query logs.
-  final Input<String> cloudwatchLogGroupArn;
+  final pulumi.Input<String> cloudwatchLogGroupArn;
 
   /// Route53 hosted zone ID to enable query logs.
-  final Input<String> zoneId;
+  final pulumi.Input<String> zoneId;
 
   QueryLogArgs({
     required this.cloudwatchLogGroupArn,
@@ -25,8 +25,8 @@ class QueryLogArgs {
   factory QueryLogArgs.fromMap(Map<String, dynamic> map) {
     return QueryLogArgs(
       cloudwatchLogGroupArn:
-          Input.asInput<String>(map['cloudwatchLogGroupArn']),
-      zoneId: Input.asInput<String>(map['zoneId']),
+          pulumi.Input.asInput<String>(map['cloudwatchLogGroupArn']),
+      zoneId: pulumi.Input.asInput<String>(map['zoneId']),
     );
   }
 }

@@ -1,5 +1,5 @@
 library module_iot_get_endpoint;
 
-export 'get_endpoint/get_endpoint3.dart';
-export 'get_endpoint/get_endpoint_args3.dart';
-export 'get_endpoint/get_endpoint_result3.dart';
+export 'get_endpoint/get_endpoint_iot.dart';
+export 'get_endpoint/get_endpoint_iot_args.dart';
+export 'get_endpoint/get_endpoint_iot_result.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../thing_group_metadata_root_to_parent_group/thing_group_metadata_root_to_parent_group.dart';
 
 class ThingGroupMetadata {
@@ -28,7 +28,7 @@ class ThingGroupMetadata {
     }
     final rootToParentGroupsValue = rootToParentGroups;
     if (rootToParentGroupsValue != null) {
-      map['rootToParentGroups'] = Input.encodeList<
+      map['rootToParentGroups'] = pulumi.Input.encodeList<
               ThingGroupMetadataRootToParentGroup, Map<String, dynamic>>(
           rootToParentGroupsValue, (value) => value.toMap());
     }
@@ -44,7 +44,7 @@ class ThingGroupMetadata {
           : map['parentGroupName'] as String,
       rootToParentGroups: map['rootToParentGroups'] == null
           ? null
-          : Input.decodeList<ThingGroupMetadataRootToParentGroup>(
+          : pulumi.Input.decodeList<ThingGroupMetadataRootToParentGroup>(
               map['rootToParentGroups'],
               (value) => ThingGroupMetadataRootToParentGroup.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../monitor_local_resource/monitor_local_resource.dart';
 import '../monitor_remote_resource/monitor_remote_resource.dart';
 import '../monitor_timeouts/monitor_timeouts.dart';
@@ -19,43 +19,43 @@ import 'monitor_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkflowmonitor/monitor:Monitor example example-monitor
 /// ```
-class Monitor extends CustomResource {
+class Monitor extends pulumi.CustomResource {
   /// The local resources to monitor. A local resource in a workload is the location of the hosts where the Network Flow Monitor agent is installed.
-  late final Output<List<MonitorLocalResource>> localResources;
+  late final pulumi.Output<List<MonitorLocalResource>> localResources;
 
   /// The Amazon Resource Name (ARN) of the monitor.
-  late final Output<String> monitorArn;
+  late final pulumi.Output<String> monitorArn;
 
   /// The name of the monitor. Cannot be changed after creation.
-  late final Output<String> monitorName;
+  late final pulumi.Output<String> monitorName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The remote resources to monitor. A remote resource is the other endpoint specified for the network flow of a workload, with a local resource.
-  late final Output<List<MonitorRemoteResource>?> remoteResources;
+  late final pulumi.Output<List<MonitorRemoteResource>?> remoteResources;
 
   /// The Amazon Resource Name (ARN) of the scope for the monitor. Cannot be changed after creation.
   ///
   /// The following arguments are optional:
-  late final Output<String> scopeArn;
+  late final pulumi.Output<String> scopeArn;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<MonitorTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<MonitorTimeouts?> timeouts;
 
   Monitor(
     String name, {
     MonitorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkflowmonitor/monitor:Monitor',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.localResources =
         registerOutput<List<MonitorLocalResource>>('localResources');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_security_group_filter/get_security_group_filter.dart';
 
 /// Result data returned by getSecurityGroup.
@@ -35,7 +35,7 @@ class GetSecurityGroupResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetSecurityGroupFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetSecurityGroupFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -52,7 +52,7 @@ class GetSecurityGroupResult {
       description: map['description'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetSecurityGroupFilter>(
+          : pulumi.Input.decodeList<GetSecurityGroupFilter>(
               map['filters'],
               (value) => GetSecurityGroupFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

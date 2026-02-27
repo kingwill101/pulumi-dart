@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../channel_encoder_settings_audio_description_remix_settings_channel_mapping/channel_encoder_settings_audio_description_remix_settings_channel_mapping.dart';
 
 class ChannelEncoderSettingsAudioDescriptionRemixSettings {
@@ -17,7 +17,7 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettings {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['channelMappings'] = Input.encodeList<
+    map['channelMappings'] = pulumi.Input.encodeList<
         ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping,
         Map<String, dynamic>>(channelMappings, (value) => value.toMap());
     final channelsInValue = channelsIn;
@@ -34,7 +34,7 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettings {
   factory ChannelEncoderSettingsAudioDescriptionRemixSettings.fromMap(
       Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionRemixSettings(
-      channelMappings: Input.decodeList<
+      channelMappings: pulumi.Input.decodeList<
               ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping>(
           map['channelMappings'],
           (value) =>

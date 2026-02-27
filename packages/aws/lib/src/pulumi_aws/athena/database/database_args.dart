@@ -1,40 +1,40 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../database_acl_configuration/database_acl_configuration.dart';
 import '../database_encryption_configuration/database_encryption_configuration.dart';
 
 /// The set of arguments for Database.
 class DatabaseArgs {
   /// That an Amazon S3 canned ACL should be set to control ownership of stored query results. See ACL Configuration below.
-  final Input<DatabaseAclConfiguration>? aclConfiguration;
+  final pulumi.Input<DatabaseAclConfiguration>? aclConfiguration;
 
   /// Name of S3 bucket to save the results of the query execution.
-  final Input<String>? bucket;
+  final pulumi.Input<String>? bucket;
 
   /// Description of the database.
-  final Input<String>? comment;
+  final pulumi.Input<String>? comment;
 
   /// Encryption key block AWS Athena uses to decrypt the data in S3, such as an AWS Key Management Service (AWS KMS) key. See Encryption Configuration below.
-  final Input<DatabaseEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<DatabaseEncryptionConfiguration>? encryptionConfiguration;
 
   /// AWS account ID that you expect to be the owner of the Amazon S3 bucket.
-  final Input<String>? expectedBucketOwner;
+  final pulumi.Input<String>? expectedBucketOwner;
 
   /// Boolean that indicates all tables should be deleted from the database so that the database can be destroyed without error. The tables are *not* recoverable.
-  final Input<bool>? forceDestroy;
+  final pulumi.Input<bool>? forceDestroy;
 
   /// Name of the database to create.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Key-value map of custom metadata properties for the database definition.
-  final Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>>? properties;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Name of the workgroup.
-  final Input<String>? workgroup;
+  final pulumi.Input<String>? workgroup;
 
   DatabaseArgs({
     this.aclConfiguration,
@@ -53,7 +53,7 @@ class DatabaseArgs {
     final map = <String, dynamic>{};
     final aclConfigurationValue = aclConfiguration;
     if (aclConfigurationValue != null) {
-      map['aclConfiguration'] = Input.mapOptionalInputValue<
+      map['aclConfiguration'] = pulumi.Input.mapOptionalInputValue<
               DatabaseAclConfiguration, Map<String, dynamic>>(
           aclConfigurationValue, (value) => value.toMap());
     }
@@ -67,7 +67,7 @@ class DatabaseArgs {
     }
     final encryptionConfigurationValue = encryptionConfiguration;
     if (encryptionConfigurationValue != null) {
-      map['encryptionConfiguration'] = Input.mapOptionalInputValue<
+      map['encryptionConfiguration'] = pulumi.Input.mapOptionalInputValue<
               DatabaseEncryptionConfiguration, Map<String, dynamic>>(
           encryptionConfigurationValue, (value) => value.toMap());
     }
@@ -100,20 +100,21 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      aclConfiguration: Input.asOptionalInput<DatabaseAclConfiguration>(
+      aclConfiguration: pulumi.Input.asOptionalInput<DatabaseAclConfiguration>(
           map['aclConfiguration']),
-      bucket: Input.asOptionalInput<String>(map['bucket']),
-      comment: Input.asOptionalInput<String>(map['comment']),
+      bucket: pulumi.Input.asOptionalInput<String>(map['bucket']),
+      comment: pulumi.Input.asOptionalInput<String>(map['comment']),
       encryptionConfiguration:
-          Input.asOptionalInput<DatabaseEncryptionConfiguration>(
+          pulumi.Input.asOptionalInput<DatabaseEncryptionConfiguration>(
               map['encryptionConfiguration']),
       expectedBucketOwner:
-          Input.asOptionalInput<String>(map['expectedBucketOwner']),
-      forceDestroy: Input.asOptionalInput<bool>(map['forceDestroy']),
-      name: Input.asOptionalInput<String>(map['name']),
-      properties: Input.asOptionalInput<Map<String, String>>(map['properties']),
-      region: Input.asOptionalInput<String>(map['region']),
-      workgroup: Input.asOptionalInput<String>(map['workgroup']),
+          pulumi.Input.asOptionalInput<String>(map['expectedBucketOwner']),
+      forceDestroy: pulumi.Input.asOptionalInput<bool>(map['forceDestroy']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      properties:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['properties']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      workgroup: pulumi.Input.asOptionalInput<String>(map['workgroup']),
     );
   }
 }

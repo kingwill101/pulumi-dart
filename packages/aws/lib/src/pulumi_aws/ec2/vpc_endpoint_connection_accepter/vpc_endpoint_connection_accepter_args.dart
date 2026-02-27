@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VpcEndpointConnectionAccepter.
 class VpcEndpointConnectionAccepterArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// AWS VPC Endpoint ID.
-  final Input<String> vpcEndpointId;
+  final pulumi.Input<String> vpcEndpointId;
 
   /// AWS VPC Endpoint Service ID.
-  final Input<String> vpcEndpointServiceId;
+  final pulumi.Input<String> vpcEndpointServiceId;
 
   VpcEndpointConnectionAccepterArgs({
     this.region,
@@ -32,9 +32,10 @@ class VpcEndpointConnectionAccepterArgs {
 
   factory VpcEndpointConnectionAccepterArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointConnectionAccepterArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      vpcEndpointId: Input.asInput<String>(map['vpcEndpointId']),
-      vpcEndpointServiceId: Input.asInput<String>(map['vpcEndpointServiceId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      vpcEndpointId: pulumi.Input.asInput<String>(map['vpcEndpointId']),
+      vpcEndpointServiceId:
+          pulumi.Input.asInput<String>(map['vpcEndpointServiceId']),
     );
   }
 }

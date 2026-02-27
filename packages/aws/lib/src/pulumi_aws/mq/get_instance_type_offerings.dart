@@ -1,5 +1,5 @@
 library module_mq_get_instance_type_offerings;
 
-export 'get_instance_type_offerings/get_instance_type_offerings2.dart';
-export 'get_instance_type_offerings/get_instance_type_offerings_args2.dart';
-export 'get_instance_type_offerings/get_instance_type_offerings_result2.dart';
+export 'get_instance_type_offerings/get_instance_type_offerings_mq.dart';
+export 'get_instance_type_offerings/get_instance_type_offerings_mq_args.dart';
+export 'get_instance_type_offerings/get_instance_type_offerings_mq_result.dart';

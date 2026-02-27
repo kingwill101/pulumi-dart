@@ -1,3 +1,3 @@
 library module_opensearch_get_domain_auto_tune_option_maintenance_schedule;
 
-export 'get_domain_auto_tune_option_maintenance_schedule/get_domain_auto_tune_option_maintenance_schedule2.dart';
+export 'get_domain_auto_tune_option_maintenance_schedule/get_domain_auto_tune_option_maintenance_schedule_opensearch.dart';

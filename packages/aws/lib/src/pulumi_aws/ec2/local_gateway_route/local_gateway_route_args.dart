@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LocalGatewayRoute.
 class LocalGatewayRouteArgs {
   /// IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-  final Input<String> destinationCidrBlock;
+  final pulumi.Input<String> destinationCidrBlock;
 
   /// Identifier of EC2 Local Gateway Route Table.
-  final Input<String> localGatewayRouteTableId;
+  final pulumi.Input<String> localGatewayRouteTableId;
 
   /// Identifier of EC2 Local Gateway Virtual Interface Group.
-  final Input<String> localGatewayVirtualInterfaceGroupId;
+  final pulumi.Input<String> localGatewayVirtualInterfaceGroupId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   LocalGatewayRouteArgs({
     required this.destinationCidrBlock,
@@ -38,12 +38,13 @@ class LocalGatewayRouteArgs {
 
   factory LocalGatewayRouteArgs.fromMap(Map<String, dynamic> map) {
     return LocalGatewayRouteArgs(
-      destinationCidrBlock: Input.asInput<String>(map['destinationCidrBlock']),
+      destinationCidrBlock:
+          pulumi.Input.asInput<String>(map['destinationCidrBlock']),
       localGatewayRouteTableId:
-          Input.asInput<String>(map['localGatewayRouteTableId']),
-      localGatewayVirtualInterfaceGroupId:
-          Input.asInput<String>(map['localGatewayVirtualInterfaceGroupId']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asInput<String>(map['localGatewayRouteTableId']),
+      localGatewayVirtualInterfaceGroupId: pulumi.Input.asInput<String>(
+          map['localGatewayVirtualInterfaceGroupId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

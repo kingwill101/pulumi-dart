@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../topic_rule_http_http_header/topic_rule_http_http_header.dart';
 
 class TopicRuleHttp {
@@ -27,9 +27,8 @@ class TopicRuleHttp {
     }
     final httpHeadersValue = httpHeaders;
     if (httpHeadersValue != null) {
-      map['httpHeaders'] =
-          Input.encodeList<TopicRuleHttpHttpHeader, Map<String, dynamic>>(
-              httpHeadersValue, (value) => value.toMap());
+      map['httpHeaders'] = pulumi.Input.encodeList<TopicRuleHttpHttpHeader,
+          Map<String, dynamic>>(httpHeadersValue, (value) => value.toMap());
     }
     map['url'] = url;
     return map;
@@ -42,7 +41,7 @@ class TopicRuleHttp {
           : map['confirmationUrl'] as String,
       httpHeaders: map['httpHeaders'] == null
           ? null
-          : Input.decodeList<TopicRuleHttpHttpHeader>(
+          : pulumi.Input.decodeList<TopicRuleHttpHttpHeader>(
               map['httpHeaders'],
               (value) => TopicRuleHttpHttpHeader.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../trigger_predicate_condition/trigger_predicate_condition.dart';
 
 class TriggerPredicate {
@@ -17,9 +17,8 @@ class TriggerPredicate {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['conditions'] =
-        Input.encodeList<TriggerPredicateCondition, Map<String, dynamic>>(
-            conditions, (value) => value.toMap());
+    map['conditions'] = pulumi.Input.encodeList<TriggerPredicateCondition,
+        Map<String, dynamic>>(conditions, (value) => value.toMap());
     final logicalValue = logical;
     if (logicalValue != null) {
       map['logical'] = logicalValue;
@@ -29,7 +28,7 @@ class TriggerPredicate {
 
   factory TriggerPredicate.fromMap(Map<String, dynamic> map) {
     return TriggerPredicate(
-      conditions: Input.decodeList<TriggerPredicateCondition>(
+      conditions: pulumi.Input.decodeList<TriggerPredicateCondition>(
           map['conditions'],
           (value) => TriggerPredicateCondition.fromMap(
               (value as Map).cast<String, dynamic>())),

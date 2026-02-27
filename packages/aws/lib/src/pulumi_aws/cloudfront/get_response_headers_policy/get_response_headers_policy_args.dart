@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getResponseHeadersPolicy.
 class GetResponseHeadersPolicyArgs {
   /// Identifier for the response headers policy.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Unique name to identify the response headers policy.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   GetResponseHeadersPolicyArgs({
     this.id,
@@ -30,8 +30,8 @@ class GetResponseHeadersPolicyArgs {
 
   factory GetResponseHeadersPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetResponseHeadersPolicyArgs(
-      id: Input.asOptionalInput<String>(map['id']),
-      name: Input.asOptionalInput<String>(map['name']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
     );
   }
 }

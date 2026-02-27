@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../selection_condition/selection_condition.dart';
 import '../selection_selection_tag/selection_selection_tag.dart';
 import 'selection_args.dart';
@@ -38,40 +38,40 @@ import 'selection_args.dart';
 /// ```sh
 /// $ pulumi import aws:backup/selection:Selection example plan-id|selection-id
 /// ```
-class Selection extends CustomResource {
+class Selection extends pulumi.CustomResource {
   /// Condition-based filters used to specify sets of resources for a backup plan. See below for details.
-  late final Output<List<SelectionCondition>> conditions;
+  late final pulumi.Output<List<SelectionCondition>> conditions;
 
   /// The ARN of the IAM role that AWS Backup uses to authenticate when restoring and backing up the target resource. See the [AWS Backup Developer Guide](https://docs.aws.amazon.com/aws-backup/latest/devguide/access-control.html#managed-policies) for additional information about using AWS managed policies or creating custom policies attached to the IAM role.
-  late final Output<String> iamRoleArn;
+  late final pulumi.Output<String> iamRoleArn;
 
   /// The display name of a resource selection document.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to exclude from a backup plan.
-  late final Output<List<String>> notResources;
+  late final pulumi.Output<List<String>> notResources;
 
   /// The backup plan ID to be associated with the selection of resources.
-  late final Output<String> planId;
+  late final pulumi.Output<String> planId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan.
-  late final Output<List<String>?> resources;
+  late final pulumi.Output<List<String>?> resources;
 
   /// Tag-based conditions used to specify a set of resources to assign to a backup plan. See below for details.
-  late final Output<List<SelectionSelectionTag>?> selectionTags;
+  late final pulumi.Output<List<SelectionSelectionTag>?> selectionTags;
 
   Selection(
     String name, {
     SelectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:backup/selection:Selection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.conditions = registerOutput<List<SelectionCondition>>('conditions');
     this.iamRoleArn = registerOutput<String>('iamRoleArn');

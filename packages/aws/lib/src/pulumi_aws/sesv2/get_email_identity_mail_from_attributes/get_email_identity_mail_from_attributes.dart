@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_email_identity_mail_from_attributes_args.dart';
 import 'get_email_identity_mail_from_attributes_result.dart';
 
@@ -10,13 +10,13 @@ import 'get_email_identity_mail_from_attributes_result.dart';
 Future<GetEmailIdentityMailFromAttributesResult>
     getEmailIdentityMailFromAttributes(
   GetEmailIdentityMailFromAttributesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:sesv2/getEmailIdentityMailFromAttributes:getEmailIdentityMailFromAttributes',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEmailIdentityMailFromAttributesResult.fromMap(result);
 }

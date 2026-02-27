@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_launch_paths_summary_constraint_summary/get_launch_paths_summary_constraint_summary.dart';
 
 class GetLaunchPathsSummary {
@@ -25,7 +25,7 @@ class GetLaunchPathsSummary {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['constraintSummaries'] = Input.encodeList<
+    map['constraintSummaries'] = pulumi.Input.encodeList<
         GetLaunchPathsSummaryConstraintSummary,
         Map<String, dynamic>>(constraintSummaries, (value) => value.toMap());
     map['name'] = name;
@@ -37,7 +37,7 @@ class GetLaunchPathsSummary {
   factory GetLaunchPathsSummary.fromMap(Map<String, dynamic> map) {
     return GetLaunchPathsSummary(
       constraintSummaries:
-          Input.decodeList<GetLaunchPathsSummaryConstraintSummary>(
+          pulumi.Input.decodeList<GetLaunchPathsSummaryConstraintSummary>(
               map['constraintSummaries'],
               (value) => GetLaunchPathsSummaryConstraintSummary.fromMap(
                   (value as Map).cast<String, dynamic>())),

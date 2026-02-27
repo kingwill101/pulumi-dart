@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_experience_configuration/get_experience_configuration.dart';
 import '../get_experience_endpoint/get_experience_endpoint.dart';
 
@@ -62,13 +62,12 @@ class GetExperienceResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['configurations'] =
-        Input.encodeList<GetExperienceConfiguration, Map<String, dynamic>>(
-            configurations, (value) => value.toMap());
+    map['configurations'] = pulumi.Input.encodeList<GetExperienceConfiguration,
+        Map<String, dynamic>>(configurations, (value) => value.toMap());
     map['createdAt'] = createdAt;
     map['description'] = description;
     map['endpoints'] =
-        Input.encodeList<GetExperienceEndpoint, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetExperienceEndpoint, Map<String, dynamic>>(
             endpoints, (value) => value.toMap());
     map['errorMessage'] = errorMessage;
     map['experienceId'] = experienceId;
@@ -85,13 +84,13 @@ class GetExperienceResult {
   factory GetExperienceResult.fromMap(Map<String, dynamic> map) {
     return GetExperienceResult(
       arn: map['arn'] as String,
-      configurations: Input.decodeList<GetExperienceConfiguration>(
+      configurations: pulumi.Input.decodeList<GetExperienceConfiguration>(
           map['configurations'],
           (value) => GetExperienceConfiguration.fromMap(
               (value as Map).cast<String, dynamic>())),
       createdAt: map['createdAt'] as String,
       description: map['description'] as String,
-      endpoints: Input.decodeList<GetExperienceEndpoint>(
+      endpoints: pulumi.Input.decodeList<GetExperienceEndpoint>(
           map['endpoints'],
           (value) => GetExperienceEndpoint.fromMap(
               (value as Map).cast<String, dynamic>())),

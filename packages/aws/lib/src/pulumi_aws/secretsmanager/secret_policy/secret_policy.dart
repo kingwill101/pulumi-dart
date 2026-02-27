@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_policy_args.dart';
 
 /// Provides a resource to manage AWS Secrets Manager secret policy.
@@ -23,30 +23,30 @@ import 'secret_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:secretsmanager/secretPolicy:SecretPolicy example arn:aws:secretsmanager:us-east-1:123456789012:secret:example-123456
 /// ```
-class SecretPolicy extends CustomResource {
+class SecretPolicy extends pulumi.CustomResource {
   /// Makes an optional API call to Zelkova to validate the Resource Policy to prevent broad access to your secret.
-  late final Output<bool?> blockPublicPolicy;
+  late final pulumi.Output<bool?> blockPublicPolicy;
 
   /// Valid JSON document representing a [resource policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html). Unlike `aws.secretsmanager.Secret`, where `policy` can be set to `"{}"` to delete the policy, `"{}"` is not a valid policy since `policy` is required.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Secret ARN.
   ///
   /// The following arguments are optional:
-  late final Output<String> secretArn;
+  late final pulumi.Output<String> secretArn;
 
   SecretPolicy(
     String name, {
     SecretPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:secretsmanager/secretPolicy:SecretPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.blockPublicPolicy = registerOutput<bool?>('blockPublicPolicy');
     this.policy = registerOutput<String>('policy');

@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AttachmentAccepter.
 class AttachmentAccepterArgs {
   /// ID of the attachment.
-  final Input<String> attachmentId;
+  final pulumi.Input<String> attachmentId;
 
   /// Type of attachment. Valid values: `CONNECT`, `DIRECT_CONNECT_GATEWAY`, `SITE_TO_SITE_VPN`, `TRANSIT_GATEWAY_ROUTE_TABLE`, `VPC`.
-  final Input<String> attachmentType;
+  final pulumi.Input<String> attachmentType;
 
   AttachmentAccepterArgs({
     required this.attachmentId,
@@ -24,8 +24,8 @@ class AttachmentAccepterArgs {
 
   factory AttachmentAccepterArgs.fromMap(Map<String, dynamic> map) {
     return AttachmentAccepterArgs(
-      attachmentId: Input.asInput<String>(map['attachmentId']),
-      attachmentType: Input.asInput<String>(map['attachmentType']),
+      attachmentId: pulumi.Input.asInput<String>(map['attachmentId']),
+      attachmentType: pulumi.Input.asInput<String>(map['attachmentType']),
     );
   }
 }

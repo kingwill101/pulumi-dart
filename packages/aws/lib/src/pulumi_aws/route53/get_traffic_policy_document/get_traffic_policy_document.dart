@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_traffic_policy_document_args.dart';
 import 'get_traffic_policy_document_result.dart';
 
@@ -15,13 +15,13 @@ import 'get_traffic_policy_document_result.dart';
 /// The following example showcases the use of nested rules within the traffic policy document and introduces the `geoproximity` rule type.
 Future<GetTrafficPolicyDocumentResult> getTrafficPolicyDocument(
   GetTrafficPolicyDocumentArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:route53/getTrafficPolicyDocument:getTrafficPolicyDocument',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTrafficPolicyDocumentResult.fromMap(result);
 }

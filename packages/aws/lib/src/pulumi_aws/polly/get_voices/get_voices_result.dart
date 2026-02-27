@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_voices_voice/get_voices_voice.dart';
 
 /// Result data returned by getVoices.
@@ -46,8 +46,9 @@ class GetVoicesResult {
     map['region'] = region;
     final voicesValue = voices;
     if (voicesValue != null) {
-      map['voices'] = Input.encodeList<GetVoicesVoice, Map<String, dynamic>>(
-          voicesValue, (value) => value.toMap());
+      map['voices'] =
+          pulumi.Input.encodeList<GetVoicesVoice, Map<String, dynamic>>(
+              voicesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -65,7 +66,7 @@ class GetVoicesResult {
       region: map['region'] as String,
       voices: map['voices'] == null
           ? null
-          : Input.decodeList<GetVoicesVoice>(
+          : pulumi.Input.decodeList<GetVoicesVoice>(
               map['voices'],
               (value) => GetVoicesVoice.fromMap(
                   (value as Map).cast<String, dynamic>())),

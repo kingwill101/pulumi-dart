@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../patch_baseline_approval_rule_patch_filter/patch_baseline_approval_rule_patch_filter.dart';
 
 class PatchBaselineApprovalRule {
@@ -45,7 +45,8 @@ class PatchBaselineApprovalRule {
     if (enableNonSecurityValue != null) {
       map['enableNonSecurity'] = enableNonSecurityValue;
     }
-    map['patchFilters'] = Input.encodeList<PatchBaselineApprovalRulePatchFilter,
+    map['patchFilters'] = pulumi.Input.encodeList<
+        PatchBaselineApprovalRulePatchFilter,
         Map<String, dynamic>>(patchFilters, (value) => value.toMap());
     return map;
   }
@@ -64,10 +65,11 @@ class PatchBaselineApprovalRule {
       enableNonSecurity: map['enableNonSecurity'] == null
           ? null
           : map['enableNonSecurity'] as bool,
-      patchFilters: Input.decodeList<PatchBaselineApprovalRulePatchFilter>(
-          map['patchFilters'],
-          (value) => PatchBaselineApprovalRulePatchFilter.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      patchFilters:
+          pulumi.Input.decodeList<PatchBaselineApprovalRulePatchFilter>(
+              map['patchFilters'],
+              (value) => PatchBaselineApprovalRulePatchFilter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

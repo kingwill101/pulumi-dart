@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../kx_environment_transit_gateway_configuration_attachment_network_acl_configuration/kx_environment_transit_gateway_configuration_attachment_network_acl_configuration.dart';
 
 class KxEnvironmentTransitGatewayConfiguration {
@@ -26,7 +26,7 @@ class KxEnvironmentTransitGatewayConfiguration {
     final attachmentNetworkAclConfigurationsValue =
         attachmentNetworkAclConfigurations;
     if (attachmentNetworkAclConfigurationsValue != null) {
-      map['attachmentNetworkAclConfigurations'] = Input.encodeList<
+      map['attachmentNetworkAclConfigurations'] = pulumi.Input.encodeList<
               KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration,
               Map<String, dynamic>>(
           attachmentNetworkAclConfigurationsValue, (value) => value.toMap());
@@ -43,7 +43,7 @@ class KxEnvironmentTransitGatewayConfiguration {
                   'attachmentNetworkAclConfigurations'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration>(
               map['attachmentNetworkAclConfigurations'],
               (value) =>

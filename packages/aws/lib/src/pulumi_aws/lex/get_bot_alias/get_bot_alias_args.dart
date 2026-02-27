@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBotAlias.
 class GetBotAliasArgs {
   /// Name of the bot.
-  final Input<String> botName;
+  final pulumi.Input<String> botName;
 
   /// Name of the bot alias. The name is case sensitive.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetBotAliasArgs({
     required this.botName,
@@ -32,9 +32,9 @@ class GetBotAliasArgs {
 
   factory GetBotAliasArgs.fromMap(Map<String, dynamic> map) {
     return GetBotAliasArgs(
-      botName: Input.asInput<String>(map['botName']),
-      name: Input.asInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      botName: pulumi.Input.asInput<String>(map['botName']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

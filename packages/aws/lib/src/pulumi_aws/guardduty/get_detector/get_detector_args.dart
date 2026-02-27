@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDetector.
 class GetDetectorArgs {
   /// ID of the detector.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags for the resource.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetDetectorArgs({
     this.id,
@@ -38,9 +38,9 @@ class GetDetectorArgs {
 
   factory GetDetectorArgs.fromMap(Map<String, dynamic> map) {
     return GetDetectorArgs(
-      id: Input.asOptionalInput<String>(map['id']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

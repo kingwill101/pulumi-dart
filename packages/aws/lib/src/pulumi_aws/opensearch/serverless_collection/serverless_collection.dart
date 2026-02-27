@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../serverless_collection_timeouts/serverless_collection_timeouts.dart';
 import 'serverless_collection_args.dart';
 
@@ -21,50 +21,50 @@ import 'serverless_collection_args.dart';
 /// ```sh
 /// $ pulumi import aws:opensearch/serverlessCollection:ServerlessCollection example example
 /// ```
-class ServerlessCollection extends CustomResource {
+class ServerlessCollection extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the collection.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Collection-specific endpoint used to submit index, search, and data upload requests to an OpenSearch Serverless collection.
-  late final Output<String> collectionEndpoint;
+  late final pulumi.Output<String> collectionEndpoint;
 
   /// Collection-specific endpoint used to access OpenSearch Dashboards.
-  late final Output<String> dashboardEndpoint;
+  late final pulumi.Output<String> dashboardEndpoint;
 
   /// Description of the collection.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The ARN of the Amazon Web Services KMS key used to encrypt the collection.
-  late final Output<String> kmsKeyArn;
+  late final pulumi.Output<String> kmsKeyArn;
 
   /// Name of the collection.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Indicates whether standby replicas should be used for a collection. One of `ENABLED` or `DISABLED`. Defaults to `ENABLED`.
-  late final Output<String> standbyReplicas;
+  late final pulumi.Output<String> standbyReplicas;
 
   /// A map of tags to assign to the collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<ServerlessCollectionTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<ServerlessCollectionTimeouts?> timeouts;
 
   /// Type of collection. One of `SEARCH`, `TIMESERIES`, or `VECTORSEARCH`. Defaults to `TIMESERIES`.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   ServerlessCollection(
     String name, {
     ServerlessCollectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:opensearch/serverlessCollection:ServerlessCollection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.collectionEndpoint = registerOutput<String>('collectionEndpoint');

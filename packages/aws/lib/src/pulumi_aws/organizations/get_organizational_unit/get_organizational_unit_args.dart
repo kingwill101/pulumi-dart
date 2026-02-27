@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOrganizationalUnit.
 class GetOrganizationalUnitArgs {
   /// Name of the organizational unit
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// Parent ID of the organizational unit.
-  final Input<String> parentId;
+  final pulumi.Input<String> parentId;
 
   GetOrganizationalUnitArgs({
     required this.name,
@@ -24,8 +24,8 @@ class GetOrganizationalUnitArgs {
 
   factory GetOrganizationalUnitArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitArgs(
-      name: Input.asInput<String>(map['name']),
-      parentId: Input.asInput<String>(map['parentId']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      parentId: pulumi.Input.asInput<String>(map['parentId']),
     );
   }
 }

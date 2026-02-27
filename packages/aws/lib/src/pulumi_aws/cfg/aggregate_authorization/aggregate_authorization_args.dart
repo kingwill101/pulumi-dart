@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AggregateAuthorization.
 class AggregateAuthorizationArgs {
   /// Account ID.
-  final Input<String> accountId;
+  final pulumi.Input<String> accountId;
 
   /// The region authorized to collect aggregated data.
-  final Input<String>? authorizedAwsRegion;
+  final pulumi.Input<String>? authorizedAwsRegion;
 
   /// The region authorized to collect aggregated data. Use `authorized_aws_region` instead.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   AggregateAuthorizationArgs({
     required this.accountId,
@@ -43,11 +43,11 @@ class AggregateAuthorizationArgs {
 
   factory AggregateAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return AggregateAuthorizationArgs(
-      accountId: Input.asInput<String>(map['accountId']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
       authorizedAwsRegion:
-          Input.asOptionalInput<String>(map['authorizedAwsRegion']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<String>(map['authorizedAwsRegion']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

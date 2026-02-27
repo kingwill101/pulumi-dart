@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../search_resource_property/search_resource_property.dart';
 
 class SearchResource {
@@ -41,7 +41,7 @@ class SearchResource {
     map['lastReportedAt'] = lastReportedAt;
     map['owningAccountId'] = owningAccountId;
     map['properties'] =
-        Input.encodeList<SearchResourceProperty, Map<String, dynamic>>(
+        pulumi.Input.encodeList<SearchResourceProperty, Map<String, dynamic>>(
             properties, (value) => value.toMap());
     map['region'] = region;
     map['resourceType'] = resourceType;
@@ -54,7 +54,7 @@ class SearchResource {
       arn: map['arn'] as String,
       lastReportedAt: map['lastReportedAt'] as String,
       owningAccountId: map['owningAccountId'] as String,
-      properties: Input.decodeList<SearchResourceProperty>(
+      properties: pulumi.Input.decodeList<SearchResourceProperty>(
           map['properties'],
           (value) => SearchResourceProperty.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_traffic_policy_document_endpoint/get_traffic_policy_document_endpoint.dart';
 import '../get_traffic_policy_document_rule/get_traffic_policy_document_rule.dart';
 
@@ -34,7 +34,8 @@ class GetTrafficPolicyDocumentResult {
     final map = <String, dynamic>{};
     final endpointsValue = endpoints;
     if (endpointsValue != null) {
-      map['endpoints'] = Input.encodeList<GetTrafficPolicyDocumentEndpoint,
+      map['endpoints'] = pulumi.Input.encodeList<
+          GetTrafficPolicyDocumentEndpoint,
           Map<String, dynamic>>(endpointsValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -45,9 +46,8 @@ class GetTrafficPolicyDocumentResult {
     }
     final rulesValue = rules;
     if (rulesValue != null) {
-      map['rules'] =
-          Input.encodeList<GetTrafficPolicyDocumentRule, Map<String, dynamic>>(
-              rulesValue, (value) => value.toMap());
+      map['rules'] = pulumi.Input.encodeList<GetTrafficPolicyDocumentRule,
+          Map<String, dynamic>>(rulesValue, (value) => value.toMap());
     }
     final startEndpointValue = startEndpoint;
     if (startEndpointValue != null) {
@@ -68,7 +68,7 @@ class GetTrafficPolicyDocumentResult {
     return GetTrafficPolicyDocumentResult(
       endpoints: map['endpoints'] == null
           ? null
-          : Input.decodeList<GetTrafficPolicyDocumentEndpoint>(
+          : pulumi.Input.decodeList<GetTrafficPolicyDocumentEndpoint>(
               map['endpoints'],
               (value) => GetTrafficPolicyDocumentEndpoint.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -78,7 +78,7 @@ class GetTrafficPolicyDocumentResult {
           map['recordType'] == null ? null : map['recordType'] as String,
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<GetTrafficPolicyDocumentRule>(
+          : pulumi.Input.decodeList<GetTrafficPolicyDocumentRule>(
               map['rules'],
               (value) => GetTrafficPolicyDocumentRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

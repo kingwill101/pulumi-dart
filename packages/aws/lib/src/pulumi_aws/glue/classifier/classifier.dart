@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../classifier_csv_classifier/classifier_csv_classifier.dart';
 import '../classifier_grok_classifier/classifier_grok_classifier.dart';
 import '../classifier_json_classifier/classifier_json_classifier.dart';
@@ -34,34 +34,34 @@ import 'classifier_args.dart';
 /// ```sh
 /// $ pulumi import aws:glue/classifier:Classifier MyClassifier MyClassifier
 /// ```
-class Classifier extends CustomResource {
+class Classifier extends pulumi.CustomResource {
   /// A classifier for CSV content. Defined below.
-  late final Output<ClassifierCsvClassifier?> csvClassifier;
+  late final pulumi.Output<ClassifierCsvClassifier?> csvClassifier;
 
   /// A classifier that uses grok patterns. Defined below.
-  late final Output<ClassifierGrokClassifier?> grokClassifier;
+  late final pulumi.Output<ClassifierGrokClassifier?> grokClassifier;
 
   /// A classifier for JSON content. Defined below.
-  late final Output<ClassifierJsonClassifier?> jsonClassifier;
+  late final pulumi.Output<ClassifierJsonClassifier?> jsonClassifier;
 
   /// The name of the classifier.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A classifier for XML content. Defined below.
-  late final Output<ClassifierXmlClassifier?> xmlClassifier;
+  late final pulumi.Output<ClassifierXmlClassifier?> xmlClassifier;
 
   Classifier(
     String name, {
     ClassifierArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:glue/classifier:Classifier',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.csvClassifier =
         registerOutput<ClassifierCsvClassifier?>('csvClassifier');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../analyzer_configuration/analyzer_configuration.dart';
 import 'analyzer_args.dart';
 
@@ -33,39 +33,39 @@ import 'analyzer_args.dart';
 /// ```sh
 /// $ pulumi import aws:accessanalyzer/analyzer:Analyzer example example
 /// ```
-class Analyzer extends CustomResource {
+class Analyzer extends pulumi.CustomResource {
   /// Name of the Analyzer.
   ///
   /// The following arguments are optional:
-  late final Output<String> analyzerName;
+  late final pulumi.Output<String> analyzerName;
 
   /// ARN of the Analyzer.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// A block that specifies the configuration of the analyzer. See `configuration` Block for details.
-  late final Output<AnalyzerConfiguration?> configuration;
+  late final pulumi.Output<AnalyzerConfiguration?> configuration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Type that represents the zone of trust or scope for the analyzer. Valid values are `ACCOUNT`, `ACCOUNT_INTERNAL_ACCESS`, `ACCOUNT_UNUSED_ACCESS`, `ORGANIZATION`, `ORGANIZATION_INTERNAL_ACCESS`, `ORGANIZATION_UNUSED_ACCESS`. Defaults to `ACCOUNT`.
-  late final Output<String?> type;
+  late final pulumi.Output<String?> type;
 
   Analyzer(
     String name, {
     AnalyzerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:accessanalyzer/analyzer:Analyzer',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.analyzerName = registerOutput<String>('analyzerName');
     this.arn = registerOutput<String>('arn');

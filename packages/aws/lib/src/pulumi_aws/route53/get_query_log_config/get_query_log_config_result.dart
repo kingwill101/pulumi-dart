@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_query_log_config_filter/get_query_log_config_filter.dart';
 
 /// Result data returned by getQueryLogConfig.
@@ -48,9 +48,8 @@ class GetQueryLogConfigResult {
     map['destinationArn'] = destinationArn;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetQueryLogConfigFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetQueryLogConfigFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     final nameValue = name;
@@ -74,7 +73,7 @@ class GetQueryLogConfigResult {
       destinationArn: map['destinationArn'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetQueryLogConfigFilter>(
+          : pulumi.Input.decodeList<GetQueryLogConfigFilter>(
               map['filters'],
               (value) => GetQueryLogConfigFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

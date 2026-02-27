@@ -1,46 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../domain_configuration_authorizer_config/domain_configuration_authorizer_config.dart';
 import '../domain_configuration_tls_config/domain_configuration_tls_config.dart';
 
 /// The set of arguments for DomainConfiguration.
 class DomainConfigurationArgs {
   /// An enumerated string that speciﬁes the application-layer protocol. Valid values are `SECURE_MQTT`, `MQTT_WSS`, `HTTPS` or `DEFAULT`.
-  final Input<String>? applicationProtocol;
+  final pulumi.Input<String>? applicationProtocol;
 
   /// An enumerated string that speciﬁes the authentication type. Valid values are `CUSTOM_AUTH_X509`, `CUSTOM_AUTH`, `AWS_X509`, `AWS_SIGV4` or `DEFAULT`.
-  final Input<String>? authenticationType;
+  final pulumi.Input<String>? authenticationType;
 
   /// An object that specifies the authorization service for a domain. See the `authorizer_config` Block below for details.
-  final Input<DomainConfigurationAuthorizerConfig>? authorizerConfig;
+  final pulumi.Input<DomainConfigurationAuthorizerConfig>? authorizerConfig;
 
   /// Fully-qualified domain name.
-  final Input<String>? domainName;
+  final pulumi.Input<String>? domainName;
 
   /// The name of the domain configuration. This value must be unique to a region.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ARNs of the certificates that IoT passes to the device during the TLS handshake. Currently you can specify only one certificate ARN. This value is not required for Amazon Web Services-managed domains. When using a custom `domain_name`, the cert must include it.
-  final Input<List<String>>? serverCertificateArns;
+  final pulumi.Input<List<String>>? serverCertificateArns;
 
   /// The type of service delivered by the endpoint. Note: Amazon Web Services IoT Core currently supports only the `DATA` service type.
-  final Input<String>? serviceType;
+  final pulumi.Input<String>? serviceType;
 
   /// The status to which the domain configuration should be set. Valid values are `ENABLED` and `DISABLED`.
-  final Input<String>? status;
+  final pulumi.Input<String>? status;
 
   /// Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// An object that specifies the TLS configuration for a domain. See the `tls_config` Block below for details.
-  final Input<DomainConfigurationTlsConfig>? tlsConfig;
+  final pulumi.Input<DomainConfigurationTlsConfig>? tlsConfig;
 
   /// The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority. This value is not required for Amazon Web Services-managed domains.
-  final Input<String>? validationCertificateArn;
+  final pulumi.Input<String>? validationCertificateArn;
 
   DomainConfigurationArgs({
     this.applicationProtocol,
@@ -69,7 +69,7 @@ class DomainConfigurationArgs {
     }
     final authorizerConfigValue = authorizerConfig;
     if (authorizerConfigValue != null) {
-      map['authorizerConfig'] = Input.mapOptionalInputValue<
+      map['authorizerConfig'] = pulumi.Input.mapOptionalInputValue<
               DomainConfigurationAuthorizerConfig, Map<String, dynamic>>(
           authorizerConfigValue, (value) => value.toMap());
     }
@@ -103,7 +103,7 @@ class DomainConfigurationArgs {
     }
     final tlsConfigValue = tlsConfig;
     if (tlsConfigValue != null) {
-      map['tlsConfig'] = Input.mapOptionalInputValue<
+      map['tlsConfig'] = pulumi.Input.mapOptionalInputValue<
           DomainConfigurationTlsConfig,
           Map<String, dynamic>>(tlsConfigValue, (value) => value.toMap());
     }
@@ -117,24 +117,24 @@ class DomainConfigurationArgs {
   factory DomainConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DomainConfigurationArgs(
       applicationProtocol:
-          Input.asOptionalInput<String>(map['applicationProtocol']),
+          pulumi.Input.asOptionalInput<String>(map['applicationProtocol']),
       authenticationType:
-          Input.asOptionalInput<String>(map['authenticationType']),
+          pulumi.Input.asOptionalInput<String>(map['authenticationType']),
       authorizerConfig:
-          Input.asOptionalInput<DomainConfigurationAuthorizerConfig>(
+          pulumi.Input.asOptionalInput<DomainConfigurationAuthorizerConfig>(
               map['authorizerConfig']),
-      domainName: Input.asOptionalInput<String>(map['domainName']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      serverCertificateArns:
-          Input.asOptionalInput<List<String>>(map['serverCertificateArns']),
-      serviceType: Input.asOptionalInput<String>(map['serviceType']),
-      status: Input.asOptionalInput<String>(map['status']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      tlsConfig:
-          Input.asOptionalInput<DomainConfigurationTlsConfig>(map['tlsConfig']),
+      domainName: pulumi.Input.asOptionalInput<String>(map['domainName']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      serverCertificateArns: pulumi.Input.asOptionalInput<List<String>>(
+          map['serverCertificateArns']),
+      serviceType: pulumi.Input.asOptionalInput<String>(map['serviceType']),
+      status: pulumi.Input.asOptionalInput<String>(map['status']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tlsConfig: pulumi.Input.asOptionalInput<DomainConfigurationTlsConfig>(
+          map['tlsConfig']),
       validationCertificateArn:
-          Input.asOptionalInput<String>(map['validationCertificateArn']),
+          pulumi.Input.asOptionalInput<String>(map['validationCertificateArn']),
     );
   }
 }

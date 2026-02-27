@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_router_configuration_router/get_router_configuration_router.dart';
 
 /// Result data returned by getRouterConfiguration.
@@ -36,9 +36,8 @@ class GetRouterConfigurationResult {
     map['id'] = id;
     map['region'] = region;
     map['routerTypeIdentifier'] = routerTypeIdentifier;
-    map['routers'] =
-        Input.encodeList<GetRouterConfigurationRouter, Map<String, dynamic>>(
-            routers, (value) => value.toMap());
+    map['routers'] = pulumi.Input.encodeList<GetRouterConfigurationRouter,
+        Map<String, dynamic>>(routers, (value) => value.toMap());
     map['virtualInterfaceId'] = virtualInterfaceId;
     map['virtualInterfaceName'] = virtualInterfaceName;
     return map;
@@ -50,7 +49,7 @@ class GetRouterConfigurationResult {
       id: map['id'] as String,
       region: map['region'] as String,
       routerTypeIdentifier: map['routerTypeIdentifier'] as String,
-      routers: Input.decodeList<GetRouterConfigurationRouter>(
+      routers: pulumi.Input.decodeList<GetRouterConfigurationRouter>(
           map['routers'],
           (value) => GetRouterConfigurationRouter.fromMap(
               (value as Map).cast<String, dynamic>())),

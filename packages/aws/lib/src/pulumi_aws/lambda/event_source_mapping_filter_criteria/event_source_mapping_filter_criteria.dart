@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../event_source_mapping_filter_criteria_filter/event_source_mapping_filter_criteria_filter.dart';
 
 class EventSourceMappingFilterCriteria {
@@ -15,7 +15,8 @@ class EventSourceMappingFilterCriteria {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<EventSourceMappingFilterCriteriaFilter,
+      map['filters'] = pulumi.Input.encodeList<
+          EventSourceMappingFilterCriteriaFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     return map;
@@ -25,7 +26,7 @@ class EventSourceMappingFilterCriteria {
     return EventSourceMappingFilterCriteria(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<EventSourceMappingFilterCriteriaFilter>(
+          : pulumi.Input.decodeList<EventSourceMappingFilterCriteriaFilter>(
               map['filters'],
               (value) => EventSourceMappingFilterCriteriaFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_traffic_policy_document_rule_geo_proximity_location/get_traffic_policy_document_rule_geo_proximity_location.dart';
 import '../get_traffic_policy_document_rule_item/get_traffic_policy_document_rule_item.dart';
 import '../get_traffic_policy_document_rule_location/get_traffic_policy_document_rule_location.dart';
@@ -47,7 +47,7 @@ class GetTrafficPolicyDocumentRule {
     final map = <String, dynamic>{};
     final geoProximityLocationsValue = geoProximityLocations;
     if (geoProximityLocationsValue != null) {
-      map['geoProximityLocations'] = Input.encodeList<
+      map['geoProximityLocations'] = pulumi.Input.encodeList<
               GetTrafficPolicyDocumentRuleGeoProximityLocation,
               Map<String, dynamic>>(
           geoProximityLocationsValue, (value) => value.toMap());
@@ -55,12 +55,13 @@ class GetTrafficPolicyDocumentRule {
     map['id'] = id;
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] = Input.encodeList<GetTrafficPolicyDocumentRuleItem,
+      map['items'] = pulumi.Input.encodeList<GetTrafficPolicyDocumentRuleItem,
           Map<String, dynamic>>(itemsValue, (value) => value.toMap());
     }
     final locationsValue = locations;
     if (locationsValue != null) {
-      map['locations'] = Input.encodeList<GetTrafficPolicyDocumentRuleLocation,
+      map['locations'] = pulumi.Input.encodeList<
+          GetTrafficPolicyDocumentRuleLocation,
           Map<String, dynamic>>(locationsValue, (value) => value.toMap());
     }
     final primaryValue = primary;
@@ -69,7 +70,8 @@ class GetTrafficPolicyDocumentRule {
     }
     final regionsValue = regions;
     if (regionsValue != null) {
-      map['regions'] = Input.encodeList<GetTrafficPolicyDocumentRuleRegion,
+      map['regions'] = pulumi.Input.encodeList<
+          GetTrafficPolicyDocumentRuleRegion,
           Map<String, dynamic>>(regionsValue, (value) => value.toMap());
     }
     final secondaryValue = secondary;
@@ -87,7 +89,8 @@ class GetTrafficPolicyDocumentRule {
     return GetTrafficPolicyDocumentRule(
       geoProximityLocations: map['geoProximityLocations'] == null
           ? null
-          : Input.decodeList<GetTrafficPolicyDocumentRuleGeoProximityLocation>(
+          : pulumi.Input.decodeList<
+                  GetTrafficPolicyDocumentRuleGeoProximityLocation>(
               map['geoProximityLocations'],
               (value) =>
                   GetTrafficPolicyDocumentRuleGeoProximityLocation.fromMap(
@@ -95,13 +98,13 @@ class GetTrafficPolicyDocumentRule {
       id: map['id'] as String,
       items: map['items'] == null
           ? null
-          : Input.decodeList<GetTrafficPolicyDocumentRuleItem>(
+          : pulumi.Input.decodeList<GetTrafficPolicyDocumentRuleItem>(
               map['items'],
               (value) => GetTrafficPolicyDocumentRuleItem.fromMap(
                   (value as Map).cast<String, dynamic>())),
       locations: map['locations'] == null
           ? null
-          : Input.decodeList<GetTrafficPolicyDocumentRuleLocation>(
+          : pulumi.Input.decodeList<GetTrafficPolicyDocumentRuleLocation>(
               map['locations'],
               (value) => GetTrafficPolicyDocumentRuleLocation.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -111,7 +114,7 @@ class GetTrafficPolicyDocumentRule {
               (map['primary'] as Map).cast<String, dynamic>()),
       regions: map['regions'] == null
           ? null
-          : Input.decodeList<GetTrafficPolicyDocumentRuleRegion>(
+          : pulumi.Input.decodeList<GetTrafficPolicyDocumentRuleRegion>(
               map['regions'],
               (value) => GetTrafficPolicyDocumentRuleRegion.fromMap(
                   (value as Map).cast<String, dynamic>())),

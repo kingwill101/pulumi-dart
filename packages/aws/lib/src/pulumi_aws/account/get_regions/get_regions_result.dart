@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_regions_region/get_regions_region.dart';
 
 /// Result data returned by getRegions.
@@ -26,8 +26,9 @@ class GetRegionsResult {
     map['accountId'] = accountId;
     map['id'] = id;
     map['regionOptStatusContains'] = regionOptStatusContains;
-    map['regions'] = Input.encodeList<GetRegionsRegion, Map<String, dynamic>>(
-        regions, (value) => value.toMap());
+    map['regions'] =
+        pulumi.Input.encodeList<GetRegionsRegion, Map<String, dynamic>>(
+            regions, (value) => value.toMap());
     return map;
   }
 
@@ -37,7 +38,7 @@ class GetRegionsResult {
       id: map['id'] as String,
       regionOptStatusContains:
           (map['regionOptStatusContains'] as List).cast<String>(),
-      regions: Input.decodeList<GetRegionsRegion>(
+      regions: pulumi.Input.decodeList<GetRegionsRegion>(
           map['regions'],
           (value) =>
               GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),

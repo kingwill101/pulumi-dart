@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'snapshot_schedule_association_args.dart';
 
 /// ## Example Usage
@@ -12,25 +12,25 @@ import 'snapshot_schedule_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:redshift/snapshotScheduleAssociation:SnapshotScheduleAssociation default tf-redshift-cluster/tf-redshift-snapshot-schedule
 /// ```
-class SnapshotScheduleAssociation extends CustomResource {
+class SnapshotScheduleAssociation extends pulumi.CustomResource {
   /// The cluster identifier.
-  late final Output<String> clusterIdentifier;
+  late final pulumi.Output<String> clusterIdentifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The snapshot schedule identifier.
-  late final Output<String> scheduleIdentifier;
+  late final pulumi.Output<String> scheduleIdentifier;
 
   SnapshotScheduleAssociation(
     String name, {
     SnapshotScheduleAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:redshift/snapshotScheduleAssociation:SnapshotScheduleAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
     this.region = registerOutput<String>('region');

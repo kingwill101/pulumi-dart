@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../profiles_association_timeouts/profiles_association_timeouts.dart';
 
 /// The set of arguments for ProfilesAssociation.
 class ProfilesAssociationArgs {
   /// Name of the Profile Association. Must match a regex of `(?!^[0-9]+$)([a-zA-Z0-9\\-_' ']+)`.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// ID of the profile associated with the VPC.
-  final Input<String> profileId;
+  final pulumi.Input<String> profileId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Resource ID of the VPC the profile to be associated with.
-  final Input<String> resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<ProfilesAssociationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<ProfilesAssociationTimeouts>? timeouts;
 
   ProfilesAssociationArgs({
     this.name,
@@ -48,7 +48,8 @@ class ProfilesAssociationArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<ProfilesAssociationTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
+          ProfilesAssociationTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
@@ -56,13 +57,13 @@ class ProfilesAssociationArgs {
 
   factory ProfilesAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ProfilesAssociationArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      profileId: Input.asInput<String>(map['profileId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      resourceId: Input.asInput<String>(map['resourceId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts:
-          Input.asOptionalInput<ProfilesAssociationTimeouts>(map['timeouts']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      profileId: pulumi.Input.asInput<String>(map['profileId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourceId: pulumi.Input.asInput<String>(map['resourceId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<ProfilesAssociationTimeouts>(
+          map['timeouts']),
     );
   }
 }

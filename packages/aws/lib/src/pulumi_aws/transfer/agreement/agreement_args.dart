@@ -1,32 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Agreement.
 class AgreementArgs {
   /// The IAM Role which provides read and write access to the parent directory of the file location mentioned in the StartFileTransfer request.
-  final Input<String> accessRole;
+  final pulumi.Input<String> accessRole;
 
   /// The landing directory for the files transferred by using the AS2 protocol.
-  final Input<String> baseDirectory;
+  final pulumi.Input<String> baseDirectory;
 
   /// The Optional description of the transdfer.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The unique identifier for the AS2 local profile.
-  final Input<String> localProfileId;
+  final pulumi.Input<String> localProfileId;
 
   /// The unique identifier for the AS2 partner profile.
-  final Input<String> partnerProfileId;
+  final pulumi.Input<String> partnerProfileId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The unique server identifier for the server instance. This is the specific server the agreement uses.
-  final Input<String> serverId;
+  final pulumi.Input<String> serverId;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   AgreementArgs({
     required this.accessRole,
@@ -63,14 +63,14 @@ class AgreementArgs {
 
   factory AgreementArgs.fromMap(Map<String, dynamic> map) {
     return AgreementArgs(
-      accessRole: Input.asInput<String>(map['accessRole']),
-      baseDirectory: Input.asInput<String>(map['baseDirectory']),
-      description: Input.asOptionalInput<String>(map['description']),
-      localProfileId: Input.asInput<String>(map['localProfileId']),
-      partnerProfileId: Input.asInput<String>(map['partnerProfileId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      serverId: Input.asInput<String>(map['serverId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      accessRole: pulumi.Input.asInput<String>(map['accessRole']),
+      baseDirectory: pulumi.Input.asInput<String>(map['baseDirectory']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      localProfileId: pulumi.Input.asInput<String>(map['localProfileId']),
+      partnerProfileId: pulumi.Input.asInput<String>(map['partnerProfileId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      serverId: pulumi.Input.asInput<String>(map['serverId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

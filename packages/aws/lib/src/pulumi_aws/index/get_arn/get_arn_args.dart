@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getArn.
 class GetArnArgs {
   /// ARN to parse.
-  final Input<String> arn;
-  final Input<String>? id;
+  final pulumi.Input<String> arn;
+  final pulumi.Input<String>? id;
 
   GetArnArgs({
     required this.arn,
@@ -25,8 +25,8 @@ class GetArnArgs {
 
   factory GetArnArgs.fromMap(Map<String, dynamic> map) {
     return GetArnArgs(
-      arn: Input.asInput<String>(map['arn']),
-      id: Input.asOptionalInput<String>(map['id']),
+      arn: pulumi.Input.asInput<String>(map['arn']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
     );
   }
 }

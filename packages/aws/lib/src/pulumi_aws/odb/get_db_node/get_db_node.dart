@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_db_node_args.dart';
 import 'get_db_node_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_db_node_result.dart';
 /// ### Basic Usage
 Future<GetDbNodeResult> getDbNode(
   GetDbNodeArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:odb/getDbNode:getDbNode',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDbNodeResult.fromMap(result);
 }

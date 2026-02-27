@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../serverless_security_config_saml_options/serverless_security_config_saml_options.dart';
 import 'serverless_security_config_args.dart';
 
@@ -13,36 +13,36 @@ import 'serverless_security_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:opensearch/serverlessSecurityConfig:ServerlessSecurityConfig example saml/123456789012/example
 /// ```
-class ServerlessSecurityConfig extends CustomResource {
+class ServerlessSecurityConfig extends pulumi.CustomResource {
   /// Version of the configuration.
-  late final Output<String> configVersion;
+  late final pulumi.Output<String> configVersion;
 
   /// Description of the security configuration.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Name of the policy.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration block for SAML options.
-  late final Output<ServerlessSecurityConfigSamlOptions?> samlOptions;
+  late final pulumi.Output<ServerlessSecurityConfigSamlOptions?> samlOptions;
 
   /// Type of configuration. Must be `saml`.
   ///
   /// The following arguments are optional:
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   ServerlessSecurityConfig(
     String name, {
     ServerlessSecurityConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:opensearch/serverlessSecurityConfig:ServerlessSecurityConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.configVersion = registerOutput<String>('configVersion');
     this.description = registerOutput<String?>('description');

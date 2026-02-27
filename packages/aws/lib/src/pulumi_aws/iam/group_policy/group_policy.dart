@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_policy_args.dart';
 
 /// Provides an IAM policy attached to a group.
@@ -16,30 +16,30 @@ import 'group_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/groupPolicy:GroupPolicy mypolicy group_of_mypolicy_name:mypolicy_name
 /// ```
-class GroupPolicy extends CustomResource {
+class GroupPolicy extends pulumi.CustomResource {
   /// The IAM group to attach to the policy.
-  late final Output<String> group;
+  late final pulumi.Output<String> group;
 
   /// The name of the policy. If omitted, the provider will
   /// assign a random, unique name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Creates a unique name beginning with the specified
   /// prefix. Conflicts with `name`.
-  late final Output<String> namePrefix;
+  late final pulumi.Output<String> namePrefix;
 
   /// The policy document. This is a JSON formatted string.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   GroupPolicy(
     String name, {
     GroupPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/groupPolicy:GroupPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');

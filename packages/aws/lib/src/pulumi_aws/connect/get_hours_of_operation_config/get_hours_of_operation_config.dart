@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_hours_of_operation_config_end_time/get_hours_of_operation_config_end_time.dart';
 import '../get_hours_of_operation_config_start_time/get_hours_of_operation_config_start_time.dart';
 
@@ -23,9 +23,10 @@ class GetHoursOfOperationConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['day'] = day;
-    map['endTimes'] = Input.encodeList<GetHoursOfOperationConfigEndTime,
+    map['endTimes'] = pulumi.Input.encodeList<GetHoursOfOperationConfigEndTime,
         Map<String, dynamic>>(endTimes, (value) => value.toMap());
-    map['startTimes'] = Input.encodeList<GetHoursOfOperationConfigStartTime,
+    map['startTimes'] = pulumi.Input.encodeList<
+        GetHoursOfOperationConfigStartTime,
         Map<String, dynamic>>(startTimes, (value) => value.toMap());
     return map;
   }
@@ -33,11 +34,11 @@ class GetHoursOfOperationConfig {
   factory GetHoursOfOperationConfig.fromMap(Map<String, dynamic> map) {
     return GetHoursOfOperationConfig(
       day: map['day'] as String,
-      endTimes: Input.decodeList<GetHoursOfOperationConfigEndTime>(
+      endTimes: pulumi.Input.decodeList<GetHoursOfOperationConfigEndTime>(
           map['endTimes'],
           (value) => GetHoursOfOperationConfigEndTime.fromMap(
               (value as Map).cast<String, dynamic>())),
-      startTimes: Input.decodeList<GetHoursOfOperationConfigStartTime>(
+      startTimes: pulumi.Input.decodeList<GetHoursOfOperationConfigStartTime>(
           map['startTimes'],
           (value) => GetHoursOfOperationConfigStartTime.fromMap(
               (value as Map).cast<String, dynamic>())),

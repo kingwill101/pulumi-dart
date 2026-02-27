@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cross_account_attachment_resource/cross_account_attachment_resource.dart';
 import 'cross_account_attachment_args.dart';
 
@@ -28,42 +28,42 @@ import 'cross_account_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment example arn:aws:globalaccelerator::012345678910:attachment/01234567-abcd-8910-efgh-123456789012
 /// ```
-class CrossAccountAttachment extends CustomResource {
+class CrossAccountAttachment extends pulumi.CustomResource {
   /// ARN of the Cross Account Attachment.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Creation Time when the Cross Account Attachment.
-  late final Output<String> createdTime;
+  late final pulumi.Output<String> createdTime;
 
   /// Last modified time of the Cross Account Attachment.
-  late final Output<String> lastModifiedTime;
+  late final pulumi.Output<String> lastModifiedTime;
 
   /// Name of the Cross Account Attachment.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// List of AWS account IDs that are allowed to associate resources with the accelerator.
-  late final Output<List<String>?> principals;
+  late final pulumi.Output<List<String>?> principals;
 
   /// List of resources to be associated with the accelerator.
-  late final Output<List<CrossAccountAttachmentResource>?> resources;
+  late final pulumi.Output<List<CrossAccountAttachmentResource>?> resources;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   CrossAccountAttachment(
     String name, {
     CrossAccountAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.createdTime = registerOutput<String>('createdTime');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_custom_model_validation_data_config_validator/get_custom_model_validation_data_config_validator.dart';
 
 class GetCustomModelValidationDataConfig {
@@ -13,7 +13,7 @@ class GetCustomModelValidationDataConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['validators'] = Input.encodeList<
+    map['validators'] = pulumi.Input.encodeList<
         GetCustomModelValidationDataConfigValidator,
         Map<String, dynamic>>(validators, (value) => value.toMap());
     return map;
@@ -21,10 +21,11 @@ class GetCustomModelValidationDataConfig {
 
   factory GetCustomModelValidationDataConfig.fromMap(Map<String, dynamic> map) {
     return GetCustomModelValidationDataConfig(
-      validators: Input.decodeList<GetCustomModelValidationDataConfigValidator>(
-          map['validators'],
-          (value) => GetCustomModelValidationDataConfigValidator.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      validators:
+          pulumi.Input.decodeList<GetCustomModelValidationDataConfigValidator>(
+              map['validators'],
+              (value) => GetCustomModelValidationDataConfigValidator.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

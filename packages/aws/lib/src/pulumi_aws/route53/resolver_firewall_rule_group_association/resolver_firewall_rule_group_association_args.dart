@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ResolverFirewallRuleGroupAssociation.
 class ResolverFirewallRuleGroupAssociationArgs {
   /// The unique identifier of the firewall rule group.
-  final Input<String> firewallRuleGroupId;
+  final pulumi.Input<String> firewallRuleGroupId;
 
   /// If enabled, this setting disallows modification or removal of the association, to help prevent against accidentally altering DNS firewall protections. Valid values: `ENABLED`, `DISABLED`.
-  final Input<String>? mutationProtection;
+  final pulumi.Input<String>? mutationProtection;
 
   /// A name that lets you identify the rule group association, to manage and use it.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The setting that determines the processing order of the rule group among the rule groups that you associate with the specified VPC. DNS Firewall filters VPC traffic starting from the rule group with the lowest numeric priority setting.
-  final Input<int> priority;
+  final pulumi.Input<int> priority;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The unique identifier of the VPC that you want to associate with the rule group.
-  final Input<String> vpcId;
+  final pulumi.Input<String> vpcId;
 
   ResolverFirewallRuleGroupAssociationArgs({
     required this.firewallRuleGroupId,
@@ -62,14 +62,15 @@ class ResolverFirewallRuleGroupAssociationArgs {
   factory ResolverFirewallRuleGroupAssociationArgs.fromMap(
       Map<String, dynamic> map) {
     return ResolverFirewallRuleGroupAssociationArgs(
-      firewallRuleGroupId: Input.asInput<String>(map['firewallRuleGroupId']),
+      firewallRuleGroupId:
+          pulumi.Input.asInput<String>(map['firewallRuleGroupId']),
       mutationProtection:
-          Input.asOptionalInput<String>(map['mutationProtection']),
-      name: Input.asOptionalInput<String>(map['name']),
-      priority: Input.asInput<int>(map['priority']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vpcId: Input.asInput<String>(map['vpcId']),
+          pulumi.Input.asOptionalInput<String>(map['mutationProtection']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      priority: pulumi.Input.asInput<int>(map['priority']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpcId: pulumi.Input.asInput<String>(map['vpcId']),
     );
   }
 }

@@ -1,50 +1,50 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ResolverFirewallRule.
 class ResolverFirewallRuleArgs {
   /// The action that DNS Firewall should take on a DNS query when it matches one of the domains in the rule's domain list, or a threat in a DNS Firewall Advanced rule. Valid values: `ALLOW`, `BLOCK`, `ALERT`. Note: `ALLOW` is not valid for DNS Firewall Advanced rules.
-  final Input<String> action;
+  final pulumi.Input<String> action;
 
   /// The DNS record's type. This determines the format of the record value that you provided in BlockOverrideDomain. Value values: `CNAME`.
-  final Input<String>? blockOverrideDnsType;
+  final pulumi.Input<String>? blockOverrideDnsType;
 
   /// The custom DNS record to send back in response to the query.
-  final Input<String>? blockOverrideDomain;
+  final pulumi.Input<String>? blockOverrideDomain;
 
   /// The recommended amount of time, in seconds, for the DNS resolver or web browser to cache the provided override record. Minimum value of 0. Maximum value of 604800.
-  final Input<int>? blockOverrideTtl;
+  final pulumi.Input<int>? blockOverrideTtl;
 
   /// The way that you want DNS Firewall to block the request. Valid values: `NODATA`, `NXDOMAIN`, `OVERRIDE`.
-  final Input<String>? blockResponse;
+  final pulumi.Input<String>? blockResponse;
 
   /// The confidence threshold for DNS Firewall Advanced rules. You must provide this value when creating a DNS Firewall Advanced rule. Valid values: `LOW`, `MEDIUM`, `HIGH`. Conflicts with `firewall_domain_list_id`.
-  final Input<String>? confidenceThreshold;
+  final pulumi.Input<String>? confidenceThreshold;
 
   /// The type of DNS Firewall Advanced rule. You must provide this value when creating a DNS Firewall Advanced rule. Valid values: `DGA`, `DNS_TUNNELING`. Conflicts with `firewall_domain_list_id`.
-  final Input<String>? dnsThreatProtection;
+  final pulumi.Input<String>? dnsThreatProtection;
 
   /// The ID of the domain list that you want to use in the rule. Required for standard rules. Conflicts with `dns_threat_protection` and `confidence_threshold`.
-  final Input<String>? firewallDomainListId;
+  final pulumi.Input<String>? firewallDomainListId;
 
   /// Evaluate DNS redirection in the DNS redirection chain, such as CNAME, DNAME, ot ALIAS. Valid values are `INSPECT_REDIRECTION_DOMAIN` and `TRUST_REDIRECTION_DOMAIN`. Default value is `INSPECT_REDIRECTION_DOMAIN`.
-  final Input<String>? firewallDomainRedirectionAction;
+  final pulumi.Input<String>? firewallDomainRedirectionAction;
 
   /// The unique identifier of the firewall rule group where you want to create the rule.
-  final Input<String> firewallRuleGroupId;
+  final pulumi.Input<String> firewallRuleGroupId;
 
   /// A name that lets you identify the rule, to manage and use it.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The setting that determines the processing order of the rule in the rule group. DNS Firewall processes the rules in a rule group by order of priority, starting from the lowest setting.
-  final Input<int> priority;
+  final pulumi.Input<int> priority;
 
   /// The query type you want the rule to evaluate. Additional details can be found [here](https://en.wikipedia.org/wiki/List_of_DNS_record_types)
-  final Input<String>? qType;
+  final pulumi.Input<String>? qType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   ResolverFirewallRuleArgs({
     required this.action,
@@ -119,26 +119,28 @@ class ResolverFirewallRuleArgs {
 
   factory ResolverFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return ResolverFirewallRuleArgs(
-      action: Input.asInput<String>(map['action']),
+      action: pulumi.Input.asInput<String>(map['action']),
       blockOverrideDnsType:
-          Input.asOptionalInput<String>(map['blockOverrideDnsType']),
+          pulumi.Input.asOptionalInput<String>(map['blockOverrideDnsType']),
       blockOverrideDomain:
-          Input.asOptionalInput<String>(map['blockOverrideDomain']),
-      blockOverrideTtl: Input.asOptionalInput<int>(map['blockOverrideTtl']),
-      blockResponse: Input.asOptionalInput<String>(map['blockResponse']),
+          pulumi.Input.asOptionalInput<String>(map['blockOverrideDomain']),
+      blockOverrideTtl:
+          pulumi.Input.asOptionalInput<int>(map['blockOverrideTtl']),
+      blockResponse: pulumi.Input.asOptionalInput<String>(map['blockResponse']),
       confidenceThreshold:
-          Input.asOptionalInput<String>(map['confidenceThreshold']),
+          pulumi.Input.asOptionalInput<String>(map['confidenceThreshold']),
       dnsThreatProtection:
-          Input.asOptionalInput<String>(map['dnsThreatProtection']),
+          pulumi.Input.asOptionalInput<String>(map['dnsThreatProtection']),
       firewallDomainListId:
-          Input.asOptionalInput<String>(map['firewallDomainListId']),
-      firewallDomainRedirectionAction:
-          Input.asOptionalInput<String>(map['firewallDomainRedirectionAction']),
-      firewallRuleGroupId: Input.asInput<String>(map['firewallRuleGroupId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      priority: Input.asInput<int>(map['priority']),
-      qType: Input.asOptionalInput<String>(map['qType']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['firewallDomainListId']),
+      firewallDomainRedirectionAction: pulumi.Input.asOptionalInput<String>(
+          map['firewallDomainRedirectionAction']),
+      firewallRuleGroupId:
+          pulumi.Input.asInput<String>(map['firewallRuleGroupId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      priority: pulumi.Input.asInput<int>(map['priority']),
+      qType: pulumi.Input.asOptionalInput<String>(map['qType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

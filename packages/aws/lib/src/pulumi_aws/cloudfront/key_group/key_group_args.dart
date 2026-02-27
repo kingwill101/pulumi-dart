@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for KeyGroup.
 class KeyGroupArgs {
   /// A comment to describe the key group..
-  final Input<String>? comment;
+  final pulumi.Input<String>? comment;
 
   /// A list of the identifiers of the public keys in the key group.
-  final Input<List<String>> items;
+  final pulumi.Input<List<String>> items;
 
   /// A name to identify the key group.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   KeyGroupArgs({
     this.comment,
@@ -35,9 +35,9 @@ class KeyGroupArgs {
 
   factory KeyGroupArgs.fromMap(Map<String, dynamic> map) {
     return KeyGroupArgs(
-      comment: Input.asOptionalInput<String>(map['comment']),
-      items: Input.asInput<List<String>>(map['items']),
-      name: Input.asOptionalInput<String>(map['name']),
+      comment: pulumi.Input.asOptionalInput<String>(map['comment']),
+      items: pulumi.Input.asInput<List<String>>(map['items']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
     );
   }
 }

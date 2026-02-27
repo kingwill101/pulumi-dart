@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VpcIpamScope.
 class VpcIpamScopeArgs {
   /// A description for the scope you're creating.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The ID of the IPAM for which you're creating this scope.
-  final Input<String> ipamId;
+  final pulumi.Input<String> ipamId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   VpcIpamScopeArgs({
     this.description,
@@ -43,10 +43,10 @@ class VpcIpamScopeArgs {
 
   factory VpcIpamScopeArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamScopeArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      ipamId: Input.asInput<String>(map['ipamId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      ipamId: pulumi.Input.asInput<String>(map['ipamId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

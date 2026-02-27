@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../dashboard_parameters_date_time_parameter/dashboard_parameters_date_time_parameter.dart';
 import '../dashboard_parameters_decimal_parameter/dashboard_parameters_decimal_parameter.dart';
 import '../dashboard_parameters_integer_parameter/dashboard_parameters_integer_parameter.dart';
@@ -30,25 +30,25 @@ class DashboardParameters {
     final map = <String, dynamic>{};
     final dateTimeParametersValue = dateTimeParameters;
     if (dateTimeParametersValue != null) {
-      map['dateTimeParameters'] = Input.encodeList<
+      map['dateTimeParameters'] = pulumi.Input.encodeList<
               DashboardParametersDateTimeParameter, Map<String, dynamic>>(
           dateTimeParametersValue, (value) => value.toMap());
     }
     final decimalParametersValue = decimalParameters;
     if (decimalParametersValue != null) {
-      map['decimalParameters'] = Input.encodeList<
+      map['decimalParameters'] = pulumi.Input.encodeList<
               DashboardParametersDecimalParameter, Map<String, dynamic>>(
           decimalParametersValue, (value) => value.toMap());
     }
     final integerParametersValue = integerParameters;
     if (integerParametersValue != null) {
-      map['integerParameters'] = Input.encodeList<
+      map['integerParameters'] = pulumi.Input.encodeList<
               DashboardParametersIntegerParameter, Map<String, dynamic>>(
           integerParametersValue, (value) => value.toMap());
     }
     final stringParametersValue = stringParameters;
     if (stringParametersValue != null) {
-      map['stringParameters'] = Input.encodeList<
+      map['stringParameters'] = pulumi.Input.encodeList<
               DashboardParametersStringParameter, Map<String, dynamic>>(
           stringParametersValue, (value) => value.toMap());
     }
@@ -59,25 +59,25 @@ class DashboardParameters {
     return DashboardParameters(
       dateTimeParameters: map['dateTimeParameters'] == null
           ? null
-          : Input.decodeList<DashboardParametersDateTimeParameter>(
+          : pulumi.Input.decodeList<DashboardParametersDateTimeParameter>(
               map['dateTimeParameters'],
               (value) => DashboardParametersDateTimeParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       decimalParameters: map['decimalParameters'] == null
           ? null
-          : Input.decodeList<DashboardParametersDecimalParameter>(
+          : pulumi.Input.decodeList<DashboardParametersDecimalParameter>(
               map['decimalParameters'],
               (value) => DashboardParametersDecimalParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       integerParameters: map['integerParameters'] == null
           ? null
-          : Input.decodeList<DashboardParametersIntegerParameter>(
+          : pulumi.Input.decodeList<DashboardParametersIntegerParameter>(
               map['integerParameters'],
               (value) => DashboardParametersIntegerParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       stringParameters: map['stringParameters'] == null
           ? null
-          : Input.decodeList<DashboardParametersStringParameter>(
+          : pulumi.Input.decodeList<DashboardParametersStringParameter>(
               map['stringParameters'],
               (value) => DashboardParametersStringParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

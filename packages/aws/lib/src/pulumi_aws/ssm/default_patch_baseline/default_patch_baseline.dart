@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_patch_baseline_args.dart';
 
 /// Resource for registering an AWS Systems Manager Default Patch Baseline.
@@ -36,11 +36,11 @@ import 'default_patch_baseline_args.dart';
 /// ```sh
 /// $ pulumi import aws:ssm/defaultPatchBaseline:DefaultPatchBaseline example CENTOS
 /// ```
-class DefaultPatchBaseline extends CustomResource {
+class DefaultPatchBaseline extends pulumi.CustomResource {
   /// ID of the patch baseline.
   /// Can be an ID or an ARN.
   /// When specifying an AWS-provided patch baseline, must be the ARN.
-  late final Output<String> baselineId;
+  late final pulumi.Output<String> baselineId;
 
   /// The operating system the patch baseline applies to.
   /// Valid values are
@@ -58,20 +58,20 @@ class DefaultPatchBaseline extends CustomResource {
   /// `SUSE`,
   /// `UBUNTU`, and
   /// `WINDOWS`.
-  late final Output<String> operatingSystem;
+  late final pulumi.Output<String> operatingSystem;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   DefaultPatchBaseline(
     String name, {
     DefaultPatchBaselineArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssm/defaultPatchBaseline:DefaultPatchBaseline',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.baselineId = registerOutput<String>('baselineId');
     this.operatingSystem = registerOutput<String>('operatingSystem');

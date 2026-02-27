@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lifecycle_policy_policy_details_schedule_archive_rule/lifecycle_policy_policy_details_schedule_archive_rule.dart';
 import '../lifecycle_policy_policy_details_schedule_create_rule/lifecycle_policy_policy_details_schedule_create_rule.dart';
 import '../lifecycle_policy_policy_details_schedule_cross_region_copy_rule/lifecycle_policy_policy_details_schedule_cross_region_copy_rule.dart';
@@ -63,7 +63,7 @@ class LifecyclePolicyPolicyDetailsSchedule {
     map['createRule'] = createRule.toMap();
     final crossRegionCopyRulesValue = crossRegionCopyRules;
     if (crossRegionCopyRulesValue != null) {
-      map['crossRegionCopyRules'] = Input.encodeList<
+      map['crossRegionCopyRules'] = pulumi.Input.encodeList<
               LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule,
               Map<String, dynamic>>(
           crossRegionCopyRulesValue, (value) => value.toMap());
@@ -105,7 +105,7 @@ class LifecyclePolicyPolicyDetailsSchedule {
           (map['createRule'] as Map).cast<String, dynamic>()),
       crossRegionCopyRules: map['crossRegionCopyRules'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule>(
               map['crossRegionCopyRules'],
               (value) => LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule

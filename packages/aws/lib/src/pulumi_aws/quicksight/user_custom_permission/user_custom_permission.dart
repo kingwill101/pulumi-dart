@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_custom_permission_args.dart';
 
 /// Manages the custom permissions profile for a user.
@@ -14,33 +14,33 @@ import 'user_custom_permission_args.dart';
 /// ```sh
 /// $ pulumi import aws:quicksight/userCustomPermission:UserCustomPermission example 012345678901,default,user1
 /// ```
-class UserCustomPermission extends CustomResource {
+class UserCustomPermission extends pulumi.CustomResource {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  late final Output<String> awsAccountId;
+  late final pulumi.Output<String> awsAccountId;
 
   /// Custom permissions profile name.
-  late final Output<String> customPermissionsName;
+  late final pulumi.Output<String> customPermissionsName;
 
   /// Namespace that the user belongs to. Defaults to `default`.
-  late final Output<String> namespace;
+  late final pulumi.Output<String> namespace;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Username of the user.
   ///
   /// The following arguments are optional:
-  late final Output<String> userName;
+  late final pulumi.Output<String> userName;
 
   UserCustomPermission(
     String name, {
     UserCustomPermissionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:quicksight/userCustomPermission:UserCustomPermission',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.awsAccountId = registerOutput<String>('awsAccountId');
     this.customPermissionsName =

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../key_value_store_timeouts/key_value_store_timeouts.dart';
 import 'key_value_store_args.dart';
 
@@ -28,32 +28,32 @@ import 'key_value_store_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudfront/keyValueStore:KeyValueStore example example_store
 /// ```
-class KeyValueStore extends CustomResource {
+class KeyValueStore extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) identifying your CloudFront KeyValueStore.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Comment.
-  late final Output<String?> comment;
+  late final pulumi.Output<String?> comment;
 
   /// ETag hash of the KeyValueStore.
-  late final Output<String> etag;
-  late final Output<String> lastModifiedTime;
+  late final pulumi.Output<String> etag;
+  late final pulumi.Output<String> lastModifiedTime;
 
   /// Unique name for your CloudFront KeyValueStore.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
-  late final Output<KeyValueStoreTimeouts?> timeouts;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<KeyValueStoreTimeouts?> timeouts;
 
   KeyValueStore(
     String name, {
     KeyValueStoreArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/keyValueStore:KeyValueStore',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.comment = registerOutput<String?>('comment');

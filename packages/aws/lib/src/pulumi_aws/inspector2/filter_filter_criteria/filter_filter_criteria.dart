@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../filter_filter_criteria_aws_account_id/filter_filter_criteria_aws_account_id.dart';
 import '../filter_filter_criteria_code_repository_project_name/filter_filter_criteria_code_repository_project_name.dart';
 import '../filter_filter_criteria_code_repository_provider_type/filter_filter_criteria_code_repository_provider_type.dart';
@@ -248,275 +248,280 @@ class FilterFilterCriteria {
     final map = <String, dynamic>{};
     final awsAccountIdsValue = awsAccountIds;
     if (awsAccountIdsValue != null) {
-      map['awsAccountIds'] = Input.encodeList<FilterFilterCriteriaAwsAccountId,
+      map['awsAccountIds'] = pulumi.Input.encodeList<
+          FilterFilterCriteriaAwsAccountId,
           Map<String, dynamic>>(awsAccountIdsValue, (value) => value.toMap());
     }
     final codeRepositoryProjectNamesValue = codeRepositoryProjectNames;
     if (codeRepositoryProjectNamesValue != null) {
-      map['codeRepositoryProjectNames'] = Input.encodeList<
+      map['codeRepositoryProjectNames'] = pulumi.Input.encodeList<
               FilterFilterCriteriaCodeRepositoryProjectName,
               Map<String, dynamic>>(
           codeRepositoryProjectNamesValue, (value) => value.toMap());
     }
     final codeRepositoryProviderTypesValue = codeRepositoryProviderTypes;
     if (codeRepositoryProviderTypesValue != null) {
-      map['codeRepositoryProviderTypes'] = Input.encodeList<
+      map['codeRepositoryProviderTypes'] = pulumi.Input.encodeList<
               FilterFilterCriteriaCodeRepositoryProviderType,
               Map<String, dynamic>>(
           codeRepositoryProviderTypesValue, (value) => value.toMap());
     }
     final codeVulnerabilityDetectorNamesValue = codeVulnerabilityDetectorNames;
     if (codeVulnerabilityDetectorNamesValue != null) {
-      map['codeVulnerabilityDetectorNames'] = Input.encodeList<
+      map['codeVulnerabilityDetectorNames'] = pulumi.Input.encodeList<
               FilterFilterCriteriaCodeVulnerabilityDetectorName,
               Map<String, dynamic>>(
           codeVulnerabilityDetectorNamesValue, (value) => value.toMap());
     }
     final codeVulnerabilityDetectorTagsValue = codeVulnerabilityDetectorTags;
     if (codeVulnerabilityDetectorTagsValue != null) {
-      map['codeVulnerabilityDetectorTags'] = Input.encodeList<
+      map['codeVulnerabilityDetectorTags'] = pulumi.Input.encodeList<
               FilterFilterCriteriaCodeVulnerabilityDetectorTag,
               Map<String, dynamic>>(
           codeVulnerabilityDetectorTagsValue, (value) => value.toMap());
     }
     final codeVulnerabilityFilePathsValue = codeVulnerabilityFilePaths;
     if (codeVulnerabilityFilePathsValue != null) {
-      map['codeVulnerabilityFilePaths'] = Input.encodeList<
+      map['codeVulnerabilityFilePaths'] = pulumi.Input.encodeList<
               FilterFilterCriteriaCodeVulnerabilityFilePath,
               Map<String, dynamic>>(
           codeVulnerabilityFilePathsValue, (value) => value.toMap());
     }
     final componentIdsValue = componentIds;
     if (componentIdsValue != null) {
-      map['componentIds'] = Input.encodeList<FilterFilterCriteriaComponentId,
+      map['componentIds'] = pulumi.Input.encodeList<
+          FilterFilterCriteriaComponentId,
           Map<String, dynamic>>(componentIdsValue, (value) => value.toMap());
     }
     final componentTypesValue = componentTypes;
     if (componentTypesValue != null) {
-      map['componentTypes'] = Input.encodeList<
+      map['componentTypes'] = pulumi.Input.encodeList<
           FilterFilterCriteriaComponentType,
           Map<String, dynamic>>(componentTypesValue, (value) => value.toMap());
     }
     final ec2InstanceImageIdsValue = ec2InstanceImageIds;
     if (ec2InstanceImageIdsValue != null) {
-      map['ec2InstanceImageIds'] = Input.encodeList<
+      map['ec2InstanceImageIds'] = pulumi.Input.encodeList<
               FilterFilterCriteriaEc2InstanceImageId, Map<String, dynamic>>(
           ec2InstanceImageIdsValue, (value) => value.toMap());
     }
     final ec2InstanceSubnetIdsValue = ec2InstanceSubnetIds;
     if (ec2InstanceSubnetIdsValue != null) {
-      map['ec2InstanceSubnetIds'] = Input.encodeList<
+      map['ec2InstanceSubnetIds'] = pulumi.Input.encodeList<
               FilterFilterCriteriaEc2InstanceSubnetId, Map<String, dynamic>>(
           ec2InstanceSubnetIdsValue, (value) => value.toMap());
     }
     final ec2InstanceVpcIdsValue = ec2InstanceVpcIds;
     if (ec2InstanceVpcIdsValue != null) {
-      map['ec2InstanceVpcIds'] = Input.encodeList<
+      map['ec2InstanceVpcIds'] = pulumi.Input.encodeList<
               FilterFilterCriteriaEc2InstanceVpcId, Map<String, dynamic>>(
           ec2InstanceVpcIdsValue, (value) => value.toMap());
     }
     final ecrImageArchitecturesValue = ecrImageArchitectures;
     if (ecrImageArchitecturesValue != null) {
-      map['ecrImageArchitectures'] = Input.encodeList<
+      map['ecrImageArchitectures'] = pulumi.Input.encodeList<
               FilterFilterCriteriaEcrImageArchitecture, Map<String, dynamic>>(
           ecrImageArchitecturesValue, (value) => value.toMap());
     }
     final ecrImageHashesValue = ecrImageHashes;
     if (ecrImageHashesValue != null) {
-      map['ecrImageHashes'] = Input.encodeList<FilterFilterCriteriaEcrImageHash,
+      map['ecrImageHashes'] = pulumi.Input.encodeList<
+          FilterFilterCriteriaEcrImageHash,
           Map<String, dynamic>>(ecrImageHashesValue, (value) => value.toMap());
     }
     final ecrImageInUseCountsValue = ecrImageInUseCounts;
     if (ecrImageInUseCountsValue != null) {
-      map['ecrImageInUseCounts'] = Input.encodeList<
+      map['ecrImageInUseCounts'] = pulumi.Input.encodeList<
               FilterFilterCriteriaEcrImageInUseCount, Map<String, dynamic>>(
           ecrImageInUseCountsValue, (value) => value.toMap());
     }
     final ecrImageLastInUseAtsValue = ecrImageLastInUseAts;
     if (ecrImageLastInUseAtsValue != null) {
-      map['ecrImageLastInUseAts'] = Input.encodeList<
+      map['ecrImageLastInUseAts'] = pulumi.Input.encodeList<
               FilterFilterCriteriaEcrImageLastInUseAt, Map<String, dynamic>>(
           ecrImageLastInUseAtsValue, (value) => value.toMap());
     }
     final ecrImagePushedAtsValue = ecrImagePushedAts;
     if (ecrImagePushedAtsValue != null) {
-      map['ecrImagePushedAts'] = Input.encodeList<
+      map['ecrImagePushedAts'] = pulumi.Input.encodeList<
               FilterFilterCriteriaEcrImagePushedAt, Map<String, dynamic>>(
           ecrImagePushedAtsValue, (value) => value.toMap());
     }
     final ecrImageRegistriesValue = ecrImageRegistries;
     if (ecrImageRegistriesValue != null) {
-      map['ecrImageRegistries'] = Input.encodeList<
+      map['ecrImageRegistries'] = pulumi.Input.encodeList<
               FilterFilterCriteriaEcrImageRegistry, Map<String, dynamic>>(
           ecrImageRegistriesValue, (value) => value.toMap());
     }
     final ecrImageRepositoryNamesValue = ecrImageRepositoryNames;
     if (ecrImageRepositoryNamesValue != null) {
-      map['ecrImageRepositoryNames'] = Input.encodeList<
+      map['ecrImageRepositoryNames'] = pulumi.Input.encodeList<
               FilterFilterCriteriaEcrImageRepositoryName, Map<String, dynamic>>(
           ecrImageRepositoryNamesValue, (value) => value.toMap());
     }
     final ecrImageTagsValue = ecrImageTags;
     if (ecrImageTagsValue != null) {
-      map['ecrImageTags'] = Input.encodeList<FilterFilterCriteriaEcrImageTag,
+      map['ecrImageTags'] = pulumi.Input.encodeList<
+          FilterFilterCriteriaEcrImageTag,
           Map<String, dynamic>>(ecrImageTagsValue, (value) => value.toMap());
     }
     final epssScoresValue = epssScores;
     if (epssScoresValue != null) {
-      map['epssScores'] =
-          Input.encodeList<FilterFilterCriteriaEpssScore, Map<String, dynamic>>(
-              epssScoresValue, (value) => value.toMap());
+      map['epssScores'] = pulumi.Input.encodeList<FilterFilterCriteriaEpssScore,
+          Map<String, dynamic>>(epssScoresValue, (value) => value.toMap());
     }
     final exploitAvailablesValue = exploitAvailables;
     if (exploitAvailablesValue != null) {
-      map['exploitAvailables'] = Input.encodeList<
+      map['exploitAvailables'] = pulumi.Input.encodeList<
               FilterFilterCriteriaExploitAvailable, Map<String, dynamic>>(
           exploitAvailablesValue, (value) => value.toMap());
     }
     final findingArnsValue = findingArns;
     if (findingArnsValue != null) {
-      map['findingArns'] = Input.encodeList<FilterFilterCriteriaFindingArn,
+      map['findingArns'] = pulumi.Input.encodeList<
+          FilterFilterCriteriaFindingArn,
           Map<String, dynamic>>(findingArnsValue, (value) => value.toMap());
     }
     final findingStatusesValue = findingStatuses;
     if (findingStatusesValue != null) {
-      map['findingStatuses'] = Input.encodeList<
+      map['findingStatuses'] = pulumi.Input.encodeList<
           FilterFilterCriteriaFindingStatus,
           Map<String, dynamic>>(findingStatusesValue, (value) => value.toMap());
     }
     final findingTypesValue = findingTypes;
     if (findingTypesValue != null) {
-      map['findingTypes'] = Input.encodeList<FilterFilterCriteriaFindingType,
+      map['findingTypes'] = pulumi.Input.encodeList<
+          FilterFilterCriteriaFindingType,
           Map<String, dynamic>>(findingTypesValue, (value) => value.toMap());
     }
     final firstObservedAtsValue = firstObservedAts;
     if (firstObservedAtsValue != null) {
-      map['firstObservedAts'] = Input.encodeList<
+      map['firstObservedAts'] = pulumi.Input.encodeList<
               FilterFilterCriteriaFirstObservedAt, Map<String, dynamic>>(
           firstObservedAtsValue, (value) => value.toMap());
     }
     final fixAvailablesValue = fixAvailables;
     if (fixAvailablesValue != null) {
-      map['fixAvailables'] = Input.encodeList<FilterFilterCriteriaFixAvailable,
+      map['fixAvailables'] = pulumi.Input.encodeList<
+          FilterFilterCriteriaFixAvailable,
           Map<String, dynamic>>(fixAvailablesValue, (value) => value.toMap());
     }
     final inspectorScoresValue = inspectorScores;
     if (inspectorScoresValue != null) {
-      map['inspectorScores'] = Input.encodeList<
+      map['inspectorScores'] = pulumi.Input.encodeList<
           FilterFilterCriteriaInspectorScore,
           Map<String, dynamic>>(inspectorScoresValue, (value) => value.toMap());
     }
     final lambdaFunctionExecutionRoleArnsValue =
         lambdaFunctionExecutionRoleArns;
     if (lambdaFunctionExecutionRoleArnsValue != null) {
-      map['lambdaFunctionExecutionRoleArns'] = Input.encodeList<
+      map['lambdaFunctionExecutionRoleArns'] = pulumi.Input.encodeList<
               FilterFilterCriteriaLambdaFunctionExecutionRoleArn,
               Map<String, dynamic>>(
           lambdaFunctionExecutionRoleArnsValue, (value) => value.toMap());
     }
     final lambdaFunctionLastModifiedAtsValue = lambdaFunctionLastModifiedAts;
     if (lambdaFunctionLastModifiedAtsValue != null) {
-      map['lambdaFunctionLastModifiedAts'] = Input.encodeList<
+      map['lambdaFunctionLastModifiedAts'] = pulumi.Input.encodeList<
               FilterFilterCriteriaLambdaFunctionLastModifiedAt,
               Map<String, dynamic>>(
           lambdaFunctionLastModifiedAtsValue, (value) => value.toMap());
     }
     final lambdaFunctionLayersValue = lambdaFunctionLayers;
     if (lambdaFunctionLayersValue != null) {
-      map['lambdaFunctionLayers'] = Input.encodeList<
+      map['lambdaFunctionLayers'] = pulumi.Input.encodeList<
               FilterFilterCriteriaLambdaFunctionLayer, Map<String, dynamic>>(
           lambdaFunctionLayersValue, (value) => value.toMap());
     }
     final lambdaFunctionNamesValue = lambdaFunctionNames;
     if (lambdaFunctionNamesValue != null) {
-      map['lambdaFunctionNames'] = Input.encodeList<
+      map['lambdaFunctionNames'] = pulumi.Input.encodeList<
               FilterFilterCriteriaLambdaFunctionName, Map<String, dynamic>>(
           lambdaFunctionNamesValue, (value) => value.toMap());
     }
     final lambdaFunctionRuntimesValue = lambdaFunctionRuntimes;
     if (lambdaFunctionRuntimesValue != null) {
-      map['lambdaFunctionRuntimes'] = Input.encodeList<
+      map['lambdaFunctionRuntimes'] = pulumi.Input.encodeList<
               FilterFilterCriteriaLambdaFunctionRuntime, Map<String, dynamic>>(
           lambdaFunctionRuntimesValue, (value) => value.toMap());
     }
     final lastObservedAtsValue = lastObservedAts;
     if (lastObservedAtsValue != null) {
-      map['lastObservedAts'] = Input.encodeList<
+      map['lastObservedAts'] = pulumi.Input.encodeList<
           FilterFilterCriteriaLastObservedAt,
           Map<String, dynamic>>(lastObservedAtsValue, (value) => value.toMap());
     }
     final networkProtocolsValue = networkProtocols;
     if (networkProtocolsValue != null) {
-      map['networkProtocols'] = Input.encodeList<
+      map['networkProtocols'] = pulumi.Input.encodeList<
               FilterFilterCriteriaNetworkProtocol, Map<String, dynamic>>(
           networkProtocolsValue, (value) => value.toMap());
     }
     final portRangesValue = portRanges;
     if (portRangesValue != null) {
-      map['portRanges'] =
-          Input.encodeList<FilterFilterCriteriaPortRange, Map<String, dynamic>>(
-              portRangesValue, (value) => value.toMap());
+      map['portRanges'] = pulumi.Input.encodeList<FilterFilterCriteriaPortRange,
+          Map<String, dynamic>>(portRangesValue, (value) => value.toMap());
     }
     final relatedVulnerabilitiesValue = relatedVulnerabilities;
     if (relatedVulnerabilitiesValue != null) {
-      map['relatedVulnerabilities'] = Input.encodeList<
+      map['relatedVulnerabilities'] = pulumi.Input.encodeList<
               FilterFilterCriteriaRelatedVulnerability, Map<String, dynamic>>(
           relatedVulnerabilitiesValue, (value) => value.toMap());
     }
     final resourceIdsValue = resourceIds;
     if (resourceIdsValue != null) {
-      map['resourceIds'] = Input.encodeList<FilterFilterCriteriaResourceId,
+      map['resourceIds'] = pulumi.Input.encodeList<
+          FilterFilterCriteriaResourceId,
           Map<String, dynamic>>(resourceIdsValue, (value) => value.toMap());
     }
     final resourceTagsValue = resourceTags;
     if (resourceTagsValue != null) {
-      map['resourceTags'] = Input.encodeList<FilterFilterCriteriaResourceTag,
+      map['resourceTags'] = pulumi.Input.encodeList<
+          FilterFilterCriteriaResourceTag,
           Map<String, dynamic>>(resourceTagsValue, (value) => value.toMap());
     }
     final resourceTypesValue = resourceTypes;
     if (resourceTypesValue != null) {
-      map['resourceTypes'] = Input.encodeList<FilterFilterCriteriaResourceType,
+      map['resourceTypes'] = pulumi.Input.encodeList<
+          FilterFilterCriteriaResourceType,
           Map<String, dynamic>>(resourceTypesValue, (value) => value.toMap());
     }
     final severitiesValue = severities;
     if (severitiesValue != null) {
-      map['severities'] =
-          Input.encodeList<FilterFilterCriteriaSeverity, Map<String, dynamic>>(
-              severitiesValue, (value) => value.toMap());
+      map['severities'] = pulumi.Input.encodeList<FilterFilterCriteriaSeverity,
+          Map<String, dynamic>>(severitiesValue, (value) => value.toMap());
     }
     final titlesValue = titles;
     if (titlesValue != null) {
-      map['titles'] =
-          Input.encodeList<FilterFilterCriteriaTitle, Map<String, dynamic>>(
-              titlesValue, (value) => value.toMap());
+      map['titles'] = pulumi.Input.encodeList<FilterFilterCriteriaTitle,
+          Map<String, dynamic>>(titlesValue, (value) => value.toMap());
     }
     final updatedAtsValue = updatedAts;
     if (updatedAtsValue != null) {
-      map['updatedAts'] =
-          Input.encodeList<FilterFilterCriteriaUpdatedAt, Map<String, dynamic>>(
-              updatedAtsValue, (value) => value.toMap());
+      map['updatedAts'] = pulumi.Input.encodeList<FilterFilterCriteriaUpdatedAt,
+          Map<String, dynamic>>(updatedAtsValue, (value) => value.toMap());
     }
     final vendorSeveritiesValue = vendorSeverities;
     if (vendorSeveritiesValue != null) {
-      map['vendorSeverities'] = Input.encodeList<
+      map['vendorSeverities'] = pulumi.Input.encodeList<
               FilterFilterCriteriaVendorSeverity, Map<String, dynamic>>(
           vendorSeveritiesValue, (value) => value.toMap());
     }
     final vulnerabilityIdsValue = vulnerabilityIds;
     if (vulnerabilityIdsValue != null) {
-      map['vulnerabilityIds'] = Input.encodeList<
+      map['vulnerabilityIds'] = pulumi.Input.encodeList<
               FilterFilterCriteriaVulnerabilityId, Map<String, dynamic>>(
           vulnerabilityIdsValue, (value) => value.toMap());
     }
     final vulnerabilitySourcesValue = vulnerabilitySources;
     if (vulnerabilitySourcesValue != null) {
-      map['vulnerabilitySources'] = Input.encodeList<
+      map['vulnerabilitySources'] = pulumi.Input.encodeList<
               FilterFilterCriteriaVulnerabilitySource, Map<String, dynamic>>(
           vulnerabilitySourcesValue, (value) => value.toMap());
     }
     final vulnerablePackagesValue = vulnerablePackages;
     if (vulnerablePackagesValue != null) {
-      map['vulnerablePackages'] = Input.encodeList<
+      map['vulnerablePackages'] = pulumi.Input.encodeList<
               FilterFilterCriteriaVulnerablePackage, Map<String, dynamic>>(
           vulnerablePackagesValue, (value) => value.toMap());
     }
@@ -527,286 +532,292 @@ class FilterFilterCriteria {
     return FilterFilterCriteria(
       awsAccountIds: map['awsAccountIds'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaAwsAccountId>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaAwsAccountId>(
               map['awsAccountIds'],
               (value) => FilterFilterCriteriaAwsAccountId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       codeRepositoryProjectNames: map['codeRepositoryProjectNames'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaCodeRepositoryProjectName>(
+          : pulumi.Input.decodeList<
+                  FilterFilterCriteriaCodeRepositoryProjectName>(
               map['codeRepositoryProjectNames'],
               (value) => FilterFilterCriteriaCodeRepositoryProjectName.fromMap(
                   (value as Map).cast<String, dynamic>())),
       codeRepositoryProviderTypes: map['codeRepositoryProviderTypes'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaCodeRepositoryProviderType>(
+          : pulumi.Input.decodeList<
+                  FilterFilterCriteriaCodeRepositoryProviderType>(
               map['codeRepositoryProviderTypes'],
               (value) => FilterFilterCriteriaCodeRepositoryProviderType.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      codeVulnerabilityDetectorNames: map['codeVulnerabilityDetectorNames'] ==
-              null
-          ? null
-          : Input.decodeList<FilterFilterCriteriaCodeVulnerabilityDetectorName>(
-              map['codeVulnerabilityDetectorNames'],
-              (value) =>
-                  FilterFilterCriteriaCodeVulnerabilityDetectorName.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      codeVulnerabilityDetectorTags: map['codeVulnerabilityDetectorTags'] ==
-              null
-          ? null
-          : Input.decodeList<FilterFilterCriteriaCodeVulnerabilityDetectorTag>(
-              map['codeVulnerabilityDetectorTags'],
-              (value) =>
-                  FilterFilterCriteriaCodeVulnerabilityDetectorTag.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      codeVulnerabilityDetectorNames:
+          map['codeVulnerabilityDetectorNames'] == null
+              ? null
+              : pulumi.Input.decodeList<
+                      FilterFilterCriteriaCodeVulnerabilityDetectorName>(
+                  map['codeVulnerabilityDetectorNames'],
+                  (value) =>
+                      FilterFilterCriteriaCodeVulnerabilityDetectorName.fromMap(
+                          (value as Map).cast<String, dynamic>())),
+      codeVulnerabilityDetectorTags:
+          map['codeVulnerabilityDetectorTags'] == null
+              ? null
+              : pulumi.Input.decodeList<
+                      FilterFilterCriteriaCodeVulnerabilityDetectorTag>(
+                  map['codeVulnerabilityDetectorTags'],
+                  (value) =>
+                      FilterFilterCriteriaCodeVulnerabilityDetectorTag.fromMap(
+                          (value as Map).cast<String, dynamic>())),
       codeVulnerabilityFilePaths: map['codeVulnerabilityFilePaths'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaCodeVulnerabilityFilePath>(
+          : pulumi.Input.decodeList<
+                  FilterFilterCriteriaCodeVulnerabilityFilePath>(
               map['codeVulnerabilityFilePaths'],
               (value) => FilterFilterCriteriaCodeVulnerabilityFilePath.fromMap(
                   (value as Map).cast<String, dynamic>())),
       componentIds: map['componentIds'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaComponentId>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaComponentId>(
               map['componentIds'],
               (value) => FilterFilterCriteriaComponentId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       componentTypes: map['componentTypes'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaComponentType>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaComponentType>(
               map['componentTypes'],
               (value) => FilterFilterCriteriaComponentType.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ec2InstanceImageIds: map['ec2InstanceImageIds'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaEc2InstanceImageId>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaEc2InstanceImageId>(
               map['ec2InstanceImageIds'],
               (value) => FilterFilterCriteriaEc2InstanceImageId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ec2InstanceSubnetIds: map['ec2InstanceSubnetIds'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaEc2InstanceSubnetId>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaEc2InstanceSubnetId>(
               map['ec2InstanceSubnetIds'],
               (value) => FilterFilterCriteriaEc2InstanceSubnetId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ec2InstanceVpcIds: map['ec2InstanceVpcIds'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaEc2InstanceVpcId>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaEc2InstanceVpcId>(
               map['ec2InstanceVpcIds'],
               (value) => FilterFilterCriteriaEc2InstanceVpcId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ecrImageArchitectures: map['ecrImageArchitectures'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaEcrImageArchitecture>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaEcrImageArchitecture>(
               map['ecrImageArchitectures'],
               (value) => FilterFilterCriteriaEcrImageArchitecture.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ecrImageHashes: map['ecrImageHashes'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaEcrImageHash>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaEcrImageHash>(
               map['ecrImageHashes'],
               (value) => FilterFilterCriteriaEcrImageHash.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ecrImageInUseCounts: map['ecrImageInUseCounts'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaEcrImageInUseCount>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaEcrImageInUseCount>(
               map['ecrImageInUseCounts'],
               (value) => FilterFilterCriteriaEcrImageInUseCount.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ecrImageLastInUseAts: map['ecrImageLastInUseAts'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaEcrImageLastInUseAt>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaEcrImageLastInUseAt>(
               map['ecrImageLastInUseAts'],
               (value) => FilterFilterCriteriaEcrImageLastInUseAt.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ecrImagePushedAts: map['ecrImagePushedAts'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaEcrImagePushedAt>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaEcrImagePushedAt>(
               map['ecrImagePushedAts'],
               (value) => FilterFilterCriteriaEcrImagePushedAt.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ecrImageRegistries: map['ecrImageRegistries'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaEcrImageRegistry>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaEcrImageRegistry>(
               map['ecrImageRegistries'],
               (value) => FilterFilterCriteriaEcrImageRegistry.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ecrImageRepositoryNames: map['ecrImageRepositoryNames'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaEcrImageRepositoryName>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaEcrImageRepositoryName>(
               map['ecrImageRepositoryNames'],
               (value) => FilterFilterCriteriaEcrImageRepositoryName.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ecrImageTags: map['ecrImageTags'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaEcrImageTag>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaEcrImageTag>(
               map['ecrImageTags'],
               (value) => FilterFilterCriteriaEcrImageTag.fromMap(
                   (value as Map).cast<String, dynamic>())),
       epssScores: map['epssScores'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaEpssScore>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaEpssScore>(
               map['epssScores'],
               (value) => FilterFilterCriteriaEpssScore.fromMap(
                   (value as Map).cast<String, dynamic>())),
       exploitAvailables: map['exploitAvailables'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaExploitAvailable>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaExploitAvailable>(
               map['exploitAvailables'],
               (value) => FilterFilterCriteriaExploitAvailable.fromMap(
                   (value as Map).cast<String, dynamic>())),
       findingArns: map['findingArns'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaFindingArn>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaFindingArn>(
               map['findingArns'],
               (value) => FilterFilterCriteriaFindingArn.fromMap(
                   (value as Map).cast<String, dynamic>())),
       findingStatuses: map['findingStatuses'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaFindingStatus>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaFindingStatus>(
               map['findingStatuses'],
               (value) => FilterFilterCriteriaFindingStatus.fromMap(
                   (value as Map).cast<String, dynamic>())),
       findingTypes: map['findingTypes'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaFindingType>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaFindingType>(
               map['findingTypes'],
               (value) => FilterFilterCriteriaFindingType.fromMap(
                   (value as Map).cast<String, dynamic>())),
       firstObservedAts: map['firstObservedAts'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaFirstObservedAt>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaFirstObservedAt>(
               map['firstObservedAts'],
               (value) => FilterFilterCriteriaFirstObservedAt.fromMap(
                   (value as Map).cast<String, dynamic>())),
       fixAvailables: map['fixAvailables'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaFixAvailable>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaFixAvailable>(
               map['fixAvailables'],
               (value) => FilterFilterCriteriaFixAvailable.fromMap(
                   (value as Map).cast<String, dynamic>())),
       inspectorScores: map['inspectorScores'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaInspectorScore>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaInspectorScore>(
               map['inspectorScores'],
               (value) => FilterFilterCriteriaInspectorScore.fromMap(
                   (value as Map).cast<String, dynamic>())),
       lambdaFunctionExecutionRoleArns: map['lambdaFunctionExecutionRoleArns'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FilterFilterCriteriaLambdaFunctionExecutionRoleArn>(
               map['lambdaFunctionExecutionRoleArns'],
               (value) =>
                   FilterFilterCriteriaLambdaFunctionExecutionRoleArn.fromMap(
                       (value as Map).cast<String, dynamic>())),
-      lambdaFunctionLastModifiedAts: map['lambdaFunctionLastModifiedAts'] ==
-              null
-          ? null
-          : Input.decodeList<FilterFilterCriteriaLambdaFunctionLastModifiedAt>(
-              map['lambdaFunctionLastModifiedAts'],
-              (value) =>
-                  FilterFilterCriteriaLambdaFunctionLastModifiedAt.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      lambdaFunctionLastModifiedAts:
+          map['lambdaFunctionLastModifiedAts'] == null
+              ? null
+              : pulumi.Input.decodeList<
+                      FilterFilterCriteriaLambdaFunctionLastModifiedAt>(
+                  map['lambdaFunctionLastModifiedAts'],
+                  (value) =>
+                      FilterFilterCriteriaLambdaFunctionLastModifiedAt.fromMap(
+                          (value as Map).cast<String, dynamic>())),
       lambdaFunctionLayers: map['lambdaFunctionLayers'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaLambdaFunctionLayer>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaLambdaFunctionLayer>(
               map['lambdaFunctionLayers'],
               (value) => FilterFilterCriteriaLambdaFunctionLayer.fromMap(
                   (value as Map).cast<String, dynamic>())),
       lambdaFunctionNames: map['lambdaFunctionNames'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaLambdaFunctionName>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaLambdaFunctionName>(
               map['lambdaFunctionNames'],
               (value) => FilterFilterCriteriaLambdaFunctionName.fromMap(
                   (value as Map).cast<String, dynamic>())),
       lambdaFunctionRuntimes: map['lambdaFunctionRuntimes'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaLambdaFunctionRuntime>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaLambdaFunctionRuntime>(
               map['lambdaFunctionRuntimes'],
               (value) => FilterFilterCriteriaLambdaFunctionRuntime.fromMap(
                   (value as Map).cast<String, dynamic>())),
       lastObservedAts: map['lastObservedAts'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaLastObservedAt>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaLastObservedAt>(
               map['lastObservedAts'],
               (value) => FilterFilterCriteriaLastObservedAt.fromMap(
                   (value as Map).cast<String, dynamic>())),
       networkProtocols: map['networkProtocols'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaNetworkProtocol>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaNetworkProtocol>(
               map['networkProtocols'],
               (value) => FilterFilterCriteriaNetworkProtocol.fromMap(
                   (value as Map).cast<String, dynamic>())),
       portRanges: map['portRanges'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaPortRange>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaPortRange>(
               map['portRanges'],
               (value) => FilterFilterCriteriaPortRange.fromMap(
                   (value as Map).cast<String, dynamic>())),
       relatedVulnerabilities: map['relatedVulnerabilities'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaRelatedVulnerability>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaRelatedVulnerability>(
               map['relatedVulnerabilities'],
               (value) => FilterFilterCriteriaRelatedVulnerability.fromMap(
                   (value as Map).cast<String, dynamic>())),
       resourceIds: map['resourceIds'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaResourceId>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaResourceId>(
               map['resourceIds'],
               (value) => FilterFilterCriteriaResourceId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       resourceTags: map['resourceTags'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaResourceTag>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaResourceTag>(
               map['resourceTags'],
               (value) => FilterFilterCriteriaResourceTag.fromMap(
                   (value as Map).cast<String, dynamic>())),
       resourceTypes: map['resourceTypes'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaResourceType>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaResourceType>(
               map['resourceTypes'],
               (value) => FilterFilterCriteriaResourceType.fromMap(
                   (value as Map).cast<String, dynamic>())),
       severities: map['severities'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaSeverity>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaSeverity>(
               map['severities'],
               (value) => FilterFilterCriteriaSeverity.fromMap(
                   (value as Map).cast<String, dynamic>())),
       titles: map['titles'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaTitle>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaTitle>(
               map['titles'],
               (value) => FilterFilterCriteriaTitle.fromMap(
                   (value as Map).cast<String, dynamic>())),
       updatedAts: map['updatedAts'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaUpdatedAt>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaUpdatedAt>(
               map['updatedAts'],
               (value) => FilterFilterCriteriaUpdatedAt.fromMap(
                   (value as Map).cast<String, dynamic>())),
       vendorSeverities: map['vendorSeverities'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaVendorSeverity>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaVendorSeverity>(
               map['vendorSeverities'],
               (value) => FilterFilterCriteriaVendorSeverity.fromMap(
                   (value as Map).cast<String, dynamic>())),
       vulnerabilityIds: map['vulnerabilityIds'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaVulnerabilityId>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaVulnerabilityId>(
               map['vulnerabilityIds'],
               (value) => FilterFilterCriteriaVulnerabilityId.fromMap(
                   (value as Map).cast<String, dynamic>())),
       vulnerabilitySources: map['vulnerabilitySources'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaVulnerabilitySource>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaVulnerabilitySource>(
               map['vulnerabilitySources'],
               (value) => FilterFilterCriteriaVulnerabilitySource.fromMap(
                   (value as Map).cast<String, dynamic>())),
       vulnerablePackages: map['vulnerablePackages'] == null
           ? null
-          : Input.decodeList<FilterFilterCriteriaVulnerablePackage>(
+          : pulumi.Input.decodeList<FilterFilterCriteriaVulnerablePackage>(
               map['vulnerablePackages'],
               (value) => FilterFilterCriteriaVulnerablePackage.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../drt_access_role_arn_association_timeouts/drt_access_role_arn_association_timeouts.dart';
 import 'drt_access_role_arn_association_args.dart';
 
@@ -18,20 +18,20 @@ import 'drt_access_role_arn_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:shield/drtAccessRoleArnAssociation:DrtAccessRoleArnAssociation example 123456789012
 /// ```
-class DrtAccessRoleArnAssociation extends CustomResource {
+class DrtAccessRoleArnAssociation extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the role the SRT will use to access your AWS account. Prior to making the AssociateDRTRole request, you must attach the `AWSShieldDRTAccessPolicy` managed policy to this role.
-  late final Output<String> roleArn;
-  late final Output<DrtAccessRoleArnAssociationTimeouts?> timeouts;
+  late final pulumi.Output<String> roleArn;
+  late final pulumi.Output<DrtAccessRoleArnAssociationTimeouts?> timeouts;
 
   DrtAccessRoleArnAssociation(
     String name, {
     DrtAccessRoleArnAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:shield/drtAccessRoleArnAssociation:DrtAccessRoleArnAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.roleArn = registerOutput<String>('roleArn');
     this.timeouts =

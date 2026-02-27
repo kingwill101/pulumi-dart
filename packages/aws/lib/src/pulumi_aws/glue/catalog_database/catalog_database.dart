@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../catalog_database_create_table_default_permission/catalog_database_create_table_default_permission.dart';
 import '../catalog_database_federated_database/catalog_database_federated_database.dart';
 import '../catalog_database_target_database/catalog_database_target_database.dart';
@@ -21,53 +21,53 @@ import 'catalog_database_args.dart';
 /// ```sh
 /// $ pulumi import aws:glue/catalogDatabase:CatalogDatabase database 123456789012:my_database
 /// ```
-class CatalogDatabase extends CustomResource {
+class CatalogDatabase extends pulumi.CustomResource {
   /// ARN of the Glue Catalog Database.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
-  late final Output<String> catalogId;
+  late final pulumi.Output<String> catalogId;
 
   /// Creates a set of default permissions on the table for principals. See `create_table_default_permission` below.
-  late final Output<List<CatalogDatabaseCreateTableDefaultPermission>>
+  late final pulumi.Output<List<CatalogDatabaseCreateTableDefaultPermission>>
       createTableDefaultPermissions;
 
   /// Description of the database.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Configuration block that references an entity outside the AWS Glue Data Catalog. See `federated_database` below.
-  late final Output<CatalogDatabaseFederatedDatabase?> federatedDatabase;
+  late final pulumi.Output<CatalogDatabaseFederatedDatabase?> federatedDatabase;
 
   /// Location of the database (for example, an HDFS path).
-  late final Output<String> locationUri;
+  late final pulumi.Output<String> locationUri;
 
   /// Name of the database. The acceptable characters are lowercase letters, numbers, and the underscore character.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// List of key-value pairs that define parameters and properties of the database.
-  late final Output<Map<String, String>?> parameters;
+  late final pulumi.Output<Map<String, String>?> parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Configuration block for a target database for resource linking. See `target_database` below.
-  late final Output<CatalogDatabaseTargetDatabase?> targetDatabase;
+  late final pulumi.Output<CatalogDatabaseTargetDatabase?> targetDatabase;
 
   CatalogDatabase(
     String name, {
     CatalogDatabaseArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:glue/catalogDatabase:CatalogDatabase',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.catalogId = registerOutput<String>('catalogId');

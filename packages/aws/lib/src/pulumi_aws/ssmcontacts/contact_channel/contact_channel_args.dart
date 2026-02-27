@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../contact_channel_delivery_address/contact_channel_delivery_address.dart';
 
 /// The set of arguments for ContactChannel.
 class ContactChannelArgs {
   /// Amazon Resource Name (ARN) of the AWS SSM Contact that the contact channel belongs to.
-  final Input<String> contactId;
+  final pulumi.Input<String> contactId;
 
   /// Block that contains contact engagement details. See details below.
-  final Input<ContactChannelDeliveryAddress> deliveryAddress;
+  final pulumi.Input<ContactChannelDeliveryAddress> deliveryAddress;
 
   /// Name of the contact channel. Must be between 1 and 255 characters, and may contain alphanumerics, underscores (`_`), hyphens (`-`), periods (`.`), and spaces.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Type of the contact channel. One of `SMS`, `VOICE` or `EMAIL`.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   ContactChannelArgs({
     required this.contactId,
@@ -31,7 +31,8 @@ class ContactChannelArgs {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['contactId'] = contactId;
-    map['deliveryAddress'] = Input.mapInputValue<ContactChannelDeliveryAddress,
+    map['deliveryAddress'] = pulumi.Input.mapInputValue<
+        ContactChannelDeliveryAddress,
         Map<String, dynamic>>(deliveryAddress, (value) => value.toMap());
     final nameValue = name;
     if (nameValue != null) {
@@ -47,12 +48,12 @@ class ContactChannelArgs {
 
   factory ContactChannelArgs.fromMap(Map<String, dynamic> map) {
     return ContactChannelArgs(
-      contactId: Input.asInput<String>(map['contactId']),
-      deliveryAddress:
-          Input.asInput<ContactChannelDeliveryAddress>(map['deliveryAddress']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      type: Input.asInput<String>(map['type']),
+      contactId: pulumi.Input.asInput<String>(map['contactId']),
+      deliveryAddress: pulumi.Input.asInput<ContactChannelDeliveryAddress>(
+          map['deliveryAddress']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

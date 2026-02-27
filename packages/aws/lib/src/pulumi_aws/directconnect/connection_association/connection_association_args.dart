@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ConnectionAssociation.
 class ConnectionAssociationArgs {
   /// The ID of the connection.
-  final Input<String> connectionId;
+  final pulumi.Input<String> connectionId;
 
   /// The ID of the LAG with which to associate the connection.
-  final Input<String> lagId;
+  final pulumi.Input<String> lagId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   ConnectionAssociationArgs({
     required this.connectionId,
@@ -32,9 +32,9 @@ class ConnectionAssociationArgs {
 
   factory ConnectionAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionAssociationArgs(
-      connectionId: Input.asInput<String>(map['connectionId']),
-      lagId: Input.asInput<String>(map['lagId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      connectionId: pulumi.Input.asInput<String>(map['connectionId']),
+      lagId: pulumi.Input.asInput<String>(map['lagId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

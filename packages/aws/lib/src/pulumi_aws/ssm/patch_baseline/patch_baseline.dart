@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../patch_baseline_approval_rule/patch_baseline_approval_rule.dart';
 import '../patch_baseline_global_filter/patch_baseline_global_filter.dart';
 import '../patch_baseline_source/patch_baseline_source.dart';
@@ -49,69 +49,69 @@ import 'patch_baseline_args.dart';
 /// ```sh
 /// $ pulumi import aws:ssm/patchBaseline:PatchBaseline example pb-12345678
 /// ```
-class PatchBaseline extends CustomResource {
+class PatchBaseline extends pulumi.CustomResource {
   /// Set of rules used to include patches in the baseline. Up to 10 approval rules can be specified. See `approval_rule` below.
-  late final Output<List<PatchBaselineApprovalRule>?> approvalRules;
+  late final pulumi.Output<List<PatchBaselineApprovalRule>?> approvalRules;
 
   /// List of explicitly approved patches for the baseline. Cannot be specified with `approval_rule`.
-  late final Output<List<String>?> approvedPatches;
+  late final pulumi.Output<List<String>?> approvedPatches;
 
   /// Compliance level for approved patches. This means that if an approved patch is reported as missing, this is the severity of the compliance violation. Valid values are `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFORMATIONAL`, `UNSPECIFIED`. The default value is `UNSPECIFIED`.
-  late final Output<String?> approvedPatchesComplianceLevel;
+  late final pulumi.Output<String?> approvedPatchesComplianceLevel;
 
   /// Whether the list of approved patches includes non-security updates that should be applied to the instances. Applies to Linux instances only.
-  late final Output<bool?> approvedPatchesEnableNonSecurity;
+  late final pulumi.Output<bool?> approvedPatchesEnableNonSecurity;
 
   /// ARN of the baseline.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Indicates the compliance status of managed nodes for which security-related patches are available but were not approved. Supported for Windows Server managed nodes only. Valid values are `COMPLIANT`, `NON_COMPLIANT`.
-  late final Output<String> availableSecurityUpdatesComplianceStatus;
+  late final pulumi.Output<String> availableSecurityUpdatesComplianceStatus;
 
   /// Description of the patch baseline.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Set of global filters used to exclude patches from the baseline. Up to 4 global filters can be specified using Key/Value pairs. Valid Keys are `PRODUCT`, `CLASSIFICATION`, `MSRC_SEVERITY`, and `PATCH_ID`.
-  late final Output<List<PatchBaselineGlobalFilter>?> globalFilters;
+  late final pulumi.Output<List<PatchBaselineGlobalFilter>?> globalFilters;
 
   /// JSON definition of the baseline.
-  late final Output<String> json;
+  late final pulumi.Output<String> json;
 
   /// Name of the patch baseline.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Operating system the patch baseline applies to. Valid values are `ALMA_LINUX`, `AMAZON_LINUX`, `AMAZON_LINUX_2`, `AMAZON_LINUX_2022`, `AMAZON_LINUX_2023`, `CENTOS`, `DEBIAN`, `MACOS`, `ORACLE_LINUX`, `RASPBIAN`, `REDHAT_ENTERPRISE_LINUX`, `ROCKY_LINUX`, `SUSE`, `UBUNTU`, and `WINDOWS`. The default value is `WINDOWS`.
-  late final Output<String?> operatingSystem;
+  late final pulumi.Output<String?> operatingSystem;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// List of rejected patches.
-  late final Output<List<String>?> rejectedPatches;
+  late final pulumi.Output<List<String>?> rejectedPatches;
 
   /// Action for Patch Manager to take on patches included in the `rejected_patches` list. Valid values are `ALLOW_AS_DEPENDENCY` and `BLOCK`.
-  late final Output<String> rejectedPatchesAction;
+  late final pulumi.Output<String> rejectedPatchesAction;
 
   /// Configuration block with alternate sources for patches. Applies to Linux instances only. See `source` below.
-  late final Output<List<PatchBaselineSource>?> sources;
+  late final pulumi.Output<List<PatchBaselineSource>?> sources;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   PatchBaseline(
     String name, {
     PatchBaselineArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssm/patchBaseline:PatchBaseline',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.approvalRules =
         registerOutput<List<PatchBaselineApprovalRule>?>('approvalRules');

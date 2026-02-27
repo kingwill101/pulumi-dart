@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_fleet_instance_type_config/instance_fleet_instance_type_config.dart';
 import '../instance_fleet_launch_specifications/instance_fleet_launch_specifications.dart';
 import 'instance_fleet_args.dart';
@@ -21,45 +21,47 @@ import 'instance_fleet_args.dart';
 /// ```sh
 /// $ pulumi import aws:emr/instanceFleet:InstanceFleet example j-123456ABCDEF/if-15EK4O09RZLNR
 /// ```
-class InstanceFleet extends CustomResource {
+class InstanceFleet extends pulumi.CustomResource {
   /// ID of the EMR Cluster to attach to. Changing this forces a new resource to be created.
-  late final Output<String> clusterId;
+  late final pulumi.Output<String> clusterId;
 
   /// Configuration block for instance fleet
-  late final Output<List<InstanceFleetInstanceTypeConfig>?> instanceTypeConfigs;
+  late final pulumi.Output<List<InstanceFleetInstanceTypeConfig>?>
+      instanceTypeConfigs;
 
   /// Configuration block for launch specification
-  late final Output<InstanceFleetLaunchSpecifications?> launchSpecifications;
+  late final pulumi.Output<InstanceFleetLaunchSpecifications?>
+      launchSpecifications;
 
   /// Friendly name given to the instance fleet.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The number of On-Demand units that have been provisioned for the instance
   /// fleet to fulfill TargetOnDemandCapacity. This provisioned capacity might be less than or greater than TargetOnDemandCapacity.
-  late final Output<int> provisionedOnDemandCapacity;
+  late final pulumi.Output<int> provisionedOnDemandCapacity;
 
   /// The number of Spot units that have been provisioned for this instance fleet
   /// to fulfill TargetSpotCapacity. This provisioned capacity might be less than or greater than TargetSpotCapacity.
-  late final Output<int> provisionedSpotCapacity;
+  late final pulumi.Output<int> provisionedSpotCapacity;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision.
-  late final Output<int?> targetOnDemandCapacity;
+  late final pulumi.Output<int?> targetOnDemandCapacity;
 
   /// The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision.
-  late final Output<int?> targetSpotCapacity;
+  late final pulumi.Output<int?> targetSpotCapacity;
 
   InstanceFleet(
     String name, {
     InstanceFleetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:emr/instanceFleet:InstanceFleet',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.clusterId = registerOutput<String>('clusterId');
     this.instanceTypeConfigs =

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_kms_key_args.dart';
 
 /// Provides a resource to manage the default customer master key (CMK) that your AWS account uses to encrypt EBS volumes.
@@ -21,22 +21,22 @@ import 'default_kms_key_args.dart';
 /// ```sh
 /// $ pulumi import aws:ebs/defaultKmsKey:DefaultKmsKey example arn:aws:kms:us-east-1:123456789012:key/abcd-1234
 /// ```
-class DefaultKmsKey extends CustomResource {
+class DefaultKmsKey extends pulumi.CustomResource {
   /// The ARN of the AWS Key Management Service (AWS KMS) customer master key (CMK) to use to encrypt the EBS volume.
-  late final Output<String> keyArn;
+  late final pulumi.Output<String> keyArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   DefaultKmsKey(
     String name, {
     DefaultKmsKeyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ebs/defaultKmsKey:DefaultKmsKey',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.keyArn = registerOutput<String>('keyArn');
     this.region = registerOutput<String>('region');

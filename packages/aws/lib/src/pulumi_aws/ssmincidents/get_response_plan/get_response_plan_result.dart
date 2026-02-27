@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_response_plan_action/get_response_plan_action.dart';
 import '../get_response_plan_incident_template/get_response_plan_incident_template.dart';
 import '../get_response_plan_integration/get_response_plan_integration.dart';
@@ -51,19 +51,18 @@ class GetResponsePlanResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['actions'] =
-        Input.encodeList<GetResponsePlanAction, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetResponsePlanAction, Map<String, dynamic>>(
             actions, (value) => value.toMap());
     map['arn'] = arn;
     map['chatChannels'] = chatChannels;
     map['displayName'] = displayName;
     map['engagements'] = engagements;
     map['id'] = id;
-    map['incidentTemplates'] =
-        Input.encodeList<GetResponsePlanIncidentTemplate, Map<String, dynamic>>(
-            incidentTemplates, (value) => value.toMap());
-    map['integrations'] =
-        Input.encodeList<GetResponsePlanIntegration, Map<String, dynamic>>(
-            integrations, (value) => value.toMap());
+    map['incidentTemplates'] = pulumi.Input.encodeList<
+        GetResponsePlanIncidentTemplate,
+        Map<String, dynamic>>(incidentTemplates, (value) => value.toMap());
+    map['integrations'] = pulumi.Input.encodeList<GetResponsePlanIntegration,
+        Map<String, dynamic>>(integrations, (value) => value.toMap());
     map['name'] = name;
     map['region'] = region;
     map['tags'] = tags;
@@ -72,7 +71,7 @@ class GetResponsePlanResult {
 
   factory GetResponsePlanResult.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanResult(
-      actions: Input.decodeList<GetResponsePlanAction>(
+      actions: pulumi.Input.decodeList<GetResponsePlanAction>(
           map['actions'],
           (value) => GetResponsePlanAction.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -81,11 +80,12 @@ class GetResponsePlanResult {
       displayName: map['displayName'] as String,
       engagements: (map['engagements'] as List).cast<String>(),
       id: map['id'] as String,
-      incidentTemplates: Input.decodeList<GetResponsePlanIncidentTemplate>(
-          map['incidentTemplates'],
-          (value) => GetResponsePlanIncidentTemplate.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      integrations: Input.decodeList<GetResponsePlanIntegration>(
+      incidentTemplates:
+          pulumi.Input.decodeList<GetResponsePlanIncidentTemplate>(
+              map['incidentTemplates'],
+              (value) => GetResponsePlanIncidentTemplate.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      integrations: pulumi.Input.decodeList<GetResponsePlanIntegration>(
           map['integrations'],
           (value) => GetResponsePlanIntegration.fromMap(
               (value as Map).cast<String, dynamic>())),

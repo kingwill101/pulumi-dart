@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_image_image_scanning_configuration_ecr_configuration/get_image_image_scanning_configuration_ecr_configuration.dart';
 
 class GetImageImageScanningConfiguration {
@@ -18,7 +18,7 @@ class GetImageImageScanningConfiguration {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['ecrConfigurations'] = Input.encodeList<
+    map['ecrConfigurations'] = pulumi.Input.encodeList<
         GetImageImageScanningConfigurationEcrConfiguration,
         Map<String, dynamic>>(ecrConfigurations, (value) => value.toMap());
     map['imageScanningEnabled'] = imageScanningEnabled;
@@ -27,12 +27,11 @@ class GetImageImageScanningConfiguration {
 
   factory GetImageImageScanningConfiguration.fromMap(Map<String, dynamic> map) {
     return GetImageImageScanningConfiguration(
-      ecrConfigurations:
-          Input.decodeList<GetImageImageScanningConfigurationEcrConfiguration>(
-              map['ecrConfigurations'],
-              (value) =>
-                  GetImageImageScanningConfigurationEcrConfiguration.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      ecrConfigurations: pulumi.Input.decodeList<
+              GetImageImageScanningConfigurationEcrConfiguration>(
+          map['ecrConfigurations'],
+          (value) => GetImageImageScanningConfigurationEcrConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>())),
       imageScanningEnabled: map['imageScanningEnabled'] as bool,
     );
   }

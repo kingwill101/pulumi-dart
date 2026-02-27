@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_agent_action_group_action_group_executor/agent_agent_action_group_action_group_executor.dart';
 import '../agent_agent_action_group_api_schema/agent_agent_action_group_api_schema.dart';
 import '../agent_agent_action_group_function_schema/agent_agent_action_group_function_schema.dart';
@@ -11,43 +11,44 @@ class AgentAgentActionGroupArgs {
   /// ARN of the Lambda function containing the business logic that is carried out upon invoking the action or custom control method for handling the information elicited from the user. See `action_group_executor` Block for details.
   ///
   /// The following arguments are optional:
-  final Input<AgentAgentActionGroupActionGroupExecutor>? actionGroupExecutor;
+  final pulumi.Input<AgentAgentActionGroupActionGroupExecutor>?
+      actionGroupExecutor;
 
   /// Name of the action group.
-  final Input<String> actionGroupName;
+  final pulumi.Input<String> actionGroupName;
 
   /// Whether the action group is available for the agent to invoke or not when sending an [InvokeAgent](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent-runtime_InvokeAgent.html) request. Valid values: `ENABLED`, `DISABLED`.
-  final Input<String>? actionGroupState;
+  final pulumi.Input<String>? actionGroupState;
 
   /// The unique identifier of the agent for which to create the action group.
-  final Input<String> agentId;
+  final pulumi.Input<String> agentId;
 
   /// Version of the agent for which to create the action group. Valid values: `DRAFT`.
-  final Input<String> agentVersion;
+  final pulumi.Input<String> agentVersion;
 
   /// Either details about the S3 object containing the OpenAPI schema for the action group or the JSON or YAML-formatted payload defining the schema. For more information, see [Action group OpenAPI schemas](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-api-schema.html). See `api_schema` Block for details.
-  final Input<AgentAgentActionGroupApiSchema>? apiSchema;
+  final pulumi.Input<AgentAgentActionGroupApiSchema>? apiSchema;
 
   /// Description of the action group.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Describes the function schema for the action group.
   /// Each function represents an action in an action group.
   /// See `function_schema` Block for details.
-  final Input<AgentAgentActionGroupFunctionSchema>? functionSchema;
+  final pulumi.Input<AgentAgentActionGroupFunctionSchema>? functionSchema;
 
   /// To allow your agent to request the user for additional information when trying to complete a task, set this argument to `AMAZON.UserInput`. You must leave the `description`, `api_schema`, and `action_group_executor` arguments blank for this action group. Valid values: `AMAZON.UserInput`.
-  final Input<String>? parentActionGroupSignature;
+  final pulumi.Input<String>? parentActionGroupSignature;
 
   /// Whether or not to prepare the agent after creation or modification. Defaults to `true`.
-  final Input<bool>? prepareAgent;
+  final pulumi.Input<bool>? prepareAgent;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Whether the in-use check is skipped when deleting the action group.
-  final Input<bool>? skipResourceInUseCheck;
-  final Input<AgentAgentActionGroupTimeouts>? timeouts;
+  final pulumi.Input<bool>? skipResourceInUseCheck;
+  final pulumi.Input<AgentAgentActionGroupTimeouts>? timeouts;
 
   AgentAgentActionGroupArgs({
     this.actionGroupExecutor,
@@ -69,7 +70,7 @@ class AgentAgentActionGroupArgs {
     final map = <String, dynamic>{};
     final actionGroupExecutorValue = actionGroupExecutor;
     if (actionGroupExecutorValue != null) {
-      map['actionGroupExecutor'] = Input.mapOptionalInputValue<
+      map['actionGroupExecutor'] = pulumi.Input.mapOptionalInputValue<
               AgentAgentActionGroupActionGroupExecutor, Map<String, dynamic>>(
           actionGroupExecutorValue, (value) => value.toMap());
     }
@@ -82,7 +83,7 @@ class AgentAgentActionGroupArgs {
     map['agentVersion'] = agentVersion;
     final apiSchemaValue = apiSchema;
     if (apiSchemaValue != null) {
-      map['apiSchema'] = Input.mapOptionalInputValue<
+      map['apiSchema'] = pulumi.Input.mapOptionalInputValue<
           AgentAgentActionGroupApiSchema,
           Map<String, dynamic>>(apiSchemaValue, (value) => value.toMap());
     }
@@ -92,7 +93,7 @@ class AgentAgentActionGroupArgs {
     }
     final functionSchemaValue = functionSchema;
     if (functionSchemaValue != null) {
-      map['functionSchema'] = Input.mapOptionalInputValue<
+      map['functionSchema'] = pulumi.Input.mapOptionalInputValue<
           AgentAgentActionGroupFunctionSchema,
           Map<String, dynamic>>(functionSchemaValue, (value) => value.toMap());
     }
@@ -114,7 +115,7 @@ class AgentAgentActionGroupArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           AgentAgentActionGroupTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -123,27 +124,27 @@ class AgentAgentActionGroupArgs {
 
   factory AgentAgentActionGroupArgs.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupArgs(
-      actionGroupExecutor:
-          Input.asOptionalInput<AgentAgentActionGroupActionGroupExecutor>(
-              map['actionGroupExecutor']),
-      actionGroupName: Input.asInput<String>(map['actionGroupName']),
-      actionGroupState: Input.asOptionalInput<String>(map['actionGroupState']),
-      agentId: Input.asInput<String>(map['agentId']),
-      agentVersion: Input.asInput<String>(map['agentVersion']),
-      apiSchema: Input.asOptionalInput<AgentAgentActionGroupApiSchema>(
+      actionGroupExecutor: pulumi.Input.asOptionalInput<
+          AgentAgentActionGroupActionGroupExecutor>(map['actionGroupExecutor']),
+      actionGroupName: pulumi.Input.asInput<String>(map['actionGroupName']),
+      actionGroupState:
+          pulumi.Input.asOptionalInput<String>(map['actionGroupState']),
+      agentId: pulumi.Input.asInput<String>(map['agentId']),
+      agentVersion: pulumi.Input.asInput<String>(map['agentVersion']),
+      apiSchema: pulumi.Input.asOptionalInput<AgentAgentActionGroupApiSchema>(
           map['apiSchema']),
-      description: Input.asOptionalInput<String>(map['description']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       functionSchema:
-          Input.asOptionalInput<AgentAgentActionGroupFunctionSchema>(
+          pulumi.Input.asOptionalInput<AgentAgentActionGroupFunctionSchema>(
               map['functionSchema']),
-      parentActionGroupSignature:
-          Input.asOptionalInput<String>(map['parentActionGroupSignature']),
-      prepareAgent: Input.asOptionalInput<bool>(map['prepareAgent']),
-      region: Input.asOptionalInput<String>(map['region']),
+      parentActionGroupSignature: pulumi.Input.asOptionalInput<String>(
+          map['parentActionGroupSignature']),
+      prepareAgent: pulumi.Input.asOptionalInput<bool>(map['prepareAgent']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       skipResourceInUseCheck:
-          Input.asOptionalInput<bool>(map['skipResourceInUseCheck']),
-      timeouts:
-          Input.asOptionalInput<AgentAgentActionGroupTimeouts>(map['timeouts']),
+          pulumi.Input.asOptionalInput<bool>(map['skipResourceInUseCheck']),
+      timeouts: pulumi.Input.asOptionalInput<AgentAgentActionGroupTimeouts>(
+          map['timeouts']),
     );
   }
 }

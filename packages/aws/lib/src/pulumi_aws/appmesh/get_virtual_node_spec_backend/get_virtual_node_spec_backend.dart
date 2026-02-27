@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_node_spec_backend_virtual_service/get_virtual_node_spec_backend_virtual_service.dart';
 
 class GetVirtualNodeSpecBackend {
@@ -12,7 +12,7 @@ class GetVirtualNodeSpecBackend {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['virtualServices'] = Input.encodeList<
+    map['virtualServices'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecBackendVirtualService,
         Map<String, dynamic>>(virtualServices, (value) => value.toMap());
     return map;
@@ -21,7 +21,7 @@ class GetVirtualNodeSpecBackend {
   factory GetVirtualNodeSpecBackend.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackend(
       virtualServices:
-          Input.decodeList<GetVirtualNodeSpecBackendVirtualService>(
+          pulumi.Input.decodeList<GetVirtualNodeSpecBackendVirtualService>(
               map['virtualServices'],
               (value) => GetVirtualNodeSpecBackendVirtualService.fromMap(
                   (value as Map).cast<String, dynamic>())),

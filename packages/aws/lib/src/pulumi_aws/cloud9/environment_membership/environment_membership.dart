@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_membership_args.dart';
 
 /// Provides an environment member to an AWS Cloud9 development environment.
@@ -14,31 +14,31 @@ import 'environment_membership_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloud9/environmentMembership:EnvironmentMembership test environment-id#user-arn
 /// ```
-class EnvironmentMembership extends CustomResource {
+class EnvironmentMembership extends pulumi.CustomResource {
   /// The ID of the environment that contains the environment member you want to add.
-  late final Output<String> environmentId;
+  late final pulumi.Output<String> environmentId;
 
   /// The type of environment member permissions you want to associate with this environment member. Allowed values are `read-only` and `read-write` .
-  late final Output<String> permissions;
+  late final pulumi.Output<String> permissions;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The Amazon Resource Name (ARN) of the environment member you want to add.
-  late final Output<String> userArn;
+  late final pulumi.Output<String> userArn;
 
   /// The user ID in AWS Identity and Access Management (AWS IAM) of the environment member.
-  late final Output<String> userId;
+  late final pulumi.Output<String> userId;
 
   EnvironmentMembership(
     String name, {
     EnvironmentMembershipArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloud9/environmentMembership:EnvironmentMembership',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.environmentId = registerOutput<String>('environmentId');
     this.permissions = registerOutput<String>('permissions');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_storage_config_storage_config/instance_storage_config_storage_config.dart';
 import 'instance_storage_config_args.dart';
 
@@ -34,31 +34,31 @@ import 'instance_storage_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:connect/instanceStorageConfig:InstanceStorageConfig example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5:CHAT_TRANSCRIPTS
 /// ```
-class InstanceStorageConfig extends CustomResource {
+class InstanceStorageConfig extends pulumi.CustomResource {
   /// The existing association identifier that uniquely identifies the resource type and storage config for the given instance ID.
-  late final Output<String> associationId;
+  late final pulumi.Output<String> associationId;
 
   /// Specifies the identifier of the hosting Amazon Connect Instance.
-  late final Output<String> instanceId;
+  late final pulumi.Output<String> instanceId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A valid resource type. Valid Values: `AGENT_EVENTS` | `ATTACHMENTS` | `CALL_RECORDINGS` | `CHAT_TRANSCRIPTS` | `CONTACT_EVALUATIONS` | `CONTACT_TRACE_RECORDS` | `EMAIL_MESSAGES` | `MEDIA_STREAMS` | `REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS` | `REAL_TIME_CONTACT_ANALYSIS_SEGMENTS` | `REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS` | `SCHEDULED_REPORTS` | `SCREEN_RECORDINGS`.
-  late final Output<String> resourceType;
+  late final pulumi.Output<String> resourceType;
 
   /// Specifies the storage configuration options for the Connect Instance. Documented below.
-  late final Output<InstanceStorageConfigStorageConfig> storageConfig;
+  late final pulumi.Output<InstanceStorageConfigStorageConfig> storageConfig;
 
   InstanceStorageConfig(
     String name, {
     InstanceStorageConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:connect/instanceStorageConfig:InstanceStorageConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.associationId = registerOutput<String>('associationId');
     this.instanceId = registerOutput<String>('instanceId');

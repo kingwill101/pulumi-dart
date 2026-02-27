@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../report_group_export_config/report_group_export_config.dart';
 
 /// The set of arguments for ReportGroup.
 class ReportGroupArgs {
   /// If `true`, deletes any reports that belong to a report group before deleting the report group. If `false`, you must delete any reports in the report group before deleting it. Default value is `false`.
-  final Input<bool>? deleteReports;
+  final pulumi.Input<bool>? deleteReports;
 
   /// Information about the destination where the raw data of this Report Group is exported. see Export Config documented below.
-  final Input<ReportGroupExportConfig> exportConfig;
+  final pulumi.Input<ReportGroupExportConfig> exportConfig;
 
   /// The name of a Report Group.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value mapping of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The type of the Report Group. Valid value are `TEST` and `CODE_COVERAGE`.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   ReportGroupArgs({
     this.deleteReports,
@@ -38,9 +38,8 @@ class ReportGroupArgs {
     if (deleteReportsValue != null) {
       map['deleteReports'] = deleteReportsValue;
     }
-    map['exportConfig'] =
-        Input.mapInputValue<ReportGroupExportConfig, Map<String, dynamic>>(
-            exportConfig, (value) => value.toMap());
+    map['exportConfig'] = pulumi.Input.mapInputValue<ReportGroupExportConfig,
+        Map<String, dynamic>>(exportConfig, (value) => value.toMap());
     final nameValue = name;
     if (nameValue != null) {
       map['name'] = nameValue;
@@ -59,12 +58,13 @@ class ReportGroupArgs {
 
   factory ReportGroupArgs.fromMap(Map<String, dynamic> map) {
     return ReportGroupArgs(
-      deleteReports: Input.asOptionalInput<bool>(map['deleteReports']),
-      exportConfig: Input.asInput<ReportGroupExportConfig>(map['exportConfig']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      type: Input.asInput<String>(map['type']),
+      deleteReports: pulumi.Input.asOptionalInput<bool>(map['deleteReports']),
+      exportConfig:
+          pulumi.Input.asInput<ReportGroupExportConfig>(map['exportConfig']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

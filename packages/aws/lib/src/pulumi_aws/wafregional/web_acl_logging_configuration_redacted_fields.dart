@@ -1,3 +1,3 @@
 library module_wafregional_web_acl_logging_configuration_redacted_fields;
 
-export 'web_acl_logging_configuration_redacted_fields/web_acl_logging_configuration_redacted_fields2.dart';
+export 'web_acl_logging_configuration_redacted_fields/web_acl_logging_configuration_redacted_fields_wafregional.dart';

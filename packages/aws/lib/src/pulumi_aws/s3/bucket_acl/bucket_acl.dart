@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_acl_access_control_policy/bucket_acl_access_control_policy.dart';
 import 'bucket_acl_args.dart';
 
@@ -78,31 +78,31 @@ import 'bucket_acl_args.dart';
 /// ```
 ///
 /// [1]: https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl
-class BucketAcl extends CustomResource {
+class BucketAcl extends pulumi.CustomResource {
   /// Configuration block that sets the ACL permissions for an object per grantee. See below.
-  late final Output<BucketAclAccessControlPolicy> accessControlPolicy;
+  late final pulumi.Output<BucketAclAccessControlPolicy> accessControlPolicy;
 
   /// Specifies the Canned ACL to apply to the bucket. Valid values: `private`, `public-read`, `public-read-write`, `aws-exec-read`, `authenticated-read`, `bucket-owner-read`, `bucket-owner-full-control`, `log-delivery-write`. Full details are available on the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
-  late final Output<String?> acl;
+  late final pulumi.Output<String?> acl;
 
   /// Bucket to which to apply the ACL.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Account ID of the expected bucket owner.
-  late final Output<String?> expectedBucketOwner;
+  late final pulumi.Output<String?> expectedBucketOwner;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   BucketAcl(
     String name, {
     BucketAclArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/bucketAcl:BucketAcl',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessControlPolicy =
         registerOutput<BucketAclAccessControlPolicy>('accessControlPolicy');

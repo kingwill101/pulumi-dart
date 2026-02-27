@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Type.
 class TypeArgs {
   /// GraphQL API ID.
-  final Input<String> apiId;
+  final pulumi.Input<String> apiId;
 
   /// The type definition.
-  final Input<String> definition;
+  final pulumi.Input<String> definition;
 
   /// The type format: `SDL` or `JSON`.
-  final Input<String> format;
+  final pulumi.Input<String> format;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   TypeArgs({
     required this.apiId,
@@ -37,10 +37,10 @@ class TypeArgs {
 
   factory TypeArgs.fromMap(Map<String, dynamic> map) {
     return TypeArgs(
-      apiId: Input.asInput<String>(map['apiId']),
-      definition: Input.asInput<String>(map['definition']),
-      format: Input.asInput<String>(map['format']),
-      region: Input.asOptionalInput<String>(map['region']),
+      apiId: pulumi.Input.asInput<String>(map['apiId']),
+      definition: pulumi.Input.asInput<String>(map['definition']),
+      format: pulumi.Input.asInput<String>(map['format']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

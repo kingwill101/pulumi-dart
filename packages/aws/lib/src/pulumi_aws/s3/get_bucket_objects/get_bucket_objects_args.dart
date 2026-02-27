@@ -1,32 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBucketObjects.
 class GetBucketObjectsArgs {
   /// Lists object keys in this S3 bucket. Alternatively, an [S3 access point](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html) ARN can be specified
-  final Input<String> bucket;
+  final pulumi.Input<String> bucket;
 
   /// Character used to group keys (Default: none)
-  final Input<String>? delimiter;
+  final pulumi.Input<String>? delimiter;
 
   /// Encodes keys using this method (Default: none; besides none, only "url" can be used)
-  final Input<String>? encodingType;
+  final pulumi.Input<String>? encodingType;
 
   /// Boolean specifying whether to populate the owner list (Default: false)
-  final Input<bool>? fetchOwner;
+  final pulumi.Input<bool>? fetchOwner;
 
   /// Maximum object keys to return (Default: 1000)
-  final Input<int>? maxKeys;
+  final pulumi.Input<int>? maxKeys;
 
   /// Limits results to object keys with this prefix (Default: none)
-  final Input<String>? prefix;
+  final pulumi.Input<String>? prefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Returns key names lexicographically after a specific object key in your bucket (Default: none; S3 lists object keys in UTF-8 character encoding in lexicographical order)
-  final Input<String>? startAfter;
+  final pulumi.Input<String>? startAfter;
 
   GetBucketObjectsArgs({
     required this.bucket,
@@ -75,14 +75,14 @@ class GetBucketObjectsArgs {
 
   factory GetBucketObjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectsArgs(
-      bucket: Input.asInput<String>(map['bucket']),
-      delimiter: Input.asOptionalInput<String>(map['delimiter']),
-      encodingType: Input.asOptionalInput<String>(map['encodingType']),
-      fetchOwner: Input.asOptionalInput<bool>(map['fetchOwner']),
-      maxKeys: Input.asOptionalInput<int>(map['maxKeys']),
-      prefix: Input.asOptionalInput<String>(map['prefix']),
-      region: Input.asOptionalInput<String>(map['region']),
-      startAfter: Input.asOptionalInput<String>(map['startAfter']),
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      delimiter: pulumi.Input.asOptionalInput<String>(map['delimiter']),
+      encodingType: pulumi.Input.asOptionalInput<String>(map['encodingType']),
+      fetchOwner: pulumi.Input.asOptionalInput<bool>(map['fetchOwner']),
+      maxKeys: pulumi.Input.asOptionalInput<int>(map['maxKeys']),
+      prefix: pulumi.Input.asOptionalInput<String>(map['prefix']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      startAfter: pulumi.Input.asOptionalInput<String>(map['startAfter']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../application_application_configuration_sql_application_configuration_input_input_parallelism/application_application_configuration_sql_application_configuration_input_input_parallelism.dart';
 import '../application_application_configuration_sql_application_configuration_input_input_processing_configuration/application_application_configuration_sql_application_configuration_input_input_processing_configuration.dart';
 import '../application_application_configuration_sql_application_configuration_input_input_schema/application_application_configuration_sql_application_configuration_input_input_schema.dart';
@@ -76,7 +76,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInput {
     final inputStartingPositionConfigurationsValue =
         inputStartingPositionConfigurations;
     if (inputStartingPositionConfigurationsValue != null) {
-      map['inputStartingPositionConfigurations'] = Input.encodeList<
+      map['inputStartingPositionConfigurations'] = pulumi.Input.encodeList<
               ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration,
               Map<String, dynamic>>(
           inputStartingPositionConfigurationsValue, (value) => value.toMap());
@@ -117,7 +117,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInput {
                   'inputStartingPositionConfigurations'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration>(
               map['inputStartingPositionConfigurations'],
               (value) =>

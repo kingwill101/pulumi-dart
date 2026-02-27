@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTrackerAssociations.
 class GetTrackerAssociationsArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Name of the tracker resource associated with a geofence collection.
-  final Input<String> trackerName;
+  final pulumi.Input<String> trackerName;
 
   GetTrackerAssociationsArgs({
     this.region,
@@ -27,8 +27,8 @@ class GetTrackerAssociationsArgs {
 
   factory GetTrackerAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetTrackerAssociationsArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      trackerName: Input.asInput<String>(map['trackerName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      trackerName: pulumi.Input.asInput<String>(map['trackerName']),
     );
   }
 }

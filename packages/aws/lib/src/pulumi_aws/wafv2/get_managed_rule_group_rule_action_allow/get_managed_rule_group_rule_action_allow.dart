@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_managed_rule_group_rule_action_allow_custom_request_handling/get_managed_rule_group_rule_action_allow_custom_request_handling.dart';
 
 class GetManagedRuleGroupRuleActionAllow {
@@ -13,7 +13,7 @@ class GetManagedRuleGroupRuleActionAllow {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['customRequestHandlings'] = Input.encodeList<
+    map['customRequestHandlings'] = pulumi.Input.encodeList<
         GetManagedRuleGroupRuleActionAllowCustomRequestHandling,
         Map<String, dynamic>>(customRequestHandlings, (value) => value.toMap());
     return map;
@@ -21,7 +21,7 @@ class GetManagedRuleGroupRuleActionAllow {
 
   factory GetManagedRuleGroupRuleActionAllow.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionAllow(
-      customRequestHandlings: Input.decodeList<
+      customRequestHandlings: pulumi.Input.decodeList<
               GetManagedRuleGroupRuleActionAllowCustomRequestHandling>(
           map['customRequestHandlings'],
           (value) =>

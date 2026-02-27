@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_firehose_delivery_stream_args.dart';
 import 'get_firehose_delivery_stream_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_firehose_delivery_stream_result.dart';
 /// For more details, see the [Amazon Kinesis Firehose Documentation](https://aws.amazon.com/documentation/firehose/).
 Future<GetFirehoseDeliveryStreamResult> getFirehoseDeliveryStream(
   GetFirehoseDeliveryStreamArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:kinesis/getFirehoseDeliveryStream:getFirehoseDeliveryStream',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirehoseDeliveryStreamResult.fromMap(result);
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_association_args.dart';
 
 /// Resource for managing an AWS User Notifications Channel Association. This resource associates a channel (such as an email contact) with a notification configuration.
@@ -16,22 +16,22 @@ import 'channel_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:notifications/channelAssociation:ChannelAssociation example arn:aws:notifications:us-west-2:123456789012:configuration:example-notification-config,arn:aws:notificationscontacts:us-west-2:123456789012:emailcontact:example-contact
 /// ```
-class ChannelAssociation extends CustomResource {
+class ChannelAssociation extends pulumi.CustomResource {
   /// ARN of the channel to associate with the notification configuration. Must match pattern `^arn:aws:(chatbot|consoleapp|notifications-contacts):[a-zA-Z0-9-]*:[0-9]{12}:[a-zA-Z0-9-_.@]+/[a-zA-Z0-9/_.@:-]+$`.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// ARN of the notification configuration to associate the channel with.
-  late final Output<String> notificationConfigurationArn;
+  late final pulumi.Output<String> notificationConfigurationArn;
 
   ChannelAssociation(
     String name, {
     ChannelAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:notifications/channelAssociation:ChannelAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.notificationConfigurationArn =

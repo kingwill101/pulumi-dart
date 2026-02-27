@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AssessmentReport.
 class AssessmentReportArgs {
   /// Unique identifier of the assessment to create the report from.
   ///
   /// The following arguments are optional:
-  final Input<String> assessmentId;
+  final pulumi.Input<String> assessmentId;
 
   /// Description of the assessment report.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the assessment report.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   AssessmentReportArgs({
     required this.assessmentId,
@@ -45,10 +45,10 @@ class AssessmentReportArgs {
 
   factory AssessmentReportArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentReportArgs(
-      assessmentId: Input.asInput<String>(map['assessmentId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      assessmentId: pulumi.Input.asInput<String>(map['assessmentId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

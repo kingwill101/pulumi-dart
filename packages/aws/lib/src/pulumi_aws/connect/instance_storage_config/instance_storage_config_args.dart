@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_storage_config_storage_config/instance_storage_config_storage_config.dart';
 
 /// The set of arguments for InstanceStorageConfig.
 class InstanceStorageConfigArgs {
   /// Specifies the identifier of the hosting Amazon Connect Instance.
-  final Input<String> instanceId;
+  final pulumi.Input<String> instanceId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A valid resource type. Valid Values: `AGENT_EVENTS` | `ATTACHMENTS` | `CALL_RECORDINGS` | `CHAT_TRANSCRIPTS` | `CONTACT_EVALUATIONS` | `CONTACT_TRACE_RECORDS` | `EMAIL_MESSAGES` | `MEDIA_STREAMS` | `REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS` | `REAL_TIME_CONTACT_ANALYSIS_SEGMENTS` | `REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS` | `SCHEDULED_REPORTS` | `SCREEN_RECORDINGS`.
-  final Input<String> resourceType;
+  final pulumi.Input<String> resourceType;
 
   /// Specifies the storage configuration options for the Connect Instance. Documented below.
-  final Input<InstanceStorageConfigStorageConfig> storageConfig;
+  final pulumi.Input<InstanceStorageConfigStorageConfig> storageConfig;
 
   InstanceStorageConfigArgs({
     required this.instanceId,
@@ -32,7 +32,7 @@ class InstanceStorageConfigArgs {
       map['region'] = regionValue;
     }
     map['resourceType'] = resourceType;
-    map['storageConfig'] = Input.mapInputValue<
+    map['storageConfig'] = pulumi.Input.mapInputValue<
         InstanceStorageConfigStorageConfig,
         Map<String, dynamic>>(storageConfig, (value) => value.toMap());
     return map;
@@ -40,10 +40,10 @@ class InstanceStorageConfigArgs {
 
   factory InstanceStorageConfigArgs.fromMap(Map<String, dynamic> map) {
     return InstanceStorageConfigArgs(
-      instanceId: Input.asInput<String>(map['instanceId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      resourceType: Input.asInput<String>(map['resourceType']),
-      storageConfig: Input.asInput<InstanceStorageConfigStorageConfig>(
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourceType: pulumi.Input.asInput<String>(map['resourceType']),
+      storageConfig: pulumi.Input.asInput<InstanceStorageConfigStorageConfig>(
           map['storageConfig']),
     );
   }

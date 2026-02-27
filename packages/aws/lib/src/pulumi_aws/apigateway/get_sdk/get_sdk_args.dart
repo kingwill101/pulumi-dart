@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSdk.
 class GetSdkArgs {
   /// Key-value map of query string parameters `sdk_type` properties of the SDK. For SDK Type of `objectivec` or `swift`, a parameter named `classPrefix` is required. For SDK Type of `android`, parameters named `groupId`, `artifactId`, `artifactVersion`, and `invokerPackage` are required. For SDK Type of `java`, parameters named `serviceName` and `javaPackageName` are required.
-  final Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Identifier of the associated REST API.
-  final Input<String> restApiId;
+  final pulumi.Input<String> restApiId;
 
   /// Language for the generated SDK. Currently `java`, `javascript`, `android`, `objectivec` (for iOS), `swift` (for iOS), and `ruby` are supported.
-  final Input<String> sdkType;
+  final pulumi.Input<String> sdkType;
 
   /// Name of the Stage that will be exported.
-  final Input<String> stageName;
+  final pulumi.Input<String> stageName;
 
   GetSdkArgs({
     this.parameters,
@@ -45,11 +45,12 @@ class GetSdkArgs {
 
   factory GetSdkArgs.fromMap(Map<String, dynamic> map) {
     return GetSdkArgs(
-      parameters: Input.asOptionalInput<Map<String, String>>(map['parameters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      restApiId: Input.asInput<String>(map['restApiId']),
-      sdkType: Input.asInput<String>(map['sdkType']),
-      stageName: Input.asInput<String>(map['stageName']),
+      parameters:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['parameters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      restApiId: pulumi.Input.asInput<String>(map['restApiId']),
+      sdkType: pulumi.Input.asInput<String>(map['sdkType']),
+      stageName: pulumi.Input.asInput<String>(map['stageName']),
     );
   }
 }

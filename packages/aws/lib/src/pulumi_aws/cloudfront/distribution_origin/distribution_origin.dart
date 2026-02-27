@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../distribution_origin_custom_header/distribution_origin_custom_header.dart';
 import '../distribution_origin_custom_origin_config/distribution_origin_custom_origin_config.dart';
 import '../distribution_origin_origin_shield/distribution_origin_origin_shield.dart';
@@ -69,7 +69,8 @@ class DistributionOrigin {
     }
     final customHeadersValue = customHeaders;
     if (customHeadersValue != null) {
-      map['customHeaders'] = Input.encodeList<DistributionOriginCustomHeader,
+      map['customHeaders'] = pulumi.Input.encodeList<
+          DistributionOriginCustomHeader,
           Map<String, dynamic>>(customHeadersValue, (value) => value.toMap());
     }
     final customOriginConfigValue = customOriginConfig;
@@ -115,7 +116,7 @@ class DistributionOrigin {
           : map['connectionTimeout'] as int,
       customHeaders: map['customHeaders'] == null
           ? null
-          : Input.decodeList<DistributionOriginCustomHeader>(
+          : pulumi.Input.decodeList<DistributionOriginCustomHeader>(
               map['customHeaders'],
               (value) => DistributionOriginCustomHeader.fromMap(
                   (value as Map).cast<String, dynamic>())),

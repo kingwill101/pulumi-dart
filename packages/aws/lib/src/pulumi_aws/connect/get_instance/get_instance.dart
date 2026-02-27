@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_instance_args.dart';
 import 'get_instance_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_instance_result.dart';
 /// By instance_id
 Future<GetInstanceResult> getInstance(
   GetInstanceArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:connect/getInstance:getInstance',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceResult.fromMap(result);
 }

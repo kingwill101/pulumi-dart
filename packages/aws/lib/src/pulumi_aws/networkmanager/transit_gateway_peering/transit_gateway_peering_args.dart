@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TransitGatewayPeering.
 class TransitGatewayPeeringArgs {
   /// ID of a core network.
-  final Input<String> coreNetworkId;
+  final pulumi.Input<String> coreNetworkId;
 
   /// Key-value tags for the peering. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// ARN of the transit gateway for the peering request.
   ///
   /// The following arguments are optional:
-  final Input<String> transitGatewayArn;
+  final pulumi.Input<String> transitGatewayArn;
 
   TransitGatewayPeeringArgs({
     required this.coreNetworkId,
@@ -34,9 +34,9 @@ class TransitGatewayPeeringArgs {
 
   factory TransitGatewayPeeringArgs.fromMap(Map<String, dynamic> map) {
     return TransitGatewayPeeringArgs(
-      coreNetworkId: Input.asInput<String>(map['coreNetworkId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      transitGatewayArn: Input.asInput<String>(map['transitGatewayArn']),
+      coreNetworkId: pulumi.Input.asInput<String>(map['coreNetworkId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      transitGatewayArn: pulumi.Input.asInput<String>(map['transitGatewayArn']),
     );
   }
 }

@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOutposts.
 class GetOutpostsArgs {
   /// Availability Zone name.
-  final Input<String>? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
 
   /// Availability Zone identifier.
-  final Input<String>? availabilityZoneId;
+  final pulumi.Input<String>? availabilityZoneId;
 
   /// AWS Account identifier of the Outpost owner.
-  final Input<String>? ownerId;
+  final pulumi.Input<String>? ownerId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Site identifier.
-  final Input<String>? siteId;
+  final pulumi.Input<String>? siteId;
 
   GetOutpostsArgs({
     this.availabilityZone,
@@ -54,12 +54,13 @@ class GetOutpostsArgs {
 
   factory GetOutpostsArgs.fromMap(Map<String, dynamic> map) {
     return GetOutpostsArgs(
-      availabilityZone: Input.asOptionalInput<String>(map['availabilityZone']),
+      availabilityZone:
+          pulumi.Input.asOptionalInput<String>(map['availabilityZone']),
       availabilityZoneId:
-          Input.asOptionalInput<String>(map['availabilityZoneId']),
-      ownerId: Input.asOptionalInput<String>(map['ownerId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      siteId: Input.asOptionalInput<String>(map['siteId']),
+          pulumi.Input.asOptionalInput<String>(map['availabilityZoneId']),
+      ownerId: pulumi.Input.asOptionalInput<String>(map['ownerId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      siteId: pulumi.Input.asOptionalInput<String>(map['siteId']),
     );
   }
 }

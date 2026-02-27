@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_snapshot_ids_filter/get_snapshot_ids_filter.dart';
 
 /// Result data returned by getSnapshotIds.
@@ -30,7 +30,7 @@ class GetSnapshotIdsResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetSnapshotIdsFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetSnapshotIdsFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -51,7 +51,7 @@ class GetSnapshotIdsResult {
     return GetSnapshotIdsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetSnapshotIdsFilter>(
+          : pulumi.Input.decodeList<GetSnapshotIdsFilter>(
               map['filters'],
               (value) => GetSnapshotIdsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../spot_fleet_request_launch_template_config_launch_template_specification/spot_fleet_request_launch_template_config_launch_template_specification.dart';
 import '../spot_fleet_request_launch_template_config_override/spot_fleet_request_launch_template_config_override.dart';
 
@@ -22,7 +22,7 @@ class SpotFleetRequestLaunchTemplateConfig {
     map['launchTemplateSpecification'] = launchTemplateSpecification.toMap();
     final overridesValue = overrides;
     if (overridesValue != null) {
-      map['overrides'] = Input.encodeList<
+      map['overrides'] = pulumi.Input.encodeList<
           SpotFleetRequestLaunchTemplateConfigOverride,
           Map<String, dynamic>>(overridesValue, (value) => value.toMap());
     }
@@ -38,7 +38,8 @@ class SpotFleetRequestLaunchTemplateConfig {
                   .cast<String, dynamic>()),
       overrides: map['overrides'] == null
           ? null
-          : Input.decodeList<SpotFleetRequestLaunchTemplateConfigOverride>(
+          : pulumi.Input.decodeList<
+                  SpotFleetRequestLaunchTemplateConfigOverride>(
               map['overrides'],
               (value) => SpotFleetRequestLaunchTemplateConfigOverride.fromMap(
                   (value as Map).cast<String, dynamic>())),

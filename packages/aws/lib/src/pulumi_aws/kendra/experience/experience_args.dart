@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../experience_configuration/experience_configuration.dart';
 
 /// The set of arguments for Experience.
@@ -8,24 +8,24 @@ class ExperienceArgs {
   /// Configuration information for your Amazon Kendra experience. The provider will only perform drift detection of its value when present in a configuration. Detailed below.
   ///
   /// > **NOTE:** By default of the AWS Kendra API, updates to an existing `aws.kendra.Experience` resource (e.g. updating the `name`) will also update the `configuration.content_source_configuration.direct_put_content` parameter to `false` if not already provided.
-  final Input<ExperienceConfiguration>? configuration;
+  final pulumi.Input<ExperienceConfiguration>? configuration;
 
   /// A description for your Amazon Kendra experience.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The identifier of the index for your Amazon Kendra experience.
-  final Input<String> indexId;
+  final pulumi.Input<String> indexId;
 
   /// A name for your Amazon Kendra experience.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The Amazon Resource Name (ARN) of a role with permission to access `Query API`, `QuerySuggestions API`, `SubmitFeedback API`, and `AWS SSO` that stores your user and group information. For more information, see [IAM roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
   ///
   /// The following arguments are optional:
-  final Input<String> roleArn;
+  final pulumi.Input<String> roleArn;
 
   ExperienceArgs({
     this.configuration,
@@ -40,7 +40,7 @@ class ExperienceArgs {
     final map = <String, dynamic>{};
     final configurationValue = configuration;
     if (configurationValue != null) {
-      map['configuration'] = Input.mapOptionalInputValue<
+      map['configuration'] = pulumi.Input.mapOptionalInputValue<
           ExperienceConfiguration,
           Map<String, dynamic>>(configurationValue, (value) => value.toMap());
     }
@@ -63,13 +63,13 @@ class ExperienceArgs {
 
   factory ExperienceArgs.fromMap(Map<String, dynamic> map) {
     return ExperienceArgs(
-      configuration:
-          Input.asOptionalInput<ExperienceConfiguration>(map['configuration']),
-      description: Input.asOptionalInput<String>(map['description']),
-      indexId: Input.asInput<String>(map['indexId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      roleArn: Input.asInput<String>(map['roleArn']),
+      configuration: pulumi.Input.asOptionalInput<ExperienceConfiguration>(
+          map['configuration']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      indexId: pulumi.Input.asInput<String>(map['indexId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      roleArn: pulumi.Input.asInput<String>(map['roleArn']),
     );
   }
 }

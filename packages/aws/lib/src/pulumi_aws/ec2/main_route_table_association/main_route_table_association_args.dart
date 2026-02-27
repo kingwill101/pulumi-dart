@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for MainRouteTableAssociation.
 class MainRouteTableAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of the Route Table to set as the new
   /// main route table for the target VPC
-  final Input<String> routeTableId;
+  final pulumi.Input<String> routeTableId;
 
   /// The ID of the VPC whose main route table should be set
-  final Input<String> vpcId;
+  final pulumi.Input<String> vpcId;
 
   MainRouteTableAssociationArgs({
     this.region,
@@ -33,9 +33,9 @@ class MainRouteTableAssociationArgs {
 
   factory MainRouteTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MainRouteTableAssociationArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      routeTableId: Input.asInput<String>(map['routeTableId']),
-      vpcId: Input.asInput<String>(map['vpcId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      routeTableId: pulumi.Input.asInput<String>(map['routeTableId']),
+      vpcId: pulumi.Input.asInput<String>(map['vpcId']),
     );
   }
 }

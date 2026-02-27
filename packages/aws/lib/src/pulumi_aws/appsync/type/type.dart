@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'type_args.dart';
 
 /// Provides an AppSync Type.
@@ -14,37 +14,37 @@ import 'type_args.dart';
 /// ```sh
 /// $ pulumi import aws:appsync/type:Type example api-id:format:name
 /// ```
-class Type extends CustomResource {
+class Type extends pulumi.CustomResource {
   /// GraphQL API ID.
-  late final Output<String> apiId;
+  late final pulumi.Output<String> apiId;
 
   /// The ARN of the type.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The type definition.
-  late final Output<String> definition;
+  late final pulumi.Output<String> definition;
 
   /// The type description.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// The type format: `SDL` or `JSON`.
-  late final Output<String> format;
+  late final pulumi.Output<String> format;
 
   /// The type name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   Type(
     String name, {
     TypeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:appsync/type:Type',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiId = registerOutput<String>('apiId');
     this.arn = registerOutput<String>('arn');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_v2_server_side_encryption_configuration_rule_apply_server_side_encryption_by_default/bucket_v2_server_side_encryption_configuration_rule_apply_server_side_encryption_by_default.dart';
 
 class BucketV2ServerSideEncryptionConfigurationRule {
@@ -19,7 +19,7 @@ class BucketV2ServerSideEncryptionConfigurationRule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['applyServerSideEncryptionByDefaults'] = Input.encodeList<
+    map['applyServerSideEncryptionByDefaults'] = pulumi.Input.encodeList<
             BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault,
             Map<String, dynamic>>(
         applyServerSideEncryptionByDefaults, (value) => value.toMap());
@@ -33,7 +33,7 @@ class BucketV2ServerSideEncryptionConfigurationRule {
   factory BucketV2ServerSideEncryptionConfigurationRule.fromMap(
       Map<String, dynamic> map) {
     return BucketV2ServerSideEncryptionConfigurationRule(
-      applyServerSideEncryptionByDefaults: Input.decodeList<
+      applyServerSideEncryptionByDefaults: pulumi.Input.decodeList<
               BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault>(
           map['applyServerSideEncryptionByDefaults'],
           (value) =>

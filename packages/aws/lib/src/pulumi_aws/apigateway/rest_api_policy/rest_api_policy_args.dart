@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RestApiPolicy.
 class RestApiPolicyArgs {
   /// JSON formatted policy document that controls access to the API Gateway.
-  final Input<String> policy;
+  final pulumi.Input<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the REST API.
-  final Input<String> restApiId;
+  final pulumi.Input<String> restApiId;
 
   RestApiPolicyArgs({
     required this.policy,
@@ -32,9 +32,9 @@ class RestApiPolicyArgs {
 
   factory RestApiPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RestApiPolicyArgs(
-      policy: Input.asInput<String>(map['policy']),
-      region: Input.asOptionalInput<String>(map['region']),
-      restApiId: Input.asInput<String>(map['restApiId']),
+      policy: pulumi.Input.asInput<String>(map['policy']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      restApiId: pulumi.Input.asInput<String>(map['restApiId']),
     );
   }
 }

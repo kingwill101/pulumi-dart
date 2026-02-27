@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_node_spec_backend_virtual_service_client_policy_tl_validation_subject_alternative_name_match/get_virtual_node_spec_backend_virtual_service_client_policy_tl_validation_subject_alternative_name_match.dart';
 
 class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeName {
@@ -14,7 +14,7 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlte
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['matches'] = Input.encodeList<
+    map['matches'] = pulumi.Input.encodeList<
         GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch,
         Map<String, dynamic>>(matches, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlte
   factory GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeName.fromMap(
       Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeName(
-      matches: Input.decodeList<
+      matches: pulumi.Input.decodeList<
               GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch>(
           map['matches'],
           (value) =>

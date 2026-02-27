@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_response_plan_incident_template_notification_target/get_response_plan_incident_template_notification_target.dart';
 
 class GetResponsePlanIncidentTemplate {
@@ -37,7 +37,7 @@ class GetResponsePlanIncidentTemplate {
     map['dedupeString'] = dedupeString;
     map['impact'] = impact;
     map['incidentTags'] = incidentTags;
-    map['notificationTargets'] = Input.encodeList<
+    map['notificationTargets'] = pulumi.Input.encodeList<
         GetResponsePlanIncidentTemplateNotificationTarget,
         Map<String, dynamic>>(notificationTargets, (value) => value.toMap());
     map['summary'] = summary;
@@ -50,12 +50,11 @@ class GetResponsePlanIncidentTemplate {
       dedupeString: map['dedupeString'] as String,
       impact: map['impact'] as int,
       incidentTags: (map['incidentTags'] as Map).cast<String, String>(),
-      notificationTargets:
-          Input.decodeList<GetResponsePlanIncidentTemplateNotificationTarget>(
-              map['notificationTargets'],
-              (value) =>
-                  GetResponsePlanIncidentTemplateNotificationTarget.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      notificationTargets: pulumi.Input.decodeList<
+              GetResponsePlanIncidentTemplateNotificationTarget>(
+          map['notificationTargets'],
+          (value) => GetResponsePlanIncidentTemplateNotificationTarget.fromMap(
+              (value as Map).cast<String, dynamic>())),
       summary: map['summary'] as String,
       title: map['title'] as String,
     );

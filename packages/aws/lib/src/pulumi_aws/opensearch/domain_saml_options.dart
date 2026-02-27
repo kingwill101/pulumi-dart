@@ -1,4 +1,4 @@
 library module_opensearch_domain_saml_options;
 
-export 'domain_saml_options/domain_saml_options2.dart';
-export 'domain_saml_options/domain_saml_options_args2.dart';
+export 'domain_saml_options/domain_saml_options_opensearch.dart';
+export 'domain_saml_options/domain_saml_options_opensearch_args.dart';

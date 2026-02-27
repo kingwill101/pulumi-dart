@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_gateway_route_spec_grpc_route_action_target_virtual_service/get_gateway_route_spec_grpc_route_action_target_virtual_service.dart';
 
 class GetGatewayRouteSpecGrpcRouteActionTarget {
@@ -16,7 +16,7 @@ class GetGatewayRouteSpecGrpcRouteActionTarget {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['port'] = port;
-    map['virtualServices'] = Input.encodeList<
+    map['virtualServices'] = pulumi.Input.encodeList<
         GetGatewayRouteSpecGrpcRouteActionTargetVirtualService,
         Map<String, dynamic>>(virtualServices, (value) => value.toMap());
     return map;
@@ -26,7 +26,7 @@ class GetGatewayRouteSpecGrpcRouteActionTarget {
       Map<String, dynamic> map) {
     return GetGatewayRouteSpecGrpcRouteActionTarget(
       port: map['port'] as int,
-      virtualServices: Input.decodeList<
+      virtualServices: pulumi.Input.decodeList<
               GetGatewayRouteSpecGrpcRouteActionTargetVirtualService>(
           map['virtualServices'],
           (value) =>

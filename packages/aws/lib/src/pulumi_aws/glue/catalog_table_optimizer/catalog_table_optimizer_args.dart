@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../catalog_table_optimizer_configuration/catalog_table_optimizer_configuration.dart';
 
 /// The set of arguments for CatalogTableOptimizer.
 class CatalogTableOptimizerArgs {
   /// The Catalog ID of the table.
-  final Input<String> catalogId;
+  final pulumi.Input<String> catalogId;
 
   /// A configuration block that defines the table optimizer settings. See Configuration for additional details.
-  final Input<CatalogTableOptimizerConfiguration> configuration;
+  final pulumi.Input<CatalogTableOptimizerConfiguration> configuration;
 
   /// The name of the database in the catalog in which the table resides.
-  final Input<String> databaseName;
+  final pulumi.Input<String> databaseName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The name of the table.
-  final Input<String> tableName;
+  final pulumi.Input<String> tableName;
 
   /// The type of table optimizer. Valid values are `compaction`, `retention`, and `orphan_file_deletion`.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   CatalogTableOptimizerArgs({
     required this.catalogId,
@@ -35,7 +35,7 @@ class CatalogTableOptimizerArgs {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['catalogId'] = catalogId;
-    map['configuration'] = Input.mapInputValue<
+    map['configuration'] = pulumi.Input.mapInputValue<
         CatalogTableOptimizerConfiguration,
         Map<String, dynamic>>(configuration, (value) => value.toMap());
     map['databaseName'] = databaseName;
@@ -50,13 +50,13 @@ class CatalogTableOptimizerArgs {
 
   factory CatalogTableOptimizerArgs.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerArgs(
-      catalogId: Input.asInput<String>(map['catalogId']),
-      configuration: Input.asInput<CatalogTableOptimizerConfiguration>(
+      catalogId: pulumi.Input.asInput<String>(map['catalogId']),
+      configuration: pulumi.Input.asInput<CatalogTableOptimizerConfiguration>(
           map['configuration']),
-      databaseName: Input.asInput<String>(map['databaseName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tableName: Input.asInput<String>(map['tableName']),
-      type: Input.asInput<String>(map['type']),
+      databaseName: pulumi.Input.asInput<String>(map['databaseName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tableName: pulumi.Input.asInput<String>(map['tableName']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

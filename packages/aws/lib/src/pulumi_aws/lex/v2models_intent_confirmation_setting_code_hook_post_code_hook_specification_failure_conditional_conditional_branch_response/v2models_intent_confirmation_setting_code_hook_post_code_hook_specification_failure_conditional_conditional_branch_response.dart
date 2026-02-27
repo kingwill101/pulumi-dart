@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_confirmation_setting_code_hook_post_code_hook_specification_failure_conditional_conditional_branch_response_message_group/v2models_intent_confirmation_setting_code_hook_post_code_hook_specification_failure_conditional_conditional_branch_response_message_group.dart';
 
 class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchResponse {
@@ -25,7 +25,7 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureC
     }
     final messageGroupsValue = messageGroups;
     if (messageGroupsValue != null) {
-      map['messageGroups'] = Input.encodeList<
+      map['messageGroups'] = pulumi.Input.encodeList<
           V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchResponseMessageGroup,
           Map<String, dynamic>>(messageGroupsValue, (value) => value.toMap());
     }
@@ -39,7 +39,7 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureC
           map['allowInterrupt'] == null ? null : map['allowInterrupt'] as bool,
       messageGroups: map['messageGroups'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchResponseMessageGroup>(
               map['messageGroups'],
               (value) =>

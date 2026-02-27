@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_core_network_policy_document_segment_action_via_with_edge_override/get_core_network_policy_document_segment_action_via_with_edge_override.dart';
 
 class GetCoreNetworkPolicyDocumentSegmentActionVia {
@@ -24,7 +24,7 @@ class GetCoreNetworkPolicyDocumentSegmentActionVia {
     }
     final withEdgeOverridesValue = withEdgeOverrides;
     if (withEdgeOverridesValue != null) {
-      map['withEdgeOverrides'] = Input.encodeList<
+      map['withEdgeOverrides'] = pulumi.Input.encodeList<
               GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride,
               Map<String, dynamic>>(
           withEdgeOverridesValue, (value) => value.toMap());
@@ -40,7 +40,7 @@ class GetCoreNetworkPolicyDocumentSegmentActionVia {
           : (map['networkFunctionGroups'] as List).cast<String>(),
       withEdgeOverrides: map['withEdgeOverrides'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GetCoreNetworkPolicyDocumentSegmentActionViaWithEdgeOverride>(
               map['withEdgeOverrides'],
               (value) =>

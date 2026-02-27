@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_type_offering_filter/get_instance_type_offering_filter.dart';
 
 /// Result data returned by getInstanceTypeOffering.
@@ -33,9 +33,8 @@ class GetInstanceTypeOfferingResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetInstanceTypeOfferingFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetInstanceTypeOfferingFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['instanceType'] = instanceType;
@@ -56,7 +55,7 @@ class GetInstanceTypeOfferingResult {
     return GetInstanceTypeOfferingResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetInstanceTypeOfferingFilter>(
+          : pulumi.Input.decodeList<GetInstanceTypeOfferingFilter>(
               map['filters'],
               (value) => GetInstanceTypeOfferingFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_user_pool_account_recovery_setting/get_user_pool_account_recovery_setting.dart';
 import '../get_user_pool_admin_create_user_config/get_user_pool_admin_create_user_config.dart';
 import '../get_user_pool_device_configuration/get_user_pool_device_configuration.dart';
@@ -107,10 +107,10 @@ class GetUserPoolResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['accountRecoverySettings'] = Input.encodeList<
+    map['accountRecoverySettings'] = pulumi.Input.encodeList<
             GetUserPoolAccountRecoverySetting, Map<String, dynamic>>(
         accountRecoverySettings, (value) => value.toMap());
-    map['adminCreateUserConfigs'] = Input.encodeList<
+    map['adminCreateUserConfigs'] = pulumi.Input.encodeList<
         GetUserPoolAdminCreateUserConfig,
         Map<String, dynamic>>(adminCreateUserConfigs, (value) => value.toMap());
     map['arn'] = arn;
@@ -118,31 +118,31 @@ class GetUserPoolResult {
     map['creationDate'] = creationDate;
     map['customDomain'] = customDomain;
     map['deletionProtection'] = deletionProtection;
-    map['deviceConfigurations'] =
-        Input.encodeList<GetUserPoolDeviceConfiguration, Map<String, dynamic>>(
-            deviceConfigurations, (value) => value.toMap());
+    map['deviceConfigurations'] = pulumi.Input.encodeList<
+        GetUserPoolDeviceConfiguration,
+        Map<String, dynamic>>(deviceConfigurations, (value) => value.toMap());
     map['domain'] = domain;
-    map['emailConfigurations'] =
-        Input.encodeList<GetUserPoolEmailConfiguration, Map<String, dynamic>>(
-            emailConfigurations, (value) => value.toMap());
+    map['emailConfigurations'] = pulumi.Input.encodeList<
+        GetUserPoolEmailConfiguration,
+        Map<String, dynamic>>(emailConfigurations, (value) => value.toMap());
     map['estimatedNumberOfUsers'] = estimatedNumberOfUsers;
     map['id'] = id;
     map['lambdaConfigs'] =
-        Input.encodeList<GetUserPoolLambdaConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetUserPoolLambdaConfig, Map<String, dynamic>>(
             lambdaConfigs, (value) => value.toMap());
     map['lastModifiedDate'] = lastModifiedDate;
     map['mfaConfiguration'] = mfaConfiguration;
     map['name'] = name;
     map['region'] = region;
-    map['schemaAttributes'] =
-        Input.encodeList<GetUserPoolSchemaAttribute, Map<String, dynamic>>(
-            schemaAttributes, (value) => value.toMap());
+    map['schemaAttributes'] = pulumi.Input.encodeList<
+        GetUserPoolSchemaAttribute,
+        Map<String, dynamic>>(schemaAttributes, (value) => value.toMap());
     map['smsAuthenticationMessage'] = smsAuthenticationMessage;
     map['smsConfigurationFailure'] = smsConfigurationFailure;
     map['smsVerificationMessage'] = smsVerificationMessage;
     map['tags'] = tags;
     map['userPoolAddOns'] =
-        Input.encodeList<GetUserPoolUserPoolAddOn, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetUserPoolUserPoolAddOn, Map<String, dynamic>>(
             userPoolAddOns, (value) => value.toMap());
     map['userPoolId'] = userPoolId;
     map['userPoolTags'] = userPoolTags;
@@ -153,12 +153,12 @@ class GetUserPoolResult {
   factory GetUserPoolResult.fromMap(Map<String, dynamic> map) {
     return GetUserPoolResult(
       accountRecoverySettings:
-          Input.decodeList<GetUserPoolAccountRecoverySetting>(
+          pulumi.Input.decodeList<GetUserPoolAccountRecoverySetting>(
               map['accountRecoverySettings'],
               (value) => GetUserPoolAccountRecoverySetting.fromMap(
                   (value as Map).cast<String, dynamic>())),
       adminCreateUserConfigs:
-          Input.decodeList<GetUserPoolAdminCreateUserConfig>(
+          pulumi.Input.decodeList<GetUserPoolAdminCreateUserConfig>(
               map['adminCreateUserConfigs'],
               (value) => GetUserPoolAdminCreateUserConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -168,18 +168,20 @@ class GetUserPoolResult {
       creationDate: map['creationDate'] as String,
       customDomain: map['customDomain'] as String,
       deletionProtection: map['deletionProtection'] as String,
-      deviceConfigurations: Input.decodeList<GetUserPoolDeviceConfiguration>(
-          map['deviceConfigurations'],
-          (value) => GetUserPoolDeviceConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      deviceConfigurations:
+          pulumi.Input.decodeList<GetUserPoolDeviceConfiguration>(
+              map['deviceConfigurations'],
+              (value) => GetUserPoolDeviceConfiguration.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       domain: map['domain'] as String,
-      emailConfigurations: Input.decodeList<GetUserPoolEmailConfiguration>(
-          map['emailConfigurations'],
-          (value) => GetUserPoolEmailConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      emailConfigurations:
+          pulumi.Input.decodeList<GetUserPoolEmailConfiguration>(
+              map['emailConfigurations'],
+              (value) => GetUserPoolEmailConfiguration.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       estimatedNumberOfUsers: map['estimatedNumberOfUsers'] as int,
       id: map['id'] as String,
-      lambdaConfigs: Input.decodeList<GetUserPoolLambdaConfig>(
+      lambdaConfigs: pulumi.Input.decodeList<GetUserPoolLambdaConfig>(
           map['lambdaConfigs'],
           (value) => GetUserPoolLambdaConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -187,7 +189,7 @@ class GetUserPoolResult {
       mfaConfiguration: map['mfaConfiguration'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
-      schemaAttributes: Input.decodeList<GetUserPoolSchemaAttribute>(
+      schemaAttributes: pulumi.Input.decodeList<GetUserPoolSchemaAttribute>(
           map['schemaAttributes'],
           (value) => GetUserPoolSchemaAttribute.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -195,7 +197,7 @@ class GetUserPoolResult {
       smsConfigurationFailure: map['smsConfigurationFailure'] as String,
       smsVerificationMessage: map['smsVerificationMessage'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      userPoolAddOns: Input.decodeList<GetUserPoolUserPoolAddOn>(
+      userPoolAddOns: pulumi.Input.decodeList<GetUserPoolUserPoolAddOn>(
           map['userPoolAddOns'],
           (value) => GetUserPoolUserPoolAddOn.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'adm_channel_args.dart';
 
 /// Provides a Pinpoint ADM (Amazon Device Messaging) Channel resource.
@@ -15,31 +15,31 @@ import 'adm_channel_args.dart';
 /// ```sh
 /// $ pulumi import aws:pinpoint/admChannel:AdmChannel channel application-id
 /// ```
-class AdmChannel extends CustomResource {
+class AdmChannel extends pulumi.CustomResource {
   /// The application ID.
-  late final Output<String> applicationId;
+  late final pulumi.Output<String> applicationId;
 
   /// Client ID (part of OAuth Credentials) obtained via Amazon Developer Account.
-  late final Output<String> clientId;
+  late final pulumi.Output<String> clientId;
 
   /// Client Secret (part of OAuth Credentials) obtained via Amazon Developer Account.
-  late final Output<String> clientSecret;
+  late final pulumi.Output<String> clientSecret;
 
   /// Specifies whether to enable the channel. Defaults to `true`.
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   AdmChannel(
     String name, {
     AdmChannelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:pinpoint/admChannel:AdmChannel',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.applicationId = registerOutput<String>('applicationId');
     this.clientId = registerOutput<String>('clientId');

@@ -1,47 +1,47 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../smsvoicev2_phone_number_timeouts/smsvoicev2_phone_number_timeouts.dart';
 
 /// The set of arguments for Smsvoicev2PhoneNumber.
 class Smsvoicev2PhoneNumberArgs {
   /// By default this is set to `false`. When set to true the phone number can’t be deleted.
-  final Input<bool>? deletionProtectionEnabled;
+  final pulumi.Input<bool>? deletionProtectionEnabled;
 
   /// The two-character code, in ISO 3166-1 alpha-2 format, for the country or region.
-  final Input<String> isoCountryCode;
+  final pulumi.Input<String> isoCountryCode;
 
   /// The type of message. Valid values are `TRANSACTIONAL` for messages that are critical or time-sensitive and `PROMOTIONAL` for messages that aren’t critical or time-sensitive.
-  final Input<String> messageType;
+  final pulumi.Input<String> messageType;
 
   /// Describes if the origination identity can be used for text messages, voice calls or both. valid values are `SMS` and `VOICE`.
-  final Input<List<String>> numberCapabilities;
+  final pulumi.Input<List<String>> numberCapabilities;
 
   /// The type of phone number to request. Possible values are `LONG_CODE`, `TOLL_FREE`, `TEN_DLC`, or `SIMULATOR`.
-  final Input<String> numberType;
+  final pulumi.Input<String> numberType;
 
   /// The name of the opt-out list to associate with the phone number.
-  final Input<String>? optOutListName;
+  final pulumi.Input<String>? optOutListName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Use this field to attach your phone number for an external registration process.
-  final Input<String>? registrationId;
+  final pulumi.Input<String>? registrationId;
 
   /// When set to `false` an end recipient sends a message that begins with HELP or STOP to one of your dedicated numbers, AWS End User Messaging SMS and Voice automatically replies with a customizable message and adds the end recipient to the opt-out list. When set to true you’re responsible for responding to HELP and STOP requests. You’re also responsible for tracking and honoring opt-out request.
-  final Input<bool>? selfManagedOptOutsEnabled;
-  final Input<Map<String, String>>? tags;
-  final Input<Smsvoicev2PhoneNumberTimeouts>? timeouts;
+  final pulumi.Input<bool>? selfManagedOptOutsEnabled;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Smsvoicev2PhoneNumberTimeouts>? timeouts;
 
   /// Configuration for two-way SMS. Specify an ARN to receive incoming SMS messages, or `connect.[region].amazonaws.com` (with `[region]` replaced by the AWS Region of the Amazon Connect instance) to set Amazon Connect as the inbound destination.
-  final Input<String>? twoWayChannelArn;
+  final pulumi.Input<String>? twoWayChannelArn;
 
   /// By default this is set to `false`. When set to `true` you can receive incoming text messages from your end recipients.
-  final Input<bool>? twoWayChannelEnabled;
+  final pulumi.Input<bool>? twoWayChannelEnabled;
 
   /// IAM Role ARN for a service to assume, to be able to post inbound SMS messages.
-  final Input<String>? twoWayChannelRole;
+  final pulumi.Input<String>? twoWayChannelRole;
 
   Smsvoicev2PhoneNumberArgs({
     this.deletionProtectionEnabled,
@@ -92,7 +92,7 @@ class Smsvoicev2PhoneNumberArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           Smsvoicev2PhoneNumberTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -114,25 +114,28 @@ class Smsvoicev2PhoneNumberArgs {
   factory Smsvoicev2PhoneNumberArgs.fromMap(Map<String, dynamic> map) {
     return Smsvoicev2PhoneNumberArgs(
       deletionProtectionEnabled:
-          Input.asOptionalInput<bool>(map['deletionProtectionEnabled']),
-      isoCountryCode: Input.asInput<String>(map['isoCountryCode']),
-      messageType: Input.asInput<String>(map['messageType']),
+          pulumi.Input.asOptionalInput<bool>(map['deletionProtectionEnabled']),
+      isoCountryCode: pulumi.Input.asInput<String>(map['isoCountryCode']),
+      messageType: pulumi.Input.asInput<String>(map['messageType']),
       numberCapabilities:
-          Input.asInput<List<String>>(map['numberCapabilities']),
-      numberType: Input.asInput<String>(map['numberType']),
-      optOutListName: Input.asOptionalInput<String>(map['optOutListName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      registrationId: Input.asOptionalInput<String>(map['registrationId']),
+          pulumi.Input.asInput<List<String>>(map['numberCapabilities']),
+      numberType: pulumi.Input.asInput<String>(map['numberType']),
+      optOutListName:
+          pulumi.Input.asOptionalInput<String>(map['optOutListName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      registrationId:
+          pulumi.Input.asOptionalInput<String>(map['registrationId']),
       selfManagedOptOutsEnabled:
-          Input.asOptionalInput<bool>(map['selfManagedOptOutsEnabled']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts:
-          Input.asOptionalInput<Smsvoicev2PhoneNumberTimeouts>(map['timeouts']),
-      twoWayChannelArn: Input.asOptionalInput<String>(map['twoWayChannelArn']),
+          pulumi.Input.asOptionalInput<bool>(map['selfManagedOptOutsEnabled']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<Smsvoicev2PhoneNumberTimeouts>(
+          map['timeouts']),
+      twoWayChannelArn:
+          pulumi.Input.asOptionalInput<String>(map['twoWayChannelArn']),
       twoWayChannelEnabled:
-          Input.asOptionalInput<bool>(map['twoWayChannelEnabled']),
+          pulumi.Input.asOptionalInput<bool>(map['twoWayChannelEnabled']),
       twoWayChannelRole:
-          Input.asOptionalInput<String>(map['twoWayChannelRole']),
+          pulumi.Input.asOptionalInput<String>(map['twoWayChannelRole']),
     );
   }
 }

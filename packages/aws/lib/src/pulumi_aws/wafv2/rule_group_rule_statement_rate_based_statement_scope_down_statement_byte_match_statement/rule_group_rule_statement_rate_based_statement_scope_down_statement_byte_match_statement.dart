@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_statement_rate_based_statement_scope_down_statement_byte_match_statement_field_to_match/rule_group_rule_statement_rate_based_statement_scope_down_statement_byte_match_statement_field_to_match.dart';
 import '../rule_group_rule_statement_rate_based_statement_scope_down_statement_byte_match_statement_text_transformation/rule_group_rule_statement_rate_based_statement_scope_down_statement_byte_match_statement_text_transformation.dart';
 
@@ -37,7 +37,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStateme
     }
     map['positionalConstraint'] = positionalConstraint;
     map['searchString'] = searchString;
-    map['textTransformations'] = Input.encodeList<
+    map['textTransformations'] = pulumi.Input.encodeList<
         RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementTextTransformation,
         Map<String, dynamic>>(textTransformations, (value) => value.toMap());
     return map;
@@ -52,7 +52,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStateme
               .fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>()),
       positionalConstraint: map['positionalConstraint'] as String,
       searchString: map['searchString'] as String,
-      textTransformations: Input.decodeList<
+      textTransformations: pulumi.Input.decodeList<
               RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementTextTransformation>(
           map['textTransformations'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_endpoint_dns_entry/get_vpc_endpoint_dns_entry.dart';
 import '../get_vpc_endpoint_dns_option/get_vpc_endpoint_dns_option.dart';
 import '../get_vpc_endpoint_filter/get_vpc_endpoint_filter.dart';
@@ -87,15 +87,15 @@ class GetVpcEndpointResult {
     map['arn'] = arn;
     map['cidrBlocks'] = cidrBlocks;
     map['dnsEntries'] =
-        Input.encodeList<GetVpcEndpointDnsEntry, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetVpcEndpointDnsEntry, Map<String, dynamic>>(
             dnsEntries, (value) => value.toMap());
     map['dnsOptions'] =
-        Input.encodeList<GetVpcEndpointDnsOption, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetVpcEndpointDnsOption, Map<String, dynamic>>(
             dnsOptions, (value) => value.toMap());
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetVpcEndpointFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetVpcEndpointFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -123,17 +123,17 @@ class GetVpcEndpointResult {
     return GetVpcEndpointResult(
       arn: map['arn'] as String,
       cidrBlocks: (map['cidrBlocks'] as List).cast<String>(),
-      dnsEntries: Input.decodeList<GetVpcEndpointDnsEntry>(
+      dnsEntries: pulumi.Input.decodeList<GetVpcEndpointDnsEntry>(
           map['dnsEntries'],
           (value) => GetVpcEndpointDnsEntry.fromMap(
               (value as Map).cast<String, dynamic>())),
-      dnsOptions: Input.decodeList<GetVpcEndpointDnsOption>(
+      dnsOptions: pulumi.Input.decodeList<GetVpcEndpointDnsOption>(
           map['dnsOptions'],
           (value) => GetVpcEndpointDnsOption.fromMap(
               (value as Map).cast<String, dynamic>())),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVpcEndpointFilter>(
+          : pulumi.Input.decodeList<GetVpcEndpointFilter>(
               map['filters'],
               (value) => GetVpcEndpointFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

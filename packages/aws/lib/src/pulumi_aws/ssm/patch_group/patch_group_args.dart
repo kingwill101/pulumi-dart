@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for PatchGroup.
 class PatchGroupArgs {
   /// The ID of the patch baseline to register the patch group with.
-  final Input<String> baselineId;
+  final pulumi.Input<String> baselineId;
 
   /// The name of the patch group that should be registered with the patch baseline.
-  final Input<String> patchGroup;
+  final pulumi.Input<String> patchGroup;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   PatchGroupArgs({
     required this.baselineId,
@@ -32,9 +32,9 @@ class PatchGroupArgs {
 
   factory PatchGroupArgs.fromMap(Map<String, dynamic> map) {
     return PatchGroupArgs(
-      baselineId: Input.asInput<String>(map['baselineId']),
-      patchGroup: Input.asInput<String>(map['patchGroup']),
-      region: Input.asOptionalInput<String>(map['region']),
+      baselineId: pulumi.Input.asInput<String>(map['baselineId']),
+      patchGroup: pulumi.Input.asInput<String>(map['patchGroup']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

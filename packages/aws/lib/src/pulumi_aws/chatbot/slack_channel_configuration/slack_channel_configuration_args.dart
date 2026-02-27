@@ -1,42 +1,42 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../slack_channel_configuration_timeouts/slack_channel_configuration_timeouts.dart';
 
 /// The set of arguments for SlackChannelConfiguration.
 class SlackChannelConfigurationArgs {
   /// Name of the Slack channel configuration.
-  final Input<String> configurationName;
+  final pulumi.Input<String> configurationName;
 
   /// List of IAM policy ARNs that are applied as channel guardrails. The AWS managed `AdministratorAccess` policy is applied by default if this is not set.
-  final Input<List<String>>? guardrailPolicyArns;
+  final pulumi.Input<List<String>>? guardrailPolicyArns;
 
   /// User-defined role that AWS Chatbot assumes. This is not the service-linked role.
-  final Input<String> iamRoleArn;
+  final pulumi.Input<String> iamRoleArn;
 
   /// Logging levels include `ERROR`, `INFO`, or `NONE`.
-  final Input<String>? loggingLevel;
+  final pulumi.Input<String>? loggingLevel;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the Slack channel. For example, `C07EZ1ABC23`.
-  final Input<String> slackChannelId;
+  final pulumi.Input<String> slackChannelId;
 
   /// ID of the Slack workspace authorized with AWS Chatbot. For example, `T07EA123LEP`.
   ///
   /// The following arguments are optional:
-  final Input<String> slackTeamId;
+  final pulumi.Input<String> slackTeamId;
 
   /// ARNs of the SNS topics that deliver notifications to AWS Chatbot.
-  final Input<List<String>>? snsTopicArns;
+  final pulumi.Input<List<String>>? snsTopicArns;
 
   /// Map of tags assigned to the resource.
-  final Input<Map<String, String>>? tags;
-  final Input<SlackChannelConfigurationTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<SlackChannelConfigurationTimeouts>? timeouts;
 
   /// Enables use of a user role requirement in your chat configuration.
-  final Input<bool>? userAuthorizationRequired;
+  final pulumi.Input<bool>? userAuthorizationRequired;
 
   SlackChannelConfigurationArgs({
     required this.configurationName,
@@ -80,7 +80,7 @@ class SlackChannelConfigurationArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           SlackChannelConfigurationTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -93,20 +93,21 @@ class SlackChannelConfigurationArgs {
 
   factory SlackChannelConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SlackChannelConfigurationArgs(
-      configurationName: Input.asInput<String>(map['configurationName']),
-      guardrailPolicyArns:
-          Input.asOptionalInput<List<String>>(map['guardrailPolicyArns']),
-      iamRoleArn: Input.asInput<String>(map['iamRoleArn']),
-      loggingLevel: Input.asOptionalInput<String>(map['loggingLevel']),
-      region: Input.asOptionalInput<String>(map['region']),
-      slackChannelId: Input.asInput<String>(map['slackChannelId']),
-      slackTeamId: Input.asInput<String>(map['slackTeamId']),
-      snsTopicArns: Input.asOptionalInput<List<String>>(map['snsTopicArns']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<SlackChannelConfigurationTimeouts>(
+      configurationName: pulumi.Input.asInput<String>(map['configurationName']),
+      guardrailPolicyArns: pulumi.Input.asOptionalInput<List<String>>(
+          map['guardrailPolicyArns']),
+      iamRoleArn: pulumi.Input.asInput<String>(map['iamRoleArn']),
+      loggingLevel: pulumi.Input.asOptionalInput<String>(map['loggingLevel']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      slackChannelId: pulumi.Input.asInput<String>(map['slackChannelId']),
+      slackTeamId: pulumi.Input.asInput<String>(map['slackTeamId']),
+      snsTopicArns:
+          pulumi.Input.asOptionalInput<List<String>>(map['snsTopicArns']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<SlackChannelConfigurationTimeouts>(
           map['timeouts']),
       userAuthorizationRequired:
-          Input.asOptionalInput<bool>(map['userAuthorizationRequired']),
+          pulumi.Input.asOptionalInput<bool>(map['userAuthorizationRequired']),
     );
   }
 }

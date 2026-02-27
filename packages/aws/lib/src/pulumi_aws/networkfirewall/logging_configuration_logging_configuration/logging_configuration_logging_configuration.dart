@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../logging_configuration_logging_configuration_log_destination_config/logging_configuration_logging_configuration_log_destination_config.dart';
 
 class LoggingConfigurationLoggingConfiguration {
@@ -14,7 +14,7 @@ class LoggingConfigurationLoggingConfiguration {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['logDestinationConfigs'] = Input.encodeList<
+    map['logDestinationConfigs'] = pulumi.Input.encodeList<
         LoggingConfigurationLoggingConfigurationLogDestinationConfig,
         Map<String, dynamic>>(logDestinationConfigs, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class LoggingConfigurationLoggingConfiguration {
   factory LoggingConfigurationLoggingConfiguration.fromMap(
       Map<String, dynamic> map) {
     return LoggingConfigurationLoggingConfiguration(
-      logDestinationConfigs: Input.decodeList<
+      logDestinationConfigs: pulumi.Input.decodeList<
               LoggingConfigurationLoggingConfigurationLogDestinationConfig>(
           map['logDestinationConfigs'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_records_resource_record_set/get_records_resource_record_set.dart';
 
 /// Result data returned by getRecords.
@@ -27,9 +27,9 @@ class GetRecordsResult {
     if (nameRegexValue != null) {
       map['nameRegex'] = nameRegexValue;
     }
-    map['resourceRecordSets'] =
-        Input.encodeList<GetRecordsResourceRecordSet, Map<String, dynamic>>(
-            resourceRecordSets, (value) => value.toMap());
+    map['resourceRecordSets'] = pulumi.Input.encodeList<
+        GetRecordsResourceRecordSet,
+        Map<String, dynamic>>(resourceRecordSets, (value) => value.toMap());
     map['zoneId'] = zoneId;
     return map;
   }
@@ -38,7 +38,7 @@ class GetRecordsResult {
     return GetRecordsResult(
       id: map['id'] as String,
       nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
-      resourceRecordSets: Input.decodeList<GetRecordsResourceRecordSet>(
+      resourceRecordSets: pulumi.Input.decodeList<GetRecordsResourceRecordSet>(
           map['resourceRecordSets'],
           (value) => GetRecordsResourceRecordSet.fromMap(
               (value as Map).cast<String, dynamic>())),

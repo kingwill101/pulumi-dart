@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_listener_rule_action_jwt_validation_additional_claim/get_listener_rule_action_jwt_validation_additional_claim.dart';
 
 class GetListenerRuleActionJwtValidation {
@@ -24,7 +24,7 @@ class GetListenerRuleActionJwtValidation {
     final map = <String, dynamic>{};
     final additionalClaimsValue = additionalClaims;
     if (additionalClaimsValue != null) {
-      map['additionalClaims'] = Input.encodeList<
+      map['additionalClaims'] = pulumi.Input.encodeList<
               GetListenerRuleActionJwtValidationAdditionalClaim,
               Map<String, dynamic>>(
           additionalClaimsValue, (value) => value.toMap());
@@ -38,7 +38,8 @@ class GetListenerRuleActionJwtValidation {
     return GetListenerRuleActionJwtValidation(
       additionalClaims: map['additionalClaims'] == null
           ? null
-          : Input.decodeList<GetListenerRuleActionJwtValidationAdditionalClaim>(
+          : pulumi.Input.decodeList<
+                  GetListenerRuleActionJwtValidationAdditionalClaim>(
               map['additionalClaims'],
               (value) =>
                   GetListenerRuleActionJwtValidationAdditionalClaim.fromMap(

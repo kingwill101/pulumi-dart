@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'license_grant_accepter_args.dart';
 
 /// Accepts a License Manager grant. This allows for sharing licenses with other aws accounts.
@@ -14,46 +14,46 @@ import 'license_grant_accepter_args.dart';
 /// ```sh
 /// $ pulumi import aws:licensemanager/licenseGrantAccepter:LicenseGrantAccepter test arn:aws:license-manager::123456789012:grant:g-1cf9fba4ba2f42dcab11c686c4b4d329
 /// ```
-class LicenseGrantAccepter extends CustomResource {
+class LicenseGrantAccepter extends pulumi.CustomResource {
   /// A list of the allowed operations for the grant.
-  late final Output<List<String>> allowedOperations;
+  late final pulumi.Output<List<String>> allowedOperations;
 
   /// The ARN of the grant to accept.
-  late final Output<String> grantArn;
+  late final pulumi.Output<String> grantArn;
 
   /// The home region for the license.
-  late final Output<String> homeRegion;
+  late final pulumi.Output<String> homeRegion;
 
   /// The ARN of the license for the grant.
-  late final Output<String> licenseArn;
+  late final pulumi.Output<String> licenseArn;
 
   /// The Name of the grant.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The parent ARN.
-  late final Output<String> parentArn;
+  late final pulumi.Output<String> parentArn;
 
   /// The target account for the grant.
-  late final Output<String> principal;
+  late final pulumi.Output<String> principal;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The grant status.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// The grant version.
-  late final Output<String> version;
+  late final pulumi.Output<String> version;
 
   LicenseGrantAccepter(
     String name, {
     LicenseGrantAccepterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:licensemanager/licenseGrantAccepter:LicenseGrantAccepter',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowedOperations = registerOutput<List<String>>('allowedOperations');
     this.grantArn = registerOutput<String>('grantArn');

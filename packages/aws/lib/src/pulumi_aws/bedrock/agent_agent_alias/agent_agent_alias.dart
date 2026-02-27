@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_agent_alias_routing_configuration/agent_agent_alias_routing_configuration.dart';
 import '../agent_agent_alias_timeouts/agent_agent_alias_timeouts.dart';
 import 'agent_agent_alias_args.dart';
@@ -18,47 +18,47 @@ import 'agent_agent_alias_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrock/agentAgentAlias:AgentAgentAlias example 66IVY0GUTF,GGRRAED6JP
 /// ```
-class AgentAgentAlias extends CustomResource {
+class AgentAgentAlias extends pulumi.CustomResource {
   /// ARN of the alias.
-  late final Output<String> agentAliasArn;
+  late final pulumi.Output<String> agentAliasArn;
 
   /// Unique identifier of the alias.
-  late final Output<String> agentAliasId;
+  late final pulumi.Output<String> agentAliasId;
 
   /// Name of the alias.
-  late final Output<String> agentAliasName;
+  late final pulumi.Output<String> agentAliasName;
 
   /// Identifier of the agent to create an alias for.
   ///
   /// The following arguments are optional:
-  late final Output<String> agentId;
+  late final pulumi.Output<String> agentId;
 
   /// Description of the alias.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Details about the routing configuration of the alias. See `routing_configuration` Block for details.
-  late final Output<List<AgentAgentAliasRoutingConfiguration>>
+  late final pulumi.Output<List<AgentAgentAliasRoutingConfiguration>>
       routingConfigurations;
 
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<AgentAgentAliasTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<AgentAgentAliasTimeouts?> timeouts;
 
   AgentAgentAlias(
     String name, {
     AgentAgentAliasArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/agentAgentAlias:AgentAgentAlias',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.agentAliasArn = registerOutput<String>('agentAliasArn');
     this.agentAliasId = registerOutput<String>('agentAliasId');

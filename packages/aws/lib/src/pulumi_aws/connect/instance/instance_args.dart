@@ -1,45 +1,45 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Instance.
 class InstanceArgs {
   /// Specifies whether auto resolve best voices is enabled. Defaults to `true`.
-  final Input<bool>? autoResolveBestVoicesEnabled;
+  final pulumi.Input<bool>? autoResolveBestVoicesEnabled;
 
   /// Specifies whether contact flow logs are enabled. Defaults to `false`.
-  final Input<bool>? contactFlowLogsEnabled;
+  final pulumi.Input<bool>? contactFlowLogsEnabled;
 
   /// Specifies whether contact lens is enabled. Defaults to `true`.
-  final Input<bool>? contactLensEnabled;
+  final pulumi.Input<bool>? contactLensEnabled;
 
   /// The identifier for the directory if identity_management_type is `EXISTING_DIRECTORY`.
-  final Input<String>? directoryId;
+  final pulumi.Input<String>? directoryId;
 
   /// Specifies whether early media for outbound calls is enabled . Defaults to `true` if outbound calls is enabled.
-  final Input<bool>? earlyMediaEnabled;
+  final pulumi.Input<bool>? earlyMediaEnabled;
 
   /// Specifies the identity management type attached to the instance. Allowed Values are: `SAML`, `CONNECT_MANAGED`, `EXISTING_DIRECTORY`.
-  final Input<String> identityManagementType;
+  final pulumi.Input<String> identityManagementType;
 
   /// Specifies whether inbound calls are enabled.
-  final Input<bool> inboundCallsEnabled;
+  final pulumi.Input<bool> inboundCallsEnabled;
 
   /// Specifies the name of the instance. Required if `directory_id` not specified.
-  final Input<String>? instanceAlias;
+  final pulumi.Input<String>? instanceAlias;
 
   /// Specifies whether multi-party calls/conference is enabled. Defaults to `false`.
-  final Input<bool>? multiPartyConferenceEnabled;
+  final pulumi.Input<bool>? multiPartyConferenceEnabled;
 
   /// Specifies whether outbound calls are enabled.
-  final Input<bool> outboundCallsEnabled;
+  final pulumi.Input<bool> outboundCallsEnabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Tags to apply to the Instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// <!-- * `use_custom_tts_voices` - (Optional) Whether use custom tts voices is enabled. Defaults to `false` -->
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   InstanceArgs({
     this.autoResolveBestVoicesEnabled,
@@ -102,23 +102,26 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      autoResolveBestVoicesEnabled:
-          Input.asOptionalInput<bool>(map['autoResolveBestVoicesEnabled']),
+      autoResolveBestVoicesEnabled: pulumi.Input.asOptionalInput<bool>(
+          map['autoResolveBestVoicesEnabled']),
       contactFlowLogsEnabled:
-          Input.asOptionalInput<bool>(map['contactFlowLogsEnabled']),
+          pulumi.Input.asOptionalInput<bool>(map['contactFlowLogsEnabled']),
       contactLensEnabled:
-          Input.asOptionalInput<bool>(map['contactLensEnabled']),
-      directoryId: Input.asOptionalInput<String>(map['directoryId']),
-      earlyMediaEnabled: Input.asOptionalInput<bool>(map['earlyMediaEnabled']),
+          pulumi.Input.asOptionalInput<bool>(map['contactLensEnabled']),
+      directoryId: pulumi.Input.asOptionalInput<String>(map['directoryId']),
+      earlyMediaEnabled:
+          pulumi.Input.asOptionalInput<bool>(map['earlyMediaEnabled']),
       identityManagementType:
-          Input.asInput<String>(map['identityManagementType']),
-      inboundCallsEnabled: Input.asInput<bool>(map['inboundCallsEnabled']),
-      instanceAlias: Input.asOptionalInput<String>(map['instanceAlias']),
-      multiPartyConferenceEnabled:
-          Input.asOptionalInput<bool>(map['multiPartyConferenceEnabled']),
-      outboundCallsEnabled: Input.asInput<bool>(map['outboundCallsEnabled']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asInput<String>(map['identityManagementType']),
+      inboundCallsEnabled:
+          pulumi.Input.asInput<bool>(map['inboundCallsEnabled']),
+      instanceAlias: pulumi.Input.asOptionalInput<String>(map['instanceAlias']),
+      multiPartyConferenceEnabled: pulumi.Input.asOptionalInput<bool>(
+          map['multiPartyConferenceEnabled']),
+      outboundCallsEnabled:
+          pulumi.Input.asInput<bool>(map['outboundCallsEnabled']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

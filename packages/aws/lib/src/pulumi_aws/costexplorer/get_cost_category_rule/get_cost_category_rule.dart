@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cost_category_rule_inherited_value/get_cost_category_rule_inherited_value.dart';
 import '../get_cost_category_rule_rule/get_cost_category_rule_rule.dart';
 
@@ -26,10 +26,11 @@ class GetCostCategoryRule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['inheritedValues'] = Input.encodeList<GetCostCategoryRuleInheritedValue,
+    map['inheritedValues'] = pulumi.Input.encodeList<
+        GetCostCategoryRuleInheritedValue,
         Map<String, dynamic>>(inheritedValues, (value) => value.toMap());
     map['rules'] =
-        Input.encodeList<GetCostCategoryRuleRule, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetCostCategoryRuleRule, Map<String, dynamic>>(
             rules, (value) => value.toMap());
     map['type'] = type;
     map['value'] = value;
@@ -38,11 +39,12 @@ class GetCostCategoryRule {
 
   factory GetCostCategoryRule.fromMap(Map<String, dynamic> map) {
     return GetCostCategoryRule(
-      inheritedValues: Input.decodeList<GetCostCategoryRuleInheritedValue>(
-          map['inheritedValues'],
-          (value) => GetCostCategoryRuleInheritedValue.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      rules: Input.decodeList<GetCostCategoryRuleRule>(
+      inheritedValues:
+          pulumi.Input.decodeList<GetCostCategoryRuleInheritedValue>(
+              map['inheritedValues'],
+              (value) => GetCostCategoryRuleInheritedValue.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<GetCostCategoryRuleRule>(
           map['rules'],
           (value) => GetCostCategoryRuleRule.fromMap(
               (value as Map).cast<String, dynamic>())),

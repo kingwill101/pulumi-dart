@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOutpostInstanceType.
 class GetOutpostInstanceTypeArgs {
   /// Outpost ARN.
   ///
   /// The following arguments are optional:
-  final Input<String> arn;
+  final pulumi.Input<String> arn;
 
   /// Desired instance type. Conflicts with `preferred_instance_types`.
-  final Input<String>? instanceType;
+  final pulumi.Input<String>? instanceType;
 
   /// Ordered list of preferred instance types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. Conflicts with `instance_type`.
-  final Input<List<String>>? preferredInstanceTypes;
+  final pulumi.Input<List<String>>? preferredInstanceTypes;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetOutpostInstanceTypeArgs({
     required this.arn,
@@ -45,11 +45,11 @@ class GetOutpostInstanceTypeArgs {
 
   factory GetOutpostInstanceTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetOutpostInstanceTypeArgs(
-      arn: Input.asInput<String>(map['arn']),
-      instanceType: Input.asOptionalInput<String>(map['instanceType']),
-      preferredInstanceTypes:
-          Input.asOptionalInput<List<String>>(map['preferredInstanceTypes']),
-      region: Input.asOptionalInput<String>(map['region']),
+      arn: pulumi.Input.asInput<String>(map['arn']),
+      instanceType: pulumi.Input.asOptionalInput<String>(map['instanceType']),
+      preferredInstanceTypes: pulumi.Input.asOptionalInput<List<String>>(
+          map['preferredInstanceTypes']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

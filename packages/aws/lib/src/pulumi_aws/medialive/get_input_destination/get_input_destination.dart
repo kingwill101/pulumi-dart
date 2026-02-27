@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_input_destination_vpc/get_input_destination_vpc.dart';
 
 class GetInputDestination {
@@ -22,7 +22,7 @@ class GetInputDestination {
     map['port'] = port;
     map['url'] = url;
     map['vpcs'] =
-        Input.encodeList<GetInputDestinationVpc, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetInputDestinationVpc, Map<String, dynamic>>(
             vpcs, (value) => value.toMap());
     return map;
   }
@@ -32,7 +32,7 @@ class GetInputDestination {
       ip: map['ip'] as String,
       port: map['port'] as String,
       url: map['url'] as String,
-      vpcs: Input.decodeList<GetInputDestinationVpc>(
+      vpcs: pulumi.Input.decodeList<GetInputDestinationVpc>(
           map['vpcs'],
           (value) => GetInputDestinationVpc.fromMap(
               (value as Map).cast<String, dynamic>())),

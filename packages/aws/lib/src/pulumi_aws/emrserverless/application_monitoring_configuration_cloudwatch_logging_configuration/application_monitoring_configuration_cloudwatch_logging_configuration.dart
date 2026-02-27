@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../application_monitoring_configuration_cloudwatch_logging_configuration_log_type/application_monitoring_configuration_cloudwatch_logging_configuration_log_type.dart';
 
 class ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration {
@@ -46,7 +46,7 @@ class ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration {
     }
     final logTypesValue = logTypes;
     if (logTypesValue != null) {
-      map['logTypes'] = Input.encodeList<
+      map['logTypes'] = pulumi.Input.encodeList<
           ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType,
           Map<String, dynamic>>(logTypesValue, (value) => value.toMap());
     }
@@ -67,7 +67,7 @@ class ApplicationMonitoringConfigurationCloudwatchLoggingConfiguration {
           : map['logStreamNamePrefix'] as String,
       logTypes: map['logTypes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType>(
               map['logTypes'],
               (value) =>

@@ -1,70 +1,71 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cloud_autonomous_vm_cluster_maintenance_window/cloud_autonomous_vm_cluster_maintenance_window.dart';
 import '../cloud_autonomous_vm_cluster_timeouts/cloud_autonomous_vm_cluster_timeouts.dart';
 
 /// The set of arguments for CloudAutonomousVmCluster.
 class CloudAutonomousVmClusterArgs {
   /// The data storage size allocated for Autonomous Databases in the Autonomous VM cluster, in TB. Changing this will force terraform to create new resource.
-  final Input<double> autonomousDataStorageSizeInTbs;
+  final pulumi.Input<double> autonomousDataStorageSizeInTbs;
 
   /// Exadata infrastructure ARN. Changing this will force Terraform to create a new resource. Either the combination of `cloud_exadata_infrastructure_id` and `odb_network_id` or `cloud_exadata_infrastructure_arn` and `odb_network_arn` must be used.
-  final Input<String>? cloudExadataInfrastructureArn;
+  final pulumi.Input<String>? cloudExadataInfrastructureArn;
 
   /// Exadata infrastructure id. Changing this will force Terraform to create a new resource. Either the combination of `cloud_exadata_infrastructure_id` and `odb_network_id` or `cloud_exadata_infrastructure_arn` and `odb_network_arn` must be used.
-  final Input<String>? cloudExadataInfrastructureId;
+  final pulumi.Input<String>? cloudExadataInfrastructureId;
 
   /// The number of CPU cores enabled per node in the Autonomous VM cluster. Changing this will force terraform to create new resource.
-  final Input<int> cpuCoreCountPerNode;
+  final pulumi.Input<int> cpuCoreCountPerNode;
 
   /// The database servers in the Autonomous VM cluster. Changing this will force terraform to create new resource.
-  final Input<List<String>> dbServers;
+  final pulumi.Input<List<String>> dbServers;
 
   /// The description of the Autonomous VM cluster.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The display name of the Autonomous VM cluster. Changing this will force terraform to create new resource.
-  final Input<String> displayName;
+  final pulumi.Input<String> displayName;
 
   /// Indicates whether mutual TLS (mTLS) authentication is enabled for the Autonomous VM cluster. Changing this will force terraform to create new resource.
-  final Input<bool>? isMtlsEnabledVmCluster;
+  final pulumi.Input<bool>? isMtlsEnabledVmCluster;
 
   /// The license model for the Autonomous VM cluster. Valid values are LICENSE_INCLUDED or BRING_YOUR_OWN_LICENSE. Changing this will force terraform to create new resource.
-  final Input<String>? licenseModel;
+  final pulumi.Input<String>? licenseModel;
 
   /// The maintenance window of the Autonomous VM cluster. Changing this will force terraform to create new resource.
   ///
   /// The following arguments are optional:
-  final Input<CloudAutonomousVmClusterMaintenanceWindow> maintenanceWindow;
+  final pulumi.Input<CloudAutonomousVmClusterMaintenanceWindow>
+      maintenanceWindow;
 
   /// The amount of memory allocated per Oracle Compute Unit, in GB. Changing this will force terraform to create new resource.
-  final Input<int> memoryPerOracleComputeUnitInGbs;
+  final pulumi.Input<int> memoryPerOracleComputeUnitInGbs;
 
   /// ARN of the ODB network associated with this Autonomous VM Cluster. Changing this will force Terraform to create a new resource. Either the combination of `cloud_exadata_infrastructure_id` and `odb_network_id` or `cloud_exadata_infrastructure_arn` and `odb_network_arn` must be used.
-  final Input<String>? odbNetworkArn;
+  final pulumi.Input<String>? odbNetworkArn;
 
   /// Unique identifier of the ODB network associated with this Autonomous VM Cluster. Changing this will force Terraform to create a new resource. Changing this will create a new resource. Either the combination of `cloud_exadata_infrastructure_id` and `odb_network_id` or `cloud_exadata_infrastructure_arn` and `odb_network_arn` must be used.
-  final Input<String>? odbNetworkId;
+  final pulumi.Input<String>? odbNetworkId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The SCAN listener port for non-TLS (TCP) protocol. The default is 1521. Changing this will force terraform to create new resource.
-  final Input<int> scanListenerPortNonTls;
+  final pulumi.Input<int> scanListenerPortNonTls;
 
   /// The SCAN listener port for TLS (TCP) protocol. The default is 2484. Changing this will force terraform to create new resource.
-  final Input<int> scanListenerPortTls;
+  final pulumi.Input<int> scanListenerPortTls;
 
   /// A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The time zone of the Autonomous VM cluster. Changing this will force terraform to create new resource.
-  final Input<String>? timeZone;
-  final Input<CloudAutonomousVmClusterTimeouts>? timeouts;
+  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<CloudAutonomousVmClusterTimeouts>? timeouts;
 
   /// The total number of Autonomous Container Databases that can be created with the allocated local storage. Changing this will force terraform to create new resource.
-  final Input<int> totalContainerDatabases;
+  final pulumi.Input<int> totalContainerDatabases;
 
   CloudAutonomousVmClusterArgs({
     required this.autonomousDataStorageSizeInTbs,
@@ -115,7 +116,7 @@ class CloudAutonomousVmClusterArgs {
     if (licenseModelValue != null) {
       map['licenseModel'] = licenseModelValue;
     }
-    map['maintenanceWindow'] = Input.mapInputValue<
+    map['maintenanceWindow'] = pulumi.Input.mapInputValue<
         CloudAutonomousVmClusterMaintenanceWindow,
         Map<String, dynamic>>(maintenanceWindow, (value) => value.toMap());
     map['memoryPerOracleComputeUnitInGbs'] = memoryPerOracleComputeUnitInGbs;
@@ -143,7 +144,7 @@ class CloudAutonomousVmClusterArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           CloudAutonomousVmClusterTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -154,34 +155,37 @@ class CloudAutonomousVmClusterArgs {
   factory CloudAutonomousVmClusterArgs.fromMap(Map<String, dynamic> map) {
     return CloudAutonomousVmClusterArgs(
       autonomousDataStorageSizeInTbs:
-          Input.asInput<double>(map['autonomousDataStorageSizeInTbs']),
-      cloudExadataInfrastructureArn:
-          Input.asOptionalInput<String>(map['cloudExadataInfrastructureArn']),
-      cloudExadataInfrastructureId:
-          Input.asOptionalInput<String>(map['cloudExadataInfrastructureId']),
-      cpuCoreCountPerNode: Input.asInput<int>(map['cpuCoreCountPerNode']),
-      dbServers: Input.asInput<List<String>>(map['dbServers']),
-      description: Input.asOptionalInput<String>(map['description']),
-      displayName: Input.asInput<String>(map['displayName']),
+          pulumi.Input.asInput<double>(map['autonomousDataStorageSizeInTbs']),
+      cloudExadataInfrastructureArn: pulumi.Input.asOptionalInput<String>(
+          map['cloudExadataInfrastructureArn']),
+      cloudExadataInfrastructureId: pulumi.Input.asOptionalInput<String>(
+          map['cloudExadataInfrastructureId']),
+      cpuCoreCountPerNode:
+          pulumi.Input.asInput<int>(map['cpuCoreCountPerNode']),
+      dbServers: pulumi.Input.asInput<List<String>>(map['dbServers']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      displayName: pulumi.Input.asInput<String>(map['displayName']),
       isMtlsEnabledVmCluster:
-          Input.asOptionalInput<bool>(map['isMtlsEnabledVmCluster']),
-      licenseModel: Input.asOptionalInput<String>(map['licenseModel']),
+          pulumi.Input.asOptionalInput<bool>(map['isMtlsEnabledVmCluster']),
+      licenseModel: pulumi.Input.asOptionalInput<String>(map['licenseModel']),
       maintenanceWindow:
-          Input.asInput<CloudAutonomousVmClusterMaintenanceWindow>(
+          pulumi.Input.asInput<CloudAutonomousVmClusterMaintenanceWindow>(
               map['maintenanceWindow']),
       memoryPerOracleComputeUnitInGbs:
-          Input.asInput<int>(map['memoryPerOracleComputeUnitInGbs']),
-      odbNetworkArn: Input.asOptionalInput<String>(map['odbNetworkArn']),
-      odbNetworkId: Input.asOptionalInput<String>(map['odbNetworkId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      scanListenerPortNonTls: Input.asInput<int>(map['scanListenerPortNonTls']),
-      scanListenerPortTls: Input.asInput<int>(map['scanListenerPortTls']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeZone: Input.asOptionalInput<String>(map['timeZone']),
-      timeouts: Input.asOptionalInput<CloudAutonomousVmClusterTimeouts>(
+          pulumi.Input.asInput<int>(map['memoryPerOracleComputeUnitInGbs']),
+      odbNetworkArn: pulumi.Input.asOptionalInput<String>(map['odbNetworkArn']),
+      odbNetworkId: pulumi.Input.asOptionalInput<String>(map['odbNetworkId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      scanListenerPortNonTls:
+          pulumi.Input.asInput<int>(map['scanListenerPortNonTls']),
+      scanListenerPortTls:
+          pulumi.Input.asInput<int>(map['scanListenerPortTls']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeZone: pulumi.Input.asOptionalInput<String>(map['timeZone']),
+      timeouts: pulumi.Input.asOptionalInput<CloudAutonomousVmClusterTimeouts>(
           map['timeouts']),
       totalContainerDatabases:
-          Input.asInput<int>(map['totalContainerDatabases']),
+          pulumi.Input.asInput<int>(map['totalContainerDatabases']),
     );
   }
 }

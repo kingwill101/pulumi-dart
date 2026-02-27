@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_default_action_allow_custom_request_handling_insert_header/web_acl_default_action_allow_custom_request_handling_insert_header.dart';
 
 class WebAclDefaultActionAllowCustomRequestHandling {
@@ -14,7 +14,7 @@ class WebAclDefaultActionAllowCustomRequestHandling {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['insertHeaders'] = Input.encodeList<
+    map['insertHeaders'] = pulumi.Input.encodeList<
         WebAclDefaultActionAllowCustomRequestHandlingInsertHeader,
         Map<String, dynamic>>(insertHeaders, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class WebAclDefaultActionAllowCustomRequestHandling {
   factory WebAclDefaultActionAllowCustomRequestHandling.fromMap(
       Map<String, dynamic> map) {
     return WebAclDefaultActionAllowCustomRequestHandling(
-      insertHeaders: Input.decodeList<
+      insertHeaders: pulumi.Input.decodeList<
               WebAclDefaultActionAllowCustomRequestHandlingInsertHeader>(
           map['insertHeaders'],
           (value) =>

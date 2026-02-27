@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_db_engine_version_args.dart';
 
 /// Provides an custom engine version (CEV) resource for Amazon RDS Custom. For additional information, see [Working with CEVs for RDS Custom for Oracle](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-cev.html) and [Working with CEVs for RDS Custom for SQL Server](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-cev-sqlserver.html) in the the [RDS User Guide](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html).
@@ -28,76 +28,76 @@ import 'custom_db_engine_version_args.dart';
 /// ```sh
 /// $ pulumi import aws:rds/customDbEngineVersion:CustomDbEngineVersion example custom-oracle-ee-cdb:19.cdb_cev1
 /// ```
-class CustomDbEngineVersion extends CustomResource {
+class CustomDbEngineVersion extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) for the custom engine version.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The date and time that the CEV was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// The name of the Amazon S3 bucket that contains the database installation files.
-  late final Output<String?> databaseInstallationFilesS3BucketName;
+  late final pulumi.Output<String?> databaseInstallationFilesS3BucketName;
 
   /// The prefix for the Amazon S3 bucket that contains the database installation files.
-  late final Output<String?> databaseInstallationFilesS3Prefix;
+  late final pulumi.Output<String?> databaseInstallationFilesS3Prefix;
 
   /// The name of the DB parameter group family for the CEV.
-  late final Output<String> dbParameterGroupFamily;
+  late final pulumi.Output<String> dbParameterGroupFamily;
 
   /// The description of the CEV.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The name of the database engine. Valid values are `custom-oracle*`, `custom-sqlserver*`.
-  late final Output<String> engine;
+  late final pulumi.Output<String> engine;
 
   /// The version of the database engine.
-  late final Output<String> engineVersion;
+  late final pulumi.Output<String> engineVersion;
 
   /// The name of the manifest file within the local filesystem. Conflicts with `manifest`.
-  late final Output<String?> filename;
+  late final pulumi.Output<String?> filename;
 
   /// The ID of the AMI that was created with the CEV.
-  late final Output<String> imageId;
+  late final pulumi.Output<String> imageId;
 
   /// The ARN of the AWS KMS key that is used to encrypt the database installation files. Required for RDS Custom for Oracle.
-  late final Output<String> kmsKeyId;
+  late final pulumi.Output<String> kmsKeyId;
 
   /// The major version of the database engine.
-  late final Output<String> majorEngineVersion;
+  late final pulumi.Output<String> majorEngineVersion;
 
   /// The manifest file, in JSON format, that contains the list of database installation files. Conflicts with `filename`.
-  late final Output<String?> manifest;
+  late final pulumi.Output<String?> manifest;
 
   /// The returned manifest file, in JSON format, service generated and often different from input `manifest`.
-  late final Output<String> manifestComputed;
+  late final pulumi.Output<String> manifestComputed;
 
   /// Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the manifest source specified with `filename`. The usual way to set this is filebase64sha256("manifest.json") where "manifest.json" is the local filename of the manifest source.
-  late final Output<String?> manifestHash;
+  late final pulumi.Output<String?> manifestHash;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the AMI to create the CEV from. Required for RDS Custom for SQL Server. For RDS Custom for Oracle, you can specify an AMI ID that was used in a different Oracle CEV.
-  late final Output<String?> sourceImageId;
+  late final pulumi.Output<String?> sourceImageId;
 
   /// The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   CustomDbEngineVersion(
     String name, {
     CustomDbEngineVersionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:rds/customDbEngineVersion:CustomDbEngineVersion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.createTime = registerOutput<String>('createTime');

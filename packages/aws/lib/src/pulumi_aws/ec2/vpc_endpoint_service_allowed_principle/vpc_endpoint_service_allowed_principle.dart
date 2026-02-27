@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_endpoint_service_allowed_principle_args.dart';
 
 /// Provides a resource to allow a principal to discover a VPC endpoint service.
@@ -12,25 +12,25 @@ import 'vpc_endpoint_service_allowed_principle_args.dart';
 /// ## Example Usage
 ///
 /// Basic usage:
-class VpcEndpointServiceAllowedPrinciple extends CustomResource {
+class VpcEndpointServiceAllowedPrinciple extends pulumi.CustomResource {
   /// The ARN of the principal to allow permissions.
-  late final Output<String> principalArn;
+  late final pulumi.Output<String> principalArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the VPC endpoint service to allow permission.
-  late final Output<String> vpcEndpointServiceId;
+  late final pulumi.Output<String> vpcEndpointServiceId;
 
   VpcEndpointServiceAllowedPrinciple(
     String name, {
     VpcEndpointServiceAllowedPrincipleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpcEndpointServiceAllowedPrinciple:VpcEndpointServiceAllowedPrinciple',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.principalArn = registerOutput<String>('principalArn');
     this.region = registerOutput<String>('region');

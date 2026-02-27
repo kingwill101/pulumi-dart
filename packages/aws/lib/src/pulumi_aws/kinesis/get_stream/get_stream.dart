@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_stream_args.dart';
 import 'get_stream_result.dart';
 
@@ -8,13 +8,13 @@ import 'get_stream_result.dart';
 /// For more details, see the [Amazon Kinesis Documentation](https://aws.amazon.com/documentation/kinesis/).
 Future<GetStreamResult> getStream(
   GetStreamArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:kinesis/getStream:getStream',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStreamResult.fromMap(result);
 }

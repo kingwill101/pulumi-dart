@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_fulfillment_code_hook_post_fulfillment_status_specification_failure_conditional_conditional_branch/v2models_intent_fulfillment_code_hook_post_fulfillment_status_specification_failure_conditional_conditional_branch.dart';
 import '../v2models_intent_fulfillment_code_hook_post_fulfillment_status_specification_failure_conditional_default_branch/v2models_intent_fulfillment_code_hook_post_fulfillment_status_specification_failure_conditional_default_branch.dart';
 
@@ -28,7 +28,7 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailure
     map['active'] = active;
     final conditionalBranchesValue = conditionalBranches;
     if (conditionalBranchesValue != null) {
-      map['conditionalBranches'] = Input.encodeList<
+      map['conditionalBranches'] = pulumi.Input.encodeList<
           V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranch,
           Map<String,
               dynamic>>(conditionalBranchesValue, (value) => value.toMap());
@@ -46,7 +46,7 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailure
       active: map['active'] as bool,
       conditionalBranches: map['conditionalBranches'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranch>(
               map['conditionalBranches'],
               (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gateway_association_proposal_args.dart';
 
 /// Manages a Direct Connect Gateway Association Proposal, typically for enabling cross-account associations. For single account associations, see the `aws.directconnect.GatewayAssociation` resource.
@@ -28,37 +28,37 @@ import 'gateway_association_proposal_args.dart';
 ///
 /// The latter case is useful when a previous proposal has been accepted and deleted by AWS.
 /// The `aws.directconnect.GatewayAssociationProposal` resource will then represent a pseudo-proposal for the same Direct Connect Gateway and associated gateway. If no previous proposal is available, use a tool like [`uuidgen`](http://manpages.ubuntu.com/manpages/bionic/man1/uuidgen.1.html) to generate a new random pseudo-proposal ID.
-class GatewayAssociationProposal extends CustomResource {
+class GatewayAssociationProposal extends pulumi.CustomResource {
   /// VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.
-  late final Output<List<String>> allowedPrefixes;
+  late final pulumi.Output<List<String>> allowedPrefixes;
 
   /// The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.
-  late final Output<String> associatedGatewayId;
+  late final pulumi.Output<String> associatedGatewayId;
 
   /// The ID of the AWS account that owns the VGW or transit gateway with which to associate the Direct Connect gateway.
-  late final Output<String> associatedGatewayOwnerAccountId;
+  late final pulumi.Output<String> associatedGatewayOwnerAccountId;
 
   /// The type of the associated gateway, `transitGateway` or `virtualPrivateGateway`.
-  late final Output<String> associatedGatewayType;
+  late final pulumi.Output<String> associatedGatewayType;
 
   /// Direct Connect Gateway identifier.
-  late final Output<String> dxGatewayId;
+  late final pulumi.Output<String> dxGatewayId;
 
   /// AWS Account identifier of the Direct Connect Gateway's owner.
-  late final Output<String> dxGatewayOwnerAccountId;
+  late final pulumi.Output<String> dxGatewayOwnerAccountId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   GatewayAssociationProposal(
     String name, {
     GatewayAssociationProposalArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:directconnect/gatewayAssociationProposal:GatewayAssociationProposal',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowedPrefixes = registerOutput<List<String>>('allowedPrefixes');
     this.associatedGatewayId = registerOutput<String>('associatedGatewayId');

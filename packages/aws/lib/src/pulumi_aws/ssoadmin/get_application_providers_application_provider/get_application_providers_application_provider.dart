@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_application_providers_application_provider_display_data/get_application_providers_application_provider_display_data.dart';
 
 class GetApplicationProvidersApplicationProvider {
@@ -23,7 +23,7 @@ class GetApplicationProvidersApplicationProvider {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['applicationProviderArn'] = applicationProviderArn;
-    map['displayDatas'] = Input.encodeList<
+    map['displayDatas'] = pulumi.Input.encodeList<
         GetApplicationProvidersApplicationProviderDisplayData,
         Map<String, dynamic>>(displayDatas, (value) => value.toMap());
     map['federationProtocol'] = federationProtocol;
@@ -34,7 +34,7 @@ class GetApplicationProvidersApplicationProvider {
       Map<String, dynamic> map) {
     return GetApplicationProvidersApplicationProvider(
       applicationProviderArn: map['applicationProviderArn'] as String,
-      displayDatas: Input.decodeList<
+      displayDatas: pulumi.Input.decodeList<
               GetApplicationProvidersApplicationProviderDisplayData>(
           map['displayDatas'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_user_hierarchy_group_hierarchy_path/get_user_hierarchy_group_hierarchy_path.dart';
 
 /// Result data returned by getUserHierarchyGroup.
@@ -42,7 +42,8 @@ class GetUserHierarchyGroupResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['hierarchyGroupId'] = hierarchyGroupId;
-    map['hierarchyPaths'] = Input.encodeList<GetUserHierarchyGroupHierarchyPath,
+    map['hierarchyPaths'] = pulumi.Input.encodeList<
+        GetUserHierarchyGroupHierarchyPath,
         Map<String, dynamic>>(hierarchyPaths, (value) => value.toMap());
     map['id'] = id;
     map['instanceId'] = instanceId;
@@ -57,10 +58,11 @@ class GetUserHierarchyGroupResult {
     return GetUserHierarchyGroupResult(
       arn: map['arn'] as String,
       hierarchyGroupId: map['hierarchyGroupId'] as String,
-      hierarchyPaths: Input.decodeList<GetUserHierarchyGroupHierarchyPath>(
-          map['hierarchyPaths'],
-          (value) => GetUserHierarchyGroupHierarchyPath.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      hierarchyPaths:
+          pulumi.Input.decodeList<GetUserHierarchyGroupHierarchyPath>(
+              map['hierarchyPaths'],
+              (value) => GetUserHierarchyGroupHierarchyPath.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
       levelId: map['levelId'] as String,

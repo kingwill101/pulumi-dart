@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_configuration_profiles_args.dart';
 import 'get_configuration_profiles_result.dart';
 
@@ -10,13 +10,13 @@ import 'get_configuration_profiles_result.dart';
 /// ### Basic Usage
 Future<GetConfigurationProfilesResult> getConfigurationProfiles(
   GetConfigurationProfilesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:appconfig/getConfigurationProfiles:getConfigurationProfiles',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigurationProfilesResult.fromMap(result);
 }

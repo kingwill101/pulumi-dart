@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_endpoint_connection_accepter_args.dart';
 
 /// Provides a resource to accept a pending VPC Endpoint Connection accept request to VPC Endpoint Service.
@@ -16,28 +16,28 @@ import 'vpc_endpoint_connection_accepter_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/vpcEndpointConnectionAccepter:VpcEndpointConnectionAccepter foo vpce-svc-0f97a19d3fa8220bc_vpce-010601a6db371e263
 /// ```
-class VpcEndpointConnectionAccepter extends CustomResource {
+class VpcEndpointConnectionAccepter extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// AWS VPC Endpoint ID.
-  late final Output<String> vpcEndpointId;
+  late final pulumi.Output<String> vpcEndpointId;
 
   /// AWS VPC Endpoint Service ID.
-  late final Output<String> vpcEndpointServiceId;
+  late final pulumi.Output<String> vpcEndpointServiceId;
 
   /// State of the VPC Endpoint.
-  late final Output<String> vpcEndpointState;
+  late final pulumi.Output<String> vpcEndpointState;
 
   VpcEndpointConnectionAccepter(
     String name, {
     VpcEndpointConnectionAccepterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpcEndpointConnectionAccepter:VpcEndpointConnectionAccepter',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.vpcEndpointId = registerOutput<String>('vpcEndpointId');

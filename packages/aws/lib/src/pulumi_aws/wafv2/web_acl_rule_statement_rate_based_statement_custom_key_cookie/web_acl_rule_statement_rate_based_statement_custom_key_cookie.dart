@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_rate_based_statement_custom_key_cookie_text_transformation/web_acl_rule_statement_rate_based_statement_custom_key_cookie_text_transformation.dart';
 
 class WebAclRuleStatementRateBasedStatementCustomKeyCookie {
@@ -20,7 +20,7 @@ class WebAclRuleStatementRateBasedStatementCustomKeyCookie {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['name'] = name;
-    map['textTransformations'] = Input.encodeList<
+    map['textTransformations'] = pulumi.Input.encodeList<
         WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation,
         Map<String, dynamic>>(textTransformations, (value) => value.toMap());
     return map;
@@ -30,7 +30,7 @@ class WebAclRuleStatementRateBasedStatementCustomKeyCookie {
       Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementCustomKeyCookie(
       name: map['name'] as String,
-      textTransformations: Input.decodeList<
+      textTransformations: pulumi.Input.decodeList<
               WebAclRuleStatementRateBasedStatementCustomKeyCookieTextTransformation>(
           map['textTransformations'],
           (value) =>

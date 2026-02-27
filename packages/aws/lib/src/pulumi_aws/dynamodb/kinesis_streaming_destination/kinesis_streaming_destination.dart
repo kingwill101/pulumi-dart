@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kinesis_streaming_destination_args.dart';
 
 /// Enables a [Kinesis streaming destination](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/kds.html) for data replication of a DynamoDB table.
@@ -14,28 +14,28 @@ import 'kinesis_streaming_destination_args.dart';
 /// ```sh
 /// $ pulumi import aws:dynamodb/kinesisStreamingDestination:KinesisStreamingDestination example example,arn:aws:kinesis:us-east-1:111122223333:exampleStreamName
 /// ```
-class KinesisStreamingDestination extends CustomResource {
+class KinesisStreamingDestination extends pulumi.CustomResource {
   /// Toggle for the precision of Kinesis data stream timestamp. Valid values: `MILLISECOND` and `MICROSECOND`.
-  late final Output<String> approximateCreationDateTimePrecision;
+  late final pulumi.Output<String> approximateCreationDateTimePrecision;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ARN for a Kinesis data stream. This must exist in the same account and region as the DynamoDB table.
-  late final Output<String> streamArn;
+  late final pulumi.Output<String> streamArn;
 
   /// The name of the DynamoDB table. There can only be one Kinesis streaming destination for a given DynamoDB table.
-  late final Output<String> tableName;
+  late final pulumi.Output<String> tableName;
 
   KinesisStreamingDestination(
     String name, {
     KinesisStreamingDestinationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:dynamodb/kinesisStreamingDestination:KinesisStreamingDestination',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.approximateCreationDateTimePrecision =
         registerOutput<String>('approximateCreationDateTimePrecision');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_metadata_defaults_args.dart';
 
 /// Manages regional EC2 instance metadata default settings.
@@ -11,31 +11,31 @@ import 'instance_metadata_defaults_args.dart';
 /// ## Import
 ///
 /// You cannot import this resource.
-class InstanceMetadataDefaults extends CustomResource {
+class InstanceMetadataDefaults extends pulumi.CustomResource {
   /// Whether the metadata service is available. Can be `"enabled"`, `"disabled"`, or `"no-preference"`. Default: `"no-preference"`.
-  late final Output<String> httpEndpoint;
+  late final pulumi.Output<String> httpEndpoint;
 
   /// The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Can be an integer from `1` to `64`, or `-1` to indicate no preference. Default: `-1`.
-  late final Output<int> httpPutResponseHopLimit;
+  late final pulumi.Output<int> httpPutResponseHopLimit;
 
   /// Whether the metadata service requires session tokens, also referred to as _Instance Metadata Service Version 2 (IMDSv2)_. Can be `"optional"`, `"required"`, or `"no-preference"`. Default: `"no-preference"`.
-  late final Output<String> httpTokens;
+  late final pulumi.Output<String> httpTokens;
 
   /// Enables or disables access to instance tags from the instance metadata service. Can be `"enabled"`, `"disabled"`, or `"no-preference"`. Default: `"no-preference"`.
-  late final Output<String> instanceMetadataTags;
+  late final pulumi.Output<String> instanceMetadataTags;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   InstanceMetadataDefaults(
     String name, {
     InstanceMetadataDefaultsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/instanceMetadataDefaults:InstanceMetadataDefaults',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.httpEndpoint = registerOutput<String>('httpEndpoint');
     this.httpPutResponseHopLimit =

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_prebuilt_ecr_image_args.dart';
 import 'get_prebuilt_ecr_image_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_prebuilt_ecr_image_result.dart';
 /// Basic usage:
 Future<GetPrebuiltEcrImageResult> getPrebuiltEcrImage(
   GetPrebuiltEcrImageArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:sagemaker/getPrebuiltEcrImage:getPrebuiltEcrImage',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrebuiltEcrImageResult.fromMap(result);
 }

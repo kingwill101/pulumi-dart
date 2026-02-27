@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInvocation.
 class GetInvocationArgs {
   /// Name of the Lambda function.
-  final Input<String> functionName;
+  final pulumi.Input<String> functionName;
 
   /// String in JSON format that is passed as payload to the Lambda function.
   ///
   /// The following arguments are optional:
-  final Input<String> input;
+  final pulumi.Input<String> input;
 
   /// Qualifier (a.k.a version) of the Lambda function. Defaults to `$LATEST`.
-  final Input<String>? qualifier;
+  final pulumi.Input<String>? qualifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Tenant Id to serve invocations from specified tenant.
-  final Input<String>? tenantId;
+  final pulumi.Input<String>? tenantId;
 
   GetInvocationArgs({
     required this.functionName,
@@ -50,11 +50,11 @@ class GetInvocationArgs {
 
   factory GetInvocationArgs.fromMap(Map<String, dynamic> map) {
     return GetInvocationArgs(
-      functionName: Input.asInput<String>(map['functionName']),
-      input: Input.asInput<String>(map['input']),
-      qualifier: Input.asOptionalInput<String>(map['qualifier']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tenantId: Input.asOptionalInput<String>(map['tenantId']),
+      functionName: pulumi.Input.asInput<String>(map['functionName']),
+      input: pulumi.Input.asInput<String>(map['input']),
+      qualifier: pulumi.Input.asOptionalInput<String>(map['qualifier']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tenantId: pulumi.Input.asOptionalInput<String>(map['tenantId']),
     );
   }
 }

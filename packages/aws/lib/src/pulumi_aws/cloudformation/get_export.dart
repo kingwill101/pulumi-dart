@@ -1,5 +1,5 @@
 library module_cloudformation_get_export;
 
-export 'get_export/get_export3.dart';
-export 'get_export/get_export_args3.dart';
-export 'get_export/get_export_result3.dart';
+export 'get_export/get_export_cloudformation.dart';
+export 'get_export/get_export_cloudformation_args.dart';
+export 'get_export/get_export_cloudformation_result.dart';

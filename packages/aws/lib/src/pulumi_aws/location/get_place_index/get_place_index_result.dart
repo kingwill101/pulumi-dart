@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_place_index_data_source_configuration/get_place_index_data_source_configuration.dart';
 
 /// Result data returned by getPlaceIndex.
@@ -48,7 +48,7 @@ class GetPlaceIndexResult {
     final map = <String, dynamic>{};
     map['createTime'] = createTime;
     map['dataSource'] = dataSource;
-    map['dataSourceConfigurations'] = Input.encodeList<
+    map['dataSourceConfigurations'] = pulumi.Input.encodeList<
             GetPlaceIndexDataSourceConfiguration, Map<String, dynamic>>(
         dataSourceConfigurations, (value) => value.toMap());
     map['description'] = description;
@@ -66,7 +66,7 @@ class GetPlaceIndexResult {
       createTime: map['createTime'] as String,
       dataSource: map['dataSource'] as String,
       dataSourceConfigurations:
-          Input.decodeList<GetPlaceIndexDataSourceConfiguration>(
+          pulumi.Input.decodeList<GetPlaceIndexDataSourceConfiguration>(
               map['dataSourceConfigurations'],
               (value) => GetPlaceIndexDataSourceConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),

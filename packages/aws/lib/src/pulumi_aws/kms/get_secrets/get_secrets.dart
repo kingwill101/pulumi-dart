@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_secrets_args.dart';
 import 'get_secrets_result.dart';
 
@@ -22,13 +22,13 @@ import 'get_secrets_result.dart';
 /// That encrypted output can now be inserted into provider configurations without exposing the plaintext secret directly.
 Future<GetSecretsResult> getSecrets(
   GetSecretsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:kms/getSecrets:getSecrets',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretsResult.fromMap(result);
 }

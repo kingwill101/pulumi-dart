@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_control_control_mapping_source/get_control_control_mapping_source.dart';
 
 /// Result data returned by getControl.
@@ -36,9 +36,9 @@ class GetControlResult {
     map['actionPlanInstructions'] = actionPlanInstructions;
     map['actionPlanTitle'] = actionPlanTitle;
     map['arn'] = arn;
-    map['controlMappingSources'] =
-        Input.encodeList<GetControlControlMappingSource, Map<String, dynamic>>(
-            controlMappingSources, (value) => value.toMap());
+    map['controlMappingSources'] = pulumi.Input.encodeList<
+        GetControlControlMappingSource,
+        Map<String, dynamic>>(controlMappingSources, (value) => value.toMap());
     map['description'] = description;
     map['id'] = id;
     map['name'] = name;
@@ -54,10 +54,11 @@ class GetControlResult {
       actionPlanInstructions: map['actionPlanInstructions'] as String,
       actionPlanTitle: map['actionPlanTitle'] as String,
       arn: map['arn'] as String,
-      controlMappingSources: Input.decodeList<GetControlControlMappingSource>(
-          map['controlMappingSources'],
-          (value) => GetControlControlMappingSource.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      controlMappingSources:
+          pulumi.Input.decodeList<GetControlControlMappingSource>(
+              map['controlMappingSources'],
+              (value) => GetControlControlMappingSource.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

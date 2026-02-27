@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cost_category_rule_rule_or_and/cost_category_rule_rule_or_and.dart';
 import '../cost_category_rule_rule_or_cost_category/cost_category_rule_rule_or_cost_category.dart';
 import '../cost_category_rule_rule_or_dimension/cost_category_rule_rule_or_dimension.dart';
@@ -40,9 +40,8 @@ class CostCategoryRuleRuleOr {
     final map = <String, dynamic>{};
     final andsValue = ands;
     if (andsValue != null) {
-      map['ands'] =
-          Input.encodeList<CostCategoryRuleRuleOrAnd, Map<String, dynamic>>(
-              andsValue, (value) => value.toMap());
+      map['ands'] = pulumi.Input.encodeList<CostCategoryRuleRuleOrAnd,
+          Map<String, dynamic>>(andsValue, (value) => value.toMap());
     }
     final costCategoryValue = costCategory;
     if (costCategoryValue != null) {
@@ -58,9 +57,8 @@ class CostCategoryRuleRuleOr {
     }
     final orsValue = ors;
     if (orsValue != null) {
-      map['ors'] =
-          Input.encodeList<CostCategoryRuleRuleOrOr, Map<String, dynamic>>(
-              orsValue, (value) => value.toMap());
+      map['ors'] = pulumi.Input.encodeList<CostCategoryRuleRuleOrOr,
+          Map<String, dynamic>>(orsValue, (value) => value.toMap());
     }
     final tagsValue = tags;
     if (tagsValue != null) {
@@ -73,7 +71,7 @@ class CostCategoryRuleRuleOr {
     return CostCategoryRuleRuleOr(
       ands: map['ands'] == null
           ? null
-          : Input.decodeList<CostCategoryRuleRuleOrAnd>(
+          : pulumi.Input.decodeList<CostCategoryRuleRuleOrAnd>(
               map['ands'],
               (value) => CostCategoryRuleRuleOrAnd.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -91,7 +89,7 @@ class CostCategoryRuleRuleOr {
               (map['not'] as Map).cast<String, dynamic>()),
       ors: map['ors'] == null
           ? null
-          : Input.decodeList<CostCategoryRuleRuleOrOr>(
+          : pulumi.Input.decodeList<CostCategoryRuleRuleOrOr>(
               map['ors'],
               (value) => CostCategoryRuleRuleOrOr.fromMap(
                   (value as Map).cast<String, dynamic>())),

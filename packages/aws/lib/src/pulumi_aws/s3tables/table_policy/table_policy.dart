@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_policy_args.dart';
 
 /// Resource for managing an Amazon S3 Tables Table Policy.
@@ -16,35 +16,35 @@ import 'table_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3tables/tablePolicy:TablePolicy example 'arn:aws:s3tables:us-west-2:123456789012:bucket/example-bucket;example-namespace;example-table'
 /// ```
-class TablePolicy extends CustomResource {
+class TablePolicy extends pulumi.CustomResource {
   /// Name of the table.
   /// Must be between 1 and 255 characters in length.
   /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Name of the namespace for this table.
   /// Must be between 1 and 255 characters in length.
   /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
-  late final Output<String> namespace;
+  late final pulumi.Output<String> namespace;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Amazon Web Services resource-based policy document in JSON format.
-  late final Output<String> resourcePolicy;
+  late final pulumi.Output<String> resourcePolicy;
 
   /// ARN referencing the Table Bucket that contains this Namespace.
-  late final Output<String> tableBucketArn;
+  late final pulumi.Output<String> tableBucketArn;
 
   TablePolicy(
     String name, {
     TablePolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3tables/tablePolicy:TablePolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
     this.namespace = registerOutput<String>('namespace');

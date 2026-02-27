@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipeline_trigger_all_git_configuration_pull_request_branch/pipeline_trigger_all_git_configuration_pull_request_branch.dart';
 import '../pipeline_trigger_all_git_configuration_pull_request_file_path/pipeline_trigger_all_git_configuration_pull_request_file_path.dart';
 
@@ -24,7 +24,7 @@ class PipelineTriggerAllGitConfigurationPullRequest {
     final map = <String, dynamic>{};
     final branchesValue = branches;
     if (branchesValue != null) {
-      map['branches'] = Input.encodeList<
+      map['branches'] = pulumi.Input.encodeList<
           PipelineTriggerAllGitConfigurationPullRequestBranch,
           Map<String, dynamic>>(branchesValue, (value) => value.toMap());
     }
@@ -34,7 +34,7 @@ class PipelineTriggerAllGitConfigurationPullRequest {
     }
     final filePathsValue = filePaths;
     if (filePathsValue != null) {
-      map['filePaths'] = Input.encodeList<
+      map['filePaths'] = pulumi.Input.encodeList<
           PipelineTriggerAllGitConfigurationPullRequestFilePath,
           Map<String, dynamic>>(filePathsValue, (value) => value.toMap());
     }
@@ -46,7 +46,7 @@ class PipelineTriggerAllGitConfigurationPullRequest {
     return PipelineTriggerAllGitConfigurationPullRequest(
       branches: map['branches'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PipelineTriggerAllGitConfigurationPullRequestBranch>(
               map['branches'],
               (value) =>
@@ -56,7 +56,7 @@ class PipelineTriggerAllGitConfigurationPullRequest {
           map['events'] == null ? null : (map['events'] as List).cast<String>(),
       filePaths: map['filePaths'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PipelineTriggerAllGitConfigurationPullRequestFilePath>(
               map['filePaths'],
               (value) =>

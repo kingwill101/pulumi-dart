@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_roles_args.dart';
 import 'get_roles_result.dart';
 
@@ -29,13 +29,13 @@ import 'get_roles_result.dart';
 /// Specific role in the account filtered by name regex and path prefix
 Future<GetRolesResult> getRoles(
   GetRolesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:iam/getRoles:getRoles',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRolesResult.fromMap(result);
 }

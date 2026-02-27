@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vpc_ipam_pool_cidr_cidr_authorization_context/vpc_ipam_pool_cidr_cidr_authorization_context.dart';
 
 /// The set of arguments for VpcIpamPoolCidr.
 class VpcIpamPoolCidrArgs {
   /// The CIDR you want to assign to the pool. Conflicts with `netmask_length`.
-  final Input<String>? cidr;
+  final pulumi.Input<String>? cidr;
 
   /// A signed document that proves that you are authorized to bring the specified IP address range to Amazon using BYOIP. This is not stored in the state file. See cidr_authorization_context for more information.
-  final Input<VpcIpamPoolCidrCidrAuthorizationContext>?
+  final pulumi.Input<VpcIpamPoolCidrCidrAuthorizationContext>?
       cidrAuthorizationContext;
 
   /// The ID of the pool to which you want to assign a CIDR.
-  final Input<String> ipamPoolId;
+  final pulumi.Input<String> ipamPoolId;
 
   /// If provided, the cidr provisioned into the specified pool will be the next available cidr given this declared netmask length. Conflicts with `cidr`.
-  final Input<int>? netmaskLength;
+  final pulumi.Input<int>? netmaskLength;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   VpcIpamPoolCidrArgs({
     this.cidr,
@@ -37,7 +37,7 @@ class VpcIpamPoolCidrArgs {
     }
     final cidrAuthorizationContextValue = cidrAuthorizationContext;
     if (cidrAuthorizationContextValue != null) {
-      map['cidrAuthorizationContext'] = Input.mapOptionalInputValue<
+      map['cidrAuthorizationContext'] = pulumi.Input.mapOptionalInputValue<
               VpcIpamPoolCidrCidrAuthorizationContext, Map<String, dynamic>>(
           cidrAuthorizationContextValue, (value) => value.toMap());
     }
@@ -55,13 +55,13 @@ class VpcIpamPoolCidrArgs {
 
   factory VpcIpamPoolCidrArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamPoolCidrArgs(
-      cidr: Input.asOptionalInput<String>(map['cidr']),
+      cidr: pulumi.Input.asOptionalInput<String>(map['cidr']),
       cidrAuthorizationContext:
-          Input.asOptionalInput<VpcIpamPoolCidrCidrAuthorizationContext>(
+          pulumi.Input.asOptionalInput<VpcIpamPoolCidrCidrAuthorizationContext>(
               map['cidrAuthorizationContext']),
-      ipamPoolId: Input.asInput<String>(map['ipamPoolId']),
-      netmaskLength: Input.asOptionalInput<int>(map['netmaskLength']),
-      region: Input.asOptionalInput<String>(map['region']),
+      ipamPoolId: pulumi.Input.asInput<String>(map['ipamPoolId']),
+      netmaskLength: pulumi.Input.asOptionalInput<int>(map['netmaskLength']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

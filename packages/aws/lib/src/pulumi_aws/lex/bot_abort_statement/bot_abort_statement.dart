@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bot_abort_statement_message/bot_abort_statement_message.dart';
 
 class BotAbortStatement {
@@ -15,7 +15,7 @@ class BotAbortStatement {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['messages'] =
-        Input.encodeList<BotAbortStatementMessage, Map<String, dynamic>>(
+        pulumi.Input.encodeList<BotAbortStatementMessage, Map<String, dynamic>>(
             messages, (value) => value.toMap());
     final responseCardValue = responseCard;
     if (responseCardValue != null) {
@@ -26,7 +26,7 @@ class BotAbortStatement {
 
   factory BotAbortStatement.fromMap(Map<String, dynamic> map) {
     return BotAbortStatement(
-      messages: Input.decodeList<BotAbortStatementMessage>(
+      messages: pulumi.Input.decodeList<BotAbortStatementMessage>(
           map['messages'],
           (value) => BotAbortStatementMessage.fromMap(
               (value as Map).cast<String, dynamic>())),

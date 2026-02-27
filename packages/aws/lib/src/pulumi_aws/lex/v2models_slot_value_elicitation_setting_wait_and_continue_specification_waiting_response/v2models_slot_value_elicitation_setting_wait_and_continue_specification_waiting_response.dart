@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_slot_value_elicitation_setting_wait_and_continue_specification_waiting_response_message_group/v2models_slot_value_elicitation_setting_wait_and_continue_specification_waiting_response_message_group.dart';
 
 class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponse {
@@ -27,7 +27,7 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResp
     }
     final messageGroupsValue = messageGroups;
     if (messageGroupsValue != null) {
-      map['messageGroups'] = Input.encodeList<
+      map['messageGroups'] = pulumi.Input.encodeList<
           V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroup,
           Map<String, dynamic>>(messageGroupsValue, (value) => value.toMap());
     }
@@ -41,7 +41,7 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResp
           map['allowInterrupt'] == null ? null : map['allowInterrupt'] as bool,
       messageGroups: map['messageGroups'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroup>(
               map['messageGroups'],
               (value) =>

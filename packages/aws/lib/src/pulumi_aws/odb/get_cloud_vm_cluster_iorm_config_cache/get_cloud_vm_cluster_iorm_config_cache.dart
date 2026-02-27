@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_vm_cluster_iorm_config_cache_db_plan/get_cloud_vm_cluster_iorm_config_cache_db_plan.dart';
 
 class GetCloudVmClusterIormConfigCache {
@@ -18,7 +18,8 @@ class GetCloudVmClusterIormConfigCache {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dbPlans'] = Input.encodeList<GetCloudVmClusterIormConfigCacheDbPlan,
+    map['dbPlans'] = pulumi.Input.encodeList<
+        GetCloudVmClusterIormConfigCacheDbPlan,
         Map<String, dynamic>>(dbPlans, (value) => value.toMap());
     map['lifecycleDetails'] = lifecycleDetails;
     map['lifecycleState'] = lifecycleState;
@@ -28,7 +29,7 @@ class GetCloudVmClusterIormConfigCache {
 
   factory GetCloudVmClusterIormConfigCache.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterIormConfigCache(
-      dbPlans: Input.decodeList<GetCloudVmClusterIormConfigCacheDbPlan>(
+      dbPlans: pulumi.Input.decodeList<GetCloudVmClusterIormConfigCacheDbPlan>(
           map['dbPlans'],
           (value) => GetCloudVmClusterIormConfigCacheDbPlan.fromMap(
               (value as Map).cast<String, dynamic>())),

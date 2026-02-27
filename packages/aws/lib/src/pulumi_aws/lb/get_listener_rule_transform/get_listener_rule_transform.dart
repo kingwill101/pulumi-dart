@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_listener_rule_transform_host_header_rewrite_config/get_listener_rule_transform_host_header_rewrite_config.dart';
 import '../get_listener_rule_transform_url_rewrite_config/get_listener_rule_transform_url_rewrite_config.dart';
 
@@ -25,7 +25,7 @@ class GetListenerRuleTransform {
     final map = <String, dynamic>{};
     final hostHeaderRewriteConfigsValue = hostHeaderRewriteConfigs;
     if (hostHeaderRewriteConfigsValue != null) {
-      map['hostHeaderRewriteConfigs'] = Input.encodeList<
+      map['hostHeaderRewriteConfigs'] = pulumi.Input.encodeList<
               GetListenerRuleTransformHostHeaderRewriteConfig,
               Map<String, dynamic>>(
           hostHeaderRewriteConfigsValue, (value) => value.toMap());
@@ -33,7 +33,7 @@ class GetListenerRuleTransform {
     map['type'] = type;
     final urlRewriteConfigsValue = urlRewriteConfigs;
     if (urlRewriteConfigsValue != null) {
-      map['urlRewriteConfigs'] = Input.encodeList<
+      map['urlRewriteConfigs'] = pulumi.Input.encodeList<
               GetListenerRuleTransformUrlRewriteConfig, Map<String, dynamic>>(
           urlRewriteConfigsValue, (value) => value.toMap());
     }
@@ -44,7 +44,8 @@ class GetListenerRuleTransform {
     return GetListenerRuleTransform(
       hostHeaderRewriteConfigs: map['hostHeaderRewriteConfigs'] == null
           ? null
-          : Input.decodeList<GetListenerRuleTransformHostHeaderRewriteConfig>(
+          : pulumi.Input.decodeList<
+                  GetListenerRuleTransformHostHeaderRewriteConfig>(
               map['hostHeaderRewriteConfigs'],
               (value) =>
                   GetListenerRuleTransformHostHeaderRewriteConfig.fromMap(
@@ -52,7 +53,7 @@ class GetListenerRuleTransform {
       type: map['type'] as String,
       urlRewriteConfigs: map['urlRewriteConfigs'] == null
           ? null
-          : Input.decodeList<GetListenerRuleTransformUrlRewriteConfig>(
+          : pulumi.Input.decodeList<GetListenerRuleTransformUrlRewriteConfig>(
               map['urlRewriteConfigs'],
               (value) => GetListenerRuleTransformUrlRewriteConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

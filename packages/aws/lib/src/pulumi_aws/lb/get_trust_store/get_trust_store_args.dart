@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTrustStore.
 class GetTrustStoreArgs {
   /// Full ARN of the trust store.
-  final Input<String>? arn;
+  final pulumi.Input<String>? arn;
 
   /// Unique name of the trust store.
   ///
   /// > **NOTE:** When both `arn` and `name` are specified, `arn` takes precedence.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetTrustStoreArgs({
     this.arn,
@@ -40,9 +40,9 @@ class GetTrustStoreArgs {
 
   factory GetTrustStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetTrustStoreArgs(
-      arn: Input.asOptionalInput<String>(map['arn']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      arn: pulumi.Input.asOptionalInput<String>(map['arn']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

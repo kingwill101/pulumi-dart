@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../sdkvoice_sip_rule_target_application/sdkvoice_sip_rule_target_application.dart';
 import 'sdkvoice_sip_rule_args.dart';
 
@@ -17,36 +17,37 @@ import 'sdkvoice_sip_rule_args.dart';
 /// ```sh
 /// $ pulumi import aws:chime/sdkvoiceSipRule:SdkvoiceSipRule example abcdef123456
 /// ```
-class SdkvoiceSipRule extends CustomResource {
+class SdkvoiceSipRule extends pulumi.CustomResource {
   /// Enables or disables a rule. You must disable rules before you can delete them.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// The name of the SIP rule.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// List of SIP media applications with priority and AWS Region. Only one SIP application per AWS Region can be used. See `target_applications`.
-  late final Output<List<SdkvoiceSipRuleTargetApplication>> targetApplications;
+  late final pulumi.Output<List<SdkvoiceSipRuleTargetApplication>>
+      targetApplications;
 
   /// The type of trigger assigned to the SIP rule in `trigger_value`. Valid values are `RequestUriHostname` or `ToPhoneNumber`.
-  late final Output<String> triggerType;
+  late final pulumi.Output<String> triggerType;
 
   /// If `trigger_type` is `RequestUriHostname`, the value can be the outbound host name of an Amazon Chime Voice Connector. If `trigger_type` is `ToPhoneNumber`, the value can be a customer-owned phone number in the E164 format. The Sip Media Application specified in the Sip Rule is triggered if the request URI in an incoming SIP request matches the `RequestUriHostname`, or if the "To" header in the incoming SIP request matches the `ToPhoneNumber` value.
   ///
   /// The following arguments are optional:
-  late final Output<String> triggerValue;
+  late final pulumi.Output<String> triggerValue;
 
   SdkvoiceSipRule(
     String name, {
     SdkvoiceSipRuleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:chime/sdkvoiceSipRule:SdkvoiceSipRule',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.disabled = registerOutput<bool?>('disabled');
     this.name = registerOutput<String>('name');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_secret_versions_version/get_secret_versions_version.dart';
 
 /// Result data returned by getSecretVersions.
@@ -40,7 +40,7 @@ class GetSecretVersionsResult {
     map['region'] = region;
     map['secretId'] = secretId;
     map['versions'] =
-        Input.encodeList<GetSecretVersionsVersion, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetSecretVersionsVersion, Map<String, dynamic>>(
             versions, (value) => value.toMap());
     return map;
   }
@@ -55,7 +55,7 @@ class GetSecretVersionsResult {
       name: map['name'] as String,
       region: map['region'] as String,
       secretId: map['secretId'] as String,
-      versions: Input.decodeList<GetSecretVersionsVersion>(
+      versions: pulumi.Input.decodeList<GetSecretVersionsVersion>(
           map['versions'],
           (value) => GetSecretVersionsVersion.fromMap(
               (value as Map).cast<String, dynamic>())),

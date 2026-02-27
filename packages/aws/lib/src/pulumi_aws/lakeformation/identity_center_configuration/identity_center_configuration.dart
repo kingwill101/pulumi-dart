@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_center_configuration_args.dart';
 
 /// Manages an AWS Lake Formation Identity Center Configuration.
@@ -16,34 +16,34 @@ import 'identity_center_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:lakeformation/identityCenterConfiguration:IdentityCenterConfiguration example 123456789012
 /// ```
-class IdentityCenterConfiguration extends CustomResource {
+class IdentityCenterConfiguration extends pulumi.CustomResource {
   /// ARN of the Lake Formation applicated integrated with IAM Identity Center.
-  late final Output<String> applicationArn;
+  late final pulumi.Output<String> applicationArn;
 
   /// Identifier for the Data Catalog.
   /// By default, the account ID.
-  late final Output<String> catalogId;
+  late final pulumi.Output<String> catalogId;
 
   /// ARN of the IAM Identity Center Instance to associate.
   ///
   /// The following arguments are optional:
-  late final Output<String> instanceArn;
+  late final pulumi.Output<String> instanceArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the Resource Access Manager (RAM) resource share.
-  late final Output<String> resourceShare;
+  late final pulumi.Output<String> resourceShare;
 
   IdentityCenterConfiguration(
     String name, {
     IdentityCenterConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lakeformation/identityCenterConfiguration:IdentityCenterConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.applicationArn = registerOutput<String>('applicationArn');
     this.catalogId = registerOutput<String>('catalogId');

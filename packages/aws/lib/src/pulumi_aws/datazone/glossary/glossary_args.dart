@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Glossary.
 class GlossaryArgs {
   /// Description of the glossary. Must have a length between 0 and 4096.
-  final Input<String>? description;
-  final Input<String> domainIdentifier;
+  final pulumi.Input<String>? description;
+  final pulumi.Input<String> domainIdentifier;
 
   /// Name of the glossary. Must have length between 1 and 256.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// ID of the project that owns business glossary. Must follow regex of ^[a-zA-Z0-9_-]{1,36}$.
   ///
   /// The following arguments are optional:
-  final Input<String> owningProjectIdentifier;
+  final pulumi.Input<String> owningProjectIdentifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Status of business glossary. Valid values are DISABLED and ENABLED.
-  final Input<String>? status;
+  final pulumi.Input<String>? status;
 
   GlossaryArgs({
     this.description,
@@ -56,13 +56,13 @@ class GlossaryArgs {
 
   factory GlossaryArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      domainIdentifier: Input.asInput<String>(map['domainIdentifier']),
-      name: Input.asOptionalInput<String>(map['name']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      domainIdentifier: pulumi.Input.asInput<String>(map['domainIdentifier']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       owningProjectIdentifier:
-          Input.asInput<String>(map['owningProjectIdentifier']),
-      region: Input.asOptionalInput<String>(map['region']),
-      status: Input.asOptionalInput<String>(map['status']),
+          pulumi.Input.asInput<String>(map['owningProjectIdentifier']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      status: pulumi.Input.asOptionalInput<String>(map['status']),
     );
   }
 }

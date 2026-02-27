@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_multicast_domain_association/get_multicast_domain_association.dart';
 import '../get_multicast_domain_filter/get_multicast_domain_filter.dart';
 import '../get_multicast_domain_member/get_multicast_domain_member.dart';
@@ -70,25 +70,23 @@ class GetMulticastDomainResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['associations'] =
-        Input.encodeList<GetMulticastDomainAssociation, Map<String, dynamic>>(
-            associations, (value) => value.toMap());
+    map['associations'] = pulumi.Input.encodeList<GetMulticastDomainAssociation,
+        Map<String, dynamic>>(associations, (value) => value.toMap());
     map['autoAcceptSharedAssociations'] = autoAcceptSharedAssociations;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetMulticastDomainFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetMulticastDomainFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['igmpv2Support'] = igmpv2Support;
     map['members'] =
-        Input.encodeList<GetMulticastDomainMember, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetMulticastDomainMember, Map<String, dynamic>>(
             members, (value) => value.toMap());
     map['ownerId'] = ownerId;
     map['region'] = region;
     map['sources'] =
-        Input.encodeList<GetMulticastDomainSource, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetMulticastDomainSource, Map<String, dynamic>>(
             sources, (value) => value.toMap());
     map['state'] = state;
     map['staticSourcesSupport'] = staticSourcesSupport;
@@ -102,7 +100,7 @@ class GetMulticastDomainResult {
   factory GetMulticastDomainResult.fromMap(Map<String, dynamic> map) {
     return GetMulticastDomainResult(
       arn: map['arn'] as String,
-      associations: Input.decodeList<GetMulticastDomainAssociation>(
+      associations: pulumi.Input.decodeList<GetMulticastDomainAssociation>(
           map['associations'],
           (value) => GetMulticastDomainAssociation.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -110,19 +108,19 @@ class GetMulticastDomainResult {
           map['autoAcceptSharedAssociations'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetMulticastDomainFilter>(
+          : pulumi.Input.decodeList<GetMulticastDomainFilter>(
               map['filters'],
               (value) => GetMulticastDomainFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       igmpv2Support: map['igmpv2Support'] as String,
-      members: Input.decodeList<GetMulticastDomainMember>(
+      members: pulumi.Input.decodeList<GetMulticastDomainMember>(
           map['members'],
           (value) => GetMulticastDomainMember.fromMap(
               (value as Map).cast<String, dynamic>())),
       ownerId: map['ownerId'] as String,
       region: map['region'] as String,
-      sources: Input.decodeList<GetMulticastDomainSource>(
+      sources: pulumi.Input.decodeList<GetMulticastDomainSource>(
           map['sources'],
           (value) => GetMulticastDomainSource.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../node_group_node_repair_config_node_repair_config_override/node_group_node_repair_config_node_repair_config_override.dart';
 
 class NodeGroupNodeRepairConfig {
@@ -61,7 +61,7 @@ class NodeGroupNodeRepairConfig {
     }
     final nodeRepairConfigOverridesValue = nodeRepairConfigOverrides;
     if (nodeRepairConfigOverridesValue != null) {
-      map['nodeRepairConfigOverrides'] = Input.encodeList<
+      map['nodeRepairConfigOverrides'] = pulumi.Input.encodeList<
               NodeGroupNodeRepairConfigNodeRepairConfigOverride,
               Map<String, dynamic>>(
           nodeRepairConfigOverridesValue, (value) => value.toMap());
@@ -90,7 +90,8 @@ class NodeGroupNodeRepairConfig {
               : map['maxUnhealthyNodeThresholdPercentage'] as int,
       nodeRepairConfigOverrides: map['nodeRepairConfigOverrides'] == null
           ? null
-          : Input.decodeList<NodeGroupNodeRepairConfigNodeRepairConfigOverride>(
+          : pulumi.Input.decodeList<
+                  NodeGroupNodeRepairConfigNodeRepairConfigOverride>(
               map['nodeRepairConfigOverrides'],
               (value) =>
                   NodeGroupNodeRepairConfigNodeRepairConfigOverride.fromMap(

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../sdkvoice_voice_profile_domain_server_side_encryption_configuration/sdkvoice_voice_profile_domain_server_side_encryption_configuration.dart';
 import 'sdkvoice_voice_profile_domain_args.dart';
 
@@ -17,34 +17,35 @@ import 'sdkvoice_voice_profile_domain_args.dart';
 /// ```sh
 /// $ pulumi import aws:chime/sdkvoiceVoiceProfileDomain:SdkvoiceVoiceProfileDomain example abcdef123456
 /// ```
-class SdkvoiceVoiceProfileDomain extends CustomResource {
+class SdkvoiceVoiceProfileDomain extends pulumi.CustomResource {
   /// ARN of the Voice Profile Domain.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Description of Voice Profile Domain.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Name of Voice Profile Domain.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Configuration for server side encryption.
-  late final Output<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>
+  late final pulumi
+      .Output<SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration>
       serverSideEncryptionConfiguration;
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   SdkvoiceVoiceProfileDomain(
     String name, {
     SdkvoiceVoiceProfileDomainArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:chime/sdkvoiceVoiceProfileDomain:SdkvoiceVoiceProfileDomain',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');

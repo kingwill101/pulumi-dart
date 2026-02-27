@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipeline_definition_parameter_object_attribute/pipeline_definition_parameter_object_attribute.dart';
 
 class PipelineDefinitionParameterObject {
@@ -19,7 +19,7 @@ class PipelineDefinitionParameterObject {
     final map = <String, dynamic>{};
     final attributesValue = attributes;
     if (attributesValue != null) {
-      map['attributes'] = Input.encodeList<
+      map['attributes'] = pulumi.Input.encodeList<
           PipelineDefinitionParameterObjectAttribute,
           Map<String, dynamic>>(attributesValue, (value) => value.toMap());
     }
@@ -31,7 +31,7 @@ class PipelineDefinitionParameterObject {
     return PipelineDefinitionParameterObject(
       attributes: map['attributes'] == null
           ? null
-          : Input.decodeList<PipelineDefinitionParameterObjectAttribute>(
+          : pulumi.Input.decodeList<PipelineDefinitionParameterObjectAttribute>(
               map['attributes'],
               (value) => PipelineDefinitionParameterObjectAttribute.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cloud_exadata_infrastructure_maintenance_window_days_of_week/cloud_exadata_infrastructure_maintenance_window_days_of_week.dart';
 import '../cloud_exadata_infrastructure_maintenance_window_month/cloud_exadata_infrastructure_maintenance_window_month.dart';
 
@@ -50,7 +50,7 @@ class CloudExadataInfrastructureMaintenanceWindow {
     map['customActionTimeoutInMins'] = customActionTimeoutInMins;
     final daysOfWeeksValue = daysOfWeeks;
     if (daysOfWeeksValue != null) {
-      map['daysOfWeeks'] = Input.encodeList<
+      map['daysOfWeeks'] = pulumi.Input.encodeList<
           CloudExadataInfrastructureMaintenanceWindowDaysOfWeek,
           Map<String, dynamic>>(daysOfWeeksValue, (value) => value.toMap());
     }
@@ -65,7 +65,7 @@ class CloudExadataInfrastructureMaintenanceWindow {
     }
     final monthsValue = months;
     if (monthsValue != null) {
-      map['months'] = Input.encodeList<
+      map['months'] = pulumi.Input.encodeList<
           CloudExadataInfrastructureMaintenanceWindowMonth,
           Map<String, dynamic>>(monthsValue, (value) => value.toMap());
     }
@@ -84,7 +84,7 @@ class CloudExadataInfrastructureMaintenanceWindow {
       customActionTimeoutInMins: map['customActionTimeoutInMins'] as int,
       daysOfWeeks: map['daysOfWeeks'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CloudExadataInfrastructureMaintenanceWindowDaysOfWeek>(
               map['daysOfWeeks'],
               (value) =>
@@ -98,7 +98,8 @@ class CloudExadataInfrastructureMaintenanceWindow {
           map['leadTimeInWeeks'] == null ? null : map['leadTimeInWeeks'] as int,
       months: map['months'] == null
           ? null
-          : Input.decodeList<CloudExadataInfrastructureMaintenanceWindowMonth>(
+          : pulumi.Input.decodeList<
+                  CloudExadataInfrastructureMaintenanceWindowMonth>(
               map['months'],
               (value) =>
                   CloudExadataInfrastructureMaintenanceWindowMonth.fromMap(

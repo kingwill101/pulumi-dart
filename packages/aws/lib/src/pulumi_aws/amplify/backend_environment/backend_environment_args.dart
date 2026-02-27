@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for BackendEnvironment.
 class BackendEnvironmentArgs {
   /// Unique ID for an Amplify app.
-  final Input<String> appId;
+  final pulumi.Input<String> appId;
 
   /// Name of deployment artifacts.
-  final Input<String>? deploymentArtifacts;
+  final pulumi.Input<String>? deploymentArtifacts;
 
   /// Name for the backend environment.
-  final Input<String> environmentName;
+  final pulumi.Input<String> environmentName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// AWS CloudFormation stack name of a backend environment.
-  final Input<String>? stackName;
+  final pulumi.Input<String>? stackName;
 
   BackendEnvironmentArgs({
     required this.appId,
@@ -48,12 +48,12 @@ class BackendEnvironmentArgs {
 
   factory BackendEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return BackendEnvironmentArgs(
-      appId: Input.asInput<String>(map['appId']),
+      appId: pulumi.Input.asInput<String>(map['appId']),
       deploymentArtifacts:
-          Input.asOptionalInput<String>(map['deploymentArtifacts']),
-      environmentName: Input.asInput<String>(map['environmentName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      stackName: Input.asOptionalInput<String>(map['stackName']),
+          pulumi.Input.asOptionalInput<String>(map['deploymentArtifacts']),
+      environmentName: pulumi.Input.asInput<String>(map['environmentName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      stackName: pulumi.Input.asOptionalInput<String>(map['stackName']),
     );
   }
 }

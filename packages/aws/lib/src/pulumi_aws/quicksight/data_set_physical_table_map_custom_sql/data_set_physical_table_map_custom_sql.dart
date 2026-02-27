@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_set_physical_table_map_custom_sql_column/data_set_physical_table_map_custom_sql_column.dart';
 
 class DataSetPhysicalTableMapCustomSql {
@@ -27,7 +27,8 @@ class DataSetPhysicalTableMapCustomSql {
     final map = <String, dynamic>{};
     final columnsValue = columns;
     if (columnsValue != null) {
-      map['columns'] = Input.encodeList<DataSetPhysicalTableMapCustomSqlColumn,
+      map['columns'] = pulumi.Input.encodeList<
+          DataSetPhysicalTableMapCustomSqlColumn,
           Map<String, dynamic>>(columnsValue, (value) => value.toMap());
     }
     map['dataSourceArn'] = dataSourceArn;
@@ -40,7 +41,7 @@ class DataSetPhysicalTableMapCustomSql {
     return DataSetPhysicalTableMapCustomSql(
       columns: map['columns'] == null
           ? null
-          : Input.decodeList<DataSetPhysicalTableMapCustomSqlColumn>(
+          : pulumi.Input.decodeList<DataSetPhysicalTableMapCustomSqlColumn>(
               map['columns'],
               (value) => DataSetPhysicalTableMapCustomSqlColumn.fromMap(
                   (value as Map).cast<String, dynamic>())),

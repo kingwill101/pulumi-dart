@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../extension_action_point_action/extension_action_point_action.dart';
 
 class ExtensionActionPoint {
@@ -17,16 +17,15 @@ class ExtensionActionPoint {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['actions'] =
-        Input.encodeList<ExtensionActionPointAction, Map<String, dynamic>>(
-            actions, (value) => value.toMap());
+    map['actions'] = pulumi.Input.encodeList<ExtensionActionPointAction,
+        Map<String, dynamic>>(actions, (value) => value.toMap());
     map['point'] = point;
     return map;
   }
 
   factory ExtensionActionPoint.fromMap(Map<String, dynamic> map) {
     return ExtensionActionPoint(
-      actions: Input.decodeList<ExtensionActionPointAction>(
+      actions: pulumi.Input.decodeList<ExtensionActionPointAction>(
           map['actions'],
           (value) => ExtensionActionPointAction.fromMap(
               (value as Map).cast<String, dynamic>())),

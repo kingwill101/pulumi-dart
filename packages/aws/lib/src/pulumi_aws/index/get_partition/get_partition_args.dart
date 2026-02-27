@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPartition.
 class GetPartitionArgs {
   /// Identifier of the current partition (e.g., `aws` in AWS Commercial, `aws-cn` in AWS China).
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   GetPartitionArgs({
     this.id,
@@ -22,7 +22,7 @@ class GetPartitionArgs {
 
   factory GetPartitionArgs.fromMap(Map<String, dynamic> map) {
     return GetPartitionArgs(
-      id: Input.asOptionalInput<String>(map['id']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
     );
   }
 }

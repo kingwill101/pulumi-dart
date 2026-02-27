@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_models_model_summary/get_models_model_summary.dart';
 
 /// Result data returned by getModels.
@@ -47,7 +47,7 @@ class GetModelsResult {
     }
     map['id'] = id;
     map['modelSummaries'] =
-        Input.encodeList<GetModelsModelSummary, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetModelsModelSummary, Map<String, dynamic>>(
             modelSummaries, (value) => value.toMap());
     map['region'] = region;
     return map;
@@ -67,7 +67,7 @@ class GetModelsResult {
       byProvider:
           map['byProvider'] == null ? null : map['byProvider'] as String,
       id: map['id'] as String,
-      modelSummaries: Input.decodeList<GetModelsModelSummary>(
+      modelSummaries: pulumi.Input.decodeList<GetModelsModelSummary>(
           map['modelSummaries'],
           (value) => GetModelsModelSummary.fromMap(
               (value as Map).cast<String, dynamic>())),

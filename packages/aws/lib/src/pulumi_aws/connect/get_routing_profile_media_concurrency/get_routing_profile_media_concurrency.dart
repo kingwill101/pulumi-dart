@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_routing_profile_media_concurrency_cross_channel_behavior/get_routing_profile_media_concurrency_cross_channel_behavior.dart';
 
 class GetRoutingProfileMediaConcurrency {
@@ -24,7 +24,7 @@ class GetRoutingProfileMediaConcurrency {
     final map = <String, dynamic>{};
     map['channel'] = channel;
     map['concurrency'] = concurrency;
-    map['crossChannelBehaviors'] = Input.encodeList<
+    map['crossChannelBehaviors'] = pulumi.Input.encodeList<
         GetRoutingProfileMediaConcurrencyCrossChannelBehavior,
         Map<String, dynamic>>(crossChannelBehaviors, (value) => value.toMap());
     return map;
@@ -34,7 +34,7 @@ class GetRoutingProfileMediaConcurrency {
     return GetRoutingProfileMediaConcurrency(
       channel: map['channel'] as String,
       concurrency: map['concurrency'] as int,
-      crossChannelBehaviors: Input.decodeList<
+      crossChannelBehaviors: pulumi.Input.decodeList<
               GetRoutingProfileMediaConcurrencyCrossChannelBehavior>(
           map['crossChannelBehaviors'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_detector_feature_additional_configuration/get_detector_feature_additional_configuration.dart';
 
 class GetDetectorFeature {
@@ -22,7 +22,7 @@ class GetDetectorFeature {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['additionalConfigurations'] = Input.encodeList<
+    map['additionalConfigurations'] = pulumi.Input.encodeList<
             GetDetectorFeatureAdditionalConfiguration, Map<String, dynamic>>(
         additionalConfigurations, (value) => value.toMap());
     map['name'] = name;
@@ -33,7 +33,7 @@ class GetDetectorFeature {
   factory GetDetectorFeature.fromMap(Map<String, dynamic> map) {
     return GetDetectorFeature(
       additionalConfigurations:
-          Input.decodeList<GetDetectorFeatureAdditionalConfiguration>(
+          pulumi.Input.decodeList<GetDetectorFeatureAdditionalConfiguration>(
               map['additionalConfigurations'],
               (value) => GetDetectorFeatureAdditionalConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),

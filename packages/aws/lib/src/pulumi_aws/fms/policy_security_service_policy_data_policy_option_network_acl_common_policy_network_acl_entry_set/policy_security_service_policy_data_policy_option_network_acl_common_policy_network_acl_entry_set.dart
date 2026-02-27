@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set_first_entry/policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set_first_entry.dart';
 import '../policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set_last_entry/policy_security_service_policy_data_policy_option_network_acl_common_policy_network_acl_entry_set_last_entry.dart';
 
@@ -32,7 +32,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
     final map = <String, dynamic>{};
     final firstEntriesValue = firstEntries;
     if (firstEntriesValue != null) {
-      map['firstEntries'] = Input.encodeList<
+      map['firstEntries'] = pulumi.Input.encodeList<
           PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry,
           Map<String, dynamic>>(firstEntriesValue, (value) => value.toMap());
     }
@@ -40,7 +40,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
     map['forceRemediateForLastEntries'] = forceRemediateForLastEntries;
     final lastEntriesValue = lastEntries;
     if (lastEntriesValue != null) {
-      map['lastEntries'] = Input.encodeList<
+      map['lastEntries'] = pulumi.Input.encodeList<
           PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry,
           Map<String, dynamic>>(lastEntriesValue, (value) => value.toMap());
     }
@@ -52,7 +52,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
     return PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet(
       firstEntries: map['firstEntries'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry>(
               map['firstEntries'],
               (value) =>
@@ -63,7 +63,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
       forceRemediateForLastEntries: map['forceRemediateForLastEntries'] as bool,
       lastEntries: map['lastEntries'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry>(
               map['lastEntries'],
               (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'organization_configuration_args.dart';
 
 /// Manages the Detective Organization Configuration in the current AWS Region. The AWS account utilizing this resource must have been assigned as a delegated Organization administrator account, e.g., via the `aws.detective.OrganizationAdminAccount` resource. More information about Organizations support in Detective can be found in the [Detective User Guide](https://docs.aws.amazon.com/detective/latest/adminguide/accounts-orgs-transition.html).
@@ -16,25 +16,25 @@ import 'organization_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:detective/organizationConfiguration:OrganizationConfiguration example arn:aws:detective:us-east-1:123456789012:graph:00b00fd5aecc0ab60a708659477e9617
 /// ```
-class OrganizationConfiguration extends CustomResource {
+class OrganizationConfiguration extends pulumi.CustomResource {
   /// When this setting is enabled, all new accounts that are created in, or added to, the organization are added as a member accounts of the organization’s Detective delegated administrator and Detective is enabled in that AWS Region.
-  late final Output<bool> autoEnable;
+  late final pulumi.Output<bool> autoEnable;
 
   /// ARN of the behavior graph.
-  late final Output<String> graphArn;
+  late final pulumi.Output<String> graphArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   OrganizationConfiguration(
     String name, {
     OrganizationConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:detective/organizationConfiguration:OrganizationConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.autoEnable = registerOutput<bool>('autoEnable');
     this.graphArn = registerOutput<String>('graphArn');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enabler_args.dart';
 
 /// Resource for enabling Amazon Inspector resource scans.
@@ -22,28 +22,28 @@ import 'enabler_args.dart';
 /// ```sh
 /// $ pulumi import aws:inspector2/enabler:Enabler example 123456789012:234567890123-EC2:ECR
 /// ```
-class Enabler extends CustomResource {
+class Enabler extends pulumi.CustomResource {
   /// Set of account IDs.
   /// Can contain one of: the Organization's Administrator Account, or one or more Member Accounts.
-  late final Output<List<String>> accountIds;
+  late final pulumi.Output<List<String>> accountIds;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Type of resources to scan.
   /// Valid values are `EC2`, `ECR`, `LAMBDA`, `LAMBDA_CODE` and `CODE_REPOSITORY`.
   /// At least one item is required.
-  late final Output<List<String>> resourceTypes;
+  late final pulumi.Output<List<String>> resourceTypes;
 
   Enabler(
     String name, {
     EnablerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:inspector2/enabler:Enabler',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountIds = registerOutput<List<String>>('accountIds');
     this.region = registerOutput<String>('region');

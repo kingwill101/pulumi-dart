@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_connect_peer_filter/get_connect_peer_filter.dart';
 
 /// Arguments for getConnectPeer.
 class GetConnectPeerArgs {
   /// One or more configuration blocks containing name-values filters. Detailed below.
-  final Input<List<GetConnectPeerFilter>>? filters;
+  final pulumi.Input<List<GetConnectPeerFilter>>? filters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value tags for the EC2 Transit Gateway Connect Peer
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Identifier of the EC2 Transit Gateway Connect Peer.
-  final Input<String>? transitGatewayConnectPeerId;
+  final pulumi.Input<String>? transitGatewayConnectPeerId;
 
   GetConnectPeerArgs({
     this.filters,
@@ -28,12 +28,11 @@ class GetConnectPeerArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetConnectPeerFilter>,
-              List<Map<String, dynamic>>>(
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
+              List<GetConnectPeerFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetConnectPeerFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetConnectPeerFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final regionValue = region;
     if (regionValue != null) {
@@ -52,12 +51,12 @@ class GetConnectPeerArgs {
 
   factory GetConnectPeerArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectPeerArgs(
-      filters:
-          Input.asOptionalInput<List<GetConnectPeerFilter>>(map['filters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      transitGatewayConnectPeerId:
-          Input.asOptionalInput<String>(map['transitGatewayConnectPeerId']),
+      filters: pulumi.Input.asOptionalInput<List<GetConnectPeerFilter>>(
+          map['filters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      transitGatewayConnectPeerId: pulumi.Input.asOptionalInput<String>(
+          map['transitGatewayConnectPeerId']),
     );
   }
 }

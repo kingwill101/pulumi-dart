@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_firewall_policy_firewall_policy_stateful_rule_group_reference_override/get_firewall_policy_firewall_policy_stateful_rule_group_reference_override.dart';
 
 class GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference {
@@ -20,7 +20,7 @@ class GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['deepThreatInspection'] = deepThreatInspection;
-    map['overrides'] = Input.encodeList<
+    map['overrides'] = pulumi.Input.encodeList<
         GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride,
         Map<String, dynamic>>(overrides, (value) => value.toMap());
     map['priority'] = priority;
@@ -32,7 +32,7 @@ class GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference {
       Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference(
       deepThreatInspection: map['deepThreatInspection'] as String,
-      overrides: Input.decodeList<
+      overrides: pulumi.Input.decodeList<
               GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride>(
           map['overrides'],
           (value) =>

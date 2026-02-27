@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resource_server_scope/resource_server_scope.dart';
 
 /// The set of arguments for ResourceServer.
 class ResourceServerArgs {
   /// An identifier for the resource server.
-  final Input<String> identifier;
+  final pulumi.Input<String> identifier;
 
   /// A name for the resource server.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A list of Authorization Scope.
-  final Input<List<ResourceServerScope>>? scopes;
+  final pulumi.Input<List<ResourceServerScope>>? scopes;
 
   /// User pool the client belongs to.
-  final Input<String> userPoolId;
+  final pulumi.Input<String> userPoolId;
 
   ResourceServerArgs({
     required this.identifier,
@@ -41,12 +41,11 @@ class ResourceServerArgs {
     }
     final scopesValue = scopes;
     if (scopesValue != null) {
-      map['scopes'] = Input.mapOptionalInputValue<List<ResourceServerScope>,
-              List<Map<String, dynamic>>>(
+      map['scopes'] = pulumi.Input.mapOptionalInputValue<
+              List<ResourceServerScope>, List<Map<String, dynamic>>>(
           scopesValue,
-          (value) =>
-              Input.encodeList<ResourceServerScope, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<ResourceServerScope,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['userPoolId'] = userPoolId;
     return map;
@@ -54,11 +53,12 @@ class ResourceServerArgs {
 
   factory ResourceServerArgs.fromMap(Map<String, dynamic> map) {
     return ResourceServerArgs(
-      identifier: Input.asInput<String>(map['identifier']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      scopes: Input.asOptionalInput<List<ResourceServerScope>>(map['scopes']),
-      userPoolId: Input.asInput<String>(map['userPoolId']),
+      identifier: pulumi.Input.asInput<String>(map['identifier']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      scopes: pulumi.Input.asOptionalInput<List<ResourceServerScope>>(
+          map['scopes']),
+      userPoolId: pulumi.Input.asInput<String>(map['userPoolId']),
     );
   }
 }

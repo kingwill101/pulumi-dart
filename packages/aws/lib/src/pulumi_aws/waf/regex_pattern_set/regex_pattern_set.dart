@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'regex_pattern_set_args.dart';
 
 /// Provides a WAF Regex Pattern Set Resource
@@ -14,25 +14,25 @@ import 'regex_pattern_set_args.dart';
 /// ```sh
 /// $ pulumi import aws:waf/regexPatternSet:RegexPatternSet example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
 /// ```
-class RegexPatternSet extends CustomResource {
+class RegexPatternSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN)
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The name or description of the Regex Pattern Set.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
-  late final Output<List<String>?> regexPatternStrings;
+  late final pulumi.Output<List<String>?> regexPatternStrings;
 
   RegexPatternSet(
     String name, {
     RegexPatternSetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:waf/regexPatternSet:RegexPatternSet',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for CostAllocationTag.
 class CostAllocationTagArgs {
   /// The status of a cost allocation tag. Valid values are `Active` and `Inactive`.
-  final Input<String> status;
+  final pulumi.Input<String> status;
 
   /// The key for the cost allocation tag.
-  final Input<String> tagKey;
+  final pulumi.Input<String> tagKey;
 
   CostAllocationTagArgs({
     required this.status,
@@ -24,8 +24,8 @@ class CostAllocationTagArgs {
 
   factory CostAllocationTagArgs.fromMap(Map<String, dynamic> map) {
     return CostAllocationTagArgs(
-      status: Input.asInput<String>(map['status']),
-      tagKey: Input.asInput<String>(map['tagKey']),
+      status: pulumi.Input.asInput<String>(map['status']),
+      tagKey: pulumi.Input.asInput<String>(map['tagKey']),
     );
   }
 }

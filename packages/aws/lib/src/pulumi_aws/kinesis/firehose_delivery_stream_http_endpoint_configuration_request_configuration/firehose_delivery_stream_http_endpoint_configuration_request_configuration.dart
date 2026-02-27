@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firehose_delivery_stream_http_endpoint_configuration_request_configuration_common_attribute/firehose_delivery_stream_http_endpoint_configuration_request_configuration_common_attribute.dart';
 
 class FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration {
@@ -21,7 +21,7 @@ class FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration {
     final map = <String, dynamic>{};
     final commonAttributesValue = commonAttributes;
     if (commonAttributesValue != null) {
-      map['commonAttributes'] = Input.encodeList<
+      map['commonAttributes'] = pulumi.Input.encodeList<
           FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute,
           Map<String,
               dynamic>>(commonAttributesValue, (value) => value.toMap());
@@ -38,7 +38,7 @@ class FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration {
     return FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration(
       commonAttributes: map['commonAttributes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute>(
               map['commonAttributes'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../document_classifier_input_data_config_augmented_manifest/document_classifier_input_data_config_augmented_manifest.dart';
 
 class DocumentClassifierInputDataConfig {
@@ -36,7 +36,7 @@ class DocumentClassifierInputDataConfig {
     final map = <String, dynamic>{};
     final augmentedManifestsValue = augmentedManifests;
     if (augmentedManifestsValue != null) {
-      map['augmentedManifests'] = Input.encodeList<
+      map['augmentedManifests'] = pulumi.Input.encodeList<
               DocumentClassifierInputDataConfigAugmentedManifest,
               Map<String, dynamic>>(
           augmentedManifestsValue, (value) => value.toMap());
@@ -64,7 +64,7 @@ class DocumentClassifierInputDataConfig {
     return DocumentClassifierInputDataConfig(
       augmentedManifests: map['augmentedManifests'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DocumentClassifierInputDataConfigAugmentedManifest>(
               map['augmentedManifests'],
               (value) =>

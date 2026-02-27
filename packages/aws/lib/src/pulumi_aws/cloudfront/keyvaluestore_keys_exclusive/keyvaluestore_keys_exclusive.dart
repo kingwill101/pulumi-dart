@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../keyvaluestore_keys_exclusive_resource_key_value_pair/keyvaluestore_keys_exclusive_resource_key_value_pair.dart';
 import 'keyvaluestore_keys_exclusive_args.dart';
 
@@ -29,32 +29,33 @@ import 'keyvaluestore_keys_exclusive_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive example arn:aws:cloudfront::111111111111:key-value-store/8562g61f-caba-2845-9d99-b97diwae5d3c
 /// ```
-class KeyvaluestoreKeysExclusive extends CustomResource {
+class KeyvaluestoreKeysExclusive extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the Key Value Store.
   ///
   /// The following arguments are optional:
-  late final Output<String> keyValueStoreArn;
+  late final pulumi.Output<String> keyValueStoreArn;
 
   /// Maximum resource key values pairs that will update in a single API request. AWS has a default quota of 50 keys or a 3 MB payload, whichever is reached first. Defaults to `50`.
-  late final Output<int> maxBatchSize;
+  late final pulumi.Output<int> maxBatchSize;
 
   /// A list of all resource key value pairs associated with the KeyValueStore.
   /// See `resource_key_value_pair` below.
-  late final Output<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>?>
+  late final pulumi
+      .Output<List<KeyvaluestoreKeysExclusiveResourceKeyValuePair>?>
       resourceKeyValuePairs;
 
   /// Total size of the Key Value Store in bytes.
-  late final Output<int> totalSizeInBytes;
+  late final pulumi.Output<int> totalSizeInBytes;
 
   KeyvaluestoreKeysExclusive(
     String name, {
     KeyvaluestoreKeysExclusiveArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/keyvaluestoreKeysExclusive:KeyvaluestoreKeysExclusive',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.keyValueStoreArn = registerOutput<String>('keyValueStoreArn');
     this.maxBatchSize = registerOutput<int>('maxBatchSize');

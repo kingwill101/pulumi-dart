@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vpc_block_public_access_options_timeouts/vpc_block_public_access_options_timeouts.dart';
 import 'vpc_block_public_access_options_args.dart';
 
@@ -17,29 +17,29 @@ import 'vpc_block_public_access_options_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/vpcBlockPublicAccessOptions:VpcBlockPublicAccessOptions example us-east-1
 /// ```
-class VpcBlockPublicAccessOptions extends CustomResource {
+class VpcBlockPublicAccessOptions extends pulumi.CustomResource {
   /// The AWS account id to which these options apply.
-  late final Output<String> awsAccountId;
+  late final pulumi.Output<String> awsAccountId;
 
   /// The AWS region to which these options apply.
-  late final Output<String> awsRegion;
+  late final pulumi.Output<String> awsRegion;
 
   /// Block mode. Needs to be one of `block-bidirectional`, `block-ingress`, `off`. If this resource is deleted, then this value will be set to `off` in the AWS account and region.
-  late final Output<String> internetGatewayBlockMode;
+  late final pulumi.Output<String> internetGatewayBlockMode;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<VpcBlockPublicAccessOptionsTimeouts?> timeouts;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<VpcBlockPublicAccessOptionsTimeouts?> timeouts;
 
   VpcBlockPublicAccessOptions(
     String name, {
     VpcBlockPublicAccessOptionsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpcBlockPublicAccessOptions:VpcBlockPublicAccessOptions',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.awsAccountId = registerOutput<String>('awsAccountId');
     this.awsRegion = registerOutput<String>('awsRegion');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'voice_connector_termination_args.dart';
 
 /// Enable Termination settings to control outbound calling from your SIP infrastructure.
@@ -14,37 +14,37 @@ import 'voice_connector_termination_args.dart';
 /// ```sh
 /// $ pulumi import aws:chime/voiceConnectorTermination:VoiceConnectorTermination default abcdef1ghij2klmno3pqr4
 /// ```
-class VoiceConnectorTermination extends CustomResource {
+class VoiceConnectorTermination extends pulumi.CustomResource {
   /// The countries to which calls are allowed, in ISO 3166-1 alpha-2 format.
-  late final Output<List<String>> callingRegions;
+  late final pulumi.Output<List<String>> callingRegions;
 
   /// The IP addresses allowed to make calls, in CIDR format.
-  late final Output<List<String>> cidrAllowLists;
+  late final pulumi.Output<List<String>> cidrAllowLists;
 
   /// The limit on calls per second. Max value based on account service quota. Default value of `1`.
-  late final Output<int?> cpsLimit;
+  late final pulumi.Output<int?> cpsLimit;
 
   /// The default caller ID phone number.
-  late final Output<String?> defaultPhoneNumber;
+  late final pulumi.Output<String?> defaultPhoneNumber;
 
   /// When termination settings are disabled, outbound calls can not be made.
-  late final Output<bool?> disabled;
+  late final pulumi.Output<bool?> disabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The Amazon Chime Voice Connector ID.
-  late final Output<String> voiceConnectorId;
+  late final pulumi.Output<String> voiceConnectorId;
 
   VoiceConnectorTermination(
     String name, {
     VoiceConnectorTerminationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:chime/voiceConnectorTermination:VoiceConnectorTermination',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.callingRegions = registerOutput<List<String>>('callingRegions');
     this.cidrAllowLists = registerOutput<List<String>>('cidrAllowLists');

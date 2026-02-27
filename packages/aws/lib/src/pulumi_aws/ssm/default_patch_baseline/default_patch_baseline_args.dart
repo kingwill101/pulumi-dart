@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DefaultPatchBaseline.
 class DefaultPatchBaselineArgs {
   /// ID of the patch baseline.
   /// Can be an ID or an ARN.
   /// When specifying an AWS-provided patch baseline, must be the ARN.
-  final Input<String> baselineId;
+  final pulumi.Input<String> baselineId;
 
   /// The operating system the patch baseline applies to.
   /// Valid values are
@@ -25,10 +25,10 @@ class DefaultPatchBaselineArgs {
   /// `SUSE`,
   /// `UBUNTU`, and
   /// `WINDOWS`.
-  final Input<String> operatingSystem;
+  final pulumi.Input<String> operatingSystem;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   DefaultPatchBaselineArgs({
     required this.baselineId,
@@ -49,9 +49,9 @@ class DefaultPatchBaselineArgs {
 
   factory DefaultPatchBaselineArgs.fromMap(Map<String, dynamic> map) {
     return DefaultPatchBaselineArgs(
-      baselineId: Input.asInput<String>(map['baselineId']),
-      operatingSystem: Input.asInput<String>(map['operatingSystem']),
-      region: Input.asOptionalInput<String>(map['region']),
+      baselineId: pulumi.Input.asInput<String>(map['baselineId']),
+      operatingSystem: pulumi.Input.asInput<String>(map['operatingSystem']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

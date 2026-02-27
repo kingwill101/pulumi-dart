@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for KeyPair.
 class KeyPairArgs {
   /// The name for the key pair. If neither `key_name` nor `key_name_prefix` is provided, the provider will create a unique key name.
-  final Input<String>? keyName;
+  final pulumi.Input<String>? keyName;
 
   /// Creates a unique name beginning with the specified prefix. Conflicts with `key_name`. If neither `key_name` nor `key_name_prefix` is provided, the provider will create a unique key name.
-  final Input<String>? keyNamePrefix;
+  final pulumi.Input<String>? keyNamePrefix;
 
   /// The public key material.
-  final Input<String> publicKey;
+  final pulumi.Input<String> publicKey;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   KeyPairArgs({
     this.keyName,
@@ -51,11 +51,11 @@ class KeyPairArgs {
 
   factory KeyPairArgs.fromMap(Map<String, dynamic> map) {
     return KeyPairArgs(
-      keyName: Input.asOptionalInput<String>(map['keyName']),
-      keyNamePrefix: Input.asOptionalInput<String>(map['keyNamePrefix']),
-      publicKey: Input.asInput<String>(map['publicKey']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      keyName: pulumi.Input.asOptionalInput<String>(map['keyName']),
+      keyNamePrefix: pulumi.Input.asOptionalInput<String>(map['keyNamePrefix']),
+      publicKey: pulumi.Input.asInput<String>(map['publicKey']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

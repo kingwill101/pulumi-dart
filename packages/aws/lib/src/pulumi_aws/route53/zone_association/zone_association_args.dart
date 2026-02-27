@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ZoneAssociation.
 class ZoneAssociationArgs {
   /// The VPC to associate with the private hosted zone.
-  final Input<String> vpcId;
+  final pulumi.Input<String> vpcId;
 
   /// The VPC's region. Defaults to the region of the AWS provider.
-  final Input<String>? vpcRegion;
+  final pulumi.Input<String>? vpcRegion;
 
   /// The private hosted zone to associate.
-  final Input<String> zoneId;
+  final pulumi.Input<String> zoneId;
 
   ZoneAssociationArgs({
     required this.vpcId,
@@ -32,9 +32,9 @@ class ZoneAssociationArgs {
 
   factory ZoneAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ZoneAssociationArgs(
-      vpcId: Input.asInput<String>(map['vpcId']),
-      vpcRegion: Input.asOptionalInput<String>(map['vpcRegion']),
-      zoneId: Input.asInput<String>(map['zoneId']),
+      vpcId: pulumi.Input.asInput<String>(map['vpcId']),
+      vpcRegion: pulumi.Input.asOptionalInput<String>(map['vpcRegion']),
+      zoneId: pulumi.Input.asInput<String>(map['zoneId']),
     );
   }
 }

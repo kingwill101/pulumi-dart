@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_closing_setting_conditional_default_branch_response_message_group/v2models_intent_closing_setting_conditional_default_branch_response_message_group.dart';
 
 class V2modelsIntentClosingSettingConditionalDefaultBranchResponse {
@@ -25,7 +25,7 @@ class V2modelsIntentClosingSettingConditionalDefaultBranchResponse {
     }
     final messageGroupsValue = messageGroups;
     if (messageGroupsValue != null) {
-      map['messageGroups'] = Input.encodeList<
+      map['messageGroups'] = pulumi.Input.encodeList<
           V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroup,
           Map<String, dynamic>>(messageGroupsValue, (value) => value.toMap());
     }
@@ -39,7 +39,7 @@ class V2modelsIntentClosingSettingConditionalDefaultBranchResponse {
           map['allowInterrupt'] == null ? null : map['allowInterrupt'] as bool,
       messageGroups: map['messageGroups'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroup>(
               map['messageGroups'],
               (value) =>

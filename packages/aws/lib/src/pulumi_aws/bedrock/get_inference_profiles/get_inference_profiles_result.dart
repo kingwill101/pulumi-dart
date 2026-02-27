@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_inference_profiles_inference_profile_summary/get_inference_profiles_inference_profile_summary.dart';
 
 /// Result data returned by getInferenceProfiles.
@@ -26,7 +26,7 @@ class GetInferenceProfilesResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['inferenceProfileSummaries'] = Input.encodeList<
+    map['inferenceProfileSummaries'] = pulumi.Input.encodeList<
             GetInferenceProfilesInferenceProfileSummary, Map<String, dynamic>>(
         inferenceProfileSummaries, (value) => value.toMap());
     map['region'] = region;
@@ -41,7 +41,7 @@ class GetInferenceProfilesResult {
     return GetInferenceProfilesResult(
       id: map['id'] as String,
       inferenceProfileSummaries:
-          Input.decodeList<GetInferenceProfilesInferenceProfileSummary>(
+          pulumi.Input.decodeList<GetInferenceProfilesInferenceProfileSummary>(
               map['inferenceProfileSummaries'],
               (value) => GetInferenceProfilesInferenceProfileSummary.fromMap(
                   (value as Map).cast<String, dynamic>())),

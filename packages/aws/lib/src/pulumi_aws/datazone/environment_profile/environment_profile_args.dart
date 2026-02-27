@@ -1,36 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../environment_profile_user_parameter/environment_profile_user_parameter.dart';
 
 /// The set of arguments for EnvironmentProfile.
 class EnvironmentProfileArgs {
   /// Id of the AWS account being used.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// Desired region for environment profile.
-  final Input<String> awsAccountRegion;
+  final pulumi.Input<String> awsAccountRegion;
 
   /// Description of environment profile.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Domain Identifier for environment profile.
-  final Input<String> domainIdentifier;
+  final pulumi.Input<String> domainIdentifier;
 
   /// ID of the blueprint which the environment will be created with.
-  final Input<String> environmentBlueprintIdentifier;
+  final pulumi.Input<String> environmentBlueprintIdentifier;
 
   /// Name of the environment profile.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Project identifier for environment profile.
-  final Input<String> projectIdentifier;
+  final pulumi.Input<String> projectIdentifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Array of user parameters of the environment profile with the following attributes:
-  final Input<List<EnvironmentProfileUserParameter>>? userParameters;
+  final pulumi.Input<List<EnvironmentProfileUserParameter>>? userParameters;
 
   EnvironmentProfileArgs({
     this.awsAccountId,
@@ -68,11 +68,11 @@ class EnvironmentProfileArgs {
     }
     final userParametersValue = userParameters;
     if (userParametersValue != null) {
-      map['userParameters'] = Input.mapOptionalInputValue<
+      map['userParameters'] = pulumi.Input.mapOptionalInputValue<
               List<EnvironmentProfileUserParameter>,
               List<Map<String, dynamic>>>(
           userParametersValue,
-          (value) => Input.encodeList<EnvironmentProfileUserParameter,
+          (value) => pulumi.Input.encodeList<EnvironmentProfileUserParameter,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     return map;
@@ -80,17 +80,17 @@ class EnvironmentProfileArgs {
 
   factory EnvironmentProfileArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentProfileArgs(
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
-      awsAccountRegion: Input.asInput<String>(map['awsAccountRegion']),
-      description: Input.asOptionalInput<String>(map['description']),
-      domainIdentifier: Input.asInput<String>(map['domainIdentifier']),
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
+      awsAccountRegion: pulumi.Input.asInput<String>(map['awsAccountRegion']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      domainIdentifier: pulumi.Input.asInput<String>(map['domainIdentifier']),
       environmentBlueprintIdentifier:
-          Input.asInput<String>(map['environmentBlueprintIdentifier']),
-      name: Input.asOptionalInput<String>(map['name']),
-      projectIdentifier: Input.asInput<String>(map['projectIdentifier']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asInput<String>(map['environmentBlueprintIdentifier']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      projectIdentifier: pulumi.Input.asInput<String>(map['projectIdentifier']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       userParameters:
-          Input.asOptionalInput<List<EnvironmentProfileUserParameter>>(
+          pulumi.Input.asOptionalInput<List<EnvironmentProfileUserParameter>>(
               map['userParameters']),
     );
   }

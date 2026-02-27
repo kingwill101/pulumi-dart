@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firewall_firewall_status_sync_state/firewall_firewall_status_sync_state.dart';
 import '../firewall_firewall_status_transit_gateway_attachment_sync_state/firewall_firewall_status_transit_gateway_attachment_sync_state.dart';
 
@@ -21,13 +21,14 @@ class FirewallFirewallStatus {
     final map = <String, dynamic>{};
     final syncStatesValue = syncStates;
     if (syncStatesValue != null) {
-      map['syncStates'] = Input.encodeList<FirewallFirewallStatusSyncState,
+      map['syncStates'] = pulumi.Input.encodeList<
+          FirewallFirewallStatusSyncState,
           Map<String, dynamic>>(syncStatesValue, (value) => value.toMap());
     }
     final transitGatewayAttachmentSyncStatesValue =
         transitGatewayAttachmentSyncStates;
     if (transitGatewayAttachmentSyncStatesValue != null) {
-      map['transitGatewayAttachmentSyncStates'] = Input.encodeList<
+      map['transitGatewayAttachmentSyncStates'] = pulumi.Input.encodeList<
               FirewallFirewallStatusTransitGatewayAttachmentSyncState,
               Map<String, dynamic>>(
           transitGatewayAttachmentSyncStatesValue, (value) => value.toMap());
@@ -39,14 +40,14 @@ class FirewallFirewallStatus {
     return FirewallFirewallStatus(
       syncStates: map['syncStates'] == null
           ? null
-          : Input.decodeList<FirewallFirewallStatusSyncState>(
+          : pulumi.Input.decodeList<FirewallFirewallStatusSyncState>(
               map['syncStates'],
               (value) => FirewallFirewallStatusSyncState.fromMap(
                   (value as Map).cast<String, dynamic>())),
       transitGatewayAttachmentSyncStates:
           map['transitGatewayAttachmentSyncStates'] == null
               ? null
-              : Input.decodeList<
+              : pulumi.Input.decodeList<
                       FirewallFirewallStatusTransitGatewayAttachmentSyncState>(
                   map['transitGatewayAttachmentSyncStates'],
                   (value) =>

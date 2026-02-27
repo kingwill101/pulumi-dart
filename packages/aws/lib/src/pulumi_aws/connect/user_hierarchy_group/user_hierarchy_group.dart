@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_hierarchy_group_hierarchy_path/user_hierarchy_group_hierarchy_path.dart';
 import 'user_hierarchy_group_args.dart';
 
@@ -24,47 +24,48 @@ import 'user_hierarchy_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:connect/userHierarchyGroup:UserHierarchyGroup example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
 /// ```
-class UserHierarchyGroup extends CustomResource {
+class UserHierarchyGroup extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the hierarchy group.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The identifier for the hierarchy group.
-  late final Output<String> hierarchyGroupId;
+  late final pulumi.Output<String> hierarchyGroupId;
 
   /// A block that contains information about the levels in the hierarchy group. The `hierarchy_path` block is documented below.
-  late final Output<List<UserHierarchyGroupHierarchyPath>> hierarchyPaths;
+  late final pulumi.Output<List<UserHierarchyGroupHierarchyPath>>
+      hierarchyPaths;
 
   /// Specifies the identifier of the hosting Amazon Connect Instance.
-  late final Output<String> instanceId;
+  late final pulumi.Output<String> instanceId;
 
   /// The identifier of the level in the hierarchy group.
-  late final Output<String> levelId;
+  late final pulumi.Output<String> levelId;
 
   /// The name of the user hierarchy group. Must not be more than 100 characters.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The identifier for the parent hierarchy group. The user hierarchy is created at level one if the parent group ID is null.
-  late final Output<String?> parentGroupId;
+  late final pulumi.Output<String?> parentGroupId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Tags to apply to the hierarchy group. If configured with a provider
   /// `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   UserHierarchyGroup(
     String name, {
     UserHierarchyGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:connect/userHierarchyGroup:UserHierarchyGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.hierarchyGroupId = registerOutput<String>('hierarchyGroupId');

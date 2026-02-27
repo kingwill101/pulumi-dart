@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AmiLaunchPermission.
 class AmiLaunchPermissionArgs {
   /// AWS account ID for the launch permission.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// Name of the group for the launch permission. Valid values: `"all"`.
-  final Input<String>? group;
+  final pulumi.Input<String>? group;
 
   /// ID of the AMI.
-  final Input<String> imageId;
+  final pulumi.Input<String> imageId;
 
   /// ARN of an organization for the launch permission.
-  final Input<String>? organizationArn;
+  final pulumi.Input<String>? organizationArn;
 
   /// ARN of an organizational unit for the launch permission.
-  final Input<String>? organizationalUnitArn;
+  final pulumi.Input<String>? organizationalUnitArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   AmiLaunchPermissionArgs({
     this.accountId,
@@ -59,13 +59,14 @@ class AmiLaunchPermissionArgs {
 
   factory AmiLaunchPermissionArgs.fromMap(Map<String, dynamic> map) {
     return AmiLaunchPermissionArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
-      group: Input.asOptionalInput<String>(map['group']),
-      imageId: Input.asInput<String>(map['imageId']),
-      organizationArn: Input.asOptionalInput<String>(map['organizationArn']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
+      group: pulumi.Input.asOptionalInput<String>(map['group']),
+      imageId: pulumi.Input.asInput<String>(map['imageId']),
+      organizationArn:
+          pulumi.Input.asOptionalInput<String>(map['organizationArn']),
       organizationalUnitArn:
-          Input.asOptionalInput<String>(map['organizationalUnitArn']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['organizationalUnitArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

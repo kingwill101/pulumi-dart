@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connection_group_timeouts/connection_group_timeouts.dart';
 import 'connection_group_args.dart';
 
@@ -19,54 +19,54 @@ import 'connection_group_args.dart';
 /// ```
 ///
 /// [1]: https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-cloudfront-connectiongroup.html
-class ConnectionGroup extends CustomResource {
+class ConnectionGroup extends pulumi.CustomResource {
   /// ID of the associated Anycast IP List. `ipv6_enabled` must not be set to `true` in order to set this argument
-  late final Output<String?> anycastIpListId;
+  late final pulumi.Output<String?> anycastIpListId;
 
   /// ARN of the connection group.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Whether the connection group is enabled. Default is `true`.
-  late final Output<bool> enabled;
+  late final pulumi.Output<bool> enabled;
 
   /// Current version of the connection group.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Whether IPv6 is enabled for the connection group. Default is `false`.
-  late final Output<bool> ipv6Enabled;
+  late final pulumi.Output<bool> ipv6Enabled;
 
   /// Whether the connection group is the default connection group for the distribution tenants.
-  late final Output<bool> isDefault;
+  late final pulumi.Output<bool> isDefault;
 
   /// Date and time when the connection group was last modified.
-  late final Output<String> lastModifiedTime;
+  late final pulumi.Output<String> lastModifiedTime;
 
   /// Name of the connection group.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The routing endpoint (also known as the DNS name) that is assigned to the connection group, such as d111111abcdef8.cloudfront.net.
-  late final Output<String> routingEndpoint;
+  late final pulumi.Output<String> routingEndpoint;
 
   /// Current status of the connection group.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<ConnectionGroupTimeouts?> timeouts;
-  late final Output<bool> waitForDeployment;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<ConnectionGroupTimeouts?> timeouts;
+  late final pulumi.Output<bool> waitForDeployment;
 
   ConnectionGroup(
     String name, {
     ConnectionGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/connectionGroup:ConnectionGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.anycastIpListId = registerOutput<String?>('anycastIpListId');
     this.arn = registerOutput<String>('arn');

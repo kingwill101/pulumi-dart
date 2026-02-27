@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBrokerEngineTypes.
 class GetBrokerEngineTypesArgs {
   /// MQ engine type to return version details for.
-  final Input<String>? engineType;
+  final pulumi.Input<String>? engineType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetBrokerEngineTypesArgs({
     this.engineType,
@@ -30,8 +30,8 @@ class GetBrokerEngineTypesArgs {
 
   factory GetBrokerEngineTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetBrokerEngineTypesArgs(
-      engineType: Input.asOptionalInput<String>(map['engineType']),
-      region: Input.asOptionalInput<String>(map['region']),
+      engineType: pulumi.Input.asOptionalInput<String>(map['engineType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

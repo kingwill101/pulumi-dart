@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_load_balancer_advanced_configuration/get_service_load_balancer_advanced_configuration.dart';
 
 class GetServiceLoadBalancer {
@@ -30,7 +30,7 @@ class GetServiceLoadBalancer {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['advancedConfigurations'] = Input.encodeList<
+    map['advancedConfigurations'] = pulumi.Input.encodeList<
         GetServiceLoadBalancerAdvancedConfiguration,
         Map<String, dynamic>>(advancedConfigurations, (value) => value.toMap());
     map['containerName'] = containerName;
@@ -43,7 +43,7 @@ class GetServiceLoadBalancer {
   factory GetServiceLoadBalancer.fromMap(Map<String, dynamic> map) {
     return GetServiceLoadBalancer(
       advancedConfigurations:
-          Input.decodeList<GetServiceLoadBalancerAdvancedConfiguration>(
+          pulumi.Input.decodeList<GetServiceLoadBalancerAdvancedConfiguration>(
               map['advancedConfigurations'],
               (value) => GetServiceLoadBalancerAdvancedConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),

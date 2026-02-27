@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getFunction.
 class GetFunctionArgs {
   /// Name of the CloudFront function.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// Function’s stage, either `DEVELOPMENT` or `LIVE`.
-  final Input<String> stage;
+  final pulumi.Input<String> stage;
 
   GetFunctionArgs({
     required this.name,
@@ -24,8 +24,8 @@ class GetFunctionArgs {
 
   factory GetFunctionArgs.fromMap(Map<String, dynamic> map) {
     return GetFunctionArgs(
-      name: Input.asInput<String>(map['name']),
-      stage: Input.asInput<String>(map['stage']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      stage: pulumi.Input.asInput<String>(map['stage']),
     );
   }
 }

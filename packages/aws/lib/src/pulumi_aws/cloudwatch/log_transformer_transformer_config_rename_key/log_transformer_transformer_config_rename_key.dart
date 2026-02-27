@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../log_transformer_transformer_config_rename_key_entry/log_transformer_transformer_config_rename_key_entry.dart';
 
 class LogTransformerTransformerConfigRenameKey {
@@ -13,7 +13,7 @@ class LogTransformerTransformerConfigRenameKey {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['entries'] = Input.encodeList<
+    map['entries'] = pulumi.Input.encodeList<
         LogTransformerTransformerConfigRenameKeyEntry,
         Map<String, dynamic>>(entries, (value) => value.toMap());
     return map;
@@ -22,7 +22,8 @@ class LogTransformerTransformerConfigRenameKey {
   factory LogTransformerTransformerConfigRenameKey.fromMap(
       Map<String, dynamic> map) {
     return LogTransformerTransformerConfigRenameKey(
-      entries: Input.decodeList<LogTransformerTransformerConfigRenameKeyEntry>(
+      entries: pulumi.Input.decodeList<
+              LogTransformerTransformerConfigRenameKeyEntry>(
           map['entries'],
           (value) => LogTransformerTransformerConfigRenameKeyEntry.fromMap(
               (value as Map).cast<String, dynamic>())),

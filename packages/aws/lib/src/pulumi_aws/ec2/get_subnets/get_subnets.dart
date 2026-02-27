@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_subnets_args.dart';
 import 'get_subnets_result.dart';
 
@@ -15,13 +15,13 @@ import 'get_subnets_result.dart';
 /// can loop through the subnets, putting instances across availability zones.
 Future<GetSubnetsResult> getSubnets(
   GetSubnetsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getSubnets:getSubnets',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubnetsResult.fromMap(result);
 }

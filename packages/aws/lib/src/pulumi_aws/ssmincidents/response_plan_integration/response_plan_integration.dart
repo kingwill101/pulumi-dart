@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../response_plan_integration_pagerduty/response_plan_integration_pagerduty.dart';
 
 class ResponsePlanIntegration {
@@ -15,7 +15,8 @@ class ResponsePlanIntegration {
     final map = <String, dynamic>{};
     final pagerdutiesValue = pagerduties;
     if (pagerdutiesValue != null) {
-      map['pagerduties'] = Input.encodeList<ResponsePlanIntegrationPagerduty,
+      map['pagerduties'] = pulumi.Input.encodeList<
+          ResponsePlanIntegrationPagerduty,
           Map<String, dynamic>>(pagerdutiesValue, (value) => value.toMap());
     }
     return map;
@@ -25,7 +26,7 @@ class ResponsePlanIntegration {
     return ResponsePlanIntegration(
       pagerduties: map['pagerduties'] == null
           ? null
-          : Input.decodeList<ResponsePlanIntegrationPagerduty>(
+          : pulumi.Input.decodeList<ResponsePlanIntegrationPagerduty>(
               map['pagerduties'],
               (value) => ResponsePlanIntegrationPagerduty.fromMap(
                   (value as Map).cast<String, dynamic>())),

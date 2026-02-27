@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../deployment_config_minimum_healthy_hosts/deployment_config_minimum_healthy_hosts.dart';
 import '../deployment_config_traffic_routing_config/deployment_config_traffic_routing_config.dart';
 import '../deployment_config_zonal_config/deployment_config_zonal_config.dart';
@@ -8,22 +8,23 @@ import '../deployment_config_zonal_config/deployment_config_zonal_config.dart';
 /// The set of arguments for DeploymentConfig.
 class DeploymentConfigArgs {
   /// The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
-  final Input<String>? computePlatform;
+  final pulumi.Input<String>? computePlatform;
 
   /// The name of the deployment config.
-  final Input<String>? deploymentConfigName;
+  final pulumi.Input<String>? deploymentConfigName;
 
   /// A minimum_healthy_hosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
-  final Input<DeploymentConfigMinimumHealthyHosts>? minimumHealthyHosts;
+  final pulumi.Input<DeploymentConfigMinimumHealthyHosts>? minimumHealthyHosts;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A traffic_routing_config block. Traffic Routing Config is documented below.
-  final Input<DeploymentConfigTrafficRoutingConfig>? trafficRoutingConfig;
+  final pulumi.Input<DeploymentConfigTrafficRoutingConfig>?
+      trafficRoutingConfig;
 
   /// A zonal_config block. Zonal Config is documented below.
-  final Input<DeploymentConfigZonalConfig>? zonalConfig;
+  final pulumi.Input<DeploymentConfigZonalConfig>? zonalConfig;
 
   DeploymentConfigArgs({
     this.computePlatform,
@@ -46,7 +47,7 @@ class DeploymentConfigArgs {
     }
     final minimumHealthyHostsValue = minimumHealthyHosts;
     if (minimumHealthyHostsValue != null) {
-      map['minimumHealthyHosts'] = Input.mapOptionalInputValue<
+      map['minimumHealthyHosts'] = pulumi.Input.mapOptionalInputValue<
               DeploymentConfigMinimumHealthyHosts, Map<String, dynamic>>(
           minimumHealthyHostsValue, (value) => value.toMap());
     }
@@ -56,13 +57,13 @@ class DeploymentConfigArgs {
     }
     final trafficRoutingConfigValue = trafficRoutingConfig;
     if (trafficRoutingConfigValue != null) {
-      map['trafficRoutingConfig'] = Input.mapOptionalInputValue<
+      map['trafficRoutingConfig'] = pulumi.Input.mapOptionalInputValue<
               DeploymentConfigTrafficRoutingConfig, Map<String, dynamic>>(
           trafficRoutingConfigValue, (value) => value.toMap());
     }
     final zonalConfigValue = zonalConfig;
     if (zonalConfigValue != null) {
-      map['zonalConfig'] = Input.mapOptionalInputValue<
+      map['zonalConfig'] = pulumi.Input.mapOptionalInputValue<
           DeploymentConfigZonalConfig,
           Map<String, dynamic>>(zonalConfigValue, (value) => value.toMap());
     }
@@ -71,17 +72,18 @@ class DeploymentConfigArgs {
 
   factory DeploymentConfigArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentConfigArgs(
-      computePlatform: Input.asOptionalInput<String>(map['computePlatform']),
+      computePlatform:
+          pulumi.Input.asOptionalInput<String>(map['computePlatform']),
       deploymentConfigName:
-          Input.asOptionalInput<String>(map['deploymentConfigName']),
+          pulumi.Input.asOptionalInput<String>(map['deploymentConfigName']),
       minimumHealthyHosts:
-          Input.asOptionalInput<DeploymentConfigMinimumHealthyHosts>(
+          pulumi.Input.asOptionalInput<DeploymentConfigMinimumHealthyHosts>(
               map['minimumHealthyHosts']),
-      region: Input.asOptionalInput<String>(map['region']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       trafficRoutingConfig:
-          Input.asOptionalInput<DeploymentConfigTrafficRoutingConfig>(
+          pulumi.Input.asOptionalInput<DeploymentConfigTrafficRoutingConfig>(
               map['trafficRoutingConfig']),
-      zonalConfig: Input.asOptionalInput<DeploymentConfigZonalConfig>(
+      zonalConfig: pulumi.Input.asOptionalInput<DeploymentConfigZonalConfig>(
           map['zonalConfig']),
     );
   }

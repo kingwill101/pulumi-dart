@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_cidr_block_association/get_vpc_cidr_block_association.dart';
 import '../get_vpc_filter/get_vpc_filter.dart';
 
@@ -72,9 +72,9 @@ class GetVpcResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['cidrBlock'] = cidrBlock;
-    map['cidrBlockAssociations'] =
-        Input.encodeList<GetVpcCidrBlockAssociation, Map<String, dynamic>>(
-            cidrBlockAssociations, (value) => value.toMap());
+    map['cidrBlockAssociations'] = pulumi.Input.encodeList<
+        GetVpcCidrBlockAssociation,
+        Map<String, dynamic>>(cidrBlockAssociations, (value) => value.toMap());
     map['default'] = default_;
     map['dhcpOptionsId'] = dhcpOptionsId;
     map['enableDnsHostnames'] = enableDnsHostnames;
@@ -82,8 +82,9 @@ class GetVpcResult {
     map['enableNetworkAddressUsageMetrics'] = enableNetworkAddressUsageMetrics;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetVpcFilter, Map<String, dynamic>>(
-          filtersValue, (value) => value.toMap());
+      map['filters'] =
+          pulumi.Input.encodeList<GetVpcFilter, Map<String, dynamic>>(
+              filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['instanceTenancy'] = instanceTenancy;
@@ -101,10 +102,11 @@ class GetVpcResult {
     return GetVpcResult(
       arn: map['arn'] as String,
       cidrBlock: map['cidrBlock'] as String,
-      cidrBlockAssociations: Input.decodeList<GetVpcCidrBlockAssociation>(
-          map['cidrBlockAssociations'],
-          (value) => GetVpcCidrBlockAssociation.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      cidrBlockAssociations:
+          pulumi.Input.decodeList<GetVpcCidrBlockAssociation>(
+              map['cidrBlockAssociations'],
+              (value) => GetVpcCidrBlockAssociation.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       default_: map['default'] as bool,
       dhcpOptionsId: map['dhcpOptionsId'] as String,
       enableDnsHostnames: map['enableDnsHostnames'] as bool,
@@ -113,7 +115,7 @@ class GetVpcResult {
           map['enableNetworkAddressUsageMetrics'] as bool,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVpcFilter>(
+          : pulumi.Input.decodeList<GetVpcFilter>(
               map['filters'],
               (value) =>
                   GetVpcFilter.fromMap((value as Map).cast<String, dynamic>())),

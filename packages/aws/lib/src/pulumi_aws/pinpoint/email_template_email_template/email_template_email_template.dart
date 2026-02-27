@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../email_template_email_template_header/email_template_email_template_header.dart';
 
 class EmailTemplateEmailTemplate {
@@ -43,7 +43,7 @@ class EmailTemplateEmailTemplate {
     }
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] = Input.encodeList<EmailTemplateEmailTemplateHeader,
+      map['headers'] = pulumi.Input.encodeList<EmailTemplateEmailTemplateHeader,
           Map<String, dynamic>>(headersValue, (value) => value.toMap());
     }
     final htmlPartValue = htmlPart;
@@ -74,7 +74,7 @@ class EmailTemplateEmailTemplate {
           map['description'] == null ? null : map['description'] as String,
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<EmailTemplateEmailTemplateHeader>(
+          : pulumi.Input.decodeList<EmailTemplateEmailTemplateHeader>(
               map['headers'],
               (value) => EmailTemplateEmailTemplateHeader.fromMap(
                   (value as Map).cast<String, dynamic>())),

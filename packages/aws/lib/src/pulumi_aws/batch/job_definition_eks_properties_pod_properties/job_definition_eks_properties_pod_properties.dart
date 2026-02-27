@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_definition_eks_properties_pod_properties_container/job_definition_eks_properties_pod_properties_container.dart';
 import '../job_definition_eks_properties_pod_properties_image_pull_secret/job_definition_eks_properties_pod_properties_image_pull_secret.dart';
 import '../job_definition_eks_properties_pod_properties_init_container/job_definition_eks_properties_pod_properties_init_container.dart';
@@ -51,7 +51,7 @@ class JobDefinitionEksPropertiesPodProperties {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['containers'] = Input.encodeList<
+    map['containers'] = pulumi.Input.encodeList<
         JobDefinitionEksPropertiesPodPropertiesContainer,
         Map<String, dynamic>>(containers, (value) => value.toMap());
     final dnsPolicyValue = dnsPolicy;
@@ -64,14 +64,14 @@ class JobDefinitionEksPropertiesPodProperties {
     }
     final imagePullSecretsValue = imagePullSecrets;
     if (imagePullSecretsValue != null) {
-      map['imagePullSecrets'] = Input.encodeList<
+      map['imagePullSecrets'] = pulumi.Input.encodeList<
               JobDefinitionEksPropertiesPodPropertiesImagePullSecret,
               Map<String, dynamic>>(
           imagePullSecretsValue, (value) => value.toMap());
     }
     final initContainersValue = initContainers;
     if (initContainersValue != null) {
-      map['initContainers'] = Input.encodeList<
+      map['initContainers'] = pulumi.Input.encodeList<
           JobDefinitionEksPropertiesPodPropertiesInitContainer,
           Map<String, dynamic>>(initContainersValue, (value) => value.toMap());
     }
@@ -89,7 +89,7 @@ class JobDefinitionEksPropertiesPodProperties {
     }
     final volumesValue = volumes;
     if (volumesValue != null) {
-      map['volumes'] = Input.encodeList<
+      map['volumes'] = pulumi.Input.encodeList<
           JobDefinitionEksPropertiesPodPropertiesVolume,
           Map<String, dynamic>>(volumesValue, (value) => value.toMap());
     }
@@ -99,25 +99,24 @@ class JobDefinitionEksPropertiesPodProperties {
   factory JobDefinitionEksPropertiesPodProperties.fromMap(
       Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodProperties(
-      containers:
-          Input.decodeList<JobDefinitionEksPropertiesPodPropertiesContainer>(
-              map['containers'],
-              (value) =>
-                  JobDefinitionEksPropertiesPodPropertiesContainer.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      containers: pulumi.Input.decodeList<
+              JobDefinitionEksPropertiesPodPropertiesContainer>(
+          map['containers'],
+          (value) => JobDefinitionEksPropertiesPodPropertiesContainer.fromMap(
+              (value as Map).cast<String, dynamic>())),
       dnsPolicy: map['dnsPolicy'] == null ? null : map['dnsPolicy'] as String,
       hostNetwork:
           map['hostNetwork'] == null ? null : map['hostNetwork'] as bool,
       imagePullSecrets: map['imagePullSecrets'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   JobDefinitionEksPropertiesPodPropertiesImagePullSecret>(
               map['imagePullSecrets'],
               (value) => JobDefinitionEksPropertiesPodPropertiesImagePullSecret
                   .fromMap((value as Map).cast<String, dynamic>())),
       initContainers: map['initContainers'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   JobDefinitionEksPropertiesPodPropertiesInitContainer>(
               map['initContainers'],
               (value) =>
@@ -135,7 +134,8 @@ class JobDefinitionEksPropertiesPodProperties {
           : map['shareProcessNamespace'] as bool,
       volumes: map['volumes'] == null
           ? null
-          : Input.decodeList<JobDefinitionEksPropertiesPodPropertiesVolume>(
+          : pulumi.Input.decodeList<
+                  JobDefinitionEksPropertiesPodPropertiesVolume>(
               map['volumes'],
               (value) => JobDefinitionEksPropertiesPodPropertiesVolume.fromMap(
                   (value as Map).cast<String, dynamic>())),

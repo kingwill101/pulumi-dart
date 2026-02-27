@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../trail_event_selector_data_resource/trail_event_selector_data_resource.dart';
 
 class TrailEventSelector {
@@ -27,7 +27,8 @@ class TrailEventSelector {
     final map = <String, dynamic>{};
     final dataResourcesValue = dataResources;
     if (dataResourcesValue != null) {
-      map['dataResources'] = Input.encodeList<TrailEventSelectorDataResource,
+      map['dataResources'] = pulumi.Input.encodeList<
+          TrailEventSelectorDataResource,
           Map<String, dynamic>>(dataResourcesValue, (value) => value.toMap());
     }
     final excludeManagementEventSourcesValue = excludeManagementEventSources;
@@ -49,7 +50,7 @@ class TrailEventSelector {
     return TrailEventSelector(
       dataResources: map['dataResources'] == null
           ? null
-          : Input.decodeList<TrailEventSelectorDataResource>(
+          : pulumi.Input.decodeList<TrailEventSelectorDataResource>(
               map['dataResources'],
               (value) => TrailEventSelectorDataResource.fromMap(
                   (value as Map).cast<String, dynamic>())),

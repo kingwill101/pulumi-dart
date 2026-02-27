@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getServiceNetwork.
 class GetServiceNetworkArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Identifier of the service network.
-  final Input<String> serviceNetworkIdentifier;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<String> serviceNetworkIdentifier;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetServiceNetworkArgs({
     this.region,
@@ -33,10 +33,10 @@ class GetServiceNetworkArgs {
 
   factory GetServiceNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceNetworkArgs(
-      region: Input.asOptionalInput<String>(map['region']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       serviceNetworkIdentifier:
-          Input.asInput<String>(map['serviceNetworkIdentifier']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asInput<String>(map['serviceNetworkIdentifier']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

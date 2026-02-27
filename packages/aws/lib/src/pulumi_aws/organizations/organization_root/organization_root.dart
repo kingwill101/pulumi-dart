@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../organization_root_policy_type/organization_root_policy_type.dart';
 
 class OrganizationRoot {
@@ -39,9 +39,8 @@ class OrganizationRoot {
     }
     final policyTypesValue = policyTypes;
     if (policyTypesValue != null) {
-      map['policyTypes'] =
-          Input.encodeList<OrganizationRootPolicyType, Map<String, dynamic>>(
-              policyTypesValue, (value) => value.toMap());
+      map['policyTypes'] = pulumi.Input.encodeList<OrganizationRootPolicyType,
+          Map<String, dynamic>>(policyTypesValue, (value) => value.toMap());
     }
     return map;
   }
@@ -53,7 +52,7 @@ class OrganizationRoot {
       name: map['name'] == null ? null : map['name'] as String,
       policyTypes: map['policyTypes'] == null
           ? null
-          : Input.decodeList<OrganizationRootPolicyType>(
+          : pulumi.Input.decodeList<OrganizationRootPolicyType>(
               map['policyTypes'],
               (value) => OrganizationRootPolicyType.fromMap(
                   (value as Map).cast<String, dynamic>())),

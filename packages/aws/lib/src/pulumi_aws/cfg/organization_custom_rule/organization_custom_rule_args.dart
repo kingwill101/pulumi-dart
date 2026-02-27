@@ -1,44 +1,44 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for OrganizationCustomRule.
 class OrganizationCustomRuleArgs {
   /// Description of the rule
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// List of AWS account identifiers to exclude from the rule
-  final Input<List<String>>? excludedAccounts;
+  final pulumi.Input<List<String>>? excludedAccounts;
 
   /// A string in JSON format that is passed to the AWS Config Rule Lambda Function
-  final Input<String>? inputParameters;
+  final pulumi.Input<String>? inputParameters;
 
   /// Amazon Resource Name (ARN) of the rule Lambda Function
-  final Input<String> lambdaFunctionArn;
+  final pulumi.Input<String> lambdaFunctionArn;
 
   /// The maximum frequency with which AWS Config runs evaluations for a rule, if the rule is triggered at a periodic frequency. Defaults to `TwentyFour_Hours` for periodic frequency triggered rules. Valid values: `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, or `TwentyFour_Hours`.
-  final Input<String>? maximumExecutionFrequency;
+  final pulumi.Input<String>? maximumExecutionFrequency;
 
   /// The name of the rule
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Identifier of the AWS resource to evaluate
-  final Input<String>? resourceIdScope;
+  final pulumi.Input<String>? resourceIdScope;
 
   /// List of types of AWS resources to evaluate
-  final Input<List<String>>? resourceTypesScopes;
+  final pulumi.Input<List<String>>? resourceTypesScopes;
 
   /// Tag key of AWS resources to evaluate
-  final Input<String>? tagKeyScope;
+  final pulumi.Input<String>? tagKeyScope;
 
   /// Tag value of AWS resources to evaluate
-  final Input<String>? tagValueScope;
+  final pulumi.Input<String>? tagValueScope;
 
   /// List of notification types that trigger AWS Config to run an evaluation for the rule. Valid values: `ConfigurationItemChangeNotification`, `OversizedConfigurationItemChangeNotification`, and `ScheduledNotification`
-  final Input<List<String>> triggerTypes;
+  final pulumi.Input<List<String>> triggerTypes;
 
   OrganizationCustomRuleArgs({
     this.description,
@@ -104,21 +104,23 @@ class OrganizationCustomRuleArgs {
 
   factory OrganizationCustomRuleArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationCustomRuleArgs(
-      description: Input.asOptionalInput<String>(map['description']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       excludedAccounts:
-          Input.asOptionalInput<List<String>>(map['excludedAccounts']),
-      inputParameters: Input.asOptionalInput<String>(map['inputParameters']),
-      lambdaFunctionArn: Input.asInput<String>(map['lambdaFunctionArn']),
-      maximumExecutionFrequency:
-          Input.asOptionalInput<String>(map['maximumExecutionFrequency']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      resourceIdScope: Input.asOptionalInput<String>(map['resourceIdScope']),
-      resourceTypesScopes:
-          Input.asOptionalInput<List<String>>(map['resourceTypesScopes']),
-      tagKeyScope: Input.asOptionalInput<String>(map['tagKeyScope']),
-      tagValueScope: Input.asOptionalInput<String>(map['tagValueScope']),
-      triggerTypes: Input.asInput<List<String>>(map['triggerTypes']),
+          pulumi.Input.asOptionalInput<List<String>>(map['excludedAccounts']),
+      inputParameters:
+          pulumi.Input.asOptionalInput<String>(map['inputParameters']),
+      lambdaFunctionArn: pulumi.Input.asInput<String>(map['lambdaFunctionArn']),
+      maximumExecutionFrequency: pulumi.Input.asOptionalInput<String>(
+          map['maximumExecutionFrequency']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourceIdScope:
+          pulumi.Input.asOptionalInput<String>(map['resourceIdScope']),
+      resourceTypesScopes: pulumi.Input.asOptionalInput<List<String>>(
+          map['resourceTypesScopes']),
+      tagKeyScope: pulumi.Input.asOptionalInput<String>(map['tagKeyScope']),
+      tagValueScope: pulumi.Input.asOptionalInput<String>(map['tagValueScope']),
+      triggerTypes: pulumi.Input.asInput<List<String>>(map['triggerTypes']),
     );
   }
 }

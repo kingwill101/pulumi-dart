@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_peering_attachment_filter/get_peering_attachment_filter.dart';
 
 /// Result data returned by getPeeringAttachment.
@@ -43,9 +43,8 @@ class GetPeeringAttachmentResult {
     map['arn'] = arn;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetPeeringAttachmentFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetPeeringAttachmentFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['peerAccountId'] = peerAccountId;
@@ -63,7 +62,7 @@ class GetPeeringAttachmentResult {
       arn: map['arn'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetPeeringAttachmentFilter>(
+          : pulumi.Input.decodeList<GetPeeringAttachmentFilter>(
               map['filters'],
               (value) => GetPeeringAttachmentFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

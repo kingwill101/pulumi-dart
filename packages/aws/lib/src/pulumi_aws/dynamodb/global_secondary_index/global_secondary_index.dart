@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../global_secondary_index_key_schema/global_secondary_index_key_schema.dart';
 import '../global_secondary_index_on_demand_throughput/global_secondary_index_on_demand_throughput.dart';
 import '../global_secondary_index_projection/global_secondary_index_projection.dart';
@@ -44,57 +44,58 @@ import 'global_secondary_index_args.dart';
 /// ```sh
 /// $ pulumi import aws:dynamodb/globalSecondaryIndex:GlobalSecondaryIndex example 'example-table,example-index'
 /// ```
-class GlobalSecondaryIndex extends CustomResource {
+class GlobalSecondaryIndex extends pulumi.CustomResource {
   /// ARN of the GSI.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Name of the index.
-  late final Output<String> indexName;
+  late final pulumi.Output<String> indexName;
 
   /// Set of nested attribute definitions.
   /// At least 1 element defining a `HASH` is required.
   /// All elements with the `key_type` of `HASH` must precede elements with `key_type` of `RANGE`.
   /// Changing any values in `key_schema` will re-create the resource.
   /// See `key_schema` below.
-  late final Output<List<GlobalSecondaryIndexKeySchema>?> keySchemas;
+  late final pulumi.Output<List<GlobalSecondaryIndexKeySchema>?> keySchemas;
 
   /// Sets the maximum number of read and write units for the index.
   /// See `on_demand_throughput` below.
   /// Only valid if the table's `billing_mode` is `PAY_PER_REQUEST`.
-  late final Output<GlobalSecondaryIndexOnDemandThroughput?> onDemandThroughput;
+  late final pulumi.Output<GlobalSecondaryIndexOnDemandThroughput?>
+      onDemandThroughput;
 
   /// Describes which attributes from the table are represented in the index.
   /// See `projection` below.
-  late final Output<GlobalSecondaryIndexProjection?> projection;
+  late final pulumi.Output<GlobalSecondaryIndexProjection?> projection;
 
   /// Provisioned throughput for the index.
   /// See `provisioned_throughput` below.
   /// Required if the table's `billing_mode` is `PROVISIONED`.
-  late final Output<GlobalSecondaryIndexProvisionedThroughput?>
+  late final pulumi.Output<GlobalSecondaryIndexProvisionedThroughput?>
       provisionedThroughput;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Name of the table this index belongs to.
   ///
   /// The following arguments are optional:
-  late final Output<String> tableName;
-  late final Output<GlobalSecondaryIndexTimeouts?> timeouts;
+  late final pulumi.Output<String> tableName;
+  late final pulumi.Output<GlobalSecondaryIndexTimeouts?> timeouts;
 
   /// Sets the number of warm read and write units for this index.
   /// See `warm_throughput` below.
-  late final Output<GlobalSecondaryIndexWarmThroughput> warmThroughput;
+  late final pulumi.Output<GlobalSecondaryIndexWarmThroughput> warmThroughput;
 
   GlobalSecondaryIndex(
     String name, {
     GlobalSecondaryIndexArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:dynamodb/globalSecondaryIndex:GlobalSecondaryIndex',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.indexName = registerOutput<String>('indexName');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../dx_gateway_attachment_timeouts/dx_gateway_attachment_timeouts.dart';
 import 'dx_gateway_attachment_args.dart';
 
@@ -19,58 +19,58 @@ import 'dx_gateway_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkmanager/dxGatewayAttachment:DxGatewayAttachment example attachment-1a2b3c4d5e6f7g
 /// ```
-class DxGatewayAttachment extends CustomResource {
+class DxGatewayAttachment extends pulumi.CustomResource {
   /// ARN of the attachment.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Policy rule number associated with the attachment.
-  late final Output<int> attachmentPolicyRuleNumber;
+  late final pulumi.Output<int> attachmentPolicyRuleNumber;
 
   /// Type of attachment.
-  late final Output<String> attachmentType;
+  late final pulumi.Output<String> attachmentType;
 
   /// ARN of the core network for the attachment.
-  late final Output<String> coreNetworkArn;
+  late final pulumi.Output<String> coreNetworkArn;
 
   /// ID of the Cloud WAN core network to which the Direct Connect gateway attachment should be attached.
-  late final Output<String> coreNetworkId;
+  late final pulumi.Output<String> coreNetworkId;
 
   /// ARN of the Direct Connect gateway attachment.
-  late final Output<String> directConnectGatewayArn;
+  late final pulumi.Output<String> directConnectGatewayArn;
 
   /// One or more core network edge locations to associate with the Direct Connect gateway attachment.
   ///
   /// The following arguments are optional:
-  late final Output<List<String>> edgeLocations;
+  late final pulumi.Output<List<String>> edgeLocations;
 
   /// ID of the attachment account owner.
-  late final Output<String> ownerAccountId;
+  late final pulumi.Output<String> ownerAccountId;
 
   /// The routing policy label to apply to the Direct Connect Gateway attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
-  late final Output<String?> routingPolicyLabel;
+  late final pulumi.Output<String?> routingPolicyLabel;
 
   /// Name of the segment attachment.
-  late final Output<String> segmentName;
+  late final pulumi.Output<String> segmentName;
 
   /// State of the attachment.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<DxGatewayAttachmentTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<DxGatewayAttachmentTimeouts?> timeouts;
 
   DxGatewayAttachment(
     String name, {
     DxGatewayAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkmanager/dxGatewayAttachment:DxGatewayAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.attachmentPolicyRuleNumber =

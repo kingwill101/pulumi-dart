@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'product_portfolio_association_args.dart';
 
 /// Manages a Service Catalog Product Portfolio Association.
@@ -16,33 +16,33 @@ import 'product_portfolio_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation example en:port-68656c6c6f:prod-dnigbtea24ste
 /// ```
-class ProductPortfolioAssociation extends CustomResource {
+class ProductPortfolioAssociation extends pulumi.CustomResource {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  late final Output<String?> acceptLanguage;
+  late final pulumi.Output<String?> acceptLanguage;
 
   /// Portfolio identifier.
-  late final Output<String> portfolioId;
+  late final pulumi.Output<String> portfolioId;
 
   /// Product identifier.
   ///
   /// The following arguments are optional:
-  late final Output<String> productId;
+  late final pulumi.Output<String> productId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Identifier of the source portfolio.
-  late final Output<String?> sourcePortfolioId;
+  late final pulumi.Output<String?> sourcePortfolioId;
 
   ProductPortfolioAssociation(
     String name, {
     ProductPortfolioAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:servicecatalog/productPortfolioAssociation:ProductPortfolioAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.acceptLanguage = registerOutput<String?>('acceptLanguage');
     this.portfolioId = registerOutput<String>('portfolioId');

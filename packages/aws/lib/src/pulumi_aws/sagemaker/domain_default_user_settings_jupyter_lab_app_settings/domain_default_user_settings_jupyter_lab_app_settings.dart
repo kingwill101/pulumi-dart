@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../domain_default_user_settings_jupyter_lab_app_settings_app_lifecycle_management/domain_default_user_settings_jupyter_lab_app_settings_app_lifecycle_management.dart';
 import '../domain_default_user_settings_jupyter_lab_app_settings_code_repository/domain_default_user_settings_jupyter_lab_app_settings_code_repository.dart';
 import '../domain_default_user_settings_jupyter_lab_app_settings_custom_image/domain_default_user_settings_jupyter_lab_app_settings_custom_image.dart';
@@ -55,14 +55,14 @@ class DomainDefaultUserSettingsJupyterLabAppSettings {
     }
     final codeRepositoriesValue = codeRepositories;
     if (codeRepositoriesValue != null) {
-      map['codeRepositories'] = Input.encodeList<
+      map['codeRepositories'] = pulumi.Input.encodeList<
               DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository,
               Map<String, dynamic>>(
           codeRepositoriesValue, (value) => value.toMap());
     }
     final customImagesValue = customImages;
     if (customImagesValue != null) {
-      map['customImages'] = Input.encodeList<
+      map['customImages'] = pulumi.Input.encodeList<
           DomainDefaultUserSettingsJupyterLabAppSettingsCustomImage,
           Map<String, dynamic>>(customImagesValue, (value) => value.toMap());
     }
@@ -94,7 +94,7 @@ class DomainDefaultUserSettingsJupyterLabAppSettings {
           : map['builtInLifecycleConfigArn'] as String,
       codeRepositories: map['codeRepositories'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository>(
               map['codeRepositories'],
               (value) =>
@@ -102,7 +102,7 @@ class DomainDefaultUserSettingsJupyterLabAppSettings {
                       .fromMap((value as Map).cast<String, dynamic>())),
       customImages: map['customImages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DomainDefaultUserSettingsJupyterLabAppSettingsCustomImage>(
               map['customImages'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_multi_region_access_points_access_point_public_access_block/get_multi_region_access_points_access_point_public_access_block.dart';
 import '../get_multi_region_access_points_access_point_region/get_multi_region_access_points_access_point_region.dart';
 
@@ -38,10 +38,10 @@ class GetMultiRegionAccessPointsAccessPoint {
     map['alias'] = alias;
     map['createdAt'] = createdAt;
     map['name'] = name;
-    map['publicAccessBlocks'] = Input.encodeList<
+    map['publicAccessBlocks'] = pulumi.Input.encodeList<
         GetMultiRegionAccessPointsAccessPointPublicAccessBlock,
         Map<String, dynamic>>(publicAccessBlocks, (value) => value.toMap());
-    map['regions'] = Input.encodeList<
+    map['regions'] = pulumi.Input.encodeList<
         GetMultiRegionAccessPointsAccessPointRegion,
         Map<String, dynamic>>(regions, (value) => value.toMap());
     map['status'] = status;
@@ -54,16 +54,17 @@ class GetMultiRegionAccessPointsAccessPoint {
       alias: map['alias'] as String,
       createdAt: map['createdAt'] as String,
       name: map['name'] as String,
-      publicAccessBlocks: Input.decodeList<
+      publicAccessBlocks: pulumi.Input.decodeList<
               GetMultiRegionAccessPointsAccessPointPublicAccessBlock>(
           map['publicAccessBlocks'],
           (value) =>
               GetMultiRegionAccessPointsAccessPointPublicAccessBlock.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      regions: Input.decodeList<GetMultiRegionAccessPointsAccessPointRegion>(
-          map['regions'],
-          (value) => GetMultiRegionAccessPointsAccessPointRegion.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      regions:
+          pulumi.Input.decodeList<GetMultiRegionAccessPointsAccessPointRegion>(
+              map['regions'],
+              (value) => GetMultiRegionAccessPointsAccessPointRegion.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
     );
   }

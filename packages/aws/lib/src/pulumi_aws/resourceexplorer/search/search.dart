@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'search_args.dart';
 import 'search_result.dart';
 
@@ -9,13 +9,13 @@ import 'search_result.dart';
 /// ### Basic Usage
 Future<SearchResult> search(
   SearchArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:resourceexplorer/search:Search',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return SearchResult.fromMap(result);
 }

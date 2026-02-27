@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AccessGrantsInstanceResourcePolicy.
 class AccessGrantsInstanceResourcePolicyArgs {
   /// The AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// The policy document.
-  final Input<String> policy;
+  final pulumi.Input<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   AccessGrantsInstanceResourcePolicyArgs({
     this.accountId,
@@ -36,9 +36,9 @@ class AccessGrantsInstanceResourcePolicyArgs {
   factory AccessGrantsInstanceResourcePolicyArgs.fromMap(
       Map<String, dynamic> map) {
     return AccessGrantsInstanceResourcePolicyArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
-      policy: Input.asInput<String>(map['policy']),
-      region: Input.asOptionalInput<String>(map['region']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
+      policy: pulumi.Input.asInput<String>(map['policy']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

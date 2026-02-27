@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../assessment_assessment_reports_destination/assessment_assessment_reports_destination.dart';
 import '../assessment_role/assessment_role.dart';
 import '../assessment_roles_all/assessment_roles_all.dart';
@@ -20,53 +20,53 @@ import 'assessment_args.dart';
 /// ```sh
 /// $ pulumi import aws:auditmanager/assessment:Assessment example abc123-de45
 /// ```
-class Assessment extends CustomResource {
+class Assessment extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the assessment.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Assessment report storage destination configuration. See `assessment_reports_destination` below.
-  late final Output<AssessmentAssessmentReportsDestination?>
+  late final pulumi.Output<AssessmentAssessmentReportsDestination?>
       assessmentReportsDestination;
 
   /// Description of the assessment.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Unique identifier of the framework the assessment will be created from.
-  late final Output<String> frameworkId;
+  late final pulumi.Output<String> frameworkId;
 
   /// Name of the assessment.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// List of roles for the assessment. See `roles` below.
-  late final Output<List<AssessmentRole>> roles;
+  late final pulumi.Output<List<AssessmentRole>> roles;
 
   /// Complete list of all roles with access to the assessment. This includes both roles explicitly configured via the `roles` block, and any roles which have access to all Audit Manager assessments by default.
-  late final Output<List<AssessmentRolesAll>> rolesAlls;
+  late final pulumi.Output<List<AssessmentRolesAll>> rolesAlls;
 
   /// Amazon Web Services accounts and services that are in scope for the assessment. See `scope` below.
   ///
   /// The following arguments are optional:
-  late final Output<AssessmentScope?> scope;
+  late final pulumi.Output<AssessmentScope?> scope;
 
   /// Status of the assessment. Valid values are `ACTIVE` and `INACTIVE`.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// A map of tags to assign to the assessment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Assessment(
     String name, {
     AssessmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:auditmanager/assessment:Assessment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.assessmentReportsDestination =

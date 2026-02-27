@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_config_args.dart';
 
 /// Creates and manages an AWS XRay Encryption Config.
@@ -21,25 +21,25 @@ import 'encryption_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:xray/encryptionConfig:EncryptionConfig example us-west-2
 /// ```
-class EncryptionConfig extends CustomResource {
+class EncryptionConfig extends pulumi.CustomResource {
   /// An AWS KMS customer master key (CMK) ARN.
-  late final Output<String?> keyId;
+  late final pulumi.Output<String?> keyId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The type of encryption. Set to `KMS` to use your own key for encryption. Set to `NONE` for default encryption.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   EncryptionConfig(
     String name, {
     EncryptionConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:xray/encryptionConfig:EncryptionConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.keyId = registerOutput<String?>('keyId');
     this.region = registerOutput<String>('region');

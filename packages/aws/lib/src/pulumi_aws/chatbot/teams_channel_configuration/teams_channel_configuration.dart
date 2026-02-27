@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../teams_channel_configuration_timeouts/teams_channel_configuration_timeouts.dart';
 import 'teams_channel_configuration_args.dart';
 
@@ -19,64 +19,64 @@ import 'teams_channel_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:chatbot/teamsChannelConfiguration:TeamsChannelConfiguration example 5f4f15d2-b958-522a-8333-124aa8bf0925
 /// ```
-class TeamsChannelConfiguration extends CustomResource {
+class TeamsChannelConfiguration extends pulumi.CustomResource {
   /// ID of the Microsoft Teams channel.
-  late final Output<String> channelId;
+  late final pulumi.Output<String> channelId;
 
   /// Name of the Microsoft Teams channel.
-  late final Output<String> channelName;
+  late final pulumi.Output<String> channelName;
 
   /// ARN of the Microsoft Teams channel configuration.
-  late final Output<String> chatConfigurationArn;
+  late final pulumi.Output<String> chatConfigurationArn;
 
   /// Name of the Microsoft Teams channel configuration.
-  late final Output<String> configurationName;
+  late final pulumi.Output<String> configurationName;
 
   /// List of IAM policy ARNs that are applied as channel guardrails. The AWS managed `AdministratorAccess` policy is applied by default if this is not set.
-  late final Output<List<String>> guardrailPolicyArns;
+  late final pulumi.Output<List<String>> guardrailPolicyArns;
 
   /// ARN of the IAM role that defines the permissions for AWS Chatbot. This is a user-defined role that AWS Chatbot will assume. This is not the service-linked role.
-  late final Output<String> iamRoleArn;
+  late final pulumi.Output<String> iamRoleArn;
 
   /// Logging levels include `ERROR`, `INFO`, or `NONE`.
-  late final Output<String> loggingLevel;
+  late final pulumi.Output<String> loggingLevel;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARNs of the SNS topics that deliver notifications to AWS Chatbot.
-  late final Output<List<String>> snsTopicArns;
+  late final pulumi.Output<List<String>> snsTopicArns;
 
   /// Map of tags assigned to the resource.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// ID of the Microsoft Team authorized with AWS Chatbot. To get the team ID, you must perform the initial authorization flow with Microsoft Teams in the AWS Chatbot console. Then you can copy and paste the team ID from the console.
-  late final Output<String> teamId;
+  late final pulumi.Output<String> teamId;
 
   /// Name of the Microsoft Teams team.
-  late final Output<String> teamName;
+  late final pulumi.Output<String> teamName;
 
   /// ID of the Microsoft Teams tenant.
   ///
   /// The following arguments are optional:
-  late final Output<String> tenantId;
-  late final Output<TeamsChannelConfigurationTimeouts?> timeouts;
+  late final pulumi.Output<String> tenantId;
+  late final pulumi.Output<TeamsChannelConfigurationTimeouts?> timeouts;
 
   /// Enables use of a user role requirement in your chat configuration.
-  late final Output<bool> userAuthorizationRequired;
+  late final pulumi.Output<bool> userAuthorizationRequired;
 
   TeamsChannelConfiguration(
     String name, {
     TeamsChannelConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:chatbot/teamsChannelConfiguration:TeamsChannelConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.channelId = registerOutput<String>('channelId');
     this.channelName = registerOutput<String>('channelName');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../core_network_edge/core_network_edge.dart';
 import '../core_network_segment/core_network_segment.dart';
 import 'core_network_args.dart';
@@ -60,15 +60,15 @@ import 'core_network_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkmanager/coreNetwork:CoreNetwork example core-network-0d47f6t230mz46dy4
 /// ```
-class CoreNetwork extends CustomResource {
+class CoreNetwork extends pulumi.CustomResource {
   /// Core Network ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Sets the base policy document for the core network. Refer to the [Core network policies documentation](https://docs.aws.amazon.com/network-manager/latest/cloudwan/cloudwan-policy-change-sets.html) for more information.
-  late final Output<String?> basePolicyDocument;
+  late final pulumi.Output<String?> basePolicyDocument;
 
   /// List of regions to add to the base policy. The base policy created by setting the `create_base_policy` argument to `true` requires one or more regions to be set in the `edge-locations`, `location` key. If `base_policy_regions` is not specified, the region used in the base policy defaults to the region specified in the `provider` block.
-  late final Output<List<String>?> basePolicyRegions;
+  late final pulumi.Output<List<String>?> basePolicyRegions;
 
   /// Whether to create a base policy when a core network is created or updated. A base policy is created and set to `LIVE` to allow attachments to the core network (e.g. VPC Attachments) before applying a policy document provided using the `aws.networkmanager.CoreNetworkPolicyAttachment` resource. This base policy is needed if your core network does not have any `LIVE` policies and your policy document has static routes pointing to VPC attachments and you want to attach your VPCs to the core network before applying the desired policy document. Valid values are `true` or `false`. An example of this Pulumi snippet can be found above for VPC Attachment in a single region and for VPC Attachment multi-region. An example base policy is shown below. This base policy is overridden with the policy that you specify in the `aws.networkmanager.CoreNetworkPolicyAttachment` resource.
   ///
@@ -96,43 +96,43 @@ class CoreNetwork extends CustomResource {
   /// ]
   /// }
   /// ```
-  late final Output<bool?> createBasePolicy;
+  late final pulumi.Output<bool?> createBasePolicy;
 
   /// Timestamp when a core network was created.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// Description of the Core Network.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// One or more blocks detailing the edges within a core network. Detailed below.
-  late final Output<List<CoreNetworkEdge>> edges;
+  late final pulumi.Output<List<CoreNetworkEdge>> edges;
 
   /// ID of the global network that a core network will be a part of.
   ///
   /// The following arguments are optional:
-  late final Output<String> globalNetworkId;
+  late final pulumi.Output<String> globalNetworkId;
 
   /// One or more blocks detailing the segments within a core network. Detailed below.
-  late final Output<List<CoreNetworkSegment>> segments;
+  late final pulumi.Output<List<CoreNetworkSegment>> segments;
 
   /// Current state of a core network.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Key-value tags for the Core Network. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   CoreNetwork(
     String name, {
     CoreNetworkArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkmanager/coreNetwork:CoreNetwork',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.basePolicyDocument = registerOutput<String?>('basePolicyDocument');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agentcore_agent_runtime_agent_runtime_artifact/agentcore_agent_runtime_agent_runtime_artifact.dart';
 import '../agentcore_agent_runtime_authorizer_configuration/agentcore_agent_runtime_authorizer_configuration.dart';
 import '../agentcore_agent_runtime_lifecycle_configuration/agentcore_agent_runtime_lifecycle_configuration.dart';
@@ -12,47 +12,49 @@ import '../agentcore_agent_runtime_timeouts/agentcore_agent_runtime_timeouts.dar
 /// The set of arguments for AgentcoreAgentRuntime.
 class AgentcoreAgentRuntimeArgs {
   /// Container artifact configuration. See `agent_runtime_artifact` below.
-  final Input<AgentcoreAgentRuntimeAgentRuntimeArtifact> agentRuntimeArtifact;
+  final pulumi.Input<AgentcoreAgentRuntimeAgentRuntimeArtifact>
+      agentRuntimeArtifact;
 
   /// Name of the agent runtime.
-  final Input<String> agentRuntimeName;
+  final pulumi.Input<String> agentRuntimeName;
 
   /// Authorization configuration for authenticating incoming requests. See `authorizer_configuration` below.
-  final Input<AgentcoreAgentRuntimeAuthorizerConfiguration>?
+  final pulumi.Input<AgentcoreAgentRuntimeAuthorizerConfiguration>?
       authorizerConfiguration;
 
   /// Description of the agent runtime.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Map of environment variables to pass to the container.
-  final Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>>? environmentVariables;
 
   /// Runtime session and resource lifecycle configuration for the agent runtime. See `lifecycle_configuration` below.
-  final Input<List<AgentcoreAgentRuntimeLifecycleConfiguration>>?
+  final pulumi.Input<List<AgentcoreAgentRuntimeLifecycleConfiguration>>?
       lifecycleConfigurations;
 
   /// Network configuration for the agent runtime. See `network_configuration` below.
   ///
   /// The following arguments are optional:
-  final Input<AgentcoreAgentRuntimeNetworkConfiguration> networkConfiguration;
+  final pulumi.Input<AgentcoreAgentRuntimeNetworkConfiguration>
+      networkConfiguration;
 
   /// Protocol configuration for the agent runtime. See `protocol_configuration` below.
-  final Input<AgentcoreAgentRuntimeProtocolConfiguration>?
+  final pulumi.Input<AgentcoreAgentRuntimeProtocolConfiguration>?
       protocolConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Configuration for HTTP request headers that will be passed through to the runtime. See `request_header_configuration` below.
-  final Input<AgentcoreAgentRuntimeRequestHeaderConfiguration>?
+  final pulumi.Input<AgentcoreAgentRuntimeRequestHeaderConfiguration>?
       requestHeaderConfiguration;
 
   /// ARN of the IAM role that the agent runtime assumes to access AWS services.
-  final Input<String> roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<AgentcoreAgentRuntimeTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<AgentcoreAgentRuntimeTimeouts>? timeouts;
 
   AgentcoreAgentRuntimeArgs({
     required this.agentRuntimeArtifact,
@@ -72,13 +74,13 @@ class AgentcoreAgentRuntimeArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['agentRuntimeArtifact'] = Input.mapInputValue<
+    map['agentRuntimeArtifact'] = pulumi.Input.mapInputValue<
         AgentcoreAgentRuntimeAgentRuntimeArtifact,
         Map<String, dynamic>>(agentRuntimeArtifact, (value) => value.toMap());
     map['agentRuntimeName'] = agentRuntimeName;
     final authorizerConfigurationValue = authorizerConfiguration;
     if (authorizerConfigurationValue != null) {
-      map['authorizerConfiguration'] = Input.mapOptionalInputValue<
+      map['authorizerConfiguration'] = pulumi.Input.mapOptionalInputValue<
               AgentcoreAgentRuntimeAuthorizerConfiguration,
               Map<String, dynamic>>(
           authorizerConfigurationValue, (value) => value.toMap());
@@ -93,20 +95,20 @@ class AgentcoreAgentRuntimeArgs {
     }
     final lifecycleConfigurationsValue = lifecycleConfigurations;
     if (lifecycleConfigurationsValue != null) {
-      map['lifecycleConfigurations'] = Input.mapOptionalInputValue<
+      map['lifecycleConfigurations'] = pulumi.Input.mapOptionalInputValue<
               List<AgentcoreAgentRuntimeLifecycleConfiguration>,
               List<Map<String, dynamic>>>(
           lifecycleConfigurationsValue,
-          (value) => Input.encodeList<
+          (value) => pulumi.Input.encodeList<
               AgentcoreAgentRuntimeLifecycleConfiguration,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
-    map['networkConfiguration'] = Input.mapInputValue<
+    map['networkConfiguration'] = pulumi.Input.mapInputValue<
         AgentcoreAgentRuntimeNetworkConfiguration,
         Map<String, dynamic>>(networkConfiguration, (value) => value.toMap());
     final protocolConfigurationValue = protocolConfiguration;
     if (protocolConfigurationValue != null) {
-      map['protocolConfiguration'] = Input.mapOptionalInputValue<
+      map['protocolConfiguration'] = pulumi.Input.mapOptionalInputValue<
               AgentcoreAgentRuntimeProtocolConfiguration, Map<String, dynamic>>(
           protocolConfigurationValue, (value) => value.toMap());
     }
@@ -116,7 +118,7 @@ class AgentcoreAgentRuntimeArgs {
     }
     final requestHeaderConfigurationValue = requestHeaderConfiguration;
     if (requestHeaderConfigurationValue != null) {
-      map['requestHeaderConfiguration'] = Input.mapOptionalInputValue<
+      map['requestHeaderConfiguration'] = pulumi.Input.mapOptionalInputValue<
               AgentcoreAgentRuntimeRequestHeaderConfiguration,
               Map<String, dynamic>>(
           requestHeaderConfigurationValue, (value) => value.toMap());
@@ -128,7 +130,7 @@ class AgentcoreAgentRuntimeArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           AgentcoreAgentRuntimeTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -138,32 +140,32 @@ class AgentcoreAgentRuntimeArgs {
   factory AgentcoreAgentRuntimeArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeArgs(
       agentRuntimeArtifact:
-          Input.asInput<AgentcoreAgentRuntimeAgentRuntimeArtifact>(
+          pulumi.Input.asInput<AgentcoreAgentRuntimeAgentRuntimeArtifact>(
               map['agentRuntimeArtifact']),
-      agentRuntimeName: Input.asInput<String>(map['agentRuntimeName']),
-      authorizerConfiguration:
-          Input.asOptionalInput<AgentcoreAgentRuntimeAuthorizerConfiguration>(
-              map['authorizerConfiguration']),
-      description: Input.asOptionalInput<String>(map['description']),
-      environmentVariables: Input.asOptionalInput<Map<String, String>>(
+      agentRuntimeName: pulumi.Input.asInput<String>(map['agentRuntimeName']),
+      authorizerConfiguration: pulumi.Input.asOptionalInput<
+              AgentcoreAgentRuntimeAuthorizerConfiguration>(
+          map['authorizerConfiguration']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      environmentVariables: pulumi.Input.asOptionalInput<Map<String, String>>(
           map['environmentVariables']),
-      lifecycleConfigurations: Input.asOptionalInput<
+      lifecycleConfigurations: pulumi.Input.asOptionalInput<
               List<AgentcoreAgentRuntimeLifecycleConfiguration>>(
           map['lifecycleConfigurations']),
       networkConfiguration:
-          Input.asInput<AgentcoreAgentRuntimeNetworkConfiguration>(
+          pulumi.Input.asInput<AgentcoreAgentRuntimeNetworkConfiguration>(
               map['networkConfiguration']),
-      protocolConfiguration:
-          Input.asOptionalInput<AgentcoreAgentRuntimeProtocolConfiguration>(
-              map['protocolConfiguration']),
-      region: Input.asOptionalInput<String>(map['region']),
-      requestHeaderConfiguration: Input.asOptionalInput<
+      protocolConfiguration: pulumi.Input.asOptionalInput<
+              AgentcoreAgentRuntimeProtocolConfiguration>(
+          map['protocolConfiguration']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      requestHeaderConfiguration: pulumi.Input.asOptionalInput<
               AgentcoreAgentRuntimeRequestHeaderConfiguration>(
           map['requestHeaderConfiguration']),
-      roleArn: Input.asInput<String>(map['roleArn']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts:
-          Input.asOptionalInput<AgentcoreAgentRuntimeTimeouts>(map['timeouts']),
+      roleArn: pulumi.Input.asInput<String>(map['roleArn']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<AgentcoreAgentRuntimeTimeouts>(
+          map['timeouts']),
     );
   }
 }

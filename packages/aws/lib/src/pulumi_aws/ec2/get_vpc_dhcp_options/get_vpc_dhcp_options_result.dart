@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_dhcp_options_filter/get_vpc_dhcp_options_filter.dart';
 
 /// Result data returned by getVpcDhcpOptions.
@@ -64,9 +64,8 @@ class GetVpcDhcpOptionsResult {
     map['domainNameServers'] = domainNameServers;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetVpcDhcpOptionsFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetVpcDhcpOptionsFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['ipv6AddressPreferredLeaseTime'] = ipv6AddressPreferredLeaseTime;
@@ -87,7 +86,7 @@ class GetVpcDhcpOptionsResult {
       domainNameServers: (map['domainNameServers'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVpcDhcpOptionsFilter>(
+          : pulumi.Input.decodeList<GetVpcDhcpOptionsFilter>(
               map['filters'],
               (value) => GetVpcDhcpOptionsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

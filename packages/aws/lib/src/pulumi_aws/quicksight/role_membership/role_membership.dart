@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_membership_args.dart';
 
 /// Resource for managing an AWS QuickSight Role Membership.
@@ -18,33 +18,33 @@ import 'role_membership_args.dart';
 /// ```sh
 /// $ pulumi import aws:quicksight/roleMembership:RoleMembership example 012345678901,default,READER,example-group
 /// ```
-class RoleMembership extends CustomResource {
+class RoleMembership extends pulumi.CustomResource {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  late final Output<String> awsAccountId;
+  late final pulumi.Output<String> awsAccountId;
 
   /// Name of the group to be added to the role.
-  late final Output<String> memberName;
+  late final pulumi.Output<String> memberName;
 
   /// Name of the namespace. Defaults to `default`.
-  late final Output<String> namespace;
+  late final pulumi.Output<String> namespace;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Role to add the group to. Valid values are `ADMIN`, `AUTHOR`, `READER`, `ADMIN_PRO`, `AUTHOR_PRO`, and `READER_PRO`.
   ///
   /// The following arguments are optional:
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   RoleMembership(
     String name, {
     RoleMembershipArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:quicksight/roleMembership:RoleMembership',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.awsAccountId = registerOutput<String>('awsAccountId');
     this.memberName = registerOutput<String>('memberName');

@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../enrollment_status_timeouts/enrollment_status_timeouts.dart';
 
 /// The set of arguments for EnrollmentStatus.
 class EnrollmentStatusArgs {
   /// Whether to enroll member accounts of the organization if the account is the management account of an organization. Default is `false`.
-  final Input<bool>? includeMemberAccounts;
+  final pulumi.Input<bool>? includeMemberAccounts;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The enrollment status of the account. Valid values: `Active`, `Inactive`.
-  final Input<String> status;
-  final Input<EnrollmentStatusTimeouts>? timeouts;
+  final pulumi.Input<String> status;
+  final pulumi.Input<EnrollmentStatusTimeouts>? timeouts;
 
   EnrollmentStatusArgs({
     this.includeMemberAccounts,
@@ -35,7 +35,8 @@ class EnrollmentStatusArgs {
     map['status'] = status;
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<EnrollmentStatusTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
+          EnrollmentStatusTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
@@ -44,11 +45,11 @@ class EnrollmentStatusArgs {
   factory EnrollmentStatusArgs.fromMap(Map<String, dynamic> map) {
     return EnrollmentStatusArgs(
       includeMemberAccounts:
-          Input.asOptionalInput<bool>(map['includeMemberAccounts']),
-      region: Input.asOptionalInput<String>(map['region']),
-      status: Input.asInput<String>(map['status']),
-      timeouts:
-          Input.asOptionalInput<EnrollmentStatusTimeouts>(map['timeouts']),
+          pulumi.Input.asOptionalInput<bool>(map['includeMemberAccounts']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      status: pulumi.Input.asInput<String>(map['status']),
+      timeouts: pulumi.Input.asOptionalInput<EnrollmentStatusTimeouts>(
+          map['timeouts']),
     );
   }
 }

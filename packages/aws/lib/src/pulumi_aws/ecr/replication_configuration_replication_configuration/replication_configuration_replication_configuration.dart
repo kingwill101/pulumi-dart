@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../replication_configuration_replication_configuration_rule/replication_configuration_replication_configuration_rule.dart';
 
 class ReplicationConfigurationReplicationConfiguration {
@@ -13,7 +13,7 @@ class ReplicationConfigurationReplicationConfiguration {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['rules'] = Input.encodeList<
+    map['rules'] = pulumi.Input.encodeList<
         ReplicationConfigurationReplicationConfigurationRule,
         Map<String, dynamic>>(rules, (value) => value.toMap());
     return map;
@@ -22,7 +22,7 @@ class ReplicationConfigurationReplicationConfiguration {
   factory ReplicationConfigurationReplicationConfiguration.fromMap(
       Map<String, dynamic> map) {
     return ReplicationConfigurationReplicationConfiguration(
-      rules: Input.decodeList<
+      rules: pulumi.Input.decodeList<
               ReplicationConfigurationReplicationConfigurationRule>(
           map['rules'],
           (value) =>

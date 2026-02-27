@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'readiness_check_args.dart';
 
 /// Provides an AWS Route 53 Recovery Readiness Readiness Check.
@@ -14,33 +14,33 @@ import 'readiness_check_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53recoveryreadiness/readinessCheck:ReadinessCheck my-cw-alarm-check example
 /// ```
-class ReadinessCheck extends CustomResource {
+class ReadinessCheck extends pulumi.CustomResource {
   /// ARN of the readiness_check
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Unique name describing the readiness check.
-  late final Output<String> readinessCheckName;
+  late final pulumi.Output<String> readinessCheckName;
 
   /// Name describing the resource set that will be monitored for readiness.
   ///
   /// The following arguments are optional:
-  late final Output<String> resourceSetName;
+  late final pulumi.Output<String> resourceSetName;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   ReadinessCheck(
     String name, {
     ReadinessCheckArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53recoveryreadiness/readinessCheck:ReadinessCheck',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.readinessCheckName = registerOutput<String>('readinessCheckName');

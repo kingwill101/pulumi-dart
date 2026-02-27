@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_pipeline_definition_pipeline_object_field/get_pipeline_definition_pipeline_object_field.dart';
 
 class GetPipelineDefinitionPipelineObject {
@@ -23,7 +23,8 @@ class GetPipelineDefinitionPipelineObject {
     final map = <String, dynamic>{};
     final fieldsValue = fields;
     if (fieldsValue != null) {
-      map['fields'] = Input.encodeList<GetPipelineDefinitionPipelineObjectField,
+      map['fields'] = pulumi.Input.encodeList<
+          GetPipelineDefinitionPipelineObjectField,
           Map<String, dynamic>>(fieldsValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -36,7 +37,7 @@ class GetPipelineDefinitionPipelineObject {
     return GetPipelineDefinitionPipelineObject(
       fields: map['fields'] == null
           ? null
-          : Input.decodeList<GetPipelineDefinitionPipelineObjectField>(
+          : pulumi.Input.decodeList<GetPipelineDefinitionPipelineObjectField>(
               map['fields'],
               (value) => GetPipelineDefinitionPipelineObjectField.fromMap(
                   (value as Map).cast<String, dynamic>())),

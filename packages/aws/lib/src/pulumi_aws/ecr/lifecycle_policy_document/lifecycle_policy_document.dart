@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../lifecycle_policy_rule/lifecycle_policy_rule.dart';
 
 /// Represents an ECR lifecycle policy document.
@@ -14,14 +14,15 @@ class LifecyclePolicyDocument {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['rules'] = Input.encodeList<LifecyclePolicyRule, Map<String, dynamic>>(
-        rules, (value) => value.toMap());
+    map['rules'] =
+        pulumi.Input.encodeList<LifecyclePolicyRule, Map<String, dynamic>>(
+            rules, (value) => value.toMap());
     return map;
   }
 
   factory LifecyclePolicyDocument.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyDocument(
-      rules: Input.decodeList<LifecyclePolicyRule>(
+      rules: pulumi.Input.decodeList<LifecyclePolicyRule>(
           map['rules'],
           (value) => LifecyclePolicyRule.fromMap(
               (value as Map).cast<String, dynamic>())),

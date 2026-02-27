@@ -1,33 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for GlobalCluster.
 class GlobalClusterArgs {
   /// Name for an automatically created database on cluster creation.
-  final Input<String>? databaseName;
+  final pulumi.Input<String>? databaseName;
 
   /// If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
-  final Input<bool>? deletionProtection;
+  final pulumi.Input<bool>? deletionProtection;
 
   /// Name of the database engine to be used for this DB cluster. The provider will only perform drift detection if a configuration value is provided. Current Valid values: `docdb`. Defaults to `docdb`. Conflicts with `source_db_cluster_identifier`.
-  final Input<String>? engine;
+  final pulumi.Input<String>? engine;
 
   /// Engine version of the global database. Upgrading the engine version will result in all cluster members being immediately updated and will.
   /// * **NOTE:** Upgrading major versions is not supported.
-  final Input<String>? engineVersion;
+  final pulumi.Input<String>? engineVersion;
 
   /// The global cluster identifier.
-  final Input<String> globalClusterIdentifier;
+  final pulumi.Input<String> globalClusterIdentifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Amazon Resource Name (ARN) to use as the primary DB Cluster of the Global Cluster on creation. The provider cannot perform drift detection of this value.
-  final Input<String>? sourceDbClusterIdentifier;
+  final pulumi.Input<String>? sourceDbClusterIdentifier;
 
   /// Specifies whether the DB cluster is encrypted. The default is `false` unless `source_db_cluster_identifier` is specified and encrypted. The provider will only perform drift detection if a configuration value is provided.
-  final Input<bool>? storageEncrypted;
+  final pulumi.Input<bool>? storageEncrypted;
 
   GlobalClusterArgs({
     this.databaseName,
@@ -76,17 +76,18 @@ class GlobalClusterArgs {
 
   factory GlobalClusterArgs.fromMap(Map<String, dynamic> map) {
     return GlobalClusterArgs(
-      databaseName: Input.asOptionalInput<String>(map['databaseName']),
+      databaseName: pulumi.Input.asOptionalInput<String>(map['databaseName']),
       deletionProtection:
-          Input.asOptionalInput<bool>(map['deletionProtection']),
-      engine: Input.asOptionalInput<String>(map['engine']),
-      engineVersion: Input.asOptionalInput<String>(map['engineVersion']),
+          pulumi.Input.asOptionalInput<bool>(map['deletionProtection']),
+      engine: pulumi.Input.asOptionalInput<String>(map['engine']),
+      engineVersion: pulumi.Input.asOptionalInput<String>(map['engineVersion']),
       globalClusterIdentifier:
-          Input.asInput<String>(map['globalClusterIdentifier']),
-      region: Input.asOptionalInput<String>(map['region']),
-      sourceDbClusterIdentifier:
-          Input.asOptionalInput<String>(map['sourceDbClusterIdentifier']),
-      storageEncrypted: Input.asOptionalInput<bool>(map['storageEncrypted']),
+          pulumi.Input.asInput<String>(map['globalClusterIdentifier']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sourceDbClusterIdentifier: pulumi.Input.asOptionalInput<String>(
+          map['sourceDbClusterIdentifier']),
+      storageEncrypted:
+          pulumi.Input.asOptionalInput<bool>(map['storageEncrypted']),
     );
   }
 }

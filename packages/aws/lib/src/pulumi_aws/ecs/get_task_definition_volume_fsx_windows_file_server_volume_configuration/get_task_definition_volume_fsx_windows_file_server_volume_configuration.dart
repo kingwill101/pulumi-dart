@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_task_definition_volume_fsx_windows_file_server_volume_configuration_authorization_config/get_task_definition_volume_fsx_windows_file_server_volume_configuration_authorization_config.dart';
 
 class GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration {
@@ -23,7 +23,7 @@ class GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['authorizationConfigs'] = Input.encodeList<
+    map['authorizationConfigs'] = pulumi.Input.encodeList<
         GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig,
         Map<String, dynamic>>(authorizationConfigs, (value) => value.toMap());
     map['fileSystemId'] = fileSystemId;
@@ -34,7 +34,7 @@ class GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration {
   factory GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration.fromMap(
       Map<String, dynamic> map) {
     return GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration(
-      authorizationConfigs: Input.decodeList<
+      authorizationConfigs: pulumi.Input.decodeList<
               GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig>(
           map['authorizationConfigs'],
           (value) =>

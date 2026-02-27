@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_region_args.dart';
 import 'get_region_result.dart';
 
@@ -15,13 +15,13 @@ import 'get_region_result.dart';
 /// the name of the AWS Region configured on the provider.
 Future<GetRegionResult> getRegion(
   GetRegionArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:index/getRegion:getRegion',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionResult.fromMap(result);
 }

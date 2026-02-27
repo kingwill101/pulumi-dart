@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_configuration_set_args.dart';
 import 'get_configuration_set_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_configuration_set_result.dart';
 /// ### Basic Usage
 Future<GetConfigurationSetResult> getConfigurationSet(
   GetConfigurationSetArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:sesv2/getConfigurationSet:getConfigurationSet',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigurationSetResult.fromMap(result);
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_volume_configuration_managed_ebs_volume_tag_specification/service_volume_configuration_managed_ebs_volume_tag_specification.dart';
 
 class ServiceVolumeConfigurationManagedEbsVolume {
@@ -81,7 +81,7 @@ class ServiceVolumeConfigurationManagedEbsVolume {
     }
     final tagSpecificationsValue = tagSpecifications;
     if (tagSpecificationsValue != null) {
-      map['tagSpecifications'] = Input.encodeList<
+      map['tagSpecifications'] = pulumi.Input.encodeList<
               ServiceVolumeConfigurationManagedEbsVolumeTagSpecification,
               Map<String, dynamic>>(
           tagSpecificationsValue, (value) => value.toMap());
@@ -116,7 +116,7 @@ class ServiceVolumeConfigurationManagedEbsVolume {
           map['snapshotId'] == null ? null : map['snapshotId'] as String,
       tagSpecifications: map['tagSpecifications'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ServiceVolumeConfigurationManagedEbsVolumeTagSpecification>(
               map['tagSpecifications'],
               (value) =>

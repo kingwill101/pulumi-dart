@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for HostedZoneDnsSec.
 class HostedZoneDnsSecArgs {
   /// Identifier of the Route 53 Hosted Zone.
   ///
   /// The following arguments are optional:
-  final Input<String> hostedZoneId;
+  final pulumi.Input<String> hostedZoneId;
 
   /// Hosted Zone signing status. Valid values: `SIGNING`, `NOT_SIGNING`. Defaults to `SIGNING`.
-  final Input<String>? signingStatus;
+  final pulumi.Input<String>? signingStatus;
 
   HostedZoneDnsSecArgs({
     required this.hostedZoneId,
@@ -29,8 +29,8 @@ class HostedZoneDnsSecArgs {
 
   factory HostedZoneDnsSecArgs.fromMap(Map<String, dynamic> map) {
     return HostedZoneDnsSecArgs(
-      hostedZoneId: Input.asInput<String>(map['hostedZoneId']),
-      signingStatus: Input.asOptionalInput<String>(map['signingStatus']),
+      hostedZoneId: pulumi.Input.asInput<String>(map['hostedZoneId']),
+      signingStatus: pulumi.Input.asOptionalInput<String>(map['signingStatus']),
     );
   }
 }

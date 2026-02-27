@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../configuration_aggregator_account_aggregation_source/configuration_aggregator_account_aggregation_source.dart';
 import '../configuration_aggregator_organization_aggregation_source/configuration_aggregator_organization_aggregation_source.dart';
 import 'configuration_aggregator_args.dart';
@@ -22,41 +22,42 @@ import 'configuration_aggregator_args.dart';
 /// ```sh
 /// $ pulumi import aws:cfg/configurationAggregator:ConfigurationAggregator example foo
 /// ```
-class ConfigurationAggregator extends CustomResource {
+class ConfigurationAggregator extends pulumi.CustomResource {
   /// The account(s) to aggregate config data from as documented below.
-  late final Output<ConfigurationAggregatorAccountAggregationSource?>
+  late final pulumi.Output<ConfigurationAggregatorAccountAggregationSource?>
       accountAggregationSource;
 
   /// The ARN of the aggregator
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The name of the configuration aggregator.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The organization to aggregate config data from as documented below.
-  late final Output<ConfigurationAggregatorOrganizationAggregationSource?>
+  late final pulumi
+      .Output<ConfigurationAggregatorOrganizationAggregationSource?>
       organizationAggregationSource;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// Either `account_aggregation_source` or `organization_aggregation_source` must be specified.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   ConfigurationAggregator(
     String name, {
     ConfigurationAggregatorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cfg/configurationAggregator:ConfigurationAggregator',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountAggregationSource =
         registerOutput<ConfigurationAggregatorAccountAggregationSource?>(

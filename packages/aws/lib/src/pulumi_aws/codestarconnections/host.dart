@@ -1,4 +1,4 @@
 library module_codestarconnections_host;
 
-export 'host/host2.dart';
-export 'host/host_args2.dart';
+export 'host/host_codestarconnections.dart';
+export 'host/host_codestarconnections_args.dart';

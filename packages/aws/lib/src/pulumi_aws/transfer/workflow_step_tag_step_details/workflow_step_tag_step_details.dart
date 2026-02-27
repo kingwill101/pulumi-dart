@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workflow_step_tag_step_details_tag/workflow_step_tag_step_details_tag.dart';
 
 class WorkflowStepTagStepDetails {
@@ -31,9 +31,8 @@ class WorkflowStepTagStepDetails {
     }
     final tagsValue = tags;
     if (tagsValue != null) {
-      map['tags'] =
-          Input.encodeList<WorkflowStepTagStepDetailsTag, Map<String, dynamic>>(
-              tagsValue, (value) => value.toMap());
+      map['tags'] = pulumi.Input.encodeList<WorkflowStepTagStepDetailsTag,
+          Map<String, dynamic>>(tagsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -46,7 +45,7 @@ class WorkflowStepTagStepDetails {
           : map['sourceFileLocation'] as String,
       tags: map['tags'] == null
           ? null
-          : Input.decodeList<WorkflowStepTagStepDetailsTag>(
+          : pulumi.Input.decodeList<WorkflowStepTagStepDetailsTag>(
               map['tags'],
               (value) => WorkflowStepTagStepDetailsTag.fromMap(
                   (value as Map).cast<String, dynamic>())),

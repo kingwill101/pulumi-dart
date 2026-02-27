@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_organizational_unit_child_accounts_account/get_organizational_unit_child_accounts_account.dart';
 
 /// Result data returned by getOrganizationalUnitChildAccounts.
@@ -20,7 +20,7 @@ class GetOrganizationalUnitChildAccountsResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['accounts'] = Input.encodeList<
+    map['accounts'] = pulumi.Input.encodeList<
         GetOrganizationalUnitChildAccountsAccount,
         Map<String, dynamic>>(accounts, (value) => value.toMap());
     map['id'] = id;
@@ -31,10 +31,11 @@ class GetOrganizationalUnitChildAccountsResult {
   factory GetOrganizationalUnitChildAccountsResult.fromMap(
       Map<String, dynamic> map) {
     return GetOrganizationalUnitChildAccountsResult(
-      accounts: Input.decodeList<GetOrganizationalUnitChildAccountsAccount>(
-          map['accounts'],
-          (value) => GetOrganizationalUnitChildAccountsAccount.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      accounts:
+          pulumi.Input.decodeList<GetOrganizationalUnitChildAccountsAccount>(
+              map['accounts'],
+              (value) => GetOrganizationalUnitChildAccountsAccount.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       parentId: map['parentId'] as String,
     );

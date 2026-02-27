@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getStreamConsumer.
 class GetStreamConsumerArgs {
   /// ARN of the stream consumer.
-  final Input<String>? arn;
+  final pulumi.Input<String>? arn;
 
   /// Name of the stream consumer.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ARN of the data stream the consumer is registered with.
-  final Input<String> streamArn;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<String> streamArn;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetStreamConsumerArgs({
     this.arn,
@@ -49,11 +49,11 @@ class GetStreamConsumerArgs {
 
   factory GetStreamConsumerArgs.fromMap(Map<String, dynamic> map) {
     return GetStreamConsumerArgs(
-      arn: Input.asOptionalInput<String>(map['arn']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      streamArn: Input.asInput<String>(map['streamArn']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      arn: pulumi.Input.asOptionalInput<String>(map['arn']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      streamArn: pulumi.Input.asInput<String>(map['streamArn']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

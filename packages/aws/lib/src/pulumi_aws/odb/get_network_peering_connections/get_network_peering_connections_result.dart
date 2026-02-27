@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_network_peering_connections_odb_peering_connection/get_network_peering_connections_odb_peering_connection.dart';
 
 /// Result data returned by getNetworkPeeringConnections.
@@ -22,7 +22,7 @@ class GetNetworkPeeringConnectionsResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['odbPeeringConnections'] = Input.encodeList<
+    map['odbPeeringConnections'] = pulumi.Input.encodeList<
         GetNetworkPeeringConnectionsOdbPeeringConnection,
         Map<String, dynamic>>(odbPeeringConnections, (value) => value.toMap());
     map['region'] = region;
@@ -32,12 +32,11 @@ class GetNetworkPeeringConnectionsResult {
   factory GetNetworkPeeringConnectionsResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringConnectionsResult(
       id: map['id'] as String,
-      odbPeeringConnections:
-          Input.decodeList<GetNetworkPeeringConnectionsOdbPeeringConnection>(
-              map['odbPeeringConnections'],
-              (value) =>
-                  GetNetworkPeeringConnectionsOdbPeeringConnection.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      odbPeeringConnections: pulumi.Input.decodeList<
+              GetNetworkPeeringConnectionsOdbPeeringConnection>(
+          map['odbPeeringConnections'],
+          (value) => GetNetworkPeeringConnectionsOdbPeeringConnection.fromMap(
+              (value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_domain_name_endpoint_configuration/get_domain_name_endpoint_configuration.dart';
 
 /// Result data returned by getDomainName.
@@ -89,7 +89,7 @@ class GetDomainNameResult {
     map['domainName'] = domainName;
     map['domainNameId'] = domainNameId;
     map['endpointAccessMode'] = endpointAccessMode;
-    map['endpointConfigurations'] = Input.encodeList<
+    map['endpointConfigurations'] = pulumi.Input.encodeList<
         GetDomainNameEndpointConfiguration,
         Map<String, dynamic>>(endpointConfigurations, (value) => value.toMap());
     map['id'] = id;
@@ -116,7 +116,7 @@ class GetDomainNameResult {
       domainNameId: map['domainNameId'] as String,
       endpointAccessMode: map['endpointAccessMode'] as String,
       endpointConfigurations:
-          Input.decodeList<GetDomainNameEndpointConfiguration>(
+          pulumi.Input.decodeList<GetDomainNameEndpointConfiguration>(
               map['endpointConfigurations'],
               (value) => GetDomainNameEndpointConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),

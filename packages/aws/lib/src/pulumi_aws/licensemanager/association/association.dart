@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'association_args.dart';
 
 /// Provides a License Manager association.
@@ -16,25 +16,25 @@ import 'association_args.dart';
 /// ```sh
 /// $ pulumi import aws:licensemanager/association:Association example arn:aws:ec2:eu-west-1:123456789012:image/ami-123456789abcdef01,arn:aws:license-manager:eu-west-1:123456789012:license-configuration:lic-0123456789abcdef0123456789abcdef
 /// ```
-class Association extends CustomResource {
+class Association extends pulumi.CustomResource {
   /// ARN of the license configuration.
-  late final Output<String> licenseConfigurationArn;
+  late final pulumi.Output<String> licenseConfigurationArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the resource associated with the license configuration.
-  late final Output<String> resourceArn;
+  late final pulumi.Output<String> resourceArn;
 
   Association(
     String name, {
     AssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:licensemanager/association:Association',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.licenseConfigurationArn =
         registerOutput<String>('licenseConfigurationArn');

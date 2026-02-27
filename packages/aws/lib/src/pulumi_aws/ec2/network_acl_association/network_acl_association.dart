@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_acl_association_args.dart';
 
 /// Provides an network ACL association resource which allows you to associate your network ACL with any subnet(s).
@@ -18,25 +18,25 @@ import 'network_acl_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/networkAclAssociation:NetworkAclAssociation main aclassoc-02baf37f20966b3e6
 /// ```
-class NetworkAclAssociation extends CustomResource {
+class NetworkAclAssociation extends pulumi.CustomResource {
   /// The ID of the network ACL.
-  late final Output<String> networkAclId;
+  late final pulumi.Output<String> networkAclId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the associated Subnet.
-  late final Output<String> subnetId;
+  late final pulumi.Output<String> subnetId;
 
   NetworkAclAssociation(
     String name, {
     NetworkAclAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/networkAclAssociation:NetworkAclAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.networkAclId = registerOutput<String>('networkAclId');
     this.region = registerOutput<String>('region');

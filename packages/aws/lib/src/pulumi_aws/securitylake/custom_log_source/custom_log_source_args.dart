@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../custom_log_source_configuration/custom_log_source_configuration.dart';
 
 /// The set of arguments for CustomLogSource.
 class CustomLogSourceArgs {
   /// The configuration for the third-party custom source.
-  final Input<CustomLogSourceConfiguration> configuration;
+  final pulumi.Input<CustomLogSourceConfiguration> configuration;
 
   /// The Open Cybersecurity Schema Framework (OCSF) event classes which describes the type of data that the custom source will send to Security Lake.
-  final Input<List<String>>? eventClasses;
+  final pulumi.Input<List<String>>? eventClasses;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Specify the name for a third-party custom source.
   /// This must be a Regionally unique value.
   /// Has a maximum length of 20.
-  final Input<String> sourceName;
+  final pulumi.Input<String> sourceName;
 
   /// Specify the source version for the third-party custom source, to limit log collection to a specific version of custom data source.
-  final Input<String>? sourceVersion;
+  final pulumi.Input<String>? sourceVersion;
 
   CustomLogSourceArgs({
     required this.configuration,
@@ -32,9 +32,9 @@ class CustomLogSourceArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['configuration'] =
-        Input.mapInputValue<CustomLogSourceConfiguration, Map<String, dynamic>>(
-            configuration, (value) => value.toMap());
+    map['configuration'] = pulumi.Input.mapInputValue<
+        CustomLogSourceConfiguration,
+        Map<String, dynamic>>(configuration, (value) => value.toMap());
     final eventClassesValue = eventClasses;
     if (eventClassesValue != null) {
       map['eventClasses'] = eventClassesValue;
@@ -53,12 +53,13 @@ class CustomLogSourceArgs {
 
   factory CustomLogSourceArgs.fromMap(Map<String, dynamic> map) {
     return CustomLogSourceArgs(
-      configuration:
-          Input.asInput<CustomLogSourceConfiguration>(map['configuration']),
-      eventClasses: Input.asOptionalInput<List<String>>(map['eventClasses']),
-      region: Input.asOptionalInput<String>(map['region']),
-      sourceName: Input.asInput<String>(map['sourceName']),
-      sourceVersion: Input.asOptionalInput<String>(map['sourceVersion']),
+      configuration: pulumi.Input.asInput<CustomLogSourceConfiguration>(
+          map['configuration']),
+      eventClasses:
+          pulumi.Input.asOptionalInput<List<String>>(map['eventClasses']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sourceName: pulumi.Input.asInput<String>(map['sourceName']),
+      sourceVersion: pulumi.Input.asOptionalInput<String>(map['sourceVersion']),
     );
   }
 }

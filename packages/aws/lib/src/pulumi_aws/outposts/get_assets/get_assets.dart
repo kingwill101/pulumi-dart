@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_assets_args.dart';
 import 'get_assets_result.dart';
 
@@ -17,13 +17,13 @@ import 'get_assets_result.dart';
 /// ### With Status ID Filter
 Future<GetAssetsResult> getAssets(
   GetAssetsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:outposts/getAssets:getAssets',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAssetsResult.fromMap(result);
 }

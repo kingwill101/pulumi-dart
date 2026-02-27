@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAppregistryAttributeGroupAssociations.
 class GetAppregistryAttributeGroupAssociationsArgs {
   /// ID of the application to which attribute groups are associated.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Name of the application to which attribute groups are associated.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// > Exactly one of `id`or `name` must be set.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetAppregistryAttributeGroupAssociationsArgs({
     this.id,
@@ -40,9 +40,9 @@ class GetAppregistryAttributeGroupAssociationsArgs {
   factory GetAppregistryAttributeGroupAssociationsArgs.fromMap(
       Map<String, dynamic> map) {
     return GetAppregistryAttributeGroupAssociationsArgs(
-      id: Input.asOptionalInput<String>(map['id']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

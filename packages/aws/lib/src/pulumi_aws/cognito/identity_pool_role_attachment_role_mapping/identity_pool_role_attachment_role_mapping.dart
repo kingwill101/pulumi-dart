@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../identity_pool_role_attachment_role_mapping_mapping_rule/identity_pool_role_attachment_role_mapping_mapping_rule.dart';
 
 class IdentityPoolRoleAttachmentRoleMapping {
@@ -32,7 +32,7 @@ class IdentityPoolRoleAttachmentRoleMapping {
     map['identityProvider'] = identityProvider;
     final mappingRulesValue = mappingRules;
     if (mappingRulesValue != null) {
-      map['mappingRules'] = Input.encodeList<
+      map['mappingRules'] = pulumi.Input.encodeList<
           IdentityPoolRoleAttachmentRoleMappingMappingRule,
           Map<String, dynamic>>(mappingRulesValue, (value) => value.toMap());
     }
@@ -49,7 +49,8 @@ class IdentityPoolRoleAttachmentRoleMapping {
       identityProvider: map['identityProvider'] as String,
       mappingRules: map['mappingRules'] == null
           ? null
-          : Input.decodeList<IdentityPoolRoleAttachmentRoleMappingMappingRule>(
+          : pulumi.Input.decodeList<
+                  IdentityPoolRoleAttachmentRoleMappingMappingRule>(
               map['mappingRules'],
               (value) =>
                   IdentityPoolRoleAttachmentRoleMappingMappingRule.fromMap(

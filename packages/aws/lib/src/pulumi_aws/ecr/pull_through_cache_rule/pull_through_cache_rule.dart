@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pull_through_cache_rule_args.dart';
 
 /// Provides an Elastic Container Registry Pull Through Cache Rule.
@@ -17,37 +17,37 @@ import 'pull_through_cache_rule_args.dart';
 /// ```sh
 /// $ pulumi import aws:ecr/pullThroughCacheRule:PullThroughCacheRule example ecr-public
 /// ```
-class PullThroughCacheRule extends CustomResource {
+class PullThroughCacheRule extends pulumi.CustomResource {
   /// ARN of the Secret which will be used to authenticate against the registry.
-  late final Output<String?> credentialArn;
+  late final pulumi.Output<String?> credentialArn;
 
   /// The ARN of the IAM role associated with the pull through cache rule. Must be specified if the upstream registry is a cross-account ECR private registry. See [AWS Document - Setting up permissions for cross-account ECR to ECR PTC](https://docs.aws.amazon.com/AmazonECR/latest/userguide/pull-through-cache-private.html).
-  late final Output<String?> customRoleArn;
+  late final pulumi.Output<String?> customRoleArn;
 
   /// The repository name prefix to use when caching images from the source registry. Use `ROOT` as the prefix to apply a template to all repositories in your registry that don't have an associated pull through cache rule.
-  late final Output<String> ecrRepositoryPrefix;
+  late final pulumi.Output<String> ecrRepositoryPrefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The registry ID where the repository was created.
-  late final Output<String> registryId;
+  late final pulumi.Output<String> registryId;
 
   /// The registry URL of the upstream registry to use as the source.
-  late final Output<String> upstreamRegistryUrl;
+  late final pulumi.Output<String> upstreamRegistryUrl;
 
   /// The upstream repository prefix associated with the pull through cache rule. Used if the upstream registry is an ECR private registry. If not specified, it's set to `ROOT`, which allows matching with any upstream repository. See [AWS Document - Customizing repository prefixes for ECR to ECR pull through cache](https://docs.aws.amazon.com/AmazonECR/latest/userguide/pull-through-cache-private-wildcards.html).
-  late final Output<String?> upstreamRepositoryPrefix;
+  late final pulumi.Output<String?> upstreamRepositoryPrefix;
 
   PullThroughCacheRule(
     String name, {
     PullThroughCacheRuleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ecr/pullThroughCacheRule:PullThroughCacheRule',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.credentialArn = registerOutput<String?>('credentialArn');
     this.customRoleArn = registerOutput<String?>('customRoleArn');

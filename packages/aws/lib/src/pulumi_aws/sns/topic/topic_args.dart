@@ -1,95 +1,95 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Topic.
 class TopicArgs {
   /// IAM role for failure feedback
-  final Input<String>? applicationFailureFeedbackRoleArn;
+  final pulumi.Input<String>? applicationFailureFeedbackRoleArn;
 
   /// The IAM role permitted to receive success feedback for this topic
-  final Input<String>? applicationSuccessFeedbackRoleArn;
+  final pulumi.Input<String>? applicationSuccessFeedbackRoleArn;
 
   /// Percentage of success to sample
-  final Input<int>? applicationSuccessFeedbackSampleRate;
+  final pulumi.Input<int>? applicationSuccessFeedbackSampleRate;
 
   /// The message archive policy for FIFO topics. More details in the [AWS documentation](https://docs.aws.amazon.com/sns/latest/dg/message-archiving-and-replay-topic-owner.html).
-  final Input<String>? archivePolicy;
+  final pulumi.Input<String>? archivePolicy;
 
   /// Enables content-based deduplication for FIFO topics. For more information, see the [related documentation](https://docs.aws.amazon.com/sns/latest/dg/fifo-message-dedup.html)
-  final Input<bool>? contentBasedDeduplication;
+  final pulumi.Input<bool>? contentBasedDeduplication;
 
   /// The SNS delivery policy. More details in the [AWS documentation](https://docs.aws.amazon.com/sns/latest/dg/DeliveryPolicies.html).
-  final Input<String>? deliveryPolicy;
+  final pulumi.Input<String>? deliveryPolicy;
 
   /// The display name for the topic
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Enables higher throughput for FIFO topics by adjusting the scope of deduplication. This attribute has two possible values, `Topic` and `MessageGroup`. For more information, see the [related documentation](https://docs.aws.amazon.com/sns/latest/dg/fifo-high-throughput.html#enable-high-throughput-on-fifo-topic).
-  final Input<String>? fifoThroughputScope;
+  final pulumi.Input<String>? fifoThroughputScope;
 
   /// Boolean indicating whether or not to create a FIFO (first-in-first-out) topic. FIFO topics can't deliver messages to customer managed endpoints, such as email addresses, mobile apps, SMS, or HTTP(S) endpoints. These endpoint types aren't guaranteed to preserve strict message ordering. Default is `false`.
-  final Input<bool>? fifoTopic;
+  final pulumi.Input<bool>? fifoTopic;
 
   /// IAM role for failure feedback
-  final Input<String>? firehoseFailureFeedbackRoleArn;
+  final pulumi.Input<String>? firehoseFailureFeedbackRoleArn;
 
   /// The IAM role permitted to receive success feedback for this topic
-  final Input<String>? firehoseSuccessFeedbackRoleArn;
+  final pulumi.Input<String>? firehoseSuccessFeedbackRoleArn;
 
   /// Percentage of success to sample
-  final Input<int>? firehoseSuccessFeedbackSampleRate;
+  final pulumi.Input<int>? firehoseSuccessFeedbackSampleRate;
 
   /// IAM role for failure feedback
-  final Input<String>? httpFailureFeedbackRoleArn;
+  final pulumi.Input<String>? httpFailureFeedbackRoleArn;
 
   /// The IAM role permitted to receive success feedback for this topic
-  final Input<String>? httpSuccessFeedbackRoleArn;
+  final pulumi.Input<String>? httpSuccessFeedbackRoleArn;
 
   /// Percentage of success to sample
-  final Input<int>? httpSuccessFeedbackSampleRate;
+  final pulumi.Input<int>? httpSuccessFeedbackSampleRate;
 
   /// The ID of an AWS-managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see [Key Terms](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms)
-  final Input<String>? kmsMasterKeyId;
+  final pulumi.Input<String>? kmsMasterKeyId;
 
   /// IAM role for failure feedback
-  final Input<String>? lambdaFailureFeedbackRoleArn;
+  final pulumi.Input<String>? lambdaFailureFeedbackRoleArn;
 
   /// The IAM role permitted to receive success feedback for this topic
-  final Input<String>? lambdaSuccessFeedbackRoleArn;
+  final pulumi.Input<String>? lambdaSuccessFeedbackRoleArn;
 
   /// Percentage of success to sample
-  final Input<int>? lambdaSuccessFeedbackSampleRate;
+  final pulumi.Input<int>? lambdaSuccessFeedbackSampleRate;
 
   /// The name of the topic. Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long. For a FIFO (first-in-first-out) topic, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// The fully-formed AWS policy as JSON.
-  final Input<String>? policy;
+  final pulumi.Input<String>? policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// If `SignatureVersion` should be [1 (SHA1) or 2 (SHA256)](https://docs.aws.amazon.com/sns/latest/dg/sns-verify-signature-of-message.html). The signature version corresponds to the hashing algorithm used while creating the signature of the notifications, subscription confirmations, or unsubscribe confirmation messages sent by Amazon SNS.
-  final Input<int>? signatureVersion;
+  final pulumi.Input<int>? signatureVersion;
 
   /// IAM role for failure feedback
-  final Input<String>? sqsFailureFeedbackRoleArn;
+  final pulumi.Input<String>? sqsFailureFeedbackRoleArn;
 
   /// The IAM role permitted to receive success feedback for this topic
-  final Input<String>? sqsSuccessFeedbackRoleArn;
+  final pulumi.Input<String>? sqsSuccessFeedbackRoleArn;
 
   /// Percentage of success to sample
-  final Input<int>? sqsSuccessFeedbackSampleRate;
+  final pulumi.Input<int>? sqsSuccessFeedbackSampleRate;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Tracing mode of an Amazon SNS topic. Valid values: `"PassThrough"`, `"Active"`.
-  final Input<String>? tracingConfig;
+  final pulumi.Input<String>? tracingConfig;
 
   TopicArgs({
     this.applicationFailureFeedbackRoleArn,
@@ -258,52 +258,55 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      applicationFailureFeedbackRoleArn: Input.asOptionalInput<String>(
+      applicationFailureFeedbackRoleArn: pulumi.Input.asOptionalInput<String>(
           map['applicationFailureFeedbackRoleArn']),
-      applicationSuccessFeedbackRoleArn: Input.asOptionalInput<String>(
+      applicationSuccessFeedbackRoleArn: pulumi.Input.asOptionalInput<String>(
           map['applicationSuccessFeedbackRoleArn']),
-      applicationSuccessFeedbackSampleRate: Input.asOptionalInput<int>(
+      applicationSuccessFeedbackSampleRate: pulumi.Input.asOptionalInput<int>(
           map['applicationSuccessFeedbackSampleRate']),
-      archivePolicy: Input.asOptionalInput<String>(map['archivePolicy']),
+      archivePolicy: pulumi.Input.asOptionalInput<String>(map['archivePolicy']),
       contentBasedDeduplication:
-          Input.asOptionalInput<bool>(map['contentBasedDeduplication']),
-      deliveryPolicy: Input.asOptionalInput<String>(map['deliveryPolicy']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
+          pulumi.Input.asOptionalInput<bool>(map['contentBasedDeduplication']),
+      deliveryPolicy:
+          pulumi.Input.asOptionalInput<String>(map['deliveryPolicy']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
       fifoThroughputScope:
-          Input.asOptionalInput<String>(map['fifoThroughputScope']),
-      fifoTopic: Input.asOptionalInput<bool>(map['fifoTopic']),
-      firehoseFailureFeedbackRoleArn:
-          Input.asOptionalInput<String>(map['firehoseFailureFeedbackRoleArn']),
-      firehoseSuccessFeedbackRoleArn:
-          Input.asOptionalInput<String>(map['firehoseSuccessFeedbackRoleArn']),
-      firehoseSuccessFeedbackSampleRate:
-          Input.asOptionalInput<int>(map['firehoseSuccessFeedbackSampleRate']),
-      httpFailureFeedbackRoleArn:
-          Input.asOptionalInput<String>(map['httpFailureFeedbackRoleArn']),
-      httpSuccessFeedbackRoleArn:
-          Input.asOptionalInput<String>(map['httpSuccessFeedbackRoleArn']),
-      httpSuccessFeedbackSampleRate:
-          Input.asOptionalInput<int>(map['httpSuccessFeedbackSampleRate']),
-      kmsMasterKeyId: Input.asOptionalInput<String>(map['kmsMasterKeyId']),
-      lambdaFailureFeedbackRoleArn:
-          Input.asOptionalInput<String>(map['lambdaFailureFeedbackRoleArn']),
-      lambdaSuccessFeedbackRoleArn:
-          Input.asOptionalInput<String>(map['lambdaSuccessFeedbackRoleArn']),
-      lambdaSuccessFeedbackSampleRate:
-          Input.asOptionalInput<int>(map['lambdaSuccessFeedbackSampleRate']),
-      name: Input.asOptionalInput<String>(map['name']),
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
-      policy: Input.asOptionalInput<String>(map['policy']),
-      region: Input.asOptionalInput<String>(map['region']),
-      signatureVersion: Input.asOptionalInput<int>(map['signatureVersion']),
-      sqsFailureFeedbackRoleArn:
-          Input.asOptionalInput<String>(map['sqsFailureFeedbackRoleArn']),
-      sqsSuccessFeedbackRoleArn:
-          Input.asOptionalInput<String>(map['sqsSuccessFeedbackRoleArn']),
-      sqsSuccessFeedbackSampleRate:
-          Input.asOptionalInput<int>(map['sqsSuccessFeedbackSampleRate']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      tracingConfig: Input.asOptionalInput<String>(map['tracingConfig']),
+          pulumi.Input.asOptionalInput<String>(map['fifoThroughputScope']),
+      fifoTopic: pulumi.Input.asOptionalInput<bool>(map['fifoTopic']),
+      firehoseFailureFeedbackRoleArn: pulumi.Input.asOptionalInput<String>(
+          map['firehoseFailureFeedbackRoleArn']),
+      firehoseSuccessFeedbackRoleArn: pulumi.Input.asOptionalInput<String>(
+          map['firehoseSuccessFeedbackRoleArn']),
+      firehoseSuccessFeedbackSampleRate: pulumi.Input.asOptionalInput<int>(
+          map['firehoseSuccessFeedbackSampleRate']),
+      httpFailureFeedbackRoleArn: pulumi.Input.asOptionalInput<String>(
+          map['httpFailureFeedbackRoleArn']),
+      httpSuccessFeedbackRoleArn: pulumi.Input.asOptionalInput<String>(
+          map['httpSuccessFeedbackRoleArn']),
+      httpSuccessFeedbackSampleRate: pulumi.Input.asOptionalInput<int>(
+          map['httpSuccessFeedbackSampleRate']),
+      kmsMasterKeyId:
+          pulumi.Input.asOptionalInput<String>(map['kmsMasterKeyId']),
+      lambdaFailureFeedbackRoleArn: pulumi.Input.asOptionalInput<String>(
+          map['lambdaFailureFeedbackRoleArn']),
+      lambdaSuccessFeedbackRoleArn: pulumi.Input.asOptionalInput<String>(
+          map['lambdaSuccessFeedbackRoleArn']),
+      lambdaSuccessFeedbackSampleRate: pulumi.Input.asOptionalInput<int>(
+          map['lambdaSuccessFeedbackSampleRate']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
+      policy: pulumi.Input.asOptionalInput<String>(map['policy']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      signatureVersion:
+          pulumi.Input.asOptionalInput<int>(map['signatureVersion']),
+      sqsFailureFeedbackRoleArn: pulumi.Input.asOptionalInput<String>(
+          map['sqsFailureFeedbackRoleArn']),
+      sqsSuccessFeedbackRoleArn: pulumi.Input.asOptionalInput<String>(
+          map['sqsSuccessFeedbackRoleArn']),
+      sqsSuccessFeedbackSampleRate: pulumi.Input.asOptionalInput<int>(
+          map['sqsSuccessFeedbackSampleRate']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tracingConfig: pulumi.Input.asOptionalInput<String>(map['tracingConfig']),
     );
   }
 }

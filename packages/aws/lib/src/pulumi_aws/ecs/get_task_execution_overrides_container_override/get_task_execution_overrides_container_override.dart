@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_task_execution_overrides_container_override_environment/get_task_execution_overrides_container_override_environment.dart';
 import '../get_task_execution_overrides_container_override_resource_requirement/get_task_execution_overrides_container_override_resource_requirement.dart';
 
@@ -50,7 +50,7 @@ class GetTaskExecutionOverridesContainerOverride {
     }
     final environmentsValue = environments;
     if (environmentsValue != null) {
-      map['environments'] = Input.encodeList<
+      map['environments'] = pulumi.Input.encodeList<
           GetTaskExecutionOverridesContainerOverrideEnvironment,
           Map<String, dynamic>>(environmentsValue, (value) => value.toMap());
     }
@@ -65,7 +65,7 @@ class GetTaskExecutionOverridesContainerOverride {
     map['name'] = name;
     final resourceRequirementsValue = resourceRequirements;
     if (resourceRequirementsValue != null) {
-      map['resourceRequirements'] = Input.encodeList<
+      map['resourceRequirements'] = pulumi.Input.encodeList<
               GetTaskExecutionOverridesContainerOverrideResourceRequirement,
               Map<String, dynamic>>(
           resourceRequirementsValue, (value) => value.toMap());
@@ -82,7 +82,7 @@ class GetTaskExecutionOverridesContainerOverride {
       cpu: map['cpu'] == null ? null : map['cpu'] as int,
       environments: map['environments'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GetTaskExecutionOverridesContainerOverrideEnvironment>(
               map['environments'],
               (value) =>
@@ -95,7 +95,7 @@ class GetTaskExecutionOverridesContainerOverride {
       name: map['name'] as String,
       resourceRequirements: map['resourceRequirements'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GetTaskExecutionOverridesContainerOverrideResourceRequirement>(
               map['resourceRequirements'],
               (value) =>

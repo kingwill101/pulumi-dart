@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_event_buses_event_bus/get_event_buses_event_bus.dart';
 
 /// Result data returned by getEventBuses.
@@ -23,7 +23,7 @@ class GetEventBusesResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['eventBuses'] =
-        Input.encodeList<GetEventBusesEventBus, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetEventBusesEventBus, Map<String, dynamic>>(
             eventBuses, (value) => value.toMap());
     map['id'] = id;
     final namePrefixValue = namePrefix;
@@ -36,7 +36,7 @@ class GetEventBusesResult {
 
   factory GetEventBusesResult.fromMap(Map<String, dynamic> map) {
     return GetEventBusesResult(
-      eventBuses: Input.decodeList<GetEventBusesEventBus>(
+      eventBuses: pulumi.Input.decodeList<GetEventBusesEventBus>(
           map['eventBuses'],
           (value) => GetEventBusesEventBus.fromMap(
               (value as Map).cast<String, dynamic>())),

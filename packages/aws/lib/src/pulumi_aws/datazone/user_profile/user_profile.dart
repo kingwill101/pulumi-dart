@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_profile_detail/user_profile_detail.dart';
 import '../user_profile_timeouts/user_profile_timeouts.dart';
 import 'user_profile_args.dart';
@@ -18,40 +18,40 @@ import 'user_profile_args.dart';
 /// ```sh
 /// $ pulumi import aws:datazone/userProfile:UserProfile example arn:aws:iam::123456789012:user/example,dzd_54nakfrg9k6suo,IAM
 /// ```
-class UserProfile extends CustomResource {
+class UserProfile extends pulumi.CustomResource {
   /// Details about the user profile.
-  late final Output<List<UserProfileDetail>> details;
+  late final pulumi.Output<List<UserProfileDetail>> details;
 
   /// The domain identifier.
-  late final Output<String> domainIdentifier;
+  late final pulumi.Output<String> domainIdentifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The user profile status.
-  late final Output<String> status;
-  late final Output<UserProfileTimeouts?> timeouts;
+  late final pulumi.Output<String> status;
+  late final pulumi.Output<UserProfileTimeouts?> timeouts;
 
   /// The user profile type.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// The user identifier.
   ///
   /// The following arguments are optional:
-  late final Output<String> userIdentifier;
+  late final pulumi.Output<String> userIdentifier;
 
   /// The user type.
-  late final Output<String> userType;
+  late final pulumi.Output<String> userType;
 
   UserProfile(
     String name, {
     UserProfileArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:datazone/userProfile:UserProfile',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.details = registerOutput<List<UserProfileDetail>>('details');
     this.domainIdentifier = registerOutput<String>('domainIdentifier');

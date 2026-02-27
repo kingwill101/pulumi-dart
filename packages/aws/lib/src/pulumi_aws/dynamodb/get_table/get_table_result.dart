@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_table_attribute/get_table_attribute.dart';
 import '../get_table_global_secondary_index/get_table_global_secondary_index.dart';
 import '../get_table_local_secondary_index/get_table_local_secondary_index.dart';
@@ -73,28 +73,29 @@ class GetTableResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['attributes'] =
-        Input.encodeList<GetTableAttribute, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTableAttribute, Map<String, dynamic>>(
             attributes, (value) => value.toMap());
     map['billingMode'] = billingMode;
     map['deletionProtectionEnabled'] = deletionProtectionEnabled;
-    map['globalSecondaryIndexes'] =
-        Input.encodeList<GetTableGlobalSecondaryIndex, Map<String, dynamic>>(
-            globalSecondaryIndexes, (value) => value.toMap());
+    map['globalSecondaryIndexes'] = pulumi.Input.encodeList<
+        GetTableGlobalSecondaryIndex,
+        Map<String, dynamic>>(globalSecondaryIndexes, (value) => value.toMap());
     map['hashKey'] = hashKey;
     map['id'] = id;
-    map['localSecondaryIndexes'] =
-        Input.encodeList<GetTableLocalSecondaryIndex, Map<String, dynamic>>(
-            localSecondaryIndexes, (value) => value.toMap());
+    map['localSecondaryIndexes'] = pulumi.Input.encodeList<
+        GetTableLocalSecondaryIndex,
+        Map<String, dynamic>>(localSecondaryIndexes, (value) => value.toMap());
     map['name'] = name;
-    map['onDemandThroughputs'] =
-        Input.encodeList<GetTableOnDemandThroughput, Map<String, dynamic>>(
-            onDemandThroughputs, (value) => value.toMap());
+    map['onDemandThroughputs'] = pulumi.Input.encodeList<
+        GetTableOnDemandThroughput,
+        Map<String, dynamic>>(onDemandThroughputs, (value) => value.toMap());
     map['pointInTimeRecovery'] = pointInTimeRecovery.toMap();
     map['rangeKey'] = rangeKey;
     map['readCapacity'] = readCapacity;
     map['region'] = region;
-    map['replicas'] = Input.encodeList<GetTableReplica, Map<String, dynamic>>(
-        replicas, (value) => value.toMap());
+    map['replicas'] =
+        pulumi.Input.encodeList<GetTableReplica, Map<String, dynamic>>(
+            replicas, (value) => value.toMap());
     map['serverSideEncryption'] = serverSideEncryption.toMap();
     map['streamArn'] = streamArn;
     map['streamEnabled'] = streamEnabled;
@@ -104,7 +105,7 @@ class GetTableResult {
     map['tags'] = tags;
     map['ttl'] = ttl.toMap();
     map['warmThroughputs'] =
-        Input.encodeList<GetTableWarmThroughput, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetTableWarmThroughput, Map<String, dynamic>>(
             warmThroughputs, (value) => value.toMap());
     map['writeCapacity'] = writeCapacity;
     return map;
@@ -113,24 +114,26 @@ class GetTableResult {
   factory GetTableResult.fromMap(Map<String, dynamic> map) {
     return GetTableResult(
       arn: map['arn'] as String,
-      attributes: Input.decodeList<GetTableAttribute>(
+      attributes: pulumi.Input.decodeList<GetTableAttribute>(
           map['attributes'],
           (value) => GetTableAttribute.fromMap(
               (value as Map).cast<String, dynamic>())),
       billingMode: map['billingMode'] as String,
       deletionProtectionEnabled: map['deletionProtectionEnabled'] as bool,
-      globalSecondaryIndexes: Input.decodeList<GetTableGlobalSecondaryIndex>(
-          map['globalSecondaryIndexes'],
-          (value) => GetTableGlobalSecondaryIndex.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      globalSecondaryIndexes:
+          pulumi.Input.decodeList<GetTableGlobalSecondaryIndex>(
+              map['globalSecondaryIndexes'],
+              (value) => GetTableGlobalSecondaryIndex.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       hashKey: map['hashKey'] as String,
       id: map['id'] as String,
-      localSecondaryIndexes: Input.decodeList<GetTableLocalSecondaryIndex>(
-          map['localSecondaryIndexes'],
-          (value) => GetTableLocalSecondaryIndex.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      localSecondaryIndexes:
+          pulumi.Input.decodeList<GetTableLocalSecondaryIndex>(
+              map['localSecondaryIndexes'],
+              (value) => GetTableLocalSecondaryIndex.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      onDemandThroughputs: Input.decodeList<GetTableOnDemandThroughput>(
+      onDemandThroughputs: pulumi.Input.decodeList<GetTableOnDemandThroughput>(
           map['onDemandThroughputs'],
           (value) => GetTableOnDemandThroughput.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -139,7 +142,7 @@ class GetTableResult {
       rangeKey: map['rangeKey'] as String,
       readCapacity: map['readCapacity'] as int,
       region: map['region'] as String,
-      replicas: Input.decodeList<GetTableReplica>(
+      replicas: pulumi.Input.decodeList<GetTableReplica>(
           map['replicas'],
           (value) =>
               GetTableReplica.fromMap((value as Map).cast<String, dynamic>())),
@@ -152,7 +155,7 @@ class GetTableResult {
       tableClass: map['tableClass'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       ttl: GetTableTtl.fromMap((map['ttl'] as Map).cast<String, dynamic>()),
-      warmThroughputs: Input.decodeList<GetTableWarmThroughput>(
+      warmThroughputs: pulumi.Input.decodeList<GetTableWarmThroughput>(
           map['warmThroughputs'],
           (value) => GetTableWarmThroughput.fromMap(
               (value as Map).cast<String, dynamic>())),

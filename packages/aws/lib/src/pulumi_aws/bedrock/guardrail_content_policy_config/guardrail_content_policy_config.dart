@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../guardrail_content_policy_config_filters_config/guardrail_content_policy_config_filters_config.dart';
 import '../guardrail_content_policy_config_tier_config/guardrail_content_policy_config_tier_config.dart';
 
@@ -21,13 +21,13 @@ class GuardrailContentPolicyConfig {
     final map = <String, dynamic>{};
     final filtersConfigsValue = filtersConfigs;
     if (filtersConfigsValue != null) {
-      map['filtersConfigs'] = Input.encodeList<
+      map['filtersConfigs'] = pulumi.Input.encodeList<
           GuardrailContentPolicyConfigFiltersConfig,
           Map<String, dynamic>>(filtersConfigsValue, (value) => value.toMap());
     }
     final tierConfigsValue = tierConfigs;
     if (tierConfigsValue != null) {
-      map['tierConfigs'] = Input.encodeList<
+      map['tierConfigs'] = pulumi.Input.encodeList<
           GuardrailContentPolicyConfigTierConfig,
           Map<String, dynamic>>(tierConfigsValue, (value) => value.toMap());
     }
@@ -38,13 +38,13 @@ class GuardrailContentPolicyConfig {
     return GuardrailContentPolicyConfig(
       filtersConfigs: map['filtersConfigs'] == null
           ? null
-          : Input.decodeList<GuardrailContentPolicyConfigFiltersConfig>(
+          : pulumi.Input.decodeList<GuardrailContentPolicyConfigFiltersConfig>(
               map['filtersConfigs'],
               (value) => GuardrailContentPolicyConfigFiltersConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
       tierConfigs: map['tierConfigs'] == null
           ? null
-          : Input.decodeList<GuardrailContentPolicyConfigTierConfig>(
+          : pulumi.Input.decodeList<GuardrailContentPolicyConfigTierConfig>(
               map['tierConfigs'],
               (value) => GuardrailContentPolicyConfigTierConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

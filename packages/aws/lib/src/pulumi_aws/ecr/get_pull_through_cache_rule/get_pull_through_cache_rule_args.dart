@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPullThroughCacheRule.
 class GetPullThroughCacheRuleArgs {
   /// The repository name prefix to use when caching images from the source registry.
-  final Input<String> ecrRepositoryPrefix;
+  final pulumi.Input<String> ecrRepositoryPrefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetPullThroughCacheRuleArgs({
     required this.ecrRepositoryPrefix,
@@ -27,8 +27,9 @@ class GetPullThroughCacheRuleArgs {
 
   factory GetPullThroughCacheRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetPullThroughCacheRuleArgs(
-      ecrRepositoryPrefix: Input.asInput<String>(map['ecrRepositoryPrefix']),
-      region: Input.asOptionalInput<String>(map['region']),
+      ecrRepositoryPrefix:
+          pulumi.Input.asInput<String>(map['ecrRepositoryPrefix']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

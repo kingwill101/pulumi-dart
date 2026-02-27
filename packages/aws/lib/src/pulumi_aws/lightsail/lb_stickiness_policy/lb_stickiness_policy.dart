@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lb_stickiness_policy_args.dart';
 
 /// Manages session stickiness for a Lightsail Load Balancer.
@@ -16,30 +16,30 @@ import 'lb_stickiness_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:lightsail/lbStickinessPolicy:LbStickinessPolicy example example-load-balancer
 /// ```
-class LbStickinessPolicy extends CustomResource {
+class LbStickinessPolicy extends pulumi.CustomResource {
   /// Cookie duration in seconds. This determines the length of the session stickiness.
-  late final Output<int> cookieDuration;
+  late final pulumi.Output<int> cookieDuration;
 
   /// Whether to enable session stickiness for the load balancer.
-  late final Output<bool> enabled;
+  late final pulumi.Output<bool> enabled;
 
   /// Name of the load balancer to which you want to enable session stickiness.
   ///
   /// The following arguments are optional:
-  late final Output<String> lbName;
+  late final pulumi.Output<String> lbName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   LbStickinessPolicy(
     String name, {
     LbStickinessPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lightsail/lbStickinessPolicy:LbStickinessPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cookieDuration = registerOutput<int>('cookieDuration');
     this.enabled = registerOutput<bool>('enabled');

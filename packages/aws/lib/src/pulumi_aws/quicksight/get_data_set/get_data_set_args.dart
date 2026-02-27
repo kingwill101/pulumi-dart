@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getDataSet.
 class GetDataSetArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// Identifier for the data set.
-  final Input<String> dataSetId;
+  final pulumi.Input<String> dataSetId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetDataSetArgs({
     this.awsAccountId,
@@ -41,10 +41,10 @@ class GetDataSetArgs {
 
   factory GetDataSetArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSetArgs(
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
-      dataSetId: Input.asInput<String>(map['dataSetId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
+      dataSetId: pulumi.Input.asInput<String>(map['dataSetId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

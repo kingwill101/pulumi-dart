@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_caller_identity_args.dart';
 import 'get_caller_identity_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_caller_identity_result.dart';
 /// which this provider is authorized.
 Future<GetCallerIdentityResult> getCallerIdentity(
   GetCallerIdentityArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:index/getCallerIdentity:getCallerIdentity',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCallerIdentityResult.fromMap(result);
 }

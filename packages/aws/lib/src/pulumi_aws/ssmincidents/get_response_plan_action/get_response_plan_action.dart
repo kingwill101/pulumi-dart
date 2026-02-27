@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_response_plan_action_ssm_automation/get_response_plan_action_ssm_automation.dart';
 
 class GetResponsePlanAction {
@@ -13,17 +13,19 @@ class GetResponsePlanAction {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['ssmAutomations'] = Input.encodeList<GetResponsePlanActionSsmAutomation,
+    map['ssmAutomations'] = pulumi.Input.encodeList<
+        GetResponsePlanActionSsmAutomation,
         Map<String, dynamic>>(ssmAutomations, (value) => value.toMap());
     return map;
   }
 
   factory GetResponsePlanAction.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanAction(
-      ssmAutomations: Input.decodeList<GetResponsePlanActionSsmAutomation>(
-          map['ssmAutomations'],
-          (value) => GetResponsePlanActionSsmAutomation.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      ssmAutomations:
+          pulumi.Input.decodeList<GetResponsePlanActionSsmAutomation>(
+              map['ssmAutomations'],
+              (value) => GetResponsePlanActionSsmAutomation.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_gateway_spec_backend_default_client_policy/get_virtual_gateway_spec_backend_default_client_policy.dart';
 
 class GetVirtualGatewaySpecBackendDefault {
@@ -12,7 +12,7 @@ class GetVirtualGatewaySpecBackendDefault {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['clientPolicies'] = Input.encodeList<
+    map['clientPolicies'] = pulumi.Input.encodeList<
         GetVirtualGatewaySpecBackendDefaultClientPolicy,
         Map<String, dynamic>>(clientPolicies, (value) => value.toMap());
     return map;
@@ -21,12 +21,11 @@ class GetVirtualGatewaySpecBackendDefault {
   factory GetVirtualGatewaySpecBackendDefault.fromMap(
       Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefault(
-      clientPolicies:
-          Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicy>(
-              map['clientPolicies'],
-              (value) =>
-                  GetVirtualGatewaySpecBackendDefaultClientPolicy.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      clientPolicies: pulumi.Input.decodeList<
+              GetVirtualGatewaySpecBackendDefaultClientPolicy>(
+          map['clientPolicies'],
+          (value) => GetVirtualGatewaySpecBackendDefaultClientPolicy.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

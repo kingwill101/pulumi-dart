@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scaling_plan_scaling_instruction_customized_load_metric_specification/scaling_plan_scaling_instruction_customized_load_metric_specification.dart';
 import '../scaling_plan_scaling_instruction_predefined_load_metric_specification/scaling_plan_scaling_instruction_predefined_load_metric_specification.dart';
 import '../scaling_plan_scaling_instruction_target_tracking_configuration/scaling_plan_scaling_instruction_target_tracking_configuration.dart';
@@ -119,7 +119,7 @@ class ScalingPlanScalingInstruction {
       map['scheduledActionBufferTime'] = scheduledActionBufferTimeValue;
     }
     map['serviceNamespace'] = serviceNamespace;
-    map['targetTrackingConfigurations'] = Input.encodeList<
+    map['targetTrackingConfigurations'] = pulumi.Input.encodeList<
             ScalingPlanScalingInstructionTargetTrackingConfiguration,
             Map<String, dynamic>>(
         targetTrackingConfigurations, (value) => value.toMap());
@@ -165,7 +165,7 @@ class ScalingPlanScalingInstruction {
           ? null
           : map['scheduledActionBufferTime'] as int,
       serviceNamespace: map['serviceNamespace'] as String,
-      targetTrackingConfigurations: Input.decodeList<
+      targetTrackingConfigurations: pulumi.Input.decodeList<
               ScalingPlanScalingInstructionTargetTrackingConfiguration>(
           map['targetTrackingConfigurations'],
           (value) =>

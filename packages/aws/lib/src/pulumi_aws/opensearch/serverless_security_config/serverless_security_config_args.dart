@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../serverless_security_config_saml_options/serverless_security_config_saml_options.dart';
 
 /// The set of arguments for ServerlessSecurityConfig.
 class ServerlessSecurityConfigArgs {
   /// Description of the security configuration.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the policy.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Configuration block for SAML options.
-  final Input<ServerlessSecurityConfigSamlOptions>? samlOptions;
+  final pulumi.Input<ServerlessSecurityConfigSamlOptions>? samlOptions;
 
   /// Type of configuration. Must be `saml`.
   ///
   /// The following arguments are optional:
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   ServerlessSecurityConfigArgs({
     this.description,
@@ -46,7 +46,7 @@ class ServerlessSecurityConfigArgs {
     }
     final samlOptionsValue = samlOptions;
     if (samlOptionsValue != null) {
-      map['samlOptions'] = Input.mapOptionalInputValue<
+      map['samlOptions'] = pulumi.Input.mapOptionalInputValue<
           ServerlessSecurityConfigSamlOptions,
           Map<String, dynamic>>(samlOptionsValue, (value) => value.toMap());
     }
@@ -56,12 +56,13 @@ class ServerlessSecurityConfigArgs {
 
   factory ServerlessSecurityConfigArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessSecurityConfigArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      samlOptions: Input.asOptionalInput<ServerlessSecurityConfigSamlOptions>(
-          map['samlOptions']),
-      type: Input.asInput<String>(map['type']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      samlOptions:
+          pulumi.Input.asOptionalInput<ServerlessSecurityConfigSamlOptions>(
+              map['samlOptions']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

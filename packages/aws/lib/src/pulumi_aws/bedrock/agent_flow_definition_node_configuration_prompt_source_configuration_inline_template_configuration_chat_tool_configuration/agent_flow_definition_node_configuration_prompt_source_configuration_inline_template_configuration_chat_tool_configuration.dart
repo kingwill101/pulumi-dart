@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_tool_configuration_tool/agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_tool_configuration_tool.dart';
 import '../agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_tool_configuration_tool_choice/agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_tool_configuration_tool_choice.dart';
 
@@ -27,7 +27,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
     }
     final toolsValue = tools;
     if (toolsValue != null) {
-      map['tools'] = Input.encodeList<
+      map['tools'] = pulumi.Input.encodeList<
           AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool,
           Map<String, dynamic>>(toolsValue, (value) => value.toMap());
     }
@@ -43,7 +43,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
               .fromMap((map['toolChoice'] as Map).cast<String, dynamic>()),
       tools: map['tools'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationTool>(
               map['tools'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_distribution_configuration_distribution_ami_distribution_configuration_launch_permission/get_distribution_configuration_distribution_ami_distribution_configuration_launch_permission.dart';
 
 class GetDistributionConfigurationDistributionAmiDistributionConfiguration {
@@ -38,7 +38,7 @@ class GetDistributionConfigurationDistributionAmiDistributionConfiguration {
     map['amiTags'] = amiTags;
     map['description'] = description;
     map['kmsKeyId'] = kmsKeyId;
-    map['launchPermissions'] = Input.encodeList<
+    map['launchPermissions'] = pulumi.Input.encodeList<
         GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission,
         Map<String, dynamic>>(launchPermissions, (value) => value.toMap());
     map['name'] = name;
@@ -52,7 +52,7 @@ class GetDistributionConfigurationDistributionAmiDistributionConfiguration {
       amiTags: (map['amiTags'] as Map).cast<String, String>(),
       description: map['description'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
-      launchPermissions: Input.decodeList<
+      launchPermissions: pulumi.Input.decodeList<
               GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission>(
           map['launchPermissions'],
           (value) =>

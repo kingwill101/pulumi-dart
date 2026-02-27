@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ReadinessCheck.
 class ReadinessCheckArgs {
   /// Unique name describing the readiness check.
-  final Input<String> readinessCheckName;
+  final pulumi.Input<String> readinessCheckName;
 
   /// Name describing the resource set that will be monitored for readiness.
   ///
   /// The following arguments are optional:
-  final Input<String> resourceSetName;
+  final pulumi.Input<String> resourceSetName;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   ReadinessCheckArgs({
     required this.readinessCheckName,
@@ -34,9 +34,10 @@ class ReadinessCheckArgs {
 
   factory ReadinessCheckArgs.fromMap(Map<String, dynamic> map) {
     return ReadinessCheckArgs(
-      readinessCheckName: Input.asInput<String>(map['readinessCheckName']),
-      resourceSetName: Input.asInput<String>(map['resourceSetName']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      readinessCheckName:
+          pulumi.Input.asInput<String>(map['readinessCheckName']),
+      resourceSetName: pulumi.Input.asInput<String>(map['resourceSetName']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

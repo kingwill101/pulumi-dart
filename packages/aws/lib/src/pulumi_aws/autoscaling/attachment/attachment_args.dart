@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Attachment.
 class AttachmentArgs {
   /// Name of ASG to associate with the ELB.
-  final Input<String> autoscalingGroupName;
+  final pulumi.Input<String> autoscalingGroupName;
 
   /// Name of the ELB.
-  final Input<String>? elb;
+  final pulumi.Input<String>? elb;
 
   /// ARN of a load balancer target group.
-  final Input<String>? lbTargetGroupArn;
+  final pulumi.Input<String>? lbTargetGroupArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   AttachmentArgs({
     required this.autoscalingGroupName,
@@ -43,10 +43,12 @@ class AttachmentArgs {
 
   factory AttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AttachmentArgs(
-      autoscalingGroupName: Input.asInput<String>(map['autoscalingGroupName']),
-      elb: Input.asOptionalInput<String>(map['elb']),
-      lbTargetGroupArn: Input.asOptionalInput<String>(map['lbTargetGroupArn']),
-      region: Input.asOptionalInput<String>(map['region']),
+      autoscalingGroupName:
+          pulumi.Input.asInput<String>(map['autoscalingGroupName']),
+      elb: pulumi.Input.asOptionalInput<String>(map['elb']),
+      lbTargetGroupArn:
+          pulumi.Input.asOptionalInput<String>(map['lbTargetGroupArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

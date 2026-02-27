@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for WorkingStorage.
 class WorkingStorageArgs {
   /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
-  final Input<String> diskId;
+  final pulumi.Input<String> diskId;
 
   /// The Amazon Resource Name (ARN) of the gateway.
-  final Input<String> gatewayArn;
+  final pulumi.Input<String> gatewayArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   WorkingStorageArgs({
     required this.diskId,
@@ -32,9 +32,9 @@ class WorkingStorageArgs {
 
   factory WorkingStorageArgs.fromMap(Map<String, dynamic> map) {
     return WorkingStorageArgs(
-      diskId: Input.asInput<String>(map['diskId']),
-      gatewayArn: Input.asInput<String>(map['gatewayArn']),
-      region: Input.asOptionalInput<String>(map['region']),
+      diskId: pulumi.Input.asInput<String>(map['diskId']),
+      gatewayArn: pulumi.Input.asInput<String>(map['gatewayArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

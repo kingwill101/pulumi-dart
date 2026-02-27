@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRouterConfiguration.
 class GetRouterConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the Router Type. For example: `CiscoSystemsInc-2900SeriesRouters-IOS124`
   ///
@@ -25,10 +25,10 @@ class GetRouterConfigurationArgs {
   /// {"platform":"PA-3000+ and 5000+ series","routerTypeIdentifier":"PaloAltoNetworks-PA3000and5000series-PANOS803","software":"PAN-OS 8.0.3+","vendor":"Palo Alto Networks","xsltTemplateName":"customer-router-palo-alto-generic.xslt","xsltTemplateNameForMacSec":""}]
   /// }
   /// ```
-  final Input<String> routerTypeIdentifier;
+  final pulumi.Input<String> routerTypeIdentifier;
 
   /// ID of the Direct Connect Virtual Interface
-  final Input<String> virtualInterfaceId;
+  final pulumi.Input<String> virtualInterfaceId;
 
   GetRouterConfigurationArgs({
     this.region,
@@ -49,9 +49,11 @@ class GetRouterConfigurationArgs {
 
   factory GetRouterConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetRouterConfigurationArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      routerTypeIdentifier: Input.asInput<String>(map['routerTypeIdentifier']),
-      virtualInterfaceId: Input.asInput<String>(map['virtualInterfaceId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      routerTypeIdentifier:
+          pulumi.Input.asInput<String>(map['routerTypeIdentifier']),
+      virtualInterfaceId:
+          pulumi.Input.asInput<String>(map['virtualInterfaceId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../search_resource/search_resource.dart';
 import '../search_resource_count/search_resource_count.dart';
 
@@ -35,10 +35,11 @@ class SearchResult {
     map['queryString'] = queryString;
     map['region'] = region;
     map['resourceCounts'] =
-        Input.encodeList<SearchResourceCount, Map<String, dynamic>>(
+        pulumi.Input.encodeList<SearchResourceCount, Map<String, dynamic>>(
             resourceCounts, (value) => value.toMap());
-    map['resources'] = Input.encodeList<SearchResource, Map<String, dynamic>>(
-        resources, (value) => value.toMap());
+    map['resources'] =
+        pulumi.Input.encodeList<SearchResource, Map<String, dynamic>>(
+            resources, (value) => value.toMap());
     map['viewArn'] = viewArn;
     return map;
   }
@@ -48,11 +49,11 @@ class SearchResult {
       id: map['id'] as String,
       queryString: map['queryString'] as String,
       region: map['region'] as String,
-      resourceCounts: Input.decodeList<SearchResourceCount>(
+      resourceCounts: pulumi.Input.decodeList<SearchResourceCount>(
           map['resourceCounts'],
           (value) => SearchResourceCount.fromMap(
               (value as Map).cast<String, dynamic>())),
-      resources: Input.decodeList<SearchResource>(
+      resources: pulumi.Input.decodeList<SearchResource>(
           map['resources'],
           (value) =>
               SearchResource.fromMap((value as Map).cast<String, dynamic>())),

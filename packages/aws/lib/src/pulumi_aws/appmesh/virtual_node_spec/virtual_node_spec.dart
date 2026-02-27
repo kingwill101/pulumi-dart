@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../virtual_node_spec_backend/virtual_node_spec_backend.dart';
 import '../virtual_node_spec_backend_defaults/virtual_node_spec_backend_defaults.dart';
 import '../virtual_node_spec_listener/virtual_node_spec_listener.dart';
@@ -40,14 +40,13 @@ class VirtualNodeSpec {
     final backendsValue = backends;
     if (backendsValue != null) {
       map['backends'] =
-          Input.encodeList<VirtualNodeSpecBackend, Map<String, dynamic>>(
+          pulumi.Input.encodeList<VirtualNodeSpecBackend, Map<String, dynamic>>(
               backendsValue, (value) => value.toMap());
     }
     final listenersValue = listeners;
     if (listenersValue != null) {
-      map['listeners'] =
-          Input.encodeList<VirtualNodeSpecListener, Map<String, dynamic>>(
-              listenersValue, (value) => value.toMap());
+      map['listeners'] = pulumi.Input.encodeList<VirtualNodeSpecListener,
+          Map<String, dynamic>>(listenersValue, (value) => value.toMap());
     }
     final loggingValue = logging;
     if (loggingValue != null) {
@@ -68,13 +67,13 @@ class VirtualNodeSpec {
               (map['backendDefaults'] as Map).cast<String, dynamic>()),
       backends: map['backends'] == null
           ? null
-          : Input.decodeList<VirtualNodeSpecBackend>(
+          : pulumi.Input.decodeList<VirtualNodeSpecBackend>(
               map['backends'],
               (value) => VirtualNodeSpecBackend.fromMap(
                   (value as Map).cast<String, dynamic>())),
       listeners: map['listeners'] == null
           ? null
-          : Input.decodeList<VirtualNodeSpecListener>(
+          : pulumi.Input.decodeList<VirtualNodeSpecListener>(
               map['listeners'],
               (value) => VirtualNodeSpecListener.fromMap(
                   (value as Map).cast<String, dynamic>())),

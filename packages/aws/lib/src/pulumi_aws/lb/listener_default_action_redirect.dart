@@ -1,3 +1,3 @@
 library module_lb_listener_default_action_redirect;
 
-export 'listener_default_action_redirect/listener_default_action_redirect2.dart';
+export 'listener_default_action_redirect/listener_default_action_redirect_lb.dart';

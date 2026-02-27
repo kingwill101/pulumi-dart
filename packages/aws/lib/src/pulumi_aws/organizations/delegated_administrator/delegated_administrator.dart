@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'delegated_administrator_args.dart';
 
 /// Provides a resource to manage an [AWS Organizations Delegated Administrator](https://docs.aws.amazon.com/organizations/latest/APIReference/API_RegisterDelegatedAdministrator.html).
@@ -26,43 +26,43 @@ import 'delegated_administrator_args.dart';
 /// ```sh
 /// $ pulumi import aws:organizations/delegatedAdministrator:DelegatedAdministrator example 123456789012/config.amazonaws.com
 /// ```
-class DelegatedAdministrator extends CustomResource {
+class DelegatedAdministrator extends pulumi.CustomResource {
   /// The account ID number of the member account in the organization to register as a delegated administrator.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// The Amazon Resource Name (ARN) of the delegated administrator's account.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The date when the account was made a delegated administrator.
-  late final Output<String> delegationEnabledDate;
+  late final pulumi.Output<String> delegationEnabledDate;
 
   /// The email address that is associated with the delegated administrator's AWS account.
-  late final Output<String> email;
+  late final pulumi.Output<String> email;
 
   /// The method by which the delegated administrator's account joined the organization.
-  late final Output<String> joinedMethod;
+  late final pulumi.Output<String> joinedMethod;
 
   /// The date when the delegated administrator's account became a part of the organization.
-  late final Output<String> joinedTimestamp;
+  late final pulumi.Output<String> joinedTimestamp;
 
   /// The friendly name of the delegated administrator's account.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The service principal of the AWS service for which you want to make the member account a delegated administrator.
-  late final Output<String> servicePrincipal;
+  late final pulumi.Output<String> servicePrincipal;
 
   /// The status of the delegated administrator's account in the organization.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   DelegatedAdministrator(
     String name, {
     DelegatedAdministratorArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:organizations/delegatedAdministrator:DelegatedAdministrator',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
     this.arn = registerOutput<String>('arn');

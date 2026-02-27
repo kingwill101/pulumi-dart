@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_registry_args.dart';
 import 'get_registry_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_registry_result.dart';
 /// ### Basic Usage
 Future<GetRegistryResult> getRegistry(
   GetRegistryArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:glue/getRegistry:getRegistry',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryResult.fromMap(result);
 }

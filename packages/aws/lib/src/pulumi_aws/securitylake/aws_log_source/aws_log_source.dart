@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../aws_log_source_source/aws_log_source_source.dart';
 import 'aws_log_source_args.dart';
 
@@ -21,22 +21,22 @@ import 'aws_log_source_args.dart';
 /// ```sh
 /// $ pulumi import aws:securitylake/awsLogSource:AwsLogSource example ROUTE53
 /// ```
-class AwsLogSource extends CustomResource {
+class AwsLogSource extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Specify the natively-supported AWS service to add as a source in Security Lake.
-  late final Output<AwsLogSourceSource> source;
+  late final pulumi.Output<AwsLogSourceSource> source;
 
   AwsLogSource(
     String name, {
     AwsLogSourceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:securitylake/awsLogSource:AwsLogSource',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.source = registerOutput<AwsLogSourceSource>('source');

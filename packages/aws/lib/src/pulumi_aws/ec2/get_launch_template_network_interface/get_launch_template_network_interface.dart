@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_launch_template_network_interface_connection_tracking_specification/get_launch_template_network_interface_connection_tracking_specification.dart';
 
 class GetLaunchTemplateNetworkInterface {
@@ -58,7 +58,7 @@ class GetLaunchTemplateNetworkInterface {
     if (associatePublicIpAddressValue != null) {
       map['associatePublicIpAddress'] = associatePublicIpAddressValue;
     }
-    map['connectionTrackingSpecifications'] = Input.encodeList<
+    map['connectionTrackingSpecifications'] = pulumi.Input.encodeList<
             GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification,
             Map<String, dynamic>>(
         connectionTrackingSpecifications, (value) => value.toMap());
@@ -92,7 +92,7 @@ class GetLaunchTemplateNetworkInterface {
       associatePublicIpAddress: map['associatePublicIpAddress'] == null
           ? null
           : map['associatePublicIpAddress'] as bool,
-      connectionTrackingSpecifications: Input.decodeList<
+      connectionTrackingSpecifications: pulumi.Input.decodeList<
               GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification>(
           map['connectionTrackingSpecifications'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_theme_configuration_typography_font_family/get_theme_configuration_typography_font_family.dart';
 
 class GetThemeConfigurationTypography {
@@ -13,7 +13,7 @@ class GetThemeConfigurationTypography {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['fontFamilies'] = Input.encodeList<
+    map['fontFamilies'] = pulumi.Input.encodeList<
         GetThemeConfigurationTypographyFontFamily,
         Map<String, dynamic>>(fontFamilies, (value) => value.toMap());
     return map;
@@ -21,10 +21,11 @@ class GetThemeConfigurationTypography {
 
   factory GetThemeConfigurationTypography.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationTypography(
-      fontFamilies: Input.decodeList<GetThemeConfigurationTypographyFontFamily>(
-          map['fontFamilies'],
-          (value) => GetThemeConfigurationTypographyFontFamily.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      fontFamilies:
+          pulumi.Input.decodeList<GetThemeConfigurationTypographyFontFamily>(
+              map['fontFamilies'],
+              (value) => GetThemeConfigurationTypographyFontFamily.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_realtime_log_config_endpoint_kinesis_stream_config/get_realtime_log_config_endpoint_kinesis_stream_config.dart';
 
 class GetRealtimeLogConfigEndpoint {
@@ -18,7 +18,7 @@ class GetRealtimeLogConfigEndpoint {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['kinesisStreamConfigs'] = Input.encodeList<
+    map['kinesisStreamConfigs'] = pulumi.Input.encodeList<
         GetRealtimeLogConfigEndpointKinesisStreamConfig,
         Map<String, dynamic>>(kinesisStreamConfigs, (value) => value.toMap());
     map['streamType'] = streamType;
@@ -27,12 +27,11 @@ class GetRealtimeLogConfigEndpoint {
 
   factory GetRealtimeLogConfigEndpoint.fromMap(Map<String, dynamic> map) {
     return GetRealtimeLogConfigEndpoint(
-      kinesisStreamConfigs:
-          Input.decodeList<GetRealtimeLogConfigEndpointKinesisStreamConfig>(
-              map['kinesisStreamConfigs'],
-              (value) =>
-                  GetRealtimeLogConfigEndpointKinesisStreamConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      kinesisStreamConfigs: pulumi.Input.decodeList<
+              GetRealtimeLogConfigEndpointKinesisStreamConfig>(
+          map['kinesisStreamConfigs'],
+          (value) => GetRealtimeLogConfigEndpointKinesisStreamConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
       streamType: map['streamType'] as String,
     );
   }

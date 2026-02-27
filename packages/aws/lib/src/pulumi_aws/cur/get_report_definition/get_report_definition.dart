@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_report_definition_args.dart';
 import 'get_report_definition_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_report_definition_result.dart';
 /// > *NOTE:* If AWS Organizations is enabled, only the master account can use this resource.
 Future<GetReportDefinitionResult> getReportDefinition(
   GetReportDefinitionArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:cur/getReportDefinition:getReportDefinition',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReportDefinitionResult.fromMap(result);
 }

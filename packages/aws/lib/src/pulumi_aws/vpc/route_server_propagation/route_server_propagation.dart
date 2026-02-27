@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../route_server_propagation_timeouts/route_server_propagation_timeouts.dart';
 import 'route_server_propagation_args.dart';
 
@@ -17,28 +17,28 @@ import 'route_server_propagation_args.dart';
 /// ```sh
 /// $ pulumi import aws:vpc/routeServerPropagation:RouteServerPropagation example rs-12345678,rtb-656c65616e6f72
 /// ```
-class RouteServerPropagation extends CustomResource {
+class RouteServerPropagation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The unique identifier for the route server to be associated.
-  late final Output<String> routeServerId;
+  late final pulumi.Output<String> routeServerId;
 
   /// The ID of the route table to which route server will propagate routes.
   ///
   /// The following arguments are optional:
-  late final Output<String> routeTableId;
-  late final Output<RouteServerPropagationTimeouts?> timeouts;
+  late final pulumi.Output<String> routeTableId;
+  late final pulumi.Output<RouteServerPropagationTimeouts?> timeouts;
 
   RouteServerPropagation(
     String name, {
     RouteServerPropagationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:vpc/routeServerPropagation:RouteServerPropagation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.routeServerId = registerOutput<String>('routeServerId');

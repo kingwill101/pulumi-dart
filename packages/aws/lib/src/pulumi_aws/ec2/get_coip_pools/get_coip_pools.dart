@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_coip_pools_args.dart';
 import 'get_coip_pools_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_coip_pools_result.dart';
 /// The following shows outputting all COIP Pool Ids.
 Future<GetCoipPoolsResult> getCoipPools(
   GetCoipPoolsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getCoipPools:getCoipPools',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCoipPoolsResult.fromMap(result);
 }

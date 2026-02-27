@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_connect_filter/get_connect_filter.dart';
 
 /// Result data returned by getConnect.
@@ -39,8 +39,9 @@ class GetConnectResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetConnectFilter, Map<String, dynamic>>(
-          filtersValue, (value) => value.toMap());
+      map['filters'] =
+          pulumi.Input.encodeList<GetConnectFilter, Map<String, dynamic>>(
+              filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['protocol'] = protocol;
@@ -56,7 +57,7 @@ class GetConnectResult {
     return GetConnectResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetConnectFilter>(
+          : pulumi.Input.decodeList<GetConnectFilter>(
               map['filters'],
               (value) => GetConnectFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

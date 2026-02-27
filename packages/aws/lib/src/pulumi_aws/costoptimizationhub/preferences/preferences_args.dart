@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Preferences.
 class PreferencesArgs {
   /// Customize whether the member accounts can see the "After Discounts" savings estimates. Valid values are `All` and `None`. Default value is `All`.
-  final Input<String>? memberAccountDiscountVisibility;
+  final pulumi.Input<String>? memberAccountDiscountVisibility;
 
   /// Customize how estimated monthly savings are calculated. Valid values are `BeforeDiscounts` and `AfterDiscounts`. Default value is `BeforeDiscounts`.
-  final Input<String>? savingsEstimationMode;
+  final pulumi.Input<String>? savingsEstimationMode;
 
   PreferencesArgs({
     this.memberAccountDiscountVisibility,
@@ -32,10 +32,10 @@ class PreferencesArgs {
 
   factory PreferencesArgs.fromMap(Map<String, dynamic> map) {
     return PreferencesArgs(
-      memberAccountDiscountVisibility:
-          Input.asOptionalInput<String>(map['memberAccountDiscountVisibility']),
+      memberAccountDiscountVisibility: pulumi.Input.asOptionalInput<String>(
+          map['memberAccountDiscountVisibility']),
       savingsEstimationMode:
-          Input.asOptionalInput<String>(map['savingsEstimationMode']),
+          pulumi.Input.asOptionalInput<String>(map['savingsEstimationMode']),
     );
   }
 }

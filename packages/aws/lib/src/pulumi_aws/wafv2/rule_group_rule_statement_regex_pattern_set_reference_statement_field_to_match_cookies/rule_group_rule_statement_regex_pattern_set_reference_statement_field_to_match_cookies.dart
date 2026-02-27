@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_statement_regex_pattern_set_reference_statement_field_to_match_cookies_match_pattern/rule_group_rule_statement_regex_pattern_set_reference_statement_field_to_match_cookies_match_pattern.dart';
 
 class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookies {
@@ -23,7 +23,7 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookies
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['matchPatterns'] = Input.encodeList<
+    map['matchPatterns'] = pulumi.Input.encodeList<
         RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookiesMatchPattern,
         Map<String, dynamic>>(matchPatterns, (value) => value.toMap());
     map['matchScope'] = matchScope;
@@ -34,7 +34,7 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookies
   factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookies.fromMap(
       Map<String, dynamic> map) {
     return RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookies(
-      matchPatterns: Input.decodeList<
+      matchPatterns: pulumi.Input.decodeList<
               RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchCookiesMatchPattern>(
           map['matchPatterns'],
           (value) =>

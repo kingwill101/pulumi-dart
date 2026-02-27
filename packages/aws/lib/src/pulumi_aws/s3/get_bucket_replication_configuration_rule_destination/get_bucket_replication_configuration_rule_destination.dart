@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bucket_replication_configuration_rule_destination_access_control_translation/get_bucket_replication_configuration_rule_destination_access_control_translation.dart';
 import '../get_bucket_replication_configuration_rule_destination_encryption_configuration/get_bucket_replication_configuration_rule_destination_encryption_configuration.dart';
 import '../get_bucket_replication_configuration_rule_destination_metric/get_bucket_replication_configuration_rule_destination_metric.dart';
@@ -34,20 +34,20 @@ class GetBucketReplicationConfigurationRuleDestination {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['accessControlTranslations'] = Input.encodeList<
+    map['accessControlTranslations'] = pulumi.Input.encodeList<
         GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation,
         Map<String,
             dynamic>>(accessControlTranslations, (value) => value.toMap());
     map['account'] = account;
     map['bucket'] = bucket;
-    map['encryptionConfigurations'] = Input.encodeList<
+    map['encryptionConfigurations'] = pulumi.Input.encodeList<
         GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration,
         Map<String,
             dynamic>>(encryptionConfigurations, (value) => value.toMap());
-    map['metrics'] = Input.encodeList<
+    map['metrics'] = pulumi.Input.encodeList<
         GetBucketReplicationConfigurationRuleDestinationMetric,
         Map<String, dynamic>>(metrics, (value) => value.toMap());
-    map['replicationTimes'] = Input.encodeList<
+    map['replicationTimes'] = pulumi.Input.encodeList<
         GetBucketReplicationConfigurationRuleDestinationReplicationTime,
         Map<String, dynamic>>(replicationTimes, (value) => value.toMap());
     map['storageClass'] = storageClass;
@@ -57,7 +57,7 @@ class GetBucketReplicationConfigurationRuleDestination {
   factory GetBucketReplicationConfigurationRuleDestination.fromMap(
       Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestination(
-      accessControlTranslations: Input.decodeList<
+      accessControlTranslations: pulumi.Input.decodeList<
               GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation>(
           map['accessControlTranslations'],
           (value) =>
@@ -65,19 +65,19 @@ class GetBucketReplicationConfigurationRuleDestination {
                   .fromMap((value as Map).cast<String, dynamic>())),
       account: map['account'] as String,
       bucket: map['bucket'] as String,
-      encryptionConfigurations: Input.decodeList<
+      encryptionConfigurations: pulumi.Input.decodeList<
               GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration>(
           map['encryptionConfigurations'],
           (value) =>
               GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration
                   .fromMap((value as Map).cast<String, dynamic>())),
-      metrics: Input.decodeList<
+      metrics: pulumi.Input.decodeList<
               GetBucketReplicationConfigurationRuleDestinationMetric>(
           map['metrics'],
           (value) =>
               GetBucketReplicationConfigurationRuleDestinationMetric.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      replicationTimes: Input.decodeList<
+      replicationTimes: pulumi.Input.decodeList<
               GetBucketReplicationConfigurationRuleDestinationReplicationTime>(
           map['replicationTimes'],
           (value) =>

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cidr_location_args.dart';
 
 /// Provides a Route53 CIDR location resource.
@@ -14,25 +14,25 @@ import 'cidr_location_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53/cidrLocation:CidrLocation example 9ac32814-3e67-0932-6048-8d779cc6f511,office
 /// ```
-class CidrLocation extends CustomResource {
+class CidrLocation extends pulumi.CustomResource {
   /// CIDR blocks for the location.
-  late final Output<List<String>> cidrBlocks;
+  late final pulumi.Output<List<String>> cidrBlocks;
 
   /// The ID of the CIDR collection to update.
-  late final Output<String> cidrCollectionId;
+  late final pulumi.Output<String> cidrCollectionId;
 
   /// Name for the CIDR location.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   CidrLocation(
     String name, {
     CidrLocationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53/cidrLocation:CidrLocation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cidrBlocks = registerOutput<List<String>>('cidrBlocks');
     this.cidrCollectionId = registerOutput<String>('cidrCollectionId');

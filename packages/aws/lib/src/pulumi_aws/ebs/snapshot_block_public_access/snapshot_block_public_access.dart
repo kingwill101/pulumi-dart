@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'snapshot_block_public_access_args.dart';
 
 /// Provides a resource to manage the state of the "Block public access for snapshots" setting on region level.
@@ -16,22 +16,22 @@ import 'snapshot_block_public_access_args.dart';
 /// ```sh
 /// $ pulumi import aws:ebs/snapshotBlockPublicAccess:SnapshotBlockPublicAccess example default
 /// ```
-class SnapshotBlockPublicAccess extends CustomResource {
+class SnapshotBlockPublicAccess extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The mode in which to enable "Block public access for snapshots" for the region. Allowed values are `block-all-sharing`, `block-new-sharing`, `unblocked`.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   SnapshotBlockPublicAccess(
     String name, {
     SnapshotBlockPublicAccessArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ebs/snapshotBlockPublicAccess:SnapshotBlockPublicAccess',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');

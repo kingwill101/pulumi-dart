@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_data_shares_data_share/get_data_shares_data_share.dart';
 
 /// Result data returned by getDataShares.
@@ -21,7 +21,7 @@ class GetDataSharesResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['dataShares'] =
-        Input.encodeList<GetDataSharesDataShare, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDataSharesDataShare, Map<String, dynamic>>(
             dataShares, (value) => value.toMap());
     map['id'] = id;
     map['region'] = region;
@@ -30,7 +30,7 @@ class GetDataSharesResult {
 
   factory GetDataSharesResult.fromMap(Map<String, dynamic> map) {
     return GetDataSharesResult(
-      dataShares: Input.decodeList<GetDataSharesDataShare>(
+      dataShares: pulumi.Input.decodeList<GetDataSharesDataShare>(
           map['dataShares'],
           (value) => GetDataSharesDataShare.fromMap(
               (value as Map).cast<String, dynamic>())),

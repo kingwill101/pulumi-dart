@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_statement_xss_match_statement_field_to_match/rule_group_rule_statement_xss_match_statement_field_to_match.dart';
 import '../rule_group_rule_statement_xss_match_statement_text_transformation/rule_group_rule_statement_xss_match_statement_text_transformation.dart';
 
@@ -25,7 +25,7 @@ class RuleGroupRuleStatementXssMatchStatement {
     if (fieldToMatchValue != null) {
       map['fieldToMatch'] = fieldToMatchValue.toMap();
     }
-    map['textTransformations'] = Input.encodeList<
+    map['textTransformations'] = pulumi.Input.encodeList<
         RuleGroupRuleStatementXssMatchStatementTextTransformation,
         Map<String, dynamic>>(textTransformations, (value) => value.toMap());
     return map;
@@ -38,7 +38,7 @@ class RuleGroupRuleStatementXssMatchStatement {
           ? null
           : RuleGroupRuleStatementXssMatchStatementFieldToMatch.fromMap(
               (map['fieldToMatch'] as Map).cast<String, dynamic>()),
-      textTransformations: Input.decodeList<
+      textTransformations: pulumi.Input.decodeList<
               RuleGroupRuleStatementXssMatchStatementTextTransformation>(
           map['textTransformations'],
           (value) =>

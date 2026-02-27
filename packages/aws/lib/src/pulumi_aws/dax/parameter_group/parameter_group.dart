@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../parameter_group_parameter/parameter_group_parameter.dart';
 import 'parameter_group_args.dart';
 
@@ -15,28 +15,28 @@ import 'parameter_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:dax/parameterGroup:ParameterGroup example my_dax_pg
 /// ```
-class ParameterGroup extends CustomResource {
+class ParameterGroup extends pulumi.CustomResource {
   /// A description of the parameter group.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The name of the parameter group.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The parameters of the parameter group.
-  late final Output<List<ParameterGroupParameter>> parameters;
+  late final pulumi.Output<List<ParameterGroupParameter>> parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ParameterGroup(
     String name, {
     ParameterGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:dax/parameterGroup:ParameterGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

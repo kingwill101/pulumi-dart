@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_table_schema_composite_partition_key/get_table_schema_composite_partition_key.dart';
 
 class GetTableSchema {
@@ -12,7 +12,7 @@ class GetTableSchema {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['compositePartitionKeys'] = Input.encodeList<
+    map['compositePartitionKeys'] = pulumi.Input.encodeList<
         GetTableSchemaCompositePartitionKey,
         Map<String, dynamic>>(compositePartitionKeys, (value) => value.toMap());
     return map;
@@ -21,7 +21,7 @@ class GetTableSchema {
   factory GetTableSchema.fromMap(Map<String, dynamic> map) {
     return GetTableSchema(
       compositePartitionKeys:
-          Input.decodeList<GetTableSchemaCompositePartitionKey>(
+          pulumi.Input.decodeList<GetTableSchemaCompositePartitionKey>(
               map['compositePartitionKeys'],
               (value) => GetTableSchemaCompositePartitionKey.fromMap(
                   (value as Map).cast<String, dynamic>())),

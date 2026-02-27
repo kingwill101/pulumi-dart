@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../site_location/site_location.dart';
 
 /// The set of arguments for Site.
 class SiteArgs {
   /// Description of the Site.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// ID of the Global Network to create the site in.
   ///
   /// The following arguments are optional:
-  final Input<String> globalNetworkId;
+  final pulumi.Input<String> globalNetworkId;
 
   /// Site location. See below.
-  final Input<SiteLocation>? location;
+  final pulumi.Input<SiteLocation>? location;
 
   /// Key-value tags for the Site. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   SiteArgs({
     this.description,
@@ -35,9 +35,8 @@ class SiteArgs {
     map['globalNetworkId'] = globalNetworkId;
     final locationValue = location;
     if (locationValue != null) {
-      map['location'] =
-          Input.mapOptionalInputValue<SiteLocation, Map<String, dynamic>>(
-              locationValue, (value) => value.toMap());
+      map['location'] = pulumi.Input.mapOptionalInputValue<SiteLocation,
+          Map<String, dynamic>>(locationValue, (value) => value.toMap());
     }
     final tagsValue = tags;
     if (tagsValue != null) {
@@ -48,10 +47,10 @@ class SiteArgs {
 
   factory SiteArgs.fromMap(Map<String, dynamic> map) {
     return SiteArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      globalNetworkId: Input.asInput<String>(map['globalNetworkId']),
-      location: Input.asOptionalInput<SiteLocation>(map['location']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      globalNetworkId: pulumi.Input.asInput<String>(map['globalNetworkId']),
+      location: pulumi.Input.asOptionalInput<SiteLocation>(map['location']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

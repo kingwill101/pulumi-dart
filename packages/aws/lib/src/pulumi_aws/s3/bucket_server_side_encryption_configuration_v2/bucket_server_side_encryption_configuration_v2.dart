@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_server_side_encryption_configuration_v2_rule/bucket_server_side_encryption_configuration_v2_rule.dart';
 import 'bucket_server_side_encryption_configuration_v2_args.dart';
 
@@ -46,28 +46,29 @@ import 'bucket_server_side_encryption_configuration_v2_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3/bucketServerSideEncryptionConfigurationV2:BucketServerSideEncryptionConfigurationV2 example bucket-name,123456789012
 /// ```
-class BucketServerSideEncryptionConfigurationV2 extends CustomResource {
+class BucketServerSideEncryptionConfigurationV2 extends pulumi.CustomResource {
   /// ID (name) of the bucket.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Account ID of the expected bucket owner.
-  late final Output<String?> expectedBucketOwner;
+  late final pulumi.Output<String?> expectedBucketOwner;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Set of server-side encryption configuration rules. See below. Currently, only a single rule is supported.
-  late final Output<List<BucketServerSideEncryptionConfigurationV2Rule>> rules;
+  late final pulumi.Output<List<BucketServerSideEncryptionConfigurationV2Rule>>
+      rules;
 
   BucketServerSideEncryptionConfigurationV2(
     String name, {
     BucketServerSideEncryptionConfigurationV2Args? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/bucketServerSideEncryptionConfigurationV2:BucketServerSideEncryptionConfigurationV2',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');

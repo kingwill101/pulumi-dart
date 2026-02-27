@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../global_table_replica/global_table_replica.dart';
 import 'global_table_args.dart';
 
@@ -19,28 +19,28 @@ import 'global_table_args.dart';
 /// ```sh
 /// $ pulumi import aws:dynamodb/globalTable:GlobalTable MyTable MyTable
 /// ```
-class GlobalTable extends CustomResource {
+class GlobalTable extends pulumi.CustomResource {
   /// The ARN of the DynamoDB Global Table
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The name of the global table. Must match underlying DynamoDB Table names in all regions.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Underlying DynamoDB Table. At least 1 replica must be defined. See below.
-  late final Output<List<GlobalTableReplica>> replicas;
+  late final pulumi.Output<List<GlobalTableReplica>> replicas;
 
   GlobalTable(
     String name, {
     GlobalTableArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:dynamodb/globalTable:GlobalTable',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

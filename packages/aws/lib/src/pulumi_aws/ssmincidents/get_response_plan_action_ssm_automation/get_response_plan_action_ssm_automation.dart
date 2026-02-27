@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_response_plan_action_ssm_automation_parameter/get_response_plan_action_ssm_automation_parameter.dart';
 
 class GetResponsePlanActionSsmAutomation {
@@ -36,7 +36,7 @@ class GetResponsePlanActionSsmAutomation {
     map['documentName'] = documentName;
     map['documentVersion'] = documentVersion;
     map['dynamicParameters'] = dynamicParameters;
-    map['parameters'] = Input.encodeList<
+    map['parameters'] = pulumi.Input.encodeList<
         GetResponsePlanActionSsmAutomationParameter,
         Map<String, dynamic>>(parameters, (value) => value.toMap());
     map['roleArn'] = roleArn;
@@ -50,10 +50,11 @@ class GetResponsePlanActionSsmAutomation {
       documentVersion: map['documentVersion'] as String,
       dynamicParameters:
           (map['dynamicParameters'] as Map).cast<String, String>(),
-      parameters: Input.decodeList<GetResponsePlanActionSsmAutomationParameter>(
-          map['parameters'],
-          (value) => GetResponsePlanActionSsmAutomationParameter.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      parameters:
+          pulumi.Input.decodeList<GetResponsePlanActionSsmAutomationParameter>(
+              map['parameters'],
+              (value) => GetResponsePlanActionSsmAutomationParameter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       roleArn: map['roleArn'] as String,
       targetAccount: map['targetAccount'] as String,
     );

@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSink.
 class GetSinkArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ARN of the sink.
-  final Input<String> sinkIdentifier;
+  final pulumi.Input<String> sinkIdentifier;
 
   /// Tags assigned to the sink.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetSinkArgs({
     this.region,
@@ -35,9 +35,9 @@ class GetSinkArgs {
 
   factory GetSinkArgs.fromMap(Map<String, dynamic> map) {
     return GetSinkArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      sinkIdentifier: Input.asInput<String>(map['sinkIdentifier']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sinkIdentifier: pulumi.Input.asInput<String>(map['sinkIdentifier']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

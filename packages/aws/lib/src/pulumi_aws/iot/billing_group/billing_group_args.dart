@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../billing_group_properties/billing_group_properties.dart';
 
 /// The set of arguments for BillingGroup.
 class BillingGroupArgs {
   /// The name of the Billing Group.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The Billing Group properties. Defined below.
-  final Input<BillingGroupProperties>? properties;
+  final pulumi.Input<BillingGroupProperties>? properties;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value mapping of resource tags
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   BillingGroupArgs({
     this.name,
@@ -32,7 +32,8 @@ class BillingGroupArgs {
     }
     final propertiesValue = properties;
     if (propertiesValue != null) {
-      map['properties'] = Input.mapOptionalInputValue<BillingGroupProperties,
+      map['properties'] = pulumi.Input.mapOptionalInputValue<
+          BillingGroupProperties,
           Map<String, dynamic>>(propertiesValue, (value) => value.toMap());
     }
     final regionValue = region;
@@ -48,11 +49,11 @@ class BillingGroupArgs {
 
   factory BillingGroupArgs.fromMap(Map<String, dynamic> map) {
     return BillingGroupArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      properties:
-          Input.asOptionalInput<BillingGroupProperties>(map['properties']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      properties: pulumi.Input.asOptionalInput<BillingGroupProperties>(
+          map['properties']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

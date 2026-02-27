@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_autonomous_vm_clusters_cloud_autonomous_vm_cluster/get_cloud_autonomous_vm_clusters_cloud_autonomous_vm_cluster.dart';
 
 /// Result data returned by getCloudAutonomousVmClusters.
@@ -21,7 +21,7 @@ class GetCloudAutonomousVmClustersResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cloudAutonomousVmClusters'] = Input.encodeList<
+    map['cloudAutonomousVmClusters'] = pulumi.Input.encodeList<
             GetCloudAutonomousVmClustersCloudAutonomousVmCluster,
             Map<String, dynamic>>(
         cloudAutonomousVmClusters, (value) => value.toMap());
@@ -32,7 +32,7 @@ class GetCloudAutonomousVmClustersResult {
 
   factory GetCloudAutonomousVmClustersResult.fromMap(Map<String, dynamic> map) {
     return GetCloudAutonomousVmClustersResult(
-      cloudAutonomousVmClusters: Input.decodeList<
+      cloudAutonomousVmClusters: pulumi.Input.decodeList<
               GetCloudAutonomousVmClustersCloudAutonomousVmCluster>(
           map['cloudAutonomousVmClusters'],
           (value) =>

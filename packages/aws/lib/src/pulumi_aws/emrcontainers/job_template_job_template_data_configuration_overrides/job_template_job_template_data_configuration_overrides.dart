@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../job_template_job_template_data_configuration_overrides_application_configuration/job_template_job_template_data_configuration_overrides_application_configuration.dart';
 import '../job_template_job_template_data_configuration_overrides_monitoring_configuration/job_template_job_template_data_configuration_overrides_monitoring_configuration.dart';
 
@@ -23,7 +23,7 @@ class JobTemplateJobTemplateDataConfigurationOverrides {
     final map = <String, dynamic>{};
     final applicationConfigurationsValue = applicationConfigurations;
     if (applicationConfigurationsValue != null) {
-      map['applicationConfigurations'] = Input.encodeList<
+      map['applicationConfigurations'] = pulumi.Input.encodeList<
           JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration,
           Map<String,
               dynamic>>(applicationConfigurationsValue, (value) => value.toMap());
@@ -40,7 +40,7 @@ class JobTemplateJobTemplateDataConfigurationOverrides {
     return JobTemplateJobTemplateDataConfigurationOverrides(
       applicationConfigurations: map['applicationConfigurations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   JobTemplateJobTemplateDataConfigurationOverridesApplicationConfiguration>(
               map['applicationConfigurations'],
               (value) =>

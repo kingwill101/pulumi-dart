@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cost_category_rule/get_cost_category_rule.dart';
 import '../get_cost_category_split_charge_rule/get_cost_category_split_charge_rule.dart';
 
@@ -55,11 +55,12 @@ class GetCostCategoryResult {
     map['id'] = id;
     map['name'] = name;
     map['ruleVersion'] = ruleVersion;
-    map['rules'] = Input.encodeList<GetCostCategoryRule, Map<String, dynamic>>(
-        rules, (value) => value.toMap());
-    map['splitChargeRules'] =
-        Input.encodeList<GetCostCategorySplitChargeRule, Map<String, dynamic>>(
-            splitChargeRules, (value) => value.toMap());
+    map['rules'] =
+        pulumi.Input.encodeList<GetCostCategoryRule, Map<String, dynamic>>(
+            rules, (value) => value.toMap());
+    map['splitChargeRules'] = pulumi.Input.encodeList<
+        GetCostCategorySplitChargeRule,
+        Map<String, dynamic>>(splitChargeRules, (value) => value.toMap());
     map['tags'] = tags;
     return map;
   }
@@ -73,11 +74,11 @@ class GetCostCategoryResult {
       id: map['id'] as String,
       name: map['name'] as String,
       ruleVersion: map['ruleVersion'] as String,
-      rules: Input.decodeList<GetCostCategoryRule>(
+      rules: pulumi.Input.decodeList<GetCostCategoryRule>(
           map['rules'],
           (value) => GetCostCategoryRule.fromMap(
               (value as Map).cast<String, dynamic>())),
-      splitChargeRules: Input.decodeList<GetCostCategorySplitChargeRule>(
+      splitChargeRules: pulumi.Input.decodeList<GetCostCategorySplitChargeRule>(
           map['splitChargeRules'],
           (value) => GetCostCategorySplitChargeRule.fromMap(
               (value as Map).cast<String, dynamic>())),

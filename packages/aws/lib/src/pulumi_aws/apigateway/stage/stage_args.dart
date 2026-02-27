@@ -1,52 +1,52 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stage_access_log_settings/stage_access_log_settings.dart';
 import '../stage_canary_settings/stage_canary_settings.dart';
 
 /// The set of arguments for Stage.
 class StageArgs {
   /// Enables access logs for the API stage. See Access Log Settings below.
-  final Input<StageAccessLogSettings>? accessLogSettings;
+  final pulumi.Input<StageAccessLogSettings>? accessLogSettings;
 
   /// Whether a cache cluster is enabled for the stage
-  final Input<bool>? cacheClusterEnabled;
+  final pulumi.Input<bool>? cacheClusterEnabled;
 
   /// Size of the cache cluster for the stage, if enabled. Allowed values include `0.5`, `1.6`, `6.1`, `13.5`, `28.4`, `58.2`, `118` and `237`.
-  final Input<String>? cacheClusterSize;
+  final pulumi.Input<String>? cacheClusterSize;
 
   /// Configuration settings of a canary deployment. See Canary Settings below.
-  final Input<StageCanarySettings>? canarySettings;
+  final pulumi.Input<StageCanarySettings>? canarySettings;
 
   /// Identifier of a client certificate for the stage.
-  final Input<String>? clientCertificateId;
+  final pulumi.Input<String>? clientCertificateId;
 
   /// ID of the deployment that the stage points to
-  final Input<String> deployment;
+  final pulumi.Input<String> deployment;
 
   /// Description of the stage.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Version of the associated API documentation.
-  final Input<String>? documentationVersion;
+  final pulumi.Input<String>? documentationVersion;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ID of the associated REST API
-  final Input<String> restApi;
+  final pulumi.Input<String> restApi;
 
   /// Name of the stage
-  final Input<String> stageName;
+  final pulumi.Input<String> stageName;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Map that defines the stage variables.
-  final Input<Map<String, String>>? variables;
+  final pulumi.Input<Map<String, String>>? variables;
 
   /// Whether active tracing with X-ray is enabled. Defaults to `false`.
-  final Input<bool>? xrayTracingEnabled;
+  final pulumi.Input<bool>? xrayTracingEnabled;
 
   StageArgs({
     this.accessLogSettings,
@@ -69,7 +69,7 @@ class StageArgs {
     final map = <String, dynamic>{};
     final accessLogSettingsValue = accessLogSettings;
     if (accessLogSettingsValue != null) {
-      map['accessLogSettings'] = Input.mapOptionalInputValue<
+      map['accessLogSettings'] = pulumi.Input.mapOptionalInputValue<
               StageAccessLogSettings, Map<String, dynamic>>(
           accessLogSettingsValue, (value) => value.toMap());
     }
@@ -83,7 +83,8 @@ class StageArgs {
     }
     final canarySettingsValue = canarySettings;
     if (canarySettingsValue != null) {
-      map['canarySettings'] = Input.mapOptionalInputValue<StageCanarySettings,
+      map['canarySettings'] = pulumi.Input.mapOptionalInputValue<
+          StageCanarySettings,
           Map<String, dynamic>>(canarySettingsValue, (value) => value.toMap());
     }
     final clientCertificateIdValue = clientCertificateId;
@@ -122,26 +123,28 @@ class StageArgs {
 
   factory StageArgs.fromMap(Map<String, dynamic> map) {
     return StageArgs(
-      accessLogSettings: Input.asOptionalInput<StageAccessLogSettings>(
+      accessLogSettings: pulumi.Input.asOptionalInput<StageAccessLogSettings>(
           map['accessLogSettings']),
       cacheClusterEnabled:
-          Input.asOptionalInput<bool>(map['cacheClusterEnabled']),
-      cacheClusterSize: Input.asOptionalInput<String>(map['cacheClusterSize']),
-      canarySettings:
-          Input.asOptionalInput<StageCanarySettings>(map['canarySettings']),
+          pulumi.Input.asOptionalInput<bool>(map['cacheClusterEnabled']),
+      cacheClusterSize:
+          pulumi.Input.asOptionalInput<String>(map['cacheClusterSize']),
+      canarySettings: pulumi.Input.asOptionalInput<StageCanarySettings>(
+          map['canarySettings']),
       clientCertificateId:
-          Input.asOptionalInput<String>(map['clientCertificateId']),
-      deployment: Input.asInput<String>(map['deployment']),
-      description: Input.asOptionalInput<String>(map['description']),
+          pulumi.Input.asOptionalInput<String>(map['clientCertificateId']),
+      deployment: pulumi.Input.asInput<String>(map['deployment']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       documentationVersion:
-          Input.asOptionalInput<String>(map['documentationVersion']),
-      region: Input.asOptionalInput<String>(map['region']),
-      restApi: Input.asInput<String>(map['restApi']),
-      stageName: Input.asInput<String>(map['stageName']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      variables: Input.asOptionalInput<Map<String, String>>(map['variables']),
+          pulumi.Input.asOptionalInput<String>(map['documentationVersion']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      restApi: pulumi.Input.asInput<String>(map['restApi']),
+      stageName: pulumi.Input.asInput<String>(map['stageName']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      variables:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['variables']),
       xrayTracingEnabled:
-          Input.asOptionalInput<bool>(map['xrayTracingEnabled']),
+          pulumi.Input.asOptionalInput<bool>(map['xrayTracingEnabled']),
     );
   }
 }

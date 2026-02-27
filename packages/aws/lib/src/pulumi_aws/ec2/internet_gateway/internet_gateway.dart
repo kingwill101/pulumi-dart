@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'internet_gateway_args.dart';
 
 /// Provides a resource to create a VPC Internet Gateway.
@@ -14,36 +14,36 @@ import 'internet_gateway_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/internetGateway:InternetGateway gw igw-c0a643a9
 /// ```
-class InternetGateway extends CustomResource {
+class InternetGateway extends pulumi.CustomResource {
   /// The ARN of the Internet Gateway.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The ID of the AWS account that owns the internet gateway.
-  late final Output<String> ownerId;
+  late final pulumi.Output<String> ownerId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// > **Note:** It's recommended to denote that the AWS Instance or Elastic IP depends on the Internet Gateway. For example:
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The VPC ID to create in.  See the aws.ec2.InternetGatewayAttachment resource for an alternate way to attach an Internet Gateway to a VPC.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   InternetGateway(
     String name, {
     InternetGatewayArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/internetGateway:InternetGateway',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.ownerId = registerOutput<String>('ownerId');

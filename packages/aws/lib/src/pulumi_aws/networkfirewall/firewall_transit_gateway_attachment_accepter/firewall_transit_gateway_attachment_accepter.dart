@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firewall_transit_gateway_attachment_accepter_timeouts/firewall_transit_gateway_attachment_accepter_timeouts.dart';
 import 'firewall_transit_gateway_attachment_accepter_args.dart';
 
@@ -24,23 +24,24 @@ import 'firewall_transit_gateway_attachment_accepter_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter example tgw-attach-0c3b7e9570eee089c
 /// ```
-class FirewallTransitGatewayAttachmentAccepter extends CustomResource {
+class FirewallTransitGatewayAttachmentAccepter extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<FirewallTransitGatewayAttachmentAccepterTimeouts?> timeouts;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<FirewallTransitGatewayAttachmentAccepterTimeouts?>
+      timeouts;
 
   /// The unique identifier of the transit gateway attachment to accept. This ID is returned in the response when creating a transit gateway-attached firewall.
-  late final Output<String> transitGatewayAttachmentId;
+  late final pulumi.Output<String> transitGatewayAttachmentId;
 
   FirewallTransitGatewayAttachmentAccepter(
     String name, {
     FirewallTransitGatewayAttachmentAccepterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkfirewall/firewallTransitGatewayAttachmentAccepter:FirewallTransitGatewayAttachmentAccepter',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.timeouts =

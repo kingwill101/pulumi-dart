@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_endpoint_associations_association/get_endpoint_associations_association.dart';
 
 /// Result data returned by getEndpointAssociations.
@@ -22,7 +22,8 @@ class GetEndpointAssociationsResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['associations'] = Input.encodeList<GetEndpointAssociationsAssociation,
+    map['associations'] = pulumi.Input.encodeList<
+        GetEndpointAssociationsAssociation,
         Map<String, dynamic>>(associations, (value) => value.toMap());
     map['id'] = id;
     map['region'] = region;
@@ -32,7 +33,7 @@ class GetEndpointAssociationsResult {
 
   factory GetEndpointAssociationsResult.fromMap(Map<String, dynamic> map) {
     return GetEndpointAssociationsResult(
-      associations: Input.decodeList<GetEndpointAssociationsAssociation>(
+      associations: pulumi.Input.decodeList<GetEndpointAssociationsAssociation>(
           map['associations'],
           (value) => GetEndpointAssociationsAssociation.fromMap(
               (value as Map).cast<String, dynamic>())),

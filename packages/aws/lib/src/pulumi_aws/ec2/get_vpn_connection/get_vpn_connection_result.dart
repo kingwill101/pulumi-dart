@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpn_connection_filter/get_vpn_connection_filter.dart';
 import '../get_vpn_connection_route/get_vpn_connection_route.dart';
 import '../get_vpn_connection_vgw_telemetry/get_vpn_connection_vgw_telemetry.dart';
@@ -90,7 +90,7 @@ class GetVpnConnectionResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetVpnConnectionFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetVpnConnectionFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['gatewayAssociationState'] = gatewayAssociationState;
@@ -98,15 +98,15 @@ class GetVpnConnectionResult {
     map['preSharedKeyArn'] = preSharedKeyArn;
     map['region'] = region;
     map['routes'] =
-        Input.encodeList<GetVpnConnectionRoute, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetVpnConnectionRoute, Map<String, dynamic>>(
             routes, (value) => value.toMap());
     map['state'] = state;
     map['tags'] = tags;
     map['transitGatewayId'] = transitGatewayId;
     map['type'] = type;
-    map['vgwTelemetries'] =
-        Input.encodeList<GetVpnConnectionVgwTelemetry, Map<String, dynamic>>(
-            vgwTelemetries, (value) => value.toMap());
+    map['vgwTelemetries'] = pulumi.Input.encodeList<
+        GetVpnConnectionVgwTelemetry,
+        Map<String, dynamic>>(vgwTelemetries, (value) => value.toMap());
     map['vpnConcentratorId'] = vpnConcentratorId;
     map['vpnConnectionId'] = vpnConnectionId;
     map['vpnGatewayId'] = vpnGatewayId;
@@ -123,7 +123,7 @@ class GetVpnConnectionResult {
       customerGatewayId: map['customerGatewayId'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVpnConnectionFilter>(
+          : pulumi.Input.decodeList<GetVpnConnectionFilter>(
               map['filters'],
               (value) => GetVpnConnectionFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -131,7 +131,7 @@ class GetVpnConnectionResult {
       id: map['id'] as String,
       preSharedKeyArn: map['preSharedKeyArn'] as String,
       region: map['region'] as String,
-      routes: Input.decodeList<GetVpnConnectionRoute>(
+      routes: pulumi.Input.decodeList<GetVpnConnectionRoute>(
           map['routes'],
           (value) => GetVpnConnectionRoute.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -139,7 +139,7 @@ class GetVpnConnectionResult {
       tags: (map['tags'] as Map).cast<String, String>(),
       transitGatewayId: map['transitGatewayId'] as String,
       type: map['type'] as String,
-      vgwTelemetries: Input.decodeList<GetVpnConnectionVgwTelemetry>(
+      vgwTelemetries: pulumi.Input.decodeList<GetVpnConnectionVgwTelemetry>(
           map['vgwTelemetries'],
           (value) => GetVpnConnectionVgwTelemetry.fromMap(
               (value as Map).cast<String, dynamic>())),

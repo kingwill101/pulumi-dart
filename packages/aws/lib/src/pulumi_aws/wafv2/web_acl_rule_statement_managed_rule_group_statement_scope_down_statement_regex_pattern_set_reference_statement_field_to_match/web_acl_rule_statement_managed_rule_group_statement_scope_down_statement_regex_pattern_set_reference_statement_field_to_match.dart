@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_regex_pattern_set_reference_statement_field_to_match_body/web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_regex_pattern_set_reference_statement_field_to_match_body.dart';
 import '../web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_regex_pattern_set_reference_statement_field_to_match_cookies/web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_regex_pattern_set_reference_statement_field_to_match_cookies.dart';
 import '../web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_regex_pattern_set_reference_statement_field_to_match_header/web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_regex_pattern_set_reference_statement_field_to_match_header.dart';
@@ -100,13 +100,13 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPattern
     }
     final headerOrdersValue = headerOrders;
     if (headerOrdersValue != null) {
-      map['headerOrders'] = Input.encodeList<
+      map['headerOrders'] = pulumi.Input.encodeList<
           WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchHeaderOrder,
           Map<String, dynamic>>(headerOrdersValue, (value) => value.toMap());
     }
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] = Input.encodeList<
+      map['headers'] = pulumi.Input.encodeList<
           WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchHeader,
           Map<String, dynamic>>(headersValue, (value) => value.toMap());
     }
@@ -165,7 +165,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPattern
               .fromMap((map['cookies'] as Map).cast<String, dynamic>()),
       headerOrders: map['headerOrders'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchHeaderOrder>(
               map['headerOrders'],
               (value) =>
@@ -173,7 +173,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPattern
                       .fromMap((value as Map).cast<String, dynamic>())),
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchHeader>(
               map['headers'],
               (value) =>

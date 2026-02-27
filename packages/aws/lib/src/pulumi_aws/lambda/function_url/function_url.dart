@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../function_url_cors/function_url_cors.dart';
 import 'function_url_args.dart';
 
@@ -23,45 +23,45 @@ import 'function_url_args.dart';
 /// ```sh
 /// $ pulumi import aws:lambda/functionUrl:FunctionUrl example example
 /// ```
-class FunctionUrl extends CustomResource {
+class FunctionUrl extends pulumi.CustomResource {
   /// Type of authentication that the function URL uses. Valid values are `AWS_IAM` and `NONE`.
-  late final Output<String> authorizationType;
+  late final pulumi.Output<String> authorizationType;
 
   /// Cross-origin resource sharing (CORS) settings for the function URL. See below.
-  late final Output<FunctionUrlCors?> cors;
+  late final pulumi.Output<FunctionUrlCors?> cors;
 
   /// ARN of the Lambda function.
-  late final Output<String> functionArn;
+  late final pulumi.Output<String> functionArn;
 
   /// Name or ARN of the Lambda function.
   ///
   /// The following arguments are optional:
-  late final Output<String> functionName;
+  late final pulumi.Output<String> functionName;
 
   /// HTTP URL endpoint for the function in the format `https://<url_id>.lambda-url.<region>.on.aws/`.
-  late final Output<String> functionUrl;
+  late final pulumi.Output<String> functionUrl;
 
   /// How the Lambda function responds to an invocation. Valid values are `BUFFERED` (default) and `RESPONSE_STREAM`.
-  late final Output<String?> invokeMode;
+  late final pulumi.Output<String?> invokeMode;
 
   /// Alias name or `$LATEST`.
-  late final Output<String?> qualifier;
+  late final pulumi.Output<String?> qualifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Generated ID for the endpoint.
-  late final Output<String> urlId;
+  late final pulumi.Output<String> urlId;
 
   FunctionUrl(
     String name, {
     FunctionUrlArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lambda/functionUrl:FunctionUrl',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.authorizationType = registerOutput<String>('authorizationType');
     this.cors = registerOutput<FunctionUrlCors?>('cors');

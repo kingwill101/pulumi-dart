@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../multitenant_distribution_origin_group_failover_criteria/multitenant_distribution_origin_group_failover_criteria.dart';
 import '../multitenant_distribution_origin_group_member/multitenant_distribution_origin_group_member.dart';
 
@@ -24,7 +24,8 @@ class MultitenantDistributionOriginGroup {
     final map = <String, dynamic>{};
     map['failoverCriteria'] = failoverCriteria.toMap();
     map['id'] = id;
-    map['members'] = Input.encodeList<MultitenantDistributionOriginGroupMember,
+    map['members'] = pulumi.Input.encodeList<
+        MultitenantDistributionOriginGroupMember,
         Map<String, dynamic>>(members, (value) => value.toMap());
     return map;
   }
@@ -35,10 +36,11 @@ class MultitenantDistributionOriginGroup {
           MultitenantDistributionOriginGroupFailoverCriteria.fromMap(
               (map['failoverCriteria'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      members: Input.decodeList<MultitenantDistributionOriginGroupMember>(
-          map['members'],
-          (value) => MultitenantDistributionOriginGroupMember.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      members:
+          pulumi.Input.decodeList<MultitenantDistributionOriginGroupMember>(
+              map['members'],
+              (value) => MultitenantDistributionOriginGroupMember.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

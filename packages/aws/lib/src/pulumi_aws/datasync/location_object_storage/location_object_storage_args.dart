@@ -1,41 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LocationObjectStorage.
 class LocationObjectStorageArgs {
   /// The access key is used if credentials are required to access the self-managed object storage server. If your object storage requires a user name and password to authenticate, use `access_key` and `secret_key` to provide the user name and password, respectively.
-  final Input<String>? accessKey;
+  final pulumi.Input<String>? accessKey;
 
   /// A list of DataSync Agent ARNs with which this location will be associated. For agentless cross-cloud transfers, this parameter does not need to be specified.
-  final Input<List<String>>? agentArns;
+  final pulumi.Input<List<String>>? agentArns;
 
   /// The bucket on the self-managed object storage server that is used to read data from.
-  final Input<String> bucketName;
+  final pulumi.Input<String> bucketName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The secret key is used if credentials are required to access the self-managed object storage server. If your object storage requires a user name and password to authenticate, use `access_key` and `secret_key` to provide the user name and password, respectively.
-  final Input<String>? secretKey;
+  final pulumi.Input<String>? secretKey;
 
   /// Specifies a certificate to authenticate with an object storage system that uses a private or self-signed certificate authority (CA). You must specify a Base64-encoded .pem string. The certificate can be up to 32768 bytes (before Base64 encoding).
-  final Input<String>? serverCertificate;
+  final pulumi.Input<String>? serverCertificate;
 
   /// The name of the self-managed object storage server. This value is the IP address or Domain Name Service (DNS) name of the object storage server. An agent uses this host name to mount the object storage server in a network.
-  final Input<String> serverHostname;
+  final pulumi.Input<String> serverHostname;
 
   /// The port that your self-managed object storage server accepts inbound network traffic on. The server port is set by default to TCP 80 (`HTTP`) or TCP 443 (`HTTPS`). You can specify a custom port if your self-managed object storage server requires one.
-  final Input<int>? serverPort;
+  final pulumi.Input<int>? serverPort;
 
   /// The protocol that the object storage server uses to communicate. Valid values are `HTTP` or `HTTPS`.
-  final Input<String>? serverProtocol;
+  final pulumi.Input<String>? serverProtocol;
 
   /// A subdirectory in the HDFS cluster. This subdirectory is used to read data from or write data to the HDFS cluster. If the subdirectory isn't specified, it will default to /.
-  final Input<String>? subdirectory;
+  final pulumi.Input<String>? subdirectory;
 
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   LocationObjectStorageArgs({
     this.accessKey,
@@ -96,18 +96,19 @@ class LocationObjectStorageArgs {
 
   factory LocationObjectStorageArgs.fromMap(Map<String, dynamic> map) {
     return LocationObjectStorageArgs(
-      accessKey: Input.asOptionalInput<String>(map['accessKey']),
-      agentArns: Input.asOptionalInput<List<String>>(map['agentArns']),
-      bucketName: Input.asInput<String>(map['bucketName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      secretKey: Input.asOptionalInput<String>(map['secretKey']),
+      accessKey: pulumi.Input.asOptionalInput<String>(map['accessKey']),
+      agentArns: pulumi.Input.asOptionalInput<List<String>>(map['agentArns']),
+      bucketName: pulumi.Input.asInput<String>(map['bucketName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      secretKey: pulumi.Input.asOptionalInput<String>(map['secretKey']),
       serverCertificate:
-          Input.asOptionalInput<String>(map['serverCertificate']),
-      serverHostname: Input.asInput<String>(map['serverHostname']),
-      serverPort: Input.asOptionalInput<int>(map['serverPort']),
-      serverProtocol: Input.asOptionalInput<String>(map['serverProtocol']),
-      subdirectory: Input.asOptionalInput<String>(map['subdirectory']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<String>(map['serverCertificate']),
+      serverHostname: pulumi.Input.asInput<String>(map['serverHostname']),
+      serverPort: pulumi.Input.asOptionalInput<int>(map['serverPort']),
+      serverProtocol:
+          pulumi.Input.asOptionalInput<String>(map['serverProtocol']),
+      subdirectory: pulumi.Input.asOptionalInput<String>(map['subdirectory']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

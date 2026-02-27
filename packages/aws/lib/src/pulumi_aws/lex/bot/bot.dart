@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bot_abort_statement/bot_abort_statement.dart';
 import '../bot_clarification_prompt/bot_clarification_prompt.dart';
 import '../bot_intent/bot_intent.dart';
@@ -18,84 +18,84 @@ import 'bot_args.dart';
 /// ```sh
 /// $ pulumi import aws:lex/bot:Bot order_flowers_bot OrderFlowers
 /// ```
-class Bot extends CustomResource {
+class Bot extends pulumi.CustomResource {
   /// The message that Amazon Lex uses to abort a conversation. Attributes are documented under statement.
-  late final Output<BotAbortStatement> abortStatement;
-  late final Output<String> arn;
+  late final pulumi.Output<BotAbortStatement> abortStatement;
+  late final pulumi.Output<String> arn;
 
   /// Checksum identifying the version of the bot that was created. The checksum is not
   /// included as an argument because the resource will add it automatically when updating the bot.
-  late final Output<String> checksum;
+  late final pulumi.Output<String> checksum;
 
   /// By specifying true, you confirm that your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. For more information see the [Amazon Lex FAQ](https://aws.amazon.com/lex/faqs#data-security) and the [Amazon Lex PutBot API Docs](https://docs.aws.amazon.com/lex/latest/dg/API_PutBot.html#lex-PutBot-request-childDirected).
-  late final Output<bool> childDirected;
+  late final pulumi.Output<bool> childDirected;
 
   /// The message that Amazon Lex uses when it doesn't understand the user's request. Attributes are documented under prompt.
-  late final Output<BotClarificationPrompt?> clarificationPrompt;
+  late final pulumi.Output<BotClarificationPrompt?> clarificationPrompt;
 
   /// Determines if a new bot version is created when the initial resource is created and on each update. Defaults to `false`.
-  late final Output<bool?> createVersion;
+  late final pulumi.Output<bool?> createVersion;
 
   /// The date when the bot version was created.
-  late final Output<String> createdDate;
+  late final pulumi.Output<String> createdDate;
 
   /// A description of the bot. Must be less than or equal to 200 characters in length.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// When set to true user utterances are sent to Amazon Comprehend for sentiment analysis. If you don't specify detectSentiment, the default is `false`.
-  late final Output<bool?> detectSentiment;
+  late final pulumi.Output<bool?> detectSentiment;
 
   /// Set to `true` to enable access to natural language understanding improvements. When you set the `enable_model_improvements` parameter to true you can use the `nlu_intent_confidence_threshold` parameter to configure confidence scores. For more information, see [Confidence Scores](https://docs.aws.amazon.com/lex/latest/dg/confidence-scores.html). You can only set the `enable_model_improvements` parameter in certain Regions. If you set the parameter to true, your bot has access to accuracy improvements. For more information see the [Amazon Lex Bot PutBot API Docs](https://docs.aws.amazon.com/lex/latest/dg/API_PutBot.html#lex-PutBot-request-enableModelImprovements).
-  late final Output<bool?> enableModelImprovements;
+  late final pulumi.Output<bool?> enableModelImprovements;
 
   /// If status is FAILED, Amazon Lex provides the reason that it failed to build the bot.
-  late final Output<String> failureReason;
+  late final pulumi.Output<String> failureReason;
 
   /// The maximum time in seconds that Amazon Lex retains the data gathered in a conversation. Default is `300`. Must be a number between 60 and 86400 (inclusive).
-  late final Output<int?> idleSessionTtlInSeconds;
+  late final pulumi.Output<int?> idleSessionTtlInSeconds;
 
   /// A set of Intent objects. Each intent represents a command that a user can express. Attributes are documented under intent. Can have up to 250 Intent objects.
-  late final Output<List<BotIntent>> intents;
+  late final pulumi.Output<List<BotIntent>> intents;
 
   /// The date when the $LATEST version of this bot was updated.
-  late final Output<String> lastUpdatedDate;
+  late final pulumi.Output<String> lastUpdatedDate;
 
   /// Specifies the target locale for the bot. Any intent used in the bot must be compatible with the locale of the bot. For available locales, see [Amazon Lex Bot PutBot API Docs](https://docs.aws.amazon.com/lex/latest/dg/API_PutBot.html#lex-PutBot-request-locale). Default is `en-US`.
-  late final Output<String?> locale;
+  late final pulumi.Output<String?> locale;
 
   /// The name of the bot that you want to create, case sensitive. Must be between 2 and 50 characters in length.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Determines the threshold where Amazon Lex will insert the AMAZON.FallbackIntent, AMAZON.KendraSearchIntent, or both when returning alternative intents in a PostContent or PostText response. AMAZON.FallbackIntent and AMAZON.KendraSearchIntent are only inserted if they are configured for the bot. For more information see [Amazon Lex Bot PutBot API Docs](https://docs.aws.amazon.com/lex/latest/dg/API_PutBot.html#lex-PutBot-request-nluIntentConfidenceThreshold) This value requires `enable_model_improvements` to be set to `true` and the default is `0`. Must be a float between 0 and 1.
-  late final Output<double?> nluIntentConfidenceThreshold;
+  late final pulumi.Output<double?> nluIntentConfidenceThreshold;
 
   /// If you set the `process_behavior` element to `BUILD`, Amazon Lex builds the bot so that it can be run. If you set the element to `SAVE` Amazon Lex saves the bot, but doesn't build it. Default is `SAVE`.
-  late final Output<String?> processBehavior;
+  late final pulumi.Output<String?> processBehavior;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// When you send a request to create or update a bot, Amazon Lex sets the status response
   /// element to BUILDING. After Amazon Lex builds the bot, it sets status to READY. If Amazon Lex can't
   /// build the bot, it sets status to FAILED. Amazon Lex returns the reason for the failure in the
   /// failure_reason response element.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// The version of the bot.
-  late final Output<String> version;
+  late final pulumi.Output<String> version;
 
   /// The Amazon Polly voice ID that you want Amazon Lex to use for voice interactions with the user. The locale configured for the voice must match the locale of the bot. For more information, see [Available Voices](http://docs.aws.amazon.com/polly/latest/dg/voicelist.html) in the Amazon Polly Developer Guide.
-  late final Output<String> voiceId;
+  late final pulumi.Output<String> voiceId;
 
   Bot(
     String name, {
     BotArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lex/bot:Bot',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.abortStatement = registerOutput<BotAbortStatement>('abortStatement');
     this.arn = registerOutput<String>('arn');

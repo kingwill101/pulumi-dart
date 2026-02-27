@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_set_logical_table_map_data_transform/data_set_logical_table_map_data_transform.dart';
 import '../data_set_logical_table_map_source/data_set_logical_table_map_source.dart';
 
@@ -29,7 +29,7 @@ class DataSetLogicalTableMap {
     map['alias'] = alias;
     final dataTransformsValue = dataTransforms;
     if (dataTransformsValue != null) {
-      map['dataTransforms'] = Input.encodeList<
+      map['dataTransforms'] = pulumi.Input.encodeList<
           DataSetLogicalTableMapDataTransform,
           Map<String, dynamic>>(dataTransformsValue, (value) => value.toMap());
     }
@@ -43,7 +43,7 @@ class DataSetLogicalTableMap {
       alias: map['alias'] as String,
       dataTransforms: map['dataTransforms'] == null
           ? null
-          : Input.decodeList<DataSetLogicalTableMapDataTransform>(
+          : pulumi.Input.decodeList<DataSetLogicalTableMapDataTransform>(
               map['dataTransforms'],
               (value) => DataSetLogicalTableMapDataTransform.fromMap(
                   (value as Map).cast<String, dynamic>())),

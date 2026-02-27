@@ -1,3 +1,3 @@
 library module_wafregional_ip_set_ip_set_descriptor;
 
-export 'ip_set_ip_set_descriptor/ip_set_ip_set_descriptor2.dart';
+export 'ip_set_ip_set_descriptor/ip_set_ip_set_descriptor_wafregional.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_subscription_args.dart';
 
 /// Provides a Log subscription for AWS Directory Service that pushes logs to cloudwatch.
@@ -14,25 +14,25 @@ import 'log_subscription_args.dart';
 /// ```sh
 /// $ pulumi import aws:directoryservice/logSubscription:LogSubscription msad d-1234567890
 /// ```
-class LogSubscription extends CustomResource {
+class LogSubscription extends pulumi.CustomResource {
   /// ID of directory.
-  late final Output<String> directoryId;
+  late final pulumi.Output<String> directoryId;
 
   /// Name of the cloudwatch log group to which the logs should be published. The log group should be already created and the directory service principal should be provided with required permission to create stream and publish logs. Changing this value would delete the current subscription and create a new one. A directory can only have one log subscription at a time.
-  late final Output<String> logGroupName;
+  late final pulumi.Output<String> logGroupName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   LogSubscription(
     String name, {
     LogSubscriptionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:directoryservice/logSubscription:LogSubscription',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.directoryId = registerOutput<String>('directoryId');
     this.logGroupName = registerOutput<String>('logGroupName');

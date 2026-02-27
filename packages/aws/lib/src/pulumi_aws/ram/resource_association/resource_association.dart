@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_association_args.dart';
 
 /// Manages a Resource Access Manager (RAM) Resource Association.
@@ -16,25 +16,25 @@ import 'resource_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:ram/resourceAssociation:ResourceAssociation example arn:aws:ram:eu-west-1:123456789012:resource-share/73da1ab9-b94a-4ba3-8eb4-45917f7f4b12,arn:aws:ec2:eu-west-1:123456789012:subnet/subnet-12345678
 /// ```
-class ResourceAssociation extends CustomResource {
+class ResourceAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Amazon Resource Name (ARN) of the resource to associate with the RAM Resource Share.
-  late final Output<String> resourceArn;
+  late final pulumi.Output<String> resourceArn;
 
   /// Amazon Resource Name (ARN) of the RAM Resource Share.
-  late final Output<String> resourceShareArn;
+  late final pulumi.Output<String> resourceShareArn;
 
   ResourceAssociation(
     String name, {
     ResourceAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ram/resourceAssociation:ResourceAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.resourceArn = registerOutput<String>('resourceArn');

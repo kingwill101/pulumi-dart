@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DiskAttachment.
 class DiskAttachmentArgs {
   /// Name of the Lightsail disk.
-  final Input<String> diskName;
+  final pulumi.Input<String> diskName;
 
   /// Disk path to expose to the instance.
-  final Input<String> diskPath;
+  final pulumi.Input<String> diskPath;
 
   /// Name of the Lightsail instance to attach to.
-  final Input<String> instanceName;
+  final pulumi.Input<String> instanceName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   DiskAttachmentArgs({
     required this.diskName,
@@ -37,10 +37,10 @@ class DiskAttachmentArgs {
 
   factory DiskAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return DiskAttachmentArgs(
-      diskName: Input.asInput<String>(map['diskName']),
-      diskPath: Input.asInput<String>(map['diskPath']),
-      instanceName: Input.asInput<String>(map['instanceName']),
-      region: Input.asOptionalInput<String>(map['region']),
+      diskName: pulumi.Input.asInput<String>(map['diskName']),
+      diskPath: pulumi.Input.asInput<String>(map['diskPath']),
+      instanceName: pulumi.Input.asInput<String>(map['instanceName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_resolver_rule_target_ip/get_resolver_rule_target_ip.dart';
 
 /// Result data returned by getResolverRule.
@@ -59,7 +59,7 @@ class GetResolverRuleResult {
     map['shareStatus'] = shareStatus;
     map['tags'] = tags;
     map['targetIps'] =
-        Input.encodeList<GetResolverRuleTargetIp, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetResolverRuleTargetIp, Map<String, dynamic>>(
             targetIps, (value) => value.toMap());
     return map;
   }
@@ -77,7 +77,7 @@ class GetResolverRuleResult {
       ruleType: map['ruleType'] as String,
       shareStatus: map['shareStatus'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      targetIps: Input.decodeList<GetResolverRuleTargetIp>(
+      targetIps: pulumi.Input.decodeList<GetResolverRuleTargetIp>(
           map['targetIps'],
           (value) => GetResolverRuleTargetIp.fromMap(
               (value as Map).cast<String, dynamic>())),

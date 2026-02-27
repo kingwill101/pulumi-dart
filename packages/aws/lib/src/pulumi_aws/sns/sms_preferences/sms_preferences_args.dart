@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SmsPreferences.
 class SmsPreferencesArgs {
   /// A string, such as your business brand, that is displayed as the sender on the receiving device.
-  final Input<String>? defaultSenderId;
+  final pulumi.Input<String>? defaultSenderId;
 
   /// The type of SMS message that you will send by default. Possible values are: Promotional, Transactional
-  final Input<String>? defaultSmsType;
+  final pulumi.Input<String>? defaultSmsType;
 
   /// The ARN of the IAM role that allows Amazon SNS to write logs about SMS deliveries in CloudWatch Logs.
-  final Input<String>? deliveryStatusIamRoleArn;
+  final pulumi.Input<String>? deliveryStatusIamRoleArn;
 
   /// The percentage of successful SMS deliveries for which Amazon SNS will write logs in CloudWatch Logs. The value must be between 0 and 100.
-  final Input<String>? deliveryStatusSuccessSamplingRate;
+  final pulumi.Input<String>? deliveryStatusSuccessSamplingRate;
 
   /// The maximum amount in USD that you are willing to spend each month to send SMS messages.
-  final Input<int>? monthlySpendLimit;
+  final pulumi.Input<int>? monthlySpendLimit;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The name of the Amazon S3 bucket to receive daily SMS usage reports from Amazon SNS.
-  final Input<String>? usageReportS3Bucket;
+  final pulumi.Input<String>? usageReportS3Bucket;
 
   SmsPreferencesArgs({
     this.defaultSenderId,
@@ -72,16 +72,19 @@ class SmsPreferencesArgs {
 
   factory SmsPreferencesArgs.fromMap(Map<String, dynamic> map) {
     return SmsPreferencesArgs(
-      defaultSenderId: Input.asOptionalInput<String>(map['defaultSenderId']),
-      defaultSmsType: Input.asOptionalInput<String>(map['defaultSmsType']),
+      defaultSenderId:
+          pulumi.Input.asOptionalInput<String>(map['defaultSenderId']),
+      defaultSmsType:
+          pulumi.Input.asOptionalInput<String>(map['defaultSmsType']),
       deliveryStatusIamRoleArn:
-          Input.asOptionalInput<String>(map['deliveryStatusIamRoleArn']),
-      deliveryStatusSuccessSamplingRate: Input.asOptionalInput<String>(
+          pulumi.Input.asOptionalInput<String>(map['deliveryStatusIamRoleArn']),
+      deliveryStatusSuccessSamplingRate: pulumi.Input.asOptionalInput<String>(
           map['deliveryStatusSuccessSamplingRate']),
-      monthlySpendLimit: Input.asOptionalInput<int>(map['monthlySpendLimit']),
-      region: Input.asOptionalInput<String>(map['region']),
+      monthlySpendLimit:
+          pulumi.Input.asOptionalInput<int>(map['monthlySpendLimit']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       usageReportS3Bucket:
-          Input.asOptionalInput<String>(map['usageReportS3Bucket']),
+          pulumi.Input.asOptionalInput<String>(map['usageReportS3Bucket']),
     );
   }
 }

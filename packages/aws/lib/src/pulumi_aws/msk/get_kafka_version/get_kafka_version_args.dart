@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getKafkaVersion.
 class GetKafkaVersionArgs {
   /// Ordered list of preferred Kafka versions. The first match in this list will be returned. Either `preferred_versions` or `version` must be set.
-  final Input<List<String>>? preferredVersions;
+  final pulumi.Input<List<String>>? preferredVersions;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Version of MSK Kafka. For example 2.4.1.1 or "2.2.1" etc. Either `preferred_versions` or `version` must be set.
-  final Input<String>? version;
+  final pulumi.Input<String>? version;
 
   GetKafkaVersionArgs({
     this.preferredVersions,
@@ -39,9 +39,9 @@ class GetKafkaVersionArgs {
   factory GetKafkaVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetKafkaVersionArgs(
       preferredVersions:
-          Input.asOptionalInput<List<String>>(map['preferredVersions']),
-      region: Input.asOptionalInput<String>(map['region']),
-      version: Input.asOptionalInput<String>(map['version']),
+          pulumi.Input.asOptionalInput<List<String>>(map['preferredVersions']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      version: pulumi.Input.asOptionalInput<String>(map['version']),
     );
   }
 }

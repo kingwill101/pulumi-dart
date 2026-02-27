@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../account_settings_timeouts/account_settings_timeouts.dart';
 
 /// The set of arguments for AccountSettings.
 class AccountSettingsArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// The default namespace for this Amazon Web Services account. Currently, the default is `default`.
-  final Input<String>? defaultNamespace;
+  final pulumi.Input<String>? defaultNamespace;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A boolean value that determines whether or not an Amazon QuickSight account can be deleted. If `true`, it does not allow the account to be deleted and results in an error message if a user tries to make a DeleteAccountSubscription request. If `false`, it will allow the account to be deleted.
-  final Input<bool>? terminationProtectionEnabled;
-  final Input<AccountSettingsTimeouts>? timeouts;
+  final pulumi.Input<bool>? terminationProtectionEnabled;
+  final pulumi.Input<AccountSettingsTimeouts>? timeouts;
 
   AccountSettingsArgs({
     this.awsAccountId,
@@ -46,7 +46,8 @@ class AccountSettingsArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<AccountSettingsTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
+          AccountSettingsTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
@@ -54,12 +55,14 @@ class AccountSettingsArgs {
 
   factory AccountSettingsArgs.fromMap(Map<String, dynamic> map) {
     return AccountSettingsArgs(
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
-      defaultNamespace: Input.asOptionalInput<String>(map['defaultNamespace']),
-      region: Input.asOptionalInput<String>(map['region']),
-      terminationProtectionEnabled:
-          Input.asOptionalInput<bool>(map['terminationProtectionEnabled']),
-      timeouts: Input.asOptionalInput<AccountSettingsTimeouts>(map['timeouts']),
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
+      defaultNamespace:
+          pulumi.Input.asOptionalInput<String>(map['defaultNamespace']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      terminationProtectionEnabled: pulumi.Input.asOptionalInput<bool>(
+          map['terminationProtectionEnabled']),
+      timeouts: pulumi.Input.asOptionalInput<AccountSettingsTimeouts>(
+          map['timeouts']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_master_instance_fleet_launch_specifications_on_demand_specification/cluster_master_instance_fleet_launch_specifications_on_demand_specification.dart';
 import '../cluster_master_instance_fleet_launch_specifications_spot_specification/cluster_master_instance_fleet_launch_specifications_spot_specification.dart';
 
@@ -23,14 +23,14 @@ class ClusterMasterInstanceFleetLaunchSpecifications {
     final map = <String, dynamic>{};
     final onDemandSpecificationsValue = onDemandSpecifications;
     if (onDemandSpecificationsValue != null) {
-      map['onDemandSpecifications'] = Input.encodeList<
+      map['onDemandSpecifications'] = pulumi.Input.encodeList<
           ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification,
           Map<String,
               dynamic>>(onDemandSpecificationsValue, (value) => value.toMap());
     }
     final spotSpecificationsValue = spotSpecifications;
     if (spotSpecificationsValue != null) {
-      map['spotSpecifications'] = Input.encodeList<
+      map['spotSpecifications'] = pulumi.Input.encodeList<
               ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification,
               Map<String, dynamic>>(
           spotSpecificationsValue, (value) => value.toMap());
@@ -43,7 +43,7 @@ class ClusterMasterInstanceFleetLaunchSpecifications {
     return ClusterMasterInstanceFleetLaunchSpecifications(
       onDemandSpecifications: map['onDemandSpecifications'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification>(
               map['onDemandSpecifications'],
               (value) =>
@@ -51,7 +51,7 @@ class ClusterMasterInstanceFleetLaunchSpecifications {
                       .fromMap((value as Map).cast<String, dynamic>())),
       spotSpecifications: map['spotSpecifications'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification>(
               map['spotSpecifications'],
               (value) =>

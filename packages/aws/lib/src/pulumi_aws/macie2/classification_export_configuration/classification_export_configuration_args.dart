@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../classification_export_configuration_s3_destination/classification_export_configuration_s3_destination.dart';
 
 /// The set of arguments for ClassificationExportConfiguration.
 class ClassificationExportConfigurationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Configuration block for a S3 Destination. Defined below
-  final Input<ClassificationExportConfigurationS3Destination> s3Destination;
+  final pulumi.Input<ClassificationExportConfigurationS3Destination>
+      s3Destination;
 
   ClassificationExportConfigurationArgs({
     this.region,
@@ -22,7 +23,7 @@ class ClassificationExportConfigurationArgs {
     if (regionValue != null) {
       map['region'] = regionValue;
     }
-    map['s3Destination'] = Input.mapInputValue<
+    map['s3Destination'] = pulumi.Input.mapInputValue<
         ClassificationExportConfigurationS3Destination,
         Map<String, dynamic>>(s3Destination, (value) => value.toMap());
     return map;
@@ -31,9 +32,9 @@ class ClassificationExportConfigurationArgs {
   factory ClassificationExportConfigurationArgs.fromMap(
       Map<String, dynamic> map) {
     return ClassificationExportConfigurationArgs(
-      region: Input.asOptionalInput<String>(map['region']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       s3Destination:
-          Input.asInput<ClassificationExportConfigurationS3Destination>(
+          pulumi.Input.asInput<ClassificationExportConfigurationS3Destination>(
               map['s3Destination']),
     );
   }

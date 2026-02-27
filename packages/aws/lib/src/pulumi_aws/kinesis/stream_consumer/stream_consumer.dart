@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stream_consumer_args.dart';
 
 /// Provides a resource to manage a Kinesis Stream Consumer.
@@ -20,33 +20,33 @@ import 'stream_consumer_args.dart';
 /// ```
 ///
 /// [1]: https://docs.aws.amazon.com/streams/latest/dev/enhanced-consumers.html
-class StreamConsumer extends CustomResource {
+class StreamConsumer extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the stream consumer.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Approximate timestamp in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) of when the stream consumer was created.
-  late final Output<String> creationTimestamp;
+  late final pulumi.Output<String> creationTimestamp;
 
   /// Name of the stream consumer.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Amazon Resource Name (ARN) of the data stream the consumer is registered with.
-  late final Output<String> streamArn;
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<String> streamArn;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   StreamConsumer(
     String name, {
     StreamConsumerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:kinesis/streamConsumer:StreamConsumer',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');

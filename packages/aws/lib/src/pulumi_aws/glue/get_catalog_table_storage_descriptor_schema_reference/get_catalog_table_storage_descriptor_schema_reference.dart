@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_catalog_table_storage_descriptor_schema_reference_schema_id/get_catalog_table_storage_descriptor_schema_reference_schema_id.dart';
 
 class GetCatalogTableStorageDescriptorSchemaReference {
@@ -21,7 +21,7 @@ class GetCatalogTableStorageDescriptorSchemaReference {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['schemaIds'] = Input.encodeList<
+    map['schemaIds'] = pulumi.Input.encodeList<
         GetCatalogTableStorageDescriptorSchemaReferenceSchemaId,
         Map<String, dynamic>>(schemaIds, (value) => value.toMap());
     map['schemaVersionId'] = schemaVersionId;
@@ -32,7 +32,7 @@ class GetCatalogTableStorageDescriptorSchemaReference {
   factory GetCatalogTableStorageDescriptorSchemaReference.fromMap(
       Map<String, dynamic> map) {
     return GetCatalogTableStorageDescriptorSchemaReference(
-      schemaIds: Input.decodeList<
+      schemaIds: pulumi.Input.decodeList<
               GetCatalogTableStorageDescriptorSchemaReferenceSchemaId>(
           map['schemaIds'],
           (value) =>

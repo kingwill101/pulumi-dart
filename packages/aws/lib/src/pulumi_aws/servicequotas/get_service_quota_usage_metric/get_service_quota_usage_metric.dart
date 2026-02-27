@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_quota_usage_metric_metric_dimension/get_service_quota_usage_metric_metric_dimension.dart';
 
 class GetServiceQuotaUsageMetric {
@@ -25,7 +25,7 @@ class GetServiceQuotaUsageMetric {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['metricDimensions'] = Input.encodeList<
+    map['metricDimensions'] = pulumi.Input.encodeList<
         GetServiceQuotaUsageMetricMetricDimension,
         Map<String, dynamic>>(metricDimensions, (value) => value.toMap());
     map['metricName'] = metricName;
@@ -37,7 +37,7 @@ class GetServiceQuotaUsageMetric {
   factory GetServiceQuotaUsageMetric.fromMap(Map<String, dynamic> map) {
     return GetServiceQuotaUsageMetric(
       metricDimensions:
-          Input.decodeList<GetServiceQuotaUsageMetricMetricDimension>(
+          pulumi.Input.decodeList<GetServiceQuotaUsageMetricMetricDimension>(
               map['metricDimensions'],
               (value) => GetServiceQuotaUsageMetricMetricDimension.fromMap(
                   (value as Map).cast<String, dynamic>())),

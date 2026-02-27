@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../launch_template_block_device_mapping/launch_template_block_device_mapping.dart';
 import '../launch_template_capacity_reservation_specification/launch_template_capacity_reservation_specification.dart';
 import '../launch_template_cpu_options/launch_template_cpu_options.dart';
@@ -25,126 +25,131 @@ import '../launch_template_tag_specification/launch_template_tag_specification.d
 class LaunchTemplateArgs {
   /// Specify volumes to attach to the instance besides the volumes specified by the AMI.
   /// See Block Devices below for details.
-  final Input<List<LaunchTemplateBlockDeviceMapping>>? blockDeviceMappings;
+  final pulumi.Input<List<LaunchTemplateBlockDeviceMapping>>?
+      blockDeviceMappings;
 
   /// Targeting for EC2 capacity reservations. See Capacity Reservation Specification below for more details.
-  final Input<LaunchTemplateCapacityReservationSpecification>?
+  final pulumi.Input<LaunchTemplateCapacityReservationSpecification>?
       capacityReservationSpecification;
 
   /// The CPU options for the instance. See CPU Options below for more details.
-  final Input<LaunchTemplateCpuOptions>? cpuOptions;
+  final pulumi.Input<LaunchTemplateCpuOptions>? cpuOptions;
 
   /// Customize the credit specification of the instance. See Credit
   /// Specification below for more details.
-  final Input<LaunchTemplateCreditSpecification>? creditSpecification;
+  final pulumi.Input<LaunchTemplateCreditSpecification>? creditSpecification;
 
   /// Default Version of the launch template.
-  final Input<int>? defaultVersion;
+  final pulumi.Input<int>? defaultVersion;
 
   /// Description of the launch template.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// If true, enables [EC2 Instance Stop Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-stop-protection.html).
-  final Input<bool>? disableApiStop;
+  final pulumi.Input<bool>? disableApiStop;
 
   /// If `true`, enables [EC2 Instance
   /// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingDisableAPITermination.html)
-  final Input<bool>? disableApiTermination;
+  final pulumi.Input<bool>? disableApiTermination;
 
   /// If `true`, the launched EC2 instance will be EBS-optimized.
-  final Input<String>? ebsOptimized;
+  final pulumi.Input<String>? ebsOptimized;
 
   /// Enable Nitro Enclaves on launched instances. See Enclave Options below for more details.
-  final Input<LaunchTemplateEnclaveOptions>? enclaveOptions;
+  final pulumi.Input<LaunchTemplateEnclaveOptions>? enclaveOptions;
 
   /// The hibernation options for the instance. See Hibernation Options below for more details.
-  final Input<LaunchTemplateHibernationOptions>? hibernationOptions;
+  final pulumi.Input<LaunchTemplateHibernationOptions>? hibernationOptions;
 
   /// The IAM Instance Profile to launch the instance with. See Instance Profile
   /// below for more details.
-  final Input<LaunchTemplateIamInstanceProfile>? iamInstanceProfile;
+  final pulumi.Input<LaunchTemplateIamInstanceProfile>? iamInstanceProfile;
 
   /// The AMI from which to launch the instance or use a Systems Manager parameter convention e.g. `resolve:ssm:parameter-name`. See [docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-launch-template.html#use-an-ssm-parameter-instead-of-an-ami-id) for more details.
-  final Input<String>? imageId;
+  final pulumi.Input<String>? imageId;
 
   /// Shutdown behavior for the instance. Can be `stop` or `terminate`.
   /// (Default: `stop`).
-  final Input<String>? instanceInitiatedShutdownBehavior;
+  final pulumi.Input<String>? instanceInitiatedShutdownBehavior;
 
   /// The market (purchasing) option for the instance. See Market Options
   /// below for details.
-  final Input<LaunchTemplateInstanceMarketOptions>? instanceMarketOptions;
+  final pulumi.Input<LaunchTemplateInstanceMarketOptions>?
+      instanceMarketOptions;
 
   /// The attribute requirements for the type of instance. If present then `instance_type` cannot be present.
-  final Input<LaunchTemplateInstanceRequirements>? instanceRequirements;
+  final pulumi.Input<LaunchTemplateInstanceRequirements>? instanceRequirements;
 
   /// The type of the instance. If present then `instance_requirements` cannot be present.
-  final Input<String>? instanceType;
+  final pulumi.Input<String>? instanceType;
 
   /// The kernel ID.
-  final Input<String>? kernelId;
+  final pulumi.Input<String>? kernelId;
 
   /// The key name to use for the instance.
-  final Input<String>? keyName;
+  final pulumi.Input<String>? keyName;
 
   /// A list of license specifications to associate with. See License Specification below for more details.
-  final Input<List<LaunchTemplateLicenseSpecification>>? licenseSpecifications;
+  final pulumi.Input<List<LaunchTemplateLicenseSpecification>>?
+      licenseSpecifications;
 
   /// The maintenance options for the instance. See Maintenance Options below for more details.
-  final Input<LaunchTemplateMaintenanceOptions>? maintenanceOptions;
+  final pulumi.Input<LaunchTemplateMaintenanceOptions>? maintenanceOptions;
 
   /// Customize the metadata options for the instance. See Metadata Options below for more details.
-  final Input<LaunchTemplateMetadataOptions>? metadataOptions;
+  final pulumi.Input<LaunchTemplateMetadataOptions>? metadataOptions;
 
   /// The monitoring option for the instance. See Monitoring below for more details.
-  final Input<LaunchTemplateMonitoring>? monitoring;
+  final pulumi.Input<LaunchTemplateMonitoring>? monitoring;
 
   /// The name of the launch template. If you leave this blank, the provider will auto-generate a unique name.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// Customize network interfaces to be attached at instance boot time. See Network
   /// Interfaces below for more details.
-  final Input<List<LaunchTemplateNetworkInterface>>? networkInterfaces;
-  final Input<LaunchTemplateNetworkPerformanceOptions>?
+  final pulumi.Input<List<LaunchTemplateNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<LaunchTemplateNetworkPerformanceOptions>?
       networkPerformanceOptions;
 
   /// The placement of the instance. See Placement below for more details.
-  final Input<LaunchTemplatePlacement>? placement;
+  final pulumi.Input<LaunchTemplatePlacement>? placement;
 
   /// The options for the instance hostname. The default values are inherited from the subnet. See Private DNS Name Options below for more details.
-  final Input<LaunchTemplatePrivateDnsNameOptions>? privateDnsNameOptions;
+  final pulumi.Input<LaunchTemplatePrivateDnsNameOptions>?
+      privateDnsNameOptions;
 
   /// The ID of the RAM disk.
-  final Input<String>? ramDiskId;
+  final pulumi.Input<String>? ramDiskId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Secondary interfaces to associate with instances launched from the template. See Secondary
   /// Interfaces below for more details.
-  final Input<List<LaunchTemplateSecondaryInterface>>? secondaryInterfaces;
+  final pulumi.Input<List<LaunchTemplateSecondaryInterface>>?
+      secondaryInterfaces;
 
   /// A list of security group names to associate with. If you are creating Instances in a VPC, use
   /// `vpc_security_group_ids` instead.
-  final Input<List<String>>? securityGroupNames;
+  final pulumi.Input<List<String>>? securityGroupNames;
 
   /// The tags to apply to the resources during launch. See Tag Specifications below for more details. Default tags are currently not propagated to ASG created resources so you may wish to inject your default tags into this variable against the relevant child resource types created.
-  final Input<List<LaunchTemplateTagSpecification>>? tagSpecifications;
+  final pulumi.Input<List<LaunchTemplateTagSpecification>>? tagSpecifications;
 
   /// A map of tags to assign to the launch template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Whether to update Default Version each update. Conflicts with `default_version`.
-  final Input<bool>? updateDefaultVersion;
+  final pulumi.Input<bool>? updateDefaultVersion;
 
   /// The base64-encoded user data to provide when launching the instance.
-  final Input<String>? userData;
+  final pulumi.Input<String>? userData;
 
   /// A list of security group IDs to associate with. Conflicts with `network_interfaces.security_groups`
-  final Input<List<String>>? vpcSecurityGroupIds;
+  final pulumi.Input<List<String>>? vpcSecurityGroupIds;
 
   LaunchTemplateArgs({
     this.blockDeviceMappings,
@@ -191,29 +196,31 @@ class LaunchTemplateArgs {
     final map = <String, dynamic>{};
     final blockDeviceMappingsValue = blockDeviceMappings;
     if (blockDeviceMappingsValue != null) {
-      map['blockDeviceMappings'] = Input.mapOptionalInputValue<
+      map['blockDeviceMappings'] = pulumi.Input.mapOptionalInputValue<
               List<LaunchTemplateBlockDeviceMapping>,
               List<Map<String, dynamic>>>(
           blockDeviceMappingsValue,
-          (value) => Input.encodeList<LaunchTemplateBlockDeviceMapping,
+          (value) => pulumi.Input.encodeList<LaunchTemplateBlockDeviceMapping,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final capacityReservationSpecificationValue =
         capacityReservationSpecification;
     if (capacityReservationSpecificationValue != null) {
-      map['capacityReservationSpecification'] = Input.mapOptionalInputValue<
-              LaunchTemplateCapacityReservationSpecification,
-              Map<String, dynamic>>(
-          capacityReservationSpecificationValue, (value) => value.toMap());
+      map['capacityReservationSpecification'] =
+          pulumi.Input.mapOptionalInputValue<
+                  LaunchTemplateCapacityReservationSpecification,
+                  Map<String, dynamic>>(
+              capacityReservationSpecificationValue, (value) => value.toMap());
     }
     final cpuOptionsValue = cpuOptions;
     if (cpuOptionsValue != null) {
-      map['cpuOptions'] = Input.mapOptionalInputValue<LaunchTemplateCpuOptions,
+      map['cpuOptions'] = pulumi.Input.mapOptionalInputValue<
+          LaunchTemplateCpuOptions,
           Map<String, dynamic>>(cpuOptionsValue, (value) => value.toMap());
     }
     final creditSpecificationValue = creditSpecification;
     if (creditSpecificationValue != null) {
-      map['creditSpecification'] = Input.mapOptionalInputValue<
+      map['creditSpecification'] = pulumi.Input.mapOptionalInputValue<
               LaunchTemplateCreditSpecification, Map<String, dynamic>>(
           creditSpecificationValue, (value) => value.toMap());
     }
@@ -239,19 +246,19 @@ class LaunchTemplateArgs {
     }
     final enclaveOptionsValue = enclaveOptions;
     if (enclaveOptionsValue != null) {
-      map['enclaveOptions'] = Input.mapOptionalInputValue<
+      map['enclaveOptions'] = pulumi.Input.mapOptionalInputValue<
           LaunchTemplateEnclaveOptions,
           Map<String, dynamic>>(enclaveOptionsValue, (value) => value.toMap());
     }
     final hibernationOptionsValue = hibernationOptions;
     if (hibernationOptionsValue != null) {
-      map['hibernationOptions'] = Input.mapOptionalInputValue<
+      map['hibernationOptions'] = pulumi.Input.mapOptionalInputValue<
               LaunchTemplateHibernationOptions, Map<String, dynamic>>(
           hibernationOptionsValue, (value) => value.toMap());
     }
     final iamInstanceProfileValue = iamInstanceProfile;
     if (iamInstanceProfileValue != null) {
-      map['iamInstanceProfile'] = Input.mapOptionalInputValue<
+      map['iamInstanceProfile'] = pulumi.Input.mapOptionalInputValue<
               LaunchTemplateIamInstanceProfile, Map<String, dynamic>>(
           iamInstanceProfileValue, (value) => value.toMap());
     }
@@ -267,13 +274,13 @@ class LaunchTemplateArgs {
     }
     final instanceMarketOptionsValue = instanceMarketOptions;
     if (instanceMarketOptionsValue != null) {
-      map['instanceMarketOptions'] = Input.mapOptionalInputValue<
+      map['instanceMarketOptions'] = pulumi.Input.mapOptionalInputValue<
               LaunchTemplateInstanceMarketOptions, Map<String, dynamic>>(
           instanceMarketOptionsValue, (value) => value.toMap());
     }
     final instanceRequirementsValue = instanceRequirements;
     if (instanceRequirementsValue != null) {
-      map['instanceRequirements'] = Input.mapOptionalInputValue<
+      map['instanceRequirements'] = pulumi.Input.mapOptionalInputValue<
               LaunchTemplateInstanceRequirements, Map<String, dynamic>>(
           instanceRequirementsValue, (value) => value.toMap());
     }
@@ -291,28 +298,29 @@ class LaunchTemplateArgs {
     }
     final licenseSpecificationsValue = licenseSpecifications;
     if (licenseSpecificationsValue != null) {
-      map['licenseSpecifications'] = Input.mapOptionalInputValue<
+      map['licenseSpecifications'] = pulumi.Input.mapOptionalInputValue<
               List<LaunchTemplateLicenseSpecification>,
               List<Map<String, dynamic>>>(
           licenseSpecificationsValue,
-          (value) => Input.encodeList<LaunchTemplateLicenseSpecification,
+          (value) => pulumi.Input.encodeList<LaunchTemplateLicenseSpecification,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final maintenanceOptionsValue = maintenanceOptions;
     if (maintenanceOptionsValue != null) {
-      map['maintenanceOptions'] = Input.mapOptionalInputValue<
+      map['maintenanceOptions'] = pulumi.Input.mapOptionalInputValue<
               LaunchTemplateMaintenanceOptions, Map<String, dynamic>>(
           maintenanceOptionsValue, (value) => value.toMap());
     }
     final metadataOptionsValue = metadataOptions;
     if (metadataOptionsValue != null) {
-      map['metadataOptions'] = Input.mapOptionalInputValue<
+      map['metadataOptions'] = pulumi.Input.mapOptionalInputValue<
           LaunchTemplateMetadataOptions,
           Map<String, dynamic>>(metadataOptionsValue, (value) => value.toMap());
     }
     final monitoringValue = monitoring;
     if (monitoringValue != null) {
-      map['monitoring'] = Input.mapOptionalInputValue<LaunchTemplateMonitoring,
+      map['monitoring'] = pulumi.Input.mapOptionalInputValue<
+          LaunchTemplateMonitoring,
           Map<String, dynamic>>(monitoringValue, (value) => value.toMap());
     }
     final nameValue = name;
@@ -325,26 +333,27 @@ class LaunchTemplateArgs {
     }
     final networkInterfacesValue = networkInterfaces;
     if (networkInterfacesValue != null) {
-      map['networkInterfaces'] = Input.mapOptionalInputValue<
+      map['networkInterfaces'] = pulumi.Input.mapOptionalInputValue<
               List<LaunchTemplateNetworkInterface>, List<Map<String, dynamic>>>(
           networkInterfacesValue,
-          (value) => Input.encodeList<LaunchTemplateNetworkInterface,
+          (value) => pulumi.Input.encodeList<LaunchTemplateNetworkInterface,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final networkPerformanceOptionsValue = networkPerformanceOptions;
     if (networkPerformanceOptionsValue != null) {
-      map['networkPerformanceOptions'] = Input.mapOptionalInputValue<
+      map['networkPerformanceOptions'] = pulumi.Input.mapOptionalInputValue<
               LaunchTemplateNetworkPerformanceOptions, Map<String, dynamic>>(
           networkPerformanceOptionsValue, (value) => value.toMap());
     }
     final placementValue = placement;
     if (placementValue != null) {
-      map['placement'] = Input.mapOptionalInputValue<LaunchTemplatePlacement,
+      map['placement'] = pulumi.Input.mapOptionalInputValue<
+          LaunchTemplatePlacement,
           Map<String, dynamic>>(placementValue, (value) => value.toMap());
     }
     final privateDnsNameOptionsValue = privateDnsNameOptions;
     if (privateDnsNameOptionsValue != null) {
-      map['privateDnsNameOptions'] = Input.mapOptionalInputValue<
+      map['privateDnsNameOptions'] = pulumi.Input.mapOptionalInputValue<
               LaunchTemplatePrivateDnsNameOptions, Map<String, dynamic>>(
           privateDnsNameOptionsValue, (value) => value.toMap());
     }
@@ -358,11 +367,11 @@ class LaunchTemplateArgs {
     }
     final secondaryInterfacesValue = secondaryInterfaces;
     if (secondaryInterfacesValue != null) {
-      map['secondaryInterfaces'] = Input.mapOptionalInputValue<
+      map['secondaryInterfaces'] = pulumi.Input.mapOptionalInputValue<
               List<LaunchTemplateSecondaryInterface>,
               List<Map<String, dynamic>>>(
           secondaryInterfacesValue,
-          (value) => Input.encodeList<LaunchTemplateSecondaryInterface,
+          (value) => pulumi.Input.encodeList<LaunchTemplateSecondaryInterface,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final securityGroupNamesValue = securityGroupNames;
@@ -371,10 +380,10 @@ class LaunchTemplateArgs {
     }
     final tagSpecificationsValue = tagSpecifications;
     if (tagSpecificationsValue != null) {
-      map['tagSpecifications'] = Input.mapOptionalInputValue<
+      map['tagSpecifications'] = pulumi.Input.mapOptionalInputValue<
               List<LaunchTemplateTagSpecification>, List<Map<String, dynamic>>>(
           tagSpecificationsValue,
-          (value) => Input.encodeList<LaunchTemplateTagSpecification,
+          (value) => pulumi.Input.encodeList<LaunchTemplateTagSpecification,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final tagsValue = tags;
@@ -399,81 +408,83 @@ class LaunchTemplateArgs {
   factory LaunchTemplateArgs.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateArgs(
       blockDeviceMappings:
-          Input.asOptionalInput<List<LaunchTemplateBlockDeviceMapping>>(
+          pulumi.Input.asOptionalInput<List<LaunchTemplateBlockDeviceMapping>>(
               map['blockDeviceMappings']),
-      capacityReservationSpecification:
-          Input.asOptionalInput<LaunchTemplateCapacityReservationSpecification>(
-              map['capacityReservationSpecification']),
-      cpuOptions:
-          Input.asOptionalInput<LaunchTemplateCpuOptions>(map['cpuOptions']),
+      capacityReservationSpecification: pulumi.Input.asOptionalInput<
+              LaunchTemplateCapacityReservationSpecification>(
+          map['capacityReservationSpecification']),
+      cpuOptions: pulumi.Input.asOptionalInput<LaunchTemplateCpuOptions>(
+          map['cpuOptions']),
       creditSpecification:
-          Input.asOptionalInput<LaunchTemplateCreditSpecification>(
+          pulumi.Input.asOptionalInput<LaunchTemplateCreditSpecification>(
               map['creditSpecification']),
-      defaultVersion: Input.asOptionalInput<int>(map['defaultVersion']),
-      description: Input.asOptionalInput<String>(map['description']),
-      disableApiStop: Input.asOptionalInput<bool>(map['disableApiStop']),
+      defaultVersion: pulumi.Input.asOptionalInput<int>(map['defaultVersion']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      disableApiStop: pulumi.Input.asOptionalInput<bool>(map['disableApiStop']),
       disableApiTermination:
-          Input.asOptionalInput<bool>(map['disableApiTermination']),
-      ebsOptimized: Input.asOptionalInput<String>(map['ebsOptimized']),
-      enclaveOptions: Input.asOptionalInput<LaunchTemplateEnclaveOptions>(
-          map['enclaveOptions']),
+          pulumi.Input.asOptionalInput<bool>(map['disableApiTermination']),
+      ebsOptimized: pulumi.Input.asOptionalInput<String>(map['ebsOptimized']),
+      enclaveOptions:
+          pulumi.Input.asOptionalInput<LaunchTemplateEnclaveOptions>(
+              map['enclaveOptions']),
       hibernationOptions:
-          Input.asOptionalInput<LaunchTemplateHibernationOptions>(
+          pulumi.Input.asOptionalInput<LaunchTemplateHibernationOptions>(
               map['hibernationOptions']),
       iamInstanceProfile:
-          Input.asOptionalInput<LaunchTemplateIamInstanceProfile>(
+          pulumi.Input.asOptionalInput<LaunchTemplateIamInstanceProfile>(
               map['iamInstanceProfile']),
-      imageId: Input.asOptionalInput<String>(map['imageId']),
-      instanceInitiatedShutdownBehavior: Input.asOptionalInput<String>(
+      imageId: pulumi.Input.asOptionalInput<String>(map['imageId']),
+      instanceInitiatedShutdownBehavior: pulumi.Input.asOptionalInput<String>(
           map['instanceInitiatedShutdownBehavior']),
       instanceMarketOptions:
-          Input.asOptionalInput<LaunchTemplateInstanceMarketOptions>(
+          pulumi.Input.asOptionalInput<LaunchTemplateInstanceMarketOptions>(
               map['instanceMarketOptions']),
       instanceRequirements:
-          Input.asOptionalInput<LaunchTemplateInstanceRequirements>(
+          pulumi.Input.asOptionalInput<LaunchTemplateInstanceRequirements>(
               map['instanceRequirements']),
-      instanceType: Input.asOptionalInput<String>(map['instanceType']),
-      kernelId: Input.asOptionalInput<String>(map['kernelId']),
-      keyName: Input.asOptionalInput<String>(map['keyName']),
-      licenseSpecifications:
-          Input.asOptionalInput<List<LaunchTemplateLicenseSpecification>>(
-              map['licenseSpecifications']),
+      instanceType: pulumi.Input.asOptionalInput<String>(map['instanceType']),
+      kernelId: pulumi.Input.asOptionalInput<String>(map['kernelId']),
+      keyName: pulumi.Input.asOptionalInput<String>(map['keyName']),
+      licenseSpecifications: pulumi.Input.asOptionalInput<
+              List<LaunchTemplateLicenseSpecification>>(
+          map['licenseSpecifications']),
       maintenanceOptions:
-          Input.asOptionalInput<LaunchTemplateMaintenanceOptions>(
+          pulumi.Input.asOptionalInput<LaunchTemplateMaintenanceOptions>(
               map['maintenanceOptions']),
-      metadataOptions: Input.asOptionalInput<LaunchTemplateMetadataOptions>(
-          map['metadataOptions']),
-      monitoring:
-          Input.asOptionalInput<LaunchTemplateMonitoring>(map['monitoring']),
-      name: Input.asOptionalInput<String>(map['name']),
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
+      metadataOptions:
+          pulumi.Input.asOptionalInput<LaunchTemplateMetadataOptions>(
+              map['metadataOptions']),
+      monitoring: pulumi.Input.asOptionalInput<LaunchTemplateMonitoring>(
+          map['monitoring']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
       networkInterfaces:
-          Input.asOptionalInput<List<LaunchTemplateNetworkInterface>>(
+          pulumi.Input.asOptionalInput<List<LaunchTemplateNetworkInterface>>(
               map['networkInterfaces']),
       networkPerformanceOptions:
-          Input.asOptionalInput<LaunchTemplateNetworkPerformanceOptions>(
+          pulumi.Input.asOptionalInput<LaunchTemplateNetworkPerformanceOptions>(
               map['networkPerformanceOptions']),
-      placement:
-          Input.asOptionalInput<LaunchTemplatePlacement>(map['placement']),
+      placement: pulumi.Input.asOptionalInput<LaunchTemplatePlacement>(
+          map['placement']),
       privateDnsNameOptions:
-          Input.asOptionalInput<LaunchTemplatePrivateDnsNameOptions>(
+          pulumi.Input.asOptionalInput<LaunchTemplatePrivateDnsNameOptions>(
               map['privateDnsNameOptions']),
-      ramDiskId: Input.asOptionalInput<String>(map['ramDiskId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      ramDiskId: pulumi.Input.asOptionalInput<String>(map['ramDiskId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       secondaryInterfaces:
-          Input.asOptionalInput<List<LaunchTemplateSecondaryInterface>>(
+          pulumi.Input.asOptionalInput<List<LaunchTemplateSecondaryInterface>>(
               map['secondaryInterfaces']),
       securityGroupNames:
-          Input.asOptionalInput<List<String>>(map['securityGroupNames']),
+          pulumi.Input.asOptionalInput<List<String>>(map['securityGroupNames']),
       tagSpecifications:
-          Input.asOptionalInput<List<LaunchTemplateTagSpecification>>(
+          pulumi.Input.asOptionalInput<List<LaunchTemplateTagSpecification>>(
               map['tagSpecifications']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
       updateDefaultVersion:
-          Input.asOptionalInput<bool>(map['updateDefaultVersion']),
-      userData: Input.asOptionalInput<String>(map['userData']),
-      vpcSecurityGroupIds:
-          Input.asOptionalInput<List<String>>(map['vpcSecurityGroupIds']),
+          pulumi.Input.asOptionalInput<bool>(map['updateDefaultVersion']),
+      userData: pulumi.Input.asOptionalInput<String>(map['userData']),
+      vpcSecurityGroupIds: pulumi.Input.asOptionalInput<List<String>>(
+          map['vpcSecurityGroupIds']),
     );
   }
 }

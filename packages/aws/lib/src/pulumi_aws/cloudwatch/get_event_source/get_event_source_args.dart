@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEventSource.
 class GetEventSourceArgs {
   /// Specifying this limits the results to only those partner event sources with names that start with the specified prefix
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetEventSourceArgs({
     this.namePrefix,
@@ -30,8 +30,8 @@ class GetEventSourceArgs {
 
   factory GetEventSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetEventSourceArgs(
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
-      region: Input.asOptionalInput<String>(map['region']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../replicator_replication_info_list_consumer_group_replication/replicator_replication_info_list_consumer_group_replication.dart';
 import '../replicator_replication_info_list_topic_replication/replicator_replication_info_list_topic_replication.dart';
 
@@ -35,7 +35,7 @@ class ReplicatorReplicationInfoList {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['consumerGroupReplications'] = Input.encodeList<
+    map['consumerGroupReplications'] = pulumi.Input.encodeList<
             ReplicatorReplicationInfoListConsumerGroupReplication,
             Map<String, dynamic>>(
         consumerGroupReplications, (value) => value.toMap());
@@ -50,7 +50,7 @@ class ReplicatorReplicationInfoList {
       map['targetKafkaClusterAlias'] = targetKafkaClusterAliasValue;
     }
     map['targetKafkaClusterArn'] = targetKafkaClusterArn;
-    map['topicReplications'] = Input.encodeList<
+    map['topicReplications'] = pulumi.Input.encodeList<
         ReplicatorReplicationInfoListTopicReplication,
         Map<String, dynamic>>(topicReplications, (value) => value.toMap());
     return map;
@@ -58,7 +58,7 @@ class ReplicatorReplicationInfoList {
 
   factory ReplicatorReplicationInfoList.fromMap(Map<String, dynamic> map) {
     return ReplicatorReplicationInfoList(
-      consumerGroupReplications: Input.decodeList<
+      consumerGroupReplications: pulumi.Input.decodeList<
               ReplicatorReplicationInfoListConsumerGroupReplication>(
           map['consumerGroupReplications'],
           (value) =>
@@ -73,11 +73,11 @@ class ReplicatorReplicationInfoList {
           ? null
           : map['targetKafkaClusterAlias'] as String,
       targetKafkaClusterArn: map['targetKafkaClusterArn'] as String,
-      topicReplications:
-          Input.decodeList<ReplicatorReplicationInfoListTopicReplication>(
-              map['topicReplications'],
-              (value) => ReplicatorReplicationInfoListTopicReplication.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      topicReplications: pulumi.Input.decodeList<
+              ReplicatorReplicationInfoListTopicReplication>(
+          map['topicReplications'],
+          (value) => ReplicatorReplicationInfoListTopicReplication.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

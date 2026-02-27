@@ -1,4 +1,4 @@
 library module_codestarconnections_connection;
 
-export 'connection/connection3.dart';
-export 'connection/connection_args3.dart';
+export 'connection/connection_codestarconnections.dart';
+export 'connection/connection_codestarconnections_args.dart';

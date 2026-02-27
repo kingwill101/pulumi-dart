@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stage_access_log_settings/stage_access_log_settings.dart';
 import '../stage_canary_settings/stage_canary_settings.dart';
 import 'stage_args.dart';
@@ -19,76 +19,76 @@ import 'stage_args.dart';
 /// ```sh
 /// $ pulumi import aws:apigateway/stage:Stage example 12345abcde/example
 /// ```
-class Stage extends CustomResource {
+class Stage extends pulumi.CustomResource {
   /// Enables access logs for the API stage. See Access Log Settings below.
-  late final Output<StageAccessLogSettings?> accessLogSettings;
+  late final pulumi.Output<StageAccessLogSettings?> accessLogSettings;
 
   /// ARN
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Whether a cache cluster is enabled for the stage
-  late final Output<bool?> cacheClusterEnabled;
+  late final pulumi.Output<bool?> cacheClusterEnabled;
 
   /// Size of the cache cluster for the stage, if enabled. Allowed values include `0.5`, `1.6`, `6.1`, `13.5`, `28.4`, `58.2`, `118` and `237`.
-  late final Output<String?> cacheClusterSize;
+  late final pulumi.Output<String?> cacheClusterSize;
 
   /// Configuration settings of a canary deployment. See Canary Settings below.
-  late final Output<StageCanarySettings?> canarySettings;
+  late final pulumi.Output<StageCanarySettings?> canarySettings;
 
   /// Identifier of a client certificate for the stage.
-  late final Output<String?> clientCertificateId;
+  late final pulumi.Output<String?> clientCertificateId;
 
   /// ID of the deployment that the stage points to
-  late final Output<String> deployment;
+  late final pulumi.Output<String> deployment;
 
   /// Description of the stage.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Version of the associated API documentation.
-  late final Output<String?> documentationVersion;
+  late final pulumi.Output<String?> documentationVersion;
 
   /// Execution ARN to be used in `lambda_permission`'s `source_arn`
   /// when allowing API Gateway to invoke a Lambda function,
   /// e.g., `arn:aws:execute-api:eu-west-2:123456789012:z4675bid1j/prod`
-  late final Output<String> executionArn;
+  late final pulumi.Output<String> executionArn;
 
   /// URL to invoke the API pointing to the stage,
   /// e.g., `https://z4675bid1j.execute-api.eu-west-2.amazonaws.com/prod`
-  late final Output<String> invokeUrl;
+  late final pulumi.Output<String> invokeUrl;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ID of the associated REST API
-  late final Output<String> restApi;
+  late final pulumi.Output<String> restApi;
 
   /// Name of the stage
-  late final Output<String> stageName;
+  late final pulumi.Output<String> stageName;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Map that defines the stage variables.
-  late final Output<Map<String, String>?> variables;
+  late final pulumi.Output<Map<String, String>?> variables;
 
   /// ARN of the WebAcl associated with the Stage.
-  late final Output<String> webAclArn;
+  late final pulumi.Output<String> webAclArn;
 
   /// Whether active tracing with X-ray is enabled. Defaults to `false`.
-  late final Output<bool?> xrayTracingEnabled;
+  late final pulumi.Output<bool?> xrayTracingEnabled;
 
   Stage(
     String name, {
     StageArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigateway/stage:Stage',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessLogSettings =
         registerOutput<StageAccessLogSettings?>('accessLogSettings');

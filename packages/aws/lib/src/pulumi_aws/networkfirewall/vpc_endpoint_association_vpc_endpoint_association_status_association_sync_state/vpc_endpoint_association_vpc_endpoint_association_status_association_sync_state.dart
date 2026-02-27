@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vpc_endpoint_association_vpc_endpoint_association_status_association_sync_state_attachment/vpc_endpoint_association_vpc_endpoint_association_status_association_sync_state_attachment.dart';
 
 class VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState {
@@ -19,7 +19,7 @@ class VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['attachments'] = Input.encodeList<
+    map['attachments'] = pulumi.Input.encodeList<
         VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment,
         Map<String, dynamic>>(attachments, (value) => value.toMap());
     map['availabilityZone'] = availabilityZone;
@@ -29,7 +29,7 @@ class VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState {
   factory VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState.fromMap(
       Map<String, dynamic> map) {
     return VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState(
-      attachments: Input.decodeList<
+      attachments: pulumi.Input.decodeList<
               VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment>(
           map['attachments'],
           (value) =>

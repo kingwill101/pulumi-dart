@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for NetworkAclRule.
 class NetworkAclRuleArgs {
   /// The network range to allow or deny, in CIDR notation (for example 172.16.0.0/24 ).
-  final Input<String>? cidrBlock;
+  final pulumi.Input<String>? cidrBlock;
 
   /// Indicates whether this is an egress rule (rule is applied to traffic leaving the subnet). Default `false`.
-  final Input<bool>? egress;
+  final pulumi.Input<bool>? egress;
 
   /// The from port to match.
-  final Input<int>? fromPort;
+  final pulumi.Input<int>? fromPort;
 
   /// ICMP protocol: The ICMP code. Required if specifying ICMP for the protocolE.g., -1
   ///
@@ -20,31 +20,31 @@ class NetworkAclRuleArgs {
   /// > **NOTE:** If the value of `icmp_type` is `-1` (which results in a wildcard ICMP type), the `icmp_code` must also be set to `-1` (wildcard ICMP code).
   ///
   /// > Note: For more information on ICMP types and codes, see here: https://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml
-  final Input<int>? icmpCode;
+  final pulumi.Input<int>? icmpCode;
 
   /// ICMP protocol: The ICMP type. Required if specifying ICMP for the protocolE.g., -1
-  final Input<int>? icmpType;
+  final pulumi.Input<int>? icmpType;
 
   /// The IPv6 CIDR block to allow or deny.
-  final Input<String>? ipv6CidrBlock;
+  final pulumi.Input<String>? ipv6CidrBlock;
 
   /// The ID of the network ACL.
-  final Input<String> networkAclId;
+  final pulumi.Input<String> networkAclId;
 
   /// The protocol. A value of -1 means all protocols.
-  final Input<String> protocol;
+  final pulumi.Input<String> protocol;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Indicates whether to allow or deny the traffic that matches the rule. Accepted values: `allow` | `deny`
-  final Input<String> ruleAction;
+  final pulumi.Input<String> ruleAction;
 
   /// The rule number for the entry (for example, 100). ACL entries are processed in ascending order by rule number.
-  final Input<int> ruleNumber;
+  final pulumi.Input<int> ruleNumber;
 
   /// The to port to match.
-  final Input<int>? toPort;
+  final pulumi.Input<int>? toPort;
 
   NetworkAclRuleArgs({
     this.cidrBlock,
@@ -104,18 +104,18 @@ class NetworkAclRuleArgs {
 
   factory NetworkAclRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAclRuleArgs(
-      cidrBlock: Input.asOptionalInput<String>(map['cidrBlock']),
-      egress: Input.asOptionalInput<bool>(map['egress']),
-      fromPort: Input.asOptionalInput<int>(map['fromPort']),
-      icmpCode: Input.asOptionalInput<int>(map['icmpCode']),
-      icmpType: Input.asOptionalInput<int>(map['icmpType']),
-      ipv6CidrBlock: Input.asOptionalInput<String>(map['ipv6CidrBlock']),
-      networkAclId: Input.asInput<String>(map['networkAclId']),
-      protocol: Input.asInput<String>(map['protocol']),
-      region: Input.asOptionalInput<String>(map['region']),
-      ruleAction: Input.asInput<String>(map['ruleAction']),
-      ruleNumber: Input.asInput<int>(map['ruleNumber']),
-      toPort: Input.asOptionalInput<int>(map['toPort']),
+      cidrBlock: pulumi.Input.asOptionalInput<String>(map['cidrBlock']),
+      egress: pulumi.Input.asOptionalInput<bool>(map['egress']),
+      fromPort: pulumi.Input.asOptionalInput<int>(map['fromPort']),
+      icmpCode: pulumi.Input.asOptionalInput<int>(map['icmpCode']),
+      icmpType: pulumi.Input.asOptionalInput<int>(map['icmpType']),
+      ipv6CidrBlock: pulumi.Input.asOptionalInput<String>(map['ipv6CidrBlock']),
+      networkAclId: pulumi.Input.asInput<String>(map['networkAclId']),
+      protocol: pulumi.Input.asInput<String>(map['protocol']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      ruleAction: pulumi.Input.asInput<String>(map['ruleAction']),
+      ruleNumber: pulumi.Input.asInput<int>(map['ruleNumber']),
+      toPort: pulumi.Input.asOptionalInput<int>(map['toPort']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_ontap_file_system_args.dart';
 import 'get_ontap_file_system_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_ontap_file_system_result.dart';
 /// ### Basic Usage
 Future<GetOntapFileSystemResult> getOntapFileSystem(
   GetOntapFileSystemArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:fsx/getOntapFileSystem:getOntapFileSystem',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOntapFileSystemResult.fromMap(result);
 }

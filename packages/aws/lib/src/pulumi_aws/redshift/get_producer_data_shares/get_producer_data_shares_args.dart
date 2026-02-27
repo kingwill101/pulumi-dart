@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getProducerDataShares.
 class GetProducerDataSharesArgs {
   /// Amazon Resource Name (ARN) of the producer namespace that returns in the list of datashares.
   ///
   /// The following arguments are optional:
-  final Input<String> producerArn;
+  final pulumi.Input<String> producerArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Status of a datashare in the producer. Valid values are `ACTIVE`, `AUTHORIZED`, `PENDING_AUTHORIZATION`, `DEAUTHORIZED`, and `REJECTED`. Omit this argument to return all statuses.
-  final Input<String>? status;
+  final pulumi.Input<String>? status;
 
   GetProducerDataSharesArgs({
     required this.producerArn,
@@ -37,9 +37,9 @@ class GetProducerDataSharesArgs {
 
   factory GetProducerDataSharesArgs.fromMap(Map<String, dynamic> map) {
     return GetProducerDataSharesArgs(
-      producerArn: Input.asInput<String>(map['producerArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      status: Input.asOptionalInput<String>(map['status']),
+      producerArn: pulumi.Input.asInput<String>(map['producerArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      status: pulumi.Input.asOptionalInput<String>(map['status']),
     );
   }
 }

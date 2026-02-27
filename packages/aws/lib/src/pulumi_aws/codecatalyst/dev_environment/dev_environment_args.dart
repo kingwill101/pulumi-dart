@@ -1,39 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../dev_environment_ides/dev_environment_ides.dart';
 import '../dev_environment_persistent_storage/dev_environment_persistent_storage.dart';
 import '../dev_environment_repository/dev_environment_repository.dart';
 
 /// The set of arguments for DevEnvironment.
 class DevEnvironmentArgs {
-  final Input<String>? alias;
+  final pulumi.Input<String>? alias;
 
   /// Information about the integrated development environment (IDE) configured for a Dev Environment.
-  final Input<DevEnvironmentIdes> ides;
+  final pulumi.Input<DevEnvironmentIdes> ides;
 
   /// The amount of time the Dev Environment will run without any activity detected before stopping, in minutes. Only whole integers are allowed. Dev Environments consume compute minutes when running.
-  final Input<int>? inactivityTimeoutMinutes;
+  final pulumi.Input<int>? inactivityTimeoutMinutes;
 
   /// The Amazon EC2 instace type to use for the Dev Environment. Valid values include dev.standard1.small,dev.standard1.medium,dev.standard1.large,dev.standard1.xlarge
   ///
   /// The following arguments are optional:
-  final Input<String> instanceType;
+  final pulumi.Input<String> instanceType;
 
   /// Information about the amount of storage allocated to the Dev Environment.
-  final Input<DevEnvironmentPersistentStorage> persistentStorage;
+  final pulumi.Input<DevEnvironmentPersistentStorage> persistentStorage;
 
   /// The name of the project in the space.
-  final Input<String> projectName;
+  final pulumi.Input<String> projectName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The source repository that contains the branch to clone into the Dev Environment.
-  final Input<List<DevEnvironmentRepository>>? repositories;
+  final pulumi.Input<List<DevEnvironmentRepository>>? repositories;
 
   /// The name of the space.
-  final Input<String> spaceName;
+  final pulumi.Input<String> spaceName;
 
   DevEnvironmentArgs({
     this.alias,
@@ -53,14 +53,15 @@ class DevEnvironmentArgs {
     if (aliasValue != null) {
       map['alias'] = aliasValue;
     }
-    map['ides'] = Input.mapInputValue<DevEnvironmentIdes, Map<String, dynamic>>(
-        ides, (value) => value.toMap());
+    map['ides'] =
+        pulumi.Input.mapInputValue<DevEnvironmentIdes, Map<String, dynamic>>(
+            ides, (value) => value.toMap());
     final inactivityTimeoutMinutesValue = inactivityTimeoutMinutes;
     if (inactivityTimeoutMinutesValue != null) {
       map['inactivityTimeoutMinutes'] = inactivityTimeoutMinutesValue;
     }
     map['instanceType'] = instanceType;
-    map['persistentStorage'] = Input.mapInputValue<
+    map['persistentStorage'] = pulumi.Input.mapInputValue<
         DevEnvironmentPersistentStorage,
         Map<String, dynamic>>(persistentStorage, (value) => value.toMap());
     map['projectName'] = projectName;
@@ -70,12 +71,11 @@ class DevEnvironmentArgs {
     }
     final repositoriesValue = repositories;
     if (repositoriesValue != null) {
-      map['repositories'] = Input.mapOptionalInputValue<
+      map['repositories'] = pulumi.Input.mapOptionalInputValue<
               List<DevEnvironmentRepository>, List<Map<String, dynamic>>>(
           repositoriesValue,
-          (value) =>
-              Input.encodeList<DevEnvironmentRepository, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<DevEnvironmentRepository,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     map['spaceName'] = spaceName;
     return map;
@@ -83,18 +83,19 @@ class DevEnvironmentArgs {
 
   factory DevEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return DevEnvironmentArgs(
-      alias: Input.asOptionalInput<String>(map['alias']),
-      ides: Input.asInput<DevEnvironmentIdes>(map['ides']),
+      alias: pulumi.Input.asOptionalInput<String>(map['alias']),
+      ides: pulumi.Input.asInput<DevEnvironmentIdes>(map['ides']),
       inactivityTimeoutMinutes:
-          Input.asOptionalInput<int>(map['inactivityTimeoutMinutes']),
-      instanceType: Input.asInput<String>(map['instanceType']),
-      persistentStorage: Input.asInput<DevEnvironmentPersistentStorage>(
+          pulumi.Input.asOptionalInput<int>(map['inactivityTimeoutMinutes']),
+      instanceType: pulumi.Input.asInput<String>(map['instanceType']),
+      persistentStorage: pulumi.Input.asInput<DevEnvironmentPersistentStorage>(
           map['persistentStorage']),
-      projectName: Input.asInput<String>(map['projectName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      repositories: Input.asOptionalInput<List<DevEnvironmentRepository>>(
-          map['repositories']),
-      spaceName: Input.asInput<String>(map['spaceName']),
+      projectName: pulumi.Input.asInput<String>(map['projectName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      repositories:
+          pulumi.Input.asOptionalInput<List<DevEnvironmentRepository>>(
+              map['repositories']),
+      spaceName: pulumi.Input.asInput<String>(map['spaceName']),
     );
   }
 }

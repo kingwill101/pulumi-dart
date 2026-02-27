@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../application_layer_automatic_response_timeouts/application_layer_automatic_response_timeouts.dart';
 
 /// The set of arguments for ApplicationLayerAutomaticResponse.
 class ApplicationLayerAutomaticResponseArgs {
   /// One of `COUNT` or `BLOCK`
-  final Input<String> action;
+  final pulumi.Input<String> action;
 
   /// ARN of the resource to protect (Cloudfront Distributions and ALBs only at this time).
-  final Input<String> resourceArn;
-  final Input<ApplicationLayerAutomaticResponseTimeouts>? timeouts;
+  final pulumi.Input<String> resourceArn;
+  final pulumi.Input<ApplicationLayerAutomaticResponseTimeouts>? timeouts;
 
   ApplicationLayerAutomaticResponseArgs({
     required this.action,
@@ -24,7 +24,7 @@ class ApplicationLayerAutomaticResponseArgs {
     map['resourceArn'] = resourceArn;
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           ApplicationLayerAutomaticResponseTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -34,11 +34,10 @@ class ApplicationLayerAutomaticResponseArgs {
   factory ApplicationLayerAutomaticResponseArgs.fromMap(
       Map<String, dynamic> map) {
     return ApplicationLayerAutomaticResponseArgs(
-      action: Input.asInput<String>(map['action']),
-      resourceArn: Input.asInput<String>(map['resourceArn']),
-      timeouts:
-          Input.asOptionalInput<ApplicationLayerAutomaticResponseTimeouts>(
-              map['timeouts']),
+      action: pulumi.Input.asInput<String>(map['action']),
+      resourceArn: pulumi.Input.asInput<String>(map['resourceArn']),
+      timeouts: pulumi.Input.asOptionalInput<
+          ApplicationLayerAutomaticResponseTimeouts>(map['timeouts']),
     );
   }
 }

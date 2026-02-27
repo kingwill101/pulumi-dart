@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'log_index_policy_args.dart';
 
 /// Resource for managing an AWS CloudWatch Logs Index Policy.
@@ -16,25 +16,25 @@ import 'log_index_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudwatch/logIndexPolicy:LogIndexPolicy example /aws/log/group/name
 /// ```
-class LogIndexPolicy extends CustomResource {
+class LogIndexPolicy extends pulumi.CustomResource {
   /// Log group name to set the policy for.
-  late final Output<String> logGroupName;
+  late final pulumi.Output<String> logGroupName;
 
   /// JSON policy document. This is a JSON formatted string.
-  late final Output<String> policyDocument;
+  late final pulumi.Output<String> policyDocument;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   LogIndexPolicy(
     String name, {
     LogIndexPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudwatch/logIndexPolicy:LogIndexPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.logGroupName = registerOutput<String>('logGroupName');
     this.policyDocument = registerOutput<String>('policyDocument');

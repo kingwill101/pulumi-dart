@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_direct_connect_gateway_attachment_filter/get_direct_connect_gateway_attachment_filter.dart';
 
 /// Result data returned by getDirectConnectGatewayAttachment.
@@ -37,7 +37,8 @@ class GetDirectConnectGatewayAttachmentResult {
     }
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetDirectConnectGatewayAttachmentFilter,
+      map['filters'] = pulumi.Input.encodeList<
+          GetDirectConnectGatewayAttachmentFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -58,7 +59,7 @@ class GetDirectConnectGatewayAttachmentResult {
           map['dxGatewayId'] == null ? null : map['dxGatewayId'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetDirectConnectGatewayAttachmentFilter>(
+          : pulumi.Input.decodeList<GetDirectConnectGatewayAttachmentFilter>(
               map['filters'],
               (value) => GetDirectConnectGatewayAttachmentFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_response_headers_policy_cors_config/get_response_headers_policy_cors_config.dart';
 import '../get_response_headers_policy_custom_headers_config/get_response_headers_policy_custom_headers_config.dart';
 import '../get_response_headers_policy_remove_headers_config/get_response_headers_policy_remove_headers_config.dart';
@@ -54,21 +54,22 @@ class GetResponseHeadersPolicyResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['comment'] = comment;
-    map['corsConfigs'] = Input.encodeList<GetResponseHeadersPolicyCorsConfig,
+    map['corsConfigs'] = pulumi.Input.encodeList<
+        GetResponseHeadersPolicyCorsConfig,
         Map<String, dynamic>>(corsConfigs, (value) => value.toMap());
-    map['customHeadersConfigs'] = Input.encodeList<
+    map['customHeadersConfigs'] = pulumi.Input.encodeList<
         GetResponseHeadersPolicyCustomHeadersConfig,
         Map<String, dynamic>>(customHeadersConfigs, (value) => value.toMap());
     map['etag'] = etag;
     map['id'] = id;
     map['name'] = name;
-    map['removeHeadersConfigs'] = Input.encodeList<
+    map['removeHeadersConfigs'] = pulumi.Input.encodeList<
         GetResponseHeadersPolicyRemoveHeadersConfig,
         Map<String, dynamic>>(removeHeadersConfigs, (value) => value.toMap());
-    map['securityHeadersConfigs'] = Input.encodeList<
+    map['securityHeadersConfigs'] = pulumi.Input.encodeList<
         GetResponseHeadersPolicySecurityHeadersConfig,
         Map<String, dynamic>>(securityHeadersConfigs, (value) => value.toMap());
-    map['serverTimingHeadersConfigs'] = Input.encodeList<
+    map['serverTimingHeadersConfigs'] = pulumi.Input.encodeList<
             GetResponseHeadersPolicyServerTimingHeadersConfig,
             Map<String, dynamic>>(
         serverTimingHeadersConfigs, (value) => value.toMap());
@@ -79,12 +80,12 @@ class GetResponseHeadersPolicyResult {
     return GetResponseHeadersPolicyResult(
       arn: map['arn'] as String,
       comment: map['comment'] as String,
-      corsConfigs: Input.decodeList<GetResponseHeadersPolicyCorsConfig>(
+      corsConfigs: pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfig>(
           map['corsConfigs'],
           (value) => GetResponseHeadersPolicyCorsConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
       customHeadersConfigs:
-          Input.decodeList<GetResponseHeadersPolicyCustomHeadersConfig>(
+          pulumi.Input.decodeList<GetResponseHeadersPolicyCustomHeadersConfig>(
               map['customHeadersConfigs'],
               (value) => GetResponseHeadersPolicyCustomHeadersConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -92,21 +93,20 @@ class GetResponseHeadersPolicyResult {
       id: map['id'] as String,
       name: map['name'] as String,
       removeHeadersConfigs:
-          Input.decodeList<GetResponseHeadersPolicyRemoveHeadersConfig>(
+          pulumi.Input.decodeList<GetResponseHeadersPolicyRemoveHeadersConfig>(
               map['removeHeadersConfigs'],
               (value) => GetResponseHeadersPolicyRemoveHeadersConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      securityHeadersConfigs:
-          Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfig>(
-              map['securityHeadersConfigs'],
-              (value) => GetResponseHeadersPolicySecurityHeadersConfig.fromMap(
-                  (value as Map).cast<String, dynamic>())),
-      serverTimingHeadersConfigs:
-          Input.decodeList<GetResponseHeadersPolicyServerTimingHeadersConfig>(
-              map['serverTimingHeadersConfigs'],
-              (value) =>
-                  GetResponseHeadersPolicyServerTimingHeadersConfig.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      securityHeadersConfigs: pulumi.Input.decodeList<
+              GetResponseHeadersPolicySecurityHeadersConfig>(
+          map['securityHeadersConfigs'],
+          (value) => GetResponseHeadersPolicySecurityHeadersConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      serverTimingHeadersConfigs: pulumi.Input.decodeList<
+              GetResponseHeadersPolicyServerTimingHeadersConfig>(
+          map['serverTimingHeadersConfigs'],
+          (value) => GetResponseHeadersPolicyServerTimingHeadersConfig.fromMap(
+              (value as Map).cast<String, dynamic>())),
     );
   }
 }

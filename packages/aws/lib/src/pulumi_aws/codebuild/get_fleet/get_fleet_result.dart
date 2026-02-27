@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_fleet_compute_configuration/get_fleet_compute_configuration.dart';
 import '../get_fleet_scaling_configuration/get_fleet_scaling_configuration.dart';
 import '../get_fleet_status/get_fleet_status.dart';
@@ -79,9 +79,9 @@ class GetFleetResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['baseCapacity'] = baseCapacity;
-    map['computeConfigurations'] =
-        Input.encodeList<GetFleetComputeConfiguration, Map<String, dynamic>>(
-            computeConfigurations, (value) => value.toMap());
+    map['computeConfigurations'] = pulumi.Input.encodeList<
+        GetFleetComputeConfiguration,
+        Map<String, dynamic>>(computeConfigurations, (value) => value.toMap());
     map['computeType'] = computeType;
     map['created'] = created;
     map['environmentType'] = environmentType;
@@ -92,14 +92,15 @@ class GetFleetResult {
     map['name'] = name;
     map['overflowBehavior'] = overflowBehavior;
     map['region'] = region;
-    map['scalingConfigurations'] =
-        Input.encodeList<GetFleetScalingConfiguration, Map<String, dynamic>>(
-            scalingConfigurations, (value) => value.toMap());
-    map['statuses'] = Input.encodeList<GetFleetStatus, Map<String, dynamic>>(
-        statuses, (value) => value.toMap());
+    map['scalingConfigurations'] = pulumi.Input.encodeList<
+        GetFleetScalingConfiguration,
+        Map<String, dynamic>>(scalingConfigurations, (value) => value.toMap());
+    map['statuses'] =
+        pulumi.Input.encodeList<GetFleetStatus, Map<String, dynamic>>(
+            statuses, (value) => value.toMap());
     map['tags'] = tags;
     map['vpcConfigs'] =
-        Input.encodeList<GetFleetVpcConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetFleetVpcConfig, Map<String, dynamic>>(
             vpcConfigs, (value) => value.toMap());
     return map;
   }
@@ -108,10 +109,11 @@ class GetFleetResult {
     return GetFleetResult(
       arn: map['arn'] as String,
       baseCapacity: map['baseCapacity'] as int,
-      computeConfigurations: Input.decodeList<GetFleetComputeConfiguration>(
-          map['computeConfigurations'],
-          (value) => GetFleetComputeConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      computeConfigurations:
+          pulumi.Input.decodeList<GetFleetComputeConfiguration>(
+              map['computeConfigurations'],
+              (value) => GetFleetComputeConfiguration.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       computeType: map['computeType'] as String,
       created: map['created'] as String,
       environmentType: map['environmentType'] as String,
@@ -122,16 +124,17 @@ class GetFleetResult {
       name: map['name'] as String,
       overflowBehavior: map['overflowBehavior'] as String,
       region: map['region'] as String,
-      scalingConfigurations: Input.decodeList<GetFleetScalingConfiguration>(
-          map['scalingConfigurations'],
-          (value) => GetFleetScalingConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      statuses: Input.decodeList<GetFleetStatus>(
+      scalingConfigurations:
+          pulumi.Input.decodeList<GetFleetScalingConfiguration>(
+              map['scalingConfigurations'],
+              (value) => GetFleetScalingConfiguration.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      statuses: pulumi.Input.decodeList<GetFleetStatus>(
           map['statuses'],
           (value) =>
               GetFleetStatus.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
-      vpcConfigs: Input.decodeList<GetFleetVpcConfig>(
+      vpcConfigs: pulumi.Input.decodeList<GetFleetVpcConfig>(
           map['vpcConfigs'],
           (value) => GetFleetVpcConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

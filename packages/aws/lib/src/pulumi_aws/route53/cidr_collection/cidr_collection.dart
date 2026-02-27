@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cidr_collection_args.dart';
 
 /// Provides a Route53 CIDR collection resource.
@@ -14,25 +14,25 @@ import 'cidr_collection_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53/cidrCollection:CidrCollection example 9ac32814-3e67-0932-6048-8d779cc6f511
 /// ```
-class CidrCollection extends CustomResource {
+class CidrCollection extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the CIDR collection.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Unique name for the CIDR collection.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The lastest version of the CIDR collection.
-  late final Output<int> version;
+  late final pulumi.Output<int> version;
 
   CidrCollection(
     String name, {
     CidrCollectionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53/cidrCollection:CidrCollection',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_user_hierarchy_structure_hierarchy_structure/get_user_hierarchy_structure_hierarchy_structure.dart';
 
 /// Result data returned by getUserHierarchyStructure.
@@ -22,7 +22,7 @@ class GetUserHierarchyStructureResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['hierarchyStructures'] = Input.encodeList<
+    map['hierarchyStructures'] = pulumi.Input.encodeList<
         GetUserHierarchyStructureHierarchyStructure,
         Map<String, dynamic>>(hierarchyStructures, (value) => value.toMap());
     map['id'] = id;
@@ -34,7 +34,7 @@ class GetUserHierarchyStructureResult {
   factory GetUserHierarchyStructureResult.fromMap(Map<String, dynamic> map) {
     return GetUserHierarchyStructureResult(
       hierarchyStructures:
-          Input.decodeList<GetUserHierarchyStructureHierarchyStructure>(
+          pulumi.Input.decodeList<GetUserHierarchyStructureHierarchyStructure>(
               map['hierarchyStructures'],
               (value) => GetUserHierarchyStructureHierarchyStructure.fromMap(
                   (value as Map).cast<String, dynamic>())),

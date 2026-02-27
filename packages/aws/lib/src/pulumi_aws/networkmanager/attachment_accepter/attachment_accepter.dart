@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attachment_accepter_args.dart';
 
 /// Manages an AWS Network Manager Attachment Accepter.
@@ -24,49 +24,49 @@ import 'attachment_accepter_args.dart';
 ///
 ///
 /// ### Direct Connect Gateway Attachment
-class AttachmentAccepter extends CustomResource {
+class AttachmentAccepter extends pulumi.CustomResource {
   /// ID of the attachment.
-  late final Output<String> attachmentId;
+  late final pulumi.Output<String> attachmentId;
 
   /// Policy rule number associated with the attachment.
-  late final Output<int> attachmentPolicyRuleNumber;
+  late final pulumi.Output<int> attachmentPolicyRuleNumber;
 
   /// Type of attachment. Valid values: `CONNECT`, `DIRECT_CONNECT_GATEWAY`, `SITE_TO_SITE_VPN`, `TRANSIT_GATEWAY_ROUTE_TABLE`, `VPC`.
-  late final Output<String> attachmentType;
+  late final pulumi.Output<String> attachmentType;
 
   /// ARN of the core network.
-  late final Output<String> coreNetworkArn;
+  late final pulumi.Output<String> coreNetworkArn;
 
   /// ID of the core network.
-  late final Output<String> coreNetworkId;
+  late final pulumi.Output<String> coreNetworkId;
 
   /// Region where the edge is located. This is returned for all attachment types except Direct Connect gateway attachments, which instead return `edge_locations`.
-  late final Output<String> edgeLocation;
+  late final pulumi.Output<String> edgeLocation;
 
   /// Edge locations that the Direct Connect gateway is associated with. This is returned only for Direct Connect gateway attachments. All other attachment types return `edge_location`.
-  late final Output<List<String>> edgeLocations;
+  late final pulumi.Output<List<String>> edgeLocations;
 
   /// ID of the attachment account owner.
-  late final Output<String> ownerAccountId;
+  late final pulumi.Output<String> ownerAccountId;
 
   /// Attachment resource ARN.
-  late final Output<String> resourceArn;
+  late final pulumi.Output<String> resourceArn;
 
   /// Name of the segment attachment.
-  late final Output<String> segmentName;
+  late final pulumi.Output<String> segmentName;
 
   /// State of the attachment.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   AttachmentAccepter(
     String name, {
     AttachmentAccepterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkmanager/attachmentAccepter:AttachmentAccepter',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attachmentId = registerOutput<String>('attachmentId');
     this.attachmentPolicyRuleNumber =

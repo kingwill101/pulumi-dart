@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_slot_type_composite_slot_type_setting_sub_slot/v2models_slot_type_composite_slot_type_setting_sub_slot.dart';
 
 class V2modelsSlotTypeCompositeSlotTypeSetting {
@@ -16,7 +16,7 @@ class V2modelsSlotTypeCompositeSlotTypeSetting {
     final map = <String, dynamic>{};
     final subSlotsValue = subSlots;
     if (subSlotsValue != null) {
-      map['subSlots'] = Input.encodeList<
+      map['subSlots'] = pulumi.Input.encodeList<
           V2modelsSlotTypeCompositeSlotTypeSettingSubSlot,
           Map<String, dynamic>>(subSlotsValue, (value) => value.toMap());
     }
@@ -28,7 +28,8 @@ class V2modelsSlotTypeCompositeSlotTypeSetting {
     return V2modelsSlotTypeCompositeSlotTypeSetting(
       subSlots: map['subSlots'] == null
           ? null
-          : Input.decodeList<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>(
+          : pulumi.Input.decodeList<
+                  V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>(
               map['subSlots'],
               (value) =>
                   V2modelsSlotTypeCompositeSlotTypeSettingSubSlot.fromMap(

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_quicksight_analysis_permission/get_quicksight_analysis_permission.dart';
 
 /// Result data returned by getQuicksightAnalysis.
@@ -47,9 +47,9 @@ class GetQuicksightAnalysisResult {
     map['lastPublishedTime'] = lastPublishedTime;
     map['lastUpdatedTime'] = lastUpdatedTime;
     map['name'] = name;
-    map['permissions'] =
-        Input.encodeList<GetQuicksightAnalysisPermission, Map<String, dynamic>>(
-            permissions, (value) => value.toMap());
+    map['permissions'] = pulumi.Input.encodeList<
+        GetQuicksightAnalysisPermission,
+        Map<String, dynamic>>(permissions, (value) => value.toMap());
     map['region'] = region;
     map['status'] = status;
     map['tags'] = tags;
@@ -67,7 +67,7 @@ class GetQuicksightAnalysisResult {
       lastPublishedTime: map['lastPublishedTime'] as String,
       lastUpdatedTime: map['lastUpdatedTime'] as String,
       name: map['name'] as String,
-      permissions: Input.decodeList<GetQuicksightAnalysisPermission>(
+      permissions: pulumi.Input.decodeList<GetQuicksightAnalysisPermission>(
           map['permissions'],
           (value) => GetQuicksightAnalysisPermission.fromMap(
               (value as Map).cast<String, dynamic>())),

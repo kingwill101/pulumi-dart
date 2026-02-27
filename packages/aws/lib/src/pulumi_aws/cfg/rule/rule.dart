@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_evaluation_mode/rule_evaluation_mode.dart';
 import '../rule_scope/rule_scope.dart';
 import '../rule_source/rule_source.dart';
@@ -33,52 +33,52 @@ import 'rule_args.dart';
 /// ```sh
 /// $ pulumi import aws:cfg/rule:Rule foo example
 /// ```
-class Rule extends CustomResource {
+class Rule extends pulumi.CustomResource {
   /// The ARN of the config rule
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Description of the rule
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The modes the Config rule can be evaluated in. See Evaluation Mode for more details.
-  late final Output<List<RuleEvaluationMode>> evaluationModes;
+  late final pulumi.Output<List<RuleEvaluationMode>> evaluationModes;
 
   /// A string in JSON format that is passed to the AWS Config rule Lambda function.
-  late final Output<String?> inputParameters;
+  late final pulumi.Output<String?> inputParameters;
 
   /// The maximum frequency with which AWS Config runs evaluations for a rule.
-  late final Output<String?> maximumExecutionFrequency;
+  late final pulumi.Output<String?> maximumExecutionFrequency;
 
   /// The name of the rule
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the config rule
-  late final Output<String> ruleId;
+  late final pulumi.Output<String> ruleId;
 
   /// Scope defines which resources can trigger an evaluation for the rule. See Scope Below.
-  late final Output<RuleScope?> scope;
+  late final pulumi.Output<RuleScope?> scope;
 
   /// Source specifies the rule owner, the rule identifier, and the notifications that cause the function to evaluate your AWS resources. See Source Below.
-  late final Output<RuleSource> source;
+  late final pulumi.Output<RuleSource> source;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Rule(
     String name, {
     RuleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cfg/rule:Rule',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');

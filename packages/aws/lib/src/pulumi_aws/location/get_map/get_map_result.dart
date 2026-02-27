@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_map_configuration/get_map_configuration.dart';
 
 /// Result data returned by getMap.
@@ -43,7 +43,7 @@ class GetMapResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['configurations'] =
-        Input.encodeList<GetMapConfiguration, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetMapConfiguration, Map<String, dynamic>>(
             configurations, (value) => value.toMap());
     map['createTime'] = createTime;
     map['description'] = description;
@@ -58,7 +58,7 @@ class GetMapResult {
 
   factory GetMapResult.fromMap(Map<String, dynamic> map) {
     return GetMapResult(
-      configurations: Input.decodeList<GetMapConfiguration>(
+      configurations: pulumi.Input.decodeList<GetMapConfiguration>(
           map['configurations'],
           (value) => GetMapConfiguration.fromMap(
               (value as Map).cast<String, dynamic>())),

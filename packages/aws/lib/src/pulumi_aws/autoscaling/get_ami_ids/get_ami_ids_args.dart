@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ami_ids_filter/get_ami_ids_filter.dart';
 
 /// Arguments for getAmiIds.
 class GetAmiIdsArgs {
   /// Filter used to scope the list e.g., by tags. See [related docs](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_Filter.html).
-  final Input<List<GetAmiIdsFilter>>? filters;
+  final pulumi.Input<List<GetAmiIdsFilter>>? filters;
 
   /// List of autoscaling group names
-  final Input<List<String>>? names;
+  final pulumi.Input<List<String>>? names;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetAmiIdsArgs({
     this.filters,
@@ -24,11 +24,12 @@ class GetAmiIdsArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetAmiIdsFilter>,
+      map['filters'] = pulumi.Input.mapOptionalInputValue<List<GetAmiIdsFilter>,
               List<Map<String, dynamic>>>(
           filtersValue,
-          (value) => Input.encodeList<GetAmiIdsFilter, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<GetAmiIdsFilter, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final namesValue = names;
     if (namesValue != null) {
@@ -43,9 +44,10 @@ class GetAmiIdsArgs {
 
   factory GetAmiIdsArgs.fromMap(Map<String, dynamic> map) {
     return GetAmiIdsArgs(
-      filters: Input.asOptionalInput<List<GetAmiIdsFilter>>(map['filters']),
-      names: Input.asOptionalInput<List<String>>(map['names']),
-      region: Input.asOptionalInput<String>(map['region']),
+      filters:
+          pulumi.Input.asOptionalInput<List<GetAmiIdsFilter>>(map['filters']),
+      names: pulumi.Input.asOptionalInput<List<String>>(map['names']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

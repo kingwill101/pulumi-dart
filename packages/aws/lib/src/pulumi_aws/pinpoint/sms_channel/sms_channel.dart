@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sms_channel_args.dart';
 
 /// Use the `aws.pinpoint.SmsChannel` resource to manage Pinpoint SMS Channels.
@@ -14,37 +14,37 @@ import 'sms_channel_args.dart';
 /// ```sh
 /// $ pulumi import aws:pinpoint/smsChannel:SmsChannel sms application-id
 /// ```
-class SmsChannel extends CustomResource {
+class SmsChannel extends pulumi.CustomResource {
   /// ID of the application.
-  late final Output<String> applicationId;
+  late final pulumi.Output<String> applicationId;
 
   /// Whether the channel is enabled or disabled. By default, it is set to `true`.
-  late final Output<bool?> enabled;
+  late final pulumi.Output<bool?> enabled;
 
   /// Maximum number of promotional messages that can be sent per second.
-  late final Output<int> promotionalMessagesPerSecond;
+  late final pulumi.Output<int> promotionalMessagesPerSecond;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Identifier of the sender for your messages.
-  late final Output<String?> senderId;
+  late final pulumi.Output<String?> senderId;
 
   /// Short Code registered with the phone provider.
-  late final Output<String?> shortCode;
+  late final pulumi.Output<String?> shortCode;
 
   /// Maximum number of transactional messages per second that can be sent.
-  late final Output<int> transactionalMessagesPerSecond;
+  late final pulumi.Output<int> transactionalMessagesPerSecond;
 
   SmsChannel(
     String name, {
     SmsChannelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:pinpoint/smsChannel:SmsChannel',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.applicationId = registerOutput<String>('applicationId');
     this.enabled = registerOutput<bool?>('enabled');

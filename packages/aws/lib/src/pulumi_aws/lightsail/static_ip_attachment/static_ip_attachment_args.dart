@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for StaticIpAttachment.
 class StaticIpAttachmentArgs {
   /// Name of the Lightsail instance to attach the IP to.
-  final Input<String> instanceName;
+  final pulumi.Input<String> instanceName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Name of the allocated static IP.
   ///
   /// The following arguments are optional:
-  final Input<String> staticIpName;
+  final pulumi.Input<String> staticIpName;
 
   StaticIpAttachmentArgs({
     required this.instanceName,
@@ -34,9 +34,9 @@ class StaticIpAttachmentArgs {
 
   factory StaticIpAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return StaticIpAttachmentArgs(
-      instanceName: Input.asInput<String>(map['instanceName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      staticIpName: Input.asInput<String>(map['staticIpName']),
+      instanceName: pulumi.Input.asInput<String>(map['instanceName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      staticIpName: pulumi.Input.asInput<String>(map['staticIpName']),
     );
   }
 }

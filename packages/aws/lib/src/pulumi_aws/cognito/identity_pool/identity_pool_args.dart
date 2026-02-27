@@ -1,41 +1,41 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../identity_pool_cognito_identity_provider/identity_pool_cognito_identity_provider.dart';
 
 /// The set of arguments for IdentityPool.
 class IdentityPoolArgs {
   /// Enables or disables the classic / basic authentication flow. Default is `false`.
-  final Input<bool>? allowClassicFlow;
+  final pulumi.Input<bool>? allowClassicFlow;
 
   /// Whether the identity pool supports unauthenticated logins or not.
-  final Input<bool>? allowUnauthenticatedIdentities;
+  final pulumi.Input<bool>? allowUnauthenticatedIdentities;
 
   /// An array of Amazon Cognito Identity user pools and their client IDs.
-  final Input<List<IdentityPoolCognitoIdentityProvider>>?
+  final pulumi.Input<List<IdentityPoolCognitoIdentityProvider>>?
       cognitoIdentityProviders;
 
   /// The "domain" by which Cognito will refer to your users. This name acts as a placeholder that allows your
   /// backend and the Cognito service to communicate about the developer provider.
-  final Input<String>? developerProviderName;
+  final pulumi.Input<String>? developerProviderName;
 
   /// The Cognito Identity Pool name.
-  final Input<String> identityPoolName;
+  final pulumi.Input<String> identityPoolName;
 
   /// Set of OpendID Connect provider ARNs.
-  final Input<List<String>>? openidConnectProviderArns;
+  final pulumi.Input<List<String>>? openidConnectProviderArns;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// An array of Amazon Resource Names (ARNs) of the SAML provider for your identity.
-  final Input<List<String>>? samlProviderArns;
+  final pulumi.Input<List<String>>? samlProviderArns;
 
   /// Key-Value pairs mapping provider names to provider app IDs.
-  final Input<Map<String, String>>? supportedLoginProviders;
+  final pulumi.Input<Map<String, String>>? supportedLoginProviders;
 
   /// A map of tags to assign to the Identity Pool. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   IdentityPoolArgs({
     this.allowClassicFlow,
@@ -63,11 +63,12 @@ class IdentityPoolArgs {
     }
     final cognitoIdentityProvidersValue = cognitoIdentityProviders;
     if (cognitoIdentityProvidersValue != null) {
-      map['cognitoIdentityProviders'] = Input.mapOptionalInputValue<
+      map['cognitoIdentityProviders'] = pulumi.Input.mapOptionalInputValue<
               List<IdentityPoolCognitoIdentityProvider>,
               List<Map<String, dynamic>>>(
           cognitoIdentityProvidersValue,
-          (value) => Input.encodeList<IdentityPoolCognitoIdentityProvider,
+          (value) => pulumi.Input.encodeList<
+              IdentityPoolCognitoIdentityProvider,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final developerProviderNameValue = developerProviderName;
@@ -100,23 +101,25 @@ class IdentityPoolArgs {
 
   factory IdentityPoolArgs.fromMap(Map<String, dynamic> map) {
     return IdentityPoolArgs(
-      allowClassicFlow: Input.asOptionalInput<bool>(map['allowClassicFlow']),
-      allowUnauthenticatedIdentities:
-          Input.asOptionalInput<bool>(map['allowUnauthenticatedIdentities']),
-      cognitoIdentityProviders:
-          Input.asOptionalInput<List<IdentityPoolCognitoIdentityProvider>>(
-              map['cognitoIdentityProviders']),
+      allowClassicFlow:
+          pulumi.Input.asOptionalInput<bool>(map['allowClassicFlow']),
+      allowUnauthenticatedIdentities: pulumi.Input.asOptionalInput<bool>(
+          map['allowUnauthenticatedIdentities']),
+      cognitoIdentityProviders: pulumi.Input.asOptionalInput<
+              List<IdentityPoolCognitoIdentityProvider>>(
+          map['cognitoIdentityProviders']),
       developerProviderName:
-          Input.asOptionalInput<String>(map['developerProviderName']),
-      identityPoolName: Input.asInput<String>(map['identityPoolName']),
-      openidConnectProviderArns:
-          Input.asOptionalInput<List<String>>(map['openidConnectProviderArns']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['developerProviderName']),
+      identityPoolName: pulumi.Input.asInput<String>(map['identityPoolName']),
+      openidConnectProviderArns: pulumi.Input.asOptionalInput<List<String>>(
+          map['openidConnectProviderArns']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       samlProviderArns:
-          Input.asOptionalInput<List<String>>(map['samlProviderArns']),
-      supportedLoginProviders: Input.asOptionalInput<Map<String, String>>(
-          map['supportedLoginProviders']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<List<String>>(map['samlProviderArns']),
+      supportedLoginProviders:
+          pulumi.Input.asOptionalInput<Map<String, String>>(
+              map['supportedLoginProviders']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

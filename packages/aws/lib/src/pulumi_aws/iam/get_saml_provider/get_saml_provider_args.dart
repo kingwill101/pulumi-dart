@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSamlProvider.
 class GetSamlProviderArgs {
   /// ARN assigned by AWS for the provider.
-  final Input<String> arn;
+  final pulumi.Input<String> arn;
 
   /// Tags attached to the SAML provider.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetSamlProviderArgs({
     required this.arn,
@@ -27,8 +27,8 @@ class GetSamlProviderArgs {
 
   factory GetSamlProviderArgs.fromMap(Map<String, dynamic> map) {
     return GetSamlProviderArgs(
-      arn: Input.asInput<String>(map['arn']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      arn: pulumi.Input.asInput<String>(map['arn']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

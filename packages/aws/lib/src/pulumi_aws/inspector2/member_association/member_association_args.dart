@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for MemberAssociation.
 class MemberAssociationArgs {
   /// ID of the account to associate
-  final Input<String> accountId;
+  final pulumi.Input<String> accountId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   MemberAssociationArgs({
     required this.accountId,
@@ -27,8 +27,8 @@ class MemberAssociationArgs {
 
   factory MemberAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MemberAssociationArgs(
-      accountId: Input.asInput<String>(map['accountId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../access_point_posix_user/access_point_posix_user.dart';
 import '../access_point_root_directory/access_point_root_directory.dart';
 
 /// The set of arguments for AccessPoint.
 class AccessPointArgs {
   /// ID of the file system for which the access point is intended.
-  final Input<String> fileSystemId;
+  final pulumi.Input<String> fileSystemId;
 
   /// Operating system user and group applied to all file system requests made using the access point. Detailed below.
-  final Input<AccessPointPosixUser>? posixUser;
+  final pulumi.Input<AccessPointPosixUser>? posixUser;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Directory on the Amazon EFS file system that the access point provides access to. Detailed below.
-  final Input<AccessPointRootDirectory>? rootDirectory;
+  final pulumi.Input<AccessPointRootDirectory>? rootDirectory;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   AccessPointArgs({
     required this.fileSystemId,
@@ -34,7 +34,8 @@ class AccessPointArgs {
     map['fileSystemId'] = fileSystemId;
     final posixUserValue = posixUser;
     if (posixUserValue != null) {
-      map['posixUser'] = Input.mapOptionalInputValue<AccessPointPosixUser,
+      map['posixUser'] = pulumi.Input.mapOptionalInputValue<
+          AccessPointPosixUser,
           Map<String, dynamic>>(posixUserValue, (value) => value.toMap());
     }
     final regionValue = region;
@@ -43,7 +44,7 @@ class AccessPointArgs {
     }
     final rootDirectoryValue = rootDirectory;
     if (rootDirectoryValue != null) {
-      map['rootDirectory'] = Input.mapOptionalInputValue<
+      map['rootDirectory'] = pulumi.Input.mapOptionalInputValue<
           AccessPointRootDirectory,
           Map<String, dynamic>>(rootDirectoryValue, (value) => value.toMap());
     }
@@ -56,12 +57,13 @@ class AccessPointArgs {
 
   factory AccessPointArgs.fromMap(Map<String, dynamic> map) {
     return AccessPointArgs(
-      fileSystemId: Input.asInput<String>(map['fileSystemId']),
-      posixUser: Input.asOptionalInput<AccessPointPosixUser>(map['posixUser']),
-      region: Input.asOptionalInput<String>(map['region']),
-      rootDirectory:
-          Input.asOptionalInput<AccessPointRootDirectory>(map['rootDirectory']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      fileSystemId: pulumi.Input.asInput<String>(map['fileSystemId']),
+      posixUser:
+          pulumi.Input.asOptionalInput<AccessPointPosixUser>(map['posixUser']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      rootDirectory: pulumi.Input.asOptionalInput<AccessPointRootDirectory>(
+          map['rootDirectory']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resolver_config_args.dart';
 
 /// Provides a Route 53 Resolver config resource.
@@ -14,28 +14,28 @@ import 'resolver_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53/resolverConfig:ResolverConfig example rslvr-rc-715aa20c73a23da7
 /// ```
-class ResolverConfig extends CustomResource {
+class ResolverConfig extends pulumi.CustomResource {
   /// Indicates whether or not the Resolver will create autodefined rules for reverse DNS lookups. Valid values: `ENABLE`, `DISABLE`.
-  late final Output<String> autodefinedReverseFlag;
+  late final pulumi.Output<String> autodefinedReverseFlag;
 
   /// The AWS account ID of the owner of the VPC that this resolver configuration applies to.
-  late final Output<String> ownerId;
+  late final pulumi.Output<String> ownerId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the VPC that the configuration is for.
-  late final Output<String> resourceId;
+  late final pulumi.Output<String> resourceId;
 
   ResolverConfig(
     String name, {
     ResolverConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53/resolverConfig:ResolverConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.autodefinedReverseFlag =
         registerOutput<String>('autodefinedReverseFlag');

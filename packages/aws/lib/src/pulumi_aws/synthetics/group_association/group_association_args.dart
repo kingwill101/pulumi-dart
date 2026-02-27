@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for GroupAssociation.
 class GroupAssociationArgs {
   /// ARN of the canary.
-  final Input<String> canaryArn;
+  final pulumi.Input<String> canaryArn;
 
   /// Name of the group that the canary will be associated with.
-  final Input<String> groupName;
+  final pulumi.Input<String> groupName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GroupAssociationArgs({
     required this.canaryArn,
@@ -32,9 +32,9 @@ class GroupAssociationArgs {
 
   factory GroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GroupAssociationArgs(
-      canaryArn: Input.asInput<String>(map['canaryArn']),
-      groupName: Input.asInput<String>(map['groupName']),
-      region: Input.asOptionalInput<String>(map['region']),
+      canaryArn: pulumi.Input.asInput<String>(map['canaryArn']),
+      groupName: pulumi.Input.asInput<String>(map['groupName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

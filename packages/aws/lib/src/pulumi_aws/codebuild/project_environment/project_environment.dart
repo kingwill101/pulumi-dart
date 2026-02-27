@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../project_environment_docker_server/project_environment_docker_server.dart';
 import '../project_environment_environment_variable/project_environment_environment_variable.dart';
 import '../project_environment_fleet/project_environment_fleet.dart';
@@ -76,7 +76,7 @@ class ProjectEnvironment {
     }
     final environmentVariablesValue = environmentVariables;
     if (environmentVariablesValue != null) {
-      map['environmentVariables'] = Input.encodeList<
+      map['environmentVariables'] = pulumi.Input.encodeList<
               ProjectEnvironmentEnvironmentVariable, Map<String, dynamic>>(
           environmentVariablesValue, (value) => value.toMap());
     }
@@ -112,7 +112,7 @@ class ProjectEnvironment {
               (map['dockerServer'] as Map).cast<String, dynamic>()),
       environmentVariables: map['environmentVariables'] == null
           ? null
-          : Input.decodeList<ProjectEnvironmentEnvironmentVariable>(
+          : pulumi.Input.decodeList<ProjectEnvironmentEnvironmentVariable>(
               map['environmentVariables'],
               (value) => ProjectEnvironmentEnvironmentVariable.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipe_target_parameters_batch_job_parameters_container_overrides_environment/pipe_target_parameters_batch_job_parameters_container_overrides_environment.dart';
 import '../pipe_target_parameters_batch_job_parameters_container_overrides_resource_requirement/pipe_target_parameters_batch_job_parameters_container_overrides_resource_requirement.dart';
 
@@ -36,7 +36,7 @@ class PipeTargetParametersBatchJobParametersContainerOverrides {
     }
     final environmentsValue = environments;
     if (environmentsValue != null) {
-      map['environments'] = Input.encodeList<
+      map['environments'] = pulumi.Input.encodeList<
           PipeTargetParametersBatchJobParametersContainerOverridesEnvironment,
           Map<String, dynamic>>(environmentsValue, (value) => value.toMap());
     }
@@ -46,7 +46,7 @@ class PipeTargetParametersBatchJobParametersContainerOverrides {
     }
     final resourceRequirementsValue = resourceRequirements;
     if (resourceRequirementsValue != null) {
-      map['resourceRequirements'] = Input.encodeList<
+      map['resourceRequirements'] = pulumi.Input.encodeList<
           PipeTargetParametersBatchJobParametersContainerOverridesResourceRequirement,
           Map<String,
               dynamic>>(resourceRequirementsValue, (value) => value.toMap());
@@ -62,7 +62,7 @@ class PipeTargetParametersBatchJobParametersContainerOverrides {
           : (map['commands'] as List).cast<String>(),
       environments: map['environments'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PipeTargetParametersBatchJobParametersContainerOverridesEnvironment>(
               map['environments'],
               (value) =>
@@ -72,7 +72,7 @@ class PipeTargetParametersBatchJobParametersContainerOverrides {
           map['instanceType'] == null ? null : map['instanceType'] as String,
       resourceRequirements: map['resourceRequirements'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PipeTargetParametersBatchJobParametersContainerOverridesResourceRequirement>(
               map['resourceRequirements'],
               (value) =>

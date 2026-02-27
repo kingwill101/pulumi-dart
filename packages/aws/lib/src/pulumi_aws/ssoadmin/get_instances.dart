@@ -1,5 +1,5 @@
 library module_ssoadmin_get_instances;
 
-export 'get_instances/get_instances4.dart';
-export 'get_instances/get_instances_args4.dart';
-export 'get_instances/get_instances_result4.dart';
+export 'get_instances/get_instances_ssoadmin.dart';
+export 'get_instances/get_instances_ssoadmin_args.dart';
+export 'get_instances/get_instances_ssoadmin_result.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'auto_scaling_configuration_version_args.dart';
 
 /// Manages an App Runner AutoScaling Configuration Version.
@@ -21,51 +21,51 @@ import 'auto_scaling_configuration_version_args.dart';
 /// ```sh
 /// $ pulumi import aws:apprunner/autoScalingConfigurationVersion:AutoScalingConfigurationVersion example "arn:aws:apprunner:us-east-1:1234567890:autoscalingconfiguration/example/1/69bdfe0115224b0db49398b7beb68e0f
 /// ```
-class AutoScalingConfigurationVersion extends CustomResource {
+class AutoScalingConfigurationVersion extends pulumi.CustomResource {
   /// ARN of this auto scaling configuration version.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Name of the auto scaling configuration.
-  late final Output<String> autoScalingConfigurationName;
+  late final pulumi.Output<String> autoScalingConfigurationName;
 
   /// The revision of this auto scaling configuration.
-  late final Output<int> autoScalingConfigurationRevision;
-  late final Output<bool> hasAssociatedService;
-  late final Output<bool> isDefault;
+  late final pulumi.Output<int> autoScalingConfigurationRevision;
+  late final pulumi.Output<bool> hasAssociatedService;
+  late final pulumi.Output<bool> isDefault;
 
   /// Whether the auto scaling configuration has the highest `auto_scaling_configuration_revision` among all configurations that share the same `auto_scaling_configuration_name`.
-  late final Output<bool> latest;
+  late final pulumi.Output<bool> latest;
 
   /// Maximal number of concurrent requests that you want an instance to process. When the number of concurrent requests goes over this limit, App Runner scales up your service.
-  late final Output<int?> maxConcurrency;
+  late final pulumi.Output<int?> maxConcurrency;
 
   /// Maximal number of instances that App Runner provisions for your service.
-  late final Output<int?> maxSize;
+  late final pulumi.Output<int?> maxSize;
 
   /// Minimal number of instances that App Runner provisions for your service.
-  late final Output<int?> minSize;
+  late final pulumi.Output<int?> minSize;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Current state of the auto scaling configuration. An INACTIVE configuration revision has been deleted and can't be used. It is permanently removed some time after deletion.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   AutoScalingConfigurationVersion(
     String name, {
     AutoScalingConfigurationVersionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apprunner/autoScalingConfigurationVersion:AutoScalingConfigurationVersion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.autoScalingConfigurationName =

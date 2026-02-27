@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_managed_rule_group_rule_action/get_managed_rule_group_rule_action.dart';
 
 class GetManagedRuleGroupRule {
@@ -17,16 +17,15 @@ class GetManagedRuleGroupRule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['actions'] =
-        Input.encodeList<GetManagedRuleGroupRuleAction, Map<String, dynamic>>(
-            actions, (value) => value.toMap());
+    map['actions'] = pulumi.Input.encodeList<GetManagedRuleGroupRuleAction,
+        Map<String, dynamic>>(actions, (value) => value.toMap());
     map['name'] = name;
     return map;
   }
 
   factory GetManagedRuleGroupRule.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRule(
-      actions: Input.decodeList<GetManagedRuleGroupRuleAction>(
+      actions: pulumi.Input.decodeList<GetManagedRuleGroupRuleAction>(
           map['actions'],
           (value) => GetManagedRuleGroupRuleAction.fromMap(
               (value as Map).cast<String, dynamic>())),

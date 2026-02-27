@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../profiles_resource_association_timeouts/profiles_resource_association_timeouts.dart';
 import 'profiles_resource_association_args.dart';
 
@@ -17,42 +17,42 @@ import 'profiles_resource_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53/profilesResourceAssociation:ProfilesResourceAssociation example rpa-id-12345678
 /// ```
-class ProfilesResourceAssociation extends CustomResource {
+class ProfilesResourceAssociation extends pulumi.CustomResource {
   /// Name of the Profile Resource Association.
-  late final Output<String> name;
-  late final Output<String> ownerId;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> ownerId;
 
   /// ID of the profile associated with the VPC.
-  late final Output<String> profileId;
+  late final pulumi.Output<String> profileId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Resource ID of the resource to be associated with the profile.
-  late final Output<String> resourceArn;
+  late final pulumi.Output<String> resourceArn;
 
   /// Resource properties for the resource to be associated with the profile.
-  late final Output<String> resourceProperties;
+  late final pulumi.Output<String> resourceProperties;
 
   /// Type of resource associated with the profile.
-  late final Output<String> resourceType;
+  late final pulumi.Output<String> resourceType;
 
   /// Status of the Profile Association. Valid values [AWS docs](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53profiles_Profile.html)
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Status message of the Profile Resource Association.
-  late final Output<String> statusMessage;
-  late final Output<ProfilesResourceAssociationTimeouts?> timeouts;
+  late final pulumi.Output<String> statusMessage;
+  late final pulumi.Output<ProfilesResourceAssociationTimeouts?> timeouts;
 
   ProfilesResourceAssociation(
     String name, {
     ProfilesResourceAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53/profilesResourceAssociation:ProfilesResourceAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
     this.ownerId = registerOutput<String>('ownerId');

@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for CustomerGatewayAssociation.
 class CustomerGatewayAssociationArgs {
   /// ARN of the customer gateway.
-  final Input<String> customerGatewayArn;
+  final pulumi.Input<String> customerGatewayArn;
 
   /// ID of the device.
-  final Input<String> deviceId;
+  final pulumi.Input<String> deviceId;
 
   /// ID of the global network.
   ///
   /// The following arguments are optional:
-  final Input<String> globalNetworkId;
+  final pulumi.Input<String> globalNetworkId;
 
   /// ID of the link.
-  final Input<String>? linkId;
+  final pulumi.Input<String>? linkId;
 
   CustomerGatewayAssociationArgs({
     required this.customerGatewayArn,
@@ -39,10 +39,11 @@ class CustomerGatewayAssociationArgs {
 
   factory CustomerGatewayAssociationArgs.fromMap(Map<String, dynamic> map) {
     return CustomerGatewayAssociationArgs(
-      customerGatewayArn: Input.asInput<String>(map['customerGatewayArn']),
-      deviceId: Input.asInput<String>(map['deviceId']),
-      globalNetworkId: Input.asInput<String>(map['globalNetworkId']),
-      linkId: Input.asOptionalInput<String>(map['linkId']),
+      customerGatewayArn:
+          pulumi.Input.asInput<String>(map['customerGatewayArn']),
+      deviceId: pulumi.Input.asInput<String>(map['deviceId']),
+      globalNetworkId: pulumi.Input.asInput<String>(map['globalNetworkId']),
+      linkId: pulumi.Input.asOptionalInput<String>(map['linkId']),
     );
   }
 }

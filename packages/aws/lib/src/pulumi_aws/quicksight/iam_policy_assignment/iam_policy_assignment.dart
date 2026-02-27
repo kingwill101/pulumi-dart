@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../iam_policy_assignment_identities/iam_policy_assignment_identities.dart';
 import 'iam_policy_assignment_args.dart';
 
@@ -17,42 +17,42 @@ import 'iam_policy_assignment_args.dart';
 /// ```sh
 /// $ pulumi import aws:quicksight/iamPolicyAssignment:IamPolicyAssignment example 123456789012,default,example
 /// ```
-class IamPolicyAssignment extends CustomResource {
+class IamPolicyAssignment extends pulumi.CustomResource {
   /// Assignment ID.
-  late final Output<String> assignmentId;
+  late final pulumi.Output<String> assignmentId;
 
   /// Name of the assignment.
-  late final Output<String> assignmentName;
+  late final pulumi.Output<String> assignmentName;
 
   /// Status of the assignment. Valid values are `ENABLED`, `DISABLED`, and `DRAFT`.
   ///
   /// The following arguments are optional:
-  late final Output<String> assignmentStatus;
+  late final pulumi.Output<String> assignmentStatus;
 
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  late final Output<String> awsAccountId;
+  late final pulumi.Output<String> awsAccountId;
 
   /// Amazon QuickSight users, groups, or both to assign the policy to. See `identities` block.
-  late final Output<IamPolicyAssignmentIdentities?> identities;
+  late final pulumi.Output<IamPolicyAssignmentIdentities?> identities;
 
   /// Namespace that contains the assignment. Defaults to `default`.
-  late final Output<String> namespace;
+  late final pulumi.Output<String> namespace;
 
   /// ARN of the IAM policy to apply to the Amazon QuickSight users and groups specified in this assignment.
-  late final Output<String?> policyArn;
+  late final pulumi.Output<String?> policyArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   IamPolicyAssignment(
     String name, {
     IamPolicyAssignmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:quicksight/iamPolicyAssignment:IamPolicyAssignment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.assignmentId = registerOutput<String>('assignmentId');
     this.assignmentName = registerOutput<String>('assignmentName');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../firehose_delivery_stream_elasticsearch_configuration/firehose_delivery_stream_elasticsearch_configuration.dart';
 import '../firehose_delivery_stream_extended_s3_configuration/firehose_delivery_stream_extended_s3_configuration.dart';
 import '../firehose_delivery_stream_http_endpoint_configuration/firehose_delivery_stream_http_endpoint_configuration.dart';
@@ -84,86 +84,87 @@ import 'firehose_delivery_stream_args.dart';
 /// ```
 ///
 /// Note: Import does not work for stream destination `s3`. Consider using `extended_s3` since `s3` destination is deprecated.
-class FirehoseDeliveryStream extends CustomResource {
+class FirehoseDeliveryStream extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) specifying the Stream
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// This is the destination to where the data is delivered. The only options are `s3` (Deprecated, use `extended_s3` instead), `extended_s3`, `redshift`, `elasticsearch`, `splunk`, `http_endpoint`, `opensearch`, `opensearchserverless` and `snowflake`.
-  late final Output<String> destination;
-  late final Output<String> destinationId;
+  late final pulumi.Output<String> destination;
+  late final pulumi.Output<String> destinationId;
 
   /// Configuration options when `destination` is `elasticsearch`. See `elasticsearch_configuration` block below for details.
-  late final Output<FirehoseDeliveryStreamElasticsearchConfiguration?>
+  late final pulumi.Output<FirehoseDeliveryStreamElasticsearchConfiguration?>
       elasticsearchConfiguration;
 
   /// Enhanced configuration options for the s3 destination. See `extended_s3_configuration` block below for details.
-  late final Output<FirehoseDeliveryStreamExtendedS3Configuration?>
+  late final pulumi.Output<FirehoseDeliveryStreamExtendedS3Configuration?>
       extendedS3Configuration;
 
   /// Configuration options when `destination` is `http_endpoint`. Requires the user to also specify an `s3_configuration` block.  See `http_endpoint_configuration` block below for details.
-  late final Output<FirehoseDeliveryStreamHttpEndpointConfiguration?>
+  late final pulumi.Output<FirehoseDeliveryStreamHttpEndpointConfiguration?>
       httpEndpointConfiguration;
 
   /// Configuration options when `destination` is `iceberg`. See `iceberg_configuration` block below for details.
-  late final Output<FirehoseDeliveryStreamIcebergConfiguration?>
+  late final pulumi.Output<FirehoseDeliveryStreamIcebergConfiguration?>
       icebergConfiguration;
 
   /// The stream and role Amazon Resource Names (ARNs) for a Kinesis data stream used as the source for a delivery stream. See `kinesis_source_configuration` block below for details.
-  late final Output<FirehoseDeliveryStreamKinesisSourceConfiguration?>
+  late final pulumi.Output<FirehoseDeliveryStreamKinesisSourceConfiguration?>
       kinesisSourceConfiguration;
 
   /// The configuration for the Amazon MSK cluster to be used as the source for a delivery stream. See `msk_source_configuration` block below for details.
-  late final Output<FirehoseDeliveryStreamMskSourceConfiguration?>
+  late final pulumi.Output<FirehoseDeliveryStreamMskSourceConfiguration?>
       mskSourceConfiguration;
 
   /// A name to identify the stream. This is unique to the AWS account and region the Stream is created in. When using for WAF logging, name must be prefixed with `aws-waf-logs-`. See [AWS Documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-policies.html#waf-policies-logging-config) for more details.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Configuration options when `destination` is `opensearch`. See `opensearch_configuration` block below for details.
-  late final Output<FirehoseDeliveryStreamOpensearchConfiguration?>
+  late final pulumi.Output<FirehoseDeliveryStreamOpensearchConfiguration?>
       opensearchConfiguration;
 
   /// Configuration options when `destination` is `opensearchserverless`. See `opensearchserverless_configuration` block below for details.
-  late final Output<FirehoseDeliveryStreamOpensearchserverlessConfiguration?>
+  late final pulumi
+      .Output<FirehoseDeliveryStreamOpensearchserverlessConfiguration?>
       opensearchserverlessConfiguration;
 
   /// Configuration options when `destination` is `redshift`. Requires the user to also specify an `s3_configuration` block. See `redshift_configuration` block below for details.
-  late final Output<FirehoseDeliveryStreamRedshiftConfiguration?>
+  late final pulumi.Output<FirehoseDeliveryStreamRedshiftConfiguration?>
       redshiftConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Encrypt at rest options. See `server_side_encryption` block below for details.
-  late final Output<FirehoseDeliveryStreamServerSideEncryption?>
+  late final pulumi.Output<FirehoseDeliveryStreamServerSideEncryption?>
       serverSideEncryption;
 
   /// Configuration options when `destination` is `snowflake`. See `snowflake_configuration` block below for details.
-  late final Output<FirehoseDeliveryStreamSnowflakeConfiguration?>
+  late final pulumi.Output<FirehoseDeliveryStreamSnowflakeConfiguration?>
       snowflakeConfiguration;
 
   /// Configuration options when `destination` is `splunk`. See `splunk_configuration` block below for details.
   ///
   /// **NOTE:** Server-side encryption should not be enabled when a kinesis stream is configured as the source of the firehose delivery stream.
-  late final Output<FirehoseDeliveryStreamSplunkConfiguration?>
+  late final pulumi.Output<FirehoseDeliveryStreamSplunkConfiguration?>
       splunkConfiguration;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<String> versionId;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<String> versionId;
 
   FirehoseDeliveryStream(
     String name, {
     FirehoseDeliveryStreamArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:kinesis/firehoseDeliveryStream:FirehoseDeliveryStream',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.destination = registerOutput<String>('destination');

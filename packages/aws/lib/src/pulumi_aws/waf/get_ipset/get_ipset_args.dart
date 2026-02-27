@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getIpset.
 class GetIpsetArgs {
   /// Name of the WAF IP set.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   GetIpsetArgs({
     required this.name,
@@ -19,7 +19,7 @@ class GetIpsetArgs {
 
   factory GetIpsetArgs.fromMap(Map<String, dynamic> map) {
     return GetIpsetArgs(
-      name: Input.asInput<String>(map['name']),
+      name: pulumi.Input.asInput<String>(map['name']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../namespace_timeouts/namespace_timeouts.dart';
 import 'namespace_args.dart';
 
@@ -17,46 +17,46 @@ import 'namespace_args.dart';
 /// ```sh
 /// $ pulumi import aws:quicksight/namespace:Namespace example 123456789012,example
 /// ```
-class Namespace extends CustomResource {
+class Namespace extends pulumi.CustomResource {
   /// ARN of the Namespace.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  late final Output<String> awsAccountId;
+  late final pulumi.Output<String> awsAccountId;
 
   /// Namespace AWS Region.
-  late final Output<String> capacityRegion;
+  late final pulumi.Output<String> capacityRegion;
 
   /// Creation status of the namespace.
-  late final Output<String> creationStatus;
+  late final pulumi.Output<String> creationStatus;
 
   /// User identity directory type. Defaults to `QUICKSIGHT`, the only current valid value.
-  late final Output<String> identityStore;
+  late final pulumi.Output<String> identityStore;
 
   /// Name of the namespace.
   ///
   /// The following arguments are optional:
-  late final Output<String> namespace;
+  late final pulumi.Output<String> namespace;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<NamespaceTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<NamespaceTimeouts?> timeouts;
 
   Namespace(
     String name, {
     NamespaceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:quicksight/namespace:Namespace',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.awsAccountId = registerOutput<String>('awsAccountId');

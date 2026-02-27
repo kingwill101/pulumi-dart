@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aggregate_authorization_args.dart';
 
 /// Manages an AWS Config Aggregate Authorization
@@ -14,34 +14,34 @@ import 'aggregate_authorization_args.dart';
 /// ```sh
 /// $ pulumi import aws:cfg/aggregateAuthorization:AggregateAuthorization example 123456789012:us-east-1
 /// ```
-class AggregateAuthorization extends CustomResource {
+class AggregateAuthorization extends pulumi.CustomResource {
   /// Account ID.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// The ARN of the authorization
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The region authorized to collect aggregated data.
-  late final Output<String?> authorizedAwsRegion;
+  late final pulumi.Output<String?> authorizedAwsRegion;
 
   /// The region authorized to collect aggregated data. Use `authorized_aws_region` instead.
-  late final Output<String?> region;
+  late final pulumi.Output<String?> region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   AggregateAuthorization(
     String name, {
     AggregateAuthorizationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cfg/aggregateAuthorization:AggregateAuthorization',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
     this.arn = registerOutput<String>('arn');

@@ -1,18 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../field_level_encryption_profile_encryption_entities/field_level_encryption_profile_encryption_entities.dart';
 
 /// The set of arguments for FieldLevelEncryptionProfile.
 class FieldLevelEncryptionProfileArgs {
   /// An optional comment about the Field Level Encryption Profile.
-  final Input<String>? comment;
+  final pulumi.Input<String>? comment;
 
   /// The encryption entities config block for field-level encryption profiles that contains an attribute `items` which includes the encryption key and field pattern specifications.
-  final Input<FieldLevelEncryptionProfileEncryptionEntities> encryptionEntities;
+  final pulumi.Input<FieldLevelEncryptionProfileEncryptionEntities>
+      encryptionEntities;
 
   /// The name of the Field Level Encryption Profile.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   FieldLevelEncryptionProfileArgs({
     this.comment,
@@ -26,7 +27,7 @@ class FieldLevelEncryptionProfileArgs {
     if (commentValue != null) {
       map['comment'] = commentValue;
     }
-    map['encryptionEntities'] = Input.mapInputValue<
+    map['encryptionEntities'] = pulumi.Input.mapInputValue<
         FieldLevelEncryptionProfileEncryptionEntities,
         Map<String, dynamic>>(encryptionEntities, (value) => value.toMap());
     final nameValue = name;
@@ -38,11 +39,11 @@ class FieldLevelEncryptionProfileArgs {
 
   factory FieldLevelEncryptionProfileArgs.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionProfileArgs(
-      comment: Input.asOptionalInput<String>(map['comment']),
+      comment: pulumi.Input.asOptionalInput<String>(map['comment']),
       encryptionEntities:
-          Input.asInput<FieldLevelEncryptionProfileEncryptionEntities>(
+          pulumi.Input.asInput<FieldLevelEncryptionProfileEncryptionEntities>(
               map['encryptionEntities']),
-      name: Input.asOptionalInput<String>(map['name']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
     );
   }
 }

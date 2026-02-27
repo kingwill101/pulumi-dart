@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_rate_based_statement_custom_key/web_acl_rule_statement_rate_based_statement_custom_key.dart';
 import '../web_acl_rule_statement_rate_based_statement_forwarded_ip_config/web_acl_rule_statement_rate_based_statement_forwarded_ip_config.dart';
 import '../web_acl_rule_statement_rate_based_statement_scope_down_statement/web_acl_rule_statement_rate_based_statement_scope_down_statement.dart';
@@ -45,7 +45,7 @@ class WebAclRuleStatementRateBasedStatement {
     }
     final customKeysValue = customKeys;
     if (customKeysValue != null) {
-      map['customKeys'] = Input.encodeList<
+      map['customKeys'] = pulumi.Input.encodeList<
           WebAclRuleStatementRateBasedStatementCustomKey,
           Map<String, dynamic>>(customKeysValue, (value) => value.toMap());
     }
@@ -73,7 +73,8 @@ class WebAclRuleStatementRateBasedStatement {
           : map['aggregateKeyType'] as String,
       customKeys: map['customKeys'] == null
           ? null
-          : Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKey>(
+          : pulumi.Input.decodeList<
+                  WebAclRuleStatementRateBasedStatementCustomKey>(
               map['customKeys'],
               (value) => WebAclRuleStatementRateBasedStatementCustomKey.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VpcIpamPoolCidrAllocation.
 class VpcIpamPoolCidrAllocationArgs {
   /// The CIDR you want to assign to the pool.
-  final Input<String>? cidr;
+  final pulumi.Input<String>? cidr;
 
   /// The description for the allocation.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Exclude a particular CIDR range from being returned by the pool.
-  final Input<List<String>>? disallowedCidrs;
+  final pulumi.Input<List<String>>? disallowedCidrs;
 
   /// The ID of the pool to which you want to assign a CIDR.
-  final Input<String> ipamPoolId;
+  final pulumi.Input<String> ipamPoolId;
 
   /// The netmask length of the CIDR you would like to allocate to the IPAM pool. Valid Values: `0-128`.
-  final Input<int>? netmaskLength;
+  final pulumi.Input<int>? netmaskLength;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   VpcIpamPoolCidrAllocationArgs({
     this.cidr,
@@ -59,13 +59,13 @@ class VpcIpamPoolCidrAllocationArgs {
 
   factory VpcIpamPoolCidrAllocationArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamPoolCidrAllocationArgs(
-      cidr: Input.asOptionalInput<String>(map['cidr']),
-      description: Input.asOptionalInput<String>(map['description']),
+      cidr: pulumi.Input.asOptionalInput<String>(map['cidr']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       disallowedCidrs:
-          Input.asOptionalInput<List<String>>(map['disallowedCidrs']),
-      ipamPoolId: Input.asInput<String>(map['ipamPoolId']),
-      netmaskLength: Input.asOptionalInput<int>(map['netmaskLength']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<List<String>>(map['disallowedCidrs']),
+      ipamPoolId: pulumi.Input.asInput<String>(map['ipamPoolId']),
+      netmaskLength: pulumi.Input.asOptionalInput<int>(map['netmaskLength']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

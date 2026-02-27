@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../key_key_attribute_key_modes_of_use/key_key_attribute_key_modes_of_use.dart';
 
 class KeyKeyAttribute {
@@ -29,9 +29,9 @@ class KeyKeyAttribute {
     map['keyClass'] = keyClass;
     final keyModesOfUsesValue = keyModesOfUses;
     if (keyModesOfUsesValue != null) {
-      map['keyModesOfUses'] =
-          Input.encodeList<KeyKeyAttributeKeyModesOfUse, Map<String, dynamic>>(
-              keyModesOfUsesValue, (value) => value.toMap());
+      map['keyModesOfUses'] = pulumi.Input.encodeList<
+          KeyKeyAttributeKeyModesOfUse,
+          Map<String, dynamic>>(keyModesOfUsesValue, (value) => value.toMap());
     }
     map['keyUsage'] = keyUsage;
     return map;
@@ -43,7 +43,7 @@ class KeyKeyAttribute {
       keyClass: map['keyClass'] as String,
       keyModesOfUses: map['keyModesOfUses'] == null
           ? null
-          : Input.decodeList<KeyKeyAttributeKeyModesOfUse>(
+          : pulumi.Input.decodeList<KeyKeyAttributeKeyModesOfUse>(
               map['keyModesOfUses'],
               (value) => KeyKeyAttributeKeyModesOfUse.fromMap(
                   (value as Map).cast<String, dynamic>())),

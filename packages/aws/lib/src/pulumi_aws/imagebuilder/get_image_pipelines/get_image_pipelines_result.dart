@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_image_pipelines_filter/get_image_pipelines_filter.dart';
 
 /// Result data returned by getImagePipelines.
@@ -29,9 +29,8 @@ class GetImagePipelinesResult {
     map['arns'] = arns;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetImagePipelinesFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetImagePipelinesFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['names'] = names;
@@ -44,7 +43,7 @@ class GetImagePipelinesResult {
       arns: (map['arns'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetImagePipelinesFilter>(
+          : pulumi.Input.decodeList<GetImagePipelinesFilter>(
               map['filters'],
               (value) => GetImagePipelinesFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

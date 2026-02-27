@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'event_stream_args.dart';
 
 /// Provides a Pinpoint Event Stream resource.
@@ -14,28 +14,28 @@ import 'event_stream_args.dart';
 /// ```sh
 /// $ pulumi import aws:pinpoint/eventStream:EventStream stream application-id
 /// ```
-class EventStream extends CustomResource {
+class EventStream extends pulumi.CustomResource {
   /// The application ID.
-  late final Output<String> applicationId;
+  late final pulumi.Output<String> applicationId;
 
   /// The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
-  late final Output<String> destinationStreamArn;
+  late final pulumi.Output<String> destinationStreamArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   EventStream(
     String name, {
     EventStreamArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:pinpoint/eventStream:EventStream',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.applicationId = registerOutput<String>('applicationId');
     this.destinationStreamArn = registerOutput<String>('destinationStreamArn');

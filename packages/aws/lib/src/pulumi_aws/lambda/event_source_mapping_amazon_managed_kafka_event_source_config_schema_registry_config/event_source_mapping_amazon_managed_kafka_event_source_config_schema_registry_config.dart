@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../event_source_mapping_amazon_managed_kafka_event_source_config_schema_registry_config_access_config/event_source_mapping_amazon_managed_kafka_event_source_config_schema_registry_config_access_config.dart';
 import '../event_source_mapping_amazon_managed_kafka_event_source_config_schema_registry_config_schema_validation_config/event_source_mapping_amazon_managed_kafka_event_source_config_schema_registry_config_schema_validation_config.dart';
 
@@ -32,7 +32,7 @@ class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig 
     final map = <String, dynamic>{};
     final accessConfigsValue = accessConfigs;
     if (accessConfigsValue != null) {
-      map['accessConfigs'] = Input.encodeList<
+      map['accessConfigs'] = pulumi.Input.encodeList<
           EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig,
           Map<String, dynamic>>(accessConfigsValue, (value) => value.toMap());
     }
@@ -46,7 +46,7 @@ class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig 
     }
     final schemaValidationConfigsValue = schemaValidationConfigs;
     if (schemaValidationConfigsValue != null) {
-      map['schemaValidationConfigs'] = Input.encodeList<
+      map['schemaValidationConfigs'] = pulumi.Input.encodeList<
           EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig,
           Map<String,
               dynamic>>(schemaValidationConfigsValue, (value) => value.toMap());
@@ -59,7 +59,7 @@ class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig 
     return EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig(
       accessConfigs: map['accessConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigAccessConfig>(
               map['accessConfigs'],
               (value) =>
@@ -73,7 +73,7 @@ class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig 
           : map['schemaRegistryUri'] as String,
       schemaValidationConfigs: map['schemaValidationConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig>(
               map['schemaValidationConfigs'],
               (value) =>

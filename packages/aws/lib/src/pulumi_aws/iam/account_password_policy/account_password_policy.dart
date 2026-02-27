@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_password_policy_args.dart';
 
 /// > **Note:** There is only a single policy allowed per AWS account. An existing policy will be lost when using this resource as an effect of this limitation.
@@ -18,46 +18,46 @@ import 'account_password_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/accountPasswordPolicy:AccountPasswordPolicy strict iam-account-password-policy
 /// ```
-class AccountPasswordPolicy extends CustomResource {
+class AccountPasswordPolicy extends pulumi.CustomResource {
   /// Whether to allow users to change their own password
-  late final Output<bool?> allowUsersToChangePassword;
+  late final pulumi.Output<bool?> allowUsersToChangePassword;
 
   /// Indicates whether passwords in the account expire. Returns `true` if `max_password_age` contains a value greater than `0`. Returns `false` if it is `0` or _not present_.
-  late final Output<bool> expirePasswords;
+  late final pulumi.Output<bool> expirePasswords;
 
   /// Whether users are prevented from setting a new password after their password has expired (i.e., require administrator reset)
-  late final Output<bool> hardExpiry;
+  late final pulumi.Output<bool> hardExpiry;
 
   /// The number of days that an user password is valid.
-  late final Output<int> maxPasswordAge;
+  late final pulumi.Output<int> maxPasswordAge;
 
   /// Minimum length to require for user passwords.
-  late final Output<int?> minimumPasswordLength;
+  late final pulumi.Output<int?> minimumPasswordLength;
 
   /// The number of previous passwords that users are prevented from reusing.
-  late final Output<int> passwordReusePrevention;
+  late final pulumi.Output<int> passwordReusePrevention;
 
   /// Whether to require lowercase characters for user passwords.
-  late final Output<bool> requireLowercaseCharacters;
+  late final pulumi.Output<bool> requireLowercaseCharacters;
 
   /// Whether to require numbers for user passwords.
-  late final Output<bool> requireNumbers;
+  late final pulumi.Output<bool> requireNumbers;
 
   /// Whether to require symbols for user passwords.
-  late final Output<bool> requireSymbols;
+  late final pulumi.Output<bool> requireSymbols;
 
   /// Whether to require uppercase characters for user passwords.
-  late final Output<bool> requireUppercaseCharacters;
+  late final pulumi.Output<bool> requireUppercaseCharacters;
 
   AccountPasswordPolicy(
     String name, {
     AccountPasswordPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/accountPasswordPolicy:AccountPasswordPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowUsersToChangePassword =
         registerOutput<bool?>('allowUsersToChangePassword');

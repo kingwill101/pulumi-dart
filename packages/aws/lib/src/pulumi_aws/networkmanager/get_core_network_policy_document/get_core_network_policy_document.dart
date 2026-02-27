@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_core_network_policy_document_args.dart';
 import 'get_core_network_policy_document_result.dart';
 
@@ -93,13 +93,13 @@ import 'get_core_network_policy_document_result.dart';
 /// ```
 Future<GetCoreNetworkPolicyDocumentResult> getCoreNetworkPolicyDocument(
   GetCoreNetworkPolicyDocumentArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:networkmanager/getCoreNetworkPolicyDocument:getCoreNetworkPolicyDocument',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCoreNetworkPolicyDocumentResult.fromMap(result);
 }

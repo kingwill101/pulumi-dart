@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGlobalNetworks.
 class GetGlobalNetworksArgs {
   /// Restricts the list to the global networks with these tags.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetGlobalNetworksArgs({
     this.tags,
@@ -22,7 +22,7 @@ class GetGlobalNetworksArgs {
 
   factory GetGlobalNetworksArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalNetworksArgs(
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

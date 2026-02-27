@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_db_system_shapes_db_system_shape/get_db_system_shapes_db_system_shape.dart';
 
 /// Result data returned by getDbSystemShapes.
@@ -27,9 +27,9 @@ class GetDbSystemShapesResult {
     if (availabilityZoneIdValue != null) {
       map['availabilityZoneId'] = availabilityZoneIdValue;
     }
-    map['dbSystemShapes'] =
-        Input.encodeList<GetDbSystemShapesDbSystemShape, Map<String, dynamic>>(
-            dbSystemShapes, (value) => value.toMap());
+    map['dbSystemShapes'] = pulumi.Input.encodeList<
+        GetDbSystemShapesDbSystemShape,
+        Map<String, dynamic>>(dbSystemShapes, (value) => value.toMap());
     map['id'] = id;
     map['region'] = region;
     return map;
@@ -40,7 +40,7 @@ class GetDbSystemShapesResult {
       availabilityZoneId: map['availabilityZoneId'] == null
           ? null
           : map['availabilityZoneId'] as String,
-      dbSystemShapes: Input.decodeList<GetDbSystemShapesDbSystemShape>(
+      dbSystemShapes: pulumi.Input.decodeList<GetDbSystemShapesDbSystemShape>(
           map['dbSystemShapes'],
           (value) => GetDbSystemShapesDbSystemShape.fromMap(
               (value as Map).cast<String, dynamic>())),

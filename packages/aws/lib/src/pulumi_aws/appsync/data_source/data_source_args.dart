@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_source_dynamodb_config/data_source_dynamodb_config.dart';
 import '../data_source_elasticsearch_config/data_source_elasticsearch_config.dart';
 import '../data_source_event_bridge_config/data_source_event_bridge_config.dart';
@@ -12,43 +12,45 @@ import '../data_source_relational_database_config/data_source_relational_databas
 /// The set of arguments for DataSource.
 class DataSourceArgs {
   /// API ID for the GraphQL API for the data source.
-  final Input<String> apiId;
+  final pulumi.Input<String> apiId;
 
   /// Description of the data source.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// DynamoDB settings. See `dynamodb_config` Block for details.
-  final Input<DataSourceDynamodbConfig>? dynamodbConfig;
+  final pulumi.Input<DataSourceDynamodbConfig>? dynamodbConfig;
 
   /// Amazon Elasticsearch settings. See `elasticsearch_config` Block for details.
-  final Input<DataSourceElasticsearchConfig>? elasticsearchConfig;
+  final pulumi.Input<DataSourceElasticsearchConfig>? elasticsearchConfig;
 
   /// AWS EventBridge settings. See `event_bridge_config` Block for details.
-  final Input<DataSourceEventBridgeConfig>? eventBridgeConfig;
+  final pulumi.Input<DataSourceEventBridgeConfig>? eventBridgeConfig;
 
   /// HTTP settings. See `http_config` Block for details.
-  final Input<DataSourceHttpConfig>? httpConfig;
+  final pulumi.Input<DataSourceHttpConfig>? httpConfig;
 
   /// AWS Lambda settings. See `lambda_config` Block for details.
-  final Input<DataSourceLambdaConfig>? lambdaConfig;
+  final pulumi.Input<DataSourceLambdaConfig>? lambdaConfig;
 
   /// User-supplied name for the data source.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Amazon OpenSearch Service settings. See `opensearchservice_config` Block for details.
-  final Input<DataSourceOpensearchserviceConfig>? opensearchserviceConfig;
+  final pulumi.Input<DataSourceOpensearchserviceConfig>?
+      opensearchserviceConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// AWS RDS settings. See `relational_database_config` Block for details.
-  final Input<DataSourceRelationalDatabaseConfig>? relationalDatabaseConfig;
+  final pulumi.Input<DataSourceRelationalDatabaseConfig>?
+      relationalDatabaseConfig;
 
   /// IAM service role ARN for the data source. Required if `type` is specified as `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `AMAZON_EVENTBRIDGE`, or `AMAZON_OPENSEARCH_SERVICE`.
-  final Input<String>? serviceRoleArn;
+  final pulumi.Input<String>? serviceRoleArn;
 
   /// Type of the Data Source. Valid values: `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `HTTP`, `NONE`, `RELATIONAL_DATABASE`, `AMAZON_EVENTBRIDGE`, `AMAZON_OPENSEARCH_SERVICE`.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   DataSourceArgs({
     required this.apiId,
@@ -75,30 +77,32 @@ class DataSourceArgs {
     }
     final dynamodbConfigValue = dynamodbConfig;
     if (dynamodbConfigValue != null) {
-      map['dynamodbConfig'] = Input.mapOptionalInputValue<
+      map['dynamodbConfig'] = pulumi.Input.mapOptionalInputValue<
           DataSourceDynamodbConfig,
           Map<String, dynamic>>(dynamodbConfigValue, (value) => value.toMap());
     }
     final elasticsearchConfigValue = elasticsearchConfig;
     if (elasticsearchConfigValue != null) {
-      map['elasticsearchConfig'] = Input.mapOptionalInputValue<
+      map['elasticsearchConfig'] = pulumi.Input.mapOptionalInputValue<
               DataSourceElasticsearchConfig, Map<String, dynamic>>(
           elasticsearchConfigValue, (value) => value.toMap());
     }
     final eventBridgeConfigValue = eventBridgeConfig;
     if (eventBridgeConfigValue != null) {
-      map['eventBridgeConfig'] = Input.mapOptionalInputValue<
+      map['eventBridgeConfig'] = pulumi.Input.mapOptionalInputValue<
               DataSourceEventBridgeConfig, Map<String, dynamic>>(
           eventBridgeConfigValue, (value) => value.toMap());
     }
     final httpConfigValue = httpConfig;
     if (httpConfigValue != null) {
-      map['httpConfig'] = Input.mapOptionalInputValue<DataSourceHttpConfig,
+      map['httpConfig'] = pulumi.Input.mapOptionalInputValue<
+          DataSourceHttpConfig,
           Map<String, dynamic>>(httpConfigValue, (value) => value.toMap());
     }
     final lambdaConfigValue = lambdaConfig;
     if (lambdaConfigValue != null) {
-      map['lambdaConfig'] = Input.mapOptionalInputValue<DataSourceLambdaConfig,
+      map['lambdaConfig'] = pulumi.Input.mapOptionalInputValue<
+          DataSourceLambdaConfig,
           Map<String, dynamic>>(lambdaConfigValue, (value) => value.toMap());
     }
     final nameValue = name;
@@ -107,7 +111,7 @@ class DataSourceArgs {
     }
     final opensearchserviceConfigValue = opensearchserviceConfig;
     if (opensearchserviceConfigValue != null) {
-      map['opensearchserviceConfig'] = Input.mapOptionalInputValue<
+      map['opensearchserviceConfig'] = pulumi.Input.mapOptionalInputValue<
               DataSourceOpensearchserviceConfig, Map<String, dynamic>>(
           opensearchserviceConfigValue, (value) => value.toMap());
     }
@@ -117,7 +121,7 @@ class DataSourceArgs {
     }
     final relationalDatabaseConfigValue = relationalDatabaseConfig;
     if (relationalDatabaseConfigValue != null) {
-      map['relationalDatabaseConfig'] = Input.mapOptionalInputValue<
+      map['relationalDatabaseConfig'] = pulumi.Input.mapOptionalInputValue<
               DataSourceRelationalDatabaseConfig, Map<String, dynamic>>(
           relationalDatabaseConfigValue, (value) => value.toMap());
     }
@@ -131,28 +135,31 @@ class DataSourceArgs {
 
   factory DataSourceArgs.fromMap(Map<String, dynamic> map) {
     return DataSourceArgs(
-      apiId: Input.asInput<String>(map['apiId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      dynamodbConfig: Input.asOptionalInput<DataSourceDynamodbConfig>(
+      apiId: pulumi.Input.asInput<String>(map['apiId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      dynamodbConfig: pulumi.Input.asOptionalInput<DataSourceDynamodbConfig>(
           map['dynamodbConfig']),
-      elasticsearchConfig: Input.asOptionalInput<DataSourceElasticsearchConfig>(
-          map['elasticsearchConfig']),
-      eventBridgeConfig: Input.asOptionalInput<DataSourceEventBridgeConfig>(
-          map['eventBridgeConfig']),
+      elasticsearchConfig:
+          pulumi.Input.asOptionalInput<DataSourceElasticsearchConfig>(
+              map['elasticsearchConfig']),
+      eventBridgeConfig:
+          pulumi.Input.asOptionalInput<DataSourceEventBridgeConfig>(
+              map['eventBridgeConfig']),
       httpConfig:
-          Input.asOptionalInput<DataSourceHttpConfig>(map['httpConfig']),
-      lambdaConfig:
-          Input.asOptionalInput<DataSourceLambdaConfig>(map['lambdaConfig']),
-      name: Input.asOptionalInput<String>(map['name']),
+          pulumi.Input.asOptionalInput<DataSourceHttpConfig>(map['httpConfig']),
+      lambdaConfig: pulumi.Input.asOptionalInput<DataSourceLambdaConfig>(
+          map['lambdaConfig']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       opensearchserviceConfig:
-          Input.asOptionalInput<DataSourceOpensearchserviceConfig>(
+          pulumi.Input.asOptionalInput<DataSourceOpensearchserviceConfig>(
               map['opensearchserviceConfig']),
-      region: Input.asOptionalInput<String>(map['region']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       relationalDatabaseConfig:
-          Input.asOptionalInput<DataSourceRelationalDatabaseConfig>(
+          pulumi.Input.asOptionalInput<DataSourceRelationalDatabaseConfig>(
               map['relationalDatabaseConfig']),
-      serviceRoleArn: Input.asOptionalInput<String>(map['serviceRoleArn']),
-      type: Input.asInput<String>(map['type']),
+      serviceRoleArn:
+          pulumi.Input.asOptionalInput<String>(map['serviceRoleArn']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

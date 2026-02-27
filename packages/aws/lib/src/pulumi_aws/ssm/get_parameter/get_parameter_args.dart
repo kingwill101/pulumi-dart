@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getParameter.
 class GetParameterArgs {
   /// Name of the parameter. To query by parameter version use `name:version` (e.g., `foo:3`).
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Whether to return decrypted `SecureString` value. Defaults to `true`.
-  final Input<bool>? withDecryption;
+  final pulumi.Input<bool>? withDecryption;
 
   GetParameterArgs({
     required this.name,
@@ -35,9 +35,9 @@ class GetParameterArgs {
 
   factory GetParameterArgs.fromMap(Map<String, dynamic> map) {
     return GetParameterArgs(
-      name: Input.asInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      withDecryption: Input.asOptionalInput<bool>(map['withDecryption']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      withDecryption: pulumi.Input.asOptionalInput<bool>(map['withDecryption']),
     );
   }
 }

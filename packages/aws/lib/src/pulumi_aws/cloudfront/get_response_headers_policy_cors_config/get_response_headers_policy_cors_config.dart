@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_response_headers_policy_cors_config_access_control_allow_header/get_response_headers_policy_cors_config_access_control_allow_header.dart';
 import '../get_response_headers_policy_cors_config_access_control_allow_method/get_response_headers_policy_cors_config_access_control_allow_method.dart';
 import '../get_response_headers_policy_cors_config_access_control_allow_origin/get_response_headers_policy_cors_config_access_control_allow_origin.dart';
@@ -43,19 +43,19 @@ class GetResponseHeadersPolicyCorsConfig {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['accessControlAllowCredentials'] = accessControlAllowCredentials;
-    map['accessControlAllowHeaders'] = Input.encodeList<
+    map['accessControlAllowHeaders'] = pulumi.Input.encodeList<
             GetResponseHeadersPolicyCorsConfigAccessControlAllowHeader,
             Map<String, dynamic>>(
         accessControlAllowHeaders, (value) => value.toMap());
-    map['accessControlAllowMethods'] = Input.encodeList<
+    map['accessControlAllowMethods'] = pulumi.Input.encodeList<
             GetResponseHeadersPolicyCorsConfigAccessControlAllowMethod,
             Map<String, dynamic>>(
         accessControlAllowMethods, (value) => value.toMap());
-    map['accessControlAllowOrigins'] = Input.encodeList<
+    map['accessControlAllowOrigins'] = pulumi.Input.encodeList<
             GetResponseHeadersPolicyCorsConfigAccessControlAllowOrigin,
             Map<String, dynamic>>(
         accessControlAllowOrigins, (value) => value.toMap());
-    map['accessControlExposeHeaders'] = Input.encodeList<
+    map['accessControlExposeHeaders'] = pulumi.Input.encodeList<
             GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader,
             Map<String, dynamic>>(
         accessControlExposeHeaders, (value) => value.toMap());
@@ -68,22 +68,22 @@ class GetResponseHeadersPolicyCorsConfig {
     return GetResponseHeadersPolicyCorsConfig(
       accessControlAllowCredentials:
           map['accessControlAllowCredentials'] as bool,
-      accessControlAllowHeaders: Input.decodeList<
+      accessControlAllowHeaders: pulumi.Input.decodeList<
               GetResponseHeadersPolicyCorsConfigAccessControlAllowHeader>(
           map['accessControlAllowHeaders'],
           (value) => GetResponseHeadersPolicyCorsConfigAccessControlAllowHeader
               .fromMap((value as Map).cast<String, dynamic>())),
-      accessControlAllowMethods: Input.decodeList<
+      accessControlAllowMethods: pulumi.Input.decodeList<
               GetResponseHeadersPolicyCorsConfigAccessControlAllowMethod>(
           map['accessControlAllowMethods'],
           (value) => GetResponseHeadersPolicyCorsConfigAccessControlAllowMethod
               .fromMap((value as Map).cast<String, dynamic>())),
-      accessControlAllowOrigins: Input.decodeList<
+      accessControlAllowOrigins: pulumi.Input.decodeList<
               GetResponseHeadersPolicyCorsConfigAccessControlAllowOrigin>(
           map['accessControlAllowOrigins'],
           (value) => GetResponseHeadersPolicyCorsConfigAccessControlAllowOrigin
               .fromMap((value as Map).cast<String, dynamic>())),
-      accessControlExposeHeaders: Input.decodeList<
+      accessControlExposeHeaders: pulumi.Input.decodeList<
               GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader>(
           map['accessControlExposeHeaders'],
           (value) => GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader

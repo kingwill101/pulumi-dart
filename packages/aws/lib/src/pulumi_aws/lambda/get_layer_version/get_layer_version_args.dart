@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getLayerVersion.
 class GetLayerVersionArgs {
   /// Specific architecture the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided architecture will be used.
-  final Input<String>? compatibleArchitecture;
+  final pulumi.Input<String>? compatibleArchitecture;
 
   /// Specific runtime the layer version must support. Conflicts with `version`. If specified, the latest available layer version supporting the provided runtime will be used.
-  final Input<String>? compatibleRuntime;
+  final pulumi.Input<String>? compatibleRuntime;
 
   /// Name of the Lambda layer.
   ///
   /// The following arguments are optional:
-  final Input<String> layerName;
+  final pulumi.Input<String> layerName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Specific layer version. Conflicts with `compatible_runtime` and `compatible_architecture`. If omitted, the latest available layer version will be used.
-  final Input<int>? version;
+  final pulumi.Input<int>? version;
 
   GetLayerVersionArgs({
     this.compatibleArchitecture,
@@ -54,12 +54,12 @@ class GetLayerVersionArgs {
   factory GetLayerVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetLayerVersionArgs(
       compatibleArchitecture:
-          Input.asOptionalInput<String>(map['compatibleArchitecture']),
+          pulumi.Input.asOptionalInput<String>(map['compatibleArchitecture']),
       compatibleRuntime:
-          Input.asOptionalInput<String>(map['compatibleRuntime']),
-      layerName: Input.asInput<String>(map['layerName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      version: Input.asOptionalInput<int>(map['version']),
+          pulumi.Input.asOptionalInput<String>(map['compatibleRuntime']),
+      layerName: pulumi.Input.asInput<String>(map['layerName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      version: pulumi.Input.asOptionalInput<int>(map['version']),
     );
   }
 }

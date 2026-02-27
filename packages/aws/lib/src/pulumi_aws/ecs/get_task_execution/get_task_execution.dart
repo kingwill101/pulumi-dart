@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_task_execution_args.dart';
 import 'get_task_execution_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_task_execution_result.dart';
 /// ### Basic Usage
 Future<GetTaskExecutionResult> getTaskExecution(
   GetTaskExecutionArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ecs/getTaskExecution:getTaskExecution',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTaskExecutionResult.fromMap(result);
 }

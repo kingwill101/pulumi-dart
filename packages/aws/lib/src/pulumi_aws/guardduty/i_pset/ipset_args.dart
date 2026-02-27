@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for IPSet.
 class IPSetArgs {
   /// Specifies whether GuardDuty is to start using the uploaded IPSet.
-  final Input<bool> activate;
+  final pulumi.Input<bool> activate;
 
   /// The detector ID of the GuardDuty.
-  final Input<String> detectorId;
+  final pulumi.Input<String> detectorId;
 
   /// The format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
-  final Input<String> format;
+  final pulumi.Input<String> format;
 
   /// The URI of the file that contains the IPSet.
-  final Input<String> location;
+  final pulumi.Input<String> location;
 
   /// The friendly name to identify the IPSet.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   IPSetArgs({
     required this.activate,
@@ -58,13 +58,13 @@ class IPSetArgs {
 
   factory IPSetArgs.fromMap(Map<String, dynamic> map) {
     return IPSetArgs(
-      activate: Input.asInput<bool>(map['activate']),
-      detectorId: Input.asInput<String>(map['detectorId']),
-      format: Input.asInput<String>(map['format']),
-      location: Input.asInput<String>(map['location']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      activate: pulumi.Input.asInput<bool>(map['activate']),
+      detectorId: pulumi.Input.asInput<String>(map['detectorId']),
+      format: pulumi.Input.asInput<String>(map['format']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

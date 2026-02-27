@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_event_source_args.dart';
 import 'get_event_source_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_event_source_result.dart';
 /// > **Note:** EventBridge was formerly known as CloudWatch Events. The functionality is identical.
 Future<GetEventSourceResult> getEventSource(
   GetEventSourceArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:cloudwatch/getEventSource:getEventSource',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEventSourceResult.fromMap(result);
 }

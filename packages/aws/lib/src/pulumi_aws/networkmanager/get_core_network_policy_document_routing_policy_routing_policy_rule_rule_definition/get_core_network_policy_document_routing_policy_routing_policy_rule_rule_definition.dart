@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_core_network_policy_document_routing_policy_routing_policy_rule_rule_definition_action/get_core_network_policy_document_routing_policy_routing_policy_rule_rule_definition_action.dart';
 import '../get_core_network_policy_document_routing_policy_routing_policy_rule_rule_definition_match_condition/get_core_network_policy_document_routing_policy_routing_policy_rule_rule_definition_match_condition.dart';
 
@@ -32,7 +32,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition {
     }
     final matchConditionsValue = matchConditions;
     if (matchConditionsValue != null) {
-      map['matchConditions'] = Input.encodeList<
+      map['matchConditions'] = pulumi.Input.encodeList<
           GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionMatchCondition,
           Map<String, dynamic>>(matchConditionsValue, (value) => value.toMap());
     }
@@ -50,7 +50,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition {
           : map['conditionLogic'] as String,
       matchConditions: map['matchConditions'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionMatchCondition>(
               map['matchConditions'],
               (value) =>

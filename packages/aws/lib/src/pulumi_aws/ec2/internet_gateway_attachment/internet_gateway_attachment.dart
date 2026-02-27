@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'internet_gateway_attachment_args.dart';
 
 /// Provides a resource to create a VPC Internet Gateway Attachment.
@@ -14,25 +14,25 @@ import 'internet_gateway_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/internetGatewayAttachment:InternetGatewayAttachment example igw-c0a643a9:vpc-123456
 /// ```
-class InternetGatewayAttachment extends CustomResource {
+class InternetGatewayAttachment extends pulumi.CustomResource {
   /// The ID of the internet gateway.
-  late final Output<String> internetGatewayId;
+  late final pulumi.Output<String> internetGatewayId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the VPC.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   InternetGatewayAttachment(
     String name, {
     InternetGatewayAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/internetGatewayAttachment:InternetGatewayAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.internetGatewayId = registerOutput<String>('internetGatewayId');
     this.region = registerOutput<String>('region');

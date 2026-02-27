@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../deployment_group_load_balancer_info_target_group_pair_info_prod_traffic_route/deployment_group_load_balancer_info_target_group_pair_info_prod_traffic_route.dart';
 import '../deployment_group_load_balancer_info_target_group_pair_info_target_group/deployment_group_load_balancer_info_target_group_pair_info_target_group.dart';
 import '../deployment_group_load_balancer_info_target_group_pair_info_test_traffic_route/deployment_group_load_balancer_info_target_group_pair_info_test_traffic_route.dart';
@@ -27,7 +27,7 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfo {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['prodTrafficRoute'] = prodTrafficRoute.toMap();
-    map['targetGroups'] = Input.encodeList<
+    map['targetGroups'] = pulumi.Input.encodeList<
         DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup,
         Map<String, dynamic>>(targetGroups, (value) => value.toMap());
     final testTrafficRouteValue = testTrafficRoute;
@@ -44,7 +44,7 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfo {
           DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute
               .fromMap(
                   (map['prodTrafficRoute'] as Map).cast<String, dynamic>()),
-      targetGroups: Input.decodeList<
+      targetGroups: pulumi.Input.decodeList<
               DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup>(
           map['targetGroups'],
           (value) =>

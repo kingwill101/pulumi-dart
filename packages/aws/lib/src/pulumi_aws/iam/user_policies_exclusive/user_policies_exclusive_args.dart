@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for UserPoliciesExclusive.
 class UserPoliciesExclusiveArgs {
   /// A list of inline policy names to be assigned to the user. Policies attached to this user but not configured in this argument will be removed.
-  final Input<List<String>> policyNames;
+  final pulumi.Input<List<String>> policyNames;
 
   /// IAM user name.
-  final Input<String> userName;
+  final pulumi.Input<String> userName;
 
   UserPoliciesExclusiveArgs({
     required this.policyNames,
@@ -24,8 +24,8 @@ class UserPoliciesExclusiveArgs {
 
   factory UserPoliciesExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return UserPoliciesExclusiveArgs(
-      policyNames: Input.asInput<List<String>>(map['policyNames']),
-      userName: Input.asInput<String>(map['userName']),
+      policyNames: pulumi.Input.asInput<List<String>>(map['policyNames']),
+      userName: pulumi.Input.asInput<String>(map['userName']),
     );
   }
 }

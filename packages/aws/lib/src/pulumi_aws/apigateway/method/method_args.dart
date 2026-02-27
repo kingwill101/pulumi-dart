@@ -1,47 +1,47 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Method.
 class MethodArgs {
   /// Specify if the method requires an API key
-  final Input<bool>? apiKeyRequired;
+  final pulumi.Input<bool>? apiKeyRequired;
 
   /// Type of authorization used for the method (`NONE`, `CUSTOM`, `AWS_IAM`, `COGNITO_USER_POOLS`)
-  final Input<String> authorization;
+  final pulumi.Input<String> authorization;
 
   /// Authorization scopes used when the authorization is `COGNITO_USER_POOLS`
-  final Input<List<String>>? authorizationScopes;
+  final pulumi.Input<List<String>>? authorizationScopes;
 
   /// Authorizer id to be used when the authorization is `CUSTOM` or `COGNITO_USER_POOLS`
-  final Input<String>? authorizerId;
+  final pulumi.Input<String>? authorizerId;
 
   /// HTTP Method (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `ANY`)
-  final Input<String> httpMethod;
+  final pulumi.Input<String> httpMethod;
 
   /// Function name that will be given to the method when generating an SDK through API Gateway. If omitted, API Gateway will generate a function name based on the resource path and HTTP verb.
-  final Input<String>? operationName;
+  final pulumi.Input<String>? operationName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of the API models used for the request's content type
   /// where key is the content type (e.g., `application/json`)
   /// and value is either `Error`, `Empty` (built-in models) or `aws.apigateway.Model`'s `name`.
-  final Input<Map<String, String>>? requestModels;
+  final pulumi.Input<Map<String, String>>? requestModels;
 
   /// Map of request parameters (from the path, query string and headers) that should be passed to the integration. The boolean value indicates whether the parameter is required (`true`) or optional (`false`).
   /// For example: `request_parameters = {"method.request.header.X-Some-Header" = true "method.request.querystring.some-query-param" = true}` would define that the header `X-Some-Header` and the query string `some-query-param` must be provided in the request.
-  final Input<Map<String, bool>>? requestParameters;
+  final pulumi.Input<Map<String, bool>>? requestParameters;
 
   /// ID of a `aws.apigateway.RequestValidator`
-  final Input<String>? requestValidatorId;
+  final pulumi.Input<String>? requestValidatorId;
 
   /// API resource ID
-  final Input<String> resourceId;
+  final pulumi.Input<String> resourceId;
 
   /// ID of the associated REST API
-  final Input<String> restApi;
+  final pulumi.Input<String> restApi;
 
   MethodArgs({
     this.apiKeyRequired,
@@ -101,22 +101,22 @@ class MethodArgs {
 
   factory MethodArgs.fromMap(Map<String, dynamic> map) {
     return MethodArgs(
-      apiKeyRequired: Input.asOptionalInput<bool>(map['apiKeyRequired']),
-      authorization: Input.asInput<String>(map['authorization']),
-      authorizationScopes:
-          Input.asOptionalInput<List<String>>(map['authorizationScopes']),
-      authorizerId: Input.asOptionalInput<String>(map['authorizerId']),
-      httpMethod: Input.asInput<String>(map['httpMethod']),
-      operationName: Input.asOptionalInput<String>(map['operationName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      requestModels:
-          Input.asOptionalInput<Map<String, String>>(map['requestModels']),
-      requestParameters:
-          Input.asOptionalInput<Map<String, bool>>(map['requestParameters']),
+      apiKeyRequired: pulumi.Input.asOptionalInput<bool>(map['apiKeyRequired']),
+      authorization: pulumi.Input.asInput<String>(map['authorization']),
+      authorizationScopes: pulumi.Input.asOptionalInput<List<String>>(
+          map['authorizationScopes']),
+      authorizerId: pulumi.Input.asOptionalInput<String>(map['authorizerId']),
+      httpMethod: pulumi.Input.asInput<String>(map['httpMethod']),
+      operationName: pulumi.Input.asOptionalInput<String>(map['operationName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      requestModels: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['requestModels']),
+      requestParameters: pulumi.Input.asOptionalInput<Map<String, bool>>(
+          map['requestParameters']),
       requestValidatorId:
-          Input.asOptionalInput<String>(map['requestValidatorId']),
-      resourceId: Input.asInput<String>(map['resourceId']),
-      restApi: Input.asInput<String>(map['restApi']),
+          pulumi.Input.asOptionalInput<String>(map['requestValidatorId']),
+      resourceId: pulumi.Input.asInput<String>(map['resourceId']),
+      restApi: pulumi.Input.asInput<String>(map['restApi']),
     );
   }
 }

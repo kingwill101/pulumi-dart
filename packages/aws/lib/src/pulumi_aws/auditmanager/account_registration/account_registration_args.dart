@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AccountRegistration.
 class AccountRegistrationArgs {
   /// Identifier for the delegated administrator account.
-  final Input<String>? delegatedAdminAccount;
+  final pulumi.Input<String>? delegatedAdminAccount;
 
   /// Flag to deregister AuditManager in the account upon destruction. Defaults to `false` (ie. AuditManager will remain active in the account, even if this resource is removed).
-  final Input<bool>? deregisterOnDestroy;
+  final pulumi.Input<bool>? deregisterOnDestroy;
 
   /// KMS key identifier.
-  final Input<String>? kmsKey;
+  final pulumi.Input<String>? kmsKey;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   AccountRegistrationArgs({
     this.delegatedAdminAccount,
@@ -47,11 +47,11 @@ class AccountRegistrationArgs {
   factory AccountRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return AccountRegistrationArgs(
       delegatedAdminAccount:
-          Input.asOptionalInput<String>(map['delegatedAdminAccount']),
+          pulumi.Input.asOptionalInput<String>(map['delegatedAdminAccount']),
       deregisterOnDestroy:
-          Input.asOptionalInput<bool>(map['deregisterOnDestroy']),
-      kmsKey: Input.asOptionalInput<String>(map['kmsKey']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<bool>(map['deregisterOnDestroy']),
+      kmsKey: pulumi.Input.asOptionalInput<String>(map['kmsKey']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

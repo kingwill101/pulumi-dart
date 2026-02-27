@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cost_category_split_charge_rule_parameter/cost_category_split_charge_rule_parameter.dart';
 
 class CostCategorySplitChargeRule {
@@ -28,7 +28,8 @@ class CostCategorySplitChargeRule {
     map['method'] = method;
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<CostCategorySplitChargeRuleParameter,
+      map['parameters'] = pulumi.Input.encodeList<
+          CostCategorySplitChargeRuleParameter,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
     map['source'] = source;
@@ -41,7 +42,7 @@ class CostCategorySplitChargeRule {
       method: map['method'] as String,
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<CostCategorySplitChargeRuleParameter>(
+          : pulumi.Input.decodeList<CostCategorySplitChargeRuleParameter>(
               map['parameters'],
               (value) => CostCategorySplitChargeRuleParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

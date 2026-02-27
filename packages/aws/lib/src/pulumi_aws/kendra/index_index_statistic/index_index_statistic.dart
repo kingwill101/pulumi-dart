@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../index_index_statistic_faq_statistic/index_index_statistic_faq_statistic.dart';
 import '../index_index_statistic_text_document_statistic/index_index_statistic_text_document_statistic.dart';
 
@@ -20,12 +20,13 @@ class IndexIndexStatistic {
     final map = <String, dynamic>{};
     final faqStatisticsValue = faqStatistics;
     if (faqStatisticsValue != null) {
-      map['faqStatistics'] = Input.encodeList<IndexIndexStatisticFaqStatistic,
+      map['faqStatistics'] = pulumi.Input.encodeList<
+          IndexIndexStatisticFaqStatistic,
           Map<String, dynamic>>(faqStatisticsValue, (value) => value.toMap());
     }
     final textDocumentStatisticsValue = textDocumentStatistics;
     if (textDocumentStatisticsValue != null) {
-      map['textDocumentStatistics'] = Input.encodeList<
+      map['textDocumentStatistics'] = pulumi.Input.encodeList<
               IndexIndexStatisticTextDocumentStatistic, Map<String, dynamic>>(
           textDocumentStatisticsValue, (value) => value.toMap());
     }
@@ -36,13 +37,13 @@ class IndexIndexStatistic {
     return IndexIndexStatistic(
       faqStatistics: map['faqStatistics'] == null
           ? null
-          : Input.decodeList<IndexIndexStatisticFaqStatistic>(
+          : pulumi.Input.decodeList<IndexIndexStatisticFaqStatistic>(
               map['faqStatistics'],
               (value) => IndexIndexStatisticFaqStatistic.fromMap(
                   (value as Map).cast<String, dynamic>())),
       textDocumentStatistics: map['textDocumentStatistics'] == null
           ? null
-          : Input.decodeList<IndexIndexStatisticTextDocumentStatistic>(
+          : pulumi.Input.decodeList<IndexIndexStatisticTextDocumentStatistic>(
               map['textDocumentStatistics'],
               (value) => IndexIndexStatisticTextDocumentStatistic.fromMap(
                   (value as Map).cast<String, dynamic>())),

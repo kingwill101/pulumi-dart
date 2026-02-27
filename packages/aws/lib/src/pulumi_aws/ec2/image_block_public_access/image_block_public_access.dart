@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_block_public_access_args.dart';
 
 /// Provides a regional public access block for AMIs. This prevents AMIs from being made publicly accessible.
@@ -13,22 +13,22 @@ import 'image_block_public_access_args.dart';
 /// ## Import
 ///
 /// You cannot import this resource.
-class ImageBlockPublicAccess extends CustomResource {
+class ImageBlockPublicAccess extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The state of block public access for AMIs at the account level in the configured AWS Region. Valid values: `unblocked` and `block-new-sharing`.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   ImageBlockPublicAccess(
     String name, {
     ImageBlockPublicAccessArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/imageBlockPublicAccess:ImageBlockPublicAccess',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');

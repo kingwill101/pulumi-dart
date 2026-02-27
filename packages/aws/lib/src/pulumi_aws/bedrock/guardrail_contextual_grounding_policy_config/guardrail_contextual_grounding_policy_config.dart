@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../guardrail_contextual_grounding_policy_config_filters_config/guardrail_contextual_grounding_policy_config_filters_config.dart';
 
 class GuardrailContextualGroundingPolicyConfig {
@@ -16,7 +16,7 @@ class GuardrailContextualGroundingPolicyConfig {
     final map = <String, dynamic>{};
     final filtersConfigsValue = filtersConfigs;
     if (filtersConfigsValue != null) {
-      map['filtersConfigs'] = Input.encodeList<
+      map['filtersConfigs'] = pulumi.Input.encodeList<
           GuardrailContextualGroundingPolicyConfigFiltersConfig,
           Map<String, dynamic>>(filtersConfigsValue, (value) => value.toMap());
     }
@@ -28,7 +28,7 @@ class GuardrailContextualGroundingPolicyConfig {
     return GuardrailContextualGroundingPolicyConfig(
       filtersConfigs: map['filtersConfigs'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GuardrailContextualGroundingPolicyConfigFiltersConfig>(
               map['filtersConfigs'],
               (value) =>

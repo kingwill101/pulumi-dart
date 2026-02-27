@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DomainEntry.
 class DomainEntryArgs {
   /// Name of the Lightsail domain in which to create the entry.
-  final Input<String> domainName;
+  final pulumi.Input<String> domainName;
 
   /// Whether the entry should be an alias. Default: `false`.
-  final Input<bool>? isAlias;
+  final pulumi.Input<bool>? isAlias;
 
   /// Name of the entry record.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Target of the domain entry.
-  final Input<String> target;
+  final pulumi.Input<String> target;
 
   /// Type of record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `NS`, `SOA`, `SRV`, `TXT`.
   ///
   /// The following arguments are optional:
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   DomainEntryArgs({
     required this.domainName,
@@ -55,12 +55,12 @@ class DomainEntryArgs {
 
   factory DomainEntryArgs.fromMap(Map<String, dynamic> map) {
     return DomainEntryArgs(
-      domainName: Input.asInput<String>(map['domainName']),
-      isAlias: Input.asOptionalInput<bool>(map['isAlias']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      target: Input.asInput<String>(map['target']),
-      type: Input.asInput<String>(map['type']),
+      domainName: pulumi.Input.asInput<String>(map['domainName']),
+      isAlias: pulumi.Input.asOptionalInput<bool>(map['isAlias']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      target: pulumi.Input.asInput<String>(map['target']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

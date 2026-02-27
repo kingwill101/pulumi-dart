@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWebAcl.
 class GetWebAclArgs {
   /// Name of the WAF Web ACL.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   GetWebAclArgs({
     required this.name,
@@ -19,7 +19,7 @@ class GetWebAclArgs {
 
   factory GetWebAclArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAclArgs(
-      name: Input.asInput<String>(map['name']),
+      name: pulumi.Input.asInput<String>(map['name']),
     );
   }
 }

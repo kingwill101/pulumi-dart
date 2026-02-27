@@ -1,37 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_encryption_configuration/rule_group_encryption_configuration.dart';
 import '../rule_group_rule_group/rule_group_rule_group.dart';
 
 /// The set of arguments for RuleGroup.
 class RuleGroupArgs {
   /// The maximum number of operating resources that this rule group can use. For a stateless rule group, the capacity required is the sum of the capacity requirements of the individual rules. For a stateful rule group, the minimum capacity required is the number of individual rules.
-  final Input<int> capacity;
+  final pulumi.Input<int> capacity;
 
   /// A friendly description of the rule group.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// KMS encryption configuration settings. See Encryption Configuration below for details.
-  final Input<RuleGroupEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<RuleGroupEncryptionConfiguration>? encryptionConfiguration;
 
   /// A friendly name of the rule group.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A configuration block that defines the rule group rules. Required unless `rules` is specified. See Rule Group below for details.
-  final Input<RuleGroupRuleGroup>? ruleGroup;
+  final pulumi.Input<RuleGroupRuleGroup>? ruleGroup;
 
   /// The stateful rule group rules specifications in Suricata file format, with one rule per line. Use this to import your existing Suricata compatible rule groups. Required unless `rule_group` is specified.
-  final Input<String>? rules;
+  final pulumi.Input<String>? rules;
 
   /// A map of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Whether the rule group is stateless (containing stateless rules) or stateful (containing stateful rules). Valid values include: `STATEFUL` or `STATELESS`.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   RuleGroupArgs({
     required this.capacity,
@@ -54,7 +54,7 @@ class RuleGroupArgs {
     }
     final encryptionConfigurationValue = encryptionConfiguration;
     if (encryptionConfigurationValue != null) {
-      map['encryptionConfiguration'] = Input.mapOptionalInputValue<
+      map['encryptionConfiguration'] = pulumi.Input.mapOptionalInputValue<
               RuleGroupEncryptionConfiguration, Map<String, dynamic>>(
           encryptionConfigurationValue, (value) => value.toMap());
     }
@@ -68,9 +68,8 @@ class RuleGroupArgs {
     }
     final ruleGroupValue = ruleGroup;
     if (ruleGroupValue != null) {
-      map['ruleGroup'] =
-          Input.mapOptionalInputValue<RuleGroupRuleGroup, Map<String, dynamic>>(
-              ruleGroupValue, (value) => value.toMap());
+      map['ruleGroup'] = pulumi.Input.mapOptionalInputValue<RuleGroupRuleGroup,
+          Map<String, dynamic>>(ruleGroupValue, (value) => value.toMap());
     }
     final rulesValue = rules;
     if (rulesValue != null) {
@@ -86,17 +85,18 @@ class RuleGroupArgs {
 
   factory RuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return RuleGroupArgs(
-      capacity: Input.asInput<int>(map['capacity']),
-      description: Input.asOptionalInput<String>(map['description']),
+      capacity: pulumi.Input.asInput<int>(map['capacity']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       encryptionConfiguration:
-          Input.asOptionalInput<RuleGroupEncryptionConfiguration>(
+          pulumi.Input.asOptionalInput<RuleGroupEncryptionConfiguration>(
               map['encryptionConfiguration']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      ruleGroup: Input.asOptionalInput<RuleGroupRuleGroup>(map['ruleGroup']),
-      rules: Input.asOptionalInput<String>(map['rules']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      type: Input.asInput<String>(map['type']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      ruleGroup:
+          pulumi.Input.asOptionalInput<RuleGroupRuleGroup>(map['ruleGroup']),
+      rules: pulumi.Input.asOptionalInput<String>(map['rules']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

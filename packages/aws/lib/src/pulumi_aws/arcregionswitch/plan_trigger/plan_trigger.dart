@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_trigger_condition/plan_trigger_condition.dart';
 
 class PlanTrigger {
@@ -33,7 +33,7 @@ class PlanTrigger {
     final conditionsValue = conditions;
     if (conditionsValue != null) {
       map['conditions'] =
-          Input.encodeList<PlanTriggerCondition, Map<String, dynamic>>(
+          pulumi.Input.encodeList<PlanTriggerCondition, Map<String, dynamic>>(
               conditionsValue, (value) => value.toMap());
     }
     final descriptionValue = description;
@@ -50,7 +50,7 @@ class PlanTrigger {
       action: map['action'] as String,
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<PlanTriggerCondition>(
+          : pulumi.Input.decodeList<PlanTriggerCondition>(
               map['conditions'],
               (value) => PlanTriggerCondition.fromMap(
                   (value as Map).cast<String, dynamic>())),

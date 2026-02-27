@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../organizations_access_timeouts/organizations_access_timeouts.dart';
 import 'organizations_access_args.dart';
 
@@ -21,20 +21,20 @@ import 'organizations_access_args.dart';
 /// ```sh
 /// $ pulumi import aws:notifications/organizationsAccess:OrganizationsAccess example 123456789012
 /// ```
-class OrganizationsAccess extends CustomResource {
+class OrganizationsAccess extends pulumi.CustomResource {
   /// Whether to enable organizations access for AWS User Notifications in AWS Organizations. When set to `true`, enables organizations access. When set to `false`, disables organizations access.
-  late final Output<bool> enabled;
-  late final Output<OrganizationsAccessTimeouts?> timeouts;
+  late final pulumi.Output<bool> enabled;
+  late final pulumi.Output<OrganizationsAccessTimeouts?> timeouts;
 
   OrganizationsAccess(
     String name, {
     OrganizationsAccessArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:notifications/organizationsAccess:OrganizationsAccess',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.enabled = registerOutput<bool>('enabled');
     this.timeouts = registerOutput<OrganizationsAccessTimeouts?>('timeouts');

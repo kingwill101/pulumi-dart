@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AlternativeContact.
 class AlternativeContactArgs {
   /// ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// Type of the alternate contact. Allowed values are: `BILLING`, `OPERATIONS`, `SECURITY`.
-  final Input<String> alternateContactType;
+  final pulumi.Input<String> alternateContactType;
 
   /// An email address for the alternate contact.
-  final Input<String> emailAddress;
+  final pulumi.Input<String> emailAddress;
 
   /// Name of the alternate contact.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Phone number for the alternate contact.
-  final Input<String> phoneNumber;
+  final pulumi.Input<String> phoneNumber;
 
   /// Title for the alternate contact.
-  final Input<String> title;
+  final pulumi.Input<String> title;
 
   AlternativeContactArgs({
     this.accountId,
@@ -50,12 +50,13 @@ class AlternativeContactArgs {
 
   factory AlternativeContactArgs.fromMap(Map<String, dynamic> map) {
     return AlternativeContactArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
-      alternateContactType: Input.asInput<String>(map['alternateContactType']),
-      emailAddress: Input.asInput<String>(map['emailAddress']),
-      name: Input.asOptionalInput<String>(map['name']),
-      phoneNumber: Input.asInput<String>(map['phoneNumber']),
-      title: Input.asInput<String>(map['title']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
+      alternateContactType:
+          pulumi.Input.asInput<String>(map['alternateContactType']),
+      emailAddress: pulumi.Input.asInput<String>(map['emailAddress']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      phoneNumber: pulumi.Input.asInput<String>(map['phoneNumber']),
+      title: pulumi.Input.asInput<String>(map['title']),
     );
   }
 }

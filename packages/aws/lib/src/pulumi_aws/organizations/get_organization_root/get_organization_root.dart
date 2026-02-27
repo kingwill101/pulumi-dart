@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_organization_root_policy_type/get_organization_root_policy_type.dart';
 
 class GetOrganizationRoot {
@@ -28,9 +28,8 @@ class GetOrganizationRoot {
     map['arn'] = arn;
     map['id'] = id;
     map['name'] = name;
-    map['policyTypes'] =
-        Input.encodeList<GetOrganizationRootPolicyType, Map<String, dynamic>>(
-            policyTypes, (value) => value.toMap());
+    map['policyTypes'] = pulumi.Input.encodeList<GetOrganizationRootPolicyType,
+        Map<String, dynamic>>(policyTypes, (value) => value.toMap());
     return map;
   }
 
@@ -39,7 +38,7 @@ class GetOrganizationRoot {
       arn: map['arn'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      policyTypes: Input.decodeList<GetOrganizationRootPolicyType>(
+      policyTypes: pulumi.Input.decodeList<GetOrganizationRootPolicyType>(
           map['policyTypes'],
           (value) => GetOrganizationRootPolicyType.fromMap(
               (value as Map).cast<String, dynamic>())),

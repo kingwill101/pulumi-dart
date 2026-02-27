@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_index_document_metadata_configuration_update_relevance/get_index_document_metadata_configuration_update_relevance.dart';
 import '../get_index_document_metadata_configuration_update_search/get_index_document_metadata_configuration_update_search.dart';
 
@@ -27,10 +27,10 @@ class GetIndexDocumentMetadataConfigurationUpdate {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['name'] = name;
-    map['relevances'] = Input.encodeList<
+    map['relevances'] = pulumi.Input.encodeList<
         GetIndexDocumentMetadataConfigurationUpdateRelevance,
         Map<String, dynamic>>(relevances, (value) => value.toMap());
-    map['searches'] = Input.encodeList<
+    map['searches'] = pulumi.Input.encodeList<
         GetIndexDocumentMetadataConfigurationUpdateSearch,
         Map<String, dynamic>>(searches, (value) => value.toMap());
     map['type'] = type;
@@ -41,18 +41,17 @@ class GetIndexDocumentMetadataConfigurationUpdate {
       Map<String, dynamic> map) {
     return GetIndexDocumentMetadataConfigurationUpdate(
       name: map['name'] as String,
-      relevances: Input.decodeList<
+      relevances: pulumi.Input.decodeList<
               GetIndexDocumentMetadataConfigurationUpdateRelevance>(
           map['relevances'],
           (value) =>
               GetIndexDocumentMetadataConfigurationUpdateRelevance.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      searches:
-          Input.decodeList<GetIndexDocumentMetadataConfigurationUpdateSearch>(
-              map['searches'],
-              (value) =>
-                  GetIndexDocumentMetadataConfigurationUpdateSearch.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      searches: pulumi.Input.decodeList<
+              GetIndexDocumentMetadataConfigurationUpdateSearch>(
+          map['searches'],
+          (value) => GetIndexDocumentMetadataConfigurationUpdateSearch.fromMap(
+              (value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_endpoint_associations_association_dns_entry/get_endpoint_associations_association_dns_entry.dart';
 import '../get_endpoint_associations_association_private_dns_entry/get_endpoint_associations_association_private_dns_entry.dart';
 
@@ -47,11 +47,11 @@ class GetEndpointAssociationsAssociation {
     final map = <String, dynamic>{};
     map['associatedResourceAccessibility'] = associatedResourceAccessibility;
     map['associatedResourceArn'] = associatedResourceArn;
-    map['dnsEntries'] = Input.encodeList<
+    map['dnsEntries'] = pulumi.Input.encodeList<
         GetEndpointAssociationsAssociationDnsEntry,
         Map<String, dynamic>>(dnsEntries, (value) => value.toMap());
     map['id'] = id;
-    map['privateDnsEntries'] = Input.encodeList<
+    map['privateDnsEntries'] = pulumi.Input.encodeList<
         GetEndpointAssociationsAssociationPrivateDnsEntry,
         Map<String, dynamic>>(privateDnsEntries, (value) => value.toMap());
     map['resourceConfigurationGroupArn'] = resourceConfigurationGroupArn;
@@ -66,17 +66,17 @@ class GetEndpointAssociationsAssociation {
       associatedResourceAccessibility:
           map['associatedResourceAccessibility'] as String,
       associatedResourceArn: map['associatedResourceArn'] as String,
-      dnsEntries: Input.decodeList<GetEndpointAssociationsAssociationDnsEntry>(
-          map['dnsEntries'],
-          (value) => GetEndpointAssociationsAssociationDnsEntry.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      dnsEntries:
+          pulumi.Input.decodeList<GetEndpointAssociationsAssociationDnsEntry>(
+              map['dnsEntries'],
+              (value) => GetEndpointAssociationsAssociationDnsEntry.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      privateDnsEntries:
-          Input.decodeList<GetEndpointAssociationsAssociationPrivateDnsEntry>(
-              map['privateDnsEntries'],
-              (value) =>
-                  GetEndpointAssociationsAssociationPrivateDnsEntry.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      privateDnsEntries: pulumi.Input.decodeList<
+              GetEndpointAssociationsAssociationPrivateDnsEntry>(
+          map['privateDnsEntries'],
+          (value) => GetEndpointAssociationsAssociationPrivateDnsEntry.fromMap(
+              (value as Map).cast<String, dynamic>())),
       resourceConfigurationGroupArn:
           map['resourceConfigurationGroupArn'] as String,
       serviceNetworkArn: map['serviceNetworkArn'] as String,

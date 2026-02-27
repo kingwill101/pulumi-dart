@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../global_cluster_global_cluster_member/global_cluster_global_cluster_member.dart';
 import 'global_cluster_args.dart';
 
@@ -25,52 +25,52 @@ import 'global_cluster_args.dart';
 /// ```
 ///
 /// Certain resource arguments, like `source_db_cluster_identifier`, do not have an API method for reading the information after creation. If the argument is set in the Pulumi program on an imported resource, Pulumi will always show a difference. To workaround this behavior, either omit the argument from the Pulumi program or use `ignore_changes` to hide the difference. For example:
-class GlobalCluster extends CustomResource {
+class GlobalCluster extends pulumi.CustomResource {
   /// Global Cluster Amazon Resource Name (ARN)
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Name for an automatically created database on cluster creation.
-  late final Output<String?> databaseName;
+  late final pulumi.Output<String?> databaseName;
 
   /// If the Global Cluster should have deletion protection enabled. The database can't be deleted when this value is set to `true`. The default is `false`.
-  late final Output<bool?> deletionProtection;
+  late final pulumi.Output<bool?> deletionProtection;
 
   /// Name of the database engine to be used for this DB cluster. The provider will only perform drift detection if a configuration value is provided. Current Valid values: `docdb`. Defaults to `docdb`. Conflicts with `source_db_cluster_identifier`.
-  late final Output<String> engine;
+  late final pulumi.Output<String> engine;
 
   /// Engine version of the global database. Upgrading the engine version will result in all cluster members being immediately updated and will.
   /// * **NOTE:** Upgrading major versions is not supported.
-  late final Output<String> engineVersion;
+  late final pulumi.Output<String> engineVersion;
 
   /// The global cluster identifier.
-  late final Output<String> globalClusterIdentifier;
+  late final pulumi.Output<String> globalClusterIdentifier;
 
   /// Set of objects containing Global Cluster members.
-  late final Output<List<GlobalClusterGlobalClusterMember>>
+  late final pulumi.Output<List<GlobalClusterGlobalClusterMember>>
       globalClusterMembers;
 
   /// AWS Region-unique, immutable identifier for the global database cluster. This identifier is found in AWS CloudTrail log entries whenever the AWS KMS key for the DB cluster is accessed.
-  late final Output<String> globalClusterResourceId;
+  late final pulumi.Output<String> globalClusterResourceId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Amazon Resource Name (ARN) to use as the primary DB Cluster of the Global Cluster on creation. The provider cannot perform drift detection of this value.
-  late final Output<String> sourceDbClusterIdentifier;
-  late final Output<String> status;
+  late final pulumi.Output<String> sourceDbClusterIdentifier;
+  late final pulumi.Output<String> status;
 
   /// Specifies whether the DB cluster is encrypted. The default is `false` unless `source_db_cluster_identifier` is specified and encrypted. The provider will only perform drift detection if a configuration value is provided.
-  late final Output<bool> storageEncrypted;
+  late final pulumi.Output<bool> storageEncrypted;
 
   GlobalCluster(
     String name, {
     GlobalClusterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:docdb/globalCluster:GlobalCluster',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.databaseName = registerOutput<String?>('databaseName');

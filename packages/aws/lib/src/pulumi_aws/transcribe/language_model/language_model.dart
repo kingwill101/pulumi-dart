@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../language_model_input_data_config/language_model_input_data_config.dart';
 import 'language_model_args.dart';
 
@@ -19,36 +19,36 @@ import 'language_model_args.dart';
 /// ```sh
 /// $ pulumi import aws:transcribe/languageModel:LanguageModel example example-name
 /// ```
-class LanguageModel extends CustomResource {
+class LanguageModel extends pulumi.CustomResource {
   /// ARN of the LanguageModel.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Name of reference base model.
-  late final Output<String> baseModelName;
+  late final pulumi.Output<String> baseModelName;
 
   /// The input data config for the LanguageModel. See Input Data Config for more details.
-  late final Output<LanguageModelInputDataConfig> inputDataConfig;
+  late final pulumi.Output<LanguageModelInputDataConfig> inputDataConfig;
 
   /// The language code you selected for your language model. Refer to the [supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page for accepted codes.
-  late final Output<String> languageCode;
+  late final pulumi.Output<String> languageCode;
 
   /// The model name.
-  late final Output<String> modelName;
+  late final pulumi.Output<String> modelName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   LanguageModel(
     String name, {
     LanguageModelArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:transcribe/languageModel:LanguageModel',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.baseModelName = registerOutput<String>('baseModelName');

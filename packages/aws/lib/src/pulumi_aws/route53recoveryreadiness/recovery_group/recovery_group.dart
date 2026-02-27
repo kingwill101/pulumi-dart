@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'recovery_group_args.dart';
 
 /// Provides an AWS Route 53 Recovery Readiness Recovery Group.
@@ -14,33 +14,33 @@ import 'recovery_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53recoveryreadiness/recoveryGroup:RecoveryGroup my-high-availability-app my-high-availability-app
 /// ```
-class RecoveryGroup extends CustomResource {
+class RecoveryGroup extends pulumi.CustomResource {
   /// ARN of the recovery group
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// List of cell arns to add as nested fault domains within this recovery group
-  late final Output<List<String>?> cells;
+  late final pulumi.Output<List<String>?> cells;
 
   /// A unique name describing the recovery group.
   ///
   /// The following arguments are optional:
-  late final Output<String> recoveryGroupName;
+  late final pulumi.Output<String> recoveryGroupName;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   RecoveryGroup(
     String name, {
     RecoveryGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53recoveryreadiness/recoveryGroup:RecoveryGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.cells = registerOutput<List<String>?>('cells');

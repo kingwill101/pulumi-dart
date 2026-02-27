@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'query_log_args.dart';
 
 /// Provides a Route53 query logging configuration resource.
@@ -20,25 +20,25 @@ import 'query_log_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53/queryLog:QueryLog example_com xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 /// ```
-class QueryLog extends CustomResource {
+class QueryLog extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the Query Logging Config.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// CloudWatch log group ARN to send query logs.
-  late final Output<String> cloudwatchLogGroupArn;
+  late final pulumi.Output<String> cloudwatchLogGroupArn;
 
   /// Route53 hosted zone ID to enable query logs.
-  late final Output<String> zoneId;
+  late final pulumi.Output<String> zoneId;
 
   QueryLog(
     String name, {
     QueryLogArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53/queryLog:QueryLog',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.cloudwatchLogGroupArn =

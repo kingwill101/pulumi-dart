@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../location_smb_mount_options/location_smb_mount_options.dart';
 import 'location_smb_args.dart';
 
@@ -24,50 +24,50 @@ import 'location_smb_args.dart';
 /// ```sh
 /// $ pulumi import aws:datasync/locationSmb:LocationSmb example arn:aws:datasync:us-east-1:123456789012:location/loc-12345678901234567
 /// ```
-class LocationSmb extends CustomResource {
+class LocationSmb extends pulumi.CustomResource {
   /// A list of DataSync Agent ARNs with which this location will be associated.
-  late final Output<List<String>> agentArns;
+  late final pulumi.Output<List<String>> agentArns;
 
   /// Amazon Resource Name (ARN) of the DataSync Location.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The name of the Windows domain the SMB server belongs to.
-  late final Output<String> domain;
+  late final pulumi.Output<String> domain;
 
   /// Configuration block containing mount options used by DataSync to access the SMB Server. Can be `AUTOMATIC`, `SMB2`, or `SMB3`.
-  late final Output<LocationSmbMountOptions?> mountOptions;
+  late final pulumi.Output<LocationSmbMountOptions?> mountOptions;
 
   /// The password of the user who can mount the share and has file permissions in the SMB.
-  late final Output<String> password;
+  late final pulumi.Output<String> password;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Specifies the IP address or DNS name of the SMB server. The DataSync Agent(s) use this to mount the SMB share.
-  late final Output<String> serverHostname;
+  late final pulumi.Output<String> serverHostname;
 
   /// Subdirectory to perform actions as source or destination. Should be exported by the NFS server.
-  late final Output<String> subdirectory;
+  late final pulumi.Output<String> subdirectory;
 
   /// Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<String> uri;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<String> uri;
 
   /// The user who can mount the share and has file and folder permissions in the SMB share.
-  late final Output<String> user;
+  late final pulumi.Output<String> user;
 
   LocationSmb(
     String name, {
     LocationSmbArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:datasync/locationSmb:LocationSmb',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.agentArns = registerOutput<List<String>>('agentArns');
     this.arn = registerOutput<String>('arn');

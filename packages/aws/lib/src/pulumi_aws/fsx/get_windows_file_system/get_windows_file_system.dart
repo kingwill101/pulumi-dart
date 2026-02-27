@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_windows_file_system_args.dart';
 import 'get_windows_file_system_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_windows_file_system_result.dart';
 /// ### Root volume Example
 Future<GetWindowsFileSystemResult> getWindowsFileSystem(
   GetWindowsFileSystemArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:fsx/getWindowsFileSystem:getWindowsFileSystem',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWindowsFileSystemResult.fromMap(result);
 }

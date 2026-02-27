@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_workgroup_endpoint_vpc_endpoint_network_interface/get_workgroup_endpoint_vpc_endpoint_network_interface.dart';
 
 class GetWorkgroupEndpointVpcEndpoint {
@@ -21,7 +21,7 @@ class GetWorkgroupEndpointVpcEndpoint {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['networkInterfaces'] = Input.encodeList<
+    map['networkInterfaces'] = pulumi.Input.encodeList<
         GetWorkgroupEndpointVpcEndpointNetworkInterface,
         Map<String, dynamic>>(networkInterfaces, (value) => value.toMap());
     map['vpcEndpointId'] = vpcEndpointId;
@@ -31,12 +31,11 @@ class GetWorkgroupEndpointVpcEndpoint {
 
   factory GetWorkgroupEndpointVpcEndpoint.fromMap(Map<String, dynamic> map) {
     return GetWorkgroupEndpointVpcEndpoint(
-      networkInterfaces:
-          Input.decodeList<GetWorkgroupEndpointVpcEndpointNetworkInterface>(
-              map['networkInterfaces'],
-              (value) =>
-                  GetWorkgroupEndpointVpcEndpointNetworkInterface.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      networkInterfaces: pulumi.Input.decodeList<
+              GetWorkgroupEndpointVpcEndpointNetworkInterface>(
+          map['networkInterfaces'],
+          (value) => GetWorkgroupEndpointVpcEndpointNetworkInterface.fromMap(
+              (value as Map).cast<String, dynamic>())),
       vpcEndpointId: map['vpcEndpointId'] as String,
       vpcId: map['vpcId'] as String,
     );

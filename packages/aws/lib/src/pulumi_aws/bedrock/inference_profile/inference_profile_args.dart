@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../inference_profile_model_source/inference_profile_model_source.dart';
 import '../inference_profile_timeouts/inference_profile_timeouts.dart';
 
 /// The set of arguments for InferenceProfile.
 class InferenceProfileArgs {
   /// The description of the inference profile.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// The source of the model this inference profile will track metrics and cost for. See `model_source`.
   ///
   /// The following arguments are optional:
-  final Input<InferenceProfileModelSource>? modelSource;
+  final pulumi.Input<InferenceProfileModelSource>? modelSource;
 
   /// The name of the inference profile.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value mapping of resource tags for the inference profile.
-  final Input<Map<String, String>>? tags;
-  final Input<InferenceProfileTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<InferenceProfileTimeouts>? timeouts;
 
   InferenceProfileArgs({
     this.description,
@@ -41,7 +41,7 @@ class InferenceProfileArgs {
     }
     final modelSourceValue = modelSource;
     if (modelSourceValue != null) {
-      map['modelSource'] = Input.mapOptionalInputValue<
+      map['modelSource'] = pulumi.Input.mapOptionalInputValue<
           InferenceProfileModelSource,
           Map<String, dynamic>>(modelSourceValue, (value) => value.toMap());
     }
@@ -59,7 +59,8 @@ class InferenceProfileArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<InferenceProfileTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
+          InferenceProfileTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
@@ -67,14 +68,14 @@ class InferenceProfileArgs {
 
   factory InferenceProfileArgs.fromMap(Map<String, dynamic> map) {
     return InferenceProfileArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      modelSource: Input.asOptionalInput<InferenceProfileModelSource>(
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      modelSource: pulumi.Input.asOptionalInput<InferenceProfileModelSource>(
           map['modelSource']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts:
-          Input.asOptionalInput<InferenceProfileTimeouts>(map['timeouts']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<InferenceProfileTimeouts>(
+          map['timeouts']),
     );
   }
 }

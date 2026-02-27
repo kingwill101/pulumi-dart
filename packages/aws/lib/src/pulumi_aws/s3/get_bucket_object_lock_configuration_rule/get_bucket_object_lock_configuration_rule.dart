@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bucket_object_lock_configuration_rule_default_retention/get_bucket_object_lock_configuration_rule_default_retention.dart';
 
 class GetBucketObjectLockConfigurationRule {
@@ -14,7 +14,7 @@ class GetBucketObjectLockConfigurationRule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['defaultRetentions'] = Input.encodeList<
+    map['defaultRetentions'] = pulumi.Input.encodeList<
         GetBucketObjectLockConfigurationRuleDefaultRetention,
         Map<String, dynamic>>(defaultRetentions, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class GetBucketObjectLockConfigurationRule {
   factory GetBucketObjectLockConfigurationRule.fromMap(
       Map<String, dynamic> map) {
     return GetBucketObjectLockConfigurationRule(
-      defaultRetentions: Input.decodeList<
+      defaultRetentions: pulumi.Input.decodeList<
               GetBucketObjectLockConfigurationRuleDefaultRetention>(
           map['defaultRetentions'],
           (value) =>

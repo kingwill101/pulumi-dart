@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_instance_storage_config_storage_config_kinesis_firehose_config/get_instance_storage_config_storage_config_kinesis_firehose_config.dart';
 import '../get_instance_storage_config_storage_config_kinesis_stream_config/get_instance_storage_config_storage_config_kinesis_stream_config.dart';
 import '../get_instance_storage_config_storage_config_kinesis_video_stream_config/get_instance_storage_config_storage_config_kinesis_video_stream_config.dart';
@@ -35,17 +35,17 @@ class GetInstanceStorageConfigStorageConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['kinesisFirehoseConfigs'] = Input.encodeList<
+    map['kinesisFirehoseConfigs'] = pulumi.Input.encodeList<
         GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig,
         Map<String, dynamic>>(kinesisFirehoseConfigs, (value) => value.toMap());
-    map['kinesisStreamConfigs'] = Input.encodeList<
+    map['kinesisStreamConfigs'] = pulumi.Input.encodeList<
         GetInstanceStorageConfigStorageConfigKinesisStreamConfig,
         Map<String, dynamic>>(kinesisStreamConfigs, (value) => value.toMap());
-    map['kinesisVideoStreamConfigs'] = Input.encodeList<
+    map['kinesisVideoStreamConfigs'] = pulumi.Input.encodeList<
             GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig,
             Map<String, dynamic>>(
         kinesisVideoStreamConfigs, (value) => value.toMap());
-    map['s3Configs'] = Input.encodeList<
+    map['s3Configs'] = pulumi.Input.encodeList<
         GetInstanceStorageConfigStorageConfigS3Config,
         Map<String, dynamic>>(s3Configs, (value) => value.toMap());
     map['storageType'] = storageType;
@@ -55,28 +55,28 @@ class GetInstanceStorageConfigStorageConfig {
   factory GetInstanceStorageConfigStorageConfig.fromMap(
       Map<String, dynamic> map) {
     return GetInstanceStorageConfigStorageConfig(
-      kinesisFirehoseConfigs: Input.decodeList<
+      kinesisFirehoseConfigs: pulumi.Input.decodeList<
               GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig>(
           map['kinesisFirehoseConfigs'],
           (value) => GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig
               .fromMap((value as Map).cast<String, dynamic>())),
-      kinesisStreamConfigs: Input.decodeList<
+      kinesisStreamConfigs: pulumi.Input.decodeList<
               GetInstanceStorageConfigStorageConfigKinesisStreamConfig>(
           map['kinesisStreamConfigs'],
           (value) =>
               GetInstanceStorageConfigStorageConfigKinesisStreamConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      kinesisVideoStreamConfigs: Input.decodeList<
+      kinesisVideoStreamConfigs: pulumi.Input.decodeList<
               GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig>(
           map['kinesisVideoStreamConfigs'],
           (value) =>
               GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig
                   .fromMap((value as Map).cast<String, dynamic>())),
-      s3Configs:
-          Input.decodeList<GetInstanceStorageConfigStorageConfigS3Config>(
-              map['s3Configs'],
-              (value) => GetInstanceStorageConfigStorageConfigS3Config.fromMap(
-                  (value as Map).cast<String, dynamic>())),
+      s3Configs: pulumi.Input.decodeList<
+              GetInstanceStorageConfigStorageConfigS3Config>(
+          map['s3Configs'],
+          (value) => GetInstanceStorageConfigStorageConfigS3Config.fromMap(
+              (value as Map).cast<String, dynamic>())),
       storageType: map['storageType'] as String,
     );
   }

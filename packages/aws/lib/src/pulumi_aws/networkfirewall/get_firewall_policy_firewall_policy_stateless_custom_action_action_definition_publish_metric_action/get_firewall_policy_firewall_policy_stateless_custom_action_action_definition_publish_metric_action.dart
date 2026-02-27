@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_firewall_policy_firewall_policy_stateless_custom_action_action_definition_publish_metric_action_dimension/get_firewall_policy_firewall_policy_stateless_custom_action_action_definition_publish_metric_action_dimension.dart';
 
 class GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction {
@@ -14,7 +14,7 @@ class GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublis
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dimensions'] = Input.encodeList<
+    map['dimensions'] = pulumi.Input.encodeList<
         GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension,
         Map<String, dynamic>>(dimensions, (value) => value.toMap());
     return map;
@@ -23,7 +23,7 @@ class GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublis
   factory GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction.fromMap(
       Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction(
-      dimensions: Input.decodeList<
+      dimensions: pulumi.Input.decodeList<
               GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension>(
           map['dimensions'],
           (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../distribution_trusted_signer_item/distribution_trusted_signer_item.dart';
 
 class DistributionTrustedSigner {
@@ -23,9 +23,8 @@ class DistributionTrustedSigner {
     }
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] =
-          Input.encodeList<DistributionTrustedSignerItem, Map<String, dynamic>>(
-              itemsValue, (value) => value.toMap());
+      map['items'] = pulumi.Input.encodeList<DistributionTrustedSignerItem,
+          Map<String, dynamic>>(itemsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -35,7 +34,7 @@ class DistributionTrustedSigner {
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       items: map['items'] == null
           ? null
-          : Input.decodeList<DistributionTrustedSignerItem>(
+          : pulumi.Input.decodeList<DistributionTrustedSignerItem>(
               map['items'],
               (value) => DistributionTrustedSignerItem.fromMap(
                   (value as Map).cast<String, dynamic>())),

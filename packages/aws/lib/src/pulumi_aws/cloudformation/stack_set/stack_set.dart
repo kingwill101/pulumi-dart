@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../stack_set_auto_deployment/stack_set_auto_deployment.dart';
 import '../stack_set_managed_execution/stack_set_managed_execution.dart';
 import '../stack_set_operation_preferences/stack_set_operation_preferences.dart';
@@ -32,70 +32,70 @@ import 'stack_set_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudformation/stackSet:StackSet example example,DELEGATED_ADMIN
 /// ```
-class StackSet extends CustomResource {
+class StackSet extends pulumi.CustomResource {
   /// Amazon Resource Number (ARN) of the IAM Role in the administrator account. This must be defined when using the `SELF_MANAGED` permission model.
-  late final Output<String?> administrationRoleArn;
+  late final pulumi.Output<String?> administrationRoleArn;
 
   /// Amazon Resource Name (ARN) of the StackSet.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Configuration block containing the auto-deployment model for your StackSet. This can only be defined when using the `SERVICE_MANAGED` permission model.
-  late final Output<StackSetAutoDeployment?> autoDeployment;
+  late final pulumi.Output<StackSetAutoDeployment?> autoDeployment;
 
   /// Specifies whether you are acting as an account administrator in the organization's management account or as a delegated administrator in a member account. Valid values: `SELF` (default), `DELEGATED_ADMIN`.
-  late final Output<String?> callAs;
+  late final pulumi.Output<String?> callAs;
 
   /// A list of capabilities. Valid values: `CAPABILITY_IAM`, `CAPABILITY_NAMED_IAM`, `CAPABILITY_AUTO_EXPAND`.
-  late final Output<List<String>?> capabilities;
+  late final pulumi.Output<List<String>?> capabilities;
 
   /// Description of the StackSet.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Name of the IAM Role in all target accounts for StackSet operations. Defaults to `AWSCloudFormationStackSetExecutionRole` when using the `SELF_MANAGED` permission model. This should not be defined when using the `SERVICE_MANAGED` permission model.
-  late final Output<String> executionRoleName;
+  late final pulumi.Output<String> executionRoleName;
 
   /// Configuration block to allow StackSets to perform non-conflicting operations concurrently and queues conflicting operations.
-  late final Output<StackSetManagedExecution?> managedExecution;
+  late final pulumi.Output<StackSetManagedExecution?> managedExecution;
 
   /// Name of the StackSet. The name must be unique in the region where you create your StackSet. The name can contain only alphanumeric characters (case-sensitive) and hyphens. It must start with an alphabetic character and cannot be longer than 128 characters.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Preferences for how AWS CloudFormation performs a stack set update.
-  late final Output<StackSetOperationPreferences?> operationPreferences;
+  late final pulumi.Output<StackSetOperationPreferences?> operationPreferences;
 
   /// Key-value map of input parameters for the StackSet template. All template parameters, including those with a `Default`, must be configured or ignored with `lifecycle` configuration block `ignore_changes` argument. All `NoEcho` template parameters must be ignored with the `lifecycle` configuration block `ignore_changes` argument.
-  late final Output<Map<String, String>?> parameters;
+  late final pulumi.Output<Map<String, String>?> parameters;
 
   /// Describes how the IAM roles required for your StackSet are created. Valid values: `SELF_MANAGED` (default), `SERVICE_MANAGED`.
-  late final Output<String?> permissionModel;
+  late final pulumi.Output<String?> permissionModel;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Unique identifier of the StackSet.
-  late final Output<String> stackSetId;
+  late final pulumi.Output<String> stackSetId;
 
   /// Key-value map of tags to associate with this StackSet and the Stacks created from it. AWS CloudFormation also propagates these tags to supported resources that are created in the Stacks. A maximum number of 50 tags can be specified. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// String containing the CloudFormation template body. Maximum size: 51,200 bytes. Conflicts with `template_url`.
-  late final Output<String> templateBody;
+  late final pulumi.Output<String> templateBody;
 
   /// String containing the location of a file containing the CloudFormation template body. The URL must point to a template that is located in an Amazon S3 bucket. Maximum location file size: 460,800 bytes. Conflicts with `template_body`.
-  late final Output<String?> templateUrl;
+  late final pulumi.Output<String?> templateUrl;
 
   StackSet(
     String name, {
     StackSetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudformation/stackSet:StackSet',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.administrationRoleArn =
         registerOutput<String?>('administrationRoleArn');

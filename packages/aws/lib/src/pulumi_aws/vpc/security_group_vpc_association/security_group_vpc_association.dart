@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../security_group_vpc_association_timeouts/security_group_vpc_association_timeouts.dart';
 import 'security_group_vpc_association_args.dart';
 
@@ -28,29 +28,29 @@ import 'security_group_vpc_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:vpc/securityGroupVpcAssociation:SecurityGroupVpcAssociation example sg-12345,vpc-67890
 /// ```
-class SecurityGroupVpcAssociation extends CustomResource {
+class SecurityGroupVpcAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the security group.
-  late final Output<String> securityGroupId;
+  late final pulumi.Output<String> securityGroupId;
 
   /// State of the VPC association. See the [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupVpcAssociation.html) for possible values.
-  late final Output<String> state;
-  late final Output<SecurityGroupVpcAssociationTimeouts?> timeouts;
+  late final pulumi.Output<String> state;
+  late final pulumi.Output<SecurityGroupVpcAssociationTimeouts?> timeouts;
 
   /// The ID of the VPC to make the association with.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   SecurityGroupVpcAssociation(
     String name, {
     SecurityGroupVpcAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:vpc/securityGroupVpcAssociation:SecurityGroupVpcAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.securityGroupId = registerOutput<String>('securityGroupId');

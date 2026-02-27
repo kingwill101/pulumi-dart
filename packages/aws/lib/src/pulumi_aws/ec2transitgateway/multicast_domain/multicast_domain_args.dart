@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for MulticastDomain.
 class MulticastDomainArgs {
   /// Whether to automatically accept cross-account subnet associations that are associated with the EC2 Transit Gateway Multicast Domain. Valid values: `disable`, `enable`. Default value: `disable`.
-  final Input<String>? autoAcceptSharedAssociations;
+  final pulumi.Input<String>? autoAcceptSharedAssociations;
 
   /// Whether to enable Internet Group Management Protocol (IGMP) version 2 for the EC2 Transit Gateway Multicast Domain. Valid values: `disable`, `enable`. Default value: `disable`.
-  final Input<String>? igmpv2Support;
+  final pulumi.Input<String>? igmpv2Support;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Whether to enable support for statically configuring multicast group sources for the EC2 Transit Gateway Multicast Domain. Valid values: `disable`, `enable`. Default value: `disable`.
-  final Input<String>? staticSourcesSupport;
+  final pulumi.Input<String>? staticSourcesSupport;
 
   /// Key-value tags for the EC2 Transit Gateway Multicast Domain. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// EC2 Transit Gateway identifier. The EC2 Transit Gateway must have `multicast_support` enabled.
-  final Input<String> transitGatewayId;
+  final pulumi.Input<String> transitGatewayId;
 
   MulticastDomainArgs({
     this.autoAcceptSharedAssociations,
@@ -59,14 +59,14 @@ class MulticastDomainArgs {
 
   factory MulticastDomainArgs.fromMap(Map<String, dynamic> map) {
     return MulticastDomainArgs(
-      autoAcceptSharedAssociations:
-          Input.asOptionalInput<String>(map['autoAcceptSharedAssociations']),
-      igmpv2Support: Input.asOptionalInput<String>(map['igmpv2Support']),
-      region: Input.asOptionalInput<String>(map['region']),
+      autoAcceptSharedAssociations: pulumi.Input.asOptionalInput<String>(
+          map['autoAcceptSharedAssociations']),
+      igmpv2Support: pulumi.Input.asOptionalInput<String>(map['igmpv2Support']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       staticSourcesSupport:
-          Input.asOptionalInput<String>(map['staticSourcesSupport']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      transitGatewayId: Input.asInput<String>(map['transitGatewayId']),
+          pulumi.Input.asOptionalInput<String>(map['staticSourcesSupport']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      transitGatewayId: pulumi.Input.asInput<String>(map['transitGatewayId']),
     );
   }
 }

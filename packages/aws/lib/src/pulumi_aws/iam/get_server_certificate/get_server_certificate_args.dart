@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getServerCertificate.
 class GetServerCertificateArgs {
   /// sort results by expiration date. returns the certificate with expiration date in furthest in the future.
-  final Input<bool>? latest;
+  final pulumi.Input<bool>? latest;
 
   /// exact name of the cert to lookup
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// prefix of cert to filter by
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// prefix of path to filter by
-  final Input<String>? pathPrefix;
+  final pulumi.Input<String>? pathPrefix;
 
   GetServerCertificateArgs({
     this.latest,
@@ -46,10 +46,10 @@ class GetServerCertificateArgs {
 
   factory GetServerCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetServerCertificateArgs(
-      latest: Input.asOptionalInput<bool>(map['latest']),
-      name: Input.asOptionalInput<String>(map['name']),
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
-      pathPrefix: Input.asOptionalInput<String>(map['pathPrefix']),
+      latest: pulumi.Input.asOptionalInput<bool>(map['latest']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
+      pathPrefix: pulumi.Input.asOptionalInput<String>(map['pathPrefix']),
     );
   }
 }

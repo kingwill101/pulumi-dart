@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for NetworkInterfaceSecurityGroupAttachment.
 class NetworkInterfaceSecurityGroupAttachmentArgs {
   /// The ID of the network interface to attach to.
-  final Input<String> networkInterfaceId;
+  final pulumi.Input<String> networkInterfaceId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of the security group.
-  final Input<String> securityGroupId;
+  final pulumi.Input<String> securityGroupId;
 
   NetworkInterfaceSecurityGroupAttachmentArgs({
     required this.networkInterfaceId,
@@ -33,9 +33,10 @@ class NetworkInterfaceSecurityGroupAttachmentArgs {
   factory NetworkInterfaceSecurityGroupAttachmentArgs.fromMap(
       Map<String, dynamic> map) {
     return NetworkInterfaceSecurityGroupAttachmentArgs(
-      networkInterfaceId: Input.asInput<String>(map['networkInterfaceId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      securityGroupId: Input.asInput<String>(map['securityGroupId']),
+      networkInterfaceId:
+          pulumi.Input.asInput<String>(map['networkInterfaceId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      securityGroupId: pulumi.Input.asInput<String>(map['securityGroupId']),
     );
   }
 }

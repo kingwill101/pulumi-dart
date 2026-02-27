@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_hierarchy_group_hierarchy_path_level_fife/user_hierarchy_group_hierarchy_path_level_fife.dart';
 import '../user_hierarchy_group_hierarchy_path_level_four/user_hierarchy_group_hierarchy_path_level_four.dart';
 import '../user_hierarchy_group_hierarchy_path_level_one/user_hierarchy_group_hierarchy_path_level_one.dart';
@@ -35,31 +35,31 @@ class UserHierarchyGroupHierarchyPath {
     final map = <String, dynamic>{};
     final levelFivesValue = levelFives;
     if (levelFivesValue != null) {
-      map['levelFives'] = Input.encodeList<
+      map['levelFives'] = pulumi.Input.encodeList<
           UserHierarchyGroupHierarchyPathLevelFife,
           Map<String, dynamic>>(levelFivesValue, (value) => value.toMap());
     }
     final levelFoursValue = levelFours;
     if (levelFoursValue != null) {
-      map['levelFours'] = Input.encodeList<
+      map['levelFours'] = pulumi.Input.encodeList<
           UserHierarchyGroupHierarchyPathLevelFour,
           Map<String, dynamic>>(levelFoursValue, (value) => value.toMap());
     }
     final levelOnesValue = levelOnes;
     if (levelOnesValue != null) {
-      map['levelOnes'] = Input.encodeList<
+      map['levelOnes'] = pulumi.Input.encodeList<
           UserHierarchyGroupHierarchyPathLevelOne,
           Map<String, dynamic>>(levelOnesValue, (value) => value.toMap());
     }
     final levelThreesValue = levelThrees;
     if (levelThreesValue != null) {
-      map['levelThrees'] = Input.encodeList<
+      map['levelThrees'] = pulumi.Input.encodeList<
           UserHierarchyGroupHierarchyPathLevelThree,
           Map<String, dynamic>>(levelThreesValue, (value) => value.toMap());
     }
     final levelTwosValue = levelTwos;
     if (levelTwosValue != null) {
-      map['levelTwos'] = Input.encodeList<
+      map['levelTwos'] = pulumi.Input.encodeList<
           UserHierarchyGroupHierarchyPathLevelTwo,
           Map<String, dynamic>>(levelTwosValue, (value) => value.toMap());
     }
@@ -70,31 +70,31 @@ class UserHierarchyGroupHierarchyPath {
     return UserHierarchyGroupHierarchyPath(
       levelFives: map['levelFives'] == null
           ? null
-          : Input.decodeList<UserHierarchyGroupHierarchyPathLevelFife>(
+          : pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelFife>(
               map['levelFives'],
               (value) => UserHierarchyGroupHierarchyPathLevelFife.fromMap(
                   (value as Map).cast<String, dynamic>())),
       levelFours: map['levelFours'] == null
           ? null
-          : Input.decodeList<UserHierarchyGroupHierarchyPathLevelFour>(
+          : pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelFour>(
               map['levelFours'],
               (value) => UserHierarchyGroupHierarchyPathLevelFour.fromMap(
                   (value as Map).cast<String, dynamic>())),
       levelOnes: map['levelOnes'] == null
           ? null
-          : Input.decodeList<UserHierarchyGroupHierarchyPathLevelOne>(
+          : pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelOne>(
               map['levelOnes'],
               (value) => UserHierarchyGroupHierarchyPathLevelOne.fromMap(
                   (value as Map).cast<String, dynamic>())),
       levelThrees: map['levelThrees'] == null
           ? null
-          : Input.decodeList<UserHierarchyGroupHierarchyPathLevelThree>(
+          : pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelThree>(
               map['levelThrees'],
               (value) => UserHierarchyGroupHierarchyPathLevelThree.fromMap(
                   (value as Map).cast<String, dynamic>())),
       levelTwos: map['levelTwos'] == null
           ? null
-          : Input.decodeList<UserHierarchyGroupHierarchyPathLevelTwo>(
+          : pulumi.Input.decodeList<UserHierarchyGroupHierarchyPathLevelTwo>(
               map['levelTwos'],
               (value) => UserHierarchyGroupHierarchyPathLevelTwo.fromMap(
                   (value as Map).cast<String, dynamic>())),

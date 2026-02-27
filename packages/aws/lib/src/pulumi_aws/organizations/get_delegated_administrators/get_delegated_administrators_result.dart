@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_delegated_administrators_delegated_administrator/get_delegated_administrators_delegated_administrator.dart';
 
 /// Result data returned by getDelegatedAdministrators.
@@ -21,7 +21,7 @@ class GetDelegatedAdministratorsResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['delegatedAdministrators'] = Input.encodeList<
+    map['delegatedAdministrators'] = pulumi.Input.encodeList<
             GetDelegatedAdministratorsDelegatedAdministrator,
             Map<String, dynamic>>(
         delegatedAdministrators, (value) => value.toMap());
@@ -35,12 +35,11 @@ class GetDelegatedAdministratorsResult {
 
   factory GetDelegatedAdministratorsResult.fromMap(Map<String, dynamic> map) {
     return GetDelegatedAdministratorsResult(
-      delegatedAdministrators:
-          Input.decodeList<GetDelegatedAdministratorsDelegatedAdministrator>(
-              map['delegatedAdministrators'],
-              (value) =>
-                  GetDelegatedAdministratorsDelegatedAdministrator.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      delegatedAdministrators: pulumi.Input.decodeList<
+              GetDelegatedAdministratorsDelegatedAdministrator>(
+          map['delegatedAdministrators'],
+          (value) => GetDelegatedAdministratorsDelegatedAdministrator.fromMap(
+              (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       servicePrincipal: map['servicePrincipal'] == null
           ? null

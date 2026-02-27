@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cloud_autonomous_vm_cluster_maintenance_window_days_of_week/cloud_autonomous_vm_cluster_maintenance_window_days_of_week.dart';
 import '../cloud_autonomous_vm_cluster_maintenance_window_month/cloud_autonomous_vm_cluster_maintenance_window_month.dart';
 
@@ -36,7 +36,7 @@ class CloudAutonomousVmClusterMaintenanceWindow {
     final map = <String, dynamic>{};
     final daysOfWeeksValue = daysOfWeeks;
     if (daysOfWeeksValue != null) {
-      map['daysOfWeeks'] = Input.encodeList<
+      map['daysOfWeeks'] = pulumi.Input.encodeList<
           CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek,
           Map<String, dynamic>>(daysOfWeeksValue, (value) => value.toMap());
     }
@@ -50,7 +50,7 @@ class CloudAutonomousVmClusterMaintenanceWindow {
     }
     final monthsValue = months;
     if (monthsValue != null) {
-      map['months'] = Input.encodeList<
+      map['months'] = pulumi.Input.encodeList<
           CloudAutonomousVmClusterMaintenanceWindowMonth,
           Map<String, dynamic>>(monthsValue, (value) => value.toMap());
     }
@@ -67,7 +67,7 @@ class CloudAutonomousVmClusterMaintenanceWindow {
     return CloudAutonomousVmClusterMaintenanceWindow(
       daysOfWeeks: map['daysOfWeeks'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>(
               map['daysOfWeeks'],
               (value) =>
@@ -80,7 +80,8 @@ class CloudAutonomousVmClusterMaintenanceWindow {
           map['leadTimeInWeeks'] == null ? null : map['leadTimeInWeeks'] as int,
       months: map['months'] == null
           ? null
-          : Input.decodeList<CloudAutonomousVmClusterMaintenanceWindowMonth>(
+          : pulumi.Input.decodeList<
+                  CloudAutonomousVmClusterMaintenanceWindowMonth>(
               map['months'],
               (value) => CloudAutonomousVmClusterMaintenanceWindowMonth.fromMap(
                   (value as Map).cast<String, dynamic>())),

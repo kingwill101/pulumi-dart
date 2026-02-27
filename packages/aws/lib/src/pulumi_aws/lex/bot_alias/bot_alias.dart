@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bot_alias_conversation_logs/bot_alias_conversation_logs.dart';
 import 'bot_alias_args.dart';
 
@@ -16,46 +16,46 @@ import 'bot_alias_args.dart';
 /// ```sh
 /// $ pulumi import aws:lex/botAlias:BotAlias order_flowers_prod OrderFlowers:OrderFlowersProd
 /// ```
-class BotAlias extends CustomResource {
+class BotAlias extends pulumi.CustomResource {
   /// The ARN of the bot alias.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The name of the bot.
-  late final Output<String> botName;
+  late final pulumi.Output<String> botName;
 
   /// The version of the bot.
-  late final Output<String> botVersion;
+  late final pulumi.Output<String> botVersion;
 
   /// Checksum of the bot alias.
-  late final Output<String> checksum;
+  late final pulumi.Output<String> checksum;
 
   /// The settings that determine how Amazon Lex uses conversation logs for the alias. Attributes are documented under conversation_logs.
-  late final Output<BotAliasConversationLogs?> conversationLogs;
+  late final pulumi.Output<BotAliasConversationLogs?> conversationLogs;
 
   /// The date that the bot alias was created.
-  late final Output<String> createdDate;
+  late final pulumi.Output<String> createdDate;
 
   /// A description of the alias. Must be less than or equal to 200 characters in length.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The date that the bot alias was updated. When you create a resource, the creation date and the last updated date are the same.
-  late final Output<String> lastUpdatedDate;
+  late final pulumi.Output<String> lastUpdatedDate;
 
   /// The name of the alias. The name is not case sensitive. Must be less than or equal to 100 characters in length.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   BotAlias(
     String name, {
     BotAliasArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lex/botAlias:BotAlias',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.botName = registerOutput<String>('botName');

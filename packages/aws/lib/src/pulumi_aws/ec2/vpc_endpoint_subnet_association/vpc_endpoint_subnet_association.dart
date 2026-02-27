@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_endpoint_subnet_association_args.dart';
 
 /// Provides a resource to create an association between a VPC endpoint and a subnet.
@@ -22,25 +22,25 @@ import 'vpc_endpoint_subnet_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/vpcEndpointSubnetAssociation:VpcEndpointSubnetAssociation example vpce-aaaaaaaa/subnet-bbbbbbbbbbbbbbbbb
 /// ```
-class VpcEndpointSubnetAssociation extends CustomResource {
+class VpcEndpointSubnetAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ID of the subnet to be associated with the VPC endpoint.
-  late final Output<String> subnetId;
+  late final pulumi.Output<String> subnetId;
 
   /// The ID of the VPC endpoint with which the subnet will be associated.
-  late final Output<String> vpcEndpointId;
+  late final pulumi.Output<String> vpcEndpointId;
 
   VpcEndpointSubnetAssociation(
     String name, {
     VpcEndpointSubnetAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpcEndpointSubnetAssociation:VpcEndpointSubnetAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.subnetId = registerOutput<String>('subnetId');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'invocation_args.dart';
 
 /// Manages an AWS Lambda Function invocation. Use this resource to invoke a Lambda function with the [RequestResponse](https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_RequestSyntax) invocation type.
@@ -103,43 +103,43 @@ import 'invocation_args.dart';
 ///
 /// Because it is not possible to retrieve previous invocations, during the next update Pulumi will update the resource calling again the function.
 /// To compute the `result_hash`, it is necessary to hash it with the standard `md5` hash function.
-class Invocation extends CustomResource {
+class Invocation extends pulumi.CustomResource {
   /// Name of the Lambda function.
-  late final Output<String> functionName;
+  late final pulumi.Output<String> functionName;
 
   /// JSON payload to the Lambda function.
   ///
   /// The following arguments are optional:
-  late final Output<String> input;
+  late final pulumi.Output<String> input;
 
   /// Lifecycle scope of the resource to manage. Valid values are `CREATE_ONLY` and `CRUD`. Defaults to `CREATE_ONLY`. `CREATE_ONLY` will invoke the function only on creation or replacement. `CRUD` will invoke the function on each lifecycle event, and augment the input JSON payload with additional lifecycle information.
-  late final Output<String?> lifecycleScope;
+  late final pulumi.Output<String?> lifecycleScope;
 
   /// Qualifier (i.e., version) of the Lambda function. Defaults to `$LATEST`.
-  late final Output<String?> qualifier;
+  late final pulumi.Output<String?> qualifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// String result of the Lambda function invocation.
-  late final Output<String> result;
+  late final pulumi.Output<String> result;
 
   /// Tenant Id to serve invocations from specified tenant.
-  late final Output<String?> tenantId;
-  late final Output<String?> terraformKey;
+  late final pulumi.Output<String?> tenantId;
+  late final pulumi.Output<String?> terraformKey;
 
   /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation.
-  late final Output<Map<String, String>?> triggers;
+  late final pulumi.Output<Map<String, String>?> triggers;
 
   Invocation(
     String name, {
     InvocationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lambda/invocation:Invocation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.functionName = registerOutput<String>('functionName');
     this.input = registerOutput<String>('input');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_default_tags_args.dart';
 import 'get_default_tags_result.dart';
 
@@ -15,13 +15,13 @@ import 'get_default_tags_result.dart';
 /// ### Dynamically Apply Default Tags to Auto Scaling Group
 Future<GetDefaultTagsResult> getDefaultTags(
   GetDefaultTagsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:index/getDefaultTags:getDefaultTags',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDefaultTagsResult.fromMap(result);
 }

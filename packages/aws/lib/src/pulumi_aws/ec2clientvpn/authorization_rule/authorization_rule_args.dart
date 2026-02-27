@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AuthorizationRule.
 class AuthorizationRuleArgs {
   /// The ID of the group to which the authorization rule grants access. One of `access_group_id` or `authorize_all_groups` must be set.
-  final Input<String>? accessGroupId;
+  final pulumi.Input<String>? accessGroupId;
 
   /// Indicates whether the authorization rule grants access to all clients. One of `access_group_id` or `authorize_all_groups` must be set.
-  final Input<bool>? authorizeAllGroups;
+  final pulumi.Input<bool>? authorizeAllGroups;
 
   /// The ID of the Client VPN endpoint.
-  final Input<String> clientVpnEndpointId;
+  final pulumi.Input<String> clientVpnEndpointId;
 
   /// A brief description of the authorization rule.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The IPv4 or IPv6 address range, in CIDR notation, of the network to which the authorization rule applies.
-  final Input<String> targetNetworkCidr;
+  final pulumi.Input<String> targetNetworkCidr;
 
   AuthorizationRuleArgs({
     this.accessGroupId,
@@ -56,13 +56,14 @@ class AuthorizationRuleArgs {
 
   factory AuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationRuleArgs(
-      accessGroupId: Input.asOptionalInput<String>(map['accessGroupId']),
+      accessGroupId: pulumi.Input.asOptionalInput<String>(map['accessGroupId']),
       authorizeAllGroups:
-          Input.asOptionalInput<bool>(map['authorizeAllGroups']),
-      clientVpnEndpointId: Input.asInput<String>(map['clientVpnEndpointId']),
-      description: Input.asOptionalInput<String>(map['description']),
-      region: Input.asOptionalInput<String>(map['region']),
-      targetNetworkCidr: Input.asInput<String>(map['targetNetworkCidr']),
+          pulumi.Input.asOptionalInput<bool>(map['authorizeAllGroups']),
+      clientVpnEndpointId:
+          pulumi.Input.asInput<String>(map['clientVpnEndpointId']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      targetNetworkCidr: pulumi.Input.asInput<String>(map['targetNetworkCidr']),
     );
   }
 }

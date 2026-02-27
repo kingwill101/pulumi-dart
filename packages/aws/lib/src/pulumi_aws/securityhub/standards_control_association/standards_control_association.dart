@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'standards_control_association_args.dart';
 
 /// Resource for managing an AWS Security Hub Standards Control Association.
@@ -16,33 +16,33 @@ import 'standards_control_association_args.dart';
 ///
 ///
 /// ## Disabling security control in all standards
-class StandardsControlAssociation extends CustomResource {
+class StandardsControlAssociation extends pulumi.CustomResource {
   /// The desired enablement status of the control in the standard. Valid values: `ENABLED`, `DISABLED`.
-  late final Output<String> associationStatus;
+  late final pulumi.Output<String> associationStatus;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The unique identifier for the security control whose enablement status you want to update.
-  late final Output<String> securityControlId;
+  late final pulumi.Output<String> securityControlId;
 
   /// The Amazon Resource Name (ARN) of the standard in which you want to update the control's enablement status.
   ///
   /// The following arguments are optional:
-  late final Output<String> standardsArn;
+  late final pulumi.Output<String> standardsArn;
 
   /// The reason for updating the control's enablement status in the standard. Required when `association_status` is `DISABLED`.
-  late final Output<String?> updatedReason;
+  late final pulumi.Output<String?> updatedReason;
 
   StandardsControlAssociation(
     String name, {
     StandardsControlAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:securityhub/standardsControlAssociation:StandardsControlAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.associationStatus = registerOutput<String>('associationStatus');
     this.region = registerOutput<String>('region');

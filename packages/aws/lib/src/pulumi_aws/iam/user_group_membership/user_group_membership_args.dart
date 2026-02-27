@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for UserGroupMembership.
 class UserGroupMembershipArgs {
   /// A list of IAM Groups to add the user to
-  final Input<List<String>> groups;
+  final pulumi.Input<List<String>> groups;
 
   /// The name of the IAM User to add to groups
-  final Input<String> user;
+  final pulumi.Input<String> user;
 
   UserGroupMembershipArgs({
     required this.groups,
@@ -24,8 +24,8 @@ class UserGroupMembershipArgs {
 
   factory UserGroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupMembershipArgs(
-      groups: Input.asInput<List<String>>(map['groups']),
-      user: Input.asInput<String>(map['user']),
+      groups: pulumi.Input.asInput<List<String>>(map['groups']),
+      user: pulumi.Input.asInput<String>(map['user']),
     );
   }
 }

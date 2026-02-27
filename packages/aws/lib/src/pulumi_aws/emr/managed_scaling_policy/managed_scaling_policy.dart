@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../managed_scaling_policy_compute_limit/managed_scaling_policy_compute_limit.dart';
 import 'managed_scaling_policy_args.dart';
 
@@ -15,31 +15,32 @@ import 'managed_scaling_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:emr/managedScalingPolicy:ManagedScalingPolicy example j-123456ABCDEF
 /// ```
-class ManagedScalingPolicy extends CustomResource {
+class ManagedScalingPolicy extends pulumi.CustomResource {
   /// ID of the EMR cluster
-  late final Output<String> clusterId;
+  late final pulumi.Output<String> clusterId;
 
   /// Configuration block with compute limit settings. Described below.
-  late final Output<List<ManagedScalingPolicyComputeLimit>> computeLimits;
+  late final pulumi.Output<List<ManagedScalingPolicyComputeLimit>>
+      computeLimits;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Specifies the scaling strategy. When set to `ADVANCED`, the `utilization_performance_index` argument can be used to configure an advanced scaling strategy. An advanced scaling strategy requires Amazon EMR on EC2 version 7.0 or later. Valid values: `ADVANCED`, `DEFAULT`.
-  late final Output<String?> scalingStrategy;
+  late final pulumi.Output<String?> scalingStrategy;
 
   /// Integer value that represents the advanced scaling strategy. Higher values optimize for performance, while lower values optimize for resource conservation. A value of `50` provides a balance between performance and resource conservation. See [the AWS documentation](https://docs.aws.amazon.com/emr/latest/ManagementGuide/managed-scaling-allocation-strategy-optimized.html#managed-scaling-allocation-strategy-optimized-getting-started) for more details. Required when `scaling_strategy` is set to `ADVANCED`. Valid values: `1`, `25`, `50`, `75`, `100`.
-  late final Output<int?> utilizationPerformanceIndex;
+  late final pulumi.Output<int?> utilizationPerformanceIndex;
 
   ManagedScalingPolicy(
     String name, {
     ManagedScalingPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:emr/managedScalingPolicy:ManagedScalingPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.clusterId = registerOutput<String>('clusterId');
     this.computeLimits =

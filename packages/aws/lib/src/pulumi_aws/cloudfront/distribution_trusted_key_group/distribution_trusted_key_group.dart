@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../distribution_trusted_key_group_item/distribution_trusted_key_group_item.dart';
 
 class DistributionTrustedKeyGroup {
@@ -23,7 +23,7 @@ class DistributionTrustedKeyGroup {
     }
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] = Input.encodeList<DistributionTrustedKeyGroupItem,
+      map['items'] = pulumi.Input.encodeList<DistributionTrustedKeyGroupItem,
           Map<String, dynamic>>(itemsValue, (value) => value.toMap());
     }
     return map;
@@ -34,7 +34,7 @@ class DistributionTrustedKeyGroup {
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       items: map['items'] == null
           ? null
-          : Input.decodeList<DistributionTrustedKeyGroupItem>(
+          : pulumi.Input.decodeList<DistributionTrustedKeyGroupItem>(
               map['items'],
               (value) => DistributionTrustedKeyGroupItem.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tls_inspection_configuration_tls_inspection_configuration_server_certificate_configuration_check_certificate_revocation_status/tls_inspection_configuration_tls_inspection_configuration_server_certificate_configuration_check_certificate_revocation_status.dart';
 import '../tls_inspection_configuration_tls_inspection_configuration_server_certificate_configuration_scope/tls_inspection_configuration_tls_inspection_configuration_server_certificate_configuration_scope.dart';
 import '../tls_inspection_configuration_tls_inspection_configuration_server_certificate_configuration_server_certificate/tls_inspection_configuration_tls_inspection_configuration_server_certificate_configuration_server_certificate.dart';
@@ -42,12 +42,12 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
       map['checkCertificateRevocationStatus'] =
           checkCertificateRevocationStatusValue.toMap();
     }
-    map['scopes'] = Input.encodeList<
+    map['scopes'] = pulumi.Input.encodeList<
         TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope,
         Map<String, dynamic>>(scopes, (value) => value.toMap());
     final serverCertificatesValue = serverCertificates;
     if (serverCertificatesValue != null) {
-      map['serverCertificates'] = Input.encodeList<
+      map['serverCertificates'] = pulumi.Input.encodeList<
           TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate,
           Map<String,
               dynamic>>(serverCertificatesValue, (value) => value.toMap());
@@ -68,7 +68,7 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
           : TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus
               .fromMap((map['checkCertificateRevocationStatus'] as Map)
                   .cast<String, dynamic>()),
-      scopes: Input.decodeList<
+      scopes: pulumi.Input.decodeList<
               TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope>(
           map['scopes'],
           (value) =>
@@ -76,7 +76,7 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
                   .fromMap((value as Map).cast<String, dynamic>())),
       serverCertificates: map['serverCertificates'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate>(
               map['serverCertificates'],
               (value) =>

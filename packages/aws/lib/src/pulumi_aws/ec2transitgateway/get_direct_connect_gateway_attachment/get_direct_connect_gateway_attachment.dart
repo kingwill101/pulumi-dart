@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_direct_connect_gateway_attachment_args.dart';
 import 'get_direct_connect_gateway_attachment_result.dart';
 
@@ -12,13 +12,13 @@ import 'get_direct_connect_gateway_attachment_result.dart';
 Future<GetDirectConnectGatewayAttachmentResult>
     getDirectConnectGatewayAttachment(
   GetDirectConnectGatewayAttachmentArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2transitgateway/getDirectConnectGatewayAttachment:getDirectConnectGatewayAttachment',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDirectConnectGatewayAttachmentResult.fromMap(result);
 }

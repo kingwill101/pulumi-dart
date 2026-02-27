@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Smsvoicev2ConfigurationSet.
 class Smsvoicev2ConfigurationSetArgs {
   /// The default message type. Must either be "TRANSACTIONAL" or "PROMOTIONAL"
-  final Input<String>? defaultMessageType;
+  final pulumi.Input<String>? defaultMessageType;
 
   /// The default sender ID to use for this configuration set.
-  final Input<String>? defaultSenderId;
+  final pulumi.Input<String>? defaultSenderId;
 
   /// The name of the configuration set.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   Smsvoicev2ConfigurationSetArgs({
     this.defaultMessageType,
@@ -55,11 +55,12 @@ class Smsvoicev2ConfigurationSetArgs {
   factory Smsvoicev2ConfigurationSetArgs.fromMap(Map<String, dynamic> map) {
     return Smsvoicev2ConfigurationSetArgs(
       defaultMessageType:
-          Input.asOptionalInput<String>(map['defaultMessageType']),
-      defaultSenderId: Input.asOptionalInput<String>(map['defaultSenderId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<String>(map['defaultMessageType']),
+      defaultSenderId:
+          pulumi.Input.asOptionalInput<String>(map['defaultSenderId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

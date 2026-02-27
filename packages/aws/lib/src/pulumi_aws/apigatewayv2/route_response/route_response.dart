@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_response_args.dart';
 
 /// Manages an Amazon API Gateway Version 2 route response.
@@ -23,34 +23,34 @@ import 'route_response_args.dart';
 /// ```sh
 /// $ pulumi import aws:apigatewayv2/routeResponse:RouteResponse example aabbccddee/1122334/998877
 /// ```
-class RouteResponse extends CustomResource {
+class RouteResponse extends pulumi.CustomResource {
   /// API identifier.
-  late final Output<String> apiId;
+  late final pulumi.Output<String> apiId;
 
   /// The [model selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-model-selection-expressions) for the route response.
-  late final Output<String?> modelSelectionExpression;
+  late final pulumi.Output<String?> modelSelectionExpression;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Response models for the route response.
-  late final Output<Map<String, String>?> responseModels;
+  late final pulumi.Output<Map<String, String>?> responseModels;
 
   /// Identifier of the `aws.apigatewayv2.Route`.
-  late final Output<String> routeId;
+  late final pulumi.Output<String> routeId;
 
   /// Route response key.
-  late final Output<String> routeResponseKey;
+  late final pulumi.Output<String> routeResponseKey;
 
   RouteResponse(
     String name, {
     RouteResponseArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigatewayv2/routeResponse:RouteResponse',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.apiId = registerOutput<String>('apiId');
     this.modelSelectionExpression =

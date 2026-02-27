@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_peering_attachments_args.dart';
 import 'get_peering_attachments_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_peering_attachments_result.dart';
 /// ### By Filter
 Future<GetPeeringAttachmentsResult> getPeeringAttachments(
   GetPeeringAttachmentsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2transitgateway/getPeeringAttachments:getPeeringAttachments',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPeeringAttachmentsResult.fromMap(result);
 }

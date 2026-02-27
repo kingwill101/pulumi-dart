@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lb_certificate_attachment_args.dart';
 
 /// Manages a Lightsail Load Balancer Certificate attachment to a Lightsail Load Balancer.
@@ -16,27 +16,27 @@ import 'lb_certificate_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:lightsail/lbCertificateAttachment:LbCertificateAttachment example example-load-balancer,example-certificate
 /// ```
-class LbCertificateAttachment extends CustomResource {
+class LbCertificateAttachment extends pulumi.CustomResource {
   /// Name of your SSL/TLS certificate.
-  late final Output<String> certificateName;
+  late final pulumi.Output<String> certificateName;
 
   /// Name of the load balancer to which you want to associate the SSL/TLS certificate.
   ///
   /// The following arguments are optional:
-  late final Output<String> lbName;
+  late final pulumi.Output<String> lbName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   LbCertificateAttachment(
     String name, {
     LbCertificateAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lightsail/lbCertificateAttachment:LbCertificateAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.certificateName = registerOutput<String>('certificateName');
     this.lbName = registerOutput<String>('lbName');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_domain_cluster_config_cold_storage_option/get_domain_cluster_config_cold_storage_option.dart';
 import '../get_domain_cluster_config_zone_awareness_config/get_domain_cluster_config_zone_awareness_config.dart';
 
@@ -54,7 +54,7 @@ class GetDomainClusterConfig {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['coldStorageOptions'] = Input.encodeList<
+    map['coldStorageOptions'] = pulumi.Input.encodeList<
         GetDomainClusterConfigColdStorageOption,
         Map<String, dynamic>>(coldStorageOptions, (value) => value.toMap());
     map['dedicatedMasterCount'] = dedicatedMasterCount;
@@ -65,7 +65,7 @@ class GetDomainClusterConfig {
     map['warmCount'] = warmCount;
     map['warmEnabled'] = warmEnabled;
     map['warmType'] = warmType;
-    map['zoneAwarenessConfigs'] = Input.encodeList<
+    map['zoneAwarenessConfigs'] = pulumi.Input.encodeList<
         GetDomainClusterConfigZoneAwarenessConfig,
         Map<String, dynamic>>(zoneAwarenessConfigs, (value) => value.toMap());
     map['zoneAwarenessEnabled'] = zoneAwarenessEnabled;
@@ -75,7 +75,7 @@ class GetDomainClusterConfig {
   factory GetDomainClusterConfig.fromMap(Map<String, dynamic> map) {
     return GetDomainClusterConfig(
       coldStorageOptions:
-          Input.decodeList<GetDomainClusterConfigColdStorageOption>(
+          pulumi.Input.decodeList<GetDomainClusterConfigColdStorageOption>(
               map['coldStorageOptions'],
               (value) => GetDomainClusterConfigColdStorageOption.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -88,7 +88,7 @@ class GetDomainClusterConfig {
       warmEnabled: map['warmEnabled'] as bool,
       warmType: map['warmType'] as String,
       zoneAwarenessConfigs:
-          Input.decodeList<GetDomainClusterConfigZoneAwarenessConfig>(
+          pulumi.Input.decodeList<GetDomainClusterConfigZoneAwarenessConfig>(
               map['zoneAwarenessConfigs'],
               (value) => GetDomainClusterConfigZoneAwarenessConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

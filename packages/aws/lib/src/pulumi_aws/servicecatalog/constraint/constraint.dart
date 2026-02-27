@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'constraint_args.dart';
 
 /// Manages a Service Catalog Constraint.
@@ -18,43 +18,43 @@ import 'constraint_args.dart';
 /// ```sh
 /// $ pulumi import aws:servicecatalog/constraint:Constraint example cons-nmdkb6cgxfcrs
 /// ```
-class Constraint extends CustomResource {
+class Constraint extends pulumi.CustomResource {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  late final Output<String?> acceptLanguage;
+  late final pulumi.Output<String?> acceptLanguage;
 
   /// Description of the constraint.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Owner of the constraint.
-  late final Output<String> owner;
+  late final pulumi.Output<String> owner;
 
   /// Constraint parameters in JSON format. The syntax depends on the constraint type. See details below.
-  late final Output<String> parameters;
+  late final pulumi.Output<String> parameters;
 
   /// Portfolio identifier.
-  late final Output<String> portfolioId;
+  late final pulumi.Output<String> portfolioId;
 
   /// Product identifier.
-  late final Output<String> productId;
+  late final pulumi.Output<String> productId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<String> status;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<String> status;
 
   /// Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`.
   ///
   /// The following arguments are optional:
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   Constraint(
     String name, {
     ConstraintArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:servicecatalog/constraint:Constraint',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.acceptLanguage = registerOutput<String?>('acceptLanguage');
     this.description = registerOutput<String>('description');

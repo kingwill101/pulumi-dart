@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAuthorizationToken.
 class GetAuthorizationTokenArgs {
   /// Name of the domain that is in scope for the generated authorization token.
-  final Input<String> domain;
+  final pulumi.Input<String> domain;
 
   /// Account number of the AWS account that owns the domain.
-  final Input<String>? domainOwner;
+  final pulumi.Input<String>? domainOwner;
 
   /// Time, in seconds, that the generated authorization token is valid. Valid values are `0` and between `900` and `43200`.
-  final Input<int>? durationSeconds;
+  final pulumi.Input<int>? durationSeconds;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetAuthorizationTokenArgs({
     required this.domain,
@@ -43,10 +43,11 @@ class GetAuthorizationTokenArgs {
 
   factory GetAuthorizationTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationTokenArgs(
-      domain: Input.asInput<String>(map['domain']),
-      domainOwner: Input.asOptionalInput<String>(map['domainOwner']),
-      durationSeconds: Input.asOptionalInput<int>(map['durationSeconds']),
-      region: Input.asOptionalInput<String>(map['region']),
+      domain: pulumi.Input.asInput<String>(map['domain']),
+      domainOwner: pulumi.Input.asOptionalInput<String>(map['domainOwner']),
+      durationSeconds:
+          pulumi.Input.asOptionalInput<int>(map['durationSeconds']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

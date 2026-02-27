@@ -1,3 +1,3 @@
 library module_lb_listener_rule_condition_path_pattern;
 
-export 'listener_rule_condition_path_pattern/listener_rule_condition_path_pattern2.dart';
+export 'listener_rule_condition_path_pattern/listener_rule_condition_path_pattern_lb.dart';

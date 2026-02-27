@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_portfolio_constraints_detail/get_portfolio_constraints_detail.dart';
 
 /// Result data returned by getPortfolioConstraints.
@@ -35,9 +35,8 @@ class GetPortfolioConstraintsResult {
     if (acceptLanguageValue != null) {
       map['acceptLanguage'] = acceptLanguageValue;
     }
-    map['details'] =
-        Input.encodeList<GetPortfolioConstraintsDetail, Map<String, dynamic>>(
-            details, (value) => value.toMap());
+    map['details'] = pulumi.Input.encodeList<GetPortfolioConstraintsDetail,
+        Map<String, dynamic>>(details, (value) => value.toMap());
     map['id'] = id;
     map['portfolioId'] = portfolioId;
     final productIdValue = productId;
@@ -53,7 +52,7 @@ class GetPortfolioConstraintsResult {
       acceptLanguage: map['acceptLanguage'] == null
           ? null
           : map['acceptLanguage'] as String,
-      details: Input.decodeList<GetPortfolioConstraintsDetail>(
+      details: pulumi.Input.decodeList<GetPortfolioConstraintsDetail>(
           map['details'],
           (value) => GetPortfolioConstraintsDetail.fromMap(
               (value as Map).cast<String, dynamic>())),

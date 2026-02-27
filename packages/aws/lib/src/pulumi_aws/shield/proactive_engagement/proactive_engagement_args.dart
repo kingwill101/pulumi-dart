@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../proactive_engagement_emergency_contact/proactive_engagement_emergency_contact.dart';
 
 /// The set of arguments for ProactiveEngagement.
 class ProactiveEngagementArgs {
   /// One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergency_contacts`.
-  final Input<List<ProactiveEngagementEmergencyContact>> emergencyContacts;
+  final pulumi.Input<List<ProactiveEngagementEmergencyContact>>
+      emergencyContacts;
 
   /// Boolean value indicating if Proactive Engagement should be enabled or not.
-  final Input<bool> enabled;
+  final pulumi.Input<bool> enabled;
 
   ProactiveEngagementArgs({
     required this.emergencyContacts,
@@ -18,11 +19,11 @@ class ProactiveEngagementArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['emergencyContacts'] = Input.mapInputValue<
+    map['emergencyContacts'] = pulumi.Input.mapInputValue<
             List<ProactiveEngagementEmergencyContact>,
             List<Map<String, dynamic>>>(
         emergencyContacts,
-        (value) => Input.encodeList<ProactiveEngagementEmergencyContact,
+        (value) => pulumi.Input.encodeList<ProactiveEngagementEmergencyContact,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     map['enabled'] = enabled;
     return map;
@@ -31,9 +32,9 @@ class ProactiveEngagementArgs {
   factory ProactiveEngagementArgs.fromMap(Map<String, dynamic> map) {
     return ProactiveEngagementArgs(
       emergencyContacts:
-          Input.asInput<List<ProactiveEngagementEmergencyContact>>(
+          pulumi.Input.asInput<List<ProactiveEngagementEmergencyContact>>(
               map['emergencyContacts']),
-      enabled: Input.asInput<bool>(map['enabled']),
+      enabled: pulumi.Input.asInput<bool>(map['enabled']),
     );
   }
 }

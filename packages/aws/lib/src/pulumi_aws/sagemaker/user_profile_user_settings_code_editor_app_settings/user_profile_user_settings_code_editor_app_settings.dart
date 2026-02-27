@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../user_profile_user_settings_code_editor_app_settings_app_lifecycle_management/user_profile_user_settings_code_editor_app_settings_app_lifecycle_management.dart';
 import '../user_profile_user_settings_code_editor_app_settings_custom_image/user_profile_user_settings_code_editor_app_settings_custom_image.dart';
 import '../user_profile_user_settings_code_editor_app_settings_default_resource_spec/user_profile_user_settings_code_editor_app_settings_default_resource_spec.dart';
@@ -44,7 +44,7 @@ class UserProfileUserSettingsCodeEditorAppSettings {
     }
     final customImagesValue = customImages;
     if (customImagesValue != null) {
-      map['customImages'] = Input.encodeList<
+      map['customImages'] = pulumi.Input.encodeList<
           UserProfileUserSettingsCodeEditorAppSettingsCustomImage,
           Map<String, dynamic>>(customImagesValue, (value) => value.toMap());
     }
@@ -72,7 +72,7 @@ class UserProfileUserSettingsCodeEditorAppSettings {
           : map['builtInLifecycleConfigArn'] as String,
       customImages: map['customImages'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   UserProfileUserSettingsCodeEditorAppSettingsCustomImage>(
               map['customImages'],
               (value) => UserProfileUserSettingsCodeEditorAppSettingsCustomImage

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resource_policy_timeouts/resource_policy_timeouts.dart';
 import 'resource_policy_args.dart';
 
@@ -44,31 +44,31 @@ import 'resource_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:amp/resourcePolicy:ResourcePolicy example ws-12345678-90ab-cdef-1234-567890abcdef
 /// ```
-class ResourcePolicy extends CustomResource {
+class ResourcePolicy extends pulumi.CustomResource {
   /// The JSON policy document to use as the resource-based policy. This policy defines the permissions that other AWS accounts or services have to access your workspace.
   ///
   /// The following arguments are optional:
-  late final Output<String> policyDocument;
+  late final pulumi.Output<String> policyDocument;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The revision ID of the current resource-based policy.
-  late final Output<String> revisionId;
-  late final Output<ResourcePolicyTimeouts?> timeouts;
+  late final pulumi.Output<String> revisionId;
+  late final pulumi.Output<ResourcePolicyTimeouts?> timeouts;
 
   /// The ID of the workspace to attach the resource-based policy to.
-  late final Output<String> workspaceId;
+  late final pulumi.Output<String> workspaceId;
 
   ResourcePolicy(
     String name, {
     ResourcePolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:amp/resourcePolicy:ResourcePolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.policyDocument = registerOutput<String>('policyDocument');
     this.region = registerOutput<String>('region');

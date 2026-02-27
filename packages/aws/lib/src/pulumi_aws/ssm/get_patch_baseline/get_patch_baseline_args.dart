@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPatchBaseline.
 class GetPatchBaselineArgs {
   /// Filters the results against the baselines default_baseline field.
-  final Input<bool>? defaultBaseline;
+  final pulumi.Input<bool>? defaultBaseline;
 
   /// Filter results by the baseline name prefix.
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// Specified OS for the baseline. Valid values: `AMAZON_LINUX`, `AMAZON_LINUX_2`, `UBUNTU`, `REDHAT_ENTERPRISE_LINUX`, `SUSE`, `CENTOS`, `ORACLE_LINUX`, `DEBIAN`, `MACOS`, `RASPBIAN` and `ROCKY_LINUX`.
-  final Input<String>? operatingSystem;
+  final pulumi.Input<String>? operatingSystem;
 
   /// Owner of the baseline. Valid values: `All`, `AWS`, `Self` (the current account).
   ///
   /// The following arguments are optional:
-  final Input<String> owner;
+  final pulumi.Input<String> owner;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetPatchBaselineArgs({
     this.defaultBaseline,
@@ -53,11 +53,13 @@ class GetPatchBaselineArgs {
 
   factory GetPatchBaselineArgs.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselineArgs(
-      defaultBaseline: Input.asOptionalInput<bool>(map['defaultBaseline']),
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
-      operatingSystem: Input.asOptionalInput<String>(map['operatingSystem']),
-      owner: Input.asInput<String>(map['owner']),
-      region: Input.asOptionalInput<String>(map['region']),
+      defaultBaseline:
+          pulumi.Input.asOptionalInput<bool>(map['defaultBaseline']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
+      operatingSystem:
+          pulumi.Input.asOptionalInput<String>(map['operatingSystem']),
+      owner: pulumi.Input.asInput<String>(map['owner']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

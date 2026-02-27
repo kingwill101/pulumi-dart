@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_vm_cluster_data_collection_option/get_cloud_vm_cluster_data_collection_option.dart';
 import '../get_cloud_vm_cluster_iorm_config_cache/get_cloud_vm_cluster_iorm_config_cache.dart';
 
@@ -184,7 +184,7 @@ class GetCloudVmClusterResult {
     map['computeModel'] = computeModel;
     map['cpuCoreCount'] = cpuCoreCount;
     map['createdAt'] = createdAt;
-    map['dataCollectionOptions'] = Input.encodeList<
+    map['dataCollectionOptions'] = pulumi.Input.encodeList<
         GetCloudVmClusterDataCollectionOption,
         Map<String, dynamic>>(dataCollectionOptions, (value) => value.toMap());
     map['dataStorageSizeInTbs'] = dataStorageSizeInTbs;
@@ -196,7 +196,8 @@ class GetCloudVmClusterResult {
     map['giVersion'] = giVersion;
     map['hostnamePrefixComputed'] = hostnamePrefixComputed;
     map['id'] = id;
-    map['iormConfigCaches'] = Input.encodeList<GetCloudVmClusterIormConfigCache,
+    map['iormConfigCaches'] = pulumi.Input.encodeList<
+        GetCloudVmClusterIormConfigCache,
         Map<String, dynamic>>(iormConfigCaches, (value) => value.toMap());
     map['isLocalBackupEnabled'] = isLocalBackupEnabled;
     map['isSparseDiskGroupEnabled'] = isSparseDiskGroupEnabled;
@@ -239,7 +240,7 @@ class GetCloudVmClusterResult {
       cpuCoreCount: map['cpuCoreCount'] as int,
       createdAt: map['createdAt'] as String,
       dataCollectionOptions:
-          Input.decodeList<GetCloudVmClusterDataCollectionOption>(
+          pulumi.Input.decodeList<GetCloudVmClusterDataCollectionOption>(
               map['dataCollectionOptions'],
               (value) => GetCloudVmClusterDataCollectionOption.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -252,10 +253,11 @@ class GetCloudVmClusterResult {
       giVersion: map['giVersion'] as String,
       hostnamePrefixComputed: map['hostnamePrefixComputed'] as String,
       id: map['id'] as String,
-      iormConfigCaches: Input.decodeList<GetCloudVmClusterIormConfigCache>(
-          map['iormConfigCaches'],
-          (value) => GetCloudVmClusterIormConfigCache.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      iormConfigCaches:
+          pulumi.Input.decodeList<GetCloudVmClusterIormConfigCache>(
+              map['iormConfigCaches'],
+              (value) => GetCloudVmClusterIormConfigCache.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       isLocalBackupEnabled: map['isLocalBackupEnabled'] as bool,
       isSparseDiskGroupEnabled: map['isSparseDiskGroupEnabled'] as bool,
       lastUpdateHistoryEntryId: map['lastUpdateHistoryEntryId'] as String,

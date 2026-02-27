@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getReplicationGroup.
 class GetReplicationGroupArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Identifier for the replication group.
-  final Input<String> replicationGroupId;
+  final pulumi.Input<String> replicationGroupId;
 
   GetReplicationGroupArgs({
     this.region,
@@ -27,8 +27,9 @@ class GetReplicationGroupArgs {
 
   factory GetReplicationGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationGroupArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      replicationGroupId: Input.asInput<String>(map['replicationGroupId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      replicationGroupId:
+          pulumi.Input.asInput<String>(map['replicationGroupId']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpc_ipam_pools_filter/get_vpc_ipam_pools_filter.dart';
 import '../get_vpc_ipam_pools_ipam_pool/get_vpc_ipam_pools_ipam_pool.dart';
 
@@ -27,12 +27,12 @@ class GetVpcIpamPoolsResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetVpcIpamPoolsFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetVpcIpamPoolsFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['ipamPools'] =
-        Input.encodeList<GetVpcIpamPoolsIpamPool, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetVpcIpamPoolsIpamPool, Map<String, dynamic>>(
             ipamPools, (value) => value.toMap());
     map['region'] = region;
     return map;
@@ -42,12 +42,12 @@ class GetVpcIpamPoolsResult {
     return GetVpcIpamPoolsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetVpcIpamPoolsFilter>(
+          : pulumi.Input.decodeList<GetVpcIpamPoolsFilter>(
               map['filters'],
               (value) => GetVpcIpamPoolsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      ipamPools: Input.decodeList<GetVpcIpamPoolsIpamPool>(
+      ipamPools: pulumi.Input.decodeList<GetVpcIpamPoolsIpamPool>(
           map['ipamPools'],
           (value) => GetVpcIpamPoolsIpamPool.fromMap(
               (value as Map).cast<String, dynamic>())),

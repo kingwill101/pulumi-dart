@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../size_constraint_set_size_constraint/size_constraint_set_size_constraint.dart';
 
 /// The set of arguments for SizeConstraintSet.
 class SizeConstraintSetArgs {
   /// Name or description of the Size Constraint Set.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Parts of web requests that you want to inspect the size of.
-  final Input<List<SizeConstraintSetSizeConstraint>>? sizeConstraints;
+  final pulumi.Input<List<SizeConstraintSetSizeConstraint>>? sizeConstraints;
 
   SizeConstraintSetArgs({
     this.name,
@@ -24,11 +24,11 @@ class SizeConstraintSetArgs {
     }
     final sizeConstraintsValue = sizeConstraints;
     if (sizeConstraintsValue != null) {
-      map['sizeConstraints'] = Input.mapOptionalInputValue<
+      map['sizeConstraints'] = pulumi.Input.mapOptionalInputValue<
               List<SizeConstraintSetSizeConstraint>,
               List<Map<String, dynamic>>>(
           sizeConstraintsValue,
-          (value) => Input.encodeList<SizeConstraintSetSizeConstraint,
+          (value) => pulumi.Input.encodeList<SizeConstraintSetSizeConstraint,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     return map;
@@ -36,9 +36,9 @@ class SizeConstraintSetArgs {
 
   factory SizeConstraintSetArgs.fromMap(Map<String, dynamic> map) {
     return SizeConstraintSetArgs(
-      name: Input.asOptionalInput<String>(map['name']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
       sizeConstraints:
-          Input.asOptionalInput<List<SizeConstraintSetSizeConstraint>>(
+          pulumi.Input.asOptionalInput<List<SizeConstraintSetSizeConstraint>>(
               map['sizeConstraints']),
     );
   }

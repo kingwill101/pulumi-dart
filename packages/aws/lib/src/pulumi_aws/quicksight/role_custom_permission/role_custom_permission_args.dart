@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RoleCustomPermission.
 class RoleCustomPermissionArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// Custom permissions profile name.
-  final Input<String> customPermissionsName;
+  final pulumi.Input<String> customPermissionsName;
 
   /// Namespace containing the role. Defaults to `default`.
-  final Input<String>? namespace;
+  final pulumi.Input<String>? namespace;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Role. Valid values are `ADMIN`, `AUTHOR`, `READER`, `ADMIN_PRO`, `AUTHOR_PRO`, and `READER_PRO`.
   ///
   /// The following arguments are optional:
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   RoleCustomPermissionArgs({
     this.awsAccountId,
@@ -50,12 +50,12 @@ class RoleCustomPermissionArgs {
 
   factory RoleCustomPermissionArgs.fromMap(Map<String, dynamic> map) {
     return RoleCustomPermissionArgs(
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
       customPermissionsName:
-          Input.asInput<String>(map['customPermissionsName']),
-      namespace: Input.asOptionalInput<String>(map['namespace']),
-      region: Input.asOptionalInput<String>(map['region']),
-      role: Input.asInput<String>(map['role']),
+          pulumi.Input.asInput<String>(map['customPermissionsName']),
+      namespace: pulumi.Input.asOptionalInput<String>(map['namespace']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      role: pulumi.Input.asInput<String>(map['role']),
     );
   }
 }

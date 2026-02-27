@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../identity_provider_config_oidc/identity_provider_config_oidc.dart';
 import 'identity_provider_config_args.dart';
 
@@ -15,37 +15,37 @@ import 'identity_provider_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:eks/identityProviderConfig:IdentityProviderConfig my_identity_provider_config my_cluster:my_identity_provider_config
 /// ```
-class IdentityProviderConfig extends CustomResource {
+class IdentityProviderConfig extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the EKS Identity Provider Configuration.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Name of the EKS Cluster.
-  late final Output<String> clusterName;
+  late final pulumi.Output<String> clusterName;
 
   /// Nested attribute containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster. Detailed below.
-  late final Output<IdentityProviderConfigOidc> oidc;
+  late final pulumi.Output<IdentityProviderConfigOidc> oidc;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Status of the EKS Identity Provider Configuration.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   IdentityProviderConfig(
     String name, {
     IdentityProviderConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:eks/identityProviderConfig:IdentityProviderConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.clusterName = registerOutput<String>('clusterName');

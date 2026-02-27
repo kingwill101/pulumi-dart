@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../endpoint_elasticsearch_settings/endpoint_elasticsearch_settings.dart';
 import '../endpoint_kafka_settings/endpoint_kafka_settings.dart';
 import '../endpoint_kinesis_settings/endpoint_kinesis_settings.dart';
@@ -14,87 +14,87 @@ import '../endpoint_redshift_settings/endpoint_redshift_settings.dart';
 /// The set of arguments for Endpoint.
 class EndpointArgs {
   /// ARN for the certificate.
-  final Input<String>? certificateArn;
+  final pulumi.Input<String>? certificateArn;
 
   /// Name of the endpoint database.
-  final Input<String>? databaseName;
+  final pulumi.Input<String>? databaseName;
 
   /// Configuration block for OpenSearch settings. See below.
-  final Input<EndpointElasticsearchSettings>? elasticsearchSettings;
+  final pulumi.Input<EndpointElasticsearchSettings>? elasticsearchSettings;
 
   /// Database endpoint identifier. Identifiers must contain from 1 to 255 alphanumeric characters or hyphens, begin with a letter, contain only ASCII letters, digits, and hyphens, not end with a hyphen, and not contain two consecutive hyphens.
-  final Input<String> endpointId;
+  final pulumi.Input<String> endpointId;
 
   /// Type of endpoint. Valid values are `source`, `target`.
-  final Input<String> endpointType;
+  final pulumi.Input<String> endpointType;
 
   /// Type of engine for the endpoint. Valid values are `aurora`, `aurora-postgresql`, `aurora-serverless`, `aurora-postgresql-serverless`,`azuredb`, `azure-sql-managed-instance`, `babelfish`, `db2`, `db2-zos`, `docdb`, `dynamodb`, `elasticsearch`, `kafka`, `kinesis`, `mariadb`, `mongodb`, `mysql`, `opensearch`, `oracle`, `postgres`, `redshift`,`redshift-serverless`, `sqlserver`, `neptune` ,`sybase`. Please note that some of engine names are available only for `target` endpoint type (e.g. `redshift`).
-  final Input<String> engineName;
+  final pulumi.Input<String> engineName;
 
   /// Additional attributes associated with the connection. For available attributes for a `source` Endpoint, see [Sources for data migration](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.html). For available attributes for a `target` Endpoint, see [Targets for data migration](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.html).
-  final Input<String>? extraConnectionAttributes;
+  final pulumi.Input<String>? extraConnectionAttributes;
 
   /// Configuration block for Kafka settings. See below.
-  final Input<EndpointKafkaSettings>? kafkaSettings;
+  final pulumi.Input<EndpointKafkaSettings>? kafkaSettings;
 
   /// Configuration block for Kinesis settings. See below.
-  final Input<EndpointKinesisSettings>? kinesisSettings;
+  final pulumi.Input<EndpointKinesisSettings>? kinesisSettings;
 
   /// ARN for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kms_key_arn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region. When `engine_name` is `redshift`, `kms_key_arn` is the KMS Key for the Redshift target and the parameter `redshift_settings.server_side_encryption_kms_key_id` encrypts the S3 intermediate storage.
   ///
   /// The following arguments are optional:
-  final Input<String>? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
 
   /// Configuration block for MongoDB settings. See below.
-  final Input<EndpointMongodbSettings>? mongodbSettings;
+  final pulumi.Input<EndpointMongodbSettings>? mongodbSettings;
 
   /// Configuration block for MySQL settings. See below.
-  final Input<EndpointMysqlSettings>? mysqlSettings;
+  final pulumi.Input<EndpointMysqlSettings>? mysqlSettings;
 
   /// Configuration block for Oracle settings. See below.
-  final Input<EndpointOracleSettings>? oracleSettings;
+  final pulumi.Input<EndpointOracleSettings>? oracleSettings;
 
   /// Password to be used to login to the endpoint database.
-  final Input<String>? password;
+  final pulumi.Input<String>? password;
 
   /// Whether to pause associated running replication tasks, regardless if they are managed by Terraform, prior to modifying the endpoint. Only tasks paused by the resource will be restarted after the modification completes. Default is `false`.
-  final Input<bool>? pauseReplicationTasks;
+  final pulumi.Input<bool>? pauseReplicationTasks;
 
   /// Port used by the endpoint database.
-  final Input<int>? port;
+  final pulumi.Input<int>? port;
 
   /// Configuration block for Postgres settings. See below.
-  final Input<EndpointPostgresSettings>? postgresSettings;
-  final Input<EndpointRedisSettings>? redisSettings;
+  final pulumi.Input<EndpointPostgresSettings>? postgresSettings;
+  final pulumi.Input<EndpointRedisSettings>? redisSettings;
 
   /// Configuration block for Redshift settings. See below.
-  final Input<EndpointRedshiftSettings>? redshiftSettings;
+  final pulumi.Input<EndpointRedshiftSettings>? redshiftSettings;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ARN of the IAM role that specifies AWS DMS as the trusted entity and has the required permissions to access the value in the Secrets Manager secret referred to by `secrets_manager_arn`. The role must allow the `iam:PassRole` action.
   ///
   /// > **Note:** You can specify one of two sets of values for these permissions. You can specify the values for this setting and `secrets_manager_arn`. Or you can specify clear-text values for `username`, `password` , `server_name`, and `port`. You can't specify both.
-  final Input<String>? secretsManagerAccessRoleArn;
+  final pulumi.Input<String>? secretsManagerAccessRoleArn;
 
   /// Full ARN, partial ARN, or friendly name of the Secrets Manager secret that contains the endpoint connection details. Supported only when `engine_name` is `aurora`, `aurora-postgresql`, `mariadb`, `mongodb`, `mysql`, `oracle`, `postgres`, `redshift`, or `sqlserver`.
-  final Input<String>? secretsManagerArn;
+  final pulumi.Input<String>? secretsManagerArn;
 
   /// Host name of the server.
-  final Input<String>? serverName;
+  final pulumi.Input<String>? serverName;
 
   /// ARN used by the service access IAM role for dynamodb endpoints.
-  final Input<String>? serviceAccessRole;
+  final pulumi.Input<String>? serviceAccessRole;
 
   /// SSL mode to use for the connection. Valid values are `none`, `require`, `verify-ca`, `verify-full`
-  final Input<String>? sslMode;
+  final pulumi.Input<String>? sslMode;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// User name to be used to login to the endpoint database.
-  final Input<String>? username;
+  final pulumi.Input<String>? username;
 
   EndpointArgs({
     this.certificateArn,
@@ -138,7 +138,7 @@ class EndpointArgs {
     }
     final elasticsearchSettingsValue = elasticsearchSettings;
     if (elasticsearchSettingsValue != null) {
-      map['elasticsearchSettings'] = Input.mapOptionalInputValue<
+      map['elasticsearchSettings'] = pulumi.Input.mapOptionalInputValue<
               EndpointElasticsearchSettings, Map<String, dynamic>>(
           elasticsearchSettingsValue, (value) => value.toMap());
     }
@@ -151,12 +151,13 @@ class EndpointArgs {
     }
     final kafkaSettingsValue = kafkaSettings;
     if (kafkaSettingsValue != null) {
-      map['kafkaSettings'] = Input.mapOptionalInputValue<EndpointKafkaSettings,
+      map['kafkaSettings'] = pulumi.Input.mapOptionalInputValue<
+          EndpointKafkaSettings,
           Map<String, dynamic>>(kafkaSettingsValue, (value) => value.toMap());
     }
     final kinesisSettingsValue = kinesisSettings;
     if (kinesisSettingsValue != null) {
-      map['kinesisSettings'] = Input.mapOptionalInputValue<
+      map['kinesisSettings'] = pulumi.Input.mapOptionalInputValue<
           EndpointKinesisSettings,
           Map<String, dynamic>>(kinesisSettingsValue, (value) => value.toMap());
     }
@@ -166,18 +167,19 @@ class EndpointArgs {
     }
     final mongodbSettingsValue = mongodbSettings;
     if (mongodbSettingsValue != null) {
-      map['mongodbSettings'] = Input.mapOptionalInputValue<
+      map['mongodbSettings'] = pulumi.Input.mapOptionalInputValue<
           EndpointMongodbSettings,
           Map<String, dynamic>>(mongodbSettingsValue, (value) => value.toMap());
     }
     final mysqlSettingsValue = mysqlSettings;
     if (mysqlSettingsValue != null) {
-      map['mysqlSettings'] = Input.mapOptionalInputValue<EndpointMysqlSettings,
+      map['mysqlSettings'] = pulumi.Input.mapOptionalInputValue<
+          EndpointMysqlSettings,
           Map<String, dynamic>>(mysqlSettingsValue, (value) => value.toMap());
     }
     final oracleSettingsValue = oracleSettings;
     if (oracleSettingsValue != null) {
-      map['oracleSettings'] = Input.mapOptionalInputValue<
+      map['oracleSettings'] = pulumi.Input.mapOptionalInputValue<
           EndpointOracleSettings,
           Map<String, dynamic>>(oracleSettingsValue, (value) => value.toMap());
     }
@@ -195,18 +197,19 @@ class EndpointArgs {
     }
     final postgresSettingsValue = postgresSettings;
     if (postgresSettingsValue != null) {
-      map['postgresSettings'] = Input.mapOptionalInputValue<
+      map['postgresSettings'] = pulumi.Input.mapOptionalInputValue<
               EndpointPostgresSettings, Map<String, dynamic>>(
           postgresSettingsValue, (value) => value.toMap());
     }
     final redisSettingsValue = redisSettings;
     if (redisSettingsValue != null) {
-      map['redisSettings'] = Input.mapOptionalInputValue<EndpointRedisSettings,
+      map['redisSettings'] = pulumi.Input.mapOptionalInputValue<
+          EndpointRedisSettings,
           Map<String, dynamic>>(redisSettingsValue, (value) => value.toMap());
     }
     final redshiftSettingsValue = redshiftSettings;
     if (redshiftSettingsValue != null) {
-      map['redshiftSettings'] = Input.mapOptionalInputValue<
+      map['redshiftSettings'] = pulumi.Input.mapOptionalInputValue<
               EndpointRedshiftSettings, Map<String, dynamic>>(
           redshiftSettingsValue, (value) => value.toMap());
     }
@@ -247,48 +250,49 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      certificateArn: Input.asOptionalInput<String>(map['certificateArn']),
-      databaseName: Input.asOptionalInput<String>(map['databaseName']),
+      certificateArn:
+          pulumi.Input.asOptionalInput<String>(map['certificateArn']),
+      databaseName: pulumi.Input.asOptionalInput<String>(map['databaseName']),
       elasticsearchSettings:
-          Input.asOptionalInput<EndpointElasticsearchSettings>(
+          pulumi.Input.asOptionalInput<EndpointElasticsearchSettings>(
               map['elasticsearchSettings']),
-      endpointId: Input.asInput<String>(map['endpointId']),
-      endpointType: Input.asInput<String>(map['endpointType']),
-      engineName: Input.asInput<String>(map['engineName']),
-      extraConnectionAttributes:
-          Input.asOptionalInput<String>(map['extraConnectionAttributes']),
-      kafkaSettings:
-          Input.asOptionalInput<EndpointKafkaSettings>(map['kafkaSettings']),
-      kinesisSettings: Input.asOptionalInput<EndpointKinesisSettings>(
+      endpointId: pulumi.Input.asInput<String>(map['endpointId']),
+      endpointType: pulumi.Input.asInput<String>(map['endpointType']),
+      engineName: pulumi.Input.asInput<String>(map['engineName']),
+      extraConnectionAttributes: pulumi.Input.asOptionalInput<String>(
+          map['extraConnectionAttributes']),
+      kafkaSettings: pulumi.Input.asOptionalInput<EndpointKafkaSettings>(
+          map['kafkaSettings']),
+      kinesisSettings: pulumi.Input.asOptionalInput<EndpointKinesisSettings>(
           map['kinesisSettings']),
-      kmsKeyArn: Input.asOptionalInput<String>(map['kmsKeyArn']),
-      mongodbSettings: Input.asOptionalInput<EndpointMongodbSettings>(
+      kmsKeyArn: pulumi.Input.asOptionalInput<String>(map['kmsKeyArn']),
+      mongodbSettings: pulumi.Input.asOptionalInput<EndpointMongodbSettings>(
           map['mongodbSettings']),
-      mysqlSettings:
-          Input.asOptionalInput<EndpointMysqlSettings>(map['mysqlSettings']),
-      oracleSettings:
-          Input.asOptionalInput<EndpointOracleSettings>(map['oracleSettings']),
-      password: Input.asOptionalInput<String>(map['password']),
+      mysqlSettings: pulumi.Input.asOptionalInput<EndpointMysqlSettings>(
+          map['mysqlSettings']),
+      oracleSettings: pulumi.Input.asOptionalInput<EndpointOracleSettings>(
+          map['oracleSettings']),
+      password: pulumi.Input.asOptionalInput<String>(map['password']),
       pauseReplicationTasks:
-          Input.asOptionalInput<bool>(map['pauseReplicationTasks']),
-      port: Input.asOptionalInput<int>(map['port']),
-      postgresSettings: Input.asOptionalInput<EndpointPostgresSettings>(
+          pulumi.Input.asOptionalInput<bool>(map['pauseReplicationTasks']),
+      port: pulumi.Input.asOptionalInput<int>(map['port']),
+      postgresSettings: pulumi.Input.asOptionalInput<EndpointPostgresSettings>(
           map['postgresSettings']),
-      redisSettings:
-          Input.asOptionalInput<EndpointRedisSettings>(map['redisSettings']),
-      redshiftSettings: Input.asOptionalInput<EndpointRedshiftSettings>(
+      redisSettings: pulumi.Input.asOptionalInput<EndpointRedisSettings>(
+          map['redisSettings']),
+      redshiftSettings: pulumi.Input.asOptionalInput<EndpointRedshiftSettings>(
           map['redshiftSettings']),
-      region: Input.asOptionalInput<String>(map['region']),
-      secretsManagerAccessRoleArn:
-          Input.asOptionalInput<String>(map['secretsManagerAccessRoleArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      secretsManagerAccessRoleArn: pulumi.Input.asOptionalInput<String>(
+          map['secretsManagerAccessRoleArn']),
       secretsManagerArn:
-          Input.asOptionalInput<String>(map['secretsManagerArn']),
-      serverName: Input.asOptionalInput<String>(map['serverName']),
+          pulumi.Input.asOptionalInput<String>(map['secretsManagerArn']),
+      serverName: pulumi.Input.asOptionalInput<String>(map['serverName']),
       serviceAccessRole:
-          Input.asOptionalInput<String>(map['serviceAccessRole']),
-      sslMode: Input.asOptionalInput<String>(map['sslMode']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      username: Input.asOptionalInput<String>(map['username']),
+          pulumi.Input.asOptionalInput<String>(map['serviceAccessRole']),
+      sslMode: pulumi.Input.asOptionalInput<String>(map['sslMode']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      username: pulumi.Input.asOptionalInput<String>(map['username']),
     );
   }
 }

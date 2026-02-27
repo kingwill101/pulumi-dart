@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vpc_endpoint_service_private_dns_name_configuration/vpc_endpoint_service_private_dns_name_configuration.dart';
 import 'vpc_endpoint_service_args.dart';
 
@@ -28,71 +28,71 @@ import 'vpc_endpoint_service_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/vpcEndpointService:VpcEndpointService foo vpce-svc-0f97a19d3fa8220bc
 /// ```
-class VpcEndpointService extends CustomResource {
+class VpcEndpointService extends pulumi.CustomResource {
   /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
-  late final Output<bool> acceptanceRequired;
+  late final pulumi.Output<bool> acceptanceRequired;
 
   /// The ARNs of one or more principals allowed to discover the endpoint service.
-  late final Output<List<String>> allowedPrincipals;
+  late final pulumi.Output<List<String>> allowedPrincipals;
 
   /// The Amazon Resource Name (ARN) of the VPC endpoint service.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// A set of Availability Zones in which the service is available.
-  late final Output<List<String>> availabilityZones;
+  late final pulumi.Output<List<String>> availabilityZones;
 
   /// A set of DNS names for the service.
-  late final Output<List<String>> baseEndpointDnsNames;
+  late final pulumi.Output<List<String>> baseEndpointDnsNames;
 
   /// Amazon Resource Names (ARNs) of one or more Gateway Load Balancers for the endpoint service.
-  late final Output<List<String>?> gatewayLoadBalancerArns;
+  late final pulumi.Output<List<String>?> gatewayLoadBalancerArns;
 
   /// Whether or not the service manages its VPC endpoints - `true` or `false`.
-  late final Output<bool> managesVpcEndpoints;
+  late final pulumi.Output<bool> managesVpcEndpoints;
 
   /// Amazon Resource Names (ARNs) of one or more Network Load Balancers for the endpoint service.
-  late final Output<List<String>?> networkLoadBalancerArns;
+  late final pulumi.Output<List<String>?> networkLoadBalancerArns;
 
   /// The private DNS name for the service.
-  late final Output<String> privateDnsName;
+  late final pulumi.Output<String> privateDnsName;
 
   /// List of objects containing information about the endpoint service private DNS name configuration.
-  late final Output<List<VpcEndpointServicePrivateDnsNameConfiguration>>
+  late final pulumi.Output<List<VpcEndpointServicePrivateDnsNameConfiguration>>
       privateDnsNameConfigurations;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The service name.
-  late final Output<String> serviceName;
+  late final pulumi.Output<String> serviceName;
 
   /// The service type, `Gateway` or `Interface`.
-  late final Output<String> serviceType;
+  late final pulumi.Output<String> serviceType;
 
   /// Verification state of the VPC endpoint service. Consumers of the endpoint service can use the private name only when the state is `verified`.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// The supported IP address types. The possible values are `ipv4` and `ipv6`.
-  late final Output<List<String>> supportedIpAddressTypes;
+  late final pulumi.Output<List<String>> supportedIpAddressTypes;
 
   /// The set of regions from which service consumers can access the service.
-  late final Output<List<String>> supportedRegions;
+  late final pulumi.Output<List<String>> supportedRegions;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   VpcEndpointService(
     String name, {
     VpcEndpointServiceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpcEndpointService:VpcEndpointService',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.acceptanceRequired = registerOutput<bool>('acceptanceRequired');
     this.allowedPrincipals = registerOutput<List<String>>('allowedPrincipals');

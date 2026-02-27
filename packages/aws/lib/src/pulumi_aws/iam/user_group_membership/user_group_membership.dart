@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_group_membership_args.dart';
 
 /// Provides a resource for adding an IAM User to IAM Groups. This
@@ -19,22 +19,22 @@ import 'user_group_membership_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/userGroupMembership:UserGroupMembership example1 user1/group1/group2
 /// ```
-class UserGroupMembership extends CustomResource {
+class UserGroupMembership extends pulumi.CustomResource {
   /// A list of IAM Groups to add the user to
-  late final Output<List<String>> groups;
+  late final pulumi.Output<List<String>> groups;
 
   /// The name of the IAM User to add to groups
-  late final Output<String> user;
+  late final pulumi.Output<String> user;
 
   UserGroupMembership(
     String name, {
     UserGroupMembershipArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/userGroupMembership:UserGroupMembership',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.groups = registerOutput<List<String>>('groups');
     this.user = registerOutput<String>('user');

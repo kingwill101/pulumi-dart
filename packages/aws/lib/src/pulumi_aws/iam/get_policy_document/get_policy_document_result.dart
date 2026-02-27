@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_policy_document_statement/get_policy_document_statement.dart';
 
 /// Result data returned by getPolicyDocument.
@@ -61,9 +61,8 @@ class GetPolicyDocumentResult {
     }
     final statementsValue = statements;
     if (statementsValue != null) {
-      map['statements'] =
-          Input.encodeList<GetPolicyDocumentStatement, Map<String, dynamic>>(
-              statementsValue, (value) => value.toMap());
+      map['statements'] = pulumi.Input.encodeList<GetPolicyDocumentStatement,
+          Map<String, dynamic>>(statementsValue, (value) => value.toMap());
     }
     final versionValue = version;
     if (versionValue != null) {
@@ -90,7 +89,7 @@ class GetPolicyDocumentResult {
           : (map['sourcePolicyDocuments'] as List).cast<String>(),
       statements: map['statements'] == null
           ? null
-          : Input.decodeList<GetPolicyDocumentStatement>(
+          : pulumi.Input.decodeList<GetPolicyDocumentStatement>(
               map['statements'],
               (value) => GetPolicyDocumentStatement.fromMap(
                   (value as Map).cast<String, dynamic>())),

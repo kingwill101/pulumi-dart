@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_certificate_args.dart';
 import 'get_certificate_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_certificate_result.dart';
 /// You can reference the certificate by domain or tags without having to hard code the ARNs as input.
 Future<GetCertificateResult> getCertificate(
   GetCertificateArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:acm/getCertificate:getCertificate',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificateResult.fromMap(result);
 }

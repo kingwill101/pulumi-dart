@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_alias_args.dart';
 import 'get_alias_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_alias_result.dart';
 /// without having to hard code the ARN as input.
 Future<GetAliasResult> getAlias(
   GetAliasArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:kms/getAlias:getAlias',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAliasResult.fromMap(result);
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_nat_gateways_filter/get_nat_gateways_filter.dart';
 
 /// Result data returned by getNatGateways.
@@ -30,7 +30,7 @@ class GetNatGatewaysResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetNatGatewaysFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetNatGatewaysFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -48,7 +48,7 @@ class GetNatGatewaysResult {
     return GetNatGatewaysResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetNatGatewaysFilter>(
+          : pulumi.Input.decodeList<GetNatGatewaysFilter>(
               map['filters'],
               (value) => GetNatGatewaysFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

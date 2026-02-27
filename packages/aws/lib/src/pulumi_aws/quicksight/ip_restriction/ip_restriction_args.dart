@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for IpRestriction.
 class IpRestrictionArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// Whether IP rules are turned on.
-  final Input<bool> enabled;
+  final pulumi.Input<bool> enabled;
 
   /// Map of allowed IPv4 CIDR ranges and descriptions.
-  final Input<Map<String, String>>? ipRestrictionRuleMap;
+  final pulumi.Input<Map<String, String>>? ipRestrictionRuleMap;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of allowed VPC endpoint IDs and descriptions.
-  final Input<Map<String, String>>? vpcEndpointIdRestrictionRuleMap;
+  final pulumi.Input<Map<String, String>>? vpcEndpointIdRestrictionRuleMap;
 
   /// Map of VPC IDs and descriptions. Traffic from all VPC endpoints that are present in the specified VPC is allowed.
-  final Input<Map<String, String>>? vpcIdRestrictionRuleMap;
+  final pulumi.Input<Map<String, String>>? vpcIdRestrictionRuleMap;
 
   IpRestrictionArgs({
     this.awsAccountId,
@@ -61,16 +61,17 @@ class IpRestrictionArgs {
 
   factory IpRestrictionArgs.fromMap(Map<String, dynamic> map) {
     return IpRestrictionArgs(
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
-      enabled: Input.asInput<bool>(map['enabled']),
-      ipRestrictionRuleMap: Input.asOptionalInput<Map<String, String>>(
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
+      enabled: pulumi.Input.asInput<bool>(map['enabled']),
+      ipRestrictionRuleMap: pulumi.Input.asOptionalInput<Map<String, String>>(
           map['ipRestrictionRuleMap']),
-      region: Input.asOptionalInput<String>(map['region']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       vpcEndpointIdRestrictionRuleMap:
-          Input.asOptionalInput<Map<String, String>>(
+          pulumi.Input.asOptionalInput<Map<String, String>>(
               map['vpcEndpointIdRestrictionRuleMap']),
-      vpcIdRestrictionRuleMap: Input.asOptionalInput<Map<String, String>>(
-          map['vpcIdRestrictionRuleMap']),
+      vpcIdRestrictionRuleMap:
+          pulumi.Input.asOptionalInput<Map<String, String>>(
+              map['vpcIdRestrictionRuleMap']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_group_association_managed_rule_group/web_acl_rule_group_association_managed_rule_group.dart';
 import '../web_acl_rule_group_association_rule_group_reference/web_acl_rule_group_association_rule_group_reference.dart';
 import '../web_acl_rule_group_association_timeouts/web_acl_rule_group_association_timeouts.dart';
@@ -8,28 +8,30 @@ import '../web_acl_rule_group_association_timeouts/web_acl_rule_group_associatio
 /// The set of arguments for WebAclRuleGroupAssociation.
 class WebAclRuleGroupAssociationArgs {
   /// Managed Rule Group configuration. One of `rule_group_reference` or `managed_rule_group` is required. Conflicts with `rule_group_reference`. See below.
-  final Input<WebAclRuleGroupAssociationManagedRuleGroup>? managedRuleGroup;
+  final pulumi.Input<WebAclRuleGroupAssociationManagedRuleGroup>?
+      managedRuleGroup;
 
   /// Override action for the rule group. Valid values are `none` and `count`. Defaults to `none`. When set to `count`, the actions defined in the rule group rules are overridden to count matches instead of blocking or allowing requests.
-  final Input<String>? overrideAction;
+  final pulumi.Input<String>? overrideAction;
 
   /// Priority of the rule within the Web ACL. Rules are evaluated in order of priority, with lower numbers evaluated first.
-  final Input<int> priority;
+  final pulumi.Input<int> priority;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Custom Rule Group reference configuration. One of `rule_group_reference` or `managed_rule_group` is required. Conflicts with `managed_rule_group`. See below.
-  final Input<WebAclRuleGroupAssociationRuleGroupReference>? ruleGroupReference;
+  final pulumi.Input<WebAclRuleGroupAssociationRuleGroupReference>?
+      ruleGroupReference;
 
   /// Name of the rule to create in the Web ACL that references the rule group. Must be between 1 and 128 characters.
-  final Input<String> ruleName;
-  final Input<WebAclRuleGroupAssociationTimeouts>? timeouts;
+  final pulumi.Input<String> ruleName;
+  final pulumi.Input<WebAclRuleGroupAssociationTimeouts>? timeouts;
 
   /// ARN of the Web ACL to associate the Rule Group with.
   ///
   /// The following arguments are optional:
-  final Input<String> webAclArn;
+  final pulumi.Input<String> webAclArn;
 
   WebAclRuleGroupAssociationArgs({
     this.managedRuleGroup,
@@ -46,7 +48,7 @@ class WebAclRuleGroupAssociationArgs {
     final map = <String, dynamic>{};
     final managedRuleGroupValue = managedRuleGroup;
     if (managedRuleGroupValue != null) {
-      map['managedRuleGroup'] = Input.mapOptionalInputValue<
+      map['managedRuleGroup'] = pulumi.Input.mapOptionalInputValue<
               WebAclRuleGroupAssociationManagedRuleGroup, Map<String, dynamic>>(
           managedRuleGroupValue, (value) => value.toMap());
     }
@@ -61,7 +63,7 @@ class WebAclRuleGroupAssociationArgs {
     }
     final ruleGroupReferenceValue = ruleGroupReference;
     if (ruleGroupReferenceValue != null) {
-      map['ruleGroupReference'] = Input.mapOptionalInputValue<
+      map['ruleGroupReference'] = pulumi.Input.mapOptionalInputValue<
               WebAclRuleGroupAssociationRuleGroupReference,
               Map<String, dynamic>>(
           ruleGroupReferenceValue, (value) => value.toMap());
@@ -69,7 +71,7 @@ class WebAclRuleGroupAssociationArgs {
     map['ruleName'] = ruleName;
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           WebAclRuleGroupAssociationTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -79,19 +81,20 @@ class WebAclRuleGroupAssociationArgs {
 
   factory WebAclRuleGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationArgs(
-      managedRuleGroup:
-          Input.asOptionalInput<WebAclRuleGroupAssociationManagedRuleGroup>(
-              map['managedRuleGroup']),
-      overrideAction: Input.asOptionalInput<String>(map['overrideAction']),
-      priority: Input.asInput<int>(map['priority']),
-      region: Input.asOptionalInput<String>(map['region']),
-      ruleGroupReference:
-          Input.asOptionalInput<WebAclRuleGroupAssociationRuleGroupReference>(
-              map['ruleGroupReference']),
-      ruleName: Input.asInput<String>(map['ruleName']),
-      timeouts: Input.asOptionalInput<WebAclRuleGroupAssociationTimeouts>(
-          map['timeouts']),
-      webAclArn: Input.asInput<String>(map['webAclArn']),
+      managedRuleGroup: pulumi.Input.asOptionalInput<
+          WebAclRuleGroupAssociationManagedRuleGroup>(map['managedRuleGroup']),
+      overrideAction:
+          pulumi.Input.asOptionalInput<String>(map['overrideAction']),
+      priority: pulumi.Input.asInput<int>(map['priority']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      ruleGroupReference: pulumi.Input.asOptionalInput<
+              WebAclRuleGroupAssociationRuleGroupReference>(
+          map['ruleGroupReference']),
+      ruleName: pulumi.Input.asInput<String>(map['ruleName']),
+      timeouts:
+          pulumi.Input.asOptionalInput<WebAclRuleGroupAssociationTimeouts>(
+              map['timeouts']),
+      webAclArn: pulumi.Input.asInput<String>(map['webAclArn']),
     );
   }
 }

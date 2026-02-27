@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_cloud_exadata_infrastructures_cloud_exadata_infrastructure/get_cloud_exadata_infrastructures_cloud_exadata_infrastructure.dart';
 
 /// Result data returned by getCloudExadataInfrastructures.
@@ -21,7 +21,7 @@ class GetCloudExadataInfrastructuresResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['cloudExadataInfrastructures'] = Input.encodeList<
+    map['cloudExadataInfrastructures'] = pulumi.Input.encodeList<
             GetCloudExadataInfrastructuresCloudExadataInfrastructure,
             Map<String, dynamic>>(
         cloudExadataInfrastructures, (value) => value.toMap());
@@ -33,7 +33,7 @@ class GetCloudExadataInfrastructuresResult {
   factory GetCloudExadataInfrastructuresResult.fromMap(
       Map<String, dynamic> map) {
     return GetCloudExadataInfrastructuresResult(
-      cloudExadataInfrastructures: Input.decodeList<
+      cloudExadataInfrastructures: pulumi.Input.decodeList<
               GetCloudExadataInfrastructuresCloudExadataInfrastructure>(
           map['cloudExadataInfrastructures'],
           (value) =>

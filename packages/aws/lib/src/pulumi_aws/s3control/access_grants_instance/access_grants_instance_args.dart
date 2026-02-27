@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AccessGrantsInstance.
 class AccessGrantsInstanceArgs {
   /// The AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// The ARN of the AWS IAM Identity Center instance associated with the S3 Access Grants instance.
-  final Input<String>? identityCenterArn;
+  final pulumi.Input<String>? identityCenterArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   AccessGrantsInstanceArgs({
     this.accountId,
@@ -46,11 +46,11 @@ class AccessGrantsInstanceArgs {
 
   factory AccessGrantsInstanceArgs.fromMap(Map<String, dynamic> map) {
     return AccessGrantsInstanceArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
       identityCenterArn:
-          Input.asOptionalInput<String>(map['identityCenterArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<String>(map['identityCenterArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

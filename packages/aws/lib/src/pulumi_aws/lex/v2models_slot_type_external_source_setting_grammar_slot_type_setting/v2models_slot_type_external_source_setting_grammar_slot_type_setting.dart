@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_slot_type_external_source_setting_grammar_slot_type_setting_source/v2models_slot_type_external_source_setting_grammar_slot_type_setting_source.dart';
 
 class V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting {
@@ -17,7 +17,7 @@ class V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting {
     final map = <String, dynamic>{};
     final sourcesValue = sources;
     if (sourcesValue != null) {
-      map['sources'] = Input.encodeList<
+      map['sources'] = pulumi.Input.encodeList<
           V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource,
           Map<String, dynamic>>(sourcesValue, (value) => value.toMap());
     }
@@ -29,7 +29,7 @@ class V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting {
     return V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSetting(
       sources: map['sources'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource>(
               map['sources'],
               (value) =>

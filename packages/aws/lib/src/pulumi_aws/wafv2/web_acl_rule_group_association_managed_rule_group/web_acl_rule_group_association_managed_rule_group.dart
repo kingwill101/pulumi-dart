@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_group_association_managed_rule_group_rule_action_override/web_acl_rule_group_association_managed_rule_group_rule_action_override.dart';
 
 class WebAclRuleGroupAssociationManagedRuleGroup {
@@ -29,7 +29,7 @@ class WebAclRuleGroupAssociationManagedRuleGroup {
     map['name'] = name;
     final ruleActionOverridesValue = ruleActionOverrides;
     if (ruleActionOverridesValue != null) {
-      map['ruleActionOverrides'] = Input.encodeList<
+      map['ruleActionOverrides'] = pulumi.Input.encodeList<
               WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverride,
               Map<String, dynamic>>(
           ruleActionOverridesValue, (value) => value.toMap());
@@ -48,7 +48,7 @@ class WebAclRuleGroupAssociationManagedRuleGroup {
       name: map['name'] as String,
       ruleActionOverrides: map['ruleActionOverrides'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverride>(
               map['ruleActionOverrides'],
               (value) =>

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_patch_baseline_approval_rule/get_patch_baseline_approval_rule.dart';
 import '../get_patch_baseline_global_filter/get_patch_baseline_global_filter.dart';
 import '../get_patch_baseline_source/get_patch_baseline_source.dart';
@@ -74,9 +74,8 @@ class GetPatchBaselineResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['approvalRules'] =
-        Input.encodeList<GetPatchBaselineApprovalRule, Map<String, dynamic>>(
-            approvalRules, (value) => value.toMap());
+    map['approvalRules'] = pulumi.Input.encodeList<GetPatchBaselineApprovalRule,
+        Map<String, dynamic>>(approvalRules, (value) => value.toMap());
     map['approvedPatches'] = approvedPatches;
     map['approvedPatchesComplianceLevel'] = approvedPatchesComplianceLevel;
     map['approvedPatchesEnableNonSecurity'] = approvedPatchesEnableNonSecurity;
@@ -87,9 +86,8 @@ class GetPatchBaselineResult {
       map['defaultBaseline'] = defaultBaselineValue;
     }
     map['description'] = description;
-    map['globalFilters'] =
-        Input.encodeList<GetPatchBaselineGlobalFilter, Map<String, dynamic>>(
-            globalFilters, (value) => value.toMap());
+    map['globalFilters'] = pulumi.Input.encodeList<GetPatchBaselineGlobalFilter,
+        Map<String, dynamic>>(globalFilters, (value) => value.toMap());
     map['id'] = id;
     map['json'] = json;
     map['name'] = name;
@@ -106,14 +104,14 @@ class GetPatchBaselineResult {
     map['rejectedPatches'] = rejectedPatches;
     map['rejectedPatchesAction'] = rejectedPatchesAction;
     map['sources'] =
-        Input.encodeList<GetPatchBaselineSource, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetPatchBaselineSource, Map<String, dynamic>>(
             sources, (value) => value.toMap());
     return map;
   }
 
   factory GetPatchBaselineResult.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselineResult(
-      approvalRules: Input.decodeList<GetPatchBaselineApprovalRule>(
+      approvalRules: pulumi.Input.decodeList<GetPatchBaselineApprovalRule>(
           map['approvalRules'],
           (value) => GetPatchBaselineApprovalRule.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -128,7 +126,7 @@ class GetPatchBaselineResult {
           ? null
           : map['defaultBaseline'] as bool,
       description: map['description'] as String,
-      globalFilters: Input.decodeList<GetPatchBaselineGlobalFilter>(
+      globalFilters: pulumi.Input.decodeList<GetPatchBaselineGlobalFilter>(
           map['globalFilters'],
           (value) => GetPatchBaselineGlobalFilter.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -144,7 +142,7 @@ class GetPatchBaselineResult {
       region: map['region'] as String,
       rejectedPatches: (map['rejectedPatches'] as List).cast<String>(),
       rejectedPatchesAction: map['rejectedPatchesAction'] as String,
-      sources: Input.decodeList<GetPatchBaselineSource>(
+      sources: pulumi.Input.decodeList<GetPatchBaselineSource>(
           map['sources'],
           (value) => GetPatchBaselineSource.fromMap(
               (value as Map).cast<String, dynamic>())),

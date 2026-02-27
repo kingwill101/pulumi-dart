@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_firewall_availability_zone_mapping/get_firewall_availability_zone_mapping.dart';
 import '../get_firewall_encryption_configuration/get_firewall_encryption_configuration.dart';
 import '../get_firewall_firewall_status/get_firewall_firewall_status.dart';
@@ -93,26 +93,25 @@ class GetFirewallResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['availabilityZoneChangeProtection'] = availabilityZoneChangeProtection;
-    map['availabilityZoneMappings'] = Input.encodeList<
+    map['availabilityZoneMappings'] = pulumi.Input.encodeList<
             GetFirewallAvailabilityZoneMapping, Map<String, dynamic>>(
         availabilityZoneMappings, (value) => value.toMap());
     map['deleteProtection'] = deleteProtection;
     map['description'] = description;
     map['enabledAnalysisTypes'] = enabledAnalysisTypes;
-    map['encryptionConfigurations'] = Input.encodeList<
+    map['encryptionConfigurations'] = pulumi.Input.encodeList<
             GetFirewallEncryptionConfiguration, Map<String, dynamic>>(
         encryptionConfigurations, (value) => value.toMap());
     map['firewallPolicyArn'] = firewallPolicyArn;
     map['firewallPolicyChangeProtection'] = firewallPolicyChangeProtection;
-    map['firewallStatuses'] =
-        Input.encodeList<GetFirewallFirewallStatus, Map<String, dynamic>>(
-            firewallStatuses, (value) => value.toMap());
+    map['firewallStatuses'] = pulumi.Input.encodeList<GetFirewallFirewallStatus,
+        Map<String, dynamic>>(firewallStatuses, (value) => value.toMap());
     map['id'] = id;
     map['name'] = name;
     map['region'] = region;
     map['subnetChangeProtection'] = subnetChangeProtection;
     map['subnetMappings'] =
-        Input.encodeList<GetFirewallSubnetMapping, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetFirewallSubnetMapping, Map<String, dynamic>>(
             subnetMappings, (value) => value.toMap());
     map['tags'] = tags;
     map['transitGatewayId'] = transitGatewayId;
@@ -128,7 +127,7 @@ class GetFirewallResult {
       availabilityZoneChangeProtection:
           map['availabilityZoneChangeProtection'] as bool,
       availabilityZoneMappings:
-          Input.decodeList<GetFirewallAvailabilityZoneMapping>(
+          pulumi.Input.decodeList<GetFirewallAvailabilityZoneMapping>(
               map['availabilityZoneMappings'],
               (value) => GetFirewallAvailabilityZoneMapping.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -137,14 +136,14 @@ class GetFirewallResult {
       enabledAnalysisTypes:
           (map['enabledAnalysisTypes'] as List).cast<String>(),
       encryptionConfigurations:
-          Input.decodeList<GetFirewallEncryptionConfiguration>(
+          pulumi.Input.decodeList<GetFirewallEncryptionConfiguration>(
               map['encryptionConfigurations'],
               (value) => GetFirewallEncryptionConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
       firewallPolicyArn: map['firewallPolicyArn'] as String,
       firewallPolicyChangeProtection:
           map['firewallPolicyChangeProtection'] as bool,
-      firewallStatuses: Input.decodeList<GetFirewallFirewallStatus>(
+      firewallStatuses: pulumi.Input.decodeList<GetFirewallFirewallStatus>(
           map['firewallStatuses'],
           (value) => GetFirewallFirewallStatus.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -152,7 +151,7 @@ class GetFirewallResult {
       name: map['name'] as String,
       region: map['region'] as String,
       subnetChangeProtection: map['subnetChangeProtection'] as bool,
-      subnetMappings: Input.decodeList<GetFirewallSubnetMapping>(
+      subnetMappings: pulumi.Input.decodeList<GetFirewallSubnetMapping>(
           map['subnetMappings'],
           (value) => GetFirewallSubnetMapping.fromMap(
               (value as Map).cast<String, dynamic>())),

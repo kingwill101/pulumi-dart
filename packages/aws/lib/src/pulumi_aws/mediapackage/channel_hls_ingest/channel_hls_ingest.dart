@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../channel_hls_ingest_ingest_endpoint/channel_hls_ingest_ingest_endpoint.dart';
 
 class ChannelHlsIngest {
@@ -15,7 +15,8 @@ class ChannelHlsIngest {
     final map = <String, dynamic>{};
     final ingestEndpointsValue = ingestEndpoints;
     if (ingestEndpointsValue != null) {
-      map['ingestEndpoints'] = Input.encodeList<ChannelHlsIngestIngestEndpoint,
+      map['ingestEndpoints'] = pulumi.Input.encodeList<
+          ChannelHlsIngestIngestEndpoint,
           Map<String, dynamic>>(ingestEndpointsValue, (value) => value.toMap());
     }
     return map;
@@ -25,7 +26,7 @@ class ChannelHlsIngest {
     return ChannelHlsIngest(
       ingestEndpoints: map['ingestEndpoints'] == null
           ? null
-          : Input.decodeList<ChannelHlsIngestIngestEndpoint>(
+          : pulumi.Input.decodeList<ChannelHlsIngestIngestEndpoint>(
               map['ingestEndpoints'],
               (value) => ChannelHlsIngestIngestEndpoint.fromMap(
                   (value as Map).cast<String, dynamic>())),

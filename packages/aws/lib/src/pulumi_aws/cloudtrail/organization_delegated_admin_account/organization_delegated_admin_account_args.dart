@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for OrganizationDelegatedAdminAccount.
 class OrganizationDelegatedAdminAccountArgs {
   /// An organization member account ID that you want to designate as a delegated administrator.
-  final Input<String> accountId;
+  final pulumi.Input<String> accountId;
 
   OrganizationDelegatedAdminAccountArgs({
     required this.accountId,
@@ -20,7 +20,7 @@ class OrganizationDelegatedAdminAccountArgs {
   factory OrganizationDelegatedAdminAccountArgs.fromMap(
       Map<String, dynamic> map) {
     return OrganizationDelegatedAdminAccountArgs(
-      accountId: Input.asInput<String>(map['accountId']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
     );
   }
 }

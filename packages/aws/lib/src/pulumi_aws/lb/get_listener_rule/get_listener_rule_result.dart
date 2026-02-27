@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_listener_rule_action/get_listener_rule_action.dart';
 import '../get_listener_rule_condition/get_listener_rule_condition.dart';
 import '../get_listener_rule_transform/get_listener_rule_transform.dart';
@@ -47,15 +47,14 @@ class GetListenerRuleResult {
     final actionsValue = actions;
     if (actionsValue != null) {
       map['actions'] =
-          Input.encodeList<GetListenerRuleAction, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetListenerRuleAction, Map<String, dynamic>>(
               actionsValue, (value) => value.toMap());
     }
     map['arn'] = arn;
     final conditionsValue = conditions;
     if (conditionsValue != null) {
-      map['conditions'] =
-          Input.encodeList<GetListenerRuleCondition, Map<String, dynamic>>(
-              conditionsValue, (value) => value.toMap());
+      map['conditions'] = pulumi.Input.encodeList<GetListenerRuleCondition,
+          Map<String, dynamic>>(conditionsValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['listenerArn'] = listenerArn;
@@ -64,9 +63,8 @@ class GetListenerRuleResult {
     map['tags'] = tags;
     final transformsValue = transforms;
     if (transformsValue != null) {
-      map['transforms'] =
-          Input.encodeList<GetListenerRuleTransform, Map<String, dynamic>>(
-              transformsValue, (value) => value.toMap());
+      map['transforms'] = pulumi.Input.encodeList<GetListenerRuleTransform,
+          Map<String, dynamic>>(transformsValue, (value) => value.toMap());
     }
     return map;
   }
@@ -75,14 +73,14 @@ class GetListenerRuleResult {
     return GetListenerRuleResult(
       actions: map['actions'] == null
           ? null
-          : Input.decodeList<GetListenerRuleAction>(
+          : pulumi.Input.decodeList<GetListenerRuleAction>(
               map['actions'],
               (value) => GetListenerRuleAction.fromMap(
                   (value as Map).cast<String, dynamic>())),
       arn: map['arn'] as String,
       conditions: map['conditions'] == null
           ? null
-          : Input.decodeList<GetListenerRuleCondition>(
+          : pulumi.Input.decodeList<GetListenerRuleCondition>(
               map['conditions'],
               (value) => GetListenerRuleCondition.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -93,7 +91,7 @@ class GetListenerRuleResult {
       tags: (map['tags'] as Map).cast<String, String>(),
       transforms: map['transforms'] == null
           ? null
-          : Input.decodeList<GetListenerRuleTransform>(
+          : pulumi.Input.decodeList<GetListenerRuleTransform>(
               map['transforms'],
               (value) => GetListenerRuleTransform.fromMap(
                   (value as Map).cast<String, dynamic>())),

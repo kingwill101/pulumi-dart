@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for GroupPolicy.
 class GroupPolicyArgs {
   /// The IAM group to attach to the policy.
-  final Input<String> group;
+  final pulumi.Input<String> group;
 
   /// The name of the policy. If omitted, the provider will
   /// assign a random, unique name.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Creates a unique name beginning with the specified
   /// prefix. Conflicts with `name`.
-  final Input<String>? namePrefix;
+  final pulumi.Input<String>? namePrefix;
 
   /// The policy document. This is a JSON formatted string.
-  final Input<String> policy;
+  final pulumi.Input<String> policy;
 
   GroupPolicyArgs({
     required this.group,
@@ -42,10 +42,10 @@ class GroupPolicyArgs {
 
   factory GroupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GroupPolicyArgs(
-      group: Input.asInput<String>(map['group']),
-      name: Input.asOptionalInput<String>(map['name']),
-      namePrefix: Input.asOptionalInput<String>(map['namePrefix']),
-      policy: Input.asInput<String>(map['policy']),
+      group: pulumi.Input.asInput<String>(map['group']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      namePrefix: pulumi.Input.asOptionalInput<String>(map['namePrefix']),
+      policy: pulumi.Input.asInput<String>(map['policy']),
     );
   }
 }

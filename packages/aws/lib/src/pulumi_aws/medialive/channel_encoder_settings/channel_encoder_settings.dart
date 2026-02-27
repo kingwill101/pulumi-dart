@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../channel_encoder_settings_audio_description/channel_encoder_settings_audio_description.dart';
 import '../channel_encoder_settings_avail_blanking/channel_encoder_settings_avail_blanking.dart';
 import '../channel_encoder_settings_caption_description/channel_encoder_settings_caption_description.dart';
@@ -56,7 +56,7 @@ class ChannelEncoderSettings {
     final map = <String, dynamic>{};
     final audioDescriptionsValue = audioDescriptions;
     if (audioDescriptionsValue != null) {
-      map['audioDescriptions'] = Input.encodeList<
+      map['audioDescriptions'] = pulumi.Input.encodeList<
               ChannelEncoderSettingsAudioDescription, Map<String, dynamic>>(
           audioDescriptionsValue, (value) => value.toMap());
     }
@@ -66,7 +66,7 @@ class ChannelEncoderSettings {
     }
     final captionDescriptionsValue = captionDescriptions;
     if (captionDescriptionsValue != null) {
-      map['captionDescriptions'] = Input.encodeList<
+      map['captionDescriptions'] = pulumi.Input.encodeList<
               ChannelEncoderSettingsCaptionDescription, Map<String, dynamic>>(
           captionDescriptionsValue, (value) => value.toMap());
     }
@@ -83,12 +83,13 @@ class ChannelEncoderSettings {
     if (nielsenConfigurationValue != null) {
       map['nielsenConfiguration'] = nielsenConfigurationValue.toMap();
     }
-    map['outputGroups'] = Input.encodeList<ChannelEncoderSettingsOutputGroup,
+    map['outputGroups'] = pulumi.Input.encodeList<
+        ChannelEncoderSettingsOutputGroup,
         Map<String, dynamic>>(outputGroups, (value) => value.toMap());
     map['timecodeConfig'] = timecodeConfig.toMap();
     final videoDescriptionsValue = videoDescriptions;
     if (videoDescriptionsValue != null) {
-      map['videoDescriptions'] = Input.encodeList<
+      map['videoDescriptions'] = pulumi.Input.encodeList<
               ChannelEncoderSettingsVideoDescription, Map<String, dynamic>>(
           videoDescriptionsValue, (value) => value.toMap());
     }
@@ -99,7 +100,7 @@ class ChannelEncoderSettings {
     return ChannelEncoderSettings(
       audioDescriptions: map['audioDescriptions'] == null
           ? null
-          : Input.decodeList<ChannelEncoderSettingsAudioDescription>(
+          : pulumi.Input.decodeList<ChannelEncoderSettingsAudioDescription>(
               map['audioDescriptions'],
               (value) => ChannelEncoderSettingsAudioDescription.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -109,7 +110,7 @@ class ChannelEncoderSettings {
               (map['availBlanking'] as Map).cast<String, dynamic>()),
       captionDescriptions: map['captionDescriptions'] == null
           ? null
-          : Input.decodeList<ChannelEncoderSettingsCaptionDescription>(
+          : pulumi.Input.decodeList<ChannelEncoderSettingsCaptionDescription>(
               map['captionDescriptions'],
               (value) => ChannelEncoderSettingsCaptionDescription.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -126,7 +127,7 @@ class ChannelEncoderSettings {
           ? null
           : ChannelEncoderSettingsNielsenConfiguration.fromMap(
               (map['nielsenConfiguration'] as Map).cast<String, dynamic>()),
-      outputGroups: Input.decodeList<ChannelEncoderSettingsOutputGroup>(
+      outputGroups: pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroup>(
           map['outputGroups'],
           (value) => ChannelEncoderSettingsOutputGroup.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -134,7 +135,7 @@ class ChannelEncoderSettings {
           (map['timecodeConfig'] as Map).cast<String, dynamic>()),
       videoDescriptions: map['videoDescriptions'] == null
           ? null
-          : Input.decodeList<ChannelEncoderSettingsVideoDescription>(
+          : pulumi.Input.decodeList<ChannelEncoderSettingsVideoDescription>(
               map['videoDescriptions'],
               (value) => ChannelEncoderSettingsVideoDescription.fromMap(
                   (value as Map).cast<String, dynamic>())),

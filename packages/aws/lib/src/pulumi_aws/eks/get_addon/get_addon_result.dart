@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_addon_pod_identity_association/get_addon_pod_identity_association.dart';
 
 /// Result data returned by getAddon.
@@ -60,9 +60,9 @@ class GetAddonResult {
     map['createdAt'] = createdAt;
     map['id'] = id;
     map['modifiedAt'] = modifiedAt;
-    map['podIdentityAssociations'] =
-        Input.encodeList<GetAddonPodIdentityAssociation, Map<String, dynamic>>(
-            podIdentityAssociations, (value) => value.toMap());
+    map['podIdentityAssociations'] = pulumi.Input.encodeList<
+            GetAddonPodIdentityAssociation, Map<String, dynamic>>(
+        podIdentityAssociations, (value) => value.toMap());
     map['region'] = region;
     map['serviceAccountRoleArn'] = serviceAccountRoleArn;
     map['tags'] = tags;
@@ -79,10 +79,11 @@ class GetAddonResult {
       createdAt: map['createdAt'] as String,
       id: map['id'] as String,
       modifiedAt: map['modifiedAt'] as String,
-      podIdentityAssociations: Input.decodeList<GetAddonPodIdentityAssociation>(
-          map['podIdentityAssociations'],
-          (value) => GetAddonPodIdentityAssociation.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      podIdentityAssociations:
+          pulumi.Input.decodeList<GetAddonPodIdentityAssociation>(
+              map['podIdentityAssociations'],
+              (value) => GetAddonPodIdentityAssociation.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       serviceAccountRoleArn: map['serviceAccountRoleArn'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),

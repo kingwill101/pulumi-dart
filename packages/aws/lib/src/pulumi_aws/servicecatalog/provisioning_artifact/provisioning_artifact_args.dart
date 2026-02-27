@@ -1,43 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ProvisioningArtifact.
 class ProvisioningArtifactArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). The default value is `en`.
-  final Input<String>? acceptLanguage;
+  final pulumi.Input<String>? acceptLanguage;
 
   /// Whether the product version is active. Inactive provisioning artifacts are invisible to end users. End users cannot launch or update a provisioned product from an inactive provisioning artifact. Default is `true`.
-  final Input<bool>? active;
+  final pulumi.Input<bool>? active;
 
   /// Description of the provisioning artifact (i.e., version), including how it differs from the previous provisioning artifact.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Whether AWS Service Catalog stops validating the specified provisioning artifact template even if it is invalid.
-  final Input<bool>? disableTemplateValidation;
+  final pulumi.Input<bool>? disableTemplateValidation;
 
   /// Information set by the administrator to provide guidance to end users about which provisioning artifacts to use. Valid values are `DEFAULT` and `DEPRECATED`. The default is `DEFAULT`. Users are able to make updates to a provisioned product of a deprecated version but cannot launch new provisioned products using a deprecated version.
-  final Input<String>? guidance;
+  final pulumi.Input<String>? guidance;
 
   /// Name of the provisioning artifact (for example, `v1`, `v2beta`). No spaces are allowed.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Identifier of the product.
-  final Input<String> productId;
+  final pulumi.Input<String> productId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Template source as the physical ID of the resource that contains the template. Currently only supports CloudFormation stack ARN. Specify the physical ID as `arn:[partition]:cloudformation:[region]:[account ID]:stack/[stack name]/[resource ID]`.
-  final Input<String>? templatePhysicalId;
+  final pulumi.Input<String>? templatePhysicalId;
 
   /// Template source as URL of the CloudFormation template in Amazon S3.
   ///
   /// The following arguments are optional:
-  final Input<String>? templateUrl;
+  final pulumi.Input<String>? templateUrl;
 
   /// Type of provisioning artifact. See [AWS Docs](https://docs.aws.amazon.com/servicecatalog/latest/dg/API_ProvisioningArtifactProperties.html) for valid list of values.
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   ProvisioningArtifactArgs({
     this.acceptLanguage,
@@ -101,19 +101,20 @@ class ProvisioningArtifactArgs {
 
   factory ProvisioningArtifactArgs.fromMap(Map<String, dynamic> map) {
     return ProvisioningArtifactArgs(
-      acceptLanguage: Input.asOptionalInput<String>(map['acceptLanguage']),
-      active: Input.asOptionalInput<bool>(map['active']),
-      description: Input.asOptionalInput<String>(map['description']),
+      acceptLanguage:
+          pulumi.Input.asOptionalInput<String>(map['acceptLanguage']),
+      active: pulumi.Input.asOptionalInput<bool>(map['active']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       disableTemplateValidation:
-          Input.asOptionalInput<bool>(map['disableTemplateValidation']),
-      guidance: Input.asOptionalInput<String>(map['guidance']),
-      name: Input.asOptionalInput<String>(map['name']),
-      productId: Input.asInput<String>(map['productId']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<bool>(map['disableTemplateValidation']),
+      guidance: pulumi.Input.asOptionalInput<String>(map['guidance']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      productId: pulumi.Input.asInput<String>(map['productId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       templatePhysicalId:
-          Input.asOptionalInput<String>(map['templatePhysicalId']),
-      templateUrl: Input.asOptionalInput<String>(map['templateUrl']),
-      type: Input.asOptionalInput<String>(map['type']),
+          pulumi.Input.asOptionalInput<String>(map['templatePhysicalId']),
+      templateUrl: pulumi.Input.asOptionalInput<String>(map['templateUrl']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
     );
   }
 }

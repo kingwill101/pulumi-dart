@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../intent_follow_up_prompt_prompt_message/intent_follow_up_prompt_prompt_message.dart';
 
 class IntentFollowUpPromptPrompt {
@@ -26,7 +26,7 @@ class IntentFollowUpPromptPrompt {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['maxAttempts'] = maxAttempts;
-    map['messages'] = Input.encodeList<IntentFollowUpPromptPromptMessage,
+    map['messages'] = pulumi.Input.encodeList<IntentFollowUpPromptPromptMessage,
         Map<String, dynamic>>(messages, (value) => value.toMap());
     final responseCardValue = responseCard;
     if (responseCardValue != null) {
@@ -38,7 +38,7 @@ class IntentFollowUpPromptPrompt {
   factory IntentFollowUpPromptPrompt.fromMap(Map<String, dynamic> map) {
     return IntentFollowUpPromptPrompt(
       maxAttempts: map['maxAttempts'] as int,
-      messages: Input.decodeList<IntentFollowUpPromptPromptMessage>(
+      messages: pulumi.Input.decodeList<IntentFollowUpPromptPromptMessage>(
           map['messages'],
           (value) => IntentFollowUpPromptPromptMessage.fromMap(
               (value as Map).cast<String, dynamic>())),

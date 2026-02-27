@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_access_control_attributes_attribute/instance_access_control_attributes_attribute.dart';
 import 'instance_access_control_attributes_args.dart';
 
@@ -15,27 +15,28 @@ import 'instance_access_control_attributes_args.dart';
 /// ```sh
 /// $ pulumi import aws:ssoadmin/instanceAccessControlAttributes:InstanceAccessControlAttributes example arn:aws:sso:::instance/ssoins-0123456789abcdef
 /// ```
-class InstanceAccessControlAttributes extends CustomResource {
+class InstanceAccessControlAttributes extends pulumi.CustomResource {
   /// See AccessControlAttribute for more details.
-  late final Output<List<InstanceAccessControlAttributesAttribute>> attributes;
+  late final pulumi.Output<List<InstanceAccessControlAttributesAttribute>>
+      attributes;
 
   /// The Amazon Resource Name (ARN) of the SSO Instance.
-  late final Output<String> instanceArn;
+  late final pulumi.Output<String> instanceArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<String> status;
-  late final Output<String> statusReason;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<String> status;
+  late final pulumi.Output<String> statusReason;
 
   InstanceAccessControlAttributes(
     String name, {
     InstanceAccessControlAttributesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssoadmin/instanceAccessControlAttributes:InstanceAccessControlAttributes',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attributes =
         registerOutput<List<InstanceAccessControlAttributesAttribute>>(

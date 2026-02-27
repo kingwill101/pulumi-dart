@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_instance_profiles_args.dart';
 import 'get_instance_profiles_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_instance_profiles_result.dart';
 /// instance profile properties without having to hard code ARNs as input.
 Future<GetInstanceProfilesResult> getInstanceProfiles(
   GetInstanceProfilesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:iam/getInstanceProfiles:getInstanceProfiles',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceProfilesResult.fromMap(result);
 }

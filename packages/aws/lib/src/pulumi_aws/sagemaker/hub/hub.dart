@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../hub_s3_storage_config/hub_s3_storage_config.dart';
 import 'hub_args.dart';
 
@@ -17,43 +17,43 @@ import 'hub_args.dart';
 /// ```sh
 /// $ pulumi import aws:sagemaker/hub:Hub test_hub my-code-repo
 /// ```
-class Hub extends CustomResource {
+class Hub extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) assigned by AWS to this Hub.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// A description of the hub.
-  late final Output<String> hubDescription;
+  late final pulumi.Output<String> hubDescription;
 
   /// The display name of the hub.
-  late final Output<String?> hubDisplayName;
+  late final pulumi.Output<String?> hubDisplayName;
 
   /// The name of the hub.
-  late final Output<String> hubName;
+  late final pulumi.Output<String> hubName;
 
   /// The searchable keywords for the hub.
-  late final Output<List<String>?> hubSearchKeywords;
+  late final pulumi.Output<List<String>?> hubSearchKeywords;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The Amazon S3 storage configuration for the hub. See S3 Storage Config details below.
-  late final Output<HubS3StorageConfig?> s3StorageConfig;
+  late final pulumi.Output<HubS3StorageConfig?> s3StorageConfig;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   Hub(
     String name, {
     HubArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sagemaker/hub:Hub',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.hubDescription = registerOutput<String>('hubDescription');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../capability_configuration_argo_cd_aws_idc/capability_configuration_argo_cd_aws_idc.dart';
 import '../capability_configuration_argo_cd_network_access/capability_configuration_argo_cd_network_access.dart';
 import '../capability_configuration_argo_cd_rbac_role_mapping/capability_configuration_argo_cd_rbac_role_mapping.dart';
@@ -42,7 +42,7 @@ class CapabilityConfigurationArgoCd {
     }
     final rbacRoleMappingsValue = rbacRoleMappings;
     if (rbacRoleMappingsValue != null) {
-      map['rbacRoleMappings'] = Input.encodeList<
+      map['rbacRoleMappings'] = pulumi.Input.encodeList<
               CapabilityConfigurationArgoCdRbacRoleMapping,
               Map<String, dynamic>>(
           rbacRoleMappingsValue, (value) => value.toMap());
@@ -65,7 +65,8 @@ class CapabilityConfigurationArgoCd {
               (map['networkAccess'] as Map).cast<String, dynamic>()),
       rbacRoleMappings: map['rbacRoleMappings'] == null
           ? null
-          : Input.decodeList<CapabilityConfigurationArgoCdRbacRoleMapping>(
+          : pulumi.Input.decodeList<
+                  CapabilityConfigurationArgoCdRbacRoleMapping>(
               map['rbacRoleMappings'],
               (value) => CapabilityConfigurationArgoCdRbacRoleMapping.fromMap(
                   (value as Map).cast<String, dynamic>())),

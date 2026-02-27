@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for HostedConfigurationVersion.
 class HostedConfigurationVersionArgs {
   /// Application ID.
-  final Input<String> applicationId;
+  final pulumi.Input<String> applicationId;
 
   /// Configuration profile ID.
-  final Input<String> configurationProfileId;
+  final pulumi.Input<String> configurationProfileId;
 
   /// Content of the configuration or the configuration data.
-  final Input<String> content;
+  final pulumi.Input<String> content;
 
   /// Standard MIME type describing the format of the configuration content. For more information, see [Content-Type](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17).
-  final Input<String> contentType;
+  final pulumi.Input<String> contentType;
 
   /// Description of the configuration.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   HostedConfigurationVersionArgs({
     required this.applicationId,
@@ -50,13 +50,13 @@ class HostedConfigurationVersionArgs {
 
   factory HostedConfigurationVersionArgs.fromMap(Map<String, dynamic> map) {
     return HostedConfigurationVersionArgs(
-      applicationId: Input.asInput<String>(map['applicationId']),
+      applicationId: pulumi.Input.asInput<String>(map['applicationId']),
       configurationProfileId:
-          Input.asInput<String>(map['configurationProfileId']),
-      content: Input.asInput<String>(map['content']),
-      contentType: Input.asInput<String>(map['contentType']),
-      description: Input.asOptionalInput<String>(map['description']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asInput<String>(map['configurationProfileId']),
+      content: pulumi.Input.asInput<String>(map['content']),
+      contentType: pulumi.Input.asInput<String>(map['contentType']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

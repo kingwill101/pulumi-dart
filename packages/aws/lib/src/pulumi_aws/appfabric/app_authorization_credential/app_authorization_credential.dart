@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../app_authorization_credential_api_key_credential/app_authorization_credential_api_key_credential.dart';
 import '../app_authorization_credential_oauth2_credential/app_authorization_credential_oauth2_credential.dart';
 
@@ -20,7 +20,7 @@ class AppAuthorizationCredential {
     final map = <String, dynamic>{};
     final apiKeyCredentialsValue = apiKeyCredentials;
     if (apiKeyCredentialsValue != null) {
-      map['apiKeyCredentials'] = Input.encodeList<
+      map['apiKeyCredentials'] = pulumi.Input.encodeList<
               AppAuthorizationCredentialApiKeyCredential, Map<String, dynamic>>(
           apiKeyCredentialsValue, (value) => value.toMap());
     }
@@ -35,7 +35,7 @@ class AppAuthorizationCredential {
     return AppAuthorizationCredential(
       apiKeyCredentials: map['apiKeyCredentials'] == null
           ? null
-          : Input.decodeList<AppAuthorizationCredentialApiKeyCredential>(
+          : pulumi.Input.decodeList<AppAuthorizationCredentialApiKeyCredential>(
               map['apiKeyCredentials'],
               (value) => AppAuthorizationCredentialApiKeyCredential.fromMap(
                   (value as Map).cast<String, dynamic>())),

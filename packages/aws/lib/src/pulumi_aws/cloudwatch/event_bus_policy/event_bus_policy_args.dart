@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for EventBusPolicy.
 class EventBusPolicyArgs {
   /// The name of the event bus to set the permissions on.
   /// If you omit this, the permissions are set on the `default` event bus.
-  final Input<String>? eventBusName;
+  final pulumi.Input<String>? eventBusName;
 
   /// The text of the policy.
-  final Input<String> policy;
+  final pulumi.Input<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   EventBusPolicyArgs({
     this.eventBusName,
@@ -36,9 +36,9 @@ class EventBusPolicyArgs {
 
   factory EventBusPolicyArgs.fromMap(Map<String, dynamic> map) {
     return EventBusPolicyArgs(
-      eventBusName: Input.asOptionalInput<String>(map['eventBusName']),
-      policy: Input.asInput<String>(map['policy']),
-      region: Input.asOptionalInput<String>(map['region']),
+      eventBusName: pulumi.Input.asOptionalInput<String>(map['eventBusName']),
+      policy: pulumi.Input.asInput<String>(map['policy']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

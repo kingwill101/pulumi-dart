@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_network_interface_filter/get_network_interface_filter.dart';
 
 /// Arguments for getNetworkInterface.
 class GetNetworkInterfaceArgs {
   /// One or more name/value pairs to filter off of. There are several valid keys, for a full reference, check out [describe-network-interfaces](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-network-interfaces.html) in the AWS CLI reference.
-  final Input<List<GetNetworkInterfaceFilter>>? filters;
+  final pulumi.Input<List<GetNetworkInterfaceFilter>>? filters;
 
   /// Identifier for the network interface.
-  final Input<String>? id;
+  final pulumi.Input<String>? id;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Any tags assigned to the network interface.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetNetworkInterfaceArgs({
     this.filters,
@@ -28,12 +28,11 @@ class GetNetworkInterfaceArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
               List<GetNetworkInterfaceFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetNetworkInterfaceFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetNetworkInterfaceFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final idValue = id;
     if (idValue != null) {
@@ -52,11 +51,11 @@ class GetNetworkInterfaceArgs {
 
   factory GetNetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceArgs(
-      filters: Input.asOptionalInput<List<GetNetworkInterfaceFilter>>(
+      filters: pulumi.Input.asOptionalInput<List<GetNetworkInterfaceFilter>>(
           map['filters']),
-      id: Input.asOptionalInput<String>(map['id']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      id: pulumi.Input.asOptionalInput<String>(map['id']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

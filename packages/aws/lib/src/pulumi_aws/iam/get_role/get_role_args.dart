@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRole.
 class GetRoleArgs {
   /// Friendly IAM role name to match.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// Tags attached to the role.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetRoleArgs({
     required this.name,
@@ -27,8 +27,8 @@ class GetRoleArgs {
 
   factory GetRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleArgs(
-      name: Input.asInput<String>(map['name']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

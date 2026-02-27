@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ControlPanel.
 class ControlPanelArgs {
   /// ARN of the cluster in which this control panel will reside.
-  final Input<String> clusterArn;
+  final pulumi.Input<String> clusterArn;
 
   /// Name describing the control panel.
   ///
   /// The following arguments are optional:
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   ControlPanelArgs({
     required this.clusterArn,
@@ -37,9 +37,9 @@ class ControlPanelArgs {
 
   factory ControlPanelArgs.fromMap(Map<String, dynamic> map) {
     return ControlPanelArgs(
-      clusterArn: Input.asInput<String>(map['clusterArn']),
-      name: Input.asOptionalInput<String>(map['name']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      clusterArn: pulumi.Input.asInput<String>(map['clusterArn']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

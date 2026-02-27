@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_peering_timeouts/cluster_peering_timeouts.dart';
 import 'cluster_peering_args.dart';
 
@@ -17,29 +17,29 @@ import 'cluster_peering_args.dart';
 /// ```sh
 /// $ pulumi import aws:dsql/clusterPeering:ClusterPeering example cluster-id-12345678
 /// ```
-class ClusterPeering extends CustomResource {
+class ClusterPeering extends pulumi.CustomResource {
   /// List of DSQL Cluster ARNs to be peered to this cluster.
-  late final Output<List<String>> clusters;
+  late final pulumi.Output<List<String>> clusters;
 
   /// DSQL Cluster Identifier.
-  late final Output<String> identifier;
+  late final pulumi.Output<String> identifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<ClusterPeeringTimeouts?> timeouts;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<ClusterPeeringTimeouts?> timeouts;
 
   /// Witness region for a multi-region cluster.
-  late final Output<String> witnessRegion;
+  late final pulumi.Output<String> witnessRegion;
 
   ClusterPeering(
     String name, {
     ClusterPeeringArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:dsql/clusterPeering:ClusterPeering',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.clusters = registerOutput<List<String>>('clusters');
     this.identifier = registerOutput<String>('identifier');

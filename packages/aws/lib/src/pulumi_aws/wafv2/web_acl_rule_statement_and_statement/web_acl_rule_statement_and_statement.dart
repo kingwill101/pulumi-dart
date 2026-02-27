@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement/web_acl_rule_statement.dart';
 
 class WebAclRuleStatementAndStatement {
@@ -14,14 +14,14 @@ class WebAclRuleStatementAndStatement {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['statements'] =
-        Input.encodeList<WebAclRuleStatement, Map<String, dynamic>>(
+        pulumi.Input.encodeList<WebAclRuleStatement, Map<String, dynamic>>(
             statements, (value) => value.toMap());
     return map;
   }
 
   factory WebAclRuleStatementAndStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementAndStatement(
-      statements: Input.decodeList<WebAclRuleStatement>(
+      statements: pulumi.Input.decodeList<WebAclRuleStatement>(
           map['statements'],
           (value) => WebAclRuleStatement.fromMap(
               (value as Map).cast<String, dynamic>())),

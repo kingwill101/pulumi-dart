@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for UsagePlanKey.
 class UsagePlanKeyArgs {
   /// Identifier of the API key resource.
-  final Input<String> keyId;
+  final pulumi.Input<String> keyId;
 
   /// Type of the API key resource. Currently, the valid key type is API_KEY.
-  final Input<String> keyType;
+  final pulumi.Input<String> keyType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Id of the usage plan resource representing to associate the key to.
-  final Input<String> usagePlanId;
+  final pulumi.Input<String> usagePlanId;
 
   UsagePlanKeyArgs({
     required this.keyId,
@@ -37,10 +37,10 @@ class UsagePlanKeyArgs {
 
   factory UsagePlanKeyArgs.fromMap(Map<String, dynamic> map) {
     return UsagePlanKeyArgs(
-      keyId: Input.asInput<String>(map['keyId']),
-      keyType: Input.asInput<String>(map['keyType']),
-      region: Input.asOptionalInput<String>(map['region']),
-      usagePlanId: Input.asInput<String>(map['usagePlanId']),
+      keyId: pulumi.Input.asInput<String>(map['keyId']),
+      keyType: pulumi.Input.asInput<String>(map['keyType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      usagePlanId: pulumi.Input.asInput<String>(map['usagePlanId']),
     );
   }
 }

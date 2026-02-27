@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTemplates.
 class GetTemplatesArgs {
   /// AWS Region to which the quota increases apply.
-  final Input<String>? awsRegion;
+  final pulumi.Input<String>? awsRegion;
 
   /// AWS Region to which the quota increases apply. Use `aws.getRegion` instead.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetTemplatesArgs({
     this.awsRegion,
@@ -30,8 +30,8 @@ class GetTemplatesArgs {
 
   factory GetTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplatesArgs(
-      awsRegion: Input.asOptionalInput<String>(map['awsRegion']),
-      region: Input.asOptionalInput<String>(map['region']),
+      awsRegion: pulumi.Input.asOptionalInput<String>(map['awsRegion']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_log_delivery_canonical_user_id_args.dart';
 import 'get_log_delivery_canonical_user_id_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_log_delivery_canonical_user_id_result.dart';
 /// See the [Amazon CloudFront Developer Guide](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/AccessLogs.html) for more information.
 Future<GetLogDeliveryCanonicalUserIdResult> getLogDeliveryCanonicalUserId(
   GetLogDeliveryCanonicalUserIdArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:cloudfront/getLogDeliveryCanonicalUserId:getLogDeliveryCanonicalUserId',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLogDeliveryCanonicalUserIdResult.fromMap(result);
 }

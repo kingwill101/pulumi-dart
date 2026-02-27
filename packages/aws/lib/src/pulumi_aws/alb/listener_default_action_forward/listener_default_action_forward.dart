@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../listener_default_action_forward_stickiness/listener_default_action_forward_stickiness.dart';
 import '../listener_default_action_forward_target_group/listener_default_action_forward_target_group.dart';
 
@@ -24,7 +24,7 @@ class ListenerDefaultActionForward {
     if (stickinessValue != null) {
       map['stickiness'] = stickinessValue.toMap();
     }
-    map['targetGroups'] = Input.encodeList<
+    map['targetGroups'] = pulumi.Input.encodeList<
         ListenerDefaultActionForwardTargetGroup,
         Map<String, dynamic>>(targetGroups, (value) => value.toMap());
     return map;
@@ -36,10 +36,11 @@ class ListenerDefaultActionForward {
           ? null
           : ListenerDefaultActionForwardStickiness.fromMap(
               (map['stickiness'] as Map).cast<String, dynamic>()),
-      targetGroups: Input.decodeList<ListenerDefaultActionForwardTargetGroup>(
-          map['targetGroups'],
-          (value) => ListenerDefaultActionForwardTargetGroup.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      targetGroups:
+          pulumi.Input.decodeList<ListenerDefaultActionForwardTargetGroup>(
+              map['targetGroups'],
+              (value) => ListenerDefaultActionForwardTargetGroup.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

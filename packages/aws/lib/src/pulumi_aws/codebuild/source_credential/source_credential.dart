@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'source_credential_args.dart';
 
 /// Provides a CodeBuild Source Credentials Resource.
@@ -34,39 +34,39 @@ import 'source_credential_args.dart';
 /// ```sh
 /// $ pulumi import aws:codebuild/sourceCredential:SourceCredential example arn:aws:codebuild:us-west-2:123456789:token:github
 /// ```
-class SourceCredential extends CustomResource {
+class SourceCredential extends pulumi.CustomResource {
   /// The ARN of Source Credential.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The type of authentication used to connect to a GitHub, GitHub Enterprise, or Bitbucket
   /// repository. Valid values are `BASIC_AUTH`,
   /// `PERSONAL_ACCESS_TOKEN`, `CODECONNECTIONS`, and `SECRETS_MANAGER`. An OAUTH connection is not supported by the API.
-  late final Output<String> authType;
+  late final pulumi.Output<String> authType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The source provider used for this project.
-  late final Output<String> serverType;
+  late final pulumi.Output<String> serverType;
 
   /// For a GitHub and GitHub Enterprise, this is the personal access token. For Bitbucket, this is the
   /// app password. When using an AWS CodeStar connection (`auth_type = "CODECONNECTIONS")`, this is an AWS CodeStar
   /// Connection ARN.
-  late final Output<String> token;
+  late final pulumi.Output<String> token;
 
   /// The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for
   /// other types of source providers or connections.
-  late final Output<String?> userName;
+  late final pulumi.Output<String?> userName;
 
   SourceCredential(
     String name, {
     SourceCredentialArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:codebuild/sourceCredential:SourceCredential',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.authType = registerOutput<String>('authType');

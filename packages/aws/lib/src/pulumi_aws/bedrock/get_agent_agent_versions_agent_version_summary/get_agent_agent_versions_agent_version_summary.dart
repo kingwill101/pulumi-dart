@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_agent_agent_versions_agent_version_summary_guardrail_configuration/get_agent_agent_versions_agent_version_summary_guardrail_configuration.dart';
 
 class GetAgentAgentVersionsAgentVersionSummary {
@@ -44,7 +44,7 @@ class GetAgentAgentVersionsAgentVersionSummary {
     map['description'] = description;
     final guardrailConfigurationsValue = guardrailConfigurations;
     if (guardrailConfigurationsValue != null) {
-      map['guardrailConfigurations'] = Input.encodeList<
+      map['guardrailConfigurations'] = pulumi.Input.encodeList<
               GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration,
               Map<String, dynamic>>(
           guardrailConfigurationsValue, (value) => value.toMap());
@@ -63,7 +63,7 @@ class GetAgentAgentVersionsAgentVersionSummary {
       description: map['description'] as String,
       guardrailConfigurations: map['guardrailConfigurations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration>(
               map['guardrailConfigurations'],
               (value) =>

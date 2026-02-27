@@ -1,4 +1,4 @@
 library module_ec2_fleet;
 
-export 'fleet/fleet3.dart';
-export 'fleet/fleet_args3.dart';
+export 'fleet/fleet_ec2.dart';
+export 'fleet/fleet_ec2_args.dart';

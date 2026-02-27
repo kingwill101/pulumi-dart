@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bot_association_lex_bot/bot_association_lex_bot.dart';
 
 /// The set of arguments for BotAssociation.
 class BotAssociationArgs {
   /// The identifier of the Amazon Connect instance. You can find the instanceId in the ARN of the instance.
-  final Input<String> instanceId;
+  final pulumi.Input<String> instanceId;
 
   /// Configuration information of an Amazon Lex (V1) bot. Detailed below.
-  final Input<BotAssociationLexBot> lexBot;
+  final pulumi.Input<BotAssociationLexBot> lexBot;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   BotAssociationArgs({
     required this.instanceId,
@@ -24,7 +24,7 @@ class BotAssociationArgs {
     final map = <String, dynamic>{};
     map['instanceId'] = instanceId;
     map['lexBot'] =
-        Input.mapInputValue<BotAssociationLexBot, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<BotAssociationLexBot, Map<String, dynamic>>(
             lexBot, (value) => value.toMap());
     final regionValue = region;
     if (regionValue != null) {
@@ -35,9 +35,9 @@ class BotAssociationArgs {
 
   factory BotAssociationArgs.fromMap(Map<String, dynamic> map) {
     return BotAssociationArgs(
-      instanceId: Input.asInput<String>(map['instanceId']),
-      lexBot: Input.asInput<BotAssociationLexBot>(map['lexBot']),
-      region: Input.asOptionalInput<String>(map['region']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      lexBot: pulumi.Input.asInput<BotAssociationLexBot>(map['lexBot']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

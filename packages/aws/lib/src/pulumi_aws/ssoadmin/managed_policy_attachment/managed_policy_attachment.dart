@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_policy_attachment_args.dart';
 
 /// Provides an IAM managed policy for a Single Sign-On (SSO) Permission Set resource
@@ -26,31 +26,31 @@ import 'managed_policy_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:ssoadmin/managedPolicyAttachment:ManagedPolicyAttachment example arn:aws:iam::aws:policy/AlexaForBusinessDeviceSetup,arn:aws:sso:::permissionSet/ssoins-2938j0x8920sbj72/ps-80383020jr9302rk,arn:aws:sso:::instance/ssoins-2938j0x8920sbj72
 /// ```
-class ManagedPolicyAttachment extends CustomResource {
+class ManagedPolicyAttachment extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
-  late final Output<String> instanceArn;
+  late final pulumi.Output<String> instanceArn;
 
   /// The IAM managed policy Amazon Resource Name (ARN) to be attached to the Permission Set.
-  late final Output<String> managedPolicyArn;
+  late final pulumi.Output<String> managedPolicyArn;
 
   /// The name of the IAM Managed Policy.
-  late final Output<String> managedPolicyName;
+  late final pulumi.Output<String> managedPolicyName;
 
   /// The Amazon Resource Name (ARN) of the Permission Set.
-  late final Output<String> permissionSetArn;
+  late final pulumi.Output<String> permissionSetArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ManagedPolicyAttachment(
     String name, {
     ManagedPolicyAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ssoadmin/managedPolicyAttachment:ManagedPolicyAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.instanceArn = registerOutput<String>('instanceArn');
     this.managedPolicyArn = registerOutput<String>('managedPolicyArn');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_secret_rotation_rotation_rule/get_secret_rotation_rotation_rule.dart';
 
 /// Result data returned by getSecretRotation.
@@ -34,9 +34,9 @@ class GetSecretRotationResult {
     map['region'] = region;
     map['rotationEnabled'] = rotationEnabled;
     map['rotationLambdaArn'] = rotationLambdaArn;
-    map['rotationRules'] =
-        Input.encodeList<GetSecretRotationRotationRule, Map<String, dynamic>>(
-            rotationRules, (value) => value.toMap());
+    map['rotationRules'] = pulumi.Input.encodeList<
+        GetSecretRotationRotationRule,
+        Map<String, dynamic>>(rotationRules, (value) => value.toMap());
     map['secretId'] = secretId;
     return map;
   }
@@ -47,7 +47,7 @@ class GetSecretRotationResult {
       region: map['region'] as String,
       rotationEnabled: map['rotationEnabled'] as bool,
       rotationLambdaArn: map['rotationLambdaArn'] as String,
-      rotationRules: Input.decodeList<GetSecretRotationRotationRule>(
+      rotationRules: pulumi.Input.decodeList<GetSecretRotationRotationRule>(
           map['rotationRules'],
           (value) => GetSecretRotationRotationRule.fromMap(
               (value as Map).cast<String, dynamic>())),

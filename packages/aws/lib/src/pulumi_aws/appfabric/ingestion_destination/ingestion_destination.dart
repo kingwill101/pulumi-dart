@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ingestion_destination_destination_configuration/ingestion_destination_destination_configuration.dart';
 import '../ingestion_destination_processing_configuration/ingestion_destination_processing_configuration.dart';
 import '../ingestion_destination_timeouts/ingestion_destination_timeouts.dart';
@@ -9,43 +9,43 @@ import 'ingestion_destination_args.dart';
 /// ## Example Usage
 ///
 /// ### Basic Usage
-class IngestionDestination extends CustomResource {
+class IngestionDestination extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the app bundle to use for the request.
-  late final Output<String> appBundleArn;
+  late final pulumi.Output<String> appBundleArn;
 
   /// ARN of the Ingestion Destination.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Contains information about the destination of ingested data.
-  late final Output<IngestionDestinationDestinationConfiguration>
+  late final pulumi.Output<IngestionDestinationDestinationConfiguration>
       destinationConfiguration;
 
   /// The Amazon Resource Name (ARN) of the ingestion to use for the request.
-  late final Output<String> ingestionArn;
+  late final pulumi.Output<String> ingestionArn;
 
   /// Contains information about how ingested data is processed.
-  late final Output<IngestionDestinationProcessingConfiguration>
+  late final pulumi.Output<IngestionDestinationProcessingConfiguration>
       processingConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<IngestionDestinationTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<IngestionDestinationTimeouts?> timeouts;
 
   IngestionDestination(
     String name, {
     IngestionDestinationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:appfabric/ingestionDestination:IngestionDestination',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.appBundleArn = registerOutput<String>('appBundleArn');
     this.arn = registerOutput<String>('arn');

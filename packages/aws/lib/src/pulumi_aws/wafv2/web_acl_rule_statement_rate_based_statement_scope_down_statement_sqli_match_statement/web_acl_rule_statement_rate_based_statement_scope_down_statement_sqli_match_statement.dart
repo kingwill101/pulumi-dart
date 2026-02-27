@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_rate_based_statement_scope_down_statement_sqli_match_statement_field_to_match/web_acl_rule_statement_rate_based_statement_scope_down_statement_sqli_match_statement_field_to_match.dart';
 import '../web_acl_rule_statement_rate_based_statement_scope_down_statement_sqli_match_statement_text_transformation/web_acl_rule_statement_rate_based_statement_scope_down_statement_sqli_match_statement_text_transformation.dart';
 
@@ -33,7 +33,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatement 
     if (sensitivityLevelValue != null) {
       map['sensitivityLevel'] = sensitivityLevelValue;
     }
-    map['textTransformations'] = Input.encodeList<
+    map['textTransformations'] = pulumi.Input.encodeList<
         WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementTextTransformation,
         Map<String, dynamic>>(textTransformations, (value) => value.toMap());
     return map;
@@ -49,7 +49,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatement 
       sensitivityLevel: map['sensitivityLevel'] == null
           ? null
           : map['sensitivityLevel'] as String,
-      textTransformations: Input.decodeList<
+      textTransformations: pulumi.Input.decodeList<
               WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementTextTransformation>(
           map['textTransformations'],
           (value) =>

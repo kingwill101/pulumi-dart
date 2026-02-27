@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getStreamKey.
 class GetStreamKeyArgs {
   /// ARN of the Channel.
-  final Input<String> channelArn;
+  final pulumi.Input<String> channelArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags assigned to the resource.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetStreamKeyArgs({
     required this.channelArn,
@@ -35,9 +35,9 @@ class GetStreamKeyArgs {
 
   factory GetStreamKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetStreamKeyArgs(
-      channelArn: Input.asInput<String>(map['channelArn']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      channelArn: pulumi.Input.asInput<String>(map['channelArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

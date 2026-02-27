@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_initial_response_setting_code_hook_post_code_hook_specification_timeout_conditional_conditional_branch/v2models_intent_initial_response_setting_code_hook_post_code_hook_specification_timeout_conditional_conditional_branch.dart';
 import '../v2models_intent_initial_response_setting_code_hook_post_code_hook_specification_timeout_conditional_default_branch/v2models_intent_initial_response_setting_code_hook_post_code_hook_specification_timeout_conditional_default_branch.dart';
 
@@ -28,7 +28,7 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeo
     map['active'] = active;
     final conditionalBranchesValue = conditionalBranches;
     if (conditionalBranchesValue != null) {
-      map['conditionalBranches'] = Input.encodeList<
+      map['conditionalBranches'] = pulumi.Input.encodeList<
           V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranch,
           Map<String,
               dynamic>>(conditionalBranchesValue, (value) => value.toMap());
@@ -46,7 +46,7 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeo
       active: map['active'] as bool,
       conditionalBranches: map['conditionalBranches'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranch>(
               map['conditionalBranches'],
               (value) =>

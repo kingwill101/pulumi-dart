@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_event_integration_event_filter/get_event_integration_event_filter.dart';
 
 /// Result data returned by getEventIntegration.
@@ -40,9 +40,9 @@ class GetEventIntegrationResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['description'] = description;
-    map['eventFilters'] =
-        Input.encodeList<GetEventIntegrationEventFilter, Map<String, dynamic>>(
-            eventFilters, (value) => value.toMap());
+    map['eventFilters'] = pulumi.Input.encodeList<
+        GetEventIntegrationEventFilter,
+        Map<String, dynamic>>(eventFilters, (value) => value.toMap());
     map['eventbridgeBus'] = eventbridgeBus;
     map['id'] = id;
     map['name'] = name;
@@ -55,7 +55,7 @@ class GetEventIntegrationResult {
     return GetEventIntegrationResult(
       arn: map['arn'] as String,
       description: map['description'] as String,
-      eventFilters: Input.decodeList<GetEventIntegrationEventFilter>(
+      eventFilters: pulumi.Input.decodeList<GetEventIntegrationEventFilter>(
           map['eventFilters'],
           (value) => GetEventIntegrationEventFilter.fromMap(
               (value as Map).cast<String, dynamic>())),

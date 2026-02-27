@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ebs_volumes_filter/get_ebs_volumes_filter.dart';
 
 /// Result data returned by getEbsVolumes.
@@ -29,7 +29,7 @@ class GetEbsVolumesResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetEbsVolumesFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetEbsVolumesFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -46,7 +46,7 @@ class GetEbsVolumesResult {
     return GetEbsVolumesResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetEbsVolumesFilter>(
+          : pulumi.Input.decodeList<GetEbsVolumesFilter>(
               map['filters'],
               (value) => GetEbsVolumesFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

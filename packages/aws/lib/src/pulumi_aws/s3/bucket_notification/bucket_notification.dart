@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_notification_lambda_function/bucket_notification_lambda_function.dart';
 import '../bucket_notification_queue/bucket_notification_queue.dart';
 import '../bucket_notification_topic/bucket_notification_topic.dart';
@@ -65,36 +65,37 @@ import 'bucket_notification_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3/bucketNotification:BucketNotification bucket_notification bucket-name
 /// ```
-class BucketNotification extends CustomResource {
+class BucketNotification extends pulumi.CustomResource {
   /// Name of the bucket for notification configuration.
   ///
   /// The following arguments are optional:
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Whether to enable Amazon EventBridge notifications. Defaults to `false`.
-  late final Output<bool?> eventbridge;
+  late final pulumi.Output<bool?> eventbridge;
 
   /// Used to configure notifications to a Lambda Function. See below.
-  late final Output<List<BucketNotificationLambdaFunction>?> lambdaFunctions;
+  late final pulumi.Output<List<BucketNotificationLambdaFunction>?>
+      lambdaFunctions;
 
   /// Notification configuration to SQS Queue. See below.
-  late final Output<List<BucketNotificationQueue>?> queues;
+  late final pulumi.Output<List<BucketNotificationQueue>?> queues;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Notification configuration to SNS Topic. See below.
-  late final Output<List<BucketNotificationTopic>?> topics;
+  late final pulumi.Output<List<BucketNotificationTopic>?> topics;
 
   BucketNotification(
     String name, {
     BucketNotificationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/bucketNotification:BucketNotification',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.eventbridge = registerOutput<bool?>('eventbridge');

@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getBundle.
 class GetBundleArgs {
   /// ID of the bundle.
-  final Input<String>? bundleId;
+  final pulumi.Input<String>? bundleId;
 
   /// Name of the bundle. You cannot combine this parameter with `bundle_id`.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundle_id`.
-  final Input<String>? owner;
+  final pulumi.Input<String>? owner;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetBundleArgs({
     this.bundleId,
@@ -46,10 +46,10 @@ class GetBundleArgs {
 
   factory GetBundleArgs.fromMap(Map<String, dynamic> map) {
     return GetBundleArgs(
-      bundleId: Input.asOptionalInput<String>(map['bundleId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      owner: Input.asOptionalInput<String>(map['owner']),
-      region: Input.asOptionalInput<String>(map['region']),
+      bundleId: pulumi.Input.asOptionalInput<String>(map['bundleId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      owner: pulumi.Input.asOptionalInput<String>(map['owner']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

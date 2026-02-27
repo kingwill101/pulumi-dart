@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SerialConsoleAccess.
 class SerialConsoleAccessArgs {
   /// Whether or not serial console access is enabled. Valid values are `true` or `false`. Defaults to `true`.
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   SerialConsoleAccessArgs({
     this.enabled,
@@ -30,8 +30,8 @@ class SerialConsoleAccessArgs {
 
   factory SerialConsoleAccessArgs.fromMap(Map<String, dynamic> map) {
     return SerialConsoleAccessArgs(
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
-      region: Input.asOptionalInput<String>(map['region']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

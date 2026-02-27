@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_availability_zones_filter/get_availability_zones_filter.dart';
 
 /// Result data returned by getAvailabilityZones.
@@ -53,9 +53,8 @@ class GetAvailabilityZonesResult {
     }
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetAvailabilityZonesFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetAvailabilityZonesFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['groupNames'] = groupNames;
     map['id'] = id;
@@ -82,7 +81,7 @@ class GetAvailabilityZonesResult {
           : (map['excludeZoneIds'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetAvailabilityZonesFilter>(
+          : pulumi.Input.decodeList<GetAvailabilityZonesFilter>(
               map['filters'],
               (value) => GetAvailabilityZonesFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_script_dag_node_arg/get_script_dag_node_arg.dart';
 
 class GetScriptDagNode {
@@ -25,8 +25,9 @@ class GetScriptDagNode {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['args'] = Input.encodeList<GetScriptDagNodeArg, Map<String, dynamic>>(
-        args, (value) => value.toMap());
+    map['args'] =
+        pulumi.Input.encodeList<GetScriptDagNodeArg, Map<String, dynamic>>(
+            args, (value) => value.toMap());
     map['id'] = id;
     final lineNumberValue = lineNumber;
     if (lineNumberValue != null) {
@@ -38,7 +39,7 @@ class GetScriptDagNode {
 
   factory GetScriptDagNode.fromMap(Map<String, dynamic> map) {
     return GetScriptDagNode(
-      args: Input.decodeList<GetScriptDagNodeArg>(
+      args: pulumi.Input.decodeList<GetScriptDagNodeArg>(
           map['args'],
           (value) => GetScriptDagNodeArg.fromMap(
               (value as Map).cast<String, dynamic>())),

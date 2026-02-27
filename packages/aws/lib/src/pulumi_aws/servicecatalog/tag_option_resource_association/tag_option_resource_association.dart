@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tag_option_resource_association_args.dart';
 
 /// Manages a Service Catalog Tag Option Resource Association.
@@ -18,37 +18,37 @@ import 'tag_option_resource_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:servicecatalog/tagOptionResourceAssociation:TagOptionResourceAssociation example tag-pjtvyakdlyo3m:prod-dnigbtea24ste
 /// ```
-class TagOptionResourceAssociation extends CustomResource {
+class TagOptionResourceAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the resource.
-  late final Output<String> resourceArn;
+  late final pulumi.Output<String> resourceArn;
 
   /// Creation time of the resource.
-  late final Output<String> resourceCreatedTime;
+  late final pulumi.Output<String> resourceCreatedTime;
 
   /// Description of the resource.
-  late final Output<String> resourceDescription;
+  late final pulumi.Output<String> resourceDescription;
 
   /// Resource identifier.
-  late final Output<String> resourceId;
+  late final pulumi.Output<String> resourceId;
 
   /// Description of the resource.
-  late final Output<String> resourceName;
+  late final pulumi.Output<String> resourceName;
 
   /// Tag Option identifier.
-  late final Output<String> tagOptionId;
+  late final pulumi.Output<String> tagOptionId;
 
   TagOptionResourceAssociation(
     String name, {
     TagOptionResourceAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:servicecatalog/tagOptionResourceAssociation:TagOptionResourceAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.resourceArn = registerOutput<String>('resourceArn');

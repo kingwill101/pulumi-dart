@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ami_ids_filter/get_ami_ids_filter.dart';
 
 /// Result data returned by getAmiIds.
@@ -29,8 +29,9 @@ class GetAmiIdsResult {
     map['arns'] = arns;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetAmiIdsFilter, Map<String, dynamic>>(
-          filtersValue, (value) => value.toMap());
+      map['filters'] =
+          pulumi.Input.encodeList<GetAmiIdsFilter, Map<String, dynamic>>(
+              filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['names'] = names;
@@ -43,7 +44,7 @@ class GetAmiIdsResult {
       arns: (map['arns'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetAmiIdsFilter>(
+          : pulumi.Input.decodeList<GetAmiIdsFilter>(
               map['filters'],
               (value) => GetAmiIdsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../baseline_parameters/baseline_parameters.dart';
 import '../baseline_timeouts/baseline_timeouts.dart';
 import 'baseline_args.dart';
@@ -18,44 +18,44 @@ import 'baseline_args.dart';
 /// ```sh
 /// $ pulumi import aws:controltower/baseline:Baseline example arn:aws:controltower:us-east-1:012345678912:enabledbaseline/XALULM96QHI525UOC
 /// ```
-class Baseline extends CustomResource {
+class Baseline extends pulumi.CustomResource {
   /// ARN of the Baseline.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The ARN of the baseline to be enabled.
-  late final Output<String> baselineIdentifier;
+  late final pulumi.Output<String> baselineIdentifier;
 
   /// The version of the baseline to be enabled.
-  late final Output<String> baselineVersion;
-  late final Output<String> operationIdentifier;
+  late final pulumi.Output<String> baselineVersion;
+  late final pulumi.Output<String> operationIdentifier;
 
   /// A list of key-value objects that specify enablement parameters, where key is a string and value is a document of any type. See Parameter below for details.
-  late final Output<BaselineParameters?> parameters;
+  late final pulumi.Output<BaselineParameters?> parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Tags to apply to the landing zone. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the landing zone, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The ARN of the target on which the baseline will be enabled. Only OUs are supported as targets.
   ///
   /// The following arguments are optional:
-  late final Output<String> targetIdentifier;
-  late final Output<BaselineTimeouts?> timeouts;
+  late final pulumi.Output<String> targetIdentifier;
+  late final pulumi.Output<BaselineTimeouts?> timeouts;
 
   Baseline(
     String name, {
     BaselineArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:controltower/baseline:Baseline',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.baselineIdentifier = registerOutput<String>('baselineIdentifier');

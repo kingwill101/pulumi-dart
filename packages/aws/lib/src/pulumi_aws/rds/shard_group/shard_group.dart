@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../shard_group_timeouts/shard_group_timeouts.dart';
 import 'shard_group_args.dart';
 
@@ -17,55 +17,55 @@ import 'shard_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:rds/shardGroup:ShardGroup example example-shard-group
 /// ```
-class ShardGroup extends CustomResource {
+class ShardGroup extends pulumi.CustomResource {
   /// ARN of the shard group.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Specifies whether to create standby DB shard groups for the DB shard group. Valid values are:
-  late final Output<int> computeRedundancy;
+  late final pulumi.Output<int> computeRedundancy;
 
   /// The name of the primary DB cluster for the DB shard group.
-  late final Output<String> dbClusterIdentifier;
+  late final pulumi.Output<String> dbClusterIdentifier;
 
   /// The name of the DB shard group.
-  late final Output<String> dbShardGroupIdentifier;
+  late final pulumi.Output<String> dbShardGroupIdentifier;
 
   /// The AWS Region-unique, immutable identifier for the DB shard group.
-  late final Output<String> dbShardGroupResourceId;
+  late final pulumi.Output<String> dbShardGroupResourceId;
 
   /// The connection endpoint for the DB shard group.
-  late final Output<String> endpoint;
+  late final pulumi.Output<String> endpoint;
 
   /// The maximum capacity of the DB shard group in Aurora capacity units (ACUs).
-  late final Output<double> maxAcu;
+  late final pulumi.Output<double> maxAcu;
 
   /// The minimum capacity of the DB shard group in Aurora capacity units (ACUs).
-  late final Output<double> minAcu;
+  late final pulumi.Output<double> minAcu;
 
   /// Indicates whether the DB shard group is publicly accessible.
-  late final Output<bool> publiclyAccessible;
+  late final pulumi.Output<bool> publiclyAccessible;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-shard-group.html).
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<ShardGroupTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<ShardGroupTimeouts?> timeouts;
 
   ShardGroup(
     String name, {
     ShardGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:rds/shardGroup:ShardGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.computeRedundancy = registerOutput<int>('computeRedundancy');

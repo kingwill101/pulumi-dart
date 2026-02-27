@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getOriginAccessIdentity.
 class GetOriginAccessIdentityArgs {
   /// The identifier for the origin access identity. For example: `E1ZAKK699EOLAL`.
-  final Input<String> id;
+  final pulumi.Input<String> id;
 
   GetOriginAccessIdentityArgs({
     required this.id,
@@ -19,7 +19,7 @@ class GetOriginAccessIdentityArgs {
 
   factory GetOriginAccessIdentityArgs.fromMap(Map<String, dynamic> map) {
     return GetOriginAccessIdentityArgs(
-      id: Input.asInput<String>(map['id']),
+      id: pulumi.Input.asInput<String>(map['id']),
     );
   }
 }

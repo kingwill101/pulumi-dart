@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_contacts_rotation_recurrence/get_contacts_rotation_recurrence.dart';
 
 /// Result data returned by getContactsRotation.
@@ -45,9 +45,8 @@ class GetContactsRotationResult {
     map['contactIds'] = contactIds;
     map['id'] = id;
     map['name'] = name;
-    map['recurrences'] =
-        Input.encodeList<GetContactsRotationRecurrence, Map<String, dynamic>>(
-            recurrences, (value) => value.toMap());
+    map['recurrences'] = pulumi.Input.encodeList<GetContactsRotationRecurrence,
+        Map<String, dynamic>>(recurrences, (value) => value.toMap());
     map['region'] = region;
     map['startTime'] = startTime;
     map['tags'] = tags;
@@ -61,7 +60,7 @@ class GetContactsRotationResult {
       contactIds: (map['contactIds'] as List).cast<String>(),
       id: map['id'] as String,
       name: map['name'] as String,
-      recurrences: Input.decodeList<GetContactsRotationRecurrence>(
+      recurrences: pulumi.Input.decodeList<GetContactsRotationRecurrence>(
           map['recurrences'],
           (value) => GetContactsRotationRecurrence.fromMap(
               (value as Map).cast<String, dynamic>())),

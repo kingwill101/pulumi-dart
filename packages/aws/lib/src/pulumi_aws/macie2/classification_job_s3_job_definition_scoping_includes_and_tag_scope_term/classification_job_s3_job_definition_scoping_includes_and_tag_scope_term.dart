@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../classification_job_s3_job_definition_scoping_includes_and_tag_scope_term_tag_value/classification_job_s3_job_definition_scoping_includes_and_tag_scope_term_tag_value.dart';
 
 class ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm {
@@ -37,7 +37,7 @@ class ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm {
     }
     final tagValuesValue = tagValues;
     if (tagValuesValue != null) {
-      map['tagValues'] = Input.encodeList<
+      map['tagValues'] = pulumi.Input.encodeList<
           ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValue,
           Map<String, dynamic>>(tagValuesValue, (value) => value.toMap());
     }
@@ -56,7 +56,7 @@ class ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm {
       key: map['key'] == null ? null : map['key'] as String,
       tagValues: map['tagValues'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValue>(
               map['tagValues'],
               (value) =>

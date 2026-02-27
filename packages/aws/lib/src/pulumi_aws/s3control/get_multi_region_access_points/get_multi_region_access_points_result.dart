@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_multi_region_access_points_access_point/get_multi_region_access_points_access_point.dart';
 
 /// Result data returned by getMultiRegionAccessPoints.
@@ -24,7 +24,7 @@ class GetMultiRegionAccessPointsResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['accessPoints'] = Input.encodeList<
+    map['accessPoints'] = pulumi.Input.encodeList<
         GetMultiRegionAccessPointsAccessPoint,
         Map<String, dynamic>>(accessPoints, (value) => value.toMap());
     final accountIdValue = accountId;
@@ -38,10 +38,11 @@ class GetMultiRegionAccessPointsResult {
 
   factory GetMultiRegionAccessPointsResult.fromMap(Map<String, dynamic> map) {
     return GetMultiRegionAccessPointsResult(
-      accessPoints: Input.decodeList<GetMultiRegionAccessPointsAccessPoint>(
-          map['accessPoints'],
-          (value) => GetMultiRegionAccessPointsAccessPoint.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      accessPoints:
+          pulumi.Input.decodeList<GetMultiRegionAccessPointsAccessPoint>(
+              map['accessPoints'],
+              (value) => GetMultiRegionAccessPointsAccessPoint.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       accountId: map['accountId'] == null ? null : map['accountId'] as String,
       id: map['id'] as String,
       region: map['region'] as String,

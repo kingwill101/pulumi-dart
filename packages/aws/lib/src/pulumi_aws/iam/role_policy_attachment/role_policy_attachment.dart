@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_policy_attachment_args.dart';
 
 /// Attaches a Managed IAM Policy to an IAM role
@@ -30,22 +30,22 @@ import 'role_policy_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/rolePolicyAttachment:RolePolicyAttachment example test-role/arn:aws:iam::xxxxxxxxxxxx:policy/test-policy
 /// ```
-class RolePolicyAttachment extends CustomResource {
+class RolePolicyAttachment extends pulumi.CustomResource {
   /// The ARN of the policy you want to apply
-  late final Output<String> policyArn;
+  late final pulumi.Output<String> policyArn;
 
   /// The name of the IAM role to which the policy should be applied
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   RolePolicyAttachment(
     String name, {
     RolePolicyAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/rolePolicyAttachment:RolePolicyAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.policyArn = registerOutput<String>('policyArn');
     this.role = registerOutput<String>('role');

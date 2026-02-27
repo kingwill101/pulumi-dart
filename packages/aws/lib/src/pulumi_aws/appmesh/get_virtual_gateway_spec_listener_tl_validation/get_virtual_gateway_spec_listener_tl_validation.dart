@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_gateway_spec_listener_tl_validation_subject_alternative_name/get_virtual_gateway_spec_listener_tl_validation_subject_alternative_name.dart';
 import '../get_virtual_gateway_spec_listener_tl_validation_trust/get_virtual_gateway_spec_listener_tl_validation_trust.dart';
 
@@ -16,11 +16,11 @@ class GetVirtualGatewaySpecListenerTlValidation {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['subjectAlternativeNames'] = Input.encodeList<
+    map['subjectAlternativeNames'] = pulumi.Input.encodeList<
             GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeName,
             Map<String, dynamic>>(
         subjectAlternativeNames, (value) => value.toMap());
-    map['trusts'] = Input.encodeList<
+    map['trusts'] = pulumi.Input.encodeList<
         GetVirtualGatewaySpecListenerTlValidationTrust,
         Map<String, dynamic>>(trusts, (value) => value.toMap());
     return map;
@@ -29,13 +29,14 @@ class GetVirtualGatewaySpecListenerTlValidation {
   factory GetVirtualGatewaySpecListenerTlValidation.fromMap(
       Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerTlValidation(
-      subjectAlternativeNames: Input.decodeList<
+      subjectAlternativeNames: pulumi.Input.decodeList<
               GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeName>(
           map['subjectAlternativeNames'],
           (value) =>
               GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeName
                   .fromMap((value as Map).cast<String, dynamic>())),
-      trusts: Input.decodeList<GetVirtualGatewaySpecListenerTlValidationTrust>(
+      trusts: pulumi.Input.decodeList<
+              GetVirtualGatewaySpecListenerTlValidationTrust>(
           map['trusts'],
           (value) => GetVirtualGatewaySpecListenerTlValidationTrust.fromMap(
               (value as Map).cast<String, dynamic>())),

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_set_logical_table_map_data_transform_tag_column_operation_tag/data_set_logical_table_map_data_transform_tag_column_operation_tag.dart';
 
 class DataSetLogicalTableMapDataTransformTagColumnOperation {
@@ -18,7 +18,7 @@ class DataSetLogicalTableMapDataTransformTagColumnOperation {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['columnName'] = columnName;
-    map['tags'] = Input.encodeList<
+    map['tags'] = pulumi.Input.encodeList<
         DataSetLogicalTableMapDataTransformTagColumnOperationTag,
         Map<String, dynamic>>(tags, (value) => value.toMap());
     return map;
@@ -28,7 +28,7 @@ class DataSetLogicalTableMapDataTransformTagColumnOperation {
       Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformTagColumnOperation(
       columnName: map['columnName'] as String,
-      tags: Input.decodeList<
+      tags: pulumi.Input.decodeList<
               DataSetLogicalTableMapDataTransformTagColumnOperationTag>(
           map['tags'],
           (value) =>

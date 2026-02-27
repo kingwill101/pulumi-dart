@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LfTag.
 class LfTagArgs {
   /// ID of the Data Catalog to create the tag in. If omitted, this defaults to the AWS Account ID.
-  final Input<String>? catalogId;
+  final pulumi.Input<String>? catalogId;
 
   /// Key-name for the tag.
-  final Input<String> key;
+  final pulumi.Input<String> key;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// List of possible values an attribute can take.
-  final Input<List<String>> values;
+  final pulumi.Input<List<String>> values;
 
   LfTagArgs({
     this.catalogId,
@@ -40,10 +40,10 @@ class LfTagArgs {
 
   factory LfTagArgs.fromMap(Map<String, dynamic> map) {
     return LfTagArgs(
-      catalogId: Input.asOptionalInput<String>(map['catalogId']),
-      key: Input.asInput<String>(map['key']),
-      region: Input.asOptionalInput<String>(map['region']),
-      values: Input.asInput<List<String>>(map['values']),
+      catalogId: pulumi.Input.asOptionalInput<String>(map['catalogId']),
+      key: pulumi.Input.asInput<String>(map['key']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      values: pulumi.Input.asInput<List<String>>(map['values']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../custom_log_source_attribute/custom_log_source_attribute.dart';
 import '../custom_log_source_configuration/custom_log_source_configuration.dart';
 import '../custom_log_source_provider_detail/custom_log_source_provider_detail.dart';
@@ -21,39 +21,39 @@ import 'custom_log_source_args.dart';
 /// ```sh
 /// $ pulumi import aws:securitylake/customLogSource:CustomLogSource example example-name
 /// ```
-class CustomLogSource extends CustomResource {
+class CustomLogSource extends pulumi.CustomResource {
   /// The attributes of a third-party custom source.
-  late final Output<List<CustomLogSourceAttribute>> attributes;
+  late final pulumi.Output<List<CustomLogSourceAttribute>> attributes;
 
   /// The configuration for the third-party custom source.
-  late final Output<CustomLogSourceConfiguration> configuration;
+  late final pulumi.Output<CustomLogSourceConfiguration> configuration;
 
   /// The Open Cybersecurity Schema Framework (OCSF) event classes which describes the type of data that the custom source will send to Security Lake.
-  late final Output<List<String>?> eventClasses;
+  late final pulumi.Output<List<String>?> eventClasses;
 
   /// The details of the log provider for a third-party custom source.
-  late final Output<List<CustomLogSourceProviderDetail>> providerDetails;
+  late final pulumi.Output<List<CustomLogSourceProviderDetail>> providerDetails;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Specify the name for a third-party custom source.
   /// This must be a Regionally unique value.
   /// Has a maximum length of 20.
-  late final Output<String> sourceName;
+  late final pulumi.Output<String> sourceName;
 
   /// Specify the source version for the third-party custom source, to limit log collection to a specific version of custom data source.
-  late final Output<String> sourceVersion;
+  late final pulumi.Output<String> sourceVersion;
 
   CustomLogSource(
     String name, {
     CustomLogSourceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:securitylake/customLogSource:CustomLogSource',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.attributes =
         registerOutput<List<CustomLogSourceAttribute>>('attributes');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mail_from_args.dart';
 
 /// Provides an SES domain MAIL FROM resource.
@@ -22,30 +22,30 @@ import 'mail_from_args.dart';
 /// ```sh
 /// $ pulumi import aws:ses/mailFrom:MailFrom example example.com
 /// ```
-class MailFrom extends CustomResource {
+class MailFrom extends pulumi.CustomResource {
   /// The action that you want Amazon SES to take if it cannot successfully read the required MX record when you send an email. Defaults to `UseDefaultValue`. See the [SES API documentation](https://docs.aws.amazon.com/ses/latest/APIReference/API_SetIdentityMailFromDomain.html) for more information.
-  late final Output<String?> behaviorOnMxFailure;
+  late final pulumi.Output<String?> behaviorOnMxFailure;
 
   /// Verified domain name or email identity to generate DKIM tokens for.
-  late final Output<String> domain;
+  late final pulumi.Output<String> domain;
 
   /// Subdomain (of above domain) which is to be used as MAIL FROM address (Required for DMARC validation)
   ///
   /// The following arguments are optional:
-  late final Output<String> mailFromDomain;
+  late final pulumi.Output<String> mailFromDomain;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   MailFrom(
     String name, {
     MailFromArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ses/mailFrom:MailFrom',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.behaviorOnMxFailure = registerOutput<String?>('behaviorOnMxFailure');
     this.domain = registerOutput<String>('domain');

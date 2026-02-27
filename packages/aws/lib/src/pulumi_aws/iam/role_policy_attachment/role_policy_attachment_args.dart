@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for RolePolicyAttachment.
 class RolePolicyAttachmentArgs {
   /// The ARN of the policy you want to apply
-  final Input<String> policyArn;
+  final pulumi.Input<String> policyArn;
 
   /// The name of the IAM role to which the policy should be applied
-  final Input<String> role;
+  final pulumi.Input<String> role;
 
   RolePolicyAttachmentArgs({
     required this.policyArn,
@@ -24,8 +24,8 @@ class RolePolicyAttachmentArgs {
 
   factory RolePolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return RolePolicyAttachmentArgs(
-      policyArn: Input.asInput<String>(map['policyArn']),
-      role: Input.asInput<String>(map['role']),
+      policyArn: pulumi.Input.asInput<String>(map['policyArn']),
+      role: pulumi.Input.asInput<String>(map['role']),
     );
   }
 }

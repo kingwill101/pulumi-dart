@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_default_action/web_acl_default_action.dart';
 import '../web_acl_logging_configuration/web_acl_logging_configuration.dart';
 import '../web_acl_rule/web_acl_rule.dart';
@@ -25,40 +25,40 @@ import 'web_acl_args.dart';
 /// ```sh
 /// $ pulumi import aws:waf/webAcl:WebAcl main 0c8e583e-18f3-4c13-9e2a-67c4805d2f94
 /// ```
-class WebAcl extends CustomResource {
+class WebAcl extends pulumi.CustomResource {
   /// The ARN of the WAF WebACL.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Configuration block with action that you want AWS WAF to take when a request doesn't match the criteria in any of the rules that are associated with the web ACL. Detailed below.
-  late final Output<WebAclDefaultAction> defaultAction;
+  late final pulumi.Output<WebAclDefaultAction> defaultAction;
 
   /// Configuration block to enable WAF logging. Detailed below.
-  late final Output<WebAclLoggingConfiguration?> loggingConfiguration;
+  late final pulumi.Output<WebAclLoggingConfiguration?> loggingConfiguration;
 
   /// The name or description for the Amazon CloudWatch metric of this web ACL.
-  late final Output<String> metricName;
+  late final pulumi.Output<String> metricName;
 
   /// The name or description of the web ACL.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Configuration blocks containing rules to associate with the web ACL and the settings for each rule. Detailed below.
-  late final Output<List<WebAclRule>?> rules;
+  late final pulumi.Output<List<WebAclRule>?> rules;
 
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   WebAcl(
     String name, {
     WebAclArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:waf/webAcl:WebAcl',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.defaultAction = registerOutput<WebAclDefaultAction>('defaultAction');

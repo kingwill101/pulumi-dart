@@ -1,3 +1,3 @@
 library module_vpclattice_get_listener_default_action;
 
-export 'get_listener_default_action/get_listener_default_action3.dart';
+export 'get_listener_default_action/get_listener_default_action_vpclattice.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_event_bus_dead_letter_config/get_event_bus_dead_letter_config.dart';
 import '../get_event_bus_log_config/get_event_bus_log_config.dart';
 
@@ -40,14 +40,14 @@ class GetEventBusResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['deadLetterConfigs'] =
-        Input.encodeList<GetEventBusDeadLetterConfig, Map<String, dynamic>>(
-            deadLetterConfigs, (value) => value.toMap());
+    map['deadLetterConfigs'] = pulumi.Input.encodeList<
+        GetEventBusDeadLetterConfig,
+        Map<String, dynamic>>(deadLetterConfigs, (value) => value.toMap());
     map['description'] = description;
     map['id'] = id;
     map['kmsKeyIdentifier'] = kmsKeyIdentifier;
     map['logConfigs'] =
-        Input.encodeList<GetEventBusLogConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetEventBusLogConfig, Map<String, dynamic>>(
             logConfigs, (value) => value.toMap());
     map['name'] = name;
     map['region'] = region;
@@ -57,14 +57,14 @@ class GetEventBusResult {
   factory GetEventBusResult.fromMap(Map<String, dynamic> map) {
     return GetEventBusResult(
       arn: map['arn'] as String,
-      deadLetterConfigs: Input.decodeList<GetEventBusDeadLetterConfig>(
+      deadLetterConfigs: pulumi.Input.decodeList<GetEventBusDeadLetterConfig>(
           map['deadLetterConfigs'],
           (value) => GetEventBusDeadLetterConfig.fromMap(
               (value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       id: map['id'] as String,
       kmsKeyIdentifier: map['kmsKeyIdentifier'] as String,
-      logConfigs: Input.decodeList<GetEventBusLogConfig>(
+      logConfigs: pulumi.Input.decodeList<GetEventBusLogConfig>(
           map['logConfigs'],
           (value) => GetEventBusLogConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

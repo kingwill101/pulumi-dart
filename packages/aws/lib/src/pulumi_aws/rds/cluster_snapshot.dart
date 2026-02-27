@@ -1,4 +1,4 @@
 library module_rds_cluster_snapshot;
 
-export 'cluster_snapshot/cluster_snapshot3.dart';
-export 'cluster_snapshot/cluster_snapshot_args3.dart';
+export 'cluster_snapshot/cluster_snapshot_rds.dart';
+export 'cluster_snapshot/cluster_snapshot_rds_args.dart';

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ontap_storage_virtual_machine_active_directory_configuration_self_managed_active_directory_configuration/get_ontap_storage_virtual_machine_active_directory_configuration_self_managed_active_directory_configuration.dart';
 
 class GetOntapStorageVirtualMachineActiveDirectoryConfiguration {
@@ -18,7 +18,7 @@ class GetOntapStorageVirtualMachineActiveDirectoryConfiguration {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['netbiosName'] = netbiosName;
-    map['selfManagedActiveDirectoryConfigurations'] = Input.encodeList<
+    map['selfManagedActiveDirectoryConfigurations'] = pulumi.Input.encodeList<
             GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration,
             Map<String, dynamic>>(
         selfManagedActiveDirectoryConfigurations, (value) => value.toMap());
@@ -29,7 +29,7 @@ class GetOntapStorageVirtualMachineActiveDirectoryConfiguration {
       Map<String, dynamic> map) {
     return GetOntapStorageVirtualMachineActiveDirectoryConfiguration(
       netbiosName: map['netbiosName'] as String,
-      selfManagedActiveDirectoryConfigurations: Input.decodeList<
+      selfManagedActiveDirectoryConfigurations: pulumi.Input.decodeList<
               GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration>(
           map['selfManagedActiveDirectoryConfigurations'],
           (value) =>

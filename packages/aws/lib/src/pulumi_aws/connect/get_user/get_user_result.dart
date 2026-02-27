@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_user_identity_info/get_user_identity_info.dart';
 import '../get_user_phone_config/get_user_phone_config.dart';
 
@@ -62,12 +62,12 @@ class GetUserResult {
     map['hierarchyGroupId'] = hierarchyGroupId;
     map['id'] = id;
     map['identityInfos'] =
-        Input.encodeList<GetUserIdentityInfo, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetUserIdentityInfo, Map<String, dynamic>>(
             identityInfos, (value) => value.toMap());
     map['instanceId'] = instanceId;
     map['name'] = name;
     map['phoneConfigs'] =
-        Input.encodeList<GetUserPhoneConfig, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetUserPhoneConfig, Map<String, dynamic>>(
             phoneConfigs, (value) => value.toMap());
     map['region'] = region;
     map['routingProfileId'] = routingProfileId;
@@ -83,13 +83,13 @@ class GetUserResult {
       directoryUserId: map['directoryUserId'] as String,
       hierarchyGroupId: map['hierarchyGroupId'] as String,
       id: map['id'] as String,
-      identityInfos: Input.decodeList<GetUserIdentityInfo>(
+      identityInfos: pulumi.Input.decodeList<GetUserIdentityInfo>(
           map['identityInfos'],
           (value) => GetUserIdentityInfo.fromMap(
               (value as Map).cast<String, dynamic>())),
       instanceId: map['instanceId'] as String,
       name: map['name'] as String,
-      phoneConfigs: Input.decodeList<GetUserPhoneConfig>(
+      phoneConfigs: pulumi.Input.decodeList<GetUserPhoneConfig>(
           map['phoneConfigs'],
           (value) => GetUserPhoneConfig.fromMap(
               (value as Map).cast<String, dynamic>())),

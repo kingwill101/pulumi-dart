@@ -1,35 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VpcEndpointService.
 class VpcEndpointServiceArgs {
   /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
-  final Input<bool> acceptanceRequired;
+  final pulumi.Input<bool> acceptanceRequired;
 
   /// The ARNs of one or more principals allowed to discover the endpoint service.
-  final Input<List<String>>? allowedPrincipals;
+  final pulumi.Input<List<String>>? allowedPrincipals;
 
   /// Amazon Resource Names (ARNs) of one or more Gateway Load Balancers for the endpoint service.
-  final Input<List<String>>? gatewayLoadBalancerArns;
+  final pulumi.Input<List<String>>? gatewayLoadBalancerArns;
 
   /// Amazon Resource Names (ARNs) of one or more Network Load Balancers for the endpoint service.
-  final Input<List<String>>? networkLoadBalancerArns;
+  final pulumi.Input<List<String>>? networkLoadBalancerArns;
 
   /// The private DNS name for the service.
-  final Input<String>? privateDnsName;
+  final pulumi.Input<String>? privateDnsName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The supported IP address types. The possible values are `ipv4` and `ipv6`.
-  final Input<List<String>>? supportedIpAddressTypes;
+  final pulumi.Input<List<String>>? supportedIpAddressTypes;
 
   /// The set of regions from which service consumers can access the service.
-  final Input<List<String>>? supportedRegions;
+  final pulumi.Input<List<String>>? supportedRegions;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   VpcEndpointServiceArgs({
     required this.acceptanceRequired,
@@ -83,20 +83,21 @@ class VpcEndpointServiceArgs {
 
   factory VpcEndpointServiceArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceArgs(
-      acceptanceRequired: Input.asInput<bool>(map['acceptanceRequired']),
+      acceptanceRequired: pulumi.Input.asInput<bool>(map['acceptanceRequired']),
       allowedPrincipals:
-          Input.asOptionalInput<List<String>>(map['allowedPrincipals']),
-      gatewayLoadBalancerArns:
-          Input.asOptionalInput<List<String>>(map['gatewayLoadBalancerArns']),
-      networkLoadBalancerArns:
-          Input.asOptionalInput<List<String>>(map['networkLoadBalancerArns']),
-      privateDnsName: Input.asOptionalInput<String>(map['privateDnsName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      supportedIpAddressTypes:
-          Input.asOptionalInput<List<String>>(map['supportedIpAddressTypes']),
+          pulumi.Input.asOptionalInput<List<String>>(map['allowedPrincipals']),
+      gatewayLoadBalancerArns: pulumi.Input.asOptionalInput<List<String>>(
+          map['gatewayLoadBalancerArns']),
+      networkLoadBalancerArns: pulumi.Input.asOptionalInput<List<String>>(
+          map['networkLoadBalancerArns']),
+      privateDnsName:
+          pulumi.Input.asOptionalInput<String>(map['privateDnsName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      supportedIpAddressTypes: pulumi.Input.asOptionalInput<List<String>>(
+          map['supportedIpAddressTypes']),
       supportedRegions:
-          Input.asOptionalInput<List<String>>(map['supportedRegions']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<List<String>>(map['supportedRegions']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

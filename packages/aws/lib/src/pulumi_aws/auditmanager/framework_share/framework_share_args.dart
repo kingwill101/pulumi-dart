@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for FrameworkShare.
 class FrameworkShareArgs {
   /// Comment from the sender about the share request.
-  final Input<String>? comment;
+  final pulumi.Input<String>? comment;
 
   /// Amazon Web Services account of the recipient.
-  final Input<String> destinationAccount;
+  final pulumi.Input<String> destinationAccount;
 
   /// Amazon Web Services region of the recipient.
-  final Input<String> destinationRegion;
+  final pulumi.Input<String> destinationRegion;
 
   /// Unique identifier for the shared custom framework.
   ///
   /// The following arguments are optional:
-  final Input<String> frameworkId;
+  final pulumi.Input<String> frameworkId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   FrameworkShareArgs({
     this.comment,
@@ -47,11 +47,12 @@ class FrameworkShareArgs {
 
   factory FrameworkShareArgs.fromMap(Map<String, dynamic> map) {
     return FrameworkShareArgs(
-      comment: Input.asOptionalInput<String>(map['comment']),
-      destinationAccount: Input.asInput<String>(map['destinationAccount']),
-      destinationRegion: Input.asInput<String>(map['destinationRegion']),
-      frameworkId: Input.asInput<String>(map['frameworkId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      comment: pulumi.Input.asOptionalInput<String>(map['comment']),
+      destinationAccount:
+          pulumi.Input.asInput<String>(map['destinationAccount']),
+      destinationRegion: pulumi.Input.asInput<String>(map['destinationRegion']),
+      frameworkId: pulumi.Input.asInput<String>(map['frameworkId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

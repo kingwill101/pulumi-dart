@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../tag_tag/tag_tag.dart';
 
 /// The set of arguments for Tag.
 class TagArgs {
   /// Name of the Autoscaling Group to apply the tag to.
-  final Input<String> autoscalingGroupName;
+  final pulumi.Input<String> autoscalingGroupName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Tag to create. The `tag` block is documented below.
-  final Input<TagTag> tag;
+  final pulumi.Input<TagTag> tag;
 
   TagArgs({
     required this.autoscalingGroupName,
@@ -27,16 +27,17 @@ class TagArgs {
     if (regionValue != null) {
       map['region'] = regionValue;
     }
-    map['tag'] = Input.mapInputValue<TagTag, Map<String, dynamic>>(
+    map['tag'] = pulumi.Input.mapInputValue<TagTag, Map<String, dynamic>>(
         tag, (value) => value.toMap());
     return map;
   }
 
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
-      autoscalingGroupName: Input.asInput<String>(map['autoscalingGroupName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tag: Input.asInput<TagTag>(map['tag']),
+      autoscalingGroupName:
+          pulumi.Input.asInput<String>(map['autoscalingGroupName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tag: pulumi.Input.asInput<TagTag>(map['tag']),
     );
   }
 }

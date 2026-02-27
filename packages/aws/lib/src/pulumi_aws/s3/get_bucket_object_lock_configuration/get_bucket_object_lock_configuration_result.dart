@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bucket_object_lock_configuration_rule/get_bucket_object_lock_configuration_rule.dart';
 
 /// Result data returned by getBucketObjectLockConfiguration.
@@ -37,7 +37,7 @@ class GetBucketObjectLockConfigurationResult {
     map['id'] = id;
     map['objectLockEnabled'] = objectLockEnabled;
     map['region'] = region;
-    map['rules'] = Input.encodeList<GetBucketObjectLockConfigurationRule,
+    map['rules'] = pulumi.Input.encodeList<GetBucketObjectLockConfigurationRule,
         Map<String, dynamic>>(rules, (value) => value.toMap());
     return map;
   }
@@ -52,7 +52,7 @@ class GetBucketObjectLockConfigurationResult {
       id: map['id'] as String,
       objectLockEnabled: map['objectLockEnabled'] as String,
       region: map['region'] as String,
-      rules: Input.decodeList<GetBucketObjectLockConfigurationRule>(
+      rules: pulumi.Input.decodeList<GetBucketObjectLockConfigurationRule>(
           map['rules'],
           (value) => GetBucketObjectLockConfigurationRule.fromMap(
               (value as Map).cast<String, dynamic>())),

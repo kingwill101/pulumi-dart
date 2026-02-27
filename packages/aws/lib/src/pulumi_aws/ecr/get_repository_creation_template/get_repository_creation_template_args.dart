@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getRepositoryCreationTemplate.
 class GetRepositoryCreationTemplateArgs {
   /// The repository name prefix that the template matches against.
-  final Input<String> prefix;
+  final pulumi.Input<String> prefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to any created repositories.
-  final Input<Map<String, String>>? resourceTags;
+  final pulumi.Input<Map<String, String>>? resourceTags;
 
   GetRepositoryCreationTemplateArgs({
     required this.prefix,
@@ -35,10 +35,10 @@ class GetRepositoryCreationTemplateArgs {
 
   factory GetRepositoryCreationTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryCreationTemplateArgs(
-      prefix: Input.asInput<String>(map['prefix']),
-      region: Input.asOptionalInput<String>(map['region']),
-      resourceTags:
-          Input.asOptionalInput<Map<String, String>>(map['resourceTags']),
+      prefix: pulumi.Input.asInput<String>(map['prefix']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      resourceTags: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['resourceTags']),
     );
   }
 }

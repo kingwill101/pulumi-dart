@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_managed_prefix_lists_filter/get_managed_prefix_lists_filter.dart';
 
 /// Result data returned by getManagedPrefixLists.
@@ -27,9 +27,8 @@ class GetManagedPrefixListsResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetManagedPrefixListsFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetManagedPrefixListsFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['ids'] = ids;
@@ -42,7 +41,7 @@ class GetManagedPrefixListsResult {
     return GetManagedPrefixListsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetManagedPrefixListsFilter>(
+          : pulumi.Input.decodeList<GetManagedPrefixListsFilter>(
               map['filters'],
               (value) => GetManagedPrefixListsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

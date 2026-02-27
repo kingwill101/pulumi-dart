@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../recommendation_preferences_external_metrics_preference/recommendation_preferences_external_metrics_preference.dart';
 import '../recommendation_preferences_preferred_resource/recommendation_preferences_preferred_resource.dart';
 import '../recommendation_preferences_scope/recommendation_preferences_scope.dart';
@@ -24,49 +24,50 @@ import 'recommendation_preferences_args.dart';
 /// ```sh
 /// $ pulumi import aws:computeoptimizer/recommendationPreferences:RecommendationPreferences example Ec2Instance,AccountId,123456789012
 /// ```
-class RecommendationPreferences extends CustomResource {
+class RecommendationPreferences extends pulumi.CustomResource {
   /// The status of the enhanced infrastructure metrics recommendation preference. Valid values: `Active`, `Inactive`.
-  late final Output<String?> enhancedInfrastructureMetrics;
+  late final pulumi.Output<String?> enhancedInfrastructureMetrics;
 
   /// The provider of the external metrics recommendation preference. See External Metrics Preference below.
-  late final Output<RecommendationPreferencesExternalMetricsPreference?>
+  late final pulumi.Output<RecommendationPreferencesExternalMetricsPreference?>
       externalMetricsPreference;
 
   /// The status of the inferred workload types recommendation preference. Valid values: `Active`, `Inactive`.
-  late final Output<String?> inferredWorkloadTypes;
+  late final pulumi.Output<String?> inferredWorkloadTypes;
 
   /// The preference to control the number of days the utilization metrics of the AWS resource are analyzed. Valid values: `DAYS_14`, `DAYS_32`, `DAYS_93`.
-  late final Output<String> lookBackPeriod;
+  late final pulumi.Output<String> lookBackPeriod;
 
   /// The preference to control which resource type values are considered when generating rightsizing recommendations. See Preferred Resources below.
-  late final Output<List<RecommendationPreferencesPreferredResource>?>
+  late final pulumi.Output<List<RecommendationPreferencesPreferredResource>?>
       preferredResources;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The target resource type of the recommendation preferences. Valid values: `Ec2Instance`, `AutoScalingGroup`, `RdsDBInstance`, `AuroraDBClusterStorage`.
-  late final Output<String> resourceType;
+  late final pulumi.Output<String> resourceType;
 
   /// The status of the savings estimation mode preference. Valid values: `AfterDiscounts`, `BeforeDiscounts`.
-  late final Output<String?> savingsEstimationMode;
+  late final pulumi.Output<String?> savingsEstimationMode;
 
   /// The scope of the recommendation preferences. See Scope below.
-  late final Output<RecommendationPreferencesScope> scope;
+  late final pulumi.Output<RecommendationPreferencesScope> scope;
 
   /// The preference to control the resource’s CPU utilization threshold, CPU utilization headroom, and memory utilization headroom. See Utilization Preferences below.
-  late final Output<List<RecommendationPreferencesUtilizationPreference>?>
+  late final pulumi
+      .Output<List<RecommendationPreferencesUtilizationPreference>?>
       utilizationPreferences;
 
   RecommendationPreferences(
     String name, {
     RecommendationPreferencesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:computeoptimizer/recommendationPreferences:RecommendationPreferences',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.enhancedInfrastructureMetrics =
         registerOutput<String?>('enhancedInfrastructureMetrics');

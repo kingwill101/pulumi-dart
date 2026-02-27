@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_website_configuration_error_document/bucket_website_configuration_error_document.dart';
 import '../bucket_website_configuration_index_document/bucket_website_configuration_index_document.dart';
 import '../bucket_website_configuration_redirect_all_requests_to/bucket_website_configuration_redirect_all_requests_to.dart';
@@ -49,48 +49,51 @@ import 'bucket_website_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3/bucketWebsiteConfiguration:BucketWebsiteConfiguration example bucket-name,123456789012
 /// ```
-class BucketWebsiteConfiguration extends CustomResource {
+class BucketWebsiteConfiguration extends pulumi.CustomResource {
   /// Name of the bucket.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Name of the error document for the website. See below.
-  late final Output<BucketWebsiteConfigurationErrorDocument?> errorDocument;
+  late final pulumi.Output<BucketWebsiteConfigurationErrorDocument?>
+      errorDocument;
 
   /// Account ID of the expected bucket owner.
-  late final Output<String?> expectedBucketOwner;
+  late final pulumi.Output<String?> expectedBucketOwner;
 
   /// Name of the index document for the website. See below.
-  late final Output<BucketWebsiteConfigurationIndexDocument?> indexDocument;
+  late final pulumi.Output<BucketWebsiteConfigurationIndexDocument?>
+      indexDocument;
 
   /// Redirect behavior for every request to this bucket's website endpoint. See below. Conflicts with `error_document`, `index_document`, and `routing_rule`.
-  late final Output<BucketWebsiteConfigurationRedirectAllRequestsTo?>
+  late final pulumi.Output<BucketWebsiteConfigurationRedirectAllRequestsTo?>
       redirectAllRequestsTo;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
   /// describing redirect behavior and when redirects are applied. Use this parameter when your routing rules contain empty String values (`""`) as seen in the example above.
-  late final Output<String> routingRuleDetails;
+  late final pulumi.Output<String> routingRuleDetails;
 
   /// List of rules that define when a redirect is applied and the redirect behavior. See below.
-  late final Output<List<BucketWebsiteConfigurationRoutingRule>> routingRules;
+  late final pulumi.Output<List<BucketWebsiteConfigurationRoutingRule>>
+      routingRules;
 
   /// Domain of the website endpoint. This is used to create Route 53 alias records.
-  late final Output<String> websiteDomain;
+  late final pulumi.Output<String> websiteDomain;
 
   /// Website endpoint.
-  late final Output<String> websiteEndpoint;
+  late final pulumi.Output<String> websiteEndpoint;
 
   BucketWebsiteConfiguration(
     String name, {
     BucketWebsiteConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/bucketWebsiteConfiguration:BucketWebsiteConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.errorDocument =

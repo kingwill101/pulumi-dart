@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_size_constraint_statement_field_to_match/web_acl_rule_statement_size_constraint_statement_field_to_match.dart';
 import '../web_acl_rule_statement_size_constraint_statement_text_transformation/web_acl_rule_statement_size_constraint_statement_text_transformation.dart';
 
@@ -33,7 +33,7 @@ class WebAclRuleStatementSizeConstraintStatement {
       map['fieldToMatch'] = fieldToMatchValue.toMap();
     }
     map['size'] = size;
-    map['textTransformations'] = Input.encodeList<
+    map['textTransformations'] = pulumi.Input.encodeList<
         WebAclRuleStatementSizeConstraintStatementTextTransformation,
         Map<String, dynamic>>(textTransformations, (value) => value.toMap());
     return map;
@@ -48,7 +48,7 @@ class WebAclRuleStatementSizeConstraintStatement {
           : WebAclRuleStatementSizeConstraintStatementFieldToMatch.fromMap(
               (map['fieldToMatch'] as Map).cast<String, dynamic>()),
       size: map['size'] as int,
-      textTransformations: Input.decodeList<
+      textTransformations: pulumi.Input.decodeList<
               WebAclRuleStatementSizeConstraintStatementTextTransformation>(
           map['textTransformations'],
           (value) =>

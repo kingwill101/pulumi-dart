@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../virtual_router_spec_listener/virtual_router_spec_listener.dart';
 
 class VirtualRouterSpec {
@@ -16,9 +16,8 @@ class VirtualRouterSpec {
     final map = <String, dynamic>{};
     final listenersValue = listeners;
     if (listenersValue != null) {
-      map['listeners'] =
-          Input.encodeList<VirtualRouterSpecListener, Map<String, dynamic>>(
-              listenersValue, (value) => value.toMap());
+      map['listeners'] = pulumi.Input.encodeList<VirtualRouterSpecListener,
+          Map<String, dynamic>>(listenersValue, (value) => value.toMap());
     }
     return map;
   }
@@ -27,7 +26,7 @@ class VirtualRouterSpec {
     return VirtualRouterSpec(
       listeners: map['listeners'] == null
           ? null
-          : Input.decodeList<VirtualRouterSpecListener>(
+          : pulumi.Input.decodeList<VirtualRouterSpecListener>(
               map['listeners'],
               (value) => VirtualRouterSpecListener.fromMap(
                   (value as Map).cast<String, dynamic>())),

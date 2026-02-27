@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_configuration_profile_validator/get_configuration_profile_validator.dart';
 
 /// Result data returned by getConfigurationProfile.
@@ -67,7 +67,8 @@ class GetConfigurationProfileResult {
     map['retrievalRoleArn'] = retrievalRoleArn;
     map['tags'] = tags;
     map['type'] = type;
-    map['validators'] = Input.encodeList<GetConfigurationProfileValidator,
+    map['validators'] = pulumi.Input.encodeList<
+        GetConfigurationProfileValidator,
         Map<String, dynamic>>(validators, (value) => value.toMap());
     return map;
   }
@@ -86,7 +87,7 @@ class GetConfigurationProfileResult {
       retrievalRoleArn: map['retrievalRoleArn'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
-      validators: Input.decodeList<GetConfigurationProfileValidator>(
+      validators: pulumi.Input.decodeList<GetConfigurationProfileValidator>(
           map['validators'],
           (value) => GetConfigurationProfileValidator.fromMap(
               (value as Map).cast<String, dynamic>())),

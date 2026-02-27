@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DelegatedAdministrator.
 class DelegatedAdministratorArgs {
   /// The account ID number of the member account in the organization to register as a delegated administrator.
-  final Input<String> accountId;
+  final pulumi.Input<String> accountId;
 
   /// The service principal of the AWS service for which you want to make the member account a delegated administrator.
-  final Input<String> servicePrincipal;
+  final pulumi.Input<String> servicePrincipal;
 
   DelegatedAdministratorArgs({
     required this.accountId,
@@ -24,8 +24,8 @@ class DelegatedAdministratorArgs {
 
   factory DelegatedAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return DelegatedAdministratorArgs(
-      accountId: Input.asInput<String>(map['accountId']),
-      servicePrincipal: Input.asInput<String>(map['servicePrincipal']),
+      accountId: pulumi.Input.asInput<String>(map['accountId']),
+      servicePrincipal: pulumi.Input.asInput<String>(map['servicePrincipal']),
     );
   }
 }

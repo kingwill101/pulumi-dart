@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../human_task_uiui_template/human_task_uiui_template.dart';
 
 /// The set of arguments for HumanTaskUI.
 class HumanTaskUIArgs {
   /// The name of the Human Task UI.
-  final Input<String> humanTaskUiName;
+  final pulumi.Input<String> humanTaskUiName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The Liquid template for the worker user interface. See UI Template below.
-  final Input<HumanTaskUIUiTemplate> uiTemplate;
+  final pulumi.Input<HumanTaskUIUiTemplate> uiTemplate;
 
   HumanTaskUIArgs({
     required this.humanTaskUiName,
@@ -36,17 +36,18 @@ class HumanTaskUIArgs {
       map['tags'] = tagsValue;
     }
     map['uiTemplate'] =
-        Input.mapInputValue<HumanTaskUIUiTemplate, Map<String, dynamic>>(
+        pulumi.Input.mapInputValue<HumanTaskUIUiTemplate, Map<String, dynamic>>(
             uiTemplate, (value) => value.toMap());
     return map;
   }
 
   factory HumanTaskUIArgs.fromMap(Map<String, dynamic> map) {
     return HumanTaskUIArgs(
-      humanTaskUiName: Input.asInput<String>(map['humanTaskUiName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      uiTemplate: Input.asInput<HumanTaskUIUiTemplate>(map['uiTemplate']),
+      humanTaskUiName: pulumi.Input.asInput<String>(map['humanTaskUiName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      uiTemplate:
+          pulumi.Input.asInput<HumanTaskUIUiTemplate>(map['uiTemplate']),
     );
   }
 }

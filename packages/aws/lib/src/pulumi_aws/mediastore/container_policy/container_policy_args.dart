@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ContainerPolicy.
 class ContainerPolicyArgs {
   /// The name of the container.
-  final Input<String> containerName;
+  final pulumi.Input<String> containerName;
 
   /// The contents of the policy.
-  final Input<String> policy;
+  final pulumi.Input<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   ContainerPolicyArgs({
     required this.containerName,
@@ -32,9 +32,9 @@ class ContainerPolicyArgs {
 
   factory ContainerPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ContainerPolicyArgs(
-      containerName: Input.asInput<String>(map['containerName']),
-      policy: Input.asInput<String>(map['policy']),
-      region: Input.asOptionalInput<String>(map['region']),
+      containerName: pulumi.Input.asInput<String>(map['containerName']),
+      policy: pulumi.Input.asInput<String>(map['policy']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

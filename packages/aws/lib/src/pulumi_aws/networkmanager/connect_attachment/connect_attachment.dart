@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../connect_attachment_options/connect_attachment_options.dart';
 import 'connect_attachment_args.dart';
 
@@ -23,66 +23,66 @@ import 'connect_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:networkmanager/connectAttachment:ConnectAttachment example attachment-0f8fa60d2238d1bd8
 /// ```
-class ConnectAttachment extends CustomResource {
+class ConnectAttachment extends pulumi.CustomResource {
   /// ARN of the attachment.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// ID of the attachment.
-  late final Output<String> attachmentId;
+  late final pulumi.Output<String> attachmentId;
 
   /// Policy rule number associated with the attachment.
-  late final Output<int> attachmentPolicyRuleNumber;
+  late final pulumi.Output<int> attachmentPolicyRuleNumber;
 
   /// Type of attachment.
-  late final Output<String> attachmentType;
+  late final pulumi.Output<String> attachmentType;
 
   /// ARN of a core network.
-  late final Output<String> coreNetworkArn;
+  late final pulumi.Output<String> coreNetworkArn;
 
   /// ID of a core network where you want to create the attachment.
-  late final Output<String> coreNetworkId;
+  late final pulumi.Output<String> coreNetworkId;
 
   /// Region where the edge is located.
-  late final Output<String> edgeLocation;
+  late final pulumi.Output<String> edgeLocation;
 
   /// Options block. See options for more information.
-  late final Output<ConnectAttachmentOptions> options;
+  late final pulumi.Output<ConnectAttachmentOptions> options;
 
   /// ID of the attachment account owner.
-  late final Output<String> ownerAccountId;
+  late final pulumi.Output<String> ownerAccountId;
 
   /// Attachment resource ARN.
-  late final Output<String> resourceArn;
+  late final pulumi.Output<String> resourceArn;
 
   /// The routing policy label to apply to the Connect attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
-  late final Output<String?> routingPolicyLabel;
+  late final pulumi.Output<String?> routingPolicyLabel;
 
   /// Name of the segment attachment.
-  late final Output<String> segmentName;
+  late final pulumi.Output<String> segmentName;
 
   /// State of the attachment.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// ID of the attachment between the two connections.
   ///
   /// The following arguments are optional:
-  late final Output<String> transportAttachmentId;
+  late final pulumi.Output<String> transportAttachmentId;
 
   ConnectAttachment(
     String name, {
     ConnectAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:networkmanager/connectAttachment:ConnectAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.attachmentId = registerOutput<String>('attachmentId');

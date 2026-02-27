@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getServiceAccount.
 class GetServiceAccountArgs {
   /// Name of the Region whose AWS CloudTrail account ID is desired. Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetServiceAccountArgs({
     this.region,
@@ -22,7 +22,7 @@ class GetServiceAccountArgs {
 
   factory GetServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceAccountArgs(
-      region: Input.asOptionalInput<String>(map['region']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

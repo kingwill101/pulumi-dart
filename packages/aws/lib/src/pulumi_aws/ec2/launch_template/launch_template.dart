@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../launch_template_block_device_mapping/launch_template_block_device_mapping.dart';
 import '../launch_template_capacity_reservation_specification/launch_template_capacity_reservation_specification.dart';
 import '../launch_template_cpu_options/launch_template_cpu_options.dart';
@@ -29,151 +29,160 @@ import 'launch_template_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/launchTemplate:LaunchTemplate web lt-12345678
 /// ```
-class LaunchTemplate extends CustomResource {
+class LaunchTemplate extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the launch template.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Specify volumes to attach to the instance besides the volumes specified by the AMI.
   /// See Block Devices below for details.
-  late final Output<List<LaunchTemplateBlockDeviceMapping>?>
+  late final pulumi.Output<List<LaunchTemplateBlockDeviceMapping>?>
       blockDeviceMappings;
 
   /// Targeting for EC2 capacity reservations. See Capacity Reservation Specification below for more details.
-  late final Output<LaunchTemplateCapacityReservationSpecification?>
+  late final pulumi.Output<LaunchTemplateCapacityReservationSpecification?>
       capacityReservationSpecification;
 
   /// The CPU options for the instance. See CPU Options below for more details.
-  late final Output<LaunchTemplateCpuOptions?> cpuOptions;
+  late final pulumi.Output<LaunchTemplateCpuOptions?> cpuOptions;
 
   /// Customize the credit specification of the instance. See Credit
   /// Specification below for more details.
-  late final Output<LaunchTemplateCreditSpecification?> creditSpecification;
+  late final pulumi.Output<LaunchTemplateCreditSpecification?>
+      creditSpecification;
 
   /// Default Version of the launch template.
-  late final Output<int> defaultVersion;
+  late final pulumi.Output<int> defaultVersion;
 
   /// Description of the launch template.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// If true, enables [EC2 Instance Stop Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-stop-protection.html).
-  late final Output<bool?> disableApiStop;
+  late final pulumi.Output<bool?> disableApiStop;
 
   /// If `true`, enables [EC2 Instance
   /// Termination Protection](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingDisableAPITermination.html)
-  late final Output<bool?> disableApiTermination;
+  late final pulumi.Output<bool?> disableApiTermination;
 
   /// If `true`, the launched EC2 instance will be EBS-optimized.
-  late final Output<String?> ebsOptimized;
+  late final pulumi.Output<String?> ebsOptimized;
 
   /// Enable Nitro Enclaves on launched instances. See Enclave Options below for more details.
-  late final Output<LaunchTemplateEnclaveOptions?> enclaveOptions;
+  late final pulumi.Output<LaunchTemplateEnclaveOptions?> enclaveOptions;
 
   /// The hibernation options for the instance. See Hibernation Options below for more details.
-  late final Output<LaunchTemplateHibernationOptions?> hibernationOptions;
+  late final pulumi.Output<LaunchTemplateHibernationOptions?>
+      hibernationOptions;
 
   /// The IAM Instance Profile to launch the instance with. See Instance Profile
   /// below for more details.
-  late final Output<LaunchTemplateIamInstanceProfile?> iamInstanceProfile;
+  late final pulumi.Output<LaunchTemplateIamInstanceProfile?>
+      iamInstanceProfile;
 
   /// The AMI from which to launch the instance or use a Systems Manager parameter convention e.g. `resolve:ssm:parameter-name`. See [docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-launch-template.html#use-an-ssm-parameter-instead-of-an-ami-id) for more details.
-  late final Output<String?> imageId;
+  late final pulumi.Output<String?> imageId;
 
   /// Shutdown behavior for the instance. Can be `stop` or `terminate`.
   /// (Default: `stop`).
-  late final Output<String?> instanceInitiatedShutdownBehavior;
+  late final pulumi.Output<String?> instanceInitiatedShutdownBehavior;
 
   /// The market (purchasing) option for the instance. See Market Options
   /// below for details.
-  late final Output<LaunchTemplateInstanceMarketOptions?> instanceMarketOptions;
+  late final pulumi.Output<LaunchTemplateInstanceMarketOptions?>
+      instanceMarketOptions;
 
   /// The attribute requirements for the type of instance. If present then `instance_type` cannot be present.
-  late final Output<LaunchTemplateInstanceRequirements?> instanceRequirements;
+  late final pulumi.Output<LaunchTemplateInstanceRequirements?>
+      instanceRequirements;
 
   /// The type of the instance. If present then `instance_requirements` cannot be present.
-  late final Output<String?> instanceType;
+  late final pulumi.Output<String?> instanceType;
 
   /// The kernel ID.
-  late final Output<String?> kernelId;
+  late final pulumi.Output<String?> kernelId;
 
   /// The key name to use for the instance.
-  late final Output<String?> keyName;
+  late final pulumi.Output<String?> keyName;
 
   /// The latest version of the launch template.
-  late final Output<int> latestVersion;
+  late final pulumi.Output<int> latestVersion;
 
   /// A list of license specifications to associate with. See License Specification below for more details.
-  late final Output<List<LaunchTemplateLicenseSpecification>?>
+  late final pulumi.Output<List<LaunchTemplateLicenseSpecification>?>
       licenseSpecifications;
 
   /// The maintenance options for the instance. See Maintenance Options below for more details.
-  late final Output<LaunchTemplateMaintenanceOptions?> maintenanceOptions;
+  late final pulumi.Output<LaunchTemplateMaintenanceOptions?>
+      maintenanceOptions;
 
   /// Customize the metadata options for the instance. See Metadata Options below for more details.
-  late final Output<LaunchTemplateMetadataOptions> metadataOptions;
+  late final pulumi.Output<LaunchTemplateMetadataOptions> metadataOptions;
 
   /// The monitoring option for the instance. See Monitoring below for more details.
-  late final Output<LaunchTemplateMonitoring?> monitoring;
+  late final pulumi.Output<LaunchTemplateMonitoring?> monitoring;
 
   /// The name of the launch template. If you leave this blank, the provider will auto-generate a unique name.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
-  late final Output<String> namePrefix;
+  late final pulumi.Output<String> namePrefix;
 
   /// Customize network interfaces to be attached at instance boot time. See Network
   /// Interfaces below for more details.
-  late final Output<List<LaunchTemplateNetworkInterface>?> networkInterfaces;
-  late final Output<LaunchTemplateNetworkPerformanceOptions?>
+  late final pulumi.Output<List<LaunchTemplateNetworkInterface>?>
+      networkInterfaces;
+  late final pulumi.Output<LaunchTemplateNetworkPerformanceOptions?>
       networkPerformanceOptions;
 
   /// The placement of the instance. See Placement below for more details.
-  late final Output<LaunchTemplatePlacement?> placement;
+  late final pulumi.Output<LaunchTemplatePlacement?> placement;
 
   /// The options for the instance hostname. The default values are inherited from the subnet. See Private DNS Name Options below for more details.
-  late final Output<LaunchTemplatePrivateDnsNameOptions?> privateDnsNameOptions;
+  late final pulumi.Output<LaunchTemplatePrivateDnsNameOptions?>
+      privateDnsNameOptions;
 
   /// The ID of the RAM disk.
-  late final Output<String?> ramDiskId;
+  late final pulumi.Output<String?> ramDiskId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Secondary interfaces to associate with instances launched from the template. See Secondary
   /// Interfaces below for more details.
-  late final Output<List<LaunchTemplateSecondaryInterface>?>
+  late final pulumi.Output<List<LaunchTemplateSecondaryInterface>?>
       secondaryInterfaces;
 
   /// A list of security group names to associate with. If you are creating Instances in a VPC, use
   /// `vpc_security_group_ids` instead.
-  late final Output<List<String>?> securityGroupNames;
+  late final pulumi.Output<List<String>?> securityGroupNames;
 
   /// The tags to apply to the resources during launch. See Tag Specifications below for more details. Default tags are currently not propagated to ASG created resources so you may wish to inject your default tags into this variable against the relevant child resource types created.
-  late final Output<List<LaunchTemplateTagSpecification>?> tagSpecifications;
+  late final pulumi.Output<List<LaunchTemplateTagSpecification>?>
+      tagSpecifications;
 
   /// A map of tags to assign to the launch template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Whether to update Default Version each update. Conflicts with `default_version`.
-  late final Output<bool?> updateDefaultVersion;
+  late final pulumi.Output<bool?> updateDefaultVersion;
 
   /// The base64-encoded user data to provide when launching the instance.
-  late final Output<String?> userData;
+  late final pulumi.Output<String?> userData;
 
   /// A list of security group IDs to associate with. Conflicts with `network_interfaces.security_groups`
-  late final Output<List<String>?> vpcSecurityGroupIds;
+  late final pulumi.Output<List<String>?> vpcSecurityGroupIds;
 
   LaunchTemplate(
     String name, {
     LaunchTemplateArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/launchTemplate:LaunchTemplate',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.blockDeviceMappings =

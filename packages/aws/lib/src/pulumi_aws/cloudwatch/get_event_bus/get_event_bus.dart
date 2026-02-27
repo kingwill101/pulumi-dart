@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_event_bus_args.dart';
 import 'get_event_bus_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_event_bus_result.dart';
 /// an event bus, given the name of the bus.
 Future<GetEventBusResult> getEventBus(
   GetEventBusArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:cloudwatch/getEventBus:getEventBus',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEventBusResult.fromMap(result);
 }

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPrimaryContact.
 class GetPrimaryContactArgs {
   /// The ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   GetPrimaryContactArgs({
     this.accountId,
@@ -22,7 +22,7 @@ class GetPrimaryContactArgs {
 
   factory GetPrimaryContactArgs.fromMap(Map<String, dynamic> map) {
     return GetPrimaryContactArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
     );
   }
 }

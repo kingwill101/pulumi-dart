@@ -1,56 +1,56 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DevEndpoint.
 class DevEndpointArgs {
   /// A map of arguments used to configure the endpoint.
-  final Input<Map<String, String>>? arguments;
+  final pulumi.Input<Map<String, String>>? arguments;
 
   /// Path to one or more Java Jars in an S3 bucket that should be loaded in this endpoint.
-  final Input<String>? extraJarsS3Path;
+  final pulumi.Input<String>? extraJarsS3Path;
 
   /// Path(s) to one or more Python libraries in an S3 bucket that should be loaded in this endpoint. Multiple values must be complete paths separated by a comma.
-  final Input<String>? extraPythonLibsS3Path;
+  final pulumi.Input<String>? extraPythonLibsS3Path;
 
   /// Specifies the versions of Python and Apache Spark to use. Defaults to AWS Glue version 0.9.
-  final Input<String>? glueVersion;
+  final pulumi.Input<String>? glueVersion;
 
   /// The name of this endpoint. It must be unique in your account.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The number of AWS Glue Data Processing Units (DPUs) to allocate to this endpoint. Conflicts with `worker_type`.
-  final Input<int>? numberOfNodes;
+  final pulumi.Input<int>? numberOfNodes;
 
   /// The number of workers of a defined worker type that are allocated to this endpoint. This field is available only when you choose worker type G.1X or G.2X.
-  final Input<int>? numberOfWorkers;
+  final pulumi.Input<int>? numberOfWorkers;
 
   /// The public key to be used by this endpoint for authentication.
-  final Input<String>? publicKey;
+  final pulumi.Input<String>? publicKey;
 
   /// A list of public keys to be used by this endpoint for authentication.
-  final Input<List<String>>? publicKeys;
+  final pulumi.Input<List<String>>? publicKeys;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The IAM role for this endpoint.
-  final Input<String> roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// The name of the Security Configuration structure to be used with this endpoint.
-  final Input<String>? securityConfiguration;
+  final pulumi.Input<String>? securityConfiguration;
 
   /// Security group IDs for the security groups to be used by this endpoint.
-  final Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>>? securityGroupIds;
 
   /// The subnet ID for the new endpoint to use.
-  final Input<String>? subnetId;
+  final pulumi.Input<String>? subnetId;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The type of predefined worker that is allocated to this endpoint. Accepts a value of Standard, G.1X, or G.2X.
-  final Input<String>? workerType;
+  final pulumi.Input<String>? workerType;
 
   DevEndpointArgs({
     this.arguments,
@@ -139,25 +139,28 @@ class DevEndpointArgs {
 
   factory DevEndpointArgs.fromMap(Map<String, dynamic> map) {
     return DevEndpointArgs(
-      arguments: Input.asOptionalInput<Map<String, String>>(map['arguments']),
-      extraJarsS3Path: Input.asOptionalInput<String>(map['extraJarsS3Path']),
+      arguments:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['arguments']),
+      extraJarsS3Path:
+          pulumi.Input.asOptionalInput<String>(map['extraJarsS3Path']),
       extraPythonLibsS3Path:
-          Input.asOptionalInput<String>(map['extraPythonLibsS3Path']),
-      glueVersion: Input.asOptionalInput<String>(map['glueVersion']),
-      name: Input.asOptionalInput<String>(map['name']),
-      numberOfNodes: Input.asOptionalInput<int>(map['numberOfNodes']),
-      numberOfWorkers: Input.asOptionalInput<int>(map['numberOfWorkers']),
-      publicKey: Input.asOptionalInput<String>(map['publicKey']),
-      publicKeys: Input.asOptionalInput<List<String>>(map['publicKeys']),
-      region: Input.asOptionalInput<String>(map['region']),
-      roleArn: Input.asInput<String>(map['roleArn']),
+          pulumi.Input.asOptionalInput<String>(map['extraPythonLibsS3Path']),
+      glueVersion: pulumi.Input.asOptionalInput<String>(map['glueVersion']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      numberOfNodes: pulumi.Input.asOptionalInput<int>(map['numberOfNodes']),
+      numberOfWorkers:
+          pulumi.Input.asOptionalInput<int>(map['numberOfWorkers']),
+      publicKey: pulumi.Input.asOptionalInput<String>(map['publicKey']),
+      publicKeys: pulumi.Input.asOptionalInput<List<String>>(map['publicKeys']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      roleArn: pulumi.Input.asInput<String>(map['roleArn']),
       securityConfiguration:
-          Input.asOptionalInput<String>(map['securityConfiguration']),
+          pulumi.Input.asOptionalInput<String>(map['securityConfiguration']),
       securityGroupIds:
-          Input.asOptionalInput<List<String>>(map['securityGroupIds']),
-      subnetId: Input.asOptionalInput<String>(map['subnetId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      workerType: Input.asOptionalInput<String>(map['workerType']),
+          pulumi.Input.asOptionalInput<List<String>>(map['securityGroupIds']),
+      subnetId: pulumi.Input.asOptionalInput<String>(map['subnetId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      workerType: pulumi.Input.asOptionalInput<String>(map['workerType']),
     );
   }
 }

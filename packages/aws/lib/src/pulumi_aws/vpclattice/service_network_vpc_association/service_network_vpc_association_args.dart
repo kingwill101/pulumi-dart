@@ -1,31 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../service_network_vpc_association_dns_options/service_network_vpc_association_dns_options.dart';
 
 /// The set of arguments for ServiceNetworkVpcAssociation.
 class ServiceNetworkVpcAssociationArgs {
   /// Configuration block for DNS option. See `dns_options` block below for details.
-  final Input<ServiceNetworkVpcAssociationDnsOptions>? dnsOptions;
+  final pulumi.Input<ServiceNetworkVpcAssociationDnsOptions>? dnsOptions;
 
   /// Boolean to indicate whether to enable private DNS for the VPC association. Defaults to `false`.
-  final Input<bool>? privateDnsEnabled;
+  final pulumi.Input<bool>? privateDnsEnabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The IDs of the security groups.
-  final Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>>? securityGroupIds;
 
   /// The ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
   /// The following arguments are optional:
-  final Input<String> serviceNetworkIdentifier;
+  final pulumi.Input<String> serviceNetworkIdentifier;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The ID of the VPC.
-  final Input<String> vpcIdentifier;
+  final pulumi.Input<String> vpcIdentifier;
 
   ServiceNetworkVpcAssociationArgs({
     this.dnsOptions,
@@ -41,7 +41,7 @@ class ServiceNetworkVpcAssociationArgs {
     final map = <String, dynamic>{};
     final dnsOptionsValue = dnsOptions;
     if (dnsOptionsValue != null) {
-      map['dnsOptions'] = Input.mapOptionalInputValue<
+      map['dnsOptions'] = pulumi.Input.mapOptionalInputValue<
           ServiceNetworkVpcAssociationDnsOptions,
           Map<String, dynamic>>(dnsOptionsValue, (value) => value.toMap());
     }
@@ -68,16 +68,18 @@ class ServiceNetworkVpcAssociationArgs {
 
   factory ServiceNetworkVpcAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkVpcAssociationArgs(
-      dnsOptions: Input.asOptionalInput<ServiceNetworkVpcAssociationDnsOptions>(
-          map['dnsOptions']),
-      privateDnsEnabled: Input.asOptionalInput<bool>(map['privateDnsEnabled']),
-      region: Input.asOptionalInput<String>(map['region']),
+      dnsOptions:
+          pulumi.Input.asOptionalInput<ServiceNetworkVpcAssociationDnsOptions>(
+              map['dnsOptions']),
+      privateDnsEnabled:
+          pulumi.Input.asOptionalInput<bool>(map['privateDnsEnabled']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       securityGroupIds:
-          Input.asOptionalInput<List<String>>(map['securityGroupIds']),
+          pulumi.Input.asOptionalInput<List<String>>(map['securityGroupIds']),
       serviceNetworkIdentifier:
-          Input.asInput<String>(map['serviceNetworkIdentifier']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vpcIdentifier: Input.asInput<String>(map['vpcIdentifier']),
+          pulumi.Input.asInput<String>(map['serviceNetworkIdentifier']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpcIdentifier: pulumi.Input.asInput<String>(map['vpcIdentifier']),
     );
   }
 }

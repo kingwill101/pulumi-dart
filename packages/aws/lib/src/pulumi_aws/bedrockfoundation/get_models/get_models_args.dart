@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getModels.
 class GetModelsArgs {
   /// Customization type to filter on. Valid values are `FINE_TUNING`.
-  final Input<String>? byCustomizationType;
+  final pulumi.Input<String>? byCustomizationType;
 
   /// Inference type to filter on. Valid values are `ON_DEMAND` and `PROVISIONED`.
-  final Input<String>? byInferenceType;
+  final pulumi.Input<String>? byInferenceType;
 
   /// Output modality to filter on. Valid values are `TEXT`, `IMAGE`, and `EMBEDDING`.
-  final Input<String>? byOutputModality;
+  final pulumi.Input<String>? byOutputModality;
 
   /// Model provider to filter on.
-  final Input<String>? byProvider;
+  final pulumi.Input<String>? byProvider;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetModelsArgs({
     this.byCustomizationType,
@@ -55,11 +55,13 @@ class GetModelsArgs {
   factory GetModelsArgs.fromMap(Map<String, dynamic> map) {
     return GetModelsArgs(
       byCustomizationType:
-          Input.asOptionalInput<String>(map['byCustomizationType']),
-      byInferenceType: Input.asOptionalInput<String>(map['byInferenceType']),
-      byOutputModality: Input.asOptionalInput<String>(map['byOutputModality']),
-      byProvider: Input.asOptionalInput<String>(map['byProvider']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['byCustomizationType']),
+      byInferenceType:
+          pulumi.Input.asOptionalInput<String>(map['byInferenceType']),
+      byOutputModality:
+          pulumi.Input.asOptionalInput<String>(map['byOutputModality']),
+      byProvider: pulumi.Input.asOptionalInput<String>(map['byProvider']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

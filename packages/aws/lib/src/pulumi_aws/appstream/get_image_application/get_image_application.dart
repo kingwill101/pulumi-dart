@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_image_application_icon_s3_location/get_image_application_icon_s3_location.dart';
 
 class GetImageApplication {
@@ -77,7 +77,8 @@ class GetImageApplication {
     map['description'] = description;
     map['displayName'] = displayName;
     map['enabled'] = enabled;
-    map['iconS3Locations'] = Input.encodeList<GetImageApplicationIconS3Location,
+    map['iconS3Locations'] = pulumi.Input.encodeList<
+        GetImageApplicationIconS3Location,
         Map<String, dynamic>>(iconS3Locations, (value) => value.toMap());
     map['iconUrl'] = iconUrl;
     map['instanceFamilies'] = instanceFamilies;
@@ -98,10 +99,11 @@ class GetImageApplication {
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       enabled: map['enabled'] as bool,
-      iconS3Locations: Input.decodeList<GetImageApplicationIconS3Location>(
-          map['iconS3Locations'],
-          (value) => GetImageApplicationIconS3Location.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      iconS3Locations:
+          pulumi.Input.decodeList<GetImageApplicationIconS3Location>(
+              map['iconS3Locations'],
+              (value) => GetImageApplicationIconS3Location.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       iconUrl: map['iconUrl'] as String,
       instanceFamilies: (map['instanceFamilies'] as List).cast<String>(),
       launchParameters: map['launchParameters'] as String,

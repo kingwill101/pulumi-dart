@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_prompt_variant/agent_prompt_variant.dart';
 import 'agent_prompt_args.dart';
 
@@ -21,54 +21,54 @@ import 'agent_prompt_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrock/agentPrompt:AgentPrompt example 1A2BC3DEFG
 /// ```
-class AgentPrompt extends CustomResource {
+class AgentPrompt extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the prompt.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Time at which the prompt was created.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// Amazon Resource Name (ARN) of the KMS key that you encrypted the prompt with.
-  late final Output<String?> customerEncryptionKeyArn;
+  late final pulumi.Output<String?> customerEncryptionKeyArn;
 
   /// Name of the default variant for your prompt.
-  late final Output<String?> defaultVariant;
+  late final pulumi.Output<String?> defaultVariant;
 
   /// Description of the prompt.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Name of the prompt.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Time at which the prompt was last updated.
-  late final Output<String> updatedAt;
+  late final pulumi.Output<String> updatedAt;
 
   /// A list of objects, each containing details about a variant of the prompt. See Variant for more information.
-  late final Output<List<AgentPromptVariant>?> variants;
+  late final pulumi.Output<List<AgentPromptVariant>?> variants;
 
   /// Version of the prompt. When you create a prompt, the version created is the `DRAFT` version.
-  late final Output<String> version;
+  late final pulumi.Output<String> version;
 
   AgentPrompt(
     String name, {
     AgentPromptArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/agentPrompt:AgentPrompt',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.createdAt = registerOutput<String>('createdAt');

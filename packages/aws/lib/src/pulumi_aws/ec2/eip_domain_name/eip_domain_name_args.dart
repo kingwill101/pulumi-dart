@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../eip_domain_name_timeouts/eip_domain_name_timeouts.dart';
 
 /// The set of arguments for EipDomainName.
 class EipDomainNameArgs {
   /// The allocation ID.
-  final Input<String> allocationId;
+  final pulumi.Input<String> allocationId;
 
   /// The domain name to modify for the IP address.
-  final Input<String> domainName;
+  final pulumi.Input<String> domainName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
-  final Input<EipDomainNameTimeouts>? timeouts;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<EipDomainNameTimeouts>? timeouts;
 
   EipDomainNameArgs({
     required this.allocationId,
@@ -32,7 +32,8 @@ class EipDomainNameArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<EipDomainNameTimeouts,
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
+          EipDomainNameTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
@@ -40,10 +41,11 @@ class EipDomainNameArgs {
 
   factory EipDomainNameArgs.fromMap(Map<String, dynamic> map) {
     return EipDomainNameArgs(
-      allocationId: Input.asInput<String>(map['allocationId']),
-      domainName: Input.asInput<String>(map['domainName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      timeouts: Input.asOptionalInput<EipDomainNameTimeouts>(map['timeouts']),
+      allocationId: pulumi.Input.asInput<String>(map['allocationId']),
+      domainName: pulumi.Input.asInput<String>(map['domainName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      timeouts:
+          pulumi.Input.asOptionalInput<EipDomainNameTimeouts>(map['timeouts']),
     );
   }
 }

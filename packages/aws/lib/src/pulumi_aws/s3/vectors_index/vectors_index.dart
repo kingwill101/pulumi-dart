@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vectors_index_encryption_configuration/vectors_index_encryption_configuration.dart';
 import '../vectors_index_metadata_configuration/vectors_index_metadata_configuration.dart';
 import 'vectors_index_args.dart';
@@ -18,55 +18,56 @@ import 'vectors_index_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3/vectorsIndex:VectorsIndex example arn:aws:s3vectors:us-west-2:123456789012:bucket/example-bucket/index/example-index
 /// ```
-class VectorsIndex extends CustomResource {
+class VectorsIndex extends pulumi.CustomResource {
   /// Date and time when the vector index was created.
-  late final Output<String> creationTime;
+  late final pulumi.Output<String> creationTime;
 
   /// Data type of the vectors to be inserted into the vector index. Valid values: `float32`.
-  late final Output<String> dataType;
+  late final pulumi.Output<String> dataType;
 
   /// Dimensions of the vectors to be inserted into the vector index.
-  late final Output<int> dimension;
+  late final pulumi.Output<int> dimension;
 
   /// Distance metric to be used for similarity search. Valid values: `cosine`, `euclidean`.
-  late final Output<String> distanceMetric;
+  late final pulumi.Output<String> distanceMetric;
 
   /// Block for encryption configuration for the vector index. See `encyption_configuration` block below.
-  late final Output<List<VectorsIndexEncryptionConfiguration>>
+  late final pulumi.Output<List<VectorsIndexEncryptionConfiguration>>
       encryptionConfigurations;
 
   /// ARN of the vector index.
-  late final Output<String> indexArn;
+  late final pulumi.Output<String> indexArn;
 
   /// Name of the vector index.
-  late final Output<String> indexName;
+  late final pulumi.Output<String> indexName;
 
   /// Block for metadata configuration for the vector index. See `metadata_configuration` block below.
-  late final Output<VectorsIndexMetadataConfiguration?> metadataConfiguration;
+  late final pulumi.Output<VectorsIndexMetadataConfiguration?>
+      metadataConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Name of the vector bucket for the vector index.
   ///
   /// The following arguments are optional:
-  late final Output<String> vectorBucketName;
+  late final pulumi.Output<String> vectorBucketName;
 
   VectorsIndex(
     String name, {
     VectorsIndexArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/vectorsIndex:VectorsIndex',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.creationTime = registerOutput<String>('creationTime');
     this.dataType = registerOutput<String>('dataType');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_logging_v2_target_grant/bucket_logging_v2_target_grant.dart';
 import '../bucket_logging_v2_target_object_key_format/bucket_logging_v2_target_object_key_format.dart';
 import 'bucket_logging_v2_args.dart';
@@ -53,38 +53,38 @@ import 'bucket_logging_v2_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3/bucketLoggingV2:BucketLoggingV2 example bucket-name,123456789012
 /// ```
-class BucketLoggingV2 extends CustomResource {
+class BucketLoggingV2 extends pulumi.CustomResource {
   /// Name of the bucket.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Account ID of the expected bucket owner.
-  late final Output<String?> expectedBucketOwner;
+  late final pulumi.Output<String?> expectedBucketOwner;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Name of the bucket where you want Amazon S3 to store server access logs.
-  late final Output<String> targetBucket;
+  late final pulumi.Output<String> targetBucket;
 
   /// Set of configuration blocks with information for granting permissions. See below.
-  late final Output<List<BucketLoggingV2TargetGrant>?> targetGrants;
+  late final pulumi.Output<List<BucketLoggingV2TargetGrant>?> targetGrants;
 
   /// Amazon S3 key format for log objects. See below.
-  late final Output<BucketLoggingV2TargetObjectKeyFormat?>
+  late final pulumi.Output<BucketLoggingV2TargetObjectKeyFormat?>
       targetObjectKeyFormat;
 
   /// Prefix for all log object keys.
-  late final Output<String> targetPrefix;
+  late final pulumi.Output<String> targetPrefix;
 
   BucketLoggingV2(
     String name, {
     BucketLoggingV2Args? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/bucketLoggingV2:BucketLoggingV2',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');

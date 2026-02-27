@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getTheme.
 class GetThemeArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Identifier of the theme.
   ///
   /// The following arguments are optional:
-  final Input<String> themeId;
+  final pulumi.Input<String> themeId;
 
   GetThemeArgs({
     this.awsAccountId,
@@ -45,10 +45,10 @@ class GetThemeArgs {
 
   factory GetThemeArgs.fromMap(Map<String, dynamic> map) {
     return GetThemeArgs(
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      themeId: Input.asInput<String>(map['themeId']),
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      themeId: pulumi.Input.asInput<String>(map['themeId']),
     );
   }
 }

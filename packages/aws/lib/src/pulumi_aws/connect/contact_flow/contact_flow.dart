@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'contact_flow_args.dart';
 
 /// Provides an Amazon Connect Contact Flow resource. For more information see
@@ -35,52 +35,52 @@ import 'contact_flow_args.dart';
 /// ```sh
 /// $ pulumi import aws:connect/contactFlow:ContactFlow example f1288a1f-6193-445a-b47e-af739b2:c1d4e5f6-1b3c-1b3c-1b3c-c1d4e5f6c1d4e5
 /// ```
-class ContactFlow extends CustomResource {
+class ContactFlow extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the Contact Flow.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The identifier of the Contact Flow.
-  late final Output<String> contactFlowId;
+  late final pulumi.Output<String> contactFlowId;
 
   /// Specifies the content of the Contact Flow, provided as a JSON string, written in Amazon Connect Contact Flow Language. If defined, the `filename` argument cannot be used.
-  late final Output<String> content;
+  late final pulumi.Output<String> content;
 
   /// Used to trigger updates. Must be set to a base64-encoded SHA256 hash of the Contact Flow source specified with `filename`.
-  late final Output<String?> contentHash;
+  late final pulumi.Output<String?> contentHash;
 
   /// Specifies the description of the Contact Flow.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The path to the Contact Flow source within the local filesystem. Conflicts with `content`.
-  late final Output<String?> filename;
+  late final pulumi.Output<String?> filename;
 
   /// Specifies the identifier of the hosting Amazon Connect Instance.
-  late final Output<String> instanceId;
+  late final pulumi.Output<String> instanceId;
 
   /// Specifies the name of the Contact Flow.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Tags to apply to the Contact Flow. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Specifies the type of the Contact Flow. Defaults to `CONTACT_FLOW`. Allowed Values are: `CONTACT_FLOW`, `CUSTOMER_QUEUE`, `CUSTOMER_HOLD`, `CUSTOMER_WHISPER`, `AGENT_HOLD`, `AGENT_WHISPER`, `OUTBOUND_WHISPER`, `AGENT_TRANSFER`, `QUEUE_TRANSFER`.
-  late final Output<String?> type;
+  late final pulumi.Output<String?> type;
 
   ContactFlow(
     String name, {
     ContactFlowArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:connect/contactFlow:ContactFlow',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.contactFlowId = registerOutput<String>('contactFlowId');

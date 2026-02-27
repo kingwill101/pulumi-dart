@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for IdentityProvider.
 class IdentityProviderArgs {
   /// The map of attribute mapping of user pool attributes. [AttributeMapping in AWS API documentation](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateIdentityProvider.html#CognitoUserPools-CreateIdentityProvider-request-AttributeMapping)
-  final Input<Map<String, String>>? attributeMapping;
+  final pulumi.Input<Map<String, String>>? attributeMapping;
 
   /// The list of identity providers.
-  final Input<List<String>>? idpIdentifiers;
+  final pulumi.Input<List<String>>? idpIdentifiers;
 
   /// The map of identity details, such as access token
-  final Input<Map<String, String>> providerDetails;
+  final pulumi.Input<Map<String, String>> providerDetails;
 
   /// The provider name
-  final Input<String> providerName;
+  final pulumi.Input<String> providerName;
 
   /// The provider type.  [See AWS API for valid values](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateIdentityProvider.html#CognitoUserPools-CreateIdentityProvider-request-ProviderType)
-  final Input<String> providerType;
+  final pulumi.Input<String> providerType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The user pool id
-  final Input<String> userPoolId;
+  final pulumi.Input<String> userPoolId;
 
   IdentityProviderArgs({
     this.attributeMapping,
@@ -58,16 +58,16 @@ class IdentityProviderArgs {
 
   factory IdentityProviderArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderArgs(
-      attributeMapping:
-          Input.asOptionalInput<Map<String, String>>(map['attributeMapping']),
+      attributeMapping: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['attributeMapping']),
       idpIdentifiers:
-          Input.asOptionalInput<List<String>>(map['idpIdentifiers']),
+          pulumi.Input.asOptionalInput<List<String>>(map['idpIdentifiers']),
       providerDetails:
-          Input.asInput<Map<String, String>>(map['providerDetails']),
-      providerName: Input.asInput<String>(map['providerName']),
-      providerType: Input.asInput<String>(map['providerType']),
-      region: Input.asOptionalInput<String>(map['region']),
-      userPoolId: Input.asInput<String>(map['userPoolId']),
+          pulumi.Input.asInput<Map<String, String>>(map['providerDetails']),
+      providerName: pulumi.Input.asInput<String>(map['providerName']),
+      providerType: pulumi.Input.asInput<String>(map['providerType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      userPoolId: pulumi.Input.asInput<String>(map['userPoolId']),
     );
   }
 }

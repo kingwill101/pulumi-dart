@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_grants_instance_args.dart';
 
 /// Provides a resource to manage an S3 Access Grants instance, which serves as a logical grouping for access grants.
@@ -21,40 +21,40 @@ import 'access_grants_instance_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3control/accessGrantsInstance:AccessGrantsInstance example 123456789012
 /// ```
-class AccessGrantsInstance extends CustomResource {
+class AccessGrantsInstance extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the S3 Access Grants instance.
-  late final Output<String> accessGrantsInstanceArn;
+  late final pulumi.Output<String> accessGrantsInstanceArn;
 
   /// Unique ID of the S3 Access Grants instance.
-  late final Output<String> accessGrantsInstanceId;
+  late final pulumi.Output<String> accessGrantsInstanceId;
 
   /// The AWS account ID for the S3 Access Grants instance. Defaults to automatically determined account ID of the Terraform AWS provider.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// The ARN of the AWS IAM Identity Center instance application; a subresource of the original Identity Center instance.
-  late final Output<String> identityCenterApplicationArn;
+  late final pulumi.Output<String> identityCenterApplicationArn;
 
   /// The ARN of the AWS IAM Identity Center instance associated with the S3 Access Grants instance.
-  late final Output<String?> identityCenterArn;
+  late final pulumi.Output<String?> identityCenterArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   AccessGrantsInstance(
     String name, {
     AccessGrantsInstanceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3control/accessGrantsInstance:AccessGrantsInstance',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accessGrantsInstanceArn =
         registerOutput<String>('accessGrantsInstanceArn');

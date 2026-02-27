@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Account.
 class AccountArgs {
   /// ARN of an IAM role for CloudWatch (to allow logging & monitoring). See more [in AWS Docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-stage-settings.html#how-to-stage-settings-console). Logging & monitoring can be enabled/disabled and otherwise tuned on the API Gateway Stage level.
-  final Input<String>? cloudwatchRoleArn;
+  final pulumi.Input<String>? cloudwatchRoleArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   AccountArgs({
     this.cloudwatchRoleArn,
@@ -31,8 +31,8 @@ class AccountArgs {
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
       cloudwatchRoleArn:
-          Input.asOptionalInput<String>(map['cloudwatchRoleArn']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<String>(map['cloudwatchRoleArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

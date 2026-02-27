@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../automation_rule_action_finding_fields_update_note/automation_rule_action_finding_fields_update_note.dart';
 import '../automation_rule_action_finding_fields_update_related_finding/automation_rule_action_finding_fields_update_related_finding.dart';
 import '../automation_rule_action_finding_fields_update_severity/automation_rule_action_finding_fields_update_severity.dart';
@@ -63,7 +63,7 @@ class AutomationRuleActionFindingFieldsUpdate {
     }
     final relatedFindingsValue = relatedFindings;
     if (relatedFindingsValue != null) {
-      map['relatedFindings'] = Input.encodeList<
+      map['relatedFindings'] = pulumi.Input.encodeList<
           AutomationRuleActionFindingFieldsUpdateRelatedFinding,
           Map<String, dynamic>>(relatedFindingsValue, (value) => value.toMap());
     }
@@ -102,7 +102,7 @@ class AutomationRuleActionFindingFieldsUpdate {
               (map['note'] as Map).cast<String, dynamic>()),
       relatedFindings: map['relatedFindings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   AutomationRuleActionFindingFieldsUpdateRelatedFinding>(
               map['relatedFindings'],
               (value) =>

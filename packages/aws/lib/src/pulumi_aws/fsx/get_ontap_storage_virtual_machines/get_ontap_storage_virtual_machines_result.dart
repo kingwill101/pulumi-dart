@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_ontap_storage_virtual_machines_filter/get_ontap_storage_virtual_machines_filter.dart';
 
 /// Result data returned by getOntapStorageVirtualMachines.
@@ -25,7 +25,8 @@ class GetOntapStorageVirtualMachinesResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetOntapStorageVirtualMachinesFilter,
+      map['filters'] = pulumi.Input.encodeList<
+          GetOntapStorageVirtualMachinesFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -39,7 +40,7 @@ class GetOntapStorageVirtualMachinesResult {
     return GetOntapStorageVirtualMachinesResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetOntapStorageVirtualMachinesFilter>(
+          : pulumi.Input.decodeList<GetOntapStorageVirtualMachinesFilter>(
               map['filters'],
               (value) => GetOntapStorageVirtualMachinesFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

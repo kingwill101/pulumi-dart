@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assessment_target_args.dart';
 
 /// Provides an Inspector Classic Assessment Target
@@ -21,28 +21,28 @@ import 'assessment_target_args.dart';
 /// ```sh
 /// $ pulumi import aws:inspector/assessmentTarget:AssessmentTarget example arn:aws:inspector:us-east-1:123456789012:target/0-xxxxxxx
 /// ```
-class AssessmentTarget extends CustomResource {
+class AssessmentTarget extends pulumi.CustomResource {
   /// The target assessment ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The name of the assessment target.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Inspector Resource Group Amazon Resource Name (ARN) stating tags for instance matching. If not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
-  late final Output<String?> resourceGroupArn;
+  late final pulumi.Output<String?> resourceGroupArn;
 
   AssessmentTarget(
     String name, {
     AssessmentTargetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:inspector/assessmentTarget:AssessmentTarget',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

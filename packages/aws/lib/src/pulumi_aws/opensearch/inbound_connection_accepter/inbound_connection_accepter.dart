@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'inbound_connection_accepter_args.dart';
 
 /// Manages an [AWS Opensearch Inbound Connection Accepter](https://docs.aws.amazon.com/opensearch-service/latest/APIReference/API_AcceptInboundConnection.html). If connecting domains from different AWS accounts, ensure that the accepter is configured to use the AWS account where the _remote_ opensearch domain exists.
@@ -16,25 +16,25 @@ import 'inbound_connection_accepter_args.dart';
 /// ```sh
 /// $ pulumi import aws:opensearch/inboundConnectionAccepter:InboundConnectionAccepter foo connection-id
 /// ```
-class InboundConnectionAccepter extends CustomResource {
+class InboundConnectionAccepter extends pulumi.CustomResource {
   /// Specifies the ID of the connection to accept.
-  late final Output<String> connectionId;
+  late final pulumi.Output<String> connectionId;
 
   /// Status of the connection request.
-  late final Output<String> connectionStatus;
+  late final pulumi.Output<String> connectionStatus;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   InboundConnectionAccepter(
     String name, {
     InboundConnectionAccepterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:opensearch/inboundConnectionAccepter:InboundConnectionAccepter',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.connectionId = registerOutput<String>('connectionId');
     this.connectionStatus = registerOutput<String>('connectionStatus');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_set_physical_table_map_s3_source_input_column/data_set_physical_table_map_s3_source_input_column.dart';
 import '../data_set_physical_table_map_s3_source_upload_settings/data_set_physical_table_map_s3_source_upload_settings.dart';
 
@@ -23,7 +23,7 @@ class DataSetPhysicalTableMapS3Source {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['dataSourceArn'] = dataSourceArn;
-    map['inputColumns'] = Input.encodeList<
+    map['inputColumns'] = pulumi.Input.encodeList<
         DataSetPhysicalTableMapS3SourceInputColumn,
         Map<String, dynamic>>(inputColumns, (value) => value.toMap());
     map['uploadSettings'] = uploadSettings.toMap();
@@ -34,7 +34,7 @@ class DataSetPhysicalTableMapS3Source {
     return DataSetPhysicalTableMapS3Source(
       dataSourceArn: map['dataSourceArn'] as String,
       inputColumns:
-          Input.decodeList<DataSetPhysicalTableMapS3SourceInputColumn>(
+          pulumi.Input.decodeList<DataSetPhysicalTableMapS3SourceInputColumn>(
               map['inputColumns'],
               (value) => DataSetPhysicalTableMapS3SourceInputColumn.fromMap(
                   (value as Map).cast<String, dynamic>())),

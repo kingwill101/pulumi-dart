@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_device_aws_location/get_device_aws_location.dart';
 import '../get_device_location/get_device_location.dart';
 
@@ -61,14 +61,14 @@ class GetDeviceResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['awsLocations'] =
-        Input.encodeList<GetDeviceAwsLocation, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDeviceAwsLocation, Map<String, dynamic>>(
             awsLocations, (value) => value.toMap());
     map['description'] = description;
     map['deviceId'] = deviceId;
     map['globalNetworkId'] = globalNetworkId;
     map['id'] = id;
     map['locations'] =
-        Input.encodeList<GetDeviceLocation, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDeviceLocation, Map<String, dynamic>>(
             locations, (value) => value.toMap());
     map['model'] = model;
     map['serialNumber'] = serialNumber;
@@ -82,7 +82,7 @@ class GetDeviceResult {
   factory GetDeviceResult.fromMap(Map<String, dynamic> map) {
     return GetDeviceResult(
       arn: map['arn'] as String,
-      awsLocations: Input.decodeList<GetDeviceAwsLocation>(
+      awsLocations: pulumi.Input.decodeList<GetDeviceAwsLocation>(
           map['awsLocations'],
           (value) => GetDeviceAwsLocation.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -90,7 +90,7 @@ class GetDeviceResult {
       deviceId: map['deviceId'] as String,
       globalNetworkId: map['globalNetworkId'] as String,
       id: map['id'] as String,
-      locations: Input.decodeList<GetDeviceLocation>(
+      locations: pulumi.Input.decodeList<GetDeviceLocation>(
           map['locations'],
           (value) => GetDeviceLocation.fromMap(
               (value as Map).cast<String, dynamic>())),

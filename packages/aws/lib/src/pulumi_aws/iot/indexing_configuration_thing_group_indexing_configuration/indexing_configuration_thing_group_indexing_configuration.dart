@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../indexing_configuration_thing_group_indexing_configuration_custom_field/indexing_configuration_thing_group_indexing_configuration_custom_field.dart';
 import '../indexing_configuration_thing_group_indexing_configuration_managed_field/indexing_configuration_thing_group_indexing_configuration_managed_field.dart';
 
@@ -26,13 +26,13 @@ class IndexingConfigurationThingGroupIndexingConfiguration {
     final map = <String, dynamic>{};
     final customFieldsValue = customFields;
     if (customFieldsValue != null) {
-      map['customFields'] = Input.encodeList<
+      map['customFields'] = pulumi.Input.encodeList<
           IndexingConfigurationThingGroupIndexingConfigurationCustomField,
           Map<String, dynamic>>(customFieldsValue, (value) => value.toMap());
     }
     final managedFieldsValue = managedFields;
     if (managedFieldsValue != null) {
-      map['managedFields'] = Input.encodeList<
+      map['managedFields'] = pulumi.Input.encodeList<
           IndexingConfigurationThingGroupIndexingConfigurationManagedField,
           Map<String, dynamic>>(managedFieldsValue, (value) => value.toMap());
     }
@@ -45,7 +45,7 @@ class IndexingConfigurationThingGroupIndexingConfiguration {
     return IndexingConfigurationThingGroupIndexingConfiguration(
       customFields: map['customFields'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   IndexingConfigurationThingGroupIndexingConfigurationCustomField>(
               map['customFields'],
               (value) =>
@@ -53,7 +53,7 @@ class IndexingConfigurationThingGroupIndexingConfiguration {
                       .fromMap((value as Map).cast<String, dynamic>())),
       managedFields: map['managedFields'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   IndexingConfigurationThingGroupIndexingConfigurationManagedField>(
               map['managedFields'],
               (value) =>

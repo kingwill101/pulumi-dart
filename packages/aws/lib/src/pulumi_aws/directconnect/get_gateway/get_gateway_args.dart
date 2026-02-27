@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGateway.
 class GetGatewayArgs {
   /// Name of the gateway to retrieve.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// A map of tags assigned to the gateway.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetGatewayArgs({
     required this.name,
@@ -27,8 +27,8 @@ class GetGatewayArgs {
 
   factory GetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayArgs(
-      name: Input.asInput<String>(map['name']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

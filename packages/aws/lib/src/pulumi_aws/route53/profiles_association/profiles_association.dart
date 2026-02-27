@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../profiles_association_timeouts/profiles_association_timeouts.dart';
 import 'profiles_association_args.dart';
 
@@ -17,44 +17,44 @@ import 'profiles_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:route53/profilesAssociation:ProfilesAssociation example rpa-id-12345678
 /// ```
-class ProfilesAssociation extends CustomResource {
-  late final Output<String> arn;
+class ProfilesAssociation extends pulumi.CustomResource {
+  late final pulumi.Output<String> arn;
 
   /// Name of the Profile Association. Must match a regex of `(?!^[0-9]+$)([a-zA-Z0-9\\-_' ']+)`.
-  late final Output<String> name;
-  late final Output<String> ownerId;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> ownerId;
 
   /// ID of the profile associated with the VPC.
-  late final Output<String> profileId;
+  late final pulumi.Output<String> profileId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Resource ID of the VPC the profile to be associated with.
-  late final Output<String> resourceId;
+  late final pulumi.Output<String> resourceId;
 
   /// Status of the Profile Association.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   /// Status message of the Profile Association.
-  late final Output<String> statusMessage;
+  late final pulumi.Output<String> statusMessage;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<ProfilesAssociationTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<ProfilesAssociationTimeouts?> timeouts;
 
   ProfilesAssociation(
     String name, {
     ProfilesAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:route53/profilesAssociation:ProfilesAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

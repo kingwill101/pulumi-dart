@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_directory_connect_setting/get_directory_connect_setting.dart';
 import '../get_directory_radius_setting/get_directory_radius_setting.dart';
 import '../get_directory_vpc_setting/get_directory_vpc_setting.dart';
@@ -76,9 +76,8 @@ class GetDirectoryResult {
     final map = <String, dynamic>{};
     map['accessUrl'] = accessUrl;
     map['alias'] = alias;
-    map['connectSettings'] =
-        Input.encodeList<GetDirectoryConnectSetting, Map<String, dynamic>>(
-            connectSettings, (value) => value.toMap());
+    map['connectSettings'] = pulumi.Input.encodeList<GetDirectoryConnectSetting,
+        Map<String, dynamic>>(connectSettings, (value) => value.toMap());
     map['description'] = description;
     map['directoryId'] = directoryId;
     map['dnsIpAddresses'] = dnsIpAddresses;
@@ -86,9 +85,8 @@ class GetDirectoryResult {
     map['enableSso'] = enableSso;
     map['id'] = id;
     map['name'] = name;
-    map['radiusSettings'] =
-        Input.encodeList<GetDirectoryRadiusSetting, Map<String, dynamic>>(
-            radiusSettings, (value) => value.toMap());
+    map['radiusSettings'] = pulumi.Input.encodeList<GetDirectoryRadiusSetting,
+        Map<String, dynamic>>(radiusSettings, (value) => value.toMap());
     map['region'] = region;
     map['securityGroupId'] = securityGroupId;
     map['shortName'] = shortName;
@@ -96,7 +94,7 @@ class GetDirectoryResult {
     map['tags'] = tags;
     map['type'] = type;
     map['vpcSettings'] =
-        Input.encodeList<GetDirectoryVpcSetting, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetDirectoryVpcSetting, Map<String, dynamic>>(
             vpcSettings, (value) => value.toMap());
     return map;
   }
@@ -105,7 +103,7 @@ class GetDirectoryResult {
     return GetDirectoryResult(
       accessUrl: map['accessUrl'] as String,
       alias: map['alias'] as String,
-      connectSettings: Input.decodeList<GetDirectoryConnectSetting>(
+      connectSettings: pulumi.Input.decodeList<GetDirectoryConnectSetting>(
           map['connectSettings'],
           (value) => GetDirectoryConnectSetting.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -116,7 +114,7 @@ class GetDirectoryResult {
       enableSso: map['enableSso'] as bool,
       id: map['id'] as String,
       name: map['name'] as String,
-      radiusSettings: Input.decodeList<GetDirectoryRadiusSetting>(
+      radiusSettings: pulumi.Input.decodeList<GetDirectoryRadiusSetting>(
           map['radiusSettings'],
           (value) => GetDirectoryRadiusSetting.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -126,7 +124,7 @@ class GetDirectoryResult {
       size: map['size'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
-      vpcSettings: Input.decodeList<GetDirectoryVpcSetting>(
+      vpcSettings: pulumi.Input.decodeList<GetDirectoryVpcSetting>(
           map['vpcSettings'],
           (value) => GetDirectoryVpcSetting.fromMap(
               (value as Map).cast<String, dynamic>())),

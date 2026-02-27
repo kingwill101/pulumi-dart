@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_script_dag_edge/get_script_dag_edge.dart';
 import '../get_script_dag_node/get_script_dag_node.dart';
 
@@ -32,10 +32,12 @@ class GetScriptResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['dagEdges'] = Input.encodeList<GetScriptDagEdge, Map<String, dynamic>>(
-        dagEdges, (value) => value.toMap());
-    map['dagNodes'] = Input.encodeList<GetScriptDagNode, Map<String, dynamic>>(
-        dagNodes, (value) => value.toMap());
+    map['dagEdges'] =
+        pulumi.Input.encodeList<GetScriptDagEdge, Map<String, dynamic>>(
+            dagEdges, (value) => value.toMap());
+    map['dagNodes'] =
+        pulumi.Input.encodeList<GetScriptDagNode, Map<String, dynamic>>(
+            dagNodes, (value) => value.toMap());
     map['id'] = id;
     final languageValue = language;
     if (languageValue != null) {
@@ -49,11 +51,11 @@ class GetScriptResult {
 
   factory GetScriptResult.fromMap(Map<String, dynamic> map) {
     return GetScriptResult(
-      dagEdges: Input.decodeList<GetScriptDagEdge>(
+      dagEdges: pulumi.Input.decodeList<GetScriptDagEdge>(
           map['dagEdges'],
           (value) =>
               GetScriptDagEdge.fromMap((value as Map).cast<String, dynamic>())),
-      dagNodes: Input.decodeList<GetScriptDagNode>(
+      dagNodes: pulumi.Input.decodeList<GetScriptDagNode>(
           map['dagNodes'],
           (value) =>
               GetScriptDagNode.fromMap((value as Map).cast<String, dynamic>())),

@@ -1,63 +1,63 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ami_ebs_block_device/ami_ebs_block_device.dart';
 import '../ami_ephemeral_block_device/ami_ephemeral_block_device.dart';
 
 /// The set of arguments for Ami.
 class AmiArgs {
   /// Machine architecture for created instances. Defaults to `x86_64`.
-  final Input<String>? architecture;
+  final pulumi.Input<String>? architecture;
 
   /// Boot mode of the AMI. For more information, see [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in the Amazon Elastic Compute Cloud User Guide.
-  final Input<String>? bootMode;
+  final pulumi.Input<String>? bootMode;
 
   /// Date and time to deprecate the AMI. If you specified a value for seconds, Amazon EC2 rounds the seconds to the nearest minute. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
-  final Input<String>? deprecationTime;
+  final pulumi.Input<String>? deprecationTime;
 
   /// Longer, human-readable description for the AMI.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Nested block describing an EBS block device that should be
   /// attached to created instances. The structure of this block is described below.
-  final Input<List<AmiEbsBlockDevice>>? ebsBlockDevices;
+  final pulumi.Input<List<AmiEbsBlockDevice>>? ebsBlockDevices;
 
   /// Whether enhanced networking with ENA is enabled. Defaults to `false`.
-  final Input<bool>? enaSupport;
+  final pulumi.Input<bool>? enaSupport;
 
   /// Nested block describing an ephemeral block device that
   /// should be attached to created instances. The structure of this block is described below.
-  final Input<List<AmiEphemeralBlockDevice>>? ephemeralBlockDevices;
-  final Input<String>? imageLocation;
+  final pulumi.Input<List<AmiEphemeralBlockDevice>>? ephemeralBlockDevices;
+  final pulumi.Input<String>? imageLocation;
 
   /// If EC2 instances started from this image should require the use of the Instance Metadata Service V2 (IMDSv2), set this argument to `v2.0`. For more information, see [Configure instance metadata options for new instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-new-instances.html#configure-IMDS-new-instances-ami-configuration).
-  final Input<String>? imdsSupport;
-  final Input<String>? kernelId;
+  final pulumi.Input<String>? imdsSupport;
+  final pulumi.Input<String>? kernelId;
 
   /// Region-unique name for the AMI.
-  final Input<String>? name;
-  final Input<String>? ramdiskId;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? ramdiskId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Name of the root device (for example, `/dev/sda1`, or `/dev/xvda`).
-  final Input<String>? rootDeviceName;
-  final Input<String>? sriovNetSupport;
+  final pulumi.Input<String>? rootDeviceName;
+  final pulumi.Input<String>? sriovNetSupport;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.
-  final Input<String>? tpmSupport;
+  final pulumi.Input<String>? tpmSupport;
 
   /// Base64 representation of the non-volatile UEFI variable store.
-  final Input<String>? uefiData;
+  final pulumi.Input<String>? uefiData;
 
   /// Keyword to choose what virtualization mode created instances
   /// will use. Can be either "paravirtual" (the default) or "hvm". The choice of virtualization type
   /// changes the set of further arguments that are required, as described below.
-  final Input<String>? virtualizationType;
+  final pulumi.Input<String>? virtualizationType;
 
   AmiArgs({
     this.architecture,
@@ -101,11 +101,12 @@ class AmiArgs {
     }
     final ebsBlockDevicesValue = ebsBlockDevices;
     if (ebsBlockDevicesValue != null) {
-      map['ebsBlockDevices'] = Input.mapOptionalInputValue<
+      map['ebsBlockDevices'] = pulumi.Input.mapOptionalInputValue<
               List<AmiEbsBlockDevice>, List<Map<String, dynamic>>>(
           ebsBlockDevicesValue,
-          (value) => Input.encodeList<AmiEbsBlockDevice, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<AmiEbsBlockDevice, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final enaSupportValue = enaSupport;
     if (enaSupportValue != null) {
@@ -113,12 +114,11 @@ class AmiArgs {
     }
     final ephemeralBlockDevicesValue = ephemeralBlockDevices;
     if (ephemeralBlockDevicesValue != null) {
-      map['ephemeralBlockDevices'] = Input.mapOptionalInputValue<
+      map['ephemeralBlockDevices'] = pulumi.Input.mapOptionalInputValue<
               List<AmiEphemeralBlockDevice>, List<Map<String, dynamic>>>(
           ephemeralBlockDevicesValue,
-          (value) =>
-              Input.encodeList<AmiEphemeralBlockDevice, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<AmiEphemeralBlockDevice,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final imageLocationValue = imageLocation;
     if (imageLocationValue != null) {
@@ -173,29 +173,32 @@ class AmiArgs {
 
   factory AmiArgs.fromMap(Map<String, dynamic> map) {
     return AmiArgs(
-      architecture: Input.asOptionalInput<String>(map['architecture']),
-      bootMode: Input.asOptionalInput<String>(map['bootMode']),
-      deprecationTime: Input.asOptionalInput<String>(map['deprecationTime']),
-      description: Input.asOptionalInput<String>(map['description']),
-      ebsBlockDevices: Input.asOptionalInput<List<AmiEbsBlockDevice>>(
+      architecture: pulumi.Input.asOptionalInput<String>(map['architecture']),
+      bootMode: pulumi.Input.asOptionalInput<String>(map['bootMode']),
+      deprecationTime:
+          pulumi.Input.asOptionalInput<String>(map['deprecationTime']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      ebsBlockDevices: pulumi.Input.asOptionalInput<List<AmiEbsBlockDevice>>(
           map['ebsBlockDevices']),
-      enaSupport: Input.asOptionalInput<bool>(map['enaSupport']),
+      enaSupport: pulumi.Input.asOptionalInput<bool>(map['enaSupport']),
       ephemeralBlockDevices:
-          Input.asOptionalInput<List<AmiEphemeralBlockDevice>>(
+          pulumi.Input.asOptionalInput<List<AmiEphemeralBlockDevice>>(
               map['ephemeralBlockDevices']),
-      imageLocation: Input.asOptionalInput<String>(map['imageLocation']),
-      imdsSupport: Input.asOptionalInput<String>(map['imdsSupport']),
-      kernelId: Input.asOptionalInput<String>(map['kernelId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      ramdiskId: Input.asOptionalInput<String>(map['ramdiskId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      rootDeviceName: Input.asOptionalInput<String>(map['rootDeviceName']),
-      sriovNetSupport: Input.asOptionalInput<String>(map['sriovNetSupport']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      tpmSupport: Input.asOptionalInput<String>(map['tpmSupport']),
-      uefiData: Input.asOptionalInput<String>(map['uefiData']),
+      imageLocation: pulumi.Input.asOptionalInput<String>(map['imageLocation']),
+      imdsSupport: pulumi.Input.asOptionalInput<String>(map['imdsSupport']),
+      kernelId: pulumi.Input.asOptionalInput<String>(map['kernelId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      ramdiskId: pulumi.Input.asOptionalInput<String>(map['ramdiskId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      rootDeviceName:
+          pulumi.Input.asOptionalInput<String>(map['rootDeviceName']),
+      sriovNetSupport:
+          pulumi.Input.asOptionalInput<String>(map['sriovNetSupport']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      tpmSupport: pulumi.Input.asOptionalInput<String>(map['tpmSupport']),
+      uefiData: pulumi.Input.asOptionalInput<String>(map['uefiData']),
       virtualizationType:
-          Input.asOptionalInput<String>(map['virtualizationType']),
+          pulumi.Input.asOptionalInput<String>(map['virtualizationType']),
     );
   }
 }

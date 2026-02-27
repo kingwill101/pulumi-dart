@@ -1,17 +1,17 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_credentials_args.dart';
 import 'get_credentials_result.dart';
 
 /// Provides redshift serverless temporary credentials for a workgroup.
 Future<GetCredentialsResult> getCredentials(
   GetCredentialsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:redshiftserverless/getCredentials:getCredentials',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCredentialsResult.fromMap(result);
 }

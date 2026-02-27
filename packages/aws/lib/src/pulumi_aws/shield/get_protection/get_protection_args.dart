@@ -1,16 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getProtection.
 class GetProtectionArgs {
   /// Unique identifier for the protection.
-  final Input<String>? protectionId;
+  final pulumi.Input<String>? protectionId;
 
   /// ARN (Amazon Resource Name) of the resource being protected.
   ///
   /// > Exactly one of `protection_id` or `resource_arn` is required.
-  final Input<String>? resourceArn;
+  final pulumi.Input<String>? resourceArn;
 
   GetProtectionArgs({
     this.protectionId,
@@ -32,8 +32,8 @@ class GetProtectionArgs {
 
   factory GetProtectionArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectionArgs(
-      protectionId: Input.asOptionalInput<String>(map['protectionId']),
-      resourceArn: Input.asOptionalInput<String>(map['resourceArn']),
+      protectionId: pulumi.Input.asOptionalInput<String>(map['protectionId']),
+      resourceArn: pulumi.Input.asOptionalInput<String>(map['resourceArn']),
     );
   }
 }

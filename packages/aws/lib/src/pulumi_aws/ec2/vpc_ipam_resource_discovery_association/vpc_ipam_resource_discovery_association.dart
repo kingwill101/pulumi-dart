@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_ipam_resource_discovery_association_args.dart';
 
 /// Provides an association between an Amazon IP Address Manager (IPAM) and a IPAM Resource Discovery. IPAM Resource Discoveries are resources meant for multi-organization customers. If you wish to use a single IPAM across multiple orgs, a resource discovery can be created and shared from a subordinate organization to the management organizations IPAM delegated admin account.
@@ -18,49 +18,49 @@ import 'vpc_ipam_resource_discovery_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/vpcIpamResourceDiscoveryAssociation:VpcIpamResourceDiscoveryAssociation example ipam-res-disco-assoc-0178368ad2146a492
 /// ```
-class VpcIpamResourceDiscoveryAssociation extends CustomResource {
+class VpcIpamResourceDiscoveryAssociation extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of IPAM Resource Discovery Association.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The Amazon Resource Name (ARN) of the IPAM.
-  late final Output<String> ipamArn;
+  late final pulumi.Output<String> ipamArn;
 
   /// The ID of the IPAM to associate.
-  late final Output<String> ipamId;
+  late final pulumi.Output<String> ipamId;
 
   /// The home region of the IPAM.
-  late final Output<String> ipamRegion;
+  late final pulumi.Output<String> ipamRegion;
 
   /// The ID of the Resource Discovery to associate.
-  late final Output<String> ipamResourceDiscoveryId;
+  late final pulumi.Output<String> ipamResourceDiscoveryId;
 
   /// A boolean to identify if the Resource Discovery is the accounts default resource discovery.
-  late final Output<bool> isDefault;
+  late final pulumi.Output<bool> isDefault;
 
   /// The account ID for the account that manages the Resource Discovery
-  late final Output<String> ownerId;
+  late final pulumi.Output<String> ownerId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The lifecycle state of the association when you associate or disassociate a resource discovery.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// A map of tags to add to the IPAM resource discovery association resource.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   VpcIpamResourceDiscoveryAssociation(
     String name, {
     VpcIpamResourceDiscoveryAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpcIpamResourceDiscoveryAssociation:VpcIpamResourceDiscoveryAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.ipamArn = registerOutput<String>('ipamArn');

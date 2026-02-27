@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for terraformConfig.
 class TerraformConfigArgs {
-  final Input<dynamic> self;
+  final pulumi.Input<dynamic> self;
 
   TerraformConfigArgs({
     required this.self,
@@ -18,7 +18,7 @@ class TerraformConfigArgs {
 
   factory TerraformConfigArgs.fromMap(Map<String, dynamic> map) {
     return TerraformConfigArgs(
-      self: Input.asInput<dynamic>(map['__self__']),
+      self: pulumi.Input.asInput<dynamic>(map['__self__']),
     );
   }
 }

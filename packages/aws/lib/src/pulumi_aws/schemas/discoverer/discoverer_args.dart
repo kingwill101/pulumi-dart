@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Discoverer.
 class DiscovererArgs {
   /// The description of the discoverer. Maximum of 256 characters.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ARN of the event bus to discover event schemas on.
-  final Input<String> sourceArn;
+  final pulumi.Input<String> sourceArn;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   DiscovererArgs({
     this.description,
@@ -43,10 +43,10 @@ class DiscovererArgs {
 
   factory DiscovererArgs.fromMap(Map<String, dynamic> map) {
     return DiscovererArgs(
-      description: Input.asOptionalInput<String>(map['description']),
-      region: Input.asOptionalInput<String>(map['region']),
-      sourceArn: Input.asInput<String>(map['sourceArn']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      sourceArn: pulumi.Input.asInput<String>(map['sourceArn']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

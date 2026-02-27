@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../outbound_connection_connection_properties/outbound_connection_connection_properties.dart';
 import '../outbound_connection_local_domain_info/outbound_connection_local_domain_info.dart';
 import '../outbound_connection_remote_domain_info/outbound_connection_remote_domain_info.dart';
@@ -8,25 +8,26 @@ import '../outbound_connection_remote_domain_info/outbound_connection_remote_dom
 /// The set of arguments for OutboundConnection.
 class OutboundConnectionArgs {
   /// Accepts the connection.
-  final Input<bool>? acceptConnection;
+  final pulumi.Input<bool>? acceptConnection;
 
   /// Specifies the connection alias that will be used by the customer for this connection.
-  final Input<String> connectionAlias;
+  final pulumi.Input<String> connectionAlias;
 
   /// Specifies the connection mode. Accepted values are `DIRECT` or `VPC_ENDPOINT`.
-  final Input<String>? connectionMode;
+  final pulumi.Input<String>? connectionMode;
 
   /// Configuration block for the outbound connection.
-  final Input<OutboundConnectionConnectionProperties>? connectionProperties;
+  final pulumi.Input<OutboundConnectionConnectionProperties>?
+      connectionProperties;
 
   /// Configuration block for the local Opensearch domain.
-  final Input<OutboundConnectionLocalDomainInfo> localDomainInfo;
+  final pulumi.Input<OutboundConnectionLocalDomainInfo> localDomainInfo;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Configuration block for the remote Opensearch domain.
-  final Input<OutboundConnectionRemoteDomainInfo> remoteDomainInfo;
+  final pulumi.Input<OutboundConnectionRemoteDomainInfo> remoteDomainInfo;
 
   OutboundConnectionArgs({
     this.acceptConnection,
@@ -51,18 +52,18 @@ class OutboundConnectionArgs {
     }
     final connectionPropertiesValue = connectionProperties;
     if (connectionPropertiesValue != null) {
-      map['connectionProperties'] = Input.mapOptionalInputValue<
+      map['connectionProperties'] = pulumi.Input.mapOptionalInputValue<
               OutboundConnectionConnectionProperties, Map<String, dynamic>>(
           connectionPropertiesValue, (value) => value.toMap());
     }
-    map['localDomainInfo'] = Input.mapInputValue<
+    map['localDomainInfo'] = pulumi.Input.mapInputValue<
         OutboundConnectionLocalDomainInfo,
         Map<String, dynamic>>(localDomainInfo, (value) => value.toMap());
     final regionValue = region;
     if (regionValue != null) {
       map['region'] = regionValue;
     }
-    map['remoteDomainInfo'] = Input.mapInputValue<
+    map['remoteDomainInfo'] = pulumi.Input.mapInputValue<
         OutboundConnectionRemoteDomainInfo,
         Map<String, dynamic>>(remoteDomainInfo, (value) => value.toMap());
     return map;
@@ -70,17 +71,20 @@ class OutboundConnectionArgs {
 
   factory OutboundConnectionArgs.fromMap(Map<String, dynamic> map) {
     return OutboundConnectionArgs(
-      acceptConnection: Input.asOptionalInput<bool>(map['acceptConnection']),
-      connectionAlias: Input.asInput<String>(map['connectionAlias']),
-      connectionMode: Input.asOptionalInput<String>(map['connectionMode']),
+      acceptConnection:
+          pulumi.Input.asOptionalInput<bool>(map['acceptConnection']),
+      connectionAlias: pulumi.Input.asInput<String>(map['connectionAlias']),
+      connectionMode:
+          pulumi.Input.asOptionalInput<String>(map['connectionMode']),
       connectionProperties:
-          Input.asOptionalInput<OutboundConnectionConnectionProperties>(
+          pulumi.Input.asOptionalInput<OutboundConnectionConnectionProperties>(
               map['connectionProperties']),
-      localDomainInfo: Input.asInput<OutboundConnectionLocalDomainInfo>(
+      localDomainInfo: pulumi.Input.asInput<OutboundConnectionLocalDomainInfo>(
           map['localDomainInfo']),
-      region: Input.asOptionalInput<String>(map['region']),
-      remoteDomainInfo: Input.asInput<OutboundConnectionRemoteDomainInfo>(
-          map['remoteDomainInfo']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      remoteDomainInfo:
+          pulumi.Input.asInput<OutboundConnectionRemoteDomainInfo>(
+              map['remoteDomainInfo']),
     );
   }
 }

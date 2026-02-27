@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../block_public_access_configuration_permitted_public_security_group_rule_range/block_public_access_configuration_permitted_public_security_group_rule_range.dart';
 import 'block_public_access_configuration_args.dart';
 
@@ -37,30 +37,30 @@ import 'block_public_access_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:emr/blockPublicAccessConfiguration:BlockPublicAccessConfiguration example current
 /// ```
-class BlockPublicAccessConfiguration extends CustomResource {
+class BlockPublicAccessConfiguration extends pulumi.CustomResource {
   /// Enable or disable EMR Block Public Access.
   ///
   /// The following arguments are optional:
-  late final Output<bool> blockPublicSecurityGroupRules;
+  late final pulumi.Output<bool> blockPublicSecurityGroupRules;
 
   /// Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `block_public_security_group_rules` is set to `true`.
-  late final Output<
+  late final pulumi.Output<
           List<
               BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>?>
       permittedPublicSecurityGroupRuleRanges;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   BlockPublicAccessConfiguration(
     String name, {
     BlockPublicAccessConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:emr/blockPublicAccessConfiguration:BlockPublicAccessConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.blockPublicSecurityGroupRules =
         registerOutput<bool>('blockPublicSecurityGroupRules');

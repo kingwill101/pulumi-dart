@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../rule_group_rule_group_rules_source_rules_source_list/rule_group_rule_group_rules_source_rules_source_list.dart';
 import '../rule_group_rule_group_rules_source_stateful_rule/rule_group_rule_group_rules_source_stateful_rule.dart';
 import '../rule_group_rule_group_rules_source_stateless_rules_and_custom_actions/rule_group_rule_group_rules_source_stateless_rules_and_custom_actions.dart';
@@ -38,7 +38,7 @@ class RuleGroupRuleGroupRulesSource {
     }
     final statefulRulesValue = statefulRules;
     if (statefulRulesValue != null) {
-      map['statefulRules'] = Input.encodeList<
+      map['statefulRules'] = pulumi.Input.encodeList<
           RuleGroupRuleGroupRulesSourceStatefulRule,
           Map<String, dynamic>>(statefulRulesValue, (value) => value.toMap());
     }
@@ -60,7 +60,7 @@ class RuleGroupRuleGroupRulesSource {
           map['rulesString'] == null ? null : map['rulesString'] as String,
       statefulRules: map['statefulRules'] == null
           ? null
-          : Input.decodeList<RuleGroupRuleGroupRulesSourceStatefulRule>(
+          : pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatefulRule>(
               map['statefulRules'],
               (value) => RuleGroupRuleGroupRulesSourceStatefulRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

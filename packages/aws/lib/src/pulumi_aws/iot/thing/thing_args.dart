@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Thing.
 class ThingArgs {
   /// Map of attributes of the thing.
-  final Input<Map<String, String>>? attributes;
+  final pulumi.Input<Map<String, String>>? attributes;
 
   /// The name of the thing.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The thing type name.
-  final Input<String>? thingTypeName;
+  final pulumi.Input<String>? thingTypeName;
 
   ThingArgs({
     this.attributes,
@@ -46,10 +46,11 @@ class ThingArgs {
 
   factory ThingArgs.fromMap(Map<String, dynamic> map) {
     return ThingArgs(
-      attributes: Input.asOptionalInput<Map<String, String>>(map['attributes']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      thingTypeName: Input.asOptionalInput<String>(map['thingTypeName']),
+      attributes:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['attributes']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      thingTypeName: pulumi.Input.asOptionalInput<String>(map['thingTypeName']),
     );
   }
 }

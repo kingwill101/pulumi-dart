@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_infrastructure_configuration_instance_metadata_option/get_infrastructure_configuration_instance_metadata_option.dart';
 import '../get_infrastructure_configuration_logging/get_infrastructure_configuration_logging.dart';
 import '../get_infrastructure_configuration_placement/get_infrastructure_configuration_placement.dart';
@@ -89,17 +89,18 @@ class GetInfrastructureConfigurationResult {
     map['dateUpdated'] = dateUpdated;
     map['description'] = description;
     map['id'] = id;
-    map['instanceMetadataOptions'] = Input.encodeList<
+    map['instanceMetadataOptions'] = pulumi.Input.encodeList<
             GetInfrastructureConfigurationInstanceMetadataOption,
             Map<String, dynamic>>(
         instanceMetadataOptions, (value) => value.toMap());
     map['instanceProfileName'] = instanceProfileName;
     map['instanceTypes'] = instanceTypes;
     map['keyPair'] = keyPair;
-    map['loggings'] = Input.encodeList<GetInfrastructureConfigurationLogging,
+    map['loggings'] = pulumi.Input.encodeList<
+        GetInfrastructureConfigurationLogging,
         Map<String, dynamic>>(loggings, (value) => value.toMap());
     map['name'] = name;
-    map['placements'] = Input.encodeList<
+    map['placements'] = pulumi.Input.encodeList<
         GetInfrastructureConfigurationPlacement,
         Map<String, dynamic>>(placements, (value) => value.toMap());
     map['region'] = region;
@@ -120,7 +121,7 @@ class GetInfrastructureConfigurationResult {
       dateUpdated: map['dateUpdated'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
-      instanceMetadataOptions: Input.decodeList<
+      instanceMetadataOptions: pulumi.Input.decodeList<
               GetInfrastructureConfigurationInstanceMetadataOption>(
           map['instanceMetadataOptions'],
           (value) =>
@@ -129,15 +130,16 @@ class GetInfrastructureConfigurationResult {
       instanceProfileName: map['instanceProfileName'] as String,
       instanceTypes: (map['instanceTypes'] as List).cast<String>(),
       keyPair: map['keyPair'] as String,
-      loggings: Input.decodeList<GetInfrastructureConfigurationLogging>(
+      loggings: pulumi.Input.decodeList<GetInfrastructureConfigurationLogging>(
           map['loggings'],
           (value) => GetInfrastructureConfigurationLogging.fromMap(
               (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      placements: Input.decodeList<GetInfrastructureConfigurationPlacement>(
-          map['placements'],
-          (value) => GetInfrastructureConfigurationPlacement.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      placements:
+          pulumi.Input.decodeList<GetInfrastructureConfigurationPlacement>(
+              map['placements'],
+              (value) => GetInfrastructureConfigurationPlacement.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       resourceTags: (map['resourceTags'] as Map).cast<String, String>(),
       securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),

@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getGatewayRoute.
 class GetGatewayRouteArgs {
   /// Name of the service mesh in which the virtual gateway exists.
-  final Input<String> meshName;
+  final pulumi.Input<String> meshName;
 
   /// AWS account ID of the service mesh's owner.
-  final Input<String>? meshOwner;
+  final pulumi.Input<String>? meshOwner;
 
   /// Name of the gateway route.
-  final Input<String> name;
+  final pulumi.Input<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Name of the virtual gateway in which the route exists.
-  final Input<String> virtualGatewayName;
+  final pulumi.Input<String> virtualGatewayName;
 
   GetGatewayRouteArgs({
     required this.meshName,
@@ -53,12 +53,13 @@ class GetGatewayRouteArgs {
 
   factory GetGatewayRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteArgs(
-      meshName: Input.asInput<String>(map['meshName']),
-      meshOwner: Input.asOptionalInput<String>(map['meshOwner']),
-      name: Input.asInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      virtualGatewayName: Input.asInput<String>(map['virtualGatewayName']),
+      meshName: pulumi.Input.asInput<String>(map['meshName']),
+      meshOwner: pulumi.Input.asOptionalInput<String>(map['meshOwner']),
+      name: pulumi.Input.asInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      virtualGatewayName:
+          pulumi.Input.asInput<String>(map['virtualGatewayName']),
     );
   }
 }

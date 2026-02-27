@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSite.
 class GetSiteArgs {
   /// ID of the Global Network of the site to retrieve.
-  final Input<String> globalNetworkId;
+  final pulumi.Input<String> globalNetworkId;
 
   /// ID of the specific site to retrieve.
-  final Input<String> siteId;
+  final pulumi.Input<String> siteId;
 
   /// Key-value tags for the Site.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetSiteArgs({
     required this.globalNetworkId,
@@ -32,9 +32,9 @@ class GetSiteArgs {
 
   factory GetSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteArgs(
-      globalNetworkId: Input.asInput<String>(map['globalNetworkId']),
-      siteId: Input.asInput<String>(map['siteId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      globalNetworkId: pulumi.Input.asInput<String>(map['globalNetworkId']),
+      siteId: pulumi.Input.asInput<String>(map['siteId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

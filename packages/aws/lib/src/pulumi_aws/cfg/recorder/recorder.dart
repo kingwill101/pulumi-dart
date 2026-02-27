@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../recorder_recording_group/recorder_recording_group.dart';
 import '../recorder_recording_mode/recorder_recording_mode.dart';
 import 'recorder_args.dart';
@@ -28,31 +28,31 @@ import 'recorder_args.dart';
 /// ```sh
 /// $ pulumi import aws:cfg/recorder:Recorder foo example
 /// ```
-class Recorder extends CustomResource {
+class Recorder extends pulumi.CustomResource {
   /// The name of the recorder. Defaults to `default`. Changing it recreates the resource.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Recording group - see below.
-  late final Output<RecorderRecordingGroup> recordingGroup;
+  late final pulumi.Output<RecorderRecordingGroup> recordingGroup;
 
   /// Recording mode - see below.
-  late final Output<RecorderRecordingMode> recordingMode;
+  late final pulumi.Output<RecorderRecordingMode> recordingMode;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Amazon Resource Name (ARN) of the IAM role. Used to make read or write requests to the delivery channel and to describe the AWS resources associated with the account. See [AWS Docs](http://docs.aws.amazon.com/config/latest/developerguide/iamrole-permissions.html) for more details.
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   Recorder(
     String name, {
     RecorderArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cfg/recorder:Recorder',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.name = registerOutput<String>('name');
     this.recordingGroup =

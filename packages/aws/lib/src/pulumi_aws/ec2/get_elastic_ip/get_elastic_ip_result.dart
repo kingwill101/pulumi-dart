@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_elastic_ip_filter/get_elastic_ip_filter.dart';
 
 /// Result data returned by getElasticIp.
@@ -94,7 +94,7 @@ class GetElasticIpResult {
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetElasticIpFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetElasticIpFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -123,7 +123,7 @@ class GetElasticIpResult {
       domain: map['domain'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetElasticIpFilter>(
+          : pulumi.Input.decodeList<GetElasticIpFilter>(
               map['filters'],
               (value) => GetElasticIpFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

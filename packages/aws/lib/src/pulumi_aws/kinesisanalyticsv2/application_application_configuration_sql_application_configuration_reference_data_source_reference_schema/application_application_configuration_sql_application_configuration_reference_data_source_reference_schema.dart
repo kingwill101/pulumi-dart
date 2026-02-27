@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../application_application_configuration_sql_application_configuration_reference_data_source_reference_schema_record_column/application_application_configuration_sql_application_configuration_reference_data_source_reference_schema_record_column.dart';
 import '../application_application_configuration_sql_application_configuration_reference_data_source_reference_schema_record_format/application_application_configuration_sql_application_configuration_reference_data_source_reference_schema_record_format.dart';
 
@@ -25,7 +25,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['recordColumns'] = Input.encodeList<
+    map['recordColumns'] = pulumi.Input.encodeList<
         ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn,
         Map<String, dynamic>>(recordColumns, (value) => value.toMap());
     final recordEncodingValue = recordEncoding;
@@ -39,7 +39,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema.fromMap(
       Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema(
-      recordColumns: Input.decodeList<
+      recordColumns: pulumi.Input.decodeList<
               ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn>(
           map['recordColumns'],
           (value) =>

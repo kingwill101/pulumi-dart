@@ -1,37 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../restore_testing_selection_protected_resource_conditions/restore_testing_selection_protected_resource_conditions.dart';
 
 /// The set of arguments for RestoreTestingSelection.
 class RestoreTestingSelectionArgs {
   /// The ARN of the IAM role.
-  final Input<String> iamRoleArn;
+  final pulumi.Input<String> iamRoleArn;
 
   /// The name of the backup restore testing selection.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// The ARNs for the protected resources.
-  final Input<List<String>>? protectedResourceArns;
+  final pulumi.Input<List<String>>? protectedResourceArns;
 
   /// The conditions for the protected resource.
-  final Input<RestoreTestingSelectionProtectedResourceConditions>?
+  final pulumi.Input<RestoreTestingSelectionProtectedResourceConditions>?
       protectedResourceConditions;
 
   /// The type of the protected resource.
-  final Input<String> protectedResourceType;
+  final pulumi.Input<String> protectedResourceType;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Override certain restore metadata keys. See the complete list of [restore testing inferred metadata](https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing-inferred-metadata.html) .
-  final Input<Map<String, String>>? restoreMetadataOverrides;
+  final pulumi.Input<Map<String, String>>? restoreMetadataOverrides;
 
   /// The name of the restore testing plan.
-  final Input<String> restoreTestingPlanName;
+  final pulumi.Input<String> restoreTestingPlanName;
 
   /// The amount of hours available to run a validation script on the data. Valid range is `1` to `168`.
-  final Input<int>? validationWindowHours;
+  final pulumi.Input<int>? validationWindowHours;
 
   RestoreTestingSelectionArgs({
     required this.iamRoleArn,
@@ -58,7 +58,7 @@ class RestoreTestingSelectionArgs {
     }
     final protectedResourceConditionsValue = protectedResourceConditions;
     if (protectedResourceConditionsValue != null) {
-      map['protectedResourceConditions'] = Input.mapOptionalInputValue<
+      map['protectedResourceConditions'] = pulumi.Input.mapOptionalInputValue<
               RestoreTestingSelectionProtectedResourceConditions,
               Map<String, dynamic>>(
           protectedResourceConditionsValue, (value) => value.toMap());
@@ -82,22 +82,23 @@ class RestoreTestingSelectionArgs {
 
   factory RestoreTestingSelectionArgs.fromMap(Map<String, dynamic> map) {
     return RestoreTestingSelectionArgs(
-      iamRoleArn: Input.asInput<String>(map['iamRoleArn']),
-      name: Input.asOptionalInput<String>(map['name']),
-      protectedResourceArns:
-          Input.asOptionalInput<List<String>>(map['protectedResourceArns']),
-      protectedResourceConditions: Input.asOptionalInput<
+      iamRoleArn: pulumi.Input.asInput<String>(map['iamRoleArn']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      protectedResourceArns: pulumi.Input.asOptionalInput<List<String>>(
+          map['protectedResourceArns']),
+      protectedResourceConditions: pulumi.Input.asOptionalInput<
               RestoreTestingSelectionProtectedResourceConditions>(
           map['protectedResourceConditions']),
       protectedResourceType:
-          Input.asInput<String>(map['protectedResourceType']),
-      region: Input.asOptionalInput<String>(map['region']),
-      restoreMetadataOverrides: Input.asOptionalInput<Map<String, String>>(
-          map['restoreMetadataOverrides']),
+          pulumi.Input.asInput<String>(map['protectedResourceType']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      restoreMetadataOverrides:
+          pulumi.Input.asOptionalInput<Map<String, String>>(
+              map['restoreMetadataOverrides']),
       restoreTestingPlanName:
-          Input.asInput<String>(map['restoreTestingPlanName']),
+          pulumi.Input.asInput<String>(map['restoreTestingPlanName']),
       validationWindowHours:
-          Input.asOptionalInput<int>(map['validationWindowHours']),
+          pulumi.Input.asOptionalInput<int>(map['validationWindowHours']),
     );
   }
 }

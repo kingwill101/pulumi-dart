@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resource_server_scope/resource_server_scope.dart';
 import 'resource_server_args.dart';
 
@@ -21,34 +21,34 @@ import 'resource_server_args.dart';
 /// ```sh
 /// $ pulumi import aws:cognito/resourceServer:ResourceServer example "us-west-2_abc123|https://example.com"
 /// ```
-class ResourceServer extends CustomResource {
+class ResourceServer extends pulumi.CustomResource {
   /// An identifier for the resource server.
-  late final Output<String> identifier;
+  late final pulumi.Output<String> identifier;
 
   /// A name for the resource server.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A list of all scopes configured for this resource server in the format identifier/scope_name.
-  late final Output<List<String>> scopeIdentifiers;
+  late final pulumi.Output<List<String>> scopeIdentifiers;
 
   /// A list of Authorization Scope.
-  late final Output<List<ResourceServerScope>?> scopes;
+  late final pulumi.Output<List<ResourceServerScope>?> scopes;
 
   /// User pool the client belongs to.
-  late final Output<String> userPoolId;
+  late final pulumi.Output<String> userPoolId;
 
   ResourceServer(
     String name, {
     ResourceServerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cognito/resourceServer:ResourceServer',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.identifier = registerOutput<String>('identifier');
     this.name = registerOutput<String>('name');

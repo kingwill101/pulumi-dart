@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpn_attachment_filter/get_vpn_attachment_filter.dart';
 
 /// Arguments for getVpnAttachment.
 class GetVpnAttachmentArgs {
   /// Configuration block(s) for filtering. Detailed below.
-  final Input<List<GetVpnAttachmentFilter>>? filters;
+  final pulumi.Input<List<GetVpnAttachmentFilter>>? filters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags, each pair of which must exactly match a pair on the desired Transit Gateway VPN Attachment.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Identifier of the EC2 Transit Gateway.
-  final Input<String>? transitGatewayId;
+  final pulumi.Input<String>? transitGatewayId;
 
   /// Identifier of the EC2 VPN Connection.
-  final Input<String>? vpnConnectionId;
+  final pulumi.Input<String>? vpnConnectionId;
 
   GetVpnAttachmentArgs({
     this.filters,
@@ -32,12 +32,11 @@ class GetVpnAttachmentArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetVpnAttachmentFilter>,
-              List<Map<String, dynamic>>>(
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
+              List<GetVpnAttachmentFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetVpnAttachmentFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetVpnAttachmentFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final regionValue = region;
     if (regionValue != null) {
@@ -60,12 +59,14 @@ class GetVpnAttachmentArgs {
 
   factory GetVpnAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetVpnAttachmentArgs(
-      filters:
-          Input.asOptionalInput<List<GetVpnAttachmentFilter>>(map['filters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      transitGatewayId: Input.asOptionalInput<String>(map['transitGatewayId']),
-      vpnConnectionId: Input.asOptionalInput<String>(map['vpnConnectionId']),
+      filters: pulumi.Input.asOptionalInput<List<GetVpnAttachmentFilter>>(
+          map['filters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      transitGatewayId:
+          pulumi.Input.asOptionalInput<String>(map['transitGatewayId']),
+      vpnConnectionId:
+          pulumi.Input.asOptionalInput<String>(map['vpnConnectionId']),
     );
   }
 }

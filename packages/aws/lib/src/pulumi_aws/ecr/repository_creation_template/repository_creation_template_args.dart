@@ -1,46 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../repository_creation_template_encryption_configuration/repository_creation_template_encryption_configuration.dart';
 import '../repository_creation_template_image_tag_mutability_exclusion_filter/repository_creation_template_image_tag_mutability_exclusion_filter.dart';
 
 /// The set of arguments for RepositoryCreationTemplate.
 class RepositoryCreationTemplateArgs {
   /// Which features this template applies to. Must contain one or more of `CREATE_ON_PUSH`, `PULL_THROUGH_CACHE`, or `REPLICATION`.
-  final Input<List<String>> appliedFors;
+  final pulumi.Input<List<String>> appliedFors;
 
   /// A custom IAM role to use for repository creation. Required if using repository tags or KMS encryption.
-  final Input<String>? customRoleArn;
+  final pulumi.Input<String>? customRoleArn;
 
   /// The description for this template.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Encryption configuration for any created repositories. See below for schema.
-  final Input<List<RepositoryCreationTemplateEncryptionConfiguration>>?
+  final pulumi.Input<List<RepositoryCreationTemplateEncryptionConfiguration>>?
       encryptionConfigurations;
 
   /// The tag mutability setting for any created repositories. Must be one of: `MUTABLE`, `IMMUTABLE`, `IMMUTABLE_WITH_EXCLUSION`, or `MUTABLE_WITH_EXCLUSION`. Defaults to `MUTABLE`.
-  final Input<String>? imageTagMutability;
+  final pulumi.Input<String>? imageTagMutability;
 
   /// Configuration block that defines filters to specify which image tags can override the default tag mutability setting. Only applicable when `image_tag_mutability` is set to `IMMUTABLE_WITH_EXCLUSION` or `MUTABLE_WITH_EXCLUSION`. See below for schema.
-  final Input<
-          List<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>>?
+  final pulumi
+      .Input<List<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>>?
       imageTagMutabilityExclusionFilters;
 
   /// The lifecycle policy document to apply to any created repositories. See more details about [Policy Parameters](http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html#lifecycle_policy_parameters) in the official AWS docs. Consider using the `aws.ecr.getLifecyclePolicyDocument` data_source to generate/manage the JSON document used for the `lifecycle_policy` argument.
-  final Input<String>? lifecyclePolicy;
+  final pulumi.Input<String>? lifecyclePolicy;
 
   /// The repository name prefix to match against. Use `ROOT` to match any prefix that doesn't explicitly match another template.
-  final Input<String> prefix;
+  final pulumi.Input<String> prefix;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The registry policy document to apply to any created repositories. This is a JSON formatted string. For more information about building IAM policy documents with Terraform, see the AWS IAM Policy Document Guide.
-  final Input<String>? repositoryPolicy;
+  final pulumi.Input<String>? repositoryPolicy;
 
   /// A map of tags to assign to any created repositories.
-  final Input<Map<String, String>>? resourceTags;
+  final pulumi.Input<Map<String, String>>? resourceTags;
 
   RepositoryCreationTemplateArgs({
     required this.appliedFors,
@@ -69,11 +69,11 @@ class RepositoryCreationTemplateArgs {
     }
     final encryptionConfigurationsValue = encryptionConfigurations;
     if (encryptionConfigurationsValue != null) {
-      map['encryptionConfigurations'] = Input.mapOptionalInputValue<
+      map['encryptionConfigurations'] = pulumi.Input.mapOptionalInputValue<
               List<RepositoryCreationTemplateEncryptionConfiguration>,
               List<Map<String, dynamic>>>(
           encryptionConfigurationsValue,
-          (value) => Input.encodeList<
+          (value) => pulumi.Input.encodeList<
               RepositoryCreationTemplateEncryptionConfiguration,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
@@ -84,11 +84,12 @@ class RepositoryCreationTemplateArgs {
     final imageTagMutabilityExclusionFiltersValue =
         imageTagMutabilityExclusionFilters;
     if (imageTagMutabilityExclusionFiltersValue != null) {
-      map['imageTagMutabilityExclusionFilters'] = Input.mapOptionalInputValue<
+      map['imageTagMutabilityExclusionFilters'] = pulumi
+          .Input.mapOptionalInputValue<
               List<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>,
               List<Map<String, dynamic>>>(
           imageTagMutabilityExclusionFiltersValue,
-          (value) => Input.encodeList<
+          (value) => pulumi.Input.encodeList<
               RepositoryCreationTemplateImageTagMutabilityExclusionFilter,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
@@ -114,24 +115,26 @@ class RepositoryCreationTemplateArgs {
 
   factory RepositoryCreationTemplateArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryCreationTemplateArgs(
-      appliedFors: Input.asInput<List<String>>(map['appliedFors']),
-      customRoleArn: Input.asOptionalInput<String>(map['customRoleArn']),
-      description: Input.asOptionalInput<String>(map['description']),
-      encryptionConfigurations: Input.asOptionalInput<
+      appliedFors: pulumi.Input.asInput<List<String>>(map['appliedFors']),
+      customRoleArn: pulumi.Input.asOptionalInput<String>(map['customRoleArn']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      encryptionConfigurations: pulumi.Input.asOptionalInput<
               List<RepositoryCreationTemplateEncryptionConfiguration>>(
           map['encryptionConfigurations']),
       imageTagMutability:
-          Input.asOptionalInput<String>(map['imageTagMutability']),
-      imageTagMutabilityExclusionFilters: Input.asOptionalInput<
+          pulumi.Input.asOptionalInput<String>(map['imageTagMutability']),
+      imageTagMutabilityExclusionFilters: pulumi.Input.asOptionalInput<
               List<
                   RepositoryCreationTemplateImageTagMutabilityExclusionFilter>>(
           map['imageTagMutabilityExclusionFilters']),
-      lifecyclePolicy: Input.asOptionalInput<String>(map['lifecyclePolicy']),
-      prefix: Input.asInput<String>(map['prefix']),
-      region: Input.asOptionalInput<String>(map['region']),
-      repositoryPolicy: Input.asOptionalInput<String>(map['repositoryPolicy']),
-      resourceTags:
-          Input.asOptionalInput<Map<String, String>>(map['resourceTags']),
+      lifecyclePolicy:
+          pulumi.Input.asOptionalInput<String>(map['lifecyclePolicy']),
+      prefix: pulumi.Input.asInput<String>(map['prefix']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      repositoryPolicy:
+          pulumi.Input.asOptionalInput<String>(map['repositoryPolicy']),
+      resourceTags: pulumi.Input.asOptionalInput<Map<String, String>>(
+          map['resourceTags']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../flow_definition_human_loop_activation_config/flow_definition_human_loop_activation_config.dart';
 import '../flow_definition_human_loop_config/flow_definition_human_loop_config.dart';
 import '../flow_definition_human_loop_request_source/flow_definition_human_loop_request_source.dart';
@@ -9,29 +9,30 @@ import '../flow_definition_output_config/flow_definition_output_config.dart';
 /// The set of arguments for FlowDefinition.
 class FlowDefinitionArgs {
   /// The name of your flow definition.
-  final Input<String> flowDefinitionName;
+  final pulumi.Input<String> flowDefinitionName;
 
   /// An object containing information about the events that trigger a human workflow. See Human Loop Activation Config details below.
-  final Input<FlowDefinitionHumanLoopActivationConfig>?
+  final pulumi.Input<FlowDefinitionHumanLoopActivationConfig>?
       humanLoopActivationConfig;
 
   /// An object containing information about the tasks the human reviewers will perform. See Human Loop Config details below.
-  final Input<FlowDefinitionHumanLoopConfig> humanLoopConfig;
+  final pulumi.Input<FlowDefinitionHumanLoopConfig> humanLoopConfig;
 
   /// Container for configuring the source of human task requests. Use to specify if Amazon Rekognition or Amazon Textract is used as an integration source. See Human Loop Request Source details below.
-  final Input<FlowDefinitionHumanLoopRequestSource>? humanLoopRequestSource;
+  final pulumi.Input<FlowDefinitionHumanLoopRequestSource>?
+      humanLoopRequestSource;
 
   /// An object containing information about where the human review results will be uploaded. See Output Config details below.
-  final Input<FlowDefinitionOutputConfig> outputConfig;
+  final pulumi.Input<FlowDefinitionOutputConfig> outputConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The Amazon Resource Name (ARN) of the role needed to call other services on your behalf.
-  final Input<String> roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   FlowDefinitionArgs({
     required this.flowDefinitionName,
@@ -49,21 +50,21 @@ class FlowDefinitionArgs {
     map['flowDefinitionName'] = flowDefinitionName;
     final humanLoopActivationConfigValue = humanLoopActivationConfig;
     if (humanLoopActivationConfigValue != null) {
-      map['humanLoopActivationConfig'] = Input.mapOptionalInputValue<
+      map['humanLoopActivationConfig'] = pulumi.Input.mapOptionalInputValue<
               FlowDefinitionHumanLoopActivationConfig, Map<String, dynamic>>(
           humanLoopActivationConfigValue, (value) => value.toMap());
     }
-    map['humanLoopConfig'] = Input.mapInputValue<FlowDefinitionHumanLoopConfig,
+    map['humanLoopConfig'] = pulumi.Input.mapInputValue<
+        FlowDefinitionHumanLoopConfig,
         Map<String, dynamic>>(humanLoopConfig, (value) => value.toMap());
     final humanLoopRequestSourceValue = humanLoopRequestSource;
     if (humanLoopRequestSourceValue != null) {
-      map['humanLoopRequestSource'] = Input.mapOptionalInputValue<
+      map['humanLoopRequestSource'] = pulumi.Input.mapOptionalInputValue<
               FlowDefinitionHumanLoopRequestSource, Map<String, dynamic>>(
           humanLoopRequestSourceValue, (value) => value.toMap());
     }
-    map['outputConfig'] =
-        Input.mapInputValue<FlowDefinitionOutputConfig, Map<String, dynamic>>(
-            outputConfig, (value) => value.toMap());
+    map['outputConfig'] = pulumi.Input.mapInputValue<FlowDefinitionOutputConfig,
+        Map<String, dynamic>>(outputConfig, (value) => value.toMap());
     final regionValue = region;
     if (regionValue != null) {
       map['region'] = regionValue;
@@ -78,20 +79,21 @@ class FlowDefinitionArgs {
 
   factory FlowDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return FlowDefinitionArgs(
-      flowDefinitionName: Input.asInput<String>(map['flowDefinitionName']),
+      flowDefinitionName:
+          pulumi.Input.asInput<String>(map['flowDefinitionName']),
       humanLoopActivationConfig:
-          Input.asOptionalInput<FlowDefinitionHumanLoopActivationConfig>(
+          pulumi.Input.asOptionalInput<FlowDefinitionHumanLoopActivationConfig>(
               map['humanLoopActivationConfig']),
-      humanLoopConfig:
-          Input.asInput<FlowDefinitionHumanLoopConfig>(map['humanLoopConfig']),
+      humanLoopConfig: pulumi.Input.asInput<FlowDefinitionHumanLoopConfig>(
+          map['humanLoopConfig']),
       humanLoopRequestSource:
-          Input.asOptionalInput<FlowDefinitionHumanLoopRequestSource>(
+          pulumi.Input.asOptionalInput<FlowDefinitionHumanLoopRequestSource>(
               map['humanLoopRequestSource']),
       outputConfig:
-          Input.asInput<FlowDefinitionOutputConfig>(map['outputConfig']),
-      region: Input.asOptionalInput<String>(map['region']),
-      roleArn: Input.asInput<String>(map['roleArn']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asInput<FlowDefinitionOutputConfig>(map['outputConfig']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      roleArn: pulumi.Input.asInput<String>(map['roleArn']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../field_level_encryption_config_content_type_profile_config/field_level_encryption_config_content_type_profile_config.dart';
 import '../field_level_encryption_config_query_arg_profile_config/field_level_encryption_config_query_arg_profile_config.dart';
 import 'field_level_encryption_config_args.dart';
@@ -16,36 +16,36 @@ import 'field_level_encryption_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudfront/fieldLevelEncryptionConfig:FieldLevelEncryptionConfig config E74FTE3AEXAMPLE
 /// ```
-class FieldLevelEncryptionConfig extends CustomResource {
+class FieldLevelEncryptionConfig extends pulumi.CustomResource {
   /// The Field Level Encryption Config ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Internal value used by CloudFront to allow future updates to the Field Level Encryption Config.
-  late final Output<String> callerReference;
+  late final pulumi.Output<String> callerReference;
 
   /// An optional comment about the Field Level Encryption Config.
-  late final Output<String?> comment;
+  late final pulumi.Output<String?> comment;
 
   /// Content Type Profile Config specifies when to forward content if a content type isn't recognized and profiles to use as by default in a request if a query argument doesn't specify a profile to use.
-  late final Output<FieldLevelEncryptionConfigContentTypeProfileConfig>
+  late final pulumi.Output<FieldLevelEncryptionConfigContentTypeProfileConfig>
       contentTypeProfileConfig;
 
   /// The current version of the Field Level Encryption Config. For example: `E2QWRUHAPOMQZL`.
-  late final Output<String> etag;
+  late final pulumi.Output<String> etag;
 
   /// Query Arg Profile Config that specifies when to forward content if a profile isn't found and the profile that can be provided as a query argument in a request.
-  late final Output<FieldLevelEncryptionConfigQueryArgProfileConfig>
+  late final pulumi.Output<FieldLevelEncryptionConfigQueryArgProfileConfig>
       queryArgProfileConfig;
 
   FieldLevelEncryptionConfig(
     String name, {
     FieldLevelEncryptionConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/fieldLevelEncryptionConfig:FieldLevelEncryptionConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.callerReference = registerOutput<String>('callerReference');

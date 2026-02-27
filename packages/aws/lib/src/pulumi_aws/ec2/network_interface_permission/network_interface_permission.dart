@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../network_interface_permission_timeouts/network_interface_permission_timeouts.dart';
 import 'network_interface_permission_args.dart';
 
@@ -15,32 +15,32 @@ import 'network_interface_permission_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/networkInterfacePermission:NetworkInterfacePermission example eni-perm-056ad97ce2ac377ed
 /// ```
-class NetworkInterfacePermission extends CustomResource {
+class NetworkInterfacePermission extends pulumi.CustomResource {
   /// The Amazon Web Services account ID.
-  late final Output<String> awsAccountId;
+  late final pulumi.Output<String> awsAccountId;
 
   /// The ID of the network interface.
-  late final Output<String> networkInterfaceId;
+  late final pulumi.Output<String> networkInterfaceId;
 
   /// ENI permission ID.
-  late final Output<String> networkInterfacePermissionId;
+  late final pulumi.Output<String> networkInterfacePermissionId;
 
   /// The type of permission to grant. Valid values are `INSTANCE-ATTACH` or `EIP-ASSOCIATE`.
-  late final Output<String> permission;
+  late final pulumi.Output<String> permission;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<NetworkInterfacePermissionTimeouts?> timeouts;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<NetworkInterfacePermissionTimeouts?> timeouts;
 
   NetworkInterfacePermission(
     String name, {
     NetworkInterfacePermissionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/networkInterfacePermission:NetworkInterfacePermission',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.awsAccountId = registerOutput<String>('awsAccountId');
     this.networkInterfaceId = registerOutput<String>('networkInterfaceId');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_workflow_step_ec2_asg_capacity_increase_config_asg/plan_workflow_step_ec2_asg_capacity_increase_config_asg.dart';
 import '../plan_workflow_step_ec2_asg_capacity_increase_config_ungraceful/plan_workflow_step_ec2_asg_capacity_increase_config_ungraceful.dart';
 
@@ -32,7 +32,7 @@ class PlanWorkflowStepEc2AsgCapacityIncreaseConfig {
     final map = <String, dynamic>{};
     final asgsValue = asgs;
     if (asgsValue != null) {
-      map['asgs'] = Input.encodeList<
+      map['asgs'] = pulumi.Input.encodeList<
           PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg,
           Map<String, dynamic>>(asgsValue, (value) => value.toMap());
     }
@@ -57,7 +57,8 @@ class PlanWorkflowStepEc2AsgCapacityIncreaseConfig {
     return PlanWorkflowStepEc2AsgCapacityIncreaseConfig(
       asgs: map['asgs'] == null
           ? null
-          : Input.decodeList<PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg>(
+          : pulumi.Input.decodeList<
+                  PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg>(
               map['asgs'],
               (value) =>
                   PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg.fromMap(

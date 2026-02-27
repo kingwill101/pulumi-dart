@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_node_group_resource_autoscaling_group/get_node_group_resource_autoscaling_group.dart';
 
 class GetNodeGroupResource {
@@ -17,7 +17,7 @@ class GetNodeGroupResource {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['autoscalingGroups'] = Input.encodeList<
+    map['autoscalingGroups'] = pulumi.Input.encodeList<
         GetNodeGroupResourceAutoscalingGroup,
         Map<String, dynamic>>(autoscalingGroups, (value) => value.toMap());
     map['remoteAccessSecurityGroupId'] = remoteAccessSecurityGroupId;
@@ -26,10 +26,11 @@ class GetNodeGroupResource {
 
   factory GetNodeGroupResource.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupResource(
-      autoscalingGroups: Input.decodeList<GetNodeGroupResourceAutoscalingGroup>(
-          map['autoscalingGroups'],
-          (value) => GetNodeGroupResourceAutoscalingGroup.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      autoscalingGroups:
+          pulumi.Input.decodeList<GetNodeGroupResourceAutoscalingGroup>(
+              map['autoscalingGroups'],
+              (value) => GetNodeGroupResourceAutoscalingGroup.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       remoteAccessSecurityGroupId: map['remoteAccessSecurityGroupId'] as String,
     );
   }

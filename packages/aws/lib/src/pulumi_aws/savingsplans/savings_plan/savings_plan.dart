@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../savings_plan_timeouts/savings_plan_timeouts.dart';
 import 'savings_plan_args.dart';
 
@@ -28,85 +28,85 @@ import 'savings_plan_args.dart';
 /// ```sh
 /// $ pulumi import aws:savingsplans/savingsPlan:SavingsPlan example sp-12345678901234567
 /// ```
-class SavingsPlan extends CustomResource {
+class SavingsPlan extends pulumi.CustomResource {
   /// The hourly commitment, in USD. This is the amount you commit to pay per hour, regardless of actual usage.
   ///
   /// The following arguments are optional:
-  late final Output<String> commitment;
+  late final pulumi.Output<String> commitment;
 
   /// The currency of the Savings Plan (e.g., `USD`).
-  late final Output<String> currency;
+  late final pulumi.Output<String> currency;
 
   /// The description.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// The EC2 instance family for the Savings Plan (only applicable to EC2 Instance Savings Plans).
-  late final Output<String> ec2InstanceFamily;
+  late final pulumi.Output<String> ec2InstanceFamily;
 
   /// The end time of the Savings Plan in RFC3339 format.
-  late final Output<String> end;
+  late final pulumi.Output<String> end;
 
   /// The ID of the offering.
-  late final Output<String> offeringId;
+  late final pulumi.Output<String> offeringId;
 
   /// The payment option for the Savings Plan (e.g., `All Upfront`, `Partial Upfront`, `No Upfront`).
-  late final Output<String> paymentOption;
+  late final pulumi.Output<String> paymentOption;
 
   /// The product types.
-  late final Output<List<String>> productTypes;
+  late final pulumi.Output<List<String>> productTypes;
 
   /// The time at which to purchase the Savings Plan, in UTC format (YYYY-MM-DDTHH:MM:SSZ). If not specified, the plan is purchased immediately. Plans with a future purchase time are placed in `queued` state and can be deleted before they become active.
-  late final Output<String?> purchaseTime;
+  late final pulumi.Output<String?> purchaseTime;
 
   /// The recurring payment amount.
-  late final Output<String> recurringPaymentAmount;
+  late final pulumi.Output<String> recurringPaymentAmount;
 
   /// The AWS Region.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The recurring payment amount.
-  late final Output<String> returnableUntil;
+  late final pulumi.Output<String> returnableUntil;
 
   /// The ARN of the Savings Plan.
-  late final Output<String> savingsPlanArn;
+  late final pulumi.Output<String> savingsPlanArn;
 
   /// The ID of the Savings Plan.
-  late final Output<String> savingsPlanId;
+  late final pulumi.Output<String> savingsPlanId;
 
   /// The unique ID of a Savings Plan offering. You can find available offerings using the `aws savingsplans describe-savings-plans-offerings` CLI command.
-  late final Output<String> savingsPlanOfferingId;
+  late final pulumi.Output<String> savingsPlanOfferingId;
 
   /// The type of Savings Plan (e.g., `Compute`, `EC2Instance`).
-  late final Output<String> savingsPlanType;
+  late final pulumi.Output<String> savingsPlanType;
 
   /// The start time of the Savings Plan in RFC3339 format.
-  late final Output<String> start;
+  late final pulumi.Output<String> start;
 
   /// The current state of the Savings Plan (e.g., `active`, `queued`, `retired`).
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The duration of the term, in seconds.
-  late final Output<int> termDurationInSeconds;
-  late final Output<SavingsPlanTimeouts?> timeouts;
+  late final pulumi.Output<int> termDurationInSeconds;
+  late final pulumi.Output<SavingsPlanTimeouts?> timeouts;
 
   /// The up-front payment amount.
-  late final Output<String?> upfrontPaymentAmount;
+  late final pulumi.Output<String?> upfrontPaymentAmount;
 
   SavingsPlan(
     String name, {
     SavingsPlanArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:savingsplans/savingsPlan:SavingsPlan',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.commitment = registerOutput<String>('commitment');
     this.currency = registerOutput<String>('currency');

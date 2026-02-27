@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../workflow_on_exception_step_tag_step_details_tag/workflow_on_exception_step_tag_step_details_tag.dart';
 
 class WorkflowOnExceptionStepTagStepDetails {
@@ -31,7 +31,8 @@ class WorkflowOnExceptionStepTagStepDetails {
     }
     final tagsValue = tags;
     if (tagsValue != null) {
-      map['tags'] = Input.encodeList<WorkflowOnExceptionStepTagStepDetailsTag,
+      map['tags'] = pulumi.Input.encodeList<
+          WorkflowOnExceptionStepTagStepDetailsTag,
           Map<String, dynamic>>(tagsValue, (value) => value.toMap());
     }
     return map;
@@ -46,7 +47,7 @@ class WorkflowOnExceptionStepTagStepDetails {
           : map['sourceFileLocation'] as String,
       tags: map['tags'] == null
           ? null
-          : Input.decodeList<WorkflowOnExceptionStepTagStepDetailsTag>(
+          : pulumi.Input.decodeList<WorkflowOnExceptionStepTagStepDetailsTag>(
               map['tags'],
               (value) => WorkflowOnExceptionStepTagStepDetailsTag.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../event_endpoint_event_bus/event_endpoint_event_bus.dart';
 import '../event_endpoint_replication_config/event_endpoint_replication_config.dart';
 import '../event_endpoint_routing_config/event_endpoint_routing_config.dart';
@@ -19,43 +19,43 @@ import 'event_endpoint_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudwatch/eventEndpoint:EventEndpoint imported_endpoint example-endpoint
 /// ```
-class EventEndpoint extends CustomResource {
+class EventEndpoint extends pulumi.CustomResource {
   /// The ARN of the endpoint that was created.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// A description of the global endpoint.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The URL of the endpoint that was created.
-  late final Output<String> endpointUrl;
+  late final pulumi.Output<String> endpointUrl;
 
   /// The event buses to use. The names of the event buses must be identical in each Region. Exactly two event buses are required. Documented below.
-  late final Output<List<EventEndpointEventBus>> eventBuses;
+  late final pulumi.Output<List<EventEndpointEventBus>> eventBuses;
 
   /// The name of the global endpoint.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Parameters used for replication. Documented below.
-  late final Output<EventEndpointReplicationConfig?> replicationConfig;
+  late final pulumi.Output<EventEndpointReplicationConfig?> replicationConfig;
 
   /// The ARN of the IAM role used for replication between event buses.
-  late final Output<String?> roleArn;
+  late final pulumi.Output<String?> roleArn;
 
   /// Parameters used for routing, including the health check and secondary Region. Documented below.
-  late final Output<EventEndpointRoutingConfig> routingConfig;
+  late final pulumi.Output<EventEndpointRoutingConfig> routingConfig;
 
   EventEndpoint(
     String name, {
     EventEndpointArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudwatch/eventEndpoint:EventEndpoint',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');

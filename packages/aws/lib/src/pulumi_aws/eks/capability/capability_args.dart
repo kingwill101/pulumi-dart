@@ -1,35 +1,35 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../capability_configuration/capability_configuration.dart';
 import '../capability_timeouts/capability_timeouts.dart';
 
 /// The set of arguments for Capability.
 class CapabilityArgs {
   /// Name of the capability. Must be unique within the cluster.
-  final Input<String> capabilityName;
+  final pulumi.Input<String> capabilityName;
 
   /// Name of the EKS cluster.
-  final Input<String> clusterName;
+  final pulumi.Input<String> clusterName;
 
   /// Configuration for the capability. See `configuration` below.
-  final Input<CapabilityConfiguration>? configuration;
+  final pulumi.Input<CapabilityConfiguration>? configuration;
 
   /// Delete propagation policy for the capability. Valid values: `RETAIN`.
-  final Input<String> deletePropagationPolicy;
+  final pulumi.Input<String> deletePropagationPolicy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// ARN of the IAM role to associate with the capability.
-  final Input<String> roleArn;
+  final pulumi.Input<String> roleArn;
 
   /// Key-value map of resource tags.
-  final Input<Map<String, String>>? tags;
-  final Input<CapabilityTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<CapabilityTimeouts>? timeouts;
 
   /// Type of the capability. Valid values: `ACK`, `KRO`, `ARGOCD`.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   CapabilityArgs({
     required this.capabilityName,
@@ -49,7 +49,7 @@ class CapabilityArgs {
     map['clusterName'] = clusterName;
     final configurationValue = configuration;
     if (configurationValue != null) {
-      map['configuration'] = Input.mapOptionalInputValue<
+      map['configuration'] = pulumi.Input.mapOptionalInputValue<
           CapabilityConfiguration,
           Map<String, dynamic>>(configurationValue, (value) => value.toMap());
     }
@@ -65,9 +65,8 @@ class CapabilityArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] =
-          Input.mapOptionalInputValue<CapabilityTimeouts, Map<String, dynamic>>(
-              timeoutsValue, (value) => value.toMap());
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<CapabilityTimeouts,
+          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     map['type'] = type;
     return map;
@@ -75,17 +74,18 @@ class CapabilityArgs {
 
   factory CapabilityArgs.fromMap(Map<String, dynamic> map) {
     return CapabilityArgs(
-      capabilityName: Input.asInput<String>(map['capabilityName']),
-      clusterName: Input.asInput<String>(map['clusterName']),
-      configuration:
-          Input.asOptionalInput<CapabilityConfiguration>(map['configuration']),
+      capabilityName: pulumi.Input.asInput<String>(map['capabilityName']),
+      clusterName: pulumi.Input.asInput<String>(map['clusterName']),
+      configuration: pulumi.Input.asOptionalInput<CapabilityConfiguration>(
+          map['configuration']),
       deletePropagationPolicy:
-          Input.asInput<String>(map['deletePropagationPolicy']),
-      region: Input.asOptionalInput<String>(map['region']),
-      roleArn: Input.asInput<String>(map['roleArn']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<CapabilityTimeouts>(map['timeouts']),
-      type: Input.asInput<String>(map['type']),
+          pulumi.Input.asInput<String>(map['deletePropagationPolicy']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      roleArn: pulumi.Input.asInput<String>(map['roleArn']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts:
+          pulumi.Input.asOptionalInput<CapabilityTimeouts>(map['timeouts']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

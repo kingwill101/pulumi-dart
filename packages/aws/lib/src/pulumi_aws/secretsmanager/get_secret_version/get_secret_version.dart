@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_secret_version_args.dart';
 import 'get_secret_version_result.dart';
 
@@ -21,13 +21,13 @@ import 'get_secret_version_result.dart';
 /// Reading key-value pairs from JSON back into a native map
 Future<GetSecretVersionResult> getSecretVersion(
   GetSecretVersionArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:secretsmanager/getSecretVersion:getSecretVersion',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretVersionResult.fromMap(result);
 }

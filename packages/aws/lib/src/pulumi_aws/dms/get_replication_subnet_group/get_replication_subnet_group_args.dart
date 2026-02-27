@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getReplicationSubnetGroup.
 class GetReplicationSubnetGroupArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Name for the replication subnet group. This value is stored as a lowercase string. It must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens and cannot be `default`.
-  final Input<String> replicationSubnetGroupId;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<String> replicationSubnetGroupId;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetReplicationSubnetGroupArgs({
     this.region,
@@ -33,10 +33,10 @@ class GetReplicationSubnetGroupArgs {
 
   factory GetReplicationSubnetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationSubnetGroupArgs(
-      region: Input.asOptionalInput<String>(map['region']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       replicationSubnetGroupId:
-          Input.asInput<String>(map['replicationSubnetGroupId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asInput<String>(map['replicationSubnetGroupId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

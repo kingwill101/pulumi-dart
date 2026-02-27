@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resource_configuration_resource_configuration_definition/resource_configuration_resource_configuration_definition.dart';
 import '../resource_configuration_timeouts/resource_configuration_timeouts.dart';
 import 'resource_configuration_args.dart';
@@ -30,68 +30,69 @@ import 'resource_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:vpclattice/resourceConfiguration:ResourceConfiguration example rcfg-1234567890abcdef1
 /// ```
-class ResourceConfiguration extends CustomResource {
+class ResourceConfiguration extends pulumi.CustomResource {
   /// Allow or Deny the association of this resource to a shareable service network.
-  late final Output<bool> allowAssociationToShareableServiceNetwork;
+  late final pulumi.Output<bool> allowAssociationToShareableServiceNetwork;
 
   /// ARN of the resource gateway.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Custom domain name for your resource configuration. Additionally, provide a `domain_verification_id` to prove your ownership of a domain.
-  late final Output<String?> customDomainName;
+  late final pulumi.Output<String?> customDomainName;
 
   /// ARN of the domain verification.
-  late final Output<String> domainVerificationArn;
+  late final pulumi.Output<String> domainVerificationArn;
 
   /// The domain verification ID of your verified custom domain name. If you don't provide an ID, you must configure the DNS settings yourself.
-  late final Output<String> domainVerificationId;
+  late final pulumi.Output<String> domainVerificationId;
 
   /// Domain verification status.
-  late final Output<String> domainVerificationStatus;
+  late final pulumi.Output<String> domainVerificationStatus;
 
   /// Name for the Resource Configuration.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Port ranges to access the Resource either single port `80` or range `80-81` range.
-  late final Output<List<String>> portRanges;
+  late final pulumi.Output<List<String>> portRanges;
 
   /// Protocol for the Resource `TCP` is currently the only supported value.  MUST be specified if `resource_configuration_group_id` is not.
-  late final Output<String> protocol;
+  late final pulumi.Output<String> protocol;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Details of the Resource Configuration. See `resource_configuration_definition` Block for details.
   ///
   /// The following arguments are optional:
-  late final Output<ResourceConfigurationResourceConfigurationDefinition?>
+  late final pulumi
+      .Output<ResourceConfigurationResourceConfigurationDefinition?>
       resourceConfigurationDefinition;
 
   /// ID of Resource Configuration where `type` is `CHILD`.
-  late final Output<String?> resourceConfigurationGroupId;
+  late final pulumi.Output<String?> resourceConfigurationGroupId;
 
   /// ID of the Resource Gateway used to access the resource. MUST be specified if `resource_configuration_group_id` is not.
-  late final Output<String> resourceGatewayIdentifier;
+  late final pulumi.Output<String> resourceGatewayIdentifier;
 
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<ResourceConfigurationTimeouts?> timeouts;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<ResourceConfigurationTimeouts?> timeouts;
 
   /// Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   ResourceConfiguration(
     String name, {
     ResourceConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:vpclattice/resourceConfiguration:ResourceConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowAssociationToShareableServiceNetwork =
         registerOutput<bool>('allowAssociationToShareableServiceNetwork');

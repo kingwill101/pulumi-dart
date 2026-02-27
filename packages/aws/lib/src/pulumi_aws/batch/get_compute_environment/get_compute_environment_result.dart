@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_compute_environment_update_policy/get_compute_environment_update_policy.dart';
 
 /// Result data returned by getComputeEnvironment.
@@ -65,7 +65,8 @@ class GetComputeEnvironmentResult {
     map['statusReason'] = statusReason;
     map['tags'] = tags;
     map['type'] = type;
-    map['updatePolicies'] = Input.encodeList<GetComputeEnvironmentUpdatePolicy,
+    map['updatePolicies'] = pulumi.Input.encodeList<
+        GetComputeEnvironmentUpdatePolicy,
         Map<String, dynamic>>(updatePolicies, (value) => value.toMap());
     return map;
   }
@@ -83,10 +84,11 @@ class GetComputeEnvironmentResult {
       statusReason: map['statusReason'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
-      updatePolicies: Input.decodeList<GetComputeEnvironmentUpdatePolicy>(
-          map['updatePolicies'],
-          (value) => GetComputeEnvironmentUpdatePolicy.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      updatePolicies:
+          pulumi.Input.decodeList<GetComputeEnvironmentUpdatePolicy>(
+              map['updatePolicies'],
+              (value) => GetComputeEnvironmentUpdatePolicy.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

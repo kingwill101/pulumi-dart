@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agentcore_oauth2_credential_provider_oauth2_provider_config_salesforce_oauth2_provider_config_oauth_discovery_authorization_server_metadata/agentcore_oauth2_credential_provider_oauth2_provider_config_salesforce_oauth2_provider_config_oauth_discovery_authorization_server_metadata.dart';
 
 class AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery {
@@ -19,7 +19,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2Provi
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['authorizationServerMetadatas'] = Input.encodeList<
+    map['authorizationServerMetadatas'] = pulumi.Input.encodeList<
         AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata,
         Map<String,
             dynamic>>(authorizationServerMetadatas, (value) => value.toMap());
@@ -30,7 +30,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2Provi
   factory AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery.fromMap(
       Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery(
-      authorizationServerMetadatas: Input.decodeList<
+      authorizationServerMetadatas: pulumi.Input.decodeList<
               AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata>(
           map['authorizationServerMetadatas'],
           (value) =>

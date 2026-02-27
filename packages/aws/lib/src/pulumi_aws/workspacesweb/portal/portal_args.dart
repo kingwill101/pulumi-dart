@@ -1,37 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../portal_timeouts/portal_timeouts.dart';
 
 /// The set of arguments for Portal.
 class PortalArgs {
   /// Additional encryption context for the customer managed key. Forces replacement if changed.
-  final Input<Map<String, String>>? additionalEncryptionContext;
+  final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
 
   /// Authentication type for the portal. Valid values: `Standard`, `IAM_Identity_Center`.
-  final Input<String>? authenticationType;
+  final pulumi.Input<String>? authenticationType;
 
   /// ARN of the browser settings to use for the portal.
-  final Input<String>? browserSettingsArn;
+  final pulumi.Input<String>? browserSettingsArn;
 
   /// ARN of the customer managed key. Forces replacement if changed.
-  final Input<String>? customerManagedKey;
+  final pulumi.Input<String>? customerManagedKey;
 
   /// Display name of the portal.
-  final Input<String>? displayName;
+  final pulumi.Input<String>? displayName;
 
   /// Instance type for the portal. Valid values: `standard.regular`, `standard.large`.
-  final Input<String>? instanceType;
+  final pulumi.Input<String>? instanceType;
 
   /// Maximum number of concurrent sessions for the portal.
-  final Input<int>? maxConcurrentSessions;
+  final pulumi.Input<int>? maxConcurrentSessions;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
-  final Input<PortalTimeouts>? timeouts;
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<PortalTimeouts>? timeouts;
 
   PortalArgs({
     this.additionalEncryptionContext,
@@ -86,30 +86,30 @@ class PortalArgs {
     }
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] =
-          Input.mapOptionalInputValue<PortalTimeouts, Map<String, dynamic>>(
-              timeoutsValue, (value) => value.toMap());
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<PortalTimeouts,
+          Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
     return map;
   }
 
   factory PortalArgs.fromMap(Map<String, dynamic> map) {
     return PortalArgs(
-      additionalEncryptionContext: Input.asOptionalInput<Map<String, String>>(
-          map['additionalEncryptionContext']),
+      additionalEncryptionContext:
+          pulumi.Input.asOptionalInput<Map<String, String>>(
+              map['additionalEncryptionContext']),
       authenticationType:
-          Input.asOptionalInput<String>(map['authenticationType']),
+          pulumi.Input.asOptionalInput<String>(map['authenticationType']),
       browserSettingsArn:
-          Input.asOptionalInput<String>(map['browserSettingsArn']),
+          pulumi.Input.asOptionalInput<String>(map['browserSettingsArn']),
       customerManagedKey:
-          Input.asOptionalInput<String>(map['customerManagedKey']),
-      displayName: Input.asOptionalInput<String>(map['displayName']),
-      instanceType: Input.asOptionalInput<String>(map['instanceType']),
+          pulumi.Input.asOptionalInput<String>(map['customerManagedKey']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      instanceType: pulumi.Input.asOptionalInput<String>(map['instanceType']),
       maxConcurrentSessions:
-          Input.asOptionalInput<int>(map['maxConcurrentSessions']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      timeouts: Input.asOptionalInput<PortalTimeouts>(map['timeouts']),
+          pulumi.Input.asOptionalInput<int>(map['maxConcurrentSessions']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      timeouts: pulumi.Input.asOptionalInput<PortalTimeouts>(map['timeouts']),
     );
   }
 }

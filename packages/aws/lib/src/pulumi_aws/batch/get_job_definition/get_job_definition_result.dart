@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_job_definition_eks_property/get_job_definition_eks_property.dart';
 import '../get_job_definition_node_property/get_job_definition_node_property.dart';
 import '../get_job_definition_retry_strategy/get_job_definition_retry_strategy.dart';
@@ -68,21 +68,20 @@ class GetJobDefinitionResult {
     }
     map['arnPrefix'] = arnPrefix;
     map['containerOrchestrationType'] = containerOrchestrationType;
-    map['eksProperties'] =
-        Input.encodeList<GetJobDefinitionEksProperty, Map<String, dynamic>>(
-            eksProperties, (value) => value.toMap());
+    map['eksProperties'] = pulumi.Input.encodeList<GetJobDefinitionEksProperty,
+        Map<String, dynamic>>(eksProperties, (value) => value.toMap());
     map['id'] = id;
     final nameValue = name;
     if (nameValue != null) {
       map['name'] = nameValue;
     }
-    map['nodeProperties'] =
-        Input.encodeList<GetJobDefinitionNodeProperty, Map<String, dynamic>>(
-            nodeProperties, (value) => value.toMap());
+    map['nodeProperties'] = pulumi.Input.encodeList<
+        GetJobDefinitionNodeProperty,
+        Map<String, dynamic>>(nodeProperties, (value) => value.toMap());
     map['region'] = region;
-    map['retryStrategies'] =
-        Input.encodeList<GetJobDefinitionRetryStrategy, Map<String, dynamic>>(
-            retryStrategies, (value) => value.toMap());
+    map['retryStrategies'] = pulumi.Input.encodeList<
+        GetJobDefinitionRetryStrategy,
+        Map<String, dynamic>>(retryStrategies, (value) => value.toMap());
     final revisionValue = revision;
     if (revisionValue != null) {
       map['revision'] = revisionValue;
@@ -94,7 +93,7 @@ class GetJobDefinitionResult {
     }
     map['tags'] = tags;
     map['timeouts'] =
-        Input.encodeList<GetJobDefinitionTimeout, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetJobDefinitionTimeout, Map<String, dynamic>>(
             timeouts, (value) => value.toMap());
     map['type'] = type;
     return map;
@@ -105,18 +104,18 @@ class GetJobDefinitionResult {
       arn: map['arn'] == null ? null : map['arn'] as String,
       arnPrefix: map['arnPrefix'] as String,
       containerOrchestrationType: map['containerOrchestrationType'] as String,
-      eksProperties: Input.decodeList<GetJobDefinitionEksProperty>(
+      eksProperties: pulumi.Input.decodeList<GetJobDefinitionEksProperty>(
           map['eksProperties'],
           (value) => GetJobDefinitionEksProperty.fromMap(
               (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      nodeProperties: Input.decodeList<GetJobDefinitionNodeProperty>(
+      nodeProperties: pulumi.Input.decodeList<GetJobDefinitionNodeProperty>(
           map['nodeProperties'],
           (value) => GetJobDefinitionNodeProperty.fromMap(
               (value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
-      retryStrategies: Input.decodeList<GetJobDefinitionRetryStrategy>(
+      retryStrategies: pulumi.Input.decodeList<GetJobDefinitionRetryStrategy>(
           map['retryStrategies'],
           (value) => GetJobDefinitionRetryStrategy.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -124,7 +123,7 @@ class GetJobDefinitionResult {
       schedulingPriority: map['schedulingPriority'] as int,
       status: map['status'] == null ? null : map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      timeouts: Input.decodeList<GetJobDefinitionTimeout>(
+      timeouts: pulumi.Input.decodeList<GetJobDefinitionTimeout>(
           map['timeouts'],
           (value) => GetJobDefinitionTimeout.fromMap(
               (value as Map).cast<String, dynamic>())),

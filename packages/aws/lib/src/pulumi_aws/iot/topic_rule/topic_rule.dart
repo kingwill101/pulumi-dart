@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../topic_rule_cloudwatch_alarm/topic_rule_cloudwatch_alarm.dart';
 import '../topic_rule_cloudwatch_log/topic_rule_cloudwatch_log.dart';
 import '../topic_rule_cloudwatch_metric/topic_rule_cloudwatch_metric.dart';
@@ -34,65 +34,65 @@ import 'topic_rule_args.dart';
 /// ```sh
 /// $ pulumi import aws:iot/topicRule:TopicRule rule <name>
 /// ```
-class TopicRule extends CustomResource {
+class TopicRule extends pulumi.CustomResource {
   /// The ARN of the topic rule
-  late final Output<String> arn;
-  late final Output<List<TopicRuleCloudwatchAlarm>?> cloudwatchAlarms;
-  late final Output<List<TopicRuleCloudwatchLog>?> cloudwatchLogs;
-  late final Output<List<TopicRuleCloudwatchMetric>?> cloudwatchMetrics;
+  late final pulumi.Output<String> arn;
+  late final pulumi.Output<List<TopicRuleCloudwatchAlarm>?> cloudwatchAlarms;
+  late final pulumi.Output<List<TopicRuleCloudwatchLog>?> cloudwatchLogs;
+  late final pulumi.Output<List<TopicRuleCloudwatchMetric>?> cloudwatchMetrics;
 
   /// The description of the rule.
-  late final Output<String?> description;
-  late final Output<List<TopicRuleDynamodb>?> dynamodbs;
-  late final Output<List<TopicRuleDynamodbv2>?> dynamodbv2s;
-  late final Output<List<TopicRuleElasticsearch>?> elasticsearch;
+  late final pulumi.Output<String?> description;
+  late final pulumi.Output<List<TopicRuleDynamodb>?> dynamodbs;
+  late final pulumi.Output<List<TopicRuleDynamodbv2>?> dynamodbv2s;
+  late final pulumi.Output<List<TopicRuleElasticsearch>?> elasticsearch;
 
   /// Specifies whether the rule is enabled.
-  late final Output<bool> enabled;
+  late final pulumi.Output<bool> enabled;
 
   /// Configuration block with error action to be associated with the rule. See the documentation for `cloudwatch_alarm`, `cloudwatch_logs`, `cloudwatch_metric`, `dynamodb`, `dynamodbv2`, `elasticsearch`, `firehose`, `http`, `iot_analytics`, `iot_events`, `kafka`, `kinesis`, `lambda`, `republish`, `s3`, `sns`, `sqs`, `step_functions`, `timestream` configuration blocks for further configuration details.
-  late final Output<TopicRuleErrorAction?> errorAction;
-  late final Output<List<TopicRuleFirehose>?> firehoses;
-  late final Output<List<TopicRuleHttp>?> https;
-  late final Output<List<TopicRuleIotAnalytic>?> iotAnalytics;
-  late final Output<List<TopicRuleIotEvent>?> iotEvents;
-  late final Output<List<TopicRuleKafka>?> kafkas;
-  late final Output<List<TopicRuleKinesis>?> kineses;
-  late final Output<List<TopicRuleLambda>?> lambdas;
+  late final pulumi.Output<TopicRuleErrorAction?> errorAction;
+  late final pulumi.Output<List<TopicRuleFirehose>?> firehoses;
+  late final pulumi.Output<List<TopicRuleHttp>?> https;
+  late final pulumi.Output<List<TopicRuleIotAnalytic>?> iotAnalytics;
+  late final pulumi.Output<List<TopicRuleIotEvent>?> iotEvents;
+  late final pulumi.Output<List<TopicRuleKafka>?> kafkas;
+  late final pulumi.Output<List<TopicRuleKinesis>?> kineses;
+  late final pulumi.Output<List<TopicRuleLambda>?> lambdas;
 
   /// The name of the rule.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<List<TopicRuleRepublish>?> republishes;
-  late final Output<List<TopicRuleS3>?> s3;
-  late final Output<List<TopicRuleSns>?> sns;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<List<TopicRuleRepublish>?> republishes;
+  late final pulumi.Output<List<TopicRuleS3>?> s3;
+  late final pulumi.Output<List<TopicRuleSns>?> sns;
 
   /// The SQL statement used to query the topic. For more information, see AWS IoT SQL Reference (http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference) in the AWS IoT Developer Guide.
-  late final Output<String> sql;
+  late final pulumi.Output<String> sql;
 
   /// The version of the SQL rules engine to use when evaluating the rule.
-  late final Output<String> sqlVersion;
-  late final Output<List<TopicRuleSqs>?> sqs;
-  late final Output<List<TopicRuleStepFunction>?> stepFunctions;
+  late final pulumi.Output<String> sqlVersion;
+  late final pulumi.Output<List<TopicRuleSqs>?> sqs;
+  late final pulumi.Output<List<TopicRuleStepFunction>?> stepFunctions;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
-  late final Output<List<TopicRuleTimestream>?> timestreams;
+  late final pulumi.Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<List<TopicRuleTimestream>?> timestreams;
 
   TopicRule(
     String name, {
     TopicRuleArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iot/topicRule:TopicRule',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.cloudwatchAlarms =

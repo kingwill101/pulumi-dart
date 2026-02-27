@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_resolver_firewall_rule_group_args.dart';
 import 'get_resolver_firewall_rule_group_result.dart';
 
@@ -11,13 +11,13 @@ import 'get_resolver_firewall_rule_group_result.dart';
 /// The following example shows how to get a firewall rule group from its ID.
 Future<GetResolverFirewallRuleGroupResult> getResolverFirewallRuleGroup(
   GetResolverFirewallRuleGroupArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:route53/getResolverFirewallRuleGroup:getResolverFirewallRuleGroup',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResolverFirewallRuleGroupResult.fromMap(result);
 }

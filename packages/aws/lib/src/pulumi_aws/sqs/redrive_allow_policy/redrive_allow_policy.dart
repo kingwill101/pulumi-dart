@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'redrive_allow_policy_args.dart';
 
 /// Provides a SQS Queue Redrive Allow Policy resource.
@@ -14,25 +14,25 @@ import 'redrive_allow_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:sqs/redriveAllowPolicy:RedriveAllowPolicy test https://queue.amazonaws.com/123456789012/myqueue
 /// ```
-class RedriveAllowPolicy extends CustomResource {
+class RedriveAllowPolicy extends pulumi.CustomResource {
   /// The URL of the SQS Queue to which to attach the policy
-  late final Output<String> queueUrl;
+  late final pulumi.Output<String> queueUrl;
 
   /// The JSON redrive allow policy for the SQS queue. Learn more in the [Amazon SQS dead-letter queues documentation](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html).
-  late final Output<String> redriveAllowPolicy;
+  late final pulumi.Output<String> redriveAllowPolicy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   RedriveAllowPolicy(
     String name, {
     RedriveAllowPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sqs/redriveAllowPolicy:RedriveAllowPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.queueUrl = registerOutput<String>('queueUrl');
     this.redriveAllowPolicy = registerOutput<String>('redriveAllowPolicy');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_users_args.dart';
 import 'get_users_result.dart';
 
@@ -19,13 +19,13 @@ import 'get_users_result.dart';
 /// ### Users filtered by path prefix
 Future<GetUsersResult> getUsers(
   GetUsersArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:iam/getUsers:getUsers',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUsersResult.fromMap(result);
 }

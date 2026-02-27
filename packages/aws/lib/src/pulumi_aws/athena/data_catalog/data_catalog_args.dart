@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DataCatalog.
 class DataCatalogArgs {
   /// Description of the data catalog.
-  final Input<String> description;
+  final pulumi.Input<String> description;
 
   /// Name of the data catalog. The catalog name must be unique for the AWS account and can use a maximum of 128 alphanumeric, underscore, at sign, or hyphen characters.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Key value pairs that specifies the Lambda function or functions to use for the data catalog. The mapping used depends on the catalog type.
-  final Input<Map<String, String>> parameters;
+  final pulumi.Input<Map<String, String>> parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Type of data catalog: `LAMBDA` for a federated catalog, `GLUE` for AWS Glue Catalog, or `HIVE` for an external hive metastore.
-  final Input<String> type;
+  final pulumi.Input<String> type;
 
   DataCatalogArgs({
     required this.description,
@@ -53,12 +53,12 @@ class DataCatalogArgs {
 
   factory DataCatalogArgs.fromMap(Map<String, dynamic> map) {
     return DataCatalogArgs(
-      description: Input.asInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      parameters: Input.asInput<Map<String, String>>(map['parameters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      type: Input.asInput<String>(map['type']),
+      description: pulumi.Input.asInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      parameters: pulumi.Input.asInput<Map<String, String>>(map['parameters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      type: pulumi.Input.asInput<String>(map['type']),
     );
   }
 }

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../distribution_configuration_distribution_ami_distribution_configuration/distribution_configuration_distribution_ami_distribution_configuration.dart';
 import '../distribution_configuration_distribution_container_distribution_configuration/distribution_configuration_distribution_container_distribution_configuration.dart';
 import '../distribution_configuration_distribution_fast_launch_configuration/distribution_configuration_distribution_fast_launch_configuration.dart';
@@ -65,14 +65,14 @@ class DistributionConfigurationDistribution {
     }
     final fastLaunchConfigurationsValue = fastLaunchConfigurations;
     if (fastLaunchConfigurationsValue != null) {
-      map['fastLaunchConfigurations'] = Input.encodeList<
+      map['fastLaunchConfigurations'] = pulumi.Input.encodeList<
               DistributionConfigurationDistributionFastLaunchConfiguration,
               Map<String, dynamic>>(
           fastLaunchConfigurationsValue, (value) => value.toMap());
     }
     final launchTemplateConfigurationsValue = launchTemplateConfigurations;
     if (launchTemplateConfigurationsValue != null) {
-      map['launchTemplateConfigurations'] = Input.encodeList<
+      map['launchTemplateConfigurations'] = pulumi.Input.encodeList<
               DistributionConfigurationDistributionLaunchTemplateConfiguration,
               Map<String, dynamic>>(
           launchTemplateConfigurationsValue, (value) => value.toMap());
@@ -88,7 +88,7 @@ class DistributionConfigurationDistribution {
     }
     final ssmParameterConfigurationsValue = ssmParameterConfigurations;
     if (ssmParameterConfigurationsValue != null) {
-      map['ssmParameterConfigurations'] = Input.encodeList<
+      map['ssmParameterConfigurations'] = pulumi.Input.encodeList<
               DistributionConfigurationDistributionSsmParameterConfiguration,
               Map<String, dynamic>>(
           ssmParameterConfigurationsValue, (value) => value.toMap());
@@ -113,7 +113,7 @@ class DistributionConfigurationDistribution {
                   .cast<String, dynamic>()),
       fastLaunchConfigurations: map['fastLaunchConfigurations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DistributionConfigurationDistributionFastLaunchConfiguration>(
               map['fastLaunchConfigurations'],
               (value) =>
@@ -121,7 +121,7 @@ class DistributionConfigurationDistribution {
                       .fromMap((value as Map).cast<String, dynamic>())),
       launchTemplateConfigurations: map['launchTemplateConfigurations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DistributionConfigurationDistributionLaunchTemplateConfiguration>(
               map['launchTemplateConfigurations'],
               (value) =>
@@ -137,7 +137,7 @@ class DistributionConfigurationDistribution {
               (map['s3ExportConfiguration'] as Map).cast<String, dynamic>()),
       ssmParameterConfigurations: map['ssmParameterConfigurations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DistributionConfigurationDistributionSsmParameterConfiguration>(
               map['ssmParameterConfigurations'],
               (value) =>

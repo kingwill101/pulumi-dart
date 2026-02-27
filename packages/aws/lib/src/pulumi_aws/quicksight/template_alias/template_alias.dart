@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'template_alias_args.dart';
 
 /// Resource for managing an AWS QuickSight Template Alias.
@@ -16,36 +16,36 @@ import 'template_alias_args.dart';
 /// ```sh
 /// $ pulumi import aws:quicksight/templateAlias:TemplateAlias example 123456789012,example-id,example-alias
 /// ```
-class TemplateAlias extends CustomResource {
+class TemplateAlias extends pulumi.CustomResource {
   /// Display name of the template alias.
-  late final Output<String> aliasName;
+  late final pulumi.Output<String> aliasName;
 
   /// Amazon Resource Name (ARN) of the template alias.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  late final Output<String> awsAccountId;
+  late final pulumi.Output<String> awsAccountId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ID of the template.
-  late final Output<String> templateId;
+  late final pulumi.Output<String> templateId;
 
   /// Version number of the template.
   ///
   /// The following arguments are optional:
-  late final Output<int> templateVersionNumber;
+  late final pulumi.Output<int> templateVersionNumber;
 
   TemplateAlias(
     String name, {
     TemplateAliasArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:quicksight/templateAlias:TemplateAlias',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.aliasName = registerOutput<String>('aliasName');
     this.arn = registerOutput<String>('arn');

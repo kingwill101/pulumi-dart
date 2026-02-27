@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../regex_match_set_regex_match_tuple/regex_match_set_regex_match_tuple.dart';
 import 'regex_match_set_args.dart';
 
@@ -15,25 +15,26 @@ import 'regex_match_set_args.dart';
 /// ```sh
 /// $ pulumi import aws:waf/regexMatchSet:RegexMatchSet example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
 /// ```
-class RegexMatchSet extends CustomResource {
+class RegexMatchSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN)
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The name or description of the Regex Match Set.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The regular expression pattern that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. See below.
-  late final Output<List<RegexMatchSetRegexMatchTuple>?> regexMatchTuples;
+  late final pulumi.Output<List<RegexMatchSetRegexMatchTuple>?>
+      regexMatchTuples;
 
   RegexMatchSet(
     String name, {
     RegexMatchSetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:waf/regexMatchSet:RegexMatchSet',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

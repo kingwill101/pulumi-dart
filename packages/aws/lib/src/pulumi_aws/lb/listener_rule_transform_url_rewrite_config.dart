@@ -1,3 +1,3 @@
 library module_lb_listener_rule_transform_url_rewrite_config;
 
-export 'listener_rule_transform_url_rewrite_config/listener_rule_transform_url_rewrite_config2.dart';
+export 'listener_rule_transform_url_rewrite_config/listener_rule_transform_url_rewrite_config_lb.dart';

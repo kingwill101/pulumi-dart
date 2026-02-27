@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../fleet_runtime_configuration_server_process/fleet_runtime_configuration_server_process.dart';
 
 class FleetRuntimeConfiguration {
@@ -35,7 +35,7 @@ class FleetRuntimeConfiguration {
     }
     final serverProcessesValue = serverProcesses;
     if (serverProcessesValue != null) {
-      map['serverProcesses'] = Input.encodeList<
+      map['serverProcesses'] = pulumi.Input.encodeList<
           FleetRuntimeConfigurationServerProcess,
           Map<String, dynamic>>(serverProcessesValue, (value) => value.toMap());
     }
@@ -54,7 +54,7 @@ class FleetRuntimeConfiguration {
               : map['maxConcurrentGameSessionActivations'] as int,
       serverProcesses: map['serverProcesses'] == null
           ? null
-          : Input.decodeList<FleetRuntimeConfigurationServerProcess>(
+          : pulumi.Input.decodeList<FleetRuntimeConfigurationServerProcess>(
               map['serverProcesses'],
               (value) => FleetRuntimeConfigurationServerProcess.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getClusterVersions.
 class GetClusterVersionsArgs {
   /// Type of clusters to filter by.
   /// Currently, the only valid value is `eks`.
-  final Input<String>? clusterType;
-  final Input<List<String>>? clusterVersionsOnlies;
+  final pulumi.Input<String>? clusterType;
+  final pulumi.Input<List<String>>? clusterVersionsOnlies;
 
   /// Whether to show only the default versions of Kubernetes supported by EKS.
-  final Input<bool>? defaultOnly;
+  final pulumi.Input<bool>? defaultOnly;
 
   /// Whether to include all kubernetes versions in the response.
-  final Input<bool>? includeAll;
+  final pulumi.Input<bool>? includeAll;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Status of the EKS cluster versions to list.
   /// Valid values are `STANDARD_SUPPORT` or `UNSUPPORTED` or `EXTENDED_SUPPORT`.
-  final Input<String>? versionStatus;
+  final pulumi.Input<String>? versionStatus;
 
   GetClusterVersionsArgs({
     this.clusterType,
@@ -62,13 +62,13 @@ class GetClusterVersionsArgs {
 
   factory GetClusterVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterVersionsArgs(
-      clusterType: Input.asOptionalInput<String>(map['clusterType']),
-      clusterVersionsOnlies:
-          Input.asOptionalInput<List<String>>(map['clusterVersionsOnlies']),
-      defaultOnly: Input.asOptionalInput<bool>(map['defaultOnly']),
-      includeAll: Input.asOptionalInput<bool>(map['includeAll']),
-      region: Input.asOptionalInput<String>(map['region']),
-      versionStatus: Input.asOptionalInput<String>(map['versionStatus']),
+      clusterType: pulumi.Input.asOptionalInput<String>(map['clusterType']),
+      clusterVersionsOnlies: pulumi.Input.asOptionalInput<List<String>>(
+          map['clusterVersionsOnlies']),
+      defaultOnly: pulumi.Input.asOptionalInput<bool>(map['defaultOnly']),
+      includeAll: pulumi.Input.asOptionalInput<bool>(map['includeAll']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      versionStatus: pulumi.Input.asOptionalInput<String>(map['versionStatus']),
     );
   }
 }

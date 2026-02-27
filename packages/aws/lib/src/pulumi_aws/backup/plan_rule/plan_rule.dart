@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_rule_copy_action/plan_rule_copy_action.dart';
 import '../plan_rule_lifecycle/plan_rule_lifecycle.dart';
 import '../plan_rule_scan_action/plan_rule_scan_action.dart';
@@ -66,7 +66,7 @@ class PlanRule {
     final copyActionsValue = copyActions;
     if (copyActionsValue != null) {
       map['copyActions'] =
-          Input.encodeList<PlanRuleCopyAction, Map<String, dynamic>>(
+          pulumi.Input.encodeList<PlanRuleCopyAction, Map<String, dynamic>>(
               copyActionsValue, (value) => value.toMap());
     }
     final enableContinuousBackupValue = enableContinuousBackup;
@@ -85,7 +85,7 @@ class PlanRule {
     final scanActionsValue = scanActions;
     if (scanActionsValue != null) {
       map['scanActions'] =
-          Input.encodeList<PlanRuleScanAction, Map<String, dynamic>>(
+          pulumi.Input.encodeList<PlanRuleScanAction, Map<String, dynamic>>(
               scanActionsValue, (value) => value.toMap());
     }
     final scheduleValue = schedule;
@@ -117,7 +117,7 @@ class PlanRule {
           : map['completionWindow'] as int,
       copyActions: map['copyActions'] == null
           ? null
-          : Input.decodeList<PlanRuleCopyAction>(
+          : pulumi.Input.decodeList<PlanRuleCopyAction>(
               map['copyActions'],
               (value) => PlanRuleCopyAction.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -134,7 +134,7 @@ class PlanRule {
       ruleName: map['ruleName'] as String,
       scanActions: map['scanActions'] == null
           ? null
-          : Input.decodeList<PlanRuleScanAction>(
+          : pulumi.Input.decodeList<PlanRuleScanAction>(
               map['scanActions'],
               (value) => PlanRuleScanAction.fromMap(
                   (value as Map).cast<String, dynamic>())),

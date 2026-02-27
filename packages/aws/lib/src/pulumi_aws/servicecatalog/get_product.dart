@@ -1,5 +1,5 @@
 library module_servicecatalog_get_product;
 
-export 'get_product/get_product2.dart';
-export 'get_product/get_product_args2.dart';
-export 'get_product/get_product_result2.dart';
+export 'get_product/get_product_servicecatalog.dart';
+export 'get_product/get_product_servicecatalog_args.dart';
+export 'get_product/get_product_servicecatalog_result.dart';

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_attachment_args.dart';
 
 /// Provides an AWS EBS Volume Attachment as a top level resource, to attach and
@@ -21,46 +21,46 @@ import 'volume_attachment_args.dart';
 /// [1]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html#available-ec2-device-names
 /// [2]: https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/device_naming.html#available-ec2-device-names
 /// [3]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html
-class VolumeAttachment extends CustomResource {
+class VolumeAttachment extends pulumi.CustomResource {
   /// The device name to expose to the instance (for
   /// example, `/dev/sdh` or `xvdh`).  See [Device Naming on Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html#available-ec2-device-names) and [Device Naming on Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/device_naming.html#available-ec2-device-names) for more information.
-  late final Output<String> deviceName;
+  late final pulumi.Output<String> deviceName;
 
   /// Set to `true` if you want to force the
   /// volume to detach. Useful if previous attempts failed, but use this option only
   /// as a last resort, as this can result in **data loss**. See
   /// [Detaching an Amazon EBS Volume from an Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html) for more information.
-  late final Output<bool?> forceDetach;
+  late final pulumi.Output<bool?> forceDetach;
 
   /// ID of the Instance to attach to
-  late final Output<String> instanceId;
+  late final pulumi.Output<String> instanceId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Set this to true if you do not wish
   /// to detach the volume from the instance to which it is attached at destroy
   /// time, and instead just remove the attachment from this provider state. This is
   /// useful when destroying an instance which has volumes created by some other
   /// means attached.
-  late final Output<bool?> skipDestroy;
+  late final pulumi.Output<bool?> skipDestroy;
 
   /// Set this to true to ensure that the target instance is stopped
   /// before trying to detach the volume. Stops the instance, if it is not already stopped.
-  late final Output<bool?> stopInstanceBeforeDetaching;
+  late final pulumi.Output<bool?> stopInstanceBeforeDetaching;
 
   /// ID of the Volume to be attached
-  late final Output<String> volumeId;
+  late final pulumi.Output<String> volumeId;
 
   VolumeAttachment(
     String name, {
     VolumeAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/volumeAttachment:VolumeAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.deviceName = registerOutput<String>('deviceName');
     this.forceDetach = registerOutput<bool?>('forceDetach');

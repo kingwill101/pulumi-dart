@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_settings_args.dart';
 
 /// Provides an AWS Backup Global Settings resource.
@@ -16,19 +16,19 @@ import 'global_settings_args.dart';
 /// ```sh
 /// $ pulumi import aws:backup/globalSettings:GlobalSettings example 123456789012
 /// ```
-class GlobalSettings extends CustomResource {
+class GlobalSettings extends pulumi.CustomResource {
   /// A list of resources along with the opt-in preferences for the account. For a list of inputs, see [UpdateGlobalSettings](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_UpdateGlobalSettings.html) in the AWS Backup Developer Guide.
-  late final Output<Map<String, String>> globalSettings;
+  late final pulumi.Output<Map<String, String>> globalSettings;
 
   GlobalSettings(
     String name, {
     GlobalSettingsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:backup/globalSettings:GlobalSettings',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.globalSettings = registerOutput<Map<String, String>>('globalSettings');
   }

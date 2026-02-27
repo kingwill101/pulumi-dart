@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../route_spec_http2_route_match_header/route_spec_http2_route_match_header.dart';
 import '../route_spec_http2_route_match_path/route_spec_http2_route_match_path.dart';
 import '../route_spec_http2_route_match_query_parameter/route_spec_http2_route_match_query_parameter.dart';
@@ -42,7 +42,7 @@ class RouteSpecHttp2RouteMatch {
     final map = <String, dynamic>{};
     final headersValue = headers;
     if (headersValue != null) {
-      map['headers'] = Input.encodeList<RouteSpecHttp2RouteMatchHeader,
+      map['headers'] = pulumi.Input.encodeList<RouteSpecHttp2RouteMatchHeader,
           Map<String, dynamic>>(headersValue, (value) => value.toMap());
     }
     final methodValue = method;
@@ -63,7 +63,7 @@ class RouteSpecHttp2RouteMatch {
     }
     final queryParametersValue = queryParameters;
     if (queryParametersValue != null) {
-      map['queryParameters'] = Input.encodeList<
+      map['queryParameters'] = pulumi.Input.encodeList<
           RouteSpecHttp2RouteMatchQueryParameter,
           Map<String, dynamic>>(queryParametersValue, (value) => value.toMap());
     }
@@ -78,7 +78,7 @@ class RouteSpecHttp2RouteMatch {
     return RouteSpecHttp2RouteMatch(
       headers: map['headers'] == null
           ? null
-          : Input.decodeList<RouteSpecHttp2RouteMatchHeader>(
+          : pulumi.Input.decodeList<RouteSpecHttp2RouteMatchHeader>(
               map['headers'],
               (value) => RouteSpecHttp2RouteMatchHeader.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -91,7 +91,7 @@ class RouteSpecHttp2RouteMatch {
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
       queryParameters: map['queryParameters'] == null
           ? null
-          : Input.decodeList<RouteSpecHttp2RouteMatchQueryParameter>(
+          : pulumi.Input.decodeList<RouteSpecHttp2RouteMatchQueryParameter>(
               map['queryParameters'],
               (value) => RouteSpecHttp2RouteMatchQueryParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for DataShareConsumerAssociation.
 class DataShareConsumerAssociationArgs {
   /// Whether to allow write operations for a datashare.
-  final Input<bool>? allowWrites;
+  final pulumi.Input<bool>? allowWrites;
 
   /// Whether the datashare is associated with the entire account. Conflicts with `consumer_arn` and `consumer_region`.
-  final Input<bool>? associateEntireAccount;
+  final pulumi.Input<bool>? associateEntireAccount;
 
   /// Amazon Resource Name (ARN) of the consumer that is associated with the datashare. Conflicts with `associate_entire_account` and `consumer_region`.
-  final Input<String>? consumerArn;
+  final pulumi.Input<String>? consumerArn;
 
   /// From a datashare consumer account, associates a datashare with all existing and future namespaces in the specified AWS Region. Conflicts with `associate_entire_account` and `consumer_arn`.
-  final Input<String>? consumerRegion;
+  final pulumi.Input<String>? consumerRegion;
 
   /// Amazon Resource Name (ARN) of the datashare that the consumer is to use with the account or the namespace.
   ///
   /// The following arguments are optional:
-  final Input<String> dataShareArn;
+  final pulumi.Input<String> dataShareArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   DataShareConsumerAssociationArgs({
     this.allowWrites,
@@ -61,13 +61,14 @@ class DataShareConsumerAssociationArgs {
 
   factory DataShareConsumerAssociationArgs.fromMap(Map<String, dynamic> map) {
     return DataShareConsumerAssociationArgs(
-      allowWrites: Input.asOptionalInput<bool>(map['allowWrites']),
+      allowWrites: pulumi.Input.asOptionalInput<bool>(map['allowWrites']),
       associateEntireAccount:
-          Input.asOptionalInput<bool>(map['associateEntireAccount']),
-      consumerArn: Input.asOptionalInput<String>(map['consumerArn']),
-      consumerRegion: Input.asOptionalInput<String>(map['consumerRegion']),
-      dataShareArn: Input.asInput<String>(map['dataShareArn']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<bool>(map['associateEntireAccount']),
+      consumerArn: pulumi.Input.asOptionalInput<String>(map['consumerArn']),
+      consumerRegion:
+          pulumi.Input.asOptionalInput<String>(map['consumerRegion']),
+      dataShareArn: pulumi.Input.asInput<String>(map['dataShareArn']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

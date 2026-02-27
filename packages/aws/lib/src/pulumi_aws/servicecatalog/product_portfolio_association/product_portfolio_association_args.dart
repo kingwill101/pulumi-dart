@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ProductPortfolioAssociation.
 class ProductPortfolioAssociationArgs {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
-  final Input<String>? acceptLanguage;
+  final pulumi.Input<String>? acceptLanguage;
 
   /// Portfolio identifier.
-  final Input<String> portfolioId;
+  final pulumi.Input<String> portfolioId;
 
   /// Product identifier.
   ///
   /// The following arguments are optional:
-  final Input<String> productId;
+  final pulumi.Input<String> productId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Identifier of the source portfolio.
-  final Input<String>? sourcePortfolioId;
+  final pulumi.Input<String>? sourcePortfolioId;
 
   ProductPortfolioAssociationArgs({
     this.acceptLanguage,
@@ -50,12 +50,13 @@ class ProductPortfolioAssociationArgs {
 
   factory ProductPortfolioAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ProductPortfolioAssociationArgs(
-      acceptLanguage: Input.asOptionalInput<String>(map['acceptLanguage']),
-      portfolioId: Input.asInput<String>(map['portfolioId']),
-      productId: Input.asInput<String>(map['productId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      acceptLanguage:
+          pulumi.Input.asOptionalInput<String>(map['acceptLanguage']),
+      portfolioId: pulumi.Input.asInput<String>(map['portfolioId']),
+      productId: pulumi.Input.asInput<String>(map['productId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       sourcePortfolioId:
-          Input.asOptionalInput<String>(map['sourcePortfolioId']),
+          pulumi.Input.asOptionalInput<String>(map['sourcePortfolioId']),
     );
   }
 }

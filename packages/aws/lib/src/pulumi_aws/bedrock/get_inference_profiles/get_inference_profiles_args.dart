@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getInferenceProfiles.
 class GetInferenceProfilesArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Filters for inference profiles that match the type you specify. Valid values are: `SYSTEM_DEFINED`, `APPLICATION`.
-  final Input<String>? type;
+  final pulumi.Input<String>? type;
 
   GetInferenceProfilesArgs({
     this.region,
@@ -30,8 +30,8 @@ class GetInferenceProfilesArgs {
 
   factory GetInferenceProfilesArgs.fromMap(Map<String, dynamic> map) {
     return GetInferenceProfilesArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      type: Input.asOptionalInput<String>(map['type']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      type: pulumi.Input.asOptionalInput<String>(map['type']),
     );
   }
 }

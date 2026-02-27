@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'organizations_features_args.dart';
 
 /// Manages centralized root access features across AWS member accounts managed using AWS Organizations. More information about managing root access in IAM can be found in the [Centralize root access for member accounts](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-enable-root-access.html).
@@ -16,19 +16,19 @@ import 'organizations_features_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/organizationsFeatures:OrganizationsFeatures example o-1234567
 /// ```
-class OrganizationsFeatures extends CustomResource {
+class OrganizationsFeatures extends pulumi.CustomResource {
   /// List of IAM features to enable. Valid values are `RootCredentialsManagement` and `RootSessions`.
-  late final Output<List<String>> enabledFeatures;
+  late final pulumi.Output<List<String>> enabledFeatures;
 
   OrganizationsFeatures(
     String name, {
     OrganizationsFeaturesArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/organizationsFeatures:OrganizationsFeatures',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.enabledFeatures = registerOutput<List<String>>('enabledFeatures');
   }

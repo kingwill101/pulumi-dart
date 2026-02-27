@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../table_replication_rule_destination/table_replication_rule_destination.dart';
 
 class TableReplicationRule {
@@ -13,15 +13,15 @@ class TableReplicationRule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['destinations'] =
-        Input.encodeList<TableReplicationRuleDestination, Map<String, dynamic>>(
-            destinations, (value) => value.toMap());
+    map['destinations'] = pulumi.Input.encodeList<
+        TableReplicationRuleDestination,
+        Map<String, dynamic>>(destinations, (value) => value.toMap());
     return map;
   }
 
   factory TableReplicationRule.fromMap(Map<String, dynamic> map) {
     return TableReplicationRule(
-      destinations: Input.decodeList<TableReplicationRuleDestination>(
+      destinations: pulumi.Input.decodeList<TableReplicationRuleDestination>(
           map['destinations'],
           (value) => TableReplicationRuleDestination.fromMap(
               (value as Map).cast<String, dynamic>())),

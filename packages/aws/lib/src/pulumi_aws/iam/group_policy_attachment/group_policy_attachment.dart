@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_policy_attachment_args.dart';
 
 /// Attaches a Managed IAM Policy to an IAM group
@@ -16,22 +16,22 @@ import 'group_policy_attachment_args.dart';
 /// ```sh
 /// $ pulumi import aws:iam/groupPolicyAttachment:GroupPolicyAttachment test-attach test-group/arn:aws:iam::xxxxxxxxxxxx:policy/test-policy
 /// ```
-class GroupPolicyAttachment extends CustomResource {
+class GroupPolicyAttachment extends pulumi.CustomResource {
   /// The group the policy should be applied to
-  late final Output<String> group;
+  late final pulumi.Output<String> group;
 
   /// The ARN of the policy you want to apply
-  late final Output<String> policyArn;
+  late final pulumi.Output<String> policyArn;
 
   GroupPolicyAttachment(
     String name, {
     GroupPolicyAttachmentArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:iam/groupPolicyAttachment:GroupPolicyAttachment',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.group = registerOutput<String>('group');
     this.policyArn = registerOutput<String>('policyArn');

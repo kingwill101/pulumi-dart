@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../remediation_configuration_execution_controls/remediation_configuration_execution_controls.dart';
 import '../remediation_configuration_parameter/remediation_configuration_parameter.dart';
 import 'remediation_configuration_args.dart';
@@ -20,55 +20,55 @@ import 'remediation_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:cfg/remediationConfiguration:RemediationConfiguration this example
 /// ```
-class RemediationConfiguration extends CustomResource {
+class RemediationConfiguration extends pulumi.CustomResource {
   /// ARN of the Config Remediation Configuration.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Remediation is triggered automatically if `true`.
-  late final Output<bool?> automatic;
+  late final pulumi.Output<bool?> automatic;
 
   /// Name of the AWS Config rule.
-  late final Output<String> configRuleName;
+  late final pulumi.Output<String> configRuleName;
 
   /// Configuration block for execution controls. See below.
-  late final Output<RemediationConfigurationExecutionControls?>
+  late final pulumi.Output<RemediationConfigurationExecutionControls?>
       executionControls;
 
   /// Maximum number of failed attempts for auto-remediation. If you do not select a number, the default is 5.
-  late final Output<int?> maximumAutomaticAttempts;
+  late final pulumi.Output<int?> maximumAutomaticAttempts;
 
   /// Can be specified multiple times for each parameter. Each parameter block supports arguments below.
-  late final Output<List<RemediationConfigurationParameter>?> parameters;
+  late final pulumi.Output<List<RemediationConfigurationParameter>?> parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Type of resource.
-  late final Output<String?> resourceType;
+  late final pulumi.Output<String?> resourceType;
 
   /// Maximum time in seconds that AWS Config runs auto-remediation. If you do not select a number, the default is 60 seconds.
-  late final Output<int?> retryAttemptSeconds;
+  late final pulumi.Output<int?> retryAttemptSeconds;
 
   /// Target ID is the name of the public document.
-  late final Output<String> targetId;
+  late final pulumi.Output<String> targetId;
 
   /// Type of the target. Target executes remediation. For example, SSM document.
   ///
   /// The following arguments are optional:
-  late final Output<String> targetType;
+  late final pulumi.Output<String> targetType;
 
   /// Version of the target. For example, version of the SSM document
-  late final Output<String?> targetVersion;
+  late final pulumi.Output<String?> targetVersion;
 
   RemediationConfiguration(
     String name, {
     RemediationConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cfg/remediationConfiguration:RemediationConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.automatic = registerOutput<bool?>('automatic');

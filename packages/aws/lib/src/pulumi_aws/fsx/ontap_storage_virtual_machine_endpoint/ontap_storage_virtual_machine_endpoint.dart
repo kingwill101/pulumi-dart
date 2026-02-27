@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../ontap_storage_virtual_machine_endpoint_iscsi/ontap_storage_virtual_machine_endpoint_iscsi.dart';
 import '../ontap_storage_virtual_machine_endpoint_management/ontap_storage_virtual_machine_endpoint_management.dart';
 import '../ontap_storage_virtual_machine_endpoint_nf/ontap_storage_virtual_machine_endpoint_nf.dart';
@@ -30,23 +30,25 @@ class OntapStorageVirtualMachineEndpoint {
     final map = <String, dynamic>{};
     final iscsisValue = iscsis;
     if (iscsisValue != null) {
-      map['iscsis'] = Input.encodeList<OntapStorageVirtualMachineEndpointIscsi,
+      map['iscsis'] = pulumi.Input.encodeList<
+          OntapStorageVirtualMachineEndpointIscsi,
           Map<String, dynamic>>(iscsisValue, (value) => value.toMap());
     }
     final managementsValue = managements;
     if (managementsValue != null) {
-      map['managements'] = Input.encodeList<
+      map['managements'] = pulumi.Input.encodeList<
           OntapStorageVirtualMachineEndpointManagement,
           Map<String, dynamic>>(managementsValue, (value) => value.toMap());
     }
     final nfsValue = nfs;
     if (nfsValue != null) {
-      map['nfs'] = Input.encodeList<OntapStorageVirtualMachineEndpointNf,
+      map['nfs'] = pulumi.Input.encodeList<OntapStorageVirtualMachineEndpointNf,
           Map<String, dynamic>>(nfsValue, (value) => value.toMap());
     }
     final smbsValue = smbs;
     if (smbsValue != null) {
-      map['smbs'] = Input.encodeList<OntapStorageVirtualMachineEndpointSmb,
+      map['smbs'] = pulumi.Input.encodeList<
+          OntapStorageVirtualMachineEndpointSmb,
           Map<String, dynamic>>(smbsValue, (value) => value.toMap());
     }
     return map;
@@ -56,25 +58,26 @@ class OntapStorageVirtualMachineEndpoint {
     return OntapStorageVirtualMachineEndpoint(
       iscsis: map['iscsis'] == null
           ? null
-          : Input.decodeList<OntapStorageVirtualMachineEndpointIscsi>(
+          : pulumi.Input.decodeList<OntapStorageVirtualMachineEndpointIscsi>(
               map['iscsis'],
               (value) => OntapStorageVirtualMachineEndpointIscsi.fromMap(
                   (value as Map).cast<String, dynamic>())),
       managements: map['managements'] == null
           ? null
-          : Input.decodeList<OntapStorageVirtualMachineEndpointManagement>(
+          : pulumi.Input.decodeList<
+                  OntapStorageVirtualMachineEndpointManagement>(
               map['managements'],
               (value) => OntapStorageVirtualMachineEndpointManagement.fromMap(
                   (value as Map).cast<String, dynamic>())),
       nfs: map['nfs'] == null
           ? null
-          : Input.decodeList<OntapStorageVirtualMachineEndpointNf>(
+          : pulumi.Input.decodeList<OntapStorageVirtualMachineEndpointNf>(
               map['nfs'],
               (value) => OntapStorageVirtualMachineEndpointNf.fromMap(
                   (value as Map).cast<String, dynamic>())),
       smbs: map['smbs'] == null
           ? null
-          : Input.decodeList<OntapStorageVirtualMachineEndpointSmb>(
+          : pulumi.Input.decodeList<OntapStorageVirtualMachineEndpointSmb>(
               map['smbs'],
               (value) => OntapStorageVirtualMachineEndpointSmb.fromMap(
                   (value as Map).cast<String, dynamic>())),

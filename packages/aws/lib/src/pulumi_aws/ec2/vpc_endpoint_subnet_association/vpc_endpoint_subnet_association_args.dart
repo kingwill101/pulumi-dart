@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VpcEndpointSubnetAssociation.
 class VpcEndpointSubnetAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of the subnet to be associated with the VPC endpoint.
-  final Input<String> subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// The ID of the VPC endpoint with which the subnet will be associated.
-  final Input<String> vpcEndpointId;
+  final pulumi.Input<String> vpcEndpointId;
 
   VpcEndpointSubnetAssociationArgs({
     this.region,
@@ -32,9 +32,9 @@ class VpcEndpointSubnetAssociationArgs {
 
   factory VpcEndpointSubnetAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointSubnetAssociationArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      subnetId: Input.asInput<String>(map['subnetId']),
-      vpcEndpointId: Input.asInput<String>(map['vpcEndpointId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      subnetId: pulumi.Input.asInput<String>(map['subnetId']),
+      vpcEndpointId: pulumi.Input.asInput<String>(map['vpcEndpointId']),
     );
   }
 }

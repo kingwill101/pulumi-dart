@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../distribution_default_cache_behavior_forwarded_values/distribution_default_cache_behavior_forwarded_values.dart';
 import '../distribution_default_cache_behavior_function_association/distribution_default_cache_behavior_function_association.dart';
 import '../distribution_default_cache_behavior_grpc_config/distribution_default_cache_behavior_grpc_config.dart';
@@ -118,7 +118,7 @@ class DistributionDefaultCacheBehavior {
     }
     final functionAssociationsValue = functionAssociations;
     if (functionAssociationsValue != null) {
-      map['functionAssociations'] = Input.encodeList<
+      map['functionAssociations'] = pulumi.Input.encodeList<
               DistributionDefaultCacheBehaviorFunctionAssociation,
               Map<String, dynamic>>(
           functionAssociationsValue, (value) => value.toMap());
@@ -129,7 +129,7 @@ class DistributionDefaultCacheBehavior {
     }
     final lambdaFunctionAssociationsValue = lambdaFunctionAssociations;
     if (lambdaFunctionAssociationsValue != null) {
-      map['lambdaFunctionAssociations'] = Input.encodeList<
+      map['lambdaFunctionAssociations'] = pulumi.Input.encodeList<
               DistributionDefaultCacheBehaviorLambdaFunctionAssociation,
               Map<String, dynamic>>(
           lambdaFunctionAssociationsValue, (value) => value.toMap());
@@ -188,7 +188,7 @@ class DistributionDefaultCacheBehavior {
               (map['forwardedValues'] as Map).cast<String, dynamic>()),
       functionAssociations: map['functionAssociations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DistributionDefaultCacheBehaviorFunctionAssociation>(
               map['functionAssociations'],
               (value) =>
@@ -200,7 +200,7 @@ class DistributionDefaultCacheBehavior {
               (map['grpcConfig'] as Map).cast<String, dynamic>()),
       lambdaFunctionAssociations: map['lambdaFunctionAssociations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DistributionDefaultCacheBehaviorLambdaFunctionAssociation>(
               map['lambdaFunctionAssociations'],
               (value) =>

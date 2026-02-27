@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AccessKey.
 class AccessKeyArgs {
   /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`, for use in the `encrypted_secret` output attribute. If providing a base-64 encoded PGP public key, make sure to provide the "raw" version and not the "armored" one (e.g. avoid passing the `-a` option to `gpg --export`).
-  final Input<String>? pgpKey;
+  final pulumi.Input<String>? pgpKey;
 
   /// Access key status to apply. Defaults to `Active`. Valid values are `Active` and `Inactive`.
-  final Input<String>? status;
+  final pulumi.Input<String>? status;
 
   /// IAM user to associate with this access key.
-  final Input<String> user;
+  final pulumi.Input<String> user;
 
   AccessKeyArgs({
     this.pgpKey,
@@ -35,9 +35,9 @@ class AccessKeyArgs {
 
   factory AccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return AccessKeyArgs(
-      pgpKey: Input.asOptionalInput<String>(map['pgpKey']),
-      status: Input.asOptionalInput<String>(map['status']),
-      user: Input.asInput<String>(map['user']),
+      pgpKey: pulumi.Input.asOptionalInput<String>(map['pgpKey']),
+      status: pulumi.Input.asOptionalInput<String>(map['status']),
+      user: pulumi.Input.asInput<String>(map['user']),
     );
   }
 }

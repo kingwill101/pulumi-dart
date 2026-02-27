@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAddon.
 class GetAddonArgs {
   /// Name of the EKS add-on. The name must match one of
   /// the names returned by [list-addon](https://docs.aws.amazon.com/cli/latest/reference/eks/list-addons.html).
-  final Input<String> addonName;
+  final pulumi.Input<String> addonName;
 
   /// Name of the EKS Cluster.
-  final Input<String> clusterName;
+  final pulumi.Input<String> clusterName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetAddonArgs({
     required this.addonName,
@@ -39,10 +39,10 @@ class GetAddonArgs {
 
   factory GetAddonArgs.fromMap(Map<String, dynamic> map) {
     return GetAddonArgs(
-      addonName: Input.asInput<String>(map['addonName']),
-      clusterName: Input.asInput<String>(map['clusterName']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      addonName: pulumi.Input.asInput<String>(map['addonName']),
+      clusterName: pulumi.Input.asInput<String>(map['clusterName']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

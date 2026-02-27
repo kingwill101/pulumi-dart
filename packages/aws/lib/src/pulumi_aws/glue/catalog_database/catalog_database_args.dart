@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../catalog_database_create_table_default_permission/catalog_database_create_table_default_permission.dart';
 import '../catalog_database_federated_database/catalog_database_federated_database.dart';
 import '../catalog_database_target_database/catalog_database_target_database.dart';
@@ -8,35 +8,35 @@ import '../catalog_database_target_database/catalog_database_target_database.dar
 /// The set of arguments for CatalogDatabase.
 class CatalogDatabaseArgs {
   /// ID of the Glue Catalog to create the database in. If omitted, this defaults to the AWS Account ID.
-  final Input<String>? catalogId;
+  final pulumi.Input<String>? catalogId;
 
   /// Creates a set of default permissions on the table for principals. See `create_table_default_permission` below.
-  final Input<List<CatalogDatabaseCreateTableDefaultPermission>>?
+  final pulumi.Input<List<CatalogDatabaseCreateTableDefaultPermission>>?
       createTableDefaultPermissions;
 
   /// Description of the database.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Configuration block that references an entity outside the AWS Glue Data Catalog. See `federated_database` below.
-  final Input<CatalogDatabaseFederatedDatabase>? federatedDatabase;
+  final pulumi.Input<CatalogDatabaseFederatedDatabase>? federatedDatabase;
 
   /// Location of the database (for example, an HDFS path).
-  final Input<String>? locationUri;
+  final pulumi.Input<String>? locationUri;
 
   /// Name of the database. The acceptable characters are lowercase letters, numbers, and the underscore character.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// List of key-value pairs that define parameters and properties of the database.
-  final Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>>? parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// Configuration block for a target database for resource linking. See `target_database` below.
-  final Input<CatalogDatabaseTargetDatabase>? targetDatabase;
+  final pulumi.Input<CatalogDatabaseTargetDatabase>? targetDatabase;
 
   CatalogDatabaseArgs({
     this.catalogId,
@@ -59,11 +59,11 @@ class CatalogDatabaseArgs {
     }
     final createTableDefaultPermissionsValue = createTableDefaultPermissions;
     if (createTableDefaultPermissionsValue != null) {
-      map['createTableDefaultPermissions'] = Input.mapOptionalInputValue<
+      map['createTableDefaultPermissions'] = pulumi.Input.mapOptionalInputValue<
               List<CatalogDatabaseCreateTableDefaultPermission>,
               List<Map<String, dynamic>>>(
           createTableDefaultPermissionsValue,
-          (value) => Input.encodeList<
+          (value) => pulumi.Input.encodeList<
               CatalogDatabaseCreateTableDefaultPermission,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
@@ -73,7 +73,7 @@ class CatalogDatabaseArgs {
     }
     final federatedDatabaseValue = federatedDatabase;
     if (federatedDatabaseValue != null) {
-      map['federatedDatabase'] = Input.mapOptionalInputValue<
+      map['federatedDatabase'] = pulumi.Input.mapOptionalInputValue<
               CatalogDatabaseFederatedDatabase, Map<String, dynamic>>(
           federatedDatabaseValue, (value) => value.toMap());
     }
@@ -99,7 +99,7 @@ class CatalogDatabaseArgs {
     }
     final targetDatabaseValue = targetDatabase;
     if (targetDatabaseValue != null) {
-      map['targetDatabase'] = Input.mapOptionalInputValue<
+      map['targetDatabase'] = pulumi.Input.mapOptionalInputValue<
           CatalogDatabaseTargetDatabase,
           Map<String, dynamic>>(targetDatabaseValue, (value) => value.toMap());
     }
@@ -108,21 +108,23 @@ class CatalogDatabaseArgs {
 
   factory CatalogDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return CatalogDatabaseArgs(
-      catalogId: Input.asOptionalInput<String>(map['catalogId']),
-      createTableDefaultPermissions: Input.asOptionalInput<
+      catalogId: pulumi.Input.asOptionalInput<String>(map['catalogId']),
+      createTableDefaultPermissions: pulumi.Input.asOptionalInput<
               List<CatalogDatabaseCreateTableDefaultPermission>>(
           map['createTableDefaultPermissions']),
-      description: Input.asOptionalInput<String>(map['description']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       federatedDatabase:
-          Input.asOptionalInput<CatalogDatabaseFederatedDatabase>(
+          pulumi.Input.asOptionalInput<CatalogDatabaseFederatedDatabase>(
               map['federatedDatabase']),
-      locationUri: Input.asOptionalInput<String>(map['locationUri']),
-      name: Input.asOptionalInput<String>(map['name']),
-      parameters: Input.asOptionalInput<Map<String, String>>(map['parameters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      targetDatabase: Input.asOptionalInput<CatalogDatabaseTargetDatabase>(
-          map['targetDatabase']),
+      locationUri: pulumi.Input.asOptionalInput<String>(map['locationUri']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      parameters:
+          pulumi.Input.asOptionalInput<Map<String, String>>(map['parameters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      targetDatabase:
+          pulumi.Input.asOptionalInput<CatalogDatabaseTargetDatabase>(
+              map['targetDatabase']),
     );
   }
 }

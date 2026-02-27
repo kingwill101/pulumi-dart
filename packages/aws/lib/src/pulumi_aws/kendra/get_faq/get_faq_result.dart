@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_faq_s3_path/get_faq_s3_path.dart';
 
 /// Result data returned by getFaq.
@@ -80,8 +80,9 @@ class GetFaqResult {
     map['name'] = name;
     map['region'] = region;
     map['roleArn'] = roleArn;
-    map['s3Paths'] = Input.encodeList<GetFaqS3Path, Map<String, dynamic>>(
-        s3Paths, (value) => value.toMap());
+    map['s3Paths'] =
+        pulumi.Input.encodeList<GetFaqS3Path, Map<String, dynamic>>(
+            s3Paths, (value) => value.toMap());
     map['status'] = status;
     map['tags'] = tags;
     map['updatedAt'] = updatedAt;
@@ -102,7 +103,7 @@ class GetFaqResult {
       name: map['name'] as String,
       region: map['region'] as String,
       roleArn: map['roleArn'] as String,
-      s3Paths: Input.decodeList<GetFaqS3Path>(
+      s3Paths: pulumi.Input.decodeList<GetFaqS3Path>(
           map['s3Paths'],
           (value) =>
               GetFaqS3Path.fromMap((value as Map).cast<String, dynamic>())),

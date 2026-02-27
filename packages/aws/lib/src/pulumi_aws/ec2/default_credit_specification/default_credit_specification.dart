@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../default_credit_specification_timeouts/default_credit_specification_timeouts.dart';
 import 'default_credit_specification_args.dart';
 
@@ -18,26 +18,26 @@ import 'default_credit_specification_args.dart';
 /// % pulumi import aws_ec2_default_credit_specification.example t2
 ///
 /// ```
-class DefaultCreditSpecification extends CustomResource {
+class DefaultCreditSpecification extends pulumi.CustomResource {
   /// Credit option for CPU usage of the instance family. Valid values: `standard`, `unlimited`.
-  late final Output<String> cpuCredits;
+  late final pulumi.Output<String> cpuCredits;
 
   /// Instance family. Valid values are `t2`, `t3`, `t3a`, `t4g`.
-  late final Output<String> instanceFamily;
+  late final pulumi.Output<String> instanceFamily;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<DefaultCreditSpecificationTimeouts?> timeouts;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<DefaultCreditSpecificationTimeouts?> timeouts;
 
   DefaultCreditSpecification(
     String name, {
     DefaultCreditSpecificationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/defaultCreditSpecification:DefaultCreditSpecification',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.cpuCredits = registerOutput<String>('cpuCredits');
     this.instanceFamily = registerOutput<String>('instanceFamily');

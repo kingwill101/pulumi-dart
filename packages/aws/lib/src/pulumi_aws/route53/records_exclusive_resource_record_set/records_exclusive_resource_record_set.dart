@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../records_exclusive_resource_record_set_alias_target/records_exclusive_resource_record_set_alias_target.dart';
 import '../records_exclusive_resource_record_set_cidr_routing_config/records_exclusive_resource_record_set_cidr_routing_config.dart';
 import '../records_exclusive_resource_record_set_geolocation/records_exclusive_resource_record_set_geolocation.dart';
@@ -122,7 +122,7 @@ class RecordsExclusiveResourceRecordSet {
     }
     final resourceRecordsValue = resourceRecords;
     if (resourceRecordsValue != null) {
-      map['resourceRecords'] = Input.encodeList<
+      map['resourceRecords'] = pulumi.Input.encodeList<
           RecordsExclusiveResourceRecordSetResourceRecord,
           Map<String, dynamic>>(resourceRecordsValue, (value) => value.toMap());
     }
@@ -177,7 +177,8 @@ class RecordsExclusiveResourceRecordSet {
       region: map['region'] == null ? null : map['region'] as String,
       resourceRecords: map['resourceRecords'] == null
           ? null
-          : Input.decodeList<RecordsExclusiveResourceRecordSetResourceRecord>(
+          : pulumi.Input.decodeList<
+                  RecordsExclusiveResourceRecordSetResourceRecord>(
               map['resourceRecords'],
               (value) =>
                   RecordsExclusiveResourceRecordSetResourceRecord.fromMap(

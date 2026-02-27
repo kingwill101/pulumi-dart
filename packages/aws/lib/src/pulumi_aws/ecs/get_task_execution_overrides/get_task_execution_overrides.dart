@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_task_execution_overrides_container_override/get_task_execution_overrides_container_override.dart';
 
 class GetTaskExecutionOverrides {
@@ -31,7 +31,7 @@ class GetTaskExecutionOverrides {
     final map = <String, dynamic>{};
     final containerOverridesValue = containerOverrides;
     if (containerOverridesValue != null) {
-      map['containerOverrides'] = Input.encodeList<
+      map['containerOverrides'] = pulumi.Input.encodeList<
               GetTaskExecutionOverridesContainerOverride, Map<String, dynamic>>(
           containerOverridesValue, (value) => value.toMap());
     }
@@ -58,7 +58,7 @@ class GetTaskExecutionOverrides {
     return GetTaskExecutionOverrides(
       containerOverrides: map['containerOverrides'] == null
           ? null
-          : Input.decodeList<GetTaskExecutionOverridesContainerOverride>(
+          : pulumi.Input.decodeList<GetTaskExecutionOverridesContainerOverride>(
               map['containerOverrides'],
               (value) => GetTaskExecutionOverridesContainerOverride.fromMap(
                   (value as Map).cast<String, dynamic>())),

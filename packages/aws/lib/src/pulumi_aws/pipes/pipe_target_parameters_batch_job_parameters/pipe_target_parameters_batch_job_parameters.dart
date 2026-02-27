@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../pipe_target_parameters_batch_job_parameters_array_properties/pipe_target_parameters_batch_job_parameters_array_properties.dart';
 import '../pipe_target_parameters_batch_job_parameters_container_overrides/pipe_target_parameters_batch_job_parameters_container_overrides.dart';
 import '../pipe_target_parameters_batch_job_parameters_depends_on/pipe_target_parameters_batch_job_parameters_depends_on.dart';
@@ -51,7 +51,7 @@ class PipeTargetParametersBatchJobParameters {
     }
     final dependsOnsValue = dependsOns;
     if (dependsOnsValue != null) {
-      map['dependsOns'] = Input.encodeList<
+      map['dependsOns'] = pulumi.Input.encodeList<
           PipeTargetParametersBatchJobParametersDependsOn,
           Map<String, dynamic>>(dependsOnsValue, (value) => value.toMap());
     }
@@ -81,7 +81,8 @@ class PipeTargetParametersBatchJobParameters {
               (map['containerOverrides'] as Map).cast<String, dynamic>()),
       dependsOns: map['dependsOns'] == null
           ? null
-          : Input.decodeList<PipeTargetParametersBatchJobParametersDependsOn>(
+          : pulumi.Input.decodeList<
+                  PipeTargetParametersBatchJobParametersDependsOn>(
               map['dependsOns'],
               (value) =>
                   PipeTargetParametersBatchJobParametersDependsOn.fromMap(

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../scheduled_query_recently_failed_run_query_insights_response_query_temporal_range_maxis/scheduled_query_recently_failed_run_query_insights_response_query_temporal_range_maxis.dart';
 
 class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRange {
@@ -17,7 +17,7 @@ class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRange {
     final map = <String, dynamic>{};
     final maxesValue = maxes;
     if (maxesValue != null) {
-      map['maxes'] = Input.encodeList<
+      map['maxes'] = pulumi.Input.encodeList<
           ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxis,
           Map<String, dynamic>>(maxesValue, (value) => value.toMap());
     }
@@ -29,7 +29,7 @@ class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRange {
     return ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRange(
       maxes: map['maxes'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxis>(
               map['maxes'],
               (value) =>

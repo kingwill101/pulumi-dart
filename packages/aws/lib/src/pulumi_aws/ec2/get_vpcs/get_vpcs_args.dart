@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_vpcs_filter/get_vpcs_filter.dart';
 
 /// Arguments for getVpcs.
 class GetVpcsArgs {
   /// Custom filter block as described below.
-  final Input<List<GetVpcsFilter>>? filters;
+  final pulumi.Input<List<GetVpcsFilter>>? filters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired vpcs.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetVpcsArgs({
     this.filters,
@@ -25,11 +25,12 @@ class GetVpcsArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetVpcsFilter>,
+      map['filters'] = pulumi.Input.mapOptionalInputValue<List<GetVpcsFilter>,
               List<Map<String, dynamic>>>(
           filtersValue,
-          (value) => Input.encodeList<GetVpcsFilter, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<GetVpcsFilter, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final regionValue = region;
     if (regionValue != null) {
@@ -44,9 +45,10 @@ class GetVpcsArgs {
 
   factory GetVpcsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcsArgs(
-      filters: Input.asOptionalInput<List<GetVpcsFilter>>(map['filters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      filters:
+          pulumi.Input.asOptionalInput<List<GetVpcsFilter>>(map['filters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

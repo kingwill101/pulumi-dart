@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../revision_assets_asset_create_s3_data_access_from_s3_bucket_asset_source_kms_keys_to_grant/revision_assets_asset_create_s3_data_access_from_s3_bucket_asset_source_kms_keys_to_grant.dart';
 
 class RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource {
@@ -36,7 +36,7 @@ class RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource {
     }
     final kmsKeysToGrantsValue = kmsKeysToGrants;
     if (kmsKeysToGrantsValue != null) {
-      map['kmsKeysToGrants'] = Input.encodeList<
+      map['kmsKeysToGrants'] = pulumi.Input.encodeList<
           RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant,
           Map<String, dynamic>>(kmsKeysToGrantsValue, (value) => value.toMap());
     }
@@ -53,7 +53,7 @@ class RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource {
       keys: map['keys'] == null ? null : (map['keys'] as List).cast<String>(),
       kmsKeysToGrants: map['kmsKeysToGrants'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant>(
               map['kmsKeysToGrants'],
               (value) =>

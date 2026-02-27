@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_slot_value_elicitation_setting_default_value_specification/v2models_slot_value_elicitation_setting_default_value_specification.dart';
 import '../v2models_slot_value_elicitation_setting_prompt_specification/v2models_slot_value_elicitation_setting_prompt_specification.dart';
 import '../v2models_slot_value_elicitation_setting_sample_utterance/v2models_slot_value_elicitation_setting_sample_utterance.dart';
@@ -46,7 +46,7 @@ class V2modelsSlotValueElicitationSetting {
     final map = <String, dynamic>{};
     final defaultValueSpecificationsValue = defaultValueSpecifications;
     if (defaultValueSpecificationsValue != null) {
-      map['defaultValueSpecifications'] = Input.encodeList<
+      map['defaultValueSpecifications'] = pulumi.Input.encodeList<
               V2modelsSlotValueElicitationSettingDefaultValueSpecification,
               Map<String, dynamic>>(
           defaultValueSpecificationsValue, (value) => value.toMap());
@@ -57,7 +57,7 @@ class V2modelsSlotValueElicitationSetting {
     }
     final sampleUtterancesValue = sampleUtterances;
     if (sampleUtterancesValue != null) {
-      map['sampleUtterances'] = Input.encodeList<
+      map['sampleUtterances'] = pulumi.Input.encodeList<
               V2modelsSlotValueElicitationSettingSampleUtterance,
               Map<String, dynamic>>(
           sampleUtterancesValue, (value) => value.toMap());
@@ -65,14 +65,14 @@ class V2modelsSlotValueElicitationSetting {
     map['slotConstraint'] = slotConstraint;
     final slotResolutionSettingsValue = slotResolutionSettings;
     if (slotResolutionSettingsValue != null) {
-      map['slotResolutionSettings'] = Input.encodeList<
+      map['slotResolutionSettings'] = pulumi.Input.encodeList<
               V2modelsSlotValueElicitationSettingSlotResolutionSetting,
               Map<String, dynamic>>(
           slotResolutionSettingsValue, (value) => value.toMap());
     }
     final waitAndContinueSpecificationsValue = waitAndContinueSpecifications;
     if (waitAndContinueSpecificationsValue != null) {
-      map['waitAndContinueSpecifications'] = Input.encodeList<
+      map['waitAndContinueSpecifications'] = pulumi.Input.encodeList<
               V2modelsSlotValueElicitationSettingWaitAndContinueSpecification,
               Map<String, dynamic>>(
           waitAndContinueSpecificationsValue, (value) => value.toMap());
@@ -85,7 +85,7 @@ class V2modelsSlotValueElicitationSetting {
     return V2modelsSlotValueElicitationSetting(
       defaultValueSpecifications: map['defaultValueSpecifications'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotValueElicitationSettingDefaultValueSpecification>(
               map['defaultValueSpecifications'],
               (value) =>
@@ -97,7 +97,7 @@ class V2modelsSlotValueElicitationSetting {
               (map['promptSpecification'] as Map).cast<String, dynamic>()),
       sampleUtterances: map['sampleUtterances'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotValueElicitationSettingSampleUtterance>(
               map['sampleUtterances'],
               (value) =>
@@ -106,7 +106,7 @@ class V2modelsSlotValueElicitationSetting {
       slotConstraint: map['slotConstraint'] as String,
       slotResolutionSettings: map['slotResolutionSettings'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotValueElicitationSettingSlotResolutionSetting>(
               map['slotResolutionSettings'],
               (value) =>
@@ -115,7 +115,7 @@ class V2modelsSlotValueElicitationSetting {
       waitAndContinueSpecifications: map['waitAndContinueSpecifications'] ==
               null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsSlotValueElicitationSettingWaitAndContinueSpecification>(
               map['waitAndContinueSpecifications'],
               (value) =>

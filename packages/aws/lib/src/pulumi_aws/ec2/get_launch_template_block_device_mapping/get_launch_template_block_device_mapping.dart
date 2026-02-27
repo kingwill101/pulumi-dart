@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_launch_template_block_device_mapping_eb/get_launch_template_block_device_mapping_eb.dart';
 
 class GetLaunchTemplateBlockDeviceMapping {
@@ -19,7 +19,7 @@ class GetLaunchTemplateBlockDeviceMapping {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['deviceName'] = deviceName;
-    map['ebs'] = Input.encodeList<GetLaunchTemplateBlockDeviceMappingEb,
+    map['ebs'] = pulumi.Input.encodeList<GetLaunchTemplateBlockDeviceMappingEb,
         Map<String, dynamic>>(ebs, (value) => value.toMap());
     map['noDevice'] = noDevice;
     map['virtualName'] = virtualName;
@@ -30,7 +30,7 @@ class GetLaunchTemplateBlockDeviceMapping {
       Map<String, dynamic> map) {
     return GetLaunchTemplateBlockDeviceMapping(
       deviceName: map['deviceName'] as String,
-      ebs: Input.decodeList<GetLaunchTemplateBlockDeviceMappingEb>(
+      ebs: pulumi.Input.decodeList<GetLaunchTemplateBlockDeviceMappingEb>(
           map['ebs'],
           (value) => GetLaunchTemplateBlockDeviceMappingEb.fromMap(
               (value as Map).cast<String, dynamic>())),

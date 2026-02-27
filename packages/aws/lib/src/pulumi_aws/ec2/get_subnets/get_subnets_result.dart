@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_subnets_filter/get_subnets_filter.dart';
 
 /// Result data returned by getSubnets.
@@ -27,8 +27,9 @@ class GetSubnetsResult {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetSubnetsFilter, Map<String, dynamic>>(
-          filtersValue, (value) => value.toMap());
+      map['filters'] =
+          pulumi.Input.encodeList<GetSubnetsFilter, Map<String, dynamic>>(
+              filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['ids'] = ids;
@@ -41,7 +42,7 @@ class GetSubnetsResult {
     return GetSubnetsResult(
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetSubnetsFilter>(
+          : pulumi.Input.decodeList<GetSubnetsFilter>(
               map['filters'],
               (value) => GetSubnetsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

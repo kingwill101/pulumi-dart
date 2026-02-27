@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_resolver_rules_args.dart';
 import 'get_resolver_rules_result.dart';
 
@@ -19,13 +19,13 @@ import 'get_resolver_rules_result.dart';
 /// Resolver rules whose name contains `abc`.
 Future<GetResolverRulesResult> getResolverRules(
   GetResolverRulesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:route53/getResolverRules:getResolverRules',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResolverRulesResult.fromMap(result);
 }

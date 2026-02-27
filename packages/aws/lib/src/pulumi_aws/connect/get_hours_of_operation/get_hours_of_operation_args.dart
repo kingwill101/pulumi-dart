@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getHoursOfOperation.
 class GetHoursOfOperationArgs {
   /// Returns information on a specific Hours of Operation by hours of operation id
-  final Input<String>? hoursOfOperationId;
+  final pulumi.Input<String>? hoursOfOperationId;
 
   /// Reference to the hosting Amazon Connect Instance
-  final Input<String> instanceId;
+  final pulumi.Input<String> instanceId;
 
   /// Returns information on a specific Hours of Operation by name
   ///
   /// > **NOTE:** `instance_id` and one of either `name` or `hours_of_operation_id` is required.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags to assign to the Hours of Operation.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetHoursOfOperationArgs({
     this.hoursOfOperationId,
@@ -54,11 +54,11 @@ class GetHoursOfOperationArgs {
   factory GetHoursOfOperationArgs.fromMap(Map<String, dynamic> map) {
     return GetHoursOfOperationArgs(
       hoursOfOperationId:
-          Input.asOptionalInput<String>(map['hoursOfOperationId']),
-      instanceId: Input.asInput<String>(map['instanceId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<String>(map['hoursOfOperationId']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

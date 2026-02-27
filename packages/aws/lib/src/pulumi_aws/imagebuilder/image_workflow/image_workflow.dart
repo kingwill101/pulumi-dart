@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../image_workflow_parameter/image_workflow_parameter.dart';
 
 class ImageWorkflow {
@@ -38,7 +38,7 @@ class ImageWorkflow {
     final parametersValue = parameters;
     if (parametersValue != null) {
       map['parameters'] =
-          Input.encodeList<ImageWorkflowParameter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ImageWorkflowParameter, Map<String, dynamic>>(
               parametersValue, (value) => value.toMap());
     }
     map['workflowArn'] = workflowArn;
@@ -52,7 +52,7 @@ class ImageWorkflow {
           map['parallelGroup'] == null ? null : map['parallelGroup'] as String,
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<ImageWorkflowParameter>(
+          : pulumi.Input.decodeList<ImageWorkflowParameter>(
               map['parameters'],
               (value) => ImageWorkflowParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

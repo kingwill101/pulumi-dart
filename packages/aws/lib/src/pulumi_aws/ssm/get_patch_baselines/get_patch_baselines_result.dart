@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_patch_baselines_baseline_identity/get_patch_baselines_baseline_identity.dart';
 import '../get_patch_baselines_filter/get_patch_baselines_filter.dart';
 
@@ -25,7 +25,7 @@ class GetPatchBaselinesResult {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['baselineIdentities'] = Input.encodeList<
+    map['baselineIdentities'] = pulumi.Input.encodeList<
         GetPatchBaselinesBaselineIdentity,
         Map<String, dynamic>>(baselineIdentities, (value) => value.toMap());
     final defaultBaselinesValue = defaultBaselines;
@@ -34,9 +34,8 @@ class GetPatchBaselinesResult {
     }
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetPatchBaselinesFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetPatchBaselinesFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['region'] = region;
@@ -45,16 +44,17 @@ class GetPatchBaselinesResult {
 
   factory GetPatchBaselinesResult.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselinesResult(
-      baselineIdentities: Input.decodeList<GetPatchBaselinesBaselineIdentity>(
-          map['baselineIdentities'],
-          (value) => GetPatchBaselinesBaselineIdentity.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      baselineIdentities:
+          pulumi.Input.decodeList<GetPatchBaselinesBaselineIdentity>(
+              map['baselineIdentities'],
+              (value) => GetPatchBaselinesBaselineIdentity.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       defaultBaselines: map['defaultBaselines'] == null
           ? null
           : map['defaultBaselines'] as bool,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetPatchBaselinesFilter>(
+          : pulumi.Input.decodeList<GetPatchBaselinesFilter>(
               map['filters'],
               (value) => GetPatchBaselinesFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

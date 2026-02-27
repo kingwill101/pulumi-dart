@@ -1,21 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_public_ipv4_pools_filter/get_public_ipv4_pools_filter.dart';
 
 /// Arguments for getPublicIpv4Pools.
 class GetPublicIpv4PoolsArgs {
   /// Custom filter block as described below.
-  final Input<List<GetPublicIpv4PoolsFilter>>? filters;
+  final pulumi.Input<List<GetPublicIpv4PoolsFilter>>? filters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags, each pair of which must exactly match a pair on the desired pools.
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetPublicIpv4PoolsArgs({
     this.filters,
@@ -27,12 +27,11 @@ class GetPublicIpv4PoolsArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
               List<GetPublicIpv4PoolsFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetPublicIpv4PoolsFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetPublicIpv4PoolsFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final regionValue = region;
     if (regionValue != null) {
@@ -47,10 +46,10 @@ class GetPublicIpv4PoolsArgs {
 
   factory GetPublicIpv4PoolsArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicIpv4PoolsArgs(
-      filters:
-          Input.asOptionalInput<List<GetPublicIpv4PoolsFilter>>(map['filters']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      filters: pulumi.Input.asOptionalInput<List<GetPublicIpv4PoolsFilter>>(
+          map['filters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

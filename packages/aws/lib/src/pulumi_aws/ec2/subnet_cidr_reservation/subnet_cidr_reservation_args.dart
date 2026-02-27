@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SubnetCidrReservation.
 class SubnetCidrReservationArgs {
   /// The CIDR block for the reservation.
-  final Input<String> cidrBlock;
+  final pulumi.Input<String> cidrBlock;
 
   /// A brief description of the reservation.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The type of reservation to create. Valid values: `explicit`, `prefix`
-  final Input<String> reservationType;
+  final pulumi.Input<String> reservationType;
 
   /// The ID of the subnet to create the reservation for.
-  final Input<String> subnetId;
+  final pulumi.Input<String> subnetId;
 
   SubnetCidrReservationArgs({
     required this.cidrBlock,
@@ -45,11 +45,11 @@ class SubnetCidrReservationArgs {
 
   factory SubnetCidrReservationArgs.fromMap(Map<String, dynamic> map) {
     return SubnetCidrReservationArgs(
-      cidrBlock: Input.asInput<String>(map['cidrBlock']),
-      description: Input.asOptionalInput<String>(map['description']),
-      region: Input.asOptionalInput<String>(map['region']),
-      reservationType: Input.asInput<String>(map['reservationType']),
-      subnetId: Input.asInput<String>(map['subnetId']),
+      cidrBlock: pulumi.Input.asInput<String>(map['cidrBlock']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      reservationType: pulumi.Input.asInput<String>(map['reservationType']),
+      subnetId: pulumi.Input.asInput<String>(map['subnetId']),
     );
   }
 }

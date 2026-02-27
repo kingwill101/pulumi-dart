@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getAccessKeys.
 class GetAccessKeysArgs {
   /// Name of the IAM user associated with the access keys.
-  final Input<String> user;
+  final pulumi.Input<String> user;
 
   GetAccessKeysArgs({
     required this.user,
@@ -19,7 +19,7 @@ class GetAccessKeysArgs {
 
   factory GetAccessKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessKeysArgs(
-      user: Input.asInput<String>(map['user']),
+      user: pulumi.Input.asInput<String>(map['user']),
     );
   }
 }

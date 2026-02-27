@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_data_source_data_source_configuration/agent_data_source_data_source_configuration.dart';
 import '../agent_data_source_server_side_encryption_configuration/agent_data_source_server_side_encryption_configuration.dart';
 import '../agent_data_source_timeouts/agent_data_source_timeouts.dart';
@@ -29,49 +29,49 @@ import 'agent_data_source_args.dart';
 /// [2]: https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_SalesforceDataSourceConfiguration.html
 /// [3]: https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_SharePointDataSourceConfiguration.html
 /// [4]: https://docs.aws.amazon.com/bedrock/latest/APIReference/API_agent_WebDataSourceConfiguration.html
-class AgentDataSource extends CustomResource {
+class AgentDataSource extends pulumi.CustomResource {
   /// Data deletion policy for a data source. Valid values: `RETAIN`, `DELETE`.
-  late final Output<String> dataDeletionPolicy;
+  late final pulumi.Output<String> dataDeletionPolicy;
 
   /// Details about how the data source is stored. See `data_source_configuration` block for details.
-  late final Output<AgentDataSourceDataSourceConfiguration>
+  late final pulumi.Output<AgentDataSourceDataSourceConfiguration>
       dataSourceConfiguration;
 
   /// Unique identifier of the data source.
-  late final Output<String> dataSourceId;
+  late final pulumi.Output<String> dataSourceId;
 
   /// Description of the data source.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Unique identifier of the knowledge base to which the data source belongs.
-  late final Output<String> knowledgeBaseId;
+  late final pulumi.Output<String> knowledgeBaseId;
 
   /// Name of the data source.
   ///
   /// The following arguments are optional:
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Details about the configuration of the server-side encryption. See `server_side_encryption_configuration` block for details.
-  late final Output<AgentDataSourceServerSideEncryptionConfiguration?>
+  late final pulumi.Output<AgentDataSourceServerSideEncryptionConfiguration?>
       serverSideEncryptionConfiguration;
-  late final Output<AgentDataSourceTimeouts?> timeouts;
+  late final pulumi.Output<AgentDataSourceTimeouts?> timeouts;
 
   /// Details about the configuration of the server-side encryption. See `vector_ingestion_configuration` block for details.
-  late final Output<AgentDataSourceVectorIngestionConfiguration?>
+  late final pulumi.Output<AgentDataSourceVectorIngestionConfiguration?>
       vectorIngestionConfiguration;
 
   AgentDataSource(
     String name, {
     AgentDataSourceArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrock/agentDataSource:AgentDataSource',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.dataDeletionPolicy = registerOutput<String>('dataDeletionPolicy');
     this.dataSourceConfiguration =

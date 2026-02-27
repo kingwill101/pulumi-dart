@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SnapshotScheduleAssociation.
 class SnapshotScheduleAssociationArgs {
   /// The cluster identifier.
-  final Input<String> clusterIdentifier;
+  final pulumi.Input<String> clusterIdentifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The snapshot schedule identifier.
-  final Input<String> scheduleIdentifier;
+  final pulumi.Input<String> scheduleIdentifier;
 
   SnapshotScheduleAssociationArgs({
     required this.clusterIdentifier,
@@ -32,9 +32,10 @@ class SnapshotScheduleAssociationArgs {
 
   factory SnapshotScheduleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotScheduleAssociationArgs(
-      clusterIdentifier: Input.asInput<String>(map['clusterIdentifier']),
-      region: Input.asOptionalInput<String>(map['region']),
-      scheduleIdentifier: Input.asInput<String>(map['scheduleIdentifier']),
+      clusterIdentifier: pulumi.Input.asInput<String>(map['clusterIdentifier']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      scheduleIdentifier:
+          pulumi.Input.asInput<String>(map['scheduleIdentifier']),
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_saml_provider_args.dart';
 import 'get_saml_provider_result.dart';
 
@@ -7,13 +7,13 @@ import 'get_saml_provider_result.dart';
 /// document of an existing SAML provider.
 Future<GetSamlProviderResult> getSamlProvider(
   GetSamlProviderArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:iam/getSamlProvider:getSamlProvider',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSamlProviderResult.fromMap(result);
 }

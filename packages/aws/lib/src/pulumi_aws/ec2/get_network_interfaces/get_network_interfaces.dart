@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_network_interfaces_args.dart';
 import 'get_network_interfaces_result.dart';
 
@@ -16,13 +16,13 @@ import 'get_network_interfaces_result.dart';
 /// with specific subnet.
 Future<GetNetworkInterfacesResult> getNetworkInterfaces(
   GetNetworkInterfacesArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getNetworkInterfaces:getNetworkInterfaces',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkInterfacesResult.fromMap(result);
 }

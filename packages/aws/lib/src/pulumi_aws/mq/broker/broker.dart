@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../broker_configuration/broker_configuration.dart';
 import '../broker_encryption_options/broker_encryption_options.dart';
 import '../broker_instance/broker_instance.dart';
@@ -41,97 +41,97 @@ import 'broker_args.dart';
 /// ```sh
 /// $ pulumi import aws:mq/broker:Broker example a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
 /// ```
-class Broker extends CustomResource {
+class Broker extends pulumi.CustomResource {
   /// Whether to apply broker modifications immediately. Default is `false`.
-  late final Output<bool?> applyImmediately;
+  late final pulumi.Output<bool?> applyImmediately;
 
   /// ARN of the broker.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Authentication strategy used to secure the broker. Valid values are `simple` and `ldap`. `ldap` is not supported for `engine_type` `RabbitMQ`.
-  late final Output<String> authenticationStrategy;
+  late final pulumi.Output<String> authenticationStrategy;
 
   /// Whether to automatically upgrade to new minor versions of brokers as Amazon MQ makes releases available.
-  late final Output<bool?> autoMinorVersionUpgrade;
+  late final pulumi.Output<bool?> autoMinorVersionUpgrade;
 
   /// Name of the broker.
-  late final Output<String> brokerName;
+  late final pulumi.Output<String> brokerName;
 
   /// Configuration block for broker configuration. Applies to `engine_type` of `ActiveMQ` and `RabbitMQ` only. Detailed below.
-  late final Output<BrokerConfiguration> configuration;
+  late final pulumi.Output<BrokerConfiguration> configuration;
 
   /// Whether this broker is part of a data replication pair. Valid values are `CRDR` and `NONE`.
-  late final Output<String> dataReplicationMode;
+  late final pulumi.Output<String> dataReplicationMode;
 
   /// ARN of the primary broker used to replicate data in a data replication pair. Required when `data_replication_mode` is `CRDR`.
-  late final Output<String?> dataReplicationPrimaryBrokerArn;
+  late final pulumi.Output<String?> dataReplicationPrimaryBrokerArn;
 
   /// Deployment mode of the broker. Valid values are `SINGLE_INSTANCE`, `ACTIVE_STANDBY_MULTI_AZ`, and `CLUSTER_MULTI_AZ`. Default is `SINGLE_INSTANCE`.
-  late final Output<String?> deploymentMode;
+  late final pulumi.Output<String?> deploymentMode;
 
   /// Configuration block containing encryption options. Detailed below.
-  late final Output<BrokerEncryptionOptions?> encryptionOptions;
+  late final pulumi.Output<BrokerEncryptionOptions?> encryptionOptions;
 
   /// Type of broker engine. Valid values are `ActiveMQ` and `RabbitMQ`.
-  late final Output<String> engineType;
+  late final pulumi.Output<String> engineType;
 
   /// Version of the broker engine.
-  late final Output<String> engineVersion;
+  late final pulumi.Output<String> engineVersion;
 
   /// Broker's instance type. For example, `mq.t3.micro`, `mq.m5.large`.
-  late final Output<String> hostInstanceType;
+  late final pulumi.Output<String> hostInstanceType;
 
   /// List of information about allocated brokers (both active & standby).
-  late final Output<List<BrokerInstance>> instances;
+  late final pulumi.Output<List<BrokerInstance>> instances;
 
   /// Configuration block for the LDAP server used to authenticate and authorize connections. Not supported for `engine_type` `RabbitMQ`. Detailed below.
-  late final Output<BrokerLdapServerMetadata?> ldapServerMetadata;
+  late final pulumi.Output<BrokerLdapServerMetadata?> ldapServerMetadata;
 
   /// Configuration block for the logging configuration. Detailed below.
-  late final Output<BrokerLogs?> logs;
+  late final pulumi.Output<BrokerLogs?> logs;
 
   /// Configuration block for the maintenance window start time. Detailed below.
-  late final Output<BrokerMaintenanceWindowStartTime>
+  late final pulumi.Output<BrokerMaintenanceWindowStartTime>
       maintenanceWindowStartTime;
 
   /// Data replication mode that will be applied after reboot.
-  late final Output<String> pendingDataReplicationMode;
+  late final pulumi.Output<String> pendingDataReplicationMode;
 
   /// Whether to enable connections from applications outside of the VPC that hosts the broker's subnets.
-  late final Output<bool?> publiclyAccessible;
+  late final pulumi.Output<bool?> publiclyAccessible;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// List of security group IDs assigned to the broker.
-  late final Output<List<String>?> securityGroups;
+  late final pulumi.Output<List<String>?> securityGroups;
 
   /// Storage type of the broker. For `engine_type` `ActiveMQ`, valid values are `efs` and `ebs` (AWS-default is `efs`). For `engine_type` `RabbitMQ`, only `ebs` is supported. When using `ebs`, only the `mq.m5` broker instance type family is supported.
-  late final Output<String> storageType;
+  late final pulumi.Output<String> storageType;
 
   /// List of subnet IDs in which to launch the broker. A `SINGLE_INSTANCE` deployment requires one subnet. An `ACTIVE_STANDBY_MULTI_AZ` deployment requires multiple subnets.
-  late final Output<List<String>> subnetIds;
+  late final pulumi.Output<List<String>> subnetIds;
 
   /// Map of tags to assign to the broker. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Configuration block for broker users. For `engine_type` of `RabbitMQ`, Amazon MQ does not return broker users preventing this resource from making user updates and drift detection. Detailed below.
   ///
   /// The following arguments are optional:
-  late final Output<List<BrokerUser>> users;
+  late final pulumi.Output<List<BrokerUser>> users;
 
   Broker(
     String name, {
     BrokerArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:mq/broker:Broker',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.applyImmediately = registerOutput<bool?>('applyImmediately');
     this.arn = registerOutput<String>('arn');

@@ -1,23 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getEngineVersion.
 class GetEngineVersionArgs {
   /// DB engine. (Default: `docdb`)
-  final Input<String>? engine;
+  final pulumi.Input<String>? engine;
 
   /// Name of a specific DB parameter group family. An example parameter group family is `docdb3.6`.
-  final Input<String>? parameterGroupFamily;
+  final pulumi.Input<String>? parameterGroupFamily;
 
   /// Ordered list of preferred engine versions. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned. If both the `version` and `preferred_versions` arguments are not configured, the data source will return the default version for the engine.
-  final Input<List<String>>? preferredVersions;
+  final pulumi.Input<List<String>>? preferredVersions;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Version of the DB engine. For example, `3.6.0`. If `version` and `preferred_versions` are not set, the data source will provide information for the AWS-defined default version. If both the `version` and `preferred_versions` arguments are not configured, the data source will return the default version for the engine.
-  final Input<String>? version;
+  final pulumi.Input<String>? version;
 
   GetEngineVersionArgs({
     this.engine,
@@ -54,13 +54,13 @@ class GetEngineVersionArgs {
 
   factory GetEngineVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetEngineVersionArgs(
-      engine: Input.asOptionalInput<String>(map['engine']),
+      engine: pulumi.Input.asOptionalInput<String>(map['engine']),
       parameterGroupFamily:
-          Input.asOptionalInput<String>(map['parameterGroupFamily']),
+          pulumi.Input.asOptionalInput<String>(map['parameterGroupFamily']),
       preferredVersions:
-          Input.asOptionalInput<List<String>>(map['preferredVersions']),
-      region: Input.asOptionalInput<String>(map['region']),
-      version: Input.asOptionalInput<String>(map['version']),
+          pulumi.Input.asOptionalInput<List<String>>(map['preferredVersions']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      version: pulumi.Input.asOptionalInput<String>(map['version']),
     );
   }
 }

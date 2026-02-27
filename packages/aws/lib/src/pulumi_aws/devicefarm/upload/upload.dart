@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'upload_args.dart';
 
 /// Provides a resource to manage AWS Device Farm Uploads.
@@ -23,43 +23,43 @@ import 'upload_args.dart';
 /// ```sh
 /// $ pulumi import aws:devicefarm/upload:Upload example arn:aws:devicefarm:us-west-2:123456789012:upload:4fa784c7-ccb4-4dbf-ba4f-02198320daa1
 /// ```
-class Upload extends CustomResource {
+class Upload extends pulumi.CustomResource {
   /// The Amazon Resource Name of this upload.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The upload's category.
-  late final Output<String> category;
+  late final pulumi.Output<String> category;
 
   /// The upload's content type (for example, application/octet-stream).
-  late final Output<String?> contentType;
+  late final pulumi.Output<String?> contentType;
 
   /// The upload's metadata. For example, for Android, this contains information that is parsed from the manifest and is displayed in the AWS Device Farm console after the associated app is uploaded.
-  late final Output<String> metadata;
+  late final pulumi.Output<String> metadata;
 
   /// The upload's file name. The name should not contain any forward slashes (/). If you are uploading an iOS app, the file name must end with the .ipa extension. If you are uploading an Android app, the file name must end with the .apk extension. For all others, the file name must end with the .zip file extension.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The ARN of the project for the upload.
-  late final Output<String> projectArn;
+  late final pulumi.Output<String> projectArn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The upload's upload type. See [AWS Docs](https://docs.aws.amazon.com/devicefarm/latest/APIReference/API_CreateUpload.html#API_CreateUpload_RequestSyntax) for valid list of values.
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   /// The presigned Amazon S3 URL that was used to store a file using a PUT request.
-  late final Output<String> url;
+  late final pulumi.Output<String> url;
 
   Upload(
     String name, {
     UploadArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:devicefarm/upload:Upload',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.category = registerOutput<String>('category');

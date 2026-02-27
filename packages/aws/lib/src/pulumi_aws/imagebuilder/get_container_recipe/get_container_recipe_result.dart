@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_container_recipe_component/get_container_recipe_component.dart';
 import '../get_container_recipe_instance_configuration/get_container_recipe_instance_configuration.dart';
 import '../get_container_recipe_target_repository/get_container_recipe_target_repository.dart';
@@ -86,16 +86,15 @@ class GetContainerRecipeResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['arn'] = arn;
-    map['components'] =
-        Input.encodeList<GetContainerRecipeComponent, Map<String, dynamic>>(
-            components, (value) => value.toMap());
+    map['components'] = pulumi.Input.encodeList<GetContainerRecipeComponent,
+        Map<String, dynamic>>(components, (value) => value.toMap());
     map['containerType'] = containerType;
     map['dateCreated'] = dateCreated;
     map['description'] = description;
     map['dockerfileTemplateData'] = dockerfileTemplateData;
     map['encrypted'] = encrypted;
     map['id'] = id;
-    map['instanceConfigurations'] = Input.encodeList<
+    map['instanceConfigurations'] = pulumi.Input.encodeList<
         GetContainerRecipeInstanceConfiguration,
         Map<String, dynamic>>(instanceConfigurations, (value) => value.toMap());
     map['kmsKeyId'] = kmsKeyId;
@@ -105,7 +104,7 @@ class GetContainerRecipeResult {
     map['platform'] = platform;
     map['region'] = region;
     map['tags'] = tags;
-    map['targetRepositories'] = Input.encodeList<
+    map['targetRepositories'] = pulumi.Input.encodeList<
         GetContainerRecipeTargetRepository,
         Map<String, dynamic>>(targetRepositories, (value) => value.toMap());
     map['version'] = version;
@@ -116,7 +115,7 @@ class GetContainerRecipeResult {
   factory GetContainerRecipeResult.fromMap(Map<String, dynamic> map) {
     return GetContainerRecipeResult(
       arn: map['arn'] as String,
-      components: Input.decodeList<GetContainerRecipeComponent>(
+      components: pulumi.Input.decodeList<GetContainerRecipeComponent>(
           map['components'],
           (value) => GetContainerRecipeComponent.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -127,7 +126,7 @@ class GetContainerRecipeResult {
       encrypted: map['encrypted'] as bool,
       id: map['id'] as String,
       instanceConfigurations:
-          Input.decodeList<GetContainerRecipeInstanceConfiguration>(
+          pulumi.Input.decodeList<GetContainerRecipeInstanceConfiguration>(
               map['instanceConfigurations'],
               (value) => GetContainerRecipeInstanceConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -138,10 +137,11 @@ class GetContainerRecipeResult {
       platform: map['platform'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      targetRepositories: Input.decodeList<GetContainerRecipeTargetRepository>(
-          map['targetRepositories'],
-          (value) => GetContainerRecipeTargetRepository.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      targetRepositories:
+          pulumi.Input.decodeList<GetContainerRecipeTargetRepository>(
+              map['targetRepositories'],
+              (value) => GetContainerRecipeTargetRepository.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       version: map['version'] as String,
       workingDirectory: map['workingDirectory'] as String,
     );

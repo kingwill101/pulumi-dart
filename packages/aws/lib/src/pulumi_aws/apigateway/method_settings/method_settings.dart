@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../method_settings_settings/method_settings_settings.dart';
 import 'method_settings_args.dart';
 
@@ -34,31 +34,31 @@ import 'method_settings_args.dart';
 /// ```sh
 /// $ pulumi import aws:apigateway/methodSettings:MethodSettings example 12345abcde/example/test/GET
 /// ```
-class MethodSettings extends CustomResource {
+class MethodSettings extends pulumi.CustomResource {
   /// Method path defined as `{resource_path}/{http_method}` for an individual method override, or `*/*` for overriding all methods in the stage. Ensure to trim any leading forward slashes in the path (e.g., `trimprefix(aws_api_gateway_resource.example.path, "/")`).
-  late final Output<String> methodPath;
+  late final pulumi.Output<String> methodPath;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ID of the REST API
-  late final Output<String> restApi;
+  late final pulumi.Output<String> restApi;
 
   /// Settings block, see below.
-  late final Output<MethodSettingsSettings> settings;
+  late final pulumi.Output<MethodSettingsSettings> settings;
 
   /// Name of the stage
-  late final Output<String> stageName;
+  late final pulumi.Output<String> stageName;
 
   MethodSettings(
     String name, {
     MethodSettingsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:apigateway/methodSettings:MethodSettings',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.methodPath = registerOutput<String>('methodPath');
     this.region = registerOutput<String>('region');

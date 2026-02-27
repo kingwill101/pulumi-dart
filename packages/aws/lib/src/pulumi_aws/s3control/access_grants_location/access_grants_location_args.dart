@@ -1,24 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for AccessGrantsLocation.
 class AccessGrantsLocationArgs {
   /// The AWS account ID for the S3 Access Grants location. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? accountId;
+  final pulumi.Input<String>? accountId;
 
   /// The ARN of the IAM role that S3 Access Grants should use when fulfilling runtime access
   /// requests to the location.
-  final Input<String> iamRoleArn;
+  final pulumi.Input<String> iamRoleArn;
 
   /// The default S3 URI `s3://` or the URI to a custom location, a specific bucket or prefix.
-  final Input<String> locationScope;
+  final pulumi.Input<String> locationScope;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   AccessGrantsLocationArgs({
     this.accountId,
@@ -49,11 +49,11 @@ class AccessGrantsLocationArgs {
 
   factory AccessGrantsLocationArgs.fromMap(Map<String, dynamic> map) {
     return AccessGrantsLocationArgs(
-      accountId: Input.asOptionalInput<String>(map['accountId']),
-      iamRoleArn: Input.asInput<String>(map['iamRoleArn']),
-      locationScope: Input.asInput<String>(map['locationScope']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      accountId: pulumi.Input.asOptionalInput<String>(map['accountId']),
+      iamRoleArn: pulumi.Input.asInput<String>(map['iamRoleArn']),
+      locationScope: pulumi.Input.asInput<String>(map['locationScope']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

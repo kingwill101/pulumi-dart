@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'domain_entry_args.dart';
 
 /// Manages a Lightsail domain entry (DNS record). Use this resource to define how DNS queries for your domain are handled.
@@ -16,36 +16,36 @@ import 'domain_entry_args.dart';
 /// ```sh
 /// $ pulumi import aws:lightsail/domainEntry:DomainEntry example www,example.com,A,127.0.0.1
 /// ```
-class DomainEntry extends CustomResource {
+class DomainEntry extends pulumi.CustomResource {
   /// Name of the Lightsail domain in which to create the entry.
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// Whether the entry should be an alias. Default: `false`.
-  late final Output<bool?> isAlias;
+  late final pulumi.Output<bool?> isAlias;
 
   /// Name of the entry record.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Target of the domain entry.
-  late final Output<String> target;
+  late final pulumi.Output<String> target;
 
   /// Type of record. Valid values: `A`, `AAAA`, `CNAME`, `MX`, `NS`, `SOA`, `SRV`, `TXT`.
   ///
   /// The following arguments are optional:
-  late final Output<String> type;
+  late final pulumi.Output<String> type;
 
   DomainEntry(
     String name, {
     DomainEntryArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lightsail/domainEntry:DomainEntry',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.domainName = registerOutput<String>('domainName');
     this.isAlias = registerOutput<bool?>('isAlias');

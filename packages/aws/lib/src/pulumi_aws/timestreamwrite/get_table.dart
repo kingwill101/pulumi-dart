@@ -1,5 +1,5 @@
 library module_timestreamwrite_get_table;
 
-export 'get_table/get_table2.dart';
-export 'get_table/get_table_args2.dart';
-export 'get_table/get_table_result2.dart';
+export 'get_table/get_table_timestreamwrite.dart';
+export 'get_table/get_table_timestreamwrite_args.dart';
+export 'get_table/get_table_timestreamwrite_result.dart';

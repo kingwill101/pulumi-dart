@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../collaboration_data_encryption_metadata/collaboration_data_encryption_metadata.dart';
 import '../collaboration_member/collaboration_member.dart';
 import 'collaboration_args.dart';
@@ -29,59 +29,59 @@ import 'collaboration_args.dart';
 /// ```sh
 /// $ pulumi import aws:cleanrooms/collaboration:Collaboration collaboration 1234abcd-12ab-34cd-56ef-1234567890ab
 /// ```
-class Collaboration extends CustomResource {
+class Collaboration extends pulumi.CustomResource {
   /// Analytics engine used by the collaboration. Valid values are `CLEAN_ROOMS_SQL` (deprecated) and `SPARK`.
-  late final Output<String?> analyticsEngine;
+  late final pulumi.Output<String?> analyticsEngine;
 
   /// ARN of the collaboration.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Date and time the collaboration was created.
-  late final Output<String> createTime;
+  late final pulumi.Output<String> createTime;
 
   /// Name for the member record for the collaboration creator.
-  late final Output<String> creatorDisplayName;
+  late final pulumi.Output<String> creatorDisplayName;
 
   /// List of member abilities for the creator of the collaboration. Valid values [may be found here](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateCollaboration.html#API-CreateCollaboration-request-creatorMemberAbilities).
-  late final Output<List<String>> creatorMemberAbilities;
+  late final pulumi.Output<List<String>> creatorMemberAbilities;
 
   /// Collection of settings which determine how the [c3r client](https://docs.aws.amazon.com/clean-rooms/latest/userguide/crypto-computing.html) will encrypt data for use within this collaboration. See below.
-  late final Output<CollaborationDataEncryptionMetadata?>
+  late final pulumi.Output<CollaborationDataEncryptionMetadata?>
       dataEncryptionMetadata;
 
   /// Description for a collaboration.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Additional members of the collaboration which will be invited to join the collaboration. See below.
-  late final Output<List<CollaborationMember>?> members;
+  late final pulumi.Output<List<CollaborationMember>?> members;
 
   /// Name of the collaboration.  Collaboration names do not need to be unique.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Whether members of the collaboration can enable query logs within their own memberships. Valid values [may be found here](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateCollaboration.html#API-CreateCollaboration-request-queryLogStatus).
   ///
   /// The following arguments are optional:
-  late final Output<String> queryLogStatus;
+  late final pulumi.Output<String> queryLogStatus;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Key value pairs which tag the collaboration.
-  late final Output<Map<String, String>?> tags;
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Date and time the collaboration was last updated.
-  late final Output<String> updateTime;
+  late final pulumi.Output<String> updateTime;
 
   Collaboration(
     String name, {
     CollaborationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cleanrooms/collaboration:Collaboration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.analyticsEngine = registerOutput<String?>('analyticsEngine');
     this.arn = registerOutput<String>('arn');

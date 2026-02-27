@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_experience_configuration_content_source_configuration/get_experience_configuration_content_source_configuration.dart';
 import '../get_experience_configuration_user_identity_configuration/get_experience_configuration_user_identity_configuration.dart';
 
@@ -20,11 +20,11 @@ class GetExperienceConfiguration {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['contentSourceConfigurations'] = Input.encodeList<
+    map['contentSourceConfigurations'] = pulumi.Input.encodeList<
             GetExperienceConfigurationContentSourceConfiguration,
             Map<String, dynamic>>(
         contentSourceConfigurations, (value) => value.toMap());
-    map['userIdentityConfigurations'] = Input.encodeList<
+    map['userIdentityConfigurations'] = pulumi.Input.encodeList<
             GetExperienceConfigurationUserIdentityConfiguration,
             Map<String, dynamic>>(
         userIdentityConfigurations, (value) => value.toMap());
@@ -33,18 +33,18 @@ class GetExperienceConfiguration {
 
   factory GetExperienceConfiguration.fromMap(Map<String, dynamic> map) {
     return GetExperienceConfiguration(
-      contentSourceConfigurations: Input.decodeList<
+      contentSourceConfigurations: pulumi.Input.decodeList<
               GetExperienceConfigurationContentSourceConfiguration>(
           map['contentSourceConfigurations'],
           (value) =>
               GetExperienceConfigurationContentSourceConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      userIdentityConfigurations:
-          Input.decodeList<GetExperienceConfigurationUserIdentityConfiguration>(
-              map['userIdentityConfigurations'],
-              (value) =>
-                  GetExperienceConfigurationUserIdentityConfiguration.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      userIdentityConfigurations: pulumi.Input.decodeList<
+              GetExperienceConfigurationUserIdentityConfiguration>(
+          map['userIdentityConfigurations'],
+          (value) =>
+              GetExperienceConfigurationUserIdentityConfiguration.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

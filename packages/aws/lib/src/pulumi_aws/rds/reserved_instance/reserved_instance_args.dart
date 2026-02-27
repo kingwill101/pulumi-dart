@@ -1,25 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for ReservedInstance.
 class ReservedInstanceArgs {
   /// Number of instances to reserve. Default value is `1`.
-  final Input<int>? instanceCount;
+  final pulumi.Input<int>? instanceCount;
 
   /// ID of the Reserved DB instance offering to purchase. To determine an `offering_id`, see the `aws.rds.getReservedInstanceOffering` data source.
   ///
   /// The following arguments are optional:
-  final Input<String> offeringId;
+  final pulumi.Input<String> offeringId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Customer-specified identifier to track this reservation.
-  final Input<String>? reservationId;
+  final pulumi.Input<String>? reservationId;
 
   /// Map of tags to assign to the DB reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   ReservedInstanceArgs({
     this.instanceCount,
@@ -53,11 +53,11 @@ class ReservedInstanceArgs {
 
   factory ReservedInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ReservedInstanceArgs(
-      instanceCount: Input.asOptionalInput<int>(map['instanceCount']),
-      offeringId: Input.asInput<String>(map['offeringId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      reservationId: Input.asOptionalInput<String>(map['reservationId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      instanceCount: pulumi.Input.asOptionalInput<int>(map['instanceCount']),
+      offeringId: pulumi.Input.asInput<String>(map['offeringId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      reservationId: pulumi.Input.asOptionalInput<String>(map['reservationId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

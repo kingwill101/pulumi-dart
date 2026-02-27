@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../code_signing_config_allowed_publishers/code_signing_config_allowed_publishers.dart';
 import '../code_signing_config_policies/code_signing_config_policies.dart';
 import 'code_signing_config_args.dart';
@@ -28,45 +28,46 @@ import 'code_signing_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:lambda/codeSigningConfig:CodeSigningConfig example arn:aws:lambda:us-west-2:123456789012:code-signing-config:csc-0f6c334abcdea4d8b
 /// ```
-class CodeSigningConfig extends CustomResource {
+class CodeSigningConfig extends pulumi.CustomResource {
   /// Configuration block of allowed publishers as signing profiles for this code signing configuration. See below.
   ///
   /// The following arguments are optional:
-  late final Output<CodeSigningConfigAllowedPublishers> allowedPublishers;
+  late final pulumi.Output<CodeSigningConfigAllowedPublishers>
+      allowedPublishers;
 
   /// ARN of the code signing configuration.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Unique identifier for the code signing configuration.
-  late final Output<String> configId;
+  late final pulumi.Output<String> configId;
 
   /// Descriptive name for this code signing configuration.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// Date and time that the code signing configuration was last modified.
-  late final Output<String> lastModified;
+  late final pulumi.Output<String> lastModified;
 
   /// Configuration block of code signing policies that define the actions to take if the validation checks fail. See below.
-  late final Output<CodeSigningConfigPolicies> policies;
+  late final pulumi.Output<CodeSigningConfigPolicies> policies;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   CodeSigningConfig(
     String name, {
     CodeSigningConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lambda/codeSigningConfig:CodeSigningConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.allowedPublishers =
         registerOutput<CodeSigningConfigAllowedPublishers>('allowedPublishers');

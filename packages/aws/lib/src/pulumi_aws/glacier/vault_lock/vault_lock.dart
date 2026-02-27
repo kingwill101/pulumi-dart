@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vault_lock_args.dart';
 
 /// Manages a Glacier Vault Lock. You can refer to the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html) for a full explanation of the Glacier Vault Lock functionality.
@@ -26,31 +26,31 @@ import 'vault_lock_args.dart';
 /// ```sh
 /// $ pulumi import aws:glacier/vaultLock:VaultLock example example-vault
 /// ```
-class VaultLock extends CustomResource {
+class VaultLock extends pulumi.CustomResource {
   /// Boolean whether to permanently apply this Glacier Lock Policy. Once completed, this cannot be undone. If set to `false`, the Glacier Lock Policy remains in a testing mode for 24 hours. After that time, the Glacier Lock Policy is automatically removed by Glacier and the this provider resource will show as needing recreation. Changing this from `false` to `true` will show as resource recreation, which is expected. Changing this from `true` to `false` is not possible unless the Glacier Vault is recreated at the same time.
-  late final Output<bool> completeLock;
+  late final pulumi.Output<bool> completeLock;
 
   /// Allow this provider to ignore the error returned when attempting to delete the Glacier Lock Policy. This can be used to delete or recreate the Glacier Vault via this provider, for example, if the Glacier Vault Lock policy permits that action. This should only be used in conjunction with `complete_lock` being set to `true`.
-  late final Output<bool?> ignoreDeletionError;
+  late final pulumi.Output<bool?> ignoreDeletionError;
 
   /// JSON string containing the IAM policy to apply as the Glacier Vault Lock policy.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The name of the Glacier Vault.
-  late final Output<String> vaultName;
+  late final pulumi.Output<String> vaultName;
 
   VaultLock(
     String name, {
     VaultLockArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:glacier/vaultLock:VaultLock',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.completeLock = registerOutput<bool>('completeLock');
     this.ignoreDeletionError = registerOutput<bool?>('ignoreDeletionError');

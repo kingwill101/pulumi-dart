@@ -1,6 +1,6 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_principal_policy_simulation_args.dart';
-import 'get_principal_policy_simulation_result2.dart';
+import 'get_principal_policy_simulation_iam_result.dart';
 
 /// Runs a simulation of the IAM policies of a particular principal against a given hypothetical request.
 ///
@@ -28,15 +28,15 @@ import 'get_principal_policy_simulation_result2.dart';
 ///
 ///
 /// When using `aws.iam.getPrincipalPolicySimulation` to test the effect of a policy declared elsewhere in the same configuration, it's important to use `depends_on` to make sure that the needed policy has been fully created or updated before running the simulation.
-Future<GetPrincipalPolicySimulationResult2> getPrincipalPolicySimulation(
+Future<GetPrincipalPolicySimulationIamResult> getPrincipalPolicySimulation(
   GetPrincipalPolicySimulationArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:iam/getPrincipalPolicySimulation:getPrincipalPolicySimulation',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetPrincipalPolicySimulationResult2.fromMap(result);
+  return GetPrincipalPolicySimulationIamResult.fromMap(result);
 }

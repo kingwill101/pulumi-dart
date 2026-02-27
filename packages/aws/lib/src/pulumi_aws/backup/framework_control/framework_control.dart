@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../framework_control_input_parameter/framework_control_input_parameter.dart';
 import '../framework_control_scope/framework_control_scope.dart';
 
@@ -24,7 +24,8 @@ class FrameworkControl {
     final map = <String, dynamic>{};
     final inputParametersValue = inputParameters;
     if (inputParametersValue != null) {
-      map['inputParameters'] = Input.encodeList<FrameworkControlInputParameter,
+      map['inputParameters'] = pulumi.Input.encodeList<
+          FrameworkControlInputParameter,
           Map<String, dynamic>>(inputParametersValue, (value) => value.toMap());
     }
     map['name'] = name;
@@ -39,7 +40,7 @@ class FrameworkControl {
     return FrameworkControl(
       inputParameters: map['inputParameters'] == null
           ? null
-          : Input.decodeList<FrameworkControlInputParameter>(
+          : pulumi.Input.decodeList<FrameworkControlInputParameter>(
               map['inputParameters'],
               (value) => FrameworkControlInputParameter.fromMap(
                   (value as Map).cast<String, dynamic>())),

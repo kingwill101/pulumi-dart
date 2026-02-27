@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_byte_match_statement_field_to_match/web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_byte_match_statement_field_to_match.dart';
 import '../web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_byte_match_statement_text_transformation/web_acl_rule_statement_managed_rule_group_statement_scope_down_statement_byte_match_statement_text_transformation.dart';
 
@@ -35,7 +35,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchSta
     }
     map['positionalConstraint'] = positionalConstraint;
     map['searchString'] = searchString;
-    map['textTransformations'] = Input.encodeList<
+    map['textTransformations'] = pulumi.Input.encodeList<
         WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementTextTransformation,
         Map<String, dynamic>>(textTransformations, (value) => value.toMap());
     return map;
@@ -50,7 +50,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchSta
               .fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>()),
       positionalConstraint: map['positionalConstraint'] as String,
       searchString: map['searchString'] as String,
-      textTransformations: Input.decodeList<
+      textTransformations: pulumi.Input.decodeList<
               WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementByteMatchStatementTextTransformation>(
           map['textTransformations'],
           (value) =>

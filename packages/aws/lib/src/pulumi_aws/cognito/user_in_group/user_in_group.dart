@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_in_group_args.dart';
 
 /// Adds the specified user to the specified group.
@@ -14,28 +14,28 @@ import 'user_in_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:cognito/userInGroup:UserInGroup example us-east-1_vG78M4goG,example-group,example-user
 /// ```
-class UserInGroup extends CustomResource {
+class UserInGroup extends pulumi.CustomResource {
   /// The name of the group to which the user is to be added.
-  late final Output<String> groupName;
+  late final pulumi.Output<String> groupName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The user pool ID of the user and group.
-  late final Output<String> userPoolId;
+  late final pulumi.Output<String> userPoolId;
 
   /// The username of the user to be added to the group.
-  late final Output<String> username;
+  late final pulumi.Output<String> username;
 
   UserInGroup(
     String name, {
     UserInGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cognito/userInGroup:UserInGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.groupName = registerOutput<String>('groupName');
     this.region = registerOutput<String>('region');

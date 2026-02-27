@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_share_accepter_args.dart';
 
 /// Manage accepting a Resource Access Manager (RAM) Resource Share invitation. From a _receiver_ AWS account, accept an invitation to share resources that were shared by a _sender_ AWS account. To create a resource share in the _sender_, see the `aws.ram.ResourceShare` resource.
@@ -18,43 +18,43 @@ import 'resource_share_accepter_args.dart';
 /// ```sh
 /// $ pulumi import aws:ram/resourceShareAccepter:ResourceShareAccepter example arn:aws:ram:us-east-1:123456789012:resource-share/c4b56393-e8d9-89d9-6dc9-883752de4767
 /// ```
-class ResourceShareAccepter extends CustomResource {
+class ResourceShareAccepter extends pulumi.CustomResource {
   /// The ARN of the resource share invitation.
-  late final Output<String> invitationArn;
+  late final pulumi.Output<String> invitationArn;
 
   /// The account ID of the receiver account which accepts the invitation.
-  late final Output<String> receiverAccountId;
+  late final pulumi.Output<String> receiverAccountId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// A list of the resource ARNs shared via the resource share.
-  late final Output<List<String>> resources;
+  late final pulumi.Output<List<String>> resources;
 
   /// The account ID of the sender account which submits the invitation.
-  late final Output<String> senderAccountId;
+  late final pulumi.Output<String> senderAccountId;
 
   /// The ARN of the resource share.
-  late final Output<String> shareArn;
+  late final pulumi.Output<String> shareArn;
 
   /// The ID of the resource share as displayed in the console.
-  late final Output<String> shareId;
+  late final pulumi.Output<String> shareId;
 
   /// The name of the resource share.
-  late final Output<String> shareName;
+  late final pulumi.Output<String> shareName;
 
   /// The status of the resource share (ACTIVE, PENDING, FAILED, DELETING, DELETED).
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   ResourceShareAccepter(
     String name, {
     ResourceShareAccepterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ram/resourceShareAccepter:ResourceShareAccepter',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.invitationArn = registerOutput<String>('invitationArn');
     this.receiverAccountId = registerOutput<String>('receiverAccountId');

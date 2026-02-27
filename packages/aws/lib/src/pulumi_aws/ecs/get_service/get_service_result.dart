@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_capacity_provider_strategy/get_service_capacity_provider_strategy.dart';
 import '../get_service_deployment/get_service_deployment.dart';
 import '../get_service_deployment_configuration/get_service_deployment_configuration.dart';
@@ -152,43 +152,44 @@ class GetServiceResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['availabilityZoneRebalancing'] = availabilityZoneRebalancing;
-    map['capacityProviderStrategies'] = Input.encodeList<
+    map['capacityProviderStrategies'] = pulumi.Input.encodeList<
             GetServiceCapacityProviderStrategy, Map<String, dynamic>>(
         capacityProviderStrategies, (value) => value.toMap());
     map['clusterArn'] = clusterArn;
     map['createdAt'] = createdAt;
     map['createdBy'] = createdBy;
-    map['deploymentConfigurations'] = Input.encodeList<
+    map['deploymentConfigurations'] = pulumi.Input.encodeList<
             GetServiceDeploymentConfiguration, Map<String, dynamic>>(
         deploymentConfigurations, (value) => value.toMap());
-    map['deploymentControllers'] =
-        Input.encodeList<GetServiceDeploymentController, Map<String, dynamic>>(
-            deploymentControllers, (value) => value.toMap());
+    map['deploymentControllers'] = pulumi.Input.encodeList<
+        GetServiceDeploymentController,
+        Map<String, dynamic>>(deploymentControllers, (value) => value.toMap());
     map['deployments'] =
-        Input.encodeList<GetServiceDeployment, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetServiceDeployment, Map<String, dynamic>>(
             deployments, (value) => value.toMap());
     map['desiredCount'] = desiredCount;
     map['enableEcsManagedTags'] = enableEcsManagedTags;
     map['enableExecuteCommand'] = enableExecuteCommand;
-    map['events'] = Input.encodeList<GetServiceEvent, Map<String, dynamic>>(
-        events, (value) => value.toMap());
+    map['events'] =
+        pulumi.Input.encodeList<GetServiceEvent, Map<String, dynamic>>(
+            events, (value) => value.toMap());
     map['healthCheckGracePeriodSeconds'] = healthCheckGracePeriodSeconds;
     map['iamRole'] = iamRole;
     map['id'] = id;
     map['launchType'] = launchType;
     map['loadBalancers'] =
-        Input.encodeList<GetServiceLoadBalancer, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetServiceLoadBalancer, Map<String, dynamic>>(
             loadBalancers, (value) => value.toMap());
-    map['networkConfigurations'] =
-        Input.encodeList<GetServiceNetworkConfiguration, Map<String, dynamic>>(
-            networkConfigurations, (value) => value.toMap());
-    map['orderedPlacementStrategies'] = Input.encodeList<
+    map['networkConfigurations'] = pulumi.Input.encodeList<
+        GetServiceNetworkConfiguration,
+        Map<String, dynamic>>(networkConfigurations, (value) => value.toMap());
+    map['orderedPlacementStrategies'] = pulumi.Input.encodeList<
             GetServiceOrderedPlacementStrategy, Map<String, dynamic>>(
         orderedPlacementStrategies, (value) => value.toMap());
     map['pendingCount'] = pendingCount;
-    map['placementConstraints'] =
-        Input.encodeList<GetServicePlacementConstraint, Map<String, dynamic>>(
-            placementConstraints, (value) => value.toMap());
+    map['placementConstraints'] = pulumi.Input.encodeList<
+        GetServicePlacementConstraint,
+        Map<String, dynamic>>(placementConstraints, (value) => value.toMap());
     map['platformFamily'] = platformFamily;
     map['platformVersion'] = platformVersion;
     map['propagateTags'] = propagateTags;
@@ -196,14 +197,15 @@ class GetServiceResult {
     map['runningCount'] = runningCount;
     map['schedulingStrategy'] = schedulingStrategy;
     map['serviceName'] = serviceName;
-    map['serviceRegistries'] =
-        Input.encodeList<GetServiceServiceRegistry, Map<String, dynamic>>(
-            serviceRegistries, (value) => value.toMap());
+    map['serviceRegistries'] = pulumi.Input.encodeList<
+        GetServiceServiceRegistry,
+        Map<String, dynamic>>(serviceRegistries, (value) => value.toMap());
     map['status'] = status;
     map['tags'] = tags;
     map['taskDefinition'] = taskDefinition;
-    map['taskSets'] = Input.encodeList<GetServiceTaskSet, Map<String, dynamic>>(
-        taskSets, (value) => value.toMap());
+    map['taskSets'] =
+        pulumi.Input.encodeList<GetServiceTaskSet, Map<String, dynamic>>(
+            taskSets, (value) => value.toMap());
     return map;
   }
 
@@ -212,7 +214,7 @@ class GetServiceResult {
       arn: map['arn'] as String,
       availabilityZoneRebalancing: map['availabilityZoneRebalancing'] as String,
       capacityProviderStrategies:
-          Input.decodeList<GetServiceCapacityProviderStrategy>(
+          pulumi.Input.decodeList<GetServiceCapacityProviderStrategy>(
               map['capacityProviderStrategies'],
               (value) => GetServiceCapacityProviderStrategy.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -220,22 +222,23 @@ class GetServiceResult {
       createdAt: map['createdAt'] as String,
       createdBy: map['createdBy'] as String,
       deploymentConfigurations:
-          Input.decodeList<GetServiceDeploymentConfiguration>(
+          pulumi.Input.decodeList<GetServiceDeploymentConfiguration>(
               map['deploymentConfigurations'],
               (value) => GetServiceDeploymentConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
-      deploymentControllers: Input.decodeList<GetServiceDeploymentController>(
-          map['deploymentControllers'],
-          (value) => GetServiceDeploymentController.fromMap(
-              (value as Map).cast<String, dynamic>())),
-      deployments: Input.decodeList<GetServiceDeployment>(
+      deploymentControllers:
+          pulumi.Input.decodeList<GetServiceDeploymentController>(
+              map['deploymentControllers'],
+              (value) => GetServiceDeploymentController.fromMap(
+                  (value as Map).cast<String, dynamic>())),
+      deployments: pulumi.Input.decodeList<GetServiceDeployment>(
           map['deployments'],
           (value) => GetServiceDeployment.fromMap(
               (value as Map).cast<String, dynamic>())),
       desiredCount: map['desiredCount'] as int,
       enableEcsManagedTags: map['enableEcsManagedTags'] as bool,
       enableExecuteCommand: map['enableExecuteCommand'] as bool,
-      events: Input.decodeList<GetServiceEvent>(
+      events: pulumi.Input.decodeList<GetServiceEvent>(
           map['events'],
           (value) =>
               GetServiceEvent.fromMap((value as Map).cast<String, dynamic>())),
@@ -244,24 +247,26 @@ class GetServiceResult {
       iamRole: map['iamRole'] as String,
       id: map['id'] as String,
       launchType: map['launchType'] as String,
-      loadBalancers: Input.decodeList<GetServiceLoadBalancer>(
+      loadBalancers: pulumi.Input.decodeList<GetServiceLoadBalancer>(
           map['loadBalancers'],
           (value) => GetServiceLoadBalancer.fromMap(
               (value as Map).cast<String, dynamic>())),
-      networkConfigurations: Input.decodeList<GetServiceNetworkConfiguration>(
-          map['networkConfigurations'],
-          (value) => GetServiceNetworkConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      networkConfigurations:
+          pulumi.Input.decodeList<GetServiceNetworkConfiguration>(
+              map['networkConfigurations'],
+              (value) => GetServiceNetworkConfiguration.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       orderedPlacementStrategies:
-          Input.decodeList<GetServiceOrderedPlacementStrategy>(
+          pulumi.Input.decodeList<GetServiceOrderedPlacementStrategy>(
               map['orderedPlacementStrategies'],
               (value) => GetServiceOrderedPlacementStrategy.fromMap(
                   (value as Map).cast<String, dynamic>())),
       pendingCount: map['pendingCount'] as int,
-      placementConstraints: Input.decodeList<GetServicePlacementConstraint>(
-          map['placementConstraints'],
-          (value) => GetServicePlacementConstraint.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      placementConstraints:
+          pulumi.Input.decodeList<GetServicePlacementConstraint>(
+              map['placementConstraints'],
+              (value) => GetServicePlacementConstraint.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       platformFamily: map['platformFamily'] as String,
       platformVersion: map['platformVersion'] as String,
       propagateTags: map['propagateTags'] as String,
@@ -269,14 +274,14 @@ class GetServiceResult {
       runningCount: map['runningCount'] as int,
       schedulingStrategy: map['schedulingStrategy'] as String,
       serviceName: map['serviceName'] as String,
-      serviceRegistries: Input.decodeList<GetServiceServiceRegistry>(
+      serviceRegistries: pulumi.Input.decodeList<GetServiceServiceRegistry>(
           map['serviceRegistries'],
           (value) => GetServiceServiceRegistry.fromMap(
               (value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       taskDefinition: map['taskDefinition'] as String,
-      taskSets: Input.decodeList<GetServiceTaskSet>(
+      taskSets: pulumi.Input.decodeList<GetServiceTaskSet>(
           map['taskSets'],
           (value) => GetServiceTaskSet.fromMap(
               (value as Map).cast<String, dynamic>())),

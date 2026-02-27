@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../mltransform_input_record_table/mltransform_input_record_table.dart';
 import '../mltransform_parameters/mltransform_parameters.dart';
 import '../mltransform_schema/mltransform_schema.dart';
@@ -17,67 +17,67 @@ import 'mltransform_args.dart';
 /// ```sh
 /// $ pulumi import aws:glue/mLTransform:MLTransform example tfm-c2cafbe83b1c575f49eaca9939220e2fcd58e2d5
 /// ```
-class MLTransform extends CustomResource {
+class MLTransform extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of Glue ML Transform.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Description of the ML Transform.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The version of glue to use, for example "1.0". For information about available versions, see the [AWS Glue Release Notes](https://docs.aws.amazon.com/glue/latest/dg/release-notes.html).
-  late final Output<String> glueVersion;
+  late final pulumi.Output<String> glueVersion;
 
   /// A list of AWS Glue table definitions used by the transform. see Input Record Tables.
-  late final Output<List<MLTransformInputRecordTable>> inputRecordTables;
+  late final pulumi.Output<List<MLTransformInputRecordTable>> inputRecordTables;
 
   /// The number of labels available for this transform.
-  late final Output<int> labelCount;
+  late final pulumi.Output<int> labelCount;
 
   /// The number of AWS Glue data processing units (DPUs) that are allocated to task runs for this transform. You can allocate from `2` to `100` DPUs; the default is `10`. `max_capacity` is a mutually exclusive option with `number_of_workers` and `worker_type`.
-  late final Output<double> maxCapacity;
+  late final pulumi.Output<double> maxCapacity;
 
   /// The maximum number of times to retry this ML Transform if it fails.
-  late final Output<int?> maxRetries;
+  late final pulumi.Output<int?> maxRetries;
 
   /// The name you assign to this ML Transform. It must be unique in your account.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The number of workers of a defined `worker_type` that are allocated when an ML Transform runs. Required with `worker_type`.
-  late final Output<int?> numberOfWorkers;
+  late final pulumi.Output<int?> numberOfWorkers;
 
   /// The algorithmic parameters that are specific to the transform type used. Conditionally dependent on the transform type. see Parameters.
-  late final Output<MLTransformParameters> parameters;
+  late final pulumi.Output<MLTransformParameters> parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ARN of the IAM role associated with this ML Transform.
-  late final Output<String> roleArn;
+  late final pulumi.Output<String> roleArn;
 
   /// The object that represents the schema that this transform accepts. see Schema.
-  late final Output<List<MLTransformSchema>> schemas;
+  late final pulumi.Output<List<MLTransformSchema>> schemas;
 
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// The ML Transform timeout in minutes. The default is 2880 minutes (48 hours).
-  late final Output<int?> timeout;
+  late final pulumi.Output<int?> timeout;
 
   /// The type of predefined worker that is allocated when an ML Transform runs. Accepts a value of `Standard`, `G.1X`, or `G.2X`. Required with `number_of_workers`.
-  late final Output<String?> workerType;
+  late final pulumi.Output<String?> workerType;
 
   MLTransform(
     String name, {
     MLTransformArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:glue/mLTransform:MLTransform',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');

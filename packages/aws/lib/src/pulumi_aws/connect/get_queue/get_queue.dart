@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_queue_args.dart';
 import 'get_queue_result.dart';
 
@@ -13,13 +13,13 @@ import 'get_queue_result.dart';
 /// By `queue_id`
 Future<GetQueueResult> getQueue(
   GetQueueArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:connect/getQueue:getQueue',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetQueueResult.fromMap(result);
 }

@@ -1,3 +1,3 @@
 library module_lb_get_listener_default_action_forward_stickiness;
 
-export 'get_listener_default_action_forward_stickiness/get_listener_default_action_forward_stickiness2.dart';
+export 'get_listener_default_action_forward_stickiness/get_listener_default_action_forward_stickiness_lb.dart';

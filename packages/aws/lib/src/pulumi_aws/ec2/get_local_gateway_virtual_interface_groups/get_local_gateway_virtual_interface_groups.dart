@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_local_gateway_virtual_interface_groups_args.dart';
 import 'get_local_gateway_virtual_interface_groups_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_local_gateway_virtual_interface_groups_result.dart';
 Future<GetLocalGatewayVirtualInterfaceGroupsResult>
     getLocalGatewayVirtualInterfaceGroups(
   GetLocalGatewayVirtualInterfaceGroupsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ec2/getLocalGatewayVirtualInterfaceGroups:getLocalGatewayVirtualInterfaceGroups',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocalGatewayVirtualInterfaceGroupsResult.fromMap(result);
 }

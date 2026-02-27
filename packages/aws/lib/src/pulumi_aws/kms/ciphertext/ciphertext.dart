@@ -1,42 +1,42 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ciphertext_args.dart';
 
 /// The KMS ciphertext resource allows you to encrypt plaintext into ciphertext
 /// by using an AWS KMS customer master key. The value returned by this resource
 /// is stable across every apply. For a changing ciphertext value each apply, see
 /// the `aws.kms.Ciphertext` data source.
-class Ciphertext extends CustomResource {
+class Ciphertext extends pulumi.CustomResource {
   /// Base64 encoded ciphertext
-  late final Output<String> ciphertextBlob;
+  late final pulumi.Output<String> ciphertextBlob;
 
   /// An optional mapping that makes up the encryption context.
-  late final Output<Map<String, String>?> context;
+  late final pulumi.Output<Map<String, String>?> context;
 
   /// Globally unique key ID for the customer master key.
-  late final Output<String> keyId;
+  late final pulumi.Output<String> keyId;
 
   /// Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
-  late final Output<String?> plaintext;
+  late final pulumi.Output<String?> plaintext;
 
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Data to be encrypted. Note that this may show up in logs. It will not be stored in the state file.
-  late final Output<String?> plaintextWo;
+  late final pulumi.Output<String?> plaintextWo;
 
   /// Used together with `plaintext_wo` to trigger a replacement. Modify this value when a replacement is required.
-  late final Output<String?> plaintextWoVersion;
+  late final pulumi.Output<String?> plaintextWoVersion;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   Ciphertext(
     String name, {
     CiphertextArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:kms/ciphertext:Ciphertext',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.ciphertextBlob = registerOutput<String>('ciphertextBlob');
     this.context = registerOutput<Map<String, String>?>('context');

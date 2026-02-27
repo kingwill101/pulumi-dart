@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_gi_versions_gi_version/get_gi_versions_gi_version.dart';
 
 /// Result data returned by getGiVersions.
@@ -23,7 +23,7 @@ class GetGiVersionsResult {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['giVersions'] =
-        Input.encodeList<GetGiVersionsGiVersion, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetGiVersionsGiVersion, Map<String, dynamic>>(
             giVersions, (value) => value.toMap());
     map['id'] = id;
     map['region'] = region;
@@ -36,7 +36,7 @@ class GetGiVersionsResult {
 
   factory GetGiVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetGiVersionsResult(
-      giVersions: Input.decodeList<GetGiVersionsGiVersion>(
+      giVersions: pulumi.Input.decodeList<GetGiVersionsGiVersion>(
           map['giVersions'],
           (value) => GetGiVersionsGiVersion.fromMap(
               (value as Map).cast<String, dynamic>())),

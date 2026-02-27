@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../bucket_replication_config_rule/bucket_replication_config_rule.dart';
 import 'bucket_replication_config_args.dart';
 
@@ -31,15 +31,15 @@ import 'bucket_replication_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3/bucketReplicationConfig:BucketReplicationConfig replication bucket-name
 /// ```
-class BucketReplicationConfig extends CustomResource {
+class BucketReplicationConfig extends pulumi.CustomResource {
   /// Name of the source S3 bucket you want Amazon S3 to monitor.
-  late final Output<String> bucket;
+  late final pulumi.Output<String> bucket;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the IAM role for Amazon S3 to assume when replicating the objects.
-  late final Output<String> role;
+  late final pulumi.Output<String> role;
 
   /// List of configuration blocks describing the rules managing the replication. See below.
   ///
@@ -49,21 +49,21 @@ class BucketReplicationConfig extends CustomResource {
   ///
   /// > **NOTE:** The `existing_object_replication` parameter is not supported by Amazon S3 at this time and should not be included in your `rule` configurations. Specifying this parameter will result in `MalformedXML` errors.
   /// To replicate existing objects, please refer to the [Replicating existing objects with S3 Batch Replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-batch-replication-batch.html) documentation in the Amazon S3 User Guide.
-  late final Output<List<BucketReplicationConfigRule>> rules;
+  late final pulumi.Output<List<BucketReplicationConfigRule>> rules;
 
   /// Token to allow replication to be enabled on an Object Lock-enabled bucket. You must contact AWS support for the bucket's "Object Lock token".
   /// For more details, see [Using S3 Object Lock with replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-managing.html#object-lock-managing-replication).
-  late final Output<String?> token;
+  late final pulumi.Output<String?> token;
 
   BucketReplicationConfig(
     String name, {
     BucketReplicationConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3/bucketReplicationConfig:BucketReplicationConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.bucket = registerOutput<String>('bucket');
     this.region = registerOutput<String>('region');

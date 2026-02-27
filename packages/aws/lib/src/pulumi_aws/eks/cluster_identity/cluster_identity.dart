@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../cluster_identity_oidc/cluster_identity_oidc.dart';
 
 class ClusterIdentity {
@@ -16,7 +16,7 @@ class ClusterIdentity {
     final oidcsValue = oidcs;
     if (oidcsValue != null) {
       map['oidcs'] =
-          Input.encodeList<ClusterIdentityOidc, Map<String, dynamic>>(
+          pulumi.Input.encodeList<ClusterIdentityOidc, Map<String, dynamic>>(
               oidcsValue, (value) => value.toMap());
     }
     return map;
@@ -26,7 +26,7 @@ class ClusterIdentity {
     return ClusterIdentity(
       oidcs: map['oidcs'] == null
           ? null
-          : Input.decodeList<ClusterIdentityOidc>(
+          : pulumi.Input.decodeList<ClusterIdentityOidc>(
               map['oidcs'],
               (value) => ClusterIdentityOidc.fromMap(
                   (value as Map).cast<String, dynamic>())),

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tenant_resource_association_args.dart';
 
 /// Manages an AWS SESv2 (Simple Email V2) Tenant Resource Association.
@@ -16,27 +16,27 @@ import 'tenant_resource_association_args.dart';
 /// ```sh
 /// $ pulumi import aws:sesv2/tenantResourceAssociation:TenantResourceAssociation example "example-tenant|arn:aws:ses:us-east-1:123456789012:configuration-set/example"
 /// ```
-class TenantResourceAssociation extends CustomResource {
+class TenantResourceAssociation extends pulumi.CustomResource {
   /// AWS region for SESv2 operations. If not specified, the default provider region is used.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the SES resource to associate with the tenant.
   ///
   /// The following arguments are optional:
-  late final Output<String> resourceArn;
+  late final pulumi.Output<String> resourceArn;
 
   /// Name of SES Tenant.
-  late final Output<String> tenantName;
+  late final pulumi.Output<String> tenantName;
 
   TenantResourceAssociation(
     String name, {
     TenantResourceAssociationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sesv2/tenantResourceAssociation:TenantResourceAssociation',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.region = registerOutput<String>('region');
     this.resourceArn = registerOutput<String>('resourceArn');

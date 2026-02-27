@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'runtime_management_config_args.dart';
 
 /// Manages an AWS Lambda Runtime Management Config. Use this resource to control how Lambda updates the runtime for your function.
@@ -26,36 +26,36 @@ import 'runtime_management_config_args.dart';
 /// ```sh
 /// $ pulumi import aws:lambda/runtimeManagementConfig:RuntimeManagementConfig example example,$LATEST
 /// ```
-class RuntimeManagementConfig extends CustomResource {
+class RuntimeManagementConfig extends pulumi.CustomResource {
   /// ARN of the function.
-  late final Output<String> functionArn;
+  late final pulumi.Output<String> functionArn;
 
   /// Name or ARN of the Lambda function.
   ///
   /// The following arguments are optional:
-  late final Output<String> functionName;
+  late final pulumi.Output<String> functionName;
 
   /// Version of the function. This can be `$LATEST` or a published version number. If omitted, this resource will manage the runtime configuration for `$LATEST`.
-  late final Output<String?> qualifier;
+  late final pulumi.Output<String?> qualifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// ARN of the runtime version. Only required when `update_runtime_on` is `Manual`.
-  late final Output<String?> runtimeVersionArn;
+  late final pulumi.Output<String?> runtimeVersionArn;
 
   /// Runtime update mode. Valid values are `Auto`, `FunctionUpdate`, and `Manual`. When a function is created, the default mode is `Auto`.
-  late final Output<String?> updateRuntimeOn;
+  late final pulumi.Output<String?> updateRuntimeOn;
 
   RuntimeManagementConfig(
     String name, {
     RuntimeManagementConfigArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lambda/runtimeManagementConfig:RuntimeManagementConfig',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.functionArn = registerOutput<String>('functionArn');
     this.functionName = registerOutput<String>('functionName');

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../usage_plan_api_stage/usage_plan_api_stage.dart';
 import '../usage_plan_quota_settings/usage_plan_quota_settings.dart';
 import '../usage_plan_throttle_settings/usage_plan_throttle_settings.dart';
@@ -8,28 +8,28 @@ import '../usage_plan_throttle_settings/usage_plan_throttle_settings.dart';
 /// The set of arguments for UsagePlan.
 class UsagePlanArgs {
   /// Associated API stages of the usage plan.
-  final Input<List<UsagePlanApiStage>>? apiStages;
+  final pulumi.Input<List<UsagePlanApiStage>>? apiStages;
 
   /// Description of a usage plan.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Name of the usage plan.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// AWS Marketplace product identifier to associate with the usage plan as a SaaS product on AWS Marketplace.
-  final Input<String>? productCode;
+  final pulumi.Input<String>? productCode;
 
   /// The quota settings of the usage plan.
-  final Input<UsagePlanQuotaSettings>? quotaSettings;
+  final pulumi.Input<UsagePlanQuotaSettings>? quotaSettings;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// The throttling limits of the usage plan.
-  final Input<UsagePlanThrottleSettings>? throttleSettings;
+  final pulumi.Input<UsagePlanThrottleSettings>? throttleSettings;
 
   UsagePlanArgs({
     this.apiStages,
@@ -46,11 +46,12 @@ class UsagePlanArgs {
     final map = <String, dynamic>{};
     final apiStagesValue = apiStages;
     if (apiStagesValue != null) {
-      map['apiStages'] = Input.mapOptionalInputValue<List<UsagePlanApiStage>,
-              List<Map<String, dynamic>>>(
+      map['apiStages'] = pulumi.Input.mapOptionalInputValue<
+              List<UsagePlanApiStage>, List<Map<String, dynamic>>>(
           apiStagesValue,
-          (value) => Input.encodeList<UsagePlanApiStage, Map<String, dynamic>>(
-              value, (value) => value.toMap()));
+          (value) =>
+              pulumi.Input.encodeList<UsagePlanApiStage, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
     }
     final descriptionValue = description;
     if (descriptionValue != null) {
@@ -66,7 +67,8 @@ class UsagePlanArgs {
     }
     final quotaSettingsValue = quotaSettings;
     if (quotaSettingsValue != null) {
-      map['quotaSettings'] = Input.mapOptionalInputValue<UsagePlanQuotaSettings,
+      map['quotaSettings'] = pulumi.Input.mapOptionalInputValue<
+          UsagePlanQuotaSettings,
           Map<String, dynamic>>(quotaSettingsValue, (value) => value.toMap());
     }
     final regionValue = region;
@@ -79,7 +81,7 @@ class UsagePlanArgs {
     }
     final throttleSettingsValue = throttleSettings;
     if (throttleSettingsValue != null) {
-      map['throttleSettings'] = Input.mapOptionalInputValue<
+      map['throttleSettings'] = pulumi.Input.mapOptionalInputValue<
               UsagePlanThrottleSettings, Map<String, dynamic>>(
           throttleSettingsValue, (value) => value.toMap());
     }
@@ -88,16 +90,16 @@ class UsagePlanArgs {
 
   factory UsagePlanArgs.fromMap(Map<String, dynamic> map) {
     return UsagePlanArgs(
-      apiStages:
-          Input.asOptionalInput<List<UsagePlanApiStage>>(map['apiStages']),
-      description: Input.asOptionalInput<String>(map['description']),
-      name: Input.asOptionalInput<String>(map['name']),
-      productCode: Input.asOptionalInput<String>(map['productCode']),
-      quotaSettings:
-          Input.asOptionalInput<UsagePlanQuotaSettings>(map['quotaSettings']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      throttleSettings: Input.asOptionalInput<UsagePlanThrottleSettings>(
+      apiStages: pulumi.Input.asOptionalInput<List<UsagePlanApiStage>>(
+          map['apiStages']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      productCode: pulumi.Input.asOptionalInput<String>(map['productCode']),
+      quotaSettings: pulumi.Input.asOptionalInput<UsagePlanQuotaSettings>(
+          map['quotaSettings']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      throttleSettings: pulumi.Input.asOptionalInput<UsagePlanThrottleSettings>(
           map['throttleSettings']),
     );
   }

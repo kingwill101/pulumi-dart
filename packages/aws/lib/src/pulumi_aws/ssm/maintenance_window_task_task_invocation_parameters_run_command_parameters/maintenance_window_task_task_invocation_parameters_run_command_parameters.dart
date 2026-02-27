@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../maintenance_window_task_task_invocation_parameters_run_command_parameters_cloudwatch_config/maintenance_window_task_task_invocation_parameters_run_command_parameters_cloudwatch_config.dart';
 import '../maintenance_window_task_task_invocation_parameters_run_command_parameters_notification_config/maintenance_window_task_task_invocation_parameters_run_command_parameters_notification_config.dart';
 import '../maintenance_window_task_task_invocation_parameters_run_command_parameters_parameter/maintenance_window_task_task_invocation_parameters_run_command_parameters_parameter.dart';
@@ -93,7 +93,7 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters {
     }
     final parametersValue = parameters;
     if (parametersValue != null) {
-      map['parameters'] = Input.encodeList<
+      map['parameters'] = pulumi.Input.encodeList<
           MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter,
           Map<String, dynamic>>(parametersValue, (value) => value.toMap());
     }
@@ -138,7 +138,7 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters {
           : map['outputS3KeyPrefix'] as String,
       parameters: map['parameters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter>(
               map['parameters'],
               (value) =>

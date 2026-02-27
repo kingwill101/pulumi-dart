@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'keyvaluestore_key_args.dart';
 
 /// Resource for managing an AWS CloudFront KeyValueStore Key.
@@ -30,28 +30,28 @@ import 'keyvaluestore_key_args.dart';
 /// ```sh
 /// $ pulumi import aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey example arn:aws:cloudfront::111111111111:key-value-store/8562g61f-caba-2845-9d99-b97diwae5d3c,someKey
 /// ```
-class KeyvaluestoreKey extends CustomResource {
+class KeyvaluestoreKey extends pulumi.CustomResource {
   /// Key to put.
-  late final Output<String> key;
+  late final pulumi.Output<String> key;
 
   /// Amazon Resource Name (ARN) of the Key Value Store.
-  late final Output<String> keyValueStoreArn;
+  late final pulumi.Output<String> keyValueStoreArn;
 
   /// Total size of the Key Value Store in bytes.
-  late final Output<int> totalSizeInBytes;
+  late final pulumi.Output<int> totalSizeInBytes;
 
   /// Value to put.
-  late final Output<String> value;
+  late final pulumi.Output<String> value;
 
   KeyvaluestoreKey(
     String name, {
     KeyvaluestoreKeyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:cloudfront/keyvaluestoreKey:KeyvaluestoreKey',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.key = registerOutput<String>('key');
     this.keyValueStoreArn = registerOutput<String>('keyValueStoreArn');

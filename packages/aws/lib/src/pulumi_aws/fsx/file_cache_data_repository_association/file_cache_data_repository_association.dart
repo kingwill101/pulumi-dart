@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../file_cache_data_repository_association_nf/file_cache_data_repository_association_nf.dart';
 
 class FileCacheDataRepositoryAssociation {
@@ -72,7 +72,7 @@ class FileCacheDataRepositoryAssociation {
     }
     final nfsValue = nfs;
     if (nfsValue != null) {
-      map['nfs'] = Input.encodeList<FileCacheDataRepositoryAssociationNf,
+      map['nfs'] = pulumi.Input.encodeList<FileCacheDataRepositoryAssociationNf,
           Map<String, dynamic>>(nfsValue, (value) => value.toMap());
     }
     final resourceArnValue = resourceArn;
@@ -107,7 +107,7 @@ class FileCacheDataRepositoryAssociation {
           : map['importedFileChunkSize'] as int,
       nfs: map['nfs'] == null
           ? null
-          : Input.decodeList<FileCacheDataRepositoryAssociationNf>(
+          : pulumi.Input.decodeList<FileCacheDataRepositoryAssociationNf>(
               map['nfs'],
               (value) => FileCacheDataRepositoryAssociationNf.fromMap(
                   (value as Map).cast<String, dynamic>())),

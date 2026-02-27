@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../domain_saml_options_saml_options/domain_saml_options_saml_options.dart';
 import 'domain_saml_options_args.dart';
 
@@ -17,27 +17,27 @@ import 'domain_saml_options_args.dart';
 /// ```sh
 /// $ pulumi import aws:elasticsearch/domainSamlOptions:DomainSamlOptions example domain_name
 /// ```
-class DomainSamlOptions extends CustomResource {
+class DomainSamlOptions extends pulumi.CustomResource {
   /// Name of the domain.
   ///
   /// The following arguments are optional:
-  late final Output<String> domainName;
+  late final pulumi.Output<String> domainName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The SAML authentication options for an AWS Elasticsearch Domain.
-  late final Output<DomainSamlOptionsSamlOptions?> samlOptions;
+  late final pulumi.Output<DomainSamlOptionsSamlOptions?> samlOptions;
 
   DomainSamlOptions(
     String name, {
     DomainSamlOptionsArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:elasticsearch/domainSamlOptions:DomainSamlOptions',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.domainName = registerOutput<String>('domainName');
     this.region = registerOutput<String>('region');

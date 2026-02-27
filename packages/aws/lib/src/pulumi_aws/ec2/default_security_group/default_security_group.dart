@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../default_security_group_egress/default_security_group_egress.dart';
 import '../default_security_group_ingress/default_security_group_ingress.dart';
 import 'default_security_group_args.dart';
@@ -36,48 +36,48 @@ import 'default_security_group_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/defaultSecurityGroup:DefaultSecurityGroup default_sg sg-903004f8
 /// ```
-class DefaultSecurityGroup extends CustomResource {
+class DefaultSecurityGroup extends pulumi.CustomResource {
   /// ARN of the security group.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Description of the security group.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// Configuration block. Detailed below.
-  late final Output<List<DefaultSecurityGroupEgress>> egress;
+  late final pulumi.Output<List<DefaultSecurityGroupEgress>> egress;
 
   /// Configuration block. Detailed below.
-  late final Output<List<DefaultSecurityGroupIngress>> ingress;
+  late final pulumi.Output<List<DefaultSecurityGroupIngress>> ingress;
 
   /// Name of the security group.
-  late final Output<String> name;
-  late final Output<String> namePrefix;
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> namePrefix;
 
   /// Owner ID.
-  late final Output<String> ownerId;
+  late final pulumi.Output<String> ownerId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<bool?> revokeRulesOnDelete;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<bool?> revokeRulesOnDelete;
 
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  late final Output<Map<String, String>?> tags;
+  late final pulumi.Output<Map<String, String>?> tags;
 
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  late final Output<Map<String, String>> tagsAll;
+  late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// VPC ID. **Note that changing the `vpc_id` will _not_ restore any default security group rules that were modified, added, or removed.** It will be left in its current state.
-  late final Output<String> vpcId;
+  late final pulumi.Output<String> vpcId;
 
   DefaultSecurityGroup(
     String name, {
     DefaultSecurityGroupArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/defaultSecurityGroup:DefaultSecurityGroup',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String>('description');

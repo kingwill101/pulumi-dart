@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bucket_replication_configuration_rule_delete_marker_replication/get_bucket_replication_configuration_rule_delete_marker_replication.dart';
 import '../get_bucket_replication_configuration_rule_destination/get_bucket_replication_configuration_rule_destination.dart';
 import '../get_bucket_replication_configuration_rule_existing_object_replication/get_bucket_replication_configuration_rule_existing_object_replication.dart';
@@ -37,24 +37,24 @@ class GetBucketReplicationConfigurationRule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['deleteMarkerReplications'] = Input.encodeList<
+    map['deleteMarkerReplications'] = pulumi.Input.encodeList<
             GetBucketReplicationConfigurationRuleDeleteMarkerReplication,
             Map<String, dynamic>>(
         deleteMarkerReplications, (value) => value.toMap());
-    map['destinations'] = Input.encodeList<
+    map['destinations'] = pulumi.Input.encodeList<
         GetBucketReplicationConfigurationRuleDestination,
         Map<String, dynamic>>(destinations, (value) => value.toMap());
-    map['existingObjectReplications'] = Input.encodeList<
+    map['existingObjectReplications'] = pulumi.Input.encodeList<
             GetBucketReplicationConfigurationRuleExistingObjectReplication,
             Map<String, dynamic>>(
         existingObjectReplications, (value) => value.toMap());
-    map['filters'] = Input.encodeList<
+    map['filters'] = pulumi.Input.encodeList<
         GetBucketReplicationConfigurationRuleFilter,
         Map<String, dynamic>>(filters, (value) => value.toMap());
     map['id'] = id;
     map['prefix'] = prefix;
     map['priority'] = priority;
-    map['sourceSelectionCriterias'] = Input.encodeList<
+    map['sourceSelectionCriterias'] = pulumi.Input.encodeList<
             GetBucketReplicationConfigurationRuleSourceSelectionCriteria,
             Map<String, dynamic>>(
         sourceSelectionCriterias, (value) => value.toMap());
@@ -65,32 +65,32 @@ class GetBucketReplicationConfigurationRule {
   factory GetBucketReplicationConfigurationRule.fromMap(
       Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRule(
-      deleteMarkerReplications: Input.decodeList<
+      deleteMarkerReplications: pulumi.Input.decodeList<
               GetBucketReplicationConfigurationRuleDeleteMarkerReplication>(
           map['deleteMarkerReplications'],
           (value) =>
               GetBucketReplicationConfigurationRuleDeleteMarkerReplication
                   .fromMap((value as Map).cast<String, dynamic>())),
-      destinations:
-          Input.decodeList<GetBucketReplicationConfigurationRuleDestination>(
-              map['destinations'],
-              (value) =>
-                  GetBucketReplicationConfigurationRuleDestination.fromMap(
-                      (value as Map).cast<String, dynamic>())),
-      existingObjectReplications: Input.decodeList<
+      destinations: pulumi.Input.decodeList<
+              GetBucketReplicationConfigurationRuleDestination>(
+          map['destinations'],
+          (value) => GetBucketReplicationConfigurationRuleDestination.fromMap(
+              (value as Map).cast<String, dynamic>())),
+      existingObjectReplications: pulumi.Input.decodeList<
               GetBucketReplicationConfigurationRuleExistingObjectReplication>(
           map['existingObjectReplications'],
           (value) =>
               GetBucketReplicationConfigurationRuleExistingObjectReplication
                   .fromMap((value as Map).cast<String, dynamic>())),
-      filters: Input.decodeList<GetBucketReplicationConfigurationRuleFilter>(
-          map['filters'],
-          (value) => GetBucketReplicationConfigurationRuleFilter.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      filters:
+          pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleFilter>(
+              map['filters'],
+              (value) => GetBucketReplicationConfigurationRuleFilter.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       prefix: map['prefix'] as String,
       priority: map['priority'] as int,
-      sourceSelectionCriterias: Input.decodeList<
+      sourceSelectionCriterias: pulumi.Input.decodeList<
               GetBucketReplicationConfigurationRuleSourceSelectionCriteria>(
           map['sourceSelectionCriterias'],
           (value) =>

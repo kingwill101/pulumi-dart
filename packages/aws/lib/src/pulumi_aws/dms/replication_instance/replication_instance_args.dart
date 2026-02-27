@@ -1,67 +1,67 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../replication_instance_kerberos_authentication_settings/replication_instance_kerberos_authentication_settings.dart';
 
 /// The set of arguments for ReplicationInstance.
 class ReplicationInstanceArgs {
   /// The amount of storage (in gigabytes) to be initially allocated for the replication instance.
-  final Input<int>? allocatedStorage;
+  final pulumi.Input<int>? allocatedStorage;
 
   /// Indicates that major version upgrades are allowed.
-  final Input<bool>? allowMajorVersionUpgrade;
+  final pulumi.Input<bool>? allowMajorVersionUpgrade;
 
   /// Indicates whether the changes should be applied immediately or during the next maintenance window. Only used when updating an existing resource.
-  final Input<bool>? applyImmediately;
+  final pulumi.Input<bool>? applyImmediately;
 
   /// Indicates that minor engine upgrades will be applied automatically to the replication instance during the maintenance window.
-  final Input<bool>? autoMinorVersionUpgrade;
+  final pulumi.Input<bool>? autoMinorVersionUpgrade;
 
   /// The EC2 Availability Zone that the replication instance will be created in.
-  final Input<String>? availabilityZone;
+  final pulumi.Input<String>? availabilityZone;
 
   /// A list of custom DNS name servers supported for the replication instance to access your on-premise source or target database. This list overrides the default name servers supported by the replication instance. You can specify a comma-separated list of internet addresses for up to four on-premise DNS name servers.
-  final Input<String>? dnsNameServers;
+  final pulumi.Input<String>? dnsNameServers;
 
   /// The engine version number of the replication instance.
-  final Input<String>? engineVersion;
+  final pulumi.Input<String>? engineVersion;
 
   /// Configuration block for settings required for Kerberos authentication. See below.
-  final Input<ReplicationInstanceKerberosAuthenticationSettings>?
+  final pulumi.Input<ReplicationInstanceKerberosAuthenticationSettings>?
       kerberosAuthenticationSettings;
 
   /// The Amazon Resource Name (ARN) for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kms_key_arn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
-  final Input<String>? kmsKeyArn;
+  final pulumi.Input<String>? kmsKeyArn;
 
   /// Specifies if the replication instance is a multi-az deployment. You cannot set the `availability_zone` parameter if the `multi_az` parameter is set to `true`.
-  final Input<bool>? multiAz;
+  final pulumi.Input<bool>? multiAz;
 
   /// The type of IP address protocol used by a replication instance. Valid values: `IPV4`, `DUAL`.
-  final Input<String>? networkType;
+  final pulumi.Input<String>? networkType;
 
   /// The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
-  final Input<String>? preferredMaintenanceWindow;
+  final pulumi.Input<String>? preferredMaintenanceWindow;
 
   /// Specifies the accessibility options for the replication instance. A value of true represents an instance with a public IP address. A value of false represents an instance with a private IP address.
-  final Input<bool>? publiclyAccessible;
+  final pulumi.Input<bool>? publiclyAccessible;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The compute and memory capacity of the replication instance as specified by the replication instance class. See [AWS DMS User Guide](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.Types.html) for available instance sizes and advice on which one to choose.
-  final Input<String> replicationInstanceClass;
+  final pulumi.Input<String> replicationInstanceClass;
 
   /// The replication instance identifier. This parameter is stored as a lowercase string.
-  final Input<String> replicationInstanceId;
+  final pulumi.Input<String> replicationInstanceId;
 
   /// A subnet group to associate with the replication instance.
-  final Input<String>? replicationSubnetGroupId;
+  final pulumi.Input<String>? replicationSubnetGroupId;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// A list of VPC security group IDs to be used with the replication instance. The VPC security groups must work with the VPC containing the replication instance.
-  final Input<List<String>>? vpcSecurityGroupIds;
+  final pulumi.Input<List<String>>? vpcSecurityGroupIds;
 
   ReplicationInstanceArgs({
     this.allocatedStorage,
@@ -117,10 +117,11 @@ class ReplicationInstanceArgs {
     }
     final kerberosAuthenticationSettingsValue = kerberosAuthenticationSettings;
     if (kerberosAuthenticationSettingsValue != null) {
-      map['kerberosAuthenticationSettings'] = Input.mapOptionalInputValue<
-              ReplicationInstanceKerberosAuthenticationSettings,
-              Map<String, dynamic>>(
-          kerberosAuthenticationSettingsValue, (value) => value.toMap());
+      map['kerberosAuthenticationSettings'] =
+          pulumi.Input.mapOptionalInputValue<
+                  ReplicationInstanceKerberosAuthenticationSettings,
+                  Map<String, dynamic>>(
+              kerberosAuthenticationSettingsValue, (value) => value.toMap());
     }
     final kmsKeyArnValue = kmsKeyArn;
     if (kmsKeyArnValue != null) {
@@ -165,35 +166,39 @@ class ReplicationInstanceArgs {
 
   factory ReplicationInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationInstanceArgs(
-      allocatedStorage: Input.asOptionalInput<int>(map['allocatedStorage']),
+      allocatedStorage:
+          pulumi.Input.asOptionalInput<int>(map['allocatedStorage']),
       allowMajorVersionUpgrade:
-          Input.asOptionalInput<bool>(map['allowMajorVersionUpgrade']),
-      applyImmediately: Input.asOptionalInput<bool>(map['applyImmediately']),
+          pulumi.Input.asOptionalInput<bool>(map['allowMajorVersionUpgrade']),
+      applyImmediately:
+          pulumi.Input.asOptionalInput<bool>(map['applyImmediately']),
       autoMinorVersionUpgrade:
-          Input.asOptionalInput<bool>(map['autoMinorVersionUpgrade']),
-      availabilityZone: Input.asOptionalInput<String>(map['availabilityZone']),
-      dnsNameServers: Input.asOptionalInput<String>(map['dnsNameServers']),
-      engineVersion: Input.asOptionalInput<String>(map['engineVersion']),
-      kerberosAuthenticationSettings: Input.asOptionalInput<
+          pulumi.Input.asOptionalInput<bool>(map['autoMinorVersionUpgrade']),
+      availabilityZone:
+          pulumi.Input.asOptionalInput<String>(map['availabilityZone']),
+      dnsNameServers:
+          pulumi.Input.asOptionalInput<String>(map['dnsNameServers']),
+      engineVersion: pulumi.Input.asOptionalInput<String>(map['engineVersion']),
+      kerberosAuthenticationSettings: pulumi.Input.asOptionalInput<
               ReplicationInstanceKerberosAuthenticationSettings>(
           map['kerberosAuthenticationSettings']),
-      kmsKeyArn: Input.asOptionalInput<String>(map['kmsKeyArn']),
-      multiAz: Input.asOptionalInput<bool>(map['multiAz']),
-      networkType: Input.asOptionalInput<String>(map['networkType']),
-      preferredMaintenanceWindow:
-          Input.asOptionalInput<String>(map['preferredMaintenanceWindow']),
+      kmsKeyArn: pulumi.Input.asOptionalInput<String>(map['kmsKeyArn']),
+      multiAz: pulumi.Input.asOptionalInput<bool>(map['multiAz']),
+      networkType: pulumi.Input.asOptionalInput<String>(map['networkType']),
+      preferredMaintenanceWindow: pulumi.Input.asOptionalInput<String>(
+          map['preferredMaintenanceWindow']),
       publiclyAccessible:
-          Input.asOptionalInput<bool>(map['publiclyAccessible']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<bool>(map['publiclyAccessible']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       replicationInstanceClass:
-          Input.asInput<String>(map['replicationInstanceClass']),
+          pulumi.Input.asInput<String>(map['replicationInstanceClass']),
       replicationInstanceId:
-          Input.asInput<String>(map['replicationInstanceId']),
+          pulumi.Input.asInput<String>(map['replicationInstanceId']),
       replicationSubnetGroupId:
-          Input.asOptionalInput<String>(map['replicationSubnetGroupId']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      vpcSecurityGroupIds:
-          Input.asOptionalInput<List<String>>(map['vpcSecurityGroupIds']),
+          pulumi.Input.asOptionalInput<String>(map['replicationSubnetGroupId']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      vpcSecurityGroupIds: pulumi.Input.asOptionalInput<List<String>>(
+          map['vpcSecurityGroupIds']),
     );
   }
 }

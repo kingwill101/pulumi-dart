@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_cluster_container_provider_info/get_virtual_cluster_container_provider_info.dart';
 
 class GetVirtualClusterContainerProvider {
@@ -22,7 +22,8 @@ class GetVirtualClusterContainerProvider {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['infos'] = Input.encodeList<GetVirtualClusterContainerProviderInfo,
+    map['infos'] = pulumi.Input.encodeList<
+        GetVirtualClusterContainerProviderInfo,
         Map<String, dynamic>>(infos, (value) => value.toMap());
     map['type'] = type;
     return map;
@@ -31,7 +32,7 @@ class GetVirtualClusterContainerProvider {
   factory GetVirtualClusterContainerProvider.fromMap(Map<String, dynamic> map) {
     return GetVirtualClusterContainerProvider(
       id: map['id'] as String,
-      infos: Input.decodeList<GetVirtualClusterContainerProviderInfo>(
+      infos: pulumi.Input.decodeList<GetVirtualClusterContainerProviderInfo>(
           map['infos'],
           (value) => GetVirtualClusterContainerProviderInfo.fromMap(
               (value as Map).cast<String, dynamic>())),

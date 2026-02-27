@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for MulticastDomainAssociation.
 class MulticastDomainAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The ID of the subnet to associate with the transit gateway multicast domain.
-  final Input<String> subnetId;
+  final pulumi.Input<String> subnetId;
 
   /// The ID of the transit gateway attachment.
-  final Input<String> transitGatewayAttachmentId;
+  final pulumi.Input<String> transitGatewayAttachmentId;
 
   /// The ID of the transit gateway multicast domain.
-  final Input<String> transitGatewayMulticastDomainId;
+  final pulumi.Input<String> transitGatewayMulticastDomainId;
 
   MulticastDomainAssociationArgs({
     this.region,
@@ -37,12 +37,12 @@ class MulticastDomainAssociationArgs {
 
   factory MulticastDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastDomainAssociationArgs(
-      region: Input.asOptionalInput<String>(map['region']),
-      subnetId: Input.asInput<String>(map['subnetId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      subnetId: pulumi.Input.asInput<String>(map['subnetId']),
       transitGatewayAttachmentId:
-          Input.asInput<String>(map['transitGatewayAttachmentId']),
+          pulumi.Input.asInput<String>(map['transitGatewayAttachmentId']),
       transitGatewayMulticastDomainId:
-          Input.asInput<String>(map['transitGatewayMulticastDomainId']),
+          pulumi.Input.asInput<String>(map['transitGatewayMulticastDomainId']),
     );
   }
 }

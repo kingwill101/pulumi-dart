@@ -1,14 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getReportDefinition.
 class GetReportDefinitionArgs {
   /// Name of the report definition to match.
-  final Input<String> reportName;
+  final pulumi.Input<String> reportName;
 
   /// Map of key-value pairs assigned to the resource.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetReportDefinitionArgs({
     required this.reportName,
@@ -27,8 +27,8 @@ class GetReportDefinitionArgs {
 
   factory GetReportDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetReportDefinitionArgs(
-      reportName: Input.asInput<String>(map['reportName']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      reportName: pulumi.Input.asInput<String>(map['reportName']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

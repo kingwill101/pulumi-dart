@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_theme_configuration/get_theme_configuration.dart';
 import '../get_theme_permission/get_theme_permission.dart';
 
@@ -69,14 +69,14 @@ class GetThemeResult {
     map['awsAccountId'] = awsAccountId;
     map['baseThemeId'] = baseThemeId;
     map['configurations'] =
-        Input.encodeList<GetThemeConfiguration, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetThemeConfiguration, Map<String, dynamic>>(
             configurations, (value) => value.toMap());
     map['createdTime'] = createdTime;
     map['id'] = id;
     map['lastUpdatedTime'] = lastUpdatedTime;
     map['name'] = name;
     map['permissions'] =
-        Input.encodeList<GetThemePermission, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetThemePermission, Map<String, dynamic>>(
             permissions, (value) => value.toMap());
     map['region'] = region;
     map['status'] = status;
@@ -92,7 +92,7 @@ class GetThemeResult {
       arn: map['arn'] as String,
       awsAccountId: map['awsAccountId'] as String,
       baseThemeId: map['baseThemeId'] as String,
-      configurations: Input.decodeList<GetThemeConfiguration>(
+      configurations: pulumi.Input.decodeList<GetThemeConfiguration>(
           map['configurations'],
           (value) => GetThemeConfiguration.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -100,7 +100,7 @@ class GetThemeResult {
       id: map['id'] as String,
       lastUpdatedTime: map['lastUpdatedTime'] as String,
       name: map['name'] as String,
-      permissions: Input.decodeList<GetThemePermission>(
+      permissions: pulumi.Input.decodeList<GetThemePermission>(
           map['permissions'],
           (value) => GetThemePermission.fromMap(
               (value as Map).cast<String, dynamic>())),

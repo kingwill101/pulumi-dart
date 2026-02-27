@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'prepared_statement_args.dart';
 
 /// Resource for managing an Athena Prepared Statement.
@@ -14,31 +14,31 @@ import 'prepared_statement_args.dart';
 /// ```sh
 /// $ pulumi import aws:athena/preparedStatement:PreparedStatement example 12345abcde/example
 /// ```
-class PreparedStatement extends CustomResource {
+class PreparedStatement extends pulumi.CustomResource {
   /// Brief explanation of prepared statement. Maximum length of 1024.
-  late final Output<String?> description;
+  late final pulumi.Output<String?> description;
 
   /// The name of the prepared statement. Maximum length of 256.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The query string for the prepared statement.
-  late final Output<String> queryStatement;
+  late final pulumi.Output<String> queryStatement;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The name of the workgroup to which the prepared statement belongs.
-  late final Output<String> workgroup;
+  late final pulumi.Output<String> workgroup;
 
   PreparedStatement(
     String name, {
     PreparedStatementArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:athena/preparedStatement:PreparedStatement',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

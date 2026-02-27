@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../agent_agent_prompt_override_configuration_prompt_configuration/agent_agent_prompt_override_configuration_prompt_configuration.dart';
 
 class AgentAgentPromptOverrideConfiguration {
@@ -19,7 +19,7 @@ class AgentAgentPromptOverrideConfiguration {
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
     map['overrideLambda'] = overrideLambda;
-    map['promptConfigurations'] = Input.encodeList<
+    map['promptConfigurations'] = pulumi.Input.encodeList<
         AgentAgentPromptOverrideConfigurationPromptConfiguration,
         Map<String, dynamic>>(promptConfigurations, (value) => value.toMap());
     return map;
@@ -29,7 +29,7 @@ class AgentAgentPromptOverrideConfiguration {
       Map<String, dynamic> map) {
     return AgentAgentPromptOverrideConfiguration(
       overrideLambda: map['overrideLambda'] as String,
-      promptConfigurations: Input.decodeList<
+      promptConfigurations: pulumi.Input.decodeList<
               AgentAgentPromptOverrideConfigurationPromptConfiguration>(
           map['promptConfigurations'],
           (value) =>

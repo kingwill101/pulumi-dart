@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'local_gateway_route_args.dart';
 
 /// Manages an EC2 Local Gateway Route. More information can be found in the [Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#routing).
@@ -14,28 +14,28 @@ import 'local_gateway_route_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/localGatewayRoute:LocalGatewayRoute example lgw-rtb-12345678_172.16.0.0/16
 /// ```
-class LocalGatewayRoute extends CustomResource {
+class LocalGatewayRoute extends pulumi.CustomResource {
   /// IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
-  late final Output<String> destinationCidrBlock;
+  late final pulumi.Output<String> destinationCidrBlock;
 
   /// Identifier of EC2 Local Gateway Route Table.
-  late final Output<String> localGatewayRouteTableId;
+  late final pulumi.Output<String> localGatewayRouteTableId;
 
   /// Identifier of EC2 Local Gateway Virtual Interface Group.
-  late final Output<String> localGatewayVirtualInterfaceGroupId;
+  late final pulumi.Output<String> localGatewayVirtualInterfaceGroupId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   LocalGatewayRoute(
     String name, {
     LocalGatewayRouteArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/localGatewayRoute:LocalGatewayRoute',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.destinationCidrBlock = registerOutput<String>('destinationCidrBlock');
     this.localGatewayRouteTableId =

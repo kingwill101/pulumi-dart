@@ -1,28 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Logging.
 class LoggingArgs {
   /// Name of an existing S3 bucket where the log files are to be stored. Required when `log_destination_type` is `s3`. Must be in the same region as the cluster and the cluster must have read bucket and put object permissions. For more information on the permissions required for the bucket, please read the AWS [documentation](http://docs.aws.amazon.com/redshift/latest/mgmt/db-auditing.html#db-auditing-enable-logging)
-  final Input<String>? bucketName;
+  final pulumi.Input<String>? bucketName;
 
   /// Identifier of the source cluster.
   ///
   /// The following arguments are optional:
-  final Input<String> clusterIdentifier;
+  final pulumi.Input<String> clusterIdentifier;
 
   /// Log destination type. Valid values are `s3` and `cloudwatch`.
-  final Input<String>? logDestinationType;
+  final pulumi.Input<String>? logDestinationType;
 
   /// Collection of exported log types. Required when `log_destination_type` is `cloudwatch`. Valid values are `connectionlog`, `useractivitylog`, and `userlog`.
-  final Input<List<String>>? logExports;
+  final pulumi.Input<List<String>>? logExports;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Prefix applied to the log file names.
-  final Input<String>? s3KeyPrefix;
+  final pulumi.Input<String>? s3KeyPrefix;
 
   LoggingArgs({
     this.bucketName,
@@ -61,13 +61,13 @@ class LoggingArgs {
 
   factory LoggingArgs.fromMap(Map<String, dynamic> map) {
     return LoggingArgs(
-      bucketName: Input.asOptionalInput<String>(map['bucketName']),
-      clusterIdentifier: Input.asInput<String>(map['clusterIdentifier']),
+      bucketName: pulumi.Input.asOptionalInput<String>(map['bucketName']),
+      clusterIdentifier: pulumi.Input.asInput<String>(map['clusterIdentifier']),
       logDestinationType:
-          Input.asOptionalInput<String>(map['logDestinationType']),
-      logExports: Input.asOptionalInput<List<String>>(map['logExports']),
-      region: Input.asOptionalInput<String>(map['region']),
-      s3KeyPrefix: Input.asOptionalInput<String>(map['s3KeyPrefix']),
+          pulumi.Input.asOptionalInput<String>(map['logDestinationType']),
+      logExports: pulumi.Input.asOptionalInput<List<String>>(map['logExports']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      s3KeyPrefix: pulumi.Input.asOptionalInput<String>(map['s3KeyPrefix']),
     );
   }
 }

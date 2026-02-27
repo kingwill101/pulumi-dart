@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../resource_data_sync_s3_destination/resource_data_sync_s3_destination.dart';
 
 /// The set of arguments for ResourceDataSync.
 class ResourceDataSyncArgs {
   /// Name for the configuration.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Amazon S3 configuration details for the sync.
-  final Input<ResourceDataSyncS3Destination> s3Destination;
+  final pulumi.Input<ResourceDataSyncS3Destination> s3Destination;
 
   ResourceDataSyncArgs({
     this.name,
@@ -30,17 +30,18 @@ class ResourceDataSyncArgs {
     if (regionValue != null) {
       map['region'] = regionValue;
     }
-    map['s3Destination'] = Input.mapInputValue<ResourceDataSyncS3Destination,
+    map['s3Destination'] = pulumi.Input.mapInputValue<
+        ResourceDataSyncS3Destination,
         Map<String, dynamic>>(s3Destination, (value) => value.toMap());
     return map;
   }
 
   factory ResourceDataSyncArgs.fromMap(Map<String, dynamic> map) {
     return ResourceDataSyncArgs(
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      s3Destination:
-          Input.asInput<ResourceDataSyncS3Destination>(map['s3Destination']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      s3Destination: pulumi.Input.asInput<ResourceDataSyncS3Destination>(
+          map['s3Destination']),
     );
   }
 }

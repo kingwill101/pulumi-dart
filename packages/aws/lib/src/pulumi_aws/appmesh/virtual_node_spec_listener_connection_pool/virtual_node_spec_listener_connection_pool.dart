@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../virtual_node_spec_listener_connection_pool_grpc/virtual_node_spec_listener_connection_pool_grpc.dart';
 import '../virtual_node_spec_listener_connection_pool_http/virtual_node_spec_listener_connection_pool_http.dart';
 import '../virtual_node_spec_listener_connection_pool_http2/virtual_node_spec_listener_connection_pool_http2.dart';
@@ -34,18 +34,20 @@ class VirtualNodeSpecListenerConnectionPool {
     }
     final http2sValue = http2s;
     if (http2sValue != null) {
-      map['http2s'] = Input.encodeList<
+      map['http2s'] = pulumi.Input.encodeList<
           VirtualNodeSpecListenerConnectionPoolHttp2,
           Map<String, dynamic>>(http2sValue, (value) => value.toMap());
     }
     final httpsValue = https;
     if (httpsValue != null) {
-      map['https'] = Input.encodeList<VirtualNodeSpecListenerConnectionPoolHttp,
+      map['https'] = pulumi.Input.encodeList<
+          VirtualNodeSpecListenerConnectionPoolHttp,
           Map<String, dynamic>>(httpsValue, (value) => value.toMap());
     }
     final tcpsValue = tcps;
     if (tcpsValue != null) {
-      map['tcps'] = Input.encodeList<VirtualNodeSpecListenerConnectionPoolTcp,
+      map['tcps'] = pulumi.Input.encodeList<
+          VirtualNodeSpecListenerConnectionPoolTcp,
           Map<String, dynamic>>(tcpsValue, (value) => value.toMap());
     }
     return map;
@@ -60,19 +62,19 @@ class VirtualNodeSpecListenerConnectionPool {
               (map['grpc'] as Map).cast<String, dynamic>()),
       http2s: map['http2s'] == null
           ? null
-          : Input.decodeList<VirtualNodeSpecListenerConnectionPoolHttp2>(
+          : pulumi.Input.decodeList<VirtualNodeSpecListenerConnectionPoolHttp2>(
               map['http2s'],
               (value) => VirtualNodeSpecListenerConnectionPoolHttp2.fromMap(
                   (value as Map).cast<String, dynamic>())),
       https: map['https'] == null
           ? null
-          : Input.decodeList<VirtualNodeSpecListenerConnectionPoolHttp>(
+          : pulumi.Input.decodeList<VirtualNodeSpecListenerConnectionPoolHttp>(
               map['https'],
               (value) => VirtualNodeSpecListenerConnectionPoolHttp.fromMap(
                   (value as Map).cast<String, dynamic>())),
       tcps: map['tcps'] == null
           ? null
-          : Input.decodeList<VirtualNodeSpecListenerConnectionPoolTcp>(
+          : pulumi.Input.decodeList<VirtualNodeSpecListenerConnectionPoolTcp>(
               map['tcps'],
               (value) => VirtualNodeSpecListenerConnectionPoolTcp.fromMap(
                   (value as Map).cast<String, dynamic>())),

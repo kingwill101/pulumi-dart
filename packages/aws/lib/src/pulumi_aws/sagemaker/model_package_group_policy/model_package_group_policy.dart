@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'model_package_group_policy_args.dart';
 
 /// Provides a SageMaker AI Model Package Group Policy resource.
@@ -16,23 +16,23 @@ import 'model_package_group_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:sagemaker/modelPackageGroupPolicy:ModelPackageGroupPolicy example example
 /// ```
-class ModelPackageGroupPolicy extends CustomResource {
+class ModelPackageGroupPolicy extends pulumi.CustomResource {
   /// The name of the model package group.
-  late final Output<String> modelPackageGroupName;
+  late final pulumi.Output<String> modelPackageGroupName;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
-  late final Output<String> resourcePolicy;
+  late final pulumi.Output<String> region;
+  late final pulumi.Output<String> resourcePolicy;
 
   ModelPackageGroupPolicy(
     String name, {
     ModelPackageGroupPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:sagemaker/modelPackageGroupPolicy:ModelPackageGroupPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.modelPackageGroupName =
         registerOutput<String>('modelPackageGroupName');

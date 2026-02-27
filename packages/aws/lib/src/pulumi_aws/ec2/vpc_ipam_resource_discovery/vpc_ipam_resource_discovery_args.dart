@@ -1,26 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../vpc_ipam_resource_discovery_operating_region/vpc_ipam_resource_discovery_operating_region.dart';
 import '../vpc_ipam_resource_discovery_organizational_unit_exclusion/vpc_ipam_resource_discovery_organizational_unit_exclusion.dart';
 
 /// The set of arguments for VpcIpamResourceDiscovery.
 class VpcIpamResourceDiscoveryArgs {
   /// A description for the IPAM Resource Discovery.
-  final Input<String>? description;
+  final pulumi.Input<String>? description;
 
   /// Determines which regions the Resource Discovery will enable IPAM features for usage and monitoring. Locale is the Region where you want to make an IPAM pool available for allocations. You can only create pools with locales that match the operating Regions of the IPAM Resource Discovery. You can only create VPCs from a pool whose locale matches the VPC's Region. You specify a region using the region_name parameter. **You must set your provider block region as an operating_region.**
-  final Input<List<VpcIpamResourceDiscoveryOperatingRegion>> operatingRegions;
+  final pulumi.Input<List<VpcIpamResourceDiscoveryOperatingRegion>>
+      operatingRegions;
 
   /// Add an Organizational Unit (OU) exclusion to IPAM. If IPAM is integrated with AWS Organizations and OU exclusion is added, IPAM will not manage the IP addresses in accounts in the OU exclusion. Refer to [IPAM Quotas](https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html) for the limit of exclusions that can be created.
-  final Input<List<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>>?
+  final pulumi.Input<List<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>>?
       organizationalUnitExclusions;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   VpcIpamResourceDiscoveryArgs({
     this.description,
@@ -36,19 +37,20 @@ class VpcIpamResourceDiscoveryArgs {
     if (descriptionValue != null) {
       map['description'] = descriptionValue;
     }
-    map['operatingRegions'] = Input.mapInputValue<
+    map['operatingRegions'] = pulumi.Input.mapInputValue<
             List<VpcIpamResourceDiscoveryOperatingRegion>,
             List<Map<String, dynamic>>>(
         operatingRegions,
-        (value) => Input.encodeList<VpcIpamResourceDiscoveryOperatingRegion,
+        (value) => pulumi.Input.encodeList<
+            VpcIpamResourceDiscoveryOperatingRegion,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     final organizationalUnitExclusionsValue = organizationalUnitExclusions;
     if (organizationalUnitExclusionsValue != null) {
-      map['organizationalUnitExclusions'] = Input.mapOptionalInputValue<
+      map['organizationalUnitExclusions'] = pulumi.Input.mapOptionalInputValue<
               List<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>,
               List<Map<String, dynamic>>>(
           organizationalUnitExclusionsValue,
-          (value) => Input.encodeList<
+          (value) => pulumi.Input.encodeList<
               VpcIpamResourceDiscoveryOrganizationalUnitExclusion,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
@@ -65,15 +67,15 @@ class VpcIpamResourceDiscoveryArgs {
 
   factory VpcIpamResourceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamResourceDiscoveryArgs(
-      description: Input.asOptionalInput<String>(map['description']),
+      description: pulumi.Input.asOptionalInput<String>(map['description']),
       operatingRegions:
-          Input.asInput<List<VpcIpamResourceDiscoveryOperatingRegion>>(
+          pulumi.Input.asInput<List<VpcIpamResourceDiscoveryOperatingRegion>>(
               map['operatingRegions']),
-      organizationalUnitExclusions: Input.asOptionalInput<
+      organizationalUnitExclusions: pulumi.Input.asOptionalInput<
               List<VpcIpamResourceDiscoveryOrganizationalUnitExclusion>>(
           map['organizationalUnitExclusions']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

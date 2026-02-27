@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../application_layer_automatic_response_timeouts/application_layer_automatic_response_timeouts.dart';
 import 'application_layer_automatic_response_args.dart';
 
@@ -7,23 +7,23 @@ import 'application_layer_automatic_response_args.dart';
 /// ## Example Usage
 ///
 /// ### Basic Usage
-class ApplicationLayerAutomaticResponse extends CustomResource {
+class ApplicationLayerAutomaticResponse extends pulumi.CustomResource {
   /// One of `COUNT` or `BLOCK`
-  late final Output<String> action;
+  late final pulumi.Output<String> action;
 
   /// ARN of the resource to protect (Cloudfront Distributions and ALBs only at this time).
-  late final Output<String> resourceArn;
-  late final Output<ApplicationLayerAutomaticResponseTimeouts?> timeouts;
+  late final pulumi.Output<String> resourceArn;
+  late final pulumi.Output<ApplicationLayerAutomaticResponseTimeouts?> timeouts;
 
   ApplicationLayerAutomaticResponse(
     String name, {
     ApplicationLayerAutomaticResponseArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:shield/applicationLayerAutomaticResponse:ApplicationLayerAutomaticResponse',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.action = registerOutput<String>('action');
     this.resourceArn = registerOutput<String>('resourceArn');

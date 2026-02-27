@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_distribution_configurations_filter/get_distribution_configurations_filter.dart';
 
 /// Result data returned by getDistributionConfigurations.
@@ -29,7 +29,8 @@ class GetDistributionConfigurationsResult {
     map['arns'] = arns;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.encodeList<GetDistributionConfigurationsFilter,
+      map['filters'] = pulumi.Input.encodeList<
+          GetDistributionConfigurationsFilter,
           Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
@@ -44,7 +45,7 @@ class GetDistributionConfigurationsResult {
       arns: (map['arns'] as List).cast<String>(),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetDistributionConfigurationsFilter>(
+          : pulumi.Input.decodeList<GetDistributionConfigurationsFilter>(
               map['filters'],
               (value) => GetDistributionConfigurationsFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

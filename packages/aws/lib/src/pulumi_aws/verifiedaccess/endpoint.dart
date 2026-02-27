@@ -1,4 +1,4 @@
 library module_verifiedaccess_endpoint;
 
-export 'endpoint/endpoint5.dart';
-export 'endpoint/endpoint_args5.dart';
+export 'endpoint/endpoint_verifiedaccess.dart';
+export 'endpoint/endpoint_verifiedaccess_args.dart';

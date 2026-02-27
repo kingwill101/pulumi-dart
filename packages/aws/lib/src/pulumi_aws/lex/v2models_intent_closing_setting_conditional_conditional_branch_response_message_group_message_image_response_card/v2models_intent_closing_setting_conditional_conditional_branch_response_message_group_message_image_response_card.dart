@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../v2models_intent_closing_setting_conditional_conditional_branch_response_message_group_message_image_response_card_button/v2models_intent_closing_setting_conditional_conditional_branch_response_message_group_message_image_response_card_button.dart';
 
 class V2modelsIntentClosingSettingConditionalConditionalBranchResponseMessageGroupMessageImageResponseCard {
@@ -29,7 +29,7 @@ class V2modelsIntentClosingSettingConditionalConditionalBranchResponseMessageGro
     final map = <String, dynamic>{};
     final buttonsValue = buttons;
     if (buttonsValue != null) {
-      map['buttons'] = Input.encodeList<
+      map['buttons'] = pulumi.Input.encodeList<
           V2modelsIntentClosingSettingConditionalConditionalBranchResponseMessageGroupMessageImageResponseCardButton,
           Map<String, dynamic>>(buttonsValue, (value) => value.toMap());
     }
@@ -50,7 +50,7 @@ class V2modelsIntentClosingSettingConditionalConditionalBranchResponseMessageGro
     return V2modelsIntentClosingSettingConditionalConditionalBranchResponseMessageGroupMessageImageResponseCard(
       buttons: map['buttons'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   V2modelsIntentClosingSettingConditionalConditionalBranchResponseMessageGroupMessageImageResponseCardButton>(
               map['buttons'],
               (value) =>

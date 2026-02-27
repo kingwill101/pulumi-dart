@@ -1,20 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for SnapshotCopyGrant.
 class SnapshotCopyGrantArgs {
   /// The unique identifier for the customer master key (CMK) that the grant applies to. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a different AWS account, you must use the key ARN. If not specified, the default key is used.
-  final Input<String>? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// A friendly name for identifying the grant.
-  final Input<String> snapshotCopyGrantName;
+  final pulumi.Input<String> snapshotCopyGrantName;
 
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   SnapshotCopyGrantArgs({
     this.kmsKeyId,
@@ -43,11 +43,11 @@ class SnapshotCopyGrantArgs {
 
   factory SnapshotCopyGrantArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotCopyGrantArgs(
-      kmsKeyId: Input.asOptionalInput<String>(map['kmsKeyId']),
-      region: Input.asOptionalInput<String>(map['region']),
+      kmsKeyId: pulumi.Input.asOptionalInput<String>(map['kmsKeyId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
       snapshotCopyGrantName:
-          Input.asInput<String>(map['snapshotCopyGrantName']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asInput<String>(map['snapshotCopyGrantName']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

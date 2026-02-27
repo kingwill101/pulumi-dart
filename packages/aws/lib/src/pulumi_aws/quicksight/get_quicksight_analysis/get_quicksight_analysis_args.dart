@@ -1,18 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getQuicksightAnalysis.
 class GetQuicksightAnalysisArgs {
   /// Identifier for the analysis.
-  final Input<String> analysisId;
+  final pulumi.Input<String> analysisId;
 
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  final Input<String>? awsAccountId;
+  final pulumi.Input<String>? awsAccountId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetQuicksightAnalysisArgs({
     required this.analysisId,
@@ -41,10 +41,10 @@ class GetQuicksightAnalysisArgs {
 
   factory GetQuicksightAnalysisArgs.fromMap(Map<String, dynamic> map) {
     return GetQuicksightAnalysisArgs(
-      analysisId: Input.asInput<String>(map['analysisId']),
-      awsAccountId: Input.asOptionalInput<String>(map['awsAccountId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      analysisId: pulumi.Input.asInput<String>(map['analysisId']),
+      awsAccountId: pulumi.Input.asOptionalInput<String>(map['awsAccountId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

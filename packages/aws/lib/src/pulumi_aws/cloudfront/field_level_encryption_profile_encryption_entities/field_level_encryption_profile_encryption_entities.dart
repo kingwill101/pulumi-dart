@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../field_level_encryption_profile_encryption_entities_item/field_level_encryption_profile_encryption_entities_item.dart';
 
 class FieldLevelEncryptionProfileEncryptionEntities {
@@ -14,7 +14,7 @@ class FieldLevelEncryptionProfileEncryptionEntities {
     final map = <String, dynamic>{};
     final itemsValue = items;
     if (itemsValue != null) {
-      map['items'] = Input.encodeList<
+      map['items'] = pulumi.Input.encodeList<
           FieldLevelEncryptionProfileEncryptionEntitiesItem,
           Map<String, dynamic>>(itemsValue, (value) => value.toMap());
     }
@@ -26,7 +26,8 @@ class FieldLevelEncryptionProfileEncryptionEntities {
     return FieldLevelEncryptionProfileEncryptionEntities(
       items: map['items'] == null
           ? null
-          : Input.decodeList<FieldLevelEncryptionProfileEncryptionEntitiesItem>(
+          : pulumi.Input.decodeList<
+                  FieldLevelEncryptionProfileEncryptionEntitiesItem>(
               map['items'],
               (value) =>
                   FieldLevelEncryptionProfileEncryptionEntitiesItem.fromMap(

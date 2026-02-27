@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../event_sources_config_event_source/event_sources_config_event_source.dart';
 
 /// The set of arguments for EventSourcesConfig.
 class EventSourcesConfigArgs {
   /// Configuration information about the integration of DevOps Guru as the Consumer via EventBridge with another AWS Service. See `event_sources` below.
-  final Input<List<EventSourcesConfigEventSource>> eventSources;
+  final pulumi.Input<List<EventSourcesConfigEventSource>> eventSources;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   EventSourcesConfigArgs({
     required this.eventSources,
@@ -18,10 +18,10 @@ class EventSourcesConfigArgs {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['eventSources'] = Input.mapInputValue<
+    map['eventSources'] = pulumi.Input.mapInputValue<
             List<EventSourcesConfigEventSource>, List<Map<String, dynamic>>>(
         eventSources,
-        (value) => Input.encodeList<EventSourcesConfigEventSource,
+        (value) => pulumi.Input.encodeList<EventSourcesConfigEventSource,
             Map<String, dynamic>>(value, (value) => value.toMap()));
     final regionValue = region;
     if (regionValue != null) {
@@ -32,9 +32,9 @@ class EventSourcesConfigArgs {
 
   factory EventSourcesConfigArgs.fromMap(Map<String, dynamic> map) {
     return EventSourcesConfigArgs(
-      eventSources: Input.asInput<List<EventSourcesConfigEventSource>>(
+      eventSources: pulumi.Input.asInput<List<EventSourcesConfigEventSource>>(
           map['eventSources']),
-      region: Input.asOptionalInput<String>(map['region']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

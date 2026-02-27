@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../replication_configuration_replication_configuration_rule_destination/replication_configuration_replication_configuration_rule_destination.dart';
 import '../replication_configuration_replication_configuration_rule_repository_filter/replication_configuration_replication_configuration_rule_repository_filter.dart';
 
@@ -21,12 +21,12 @@ class ReplicationConfigurationReplicationConfigurationRule {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['destinations'] = Input.encodeList<
+    map['destinations'] = pulumi.Input.encodeList<
         ReplicationConfigurationReplicationConfigurationRuleDestination,
         Map<String, dynamic>>(destinations, (value) => value.toMap());
     final repositoryFiltersValue = repositoryFilters;
     if (repositoryFiltersValue != null) {
-      map['repositoryFilters'] = Input.encodeList<
+      map['repositoryFilters'] = pulumi.Input.encodeList<
           ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter,
           Map<String,
               dynamic>>(repositoryFiltersValue, (value) => value.toMap());
@@ -37,7 +37,7 @@ class ReplicationConfigurationReplicationConfigurationRule {
   factory ReplicationConfigurationReplicationConfigurationRule.fromMap(
       Map<String, dynamic> map) {
     return ReplicationConfigurationReplicationConfigurationRule(
-      destinations: Input.decodeList<
+      destinations: pulumi.Input.decodeList<
               ReplicationConfigurationReplicationConfigurationRuleDestination>(
           map['destinations'],
           (value) =>
@@ -45,7 +45,7 @@ class ReplicationConfigurationReplicationConfigurationRule {
                   .fromMap((value as Map).cast<String, dynamic>())),
       repositoryFilters: map['repositoryFilters'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter>(
               map['repositoryFilters'],
               (value) =>

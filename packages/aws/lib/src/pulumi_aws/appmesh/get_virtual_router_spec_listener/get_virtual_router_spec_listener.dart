@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_virtual_router_spec_listener_port_mapping/get_virtual_router_spec_listener_port_mapping.dart';
 
 class GetVirtualRouterSpecListener {
@@ -12,7 +12,7 @@ class GetVirtualRouterSpecListener {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['portMappings'] = Input.encodeList<
+    map['portMappings'] = pulumi.Input.encodeList<
         GetVirtualRouterSpecListenerPortMapping,
         Map<String, dynamic>>(portMappings, (value) => value.toMap());
     return map;
@@ -20,10 +20,11 @@ class GetVirtualRouterSpecListener {
 
   factory GetVirtualRouterSpecListener.fromMap(Map<String, dynamic> map) {
     return GetVirtualRouterSpecListener(
-      portMappings: Input.decodeList<GetVirtualRouterSpecListenerPortMapping>(
-          map['portMappings'],
-          (value) => GetVirtualRouterSpecListenerPortMapping.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      portMappings:
+          pulumi.Input.decodeList<GetVirtualRouterSpecListenerPortMapping>(
+              map['portMappings'],
+              (value) => GetVirtualRouterSpecListenerPortMapping.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

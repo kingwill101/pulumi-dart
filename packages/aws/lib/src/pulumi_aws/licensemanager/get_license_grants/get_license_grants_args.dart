@@ -1,15 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_license_grants_filter/get_license_grants_filter.dart';
 
 /// Arguments for getLicenseGrants.
 class GetLicenseGrantsArgs {
   /// Custom filter block as described below.
-  final Input<List<GetLicenseGrantsFilter>>? filters;
+  final pulumi.Input<List<GetLicenseGrantsFilter>>? filters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   GetLicenseGrantsArgs({
     this.filters,
@@ -20,12 +20,11 @@ class GetLicenseGrantsArgs {
     final map = <String, dynamic>{};
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] = Input.mapOptionalInputValue<List<GetLicenseGrantsFilter>,
-              List<Map<String, dynamic>>>(
+      map['filters'] = pulumi.Input.mapOptionalInputValue<
+              List<GetLicenseGrantsFilter>, List<Map<String, dynamic>>>(
           filtersValue,
-          (value) =>
-              Input.encodeList<GetLicenseGrantsFilter, Map<String, dynamic>>(
-                  value, (value) => value.toMap()));
+          (value) => pulumi.Input.encodeList<GetLicenseGrantsFilter,
+              Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final regionValue = region;
     if (regionValue != null) {
@@ -36,9 +35,9 @@ class GetLicenseGrantsArgs {
 
   factory GetLicenseGrantsArgs.fromMap(Map<String, dynamic> map) {
     return GetLicenseGrantsArgs(
-      filters:
-          Input.asOptionalInput<List<GetLicenseGrantsFilter>>(map['filters']),
-      region: Input.asOptionalInput<String>(map['region']),
+      filters: pulumi.Input.asOptionalInput<List<GetLicenseGrantsFilter>>(
+          map['filters']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

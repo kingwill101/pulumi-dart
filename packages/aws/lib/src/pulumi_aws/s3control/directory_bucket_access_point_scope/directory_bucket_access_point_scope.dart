@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../directory_bucket_access_point_scope_scope/directory_bucket_access_point_scope_scope.dart';
 import 'directory_bucket_access_point_scope_args.dart';
 
@@ -23,28 +23,28 @@ import 'directory_bucket_access_point_scope_args.dart';
 /// ```sh
 /// $ pulumi import aws:s3control/directoryBucketAccessPointScope:DirectoryBucketAccessPointScope example example--zoneid--xa-s3,123456789012
 /// ```
-class DirectoryBucketAccessPointScope extends CustomResource {
+class DirectoryBucketAccessPointScope extends pulumi.CustomResource {
   /// The AWS account ID that owns the specified access point.
-  late final Output<String> accountId;
+  late final pulumi.Output<String> accountId;
 
   /// The name of the access point that you want to apply the scope to.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// . Scope is used to restrict access to specific prefixes, API operations, or a combination of both. To remove the `scope`, set it to `{permissions=[] prefixes=[]}`. The default scope is `{permissions=[] prefixes=[]}`.
-  late final Output<DirectoryBucketAccessPointScopeScope> scope;
+  late final pulumi.Output<DirectoryBucketAccessPointScopeScope> scope;
 
   DirectoryBucketAccessPointScope(
     String name, {
     DirectoryBucketAccessPointScopeArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:s3control/directoryBucketAccessPointScope:DirectoryBucketAccessPointScope',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.accountId = registerOutput<String>('accountId');
     this.name = registerOutput<String>('name');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_container_definition_args.dart';
 import 'get_container_definition_result.dart';
 
@@ -6,13 +6,13 @@ import 'get_container_definition_result.dart';
 /// a specific container within an AWS ECS service.
 Future<GetContainerDefinitionResult> getContainerDefinition(
   GetContainerDefinitionArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:ecs/getContainerDefinition:getContainerDefinition',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContainerDefinitionResult.fromMap(result);
 }

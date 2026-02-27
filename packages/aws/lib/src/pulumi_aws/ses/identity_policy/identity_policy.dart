@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_policy_args.dart';
 
 /// Manages a SES Identity Policy. More information about SES Sending Authorization Policies can be found in the [SES Developer Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
@@ -14,28 +14,28 @@ import 'identity_policy_args.dart';
 /// ```sh
 /// $ pulumi import aws:ses/identityPolicy:IdentityPolicy example 'example.com|example'
 /// ```
-class IdentityPolicy extends CustomResource {
+class IdentityPolicy extends pulumi.CustomResource {
   /// Name or Amazon Resource Name (ARN) of the SES Identity.
-  late final Output<String> identity;
+  late final pulumi.Output<String> identity;
 
   /// Name of the policy.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// JSON string of the policy.
-  late final Output<String> policy;
+  late final pulumi.Output<String> policy;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   IdentityPolicy(
     String name, {
     IdentityPolicyArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ses/identityPolicy:IdentityPolicy',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.identity = registerOutput<String>('identity');
     this.name = registerOutput<String>('name');

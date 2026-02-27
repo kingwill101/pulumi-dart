@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_accelerator_attribute/get_accelerator_attribute.dart';
 import '../get_accelerator_ip_set/get_accelerator_ip_set.dart';
 
@@ -36,7 +36,7 @@ class GetAcceleratorResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['attributes'] =
-        Input.encodeList<GetAcceleratorAttribute, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetAcceleratorAttribute, Map<String, dynamic>>(
             attributes, (value) => value.toMap());
     map['dnsName'] = dnsName;
     map['dualStackDnsName'] = dualStackDnsName;
@@ -44,8 +44,9 @@ class GetAcceleratorResult {
     map['hostedZoneId'] = hostedZoneId;
     map['id'] = id;
     map['ipAddressType'] = ipAddressType;
-    map['ipSets'] = Input.encodeList<GetAcceleratorIpSet, Map<String, dynamic>>(
-        ipSets, (value) => value.toMap());
+    map['ipSets'] =
+        pulumi.Input.encodeList<GetAcceleratorIpSet, Map<String, dynamic>>(
+            ipSets, (value) => value.toMap());
     map['name'] = name;
     map['tags'] = tags;
     return map;
@@ -54,7 +55,7 @@ class GetAcceleratorResult {
   factory GetAcceleratorResult.fromMap(Map<String, dynamic> map) {
     return GetAcceleratorResult(
       arn: map['arn'] as String,
-      attributes: Input.decodeList<GetAcceleratorAttribute>(
+      attributes: pulumi.Input.decodeList<GetAcceleratorAttribute>(
           map['attributes'],
           (value) => GetAcceleratorAttribute.fromMap(
               (value as Map).cast<String, dynamic>())),
@@ -64,7 +65,7 @@ class GetAcceleratorResult {
       hostedZoneId: map['hostedZoneId'] as String,
       id: map['id'] as String,
       ipAddressType: map['ipAddressType'] as String,
-      ipSets: Input.decodeList<GetAcceleratorIpSet>(
+      ipSets: pulumi.Input.decodeList<GetAcceleratorIpSet>(
           map['ipSets'],
           (value) => GetAcceleratorIpSet.fromMap(
               (value as Map).cast<String, dynamic>())),

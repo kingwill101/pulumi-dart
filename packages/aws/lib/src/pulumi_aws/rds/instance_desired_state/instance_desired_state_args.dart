@@ -1,19 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_desired_state_timeouts/instance_desired_state_timeouts.dart';
 
 /// The set of arguments for InstanceDesiredState.
 class InstanceDesiredStateArgs {
   /// DB Instance Identifier
-  final Input<String> identifier;
+  final pulumi.Input<String> identifier;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Configured state of the DB Instance. Valid values are `available` and `stopped`.
-  final Input<String> state;
-  final Input<InstanceDesiredStateTimeouts>? timeouts;
+  final pulumi.Input<String> state;
+  final pulumi.Input<InstanceDesiredStateTimeouts>? timeouts;
 
   InstanceDesiredStateArgs({
     required this.identifier,
@@ -32,7 +32,7 @@ class InstanceDesiredStateArgs {
     map['state'] = state;
     final timeoutsValue = timeouts;
     if (timeoutsValue != null) {
-      map['timeouts'] = Input.mapOptionalInputValue<
+      map['timeouts'] = pulumi.Input.mapOptionalInputValue<
           InstanceDesiredStateTimeouts,
           Map<String, dynamic>>(timeoutsValue, (value) => value.toMap());
     }
@@ -41,11 +41,11 @@ class InstanceDesiredStateArgs {
 
   factory InstanceDesiredStateArgs.fromMap(Map<String, dynamic> map) {
     return InstanceDesiredStateArgs(
-      identifier: Input.asInput<String>(map['identifier']),
-      region: Input.asOptionalInput<String>(map['region']),
-      state: Input.asInput<String>(map['state']),
-      timeouts:
-          Input.asOptionalInput<InstanceDesiredStateTimeouts>(map['timeouts']),
+      identifier: pulumi.Input.asInput<String>(map['identifier']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      state: pulumi.Input.asInput<String>(map['state']),
+      timeouts: pulumi.Input.asOptionalInput<InstanceDesiredStateTimeouts>(
+          map['timeouts']),
     );
   }
 }

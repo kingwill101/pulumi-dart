@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../invocation_logging_configuration_logging_config/invocation_logging_configuration_logging_config.dart';
 import 'invocation_logging_configuration_args.dart';
 
@@ -19,22 +19,23 @@ import 'invocation_logging_configuration_args.dart';
 /// ```sh
 /// $ pulumi import aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration my_config us-east-1
 /// ```
-class InvocationLoggingConfiguration extends CustomResource {
+class InvocationLoggingConfiguration extends pulumi.CustomResource {
   /// The logging configuration values to set. See `logging_config` Block for details.
-  late final Output<InvocationLoggingConfigurationLoggingConfig> loggingConfig;
+  late final pulumi.Output<InvocationLoggingConfigurationLoggingConfig>
+      loggingConfig;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   InvocationLoggingConfiguration(
     String name, {
     InvocationLoggingConfigurationArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.loggingConfig =
         registerOutput<InvocationLoggingConfigurationLoggingConfig>(

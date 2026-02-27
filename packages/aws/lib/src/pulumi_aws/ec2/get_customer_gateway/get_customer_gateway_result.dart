@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_customer_gateway_filter/get_customer_gateway_filter.dart';
 
 /// Result data returned by getCustomerGateway.
@@ -55,9 +55,8 @@ class GetCustomerGatewayResult {
     map['deviceName'] = deviceName;
     final filtersValue = filters;
     if (filtersValue != null) {
-      map['filters'] =
-          Input.encodeList<GetCustomerGatewayFilter, Map<String, dynamic>>(
-              filtersValue, (value) => value.toMap());
+      map['filters'] = pulumi.Input.encodeList<GetCustomerGatewayFilter,
+          Map<String, dynamic>>(filtersValue, (value) => value.toMap());
     }
     map['id'] = id;
     map['ipAddress'] = ipAddress;
@@ -76,7 +75,7 @@ class GetCustomerGatewayResult {
       deviceName: map['deviceName'] as String,
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetCustomerGatewayFilter>(
+          : pulumi.Input.decodeList<GetCustomerGatewayFilter>(
               map['filters'],
               (value) => GetCustomerGatewayFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),

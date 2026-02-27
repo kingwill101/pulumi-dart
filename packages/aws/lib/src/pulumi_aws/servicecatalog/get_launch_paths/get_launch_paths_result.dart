@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_launch_paths_summary/get_launch_paths_summary.dart';
 
 /// Result data returned by getLaunchPaths.
@@ -33,7 +33,7 @@ class GetLaunchPathsResult {
     map['productId'] = productId;
     map['region'] = region;
     map['summaries'] =
-        Input.encodeList<GetLaunchPathsSummary, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetLaunchPathsSummary, Map<String, dynamic>>(
             summaries, (value) => value.toMap());
     return map;
   }
@@ -46,7 +46,7 @@ class GetLaunchPathsResult {
       id: map['id'] as String,
       productId: map['productId'] as String,
       region: map['region'] as String,
-      summaries: Input.decodeList<GetLaunchPathsSummary>(
+      summaries: pulumi.Input.decodeList<GetLaunchPathsSummary>(
           map['summaries'],
           (value) => GetLaunchPathsSummary.fromMap(
               (value as Map).cast<String, dynamic>())),

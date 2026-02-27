@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'framework_share_args.dart';
 
 /// Resource for managing an AWS Audit Manager Framework Share.
@@ -16,36 +16,36 @@ import 'framework_share_args.dart';
 /// ```sh
 /// $ pulumi import aws:auditmanager/frameworkShare:FrameworkShare example abcdef-123456
 /// ```
-class FrameworkShare extends CustomResource {
+class FrameworkShare extends pulumi.CustomResource {
   /// Comment from the sender about the share request.
-  late final Output<String?> comment;
+  late final pulumi.Output<String?> comment;
 
   /// Amazon Web Services account of the recipient.
-  late final Output<String> destinationAccount;
+  late final pulumi.Output<String> destinationAccount;
 
   /// Amazon Web Services region of the recipient.
-  late final Output<String> destinationRegion;
+  late final pulumi.Output<String> destinationRegion;
 
   /// Unique identifier for the shared custom framework.
   ///
   /// The following arguments are optional:
-  late final Output<String> frameworkId;
+  late final pulumi.Output<String> frameworkId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Status of the share request.
-  late final Output<String> status;
+  late final pulumi.Output<String> status;
 
   FrameworkShare(
     String name, {
     FrameworkShareArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:auditmanager/frameworkShare:FrameworkShare',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.comment = registerOutput<String?>('comment');
     this.destinationAccount = registerOutput<String>('destinationAccount');

@@ -1,39 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for Eip.
 class EipArgs {
   /// IP address from an EC2 BYOIP pool. This option is only available for VPC EIPs.
-  final Input<String>? address;
+  final pulumi.Input<String>? address;
 
   /// User-specified primary or secondary private IP address to associate with the Elastic IP address. If no private IP address is specified, the Elastic IP address is associated with the primary private IP address.
-  final Input<String>? associateWithPrivateIp;
+  final pulumi.Input<String>? associateWithPrivateIp;
 
   /// ID  of a customer-owned address pool. For more on customer owned IP addressed check out [Customer-owned IP addresses guide](https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing).
-  final Input<String>? customerOwnedIpv4Pool;
+  final pulumi.Input<String>? customerOwnedIpv4Pool;
 
   /// Indicates if this EIP is for use in VPC (`vpc`).
-  final Input<String>? domain;
+  final pulumi.Input<String>? domain;
 
   /// EC2 instance ID.
-  final Input<String>? instance;
+  final pulumi.Input<String>? instance;
 
   /// The ID of an IPAM pool which has an Amazon-provided or BYOIP public IPv4 CIDR provisioned to it.
-  final Input<String>? ipamPoolId;
+  final pulumi.Input<String>? ipamPoolId;
 
   /// Location from which the IP address is advertised. Use this parameter to limit the address to this location.
-  final Input<String>? networkBorderGroup;
+  final pulumi.Input<String>? networkBorderGroup;
 
   /// Network interface ID to associate with.
-  final Input<String>? networkInterface;
+  final pulumi.Input<String>? networkInterface;
 
   /// EC2 IPv4 address pool identifier or `amazon`.
   /// This option is only available for VPC EIPs.
-  final Input<String>? publicIpv4Pool;
+  final pulumi.Input<String>? publicIpv4Pool;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags to assign to the resource. Tags can only be applied to EIPs in a VPC. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
@@ -42,7 +42,7 @@ class EipArgs {
   /// See the relevant [AssociateAddress API Call][1] for more information.
   ///
   /// > **NOTE:** Specifying both `public_ipv4_pool` and `address` won't cause an error, however, only `address` will be used if both options are defined as the API only requires one of the two.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   EipArgs({
     this.address,
@@ -109,20 +109,22 @@ class EipArgs {
 
   factory EipArgs.fromMap(Map<String, dynamic> map) {
     return EipArgs(
-      address: Input.asOptionalInput<String>(map['address']),
+      address: pulumi.Input.asOptionalInput<String>(map['address']),
       associateWithPrivateIp:
-          Input.asOptionalInput<String>(map['associateWithPrivateIp']),
+          pulumi.Input.asOptionalInput<String>(map['associateWithPrivateIp']),
       customerOwnedIpv4Pool:
-          Input.asOptionalInput<String>(map['customerOwnedIpv4Pool']),
-      domain: Input.asOptionalInput<String>(map['domain']),
-      instance: Input.asOptionalInput<String>(map['instance']),
-      ipamPoolId: Input.asOptionalInput<String>(map['ipamPoolId']),
+          pulumi.Input.asOptionalInput<String>(map['customerOwnedIpv4Pool']),
+      domain: pulumi.Input.asOptionalInput<String>(map['domain']),
+      instance: pulumi.Input.asOptionalInput<String>(map['instance']),
+      ipamPoolId: pulumi.Input.asOptionalInput<String>(map['ipamPoolId']),
       networkBorderGroup:
-          Input.asOptionalInput<String>(map['networkBorderGroup']),
-      networkInterface: Input.asOptionalInput<String>(map['networkInterface']),
-      publicIpv4Pool: Input.asOptionalInput<String>(map['publicIpv4Pool']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<String>(map['networkBorderGroup']),
+      networkInterface:
+          pulumi.Input.asOptionalInput<String>(map['networkInterface']),
+      publicIpv4Pool:
+          pulumi.Input.asOptionalInput<String>(map['publicIpv4Pool']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

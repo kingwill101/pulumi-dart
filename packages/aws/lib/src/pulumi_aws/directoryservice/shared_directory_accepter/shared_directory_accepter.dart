@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'shared_directory_accepter_args.dart';
 
 /// Accepts a shared directory in a consumer account.
@@ -16,34 +16,34 @@ import 'shared_directory_accepter_args.dart';
 /// ```sh
 /// $ pulumi import aws:directoryservice/sharedDirectoryAccepter:SharedDirectoryAccepter example d-9267633ece
 /// ```
-class SharedDirectoryAccepter extends CustomResource {
+class SharedDirectoryAccepter extends pulumi.CustomResource {
   /// Method used when sharing a directory (i.e., `ORGANIZATIONS` or `HANDSHAKE`).
-  late final Output<String> method;
+  late final pulumi.Output<String> method;
 
   /// Message sent by the directory owner to the directory consumer to help the directory consumer administrator determine whether to approve or reject the share invitation.
-  late final Output<String> notes;
+  late final pulumi.Output<String> notes;
 
   /// Account identifier of the directory owner.
-  late final Output<String> ownerAccountId;
+  late final pulumi.Output<String> ownerAccountId;
 
   /// Identifier of the Managed Microsoft AD directory from the perspective of the directory owner.
-  late final Output<String> ownerDirectoryId;
+  late final pulumi.Output<String> ownerDirectoryId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Identifier of the directory that is stored in the directory consumer account that corresponds to the shared directory in the owner account.
-  late final Output<String> sharedDirectoryId;
+  late final pulumi.Output<String> sharedDirectoryId;
 
   SharedDirectoryAccepter(
     String name, {
     SharedDirectoryAccepterArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:directoryservice/sharedDirectoryAccepter:SharedDirectoryAccepter',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.method = registerOutput<String>('method');
     this.notes = registerOutput<String>('notes');

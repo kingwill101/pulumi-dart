@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_cluster_versions_args.dart';
 import 'get_cluster_versions_result.dart';
 
@@ -17,13 +17,13 @@ import 'get_cluster_versions_result.dart';
 /// ### Filter by Version Status
 Future<GetClusterVersionsResult> getClusterVersions(
   GetClusterVersionsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:eks/getClusterVersions:getClusterVersions',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterVersionsResult.fromMap(result);
 }

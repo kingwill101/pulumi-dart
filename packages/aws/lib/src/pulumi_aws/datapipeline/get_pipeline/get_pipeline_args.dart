@@ -1,17 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getPipeline.
 class GetPipelineArgs {
   /// ID of the pipeline.
-  final Input<String> pipelineId;
+  final pulumi.Input<String> pipelineId;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Map of tags assigned to the resource.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   GetPipelineArgs({
     required this.pipelineId,
@@ -35,9 +35,9 @@ class GetPipelineArgs {
 
   factory GetPipelineArgs.fromMap(Map<String, dynamic> map) {
     return GetPipelineArgs(
-      pipelineId: Input.asInput<String>(map['pipelineId']),
-      region: Input.asOptionalInput<String>(map['region']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+      pipelineId: pulumi.Input.asInput<String>(map['pipelineId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

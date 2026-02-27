@@ -1,27 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for LoadBalancerCookieStickinessPolicy.
 class LoadBalancerCookieStickinessPolicyArgs {
   /// The time period after which
   /// the session cookie should be considered stale, expressed in seconds.
-  final Input<int>? cookieExpirationPeriod;
+  final pulumi.Input<int>? cookieExpirationPeriod;
 
   /// The load balancer port to which the policy
   /// should be applied. This must be an active listener on the load
   /// balancer.
-  final Input<int> lbPort;
+  final pulumi.Input<int> lbPort;
 
   /// The load balancer to which the policy
   /// should be attached.
-  final Input<String> loadBalancer;
+  final pulumi.Input<String> loadBalancer;
 
   /// The name of the stickiness policy.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   LoadBalancerCookieStickinessPolicyArgs({
     this.cookieExpirationPeriod,
@@ -54,11 +54,11 @@ class LoadBalancerCookieStickinessPolicyArgs {
       Map<String, dynamic> map) {
     return LoadBalancerCookieStickinessPolicyArgs(
       cookieExpirationPeriod:
-          Input.asOptionalInput<int>(map['cookieExpirationPeriod']),
-      lbPort: Input.asInput<int>(map['lbPort']),
-      loadBalancer: Input.asInput<String>(map['loadBalancer']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
+          pulumi.Input.asOptionalInput<int>(map['cookieExpirationPeriod']),
+      lbPort: pulumi.Input.asInput<int>(map['lbPort']),
+      loadBalancer: pulumi.Input.asInput<String>(map['loadBalancer']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
     );
   }
 }

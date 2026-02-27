@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_scheduling_policy_fair_share_policy_share_distribution/get_scheduling_policy_fair_share_policy_share_distribution.dart';
 
 class GetSchedulingPolicyFairSharePolicy {
@@ -22,7 +22,7 @@ class GetSchedulingPolicyFairSharePolicy {
     final map = <String, dynamic>{};
     map['computeReservation'] = computeReservation;
     map['shareDecaySeconds'] = shareDecaySeconds;
-    map['shareDistributions'] = Input.encodeList<
+    map['shareDistributions'] = pulumi.Input.encodeList<
         GetSchedulingPolicyFairSharePolicyShareDistribution,
         Map<String, dynamic>>(shareDistributions, (value) => value.toMap());
     return map;
@@ -32,12 +32,12 @@ class GetSchedulingPolicyFairSharePolicy {
     return GetSchedulingPolicyFairSharePolicy(
       computeReservation: map['computeReservation'] as int,
       shareDecaySeconds: map['shareDecaySeconds'] as int,
-      shareDistributions:
-          Input.decodeList<GetSchedulingPolicyFairSharePolicyShareDistribution>(
-              map['shareDistributions'],
-              (value) =>
-                  GetSchedulingPolicyFairSharePolicyShareDistribution.fromMap(
-                      (value as Map).cast<String, dynamic>())),
+      shareDistributions: pulumi.Input.decodeList<
+              GetSchedulingPolicyFairSharePolicyShareDistribution>(
+          map['shareDistributions'],
+          (value) =>
+              GetSchedulingPolicyFairSharePolicyShareDistribution.fromMap(
+                  (value as Map).cast<String, dynamic>())),
     );
   }
 }

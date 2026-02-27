@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../plan_workflow_step_arc_routing_control_config_region_and_routing_control_routing_control/plan_workflow_step_arc_routing_control_config_region_and_routing_control_routing_control.dart';
 
 class PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl {
@@ -22,7 +22,7 @@ class PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl {
     map['region'] = region;
     final routingControlsValue = routingControls;
     if (routingControlsValue != null) {
-      map['routingControls'] = Input.encodeList<
+      map['routingControls'] = pulumi.Input.encodeList<
           PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl,
           Map<String, dynamic>>(routingControlsValue, (value) => value.toMap());
     }
@@ -35,7 +35,7 @@ class PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl {
       region: map['region'] as String,
       routingControls: map['routingControls'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl>(
               map['routingControls'],
               (value) =>

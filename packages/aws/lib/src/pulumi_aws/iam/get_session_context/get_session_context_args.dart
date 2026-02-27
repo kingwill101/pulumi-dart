@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getSessionContext.
 class GetSessionContextArgs {
   /// ARN for an assumed role.
   ///
   /// > If `arn` is a non-role ARN, Pulumi gives no error and `issuer_arn` will be equal to the `arn` value. For STS assumed-role ARNs, Pulumi gives an error if the identified IAM role does not exist.
-  final Input<String> arn;
+  final pulumi.Input<String> arn;
 
   GetSessionContextArgs({
     required this.arn,
@@ -21,7 +21,7 @@ class GetSessionContextArgs {
 
   factory GetSessionContextArgs.fromMap(Map<String, dynamic> map) {
     return GetSessionContextArgs(
-      arn: Input.asInput<String>(map['arn']),
+      arn: pulumi.Input.asInput<String>(map['arn']),
     );
   }
 }

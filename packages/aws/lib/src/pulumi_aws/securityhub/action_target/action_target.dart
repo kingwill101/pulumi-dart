@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'action_target_args.dart';
 
 /// Creates Security Hub custom action.
@@ -14,31 +14,31 @@ import 'action_target_args.dart';
 /// ```sh
 /// $ pulumi import aws:securityhub/actionTarget:ActionTarget example arn:aws:securityhub:eu-west-1:312940875350:action/custom/a
 /// ```
-class ActionTarget extends CustomResource {
+class ActionTarget extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the Security Hub custom action target.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The name of the custom action target.
-  late final Output<String> description;
+  late final pulumi.Output<String> description;
 
   /// The ID for the custom action target.
-  late final Output<String> identifier;
+  late final pulumi.Output<String> identifier;
 
   /// The description for the custom action target.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   ActionTarget(
     String name, {
     ActionTargetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:securityhub/actionTarget:ActionTarget',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String>('description');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../container_service_deployment_version_container/container_service_deployment_version_container.dart';
 import '../container_service_deployment_version_public_endpoint/container_service_deployment_version_public_endpoint.dart';
 import 'container_service_deployment_version_args.dart';
@@ -22,41 +22,41 @@ import 'container_service_deployment_version_args.dart';
 /// ```sh
 /// $ pulumi import aws:lightsail/containerServiceDeploymentVersion:ContainerServiceDeploymentVersion example container-service-1/1
 /// ```
-class ContainerServiceDeploymentVersion extends CustomResource {
+class ContainerServiceDeploymentVersion extends pulumi.CustomResource {
   /// Set of configuration blocks that describe the settings of the containers that will be launched on the container service. Maximum of 53. See below.
-  late final Output<List<ContainerServiceDeploymentVersionContainer>>
+  late final pulumi.Output<List<ContainerServiceDeploymentVersionContainer>>
       containers;
 
   /// Date and time when the deployment was created.
-  late final Output<String> createdAt;
+  late final pulumi.Output<String> createdAt;
 
   /// Configuration block that describes the settings of the public endpoint for the container service. See below.
-  late final Output<ContainerServiceDeploymentVersionPublicEndpoint?>
+  late final pulumi.Output<ContainerServiceDeploymentVersionPublicEndpoint?>
       publicEndpoint;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// Name of the container service.
   ///
   /// The following arguments are optional:
-  late final Output<String> serviceName;
+  late final pulumi.Output<String> serviceName;
 
   /// Current state of the container service.
-  late final Output<String> state;
+  late final pulumi.Output<String> state;
 
   /// Version number of the deployment.
-  late final Output<int> version;
+  late final pulumi.Output<int> version;
 
   ContainerServiceDeploymentVersion(
     String name, {
     ContainerServiceDeploymentVersionArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:lightsail/containerServiceDeploymentVersion:ContainerServiceDeploymentVersion',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.containers =
         registerOutput<List<ContainerServiceDeploymentVersionContainer>>(

@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_bucket_replication_configuration_rule_destination_metric_event_threshold/get_bucket_replication_configuration_rule_destination_metric_event_threshold.dart';
 
 class GetBucketReplicationConfigurationRuleDestinationMetric {
@@ -16,7 +16,7 @@ class GetBucketReplicationConfigurationRuleDestinationMetric {
 
   Map<String, dynamic> toMap() {
     final map = <String, dynamic>{};
-    map['eventThresholds'] = Input.encodeList<
+    map['eventThresholds'] = pulumi.Input.encodeList<
         GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold,
         Map<String, dynamic>>(eventThresholds, (value) => value.toMap());
     map['status'] = status;
@@ -26,7 +26,7 @@ class GetBucketReplicationConfigurationRuleDestinationMetric {
   factory GetBucketReplicationConfigurationRuleDestinationMetric.fromMap(
       Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestinationMetric(
-      eventThresholds: Input.decodeList<
+      eventThresholds: pulumi.Input.decodeList<
               GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold>(
           map['eventThresholds'],
           (value) =>

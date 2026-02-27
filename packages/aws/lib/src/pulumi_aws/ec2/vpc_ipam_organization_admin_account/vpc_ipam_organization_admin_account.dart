@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'vpc_ipam_organization_admin_account_args.dart';
 
 /// Enables the IPAM Service and promotes a delegated administrator.
@@ -16,29 +16,29 @@ import 'vpc_ipam_organization_admin_account_args.dart';
 /// ```sh
 /// $ pulumi import aws:ec2/vpcIpamOrganizationAdminAccount:VpcIpamOrganizationAdminAccount example 12345678901
 /// ```
-class VpcIpamOrganizationAdminAccount extends CustomResource {
+class VpcIpamOrganizationAdminAccount extends pulumi.CustomResource {
   /// The Organizations ARN for the delegate account.
-  late final Output<String> arn;
-  late final Output<String> delegatedAdminAccountId;
+  late final pulumi.Output<String> arn;
+  late final pulumi.Output<String> delegatedAdminAccountId;
 
   /// The Organizations email for the delegate account.
-  late final Output<String> email;
+  late final pulumi.Output<String> email;
 
   /// The Organizations name for the delegate account.
-  late final Output<String> name;
+  late final pulumi.Output<String> name;
 
   /// The AWS service principal.
-  late final Output<String> servicePrincipal;
+  late final pulumi.Output<String> servicePrincipal;
 
   VpcIpamOrganizationAdminAccount(
     String name, {
     VpcIpamOrganizationAdminAccountArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ec2/vpcIpamOrganizationAdminAccount:VpcIpamOrganizationAdminAccount',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.delegatedAdminAccountId =

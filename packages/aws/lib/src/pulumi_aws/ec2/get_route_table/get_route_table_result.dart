@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_route_table_association/get_route_table_association.dart';
 import '../get_route_table_filter/get_route_table_filter.dart';
 import '../get_route_table_route/get_route_table_route.dart';
@@ -54,12 +54,12 @@ class GetRouteTableResult {
     final map = <String, dynamic>{};
     map['arn'] = arn;
     map['associations'] =
-        Input.encodeList<GetRouteTableAssociation, Map<String, dynamic>>(
+        pulumi.Input.encodeList<GetRouteTableAssociation, Map<String, dynamic>>(
             associations, (value) => value.toMap());
     final filtersValue = filters;
     if (filtersValue != null) {
       map['filters'] =
-          Input.encodeList<GetRouteTableFilter, Map<String, dynamic>>(
+          pulumi.Input.encodeList<GetRouteTableFilter, Map<String, dynamic>>(
               filtersValue, (value) => value.toMap());
     }
     map['gatewayId'] = gatewayId;
@@ -67,8 +67,9 @@ class GetRouteTableResult {
     map['ownerId'] = ownerId;
     map['region'] = region;
     map['routeTableId'] = routeTableId;
-    map['routes'] = Input.encodeList<GetRouteTableRoute, Map<String, dynamic>>(
-        routes, (value) => value.toMap());
+    map['routes'] =
+        pulumi.Input.encodeList<GetRouteTableRoute, Map<String, dynamic>>(
+            routes, (value) => value.toMap());
     map['subnetId'] = subnetId;
     map['tags'] = tags;
     map['vpcId'] = vpcId;
@@ -78,13 +79,13 @@ class GetRouteTableResult {
   factory GetRouteTableResult.fromMap(Map<String, dynamic> map) {
     return GetRouteTableResult(
       arn: map['arn'] as String,
-      associations: Input.decodeList<GetRouteTableAssociation>(
+      associations: pulumi.Input.decodeList<GetRouteTableAssociation>(
           map['associations'],
           (value) => GetRouteTableAssociation.fromMap(
               (value as Map).cast<String, dynamic>())),
       filters: map['filters'] == null
           ? null
-          : Input.decodeList<GetRouteTableFilter>(
+          : pulumi.Input.decodeList<GetRouteTableFilter>(
               map['filters'],
               (value) => GetRouteTableFilter.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -93,7 +94,7 @@ class GetRouteTableResult {
       ownerId: map['ownerId'] as String,
       region: map['region'] as String,
       routeTableId: map['routeTableId'] as String,
-      routes: Input.decodeList<GetRouteTableRoute>(
+      routes: pulumi.Input.decodeList<GetRouteTableRoute>(
           map['routes'],
           (value) => GetRouteTableRoute.fromMap(
               (value as Map).cast<String, dynamic>())),

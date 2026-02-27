@@ -1,29 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for VoiceConnectorTermination.
 class VoiceConnectorTerminationArgs {
   /// The countries to which calls are allowed, in ISO 3166-1 alpha-2 format.
-  final Input<List<String>> callingRegions;
+  final pulumi.Input<List<String>> callingRegions;
 
   /// The IP addresses allowed to make calls, in CIDR format.
-  final Input<List<String>> cidrAllowLists;
+  final pulumi.Input<List<String>> cidrAllowLists;
 
   /// The limit on calls per second. Max value based on account service quota. Default value of `1`.
-  final Input<int>? cpsLimit;
+  final pulumi.Input<int>? cpsLimit;
 
   /// The default caller ID phone number.
-  final Input<String>? defaultPhoneNumber;
+  final pulumi.Input<String>? defaultPhoneNumber;
 
   /// When termination settings are disabled, outbound calls can not be made.
-  final Input<bool>? disabled;
+  final pulumi.Input<bool>? disabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// The Amazon Chime Voice Connector ID.
-  final Input<String> voiceConnectorId;
+  final pulumi.Input<String> voiceConnectorId;
 
   VoiceConnectorTerminationArgs({
     required this.callingRegions,
@@ -61,14 +61,14 @@ class VoiceConnectorTerminationArgs {
 
   factory VoiceConnectorTerminationArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorTerminationArgs(
-      callingRegions: Input.asInput<List<String>>(map['callingRegions']),
-      cidrAllowLists: Input.asInput<List<String>>(map['cidrAllowLists']),
-      cpsLimit: Input.asOptionalInput<int>(map['cpsLimit']),
+      callingRegions: pulumi.Input.asInput<List<String>>(map['callingRegions']),
+      cidrAllowLists: pulumi.Input.asInput<List<String>>(map['cidrAllowLists']),
+      cpsLimit: pulumi.Input.asOptionalInput<int>(map['cpsLimit']),
       defaultPhoneNumber:
-          Input.asOptionalInput<String>(map['defaultPhoneNumber']),
-      disabled: Input.asOptionalInput<bool>(map['disabled']),
-      region: Input.asOptionalInput<String>(map['region']),
-      voiceConnectorId: Input.asInput<String>(map['voiceConnectorId']),
+          pulumi.Input.asOptionalInput<String>(map['defaultPhoneNumber']),
+      disabled: pulumi.Input.asOptionalInput<bool>(map['disabled']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      voiceConnectorId: pulumi.Input.asInput<String>(map['voiceConnectorId']),
     );
   }
 }

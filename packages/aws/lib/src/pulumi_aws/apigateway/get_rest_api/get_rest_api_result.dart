@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_rest_api_endpoint_configuration/get_rest_api_endpoint_configuration.dart';
 
 /// Result data returned by getRestApi.
@@ -62,9 +62,9 @@ class GetRestApiResult {
     map['arn'] = arn;
     map['binaryMediaTypes'] = binaryMediaTypes;
     map['description'] = description;
-    map['endpointConfigurations'] =
-        Input.encodeList<GetRestApiEndpointConfiguration, Map<String, dynamic>>(
-            endpointConfigurations, (value) => value.toMap());
+    map['endpointConfigurations'] = pulumi.Input.encodeList<
+        GetRestApiEndpointConfiguration,
+        Map<String, dynamic>>(endpointConfigurations, (value) => value.toMap());
     map['executionArn'] = executionArn;
     map['id'] = id;
     map['minimumCompressionSize'] = minimumCompressionSize;
@@ -82,10 +82,11 @@ class GetRestApiResult {
       arn: map['arn'] as String,
       binaryMediaTypes: (map['binaryMediaTypes'] as List).cast<String>(),
       description: map['description'] as String,
-      endpointConfigurations: Input.decodeList<GetRestApiEndpointConfiguration>(
-          map['endpointConfigurations'],
-          (value) => GetRestApiEndpointConfiguration.fromMap(
-              (value as Map).cast<String, dynamic>())),
+      endpointConfigurations:
+          pulumi.Input.decodeList<GetRestApiEndpointConfiguration>(
+              map['endpointConfigurations'],
+              (value) => GetRestApiEndpointConfiguration.fromMap(
+                  (value as Map).cast<String, dynamic>())),
       executionArn: map['executionArn'] as String,
       id: map['id'] as String,
       minimumCompressionSize: map['minimumCompressionSize'] as String,

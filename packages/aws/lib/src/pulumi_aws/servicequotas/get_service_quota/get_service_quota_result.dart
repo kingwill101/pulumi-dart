@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../get_service_quota_usage_metric/get_service_quota_usage_metric.dart';
 
 /// Result data returned by getServiceQuota.
@@ -60,9 +60,8 @@ class GetServiceQuotaResult {
     map['region'] = region;
     map['serviceCode'] = serviceCode;
     map['serviceName'] = serviceName;
-    map['usageMetrics'] =
-        Input.encodeList<GetServiceQuotaUsageMetric, Map<String, dynamic>>(
-            usageMetrics, (value) => value.toMap());
+    map['usageMetrics'] = pulumi.Input.encodeList<GetServiceQuotaUsageMetric,
+        Map<String, dynamic>>(usageMetrics, (value) => value.toMap());
     map['value'] = value;
     return map;
   }
@@ -79,7 +78,7 @@ class GetServiceQuotaResult {
       region: map['region'] as String,
       serviceCode: map['serviceCode'] as String,
       serviceName: map['serviceName'] as String,
-      usageMetrics: Input.decodeList<GetServiceQuotaUsageMetric>(
+      usageMetrics: pulumi.Input.decodeList<GetServiceQuotaUsageMetric>(
           map['usageMetrics'],
           (value) => GetServiceQuotaUsageMetric.fromMap(
               (value as Map).cast<String, dynamic>())),

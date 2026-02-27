@@ -1,3 +1,3 @@
 library module_route53recoverycontrol_cluster_cluster_endpoint;
 
-export 'cluster_cluster_endpoint/cluster_cluster_endpoint2.dart';
+export 'cluster_cluster_endpoint/cluster_cluster_endpoint_route53recoverycontrol.dart';

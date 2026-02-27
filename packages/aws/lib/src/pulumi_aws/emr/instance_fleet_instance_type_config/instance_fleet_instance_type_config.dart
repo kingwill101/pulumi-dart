@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../instance_fleet_instance_type_config_configuration/instance_fleet_instance_type_config_configuration.dart';
 import '../instance_fleet_instance_type_config_ebs_config/instance_fleet_instance_type_config_ebs_config.dart';
 
@@ -46,13 +46,13 @@ class InstanceFleetInstanceTypeConfig {
     }
     final configurationsValue = configurations;
     if (configurationsValue != null) {
-      map['configurations'] = Input.encodeList<
+      map['configurations'] = pulumi.Input.encodeList<
           InstanceFleetInstanceTypeConfigConfiguration,
           Map<String, dynamic>>(configurationsValue, (value) => value.toMap());
     }
     final ebsConfigsValue = ebsConfigs;
     if (ebsConfigsValue != null) {
-      map['ebsConfigs'] = Input.encodeList<
+      map['ebsConfigs'] = pulumi.Input.encodeList<
           InstanceFleetInstanceTypeConfigEbsConfig,
           Map<String, dynamic>>(ebsConfigsValue, (value) => value.toMap());
     }
@@ -73,13 +73,14 @@ class InstanceFleetInstanceTypeConfig {
               : map['bidPriceAsPercentageOfOnDemandPrice'] as double,
       configurations: map['configurations'] == null
           ? null
-          : Input.decodeList<InstanceFleetInstanceTypeConfigConfiguration>(
+          : pulumi.Input.decodeList<
+                  InstanceFleetInstanceTypeConfigConfiguration>(
               map['configurations'],
               (value) => InstanceFleetInstanceTypeConfigConfiguration.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ebsConfigs: map['ebsConfigs'] == null
           ? null
-          : Input.decodeList<InstanceFleetInstanceTypeConfigEbsConfig>(
+          : pulumi.Input.decodeList<InstanceFleetInstanceTypeConfigEbsConfig>(
               map['ebsConfigs'],
               (value) => InstanceFleetInstanceTypeConfigEbsConfig.fromMap(
                   (value as Map).cast<String, dynamic>())),

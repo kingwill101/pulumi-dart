@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../data_source_custom_document_enrichment_configuration_inline_configuration/data_source_custom_document_enrichment_configuration_inline_configuration.dart';
 import '../data_source_custom_document_enrichment_configuration_post_extraction_hook_configuration/data_source_custom_document_enrichment_configuration_post_extraction_hook_configuration.dart';
 import '../data_source_custom_document_enrichment_configuration_pre_extraction_hook_configuration/data_source_custom_document_enrichment_configuration_pre_extraction_hook_configuration.dart';
@@ -33,7 +33,7 @@ class DataSourceCustomDocumentEnrichmentConfiguration {
     final map = <String, dynamic>{};
     final inlineConfigurationsValue = inlineConfigurations;
     if (inlineConfigurationsValue != null) {
-      map['inlineConfigurations'] = Input.encodeList<
+      map['inlineConfigurations'] = pulumi.Input.encodeList<
           DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration,
           Map<String,
               dynamic>>(inlineConfigurationsValue, (value) => value.toMap());
@@ -61,7 +61,7 @@ class DataSourceCustomDocumentEnrichmentConfiguration {
     return DataSourceCustomDocumentEnrichmentConfiguration(
       inlineConfigurations: map['inlineConfigurations'] == null
           ? null
-          : Input.decodeList<
+          : pulumi.Input.decodeList<
                   DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration>(
               map['inlineConfigurations'],
               (value) =>

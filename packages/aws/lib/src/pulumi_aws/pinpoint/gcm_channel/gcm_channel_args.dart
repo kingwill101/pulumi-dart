@@ -1,22 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for GcmChannel.
 class GcmChannelArgs {
   /// Platform credential API key from Google.
-  final Input<String>? apiKey;
+  final pulumi.Input<String>? apiKey;
 
   /// The application ID.
-  final Input<String> applicationId;
-  final Input<String>? defaultAuthenticationMethod;
+  final pulumi.Input<String> applicationId;
+  final pulumi.Input<String>? defaultAuthenticationMethod;
 
   /// Whether the channel is enabled or disabled. Defaults to `true`.
-  final Input<bool>? enabled;
+  final pulumi.Input<bool>? enabled;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
-  final Input<String>? serviceJson;
+  final pulumi.Input<String>? region;
+  final pulumi.Input<String>? serviceJson;
 
   GcmChannelArgs({
     this.apiKey,
@@ -55,13 +55,13 @@ class GcmChannelArgs {
 
   factory GcmChannelArgs.fromMap(Map<String, dynamic> map) {
     return GcmChannelArgs(
-      apiKey: Input.asOptionalInput<String>(map['apiKey']),
-      applicationId: Input.asInput<String>(map['applicationId']),
-      defaultAuthenticationMethod:
-          Input.asOptionalInput<String>(map['defaultAuthenticationMethod']),
-      enabled: Input.asOptionalInput<bool>(map['enabled']),
-      region: Input.asOptionalInput<String>(map['region']),
-      serviceJson: Input.asOptionalInput<String>(map['serviceJson']),
+      apiKey: pulumi.Input.asOptionalInput<String>(map['apiKey']),
+      applicationId: pulumi.Input.asInput<String>(map['applicationId']),
+      defaultAuthenticationMethod: pulumi.Input.asOptionalInput<String>(
+          map['defaultAuthenticationMethod']),
+      enabled: pulumi.Input.asOptionalInput<bool>(map['enabled']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      serviceJson: pulumi.Input.asOptionalInput<String>(map['serviceJson']),
     );
   }
 }

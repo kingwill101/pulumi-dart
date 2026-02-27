@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'active_receipt_rule_set_args.dart';
 
 /// Provides a resource to designate the active SES receipt rule set
@@ -14,25 +14,25 @@ import 'active_receipt_rule_set_args.dart';
 /// ```sh
 /// $ pulumi import aws:ses/activeReceiptRuleSet:ActiveReceiptRuleSet my_rule_set my_rule_set_name
 /// ```
-class ActiveReceiptRuleSet extends CustomResource {
+class ActiveReceiptRuleSet extends pulumi.CustomResource {
   /// The SES receipt rule set ARN.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The name of the rule set
-  late final Output<String> ruleSetName;
+  late final pulumi.Output<String> ruleSetName;
 
   ActiveReceiptRuleSet(
     String name, {
     ActiveReceiptRuleSetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:ses/activeReceiptRuleSet:ActiveReceiptRuleSet',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.region = registerOutput<String>('region');

@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../control_tower_control_parameter/control_tower_control_parameter.dart';
 import 'control_tower_control_args.dart';
 
@@ -16,33 +16,33 @@ import 'control_tower_control_args.dart';
 /// ```sh
 /// $ pulumi import aws:controltower/controlTowerControl:ControlTowerControl example arn:aws:organizations::123456789101:ou/o-qqaejywet/ou-qg5o-ufbhdtv3,arn:aws:controltower:us-east-1::control/WTDSMKDKDNLE
 /// ```
-class ControlTowerControl extends CustomResource {
+class ControlTowerControl extends pulumi.CustomResource {
   /// The ARN of the EnabledControl resource.
-  late final Output<String> arn;
+  late final pulumi.Output<String> arn;
 
   /// The ARN of the control. Only Strongly recommended and Elective controls are permitted, with the exception of the Region deny guardrail.
-  late final Output<String> controlIdentifier;
+  late final pulumi.Output<String> controlIdentifier;
 
   /// Parameter values which are specified to configure the control when you enable it. See Parameters for more details.
-  late final Output<List<ControlTowerControlParameter>?> parameters;
+  late final pulumi.Output<List<ControlTowerControlParameter>?> parameters;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  late final Output<String> region;
+  late final pulumi.Output<String> region;
 
   /// The ARN of the organizational unit.
   ///
   /// The following arguments are optional:
-  late final Output<String> targetIdentifier;
+  late final pulumi.Output<String> targetIdentifier;
 
   ControlTowerControl(
     String name, {
     ControlTowerControlArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'aws:controltower/controlTowerControl:ControlTowerControl',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.controlIdentifier = registerOutput<String>('controlIdentifier');

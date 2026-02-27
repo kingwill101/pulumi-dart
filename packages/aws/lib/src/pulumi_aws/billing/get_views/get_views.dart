@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_views_args.dart';
 import 'get_views_result.dart';
 
@@ -9,13 +9,13 @@ import 'get_views_result.dart';
 /// ### Basic Usage
 Future<GetViewsResult> getViews(
   GetViewsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'aws:billing/getViews:getViews',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetViewsResult.fromMap(result);
 }
