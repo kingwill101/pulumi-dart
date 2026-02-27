@@ -1,0 +1,165 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_memcache_v1_maintenance_policy.dart';
+import 'instance_memcache_version.dart';
+import 'instance_message.dart';
+import 'memcache_parameters.dart';
+import 'node_config_memcache_v1.dart';
+
+/// The set of arguments for Instance.
+class InstanceMemcacheV1Args {
+  /// The full name of the Google Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. If left unspecified, the `default` network will be used.
+  final pulumi.Input<String>? authorizedNetwork;
+
+  /// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
+  final pulumi.Input<String>? displayName;
+
+  /// Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
+  final pulumi.Input<String> instanceId;
+
+  /// List of messages that describe the current state of the Memcached instance.
+  final pulumi.Input<List<InstanceMessage>>? instanceMessages;
+
+  /// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
+
+  /// The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+  final pulumi.Input<GoogleCloudMemcacheV1MaintenancePolicy>? maintenancePolicy;
+
+  /// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
+  final pulumi.Input<InstanceMemcacheVersion>? memcacheVersion;
+
+  /// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+  final pulumi.Input<String>? name;
+
+  /// Configuration for Memcached nodes.
+  final pulumi.Input<NodeConfigMemcacheV1> nodeConfig;
+
+  /// Number of nodes in the Memcached instance.
+  final pulumi.Input<int> nodeCount;
+
+  /// User defined parameters to apply to the memcached process on each node.
+  final pulumi.Input<MemcacheParameters>? parameters;
+  final pulumi.Input<String>? project;
+
+  /// Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
+  final pulumi.Input<List<String>>? reservedIpRangeId;
+
+  /// Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
+  final pulumi.Input<List<String>>? zones;
+
+  InstanceMemcacheV1Args({
+    this.authorizedNetwork,
+    this.displayName,
+    required this.instanceId,
+    this.instanceMessages,
+    this.labels,
+    this.location,
+    this.maintenancePolicy,
+    this.memcacheVersion,
+    this.name,
+    required this.nodeConfig,
+    required this.nodeCount,
+    this.parameters,
+    this.project,
+    this.reservedIpRangeId,
+    this.zones,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final authorizedNetworkValue = authorizedNetwork;
+    if (authorizedNetworkValue != null) {
+      map['authorizedNetwork'] = authorizedNetworkValue;
+    }
+    final displayNameValue = displayName;
+    if (displayNameValue != null) {
+      map['displayName'] = displayNameValue;
+    }
+    map['instanceId'] = instanceId;
+    final instanceMessagesValue = instanceMessages;
+    if (instanceMessagesValue != null) {
+      map['instanceMessages'] = pulumi.Input.mapOptionalInputValue<
+              List<InstanceMessage>, List<Map<String, dynamic>>>(
+          instanceMessagesValue,
+          (value) =>
+              pulumi.Input.encodeList<InstanceMessage, Map<String, dynamic>>(
+                  value, (value) => value.toMap()));
+    }
+    final labelsValue = labels;
+    if (labelsValue != null) {
+      map['labels'] = labelsValue;
+    }
+    final locationValue = location;
+    if (locationValue != null) {
+      map['location'] = locationValue;
+    }
+    final maintenancePolicyValue = maintenancePolicy;
+    if (maintenancePolicyValue != null) {
+      map['maintenancePolicy'] = pulumi.Input.mapOptionalInputValue<
+              GoogleCloudMemcacheV1MaintenancePolicy, Map<String, dynamic>>(
+          maintenancePolicyValue, (value) => value.toMap());
+    }
+    final memcacheVersionValue = memcacheVersion;
+    if (memcacheVersionValue != null) {
+      map['memcacheVersion'] =
+          pulumi.Input.mapOptionalInputValue<InstanceMemcacheVersion, String>(
+              memcacheVersionValue, (value) => value.value);
+    }
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    map['nodeConfig'] =
+        pulumi.Input.mapInputValue<NodeConfigMemcacheV1, Map<String, dynamic>>(
+            nodeConfig, (value) => value.toMap());
+    map['nodeCount'] = nodeCount;
+    final parametersValue = parameters;
+    if (parametersValue != null) {
+      map['parameters'] = pulumi.Input.mapOptionalInputValue<MemcacheParameters,
+          Map<String, dynamic>>(parametersValue, (value) => value.toMap());
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    final reservedIpRangeIdValue = reservedIpRangeId;
+    if (reservedIpRangeIdValue != null) {
+      map['reservedIpRangeId'] = reservedIpRangeIdValue;
+    }
+    final zonesValue = zones;
+    if (zonesValue != null) {
+      map['zones'] = zonesValue;
+    }
+    return map;
+  }
+
+  factory InstanceMemcacheV1Args.fromMap(Map<String, dynamic> map) {
+    return InstanceMemcacheV1Args(
+      authorizedNetwork:
+          pulumi.Input.asOptionalInput<String>(map['authorizedNetwork']),
+      displayName: pulumi.Input.asOptionalInput<String>(map['displayName']),
+      instanceId: pulumi.Input.asInput<String>(map['instanceId']),
+      instanceMessages: pulumi.Input.asOptionalInput<List<InstanceMessage>>(
+          map['instanceMessages']),
+      labels: pulumi.Input.asOptionalInput<Map<String, String>>(map['labels']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      maintenancePolicy:
+          pulumi.Input.asOptionalInput<GoogleCloudMemcacheV1MaintenancePolicy>(
+              map['maintenancePolicy']),
+      memcacheVersion: pulumi.Input.asOptionalInput<InstanceMemcacheVersion>(
+          map['memcacheVersion']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      nodeConfig: pulumi.Input.asInput<NodeConfigMemcacheV1>(map['nodeConfig']),
+      nodeCount: pulumi.Input.asInput<int>(map['nodeCount']),
+      parameters:
+          pulumi.Input.asOptionalInput<MemcacheParameters>(map['parameters']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      reservedIpRangeId:
+          pulumi.Input.asOptionalInput<List<String>>(map['reservedIpRangeId']),
+      zones: pulumi.Input.asOptionalInput<List<String>>(map['zones']),
+    );
+  }
+}

@@ -1656,12 +1656,13 @@ func makeRawObjectClassSpec(
 	namedTypeRefs map[string]packageNamedTypeRef,
 	useReferenceTypes bool,
 	usesInputTypes bool,
+	nameSuffixes ...string,
 ) *packageObjectClassSpec {
 	if len(properties) == 0 {
 		return nil
 	}
 
-	className := uniqueClassName(toDartClassName(baseName), usedClassNames)
+	className := uniqueQualifiedClassName(baseName, modulePath, usedClassNames, nameSuffixes...)
 	return buildRawObjectClassSpec(
 		className,
 		modulePath,
@@ -1874,7 +1875,13 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 	for _, token := range typeTokens {
 		typeSpec := rawSpec.Types[token]
 		if len(typeSpec.Enum) > 0 {
-			typeName := uniqueClassName(toDartClassName(tokenElementName(token)), usedClassNames)
+			typeName := uniqueQualifiedClassName(
+				tokenElementName(token),
+				tokenModulePath(token),
+				usedClassNames,
+				"",
+				"Enum",
+			)
 			namedTypeRefs[token] = packageNamedTypeRef{
 				Kind:             "enum",
 				Name:             typeName,
@@ -1887,7 +1894,13 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 			typeName := ""
 			useReferenceType := false
 			if len(typeSpec.Properties) > 0 {
-				typeName = uniqueClassName(toDartClassName(tokenElementName(token)), usedClassNames)
+				typeName = uniqueQualifiedClassName(
+					tokenElementName(token),
+					tokenModulePath(token),
+					usedClassNames,
+					"",
+					"Type",
+				)
 				useReferenceType = true
 			}
 			namedTypeRefs[token] = packageNamedTypeRef{
@@ -1958,20 +1971,23 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 
 	for _, token := range resourceTokens {
 		resource := rawSpec.Resources[token]
+		resourceBaseName := toDartClassName(tokenElementName(token))
 		resourceSpec := packageResourceSpec{
 			IsComponent: resource.IsComponent,
 			Comment:     strings.TrimSpace(resource.Description),
 		}
 		if classSpec := makeRawObjectClassSpec(
-			toDartClassName(tokenElementName(token))+"Args",
+			resourceBaseName,
 			tokenModulePath(token),
-			fmt.Sprintf("The set of arguments for %s.", toDartClassName(tokenElementName(token))),
+			fmt.Sprintf("The set of arguments for %s.", resourceBaseName),
 			resource.InputProperties,
 			resource.RequiredInputs,
 			usedClassNames,
 			namedTypeRefs,
 			true,
 			true,
+			"Args",
+			"ResourceArgs",
 		); classSpec != nil {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			resourceSpec.ArgsClass = classSpec.ClassName
@@ -2007,7 +2023,7 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 		}
 		base := toDartClassName(tokenElementName(token))
 		if classSpec := makeRawObjectClassSpec(
-			base+"Args",
+			base,
 			tokenModulePath(token),
 			fmt.Sprintf("Arguments for %s.", functionNameFromToken(token, map[string]int{})),
 			inputProperties,
@@ -2016,12 +2032,14 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 			namedTypeRefs,
 			true,
 			true,
+			"Args",
+			"InvokeArgs",
 		); classSpec != nil {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			functionSpec.ArgsClass = classSpec.ClassName
 		}
 		if classSpec := makeRawObjectClassSpec(
-			base+"Result",
+			base,
 			tokenModulePath(token),
 			fmt.Sprintf("Result data returned by %s.", functionNameFromToken(token, map[string]int{})),
 			outputProperties,
@@ -2030,6 +2048,8 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 			namedTypeRefs,
 			true,
 			false,
+			"Result",
+			"InvokeResult",
 		); classSpec != nil {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			functionSpec.ResultClass = classSpec.ClassName
@@ -2049,6 +2069,130 @@ func parsePackageSchema(schemaJSON string) (*packageSchema, error) {
 
 func uniqueClassName(base string, used map[string]int) string {
 	return claimUniqueTypeName(base, used)
+}
+
+func lowerCamelIdentifier(name string) string {
+	if name == "" {
+		return ""
+	}
+	runes := []rune(name)
+	if runes[0] >= 'A' && runes[0] <= 'Z' {
+		runes[0] = runes[0] - 'A' + 'a'
+	}
+	return string(runes)
+}
+
+func sanitizeCallableIdentifier(name string) string {
+	if name == "" {
+		return "invoke"
+	}
+	name = lowerCamelIdentifier(name)
+	if _, reserved := dartReservedIdentifiers[name]; reserved {
+		return name + "_"
+	}
+	return name
+}
+
+func modulePathQualifierForName(modulePath, baseName string) string {
+	normalized := normalizedModulePath(modulePath)
+	if normalized == "" {
+		return ""
+	}
+
+	baseToken := toSnakeCaseIdentifier(baseName)
+	parts := strings.Split(normalized, "/")
+	var b strings.Builder
+	for _, part := range parts {
+		if part == "" || part == "index" {
+			continue
+		}
+		if baseToken != "" && part == baseToken {
+			continue
+		}
+		b.WriteString(toDartClassName(part))
+	}
+	return b.String()
+}
+
+func typeNameCandidates(baseName, modulePath string, suffixes ...string) []string {
+	base := toDartClassName(baseName)
+	if base == "" {
+		base = "GeneratedType"
+	}
+	qualifier := modulePathQualifierForName(modulePath, base)
+
+	if len(suffixes) == 0 {
+		suffixes = []string{""}
+	}
+
+	seen := map[string]struct{}{}
+	candidates := make([]string, 0, len(suffixes)*2+2)
+	add := func(candidate string) {
+		candidate = sanitizeTypeName(candidate)
+		if candidate == "" {
+			return
+		}
+		if _, exists := seen[candidate]; exists {
+			return
+		}
+		seen[candidate] = struct{}{}
+		candidates = append(candidates, candidate)
+	}
+
+	for _, suffix := range suffixes {
+		add(base + suffix)
+		if qualifier != "" {
+			add(base + qualifier + suffix)
+		}
+	}
+
+	if len(candidates) == 0 {
+		candidates = append(candidates, "GeneratedType")
+	}
+	return candidates
+}
+
+func claimUniqueTypeNameFromCandidates(candidates []string, used map[string]int) string {
+	for _, candidate := range candidates {
+		if _, exists := used[candidate]; !exists {
+			used[candidate] = 1
+			return candidate
+		}
+	}
+	if len(candidates) == 0 {
+		return claimUniqueTypeName("GeneratedType", used)
+	}
+	return claimUniqueTypeName(candidates[0], used)
+}
+
+func uniqueQualifiedClassName(baseName, modulePath string, used map[string]int, suffixes ...string) string {
+	return claimUniqueTypeNameFromCandidates(typeNameCandidates(baseName, modulePath, suffixes...), used)
+}
+
+func claimUniqueIdentifierFromCandidates(candidates []string, used map[string]int) string {
+	normalizedCandidates := make([]string, 0, len(candidates))
+	for _, candidate := range candidates {
+		candidate = sanitizeCallableIdentifier(candidate)
+		if candidate == "" {
+			continue
+		}
+		normalizedCandidates = append(normalizedCandidates, candidate)
+		if _, exists := used[candidate]; !exists {
+			used[candidate] = 1
+			return candidate
+		}
+	}
+	if len(normalizedCandidates) == 0 {
+		normalizedCandidates = append(normalizedCandidates, "invoke")
+	}
+	base := normalizedCandidates[0]
+	for suffix := 2; ; suffix++ {
+		candidate := fmt.Sprintf("%s%d", base, suffix)
+		if _, exists := used[candidate]; !exists {
+			used[candidate] = 1
+			return candidate
+		}
+	}
 }
 
 var dartReservedIdentifiers = map[string]struct{}{
@@ -2292,12 +2436,13 @@ func makeObjectClassSpec(
 	namedTypeRefs map[string]packageNamedTypeRef,
 	useReferenceTypes bool,
 	usesInputTypes bool,
+	nameSuffixes ...string,
 ) *packageObjectClassSpec {
 	if len(properties) == 0 {
 		return nil
 	}
 
-	className := uniqueClassName(toDartClassName(baseName), usedClassNames)
+	className := uniqueQualifiedClassName(baseName, modulePath, usedClassNames, nameSuffixes...)
 	return buildObjectClassSpec(
 		className,
 		modulePath,
@@ -2525,7 +2670,13 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 		typ := typesByToken[token]
 		switch t := typ.(type) {
 		case *schema.EnumType:
-			typeName := uniqueClassName(toDartClassName(tokenElementName(token)), usedClassNames)
+			typeName := uniqueQualifiedClassName(
+				tokenElementName(token),
+				tokenModulePath(token),
+				usedClassNames,
+				"",
+				"Enum",
+			)
 			underlyingType := dartTypeSpecFromSchemaType(t.ElementType, nil, false).DartType
 			namedTypeRefs[token] = packageNamedTypeRef{
 				Kind:             "enum",
@@ -2537,7 +2688,13 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			typeName := ""
 			useReferenceType := false
 			if len(t.Properties) > 0 {
-				typeName = uniqueClassName(toDartClassName(tokenElementName(token)), usedClassNames)
+				typeName = uniqueQualifiedClassName(
+					tokenElementName(token),
+					tokenModulePath(token),
+					usedClassNames,
+					"",
+					"Type",
+				)
 				useReferenceType = true
 			}
 			namedTypeRefs[token] = packageNamedTypeRef{
@@ -2608,19 +2765,22 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 
 	for _, token := range resourceTokens {
 		resource := resourceByToken[token]
+		resourceBaseName := toDartClassName(tokenElementName(resource.Token))
 		resourceSpec := packageResourceSpec{
 			IsComponent: resource.IsComponent,
 			Comment:     strings.TrimSpace(resource.Comment),
 		}
 		if classSpec := makeObjectClassSpec(
-			toDartClassName(tokenElementName(resource.Token))+"Args",
+			resourceBaseName,
 			tokenModulePath(resource.Token),
-			fmt.Sprintf("The set of arguments for %s.", toDartClassName(tokenElementName(resource.Token))),
+			fmt.Sprintf("The set of arguments for %s.", resourceBaseName),
 			resource.InputProperties,
 			usedClassNames,
 			namedTypeRefs,
 			true,
 			true,
+			"Args",
+			"ResourceArgs",
 		); classSpec != nil {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			resourceSpec.ArgsClass = classSpec.ClassName
@@ -2654,7 +2814,7 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 		}
 		base := toDartClassName(tokenElementName(function.Token))
 		if classSpec := makeObjectClassSpec(
-			base+"Args",
+			base,
 			tokenModulePath(function.Token),
 			fmt.Sprintf("Arguments for %s.", functionNameFromToken(function.Token, map[string]int{})),
 			inputProperties,
@@ -2662,12 +2822,14 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			namedTypeRefs,
 			true,
 			true,
+			"Args",
+			"InvokeArgs",
 		); classSpec != nil {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			functionSpec.ArgsClass = classSpec.ClassName
 		}
 		if classSpec := makeObjectClassSpec(
-			base+"Result",
+			base,
 			tokenModulePath(function.Token),
 			fmt.Sprintf("Result data returned by %s.", functionNameFromToken(function.Token, map[string]int{})),
 			outputProperties,
@@ -2675,6 +2837,8 @@ func packageSchemaFromPackage(pkg *schema.Package) *packageSchema {
 			namedTypeRefs,
 			true,
 			false,
+			"Result",
+			"InvokeResult",
 		); classSpec != nil {
 			spec.ObjectClasses = append(spec.ObjectClasses, *classSpec)
 			functionSpec.ResultClass = classSpec.ClassName
@@ -2796,8 +2960,7 @@ func tokenModulePath(token string) string {
 }
 
 func resourceClassNameFromToken(token string, used map[string]int) string {
-	base := sanitizeTypeName(toDartClassName(tokenElementName(token)))
-	return claimUniqueTypeName(base, used)
+	return uniqueQualifiedClassName(tokenElementName(token), tokenModulePath(token), used, "", "Resource", "Res")
 }
 
 func functionNameFromToken(token string, used map[string]int) string {
@@ -2811,22 +2974,36 @@ func functionNameFromToken(token string, used map[string]int) string {
 		classLike = "Invoke"
 	}
 
-	runes := []rune(classLike)
-	if len(runes) > 0 && runes[0] >= 'A' && runes[0] <= 'Z' {
-		runes[0] = runes[0] - 'A' + 'a'
+	moduleQualifier := modulePathQualifierForName(tokenModulePath(token), classLike)
+
+	classCandidates := []string{classLike}
+	if strings.HasPrefix(classLike, "Get") && len(classLike) > len("Get") {
+		classCandidates = append(classCandidates, "Lookup"+classLike[len("Get"):])
 	}
-	candidate := string(runes)
-	if candidate == "" {
-		candidate = "invoke"
+	if strings.HasPrefix(classLike, "New") && len(classLike) > len("New") {
+		classCandidates = append(classCandidates, "Create"+classLike[len("New"):])
 	}
 
-	for suffix := 2; ; suffix++ {
-		if _, exists := used[candidate]; !exists {
-			used[candidate] = 1
-			return candidate
+	candidates := make([]string, 0, len(classCandidates)*2)
+	seen := map[string]struct{}{}
+	add := func(candidate string) {
+		candidate = sanitizeCallableIdentifier(candidate)
+		if candidate == "" {
+			return
 		}
-		candidate = fmt.Sprintf("%s%d", string(runes), suffix)
+		if _, exists := seen[candidate]; exists {
+			return
+		}
+		seen[candidate] = struct{}{}
+		candidates = append(candidates, candidate)
 	}
+	for _, classCandidate := range classCandidates {
+		add(classCandidate)
+		if moduleQualifier != "" {
+			add(classCandidate + moduleQualifier)
+		}
+	}
+	return claimUniqueIdentifierFromCandidates(candidates, used)
 }
 
 func propertyTypeSpec(property packagePropertySpec) packageTypeSpec {
@@ -2857,7 +3034,7 @@ func nullableDartType(base string, required bool) string {
 func objectClassPropertyDartType(objectClass packageObjectClassSpec, property packagePropertySpec) string {
 	base := propertyBaseDartType(property)
 	if objectClass.UsesInputTypes {
-		typed := fmt.Sprintf("Input<%s>", base)
+		typed := fmt.Sprintf("pulumi.Input<%s>", base)
 		if property.Required {
 			return typed
 		}
@@ -2940,7 +3117,7 @@ func typeSpecDecodeExpression(typeSpec packageTypeSpec, sourceExpr string) strin
 		element := typeSpecElement(typeSpec)
 		if typeSpecNeedsDecodeConversion(element) {
 			return fmt.Sprintf(
-				"Input.decodeList<%s>(%s, (value) => %s)",
+				"pulumi.Input.decodeList<%s>(%s, (value) => %s)",
 				element.DartType,
 				sourceExpr,
 				typeSpecDecodeExpression(element, "value"),
@@ -2951,7 +3128,7 @@ func typeSpecDecodeExpression(typeSpec packageTypeSpec, sourceExpr string) strin
 		element := typeSpecElement(typeSpec)
 		if typeSpecNeedsDecodeConversion(element) {
 			return fmt.Sprintf(
-				"Input.decodeMapValues<%s>(%s, (value) => %s)",
+				"pulumi.Input.decodeMapValues<%s>(%s, (value) => %s)",
 				element.DartType,
 				sourceExpr,
 				typeSpecDecodeExpression(element, "value"),
@@ -2982,7 +3159,7 @@ func typeSpecEncodeExpression(typeSpec packageTypeSpec, sourceExpr string) strin
 		element := typeSpecElement(typeSpec)
 		if typeSpecNeedsEncodeConversion(element) {
 			return fmt.Sprintf(
-				"Input.encodeList<%s, %s>(%s, (value) => %s)",
+				"pulumi.Input.encodeList<%s, %s>(%s, (value) => %s)",
 				element.DartType,
 				typeSpecWireDartType(element),
 				sourceExpr,
@@ -2994,7 +3171,7 @@ func typeSpecEncodeExpression(typeSpec packageTypeSpec, sourceExpr string) strin
 		element := typeSpecElement(typeSpec)
 		if typeSpecNeedsEncodeConversion(element) {
 			return fmt.Sprintf(
-				"Input.encodeMapValues<%s, %s>(%s, (value) => %s)",
+				"pulumi.Input.encodeMapValues<%s, %s>(%s, (value) => %s)",
 				element.DartType,
 				typeSpecWireDartType(element),
 				sourceExpr,
@@ -3063,9 +3240,9 @@ func objectClassFromMapExpression(objectClass packageObjectClassSpec, property p
 	base := propertyBaseDartType(property)
 	if objectClass.UsesInputTypes {
 		if property.Required {
-			return fmt.Sprintf("Input.asInput<%s>(map['%s'])", base, property.Name)
+			return fmt.Sprintf("pulumi.Input.asInput<%s>(map['%s'])", base, property.Name)
 		}
-		return fmt.Sprintf("Input.asOptionalInput<%s>(map['%s'])", base, property.Name)
+		return fmt.Sprintf("pulumi.Input.asOptionalInput<%s>(map['%s'])", base, property.Name)
 	}
 
 	sourceExpr := fmt.Sprintf("map['%s']", property.Name)
@@ -3083,7 +3260,7 @@ func objectClassToMapExpressionFromSource(objectClass packageObjectClassSpec, pr
 		if typeSpecNeedsEncodeConversion(typeSpec) {
 			if property.Required {
 				return fmt.Sprintf(
-					"Input.mapInputValue<%s, %s>(%s, (value) => %s)",
+					"pulumi.Input.mapInputValue<%s, %s>(%s, (value) => %s)",
 					typeSpec.DartType,
 					typeSpecWireDartType(typeSpec),
 					sourceExpr,
@@ -3091,7 +3268,7 @@ func objectClassToMapExpressionFromSource(objectClass packageObjectClassSpec, pr
 				)
 			}
 			return fmt.Sprintf(
-				"Input.mapOptionalInputValue<%s, %s>(%s, (value) => %s)",
+				"pulumi.Input.mapOptionalInputValue<%s, %s>(%s, (value) => %s)",
 				typeSpec.DartType,
 				typeSpecWireDartType(typeSpec),
 				sourceExpr,
@@ -3220,13 +3397,13 @@ func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec)
 	fmt.Fprintf(b, "  const %s();\n\n", configSpec.ClassName)
 	b.WriteString(
 		"  String? _raw(String key) {\n" +
-			"    final deployment = Deployment.instance;\n" +
+			"    final deployment = pulumi.Deployment.instance;\n" +
 			"    return deployment.getConfig(key);\n" +
 			"  }\n\n",
 	)
 	b.WriteString(
 		"  bool _isSecret(String key) {\n" +
-			"    final deployment = Deployment.instance;\n" +
+			"    final deployment = pulumi.Deployment.instance;\n" +
 			"    return deployment.isConfigSecret(key);\n" +
 			"  }\n\n",
 	)
@@ -3447,7 +3624,7 @@ func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClas
 func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 	var b strings.Builder
 	fmt.Fprintf(&b, "library %s;\n\n", packageName)
-	b.WriteString("import 'package:pulumi/pulumi.dart' hide Config;\n\n")
+	b.WriteString("import 'package:pulumi/pulumi.dart' as pulumi;\n\n")
 
 	resourceTokens := make([]string, 0, len(spec.Resources))
 	for token := range spec.Resources {
@@ -3530,14 +3707,14 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 	}
 
 	if len(resourceTokens) > 0 {
-		b.WriteString(`Inputs _mapToInputs(Map<String, dynamic> args) {
-  final mapped = <String, Input<dynamic>>{};
+		b.WriteString(`pulumi.Inputs _mapToInputs(Map<String, dynamic> args) {
+  final mapped = <String, pulumi.Input<dynamic>>{};
   for (final entry in args.entries) {
     final value = entry.value;
-    if (value is Input<dynamic>) {
+    if (value is pulumi.Input<dynamic>) {
       mapped[entry.key] = value;
     } else {
-      mapped[entry.key] = Input.fromValue(value);
+      mapped[entry.key] = pulumi.Input.fromValue(value);
     }
   }
   return mapped;
@@ -3547,32 +3724,32 @@ func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 	}
 
 	if hasTypedInputObjects {
-		b.WriteString(`Input<T> _asInput<T>(dynamic value) {
-  if (value is Input<T>) {
+		b.WriteString(`pulumi.Input<T> _asInput<T>(dynamic value) {
+  if (value is pulumi.Input<T>) {
     return value;
   }
-  return Input.fromValue(value as T);
+  return pulumi.Input.fromValue(value as T);
 }
 
-Input<T>? _asOptionalInput<T>(dynamic value) {
+pulumi.Input<T>? _asOptionalInput<T>(dynamic value) {
   if (value == null) {
     return null;
   }
-  if (value is Input<T>) {
+  if (value is pulumi.Input<T>) {
     return value;
   }
-  return Input.fromValue(value as T);
+  return pulumi.Input.fromValue(value as T);
 }
 
 `)
 	}
 
 	if hasInputReferenceMappings {
-		b.WriteString(`Input<U> _mapInputValue<T, U>(Input<T> input, U Function(T value) mapper) {
-  return Input.fromOutput(input.toOutput().apply((value) => mapper(value as T)));
+		b.WriteString(`pulumi.Input<U> _mapInputValue<T, U>(pulumi.Input<T> input, U Function(T value) mapper) {
+  return pulumi.Input.fromOutput(input.toOutput().apply((value) => mapper(value as T)));
 }
 
-Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapper) {
+pulumi.Input<U>? _mapOptionalInputValue<T, U>(pulumi.Input<T>? input, U Function(T value) mapper) {
   if (input == null) {
     return null;
   }
@@ -3616,7 +3793,7 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 	}
 
 	if len(functionTokens) > 0 {
-		b.WriteString(`deployment_models.InvokeOptions? _toDeploymentInvokeOptions(InvokeOptions? options) {
+		b.WriteString(`deployment_models.InvokeOptions? _toDeploymentInvokeOptions(pulumi.InvokeOptions? options) {
   if (options == null) {
     return null;
   }
@@ -3738,12 +3915,12 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 		writeDartDocComment(&b, "", resource.Comment)
 
 		if resource.IsComponent {
-			fmt.Fprintf(&b, "class %s extends ComponentResource {\n", className)
+			fmt.Fprintf(&b, "class %s extends pulumi.ComponentResource {\n", className)
 			for _, property := range resource.OutputProperties {
 				writeDartDocComment(&b, "  ", property.Comment)
 				fmt.Fprintf(
 					&b,
-					"  late final Output<%s> %s;\n",
+					"  late final pulumi.Output<%s> %s;\n",
 					resourceOutputValueType(property),
 					property.FieldName,
 				)
@@ -3752,9 +3929,9 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 				b.WriteString("\n")
 			}
 
-			signature := "  %s(\n    String name, {\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          null,\n          options ?? ComponentResourceOptions(),\n        )"
+			signature := "  %s(\n    String name, {\n    pulumi.ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          null,\n          options ?? pulumi.ComponentResourceOptions(),\n        )"
 			if resource.ArgsClass != "" {
-				signature = "  %s(\n    String name, {\n    %s? args,\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? ComponentResourceOptions(),\n        )"
+				signature = "  %s(\n    String name, {\n    %s? args,\n    pulumi.ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.ComponentResourceOptions(),\n        )"
 				fmt.Fprintf(&b, signature, className, resource.ArgsClass, token)
 			} else {
 				fmt.Fprintf(&b, signature, className, token)
@@ -3778,12 +3955,12 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 			continue
 		}
 
-		fmt.Fprintf(&b, "class %s extends CustomResource {\n", className)
+		fmt.Fprintf(&b, "class %s extends pulumi.CustomResource {\n", className)
 		for _, property := range resource.OutputProperties {
 			writeDartDocComment(&b, "  ", property.Comment)
 			fmt.Fprintf(
 				&b,
-				"  late final Output<%s> %s;\n",
+				"  late final pulumi.Output<%s> %s;\n",
 				resourceOutputValueType(property),
 				property.FieldName,
 			)
@@ -3794,7 +3971,7 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 		if resource.ArgsClass != "" {
 			fmt.Fprintf(
 				&b,
-				"  %s(\n    String name, {\n    %s? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? CustomResourceOptions()%s,\n        )",
+				"  %s(\n    String name, {\n    %s? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.CustomResourceOptions()%s,\n        )",
 				className,
 				resource.ArgsClass,
 				token,
@@ -3803,7 +3980,7 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 		} else {
 			fmt.Fprintf(
 				&b,
-				"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? CustomResourceOptions()%s,\n        )",
+				"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          _mapToInputs(args ?? const {}),\n          options ?? pulumi.CustomResourceOptions()%s,\n        )",
 				className,
 				token,
 				resourceRegisterPackageArg,
@@ -3836,20 +4013,20 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 		function := spec.Functions[token]
 		writeDartDocComment(&b, "", function.Comment)
 
-		signatureArgs := "Map<String, dynamic> args, {\n  InvokeOptions? options,\n"
+		signatureArgs := "Map<String, dynamic> args, {\n  pulumi.InvokeOptions? options,\n"
 		invokeArgs := "args"
 		if function.ArgsClass != "" {
-			signatureArgs = fmt.Sprintf("%s args, {\n  InvokeOptions? options,\n", function.ArgsClass)
+			signatureArgs = fmt.Sprintf("%s args, {\n  pulumi.InvokeOptions? options,\n", function.ArgsClass)
 			invokeArgs = "args.toMap()"
 		} else if !function.HasArgs {
-			signatureArgs = "{\n  InvokeOptions? options,\n"
+			signatureArgs = "{\n  pulumi.InvokeOptions? options,\n"
 			invokeArgs = "const <String, dynamic>{}"
 		}
 
 		if function.ResultClass != "" {
 			fmt.Fprintf(
 				&b,
-				"Future<%s> %s(\n  %s}) async {\n  final deployment = Deployment.instance;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n  return %s.fromMap(result);\n}\n\n",
+				"Future<%s> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n  return %s.fromMap(result);\n}\n\n",
 				function.ResultClass,
 				funcName,
 				signatureArgs,
@@ -3863,7 +4040,7 @@ Input<U>? _mapOptionalInputValue<T, U>(Input<T>? input, U Function(T value) mapp
 
 		fmt.Fprintf(
 			&b,
-			"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = Deployment.instance;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n}\n\n",
+			"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: _toDeploymentInvokeOptions(options)%s,\n  );\n}\n\n",
 			funcName,
 			signatureArgs,
 			token,
@@ -4010,7 +4187,7 @@ func generatedObjectClassFile(
 	var b strings.Builder
 	b.WriteString("// ignore_for_file: unused_element, unnecessary_cast\n\n")
 	if objectClass.UsesInputTypes || objectClassNeedsObjectHelpers(objectClass) {
-		b.WriteString("import 'package:pulumi/pulumi.dart' hide Config;\n")
+		b.WriteString("import 'package:pulumi/pulumi.dart' as pulumi;\n")
 	}
 
 	imports := map[string]struct{}{}
@@ -4052,7 +4229,7 @@ func generatedResourceFile(
 	registrationFilePath string,
 ) []byte {
 	var b strings.Builder
-	b.WriteString("import 'package:pulumi/pulumi.dart' hide Config;\n")
+	b.WriteString("import 'package:pulumi/pulumi.dart' as pulumi;\n")
 
 	imports := map[string]struct{}{}
 	if resource.ArgsClass != "" {
@@ -4080,12 +4257,12 @@ func generatedResourceFile(
 
 	writeDartDocComment(&b, "", resource.Comment)
 	if resource.IsComponent {
-		fmt.Fprintf(&b, "class %s extends ComponentResource {\n", className)
+		fmt.Fprintf(&b, "class %s extends pulumi.ComponentResource {\n", className)
 		for _, property := range resource.OutputProperties {
 			writeDartDocComment(&b, "  ", property.Comment)
 			fmt.Fprintf(
 				&b,
-				"  late final Output<%s> %s;\n",
+				"  late final pulumi.Output<%s> %s;\n",
 				resourceOutputValueType(property),
 				property.FieldName,
 			)
@@ -4094,9 +4271,9 @@ func generatedResourceFile(
 			b.WriteString("\n")
 		}
 
-		signature := "  %s(\n    String name, {\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          null,\n          options ?? ComponentResourceOptions(),\n        )"
+		signature := "  %s(\n    String name, {\n    pulumi.ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          null,\n          options ?? pulumi.ComponentResourceOptions(),\n        )"
 		if resource.ArgsClass != "" {
-			signature = "  %s(\n    String name, {\n    %s? args,\n    ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          Input.mapToInputs(args?.toMap() ?? const {}),\n          options ?? ComponentResourceOptions(),\n        )"
+			signature = "  %s(\n    String name, {\n    %s? args,\n    pulumi.ComponentResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.ComponentResourceOptions(),\n        )"
 			fmt.Fprintf(&b, signature, className, resource.ArgsClass, token)
 		} else {
 			fmt.Fprintf(&b, signature, className, token)
@@ -4120,12 +4297,12 @@ func generatedResourceFile(
 		return []byte(b.String())
 	}
 
-	fmt.Fprintf(&b, "class %s extends CustomResource {\n", className)
+	fmt.Fprintf(&b, "class %s extends pulumi.CustomResource {\n", className)
 	for _, property := range resource.OutputProperties {
 		writeDartDocComment(&b, "  ", property.Comment)
 		fmt.Fprintf(
 			&b,
-			"  late final Output<%s> %s;\n",
+			"  late final pulumi.Output<%s> %s;\n",
 			resourceOutputValueType(property),
 			property.FieldName,
 		)
@@ -4142,7 +4319,7 @@ func generatedResourceFile(
 	if resource.ArgsClass != "" {
 		fmt.Fprintf(
 			&b,
-			"  %s(\n    String name, {\n    %s? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          Input.mapToInputs(args?.toMap() ?? const {}),\n          options ?? CustomResourceOptions()%s,\n        )",
+			"  %s(\n    String name, {\n    %s? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),\n          options ?? pulumi.CustomResourceOptions()%s,\n        )",
 			className,
 			resource.ArgsClass,
 			token,
@@ -4151,7 +4328,7 @@ func generatedResourceFile(
 	} else {
 		fmt.Fprintf(
 			&b,
-			"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          Input.mapToInputs(args ?? const {}),\n          options ?? CustomResourceOptions()%s,\n        )",
+			"  %s(\n    String name, {\n    Map<String, dynamic>? args,\n    pulumi.CustomResourceOptions? options,\n  }) : super(\n          '%s',\n          name,\n          pulumi.Input.mapToInputs(args ?? const {}),\n          options ?? pulumi.CustomResourceOptions()%s,\n        )",
 			className,
 			token,
 			resourceRegisterPackageArg,
@@ -4185,7 +4362,7 @@ func generatedFunctionFile(
 	registrationFilePath string,
 ) []byte {
 	var b strings.Builder
-	b.WriteString("import 'package:pulumi/pulumi.dart' hide Config;\n")
+	b.WriteString("import 'package:pulumi/pulumi.dart' as pulumi;\n")
 
 	imports := map[string]struct{}{}
 	if function.ArgsClass != "" {
@@ -4217,20 +4394,20 @@ func generatedFunctionFile(
 	}
 
 	writeDartDocComment(&b, "", function.Comment)
-	signatureArgs := "Map<String, dynamic> args, {\n  InvokeOptions? options,\n"
+	signatureArgs := "Map<String, dynamic> args, {\n  pulumi.InvokeOptions? options,\n"
 	invokeArgs := "args"
 	if function.ArgsClass != "" {
-		signatureArgs = fmt.Sprintf("%s args, {\n  InvokeOptions? options,\n", function.ArgsClass)
+		signatureArgs = fmt.Sprintf("%s args, {\n  pulumi.InvokeOptions? options,\n", function.ArgsClass)
 		invokeArgs = "args.toMap()"
 	} else if !function.HasArgs {
-		signatureArgs = "{\n  InvokeOptions? options,\n"
+		signatureArgs = "{\n  pulumi.InvokeOptions? options,\n"
 		invokeArgs = "const <String, dynamic>{}"
 	}
 
 	if function.ResultClass != "" {
 		fmt.Fprintf(
 			&b,
-			"Future<%s> %s(\n  %s}) async {\n  final deployment = Deployment.instance;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: toDeploymentInvokeOptions(options)%s,\n  );\n  return %s.fromMap(result);\n}\n",
+			"Future<%s> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  final result = await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: pulumi.toDeploymentInvokeOptions(options)%s,\n  );\n  return %s.fromMap(result);\n}\n",
 			function.ResultClass,
 			funcName,
 			signatureArgs,
@@ -4244,7 +4421,7 @@ func generatedFunctionFile(
 
 	fmt.Fprintf(
 		&b,
-		"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = Deployment.instance;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: toDeploymentInvokeOptions(options)%s,\n  );\n}\n",
+		"Future<Map<String, dynamic>> %s(\n  %s}) async {\n  final deployment = pulumi.Deployment.instance;\n  return await deployment.invoke<Map<String, dynamic>>(\n    '%s',\n    %s,\n    options: pulumi.toDeploymentInvokeOptions(options)%s,\n  );\n}\n",
 		funcName,
 		signatureArgs,
 		token,
@@ -4272,7 +4449,7 @@ func generatedConfigFile(spec *packageSchema, packageName string, filePath strin
 	if configNeedsJSONDecode {
 		b.WriteString("import 'dart:convert';\n")
 	}
-	b.WriteString("import 'package:pulumi/pulumi.dart' hide Config;\n")
+	b.WriteString("import 'package:pulumi/pulumi.dart' as pulumi;\n")
 
 	imports := map[string]struct{}{}
 	for _, ref := range referencedTypesFromProperties(spec.Config.Properties) {
@@ -4712,9 +4889,9 @@ func generatedProgramStub(pclSource map[string]string) []byte {
 		sourceList = "(no source files provided)"
 	}
 
-	return []byte(fmt.Sprintf(`import 'package:pulumi/pulumi.dart';
+	return []byte(fmt.Sprintf(`import 'package:pulumi/pulumi.dart' as pulumi;
 
-class GeneratedStack extends Stack {
+class GeneratedStack extends pulumi.Stack {
   GeneratedStack() {
     // Generated by pulumi-language-dart from PCL sources: %s
     // Replace this scaffold with generated resource definitions.
@@ -4722,17 +4899,17 @@ class GeneratedStack extends Stack {
 }
 
 Future<void> main() async {
-  await Deployment.runOrThrow(() => GeneratedStack());
+  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
 }
 `, sourceList))
 }
 
 func generatedPackageExampleMain(packageName string) []byte {
 	return []byte(fmt.Sprintf(`// ignore_for_file: unused_import
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:%s/%s.dart' as provider;
 
-class ExampleStack extends Stack {
+class ExampleStack extends pulumi.Stack {
   ExampleStack() {
     // Add resources from package:%s.
     // Example:
@@ -4741,7 +4918,7 @@ class ExampleStack extends Stack {
 }
 
 Future<void> main() async {
-  await Deployment.runOrThrow(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => ExampleStack());
 }
 `, packageName, packageName, packageName))
 }

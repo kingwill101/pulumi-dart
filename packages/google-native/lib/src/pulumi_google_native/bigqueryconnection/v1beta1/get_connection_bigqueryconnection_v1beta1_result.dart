@@ -1,0 +1,63 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'cloud_sql_properties_response.dart';
+
+/// Result data returned by getConnection.
+class GetConnectionBigqueryconnectionV1beta1Result {
+  /// Cloud SQL properties.
+  final CloudSqlPropertiesResponse cloudSql;
+
+  /// The creation timestamp of the connection.
+  final String creationTime;
+
+  /// User provided description.
+  final String description;
+
+  /// User provided display name for the connection.
+  final String friendlyName;
+
+  /// True, if credential is configured for this connection.
+  final bool hasCredential;
+
+  /// The last update timestamp of the connection.
+  final String lastModifiedTime;
+
+  /// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
+  final String name;
+
+  GetConnectionBigqueryconnectionV1beta1Result({
+    required this.cloudSql,
+    required this.creationTime,
+    required this.description,
+    required this.friendlyName,
+    required this.hasCredential,
+    required this.lastModifiedTime,
+    required this.name,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['cloudSql'] = cloudSql.toMap();
+    map['creationTime'] = creationTime;
+    map['description'] = description;
+    map['friendlyName'] = friendlyName;
+    map['hasCredential'] = hasCredential;
+    map['lastModifiedTime'] = lastModifiedTime;
+    map['name'] = name;
+    return map;
+  }
+
+  factory GetConnectionBigqueryconnectionV1beta1Result.fromMap(
+      Map<String, dynamic> map) {
+    return GetConnectionBigqueryconnectionV1beta1Result(
+      cloudSql: CloudSqlPropertiesResponse.fromMap(
+          (map['cloudSql'] as Map).cast<String, dynamic>()),
+      creationTime: map['creationTime'] as String,
+      description: map['description'] as String,
+      friendlyName: map['friendlyName'] as String,
+      hasCredential: map['hasCredential'] as bool,
+      lastModifiedTime: map['lastModifiedTime'] as String,
+      name: map['name'] as String,
+    );
+  }
+}

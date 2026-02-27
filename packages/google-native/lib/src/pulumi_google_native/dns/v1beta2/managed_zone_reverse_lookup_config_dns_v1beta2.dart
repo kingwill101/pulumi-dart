@@ -1,0 +1,25 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ManagedZoneReverseLookupConfigDnsV1beta2 {
+  final String? kind;
+
+  ManagedZoneReverseLookupConfigDnsV1beta2({
+    this.kind,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final kindValue = kind;
+    if (kindValue != null) {
+      map['kind'] = kindValue;
+    }
+    return map;
+  }
+
+  factory ManagedZoneReverseLookupConfigDnsV1beta2.fromMap(
+      Map<String, dynamic> map) {
+    return ManagedZoneReverseLookupConfigDnsV1beta2(
+      kind: map['kind'] == null ? null : map['kind'] as String,
+    );
+  }
+}

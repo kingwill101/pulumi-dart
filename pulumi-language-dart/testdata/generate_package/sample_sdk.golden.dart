@@ -2,7 +2,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'dart:convert';
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../index/widget_metadata.dart';
 import '../index/widget_mode.dart';
 
@@ -42,12 +42,12 @@ class SampleConfig {
   const SampleConfig();
 
   String? _raw(String key) {
-    final deployment = Deployment.instance;
+    final deployment = pulumi.Deployment.instance;
     return deployment.getConfig(key);
   }
 
   bool _isSecret(String key) {
-    final deployment = Deployment.instance;
+    final deployment = pulumi.Deployment.instance;
     return deployment.isConfigSecret(key);
   }
 
@@ -119,19 +119,19 @@ export 'index/widget_metadata.dart';
 export 'index/widget_mode.dart';
 
 // FILE: index/get_widget_details.dart
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_widget_details_args.dart';
 import 'get_widget_details_result.dart';
 
 Future<GetWidgetDetailsResult> getWidgetDetails(
   GetWidgetDetailsArgs args, {
-  InvokeOptions? options,
+  pulumi.InvokeOptions? options,
 }) async {
-  final deployment = Deployment.instance;
+  final deployment = pulumi.Deployment.instance;
   final result = await deployment.invoke<Map<String, dynamic>>(
     'sample:index:getWidgetDetails',
     args.toMap(),
-    options: toDeploymentInvokeOptions(options),
+    options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWidgetDetailsResult.fromMap(result);
 }
@@ -139,11 +139,11 @@ Future<GetWidgetDetailsResult> getWidgetDetails(
 // FILE: index/get_widget_details_args.dart
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Arguments for getWidgetDetails.
 class GetWidgetDetailsArgs {
-  final Input<String> id;
+  final pulumi.Input<String> id;
 
   GetWidgetDetailsArgs({
     required this.id,
@@ -157,7 +157,7 @@ class GetWidgetDetailsArgs {
 
   factory GetWidgetDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetWidgetDetailsArgs(
-      id: Input.asInput<String>(map['id']),
+      id: pulumi.Input.asInput<String>(map['id']),
     );
   }
 }
@@ -196,23 +196,23 @@ class GetWidgetDetailsResult {
 
 
 // FILE: index/widget.dart
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'widget_args.dart';
 import 'widget_mode.dart';
 
-class Widget extends CustomResource {
-  late final Output<String> arn;
-  late final Output<WidgetMode> mode;
+class Widget extends pulumi.CustomResource {
+  late final pulumi.Output<String> arn;
+  late final pulumi.Output<WidgetMode> mode;
 
   Widget(
     String name, {
     WidgetArgs? args,
-    CustomResourceOptions? options,
+    pulumi.CustomResourceOptions? options,
   }) : super(
           'sample:index:Widget',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? CustomResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
         ) {
     this.arn = registerOutput<String>('arn');
     this.mode = registerOutput<WidgetMode>('mode');
@@ -222,14 +222,14 @@ class Widget extends CustomResource {
 // FILE: index/widget_args.dart
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' hide Config;
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'widget_metadata.dart';
 import 'widget_mode.dart';
 
 /// The set of arguments for Widget.
 class WidgetArgs {
-  final Input<WidgetMetadata>? metadata;
-  final Input<WidgetMode> mode;
+  final pulumi.Input<WidgetMetadata>? metadata;
+  final pulumi.Input<WidgetMode> mode;
 
   WidgetArgs({
     this.metadata,
@@ -240,16 +240,16 @@ class WidgetArgs {
     final map = <String, dynamic>{};
     final metadataValue = metadata;
     if (metadataValue != null) {
-      map['metadata'] = Input.mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadataValue, (value) => value.toMap());
+      map['metadata'] = pulumi.Input.mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadataValue, (value) => value.toMap());
     }
-    map['mode'] = Input.mapInputValue<WidgetMode, String>(mode, (value) => value.value);
+    map['mode'] = pulumi.Input.mapInputValue<WidgetMode, String>(mode, (value) => value.value);
     return map;
   }
 
   factory WidgetArgs.fromMap(Map<String, dynamic> map) {
     return WidgetArgs(
-      metadata: Input.asOptionalInput<WidgetMetadata>(map['metadata']),
-      mode: Input.asInput<WidgetMode>(map['mode']),
+      metadata: pulumi.Input.asOptionalInput<WidgetMetadata>(map['metadata']),
+      mode: pulumi.Input.asInput<WidgetMode>(map['mode']),
     );
   }
 }

@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'security_policy_rule_matcher_expr_options_recaptcha_options_response_compute_beta.dart';
+
+class SecurityPolicyRuleMatcherExprOptionsResponseComputeBeta {
+  /// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
+  final SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseComputeBeta
+      recaptchaOptions;
+
+  SecurityPolicyRuleMatcherExprOptionsResponseComputeBeta({
+    required this.recaptchaOptions,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['recaptchaOptions'] = recaptchaOptions.toMap();
+    return map;
+  }
+
+  factory SecurityPolicyRuleMatcherExprOptionsResponseComputeBeta.fromMap(
+      Map<String, dynamic> map) {
+    return SecurityPolicyRuleMatcherExprOptionsResponseComputeBeta(
+      recaptchaOptions:
+          SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponseComputeBeta
+              .fromMap(
+                  (map['recaptchaOptions'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

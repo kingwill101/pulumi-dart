@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// GkeCluster contains information specific to GKE clusters.
+class GkeClusterGkehubV1beta1 {
+  /// Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
+  final String? resourceLink;
+
+  GkeClusterGkehubV1beta1({
+    this.resourceLink,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final resourceLinkValue = resourceLink;
+    if (resourceLinkValue != null) {
+      map['resourceLink'] = resourceLinkValue;
+    }
+    return map;
+  }
+
+  factory GkeClusterGkehubV1beta1.fromMap(Map<String, dynamic> map) {
+    return GkeClusterGkehubV1beta1(
+      resourceLink:
+          map['resourceLink'] == null ? null : map['resourceLink'] as String,
+    );
+  }
+}

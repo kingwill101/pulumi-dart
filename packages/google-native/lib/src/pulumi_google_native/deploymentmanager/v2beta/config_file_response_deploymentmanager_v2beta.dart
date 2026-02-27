@@ -1,0 +1,23 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+class ConfigFileResponseDeploymentmanagerV2beta {
+  /// The contents of the file.
+  final String content;
+
+  ConfigFileResponseDeploymentmanagerV2beta({
+    required this.content,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['content'] = content;
+    return map;
+  }
+
+  factory ConfigFileResponseDeploymentmanagerV2beta.fromMap(
+      Map<String, dynamic> map) {
+    return ConfigFileResponseDeploymentmanagerV2beta(
+      content: map['content'] as String,
+    );
+  }
+}

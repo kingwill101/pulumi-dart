@@ -1,0 +1,31 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'config_runtimeconfig_v1beta1_args.dart';
+
+/// Creates a new RuntimeConfig resource. The configuration name must be unique within project.
+class ConfigRuntimeconfigV1beta1 extends pulumi.CustomResource {
+  /// An optional description of the RuntimeConfig object.
+  late final pulumi.Output<String> description;
+
+  /// The resource name of a runtime config. The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be less than 64 characters. You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you create the resource, you cannot change the resource's name.
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
+
+  /// An optional but recommended unique `request_id`. If the server receives two `create()` requests with the same `request_id`, then the second request will be ignored and the first resource created and stored in the backend is returned. Empty `request_id` fields are ignored. It is responsibility of the client to ensure uniqueness of the `request_id` strings. `request_id` strings are limited to 64 characters.
+  late final pulumi.Output<String?> requestId;
+
+  ConfigRuntimeconfigV1beta1(
+    String name, {
+    ConfigRuntimeconfigV1beta1Args? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'google-native:runtimeconfig/v1beta1:Config',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.requestId = registerOutput<String?>('requestId');
+  }
+}

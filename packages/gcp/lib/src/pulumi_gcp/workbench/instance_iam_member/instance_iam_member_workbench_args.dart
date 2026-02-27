@@ -1,0 +1,61 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import '../instance_iam_member_condition/instance_iam_member_condition_workbench.dart';
+
+/// The set of arguments for InstanceIamMember.
+class InstanceIamMemberWorkbenchArgs {
+  final pulumi.Input<InstanceIamMemberConditionWorkbench>? condition;
+  final pulumi.Input<String>? location;
+  final pulumi.Input<String> member;
+  final pulumi.Input<String>? name;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> role;
+
+  InstanceIamMemberWorkbenchArgs({
+    this.condition,
+    this.location,
+    required this.member,
+    this.name,
+    this.project,
+    required this.role,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final conditionValue = condition;
+    if (conditionValue != null) {
+      map['condition'] = pulumi.Input.mapOptionalInputValue<
+          InstanceIamMemberConditionWorkbench,
+          Map<String, dynamic>>(conditionValue, (value) => value.toMap());
+    }
+    final locationValue = location;
+    if (locationValue != null) {
+      map['location'] = locationValue;
+    }
+    map['member'] = member;
+    final nameValue = name;
+    if (nameValue != null) {
+      map['name'] = nameValue;
+    }
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    map['role'] = role;
+    return map;
+  }
+
+  factory InstanceIamMemberWorkbenchArgs.fromMap(Map<String, dynamic> map) {
+    return InstanceIamMemberWorkbenchArgs(
+      condition:
+          pulumi.Input.asOptionalInput<InstanceIamMemberConditionWorkbench>(
+              map['condition']),
+      location: pulumi.Input.asOptionalInput<String>(map['location']),
+      member: pulumi.Input.asInput<String>(map['member']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+      role: pulumi.Input.asInput<String>(map['role']),
+    );
+  }
+}

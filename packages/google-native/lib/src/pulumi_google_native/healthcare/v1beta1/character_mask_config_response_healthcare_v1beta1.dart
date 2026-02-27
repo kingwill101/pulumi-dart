@@ -1,0 +1,24 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Mask a string by replacing its characters with a fixed character.
+class CharacterMaskConfigResponseHealthcareV1beta1 {
+  /// Character to mask the sensitive values. If not supplied, defaults to "*".
+  final String maskingCharacter;
+
+  CharacterMaskConfigResponseHealthcareV1beta1({
+    required this.maskingCharacter,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['maskingCharacter'] = maskingCharacter;
+    return map;
+  }
+
+  factory CharacterMaskConfigResponseHealthcareV1beta1.fromMap(
+      Map<String, dynamic> map) {
+    return CharacterMaskConfigResponseHealthcareV1beta1(
+      maskingCharacter: map['maskingCharacter'] as String,
+    );
+  }
+}

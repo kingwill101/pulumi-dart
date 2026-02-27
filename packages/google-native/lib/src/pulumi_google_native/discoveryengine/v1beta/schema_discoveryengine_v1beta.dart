@@ -1,0 +1,42 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'schema_discoveryengine_v1beta_args.dart';
+
+/// Creates a Schema.
+class SchemaDiscoveryengineV1beta extends pulumi.CustomResource {
+  late final pulumi.Output<String> collectionId;
+  late final pulumi.Output<String> dataStoreId;
+
+  /// The JSON representation of the schema.
+  late final pulumi.Output<String> jsonSchema;
+  late final pulumi.Output<String> location;
+
+  /// Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
+
+  /// Required. The ID to use for the Schema, which will become the final component of the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
+  late final pulumi.Output<String> schemaId;
+
+  /// The structured representation of the schema.
+  late final pulumi.Output<Map<String, String>> structSchema;
+
+  SchemaDiscoveryengineV1beta(
+    String name, {
+    SchemaDiscoveryengineV1betaArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'google-native:discoveryengine/v1beta:Schema',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.collectionId = registerOutput<String>('collectionId');
+    this.dataStoreId = registerOutput<String>('dataStoreId');
+    this.jsonSchema = registerOutput<String>('jsonSchema');
+    this.location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.schemaId = registerOutput<String>('schemaId');
+    this.structSchema = registerOutput<Map<String, String>>('structSchema');
+  }
+}

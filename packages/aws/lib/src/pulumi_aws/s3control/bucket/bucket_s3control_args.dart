@@ -1,0 +1,49 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// The set of arguments for Bucket.
+class BucketS3controlArgs {
+  /// Name of the bucket.
+  final pulumi.Input<String> bucket;
+
+  /// Identifier of the Outpost to contain this bucket.
+  final pulumi.Input<String> outpostId;
+
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  BucketS3controlArgs({
+    required this.bucket,
+    required this.outpostId,
+    this.region,
+    this.tags,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['bucket'] = bucket;
+    map['outpostId'] = outpostId;
+    final regionValue = region;
+    if (regionValue != null) {
+      map['region'] = regionValue;
+    }
+    final tagsValue = tags;
+    if (tagsValue != null) {
+      map['tags'] = tagsValue;
+    }
+    return map;
+  }
+
+  factory BucketS3controlArgs.fromMap(Map<String, dynamic> map) {
+    return BucketS3controlArgs(
+      bucket: pulumi.Input.asInput<String>(map['bucket']),
+      outpostId: pulumi.Input.asInput<String>(map['outpostId']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+    );
+  }
+}

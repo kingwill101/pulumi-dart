@@ -275,9 +275,9 @@ func TestGeneratePackageEmitsResourceClasses(t *testing.T) {
 	assert.Contains(t, content, "// FILE: index/do_thing.dart")
 	assert.NotContains(t, content, "part of ")
 	assert.NotContains(t, content, "part '")
-	assert.Contains(t, content, "class Widget extends CustomResource")
-	assert.Contains(t, content, "class WidgetComponent extends ComponentResource")
-	assert.Contains(t, content, "Input.mapToInputs")
+	assert.Contains(t, content, "class Widget extends pulumi.CustomResource")
+	assert.Contains(t, content, "class WidgetComponent extends pulumi.ComponentResource")
+	assert.Contains(t, content, "pulumi.Input.mapToInputs")
 	assert.Contains(t, content, "sample:index:Widget")
 	assert.Contains(t, content, "sample:index:WidgetComponent")
 	assert.Contains(t, content, "Future<Map<String, dynamic>> doThing")
@@ -452,23 +452,23 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 	assert.Contains(t, content, "// FILE: index/get_widget.dart")
 
 	assert.Contains(t, content, "class WidgetArgs")
-	assert.Contains(t, content, "final Input<int> size;")
-	assert.Contains(t, content, "final Input<String>? label;")
+	assert.Contains(t, content, "final pulumi.Input<int> size;")
+	assert.Contains(t, content, "final pulumi.Input<String>? label;")
 	assert.Contains(t, content, "required this.size")
 	assert.Contains(t, content, "WidgetArgs? args")
 	assert.Contains(t, content, "args?.toMap()")
-	assert.Contains(t, content, "size: Input.asInput<int>(map['size'])")
-	assert.Contains(t, content, "label: Input.asOptionalInput<String>(map['label'])")
+	assert.Contains(t, content, "size: pulumi.Input.asInput<int>(map['size'])")
+	assert.Contains(t, content, "label: pulumi.Input.asOptionalInput<String>(map['label'])")
 
-	assert.Contains(t, content, "late final Output<String> arn;")
-	assert.Contains(t, content, "late final Output<int?> size;")
-	assert.Contains(t, content, "late final Output<String?> label;")
+	assert.Contains(t, content, "late final pulumi.Output<String> arn;")
+	assert.Contains(t, content, "late final pulumi.Output<int?> size;")
+	assert.Contains(t, content, "late final pulumi.Output<String?> label;")
 	assert.Contains(t, content, "arn = registerOutput<String>('arn');")
 	assert.Contains(t, content, "size = registerOutput<int?>('size');")
 	assert.Contains(t, content, "label = registerOutput<String?>('label');")
 
 	assert.Contains(t, content, "class GetWidgetArgs")
-	assert.Contains(t, content, "final Input<String> id;")
+	assert.Contains(t, content, "final pulumi.Input<String> id;")
 	assert.Contains(t, content, "required this.id")
 	assert.Contains(t, content, "class GetWidgetResult")
 	assert.Contains(t, content, "final String name;")
@@ -797,10 +797,10 @@ func TestGeneratePackageWritesExampleMain(t *testing.T) {
 	require.NoError(t, err)
 	example := string(exampleData)
 
-	assert.Contains(t, example, "import 'package:pulumi/pulumi.dart';")
+	assert.Contains(t, example, "import 'package:pulumi/pulumi.dart' as pulumi;")
 	assert.Contains(t, example, "import 'package:pulumi_sample/pulumi_sample.dart' as provider;")
-	assert.Contains(t, example, "await Deployment.runOrThrow(() => ExampleStack());")
-	assert.Contains(t, example, "class ExampleStack extends Stack")
+	assert.Contains(t, example, "await pulumi.Deployment.runOrThrow(() => ExampleStack());")
+	assert.Contains(t, example, "class ExampleStack extends pulumi.Stack")
 }
 
 func TestGeneratePackageRejectsUnsafeExtraFilePaths(t *testing.T) {
@@ -896,13 +896,13 @@ func TestGeneratePackageEmitsNamedTypesAndRefs(t *testing.T) {
 	assert.Contains(t, content, "mode: WidgetMode.fromValue(map['mode'] as String)")
 
 	assert.Contains(t, content, "class WidgetArgs")
-	assert.Contains(t, content, "final Input<WidgetMode> mode;")
-	assert.Contains(t, content, "final Input<WidgetMetadata>? metadata;")
-	assert.Contains(t, content, "Input.mapInputValue<WidgetMode, String>(mode, (value) => value.value)")
+	assert.Contains(t, content, "final pulumi.Input<WidgetMode> mode;")
+	assert.Contains(t, content, "final pulumi.Input<WidgetMetadata>? metadata;")
+	assert.Contains(t, content, "pulumi.Input.mapInputValue<WidgetMode, String>(mode, (value) => value.value)")
 	assert.Contains(
 		t,
 		content,
-		"Input.mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadataValue, (value) => value.toMap())",
+		"pulumi.Input.mapOptionalInputValue<WidgetMetadata, Map<String, dynamic>>(metadataValue, (value) => value.toMap())",
 	)
 
 	assert.Contains(t, content, "class GetWidgetDetailsResult")
@@ -941,7 +941,7 @@ func TestGeneratePackageTreatsEmptyObjectTypesAsMaps(t *testing.T) {
 	require.NoError(t, err)
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
-	assert.Contains(t, content, "final Input<Map<String, dynamic>>? opaque;")
+	assert.Contains(t, content, "final pulumi.Input<Map<String, dynamic>>? opaque;")
 	assert.Contains(t, content, "map['opaque'] = opaqueValue;")
 	assert.NotContains(t, content, "Input<Opaque>")
 	assert.NotContains(t, content, "index/opaque.dart")
@@ -985,8 +985,8 @@ func TestGeneratePackageAvoidsPulumiConfigImportCollision(t *testing.T) {
 	argsData, err := os.ReadFile(matches[0])
 	require.NoError(t, err)
 	argsContent := string(argsData)
-	assert.Contains(t, argsContent, "import 'package:pulumi/pulumi.dart' hide Config;")
-	assert.Contains(t, argsContent, "Input.mapOptionalInputValue<Config, Map<String, dynamic>>")
+	assert.Contains(t, argsContent, "import 'package:pulumi/pulumi.dart' as pulumi;")
+	assert.Contains(t, argsContent, "pulumi.Input.mapOptionalInputValue<Config, Map<String, dynamic>>")
 }
 
 func TestGeneratePackageAvoidsResourceTypeNameCollisions(t *testing.T) {
@@ -1018,8 +1018,8 @@ func TestGeneratePackageAvoidsResourceTypeNameCollisions(t *testing.T) {
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
 	assert.Contains(t, content, "class Widget {")
-	assert.Contains(t, content, "class Widget2 extends CustomResource")
-	assert.Contains(t, content, "export 'index/widget2.dart';")
+	assert.Contains(t, content, "class WidgetResource extends pulumi.CustomResource")
+	assert.Contains(t, content, "export 'index/widget_resource.dart';")
 }
 
 func TestGeneratePackageSanitizesBuiltInResourceClassName(t *testing.T) {
@@ -1042,7 +1042,7 @@ func TestGeneratePackageSanitizesBuiltInResourceClassName(t *testing.T) {
 	require.NoError(t, err)
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
-	assert.Contains(t, content, "class FunctionType extends CustomResource")
+	assert.Contains(t, content, "class FunctionType extends pulumi.CustomResource")
 	assert.Contains(t, content, "export 'index/function_type.dart';")
 }
 
@@ -1067,8 +1067,8 @@ func TestGeneratePackageSanitizesCoreTypeResourceClassNames(t *testing.T) {
 	require.NoError(t, err)
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
-	assert.Contains(t, content, "class MapType extends CustomResource")
-	assert.Contains(t, content, "class InputType extends CustomResource")
+	assert.Contains(t, content, "class MapType extends pulumi.CustomResource")
+	assert.Contains(t, content, "class InputType extends pulumi.CustomResource")
 	assert.Contains(t, content, "export 'index/map_type.dart';")
 	assert.Contains(t, content, "export 'index/input_type.dart';")
 }
@@ -1102,10 +1102,37 @@ func TestGeneratePackageAvoidsNumericSuffixClassNameCollisions(t *testing.T) {
 	require.NoError(t, err)
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
-	assert.Contains(t, content, "class Foo2 extends CustomResource")
-	assert.Contains(t, content, "class Foo3 extends CustomResource")
+	assert.Contains(t, content, "class Foo2 extends pulumi.CustomResource")
+	assert.Contains(t, content, "class FooResource extends pulumi.CustomResource")
 	assert.Contains(t, content, "export 'index/foo2.dart';")
-	assert.Contains(t, content, "export 'index/foo3.dart';")
+	assert.Contains(t, content, "export 'index/foo_resource.dart';")
+}
+
+func TestGeneratePackageModuleQualifiesResourceNameCollisions(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"resources": {
+			"sample:alpha:Thing": {},
+			"sample:beta:Thing": {}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
+	assert.Contains(t, content, "class Thing extends pulumi.CustomResource")
+	assert.Contains(t, content, "class ThingBeta extends pulumi.CustomResource")
+	assert.Contains(t, content, "export 'alpha/thing.dart';")
+	assert.Contains(t, content, "export 'beta/thing_beta.dart';")
 }
 
 func TestGeneratePackageSanitizesRuntimeTypeFieldName(t *testing.T) {
@@ -1386,17 +1413,17 @@ func TestGeneratePackageEmitsCollectionRefMappings(t *testing.T) {
 	assert.Contains(t, content, "// FILE: index/get_widget_details_result.dart")
 	assert.Contains(t, content, "// FILE: index/widget.dart")
 	assert.Contains(t, content, "// FILE: index/get_widget_details.dart")
-	assert.Contains(t, content, "final Input<List<WidgetMode>> modes;")
-	assert.Contains(t, content, "final Input<Map<String, WidgetMetadata>>? metadataById;")
+	assert.Contains(t, content, "final pulumi.Input<List<WidgetMode>> modes;")
+	assert.Contains(t, content, "final pulumi.Input<Map<String, WidgetMetadata>>? metadataById;")
 	assert.Contains(
 		t,
 		content,
-		"Input.mapInputValue<List<WidgetMode>, List<String>>(modes, (value) => Input.encodeList<WidgetMode, String>(value, (value) => value.value))",
+		"pulumi.Input.mapInputValue<List<WidgetMode>, List<String>>(modes, (value) => pulumi.Input.encodeList<WidgetMode, String>(value, (value) => value.value))",
 	)
 	assert.Contains(
 		t,
 		content,
-		"Input.mapOptionalInputValue<Map<String, WidgetMetadata>, Map<String, Map<String, dynamic>>>(metadataByIdValue, (value) => Input.encodeMapValues<WidgetMetadata, Map<String, dynamic>>(value, (value) => value.toMap()))",
+		"pulumi.Input.mapOptionalInputValue<Map<String, WidgetMetadata>, Map<String, Map<String, dynamic>>>(metadataByIdValue, (value) => pulumi.Input.encodeMapValues<WidgetMetadata, Map<String, dynamic>>(value, (value) => value.toMap()))",
 	)
 
 	assert.Contains(t, content, "final List<WidgetMode> modes;")
@@ -1404,25 +1431,25 @@ func TestGeneratePackageEmitsCollectionRefMappings(t *testing.T) {
 	assert.Contains(
 		t,
 		content,
-		"modes: Input.decodeList<WidgetMode>(map['modes'], (value) => WidgetMode.fromValue(value as String))",
+		"modes: pulumi.Input.decodeList<WidgetMode>(map['modes'], (value) => WidgetMode.fromValue(value as String))",
 	)
 	assert.Contains(
 		t,
 		content,
-		"metadataById: Input.decodeMapValues<WidgetMetadata>(map['metadataById'], (value) => WidgetMetadata.fromMap((value as Map).cast<String, dynamic>()))",
+		"metadataById: pulumi.Input.decodeMapValues<WidgetMetadata>(map['metadataById'], (value) => WidgetMetadata.fromMap((value as Map).cast<String, dynamic>()))",
 	)
 
 	assert.Contains(t, content, "List<WidgetMode>? get modeHistory")
 	assert.Contains(
 		t,
 		content,
-		"return raw == null ? null : Input.decodeList<WidgetMode>(jsonDecode(raw), (value) => WidgetMode.fromValue(value as String));",
+		"return raw == null ? null : pulumi.Input.decodeList<WidgetMode>(jsonDecode(raw), (value) => WidgetMode.fromValue(value as String));",
 	)
 	assert.Contains(t, content, "Map<String, WidgetMetadata>? get metadataById")
 	assert.Contains(
 		t,
 		content,
-		"return raw == null ? null : Input.decodeMapValues<WidgetMetadata>(jsonDecode(raw), (value) => WidgetMetadata.fromMap((value as Map).cast<String, dynamic>()));",
+		"return raw == null ? null : pulumi.Input.decodeMapValues<WidgetMetadata>(jsonDecode(raw), (value) => WidgetMetadata.fromMap((value as Map).cast<String, dynamic>()));",
 	)
 }
 
@@ -1450,7 +1477,7 @@ func TestGeneratePackageHandlesResourceOutputNameCollision(t *testing.T) {
 	require.NoError(t, err)
 
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
-	assert.Contains(t, content, "late final Output<String?> name;")
+	assert.Contains(t, content, "late final pulumi.Output<String?> name;")
 	assert.Contains(t, content, "this.name = registerOutput<String?>('name');")
 }
 

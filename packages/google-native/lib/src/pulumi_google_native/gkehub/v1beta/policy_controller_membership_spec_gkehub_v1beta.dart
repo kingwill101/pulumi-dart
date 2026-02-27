@@ -1,0 +1,42 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'policy_controller_hub_config_gkehub_v1beta.dart';
+
+/// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
+class PolicyControllerMembershipSpecGkehubV1beta {
+  /// Policy Controller configuration for the cluster.
+  final PolicyControllerHubConfigGkehubV1beta? policyControllerHubConfig;
+
+  /// Version of Policy Controller installed.
+  final String? version;
+
+  PolicyControllerMembershipSpecGkehubV1beta({
+    this.policyControllerHubConfig,
+    this.version,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    final policyControllerHubConfigValue = policyControllerHubConfig;
+    if (policyControllerHubConfigValue != null) {
+      map['policyControllerHubConfig'] = policyControllerHubConfigValue.toMap();
+    }
+    final versionValue = version;
+    if (versionValue != null) {
+      map['version'] = versionValue;
+    }
+    return map;
+  }
+
+  factory PolicyControllerMembershipSpecGkehubV1beta.fromMap(
+      Map<String, dynamic> map) {
+    return PolicyControllerMembershipSpecGkehubV1beta(
+      policyControllerHubConfig: map['policyControllerHubConfig'] == null
+          ? null
+          : PolicyControllerHubConfigGkehubV1beta.fromMap(
+              (map['policyControllerHubConfig'] as Map)
+                  .cast<String, dynamic>()),
+      version: map['version'] == null ? null : map['version'] as String,
+    );
+  }
+}

@@ -1,0 +1,34 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'mysql_rdbms_response_datastream_v1alpha1.dart';
+
+/// MySQL source configuration
+class MysqlSourceConfigResponseDatastreamV1alpha1 {
+  /// MySQL objects to retrieve from the source.
+  final MysqlRdbmsResponseDatastreamV1alpha1 allowlist;
+
+  /// MySQL objects to exclude from the stream.
+  final MysqlRdbmsResponseDatastreamV1alpha1 rejectlist;
+
+  MysqlSourceConfigResponseDatastreamV1alpha1({
+    required this.allowlist,
+    required this.rejectlist,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['allowlist'] = allowlist.toMap();
+    map['rejectlist'] = rejectlist.toMap();
+    return map;
+  }
+
+  factory MysqlSourceConfigResponseDatastreamV1alpha1.fromMap(
+      Map<String, dynamic> map) {
+    return MysqlSourceConfigResponseDatastreamV1alpha1(
+      allowlist: MysqlRdbmsResponseDatastreamV1alpha1.fromMap(
+          (map['allowlist'] as Map).cast<String, dynamic>()),
+      rejectlist: MysqlRdbmsResponseDatastreamV1alpha1.fromMap(
+          (map['rejectlist'] as Map).cast<String, dynamic>()),
+    );
+  }
+}

@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Arguments for getArtifact.
+class GetArtifactAiplatformV1beta1Args {
+  final pulumi.Input<String> artifactId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> metadataStoreId;
+  final pulumi.Input<String>? project;
+
+  GetArtifactAiplatformV1beta1Args({
+    required this.artifactId,
+    required this.location,
+    required this.metadataStoreId,
+    this.project,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['artifactId'] = artifactId;
+    map['location'] = location;
+    map['metadataStoreId'] = metadataStoreId;
+    final projectValue = project;
+    if (projectValue != null) {
+      map['project'] = projectValue;
+    }
+    return map;
+  }
+
+  factory GetArtifactAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+    return GetArtifactAiplatformV1beta1Args(
+      artifactId: pulumi.Input.asInput<String>(map['artifactId']),
+      location: pulumi.Input.asInput<String>(map['location']),
+      metadataStoreId: pulumi.Input.asInput<String>(map['metadataStoreId']),
+      project: pulumi.Input.asOptionalInput<String>(map['project']),
+    );
+  }
+}

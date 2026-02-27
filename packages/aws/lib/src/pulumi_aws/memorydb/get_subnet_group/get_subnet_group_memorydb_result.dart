@@ -1,0 +1,61 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+/// Result data returned by getSubnetGroup.
+class GetSubnetGroupMemorydbResult {
+  /// ARN of the subnet group.
+  final String arn;
+
+  /// Description of the subnet group.
+  final String description;
+
+  /// The provider-assigned unique ID for this managed resource.
+  final String id;
+  final String name;
+  final String region;
+
+  /// Set of VPC Subnet ID-s of the subnet group.
+  final List<String> subnetIds;
+
+  /// Map of tags assigned to the subnet group.
+  final Map<String, String> tags;
+
+  /// VPC in which the subnet group exists.
+  final String vpcId;
+
+  GetSubnetGroupMemorydbResult({
+    required this.arn,
+    required this.description,
+    required this.id,
+    required this.name,
+    required this.region,
+    required this.subnetIds,
+    required this.tags,
+    required this.vpcId,
+  });
+
+  Map<String, dynamic> toMap() {
+    final map = <String, dynamic>{};
+    map['arn'] = arn;
+    map['description'] = description;
+    map['id'] = id;
+    map['name'] = name;
+    map['region'] = region;
+    map['subnetIds'] = subnetIds;
+    map['tags'] = tags;
+    map['vpcId'] = vpcId;
+    return map;
+  }
+
+  factory GetSubnetGroupMemorydbResult.fromMap(Map<String, dynamic> map) {
+    return GetSubnetGroupMemorydbResult(
+      arn: map['arn'] as String,
+      description: map['description'] as String,
+      id: map['id'] as String,
+      name: map['name'] as String,
+      region: map['region'] as String,
+      subnetIds: (map['subnetIds'] as List).cast<String>(),
+      tags: (map['tags'] as Map).cast<String, String>(),
+      vpcId: map['vpcId'] as String,
+    );
+  }
+}
