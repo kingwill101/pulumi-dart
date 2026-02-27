@@ -84,5 +84,58 @@ void main() {
 
       expect(verification.captured.first, same(component));
     });
+
+    test(
+      'registerOutputs without explicit map uses default collected outputs',
+      () async {
+        when(
+          mockDeployment.registerResourceOutputs(any, any),
+        ).thenAnswer((_) async {});
+
+        final root = DependencyResource(
+          'urn:pulumi:stack::project::pkg:index:Root::root',
+        );
+        final component = _MyCustomComponentResource(
+          'comp-default',
+          x: Input.fromValue(true),
+          opts: ComponentResourceOptions(parent: root),
+        );
+
+        component.registerOutputs();
+
+        final outputCaptor = verify(
+          mockDeployment.registerResourceOutputs(any, captureAny),
+        )..called(1);
+        final output =
+            outputCaptor.captured.single as Output<Map<String, dynamic>>;
+        expect(await output.getValue(), isEmpty);
+      },
+    );
+
+    test('registerOutputsAsync resolves and forwards async outputs', () async {
+      when(
+        mockDeployment.registerResourceOutputs(any, any),
+      ).thenAnswer((_) async {});
+
+      final root = DependencyResource(
+        'urn:pulumi:stack::project::pkg:index:Root::root',
+      );
+      final component = _MyCustomComponentResource(
+        'comp-async',
+        x: Input.fromValue(true),
+        opts: ComponentResourceOptions(parent: root),
+      );
+
+      await component.registerOutputsAsync(
+        Future.value(<String, dynamic>{'result': 42}),
+      );
+
+      final outputCaptor = verify(
+        mockDeployment.registerResourceOutputs(any, captureAny),
+      )..called(1);
+      final output =
+          outputCaptor.captured.single as Output<Map<String, dynamic>>;
+      expect(await output.getValue(), equals({'result': 42}));
+    });
   });
 }
