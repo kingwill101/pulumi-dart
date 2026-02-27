@@ -697,6 +697,12 @@ class DeploymentImpl extends Deployment
 
     for (var entry in _outputs.entries) {
       var outputData = await entry.value.getData();
+      if (!outputData.isKnown) {
+        await _logger.warn(
+          'Undefined value (${entry.key}) will not show as a stack output.',
+        );
+        continue;
+      }
       var serializedValue = await _stack!.serializeOutputValue(outputData);
       serializedOutputs[entry.key] = serializedValue;
     }
@@ -724,6 +730,14 @@ class DeploymentImpl extends Deployment
 
     for (var entry in outputsMap.entries) {
       var outputData = await entry.value.getData();
+      if (!outputData.isKnown) {
+        if (resource.getResourceType() == Stack.rootPulumiStackTypeName) {
+          await _logger.warn(
+            'Undefined value (${entry.key}) will not show as a stack output.',
+          );
+        }
+        continue;
+      }
       var serializedValue = await _stack!.serializeOutputValue(outputData);
       serializedOutputs[entry.key] = serializedValue;
     }

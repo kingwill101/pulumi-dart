@@ -1,0 +1,3 @@
+name: log_debug_dart
+runtime: dart
+description: Validates debug log output volume for Dart.

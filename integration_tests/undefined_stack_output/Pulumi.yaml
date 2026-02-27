@@ -1,0 +1,3 @@
+name: undefined_stack_output_dart
+runtime: dart
+description: Check that undefined-like stack output values are handled safely.

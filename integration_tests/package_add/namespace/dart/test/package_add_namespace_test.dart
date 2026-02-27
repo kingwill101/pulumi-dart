@@ -1,4 +1,5 @@
-import 'package:my_namespace_mypkg/my_namespace_mypkg.dart' as mypkg;
+import 'package:pulumi_my_namespace_mypkg/pulumi_my_namespace_mypkg.dart'
+    as mypkg;
 import 'package:pulumi/pulumi.dart';
 import 'package:test/test.dart';
 
@@ -30,7 +31,7 @@ void main() {
     expect(result.mode, mode);
     expect(result.metadata.owner, 'platform');
 
-    final resourceCtor = mypkg.Resource.new;
+    final resourceCtor = mypkg.ResourceType.new;
     final invoke = mypkg.getResource;
     final configRef = mypkg.config;
     expect(resourceCtor, isA<Function>());

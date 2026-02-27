@@ -40,6 +40,29 @@ func TestPrintfDart(t *testing.T) {
 	})
 }
 
+// TestLogDebugDart tests that the amount of debug logs is reasonable.
+func TestLogDebugDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   "log_debug",
+		Quick: true,
+		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+			var count int
+			for _, ev := range stack.Events {
+				if de := ev.DiagnosticEvent; de != nil && de.Severity == "debug" {
+					count++
+				}
+			}
+			t.Logf("Found %v debug log events", count)
+
+			// Ensure at least 1 debug log event is emitted.
+			assert.Greaterf(t, count, 0, "%v is not enough debug log events", count)
+
+			// More than 25 debug log events on such a simple program is likely unintended.
+			assert.LessOrEqualf(t, count, 25, "%v is too many debug log events", count)
+		},
+	})
+}
+
 func TestStackOutputsDart(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:   "stack_outputs",
@@ -57,6 +80,34 @@ func TestStackOutputsDart(t *testing.T) {
 				assert.Equal(t, "ABC", stackRes.Outputs["xyz"])
 				assert.Equal(t, float64(42), stackRes.Outputs["foo"])
 			}
+		},
+	})
+}
+
+// Regression test for https://github.com/pulumi/pulumi/issues/7376.
+func TestUndefinedStackOutputDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   "undefined_stack_output",
+		Quick: true,
+		ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+			assert.Equal(t, nil, stack.Outputs["undef"])
+			assert.Equal(t, nil, stack.Outputs["nil"])
+			assert.Equal(t, []any{0.0, nil, nil}, stack.Outputs["list"])
+			assert.Equal(t, map[string]any{
+				"number2": 0.0,
+				"nil2":    nil,
+			}, stack.Outputs["map"])
+
+			var found bool
+			for _, event := range stack.Events {
+				if event.DiagnosticEvent != nil &&
+					event.DiagnosticEvent.Severity == "warning" &&
+					strings.Contains(event.DiagnosticEvent.Message, "will not show as a stack output") {
+					found = true
+					break
+				}
+			}
+			assert.True(t, found, "expected undefined stack output warning")
 		},
 	})
 }
@@ -128,6 +179,141 @@ func TestConfigBasicDart(t *testing.T) {
 			{Key: "a.b[1].c", Value: "false", Path: true},
 			{Key: "tokens[0]", Value: "shh", Path: true, Secret: true},
 			{Key: "foo.bar", Value: "don't tell", Path: true, Secret: true},
+		},
+	})
+}
+
+// Tests basic environments from the perspective of a Pulumi Dart program.
+func TestEnvironmentsBasicDart(t *testing.T) {
+	if os.Getenv("PULUMI_ACCESS_TOKEN") == "" {
+		t.Skip("requires Pulumi service access token")
+	}
+
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:            "config_basic",
+		Quick:          true,
+		RequireService: true,
+		CreateEnvironments: []integration.Environment{{
+			Name: "basic",
+			Definition: map[string]any{
+				"values": map[string]any{
+					"pulumiConfig": map[string]any{
+						"aConfigValue": "this value is a value",
+						"bEncryptedSecret": map[string]any{
+							"fn::secret": "this super secret is encrypted",
+						},
+						"outer": map[string]any{
+							"inner": "value",
+						},
+						"names": []any{"a", "b", "c", map[string]any{"fn::secret": "super secret name"}},
+						"servers": []any{
+							map[string]any{
+								"port": 80,
+								"host": "example",
+							},
+						},
+						"a": map[string]any{
+							"b": []any{
+								map[string]any{"c": true},
+								map[string]any{"c": false},
+							},
+						},
+						"tokens": []any{
+							map[string]any{
+								"fn::secret": "shh",
+							},
+						},
+						"foo": map[string]any{
+							"bar": map[string]any{
+								"fn::secret": "don't tell",
+							},
+						},
+					},
+				},
+			},
+		}},
+		Environments: []string{"basic"},
+	})
+}
+
+// Tests merged environments from the perspective of a Pulumi Dart program.
+func TestEnvironmentsMergeDart(t *testing.T) {
+	if os.Getenv("PULUMI_ACCESS_TOKEN") == "" {
+		t.Skip("requires Pulumi service access token")
+	}
+
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:            "config_basic",
+		Quick:          true,
+		RequireService: true,
+		CreateEnvironments: []integration.Environment{
+			{
+				Name: "merge-0",
+				Definition: map[string]any{
+					"values": map[string]any{
+						"pulumiConfig": map[string]any{
+							"outer": map[string]any{
+								"inner": "not-a-value",
+							},
+							"names": []any{"a", "b", "c", map[string]any{"fn::secret": "super secret name"}},
+							"servers": []any{
+								map[string]any{
+									"port": 80,
+									"host": "example",
+								},
+							},
+						},
+					},
+				},
+			},
+			{
+				Name: "merge-1",
+				Definition: map[string]any{
+					"values": map[string]any{
+						"pulumiConfig": map[string]any{
+							"a": map[string]any{
+								"b": []any{
+									map[string]any{"c": true},
+									map[string]any{"c": false},
+								},
+							},
+							"tokens": []any{
+								map[string]any{
+									"fn::secret": "shh",
+								},
+							},
+							"foo": map[string]any{
+								"bar": "not so secret",
+							},
+						},
+					},
+				},
+			},
+		},
+		Environments: []string{"merge-0", "merge-1"},
+		Config: map[string]string{
+			"aConfigValue": "this value is a value",
+		},
+		Secrets: map[string]string{
+			"bEncryptedSecret": "this super secret is encrypted",
+		},
+		OrderedConfig: []integration.ConfigValue{
+			{Key: "outer.inner", Value: "value", Path: true},
+			{Key: "foo.bar", Value: "don't tell", Path: true, Secret: true},
+		},
+	})
+}
+
+func TestConfigCaptureDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   "config_capture_e2e",
+		Quick: true,
+		Config: map[string]string{
+			"value": "it works",
+		},
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			assert.Equal(t, "outside capture works", stackInfo.Outputs["outside"])
+			assert.Equal(t, "inside capture works", stackInfo.Outputs["inside"])
 		},
 	})
 }
@@ -561,19 +747,13 @@ func TestAboutDart(t *testing.T) {
 	assert.Contains(t, stderr, "No current stack")
 }
 
-func TestPackageAddNamespaceDart(t *testing.T) {
-	e := ptesting.NewEnvironment(t)
-	defer e.DeleteIfNotFailed()
-
-	e.ImportDirectory(filepath.Join("package_add", "namespace"))
-	e.CWD = filepath.Join(e.RootPath, "dart")
+func setupLocalDartLanguagePluginPath(t *testing.T, rootPath string) {
+	t.Helper()
 
 	languagePluginPath, err := filepath.Abs("../pulumi-language-dart")
 	require.NoError(t, err)
-	pulumiSDKPath, err := filepath.Abs("../pulumi-dart")
-	require.NoError(t, err)
 
-	languagePluginBinary := filepath.Join(e.RootPath, "pulumi-language-dart")
+	languagePluginBinary := filepath.Join(rootPath, "pulumi-language-dart")
 	if runtime.GOOS == WindowsOS {
 		languagePluginBinary += ".exe"
 	}
@@ -583,14 +763,82 @@ func TestPackageAddNamespaceDart(t *testing.T) {
 		require.FailNowf(t, "build language plugin", "failed to build pulumi-language-dart: %v\n%s", err, string(out))
 	}
 
-	originalPath := os.Getenv("PATH")
-	require.NoError(
-		t,
-		os.Setenv("PATH", filepath.Dir(languagePluginBinary)+string(os.PathListSeparator)+originalPath),
+	t.Setenv(
+		"PATH",
+		filepath.Dir(languagePluginBinary)+string(os.PathListSeparator)+os.Getenv("PATH"),
 	)
-	defer func() {
-		_ = os.Setenv("PATH", originalPath)
-	}()
+}
+
+func TestPackageAddDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer e.DeleteIfNotFailed()
+
+	e.ImportDirectory(filepath.Join("package_add", "basic"))
+	e.CWD = filepath.Join(e.RootPath, "dart")
+
+	setupLocalDartLanguagePluginPath(t, e.RootPath)
+	pulumiSDKPath, err := filepath.Abs("../pulumi-dart")
+	require.NoError(t, err)
+
+	e.RunCommand("pulumi", "login", "--cloud-url", e.LocalURL())
+	e.RunCommand("pulumi", "stack", "init", "dev")
+
+	projectPubspecPath := filepath.Join(e.CWD, "pubspec.yaml")
+	projectPubspec, err := os.ReadFile(projectPubspecPath)
+	require.NoError(t, err)
+	projectPubspecText := string(projectPubspec)
+	if !strings.Contains(projectPubspecText, "dependency_overrides:") {
+		projectPubspecText += "\n"
+		projectPubspecText += fmt.Sprintf(
+			"dependency_overrides:\n  pulumi:\n    path: %s\n",
+			filepath.ToSlash(pulumiSDKPath),
+		)
+	} else if !strings.Contains(projectPubspecText, "pulumi:") {
+		projectPubspecText += fmt.Sprintf(
+			"  pulumi:\n    path: %s\n",
+			filepath.ToSlash(pulumiSDKPath),
+		)
+	}
+	require.NoError(t, os.WriteFile(projectPubspecPath, []byte(projectPubspecText), 0o600))
+
+	_, _ = e.RunCommand("pulumi", "plugin", "install", "resource", "random")
+	stdout, _ := e.RunCommand("pulumi", "package", "add", "random")
+	require.Contains(
+		t,
+		stdout,
+		"You can import the SDK in your Dart code with:\n\n  import 'package:pulumi_random/pulumi_random.dart' as random;",
+	)
+
+	_, err = os.Stat(filepath.Join(e.CWD, "sdks", "random", "pubspec.yaml"))
+	require.NoError(t, err)
+
+	projectPubspec, err = os.ReadFile(filepath.Join(e.CWD, "pubspec.yaml"))
+	require.NoError(t, err)
+	projectPubspecText = string(projectPubspec)
+	require.Contains(t, projectPubspecText, "pulumi_random:")
+	require.Contains(t, projectPubspecText, "path: sdks/random")
+
+	_, _, err = e.GetCommandResultsIn(e.CWD, "dart", "pub", "get")
+	require.NoError(t, err)
+
+	upStdout, upStderr, err := e.GetCommandResults("pulumi", "up", "--skip-preview", "--yes")
+	require.NoError(t, err, "pulumi up failed:\nstdout=%s\nstderr=%s", upStdout, upStderr)
+
+	stackOutput, _, err := e.GetCommandResults("pulumi", "stack", "output", "petName")
+	require.NoError(t, err)
+	require.NotEmpty(t, strings.TrimSpace(stackOutput))
+}
+
+func TestPackageAddNamespaceDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer e.DeleteIfNotFailed()
+
+	e.ImportDirectory(filepath.Join("package_add", "namespace"))
+	e.CWD = filepath.Join(e.RootPath, "dart")
+
+	pulumiSDKPath, err := filepath.Abs("../pulumi-dart")
+	require.NoError(t, err)
+	setupLocalDartLanguagePluginPath(t, e.RootPath)
 
 	projectPubspecPath := filepath.Join(e.CWD, "pubspec.yaml")
 	projectPubspec, err := os.ReadFile(projectPubspecPath)
@@ -614,35 +862,100 @@ func TestPackageAddNamespaceDart(t *testing.T) {
 	require.Contains(
 		t,
 		stdout,
-		"You can import the SDK in your Dart code with:\n\n  import 'package:my_namespace_mypkg/my_namespace_mypkg.dart' as mypkg;",
+		"You can import the SDK in your Dart code with:\n\n  import 'package:pulumi_my_namespace_mypkg/pulumi_my_namespace_mypkg.dart' as mypkg;",
 	)
 
 	_, err = os.Stat(filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "pubspec.yaml"))
 	require.NoError(t, err)
 
-	rootSDKPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "my_namespace_mypkg.dart")
+	rootSDKPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "pulumi_my_namespace_mypkg.dart")
 	rootSDK, err := os.ReadFile(rootSDKPath)
 	require.NoError(t, err)
-	assert.Contains(t, string(rootSDK), "export 'src/my_namespace_mypkg/sdk.dart';")
+	assert.Contains(t, string(rootSDK), "export 'src/pulumi_my_namespace_mypkg/sdk.dart';")
 
-	implSDKPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "my_namespace_mypkg", "sdk.dart")
+	implSDKPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "sdk.dart")
 	implSDK, err := os.ReadFile(implSDKPath)
 	require.NoError(t, err)
 	for _, expected := range []string{
-		"library my_namespace_mypkg_sdk;",
-		"class Resource extends CustomResource",
-		"enum ResourceMode",
-		"class ResourceMetadata",
-		"class ResourceArgs",
-		"class GetResourceResult",
-		"Future<GetResourceResult> getResource",
-		"final config = ",
-		"_mapToInputs",
+		"library pulumi_my_namespace_mypkg_sdk;",
+		"export 'index/resource_type.dart';",
+		"export 'index/get_resource.dart';",
+		"export 'config/config.dart';",
 	} {
 		assert.Contains(t, string(implSDK), expected)
 	}
 
+	resourceTypePath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "index", "resource_type.dart")
+	resourceTypeSource, err := os.ReadFile(resourceTypePath)
+	require.NoError(t, err)
+	assert.Contains(t, string(resourceTypeSource), "class ResourceType extends CustomResource")
+	assert.Contains(t, string(resourceTypeSource), "Input.mapToInputs")
+
+	resourceModePath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "index", "resource_mode.dart")
+	resourceModeSource, err := os.ReadFile(resourceModePath)
+	require.NoError(t, err)
+	assert.Contains(t, string(resourceModeSource), "enum ResourceMode")
+
+	resourceMetadataPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "index", "resource_metadata.dart")
+	resourceMetadataSource, err := os.ReadFile(resourceMetadataPath)
+	require.NoError(t, err)
+	assert.Contains(t, string(resourceMetadataSource), "class ResourceMetadata")
+
+	resourceArgsPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "index", "resource_args.dart")
+	resourceArgsSource, err := os.ReadFile(resourceArgsPath)
+	require.NoError(t, err)
+	assert.Contains(t, string(resourceArgsSource), "class ResourceArgs")
+
+	getResourceResultPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "index", "get_resource_result.dart")
+	getResourceResultSource, err := os.ReadFile(getResourceResultPath)
+	require.NoError(t, err)
+	assert.Contains(t, string(getResourceResultSource), "class GetResourceResult")
+
+	getResourcePath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "index", "get_resource.dart")
+	getResourceSource, err := os.ReadFile(getResourcePath)
+	require.NoError(t, err)
+	assert.Contains(t, string(getResourceSource), "Future<GetResourceResult> getResource")
+
+	configPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "pulumi_my_namespace_mypkg", "config", "config.dart")
+	configSource, err := os.ReadFile(configPath)
+	require.NoError(t, err)
+	assert.Contains(t, string(configSource), "final config = ")
+
 	e.RunCommand("dart", "test")
+}
+
+// TestRefreshDart simply tests that we can build and run an empty Dart project with refresh set.
+func TestRefreshDart(t *testing.T) {
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:   "refresh",
+		Quick: true,
+	})
+}
+
+// TestTracePropagationDart checks that tracing writes runtime traces for Dart updates.
+func TestTracePropagationDart(t *testing.T) {
+	if os.Getenv("PULUMI_ACCESS_TOKEN") == "" {
+		t.Skip("requires Pulumi service access token")
+	}
+
+	traceDir := t.TempDir()
+	testDartProgram(t, &integration.ProgramTestOptions{
+		Dir:                    "empty",
+		SkipRefresh:            true,
+		SkipPreview:            true,
+		SkipUpdate:             false,
+		SkipExportImport:       true,
+		SkipEmptyPreviewUpdate: true,
+		Quick:                  false,
+		Tracing:                "file:" + filepath.Join(traceDir, "{command}.trace"),
+		RequireService:         true,
+		NoParallel:             true,
+	})
+
+	tracePath := filepath.Join(traceDir, "pulumi-update-initial.trace")
+	traceInfo, err := os.Stat(tracePath)
+	require.NoError(t, err)
+	assert.Greater(t, traceInfo.Size(), int64(0))
 }
 
 // TestResourceRefsGetResourceDart tests that invoking the built-in 'pulumi:pulumi:getResource' function

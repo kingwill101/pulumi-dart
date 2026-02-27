@@ -1,0 +1,5 @@
+name: refresh_dart
+description: An empty Dart Pulumi program with the refresh option set.
+runtime: dart
+options:
+  refresh: always

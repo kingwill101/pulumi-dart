@@ -1,0 +1,3 @@
+name: package-add-dart
+runtime: dart
+description: Dart package add integration test
