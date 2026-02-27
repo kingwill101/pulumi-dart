@@ -1,0 +1,5 @@
+library module_parametermanager_get_regional_parameter_version_render;
+
+export 'get_regional_parameter_version_render/get_regional_parameter_version_render.dart';
+export 'get_regional_parameter_version_render/get_regional_parameter_version_render_args.dart';
+export 'get_regional_parameter_version_render/get_regional_parameter_version_render_result.dart';

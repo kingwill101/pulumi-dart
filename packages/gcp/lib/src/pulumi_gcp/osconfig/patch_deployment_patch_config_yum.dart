@@ -1,0 +1,3 @@
+library module_osconfig_patch_deployment_patch_config_yum;
+
+export 'patch_deployment_patch_config_yum/patch_deployment_patch_config_yum.dart';

@@ -1,0 +1,3 @@
+library module_compute_instance_group_manager_auto_healing_policies;
+
+export 'instance_group_manager_auto_healing_policies/instance_group_manager_auto_healing_policies.dart';

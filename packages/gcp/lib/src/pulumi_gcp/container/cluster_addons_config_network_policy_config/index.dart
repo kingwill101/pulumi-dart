@@ -1,3 +1,0 @@
-library module_container_cluster_addons_config_network_policy_config;
-
-export 'cluster_addons_config_network_policy_config.dart';

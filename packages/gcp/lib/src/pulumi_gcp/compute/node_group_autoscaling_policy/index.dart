@@ -1,3 +1,0 @@
-library module_compute_node_group_autoscaling_policy;
-
-export 'node_group_autoscaling_policy.dart';

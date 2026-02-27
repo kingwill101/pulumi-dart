@@ -1,0 +1,3 @@
+library module_dataproc_autoscaling_policy_basic_algorithm;
+
+export 'autoscaling_policy_basic_algorithm/autoscaling_policy_basic_algorithm.dart';

@@ -1,0 +1,3 @@
+library module_workbench_instance_gce_setup_shielded_instance_config;
+
+export 'instance_gce_setup_shielded_instance_config/instance_gce_setup_shielded_instance_config.dart';

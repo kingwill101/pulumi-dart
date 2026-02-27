@@ -1,0 +1,4 @@
+library module_securitycenter_v2_organization_source_iam_member;
+
+export 'v2_organization_source_iam_member/v2_organization_source_iam_member.dart';
+export 'v2_organization_source_iam_member/v2_organization_source_iam_member_args.dart';

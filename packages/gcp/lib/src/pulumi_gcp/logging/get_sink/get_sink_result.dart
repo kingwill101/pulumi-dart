@@ -28,7 +28,7 @@ class GetSinkResult {
   /// A client-assigned identifier, such as `load-balancer-exclusion`.
   final String name;
 
-  /// The identity associated with this sink. This identity must be granted write access to the configured <span pulumi-lang-nodejs="`destination`" pulumi-lang-dotnet="`Destination`" pulumi-lang-go="`destination`" pulumi-lang-python="`destination`" pulumi-lang-yaml="`destination`" pulumi-lang-java="`destination`">`destination`</span>.
+  /// The identity associated with this sink. This identity must be granted write access to the configured `destination`.
   final String writerIdentity;
 
   GetSinkResult({

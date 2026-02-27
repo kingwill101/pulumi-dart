@@ -22,14 +22,14 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
   final String? keyAlgorithm;
 
   /// Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
-  /// <span pulumi-lang-nodejs="`86400s`" pulumi-lang-dotnet="`86400s`" pulumi-lang-go="`86400s`" pulumi-lang-python="`86400s`" pulumi-lang-yaml="`86400s`" pulumi-lang-java="`86400s`">`86400s`</span> (24 hours) to <span pulumi-lang-nodejs="`2592000s`" pulumi-lang-dotnet="`2592000s`" pulumi-lang-go="`2592000s`" pulumi-lang-python="`2592000s`" pulumi-lang-yaml="`2592000s`" pulumi-lang-java="`2592000s`">`2592000s`</span> (30 days), ends in the suffix "<span pulumi-lang-nodejs="`s`" pulumi-lang-dotnet="`S`" pulumi-lang-go="`s`" pulumi-lang-python="`s`" pulumi-lang-yaml="`s`" pulumi-lang-java="`s`">`s`</span>" (indicating seconds)
+  /// `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
   /// and is preceded by the number of seconds. If unspecified, this will be defaulted to
-  /// <span pulumi-lang-nodejs="`86400s`" pulumi-lang-dotnet="`86400s`" pulumi-lang-go="`86400s`" pulumi-lang-python="`86400s`" pulumi-lang-yaml="`86400s`" pulumi-lang-java="`86400s`">`86400s`</span> (24 hours).
+  /// `86400s` (24 hours).
   final String? lifetime;
 
   /// Rotation window percentage indicating when certificate rotation should be initiated based
-  /// on remaining lifetime. Must be between <span pulumi-lang-nodejs="`50`" pulumi-lang-dotnet="`50`" pulumi-lang-go="`50`" pulumi-lang-python="`50`" pulumi-lang-yaml="`50`" pulumi-lang-java="`50`">`50`</span> - <span pulumi-lang-nodejs="`80`" pulumi-lang-dotnet="`80`" pulumi-lang-go="`80`" pulumi-lang-python="`80`" pulumi-lang-yaml="`80`" pulumi-lang-java="`80`">`80`</span>. If unspecified, this will be defaulted
-  /// to <span pulumi-lang-nodejs="`50`" pulumi-lang-dotnet="`50`" pulumi-lang-go="`50`" pulumi-lang-python="`50`" pulumi-lang-yaml="`50`" pulumi-lang-java="`50`">`50`</span>.
+  /// on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
+  /// to `50`.
   final int? rotationWindowPercentage;
 
   WorkloadIdentityPoolInlineCertificateIssuanceConfig({

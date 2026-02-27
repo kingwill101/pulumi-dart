@@ -1,0 +1,3 @@
+library module_appengine_flexible_app_version_automatic_scaling;
+
+export 'flexible_app_version_automatic_scaling/flexible_app_version_automatic_scaling.dart';

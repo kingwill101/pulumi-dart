@@ -7,15 +7,9 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
   /// (Output)
   /// The attribute type to be used to determine the boost amount. The
   /// attribute value can be derived from the field value of the specified
-  /// field_name. In the case of numerical it is straightforward i.e.<span pulumi-lang-nodejs="
-  /// attributeValue " pulumi-lang-dotnet="
-  /// AttributeValue " pulumi-lang-go="
-  /// attributeValue " pulumi-lang-python="
-  /// attribute_value " pulumi-lang-yaml="
-  /// attributeValue " pulumi-lang-java="
-  /// attributeValue ">
-  /// attribute_value </span>= numerical_field_value. In the case of freshness
-  /// however,<span pulumi-lang-nodejs=" attributeValue " pulumi-lang-dotnet=" AttributeValue " pulumi-lang-go=" attributeValue " pulumi-lang-python=" attribute_value " pulumi-lang-yaml=" attributeValue " pulumi-lang-java=" attributeValue "> attribute_value </span>= (time.now() - datetime_field_value).
+  /// field_name. In the case of numerical it is straightforward i.e.
+  /// attribute_value = numerical_field_value. In the case of freshness
+  /// however, attribute_value = (time.now() - datetime_field_value).
   /// Possible values:
   /// NUMERICAL
   /// FRESHNESS
@@ -23,7 +17,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
 
   /// (Output)
   /// The control points used to define the curve. The monotonic function
-  /// (defined through the<span pulumi-lang-nodejs=" interpolationType " pulumi-lang-dotnet=" InterpolationType " pulumi-lang-go=" interpolationType " pulumi-lang-python=" interpolation_type " pulumi-lang-yaml=" interpolationType " pulumi-lang-java=" interpolationType "> interpolation_type </span>above) passes through the
+  /// (defined through the interpolation_type above) passes through the
   /// control points listed here.
   /// Structure is documented below.
   final List<

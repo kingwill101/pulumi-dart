@@ -1,0 +1,3 @@
+library module_gkehub_get_feature_spec_fleetobservability;
+
+export 'get_feature_spec_fleetobservability/get_feature_spec_fleetobservability.dart';

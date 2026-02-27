@@ -7,7 +7,7 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlag {
   /// Whether the database flag accepts multiple values. If true, a comma-separated list of stringified values may be specified.
   final bool acceptsMultipleValues;
 
-  /// The name of the database flag, e.g. <span pulumi-lang-nodejs=""maxAllowedPackets"" pulumi-lang-dotnet=""MaxAllowedPackets"" pulumi-lang-go=""maxAllowedPackets"" pulumi-lang-python=""max_allowed_packets"" pulumi-lang-yaml=""maxAllowedPackets"" pulumi-lang-java=""maxAllowedPackets"">"max_allowed_packets"</span>. The is a possibly key for the Instance.database_flags map field.
+  /// The name of the database flag, e.g. "max_allowed_packets". The is a possibly key for the Instance.database_flags map field.
   final String flagName;
 
   /// Restriction on `INTEGER` type value. Specifies the minimum value and the maximum value that can be specified, if applicable.

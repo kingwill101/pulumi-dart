@@ -1,3 +1,0 @@
-library module_spanner_database_iammember_condition;
-
-export 'database_iammember_condition.dart';

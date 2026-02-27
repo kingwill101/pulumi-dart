@@ -7,12 +7,12 @@ import '../cx_tool_version_tool_open_api_spec/cx_tool_version_tool_open_api_spec
 
 class CxToolVersionTool {
   /// Integration connectors tool specification.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`specification`" pulumi-lang-dotnet="`Specification`" pulumi-lang-go="`specification`" pulumi-lang-python="`specification`" pulumi-lang-yaml="`specification`" pulumi-lang-java="`specification`">`specification`</span>: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+  /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
   /// Structure is documented below.
   final CxToolVersionToolConnectorSpec? connectorSpec;
 
   /// Data store search tool specification.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`specification`" pulumi-lang-dotnet="`Specification`" pulumi-lang-go="`specification`" pulumi-lang-python="`specification`" pulumi-lang-yaml="`specification`" pulumi-lang-java="`specification`">`specification`</span>: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+  /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   final CxToolVersionToolDataStoreSpec? dataStoreSpec;
 
@@ -23,7 +23,7 @@ class CxToolVersionTool {
   final String displayName;
 
   /// Client side executed function specification.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`specification`" pulumi-lang-dotnet="`Specification`" pulumi-lang-go="`specification`" pulumi-lang-python="`specification`" pulumi-lang-yaml="`specification`" pulumi-lang-java="`specification`">`specification`</span>: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+  /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   final CxToolVersionToolFunctionSpec? functionSpec;
 
@@ -33,7 +33,7 @@ class CxToolVersionTool {
   final String? name;
 
   /// OpenAPI specification of the Tool.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`specification`" pulumi-lang-dotnet="`Specification`" pulumi-lang-go="`specification`" pulumi-lang-python="`specification`" pulumi-lang-yaml="`specification`" pulumi-lang-java="`specification`">`specification`</span>: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+  /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   final CxToolVersionToolOpenApiSpec? openApiSpec;
 

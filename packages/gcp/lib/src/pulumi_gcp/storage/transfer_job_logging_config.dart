@@ -1,0 +1,3 @@
+library module_storage_transfer_job_logging_config;
+
+export 'transfer_job_logging_config/transfer_job_logging_config.dart';

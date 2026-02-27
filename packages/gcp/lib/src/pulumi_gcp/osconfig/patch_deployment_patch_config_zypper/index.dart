@@ -1,3 +1,0 @@
-library module_osconfig_patch_deployment_patch_config_zypper;
-
-export 'patch_deployment_patch_config_zypper.dart';

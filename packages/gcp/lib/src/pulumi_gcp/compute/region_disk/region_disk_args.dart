@@ -51,13 +51,13 @@ class RegionDiskArgs {
 
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`interface`" pulumi-lang-dotnet="`Interface`" pulumi-lang-go="`interface`" pulumi-lang-python="`interface`" pulumi-lang-yaml="`interface`" pulumi-lang-java="`interface`">`interface`</span> is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+  /// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
   final Input<String>? interface;
 
   /// Labels to apply to this disk.  A list of key->value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Any applicable license URI.

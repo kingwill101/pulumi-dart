@@ -1,0 +1,3 @@
+library module_cloudbuildv2_connection_github_config;
+
+export 'connection_github_config/connection_github_config.dart';

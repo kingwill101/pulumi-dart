@@ -1,3 +1,0 @@
-library module_diagflow_cx_environment_version_config;
-
-export 'cx_environment_version_config.dart';

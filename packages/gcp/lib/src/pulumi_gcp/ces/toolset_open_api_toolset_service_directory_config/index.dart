@@ -1,3 +1,0 @@
-library module_ces_toolset_open_api_toolset_service_directory_config;
-
-export 'toolset_open_api_toolset_service_directory_config.dart';

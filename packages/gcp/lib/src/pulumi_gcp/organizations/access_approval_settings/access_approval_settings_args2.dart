@@ -6,7 +6,7 @@ import '../access_approval_settings_enrolled_service/access_approval_settings_en
 /// The set of arguments for AccessApprovalSettings.
 class AccessApprovalSettingsArgs2 {
   /// The asymmetric crypto key version to use for signing approval requests.
-  /// Empty<span pulumi-lang-nodejs=" activeKeyVersion " pulumi-lang-dotnet=" ActiveKeyVersion " pulumi-lang-go=" activeKeyVersion " pulumi-lang-python=" active_key_version " pulumi-lang-yaml=" activeKeyVersion " pulumi-lang-java=" activeKeyVersion "> active_key_version </span>indicates that a Google-managed key should be used for signing.
+  /// Empty active_key_version indicates that a Google-managed key should be used for signing.
   final Input<String>? activeKeyVersion;
 
   /// A list of Google Cloud Services for which the given resource has Access Approval enrolled.

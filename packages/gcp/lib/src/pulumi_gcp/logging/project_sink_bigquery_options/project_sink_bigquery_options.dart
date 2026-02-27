@@ -2,7 +2,7 @@
 
 class ProjectSinkBigqueryOptions {
   /// Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-  /// By default, Logging creates dated tables based on the log entries' timestamps, e.g. <span pulumi-lang-nodejs="`syslog20170523`" pulumi-lang-dotnet="`Syslog20170523`" pulumi-lang-go="`syslog20170523`" pulumi-lang-python="`syslog_20170523`" pulumi-lang-yaml="`syslog20170523`" pulumi-lang-java="`syslog20170523`">`syslog_20170523`</span>. With partitioned
+  /// By default, Logging creates dated tables based on the log entries' timestamps, e.g. `syslog_20170523`. With partitioned
   /// tables the date suffix is no longer present and [special query syntax](https://cloud.google.com/bigquery/docs/querying-partitioned-tables)
   /// has to be used instead. In both cases, tables are sharded based on UTC timezone.
   final bool usePartitionedTables;

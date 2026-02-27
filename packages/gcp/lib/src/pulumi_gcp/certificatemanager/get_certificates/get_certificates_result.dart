@@ -5,7 +5,7 @@ import '../get_certificates_certificate/get_certificates_certificate.dart';
 
 /// Result data returned by getCertificates.
 class GetCertificatesResult {
-  /// A list of all retrieved certificates. See<span pulumi-lang-nodejs=" gcp.certificatemanager.Certificate " pulumi-lang-dotnet=" gcp.certificatemanager.Certificate " pulumi-lang-go=" certificatemanager.Certificate " pulumi-lang-python=" certificatemanager.Certificate " pulumi-lang-yaml=" gcp.certificatemanager.Certificate " pulumi-lang-java=" gcp.certificatemanager.Certificate "> gcp.certificatemanager.Certificate </span>resource for details of the available attributes.
+  /// A list of all retrieved certificates. See gcp.certificatemanager.Certificate resource for details of the available attributes.
   final List<GetCertificatesCertificate> certificates;
   final String? filter;
 

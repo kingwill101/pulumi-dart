@@ -1,0 +1,3 @@
+library module_workstations_workstation_config_host_gce_instance_boost_config;
+
+export 'workstation_config_host_gce_instance_boost_config/workstation_config_host_gce_instance_boost_config.dart';

@@ -1,3 +1,0 @@
-library module_compute_get_security_policy_adaptive_protection_config_layer7_ddos_defense_config;
-
-export 'get_security_policy_adaptive_protection_config_layer7_ddos_defense_config.dart';

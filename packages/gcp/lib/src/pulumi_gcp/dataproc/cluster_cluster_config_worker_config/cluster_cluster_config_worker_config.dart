@@ -30,7 +30,7 @@ class ClusterClusterConfigWorkerConfig {
   /// for details about which CPU families are available (and defaulted) for each zone.
   final String? minCpuPlatform;
 
-  /// The minimum number of primary worker instances to create.  If <span pulumi-lang-nodejs="`minNumInstances`" pulumi-lang-dotnet="`MinNumInstances`" pulumi-lang-go="`minNumInstances`" pulumi-lang-python="`min_num_instances`" pulumi-lang-yaml="`minNumInstances`" pulumi-lang-java="`minNumInstances`">`min_num_instances`</span> is set, cluster creation will succeed if the number of primary workers created is at least equal to the <span pulumi-lang-nodejs="`minNumInstances`" pulumi-lang-dotnet="`MinNumInstances`" pulumi-lang-go="`minNumInstances`" pulumi-lang-python="`min_num_instances`" pulumi-lang-yaml="`minNumInstances`" pulumi-lang-java="`minNumInstances`">`min_num_instances`</span> number.
+  /// The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
   final int? minNumInstances;
 
   /// Specifies the number of worker nodes to create.

@@ -1,0 +1,3 @@
+library module_compute_get_region_backend_service_tls_setting;
+
+export 'get_region_backend_service_tls_setting/get_region_backend_service_tls_setting.dart';

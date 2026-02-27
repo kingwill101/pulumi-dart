@@ -19,7 +19,7 @@ class ConnectionBitbucketDataCenterConfig {
       readAuthorizerCredential;
 
   /// (Output)
-  /// Output only. Version of the Bitbucket Data Center running on the <span pulumi-lang-nodejs="`hostUri`" pulumi-lang-dotnet="`HostUri`" pulumi-lang-go="`hostUri`" pulumi-lang-python="`host_uri`" pulumi-lang-yaml="`hostUri`" pulumi-lang-java="`hostUri`">`host_uri`</span>.
+  /// Output only. Version of the Bitbucket Data Center running on the `host_uri`.
   final String? serverVersion;
 
   /// Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.

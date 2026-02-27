@@ -1,3 +1,0 @@
-library module_accesscontextmanager_service_perimeter_spec_ingress_policy;
-
-export 'service_perimeter_spec_ingress_policy.dart';

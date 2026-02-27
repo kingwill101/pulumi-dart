@@ -1,3 +1,0 @@
-library module_filestore_instance_file_shares_nfs_export_option;
-
-export 'instance_file_shares_nfs_export_option.dart';

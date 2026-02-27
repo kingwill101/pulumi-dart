@@ -1,3 +1,0 @@
-library module_certificatemanager_get_certificate_map_gclb_target_ip_config;
-
-export 'get_certificate_map_gclb_target_ip_config.dart';

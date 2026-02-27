@@ -1,4 +1,0 @@
-library module_securitycenter_event_threat_detection_custom_module;
-
-export 'event_threat_detection_custom_module.dart';
-export 'event_threat_detection_custom_module_args.dart';

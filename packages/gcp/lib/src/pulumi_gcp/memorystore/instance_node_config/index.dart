@@ -1,3 +1,0 @@
-library module_memorystore_instance_node_config;
-
-export 'instance_node_config2.dart';

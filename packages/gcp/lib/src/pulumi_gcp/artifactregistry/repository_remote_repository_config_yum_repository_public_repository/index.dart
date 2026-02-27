@@ -1,3 +1,0 @@
-library module_artifactregistry_repository_remote_repository_config_yum_repository_public_repository;
-
-export 'repository_remote_repository_config_yum_repository_public_repository.dart';

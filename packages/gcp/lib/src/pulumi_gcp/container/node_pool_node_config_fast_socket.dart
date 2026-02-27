@@ -1,0 +1,3 @@
+library module_container_node_pool_node_config_fast_socket;
+
+export 'node_pool_node_config_fast_socket/node_pool_node_config_fast_socket.dart';

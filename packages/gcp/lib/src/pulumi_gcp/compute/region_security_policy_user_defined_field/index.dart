@@ -1,3 +1,0 @@
-library module_compute_region_security_policy_user_defined_field;
-
-export 'region_security_policy_user_defined_field.dart';

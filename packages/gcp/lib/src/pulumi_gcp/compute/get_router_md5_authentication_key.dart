@@ -1,0 +1,3 @@
+library module_compute_get_router_md5_authentication_key;
+
+export 'get_router_md5_authentication_key/get_router_md5_authentication_key.dart';

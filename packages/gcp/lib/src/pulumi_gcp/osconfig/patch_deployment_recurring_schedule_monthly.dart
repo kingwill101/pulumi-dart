@@ -1,0 +1,3 @@
+library module_osconfig_patch_deployment_recurring_schedule_monthly;
+
+export 'patch_deployment_recurring_schedule_monthly/patch_deployment_recurring_schedule_monthly.dart';

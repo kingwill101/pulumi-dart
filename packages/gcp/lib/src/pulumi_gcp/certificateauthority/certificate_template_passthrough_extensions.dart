@@ -1,0 +1,3 @@
+library module_certificateauthority_certificate_template_passthrough_extensions;
+
+export 'certificate_template_passthrough_extensions/certificate_template_passthrough_extensions.dart';

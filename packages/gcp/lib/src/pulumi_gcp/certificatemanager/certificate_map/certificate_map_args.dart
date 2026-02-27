@@ -10,7 +10,7 @@ class CertificateMapArgs {
   /// Set of labels associated with a Certificate Map resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// A user-defined name of the Certificate Map. Certificate Map names must be unique

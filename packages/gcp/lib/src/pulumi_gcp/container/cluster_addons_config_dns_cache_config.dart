@@ -1,0 +1,3 @@
+library module_container_cluster_addons_config_dns_cache_config;
+
+export 'cluster_addons_config_dns_cache_config/cluster_addons_config_dns_cache_config.dart';

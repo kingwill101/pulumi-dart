@@ -1,3 +1,0 @@
-library module_discoveryengine_control_synonyms_action;
-
-export 'control_synonyms_action.dart';

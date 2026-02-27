@@ -1,3 +1,0 @@
-library module_oracledatabase_db_system_properties_time_zone;
-
-export 'db_system_properties_time_zone.dart';

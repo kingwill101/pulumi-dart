@@ -10,133 +10,7 @@ import 'lake_args.dart';
 ///
 /// ### Basic_lake
 /// A basic example of a dataplex lake
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const primary = new gcp.dataplex.Lake("primary", {
-/// location: "us-west1",
-/// name: "lake",
-/// description: "Lake for DCL",
-/// displayName: "Lake for DCL",
-/// project: "my-project-name",
-/// labels: {
-/// "my-lake": "exists",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// primary = gcp.dataplex.Lake("primary",
-/// location="us-west1",
-/// name="lake",
-/// description="Lake for DCL",
-/// display_name="Lake for DCL",
-/// project="my-project-name",
-/// labels={
-/// "my-lake": "exists",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var primary = new Gcp.DataPlex.Lake("primary", new()
-/// {
-/// Location = "us-west1",
-/// Name = "lake",
-/// Description = "Lake for DCL",
-/// DisplayName = "Lake for DCL",
-/// Project = "my-project-name",
-/// Labels =
-/// {
-/// { "my-lake", "exists" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := dataplex.NewLake(ctx, "primary", &dataplex.LakeArgs{
-/// Location:    pulumi.String("us-west1"),
-/// Name:        pulumi.String("lake"),
-/// Description: pulumi.String("Lake for DCL"),
-/// DisplayName: pulumi.String("Lake for DCL"),
-/// Project:     pulumi.String("my-project-name"),
-/// Labels: pulumi.StringMap{
-/// "my-lake": pulumi.String("exists"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.dataplex.Lake;
-/// import com.pulumi.gcp.dataplex.LakeArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var primary = new Lake("primary", LakeArgs.builder()
-/// .location("us-west1")
-/// .name("lake")
-/// .description("Lake for DCL")
-/// .displayName("Lake for DCL")
-/// .project("my-project-name")
-/// .labels(Map.of("my-lake", "exists"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// primary:
-/// type: gcp:dataplex:Lake
-/// properties:
-/// location: us-west1
-/// name: lake
-/// description: Lake for DCL
-/// displayName: Lake for DCL
-/// project: my-project-name
-/// labels:
-/// my-lake: exists
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -180,7 +54,7 @@ class Lake extends CustomResource {
   /// Optional. User-defined labels for the lake.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// The location for the resource

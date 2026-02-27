@@ -1,0 +1,3 @@
+library module_bigquery_get_table_schema_foreign_type_info;
+
+export 'get_table_schema_foreign_type_info/get_table_schema_foreign_type_info.dart';

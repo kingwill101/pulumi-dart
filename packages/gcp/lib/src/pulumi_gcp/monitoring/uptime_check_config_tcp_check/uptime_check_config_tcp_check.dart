@@ -7,7 +7,7 @@ class UptimeCheckConfigTcpCheck {
   /// Structure is documented below.
   final UptimeCheckConfigTcpCheckPingConfig? pingConfig;
 
-  /// The port to the page to run the check against. Will be combined with host (specified within the <span pulumi-lang-nodejs="`monitoredResource`" pulumi-lang-dotnet="`MonitoredResource`" pulumi-lang-go="`monitoredResource`" pulumi-lang-python="`monitored_resource`" pulumi-lang-yaml="`monitoredResource`" pulumi-lang-java="`monitoredResource`">`monitored_resource`</span>) to construct the full URL.
+  /// The port to the page to run the check against. Will be combined with host (specified within the `monitored_resource`) to construct the full URL.
   final int port;
 
   UptimeCheckConfigTcpCheck({

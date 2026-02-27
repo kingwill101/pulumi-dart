@@ -1,4 +1,0 @@
-library module_securitycenter_v2_folder_notification_config;
-
-export 'v2_folder_notification_config.dart';
-export 'v2_folder_notification_config_args.dart';

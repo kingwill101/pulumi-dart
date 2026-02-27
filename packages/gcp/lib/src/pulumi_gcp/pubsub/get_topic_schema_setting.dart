@@ -1,0 +1,3 @@
+library module_pubsub_get_topic_schema_setting;
+
+export 'get_topic_schema_setting/get_topic_schema_setting.dart';

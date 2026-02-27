@@ -27,10 +27,10 @@ class WorkforcePoolArgs {
   final Input<String> parent;
 
   /// Duration that the Google Cloud access tokens, console sign-in sessions,
-  /// and <span pulumi-lang-nodejs="`gcloud`" pulumi-lang-dotnet="`Gcloud`" pulumi-lang-go="`gcloud`" pulumi-lang-python="`gcloud`" pulumi-lang-yaml="`gcloud`" pulumi-lang-java="`gcloud`">`gcloud`</span> sign-in sessions from this pool are valid.
+  /// and `gcloud` sign-in sessions from this pool are valid.
   /// Must be greater than 15 minutes (900s) and less than 12 hours (43200s).
   /// If `sessionDuration` is not configured, minted credentials have a default duration of one hour (3600s).
-  /// A duration in seconds with up to nine fractional digits, ending with '<span pulumi-lang-nodejs="`s`" pulumi-lang-dotnet="`S`" pulumi-lang-go="`s`" pulumi-lang-python="`s`" pulumi-lang-yaml="`s`" pulumi-lang-java="`s`">`s`</span>'. Example: "`3.5s`".
+  /// A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: "`3.5s`".
   final Input<String>? sessionDuration;
 
   /// The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,

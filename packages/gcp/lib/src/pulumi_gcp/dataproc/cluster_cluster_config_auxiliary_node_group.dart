@@ -1,0 +1,3 @@
+library module_dataproc_cluster_cluster_config_auxiliary_node_group;
+
+export 'cluster_cluster_config_auxiliary_node_group/cluster_cluster_config_auxiliary_node_group.dart';

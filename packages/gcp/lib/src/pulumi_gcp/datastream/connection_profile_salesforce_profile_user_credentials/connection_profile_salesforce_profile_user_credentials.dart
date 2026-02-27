@@ -9,7 +9,7 @@ class ConnectionProfileSalesforceProfileUserCredentials {
 
   /// A reference to a Secret Manager resource name storing the user's security token.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedSalesforceProfileOauth2ClientCredentials"" pulumi-lang-dotnet=""NestedSalesforceProfileOauth2ClientCredentials"" pulumi-lang-go=""nestedSalesforceProfileOauth2ClientCredentials"" pulumi-lang-python=""nested_salesforce_profile_oauth2_client_credentials"" pulumi-lang-yaml=""nestedSalesforceProfileOauth2ClientCredentials"" pulumi-lang-java=""nestedSalesforceProfileOauth2ClientCredentials"">"nested_salesforce_profile_oauth2_client_credentials"</span>></a>The <span pulumi-lang-nodejs="`oauth2ClientCredentials`" pulumi-lang-dotnet="`Oauth2ClientCredentials`" pulumi-lang-go="`oauth2ClientCredentials`" pulumi-lang-python="`oauth2_client_credentials`" pulumi-lang-yaml="`oauth2ClientCredentials`" pulumi-lang-java="`oauth2ClientCredentials`">`oauth2_client_credentials`</span> block supports:
+  /// <a name="nested_salesforce_profile_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
   final String? secretManagerStoredSecurityToken;
 
   /// Security token of the user.

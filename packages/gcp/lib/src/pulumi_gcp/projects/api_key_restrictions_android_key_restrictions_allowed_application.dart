@@ -1,0 +1,3 @@
+library module_projects_api_key_restrictions_android_key_restrictions_allowed_application;
+
+export 'api_key_restrictions_android_key_restrictions_allowed_application/api_key_restrictions_android_key_restrictions_allowed_application.dart';

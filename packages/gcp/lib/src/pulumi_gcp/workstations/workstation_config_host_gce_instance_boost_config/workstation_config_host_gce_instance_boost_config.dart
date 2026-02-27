@@ -9,7 +9,7 @@ class WorkstationConfigHostGceInstanceBoostConfig {
   final List<WorkstationConfigHostGceInstanceBoostConfigAccelerator>?
       accelerators;
 
-  /// Size of the boot disk in GB. The minimum boot disk size is <span pulumi-lang-nodejs="`30`" pulumi-lang-dotnet="`30`" pulumi-lang-go="`30`" pulumi-lang-python="`30`" pulumi-lang-yaml="`30`" pulumi-lang-java="`30`">`30`</span> GB. Defaults to <span pulumi-lang-nodejs="`50`" pulumi-lang-dotnet="`50`" pulumi-lang-go="`50`" pulumi-lang-python="`50`" pulumi-lang-yaml="`50`" pulumi-lang-java="`50`">`50`</span> GB.
+  /// Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
   final int? bootDiskSizeGb;
 
   /// Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.

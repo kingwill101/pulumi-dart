@@ -1,3 +1,0 @@
-library module_container_node_pool_node_config_guest_accelerator;
-
-export 'node_pool_node_config_guest_accelerator.dart';

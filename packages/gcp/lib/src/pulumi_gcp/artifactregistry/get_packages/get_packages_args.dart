@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getPackages.
 class GetPackagesArgs {
-  /// An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> and <span pulumi-lang-nodejs="`annotations`" pulumi-lang-dotnet="`Annotations`" pulumi-lang-go="`annotations`" pulumi-lang-python="`annotations`" pulumi-lang-yaml="`annotations`" pulumi-lang-java="`annotations`">`annotations`</span>. Further information can be found in the [REST API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages/list#query-parameters).
+  /// An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are `name` and `annotations`. Further information can be found in the [REST API](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.packages/list#query-parameters).
   final Input<String>? filter;
 
   /// The location of the Artifact Registry repository.

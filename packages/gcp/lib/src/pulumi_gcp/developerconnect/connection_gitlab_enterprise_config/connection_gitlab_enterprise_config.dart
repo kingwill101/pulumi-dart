@@ -21,7 +21,7 @@ class ConnectionGitlabEnterpriseConfig {
       readAuthorizerCredential;
 
   /// (Output)
-  /// Output only. Version of the GitLab Enterprise server running on the <span pulumi-lang-nodejs="`hostUri`" pulumi-lang-dotnet="`HostUri`" pulumi-lang-go="`hostUri`" pulumi-lang-python="`host_uri`" pulumi-lang-yaml="`hostUri`" pulumi-lang-java="`hostUri`">`host_uri`</span>.
+  /// Output only. Version of the GitLab Enterprise server running on the `host_uri`.
   final String? serverVersion;
 
   /// ServiceDirectoryConfig represents Service Directory configuration for a

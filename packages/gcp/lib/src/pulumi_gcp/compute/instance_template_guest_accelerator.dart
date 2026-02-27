@@ -1,0 +1,3 @@
+library module_compute_instance_template_guest_accelerator;
+
+export 'instance_template_guest_accelerator/instance_template_guest_accelerator.dart';

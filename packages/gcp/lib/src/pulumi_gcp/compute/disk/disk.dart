@@ -36,501 +36,15 @@ import 'disk_args.dart';
 /// ### Disk Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = new gcp.compute.Disk("default", {
-/// name: "test-disk",
-/// type: "pd-ssd",
-/// zone: "us-central1-a",
-/// image: "debian-11-bullseye-v20220719",
-/// labels: {
-/// environment: "dev",
-/// },
-/// physicalBlockSizeBytes: 4096,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default = gcp.compute.Disk("default",
-/// name="test-disk",
-/// type="pd-ssd",
-/// zone="us-central1-a",
-/// image="debian-11-bullseye-v20220719",
-/// labels={
-/// "environment": "dev",
-/// },
-/// physical_block_size_bytes=4096)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var @default = new Gcp.Compute.Disk("default", new()
-/// {
-/// Name = "test-disk",
-/// Type = "pd-ssd",
-/// Zone = "us-central1-a",
-/// Image = "debian-11-bullseye-v20220719",
-/// Labels =
-/// {
-/// { "environment", "dev" },
-/// },
-/// PhysicalBlockSizeBytes = 4096,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := compute.NewDisk(ctx, "default", &compute.DiskArgs{
-/// Name:  pulumi.String("test-disk"),
-/// Type:  pulumi.String("pd-ssd"),
-/// Zone:  pulumi.String("us-central1-a"),
-/// Image: pulumi.String("debian-11-bullseye-v20220719"),
-/// Labels: pulumi.StringMap{
-/// "environment": pulumi.String("dev"),
-/// },
-/// PhysicalBlockSizeBytes: pulumi.Int(4096),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.Disk;
-/// import com.pulumi.gcp.compute.DiskArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var default_ = new Disk("default", DiskArgs.builder()
-/// .name("test-disk")
-/// .type("pd-ssd")
-/// .zone("us-central1-a")
-/// .image("debian-11-bullseye-v20220719")
-/// .labels(Map.of("environment", "dev"))
-/// .physicalBlockSizeBytes(4096)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// default:
-/// type: gcp:compute:Disk
-/// properties:
-/// name: test-disk
-/// type: pd-ssd
-/// zone: us-central1-a
-/// image: debian-11-bullseye-v20220719
-/// labels:
-/// environment: dev
-/// physicalBlockSizeBytes: 4096
-/// ```
-/// <!--End PulumiCodeChooser -->
 /// ### Disk Async
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const primary = new gcp.compute.Disk("primary", {
-/// name: "async-test-disk",
-/// type: "pd-ssd",
-/// zone: "us-central1-a",
-/// physicalBlockSizeBytes: 4096,
-/// });
-/// const secondary = new gcp.compute.Disk("secondary", {
-/// name: "async-secondary-test-disk",
-/// type: "pd-ssd",
-/// zone: "us-east1-c",
-/// asyncPrimaryDisk: {
-/// disk: primary.id,
-/// },
-/// physicalBlockSizeBytes: 4096,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// primary = gcp.compute.Disk("primary",
-/// name="async-test-disk",
-/// type="pd-ssd",
-/// zone="us-central1-a",
-/// physical_block_size_bytes=4096)
-/// secondary = gcp.compute.Disk("secondary",
-/// name="async-secondary-test-disk",
-/// type="pd-ssd",
-/// zone="us-east1-c",
-/// async_primary_disk={
-/// "disk": primary.id,
-/// },
-/// physical_block_size_bytes=4096)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var primary = new Gcp.Compute.Disk("primary", new()
-/// {
-/// Name = "async-test-disk",
-/// Type = "pd-ssd",
-/// Zone = "us-central1-a",
-/// PhysicalBlockSizeBytes = 4096,
-/// });
-///
-/// var secondary = new Gcp.Compute.Disk("secondary", new()
-/// {
-/// Name = "async-secondary-test-disk",
-/// Type = "pd-ssd",
-/// Zone = "us-east1-c",
-/// AsyncPrimaryDisk = new Gcp.Compute.Inputs.DiskAsyncPrimaryDiskArgs
-/// {
-/// Disk = primary.Id,
-/// },
-/// PhysicalBlockSizeBytes = 4096,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// primary, err := compute.NewDisk(ctx, "primary", &compute.DiskArgs{
-/// Name:                   pulumi.String("async-test-disk"),
-/// Type:                   pulumi.String("pd-ssd"),
-/// Zone:                   pulumi.String("us-central1-a"),
-/// PhysicalBlockSizeBytes: pulumi.Int(4096),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = compute.NewDisk(ctx, "secondary", &compute.DiskArgs{
-/// Name: pulumi.String("async-secondary-test-disk"),
-/// Type: pulumi.String("pd-ssd"),
-/// Zone: pulumi.String("us-east1-c"),
-/// AsyncPrimaryDisk: &compute.DiskAsyncPrimaryDiskArgs{
-/// Disk: primary.ID(),
-/// },
-/// PhysicalBlockSizeBytes: pulumi.Int(4096),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.Disk;
-/// import com.pulumi.gcp.compute.DiskArgs;
-/// import com.pulumi.gcp.compute.inputs.DiskAsyncPrimaryDiskArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var primary = new Disk("primary", DiskArgs.builder()
-/// .name("async-test-disk")
-/// .type("pd-ssd")
-/// .zone("us-central1-a")
-/// .physicalBlockSizeBytes(4096)
-/// .build());
-///
-/// var secondary = new Disk("secondary", DiskArgs.builder()
-/// .name("async-secondary-test-disk")
-/// .type("pd-ssd")
-/// .zone("us-east1-c")
-/// .asyncPrimaryDisk(DiskAsyncPrimaryDiskArgs.builder()
-/// .disk(primary.id())
-/// .build())
-/// .physicalBlockSizeBytes(4096)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// primary:
-/// type: gcp:compute:Disk
-/// properties:
-/// name: async-test-disk
-/// type: pd-ssd
-/// zone: us-central1-a
-/// physicalBlockSizeBytes: 4096
-/// secondary:
-/// type: gcp:compute:Disk
-/// properties:
-/// name: async-secondary-test-disk
-/// type: pd-ssd
-/// zone: us-east1-c
-/// asyncPrimaryDisk:
-/// disk: ${primary.id}
-/// physicalBlockSizeBytes: 4096
-/// ```
-/// <!--End PulumiCodeChooser -->
 /// ### Disk Features
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = new gcp.compute.Disk("default", {
-/// name: "test-disk-features",
-/// type: "pd-ssd",
-/// zone: "us-central1-a",
-/// labels: {
-/// environment: "dev",
-/// },
-/// guestOsFeatures: [
-/// {
-/// type: "SECURE_BOOT",
-/// },
-/// {
-/// type: "MULTI_IP_SUBNET",
-/// },
-/// {
-/// type: "WINDOWS",
-/// },
-/// ],
-/// licenses: ["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
-/// physicalBlockSizeBytes: 4096,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default = gcp.compute.Disk("default",
-/// name="test-disk-features",
-/// type="pd-ssd",
-/// zone="us-central1-a",
-/// labels={
-/// "environment": "dev",
-/// },
-/// guest_os_features=[
-/// {
-/// "type": "SECURE_BOOT",
-/// },
-/// {
-/// "type": "MULTI_IP_SUBNET",
-/// },
-/// {
-/// "type": "WINDOWS",
-/// },
-/// ],
-/// licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
-/// physical_block_size_bytes=4096)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var @default = new Gcp.Compute.Disk("default", new()
-/// {
-/// Name = "test-disk-features",
-/// Type = "pd-ssd",
-/// Zone = "us-central1-a",
-/// Labels =
-/// {
-/// { "environment", "dev" },
-/// },
-/// GuestOsFeatures = new[]
-/// {
-/// new Gcp.Compute.Inputs.DiskGuestOsFeatureArgs
-/// {
-/// Type = "SECURE_BOOT",
-/// },
-/// new Gcp.Compute.Inputs.DiskGuestOsFeatureArgs
-/// {
-/// Type = "MULTI_IP_SUBNET",
-/// },
-/// new Gcp.Compute.Inputs.DiskGuestOsFeatureArgs
-/// {
-/// Type = "WINDOWS",
-/// },
-/// },
-/// Licenses = new[]
-/// {
-/// "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core",
-/// },
-/// PhysicalBlockSizeBytes = 4096,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := compute.NewDisk(ctx, "default", &compute.DiskArgs{
-/// Name: pulumi.String("test-disk-features"),
-/// Type: pulumi.String("pd-ssd"),
-/// Zone: pulumi.String("us-central1-a"),
-/// Labels: pulumi.StringMap{
-/// "environment": pulumi.String("dev"),
-/// },
-/// GuestOsFeatures: compute.DiskGuestOsFeatureArray{
-/// &compute.DiskGuestOsFeatureArgs{
-/// Type: pulumi.String("SECURE_BOOT"),
-/// },
-/// &compute.DiskGuestOsFeatureArgs{
-/// Type: pulumi.String("MULTI_IP_SUBNET"),
-/// },
-/// &compute.DiskGuestOsFeatureArgs{
-/// Type: pulumi.String("WINDOWS"),
-/// },
-/// },
-/// Licenses: pulumi.StringArray{
-/// pulumi.String("https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"),
-/// },
-/// PhysicalBlockSizeBytes: pulumi.Int(4096),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.Disk;
-/// import com.pulumi.gcp.compute.DiskArgs;
-/// import com.pulumi.gcp.compute.inputs.DiskGuestOsFeatureArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var default_ = new Disk("default", DiskArgs.builder()
-/// .name("test-disk-features")
-/// .type("pd-ssd")
-/// .zone("us-central1-a")
-/// .labels(Map.of("environment", "dev"))
-/// .guestOsFeatures(
-/// DiskGuestOsFeatureArgs.builder()
-/// .type("SECURE_BOOT")
-/// .build(),
-/// DiskGuestOsFeatureArgs.builder()
-/// .type("MULTI_IP_SUBNET")
-/// .build(),
-/// DiskGuestOsFeatureArgs.builder()
-/// .type("WINDOWS")
-/// .build())
-/// .licenses("https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core")
-/// .physicalBlockSizeBytes(4096)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// default:
-/// type: gcp:compute:Disk
-/// properties:
-/// name: test-disk-features
-/// type: pd-ssd
-/// zone: us-central1-a
-/// labels:
-/// environment: dev
-/// guestOsFeatures:
-/// - type: SECURE_BOOT
-/// - type: MULTI_IP_SUBNET
-/// - type: WINDOWS
-/// licenses:
-/// - https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core
-/// physicalBlockSizeBytes: 4096
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -611,7 +125,7 @@ class Disk extends CustomResource {
   late final Output<Map<String, String>> effectiveLabels;
 
   /// Whether this disk is using confidential compute mode.
-  /// Note: Only supported on hyperdisk skus,<span pulumi-lang-nodejs=" diskEncryptionKey " pulumi-lang-dotnet=" DiskEncryptionKey " pulumi-lang-go=" diskEncryptionKey " pulumi-lang-python=" disk_encryption_key " pulumi-lang-yaml=" diskEncryptionKey " pulumi-lang-java=" diskEncryptionKey "> disk_encryption_key </span>is required when setting to true
+  /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
   late final Output<bool> enableConfidentialCompute;
 
   /// A list of features to enable on the guest operating system.
@@ -620,19 +134,19 @@ class Disk extends CustomResource {
   late final Output<List<DiskGuestOsFeature>> guestOsFeatures;
 
   /// The image from which to initialize this disk. This can be
-  /// one of: the image's <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span>, `projects/{project}/global/images/{image}`,
+  /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
   /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
   /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
   /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
   /// images names must include the family name. If they don't, use the
-  /// <span pulumi-lang-nodejs="[gcp.compute.Image " pulumi-lang-dotnet="[gcp.compute.Image " pulumi-lang-go="[compute.Image " pulumi-lang-python="[compute.Image " pulumi-lang-yaml="[gcp.compute.Image " pulumi-lang-java="[gcp.compute.Image ">[gcp.compute.Image </span>data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+  /// [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
   /// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
   /// These images can be referred by family name here.
   late final Output<String?> image;
 
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`interface`" pulumi-lang-dotnet="`Interface`" pulumi-lang-go="`interface`" pulumi-lang-python="`interface`" pulumi-lang-yaml="`interface`" pulumi-lang-java="`interface`">`interface`</span> is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+  /// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
   late final Output<String?> interface;
 
   /// The fingerprint used for optimistic locking of this resource.  Used
@@ -642,7 +156,7 @@ class Disk extends CustomResource {
   /// Labels to apply to this disk.  A list of key->value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// Last attach timestamp in RFC3339 text format.
@@ -699,7 +213,7 @@ class Disk extends CustomResource {
   /// ~>**NOTE** This value does not support updating the
   /// resource policy, as resource policies can not be updated more than
   /// one at a time. Use
-  /// <span pulumi-lang-nodejs="`gcp.compute.DiskResourcePolicyAttachment`" pulumi-lang-dotnet="`gcp.compute.DiskResourcePolicyAttachment`" pulumi-lang-go="`compute.DiskResourcePolicyAttachment`" pulumi-lang-python="`compute.DiskResourcePolicyAttachment`" pulumi-lang-yaml="`gcp.compute.DiskResourcePolicyAttachment`" pulumi-lang-java="`gcp.compute.DiskResourcePolicyAttachment`">`gcp.compute.DiskResourcePolicyAttachment`</span>
+  /// `gcp.compute.DiskResourcePolicyAttachment`
   /// to allow for updating the resource policy attached to the disk.
   late final Output<List<String>> resourcePolicies;
 
@@ -707,10 +221,10 @@ class Disk extends CustomResource {
   late final Output<String> selfLink;
 
   /// Size of the persistent disk, specified in GB. You can specify this
-  /// field when creating a persistent disk using the <span pulumi-lang-nodejs="`image`" pulumi-lang-dotnet="`Image`" pulumi-lang-go="`image`" pulumi-lang-python="`image`" pulumi-lang-yaml="`image`" pulumi-lang-java="`image`">`image`</span> or
-  /// <span pulumi-lang-nodejs="`snapshot`" pulumi-lang-dotnet="`Snapshot`" pulumi-lang-go="`snapshot`" pulumi-lang-python="`snapshot`" pulumi-lang-yaml="`snapshot`" pulumi-lang-java="`snapshot`">`snapshot`</span> parameter, or specify it alone to create an empty
+  /// field when creating a persistent disk using the `image` or
+  /// `snapshot` parameter, or specify it alone to create an empty
   /// persistent disk.
-  /// If you specify this field along with <span pulumi-lang-nodejs="`image`" pulumi-lang-dotnet="`Image`" pulumi-lang-go="`image`" pulumi-lang-python="`image`" pulumi-lang-yaml="`image`" pulumi-lang-java="`image`">`image`</span> or <span pulumi-lang-nodejs="`snapshot`" pulumi-lang-dotnet="`Snapshot`" pulumi-lang-go="`snapshot`" pulumi-lang-python="`snapshot`" pulumi-lang-yaml="`snapshot`" pulumi-lang-java="`snapshot`">`snapshot`</span>,
+  /// If you specify this field along with `image` or `snapshot`,
   /// the value must not be less than the size of the image
   /// or the size of the snapshot.
   /// ~>**NOTE** If you change the size, the provider updates the disk size

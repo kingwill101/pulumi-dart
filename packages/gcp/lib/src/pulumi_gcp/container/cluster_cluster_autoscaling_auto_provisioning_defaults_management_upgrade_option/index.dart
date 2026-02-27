@@ -1,3 +1,0 @@
-library module_container_cluster_cluster_autoscaling_auto_provisioning_defaults_management_upgrade_option;
-
-export 'cluster_cluster_autoscaling_auto_provisioning_defaults_management_upgrade_option.dart';

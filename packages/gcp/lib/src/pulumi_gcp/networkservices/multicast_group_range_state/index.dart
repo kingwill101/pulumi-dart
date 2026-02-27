@@ -1,3 +1,0 @@
-library module_networkservices_multicast_group_range_state;
-
-export 'multicast_group_range_state.dart';

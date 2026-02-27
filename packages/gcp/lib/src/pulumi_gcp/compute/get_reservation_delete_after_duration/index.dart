@@ -1,3 +1,0 @@
-library module_compute_get_reservation_delete_after_duration;
-
-export 'get_reservation_delete_after_duration.dart';

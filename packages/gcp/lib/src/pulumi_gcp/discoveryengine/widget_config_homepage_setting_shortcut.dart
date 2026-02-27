@@ -1,0 +1,3 @@
+library module_discoveryengine_widget_config_homepage_setting_shortcut;
+
+export 'widget_config_homepage_setting_shortcut/widget_config_homepage_setting_shortcut.dart';

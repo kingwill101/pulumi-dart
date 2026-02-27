@@ -1,3 +1,0 @@
-library module_redis_instance_maintenance_policy_weekly_maintenance_window;
-
-export 'instance_maintenance_policy_weekly_maintenance_window3.dart';

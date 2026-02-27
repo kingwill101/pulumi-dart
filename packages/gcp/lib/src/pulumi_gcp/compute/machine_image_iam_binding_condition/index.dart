@@ -1,3 +1,0 @@
-library module_compute_machine_image_iam_binding_condition;
-
-export 'machine_image_iam_binding_condition.dart';

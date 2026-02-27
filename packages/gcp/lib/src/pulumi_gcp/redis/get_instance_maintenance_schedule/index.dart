@@ -1,3 +1,0 @@
-library module_redis_get_instance_maintenance_schedule;
-
-export 'get_instance_maintenance_schedule3.dart';

@@ -1,0 +1,3 @@
+library module_container_cluster_node_config_kubelet_config_eviction_soft;
+
+export 'cluster_node_config_kubelet_config_eviction_soft/cluster_node_config_kubelet_config_eviction_soft.dart';

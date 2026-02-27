@@ -1,4 +1,0 @@
-library module_dataproc_metastore_federation_iam_member;
-
-export 'metastore_federation_iam_member.dart';
-export 'metastore_federation_iam_member_args.dart';

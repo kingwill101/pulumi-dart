@@ -1,3 +1,0 @@
-library module_compute_security_scan_config_schedule;
-
-export 'security_scan_config_schedule.dart';

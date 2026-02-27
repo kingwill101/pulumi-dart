@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getWebApp.
 class GetWebAppArgs {
-  /// The<span pulumi-lang-nodejs=" appIp " pulumi-lang-dotnet=" AppIp " pulumi-lang-go=" appIp " pulumi-lang-python=" app_ip " pulumi-lang-yaml=" appIp " pulumi-lang-java=" appIp "> app_ip </span>of name of the Firebase webApp.
+  /// The app_ip of name of the Firebase webApp.
   ///
   ///
   /// - - -

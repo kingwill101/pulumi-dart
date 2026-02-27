@@ -1,0 +1,3 @@
+library module_storage_get_bucket_custom_placement_config;
+
+export 'get_bucket_custom_placement_config/get_bucket_custom_placement_config.dart';

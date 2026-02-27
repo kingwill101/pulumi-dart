@@ -1,0 +1,3 @@
+library module_kms_ekm_connection_service_resolver_server_certificate;
+
+export 'ekm_connection_service_resolver_server_certificate/ekm_connection_service_resolver_server_certificate.dart';

@@ -84,14 +84,14 @@ class ClusterAddonsConfig {
   /// It is disabled by default for Standard clusters; set `enabled = true` to enable.
   /// It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
   /// Lustre CSI Driver Config has optional subfield
-  /// <span pulumi-lang-nodejs="`enableLegacyLustrePort`" pulumi-lang-dotnet="`EnableLegacyLustrePort`" pulumi-lang-go="`enableLegacyLustrePort`" pulumi-lang-python="`enable_legacy_lustre_port`" pulumi-lang-yaml="`enableLegacyLustrePort`" pulumi-lang-java="`enableLegacyLustrePort`">`enable_legacy_lustre_port`</span> which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
+  /// `enable_legacy_lustre_port` which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
   /// This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
   /// See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
   final ClusterAddonsConfigLustreCsiDriverConfig? lustreCsiDriverConfig;
 
   /// Whether we should enable the network policy addon
   /// for the master.  This must be enabled in order to enable network policy for the nodes.
-  /// To enable this, you must also define a <span pulumi-lang-nodejs="`networkPolicy`" pulumi-lang-dotnet="`NetworkPolicy`" pulumi-lang-go="`networkPolicy`" pulumi-lang-python="`network_policy`" pulumi-lang-yaml="`networkPolicy`" pulumi-lang-java="`networkPolicy`">`network_policy`</span> block,
+  /// To enable this, you must also define a `network_policy` block,
   /// otherwise nothing will happen.
   /// It can only be disabled if the nodes already do not have network policies enabled.
   /// Defaults to disabled; set `disabled = false` to enable.
@@ -107,7 +107,7 @@ class ClusterAddonsConfig {
 
   /// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
   ///
-  /// This example <span pulumi-lang-nodejs="`addonsConfig`" pulumi-lang-dotnet="`AddonsConfig`" pulumi-lang-go="`addonsConfig`" pulumi-lang-python="`addons_config`" pulumi-lang-yaml="`addonsConfig`" pulumi-lang-java="`addonsConfig`">`addons_config`</span> disables two addons:
+  /// This example `addons_config` disables two addons:
   final ClusterAddonsConfigPodSnapshotConfig? podSnapshotConfig;
 
   /// . The status of the [Ray Operator

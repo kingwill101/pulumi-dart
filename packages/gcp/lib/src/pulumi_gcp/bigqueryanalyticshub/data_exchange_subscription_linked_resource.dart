@@ -1,0 +1,3 @@
+library module_bigqueryanalyticshub_data_exchange_subscription_linked_resource;
+
+export 'data_exchange_subscription_linked_resource/data_exchange_subscription_linked_resource.dart';

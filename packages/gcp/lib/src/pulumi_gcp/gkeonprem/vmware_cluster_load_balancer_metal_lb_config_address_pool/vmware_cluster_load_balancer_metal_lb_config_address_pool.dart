@@ -13,7 +13,7 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPool {
 
   /// If true, prevent IP addresses from being automatically assigned.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedDataplaneV2"" pulumi-lang-dotnet=""NestedDataplaneV2"" pulumi-lang-go=""nestedDataplaneV2"" pulumi-lang-python=""nested_dataplane_v2"" pulumi-lang-yaml=""nestedDataplaneV2"" pulumi-lang-java=""nestedDataplaneV2"">"nested_dataplane_v2"</span>></a>The <span pulumi-lang-nodejs="`dataplaneV2`" pulumi-lang-dotnet="`DataplaneV2`" pulumi-lang-go="`dataplaneV2`" pulumi-lang-python="`dataplane_v2`" pulumi-lang-yaml="`dataplaneV2`" pulumi-lang-java="`dataplaneV2`">`dataplane_v2`</span> block supports:
+  /// <a name="nested_dataplane_v2"></a>The `dataplane_v2` block supports:
   final bool? manualAssign;
 
   /// The name of the address pool.

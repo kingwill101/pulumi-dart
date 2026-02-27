@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// Arguments for getRegionalParameterVersionRender.
 class GetRegionalParameterVersionRenderArgs {
   /// Location of Parameter Manager regional Parameter resource.
-  /// It must be provided when the <span pulumi-lang-nodejs="`parameter`" pulumi-lang-dotnet="`Parameter`" pulumi-lang-go="`parameter`" pulumi-lang-python="`parameter`" pulumi-lang-yaml="`parameter`" pulumi-lang-java="`parameter`">`parameter`</span> field provided consists of only the name of the regional parameter.
+  /// It must be provided when the `parameter` field provided consists of only the name of the regional parameter.
   final Input<String>? location;
 
   /// The Parameter for obtaining the Regional Parameter Version.

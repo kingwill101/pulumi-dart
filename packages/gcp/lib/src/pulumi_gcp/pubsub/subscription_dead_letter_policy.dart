@@ -1,0 +1,3 @@
+library module_pubsub_subscription_dead_letter_policy;
+
+export 'subscription_dead_letter_policy/subscription_dead_letter_policy.dart';

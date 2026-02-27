@@ -1,3 +1,0 @@
-library module_bigquery_dataset_default_encryption_configuration;
-
-export 'dataset_default_encryption_configuration.dart';

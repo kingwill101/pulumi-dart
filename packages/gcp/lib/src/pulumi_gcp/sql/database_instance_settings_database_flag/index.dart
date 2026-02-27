@@ -1,3 +1,0 @@
-library module_sql_database_instance_settings_database_flag;
-
-export 'database_instance_settings_database_flag.dart';

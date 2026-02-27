@@ -10,173 +10,17 @@ import 'iceberg_catalog_args.dart';
 /// * [Use the BigLake metastore Iceberg REST catalog](https://docs.cloud.google.com/biglake/docs/blms-rest-catalog)
 ///
 /// > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource's IAM,
-/// you must specify a <span pulumi-lang-nodejs="`billingProject`" pulumi-lang-dotnet="`BillingProject`" pulumi-lang-go="`billingProject`" pulumi-lang-python="`billing_project`" pulumi-lang-yaml="`billingProject`" pulumi-lang-java="`billingProject`">`billing_project`</span> and set <span pulumi-lang-nodejs="`userProjectOverride`" pulumi-lang-dotnet="`UserProjectOverride`" pulumi-lang-go="`userProjectOverride`" pulumi-lang-python="`user_project_override`" pulumi-lang-yaml="`userProjectOverride`" pulumi-lang-java="`userProjectOverride`">`user_project_override`</span> to true
+/// you must specify a `billing_project` and set `user_project_override` to true
 /// in the provider configuration. Otherwise the IAM API will return 403s.
 /// Your account must have the `serviceusage.services.use` permission on the
-/// <span pulumi-lang-nodejs="`billingProject`" pulumi-lang-dotnet="`BillingProject`" pulumi-lang-go="`billingProject`" pulumi-lang-python="`billing_project`" pulumi-lang-yaml="`billingProject`" pulumi-lang-java="`billingProject`">`billing_project`</span> you defined.
+/// `billing_project` you defined.
 ///
 /// ## Example Usage
 ///
 /// ### Biglake Iceberg Catalog
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const bucketForMyIcebergCatalog = new gcp.storage.Bucket("bucket_for_my_iceberg_catalog", {
-/// name: "my_iceberg_catalog",
-/// location: "us-central1",
-/// forceDestroy: true,
-/// uniformBucketLevelAccess: true,
-/// });
-/// const myIcebergCatalog = new gcp.biglake.IcebergCatalog("my_iceberg_catalog", {
-/// name: "my_iceberg_catalog",
-/// catalogType: "CATALOG_TYPE_GCS_BUCKET",
-/// }, {
-/// dependsOn: [bucketForMyIcebergCatalog],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// bucket_for_my_iceberg_catalog = gcp.storage.Bucket("bucket_for_my_iceberg_catalog",
-/// name="my_iceberg_catalog",
-/// location="us-central1",
-/// force_destroy=True,
-/// uniform_bucket_level_access=True)
-/// my_iceberg_catalog = gcp.biglake.IcebergCatalog("my_iceberg_catalog",
-/// name="my_iceberg_catalog",
-/// catalog_type="CATALOG_TYPE_GCS_BUCKET",
-/// opts = pulumi.ResourceOptions(depends_on=[bucket_for_my_iceberg_catalog]))
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var bucketForMyIcebergCatalog = new Gcp.Storage.Bucket("bucket_for_my_iceberg_catalog", new()
-/// {
-/// Name = "my_iceberg_catalog",
-/// Location = "us-central1",
-/// ForceDestroy = true,
-/// UniformBucketLevelAccess = true,
-/// });
-///
-/// var myIcebergCatalog = new Gcp.BigLake.IcebergCatalog("my_iceberg_catalog", new()
-/// {
-/// Name = "my_iceberg_catalog",
-/// CatalogType = "CATALOG_TYPE_GCS_BUCKET",
-/// }, new CustomResourceOptions
-/// {
-/// DependsOn =
-/// {
-/// bucketForMyIcebergCatalog,
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// bucketForMyIcebergCatalog, err := storage.NewBucket(ctx, "bucket_for_my_iceberg_catalog", &storage.BucketArgs{
-/// Name:                     pulumi.String("my_iceberg_catalog"),
-/// Location:                 pulumi.String("us-central1"),
-/// ForceDestroy:             pulumi.Bool(true),
-/// UniformBucketLevelAccess: pulumi.Bool(true),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = biglake.NewIcebergCatalog(ctx, "my_iceberg_catalog", &biglake.IcebergCatalogArgs{
-/// Name:        pulumi.String("my_iceberg_catalog"),
-/// CatalogType: pulumi.String("CATALOG_TYPE_GCS_BUCKET"),
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// bucketForMyIcebergCatalog,
-/// }))
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.storage.Bucket;
-/// import com.pulumi.gcp.storage.BucketArgs;
-/// import com.pulumi.gcp.biglake.IcebergCatalog;
-/// import com.pulumi.gcp.biglake.IcebergCatalogArgs;
-/// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var bucketForMyIcebergCatalog = new Bucket("bucketForMyIcebergCatalog", BucketArgs.builder()
-/// .name("my_iceberg_catalog")
-/// .location("us-central1")
-/// .forceDestroy(true)
-/// .uniformBucketLevelAccess(true)
-/// .build());
-///
-/// var myIcebergCatalog = new IcebergCatalog("myIcebergCatalog", IcebergCatalogArgs.builder()
-/// .name("my_iceberg_catalog")
-/// .catalogType("CATALOG_TYPE_GCS_BUCKET")
-/// .build(), CustomResourceOptions.builder()
-/// .dependsOn(bucketForMyIcebergCatalog)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// bucketForMyIcebergCatalog:
-/// type: gcp:storage:Bucket
-/// name: bucket_for_my_iceberg_catalog
-/// properties:
-/// name: my_iceberg_catalog
-/// location: us-central1
-/// forceDestroy: true
-/// uniformBucketLevelAccess: true
-/// myIcebergCatalog:
-/// type: gcp:biglake:IcebergCatalog
-/// name: my_iceberg_catalog
-/// properties:
-/// name: my_iceberg_catalog
-/// catalogType: CATALOG_TYPE_GCS_BUCKET
-/// options:
-/// dependsOn:
-/// - ${bucketForMyIcebergCatalog}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -231,7 +75,7 @@ class IcebergCatalog extends CustomResource {
   /// Structure is documented below.
   late final Output<List<IcebergCatalogReplica>> replicas;
 
-  /// Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, <span pulumi-lang-nodejs="`nam4`" pulumi-lang-dotnet="`Nam4`" pulumi-lang-go="`nam4`" pulumi-lang-python="`nam4`" pulumi-lang-yaml="`nam4`" pulumi-lang-java="`nam4`">`nam4`</span> or <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`">`us`</span>. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
+  /// Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
   late final Output<List<String>> storageRegions;
 
   /// Output only. The last modification time of the IcebergCatalog.

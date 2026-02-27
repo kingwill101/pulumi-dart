@@ -1,0 +1,3 @@
+library module_integrationconnectors_connection_lock_config;
+
+export 'connection_lock_config/connection_lock_config.dart';

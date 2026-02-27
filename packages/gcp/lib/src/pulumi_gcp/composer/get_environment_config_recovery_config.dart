@@ -1,0 +1,3 @@
+library module_composer_get_environment_config_recovery_config;
+
+export 'get_environment_config_recovery_config/get_environment_config_recovery_config.dart';

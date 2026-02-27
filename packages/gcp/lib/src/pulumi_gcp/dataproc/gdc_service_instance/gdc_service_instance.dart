@@ -16,152 +16,7 @@ import 'gdc_service_instance_args.dart';
 /// ### Dataprocgdc Serviceinstance
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const service_instance = new gcp.dataproc.GdcServiceInstance("service-instance", {
-/// serviceInstanceId: "tf-e2e-service-instance",
-/// project: "my-project",
-/// location: "us-west2",
-/// gdceCluster: {
-/// gdceCluster: "projects/gdce-cluster-monitoring/locations/us-west2/clusters/gdce-prism-prober-ord106",
-/// },
-/// displayName: "A service instance",
-/// labels: {
-/// "test-label": "label-value",
-/// },
-/// serviceAccount: "dataprocgdc-cep-workflows@gdce-cluster-monitoring.iam.gserviceaccount.com",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// service_instance = gcp.dataproc.GdcServiceInstance("service-instance",
-/// service_instance_id="tf-e2e-service-instance",
-/// project="my-project",
-/// location="us-west2",
-/// gdce_cluster={
-/// "gdce_cluster": "projects/gdce-cluster-monitoring/locations/us-west2/clusters/gdce-prism-prober-ord106",
-/// },
-/// display_name="A service instance",
-/// labels={
-/// "test-label": "label-value",
-/// },
-/// service_account="dataprocgdc-cep-workflows@gdce-cluster-monitoring.iam.gserviceaccount.com")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var service_instance = new Gcp.Dataproc.GdcServiceInstance("service-instance", new()
-/// {
-/// ServiceInstanceId = "tf-e2e-service-instance",
-/// Project = "my-project",
-/// Location = "us-west2",
-/// GdceCluster = new Gcp.Dataproc.Inputs.GdcServiceInstanceGdceClusterArgs
-/// {
-/// GdceCluster = "projects/gdce-cluster-monitoring/locations/us-west2/clusters/gdce-prism-prober-ord106",
-/// },
-/// DisplayName = "A service instance",
-/// Labels =
-/// {
-/// { "test-label", "label-value" },
-/// },
-/// ServiceAccount = "dataprocgdc-cep-workflows@gdce-cluster-monitoring.iam.gserviceaccount.com",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := dataproc.NewGdcServiceInstance(ctx, "service-instance", &dataproc.GdcServiceInstanceArgs{
-/// ServiceInstanceId: pulumi.String("tf-e2e-service-instance"),
-/// Project:           pulumi.String("my-project"),
-/// Location:          pulumi.String("us-west2"),
-/// GdceCluster: &dataproc.GdcServiceInstanceGdceClusterArgs{
-/// GdceCluster: pulumi.String("projects/gdce-cluster-monitoring/locations/us-west2/clusters/gdce-prism-prober-ord106"),
-/// },
-/// DisplayName: pulumi.String("A service instance"),
-/// Labels: pulumi.StringMap{
-/// "test-label": pulumi.String("label-value"),
-/// },
-/// ServiceAccount: pulumi.String("dataprocgdc-cep-workflows@gdce-cluster-monitoring.iam.gserviceaccount.com"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.dataproc.GdcServiceInstance;
-/// import com.pulumi.gcp.dataproc.GdcServiceInstanceArgs;
-/// import com.pulumi.gcp.dataproc.inputs.GdcServiceInstanceGdceClusterArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var service_instance = new GdcServiceInstance("service-instance", GdcServiceInstanceArgs.builder()
-/// .serviceInstanceId("tf-e2e-service-instance")
-/// .project("my-project")
-/// .location("us-west2")
-/// .gdceCluster(GdcServiceInstanceGdceClusterArgs.builder()
-/// .gdceCluster("projects/gdce-cluster-monitoring/locations/us-west2/clusters/gdce-prism-prober-ord106")
-/// .build())
-/// .displayName("A service instance")
-/// .labels(Map.of("test-label", "label-value"))
-/// .serviceAccount("dataprocgdc-cep-workflows@gdce-cluster-monitoring.iam.gserviceaccount.com")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// service-instance:
-/// type: gcp:dataproc:GdcServiceInstance
-/// properties:
-/// serviceInstanceId: tf-e2e-service-instance
-/// project: my-project
-/// location: us-west2
-/// gdceCluster:
-/// gdceCluster: projects/gdce-cluster-monitoring/locations/us-west2/clusters/gdce-prism-prober-ord106
-/// displayName: A service instance
-/// labels:
-/// test-label: label-value
-/// serviceAccount: dataprocgdc-cep-workflows@gdce-cluster-monitoring.iam.gserviceaccount.com
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -196,7 +51,7 @@ class GdcServiceInstance extends CustomResource {
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final Output<Map<String, String>> effectiveLabels;
 
-  /// Effective service account associated with ServiceInstance. This will be the<span pulumi-lang-nodejs=" serviceAccount " pulumi-lang-dotnet=" ServiceAccount " pulumi-lang-go=" serviceAccount " pulumi-lang-python=" service_account " pulumi-lang-yaml=" serviceAccount " pulumi-lang-java=" serviceAccount "> service_account </span>if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
+  /// Effective service account associated with ServiceInstance. This will be the service_account if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
   late final Output<String> effectiveServiceAccount;
 
   /// Gdce cluster information.
@@ -205,7 +60,7 @@ class GdcServiceInstance extends CustomResource {
 
   /// The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// Location of the resource.

@@ -1,0 +1,3 @@
+library module_redis_cluster_managed_server_ca_ca_cert;
+
+export 'cluster_managed_server_ca_ca_cert/cluster_managed_server_ca_ca_cert.dart';

@@ -1,3 +1,0 @@
-library module_kms_ekm_connection_service_resolver;
-
-export 'ekm_connection_service_resolver.dart';

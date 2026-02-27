@@ -1,3 +1,0 @@
-library module_dataform_repository_workflow_config_recent_scheduled_execution_record;
-
-export 'repository_workflow_config_recent_scheduled_execution_record.dart';

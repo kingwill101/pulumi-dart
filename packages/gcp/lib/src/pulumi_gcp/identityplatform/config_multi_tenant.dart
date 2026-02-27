@@ -1,0 +1,3 @@
+library module_identityplatform_config_multi_tenant;
+
+export 'config_multi_tenant/config_multi_tenant.dart';

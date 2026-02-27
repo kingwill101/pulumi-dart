@@ -1,3 +1,0 @@
-library module_alloydb_instance_network_config;
-
-export 'instance_network_config.dart';

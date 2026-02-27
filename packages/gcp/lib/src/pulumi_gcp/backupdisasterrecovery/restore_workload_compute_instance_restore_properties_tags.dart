@@ -1,0 +1,3 @@
+library module_backupdisasterrecovery_restore_workload_compute_instance_restore_properties_tags;
+
+export 'restore_workload_compute_instance_restore_properties_tags/restore_workload_compute_instance_restore_properties_tags.dart';

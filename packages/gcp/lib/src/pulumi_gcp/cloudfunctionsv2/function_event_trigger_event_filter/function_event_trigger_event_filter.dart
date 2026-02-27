@@ -3,7 +3,7 @@
 class FunctionEventTriggerEventFilter {
   /// 'Required. The name of a CloudEvents attribute.
   /// Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
-  /// Do not filter for the 'type' attribute here, as this is already achieved by the resource's <span pulumi-lang-nodejs="`eventType`" pulumi-lang-dotnet="`EventType`" pulumi-lang-go="`eventType`" pulumi-lang-python="`event_type`" pulumi-lang-yaml="`eventType`" pulumi-lang-java="`eventType`">`event_type`</span> attribute.
+  /// Do not filter for the 'type' attribute here, as this is already achieved by the resource's `event_type` attribute.
   final String attribute;
 
   /// Optional. The operator used for matching the events with the value of

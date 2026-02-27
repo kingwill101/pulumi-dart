@@ -1,3 +1,0 @@
-library module_diagflow_cx_page_knowledge_connector_settings_trigger_fulfillment_message_play_audio;
-
-export 'cx_page_knowledge_connector_settings_trigger_fulfillment_message_play_audio.dart';

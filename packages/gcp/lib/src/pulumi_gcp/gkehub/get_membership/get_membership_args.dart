@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// Arguments for getMembership.
 class GetMembershipArgs {
   /// The location for the GKE Hub Membership.
-  /// Currently only <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span> is supported.
+  /// Currently only `global` is supported.
   final Input<String> location;
 
   /// The GKE Hub Membership id or GKE Cluster's name.

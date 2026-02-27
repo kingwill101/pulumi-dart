@@ -16,10 +16,10 @@ class ClusterNodePool {
 
   /// The number of nodes to create in this
   /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-  /// number of nodes per zone. Must be set if <span pulumi-lang-nodejs="`nodePool`" pulumi-lang-dotnet="`NodePool`" pulumi-lang-go="`nodePool`" pulumi-lang-python="`node_pool`" pulumi-lang-yaml="`nodePool`" pulumi-lang-java="`nodePool`">`node_pool`</span> is not set. If you're using
-  /// <span pulumi-lang-nodejs="`gcp.container.NodePool`" pulumi-lang-dotnet="`gcp.container.NodePool`" pulumi-lang-go="`container.NodePool`" pulumi-lang-python="`container.NodePool`" pulumi-lang-yaml="`gcp.container.NodePool`" pulumi-lang-java="`gcp.container.NodePool`">`gcp.container.NodePool`</span> objects with no default node pool, you'll need to
-  /// set this to a value of at least <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>, alongside setting
-  /// <span pulumi-lang-nodejs="`removeDefaultNodePool`" pulumi-lang-dotnet="`RemoveDefaultNodePool`" pulumi-lang-go="`removeDefaultNodePool`" pulumi-lang-python="`remove_default_node_pool`" pulumi-lang-yaml="`removeDefaultNodePool`" pulumi-lang-java="`removeDefaultNodePool`">`remove_default_node_pool`</span> to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+  /// `gcp.container.NodePool` objects with no default node pool, you'll need to
+  /// set this to a value of at least `1`, alongside setting
+  /// `remove_default_node_pool` to `true`.
   final int? initialNodeCount;
 
   /// The resource URLs of the managed instance groups associated with this node pool.
@@ -49,7 +49,7 @@ class ClusterNodePool {
 
   /// Parameters used in creating the default node pool.
   /// Generally, this field should not be used at the same time as a
-  /// <span pulumi-lang-nodejs="`gcp.container.NodePool`" pulumi-lang-dotnet="`gcp.container.NodePool`" pulumi-lang-go="`container.NodePool`" pulumi-lang-python="`container.NodePool`" pulumi-lang-yaml="`gcp.container.NodePool`" pulumi-lang-java="`gcp.container.NodePool`">`gcp.container.NodePool`</span> or a <span pulumi-lang-nodejs="`nodePool`" pulumi-lang-dotnet="`NodePool`" pulumi-lang-go="`nodePool`" pulumi-lang-python="`node_pool`" pulumi-lang-yaml="`nodePool`" pulumi-lang-java="`nodePool`">`node_pool`</span> block; this configuration
+  /// `gcp.container.NodePool` or a `node_pool` block; this configuration
   /// manages the default node pool, which isn't recommended to be used.
   /// Structure is documented below.
   final ClusterNodePoolNodeConfig? nodeConfig;
@@ -79,7 +79,7 @@ class ClusterNodePool {
   /// Specifies the configuration of queued provisioning
   final ClusterNodePoolQueuedProvisioning? queuedProvisioning;
 
-  /// Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of<span pulumi-lang-nodejs=" maxSurge " pulumi-lang-dotnet=" MaxSurge " pulumi-lang-go=" maxSurge " pulumi-lang-python=" max_surge " pulumi-lang-yaml=" maxSurge " pulumi-lang-java=" maxSurge "> max_surge </span>and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+  /// Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
   final ClusterNodePoolUpgradeSettings? upgradeSettings;
   final String? version;
 

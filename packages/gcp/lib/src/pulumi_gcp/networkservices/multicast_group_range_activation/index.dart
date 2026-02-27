@@ -1,4 +1,0 @@
-library module_networkservices_multicast_group_range_activation;
-
-export 'multicast_group_range_activation.dart';
-export 'multicast_group_range_activation_args.dart';

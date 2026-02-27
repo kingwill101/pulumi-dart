@@ -9,10 +9,10 @@ import '../function_source_repository/function_source_repository.dart';
 
 /// The set of arguments for Function.
 class FunctionArgs {
-  /// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside <span pulumi-lang-nodejs="`onDeployUpdatePolicy`" pulumi-lang-dotnet="`OnDeployUpdatePolicy`" pulumi-lang-go="`onDeployUpdatePolicy`" pulumi-lang-python="`on_deploy_update_policy`" pulumi-lang-yaml="`onDeployUpdatePolicy`" pulumi-lang-java="`onDeployUpdatePolicy`">`on_deploy_update_policy`</span>.
+  /// Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
   final Input<Map<String, dynamic>>? automaticUpdatePolicy;
 
-  /// Memory (in MB), available to the function. Default value is <span pulumi-lang-nodejs="`256`" pulumi-lang-dotnet="`256`" pulumi-lang-go="`256`" pulumi-lang-python="`256`" pulumi-lang-yaml="`256`" pulumi-lang-java="`256`">`256`</span>. Possible values include <span pulumi-lang-nodejs="`128`" pulumi-lang-dotnet="`128`" pulumi-lang-go="`128`" pulumi-lang-python="`128`" pulumi-lang-yaml="`128`" pulumi-lang-java="`128`">`128`</span>, <span pulumi-lang-nodejs="`256`" pulumi-lang-dotnet="`256`" pulumi-lang-go="`256`" pulumi-lang-python="`256`" pulumi-lang-yaml="`256`" pulumi-lang-java="`256`">`256`</span>, <span pulumi-lang-nodejs="`512`" pulumi-lang-dotnet="`512`" pulumi-lang-go="`512`" pulumi-lang-python="`512`" pulumi-lang-yaml="`512`" pulumi-lang-java="`512`">`512`</span>, <span pulumi-lang-nodejs="`1024`" pulumi-lang-dotnet="`1024`" pulumi-lang-go="`1024`" pulumi-lang-python="`1024`" pulumi-lang-yaml="`1024`" pulumi-lang-java="`1024`">`1024`</span>, etc.
+  /// Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
   final Input<int>? availableMemoryMb;
 
   /// A set of key/value environment variable pairs available during build time.
@@ -30,7 +30,7 @@ class FunctionArgs {
   /// Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
   final Input<String>? dockerRegistry;
 
-  /// User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and <span pulumi-lang-nodejs="`dockerRegistry`" pulumi-lang-dotnet="`DockerRegistry`" pulumi-lang-go="`dockerRegistry`" pulumi-lang-python="`docker_registry`" pulumi-lang-yaml="`dockerRegistry`" pulumi-lang-java="`dockerRegistry`">`docker_registry`</span> is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
+  /// User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
   final Input<String>? dockerRepository;
 
   /// Name of the function that will be executed when the Google Cloud Function is triggered.
@@ -39,7 +39,7 @@ class FunctionArgs {
   /// A set of key/value environment variable pairs to assign to the function.
   final Input<Map<String, String>>? environmentVariables;
 
-  /// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with <span pulumi-lang-nodejs="`triggerHttp`" pulumi-lang-dotnet="`TriggerHttp`" pulumi-lang-go="`triggerHttp`" pulumi-lang-python="`trigger_http`" pulumi-lang-yaml="`triggerHttp`" pulumi-lang-java="`triggerHttp`">`trigger_http`</span>.
+  /// A source that fires events in response to a condition in another service. Structure is documented below. Cannot be used with `trigger_http`.
   final Input<FunctionEventTrigger>? eventTrigger;
 
   /// The security level for the function. The following options are available:
@@ -48,14 +48,14 @@ class FunctionArgs {
   /// * `SECURE_OPTIONAL` Both HTTP and HTTPS requests with URLs that match the handler succeed without redirects. The application can examine the request to determine which protocol was used and respond accordingly.
   final Input<String>? httpsTriggerSecurityLevel;
 
-  /// URL which triggers function execution. Returned only if <span pulumi-lang-nodejs="`triggerHttp`" pulumi-lang-dotnet="`TriggerHttp`" pulumi-lang-go="`triggerHttp`" pulumi-lang-python="`trigger_http`" pulumi-lang-yaml="`triggerHttp`" pulumi-lang-java="`triggerHttp`">`trigger_http`</span> is used.
+  /// URL which triggers function execution. Returned only if `trigger_http` is used.
   final Input<String>? httpsTriggerUrl;
 
   /// String value that controls what traffic can reach the function. Allowed values are `ALLOW_ALL`, `ALLOW_INTERNAL_AND_GCLB` and `ALLOW_INTERNAL_ONLY`. Check [ingress documentation](https://cloud.google.com/functions/docs/networking/network-settings#ingress_settings) to see the impact of each settings value. Changes to this field will recreate the cloud function.
   final Input<String>? ingressSettings;
 
   /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-  /// If specified, you must also provide an artifact registry repository using the <span pulumi-lang-nodejs="`dockerRepository`" pulumi-lang-dotnet="`DockerRepository`" pulumi-lang-go="`dockerRepository`" pulumi-lang-python="`docker_repository`" pulumi-lang-yaml="`dockerRepository`" pulumi-lang-java="`dockerRepository`">`docker_repository`</span> field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
+  /// If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. Before deploying, please complete all pre-requisites described in https://cloud.google.com/functions/docs/securing/cmek#granting_service_accounts_access_to_the_key
   final Input<String>? kmsKeyName;
 
   /// A set of key/value label pairs to assign to the function. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
@@ -73,7 +73,7 @@ class FunctionArgs {
   /// A user-defined name of the function. Function names must be unique globally.
   final Input<String>? name;
 
-  /// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside <span pulumi-lang-nodejs="`automaticUpdatePolicy`" pulumi-lang-dotnet="`AutomaticUpdatePolicy`" pulumi-lang-go="`automaticUpdatePolicy`" pulumi-lang-python="`automatic_update_policy`" pulumi-lang-yaml="`automaticUpdatePolicy`" pulumi-lang-java="`automaticUpdatePolicy`">`automatic_update_policy`</span>. Structure is documented below.
+  /// Security patches are only applied when a function is redeployed. This should be specified as an empty block and cannot be set alongside `automatic_update_policy`. Structure is documented below.
   final Input<FunctionOnDeployUpdatePolicy>? onDeployUpdatePolicy;
 
   /// Project of the function. If it is not provided, the provider project is used.
@@ -105,13 +105,13 @@ class FunctionArgs {
   final Input<String>? sourceArchiveObject;
 
   /// Represents parameters related to source repository where a function is hosted.
-  /// Cannot be set alongside <span pulumi-lang-nodejs="`sourceArchiveBucket`" pulumi-lang-dotnet="`SourceArchiveBucket`" pulumi-lang-go="`sourceArchiveBucket`" pulumi-lang-python="`source_archive_bucket`" pulumi-lang-yaml="`sourceArchiveBucket`" pulumi-lang-java="`sourceArchiveBucket`">`source_archive_bucket`</span> or <span pulumi-lang-nodejs="`sourceArchiveObject`" pulumi-lang-dotnet="`SourceArchiveObject`" pulumi-lang-go="`sourceArchiveObject`" pulumi-lang-python="`source_archive_object`" pulumi-lang-yaml="`sourceArchiveObject`" pulumi-lang-java="`sourceArchiveObject`">`source_archive_object`</span>. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
+  /// Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
   final Input<FunctionSourceRepository>? sourceRepository;
 
   /// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
   final Input<int>? timeout;
 
-  /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as <span pulumi-lang-nodejs="`httpsTriggerUrl`" pulumi-lang-dotnet="`HttpsTriggerUrl`" pulumi-lang-go="`httpsTriggerUrl`" pulumi-lang-python="`https_trigger_url`" pulumi-lang-yaml="`httpsTriggerUrl`" pulumi-lang-java="`httpsTriggerUrl`">`https_trigger_url`</span>. Cannot be used with <span pulumi-lang-nodejs="`eventTrigger`" pulumi-lang-dotnet="`EventTrigger`" pulumi-lang-go="`eventTrigger`" pulumi-lang-python="`event_trigger`" pulumi-lang-yaml="`eventTrigger`" pulumi-lang-java="`eventTrigger`">`event_trigger`</span>.
+  /// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
   final Input<bool>? triggerHttp;
 
   /// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.

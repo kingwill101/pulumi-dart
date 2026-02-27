@@ -1,0 +1,3 @@
+library module_certificateauthority_get_authority_config_subject_key_id;
+
+export 'get_authority_config_subject_key_id/get_authority_config_subject_key_id.dart';

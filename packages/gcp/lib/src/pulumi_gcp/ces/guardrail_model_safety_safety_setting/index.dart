@@ -1,3 +1,0 @@
-library module_ces_guardrail_model_safety_safety_setting;
-
-export 'guardrail_model_safety_safety_setting.dart';

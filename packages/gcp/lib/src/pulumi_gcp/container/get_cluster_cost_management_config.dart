@@ -1,0 +1,3 @@
+library module_container_get_cluster_cost_management_config;
+
+export 'get_cluster_cost_management_config/get_cluster_cost_management_config.dart';

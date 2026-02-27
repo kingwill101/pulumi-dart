@@ -5,7 +5,7 @@ import '../example_message/example_message.dart';
 
 /// The set of arguments for Example.
 class ExampleArgs {
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> app;
 
   /// Human-readable description of the example.
@@ -20,7 +20,7 @@ class ExampleArgs {
   final Input<String>? entryAgent;
   final Input<String> exampleId;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> location;
 
   /// The collection of messages that make up the conversation.

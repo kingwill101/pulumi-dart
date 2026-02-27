@@ -5,7 +5,7 @@ import '../forwarding_rule_service_directory_registrations/forwarding_rule_servi
 
 /// The set of arguments for ForwardingRule.
 class ForwardingRuleArgs {
-  /// The <span pulumi-lang-nodejs="`ports`" pulumi-lang-dotnet="`Ports`" pulumi-lang-go="`ports`" pulumi-lang-python="`ports`" pulumi-lang-yaml="`ports`" pulumi-lang-java="`ports`">`ports`</span>, `portRange`, and `allPorts` fields are mutually exclusive.
+  /// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
   /// Only packets addressed to ports in the specified range will be forwarded
   /// to the backends configured with this forwarding rule.
   /// The `allPorts` field has the following limitations:
@@ -21,8 +21,8 @@ class ForwardingRuleArgs {
   /// true.
   final Input<bool>? allPorts;
 
-  /// This field is used along with the <span pulumi-lang-nodejs="`backendService`" pulumi-lang-dotnet="`BackendService`" pulumi-lang-go="`backendService`" pulumi-lang-python="`backend_service`" pulumi-lang-yaml="`backendService`" pulumi-lang-java="`backendService`">`backend_service`</span> field for
-  /// internal load balancing or with the <span pulumi-lang-nodejs="`target`" pulumi-lang-dotnet="`Target`" pulumi-lang-go="`target`" pulumi-lang-python="`target`" pulumi-lang-yaml="`target`" pulumi-lang-java="`target`">`target`</span> field for internal
+  /// This field is used along with the `backend_service` field for
+  /// internal load balancing or with the `target` field for internal
   /// TargetInstance.
   /// If the field is set to `TRUE`, clients can access ILB from all
   /// regions.
@@ -44,13 +44,13 @@ class ForwardingRuleArgs {
 
   /// IP address for which this forwarding rule accepts traffic. When a client
   /// sends traffic to this IP address, the forwarding rule directs the traffic
-  /// to the referenced <span pulumi-lang-nodejs="`target`" pulumi-lang-dotnet="`Target`" pulumi-lang-go="`target`" pulumi-lang-python="`target`" pulumi-lang-yaml="`target`" pulumi-lang-java="`target`">`target`</span> or `backendService`.
+  /// to the referenced `target` or `backendService`.
   /// While creating a forwarding rule, specifying an `IPAddress` is
   /// required under the following circumstances:
-  /// * When the <span pulumi-lang-nodejs="`target`" pulumi-lang-dotnet="`Target`" pulumi-lang-go="`target`" pulumi-lang-python="`target`" pulumi-lang-yaml="`target`" pulumi-lang-java="`target`">`target`</span> is set to `targetGrpcProxy` and
-  /// `validateForProxyless` is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the
+  /// * When the `target` is set to `targetGrpcProxy` and
+  /// `validateForProxyless` is set to `true`, the
   /// `IPAddress` should be set to `0.0.0.0`.
-  /// * When the <span pulumi-lang-nodejs="`target`" pulumi-lang-dotnet="`Target`" pulumi-lang-go="`target`" pulumi-lang-python="`target`" pulumi-lang-yaml="`target`" pulumi-lang-java="`target`">`target`</span> is a Private Service Connect Google APIs
+  /// * When the `target` is a Private Service Connect Google APIs
   /// bundle, you must specify an `IPAddress`.
   /// Otherwise, you can optionally specify an IP address that references an
   /// existing static (reserved) IP address resource. When omitted, Google Cloud
@@ -66,7 +66,7 @@ class ForwardingRuleArgs {
   /// * `regions/region/addresses/address-name`
   /// * `global/addresses/address-name`
   /// * `address-name`
-  /// The forwarding rule's <span pulumi-lang-nodejs="`target`" pulumi-lang-dotnet="`Target`" pulumi-lang-go="`target`" pulumi-lang-python="`target`" pulumi-lang-yaml="`target`" pulumi-lang-java="`target`">`target`</span> or `backendService`,
+  /// The forwarding rule's `target` or `backendService`,
   /// and in most cases, also the `loadBalancingScheme`, determine the
   /// type of IP address that you can use. For detailed information, see
   /// [IP address
@@ -117,7 +117,7 @@ class ForwardingRuleArgs {
   /// Labels to apply to this forwarding rule.  A list of key->value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Specifies the forwarding rule type.
@@ -168,7 +168,7 @@ class ForwardingRuleArgs {
   /// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
   final Input<bool>? noAutomateDnsZone;
 
-  /// The <span pulumi-lang-nodejs="`ports`" pulumi-lang-dotnet="`Ports`" pulumi-lang-go="`ports`" pulumi-lang-python="`ports`" pulumi-lang-yaml="`ports`" pulumi-lang-java="`ports`">`ports`</span>, `portRange`, and `allPorts` fields are mutually exclusive.
+  /// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
   /// Only packets addressed to ports in the specified range will be forwarded
   /// to the backends configured with this forwarding rule.
   /// The `portRange` field has the following limitations:
@@ -190,10 +190,10 @@ class ForwardingRuleArgs {
   /// @pattern: \d+(?:-\d+)?
   final Input<String>? portRange;
 
-  /// The <span pulumi-lang-nodejs="`ports`" pulumi-lang-dotnet="`Ports`" pulumi-lang-go="`ports`" pulumi-lang-python="`ports`" pulumi-lang-yaml="`ports`" pulumi-lang-java="`ports`">`ports`</span>, `portRange`, and `allPorts` fields are mutually exclusive.
+  /// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
   /// Only packets addressed to ports in the specified range will be forwarded
   /// to the backends configured with this forwarding rule.
-  /// The <span pulumi-lang-nodejs="`ports`" pulumi-lang-dotnet="`Ports`" pulumi-lang-go="`ports`" pulumi-lang-python="`ports`" pulumi-lang-yaml="`ports`" pulumi-lang-java="`ports`">`ports`</span> field has the following limitations:
+  /// The `ports` field has the following limitations:
   /// * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
   /// and
   /// * It's applicable only to the following products: internal passthrough

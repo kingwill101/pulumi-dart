@@ -1,0 +1,3 @@
+library module_netapp_volume_export_policy_rule;
+
+export 'volume_export_policy_rule/volume_export_policy_rule.dart';

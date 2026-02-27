@@ -1,0 +1,3 @@
+library module_gkeonprem_bare_metal_cluster_control_plane_api_server_arg;
+
+export 'bare_metal_cluster_control_plane_api_server_arg/bare_metal_cluster_control_plane_api_server_arg.dart';

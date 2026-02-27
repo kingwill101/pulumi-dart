@@ -1,0 +1,3 @@
+library module_clouddeploy_target_iam_binding_condition;
+
+export 'target_iam_binding_condition/target_iam_binding_condition.dart';

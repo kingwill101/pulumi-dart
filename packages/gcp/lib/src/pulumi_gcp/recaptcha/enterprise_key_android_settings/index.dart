@@ -1,3 +1,0 @@
-library module_recaptcha_enterprise_key_android_settings;
-
-export 'enterprise_key_android_settings.dart';

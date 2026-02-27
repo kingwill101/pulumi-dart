@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for Job.
 class JobArgs4 {
-  /// List of experiments that should be used by the job. An example value is `[<span pulumi-lang-nodejs=""enableStackdriverAgentMetrics"" pulumi-lang-dotnet=""EnableStackdriverAgentMetrics"" pulumi-lang-go=""enableStackdriverAgentMetrics"" pulumi-lang-python=""enable_stackdriver_agent_metrics"" pulumi-lang-yaml=""enableStackdriverAgentMetrics"" pulumi-lang-java=""enableStackdriverAgentMetrics"">"enable_stackdriver_agent_metrics"</span>]`.
+  /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
   final Input<List<String>>? additionalExperiments;
 
   /// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
@@ -18,7 +18,7 @@ class JobArgs4 {
 
   /// User labels to be specified for the job. Keys and values should follow the restrictions
   /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
-  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The machine type to use for the job.
@@ -50,7 +50,7 @@ class JobArgs4 {
   /// The Service Account email used to create the job. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
   final Input<String>? serviceAccountEmail;
 
-  /// If set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
+  /// If set to `true`, Pulumi will treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource, and will remove the resource from Pulumi state and move on.  See above note.
   final Input<bool>? skipWaitOnJobTermination;
 
   /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`

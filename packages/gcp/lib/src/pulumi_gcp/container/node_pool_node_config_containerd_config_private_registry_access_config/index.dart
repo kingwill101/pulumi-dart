@@ -1,3 +1,0 @@
-library module_container_node_pool_node_config_containerd_config_private_registry_access_config;
-
-export 'node_pool_node_config_containerd_config_private_registry_access_config.dart';

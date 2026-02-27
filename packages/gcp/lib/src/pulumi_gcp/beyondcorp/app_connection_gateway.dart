@@ -1,0 +1,3 @@
+library module_beyondcorp_app_connection_gateway;
+
+export 'app_connection_gateway/app_connection_gateway.dart';

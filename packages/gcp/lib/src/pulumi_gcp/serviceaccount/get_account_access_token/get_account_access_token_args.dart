@@ -7,7 +7,7 @@ class GetAccountAccessTokenArgs {
   /// Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
   final Input<List<String>>? delegates;
 
-  /// Lifetime of the impersonated token (defaults to its max: <span pulumi-lang-nodejs="`3600s`" pulumi-lang-dotnet="`3600s`" pulumi-lang-go="`3600s`" pulumi-lang-python="`3600s`" pulumi-lang-yaml="`3600s`" pulumi-lang-java="`3600s`">`3600s`</span>).
+  /// Lifetime of the impersonated token (defaults to its max: `3600s`).
   final Input<String>? lifetime;
 
   /// The scopes the new credential should have (e.g. `["cloud-platform"]`)

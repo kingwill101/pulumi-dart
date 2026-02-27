@@ -29,8 +29,8 @@ class FirewallArgs {
   final Input<List<String>>? destinationRanges;
 
   /// Direction of traffic to which this firewall applies; default is
-  /// INGRESS. Note: For INGRESS traffic, one of <span pulumi-lang-nodejs="`sourceRanges`" pulumi-lang-dotnet="`SourceRanges`" pulumi-lang-go="`sourceRanges`" pulumi-lang-python="`source_ranges`" pulumi-lang-yaml="`sourceRanges`" pulumi-lang-java="`sourceRanges`">`source_ranges`</span>,
-  /// <span pulumi-lang-nodejs="`sourceTags`" pulumi-lang-dotnet="`SourceTags`" pulumi-lang-go="`sourceTags`" pulumi-lang-python="`source_tags`" pulumi-lang-yaml="`sourceTags`" pulumi-lang-java="`sourceTags`">`source_tags`</span> or <span pulumi-lang-nodejs="`sourceServiceAccounts`" pulumi-lang-dotnet="`SourceServiceAccounts`" pulumi-lang-go="`sourceServiceAccounts`" pulumi-lang-python="`source_service_accounts`" pulumi-lang-yaml="`sourceServiceAccounts`" pulumi-lang-java="`sourceServiceAccounts`">`source_service_accounts`</span> is required.
+  /// INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
+  /// `source_tags` or `source_service_accounts` is required.
   /// Possible values are: `INGRESS`, `EGRESS`.
   final Input<String>? direction;
 
@@ -41,7 +41,7 @@ class FirewallArgs {
   final Input<bool>? disabled;
 
   /// This field denotes whether to enable logging for a particular firewall rule.
-  /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of <span pulumi-lang-nodejs="`logConfig`" pulumi-lang-dotnet="`LogConfig`" pulumi-lang-go="`logConfig`" pulumi-lang-python="`log_config`" pulumi-lang-yaml="`logConfig`" pulumi-lang-java="`logConfig`">`log_config`</span>
+  /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
   final Input<bool>? enableLogging;
 
   /// This field denotes the logging options for a particular firewall rule.
@@ -58,7 +58,7 @@ class FirewallArgs {
   /// character, which cannot be a dash.
   final Input<String>? name;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the network to attach this firewall to.
+  /// The name or self_link of the network to attach this firewall to.
   final Input<String> network;
 
   /// Additional params passed with the request, but not persisted as part of resource payload
@@ -85,7 +85,7 @@ class FirewallArgs {
   /// source IP that belongs to a tag listed in the sourceTags property. The
   /// connection does not need to match both properties for the firewall to
   /// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
-  /// <span pulumi-lang-nodejs="`sourceRanges`" pulumi-lang-dotnet="`SourceRanges`" pulumi-lang-go="`sourceRanges`" pulumi-lang-python="`source_ranges`" pulumi-lang-yaml="`sourceRanges`" pulumi-lang-java="`sourceRanges`">`source_ranges`</span>, <span pulumi-lang-nodejs="`sourceTags`" pulumi-lang-dotnet="`SourceTags`" pulumi-lang-go="`sourceTags`" pulumi-lang-python="`source_tags`" pulumi-lang-yaml="`sourceTags`" pulumi-lang-java="`sourceTags`">`source_tags`</span> or <span pulumi-lang-nodejs="`sourceServiceAccounts`" pulumi-lang-dotnet="`SourceServiceAccounts`" pulumi-lang-go="`sourceServiceAccounts`" pulumi-lang-python="`source_service_accounts`" pulumi-lang-yaml="`sourceServiceAccounts`" pulumi-lang-java="`sourceServiceAccounts`">`source_service_accounts`</span> is required.
+  /// `source_ranges`, `source_tags` or `source_service_accounts` is required.
   final Input<List<String>>? sourceRanges;
 
   /// If source service accounts are specified, the firewall will apply only
@@ -99,7 +99,7 @@ class FirewallArgs {
   /// sourceServiceAccount. The connection does not need to match both
   /// properties for the firewall to apply. sourceServiceAccounts cannot be
   /// used at the same time as sourceTags or targetTags. For INGRESS traffic,
-  /// one of <span pulumi-lang-nodejs="`sourceRanges`" pulumi-lang-dotnet="`SourceRanges`" pulumi-lang-go="`sourceRanges`" pulumi-lang-python="`source_ranges`" pulumi-lang-yaml="`sourceRanges`" pulumi-lang-java="`sourceRanges`">`source_ranges`</span>, <span pulumi-lang-nodejs="`sourceTags`" pulumi-lang-dotnet="`SourceTags`" pulumi-lang-go="`sourceTags`" pulumi-lang-python="`source_tags`" pulumi-lang-yaml="`sourceTags`" pulumi-lang-java="`sourceTags`">`source_tags`</span> or <span pulumi-lang-nodejs="`sourceServiceAccounts`" pulumi-lang-dotnet="`SourceServiceAccounts`" pulumi-lang-go="`sourceServiceAccounts`" pulumi-lang-python="`source_service_accounts`" pulumi-lang-yaml="`sourceServiceAccounts`" pulumi-lang-java="`sourceServiceAccounts`">`source_service_accounts`</span> is required.
+  /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
   final Input<List<String>>? sourceServiceAccounts;
 
   /// If source tags are specified, the firewall will apply only to traffic
@@ -111,7 +111,7 @@ class FirewallArgs {
   /// source IP address within sourceRanges OR the source IP that belongs to
   /// a tag listed in the sourceTags property. The connection does not need
   /// to match both properties for the firewall to apply. For INGRESS traffic,
-  /// one of <span pulumi-lang-nodejs="`sourceRanges`" pulumi-lang-dotnet="`SourceRanges`" pulumi-lang-go="`sourceRanges`" pulumi-lang-python="`source_ranges`" pulumi-lang-yaml="`sourceRanges`" pulumi-lang-java="`sourceRanges`">`source_ranges`</span>, <span pulumi-lang-nodejs="`sourceTags`" pulumi-lang-dotnet="`SourceTags`" pulumi-lang-go="`sourceTags`" pulumi-lang-python="`source_tags`" pulumi-lang-yaml="`sourceTags`" pulumi-lang-java="`sourceTags`">`source_tags`</span> or <span pulumi-lang-nodejs="`sourceServiceAccounts`" pulumi-lang-dotnet="`SourceServiceAccounts`" pulumi-lang-go="`sourceServiceAccounts`" pulumi-lang-python="`source_service_accounts`" pulumi-lang-yaml="`sourceServiceAccounts`" pulumi-lang-java="`sourceServiceAccounts`">`source_service_accounts`</span> is required.
+  /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
   final Input<List<String>>? sourceTags;
 
   /// A list of service accounts indicating sets of instances located in the

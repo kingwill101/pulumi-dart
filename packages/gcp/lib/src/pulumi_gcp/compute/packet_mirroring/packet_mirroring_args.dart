@@ -10,14 +10,8 @@ import '../packet_mirroring_network/packet_mirroring_network.dart';
 class PacketMirroringArgs {
   /// The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
   /// that will be used as collector for mirrored traffic. The
-  /// specified forwarding rule must have<span pulumi-lang-nodejs=" isMirroringCollector
-  /// " pulumi-lang-dotnet=" IsMirroringCollector
-  /// " pulumi-lang-go=" isMirroringCollector
-  /// " pulumi-lang-python=" is_mirroring_collector
-  /// " pulumi-lang-yaml=" isMirroringCollector
-  /// " pulumi-lang-java=" isMirroringCollector
-  /// "> is_mirroring_collector
-  /// </span>set to true.
+  /// specified forwarding rule must have is_mirroring_collector
+  /// set to true.
   /// Structure is documented below.
   final Input<PacketMirroringCollectorIlb> collectorIlb;
 

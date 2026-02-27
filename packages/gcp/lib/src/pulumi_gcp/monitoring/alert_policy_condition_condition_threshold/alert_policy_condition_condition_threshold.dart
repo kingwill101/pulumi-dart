@@ -42,14 +42,8 @@ class AlertPolicyConditionConditionThreshold {
   /// resource to a single stream for each
   /// resource or when aggregating streams across
   /// all members of a group of resources).When
-  /// computing ratios, the aggregations and<span pulumi-lang-nodejs="
-  /// denominatorAggregations " pulumi-lang-dotnet="
-  /// DenominatorAggregations " pulumi-lang-go="
-  /// denominatorAggregations " pulumi-lang-python="
-  /// denominator_aggregations " pulumi-lang-yaml="
-  /// denominatorAggregations " pulumi-lang-java="
-  /// denominatorAggregations ">
-  /// denominator_aggregations </span>fields must use the
+  /// computing ratios, the aggregations and
+  /// denominator_aggregations fields must use the
   /// same alignment period and produce time
   /// series that have the same periodicity and
   /// labels.This field is similar to the one in
@@ -63,7 +57,7 @@ class AlertPolicyConditionConditionThreshold {
   /// A filter that identifies a time series that
   /// should be used as the denominator of a ratio
   /// that will be compared with the threshold. If
-  /// a<span pulumi-lang-nodejs=" denominatorFilter " pulumi-lang-dotnet=" DenominatorFilter " pulumi-lang-go=" denominatorFilter " pulumi-lang-python=" denominator_filter " pulumi-lang-yaml=" denominatorFilter " pulumi-lang-java=" denominatorFilter "> denominator_filter </span>is specified, the time
+  /// a denominator_filter is specified, the time
   /// series specified by the filter field will be
   /// used as the numerator.The filter is similar
   /// to the one that is specified in the
@@ -133,14 +127,8 @@ class AlertPolicyConditionConditionThreshold {
   /// the condition will trigger if the comparison
   /// is true for any of the time series that have
   /// been identified by filter and aggregations,
-  /// or by the ratio, if<span pulumi-lang-nodejs=" denominatorFilter " pulumi-lang-dotnet=" DenominatorFilter " pulumi-lang-go=" denominatorFilter " pulumi-lang-python=" denominator_filter " pulumi-lang-yaml=" denominatorFilter " pulumi-lang-java=" denominatorFilter "> denominator_filter </span>and<span pulumi-lang-nodejs="
-  /// denominatorAggregations " pulumi-lang-dotnet="
-  /// DenominatorAggregations " pulumi-lang-go="
-  /// denominatorAggregations " pulumi-lang-python="
-  /// denominator_aggregations " pulumi-lang-yaml="
-  /// denominatorAggregations " pulumi-lang-java="
-  /// denominatorAggregations ">
-  /// denominator_aggregations </span>are specified.
+  /// or by the ratio, if denominator_filter and
+  /// denominator_aggregations are specified.
   /// Structure is documented below.
   final AlertPolicyConditionConditionThresholdTrigger? trigger;
 

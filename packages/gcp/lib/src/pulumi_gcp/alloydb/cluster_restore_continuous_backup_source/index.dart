@@ -1,3 +1,0 @@
-library module_alloydb_cluster_restore_continuous_backup_source;
-
-export 'cluster_restore_continuous_backup_source.dart';

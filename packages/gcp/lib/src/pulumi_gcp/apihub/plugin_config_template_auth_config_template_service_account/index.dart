@@ -1,3 +1,0 @@
-library module_apihub_plugin_config_template_auth_config_template_service_account;
-
-export 'plugin_config_template_auth_config_template_service_account.dart';

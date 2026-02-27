@@ -1,0 +1,3 @@
+library module_firebase_extensions_instance_config;
+
+export 'extensions_instance_config/extensions_instance_config.dart';

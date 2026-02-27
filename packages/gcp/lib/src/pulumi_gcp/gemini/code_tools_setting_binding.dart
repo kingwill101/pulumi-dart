@@ -1,0 +1,4 @@
+library module_gemini_code_tools_setting_binding;
+
+export 'code_tools_setting_binding/code_tools_setting_binding.dart';
+export 'code_tools_setting_binding/code_tools_setting_binding_args.dart';

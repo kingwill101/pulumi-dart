@@ -6,7 +6,7 @@ import '../app_hosting_backend_managed_resource_run_service/app_hosting_backend_
 class AppHostingBackendManagedResource {
   /// (Output)
   /// A managed Cloud Run
-  /// [<span pulumi-lang-nodejs="`service`" pulumi-lang-dotnet="`Service`" pulumi-lang-go="`service`" pulumi-lang-python="`service`" pulumi-lang-yaml="`service`" pulumi-lang-java="`service`">`service`</span>](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
+  /// [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
   /// Structure is documented below.
   final List<AppHostingBackendManagedResourceRunService>? runServices;
 

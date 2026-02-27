@@ -1,0 +1,3 @@
+library module_compute_resource_policy_instance_schedule_policy;
+
+export 'resource_policy_instance_schedule_policy/resource_policy_instance_schedule_policy.dart';

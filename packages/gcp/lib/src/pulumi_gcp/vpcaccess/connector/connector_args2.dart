@@ -12,27 +12,27 @@ class ConnectorArgs2 {
   final Input<String>? machineType;
 
   /// Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
-  /// higher than the value specified by min_instances. Required alongside <span pulumi-lang-nodejs="`minInstances`" pulumi-lang-dotnet="`MinInstances`" pulumi-lang-go="`minInstances`" pulumi-lang-python="`min_instances`" pulumi-lang-yaml="`minInstances`" pulumi-lang-java="`minInstances`">`min_instances`</span> if not using <span pulumi-lang-nodejs="`minThroughput`" pulumi-lang-dotnet="`MinThroughput`" pulumi-lang-go="`minThroughput`" pulumi-lang-python="`min_throughput`" pulumi-lang-yaml="`minThroughput`" pulumi-lang-java="`minThroughput`">`min_throughput`</span>/<span pulumi-lang-nodejs="`maxThroughput`" pulumi-lang-dotnet="`MaxThroughput`" pulumi-lang-go="`maxThroughput`" pulumi-lang-python="`max_throughput`" pulumi-lang-yaml="`maxThroughput`" pulumi-lang-java="`maxThroughput`">`max_throughput`</span>.
+  /// higher than the value specified by min_instances. Required alongside `min_instances` if not using `min_throughput`/`max_throughput`.
   final Input<int>? maxInstances;
 
-  /// Maximum throughput of the connector in Mbps, must be greater than <span pulumi-lang-nodejs="`minThroughput`" pulumi-lang-dotnet="`MinThroughput`" pulumi-lang-go="`minThroughput`" pulumi-lang-python="`min_throughput`" pulumi-lang-yaml="`minThroughput`" pulumi-lang-java="`minThroughput`">`min_throughput`</span>. Default is 300. Refers to the expected throughput
+  /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300. Refers to the expected throughput
   /// when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
-  /// min_throughput. Only one of <span pulumi-lang-nodejs="`maxThroughput`" pulumi-lang-dotnet="`MaxThroughput`" pulumi-lang-go="`maxThroughput`" pulumi-lang-python="`max_throughput`" pulumi-lang-yaml="`maxThroughput`" pulumi-lang-java="`maxThroughput`">`max_throughput`</span> and <span pulumi-lang-nodejs="`maxInstances`" pulumi-lang-dotnet="`MaxInstances`" pulumi-lang-go="`maxInstances`" pulumi-lang-python="`max_instances`" pulumi-lang-yaml="`maxInstances`" pulumi-lang-java="`maxInstances`">`max_instances`</span> can be specified. The use of<span pulumi-lang-nodejs=" maxThroughput " pulumi-lang-dotnet=" MaxThroughput " pulumi-lang-go=" maxThroughput " pulumi-lang-python=" max_throughput " pulumi-lang-yaml=" maxThroughput " pulumi-lang-java=" maxThroughput "> max_throughput </span>is discouraged in favor of max_instances.
+  /// min_throughput. Only one of `max_throughput` and `max_instances` can be specified. The use of max_throughput is discouraged in favor of max_instances.
   final Input<int>? maxThroughput;
 
   /// Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
-  /// lower than the value specified by max_instances. Required alongside <span pulumi-lang-nodejs="`maxInstances`" pulumi-lang-dotnet="`MaxInstances`" pulumi-lang-go="`maxInstances`" pulumi-lang-python="`max_instances`" pulumi-lang-yaml="`maxInstances`" pulumi-lang-java="`maxInstances`">`max_instances`</span> if not using <span pulumi-lang-nodejs="`minThroughput`" pulumi-lang-dotnet="`MinThroughput`" pulumi-lang-go="`minThroughput`" pulumi-lang-python="`min_throughput`" pulumi-lang-yaml="`minThroughput`" pulumi-lang-java="`minThroughput`">`min_throughput`</span>/<span pulumi-lang-nodejs="`maxThroughput`" pulumi-lang-dotnet="`MaxThroughput`" pulumi-lang-go="`maxThroughput`" pulumi-lang-python="`max_throughput`" pulumi-lang-yaml="`maxThroughput`" pulumi-lang-java="`maxThroughput`">`max_throughput`</span>.
+  /// lower than the value specified by max_instances. Required alongside `max_instances` if not using `min_throughput`/`max_throughput`.
   final Input<int>? minInstances;
 
   /// Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
   /// Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
-  /// Only one of <span pulumi-lang-nodejs="`minThroughput`" pulumi-lang-dotnet="`MinThroughput`" pulumi-lang-go="`minThroughput`" pulumi-lang-python="`min_throughput`" pulumi-lang-yaml="`minThroughput`" pulumi-lang-java="`minThroughput`">`min_throughput`</span> and <span pulumi-lang-nodejs="`minInstances`" pulumi-lang-dotnet="`MinInstances`" pulumi-lang-go="`minInstances`" pulumi-lang-python="`min_instances`" pulumi-lang-yaml="`minInstances`" pulumi-lang-java="`minInstances`">`min_instances`</span> can be specified. The use of<span pulumi-lang-nodejs=" minThroughput " pulumi-lang-dotnet=" MinThroughput " pulumi-lang-go=" minThroughput " pulumi-lang-python=" min_throughput " pulumi-lang-yaml=" minThroughput " pulumi-lang-java=" minThroughput "> min_throughput </span>is discouraged in favor of min_instances.
+  /// Only one of `min_throughput` and `min_instances` can be specified. The use of min_throughput is discouraged in favor of min_instances.
   final Input<int>? minThroughput;
 
   /// The name of the resource (Max 25 characters).
   final Input<String>? name;
 
-  /// Name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the VPC network. Required if <span pulumi-lang-nodejs="`ipCidrRange`" pulumi-lang-dotnet="`IpCidrRange`" pulumi-lang-go="`ipCidrRange`" pulumi-lang-python="`ip_cidr_range`" pulumi-lang-yaml="`ipCidrRange`" pulumi-lang-java="`ipCidrRange`">`ip_cidr_range`</span> is set.
+  /// Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
   final Input<String>? network;
 
   /// The ID of the project in which the resource belongs.

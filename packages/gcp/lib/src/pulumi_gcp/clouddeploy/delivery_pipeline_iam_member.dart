@@ -1,0 +1,4 @@
+library module_clouddeploy_delivery_pipeline_iam_member;
+
+export 'delivery_pipeline_iam_member/delivery_pipeline_iam_member.dart';
+export 'delivery_pipeline_iam_member/delivery_pipeline_iam_member_args.dart';

@@ -1,3 +1,0 @@
-library module_container_azure_cluster_authorization_admin_group;
-
-export 'azure_cluster_authorization_admin_group.dart';

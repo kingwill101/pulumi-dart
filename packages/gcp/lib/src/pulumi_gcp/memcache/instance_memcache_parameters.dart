@@ -1,0 +1,3 @@
+library module_memcache_instance_memcache_parameters;
+
+export 'instance_memcache_parameters/instance_memcache_parameters.dart';

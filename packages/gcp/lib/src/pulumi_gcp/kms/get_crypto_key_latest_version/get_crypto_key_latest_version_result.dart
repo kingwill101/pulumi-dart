@@ -14,7 +14,7 @@ class GetCryptoKeyLatestVersionResult {
   final String id;
   final String name;
 
-  /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the <span pulumi-lang-nodejs="[protectionLevel " pulumi-lang-dotnet="[ProtectionLevel " pulumi-lang-go="[protectionLevel " pulumi-lang-python="[protection_level " pulumi-lang-yaml="[protectionLevel " pulumi-lang-java="[protectionLevel ">[protection_level </span>reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
+  /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion. See the [protection_level reference](https://cloud.google.com/kms/docs/reference/rest/v1/ProtectionLevel) for possible outputs.
   final String protectionLevel;
 
   /// If the enclosing CryptoKey has purpose `ASYMMETRIC_SIGN` or `ASYMMETRIC_DECRYPT`, this block contains details about the public key associated to this CryptoKeyVersion. Structure is documented below.

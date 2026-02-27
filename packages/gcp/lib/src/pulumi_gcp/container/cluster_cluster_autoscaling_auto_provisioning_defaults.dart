@@ -1,0 +1,3 @@
+library module_container_cluster_cluster_autoscaling_auto_provisioning_defaults;
+
+export 'cluster_cluster_autoscaling_auto_provisioning_defaults/cluster_cluster_autoscaling_auto_provisioning_defaults.dart';

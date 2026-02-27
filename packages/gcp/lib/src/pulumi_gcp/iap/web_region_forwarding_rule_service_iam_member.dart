@@ -1,0 +1,4 @@
+library module_iap_web_region_forwarding_rule_service_iam_member;
+
+export 'web_region_forwarding_rule_service_iam_member/web_region_forwarding_rule_service_iam_member.dart';
+export 'web_region_forwarding_rule_service_iam_member/web_region_forwarding_rule_service_iam_member_args.dart';

@@ -21,7 +21,7 @@ class GetInstanceNetwork {
   final String network;
 
   /// Private Service Connect configuration.
-  /// Should only be set when<span pulumi-lang-nodejs=" connectMode " pulumi-lang-dotnet=" ConnectMode " pulumi-lang-go=" connectMode " pulumi-lang-python=" connect_mode " pulumi-lang-yaml=" connectMode " pulumi-lang-java=" connectMode "> connect_mode </span>is PRIVATE_SERVICE_CONNECT.
+  /// Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
   final List<GetInstanceNetworkPscConfig> pscConfigs;
 
   /// A /29 CIDR block that identifies the range of IP

@@ -1,3 +1,0 @@
-library module_cloudbuild_bitbucket_server_config_connected_repository;
-
-export 'bitbucket_server_config_connected_repository.dart';

@@ -1,0 +1,3 @@
+library module_cloudasset_project_feed_feed_output_config;
+
+export 'project_feed_feed_output_config/project_feed_feed_output_config.dart';

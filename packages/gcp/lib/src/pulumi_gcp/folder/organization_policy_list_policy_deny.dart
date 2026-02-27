@@ -1,0 +1,3 @@
+library module_folder_organization_policy_list_policy_deny;
+
+export 'organization_policy_list_policy_deny/organization_policy_list_policy_deny.dart';

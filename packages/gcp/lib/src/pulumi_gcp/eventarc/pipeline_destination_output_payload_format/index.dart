@@ -1,3 +1,0 @@
-library module_eventarc_pipeline_destination_output_payload_format;
-
-export 'pipeline_destination_output_payload_format.dart';

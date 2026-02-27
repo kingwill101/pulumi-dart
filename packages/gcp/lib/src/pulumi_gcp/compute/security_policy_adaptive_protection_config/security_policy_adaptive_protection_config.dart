@@ -6,7 +6,7 @@ import '../security_policy_adaptive_protection_config_layer7_ddos_defense_config
 class SecurityPolicyAdaptiveProtectionConfig {
   /// Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedLayer7DdosDefenseConfig"" pulumi-lang-dotnet=""NestedLayer7DdosDefenseConfig"" pulumi-lang-go=""nestedLayer7DdosDefenseConfig"" pulumi-lang-python=""nested_layer_7_ddos_defense_config"" pulumi-lang-yaml=""nestedLayer7DdosDefenseConfig"" pulumi-lang-java=""nestedLayer7DdosDefenseConfig"">"nested_layer_7_ddos_defense_config"</span>></a>The <span pulumi-lang-nodejs="`layer7DdosDefenseConfig`" pulumi-lang-dotnet="`Layer7DdosDefenseConfig`" pulumi-lang-go="`layer7DdosDefenseConfig`" pulumi-lang-python="`layer_7_ddos_defense_config`" pulumi-lang-yaml="`layer7DdosDefenseConfig`" pulumi-lang-java="`layer7DdosDefenseConfig`">`layer_7_ddos_defense_config`</span> block supports:
+  /// <a name="nested_layer_7_ddos_defense_config"></a>The `layer_7_ddos_defense_config` block supports:
   final SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig?
       autoDeployConfig;
 

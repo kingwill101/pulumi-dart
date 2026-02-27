@@ -1,3 +1,0 @@
-library module_cloudrunv2_worker_pool_binary_authorization;
-
-export 'worker_pool_binary_authorization.dart';

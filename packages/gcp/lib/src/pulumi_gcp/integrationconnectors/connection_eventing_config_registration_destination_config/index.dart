@@ -1,3 +1,0 @@
-library module_integrationconnectors_connection_eventing_config_registration_destination_config;
-
-export 'connection_eventing_config_registration_destination_config.dart';

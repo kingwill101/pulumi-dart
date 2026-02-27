@@ -1,3 +1,0 @@
-library module_developerconnect_connection_bitbucket_data_center_config_read_authorizer_credential;
-
-export 'connection_bitbucket_data_center_config_read_authorizer_credential2.dart';

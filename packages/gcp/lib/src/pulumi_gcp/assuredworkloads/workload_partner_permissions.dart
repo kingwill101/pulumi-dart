@@ -1,0 +1,3 @@
+library module_assuredworkloads_workload_partner_permissions;
+
+export 'workload_partner_permissions/workload_partner_permissions.dart';

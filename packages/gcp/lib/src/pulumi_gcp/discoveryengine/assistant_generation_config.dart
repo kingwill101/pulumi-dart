@@ -1,0 +1,3 @@
+library module_discoveryengine_assistant_generation_config;
+
+export 'assistant_generation_config/assistant_generation_config.dart';

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// Arguments for getAppEngineService.
 class GetAppEngineServiceArgs {
   /// The ID of the App Engine module underlying this
-  /// service. Corresponds to the moduleId resource label in the <span pulumi-lang-nodejs="[gaeApp]" pulumi-lang-dotnet="[GaeApp]" pulumi-lang-go="[gaeApp]" pulumi-lang-python="[gae_app]" pulumi-lang-yaml="[gaeApp]" pulumi-lang-java="[gaeApp]">[gae_app]</span>(https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
+  /// service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
   ///
   /// - - -
   ///

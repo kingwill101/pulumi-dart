@@ -41,7 +41,7 @@ class AgentArgs {
   /// automatically assigned for the agent.
   final Input<String>? agentId;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> app;
 
   /// The callbacks to execute before the agent is called.
@@ -89,7 +89,7 @@ class AgentArgs {
   /// the agent to perform the task using a large language model.
   final Input<Map<String, dynamic>>? llmAgent;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> location;
 
   /// Model settings contains various configurations for the LLM model.

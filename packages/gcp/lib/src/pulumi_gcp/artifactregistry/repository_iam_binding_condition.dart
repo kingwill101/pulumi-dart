@@ -1,0 +1,3 @@
+library module_artifactregistry_repository_iam_binding_condition;
+
+export 'repository_iam_binding_condition/repository_iam_binding_condition.dart';

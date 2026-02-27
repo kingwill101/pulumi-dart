@@ -1,3 +1,0 @@
-library module_eventarc_pipeline_destination_authentication_config_oauth_token;
-
-export 'pipeline_destination_authentication_config_oauth_token.dart';

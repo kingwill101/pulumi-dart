@@ -1,0 +1,3 @@
+library module_pubsub_get_subscription_expiration_policy;
+
+export 'get_subscription_expiration_policy/get_subscription_expiration_policy.dart';

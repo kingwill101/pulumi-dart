@@ -1,0 +1,3 @@
+library module_storage_transfer_job_transfer_spec_gcs_data_sink;
+
+export 'transfer_job_transfer_spec_gcs_data_sink/transfer_job_transfer_spec_gcs_data_sink.dart';

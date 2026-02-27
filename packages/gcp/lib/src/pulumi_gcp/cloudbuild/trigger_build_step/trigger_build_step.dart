@@ -27,10 +27,10 @@ class TriggerBuildStep {
   /// If this value is a relative path, it is relative to the build's working
   /// directory. If this value is absolute, it may be outside the build's working
   /// directory, in which case the contents of the path may not be persisted
-  /// across build step executions, unless a <span pulumi-lang-nodejs="`volume`" pulumi-lang-dotnet="`Volume`" pulumi-lang-go="`volume`" pulumi-lang-python="`volume`" pulumi-lang-yaml="`volume`" pulumi-lang-java="`volume`">`volume`</span> for that path is specified.
-  /// If the build specifies a `RepoSource` with <span pulumi-lang-nodejs="`dir`" pulumi-lang-dotnet="`Dir`" pulumi-lang-go="`dir`" pulumi-lang-python="`dir`" pulumi-lang-yaml="`dir`" pulumi-lang-java="`dir`">`dir`</span> and a step with a
-  /// <span pulumi-lang-nodejs="`dir`" pulumi-lang-dotnet="`Dir`" pulumi-lang-go="`dir`" pulumi-lang-python="`dir`" pulumi-lang-yaml="`dir`" pulumi-lang-java="`dir`">`dir`</span>,
-  /// which specifies an absolute path, the `RepoSource` <span pulumi-lang-nodejs="`dir`" pulumi-lang-dotnet="`Dir`" pulumi-lang-go="`dir`" pulumi-lang-python="`dir`" pulumi-lang-yaml="`dir`" pulumi-lang-java="`dir`">`dir`</span> is ignored
+  /// across build step executions, unless a `volume` for that path is specified.
+  /// If the build specifies a `RepoSource` with `dir` and a step with a
+  /// `dir`,
+  /// which specifies an absolute path, the `RepoSource` `dir` is ignored
   /// for the step's execution.
   final String? dir;
 
@@ -45,7 +45,7 @@ class TriggerBuildStep {
   /// "KEY" being given the value "VALUE".
   final List<String>? envs;
 
-  /// Unique identifier for this build step, used in <span pulumi-lang-nodejs="`waitFor`" pulumi-lang-dotnet="`WaitFor`" pulumi-lang-go="`waitFor`" pulumi-lang-python="`wait_for`" pulumi-lang-yaml="`waitFor`" pulumi-lang-java="`waitFor`">`wait_for`</span> to
+  /// Unique identifier for this build step, used in `wait_for` to
   /// reference this build step as a dependency.
   final String? id;
 
@@ -94,8 +94,8 @@ class TriggerBuildStep {
   final List<TriggerBuildStepVolume>? volumes;
 
   /// The ID(s) of the step(s) that this build step depends on.
-  /// This build step will not start until all the build steps in <span pulumi-lang-nodejs="`waitFor`" pulumi-lang-dotnet="`WaitFor`" pulumi-lang-go="`waitFor`" pulumi-lang-python="`wait_for`" pulumi-lang-yaml="`waitFor`" pulumi-lang-java="`waitFor`">`wait_for`</span>
-  /// have completed successfully. If <span pulumi-lang-nodejs="`waitFor`" pulumi-lang-dotnet="`WaitFor`" pulumi-lang-go="`waitFor`" pulumi-lang-python="`wait_for`" pulumi-lang-yaml="`waitFor`" pulumi-lang-java="`waitFor`">`wait_for`</span> is empty, this build step
+  /// This build step will not start until all the build steps in `wait_for`
+  /// have completed successfully. If `wait_for` is empty, this build step
   /// will start when all previous build steps in the `Build.Steps` list
   /// have completed successfully.
   final List<String>? waitFors;

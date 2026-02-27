@@ -1,0 +1,3 @@
+library module_beyondcorp_security_gateway_application_endpoint_matcher;
+
+export 'security_gateway_application_endpoint_matcher/security_gateway_application_endpoint_matcher.dart';

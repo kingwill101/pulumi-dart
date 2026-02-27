@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../get_keys_zone_signing_key_digest/get_keys_zone_signing_key_digest.dart';
 
 class GetKeysZoneSigningKey {
-  /// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are <span pulumi-lang-nodejs="`ecdsap256sha256`" pulumi-lang-dotnet="`Ecdsap256sha256`" pulumi-lang-go="`ecdsap256sha256`" pulumi-lang-python="`ecdsap256sha256`" pulumi-lang-yaml="`ecdsap256sha256`" pulumi-lang-java="`ecdsap256sha256`">`ecdsap256sha256`</span>, <span pulumi-lang-nodejs="`ecdsap384sha384`" pulumi-lang-dotnet="`Ecdsap384sha384`" pulumi-lang-go="`ecdsap384sha384`" pulumi-lang-python="`ecdsap384sha384`" pulumi-lang-yaml="`ecdsap384sha384`" pulumi-lang-java="`ecdsap384sha384`">`ecdsap384sha384`</span>, <span pulumi-lang-nodejs="`rsasha1`" pulumi-lang-dotnet="`Rsasha1`" pulumi-lang-go="`rsasha1`" pulumi-lang-python="`rsasha1`" pulumi-lang-yaml="`rsasha1`" pulumi-lang-java="`rsasha1`">`rsasha1`</span>, <span pulumi-lang-nodejs="`rsasha256`" pulumi-lang-dotnet="`Rsasha256`" pulumi-lang-go="`rsasha256`" pulumi-lang-python="`rsasha256`" pulumi-lang-yaml="`rsasha256`" pulumi-lang-java="`rsasha256`">`rsasha256`</span>, and <span pulumi-lang-nodejs="`rsasha512`" pulumi-lang-dotnet="`Rsasha512`" pulumi-lang-go="`rsasha512`" pulumi-lang-python="`rsasha512`" pulumi-lang-yaml="`rsasha512`" pulumi-lang-java="`rsasha512`">`rsasha512`</span>.
+  /// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
   final String algorithm;
 
   /// The time that this resource was created in the control plane. This is in RFC3339 text format.

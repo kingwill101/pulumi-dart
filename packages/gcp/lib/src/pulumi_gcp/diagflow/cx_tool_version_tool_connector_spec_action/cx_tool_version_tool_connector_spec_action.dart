@@ -3,10 +3,10 @@
 import '../cx_tool_version_tool_connector_spec_action_entity_operation/cx_tool_version_tool_connector_spec_action_entity_operation.dart';
 
 class CxToolVersionToolConnectorSpecAction {
-  /// ID of a Connection action for the tool to use. This field is part of a required union field <span pulumi-lang-nodejs="`actionSpec`" pulumi-lang-dotnet="`ActionSpec`" pulumi-lang-go="`actionSpec`" pulumi-lang-python="`action_spec`" pulumi-lang-yaml="`actionSpec`" pulumi-lang-java="`actionSpec`">`action_spec`</span>.
+  /// ID of a Connection action for the tool to use. This field is part of a required union field `action_spec`.
   final String? connectionActionId;
 
-  /// Entity operation configuration for the tool to use. This field is part of a required union field <span pulumi-lang-nodejs="`actionSpec`" pulumi-lang-dotnet="`ActionSpec`" pulumi-lang-go="`actionSpec`" pulumi-lang-python="`action_spec`" pulumi-lang-yaml="`actionSpec`" pulumi-lang-java="`actionSpec`">`action_spec`</span>.
+  /// Entity operation configuration for the tool to use. This field is part of a required union field `action_spec`.
   /// Structure is documented below.
   final CxToolVersionToolConnectorSpecActionEntityOperation? entityOperation;
 

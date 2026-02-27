@@ -1,0 +1,3 @@
+library module_pubsub_get_topic_ingestion_data_source_setting_aws_kinese;
+
+export 'get_topic_ingestion_data_source_setting_aws_kinese/get_topic_ingestion_data_source_setting_aws_kinese.dart';

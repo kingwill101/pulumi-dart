@@ -1,3 +1,0 @@
-library module_diagflow_cx_page_form_parameter_fill_behavior_reprompt_event_handler;
-
-export 'cx_page_form_parameter_fill_behavior_reprompt_event_handler.dart';

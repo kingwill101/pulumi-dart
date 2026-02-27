@@ -7,7 +7,7 @@ class GetPythonPackagesPythonPackage {
   /// The fully qualified name of the fetched package.  This name has the form: `projects/{{project}}/locations/{{location}}/repository/{{repository_id}}/pythonPackages/{{pythonPackage}}`. For example, `projects/example-project/locations/us-central1/repository/example-repo/pythonPackages/my-test-package:0.0.1`
   final String name;
 
-  /// Extracted short name of the package (last part of <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
+  /// Extracted short name of the package (last part of `name`, without version). For example, from `.../my-test-package:0.0.1` → `my-test-package`.
   final String packageName;
 
   /// The time, as a RFC 3339 string, this package was updated.

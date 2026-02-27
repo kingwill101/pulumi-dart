@@ -1,0 +1,3 @@
+library module_monitoring_slo_windows_based_sli;
+
+export 'slo_windows_based_sli/slo_windows_based_sli.dart';

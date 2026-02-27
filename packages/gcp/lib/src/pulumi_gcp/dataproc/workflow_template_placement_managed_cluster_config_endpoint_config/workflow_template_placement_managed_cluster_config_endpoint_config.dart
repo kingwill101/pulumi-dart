@@ -4,7 +4,7 @@ class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
   /// If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
   final bool? enableHttpPortAccess;
 
-  /// Output only. The map of port descriptions to URLs. Will only be populated if<span pulumi-lang-nodejs=" enableHttpPortAccess " pulumi-lang-dotnet=" EnableHttpPortAccess " pulumi-lang-go=" enableHttpPortAccess " pulumi-lang-python=" enable_http_port_access " pulumi-lang-yaml=" enableHttpPortAccess " pulumi-lang-java=" enableHttpPortAccess "> enable_http_port_access </span>is true.
+  /// Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
   final Map<String, String>? httpPorts;
 
   WorkflowTemplatePlacementManagedClusterConfigEndpointConfig({

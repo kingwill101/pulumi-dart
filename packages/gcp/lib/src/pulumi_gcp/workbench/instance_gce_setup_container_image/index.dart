@@ -1,3 +1,0 @@
-library module_workbench_instance_gce_setup_container_image;
-
-export 'instance_gce_setup_container_image.dart';

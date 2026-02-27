@@ -1,0 +1,4 @@
+library module_dns_dns_managed_zone_iam_binding;
+
+export 'dns_managed_zone_iam_binding/dns_managed_zone_iam_binding.dart';
+export 'dns_managed_zone_iam_binding/dns_managed_zone_iam_binding_args.dart';

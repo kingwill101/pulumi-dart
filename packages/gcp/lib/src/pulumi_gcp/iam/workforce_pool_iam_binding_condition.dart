@@ -1,0 +1,3 @@
+library module_iam_workforce_pool_iam_binding_condition;
+
+export 'workforce_pool_iam_binding_condition/workforce_pool_iam_binding_condition.dart';

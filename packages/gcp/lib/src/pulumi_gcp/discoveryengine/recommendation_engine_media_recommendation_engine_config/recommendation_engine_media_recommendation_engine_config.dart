@@ -9,20 +9,20 @@ class RecommendationEngineMediaRecommendationEngineConfig {
   final RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig?
       engineFeaturesConfig;
 
-  /// The optimization objective. e.g., <span pulumi-lang-nodejs="`cvr`" pulumi-lang-dotnet="`Cvr`" pulumi-lang-go="`cvr`" pulumi-lang-python="`cvr`" pulumi-lang-yaml="`cvr`" pulumi-lang-java="`cvr`">`cvr`</span>.
+  /// The optimization objective. e.g., `cvr`.
   /// This field together with MediaRecommendationEngineConfig.type describes
   /// engine metadata to use to control engine training and serving.
-  /// Currently supported values: <span pulumi-lang-nodejs="`ctr`" pulumi-lang-dotnet="`Ctr`" pulumi-lang-go="`ctr`" pulumi-lang-python="`ctr`" pulumi-lang-yaml="`ctr`" pulumi-lang-java="`ctr`">`ctr`</span>, <span pulumi-lang-nodejs="`cvr`" pulumi-lang-dotnet="`Cvr`" pulumi-lang-go="`cvr`" pulumi-lang-python="`cvr`" pulumi-lang-yaml="`cvr`" pulumi-lang-java="`cvr`">`cvr`</span>.
+  /// Currently supported values: `ctr`, `cvr`.
   /// If not specified, we choose default based on engine type. Default depends on type of recommendation:
-  /// `recommended-for-you` => <span pulumi-lang-nodejs="`ctr`" pulumi-lang-dotnet="`Ctr`" pulumi-lang-go="`ctr`" pulumi-lang-python="`ctr`" pulumi-lang-yaml="`ctr`" pulumi-lang-java="`ctr`">`ctr`</span>
-  /// `others-you-may-like` => <span pulumi-lang-nodejs="`ctr`" pulumi-lang-dotnet="`Ctr`" pulumi-lang-go="`ctr`" pulumi-lang-python="`ctr`" pulumi-lang-yaml="`ctr`" pulumi-lang-java="`ctr`">`ctr`</span>
+  /// `recommended-for-you` => `ctr`
+  /// `others-you-may-like` => `ctr`
   final String? optimizationObjective;
 
   /// Name and value of the custom threshold for cvr optimization_objective.
-  /// For<span pulumi-lang-nodejs=" targetField " pulumi-lang-dotnet=" TargetField " pulumi-lang-go=" targetField " pulumi-lang-python=" target_field " pulumi-lang-yaml=" targetField " pulumi-lang-java=" targetField "> target_field </span>`watch-time`,<span pulumi-lang-nodejs=" targetFieldValue " pulumi-lang-dotnet=" TargetFieldValue " pulumi-lang-go=" targetFieldValue " pulumi-lang-python=" target_field_value " pulumi-lang-yaml=" targetFieldValue " pulumi-lang-java=" targetFieldValue "> target_field_value </span>must be an integer
+  /// For target_field `watch-time`, target_field_value must be an integer
   /// value indicating the media progress time in seconds between (0, 86400]
   /// (excludes 0, includes 86400) (e.g., 90).
-  /// For<span pulumi-lang-nodejs=" targetField " pulumi-lang-dotnet=" TargetField " pulumi-lang-go=" targetField " pulumi-lang-python=" target_field " pulumi-lang-yaml=" targetField " pulumi-lang-java=" targetField "> target_field </span>`watch-percentage`, the<span pulumi-lang-nodejs=" targetFieldValue " pulumi-lang-dotnet=" TargetFieldValue " pulumi-lang-go=" targetFieldValue " pulumi-lang-python=" target_field_value " pulumi-lang-yaml=" targetFieldValue " pulumi-lang-java=" targetFieldValue "> target_field_value </span>must be a
+  /// For target_field `watch-percentage`, the target_field_value must be a
   /// valid float value between (0, 1.0] (excludes 0, includes 1.0) (e.g., 0.5).
   /// Structure is documented below.
   final RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig?

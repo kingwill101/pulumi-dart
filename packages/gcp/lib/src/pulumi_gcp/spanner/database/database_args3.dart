@@ -16,7 +16,7 @@ class DatabaseArgs3 {
   final Input<String>? defaultTimeZone;
 
   /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-  /// in state, a <span pulumi-lang-nodejs="`destroy`" pulumi-lang-dotnet="`Destroy`" pulumi-lang-go="`destroy`" pulumi-lang-python="`destroy`" pulumi-lang-yaml="`destroy`" pulumi-lang-java="`destroy`">`destroy`</span> or <span pulumi-lang-nodejs="`update`" pulumi-lang-dotnet="`Update`" pulumi-lang-go="`update`" pulumi-lang-python="`update`" pulumi-lang-yaml="`update`" pulumi-lang-java="`update`">`update`</span> that would delete the instance will fail.
+  /// in state, a `destroy` or `update` that would delete the instance will fail.
   final Input<bool>? deletionProtection;
   final Input<bool>? enableDropProtection;
 
@@ -38,7 +38,7 @@ class DatabaseArgs3 {
   /// The retention period for the database. The retention period must be between 1 hour
   /// and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
   /// the values 1d, 24h, 1440m, and 86400s are equivalent. Default value is 1h.
-  /// If this property is used, you must avoid adding new DDL statements to <span pulumi-lang-nodejs="`ddl`" pulumi-lang-dotnet="`Ddl`" pulumi-lang-go="`ddl`" pulumi-lang-python="`ddl`" pulumi-lang-yaml="`ddl`" pulumi-lang-java="`ddl`">`ddl`</span> that
+  /// If this property is used, you must avoid adding new DDL statements to `ddl` that
   /// update the database's version_retention_period.
   final Input<String>? versionRetentionPeriod;
 

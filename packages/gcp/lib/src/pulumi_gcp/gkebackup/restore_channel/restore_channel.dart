@@ -18,127 +18,7 @@ import 'restore_channel_args.dart';
 /// ### Gkebackup Restorechannel Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const basic = new gcp.gkebackup.RestoreChannel("basic", {
-/// name: "basic-channel",
-/// location: "us-central1",
-/// description: "Description",
-/// destinationProject: "projects/24240755850",
-/// labels: {
-/// key: "some-value",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// basic = gcp.gkebackup.RestoreChannel("basic",
-/// name="basic-channel",
-/// location="us-central1",
-/// description="Description",
-/// destination_project="projects/24240755850",
-/// labels={
-/// "key": "some-value",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var basic = new Gcp.GkeBackup.RestoreChannel("basic", new()
-/// {
-/// Name = "basic-channel",
-/// Location = "us-central1",
-/// Description = "Description",
-/// DestinationProject = "projects/24240755850",
-/// Labels =
-/// {
-/// { "key", "some-value" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := gkebackup.NewRestoreChannel(ctx, "basic", &gkebackup.RestoreChannelArgs{
-/// Name:               pulumi.String("basic-channel"),
-/// Location:           pulumi.String("us-central1"),
-/// Description:        pulumi.String("Description"),
-/// DestinationProject: pulumi.String("projects/24240755850"),
-/// Labels: pulumi.StringMap{
-/// "key": pulumi.String("some-value"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.gkebackup.RestoreChannel;
-/// import com.pulumi.gcp.gkebackup.RestoreChannelArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var basic = new RestoreChannel("basic", RestoreChannelArgs.builder()
-/// .name("basic-channel")
-/// .location("us-central1")
-/// .description("Description")
-/// .destinationProject("projects/24240755850")
-/// .labels(Map.of("key", "some-value"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// basic:
-/// type: gcp:gkebackup:RestoreChannel
-/// properties:
-/// name: basic-channel
-/// location: us-central1
-/// description: Description
-/// destinationProject: projects/24240755850
-/// labels:
-/// key: some-value
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -172,7 +52,7 @@ class RestoreChannel extends CustomResource {
   /// {project} can be project number or project id.
   late final Output<String> destinationProject;
 
-  /// The<span pulumi-lang-nodejs=" projectId " pulumi-lang-dotnet=" ProjectId " pulumi-lang-go=" projectId " pulumi-lang-python=" project_id " pulumi-lang-yaml=" projectId " pulumi-lang-java=" projectId "> project_id </span>where Backups will be restored.
+  /// The project_id where Backups will be restored.
   /// Example Project ID: "my-project-id".
   late final Output<String> destinationProjectId;
 
@@ -192,7 +72,7 @@ class RestoreChannel extends CustomResource {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// The region of the Restore Channel.

@@ -1,3 +1,0 @@
-library module_apigee_addons_config_addons_config_integration_config;
-
-export 'addons_config_addons_config_integration_config.dart';

@@ -21,144 +21,7 @@ import 'interconnect_args.dart';
 /// ### Compute Interconnect Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const project = gcp.organizations.getProject({});
-/// const example_interconnect = new gcp.compute.Interconnect("example-interconnect", {
-/// name: "example-interconnect",
-/// customerName: "example_customer",
-/// interconnectType: "DEDICATED",
-/// linkType: "LINK_TYPE_ETHERNET_10G_LR",
-/// location: project.then(project => `https://www.googleapis.com/compute/v1/${project.id}/global/interconnectLocations/iad-zone1-1`),
-/// requestedLinkCount: 1,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// project = gcp.organizations.get_project()
-/// example_interconnect = gcp.compute.Interconnect("example-interconnect",
-/// name="example-interconnect",
-/// customer_name="example_customer",
-/// interconnect_type="DEDICATED",
-/// link_type="LINK_TYPE_ETHERNET_10G_LR",
-/// location=f"https://www.googleapis.com/compute/v1/{project.id}/global/interconnectLocations/iad-zone1-1",
-/// requested_link_count=1)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var project = Gcp.Organizations.GetProject.Invoke();
-///
-/// var example_interconnect = new Gcp.Compute.Interconnect("example-interconnect", new()
-/// {
-/// Name = "example-interconnect",
-/// CustomerName = "example_customer",
-/// InterconnectType = "DEDICATED",
-/// LinkType = "LINK_TYPE_ETHERNET_10G_LR",
-/// Location = $"https://www.googleapis.com/compute/v1/{project.Apply(getProjectResult => getProjectResult.Id)}/global/interconnectLocations/iad-zone1-1",
-/// RequestedLinkCount = 1,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "fmt"
-///
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-/// if err != nil {
-/// return err
-/// }
-/// _, err = compute.NewInterconnect(ctx, "example-interconnect", &compute.InterconnectArgs{
-/// Name:               pulumi.String("example-interconnect"),
-/// CustomerName:       pulumi.String("example_customer"),
-/// InterconnectType:   pulumi.String("DEDICATED"),
-/// LinkType:           pulumi.String("LINK_TYPE_ETHERNET_10G_LR"),
-/// Location:           pulumi.Sprintf("https://www.googleapis.com/compute/v1/%v/global/interconnectLocations/iad-zone1-1", project.Id),
-/// RequestedLinkCount: pulumi.Int(1),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
-/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import com.pulumi.gcp.compute.Interconnect;
-/// import com.pulumi.gcp.compute.InterconnectArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-/// .build());
-///
-/// var example_interconnect = new Interconnect("example-interconnect", InterconnectArgs.builder()
-/// .name("example-interconnect")
-/// .customerName("example_customer")
-/// .interconnectType("DEDICATED")
-/// .linkType("LINK_TYPE_ETHERNET_10G_LR")
-/// .location(String.format("https://www.googleapis.com/compute/v1/%s/global/interconnectLocations/iad-zone1-1", project.id()))
-/// .requestedLinkCount(1)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example-interconnect:
-/// type: gcp:compute:Interconnect
-/// properties:
-/// name: example-interconnect
-/// customerName: example_customer
-/// interconnectType: DEDICATED
-/// linkType: LINK_TYPE_ETHERNET_10G_LR
-/// location: https://www.googleapis.com/compute/v1/${project.id}/global/interconnectLocations/iad-zone1-1
-/// requestedLinkCount: 1
-/// variables:
-/// project:
-/// fn::invoke:
-/// function: gcp:organizations:getProject
-/// arguments: {}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -261,7 +124,7 @@ class Interconnect extends CustomResource {
   /// method. Each label key/value pair must comply with RFC1035. Label values may be empty.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// Type of link requested. Note that this field indicates the speed of each of the links in the

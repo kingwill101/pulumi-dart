@@ -1,0 +1,3 @@
+library module_compute_region_disk_iam_binding_condition;
+
+export 'region_disk_iam_binding_condition/region_disk_iam_binding_condition.dart';

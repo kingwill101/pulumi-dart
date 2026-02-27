@@ -1,3 +1,0 @@
-library module_alloydb_instance_client_connection_config;
-
-export 'instance_client_connection_config.dart';

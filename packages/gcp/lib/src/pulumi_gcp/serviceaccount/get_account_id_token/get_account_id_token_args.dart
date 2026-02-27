@@ -10,7 +10,7 @@ class GetAccountIdTokenArgs {
   /// Include the verified email in the claim. Used only when using impersonation mode.
   final Input<bool>? includeEmail;
 
-  /// The audience claim for the <span pulumi-lang-nodejs="`idToken`" pulumi-lang-dotnet="`IdToken`" pulumi-lang-go="`idToken`" pulumi-lang-python="`id_token`" pulumi-lang-yaml="`idToken`" pulumi-lang-java="`idToken`">`id_token`</span>.
+  /// The audience claim for the `id_token`.
   final Input<String> targetAudience;
 
   /// The email of the service account being impersonated.  Used only when using impersonation mode.

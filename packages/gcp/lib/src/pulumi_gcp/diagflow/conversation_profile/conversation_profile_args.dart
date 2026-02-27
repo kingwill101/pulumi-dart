@@ -46,7 +46,7 @@ class ConversationProfileArgs {
   final Input<ConversationProfileNewMessageEventNotificationConfig>?
       newMessageEventNotificationConfig;
 
-  /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - <span pulumi-lang-nodejs=""participantId"" pulumi-lang-dotnet=""ParticipantId"" pulumi-lang-go=""participantId"" pulumi-lang-python=""participant_id"" pulumi-lang-yaml=""participantId"" pulumi-lang-java=""participantId"">"participant_id"</span> - "participantRole" - <span pulumi-lang-nodejs=""messageId"" pulumi-lang-dotnet=""MessageId"" pulumi-lang-go=""messageId"" pulumi-lang-python=""message_id"" pulumi-lang-yaml=""messageId"" pulumi-lang-java=""messageId"">"message_id"</span>
+  /// Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participant_id" - "participantRole" - "message_id"
   /// Structure is documented below.
   final Input<ConversationProfileNewRecognitionResultNotificationConfig>?
       newRecognitionResultNotificationConfig;

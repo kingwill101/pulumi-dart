@@ -1,3 +1,0 @@
-library module_container_cluster_node_pool_node_config_secondary_boot_disk;
-
-export 'cluster_node_pool_node_config_secondary_boot_disk.dart';

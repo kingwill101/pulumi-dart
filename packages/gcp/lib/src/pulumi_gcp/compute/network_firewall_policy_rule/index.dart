@@ -1,4 +1,0 @@
-library module_compute_network_firewall_policy_rule;
-
-export 'network_firewall_policy_rule.dart';
-export 'network_firewall_policy_rule_args.dart';

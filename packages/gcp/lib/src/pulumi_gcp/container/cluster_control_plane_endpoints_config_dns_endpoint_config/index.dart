@@ -1,3 +1,0 @@
-library module_container_cluster_control_plane_endpoints_config_dns_endpoint_config;
-
-export 'cluster_control_plane_endpoints_config_dns_endpoint_config.dart';

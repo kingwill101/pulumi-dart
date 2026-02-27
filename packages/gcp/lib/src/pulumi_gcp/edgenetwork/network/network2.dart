@@ -15,134 +15,7 @@ import 'network_args2.dart';
 /// ### Edgenetwork Network
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const exampleNetwork = new gcp.edgenetwork.Network("example_network", {
-/// networkId: "example-network",
-/// location: "us-west1",
-/// zone: "",
-/// description: "Example network.",
-/// mtu: 9000,
-/// labels: {
-/// environment: "dev",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// example_network = gcp.edgenetwork.Network("example_network",
-/// network_id="example-network",
-/// location="us-west1",
-/// zone="",
-/// description="Example network.",
-/// mtu=9000,
-/// labels={
-/// "environment": "dev",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var exampleNetwork = new Gcp.EdgeNetwork.Network("example_network", new()
-/// {
-/// NetworkId = "example-network",
-/// Location = "us-west1",
-/// Zone = "",
-/// Description = "Example network.",
-/// Mtu = 9000,
-/// Labels =
-/// {
-/// { "environment", "dev" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/edgenetwork"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := edgenetwork.NewNetwork(ctx, "example_network", &edgenetwork.NetworkArgs{
-/// NetworkId:   pulumi.String("example-network"),
-/// Location:    pulumi.String("us-west1"),
-/// Zone:        pulumi.String(""),
-/// Description: pulumi.String("Example network."),
-/// Mtu:         pulumi.Int(9000),
-/// Labels: pulumi.StringMap{
-/// "environment": pulumi.String("dev"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.edgenetwork.Network;
-/// import com.pulumi.gcp.edgenetwork.NetworkArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
-/// .networkId("example-network")
-/// .location("us-west1")
-/// .zone("")
-/// .description("Example network.")
-/// .mtu(9000)
-/// .labels(Map.of("environment", "dev"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// exampleNetwork:
-/// type: gcp:edgenetwork:Network
-/// name: example_network
-/// properties:
-/// networkId: example-network
-/// location: us-west1
-/// zone: ""
-/// description: Example network.
-/// mtu: 9000
-/// labels:
-/// environment: dev
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -194,13 +67,13 @@ class Network2 extends CustomResource {
   /// Labels associated with this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
   late final Output<String> location;
 
-  /// IP (L3) MTU value of the network. Default value is <span pulumi-lang-nodejs="`1500`" pulumi-lang-dotnet="`1500`" pulumi-lang-go="`1500`" pulumi-lang-python="`1500`" pulumi-lang-yaml="`1500`" pulumi-lang-java="`1500`">`1500`</span>. Possible values are: <span pulumi-lang-nodejs="`1500`" pulumi-lang-dotnet="`1500`" pulumi-lang-go="`1500`" pulumi-lang-python="`1500`" pulumi-lang-yaml="`1500`" pulumi-lang-java="`1500`">`1500`</span>, <span pulumi-lang-nodejs="`9000`" pulumi-lang-dotnet="`9000`" pulumi-lang-go="`9000`" pulumi-lang-python="`9000`" pulumi-lang-yaml="`9000`" pulumi-lang-java="`9000`">`9000`</span>.
+  /// IP (L3) MTU value of the network. Default value is `1500`. Possible values are: `1500`, `9000`.
   late final Output<int?> mtu;
 
   /// The canonical name of this resource, with format

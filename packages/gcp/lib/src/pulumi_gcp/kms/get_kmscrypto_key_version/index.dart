@@ -1,5 +1,0 @@
-library module_kms_get_kmscrypto_key_version;
-
-export 'get_kmscrypto_key_version.dart';
-export 'get_kmscrypto_key_version_args.dart';
-export 'get_kmscrypto_key_version_result.dart';

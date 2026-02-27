@@ -1,0 +1,3 @@
+library module_dataplex_entry_type_iam_binding_condition;
+
+export 'entry_type_iam_binding_condition/entry_type_iam_binding_condition.dart';

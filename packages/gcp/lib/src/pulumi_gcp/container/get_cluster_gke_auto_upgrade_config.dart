@@ -1,0 +1,3 @@
+library module_container_get_cluster_gke_auto_upgrade_config;
+
+export 'get_cluster_gke_auto_upgrade_config/get_cluster_gke_auto_upgrade_config.dart';

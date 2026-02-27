@@ -16,9 +16,9 @@ class VariableArgs {
   /// is not provided, the provider project is used.
   final Input<String>? project;
 
-  /// or <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> - (Required) The content to associate with the variable.
-  /// Exactly one of <span pulumi-lang-nodejs="`text`" pulumi-lang-dotnet="`Text`" pulumi-lang-go="`text`" pulumi-lang-python="`text`" pulumi-lang-yaml="`text`" pulumi-lang-java="`text`">`text`</span> or <span pulumi-lang-nodejs="`variable`" pulumi-lang-dotnet="`Variable`" pulumi-lang-go="`variable`" pulumi-lang-python="`variable`" pulumi-lang-yaml="`variable`" pulumi-lang-java="`variable`">`variable`</span> must be specified. If <span pulumi-lang-nodejs="`text`" pulumi-lang-dotnet="`Text`" pulumi-lang-go="`text`" pulumi-lang-python="`text`" pulumi-lang-yaml="`text`" pulumi-lang-java="`text`">`text`</span> is specified,
-  /// it must be a valid UTF-8 string and less than 4096 bytes in length. If <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span>
+  /// or `value` - (Required) The content to associate with the variable.
+  /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
+  /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
   /// is specified, it must be base64 encoded and less than 4096 bytes in length.
   ///
   /// - - -

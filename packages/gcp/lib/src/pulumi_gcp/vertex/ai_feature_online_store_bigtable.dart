@@ -1,0 +1,3 @@
+library module_vertex_ai_feature_online_store_bigtable;
+
+export 'ai_feature_online_store_bigtable/ai_feature_online_store_bigtable.dart';

@@ -1,5 +1,0 @@
-library module_bigquery_get_default_service_account;
-
-export 'get_default_service_account2.dart';
-export 'get_default_service_account_args2.dart';
-export 'get_default_service_account_result2.dart';

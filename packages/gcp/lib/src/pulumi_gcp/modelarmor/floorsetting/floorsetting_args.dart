@@ -31,7 +31,7 @@ class FloorsettingArgs {
   /// List of integrated services for which the floor setting is applicable.
   final Input<List<String>>? integratedServices;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> location;
 
   /// Will be any one of these:

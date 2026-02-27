@@ -33,8 +33,8 @@ class GetRegionSecurityPolicyRule {
   /// Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
   /// For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
   /// Example:
-  /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: <span pulumi-lang-nodejs=""ipv4FragmentOffset"" pulumi-lang-dotnet=""Ipv4FragmentOffset"" pulumi-lang-go=""ipv4FragmentOffset"" pulumi-lang-python=""ipv4_fragment_offset"" pulumi-lang-yaml=""ipv4FragmentOffset"" pulumi-lang-java=""ipv4FragmentOffset"">"ipv4_fragment_offset"</span> values: - "1-0x1fff"
-  /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named <span pulumi-lang-nodejs=""ipv4FragmentOffset"" pulumi-lang-dotnet=""Ipv4FragmentOffset"" pulumi-lang-go=""ipv4FragmentOffset"" pulumi-lang-python=""ipv4_fragment_offset"" pulumi-lang-yaml=""ipv4FragmentOffset"" pulumi-lang-java=""ipv4FragmentOffset"">"ipv4_fragment_offset"</span> with a value between 1 and 0x1fff inclusive
+  /// networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
+  /// The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
   final List<GetRegionSecurityPolicyRuleNetworkMatch> networkMatches;
 
   /// Preconfigured WAF configuration to be applied for the rule.
@@ -50,7 +50,7 @@ class GetRegionSecurityPolicyRule {
   /// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
   final int priority;
 
-  /// Must be specified if the action is <span pulumi-lang-nodejs=""rateBasedBan"" pulumi-lang-dotnet=""RateBasedBan"" pulumi-lang-go=""rateBasedBan"" pulumi-lang-python=""rate_based_ban"" pulumi-lang-yaml=""rateBasedBan"" pulumi-lang-java=""rateBasedBan"">"rate_based_ban"</span> or "throttle". Cannot be specified for any other actions.
+  /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
   final List<GetRegionSecurityPolicyRuleRateLimitOption> rateLimitOptions;
 
   GetRegionSecurityPolicyRule({

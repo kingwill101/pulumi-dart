@@ -4,20 +4,20 @@ import '../instance_boot_disk_initialize_params_source_image_encryption_key/inst
 import '../instance_boot_disk_initialize_params_source_snapshot_encryption_key/instance_boot_disk_initialize_params_source_snapshot_encryption_key.dart';
 
 class InstanceBootDiskInitializeParams {
-  /// The architecture of the attached disk. Valid values are `ARM64` or <span pulumi-lang-nodejs="`x8664`" pulumi-lang-dotnet="`X8664`" pulumi-lang-go="`x8664`" pulumi-lang-python="`x86_64`" pulumi-lang-yaml="`x8664`" pulumi-lang-java="`x8664`">`x86_64`</span>.
+  /// The architecture of the attached disk. Valid values are `ARM64` or `x86_64`.
   final String? architecture;
 
   /// Whether this disk is using confidential compute mode.
-  /// Note: Only supported on hyperdisk skus,<span pulumi-lang-nodejs=" diskEncryptionKey " pulumi-lang-dotnet=" DiskEncryptionKey " pulumi-lang-go=" diskEncryptionKey " pulumi-lang-python=" disk_encryption_key " pulumi-lang-yaml=" diskEncryptionKey " pulumi-lang-java=" diskEncryptionKey "> disk_encryption_key </span>is required when setting to true.
+  /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
   final bool? enableConfidentialCompute;
 
   /// The image from which to initialize this disk. This can be
-  /// one of: the image's <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span>, `projects/{project}/global/images/{image}`,
+  /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
   /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
   /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
   /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
   /// images names must include the family name. If they don't, use the
-  /// <span pulumi-lang-nodejs="[gcp.compute.Image " pulumi-lang-dotnet="[gcp.compute.Image " pulumi-lang-go="[compute.Image " pulumi-lang-python="[compute.Image " pulumi-lang-yaml="[gcp.compute.Image " pulumi-lang-java="[gcp.compute.Image ">[gcp.compute.Image </span>data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+  /// [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
   /// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
   /// These images can be referred by family name here.
   final String? image;
@@ -47,7 +47,7 @@ class InstanceBootDiskInitializeParams {
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
   final Map<String, String>? resourceManagerTags;
 
-  /// A list of<span pulumi-lang-nodejs=" selfLinks " pulumi-lang-dotnet=" SelfLinks " pulumi-lang-go=" selfLinks " pulumi-lang-python=" self_links " pulumi-lang-yaml=" selfLinks " pulumi-lang-java=" selfLinks "> self_links </span>of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
+  /// A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
   final String? resourcePolicies;
 
   /// The size of the image in gigabytes. If not specified, it

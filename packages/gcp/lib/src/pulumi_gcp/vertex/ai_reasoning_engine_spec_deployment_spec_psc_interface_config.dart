@@ -1,0 +1,3 @@
+library module_vertex_ai_reasoning_engine_spec_deployment_spec_psc_interface_config;
+
+export 'ai_reasoning_engine_spec_deployment_spec_psc_interface_config/ai_reasoning_engine_spec_deployment_spec_psc_interface_config.dart';

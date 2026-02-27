@@ -1,0 +1,3 @@
+library module_composer_environment_config_workloads_config_triggerer;
+
+export 'environment_config_workloads_config_triggerer/environment_config_workloads_config_triggerer.dart';

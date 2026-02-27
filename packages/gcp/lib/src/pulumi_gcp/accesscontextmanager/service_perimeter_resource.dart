@@ -1,0 +1,4 @@
+library module_accesscontextmanager_service_perimeter_resource;
+
+export 'service_perimeter_resource/service_perimeter_resource.dart';
+export 'service_perimeter_resource/service_perimeter_resource_args.dart';

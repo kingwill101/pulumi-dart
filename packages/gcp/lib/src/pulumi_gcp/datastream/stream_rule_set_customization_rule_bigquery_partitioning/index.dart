@@ -1,3 +1,0 @@
-library module_datastream_stream_rule_set_customization_rule_bigquery_partitioning;
-
-export 'stream_rule_set_customization_rule_bigquery_partitioning.dart';

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class PacketMirroringNetwork {
-  /// The full<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>URL of the network where this rule is active.
+  /// The full self_link URL of the network where this rule is active.
   final String url;
 
   PacketMirroringNetwork({

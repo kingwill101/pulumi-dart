@@ -1,3 +1,0 @@
-library module_networksecurity_authz_policy_http_rule_to_operation_host;
-
-export 'authz_policy_http_rule_to_operation_host.dart';

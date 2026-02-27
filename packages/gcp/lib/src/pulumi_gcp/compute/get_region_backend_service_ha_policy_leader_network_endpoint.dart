@@ -1,0 +1,3 @@
+library module_compute_get_region_backend_service_ha_policy_leader_network_endpoint;
+
+export 'get_region_backend_service_ha_policy_leader_network_endpoint/get_region_backend_service_ha_policy_leader_network_endpoint.dart';

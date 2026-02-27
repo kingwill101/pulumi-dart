@@ -1,0 +1,3 @@
+library module_iam_deny_policy_rule_deny_rule;
+
+export 'deny_policy_rule_deny_rule/deny_policy_rule_deny_rule.dart';

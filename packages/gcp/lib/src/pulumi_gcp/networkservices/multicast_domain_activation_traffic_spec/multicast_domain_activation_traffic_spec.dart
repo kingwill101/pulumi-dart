@@ -14,11 +14,11 @@ class MulticastDomainActivationTrafficSpec {
   final int? avgPacketSize;
 
   /// Maximum ingress Packet-Per-Second for a single multicast group in this
-  /// zone. Default to<span pulumi-lang-nodejs=" aggregatedIngressPps " pulumi-lang-dotnet=" AggregatedIngressPps " pulumi-lang-go=" aggregatedIngressPps " pulumi-lang-python=" aggregated_ingress_pps " pulumi-lang-yaml=" aggregatedIngressPps " pulumi-lang-java=" aggregatedIngressPps "> aggregated_ingress_pps </span>/ 2.
+  /// zone. Default to aggregated_ingress_pps / 2.
   final String? maxPerGroupIngressPps;
 
   /// Maximum number of subscribers for a single multicast group in this zone.
-  /// Default to max(50,<span pulumi-lang-nodejs=" aggregatedEgressPps " pulumi-lang-dotnet=" AggregatedEgressPps " pulumi-lang-go=" aggregatedEgressPps " pulumi-lang-python=" aggregated_egress_pps " pulumi-lang-yaml=" aggregatedEgressPps " pulumi-lang-java=" aggregatedEgressPps "> aggregated_egress_pps </span>/ aggregated_ingress_pps).
+  /// Default to max(50, aggregated_egress_pps / aggregated_ingress_pps).
   final String? maxPerGroupSubscribers;
 
   MulticastDomainActivationTrafficSpec({

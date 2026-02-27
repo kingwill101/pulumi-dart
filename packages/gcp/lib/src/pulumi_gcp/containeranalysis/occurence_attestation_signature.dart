@@ -1,0 +1,3 @@
+library module_containeranalysis_occurence_attestation_signature;
+
+export 'occurence_attestation_signature/occurence_attestation_signature.dart';

@@ -1,3 +1,0 @@
-library module_memcache_get_instance_maintenance_policy_weekly_maintenance_window_start_time;
-
-export 'get_instance_maintenance_policy_weekly_maintenance_window_start_time.dart';

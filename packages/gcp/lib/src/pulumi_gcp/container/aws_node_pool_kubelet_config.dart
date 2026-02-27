@@ -1,0 +1,3 @@
+library module_container_aws_node_pool_kubelet_config;
+
+export 'aws_node_pool_kubelet_config/aws_node_pool_kubelet_config.dart';

@@ -1,3 +1,0 @@
-library module_oracledatabase_get_cloud_exadata_infrastructure_property_customer_contact;
-
-export 'get_cloud_exadata_infrastructure_property_customer_contact.dart';

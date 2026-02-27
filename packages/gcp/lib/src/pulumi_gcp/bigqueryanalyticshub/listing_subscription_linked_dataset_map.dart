@@ -1,0 +1,3 @@
+library module_bigqueryanalyticshub_listing_subscription_linked_dataset_map;
+
+export 'listing_subscription_linked_dataset_map/listing_subscription_linked_dataset_map.dart';

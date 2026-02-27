@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class JobTemplateConfigManifest {
-  /// The name of the generated file. The default is <span pulumi-lang-nodejs="`manifest`" pulumi-lang-dotnet="`Manifest`" pulumi-lang-go="`manifest`" pulumi-lang-python="`manifest`" pulumi-lang-yaml="`manifest`" pulumi-lang-java="`manifest`">`manifest`</span>.
+  /// The name of the generated file. The default is `manifest`.
   final String? fileName;
 
   /// List of user supplied MuxStream.key values that should appear in this manifest.

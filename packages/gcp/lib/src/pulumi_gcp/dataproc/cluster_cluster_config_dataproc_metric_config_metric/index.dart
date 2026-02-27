@@ -1,3 +1,0 @@
-library module_dataproc_cluster_cluster_config_dataproc_metric_config_metric;
-
-export 'cluster_cluster_config_dataproc_metric_config_metric.dart';

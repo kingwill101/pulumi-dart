@@ -12,7 +12,7 @@ class InboundSamlConfigSpConfig {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedSpConfigSpCertificates"" pulumi-lang-dotnet=""NestedSpConfigSpCertificates"" pulumi-lang-go=""nestedSpConfigSpCertificates"" pulumi-lang-python=""nested_sp_config_sp_certificates"" pulumi-lang-yaml=""nestedSpConfigSpCertificates"" pulumi-lang-java=""nestedSpConfigSpCertificates"">"nested_sp_config_sp_certificates"</span>></a>The <span pulumi-lang-nodejs="`spCertificates`" pulumi-lang-dotnet="`SpCertificates`" pulumi-lang-go="`spCertificates`" pulumi-lang-python="`sp_certificates`" pulumi-lang-yaml="`spCertificates`" pulumi-lang-java="`spCertificates`">`sp_certificates`</span> block contains:
+  /// <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
   final List<InboundSamlConfigSpConfigSpCertificate>? spCertificates;
 
   /// Unique identifier for all SAML entities.

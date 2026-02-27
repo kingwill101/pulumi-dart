@@ -4,14 +4,14 @@ class ConnectionProfileOracleForwardSshConnectivity {
   /// Required. Hostname for the SSH tunnel.
   final String hostname;
 
-  /// Input only. SSH password. Only one of <span pulumi-lang-nodejs="`password`" pulumi-lang-dotnet="`Password`" pulumi-lang-go="`password`" pulumi-lang-python="`password`" pulumi-lang-yaml="`password`" pulumi-lang-java="`password`">`password`</span> and <span pulumi-lang-nodejs="`privateKey`" pulumi-lang-dotnet="`PrivateKey`" pulumi-lang-go="`privateKey`" pulumi-lang-python="`private_key`" pulumi-lang-yaml="`privateKey`" pulumi-lang-java="`privateKey`">`private_key`</span> can be configured.
+  /// Input only. SSH password. Only one of `password` and `private_key` can be configured.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final String? password;
 
   /// Port for the SSH tunnel, default value is 22.
   final int port;
 
-  /// Input only. SSH private key. Only one of <span pulumi-lang-nodejs="`password`" pulumi-lang-dotnet="`Password`" pulumi-lang-go="`password`" pulumi-lang-python="`password`" pulumi-lang-yaml="`password`" pulumi-lang-java="`password`">`password`</span> and <span pulumi-lang-nodejs="`privateKey`" pulumi-lang-dotnet="`PrivateKey`" pulumi-lang-go="`privateKey`" pulumi-lang-python="`private_key`" pulumi-lang-yaml="`privateKey`" pulumi-lang-java="`privateKey`">`private_key`</span> can be configured.
+  /// Input only. SSH private key. Only one of `password` and `private_key` can be configured.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final String? privateKey;
 

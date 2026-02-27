@@ -19,11 +19,11 @@ class JobSparkConfig {
   final JobSparkConfigLoggingConfig? loggingConfig;
 
   /// The class containing the main method of the driver. Must be in a
-  /// provided jar or jar that is already on the classpath. Conflicts with <span pulumi-lang-nodejs="`mainJarFileUri`" pulumi-lang-dotnet="`MainJarFileUri`" pulumi-lang-go="`mainJarFileUri`" pulumi-lang-python="`main_jar_file_uri`" pulumi-lang-yaml="`mainJarFileUri`" pulumi-lang-java="`mainJarFileUri`">`main_jar_file_uri`</span>
+  /// provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
   final String? mainClass;
 
   /// The HCFS URI of jar file containing
-  /// the driver jar. Conflicts with <span pulumi-lang-nodejs="`mainClass`" pulumi-lang-dotnet="`MainClass`" pulumi-lang-go="`mainClass`" pulumi-lang-python="`main_class`" pulumi-lang-yaml="`mainClass`" pulumi-lang-java="`mainClass`">`main_class`</span>
+  /// the driver jar. Conflicts with `main_class`
   final String? mainJarFileUri;
 
   /// A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.

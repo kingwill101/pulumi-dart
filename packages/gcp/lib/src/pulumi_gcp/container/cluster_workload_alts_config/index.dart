@@ -1,3 +1,0 @@
-library module_container_cluster_workload_alts_config;
-
-export 'cluster_workload_alts_config.dart';

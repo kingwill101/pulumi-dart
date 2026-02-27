@@ -1,0 +1,3 @@
+library module_compute_region_backend_service_circuit_breakers;
+
+export 'region_backend_service_circuit_breakers/region_backend_service_circuit_breakers.dart';

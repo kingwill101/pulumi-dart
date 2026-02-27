@@ -71,17 +71,17 @@ class GetInstanceTemplateDisk {
   final List<String> resourcePolicies;
 
   /// The name (**not self_link**)
-  /// of the disk (such as those managed by <span pulumi-lang-nodejs="`gcp.compute.Disk`" pulumi-lang-dotnet="`gcp.compute.Disk`" pulumi-lang-go="`compute.Disk`" pulumi-lang-python="`compute.Disk`" pulumi-lang-yaml="`gcp.compute.Disk`" pulumi-lang-java="`gcp.compute.Disk`">`gcp.compute.Disk`</span>) to attach.
-  /// > **Note:** Either <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span> or <span pulumi-lang-nodejs="`sourceImage`" pulumi-lang-dotnet="`SourceImage`" pulumi-lang-go="`sourceImage`" pulumi-lang-python="`source_image`" pulumi-lang-yaml="`sourceImage`" pulumi-lang-java="`sourceImage`">`source_image`</span> is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+  /// of the disk (such as those managed by `gcp.compute.Disk`) to attach.
+  /// > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
   final String source;
 
   /// The image from which to
-  /// initialize this disk. This can be one of: the image's <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span>,
+  /// initialize this disk. This can be one of: the image's `self_link`,
   /// `projects/{project}/global/images/{image}`,
   /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
   /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
   /// `{project}/{image}`, `{family}`, or `{image}`.
-  /// > **Note:** Either <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span> or <span pulumi-lang-nodejs="`sourceImage`" pulumi-lang-dotnet="`SourceImage`" pulumi-lang-go="`sourceImage`" pulumi-lang-python="`source_image`" pulumi-lang-yaml="`sourceImage`" pulumi-lang-java="`sourceImage`">`source_image`</span> is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+  /// > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
   final String sourceImage;
 
   /// The customer-supplied encryption key of the source

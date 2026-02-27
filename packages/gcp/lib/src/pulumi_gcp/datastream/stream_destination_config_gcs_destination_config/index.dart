@@ -1,3 +1,0 @@
-library module_datastream_stream_destination_config_gcs_destination_config;
-
-export 'stream_destination_config_gcs_destination_config.dart';

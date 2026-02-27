@@ -1,0 +1,4 @@
+library module_compute_project_cloud_armor_tier;
+
+export 'project_cloud_armor_tier/project_cloud_armor_tier.dart';
+export 'project_cloud_armor_tier/project_cloud_armor_tier_args.dart';

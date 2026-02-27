@@ -1,0 +1,3 @@
+library module_cloudtasks_queue_stackdriver_logging_config;
+
+export 'queue_stackdriver_logging_config/queue_stackdriver_logging_config.dart';

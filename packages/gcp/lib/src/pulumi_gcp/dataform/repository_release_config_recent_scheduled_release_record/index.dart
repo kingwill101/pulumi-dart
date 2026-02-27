@@ -1,3 +1,0 @@
-library module_dataform_repository_release_config_recent_scheduled_release_record;
-
-export 'repository_release_config_recent_scheduled_release_record.dart';

@@ -1,0 +1,3 @@
+library module_backupdisasterrecovery_restore_workload_target_resource;
+
+export 'restore_workload_target_resource/restore_workload_target_resource.dart';

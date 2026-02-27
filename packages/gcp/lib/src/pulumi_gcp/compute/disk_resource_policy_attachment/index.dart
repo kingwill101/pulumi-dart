@@ -1,4 +1,0 @@
-library module_compute_disk_resource_policy_attachment;
-
-export 'disk_resource_policy_attachment.dart';
-export 'disk_resource_policy_attachment_args.dart';

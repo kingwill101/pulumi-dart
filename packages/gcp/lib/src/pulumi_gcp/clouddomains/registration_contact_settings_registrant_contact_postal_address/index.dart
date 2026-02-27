@@ -1,3 +1,0 @@
-library module_clouddomains_registration_contact_settings_registrant_contact_postal_address;
-
-export 'registration_contact_settings_registrant_contact_postal_address.dart';

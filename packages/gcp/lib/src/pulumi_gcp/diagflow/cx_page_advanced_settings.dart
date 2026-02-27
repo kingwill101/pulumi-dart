@@ -1,0 +1,3 @@
+library module_diagflow_cx_page_advanced_settings;
+
+export 'cx_page_advanced_settings/cx_page_advanced_settings.dart';

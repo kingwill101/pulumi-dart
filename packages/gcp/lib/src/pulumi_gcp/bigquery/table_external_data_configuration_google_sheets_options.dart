@@ -1,0 +1,3 @@
+library module_bigquery_table_external_data_configuration_google_sheets_options;
+
+export 'table_external_data_configuration_google_sheets_options/table_external_data_configuration_google_sheets_options.dart';

@@ -1,0 +1,3 @@
+library module_compute_instance_template_scheduling_graceful_shutdown;
+
+export 'instance_template_scheduling_graceful_shutdown/instance_template_scheduling_graceful_shutdown.dart';

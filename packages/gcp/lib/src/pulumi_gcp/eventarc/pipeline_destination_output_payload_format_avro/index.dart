@@ -1,3 +1,0 @@
-library module_eventarc_pipeline_destination_output_payload_format_avro;
-
-export 'pipeline_destination_output_payload_format_avro.dart';

@@ -1,0 +1,3 @@
+library module_secretmanager_secret_iam_member_condition;
+
+export 'secret_iam_member_condition/secret_iam_member_condition.dart';

@@ -17,100 +17,7 @@ import 'account_args.dart';
 ///
 /// This snippet creates a service account in a project.
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const serviceAccount = new gcp.serviceaccount.Account("service_account", {
-/// accountId: "service-account-id",
-/// displayName: "Service Account",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// service_account = gcp.serviceaccount.Account("service_account",
-/// account_id="service-account-id",
-/// display_name="Service Account")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
-/// {
-/// AccountId = "service-account-id",
-/// DisplayName = "Service Account",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
-/// AccountId:   pulumi.String("service-account-id"),
-/// DisplayName: pulumi.String("Service Account"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.serviceaccount.Account;
-/// import com.pulumi.gcp.serviceaccount.AccountArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
-/// .accountId("service-account-id")
-/// .displayName("Service Account")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// serviceAccount:
-/// type: gcp:serviceaccount:Account
-/// name: service_account
-/// properties:
-/// accountId: service-account-id
-/// displayName: Service Account
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -137,7 +44,7 @@ class Account extends CustomResource {
   /// Must be less than or equal to 256 UTF-8 bytes.
   late final Output<String?> description;
 
-  /// Whether a service account is disabled or not. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. This field has no effect during creation.
+  /// Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
   /// Must be set after creation to disable a service account.
   late final Output<bool?> disabled;
 
@@ -146,7 +53,7 @@ class Account extends CustomResource {
   late final Output<String?> displayName;
 
   /// The e-mail address of the service account. This value
-  /// should be referenced from any <span pulumi-lang-nodejs="`gcp.organizations.getIAMPolicy`" pulumi-lang-dotnet="`gcp.organizations.getIAMPolicy`" pulumi-lang-go="`organizations.getIAMPolicy`" pulumi-lang-python="`organizations_get_iam_policy`" pulumi-lang-yaml="`gcp.organizations.getIAMPolicy`" pulumi-lang-java="`gcp.organizations.getIAMPolicy`">`gcp.organizations.getIAMPolicy`</span> data sources
+  /// should be referenced from any `gcp.organizations.getIAMPolicy` data sources
   /// that would grant the service account privileges.
   late final Output<String> email;
 

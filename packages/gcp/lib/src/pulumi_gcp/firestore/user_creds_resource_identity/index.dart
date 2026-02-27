@@ -1,3 +1,0 @@
-library module_firestore_user_creds_resource_identity;
-
-export 'user_creds_resource_identity.dart';

@@ -1,3 +1,0 @@
-library module_datastream_stream_source_config_spanner_source_config_exclude_objects_schema_table_column;
-
-export 'stream_source_config_spanner_source_config_exclude_objects_schema_table_column.dart';

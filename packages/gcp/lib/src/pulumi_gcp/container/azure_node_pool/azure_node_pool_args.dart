@@ -11,13 +11,13 @@ class AzureNodePoolArgs {
   /// Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveAnnotations`" pulumi-lang-dotnet="`EffectiveAnnotations`" pulumi-lang-go="`effectiveAnnotations`" pulumi-lang-python="`effective_annotations`" pulumi-lang-yaml="`effectiveAnnotations`" pulumi-lang-java="`effectiveAnnotations`">`effective_annotations`</span> for all of the annotations present on the resource.
+  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final Input<Map<String, String>>? annotations;
 
   /// Autoscaler configuration for this node pool.
   final Input<AzureNodePoolAutoscaling> autoscaling;
 
-  /// Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
   final Input<String>? azureAvailabilityZone;
 
   /// The azureCluster for the resource

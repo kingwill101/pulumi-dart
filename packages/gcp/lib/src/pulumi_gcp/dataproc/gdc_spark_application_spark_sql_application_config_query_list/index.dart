@@ -1,3 +1,0 @@
-library module_dataproc_gdc_spark_application_spark_sql_application_config_query_list;
-
-export 'gdc_spark_application_spark_sql_application_config_query_list.dart';

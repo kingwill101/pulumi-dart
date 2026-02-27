@@ -1,3 +1,0 @@
-library module_compute_region_per_instance_config_preserved_state_internal_ip;
-
-export 'region_per_instance_config_preserved_state_internal_ip.dart';

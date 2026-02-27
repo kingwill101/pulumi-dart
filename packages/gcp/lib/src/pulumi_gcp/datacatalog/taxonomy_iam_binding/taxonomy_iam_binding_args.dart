@@ -7,7 +7,7 @@ import '../taxonomy_iam_binding_condition/taxonomy_iam_binding_condition.dart';
 class TaxonomyIamBindingArgs {
   final Input<TaxonomyIamBindingCondition>? condition;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -32,7 +32,7 @@ class TaxonomyIamBindingArgs {
   final Input<String>? region;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.datacatalog.TaxonomyIamBinding`" pulumi-lang-dotnet="`gcp.datacatalog.TaxonomyIamBinding`" pulumi-lang-go="`datacatalog.TaxonomyIamBinding`" pulumi-lang-python="`datacatalog.TaxonomyIamBinding`" pulumi-lang-yaml="`gcp.datacatalog.TaxonomyIamBinding`" pulumi-lang-java="`gcp.datacatalog.TaxonomyIamBinding`">`gcp.datacatalog.TaxonomyIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.datacatalog.TaxonomyIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

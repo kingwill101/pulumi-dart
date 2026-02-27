@@ -1,3 +1,0 @@
-library module_firebase_hosting_custom_domain_cert_verification_dns_discovered;
-
-export 'hosting_custom_domain_cert_verification_dns_discovered.dart';

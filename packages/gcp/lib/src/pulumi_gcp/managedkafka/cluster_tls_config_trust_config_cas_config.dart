@@ -1,0 +1,3 @@
+library module_managedkafka_cluster_tls_config_trust_config_cas_config;
+
+export 'cluster_tls_config_trust_config_cas_config/cluster_tls_config_trust_config_cas_config.dart';

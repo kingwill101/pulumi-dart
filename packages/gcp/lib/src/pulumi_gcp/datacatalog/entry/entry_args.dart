@@ -48,7 +48,7 @@ class EntryArgs {
 
   /// Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
   /// When creating an entry, users should check the enum values first, if nothing matches the entry
-  /// to be created, then provide a custom value, for example <span pulumi-lang-nodejs=""mySpecialType"" pulumi-lang-dotnet=""MySpecialType"" pulumi-lang-go=""mySpecialType"" pulumi-lang-python=""my_special_type"" pulumi-lang-yaml=""mySpecialType"" pulumi-lang-java=""mySpecialType"">"my_special_type"</span>.
+  /// to be created, then provide a custom value, for example "my_special_type".
   /// userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
   /// numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
   final Input<String>? userSpecifiedType;

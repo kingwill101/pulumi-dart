@@ -1,3 +1,0 @@
-library module_redis_get_cluster_maintenance_schedule;
-
-export 'get_cluster_maintenance_schedule.dart';

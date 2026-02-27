@@ -1,0 +1,3 @@
+library module_edgecontainer_vpn_connection_detail_cloud_vpn;
+
+export 'vpn_connection_detail_cloud_vpn/vpn_connection_detail_cloud_vpn.dart';

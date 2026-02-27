@@ -1,3 +1,0 @@
-library module_composer_get_environment_storage_config;
-
-export 'get_environment_storage_config.dart';

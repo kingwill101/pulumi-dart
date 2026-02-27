@@ -1,0 +1,3 @@
+library module_transcoder_job_template_config_elementary_stream_audio_stream;
+
+export 'job_template_config_elementary_stream_audio_stream/job_template_config_elementary_stream_audio_stream.dart';

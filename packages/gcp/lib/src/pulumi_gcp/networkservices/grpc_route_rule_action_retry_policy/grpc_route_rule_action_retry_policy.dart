@@ -5,7 +5,7 @@ class GrpcRouteRuleActionRetryPolicy {
   final int? numRetries;
 
   /// Specifies one or more conditions when this retry policy applies.
-  /// Each value may be one of: `connect-failure`, `refused-stream`, <span pulumi-lang-nodejs="`cancelled`" pulumi-lang-dotnet="`Cancelled`" pulumi-lang-go="`cancelled`" pulumi-lang-python="`cancelled`" pulumi-lang-yaml="`cancelled`" pulumi-lang-java="`cancelled`">`cancelled`</span>, `deadline-exceeded`, `resource-exhausted`, <span pulumi-lang-nodejs="`unavailable`" pulumi-lang-dotnet="`Unavailable`" pulumi-lang-go="`unavailable`" pulumi-lang-python="`unavailable`" pulumi-lang-yaml="`unavailable`" pulumi-lang-java="`unavailable`">`unavailable`</span>.
+  /// Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
   final List<String>? retryConditions;
 
   GrpcRouteRuleActionRetryPolicy({

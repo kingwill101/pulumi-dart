@@ -1,3 +1,0 @@
-library module_gkehub_scope_iam_member_condition;
-
-export 'scope_iam_member_condition.dart';

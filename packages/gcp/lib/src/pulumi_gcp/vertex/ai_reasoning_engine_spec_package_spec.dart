@@ -1,0 +1,3 @@
+library module_vertex_ai_reasoning_engine_spec_package_spec;
+
+export 'ai_reasoning_engine_spec_package_spec/ai_reasoning_engine_spec_package_spec.dart';

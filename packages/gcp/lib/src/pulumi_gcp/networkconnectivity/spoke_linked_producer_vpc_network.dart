@@ -1,0 +1,3 @@
+library module_networkconnectivity_spoke_linked_producer_vpc_network;
+
+export 'spoke_linked_producer_vpc_network/spoke_linked_producer_vpc_network.dart';

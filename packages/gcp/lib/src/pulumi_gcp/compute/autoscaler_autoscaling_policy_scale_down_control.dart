@@ -1,0 +1,3 @@
+library module_compute_autoscaler_autoscaling_policy_scale_down_control;
+
+export 'autoscaler_autoscaling_policy_scale_down_control/autoscaler_autoscaling_policy_scale_down_control.dart';

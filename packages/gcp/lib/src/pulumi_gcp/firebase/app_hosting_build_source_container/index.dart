@@ -1,3 +1,0 @@
-library module_firebase_app_hosting_build_source_container;
-
-export 'app_hosting_build_source_container.dart';

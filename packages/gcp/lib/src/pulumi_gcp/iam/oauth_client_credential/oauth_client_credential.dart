@@ -19,192 +19,7 @@ import 'oauth_client_credential_args.dart';
 /// ### Iam Oauth Client Credential Full
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const oauthClient = new gcp.iam.OauthClient("oauth_client", {
-/// oauthClientId: "example-client-id",
-/// location: "global",
-/// allowedGrantTypes: ["AUTHORIZATION_CODE_GRANT"],
-/// allowedRedirectUris: ["https://www.example.com"],
-/// allowedScopes: ["https://www.googleapis.com/auth/cloud-platform"],
-/// clientType: "CONFIDENTIAL_CLIENT",
-/// });
-/// const example = new gcp.iam.OauthClientCredential("example", {
-/// oauthclient: oauthClient.oauthClientId,
-/// location: oauthClient.location,
-/// oauthClientCredentialId: "cred-id",
-/// disabled: true,
-/// displayName: "Display Name of credential",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// oauth_client = gcp.iam.OauthClient("oauth_client",
-/// oauth_client_id="example-client-id",
-/// location="global",
-/// allowed_grant_types=["AUTHORIZATION_CODE_GRANT"],
-/// allowed_redirect_uris=["https://www.example.com"],
-/// allowed_scopes=["https://www.googleapis.com/auth/cloud-platform"],
-/// client_type="CONFIDENTIAL_CLIENT")
-/// example = gcp.iam.OauthClientCredential("example",
-/// oauthclient=oauth_client.oauth_client_id,
-/// location=oauth_client.location,
-/// oauth_client_credential_id="cred-id",
-/// disabled=True,
-/// display_name="Display Name of credential")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var oauthClient = new Gcp.Iam.OauthClient("oauth_client", new()
-/// {
-/// OauthClientId = "example-client-id",
-/// Location = "global",
-/// AllowedGrantTypes = new[]
-/// {
-/// "AUTHORIZATION_CODE_GRANT",
-/// },
-/// AllowedRedirectUris = new[]
-/// {
-/// "https://www.example.com",
-/// },
-/// AllowedScopes = new[]
-/// {
-/// "https://www.googleapis.com/auth/cloud-platform",
-/// },
-/// ClientType = "CONFIDENTIAL_CLIENT",
-/// });
-///
-/// var example = new Gcp.Iam.OauthClientCredential("example", new()
-/// {
-/// Oauthclient = oauthClient.OauthClientId,
-/// Location = oauthClient.Location,
-/// OauthClientCredentialId = "cred-id",
-/// Disabled = true,
-/// DisplayName = "Display Name of credential",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// oauthClient, err := iam.NewOauthClient(ctx, "oauth_client", &iam.OauthClientArgs{
-/// OauthClientId: pulumi.String("example-client-id"),
-/// Location:      pulumi.String("global"),
-/// AllowedGrantTypes: pulumi.StringArray{
-/// pulumi.String("AUTHORIZATION_CODE_GRANT"),
-/// },
-/// AllowedRedirectUris: pulumi.StringArray{
-/// pulumi.String("https://www.example.com"),
-/// },
-/// AllowedScopes: pulumi.StringArray{
-/// pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
-/// },
-/// ClientType: pulumi.String("CONFIDENTIAL_CLIENT"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = iam.NewOauthClientCredential(ctx, "example", &iam.OauthClientCredentialArgs{
-/// Oauthclient:             oauthClient.OauthClientId,
-/// Location:                oauthClient.Location,
-/// OauthClientCredentialId: pulumi.String("cred-id"),
-/// Disabled:                pulumi.Bool(true),
-/// DisplayName:             pulumi.String("Display Name of credential"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.iam.OauthClient;
-/// import com.pulumi.gcp.iam.OauthClientArgs;
-/// import com.pulumi.gcp.iam.OauthClientCredential;
-/// import com.pulumi.gcp.iam.OauthClientCredentialArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var oauthClient = new OauthClient("oauthClient", OauthClientArgs.builder()
-/// .oauthClientId("example-client-id")
-/// .location("global")
-/// .allowedGrantTypes("AUTHORIZATION_CODE_GRANT")
-/// .allowedRedirectUris("https://www.example.com")
-/// .allowedScopes("https://www.googleapis.com/auth/cloud-platform")
-/// .clientType("CONFIDENTIAL_CLIENT")
-/// .build());
-///
-/// var example = new OauthClientCredential("example", OauthClientCredentialArgs.builder()
-/// .oauthclient(oauthClient.oauthClientId())
-/// .location(oauthClient.location())
-/// .oauthClientCredentialId("cred-id")
-/// .disabled(true)
-/// .displayName("Display Name of credential")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// oauthClient:
-/// type: gcp:iam:OauthClient
-/// name: oauth_client
-/// properties:
-/// oauthClientId: example-client-id
-/// location: global
-/// allowedGrantTypes:
-/// - AUTHORIZATION_CODE_GRANT
-/// allowedRedirectUris:
-/// - https://www.example.com
-/// allowedScopes:
-/// - https://www.googleapis.com/auth/cloud-platform
-/// clientType: CONFIDENTIAL_CLIENT
-/// example:
-/// type: gcp:iam:OauthClientCredential
-/// properties:
-/// oauthclient: ${oauthClient.oauthClientId}
-/// location: ${oauthClient.location}
-/// oauthClientCredentialId: cred-id
-/// disabled: true
-/// displayName: Display Name of credential
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -246,7 +61,7 @@ class OauthClientCredential extends CustomResource {
   /// Cannot exceed 32 characters.
   late final Output<String?> displayName;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> location;
 
   /// Immutable. Identifier. The resource name of the OauthClientCredential.
@@ -260,7 +75,7 @@ class OauthClientCredential extends CustomResource {
   /// reserved for use by Google, and may not be specified.
   late final Output<String> oauthClientCredentialId;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> oauthclient;
 
   /// The ID of the project in which the resource belongs.

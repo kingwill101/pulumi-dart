@@ -1,3 +1,0 @@
-library module_redis_get_cluster_maintenance_policy;
-
-export 'get_cluster_maintenance_policy2.dart';

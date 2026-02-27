@@ -26,17 +26,17 @@ class NotificationChannelArgs {
   /// NotificationChannelDescriptor corresponding to the type field.
   /// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
   /// determine if there are upstream changes to these fields. They can also be configured via
-  /// the<span pulumi-lang-nodejs=" sensitiveLabels " pulumi-lang-dotnet=" SensitiveLabels " pulumi-lang-go=" sensitiveLabels " pulumi-lang-python=" sensitive_labels " pulumi-lang-yaml=" sensitiveLabels " pulumi-lang-java=" sensitiveLabels "> sensitive_labels </span>block, but cannot be configured in both places.
+  /// the sensitive_labels block, but cannot be configured in both places.
   final Input<Map<String, String>>? labels;
 
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final Input<String>? project;
 
-  /// Different notification type behaviors are configured primarily using the the <span pulumi-lang-nodejs="`labels`" pulumi-lang-dotnet="`Labels`" pulumi-lang-go="`labels`" pulumi-lang-python="`labels`" pulumi-lang-yaml="`labels`" pulumi-lang-java="`labels`">`labels`</span> field on this
+  /// Different notification type behaviors are configured primarily using the the `labels` field on this
   /// resource. This block contains the labels which contain secrets or passwords so that they can be marked
   /// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
-  /// in the <span pulumi-lang-nodejs="`labels`" pulumi-lang-dotnet="`Labels`" pulumi-lang-go="`labels`" pulumi-lang-python="`labels`" pulumi-lang-yaml="`labels`" pulumi-lang-java="`labels`">`labels`</span> map in the api request.
+  /// in the `labels` map in the api request.
   /// Credentials may not be specified in both locations and will cause an error. Changing from one location
   /// to a different credential configuration in the config will require an apply to update state.
   /// Structure is documented below.

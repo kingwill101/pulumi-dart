@@ -16,7 +16,7 @@ class GetResourcesSearchAllResult {
   /// Labels associated with this resource.
   final Map<String, String> labels;
 
-  /// Location can be <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span>, regional like `us-east1`, or zonal like `us-west1-b`.
+  /// Location can be `global`, regional like `us-east1`, or zonal like `us-west1-b`.
   final String location;
 
   /// The full resource name. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.

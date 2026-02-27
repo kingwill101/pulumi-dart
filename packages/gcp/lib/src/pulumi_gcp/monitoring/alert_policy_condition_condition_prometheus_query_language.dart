@@ -1,0 +1,3 @@
+library module_monitoring_alert_policy_condition_condition_prometheus_query_language;
+
+export 'alert_policy_condition_condition_prometheus_query_language/alert_policy_condition_condition_prometheus_query_language.dart';

@@ -15,111 +15,7 @@ import 'channel_args.dart';
 /// ### Eventarc Channel With Cmek
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const primary = new gcp.eventarc.Channel("primary", {
-/// location: "us-central1",
-/// name: "some-channel",
-/// cryptoKeyName: "some-key",
-/// thirdPartyProvider: "projects/my-project-name/locations/us-central1/providers/datadog",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// primary = gcp.eventarc.Channel("primary",
-/// location="us-central1",
-/// name="some-channel",
-/// crypto_key_name="some-key",
-/// third_party_provider="projects/my-project-name/locations/us-central1/providers/datadog")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var primary = new Gcp.Eventarc.Channel("primary", new()
-/// {
-/// Location = "us-central1",
-/// Name = "some-channel",
-/// CryptoKeyName = "some-key",
-/// ThirdPartyProvider = "projects/my-project-name/locations/us-central1/providers/datadog",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := eventarc.NewChannel(ctx, "primary", &eventarc.ChannelArgs{
-/// Location:           pulumi.String("us-central1"),
-/// Name:               pulumi.String("some-channel"),
-/// CryptoKeyName:      pulumi.String("some-key"),
-/// ThirdPartyProvider: pulumi.String("projects/my-project-name/locations/us-central1/providers/datadog"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.eventarc.Channel;
-/// import com.pulumi.gcp.eventarc.ChannelArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var primary = new Channel("primary", ChannelArgs.builder()
-/// .location("us-central1")
-/// .name("some-channel")
-/// .cryptoKeyName("some-key")
-/// .thirdPartyProvider("projects/my-project-name/locations/us-central1/providers/datadog")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// primary:
-/// type: gcp:eventarc:Channel
-/// properties:
-/// location: us-central1
-/// name: some-channel
-/// cryptoKeyName: some-key
-/// thirdPartyProvider: projects/my-project-name/locations/us-central1/providers/datadog
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -159,7 +55,7 @@ class Channel extends CustomResource {
 
   /// User-defined labels for the channel.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// The location for the resource

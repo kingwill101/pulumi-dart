@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_admin_cluster_network_config_ha_control_plane_config;
-
-export 'vmware_admin_cluster_network_config_ha_control_plane_config.dart';

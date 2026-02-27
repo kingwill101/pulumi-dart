@@ -1,4 +1,0 @@
-library module_firebase_app_check_app_attest_config;
-
-export 'app_check_app_attest_config.dart';
-export 'app_check_app_attest_config_args.dart';

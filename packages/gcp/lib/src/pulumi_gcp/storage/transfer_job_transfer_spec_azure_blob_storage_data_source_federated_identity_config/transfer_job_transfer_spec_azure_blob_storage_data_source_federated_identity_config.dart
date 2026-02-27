@@ -6,7 +6,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig {
 
   /// The client (directory) ID of the application with federated credentials.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedScheduleStartEndDate"" pulumi-lang-dotnet=""NestedScheduleStartEndDate"" pulumi-lang-go=""nestedScheduleStartEndDate"" pulumi-lang-python=""nested_schedule_start_end_date"" pulumi-lang-yaml=""nestedScheduleStartEndDate"" pulumi-lang-java=""nestedScheduleStartEndDate"">"nested_schedule_start_end_date"</span>></a>The <span pulumi-lang-nodejs="`scheduleStartDate`" pulumi-lang-dotnet="`ScheduleStartDate`" pulumi-lang-go="`scheduleStartDate`" pulumi-lang-python="`schedule_start_date`" pulumi-lang-yaml="`scheduleStartDate`" pulumi-lang-java="`scheduleStartDate`">`schedule_start_date`</span> and <span pulumi-lang-nodejs="`scheduleEndDate`" pulumi-lang-dotnet="`ScheduleEndDate`" pulumi-lang-go="`scheduleEndDate`" pulumi-lang-python="`schedule_end_date`" pulumi-lang-yaml="`scheduleEndDate`" pulumi-lang-java="`scheduleEndDate`">`schedule_end_date`</span> blocks support:
+  /// <a name="nested_schedule_start_end_date"></a>The `schedule_start_date` and `schedule_end_date` blocks support:
   final String tenantId;
 
   TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig({

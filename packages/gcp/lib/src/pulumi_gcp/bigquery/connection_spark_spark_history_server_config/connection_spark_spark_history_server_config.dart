@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ConnectionSparkSparkHistoryServerConfig {
-  /// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/<span pulumi-lang-nodejs="[clusterName]" pulumi-lang-dotnet="[ClusterName]" pulumi-lang-go="[clusterName]" pulumi-lang-python="[cluster_name]" pulumi-lang-yaml="[clusterName]" pulumi-lang-java="[clusterName]">[cluster_name]</span>.
+  /// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
   final String? dataprocCluster;
 
   ConnectionSparkSparkHistoryServerConfig({

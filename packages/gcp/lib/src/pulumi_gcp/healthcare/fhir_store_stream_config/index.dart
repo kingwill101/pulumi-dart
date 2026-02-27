@@ -1,3 +1,0 @@
-library module_healthcare_fhir_store_stream_config;
-
-export 'fhir_store_stream_config.dart';

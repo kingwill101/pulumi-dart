@@ -1,3 +1,0 @@
-library module_dataproc_workflow_template_job_hive_job;
-
-export 'workflow_template_job_hive_job.dart';

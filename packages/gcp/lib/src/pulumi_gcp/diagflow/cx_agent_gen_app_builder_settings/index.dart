@@ -1,3 +1,0 @@
-library module_diagflow_cx_agent_gen_app_builder_settings;
-
-export 'cx_agent_gen_app_builder_settings.dart';

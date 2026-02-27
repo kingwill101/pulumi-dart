@@ -1,4 +1,0 @@
-library module_essentialcontacts_document_ai_warehouse_document_schema;
-
-export 'document_ai_warehouse_document_schema.dart';
-export 'document_ai_warehouse_document_schema_args.dart';

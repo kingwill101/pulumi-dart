@@ -1,0 +1,3 @@
+library module_compute_get_region_backend_service_custom_metric;
+
+export 'get_region_backend_service_custom_metric/get_region_backend_service_custom_metric.dart';

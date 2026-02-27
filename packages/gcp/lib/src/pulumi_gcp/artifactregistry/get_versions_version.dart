@@ -1,0 +1,3 @@
+library module_artifactregistry_get_versions_version;
+
+export 'get_versions_version/get_versions_version.dart';

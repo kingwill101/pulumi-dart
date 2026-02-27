@@ -1,3 +1,0 @@
-library module_dataproc_session_template_environment_config_peripherals_config;
-
-export 'session_template_environment_config_peripherals_config.dart';

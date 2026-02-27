@@ -9,7 +9,7 @@ class GetHealthCheckGrpcTlsHealthCheck {
   final String grpcServiceName;
 
   /// The port number for the health check request.
-  /// Must be specified if<span pulumi-lang-nodejs=" portSpecification " pulumi-lang-dotnet=" PortSpecification " pulumi-lang-go=" portSpecification " pulumi-lang-python=" port_specification " pulumi-lang-yaml=" portSpecification " pulumi-lang-java=" portSpecification "> port_specification </span>is USE_FIXED_PORT. Valid values are 1 through 65535.
+  /// Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
   final int port;
 
   /// Specifies how port is selected for health checking, can be one of the

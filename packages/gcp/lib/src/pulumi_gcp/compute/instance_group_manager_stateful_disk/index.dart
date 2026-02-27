@@ -1,3 +1,0 @@
-library module_compute_instance_group_manager_stateful_disk;
-
-export 'instance_group_manager_stateful_disk.dart';

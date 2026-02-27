@@ -1,0 +1,3 @@
+library module_dataplex_task_spark_infrastructure_spec_batch;
+
+export 'task_spark_infrastructure_spec_batch/task_spark_infrastructure_spec_batch.dart';

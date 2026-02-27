@@ -1,0 +1,3 @@
+library module_integrationconnectors_connection_ssl_config_client_private_key;
+
+export 'connection_ssl_config_client_private_key/connection_ssl_config_client_private_key.dart';

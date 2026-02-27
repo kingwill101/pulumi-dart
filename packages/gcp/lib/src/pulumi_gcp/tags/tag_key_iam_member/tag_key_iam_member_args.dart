@@ -7,7 +7,7 @@ import '../tag_key_iam_member_condition/tag_key_iam_member_condition.dart';
 class TagKeyIamMemberArgs {
   final Input<TagKeyIamMemberCondition>? condition;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -22,7 +22,7 @@ class TagKeyIamMemberArgs {
   final Input<String> member;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.tags.TagKeyIamBinding`" pulumi-lang-dotnet="`gcp.tags.TagKeyIamBinding`" pulumi-lang-go="`tags.TagKeyIamBinding`" pulumi-lang-python="`tags.TagKeyIamBinding`" pulumi-lang-yaml="`gcp.tags.TagKeyIamBinding`" pulumi-lang-java="`gcp.tags.TagKeyIamBinding`">`gcp.tags.TagKeyIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.tags.TagKeyIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

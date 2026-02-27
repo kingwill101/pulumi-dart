@@ -14,160 +14,7 @@ import 'intercept_deployment_group_args.dart';
 /// ### Network Security Intercept Deployment Group Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const network = new gcp.compute.Network("network", {
-/// name: "example-network",
-/// autoCreateSubnetworks: false,
-/// });
-/// const _default = new gcp.networksecurity.InterceptDeploymentGroup("default", {
-/// interceptDeploymentGroupId: "example-dg",
-/// location: "global",
-/// network: network.id,
-/// description: "some description",
-/// labels: {
-/// foo: "bar",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// network = gcp.compute.Network("network",
-/// name="example-network",
-/// auto_create_subnetworks=False)
-/// default = gcp.networksecurity.InterceptDeploymentGroup("default",
-/// intercept_deployment_group_id="example-dg",
-/// location="global",
-/// network=network.id,
-/// description="some description",
-/// labels={
-/// "foo": "bar",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var network = new Gcp.Compute.Network("network", new()
-/// {
-/// Name = "example-network",
-/// AutoCreateSubnetworks = false,
-/// });
-///
-/// var @default = new Gcp.NetworkSecurity.InterceptDeploymentGroup("default", new()
-/// {
-/// InterceptDeploymentGroupId = "example-dg",
-/// Location = "global",
-/// Network = network.Id,
-/// Description = "some description",
-/// Labels =
-/// {
-/// { "foo", "bar" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-/// Name:                  pulumi.String("example-network"),
-/// AutoCreateSubnetworks: pulumi.Bool(false),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = networksecurity.NewInterceptDeploymentGroup(ctx, "default", &networksecurity.InterceptDeploymentGroupArgs{
-/// InterceptDeploymentGroupId: pulumi.String("example-dg"),
-/// Location:                   pulumi.String("global"),
-/// Network:                    network.ID(),
-/// Description:                pulumi.String("some description"),
-/// Labels: pulumi.StringMap{
-/// "foo": pulumi.String("bar"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.Network;
-/// import com.pulumi.gcp.compute.NetworkArgs;
-/// import com.pulumi.gcp.networksecurity.InterceptDeploymentGroup;
-/// import com.pulumi.gcp.networksecurity.InterceptDeploymentGroupArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var network = new Network("network", NetworkArgs.builder()
-/// .name("example-network")
-/// .autoCreateSubnetworks(false)
-/// .build());
-///
-/// var default_ = new InterceptDeploymentGroup("default", InterceptDeploymentGroupArgs.builder()
-/// .interceptDeploymentGroupId("example-dg")
-/// .location("global")
-/// .network(network.id())
-/// .description("some description")
-/// .labels(Map.of("foo", "bar"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// network:
-/// type: gcp:compute:Network
-/// properties:
-/// name: example-network
-/// autoCreateSubnetworks: false
-/// default:
-/// type: gcp:networksecurity:InterceptDeploymentGroup
-/// properties:
-/// interceptDeploymentGroupId: example-dg
-/// location: global
-/// network: ${network.id}
-/// description: some description
-/// labels:
-/// foo: bar
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -215,10 +62,10 @@ class InterceptDeploymentGroup extends CustomResource {
 
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
-  /// The cloud location of the deployment group, currently restricted to <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span>.
+  /// The cloud location of the deployment group, currently restricted to `global`.
   late final Output<String> location;
 
   /// The list of locations where the deployment group is present.

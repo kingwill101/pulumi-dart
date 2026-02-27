@@ -10,7 +10,7 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpec {
 
   /// Optional. The name of the callable object within the
   /// entrypointModule to use as the application If not specified,
-  /// defaults to <span pulumi-lang-nodejs=""rootAgent"" pulumi-lang-dotnet=""RootAgent"" pulumi-lang-go=""rootAgent"" pulumi-lang-python=""root_agent"" pulumi-lang-yaml=""rootAgent"" pulumi-lang-java=""rootAgent"">"root_agent"</span>.
+  /// defaults to "root_agent".
   final String? entrypointObject;
 
   /// Optional. The path to the requirements file, relative to the

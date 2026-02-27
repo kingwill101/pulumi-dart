@@ -1,3 +1,0 @@
-library module_modelarmor_template_template_metadata_multi_language_detection;
-
-export 'template_template_metadata_multi_language_detection.dart';

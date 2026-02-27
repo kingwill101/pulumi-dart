@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart';
 class GetOrganizationArgs {
   /// The domain name of the Organization.
   ///
-  /// > **NOTE:** One of <span pulumi-lang-nodejs="`organization`" pulumi-lang-dotnet="`Organization`" pulumi-lang-go="`organization`" pulumi-lang-python="`organization`" pulumi-lang-yaml="`organization`" pulumi-lang-java="`organization`">`organization`</span> or <span pulumi-lang-nodejs="`domain`" pulumi-lang-dotnet="`Domain`" pulumi-lang-go="`domain`" pulumi-lang-python="`domain`" pulumi-lang-yaml="`domain`" pulumi-lang-java="`domain`">`domain`</span> must be specified.
+  /// > **NOTE:** One of `organization` or `domain` must be specified.
   final Input<String>? domain;
 
   /// The Organization's numeric ID, including an optional `organizations/` prefix.

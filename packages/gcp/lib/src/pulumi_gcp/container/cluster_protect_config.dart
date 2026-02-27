@@ -1,0 +1,3 @@
+library module_container_cluster_protect_config;
+
+export 'cluster_protect_config/cluster_protect_config.dart';

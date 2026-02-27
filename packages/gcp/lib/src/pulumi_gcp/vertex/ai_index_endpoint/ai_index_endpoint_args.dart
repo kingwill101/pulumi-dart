@@ -18,16 +18,16 @@ class AiIndexEndpointArgs {
 
   /// The labels with user-defined metadata to organize your Indexes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the index endpoint should be peered.
   /// Private services access must already be configured for the network. If left unspecified, the index endpoint is not peered with any network.
   /// [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`.
-  /// Where `{project}` is a project number, as in <span pulumi-lang-nodejs="`12345`" pulumi-lang-dotnet="`12345`" pulumi-lang-go="`12345`" pulumi-lang-python="`12345`" pulumi-lang-yaml="`12345`" pulumi-lang-java="`12345`">`12345`</span>, and `{network}` is network name.
+  /// Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
   final Input<String>? network;
 
-  /// Optional. Configuration for private service connect. <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span> and `privateServiceConnectConfig` are mutually exclusive.
+  /// Optional. Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
   /// Structure is documented below.
   final Input<AiIndexEndpointPrivateServiceConnectConfig>?
       privateServiceConnectConfig;

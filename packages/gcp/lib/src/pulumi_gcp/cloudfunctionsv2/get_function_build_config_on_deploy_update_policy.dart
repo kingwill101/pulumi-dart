@@ -1,0 +1,3 @@
+library module_cloudfunctionsv2_get_function_build_config_on_deploy_update_policy;
+
+export 'get_function_build_config_on_deploy_update_policy/get_function_build_config_on_deploy_update_policy.dart';

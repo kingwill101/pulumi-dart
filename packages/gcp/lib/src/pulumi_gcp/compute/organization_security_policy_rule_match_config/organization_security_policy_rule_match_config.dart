@@ -12,7 +12,7 @@ class OrganizationSecurityPolicyRuleMatchConfig {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedMatchConfigLayer4Config"" pulumi-lang-dotnet=""NestedMatchConfigLayer4Config"" pulumi-lang-go=""nestedMatchConfigLayer4Config"" pulumi-lang-python=""nested_match_config_layer4_config"" pulumi-lang-yaml=""nestedMatchConfigLayer4Config"" pulumi-lang-java=""nestedMatchConfigLayer4Config"">"nested_match_config_layer4_config"</span>></a>The <span pulumi-lang-nodejs="`layer4Config`" pulumi-lang-dotnet="`Layer4Config`" pulumi-lang-go="`layer4Config`" pulumi-lang-python="`layer4_config`" pulumi-lang-yaml="`layer4Config`" pulumi-lang-java="`layer4Config`">`layer4_config`</span> block supports:
+  /// <a name="nested_match_config_layer4_config"></a>The `layer4_config` block supports:
   final List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config>
       layer4Configs;
 

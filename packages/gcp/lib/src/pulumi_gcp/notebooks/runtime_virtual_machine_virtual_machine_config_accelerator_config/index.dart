@@ -1,3 +1,0 @@
-library module_notebooks_runtime_virtual_machine_virtual_machine_config_accelerator_config;
-
-export 'runtime_virtual_machine_virtual_machine_config_accelerator_config.dart';

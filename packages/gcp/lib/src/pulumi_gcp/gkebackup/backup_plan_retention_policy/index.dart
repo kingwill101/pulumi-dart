@@ -1,3 +1,0 @@
-library module_gkebackup_backup_plan_retention_policy;
-
-export 'backup_plan_retention_policy.dart';

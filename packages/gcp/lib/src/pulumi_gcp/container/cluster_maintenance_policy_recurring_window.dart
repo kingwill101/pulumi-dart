@@ -1,0 +1,3 @@
+library module_container_cluster_maintenance_policy_recurring_window;
+
+export 'cluster_maintenance_policy_recurring_window/cluster_maintenance_policy_recurring_window.dart';

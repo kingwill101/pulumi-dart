@@ -8,7 +8,7 @@ class VolumeBackupConfig {
   /// Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
   final String? backupVault;
 
-  /// When set to true, scheduled backup is enabled on the volume. Omit if no<span pulumi-lang-nodejs=" backupPolicy " pulumi-lang-dotnet=" BackupPolicy " pulumi-lang-go=" backupPolicy " pulumi-lang-python=" backup_policy " pulumi-lang-yaml=" backupPolicy " pulumi-lang-java=" backupPolicy "> backup_policy </span>is specified.
+  /// When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
   final bool? scheduledBackupEnabled;
 
   VolumeBackupConfig({

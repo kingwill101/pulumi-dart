@@ -1,0 +1,3 @@
+library module_compute_instance_group_manager_status_stateful;
+
+export 'instance_group_manager_status_stateful/instance_group_manager_status_stateful.dart';

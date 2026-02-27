@@ -1,0 +1,3 @@
+library module_diagflow_cx_tool_open_api_spec_authentication_bearer_token_config;
+
+export 'cx_tool_open_api_spec_authentication_bearer_token_config/cx_tool_open_api_spec_authentication_bearer_token_config.dart';

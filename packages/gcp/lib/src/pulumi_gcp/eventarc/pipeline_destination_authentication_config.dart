@@ -1,0 +1,3 @@
+library module_eventarc_pipeline_destination_authentication_config;
+
+export 'pipeline_destination_authentication_config/pipeline_destination_authentication_config.dart';

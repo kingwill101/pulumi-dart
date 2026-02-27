@@ -1,0 +1,3 @@
+library module_vertex_ai_feature_online_store_dedicated_serving_endpoint;
+
+export 'ai_feature_online_store_dedicated_serving_endpoint/ai_feature_online_store_dedicated_serving_endpoint.dart';

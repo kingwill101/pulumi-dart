@@ -1,0 +1,3 @@
+library module_cloudrunv2_service_template_volume_secret_item;
+
+export 'service_template_volume_secret_item/service_template_volume_secret_item.dart';

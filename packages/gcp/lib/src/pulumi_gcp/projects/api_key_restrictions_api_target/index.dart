@@ -1,3 +1,0 @@
-library module_projects_api_key_restrictions_api_target;
-
-export 'api_key_restrictions_api_target.dart';

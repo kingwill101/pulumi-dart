@@ -1,3 +1,0 @@
-library module_container_get_cluster_ip_allocation_policy_network_tier_config;
-
-export 'get_cluster_ip_allocation_policy_network_tier_config.dart';

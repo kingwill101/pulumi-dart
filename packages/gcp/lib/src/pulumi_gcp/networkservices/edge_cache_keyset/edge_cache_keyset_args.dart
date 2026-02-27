@@ -11,7 +11,7 @@ class EdgeCacheKeysetArgs {
 
   /// Set of label tags associated with the EdgeCache resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Name of the resource; provided by the client when the resource is created.
@@ -24,18 +24,18 @@ class EdgeCacheKeysetArgs {
   final Input<String>? project;
 
   /// An ordered list of Ed25519 public keys to use for validating signed requests.
-  /// You must specify <span pulumi-lang-nodejs="`publicKeys`" pulumi-lang-dotnet="`PublicKeys`" pulumi-lang-go="`publicKeys`" pulumi-lang-python="`public_keys`" pulumi-lang-yaml="`publicKeys`" pulumi-lang-java="`publicKeys`">`public_keys`</span> or <span pulumi-lang-nodejs="`validationSharedKeys`" pulumi-lang-dotnet="`ValidationSharedKeys`" pulumi-lang-go="`validationSharedKeys`" pulumi-lang-python="`validation_shared_keys`" pulumi-lang-yaml="`validationSharedKeys`" pulumi-lang-java="`validationSharedKeys`">`validation_shared_keys`</span> (or both). The keys in <span pulumi-lang-nodejs="`publicKeys`" pulumi-lang-dotnet="`PublicKeys`" pulumi-lang-go="`publicKeys`" pulumi-lang-python="`public_keys`" pulumi-lang-yaml="`publicKeys`" pulumi-lang-java="`publicKeys`">`public_keys`</span> are checked first.
+  /// You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
   /// You may specify no more than one Google-managed public key.
-  /// If you specify <span pulumi-lang-nodejs="`publicKeys`" pulumi-lang-dotnet="`PublicKeys`" pulumi-lang-go="`publicKeys`" pulumi-lang-python="`public_keys`" pulumi-lang-yaml="`publicKeys`" pulumi-lang-java="`publicKeys`">`public_keys`</span>, you must specify at least one (1) key and may specify up to three (3) keys.
+  /// If you specify `public_keys`, you must specify at least one (1) key and may specify up to three (3) keys.
   /// Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
   /// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
   /// Structure is documented below.
   final Input<List<EdgeCacheKeysetPublicKey>>? publicKeys;
 
   /// An ordered list of shared keys to use for validating signed requests.
-  /// Shared keys are secret.  Ensure that only authorized users can add <span pulumi-lang-nodejs="`validationSharedKeys`" pulumi-lang-dotnet="`ValidationSharedKeys`" pulumi-lang-go="`validationSharedKeys`" pulumi-lang-python="`validation_shared_keys`" pulumi-lang-yaml="`validationSharedKeys`" pulumi-lang-java="`validationSharedKeys`">`validation_shared_keys`</span> to a keyset.
-  /// You can rotate keys by appending (pushing) a new key to the list of <span pulumi-lang-nodejs="`validationSharedKeys`" pulumi-lang-dotnet="`ValidationSharedKeys`" pulumi-lang-go="`validationSharedKeys`" pulumi-lang-python="`validation_shared_keys`" pulumi-lang-yaml="`validationSharedKeys`" pulumi-lang-java="`validationSharedKeys`">`validation_shared_keys`</span> and removing any superseded keys.
-  /// You must specify <span pulumi-lang-nodejs="`publicKeys`" pulumi-lang-dotnet="`PublicKeys`" pulumi-lang-go="`publicKeys`" pulumi-lang-python="`public_keys`" pulumi-lang-yaml="`publicKeys`" pulumi-lang-java="`publicKeys`">`public_keys`</span> or <span pulumi-lang-nodejs="`validationSharedKeys`" pulumi-lang-dotnet="`ValidationSharedKeys`" pulumi-lang-go="`validationSharedKeys`" pulumi-lang-python="`validation_shared_keys`" pulumi-lang-yaml="`validationSharedKeys`" pulumi-lang-java="`validationSharedKeys`">`validation_shared_keys`</span> (or both). The keys in <span pulumi-lang-nodejs="`publicKeys`" pulumi-lang-dotnet="`PublicKeys`" pulumi-lang-go="`publicKeys`" pulumi-lang-python="`public_keys`" pulumi-lang-yaml="`publicKeys`" pulumi-lang-java="`publicKeys`">`public_keys`</span> are checked first.
+  /// Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
+  /// You can rotate keys by appending (pushing) a new key to the list of `validation_shared_keys` and removing any superseded keys.
+  /// You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
   /// Structure is documented below.
   final Input<List<EdgeCacheKeysetValidationSharedKey>>? validationSharedKeys;
 

@@ -1,0 +1,3 @@
+library module_dataloss_prevention_job_trigger_inspect_job_inspect_config_rule_set_rule;
+
+export 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule/prevention_job_trigger_inspect_job_inspect_config_rule_set_rule.dart';

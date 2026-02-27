@@ -1,4 +1,0 @@
-library module_kms_project_kaj_policy_config;
-
-export 'project_kaj_policy_config.dart';
-export 'project_kaj_policy_config_args.dart';

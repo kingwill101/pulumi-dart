@@ -1,3 +1,0 @@
-library module_gkehub_scope_rbac_role_binding_state;
-
-export 'scope_rbac_role_binding_state.dart';

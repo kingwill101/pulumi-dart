@@ -1,0 +1,3 @@
+library module_cloudbuild_trigger_developer_connect_event_config;
+
+export 'trigger_developer_connect_event_config/trigger_developer_connect_event_config.dart';

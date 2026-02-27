@@ -1,0 +1,3 @@
+library module_cloudrun_service_template_spec_volume_empty_dir;
+
+export 'service_template_spec_volume_empty_dir/service_template_spec_volume_empty_dir.dart';

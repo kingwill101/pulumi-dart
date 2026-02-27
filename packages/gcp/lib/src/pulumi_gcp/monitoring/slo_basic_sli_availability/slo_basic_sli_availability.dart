@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class SloBasicSliAvailability {
-  /// Whether an availability SLI is enabled or not. Must be set to `true. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
   final bool? enabled;
 
   SloBasicSliAvailability({

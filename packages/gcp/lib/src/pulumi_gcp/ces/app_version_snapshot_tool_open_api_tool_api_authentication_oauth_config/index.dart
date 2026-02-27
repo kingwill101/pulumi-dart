@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_tool_open_api_tool_api_authentication_oauth_config;
-
-export 'app_version_snapshot_tool_open_api_tool_api_authentication_oauth_config.dart';

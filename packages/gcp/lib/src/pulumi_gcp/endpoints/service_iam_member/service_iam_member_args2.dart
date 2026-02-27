@@ -7,7 +7,7 @@ import '../service_iam_member_condition/service_iam_member_condition2.dart';
 class ServiceIamMemberArgs2 {
   final Input<ServiceIamMemberCondition2>? condition;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -22,7 +22,7 @@ class ServiceIamMemberArgs2 {
   final Input<String> member;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.endpoints.ServiceIamBinding`" pulumi-lang-dotnet="`gcp.endpoints.ServiceIamBinding`" pulumi-lang-go="`endpoints.ServiceIamBinding`" pulumi-lang-python="`endpoints.ServiceIamBinding`" pulumi-lang-yaml="`gcp.endpoints.ServiceIamBinding`" pulumi-lang-java="`gcp.endpoints.ServiceIamBinding`">`gcp.endpoints.ServiceIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

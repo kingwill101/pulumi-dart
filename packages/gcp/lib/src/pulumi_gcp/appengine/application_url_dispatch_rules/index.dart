@@ -1,4 +1,0 @@
-library module_appengine_application_url_dispatch_rules;
-
-export 'application_url_dispatch_rules.dart';
-export 'application_url_dispatch_rules_args.dart';

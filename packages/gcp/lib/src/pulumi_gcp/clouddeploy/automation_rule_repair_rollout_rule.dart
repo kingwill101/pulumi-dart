@@ -1,0 +1,3 @@
+library module_clouddeploy_automation_rule_repair_rollout_rule;
+
+export 'automation_rule_repair_rollout_rule/automation_rule_repair_rollout_rule.dart';

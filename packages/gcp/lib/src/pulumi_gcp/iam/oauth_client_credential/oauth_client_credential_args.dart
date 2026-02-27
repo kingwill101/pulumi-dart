@@ -12,7 +12,7 @@ class OauthClientCredentialArgs {
   /// Cannot exceed 32 characters.
   final Input<String>? displayName;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> location;
 
   /// Required. The ID to use for the OauthClientCredential, which becomes the
@@ -21,7 +21,7 @@ class OauthClientCredentialArgs {
   /// reserved for use by Google, and may not be specified.
   final Input<String> oauthClientCredentialId;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> oauthclient;
 
   /// The ID of the project in which the resource belongs.

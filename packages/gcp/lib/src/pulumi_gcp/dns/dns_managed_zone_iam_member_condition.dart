@@ -1,0 +1,3 @@
+library module_dns_dns_managed_zone_iam_member_condition;
+
+export 'dns_managed_zone_iam_member_condition/dns_managed_zone_iam_member_condition.dart';

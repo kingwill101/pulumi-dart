@@ -1,3 +1,0 @@
-library module_networkservices_edge_cache_service_log_config;
-
-export 'edge_cache_service_log_config.dart';

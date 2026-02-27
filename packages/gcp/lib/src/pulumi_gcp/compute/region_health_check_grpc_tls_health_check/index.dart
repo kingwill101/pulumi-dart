@@ -1,3 +1,0 @@
-library module_compute_region_health_check_grpc_tls_health_check;
-
-export 'region_health_check_grpc_tls_health_check.dart';

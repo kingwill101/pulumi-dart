@@ -1,3 +1,0 @@
-library module_colab_schedule_create_notebook_execution_job_request;
-
-export 'schedule_create_notebook_execution_job_request.dart';

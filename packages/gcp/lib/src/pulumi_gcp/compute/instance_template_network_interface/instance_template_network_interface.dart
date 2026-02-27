@@ -11,7 +11,7 @@ class InstanceTemplateNetworkInterface {
   /// is not accessible from the Internet (this means that ssh provisioners will
   /// not work unless you can send traffic to the instance's
   /// network (e.g. via tunnel or because it is running on another cloud instance
-  /// on that network). This block can be specified once per <span pulumi-lang-nodejs="`networkInterface`" pulumi-lang-dotnet="`NetworkInterface`" pulumi-lang-go="`networkInterface`" pulumi-lang-python="`network_interface`" pulumi-lang-yaml="`networkInterface`" pulumi-lang-java="`networkInterface`">`network_interface`</span>. Structure documented below.
+  /// on that network). This block can be specified once per `network_interface`. Structure documented below.
   final List<InstanceTemplateNetworkInterfaceAccessConfig>? accessConfigs;
 
   /// An
@@ -41,9 +41,9 @@ class InstanceTemplateNetworkInterface {
   /// this blank, the provider will auto-generate a unique name.
   final String? name;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the network to attach this interface to.
-  /// Use <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span> attribute for Legacy or Auto subnetted networks and
-  /// <span pulumi-lang-nodejs="`subnetwork`" pulumi-lang-dotnet="`Subnetwork`" pulumi-lang-go="`subnetwork`" pulumi-lang-python="`subnetwork`" pulumi-lang-yaml="`subnetwork`" pulumi-lang-java="`subnetwork`">`subnetwork`</span> for custom subnetted networks.
+  /// The name or self_link of the network to attach this interface to.
+  /// Use `network` attribute for Legacy or Auto subnetted networks and
+  /// `subnetwork` for custom subnetted networks.
   final String? network;
 
   /// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
@@ -63,8 +63,8 @@ class InstanceTemplateNetworkInterface {
   final String? stackType;
 
   /// the name of the subnetwork to attach this interface
-  /// to. The subnetwork must exist in the same <span pulumi-lang-nodejs="`region`" pulumi-lang-dotnet="`Region`" pulumi-lang-go="`region`" pulumi-lang-python="`region`" pulumi-lang-yaml="`region`" pulumi-lang-java="`region`">`region`</span> this instance will be
-  /// created in. Either <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span> or <span pulumi-lang-nodejs="`subnetwork`" pulumi-lang-dotnet="`Subnetwork`" pulumi-lang-go="`subnetwork`" pulumi-lang-python="`subnetwork`" pulumi-lang-yaml="`subnetwork`" pulumi-lang-java="`subnetwork`">`subnetwork`</span> must be provided.
+  /// to. The subnetwork must exist in the same `region` this instance will be
+  /// created in. Either `network` or `subnetwork` must be provided.
   final String? subnetwork;
 
   /// The ID of the project in which the subnetwork belongs.

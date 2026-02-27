@@ -1,3 +1,0 @@
-library module_monitoring_uptime_check_config_http_check_auth_info;
-
-export 'uptime_check_config_http_check_auth_info.dart';

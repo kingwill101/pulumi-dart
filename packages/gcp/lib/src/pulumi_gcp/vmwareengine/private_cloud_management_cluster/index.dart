@@ -1,3 +1,0 @@
-library module_vmwareengine_private_cloud_management_cluster;
-
-export 'private_cloud_management_cluster.dart';

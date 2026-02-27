@@ -1,3 +1,0 @@
-library module_cloudidentity_get_group_transitive_memberships_membership;
-
-export 'get_group_transitive_memberships_membership.dart';

@@ -1,0 +1,3 @@
+library module_folder_access_approval_settings_enrolled_service;
+
+export 'access_approval_settings_enrolled_service/access_approval_settings_enrolled_service.dart';

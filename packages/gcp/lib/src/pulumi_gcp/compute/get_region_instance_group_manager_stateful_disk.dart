@@ -1,0 +1,3 @@
+library module_compute_get_region_instance_group_manager_stateful_disk;
+
+export 'get_region_instance_group_manager_stateful_disk/get_region_instance_group_manager_stateful_disk.dart';

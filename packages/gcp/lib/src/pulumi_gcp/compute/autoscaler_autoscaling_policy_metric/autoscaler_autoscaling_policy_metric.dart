@@ -25,7 +25,7 @@ class AutoscalerAutoscalingPolicyMetric {
   /// If not specified, the type defaults to gce_instance.
   /// You should provide a filter that is selective enough to pick just
   /// one TimeSeries for the autoscaled group or for each of the instances
-  /// (if you are using<span pulumi-lang-nodejs=" gceInstance " pulumi-lang-dotnet=" GceInstance " pulumi-lang-go=" gceInstance " pulumi-lang-python=" gce_instance " pulumi-lang-yaml=" gceInstance " pulumi-lang-java=" gceInstance "> gce_instance </span>resource type). If multiple
+  /// (if you are using gce_instance resource type). If multiple
   /// TimeSeries are returned upon the query execution, the autoscaler
   /// will sum their respective values to obtain its scaling value.
   final String? filter;
@@ -47,14 +47,8 @@ class AutoscalerAutoscalingPolicyMetric {
   /// your instances.
   /// A bad example would be a metric exporting an average or median
   /// latency, since this value can't include a chunk assignable to a
-  /// single instance, it could be better used with<span pulumi-lang-nodejs=" utilizationTarget
-  /// " pulumi-lang-dotnet=" UtilizationTarget
-  /// " pulumi-lang-go=" utilizationTarget
-  /// " pulumi-lang-python=" utilization_target
-  /// " pulumi-lang-yaml=" utilizationTarget
-  /// " pulumi-lang-java=" utilizationTarget
-  /// "> utilization_target
-  /// </span>instead.
+  /// single instance, it could be better used with utilization_target
+  /// instead.
   final double? singleInstanceAssignment;
 
   /// The target value of the metric that autoscaler should

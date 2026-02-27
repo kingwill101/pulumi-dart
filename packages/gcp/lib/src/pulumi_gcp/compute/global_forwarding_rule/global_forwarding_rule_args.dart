@@ -36,13 +36,13 @@ class GlobalForwardingRuleArgs {
 
   /// IP address for which this forwarding rule accepts traffic. When a client
   /// sends traffic to this IP address, the forwarding rule directs the traffic
-  /// to the referenced <span pulumi-lang-nodejs="`target`" pulumi-lang-dotnet="`Target`" pulumi-lang-go="`target`" pulumi-lang-python="`target`" pulumi-lang-yaml="`target`" pulumi-lang-java="`target`">`target`</span>.
+  /// to the referenced `target`.
   /// While creating a forwarding rule, specifying an `IPAddress` is
   /// required under the following circumstances:
-  /// * When the <span pulumi-lang-nodejs="`target`" pulumi-lang-dotnet="`Target`" pulumi-lang-go="`target`" pulumi-lang-python="`target`" pulumi-lang-yaml="`target`" pulumi-lang-java="`target`">`target`</span> is set to `targetGrpcProxy` and
-  /// `validateForProxyless` is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the
+  /// * When the `target` is set to `targetGrpcProxy` and
+  /// `validateForProxyless` is set to `true`, the
   /// `IPAddress` should be set to `0.0.0.0`.
-  /// * When the <span pulumi-lang-nodejs="`target`" pulumi-lang-dotnet="`Target`" pulumi-lang-go="`target`" pulumi-lang-python="`target`" pulumi-lang-yaml="`target`" pulumi-lang-java="`target`">`target`</span> is a Private Service Connect Google APIs
+  /// * When the `target` is a Private Service Connect Google APIs
   /// bundle, you must specify an `IPAddress`.
   /// Otherwise, you can optionally specify an IP address that references an
   /// existing static (reserved) IP address resource. When omitted, Google Cloud
@@ -58,7 +58,7 @@ class GlobalForwardingRuleArgs {
   /// * `regions/region/addresses/address-name`
   /// * `global/addresses/address-name`
   /// * `address-name`
-  /// The forwarding rule's <span pulumi-lang-nodejs="`target`" pulumi-lang-dotnet="`Target`" pulumi-lang-go="`target`" pulumi-lang-python="`target`" pulumi-lang-yaml="`target`" pulumi-lang-java="`target`">`target`</span>,
+  /// The forwarding rule's `target`,
   /// and in most cases, also the `loadBalancingScheme`, determine the
   /// type of IP address that you can use. For detailed information, see
   /// [IP address
@@ -85,7 +85,7 @@ class GlobalForwardingRuleArgs {
   /// Labels to apply to this forwarding rule.  A list of key->value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Specifies the forwarding rule type.

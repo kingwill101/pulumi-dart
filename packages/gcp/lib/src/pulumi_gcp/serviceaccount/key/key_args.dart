@@ -16,7 +16,7 @@ class KeyArgs {
   /// The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
   final Input<String>? privateKeyType;
 
-  /// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with <span pulumi-lang-nodejs="`publicKeyType`" pulumi-lang-dotnet="`PublicKeyType`" pulumi-lang-go="`publicKeyType`" pulumi-lang-python="`public_key_type`" pulumi-lang-yaml="`publicKeyType`" pulumi-lang-java="`publicKeyType`">`public_key_type`</span> and <span pulumi-lang-nodejs="`privateKeyType`" pulumi-lang-dotnet="`PrivateKeyType`" pulumi-lang-go="`privateKeyType`" pulumi-lang-python="`private_key_type`" pulumi-lang-yaml="`privateKeyType`" pulumi-lang-java="`privateKeyType`">`private_key_type`</span>.
+  /// Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
   final Input<String>? publicKeyData;
 
   /// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.

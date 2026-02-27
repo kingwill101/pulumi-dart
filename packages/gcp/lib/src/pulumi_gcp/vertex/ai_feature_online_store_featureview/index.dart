@@ -1,4 +1,0 @@
-library module_vertex_ai_feature_online_store_featureview;
-
-export 'ai_feature_online_store_featureview.dart';
-export 'ai_feature_online_store_featureview_args.dart';

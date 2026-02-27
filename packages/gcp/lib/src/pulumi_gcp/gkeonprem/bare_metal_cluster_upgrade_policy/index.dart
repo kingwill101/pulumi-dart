@@ -1,3 +1,0 @@
-library module_gkeonprem_bare_metal_cluster_upgrade_policy;
-
-export 'bare_metal_cluster_upgrade_policy.dart';

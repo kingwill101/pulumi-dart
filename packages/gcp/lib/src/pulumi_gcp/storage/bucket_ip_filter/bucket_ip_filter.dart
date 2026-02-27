@@ -5,17 +5,17 @@ import '../bucket_ip_filter_public_network_source/bucket_ip_filter_public_networ
 import '../bucket_ip_filter_vpc_network_source/bucket_ip_filter_vpc_network_source.dart';
 
 class BucketIpFilter {
-  /// While set <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, allows all service agents to access the bucket regardless of the IP filter configuration.
+  /// While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
   final bool? allowAllServiceAgentAccess;
 
-  /// While set <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, allows cross-org VPCs in the bucket's IP filter configuration.
+  /// While set `true`, allows cross-org VPCs in the bucket's IP filter configuration.
   final bool? allowCrossOrgVpcs;
 
   /// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
   ///
-  /// **Note**: Once<span pulumi-lang-nodejs=" ipFilter " pulumi-lang-dotnet=" IpFilter " pulumi-lang-go=" ipFilter " pulumi-lang-python=" ip_filter " pulumi-lang-yaml=" ipFilter " pulumi-lang-java=" ipFilter "> ip_filter </span>is setup, it can either be `Enabled` or `Disabled` and cannot be removed from config.
+  /// **Note**: Once ip_filter is setup, it can either be `Enabled` or `Disabled` and cannot be removed from config.
   ///
-  /// **Note**: <span pulumi-lang-nodejs="`allowAllServiceAgentAccess`" pulumi-lang-dotnet="`AllowAllServiceAgentAccess`" pulumi-lang-go="`allowAllServiceAgentAccess`" pulumi-lang-python="`allow_all_service_agent_access`" pulumi-lang-yaml="`allowAllServiceAgentAccess`" pulumi-lang-java="`allowAllServiceAgentAccess`">`allow_all_service_agent_access`</span> must be supplied when <span pulumi-lang-nodejs="`mode`" pulumi-lang-dotnet="`Mode`" pulumi-lang-go="`mode`" pulumi-lang-python="`mode`" pulumi-lang-yaml="`mode`" pulumi-lang-java="`mode`">`mode`</span> is set to `Enabled`, it can be ommited for other values.
+  /// **Note**: `allow_all_service_agent_access` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
   final String mode;
 
   /// The public network IP address ranges that can access the bucket and its data. Structure is documented below.

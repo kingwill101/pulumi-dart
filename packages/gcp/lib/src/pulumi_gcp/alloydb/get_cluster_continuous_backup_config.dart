@@ -1,0 +1,3 @@
+library module_alloydb_get_cluster_continuous_backup_config;
+
+export 'get_cluster_continuous_backup_config/get_cluster_continuous_backup_config.dart';

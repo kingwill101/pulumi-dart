@@ -1,3 +1,0 @@
-library module_artifactregistry_repository_cleanup_policy_condition;
-
-export 'repository_cleanup_policy_condition.dart';

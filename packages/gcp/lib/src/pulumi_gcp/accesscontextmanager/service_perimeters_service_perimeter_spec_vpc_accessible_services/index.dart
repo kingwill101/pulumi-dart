@@ -1,3 +1,0 @@
-library module_accesscontextmanager_service_perimeters_service_perimeter_spec_vpc_accessible_services;
-
-export 'service_perimeters_service_perimeter_spec_vpc_accessible_services.dart';

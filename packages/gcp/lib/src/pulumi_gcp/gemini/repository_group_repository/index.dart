@@ -1,3 +1,0 @@
-library module_gemini_repository_group_repository;
-
-export 'repository_group_repository.dart';

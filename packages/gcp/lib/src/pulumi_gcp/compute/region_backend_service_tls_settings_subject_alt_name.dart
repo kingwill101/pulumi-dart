@@ -1,0 +1,3 @@
+library module_compute_region_backend_service_tls_settings_subject_alt_name;
+
+export 'region_backend_service_tls_settings_subject_alt_name/region_backend_service_tls_settings_subject_alt_name.dart';

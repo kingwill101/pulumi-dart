@@ -46,7 +46,7 @@ class GetDatabaseInstancesInstance {
   /// Maintenance version.
   final String maintenanceVersion;
 
-  /// The name of the instance that will act as the master in the replication setup. Note, this requires the master to have<span pulumi-lang-nodejs=" binaryLogEnabled " pulumi-lang-dotnet=" BinaryLogEnabled " pulumi-lang-go=" binaryLogEnabled " pulumi-lang-python=" binary_log_enabled " pulumi-lang-yaml=" binaryLogEnabled " pulumi-lang-java=" binaryLogEnabled "> binary_log_enabled </span>set, as well as existing backups.
+  /// The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
   final String masterInstanceName;
   final String name;
 
@@ -75,7 +75,7 @@ class GetDatabaseInstancesInstance {
   /// The replicas of the instance.
   final List<String> replicaNames;
 
-  /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has<span pulumi-lang-nodejs=" psaWriteEndpoint " pulumi-lang-dotnet=" PsaWriteEndpoint " pulumi-lang-go=" psaWriteEndpoint " pulumi-lang-python=" psa_write_endpoint " pulumi-lang-yaml=" psaWriteEndpoint " pulumi-lang-java=" psaWriteEndpoint "> psa_write_endpoint </span>set or both the primary and replica are created.
+  /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psa_write_endpoint set or both the primary and replica are created.
   final List<GetDatabaseInstancesInstanceReplicationCluster>
       replicationClusters;
   final List<GetDatabaseInstancesInstanceRestoreBackupContext>
@@ -88,7 +88,7 @@ class GetDatabaseInstancesInstance {
   /// Note: This property is write-only and will not be read from the API. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   final String rootPasswordWo;
 
-  /// Triggers update of<span pulumi-lang-nodejs=" rootPasswordWo " pulumi-lang-dotnet=" RootPasswordWo " pulumi-lang-go=" rootPasswordWo " pulumi-lang-python=" root_password_wo " pulumi-lang-yaml=" rootPasswordWo " pulumi-lang-java=" rootPasswordWo "> root_password_wo </span>write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  /// Triggers update of root_password_wo write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   final String rootPasswordWoVersion;
 
   /// The URI of the created resource.

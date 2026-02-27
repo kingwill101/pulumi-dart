@@ -1,3 +1,0 @@
-library module_logging_get_sink_bigquery_option;
-
-export 'get_sink_bigquery_option.dart';

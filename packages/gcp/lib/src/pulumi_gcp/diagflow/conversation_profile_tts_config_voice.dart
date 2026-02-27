@@ -1,0 +1,3 @@
+library module_diagflow_conversation_profile_tts_config_voice;
+
+export 'conversation_profile_tts_config_voice/conversation_profile_tts_config_voice.dart';

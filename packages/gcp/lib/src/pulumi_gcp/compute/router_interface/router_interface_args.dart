@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart';
 class RouterInterfaceArgs {
   /// The name or resource link to the
   /// VLAN interconnect for this interface. Changing this forces a new interface to
-  /// be created. Only one of <span pulumi-lang-nodejs="`vpnTunnel`" pulumi-lang-dotnet="`VpnTunnel`" pulumi-lang-go="`vpnTunnel`" pulumi-lang-python="`vpn_tunnel`" pulumi-lang-yaml="`vpnTunnel`" pulumi-lang-java="`vpnTunnel`">`vpn_tunnel`</span>, <span pulumi-lang-nodejs="`interconnectAttachment`" pulumi-lang-dotnet="`InterconnectAttachment`" pulumi-lang-go="`interconnectAttachment`" pulumi-lang-python="`interconnect_attachment`" pulumi-lang-yaml="`interconnectAttachment`" pulumi-lang-java="`interconnectAttachment`">`interconnect_attachment`</span> or <span pulumi-lang-nodejs="`subnetwork`" pulumi-lang-dotnet="`Subnetwork`" pulumi-lang-go="`subnetwork`" pulumi-lang-python="`subnetwork`" pulumi-lang-yaml="`subnetwork`" pulumi-lang-java="`subnetwork`">`subnetwork`</span> can be specified.
+  /// be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
   final Input<String>? interconnectAttachment;
 
   /// IP address and range of the interface. The IP range must be
@@ -39,18 +39,18 @@ class RouterInterfaceArgs {
   /// The name of the router this interface will be attached to.
   /// Changing this forces a new interface to be created.
   ///
-  /// In addition to the above required fields, a router interface must have specified either <span pulumi-lang-nodejs="`ipRange`" pulumi-lang-dotnet="`IpRange`" pulumi-lang-go="`ipRange`" pulumi-lang-python="`ip_range`" pulumi-lang-yaml="`ipRange`" pulumi-lang-java="`ipRange`">`ip_range`</span> or exactly one of <span pulumi-lang-nodejs="`vpnTunnel`" pulumi-lang-dotnet="`VpnTunnel`" pulumi-lang-go="`vpnTunnel`" pulumi-lang-python="`vpn_tunnel`" pulumi-lang-yaml="`vpnTunnel`" pulumi-lang-java="`vpnTunnel`">`vpn_tunnel`</span>, <span pulumi-lang-nodejs="`interconnectAttachment`" pulumi-lang-dotnet="`InterconnectAttachment`" pulumi-lang-go="`interconnectAttachment`" pulumi-lang-python="`interconnect_attachment`" pulumi-lang-yaml="`interconnectAttachment`" pulumi-lang-java="`interconnectAttachment`">`interconnect_attachment`</span> or <span pulumi-lang-nodejs="`subnetwork`" pulumi-lang-dotnet="`Subnetwork`" pulumi-lang-go="`subnetwork`" pulumi-lang-python="`subnetwork`" pulumi-lang-yaml="`subnetwork`" pulumi-lang-java="`subnetwork`">`subnetwork`</span>, or both.
+  /// In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
   ///
   /// - - -
   final Input<String> router;
 
   /// The URI of the subnetwork resource that this interface
-  /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of <span pulumi-lang-nodejs="`vpnTunnel`" pulumi-lang-dotnet="`VpnTunnel`" pulumi-lang-go="`vpnTunnel`" pulumi-lang-python="`vpn_tunnel`" pulumi-lang-yaml="`vpnTunnel`" pulumi-lang-java="`vpnTunnel`">`vpn_tunnel`</span>, <span pulumi-lang-nodejs="`interconnectAttachment`" pulumi-lang-dotnet="`InterconnectAttachment`" pulumi-lang-go="`interconnectAttachment`" pulumi-lang-python="`interconnect_attachment`" pulumi-lang-yaml="`interconnectAttachment`" pulumi-lang-java="`interconnectAttachment`">`interconnect_attachment`</span> or <span pulumi-lang-nodejs="`subnetwork`" pulumi-lang-dotnet="`Subnetwork`" pulumi-lang-go="`subnetwork`" pulumi-lang-python="`subnetwork`" pulumi-lang-yaml="`subnetwork`" pulumi-lang-java="`subnetwork`">`subnetwork`</span> can be specified.
+  /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
   final Input<String>? subnetwork;
 
   /// The name or resource link to the VPN tunnel this
   /// interface will be linked to. Changing this forces a new interface to be created. Only
-  /// one of <span pulumi-lang-nodejs="`vpnTunnel`" pulumi-lang-dotnet="`VpnTunnel`" pulumi-lang-go="`vpnTunnel`" pulumi-lang-python="`vpn_tunnel`" pulumi-lang-yaml="`vpnTunnel`" pulumi-lang-java="`vpnTunnel`">`vpn_tunnel`</span>, <span pulumi-lang-nodejs="`interconnectAttachment`" pulumi-lang-dotnet="`InterconnectAttachment`" pulumi-lang-go="`interconnectAttachment`" pulumi-lang-python="`interconnect_attachment`" pulumi-lang-yaml="`interconnectAttachment`" pulumi-lang-java="`interconnectAttachment`">`interconnect_attachment`</span> or <span pulumi-lang-nodejs="`subnetwork`" pulumi-lang-dotnet="`Subnetwork`" pulumi-lang-go="`subnetwork`" pulumi-lang-python="`subnetwork`" pulumi-lang-yaml="`subnetwork`" pulumi-lang-java="`subnetwork`">`subnetwork`</span> can be specified.
+  /// one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
   final Input<String>? vpnTunnel;
 
   RouterInterfaceArgs({

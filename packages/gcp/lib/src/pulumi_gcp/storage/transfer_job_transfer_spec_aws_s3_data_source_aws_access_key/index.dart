@@ -1,3 +1,0 @@
-library module_storage_transfer_job_transfer_spec_aws_s3_data_source_aws_access_key;
-
-export 'transfer_job_transfer_spec_aws_s3_data_source_aws_access_key.dart';

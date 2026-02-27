@@ -1,3 +1,0 @@
-library module_compute_get_machine_types_machine_type_bundled_local_ssd;
-
-export 'get_machine_types_machine_type_bundled_local_ssd.dart';

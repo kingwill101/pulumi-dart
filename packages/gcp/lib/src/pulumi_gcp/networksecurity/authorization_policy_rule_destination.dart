@@ -1,0 +1,3 @@
+library module_networksecurity_authorization_policy_rule_destination;
+
+export 'authorization_policy_rule_destination/authorization_policy_rule_destination.dart';

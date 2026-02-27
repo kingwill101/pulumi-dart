@@ -1,3 +1,0 @@
-library module_secretmanager_get_regional_secrets_secret;
-
-export 'get_regional_secrets_secret.dart';

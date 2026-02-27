@@ -32,7 +32,7 @@ class InstanceFromTemplateArgs {
   /// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
   final Input<bool>? canIpForward;
 
-  /// The Confidential VM config being used by the instance. <span pulumi-lang-nodejs=" onHostMaintenance " pulumi-lang-dotnet=" OnHostMaintenance " pulumi-lang-go=" onHostMaintenance " pulumi-lang-python=" on_host_maintenance " pulumi-lang-yaml=" onHostMaintenance " pulumi-lang-java=" onHostMaintenance "> on_host_maintenance </span>has to be set to TERMINATE or this will fail to create.
+  /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
   final Input<InstanceFromTemplateConfidentialInstanceConfig>?
       confidentialInstanceConfig;
 
@@ -95,13 +95,13 @@ class InstanceFromTemplateArgs {
   /// Partner Metadata Map made available within the instance.
   final Input<Map<String, String>>? partnerMetadata;
 
-  /// The ID of the project in which the resource belongs. If<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>is provided, this value is ignored. If neither<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>nor project are provided, the provider project is used.
+  /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
   final Input<String>? project;
 
   /// Specifies the reservations that this instance can consume from.
   final Input<InstanceFromTemplateReservationAffinity>? reservationAffinity;
 
-  /// A list of<span pulumi-lang-nodejs=" selfLinks " pulumi-lang-dotnet=" SelfLinks " pulumi-lang-go=" selfLinks " pulumi-lang-python=" self_links " pulumi-lang-yaml=" selfLinks " pulumi-lang-java=" selfLinks "> self_links </span>of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+  /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
   final Input<String>? resourcePolicies;
 
   /// The scheduling strategy being used by the instance.
@@ -119,7 +119,7 @@ class InstanceFromTemplateArgs {
 
   /// Name or self link of an instance
   /// template to create the instance based on. It is recommended to reference
-  /// instance templates through their unique id (<span pulumi-lang-nodejs="`selfLinkUnique`" pulumi-lang-dotnet="`SelfLinkUnique`" pulumi-lang-go="`selfLinkUnique`" pulumi-lang-python="`self_link_unique`" pulumi-lang-yaml="`selfLinkUnique`" pulumi-lang-java="`selfLinkUnique`">`self_link_unique`</span> attribute).
+  /// instance templates through their unique id (`self_link_unique` attribute).
   ///
   /// - - -
   final Input<String> sourceInstanceTemplate;
@@ -130,9 +130,9 @@ class InstanceFromTemplateArgs {
   /// The zone that the machine should be created in. If not
   /// set, the provider zone is used.
   ///
-  /// In addition to these, all arguments from <span pulumi-lang-nodejs="`gcp.compute.Instance`" pulumi-lang-dotnet="`gcp.compute.Instance`" pulumi-lang-go="`compute.Instance`" pulumi-lang-python="`compute.Instance`" pulumi-lang-yaml="`gcp.compute.Instance`" pulumi-lang-java="`gcp.compute.Instance`">`gcp.compute.Instance`</span> are supported
+  /// In addition to these, all arguments from `gcp.compute.Instance` are supported
   /// as a way to override the properties in the template. All exported attributes
-  /// from <span pulumi-lang-nodejs="`gcp.compute.Instance`" pulumi-lang-dotnet="`gcp.compute.Instance`" pulumi-lang-go="`compute.Instance`" pulumi-lang-python="`compute.Instance`" pulumi-lang-yaml="`gcp.compute.Instance`" pulumi-lang-java="`gcp.compute.Instance`">`gcp.compute.Instance`</span> are likewise exported here.
+  /// from `gcp.compute.Instance` are likewise exported here.
   final Input<String>? zone;
 
   InstanceFromTemplateArgs({

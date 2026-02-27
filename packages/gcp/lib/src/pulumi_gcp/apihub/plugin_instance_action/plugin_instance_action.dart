@@ -6,7 +6,7 @@ import '../plugin_instance_action_hub_instance_action/plugin_instance_action_hub
 
 class PluginInstanceAction {
   /// This should map to one of the action id specified
-  /// in<span pulumi-lang-nodejs=" actionsConfig " pulumi-lang-dotnet=" ActionsConfig " pulumi-lang-go=" actionsConfig " pulumi-lang-python=" actions_config " pulumi-lang-yaml=" actionsConfig " pulumi-lang-java=" actionsConfig "> actions_config </span>in the plugin.
+  /// in actions_config in the plugin.
   final String actionId;
 
   /// The curation information for this plugin instance.
@@ -26,7 +26,7 @@ class PluginInstanceAction {
   /// be used.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedActionsHubInstanceAction"" pulumi-lang-dotnet=""NestedActionsHubInstanceAction"" pulumi-lang-go=""nestedActionsHubInstanceAction"" pulumi-lang-python=""nested_actions_hub_instance_action"" pulumi-lang-yaml=""nestedActionsHubInstanceAction"" pulumi-lang-java=""nestedActionsHubInstanceAction"">"nested_actions_hub_instance_action"</span>></a>The <span pulumi-lang-nodejs="`hubInstanceAction`" pulumi-lang-dotnet="`HubInstanceAction`" pulumi-lang-go="`hubInstanceAction`" pulumi-lang-python="`hub_instance_action`" pulumi-lang-yaml="`hubInstanceAction`" pulumi-lang-java="`hubInstanceAction`">`hub_instance_action`</span> block contains:
+  /// <a name="nested_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
   final String? scheduleTimeZone;
 
   /// (Output)

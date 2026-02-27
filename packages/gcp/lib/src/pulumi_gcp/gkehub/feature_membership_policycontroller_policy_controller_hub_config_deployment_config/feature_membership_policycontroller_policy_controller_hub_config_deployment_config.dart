@@ -5,7 +5,7 @@ import '../feature_membership_policycontroller_policy_controller_hub_config_depl
 import '../feature_membership_policycontroller_policy_controller_hub_config_deployment_config_pod_toleration/feature_membership_policycontroller_policy_controller_hub_config_deployment_config_pod_toleration.dart';
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig {
-  /// The name of the component. One of <span pulumi-lang-nodejs="`admission`" pulumi-lang-dotnet="`Admission`" pulumi-lang-go="`admission`" pulumi-lang-python="`admission`" pulumi-lang-yaml="`admission`" pulumi-lang-java="`admission`">`admission`</span> <span pulumi-lang-nodejs="`audit`" pulumi-lang-dotnet="`Audit`" pulumi-lang-go="`audit`" pulumi-lang-python="`audit`" pulumi-lang-yaml="`audit`" pulumi-lang-java="`audit`">`audit`</span> or <span pulumi-lang-nodejs="`mutation`" pulumi-lang-dotnet="`Mutation`" pulumi-lang-go="`mutation`" pulumi-lang-python="`mutation`" pulumi-lang-yaml="`mutation`" pulumi-lang-java="`mutation`">`mutation`</span>
+  /// The name of the component. One of `admission` `audit` or `mutation`
   final String componentName;
 
   /// Container resource requirements.

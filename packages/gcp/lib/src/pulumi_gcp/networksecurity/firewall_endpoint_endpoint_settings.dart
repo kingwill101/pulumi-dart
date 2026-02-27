@@ -1,0 +1,3 @@
+library module_networksecurity_firewall_endpoint_endpoint_settings;
+
+export 'firewall_endpoint_endpoint_settings/firewall_endpoint_endpoint_settings.dart';

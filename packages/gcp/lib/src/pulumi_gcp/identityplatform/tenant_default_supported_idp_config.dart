@@ -1,0 +1,4 @@
+library module_identityplatform_tenant_default_supported_idp_config;
+
+export 'tenant_default_supported_idp_config/tenant_default_supported_idp_config.dart';
+export 'tenant_default_supported_idp_config/tenant_default_supported_idp_config_args.dart';

@@ -7,7 +7,7 @@ class GetKMSSecretAsymmetricArgs {
   /// The ciphertext to be decrypted, encoded in base64
   final Input<String> ciphertext;
 
-  /// The crc32 checksum of the <span pulumi-lang-nodejs="`ciphertext`" pulumi-lang-dotnet="`Ciphertext`" pulumi-lang-go="`ciphertext`" pulumi-lang-python="`ciphertext`" pulumi-lang-yaml="`ciphertext`" pulumi-lang-java="`ciphertext`">`ciphertext`</span> in hexadecimal notation. If not specified, it will be computed.
+  /// The crc32 checksum of the `ciphertext` in hexadecimal notation. If not specified, it will be computed.
   final Input<String>? crc32;
 
   /// The id of the CryptoKey version that will be used to

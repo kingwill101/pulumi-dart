@@ -1,0 +1,3 @@
+library module_compute_region_per_instance_config_preserved_state_external_ip_ip_address;
+
+export 'region_per_instance_config_preserved_state_external_ip_ip_address/region_per_instance_config_preserved_state_external_ip_ip_address.dart';

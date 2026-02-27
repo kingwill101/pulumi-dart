@@ -16,7 +16,7 @@ class LbRouteExtensionExtensionChainExtension {
   /// If omitted, all headers are sent. Each element is a string indicating the header name.
   final List<String>? forwardHeaders;
 
-  /// The metadata provided here is included as part of the <span pulumi-lang-nodejs="`metadataContext`" pulumi-lang-dotnet="`MetadataContext`" pulumi-lang-go="`metadataContext`" pulumi-lang-python="`metadata_context`" pulumi-lang-yaml="`metadataContext`" pulumi-lang-java="`metadataContext`">`metadata_context`</span> (of type `google.protobuf.Struct`)
+  /// The metadata provided here is included as part of the `metadata_context` (of type `google.protobuf.Struct`)
   /// in the `ProcessingRequest` message sent to the extension server.
   /// The metadata is available under the namespace `com.google.lb_route_extension.<resource_name>.<chain_name>.<extension_name>`.
   /// The following variables are supported in the metadata: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
@@ -29,8 +29,8 @@ class LbRouteExtensionExtensionChainExtension {
   /// and the last a letter or a number.
   final String name;
 
-  /// When set to `TRUE`, enables <span pulumi-lang-nodejs="`observabilityMode`" pulumi-lang-dotnet="`ObservabilityMode`" pulumi-lang-go="`observabilityMode`" pulumi-lang-python="`observability_mode`" pulumi-lang-yaml="`observabilityMode`" pulumi-lang-java="`observabilityMode`">`observability_mode`</span> on the <span pulumi-lang-nodejs="`extProc`" pulumi-lang-dotnet="`ExtProc`" pulumi-lang-go="`extProc`" pulumi-lang-python="`ext_proc`" pulumi-lang-yaml="`extProc`" pulumi-lang-java="`extProc`">`ext_proc`</span> filter.
-  /// This makes <span pulumi-lang-nodejs="`extProc`" pulumi-lang-dotnet="`ExtProc`" pulumi-lang-go="`extProc`" pulumi-lang-python="`ext_proc`" pulumi-lang-yaml="`extProc`" pulumi-lang-java="`extProc`">`ext_proc`</span> calls asynchronous. Envoy doesn't check for the response from <span pulumi-lang-nodejs="`extProc`" pulumi-lang-dotnet="`ExtProc`" pulumi-lang-go="`extProc`" pulumi-lang-python="`ext_proc`" pulumi-lang-yaml="`extProc`" pulumi-lang-java="`extProc`">`ext_proc`</span> calls.
+  /// When set to `TRUE`, enables `observability_mode` on the `ext_proc` filter.
+  /// This makes `ext_proc` calls asynchronous. Envoy doesn't check for the response from `ext_proc` calls.
   /// For more information about the filter, see: https://www.envoyproxy.io/docs/envoy/v1.32.3/api-v3/extensions/filters/http/ext_proc/v3/ext_proc.proto
   /// This field is helpful when you want to try out the extension in async log-only mode.
   /// Supported by regional `LbTrafficExtension` and `LbRouteExtension` resources.
@@ -38,10 +38,10 @@ class LbRouteExtensionExtensionChainExtension {
   final bool? observabilityMode;
 
   /// Configures the send mode for request body processing.
-  /// The field can only be set if <span pulumi-lang-nodejs="`supportedEvents`" pulumi-lang-dotnet="`SupportedEvents`" pulumi-lang-go="`supportedEvents`" pulumi-lang-python="`supported_events`" pulumi-lang-yaml="`supportedEvents`" pulumi-lang-java="`supportedEvents`">`supported_events`</span> includes `REQUEST_BODY`.
-  /// If <span pulumi-lang-nodejs="`supportedEvents`" pulumi-lang-dotnet="`SupportedEvents`" pulumi-lang-go="`supportedEvents`" pulumi-lang-python="`supported_events`" pulumi-lang-yaml="`supportedEvents`" pulumi-lang-java="`supportedEvents`">`supported_events`</span> includes `REQUEST_BODY`, but <span pulumi-lang-nodejs="`requestBodySendMode`" pulumi-lang-dotnet="`RequestBodySendMode`" pulumi-lang-go="`requestBodySendMode`" pulumi-lang-python="`request_body_send_mode`" pulumi-lang-yaml="`requestBodySendMode`" pulumi-lang-java="`requestBodySendMode`">`request_body_send_mode`</span> is unset, the default value `STREAMED` is used.
-  /// When this field is set to `FULL_DUPLEX_STREAMED`, <span pulumi-lang-nodejs="`supportedEvents`" pulumi-lang-dotnet="`SupportedEvents`" pulumi-lang-go="`supportedEvents`" pulumi-lang-python="`supported_events`" pulumi-lang-yaml="`supportedEvents`" pulumi-lang-java="`supportedEvents`">`supported_events`</span> must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
-  /// This field can be set only when the <span pulumi-lang-nodejs="`service`" pulumi-lang-dotnet="`Service`" pulumi-lang-go="`service`" pulumi-lang-python="`service`" pulumi-lang-yaml="`service`" pulumi-lang-java="`service`">`service`</span> field of the extension points to a `BackendService`.
+  /// The field can only be set if `supported_events` includes `REQUEST_BODY`.
+  /// If `supported_events` includes `REQUEST_BODY`, but `request_body_send_mode` is unset, the default value `STREAMED` is used.
+  /// When this field is set to `FULL_DUPLEX_STREAMED`, `supported_events` must include both `REQUEST_BODY` and `REQUEST_TRAILERS`.
+  /// This field can be set only when the `service` field of the extension points to a `BackendService`.
   /// Only `FULL_DUPLEX_STREAMED` mode is supported for `LbRouteExtension` resources.
   /// Possible values are: `BODY_SEND_MODE_UNSPECIFIED`, `BODY_SEND_MODE_STREAMED`, `BODY_SEND_MODE_FULL_DUPLEX_STREAMED`.
   final String? requestBodySendMode;

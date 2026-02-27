@@ -1,0 +1,3 @@
+library module_oracledatabase_exascale_db_storage_vault_properties_time_zone;
+
+export 'exascale_db_storage_vault_properties_time_zone/exascale_db_storage_vault_properties_time_zone.dart';

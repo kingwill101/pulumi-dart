@@ -1,3 +1,0 @@
-library module_sql_database_instance_settings_active_directory_config;
-
-export 'database_instance_settings_active_directory_config.dart';

@@ -1,0 +1,3 @@
+library module_apphub_get_discovered_workload_workload_reference;
+
+export 'get_discovered_workload_workload_reference/get_discovered_workload_workload_reference.dart';

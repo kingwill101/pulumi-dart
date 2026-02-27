@@ -39,7 +39,7 @@ class MetricArgs {
   /// Structure is documented below.
   final Input<MetricMetricDescriptor>? metricDescriptor;
 
-  /// The client-assigned metric identifier. Examples - <span pulumi-lang-nodejs=""errorCount"" pulumi-lang-dotnet=""ErrorCount"" pulumi-lang-go=""errorCount"" pulumi-lang-python=""error_count"" pulumi-lang-yaml=""errorCount"" pulumi-lang-java=""errorCount"">"error_count"</span>, "nginx/requests".
+  /// The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
   /// Metric identifiers are limited to 100 characters and can include only the following
   /// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
   /// character (/) denotes a hierarchy of name pieces, and it cannot be the first character

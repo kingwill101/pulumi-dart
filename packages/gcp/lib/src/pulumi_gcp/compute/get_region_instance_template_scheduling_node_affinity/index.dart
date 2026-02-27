@@ -1,3 +1,0 @@
-library module_compute_get_region_instance_template_scheduling_node_affinity;
-
-export 'get_region_instance_template_scheduling_node_affinity.dart';

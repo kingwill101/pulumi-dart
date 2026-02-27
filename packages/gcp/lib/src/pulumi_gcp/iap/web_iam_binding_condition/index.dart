@@ -1,3 +1,0 @@
-library module_iap_web_iam_binding_condition;
-
-export 'web_iam_binding_condition.dart';

@@ -1,3 +1,0 @@
-library module_vertex_ai_endpoint_predict_request_response_logging_config;
-
-export 'ai_endpoint_predict_request_response_logging_config.dart';

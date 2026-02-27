@@ -7,7 +7,7 @@ class JobConfigEditList {
   /// A unique key for this atom.
   final String? key;
 
-  /// Start time in seconds for the atom, relative to the input file timeline. The default is <span pulumi-lang-nodejs="`0s`" pulumi-lang-dotnet="`0s`" pulumi-lang-go="`0s`" pulumi-lang-python="`0s`" pulumi-lang-yaml="`0s`" pulumi-lang-java="`0s`">`0s`</span>.
+  /// Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
   final String? startTimeOffset;
 
   JobConfigEditList({

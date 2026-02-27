@@ -1,0 +1,3 @@
+library module_apphub_workload_workload_property_extended_metadata_value;
+
+export 'workload_workload_property_extended_metadata_value/workload_workload_property_extended_metadata_value.dart';

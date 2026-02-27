@@ -1,3 +1,0 @@
-library module_dataplex_datascan_iam_member_condition;
-
-export 'datascan_iam_member_condition.dart';

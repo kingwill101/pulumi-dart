@@ -1,0 +1,3 @@
+library module_iam_workload_identity_pool_inline_trust_config_additional_trust_bundle;
+
+export 'workload_identity_pool_inline_trust_config_additional_trust_bundle/workload_identity_pool_inline_trust_config_additional_trust_bundle.dart';

@@ -1,3 +1,0 @@
-library module_beyondcorp_security_gateway_application_upstream_network;
-
-export 'security_gateway_application_upstream_network.dart';

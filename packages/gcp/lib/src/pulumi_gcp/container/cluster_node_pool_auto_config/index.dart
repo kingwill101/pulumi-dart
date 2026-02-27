@@ -1,3 +1,0 @@
-library module_container_cluster_node_pool_auto_config;
-
-export 'cluster_node_pool_auto_config.dart';

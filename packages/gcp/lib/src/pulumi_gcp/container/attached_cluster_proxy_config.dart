@@ -1,0 +1,3 @@
+library module_container_attached_cluster_proxy_config;
+
+export 'attached_cluster_proxy_config/attached_cluster_proxy_config.dart';

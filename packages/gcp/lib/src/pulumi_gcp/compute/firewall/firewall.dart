@@ -30,395 +30,11 @@ import 'firewall_args.dart';
 /// ### Firewall Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const defaultNetwork = new gcp.compute.Network("default", {name: "test-network"});
-/// const _default = new gcp.compute.Firewall("default", {
-/// name: "test-firewall",
-/// network: defaultNetwork.name,
-/// allows: [
-/// {
-/// protocol: "icmp",
-/// },
-/// {
-/// protocol: "tcp",
-/// ports: [
-/// "80",
-/// "8080",
-/// "1000-2000",
-/// ],
-/// },
-/// ],
-/// sourceTags: ["web"],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default_network = gcp.compute.Network("default", name="test-network")
-/// default = gcp.compute.Firewall("default",
-/// name="test-firewall",
-/// network=default_network.name,
-/// allows=[
-/// {
-/// "protocol": "icmp",
-/// },
-/// {
-/// "protocol": "tcp",
-/// "ports": [
-/// "80",
-/// "8080",
-/// "1000-2000",
-/// ],
-/// },
-/// ],
-/// source_tags=["web"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var defaultNetwork = new Gcp.Compute.Network("default", new()
-/// {
-/// Name = "test-network",
-/// });
-///
-/// var @default = new Gcp.Compute.Firewall("default", new()
-/// {
-/// Name = "test-firewall",
-/// Network = defaultNetwork.Name,
-/// Allows = new[]
-/// {
-/// new Gcp.Compute.Inputs.FirewallAllowArgs
-/// {
-/// Protocol = "icmp",
-/// },
-/// new Gcp.Compute.Inputs.FirewallAllowArgs
-/// {
-/// Protocol = "tcp",
-/// Ports = new[]
-/// {
-/// "80",
-/// "8080",
-/// "1000-2000",
-/// },
-/// },
-/// },
-/// SourceTags = new[]
-/// {
-/// "web",
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-/// Name: pulumi.String("test-network"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = compute.NewFirewall(ctx, "default", &compute.FirewallArgs{
-/// Name:    pulumi.String("test-firewall"),
-/// Network: defaultNetwork.Name,
-/// Allows: compute.FirewallAllowArray{
-/// &compute.FirewallAllowArgs{
-/// Protocol: pulumi.String("icmp"),
-/// },
-/// &compute.FirewallAllowArgs{
-/// Protocol: pulumi.String("tcp"),
-/// Ports: pulumi.StringArray{
-/// pulumi.String("80"),
-/// pulumi.String("8080"),
-/// pulumi.String("1000-2000"),
-/// },
-/// },
-/// },
-/// SourceTags: pulumi.StringArray{
-/// pulumi.String("web"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.Network;
-/// import com.pulumi.gcp.compute.NetworkArgs;
-/// import com.pulumi.gcp.compute.Firewall;
-/// import com.pulumi.gcp.compute.FirewallArgs;
-/// import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
-/// .name("test-network")
-/// .build());
-///
-/// var default_ = new Firewall("default", FirewallArgs.builder()
-/// .name("test-firewall")
-/// .network(defaultNetwork.name())
-/// .allows(
-/// FirewallAllowArgs.builder()
-/// .protocol("icmp")
-/// .build(),
-/// FirewallAllowArgs.builder()
-/// .protocol("tcp")
-/// .ports(
-/// "80",
-/// "8080",
-/// "1000-2000")
-/// .build())
-/// .sourceTags("web")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// default:
-/// type: gcp:compute:Firewall
-/// properties:
-/// name: test-firewall
-/// network: ${defaultNetwork.name}
-/// allows:
-/// - protocol: icmp
-/// - protocol: tcp
-/// ports:
-/// - '80'
-/// - '8080'
-/// - 1000-2000
-/// sourceTags:
-/// - web
-/// defaultNetwork:
-/// type: gcp:compute:Network
-/// name: default
-/// properties:
-/// name: test-network
-/// ```
-/// <!--End PulumiCodeChooser -->
 /// ### Firewall With Target Tags
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const rules = new gcp.compute.Firewall("rules", {
-/// project: "my-project-name",
-/// name: "my-firewall-rule",
-/// network: "default",
-/// description: "Creates firewall rule targeting tagged instances",
-/// allows: [{
-/// protocol: "tcp",
-/// ports: [
-/// "80",
-/// "8080",
-/// "1000-2000",
-/// ],
-/// }],
-/// sourceTags: ["foo"],
-/// targetTags: ["web"],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// rules = gcp.compute.Firewall("rules",
-/// project="my-project-name",
-/// name="my-firewall-rule",
-/// network="default",
-/// description="Creates firewall rule targeting tagged instances",
-/// allows=[{
-/// "protocol": "tcp",
-/// "ports": [
-/// "80",
-/// "8080",
-/// "1000-2000",
-/// ],
-/// }],
-/// source_tags=["foo"],
-/// target_tags=["web"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var rules = new Gcp.Compute.Firewall("rules", new()
-/// {
-/// Project = "my-project-name",
-/// Name = "my-firewall-rule",
-/// Network = "default",
-/// Description = "Creates firewall rule targeting tagged instances",
-/// Allows = new[]
-/// {
-/// new Gcp.Compute.Inputs.FirewallAllowArgs
-/// {
-/// Protocol = "tcp",
-/// Ports = new[]
-/// {
-/// "80",
-/// "8080",
-/// "1000-2000",
-/// },
-/// },
-/// },
-/// SourceTags = new[]
-/// {
-/// "foo",
-/// },
-/// TargetTags = new[]
-/// {
-/// "web",
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := compute.NewFirewall(ctx, "rules", &compute.FirewallArgs{
-/// Project:     pulumi.String("my-project-name"),
-/// Name:        pulumi.String("my-firewall-rule"),
-/// Network:     pulumi.String("default"),
-/// Description: pulumi.String("Creates firewall rule targeting tagged instances"),
-/// Allows: compute.FirewallAllowArray{
-/// &compute.FirewallAllowArgs{
-/// Protocol: pulumi.String("tcp"),
-/// Ports: pulumi.StringArray{
-/// pulumi.String("80"),
-/// pulumi.String("8080"),
-/// pulumi.String("1000-2000"),
-/// },
-/// },
-/// },
-/// SourceTags: pulumi.StringArray{
-/// pulumi.String("foo"),
-/// },
-/// TargetTags: pulumi.StringArray{
-/// pulumi.String("web"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.Firewall;
-/// import com.pulumi.gcp.compute.FirewallArgs;
-/// import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var rules = new Firewall("rules", FirewallArgs.builder()
-/// .project("my-project-name")
-/// .name("my-firewall-rule")
-/// .network("default")
-/// .description("Creates firewall rule targeting tagged instances")
-/// .allows(FirewallAllowArgs.builder()
-/// .protocol("tcp")
-/// .ports(
-/// "80",
-/// "8080",
-/// "1000-2000")
-/// .build())
-/// .sourceTags("foo")
-/// .targetTags("web")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// rules:
-/// type: gcp:compute:Firewall
-/// properties:
-/// project: my-project-name
-/// name: my-firewall-rule
-/// network: default
-/// description: Creates firewall rule targeting tagged instances
-/// allows:
-/// - protocol: tcp
-/// ports:
-/// - '80'
-/// - '8080'
-/// - 1000-2000
-/// sourceTags:
-/// - foo
-/// targetTags:
-/// - web
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -468,8 +84,8 @@ class Firewall extends CustomResource {
   late final Output<List<String>> destinationRanges;
 
   /// Direction of traffic to which this firewall applies; default is
-  /// INGRESS. Note: For INGRESS traffic, one of <span pulumi-lang-nodejs="`sourceRanges`" pulumi-lang-dotnet="`SourceRanges`" pulumi-lang-go="`sourceRanges`" pulumi-lang-python="`source_ranges`" pulumi-lang-yaml="`sourceRanges`" pulumi-lang-java="`sourceRanges`">`source_ranges`</span>,
-  /// <span pulumi-lang-nodejs="`sourceTags`" pulumi-lang-dotnet="`SourceTags`" pulumi-lang-go="`sourceTags`" pulumi-lang-python="`source_tags`" pulumi-lang-yaml="`sourceTags`" pulumi-lang-java="`sourceTags`">`source_tags`</span> or <span pulumi-lang-nodejs="`sourceServiceAccounts`" pulumi-lang-dotnet="`SourceServiceAccounts`" pulumi-lang-go="`sourceServiceAccounts`" pulumi-lang-python="`source_service_accounts`" pulumi-lang-yaml="`sourceServiceAccounts`" pulumi-lang-java="`sourceServiceAccounts`">`source_service_accounts`</span> is required.
+  /// INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
+  /// `source_tags` or `source_service_accounts` is required.
   /// Possible values are: `INGRESS`, `EGRESS`.
   late final Output<String> direction;
 
@@ -480,7 +96,7 @@ class Firewall extends CustomResource {
   late final Output<bool?> disabled;
 
   /// This field denotes whether to enable logging for a particular firewall rule.
-  /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of <span pulumi-lang-nodejs="`logConfig`" pulumi-lang-dotnet="`LogConfig`" pulumi-lang-go="`logConfig`" pulumi-lang-python="`log_config`" pulumi-lang-yaml="`logConfig`" pulumi-lang-java="`logConfig`">`log_config`</span>
+  /// If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
   late final Output<bool> enableLogging;
 
   /// This field denotes the logging options for a particular firewall rule.
@@ -497,7 +113,7 @@ class Firewall extends CustomResource {
   /// character, which cannot be a dash.
   late final Output<String> name;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the network to attach this firewall to.
+  /// The name or self_link of the network to attach this firewall to.
   late final Output<String> network;
 
   /// Additional params passed with the request, but not persisted as part of resource payload
@@ -527,7 +143,7 @@ class Firewall extends CustomResource {
   /// source IP that belongs to a tag listed in the sourceTags property. The
   /// connection does not need to match both properties for the firewall to
   /// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
-  /// <span pulumi-lang-nodejs="`sourceRanges`" pulumi-lang-dotnet="`SourceRanges`" pulumi-lang-go="`sourceRanges`" pulumi-lang-python="`source_ranges`" pulumi-lang-yaml="`sourceRanges`" pulumi-lang-java="`sourceRanges`">`source_ranges`</span>, <span pulumi-lang-nodejs="`sourceTags`" pulumi-lang-dotnet="`SourceTags`" pulumi-lang-go="`sourceTags`" pulumi-lang-python="`source_tags`" pulumi-lang-yaml="`sourceTags`" pulumi-lang-java="`sourceTags`">`source_tags`</span> or <span pulumi-lang-nodejs="`sourceServiceAccounts`" pulumi-lang-dotnet="`SourceServiceAccounts`" pulumi-lang-go="`sourceServiceAccounts`" pulumi-lang-python="`source_service_accounts`" pulumi-lang-yaml="`sourceServiceAccounts`" pulumi-lang-java="`sourceServiceAccounts`">`source_service_accounts`</span> is required.
+  /// `source_ranges`, `source_tags` or `source_service_accounts` is required.
   late final Output<List<String>?> sourceRanges;
 
   /// If source service accounts are specified, the firewall will apply only
@@ -541,7 +157,7 @@ class Firewall extends CustomResource {
   /// sourceServiceAccount. The connection does not need to match both
   /// properties for the firewall to apply. sourceServiceAccounts cannot be
   /// used at the same time as sourceTags or targetTags. For INGRESS traffic,
-  /// one of <span pulumi-lang-nodejs="`sourceRanges`" pulumi-lang-dotnet="`SourceRanges`" pulumi-lang-go="`sourceRanges`" pulumi-lang-python="`source_ranges`" pulumi-lang-yaml="`sourceRanges`" pulumi-lang-java="`sourceRanges`">`source_ranges`</span>, <span pulumi-lang-nodejs="`sourceTags`" pulumi-lang-dotnet="`SourceTags`" pulumi-lang-go="`sourceTags`" pulumi-lang-python="`source_tags`" pulumi-lang-yaml="`sourceTags`" pulumi-lang-java="`sourceTags`">`source_tags`</span> or <span pulumi-lang-nodejs="`sourceServiceAccounts`" pulumi-lang-dotnet="`SourceServiceAccounts`" pulumi-lang-go="`sourceServiceAccounts`" pulumi-lang-python="`source_service_accounts`" pulumi-lang-yaml="`sourceServiceAccounts`" pulumi-lang-java="`sourceServiceAccounts`">`source_service_accounts`</span> is required.
+  /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
   late final Output<List<String>?> sourceServiceAccounts;
 
   /// If source tags are specified, the firewall will apply only to traffic
@@ -553,7 +169,7 @@ class Firewall extends CustomResource {
   /// source IP address within sourceRanges OR the source IP that belongs to
   /// a tag listed in the sourceTags property. The connection does not need
   /// to match both properties for the firewall to apply. For INGRESS traffic,
-  /// one of <span pulumi-lang-nodejs="`sourceRanges`" pulumi-lang-dotnet="`SourceRanges`" pulumi-lang-go="`sourceRanges`" pulumi-lang-python="`source_ranges`" pulumi-lang-yaml="`sourceRanges`" pulumi-lang-java="`sourceRanges`">`source_ranges`</span>, <span pulumi-lang-nodejs="`sourceTags`" pulumi-lang-dotnet="`SourceTags`" pulumi-lang-go="`sourceTags`" pulumi-lang-python="`source_tags`" pulumi-lang-yaml="`sourceTags`" pulumi-lang-java="`sourceTags`">`source_tags`</span> or <span pulumi-lang-nodejs="`sourceServiceAccounts`" pulumi-lang-dotnet="`SourceServiceAccounts`" pulumi-lang-go="`sourceServiceAccounts`" pulumi-lang-python="`source_service_accounts`" pulumi-lang-yaml="`sourceServiceAccounts`" pulumi-lang-java="`sourceServiceAccounts`">`source_service_accounts`</span> is required.
+  /// one of `source_ranges`, `source_tags` or `source_service_accounts` is required.
   late final Output<List<String>?> sourceTags;
 
   /// A list of service accounts indicating sets of instances located in the

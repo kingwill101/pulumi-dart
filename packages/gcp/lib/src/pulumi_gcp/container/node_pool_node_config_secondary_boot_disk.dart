@@ -1,0 +1,3 @@
+library module_container_node_pool_node_config_secondary_boot_disk;
+
+export 'node_pool_node_config_secondary_boot_disk/node_pool_node_config_secondary_boot_disk.dart';

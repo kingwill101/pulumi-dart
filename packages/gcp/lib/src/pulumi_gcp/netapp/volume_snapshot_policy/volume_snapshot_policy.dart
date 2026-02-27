@@ -11,7 +11,7 @@ class VolumeSnapshotPolicy {
   final VolumeSnapshotPolicyDailySchedule? dailySchedule;
 
   /// Enables automated snapshot creation according to defined schedule. Default is false.
-  /// To disable automatic snapshot creation you have to remove the whole<span pulumi-lang-nodejs=" snapshotPolicy " pulumi-lang-dotnet=" SnapshotPolicy " pulumi-lang-go=" snapshotPolicy " pulumi-lang-python=" snapshot_policy " pulumi-lang-yaml=" snapshotPolicy " pulumi-lang-java=" snapshotPolicy "> snapshot_policy </span>block.
+  /// To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
   final bool? enabled;
 
   /// Hourly schedule policy.

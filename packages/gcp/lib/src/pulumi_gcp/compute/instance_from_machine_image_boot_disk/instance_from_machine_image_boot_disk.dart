@@ -9,10 +9,10 @@ class InstanceFromMachineImageBootDisk {
   /// Name with which attached disk will be accessible under /dev/disk/by-id/
   final String? deviceName;
 
-  /// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link,<span pulumi-lang-nodejs=" diskEncryptionKeyRaw " pulumi-lang-dotnet=" DiskEncryptionKeyRaw " pulumi-lang-go=" diskEncryptionKeyRaw " pulumi-lang-python=" disk_encryption_key_raw " pulumi-lang-yaml=" diskEncryptionKeyRaw " pulumi-lang-java=" diskEncryptionKeyRaw "> disk_encryption_key_raw </span>and<span pulumi-lang-nodejs=" diskEncryptionKeyRsa " pulumi-lang-dotnet=" DiskEncryptionKeyRsa " pulumi-lang-go=" diskEncryptionKeyRsa " pulumi-lang-python=" disk_encryption_key_rsa " pulumi-lang-yaml=" diskEncryptionKeyRsa " pulumi-lang-java=" diskEncryptionKeyRsa "> disk_encryption_key_rsa </span>may be set.
+  /// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
   final String? diskEncryptionKeyRaw;
 
-  /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link,<span pulumi-lang-nodejs=" diskEncryptionKeyRaw " pulumi-lang-dotnet=" DiskEncryptionKeyRaw " pulumi-lang-go=" diskEncryptionKeyRaw " pulumi-lang-python=" disk_encryption_key_raw " pulumi-lang-yaml=" diskEncryptionKeyRaw " pulumi-lang-java=" diskEncryptionKeyRaw "> disk_encryption_key_raw </span>and<span pulumi-lang-nodejs=" diskEncryptionKeyRsa " pulumi-lang-dotnet=" DiskEncryptionKeyRsa " pulumi-lang-go=" diskEncryptionKeyRsa " pulumi-lang-python=" disk_encryption_key_rsa " pulumi-lang-yaml=" diskEncryptionKeyRsa " pulumi-lang-java=" diskEncryptionKeyRsa "> disk_encryption_key_rsa </span>may be set.
+  /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
   final String? diskEncryptionKeyRsa;
 
   /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
@@ -30,16 +30,16 @@ class InstanceFromMachineImageBootDisk {
   /// Parameters with which a disk was created alongside the instance.
   final InstanceFromMachineImageBootDiskInitializeParams? initializeParams;
 
-  /// The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with<span pulumi-lang-nodejs=" attachedDisk " pulumi-lang-dotnet=" AttachedDisk " pulumi-lang-go=" attachedDisk " pulumi-lang-python=" attached_disk " pulumi-lang-yaml=" attachedDisk " pulumi-lang-java=" attachedDisk "> attached_disk </span>and only used for specific cases, please don't specify this field without advice from Google.)
+  /// The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
   final String? interface;
 
-  /// The<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link,<span pulumi-lang-nodejs=" diskEncryptionKeyRaw " pulumi-lang-dotnet=" DiskEncryptionKeyRaw " pulumi-lang-go=" diskEncryptionKeyRaw " pulumi-lang-python=" disk_encryption_key_raw " pulumi-lang-yaml=" diskEncryptionKeyRaw " pulumi-lang-java=" diskEncryptionKeyRaw "> disk_encryption_key_raw </span>and<span pulumi-lang-nodejs=" diskEncryptionKeyRsa " pulumi-lang-dotnet=" DiskEncryptionKeyRsa " pulumi-lang-go=" diskEncryptionKeyRsa " pulumi-lang-python=" disk_encryption_key_rsa " pulumi-lang-yaml=" diskEncryptionKeyRsa " pulumi-lang-java=" diskEncryptionKeyRsa "> disk_encryption_key_rsa </span>may be set.
+  /// The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_raw and disk_encryption_key_rsa may be set.
   final String? kmsKeySelfLink;
 
   /// Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
   final String? mode;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the disk attached to this instance.
+  /// The name or self_link of the disk attached to this instance.
   final String? source;
 
   InstanceFromMachineImageBootDisk({

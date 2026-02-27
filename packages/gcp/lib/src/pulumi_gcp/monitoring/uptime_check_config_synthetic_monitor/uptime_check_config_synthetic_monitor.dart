@@ -7,7 +7,7 @@ class UptimeCheckConfigSyntheticMonitor {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedSyntheticMonitorCloudFunctionV2"" pulumi-lang-dotnet=""NestedSyntheticMonitorCloudFunctionV2"" pulumi-lang-go=""nestedSyntheticMonitorCloudFunctionV2"" pulumi-lang-python=""nested_synthetic_monitor_cloud_function_v2"" pulumi-lang-yaml=""nestedSyntheticMonitorCloudFunctionV2"" pulumi-lang-java=""nestedSyntheticMonitorCloudFunctionV2"">"nested_synthetic_monitor_cloud_function_v2"</span>></a>The <span pulumi-lang-nodejs="`cloudFunctionV2`" pulumi-lang-dotnet="`CloudFunctionV2`" pulumi-lang-go="`cloudFunctionV2`" pulumi-lang-python="`cloud_function_v2`" pulumi-lang-yaml="`cloudFunctionV2`" pulumi-lang-java="`cloudFunctionV2`">`cloud_function_v2`</span> block supports:
+  /// <a name="nested_synthetic_monitor_cloud_function_v2"></a>The `cloud_function_v2` block supports:
   final UptimeCheckConfigSyntheticMonitorCloudFunctionV2 cloudFunctionV2;
 
   UptimeCheckConfigSyntheticMonitor({

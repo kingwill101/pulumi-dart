@@ -1,0 +1,3 @@
+library module_dataform_repository_git_remote_settings;
+
+export 'repository_git_remote_settings/repository_git_remote_settings.dart';

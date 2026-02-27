@@ -1,3 +1,0 @@
-library module_dataproc_session_template_jupyter_session;
-
-export 'session_template_jupyter_session.dart';

@@ -1,3 +1,0 @@
-library module_compute_get_region_instance_template_network_performance_config;
-
-export 'get_region_instance_template_network_performance_config.dart';

@@ -46,7 +46,7 @@ class SecurityPolicyRuleArgs {
   /// If it is not provided, the provider project is used.
   final Input<String>? project;
 
-  /// Must be specified if the action is <span pulumi-lang-nodejs=""rateBasedBan"" pulumi-lang-dotnet=""RateBasedBan"" pulumi-lang-go=""rateBasedBan"" pulumi-lang-python=""rate_based_ban"" pulumi-lang-yaml=""rateBasedBan"" pulumi-lang-java=""rateBasedBan"">"rate_based_ban"</span> or "throttle". Cannot be specified for any other actions.
+  /// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
   /// Structure is documented below.
   final Input<SecurityPolicyRuleRateLimitOptions>? rateLimitOptions;
 

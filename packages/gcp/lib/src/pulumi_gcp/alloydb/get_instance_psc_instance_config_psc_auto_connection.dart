@@ -1,0 +1,3 @@
+library module_alloydb_get_instance_psc_instance_config_psc_auto_connection;
+
+export 'get_instance_psc_instance_config_psc_auto_connection/get_instance_psc_instance_config_psc_auto_connection.dart';

@@ -10,7 +10,7 @@ class OsPolicyAssignmentRollout {
 
   /// This determines the minimum duration of
   /// time to wait after the configuration changes are applied through the current
-  /// rollout. A VM continues to count towards the <span pulumi-lang-nodejs="`disruptionBudget`" pulumi-lang-dotnet="`DisruptionBudget`" pulumi-lang-go="`disruptionBudget`" pulumi-lang-python="`disruption_budget`" pulumi-lang-yaml="`disruptionBudget`" pulumi-lang-java="`disruptionBudget`">`disruption_budget`</span> at least
+  /// rollout. A VM continues to count towards the `disruption_budget` at least
   /// until this duration of time has passed after configuration changes are
   /// applied.
   final String minWaitDuration;

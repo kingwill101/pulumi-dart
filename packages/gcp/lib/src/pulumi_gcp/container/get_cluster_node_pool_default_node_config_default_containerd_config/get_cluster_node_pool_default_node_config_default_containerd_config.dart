@@ -11,7 +11,7 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfig {
           GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigPrivateRegistryAccessConfig>
       privateRegistryAccessConfigs;
 
-  /// Configures containerd registry host configuration. Each<span pulumi-lang-nodejs=" registryHosts " pulumi-lang-dotnet=" RegistryHosts " pulumi-lang-go=" registryHosts " pulumi-lang-python=" registry_hosts " pulumi-lang-yaml=" registryHosts " pulumi-lang-java=" registryHosts "> registry_hosts </span>entry represents a hosts.toml file.
+  /// Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
   final List<
           GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHost>
       registryHosts;

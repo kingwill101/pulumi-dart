@@ -1,0 +1,3 @@
+library module_compute_region_health_check_log_config;
+
+export 'region_health_check_log_config/region_health_check_log_config.dart';

@@ -1,3 +1,0 @@
-library module_apigee_environment_iam_member_condition;
-
-export 'environment_iam_member_condition.dart';

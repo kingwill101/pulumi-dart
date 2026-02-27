@@ -1,0 +1,4 @@
+library module_dataproc_autoscaling_policy_iam_policy;
+
+export 'autoscaling_policy_iam_policy/autoscaling_policy_iam_policy.dart';
+export 'autoscaling_policy_iam_policy/autoscaling_policy_iam_policy_args.dart';

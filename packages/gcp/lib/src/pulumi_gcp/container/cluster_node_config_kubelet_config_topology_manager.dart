@@ -1,0 +1,3 @@
+library module_container_cluster_node_config_kubelet_config_topology_manager;
+
+export 'cluster_node_config_kubelet_config_topology_manager/cluster_node_config_kubelet_config_topology_manager.dart';

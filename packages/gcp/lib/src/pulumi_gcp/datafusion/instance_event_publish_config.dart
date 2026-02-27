@@ -1,0 +1,3 @@
+library module_datafusion_instance_event_publish_config;
+
+export 'instance_event_publish_config/instance_event_publish_config.dart';

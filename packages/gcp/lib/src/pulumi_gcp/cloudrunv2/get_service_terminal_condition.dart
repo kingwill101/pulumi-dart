@@ -1,0 +1,3 @@
+library module_cloudrunv2_get_service_terminal_condition;
+
+export 'get_service_terminal_condition/get_service_terminal_condition.dart';

@@ -14,12 +14,12 @@ class CxPageKnowledgeConnectorSettings {
   final bool? enabled;
 
   /// The target flow to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`target`" pulumi-lang-dotnet="`Target`" pulumi-lang-go="`target`" pulumi-lang-python="`target`" pulumi-lang-yaml="`target`" pulumi-lang-java="`target`">`target`</span>: Only one of `targetPage` or `targetFlow` may be set.
+  /// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
   final String? targetFlow;
 
   /// The target page to transition to. Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/pages/<PageID>.
   /// The page must be in the same host flow (the flow that owns this `KnowledgeConnectorSettings`).
-  /// This field is part of a union field <span pulumi-lang-nodejs="`target`" pulumi-lang-dotnet="`Target`" pulumi-lang-go="`target`" pulumi-lang-python="`target`" pulumi-lang-yaml="`target`" pulumi-lang-java="`target`">`target`</span>: Only one of `targetPage` or `targetFlow` may be set.
+  /// This field is part of a union field `target`: Only one of `targetPage` or `targetFlow` may be set.
   final String? targetPage;
 
   /// The fulfillment to be triggered.

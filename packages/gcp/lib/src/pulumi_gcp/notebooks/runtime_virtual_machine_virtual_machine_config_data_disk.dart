@@ -1,0 +1,3 @@
+library module_notebooks_runtime_virtual_machine_virtual_machine_config_data_disk;
+
+export 'runtime_virtual_machine_virtual_machine_config_data_disk/runtime_virtual_machine_virtual_machine_config_data_disk.dart';

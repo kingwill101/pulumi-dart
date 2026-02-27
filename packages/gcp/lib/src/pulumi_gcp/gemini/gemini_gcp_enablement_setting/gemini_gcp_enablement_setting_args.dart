@@ -7,7 +7,7 @@ class GeminiGcpEnablementSettingArgs {
   /// (Optional, Deprecated)
   /// Whether web grounding should be disabled.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`disableWebGrounding`" pulumi-lang-dotnet="`DisableWebGrounding`" pulumi-lang-go="`disableWebGrounding`" pulumi-lang-python="`disable_web_grounding`" pulumi-lang-yaml="`disableWebGrounding`" pulumi-lang-java="`disableWebGrounding`">`disable_web_grounding`</span> is deprecated. Use <span pulumi-lang-nodejs="`webGroundingType`" pulumi-lang-dotnet="`WebGroundingType`" pulumi-lang-go="`webGroundingType`" pulumi-lang-python="`web_grounding_type`" pulumi-lang-yaml="`webGroundingType`" pulumi-lang-java="`webGroundingType`">`web_grounding_type`</span> instead.
+  /// > **Warning:** `disable_web_grounding` is deprecated. Use `web_grounding_type` instead.
   final Input<bool>? disableWebGrounding;
 
   /// Whether customer data sharing should be enabled.
@@ -18,10 +18,10 @@ class GeminiGcpEnablementSettingArgs {
 
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> location;
 
   /// The ID of the project in which the resource belongs.

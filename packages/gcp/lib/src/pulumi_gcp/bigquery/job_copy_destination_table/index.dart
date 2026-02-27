@@ -1,3 +1,0 @@
-library module_bigquery_job_copy_destination_table;
-
-export 'job_copy_destination_table.dart';

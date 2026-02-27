@@ -4,7 +4,7 @@ class AutonomousDatabasePropertiesCustomerContact {
   /// The email address used by Oracle to send notifications regarding databases
   /// and infrastructure.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedPropertiesApexDetails"" pulumi-lang-dotnet=""NestedPropertiesApexDetails"" pulumi-lang-go=""nestedPropertiesApexDetails"" pulumi-lang-python=""nested_properties_apex_details"" pulumi-lang-yaml=""nestedPropertiesApexDetails"" pulumi-lang-java=""nestedPropertiesApexDetails"">"nested_properties_apex_details"</span>></a>The <span pulumi-lang-nodejs="`apexDetails`" pulumi-lang-dotnet="`ApexDetails`" pulumi-lang-go="`apexDetails`" pulumi-lang-python="`apex_details`" pulumi-lang-yaml="`apexDetails`" pulumi-lang-java="`apexDetails`">`apex_details`</span> block contains:
+  /// <a name="nested_properties_apex_details"></a>The `apex_details` block contains:
   final String email;
 
   AutonomousDatabasePropertiesCustomerContact({

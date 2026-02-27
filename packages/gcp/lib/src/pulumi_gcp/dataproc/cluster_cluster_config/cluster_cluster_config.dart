@@ -18,8 +18,8 @@ import '../cluster_cluster_config_worker_config/cluster_cluster_config_worker_co
 
 class ClusterClusterConfig {
   /// The autoscaling policy config associated with the cluster.
-  /// Note that once set, if <span pulumi-lang-nodejs="`autoscalingConfig`" pulumi-lang-dotnet="`AutoscalingConfig`" pulumi-lang-go="`autoscalingConfig`" pulumi-lang-python="`autoscaling_config`" pulumi-lang-yaml="`autoscalingConfig`" pulumi-lang-java="`autoscalingConfig`">`autoscaling_config`</span> is the only field set in <span pulumi-lang-nodejs="`clusterConfig`" pulumi-lang-dotnet="`ClusterConfig`" pulumi-lang-go="`clusterConfig`" pulumi-lang-python="`cluster_config`" pulumi-lang-yaml="`clusterConfig`" pulumi-lang-java="`clusterConfig`">`cluster_config`</span>, it can
-  /// only be removed by setting <span pulumi-lang-nodejs="`policyUri " pulumi-lang-dotnet="`PolicyUri " pulumi-lang-go="`policyUri " pulumi-lang-python="`policy_uri " pulumi-lang-yaml="`policyUri " pulumi-lang-java="`policyUri ">`policy_uri </span>= ""`, rather than removing the whole block.
+  /// Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
+  /// only be removed by setting `policy_uri = ""`, rather than removing the whole block.
   /// Structure defined below.
   final ClusterClusterConfigAutoscalingConfig? autoscalingConfig;
 
@@ -28,7 +28,7 @@ class ClusterClusterConfig {
   final List<ClusterClusterConfigAuxiliaryNodeGroup>? auxiliaryNodeGroups;
 
   /// The name of the cloud storage bucket ultimately used to house the staging data
-  /// for the cluster. If <span pulumi-lang-nodejs="`stagingBucket`" pulumi-lang-dotnet="`StagingBucket`" pulumi-lang-go="`stagingBucket`" pulumi-lang-python="`staging_bucket`" pulumi-lang-yaml="`stagingBucket`" pulumi-lang-java="`stagingBucket`">`staging_bucket`</span> is specified, it will contain this value, otherwise
+  /// for the cluster. If `staging_bucket` is specified, it will contain this value, otherwise
   /// it will be the auto generated name.
   final String? bucket;
 
@@ -70,7 +70,7 @@ class ClusterClusterConfig {
 
   /// The Google Compute Engine config settings for the additional
   /// instances in a cluster. Structure defined below.
-  /// * **NOTE** : <span pulumi-lang-nodejs="`preemptibleWorkerConfig`" pulumi-lang-dotnet="`PreemptibleWorkerConfig`" pulumi-lang-go="`preemptibleWorkerConfig`" pulumi-lang-python="`preemptible_worker_config`" pulumi-lang-yaml="`preemptibleWorkerConfig`" pulumi-lang-java="`preemptibleWorkerConfig`">`preemptible_worker_config`</span> is
+  /// * **NOTE** : `preemptible_worker_config` is
   /// an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
   /// such for legacy/compatibility reasons.
   final ClusterClusterConfigPreemptibleWorkerConfig? preemptibleWorkerConfig;
@@ -84,7 +84,7 @@ class ClusterClusterConfig {
 
   /// The Cloud Storage staging bucket used to stage files,
   /// such as Hadoop jars, between client machines and the cluster.
-  /// Note: If you don't explicitly specify a <span pulumi-lang-nodejs="`stagingBucket`" pulumi-lang-dotnet="`StagingBucket`" pulumi-lang-go="`stagingBucket`" pulumi-lang-python="`staging_bucket`" pulumi-lang-yaml="`stagingBucket`" pulumi-lang-java="`stagingBucket`">`staging_bucket`</span>
+  /// Note: If you don't explicitly specify a `staging_bucket`
   /// then GCP will auto create / assign one for you. However, you are not guaranteed
   /// an auto generated bucket which is solely dedicated to your cluster; it may be shared
   /// with other clusters in the same region/zone also choosing to use the auto generation
@@ -93,7 +93,7 @@ class ClusterClusterConfig {
 
   /// The Cloud Storage temp bucket used to store ephemeral cluster
   /// and jobs data, such as Spark and MapReduce history files.
-  /// Note: If you don't explicitly specify a <span pulumi-lang-nodejs="`tempBucket`" pulumi-lang-dotnet="`TempBucket`" pulumi-lang-go="`tempBucket`" pulumi-lang-python="`temp_bucket`" pulumi-lang-yaml="`tempBucket`" pulumi-lang-java="`tempBucket`">`temp_bucket`</span> then GCP will auto create / assign one for you.
+  /// Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
   final String? tempBucket;
 
   /// The Google Compute Engine config settings for the worker instances

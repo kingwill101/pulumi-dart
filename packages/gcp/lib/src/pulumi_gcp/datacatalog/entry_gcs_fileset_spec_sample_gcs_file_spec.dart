@@ -1,0 +1,3 @@
+library module_datacatalog_entry_gcs_fileset_spec_sample_gcs_file_spec;
+
+export 'entry_gcs_fileset_spec_sample_gcs_file_spec/entry_gcs_fileset_spec_sample_gcs_file_spec.dart';

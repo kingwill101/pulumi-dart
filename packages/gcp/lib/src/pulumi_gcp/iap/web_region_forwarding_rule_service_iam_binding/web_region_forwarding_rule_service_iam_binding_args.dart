@@ -12,7 +12,7 @@ class WebRegionForwardingRuleServiceIamBindingArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final Input<String> forwardingRuleRegionServiceName;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -36,7 +36,7 @@ class WebRegionForwardingRuleServiceIamBindingArgs {
   final Input<String>? region;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.iap.WebRegionForwardingRuleServiceIamBinding`" pulumi-lang-dotnet="`gcp.iap.WebRegionForwardingRuleServiceIamBinding`" pulumi-lang-go="`iap.WebRegionForwardingRuleServiceIamBinding`" pulumi-lang-python="`iap.WebRegionForwardingRuleServiceIamBinding`" pulumi-lang-yaml="`gcp.iap.WebRegionForwardingRuleServiceIamBinding`" pulumi-lang-java="`gcp.iap.WebRegionForwardingRuleServiceIamBinding`">`gcp.iap.WebRegionForwardingRuleServiceIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.iap.WebRegionForwardingRuleServiceIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

@@ -1,3 +1,0 @@
-library module_blockchainnodeengine_blockchain_nodes_ethereum_details_additional_endpoint;
-
-export 'blockchain_nodes_ethereum_details_additional_endpoint.dart';

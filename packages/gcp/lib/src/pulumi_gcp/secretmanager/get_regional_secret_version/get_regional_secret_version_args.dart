@@ -9,7 +9,7 @@ class GetRegionalSecretVersionArgs {
   final Input<bool>? isSecretDataBase64;
 
   /// Location of Secret Manager regional secret resource.
-  /// It must be provided when the <span pulumi-lang-nodejs="`secret`" pulumi-lang-dotnet="`Secret`" pulumi-lang-go="`secret`" pulumi-lang-python="`secret`" pulumi-lang-yaml="`secret`" pulumi-lang-java="`secret`">`secret`</span> field provided consists of only the name of the regional secret.
+  /// It must be provided when the `secret` field provided consists of only the name of the regional secret.
   final Input<String>? location;
 
   /// The project to get the secret version for. If it

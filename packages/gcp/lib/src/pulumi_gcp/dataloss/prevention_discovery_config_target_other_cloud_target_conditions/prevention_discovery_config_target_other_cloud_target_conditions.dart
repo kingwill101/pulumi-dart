@@ -7,7 +7,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditions {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedTargetsOtherCloudTargetConditionsAmazonS3BucketConditions"" pulumi-lang-dotnet=""NestedTargetsOtherCloudTargetConditionsAmazonS3BucketConditions"" pulumi-lang-go=""nestedTargetsOtherCloudTargetConditionsAmazonS3BucketConditions"" pulumi-lang-python=""nested_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"" pulumi-lang-yaml=""nestedTargetsOtherCloudTargetConditionsAmazonS3BucketConditions"" pulumi-lang-java=""nestedTargetsOtherCloudTargetConditionsAmazonS3BucketConditions"">"nested_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"</span>></a>The <span pulumi-lang-nodejs="`amazonS3BucketConditions`" pulumi-lang-dotnet="`AmazonS3BucketConditions`" pulumi-lang-go="`amazonS3BucketConditions`" pulumi-lang-python="`amazon_s3_bucket_conditions`" pulumi-lang-yaml="`amazonS3BucketConditions`" pulumi-lang-java="`amazonS3BucketConditions`">`amazon_s3_bucket_conditions`</span> block supports:
+  /// <a name="nested_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"></a>The `amazon_s3_bucket_conditions` block supports:
   final PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions?
       amazonS3BucketConditions;
 

@@ -21,7 +21,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
   /// target CPU utilization to 80, you should set
   /// autoscaling_metric_specs.metric_name
   /// to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and
-  /// autoscaling_metric_specs.target to <span pulumi-lang-nodejs="`80`" pulumi-lang-dotnet="`80`" pulumi-lang-go="`80`" pulumi-lang-python="`80`" pulumi-lang-yaml="`80`" pulumi-lang-java="`80`">`80`</span>.
+  /// autoscaling_metric_specs.target to `80`.
   /// Structure is documented below.
   final List<
           AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec>?
@@ -37,14 +37,8 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
   /// will error, but if deployment succeeds then the ability to scale to that
   /// many replicas is guaranteed (barring service outages). If traffic increases
   /// beyond what its replicas at maximum may handle, a portion of the traffic
-  /// will be dropped. If this value is not provided, will use<span pulumi-lang-nodejs="
-  /// minReplicaCount " pulumi-lang-dotnet="
-  /// MinReplicaCount " pulumi-lang-go="
-  /// minReplicaCount " pulumi-lang-python="
-  /// min_replica_count " pulumi-lang-yaml="
-  /// minReplicaCount " pulumi-lang-java="
-  /// minReplicaCount ">
-  /// min_replica_count </span>as the default value.
+  /// will be dropped. If this value is not provided, will use
+  /// min_replica_count as the default value.
   /// The value of this field impacts the charge against Vertex CPU and GPU
   /// quotas. Specifically, you will be charged for (max_replica_count *
   /// number of cores in the selected machine type) and (max_replica_count *
@@ -59,22 +53,10 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
 
   /// Number of required available replicas for the deployment to succeed.
   /// This field is only needed when partial deployment/mutation is
-  /// desired. If set, the deploy/mutate operation will succeed once<span pulumi-lang-nodejs="
-  /// availableReplicaCount " pulumi-lang-dotnet="
-  /// AvailableReplicaCount " pulumi-lang-go="
-  /// availableReplicaCount " pulumi-lang-python="
-  /// available_replica_count " pulumi-lang-yaml="
-  /// availableReplicaCount " pulumi-lang-java="
-  /// availableReplicaCount ">
-  /// available_replica_count </span>reaches required_replica_count, and the rest of
-  /// the replicas will be retried. If not set, the default<span pulumi-lang-nodejs="
-  /// requiredReplicaCount " pulumi-lang-dotnet="
-  /// RequiredReplicaCount " pulumi-lang-go="
-  /// requiredReplicaCount " pulumi-lang-python="
-  /// required_replica_count " pulumi-lang-yaml="
-  /// requiredReplicaCount " pulumi-lang-java="
-  /// requiredReplicaCount ">
-  /// required_replica_count </span>will be min_replica_count.
+  /// desired. If set, the deploy/mutate operation will succeed once
+  /// available_replica_count reaches required_replica_count, and the rest of
+  /// the replicas will be retried. If not set, the default
+  /// required_replica_count will be min_replica_count.
   final int? requiredReplicaCount;
 
   /// If true, schedule the deployment workload on [spot

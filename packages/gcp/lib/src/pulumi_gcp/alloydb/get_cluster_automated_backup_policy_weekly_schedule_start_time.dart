@@ -1,0 +1,3 @@
+library module_alloydb_get_cluster_automated_backup_policy_weekly_schedule_start_time;
+
+export 'get_cluster_automated_backup_policy_weekly_schedule_start_time/get_cluster_automated_backup_policy_weekly_schedule_start_time.dart';

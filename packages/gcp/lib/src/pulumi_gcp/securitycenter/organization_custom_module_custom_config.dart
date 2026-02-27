@@ -1,0 +1,3 @@
+library module_securitycenter_organization_custom_module_custom_config;
+
+export 'organization_custom_module_custom_config/organization_custom_module_custom_config.dart';

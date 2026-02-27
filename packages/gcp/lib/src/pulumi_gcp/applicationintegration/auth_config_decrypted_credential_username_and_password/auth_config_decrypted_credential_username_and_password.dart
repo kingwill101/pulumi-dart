@@ -3,7 +3,7 @@
 class AuthConfigDecryptedCredentialUsernameAndPassword {
   /// Password to be used.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedDecryptedCredentialOauth2AuthorizationCode"" pulumi-lang-dotnet=""NestedDecryptedCredentialOauth2AuthorizationCode"" pulumi-lang-go=""nestedDecryptedCredentialOauth2AuthorizationCode"" pulumi-lang-python=""nested_decrypted_credential_oauth2_authorization_code"" pulumi-lang-yaml=""nestedDecryptedCredentialOauth2AuthorizationCode"" pulumi-lang-java=""nestedDecryptedCredentialOauth2AuthorizationCode"">"nested_decrypted_credential_oauth2_authorization_code"</span>></a>The <span pulumi-lang-nodejs="`oauth2AuthorizationCode`" pulumi-lang-dotnet="`Oauth2AuthorizationCode`" pulumi-lang-go="`oauth2AuthorizationCode`" pulumi-lang-python="`oauth2_authorization_code`" pulumi-lang-yaml="`oauth2AuthorizationCode`" pulumi-lang-java="`oauth2AuthorizationCode`">`oauth2_authorization_code`</span> block supports:
+  /// <a name="nested_decrypted_credential_oauth2_authorization_code"></a>The `oauth2_authorization_code` block supports:
   final String? password;
 
   /// Username to be used.

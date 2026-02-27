@@ -1,0 +1,3 @@
+library module_kms_crypto_key_version_attestation;
+
+export 'crypto_key_version_attestation/crypto_key_version_attestation.dart';

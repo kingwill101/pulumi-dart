@@ -1,0 +1,3 @@
+library module_cloudrunv2_get_service_template_service_mesh;
+
+export 'get_service_template_service_mesh/get_service_template_service_mesh.dart';

@@ -1,3 +1,0 @@
-library module_iam_workforce_pool_access_restrictions;
-
-export 'workforce_pool_access_restrictions.dart';

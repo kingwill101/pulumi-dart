@@ -1,3 +1,0 @@
-library module_certificatemanager_trust_config_trust_store_trust_anchor;
-
-export 'trust_config_trust_store_trust_anchor.dart';

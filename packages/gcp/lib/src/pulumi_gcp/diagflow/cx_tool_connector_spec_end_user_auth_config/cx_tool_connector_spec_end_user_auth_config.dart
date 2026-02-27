@@ -4,16 +4,16 @@ import '../cx_tool_connector_spec_end_user_auth_config_oauth2_auth_code_config/c
 import '../cx_tool_connector_spec_end_user_auth_config_oauth2_jwt_bearer_config/cx_tool_connector_spec_end_user_auth_config_oauth2_jwt_bearer_config.dart';
 
 class CxToolConnectorSpecEndUserAuthConfig {
-  /// Oauth 2.0 Authorization Code authentication. This field is part of a union field <span pulumi-lang-nodejs="`endUserAuthConfig`" pulumi-lang-dotnet="`EndUserAuthConfig`" pulumi-lang-go="`endUserAuthConfig`" pulumi-lang-python="`end_user_auth_config`" pulumi-lang-yaml="`endUserAuthConfig`" pulumi-lang-java="`endUserAuthConfig`">`end_user_auth_config`</span>. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+  /// Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
   /// Structure is documented below.
   final CxToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig?
       oauth2AuthCodeConfig;
 
-  /// JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field <span pulumi-lang-nodejs="`endUserAuthConfig`" pulumi-lang-dotnet="`EndUserAuthConfig`" pulumi-lang-go="`endUserAuthConfig`" pulumi-lang-python="`end_user_auth_config`" pulumi-lang-yaml="`endUserAuthConfig`" pulumi-lang-java="`endUserAuthConfig`">`end_user_auth_config`</span>. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
+  /// JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig"" pulumi-lang-dotnet=""NestedConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig"" pulumi-lang-go=""nestedConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig"" pulumi-lang-python=""nested_connector_spec_end_user_auth_config_oauth2_auth_code_config"" pulumi-lang-yaml=""nestedConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig"" pulumi-lang-java=""nestedConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig"">"nested_connector_spec_end_user_auth_config_oauth2_auth_code_config"</span>></a>The <span pulumi-lang-nodejs="`oauth2AuthCodeConfig`" pulumi-lang-dotnet="`Oauth2AuthCodeConfig`" pulumi-lang-go="`oauth2AuthCodeConfig`" pulumi-lang-python="`oauth2_auth_code_config`" pulumi-lang-yaml="`oauth2AuthCodeConfig`" pulumi-lang-java="`oauth2AuthCodeConfig`">`oauth2_auth_code_config`</span> block supports:
+  /// <a name="nested_connector_spec_end_user_auth_config_oauth2_auth_code_config"></a>The `oauth2_auth_code_config` block supports:
   final CxToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig?
       oauth2JwtBearerConfig;
 

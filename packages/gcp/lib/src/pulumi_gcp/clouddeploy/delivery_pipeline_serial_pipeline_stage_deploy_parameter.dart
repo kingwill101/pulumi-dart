@@ -1,0 +1,3 @@
+library module_clouddeploy_delivery_pipeline_serial_pipeline_stage_deploy_parameter;
+
+export 'delivery_pipeline_serial_pipeline_stage_deploy_parameter/delivery_pipeline_serial_pipeline_stage_deploy_parameter.dart';

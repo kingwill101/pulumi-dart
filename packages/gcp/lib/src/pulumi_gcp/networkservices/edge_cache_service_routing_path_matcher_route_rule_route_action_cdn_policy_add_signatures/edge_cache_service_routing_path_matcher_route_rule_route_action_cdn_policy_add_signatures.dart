@@ -24,7 +24,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
   final String? tokenQueryParameter;
 
   /// The duration the token is valid starting from the moment the token is first generated.
-  /// Defaults to <span pulumi-lang-nodejs="`86400s`" pulumi-lang-dotnet="`86400s`" pulumi-lang-go="`86400s`" pulumi-lang-python="`86400s`" pulumi-lang-yaml="`86400s`" pulumi-lang-java="`86400s`">`86400s`</span> (1 day).
+  /// Defaults to `86400s` (1 day).
   /// The TTL must be >= 0 and <= 604,800 seconds (1 week).
   /// This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".

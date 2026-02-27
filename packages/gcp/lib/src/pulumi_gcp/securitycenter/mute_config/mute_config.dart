@@ -16,123 +16,7 @@ import 'mute_config_args.dart';
 /// ### Scc Mute Config
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = new gcp.securitycenter.MuteConfig("default", {
-/// muteConfigId: "my-config",
-/// parent: "organizations/123456789",
-/// filter: "category: \"OS_VULNERABILITY\"",
-/// description: "My Mute Config",
-/// type: "DYNAMIC",
-/// expiryTime: "2215-02-03T15:01:23Z",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default = gcp.securitycenter.MuteConfig("default",
-/// mute_config_id="my-config",
-/// parent="organizations/123456789",
-/// filter="category: \"OS_VULNERABILITY\"",
-/// description="My Mute Config",
-/// type="DYNAMIC",
-/// expiry_time="2215-02-03T15:01:23Z")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var @default = new Gcp.SecurityCenter.MuteConfig("default", new()
-/// {
-/// MuteConfigId = "my-config",
-/// Parent = "organizations/123456789",
-/// Filter = "category: \"OS_VULNERABILITY\"",
-/// Description = "My Mute Config",
-/// Type = "DYNAMIC",
-/// ExpiryTime = "2215-02-03T15:01:23Z",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := securitycenter.NewMuteConfig(ctx, "default", &securitycenter.MuteConfigArgs{
-/// MuteConfigId: pulumi.String("my-config"),
-/// Parent:       pulumi.String("organizations/123456789"),
-/// Filter:       pulumi.String("category: \"OS_VULNERABILITY\""),
-/// Description:  pulumi.String("My Mute Config"),
-/// Type:         pulumi.String("DYNAMIC"),
-/// ExpiryTime:   pulumi.String("2215-02-03T15:01:23Z"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.securitycenter.MuteConfig;
-/// import com.pulumi.gcp.securitycenter.MuteConfigArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var default_ = new MuteConfig("default", MuteConfigArgs.builder()
-/// .muteConfigId("my-config")
-/// .parent("organizations/123456789")
-/// .filter("category: \"OS_VULNERABILITY\"")
-/// .description("My Mute Config")
-/// .type("DYNAMIC")
-/// .expiryTime("2215-02-03T15:01:23Z")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// default:
-/// type: gcp:securitycenter:MuteConfig
-/// properties:
-/// muteConfigId: my-config
-/// parent: organizations/123456789
-/// filter: 'category: "OS_VULNERABILITY"'
-/// description: My Mute Config
-/// type: DYNAMIC
-/// expiryTime: 2215-02-03T15:01:23Z
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -181,8 +65,8 @@ class MuteConfig extends CustomResource {
   late final Output<String> name;
 
   /// Resource name of the new mute configs's parent. Its format is
-  /// "organizations/<span pulumi-lang-nodejs="[organizationId]" pulumi-lang-dotnet="[OrganizationId]" pulumi-lang-go="[organizationId]" pulumi-lang-python="[organization_id]" pulumi-lang-yaml="[organizationId]" pulumi-lang-java="[organizationId]">[organization_id]</span>", "folders/<span pulumi-lang-nodejs="[folderId]" pulumi-lang-dotnet="[FolderId]" pulumi-lang-go="[folderId]" pulumi-lang-python="[folder_id]" pulumi-lang-yaml="[folderId]" pulumi-lang-java="[folderId]">[folder_id]</span>", or
-  /// "projects/<span pulumi-lang-nodejs="[projectId]" pulumi-lang-dotnet="[ProjectId]" pulumi-lang-go="[projectId]" pulumi-lang-python="[project_id]" pulumi-lang-yaml="[projectId]" pulumi-lang-java="[projectId]">[project_id]</span>".
+  /// "organizations/[organization_id]", "folders/[folder_id]", or
+  /// "projects/[project_id]".
   late final Output<String> parent;
 
   /// The type of the mute config, which determines what type of mute state the config affects.

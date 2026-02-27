@@ -1,3 +1,0 @@
-library module_bigqueryanalyticshub_listing_bigquery_dataset_effective_replica;
-
-export 'listing_bigquery_dataset_effective_replica.dart';

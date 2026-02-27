@@ -1,3 +1,0 @@
-library module_backupdisasterrecovery_restore_workload_target_resource_gcp_resource;
-
-export 'restore_workload_target_resource_gcp_resource.dart';

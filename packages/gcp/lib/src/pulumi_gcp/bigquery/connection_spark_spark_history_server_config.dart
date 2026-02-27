@@ -1,0 +1,3 @@
+library module_bigquery_connection_spark_spark_history_server_config;
+
+export 'connection_spark_spark_history_server_config/connection_spark_spark_history_server_config.dart';

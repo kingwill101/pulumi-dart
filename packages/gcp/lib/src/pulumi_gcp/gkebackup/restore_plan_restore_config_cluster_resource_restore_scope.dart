@@ -1,0 +1,3 @@
+library module_gkebackup_restore_plan_restore_config_cluster_resource_restore_scope;
+
+export 'restore_plan_restore_config_cluster_resource_restore_scope/restore_plan_restore_config_cluster_resource_restore_scope.dart';

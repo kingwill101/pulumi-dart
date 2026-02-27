@@ -1,3 +1,0 @@
-library module_datastream_stream_rule_set_customization_rule;
-
-export 'stream_rule_set_customization_rule.dart';

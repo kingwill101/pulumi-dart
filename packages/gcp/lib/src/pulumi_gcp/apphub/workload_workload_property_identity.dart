@@ -1,0 +1,3 @@
+library module_apphub_workload_workload_property_identity;
+
+export 'workload_workload_property_identity/workload_workload_property_identity.dart';

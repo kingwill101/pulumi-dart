@@ -3,7 +3,7 @@
 class AppHostingBackendManagedResourceRunService {
   /// (Output)
   /// The name of the Cloud Run
-  /// [<span pulumi-lang-nodejs="`service`" pulumi-lang-dotnet="`Service`" pulumi-lang-go="`service`" pulumi-lang-python="`service`" pulumi-lang-yaml="`service`" pulumi-lang-java="`service`">`service`</span>](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service),
+  /// [`service`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service),
   /// in the format:
   /// projects/{project}/locations/{location}/services/{serviceId}
   final String? service;

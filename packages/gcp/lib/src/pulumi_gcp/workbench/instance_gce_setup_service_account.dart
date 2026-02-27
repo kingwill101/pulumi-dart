@@ -1,0 +1,3 @@
+library module_workbench_instance_gce_setup_service_account;
+
+export 'instance_gce_setup_service_account/instance_gce_setup_service_account.dart';

@@ -1,0 +1,3 @@
+library module_compute_instance_from_template_boot_disk;
+
+export 'instance_from_template_boot_disk/instance_from_template_boot_disk.dart';

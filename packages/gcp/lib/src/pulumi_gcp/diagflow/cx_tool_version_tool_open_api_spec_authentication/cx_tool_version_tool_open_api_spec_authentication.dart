@@ -7,23 +7,23 @@ import '../cx_tool_version_tool_open_api_spec_authentication_service_agent_auth_
 
 class CxToolVersionToolOpenApiSpecAuthentication {
   /// Config for API key auth.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`authConfig`" pulumi-lang-dotnet="`AuthConfig`" pulumi-lang-go="`authConfig`" pulumi-lang-python="`auth_config`" pulumi-lang-yaml="`authConfig`" pulumi-lang-java="`authConfig`">`auth_config`</span>: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+  /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
   final CxToolVersionToolOpenApiSpecAuthenticationApiKeyConfig? apiKeyConfig;
 
   /// Config for bearer token auth.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`authConfig`" pulumi-lang-dotnet="`AuthConfig`" pulumi-lang-go="`authConfig`" pulumi-lang-python="`auth_config`" pulumi-lang-yaml="`authConfig`" pulumi-lang-java="`authConfig`">`auth_config`</span>: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+  /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
   final CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig?
       bearerTokenConfig;
 
   /// Config for OAuth.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`authConfig`" pulumi-lang-dotnet="`AuthConfig`" pulumi-lang-go="`authConfig`" pulumi-lang-python="`auth_config`" pulumi-lang-yaml="`authConfig`" pulumi-lang-java="`authConfig`">`auth_config`</span>: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+  /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
   final CxToolVersionToolOpenApiSpecAuthenticationOauthConfig? oauthConfig;
 
   /// Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`authConfig`" pulumi-lang-dotnet="`AuthConfig`" pulumi-lang-go="`authConfig`" pulumi-lang-python="`auth_config`" pulumi-lang-yaml="`authConfig`" pulumi-lang-java="`authConfig`">`auth_config`</span>: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
+  /// This field is part of a union field `auth_config`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
   final CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig?
       serviceAgentAuthConfig;

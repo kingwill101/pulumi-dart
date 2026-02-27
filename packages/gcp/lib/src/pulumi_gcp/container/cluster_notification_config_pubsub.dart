@@ -1,0 +1,3 @@
+library module_container_cluster_notification_config_pubsub;
+
+export 'cluster_notification_config_pubsub/cluster_notification_config_pubsub.dart';

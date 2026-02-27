@@ -1,3 +1,0 @@
-library module_oracledatabase_autonomous_database_properties_customer_contact;
-
-export 'autonomous_database_properties_customer_contact.dart';

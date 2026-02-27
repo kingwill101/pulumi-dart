@@ -1,0 +1,3 @@
+library module_bigquery_get_table_external_catalog_table_option;
+
+export 'get_table_external_catalog_table_option/get_table_external_catalog_table_option.dart';

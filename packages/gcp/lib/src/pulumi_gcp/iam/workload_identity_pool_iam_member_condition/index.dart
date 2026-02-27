@@ -1,3 +1,0 @@
-library module_iam_workload_identity_pool_iam_member_condition;
-
-export 'workload_identity_pool_iam_member_condition.dart';

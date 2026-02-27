@@ -1,0 +1,3 @@
+library module_compute_region_per_instance_config_preserved_state;
+
+export 'region_per_instance_config_preserved_state/region_per_instance_config_preserved_state.dart';

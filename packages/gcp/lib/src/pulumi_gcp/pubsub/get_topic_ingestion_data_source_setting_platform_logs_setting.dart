@@ -1,0 +1,3 @@
+library module_pubsub_get_topic_ingestion_data_source_setting_platform_logs_setting;
+
+export 'get_topic_ingestion_data_source_setting_platform_logs_setting/get_topic_ingestion_data_source_setting_platform_logs_setting.dart';

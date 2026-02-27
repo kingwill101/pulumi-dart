@@ -1,0 +1,3 @@
+library module_ces_app_version_snapshot_tool_data_store_tool;
+
+export 'app_version_snapshot_tool_data_store_tool/app_version_snapshot_tool_data_store_tool.dart';

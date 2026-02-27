@@ -1,3 +1,0 @@
-library module_compute_region_url_map_path_matcher_route_rule_match_rule_metadata_filter_filter_label;
-
-export 'region_url_map_path_matcher_route_rule_match_rule_metadata_filter_filter_label.dart';

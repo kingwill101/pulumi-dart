@@ -1,3 +1,0 @@
-library module_composer_environment_config_workloads_config_web_server;
-
-export 'environment_config_workloads_config_web_server.dart';

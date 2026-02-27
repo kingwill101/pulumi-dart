@@ -1,3 +1,0 @@
-library module_gkebackup_backup_plan_backup_config_encryption_key;
-
-export 'backup_plan_backup_config_encryption_key.dart';

@@ -12,7 +12,7 @@ class SloArgs {
   /// SLIs are used to measure and calculate the quality of the Service's
   /// performance with respect to a single aspect of service quality.
   /// Exactly one of the following must be set:
-  /// <span pulumi-lang-nodejs="`basicSli`" pulumi-lang-dotnet="`BasicSli`" pulumi-lang-go="`basicSli`" pulumi-lang-python="`basic_sli`" pulumi-lang-yaml="`basicSli`" pulumi-lang-java="`basicSli`">`basic_sli`</span>, <span pulumi-lang-nodejs="`requestBasedSli`" pulumi-lang-dotnet="`RequestBasedSli`" pulumi-lang-go="`requestBasedSli`" pulumi-lang-python="`request_based_sli`" pulumi-lang-yaml="`requestBasedSli`" pulumi-lang-java="`requestBasedSli`">`request_based_sli`</span>, <span pulumi-lang-nodejs="`windowsBasedSli`" pulumi-lang-dotnet="`WindowsBasedSli`" pulumi-lang-go="`windowsBasedSli`" pulumi-lang-python="`windows_based_sli`" pulumi-lang-yaml="`windowsBasedSli`" pulumi-lang-java="`windowsBasedSli`">`windows_based_sli`</span>
+  /// `basic_sli`, `request_based_sli`, `windows_based_sli`
   /// Structure is documented below.
   final Input<SloBasicSli>? basicSli;
 
@@ -38,7 +38,7 @@ class SloArgs {
   /// It is used to measure and calculate the quality of the Service's
   /// performance with respect to a single aspect of service quality.
   /// Exactly one of the following must be set:
-  /// <span pulumi-lang-nodejs="`basicSli`" pulumi-lang-dotnet="`BasicSli`" pulumi-lang-go="`basicSli`" pulumi-lang-python="`basic_sli`" pulumi-lang-yaml="`basicSli`" pulumi-lang-java="`basicSli`">`basic_sli`</span>, <span pulumi-lang-nodejs="`requestBasedSli`" pulumi-lang-dotnet="`RequestBasedSli`" pulumi-lang-go="`requestBasedSli`" pulumi-lang-python="`request_based_sli`" pulumi-lang-yaml="`requestBasedSli`" pulumi-lang-java="`requestBasedSli`">`request_based_sli`</span>, <span pulumi-lang-nodejs="`windowsBasedSli`" pulumi-lang-dotnet="`WindowsBasedSli`" pulumi-lang-go="`windowsBasedSli`" pulumi-lang-python="`windows_based_sli`" pulumi-lang-yaml="`windowsBasedSli`" pulumi-lang-java="`windowsBasedSli`">`windows_based_sli`</span>
+  /// `basic_sli`, `request_based_sli`, `windows_based_sli`
   /// Structure is documented below.
   final Input<SloRequestBasedSli>? requestBasedSli;
 
@@ -59,20 +59,14 @@ class SloArgs {
   /// must begin with a letter.
   final Input<Map<String, String>>? userLabels;
 
-  /// A windows-based SLI defines the criteria for time windows.<span pulumi-lang-nodejs="
-  /// goodService " pulumi-lang-dotnet="
-  /// GoodService " pulumi-lang-go="
-  /// goodService " pulumi-lang-python="
-  /// good_service " pulumi-lang-yaml="
-  /// goodService " pulumi-lang-java="
-  /// goodService ">
-  /// good_service </span>is defined based off the count of these time windows
+  /// A windows-based SLI defines the criteria for time windows.
+  /// good_service is defined based off the count of these time windows
   /// for which the provided service was of good quality.
   /// A SLI describes a good service. It is used to measure and calculate
   /// the quality of the Service's performance with respect to a single
   /// aspect of service quality.
   /// Exactly one of the following must be set:
-  /// <span pulumi-lang-nodejs="`basicSli`" pulumi-lang-dotnet="`BasicSli`" pulumi-lang-go="`basicSli`" pulumi-lang-python="`basic_sli`" pulumi-lang-yaml="`basicSli`" pulumi-lang-java="`basicSli`">`basic_sli`</span>, <span pulumi-lang-nodejs="`requestBasedSli`" pulumi-lang-dotnet="`RequestBasedSli`" pulumi-lang-go="`requestBasedSli`" pulumi-lang-python="`request_based_sli`" pulumi-lang-yaml="`requestBasedSli`" pulumi-lang-java="`requestBasedSli`">`request_based_sli`</span>, <span pulumi-lang-nodejs="`windowsBasedSli`" pulumi-lang-dotnet="`WindowsBasedSli`" pulumi-lang-go="`windowsBasedSli`" pulumi-lang-python="`windows_based_sli`" pulumi-lang-yaml="`windowsBasedSli`" pulumi-lang-java="`windowsBasedSli`">`windows_based_sli`</span>
+  /// `basic_sli`, `request_based_sli`, `windows_based_sli`
   /// Structure is documented below.
   final Input<SloWindowsBasedSli>? windowsBasedSli;
 

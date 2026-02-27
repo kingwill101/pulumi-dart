@@ -8,13 +8,13 @@ class MembershipIamMemberArgs {
   final Input<MembershipIamMemberCondition>? condition;
 
   /// Location of the membership.
-  /// The default value is <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span>.
+  /// The default value is `global`.
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final Input<String>? location;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -36,7 +36,7 @@ class MembershipIamMemberArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.gkehub.MembershipIamBinding`" pulumi-lang-dotnet="`gcp.gkehub.MembershipIamBinding`" pulumi-lang-go="`gkehub.MembershipIamBinding`" pulumi-lang-python="`gkehub.MembershipIamBinding`" pulumi-lang-yaml="`gcp.gkehub.MembershipIamBinding`" pulumi-lang-java="`gcp.gkehub.MembershipIamBinding`">`gcp.gkehub.MembershipIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.gkehub.MembershipIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

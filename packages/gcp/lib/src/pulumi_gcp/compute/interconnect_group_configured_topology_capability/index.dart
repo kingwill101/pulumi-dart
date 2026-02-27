@@ -1,3 +1,0 @@
-library module_compute_interconnect_group_configured_topology_capability;
-
-export 'interconnect_group_configured_topology_capability.dart';

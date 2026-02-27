@@ -1,3 +1,0 @@
-library module_compute_instance_from_template_reservation_affinity;
-
-export 'instance_from_template_reservation_affinity.dart';

@@ -1,3 +1,0 @@
-library module_bigquery_get_table_external_data_configuration_json_option;
-
-export 'get_table_external_data_configuration_json_option.dart';

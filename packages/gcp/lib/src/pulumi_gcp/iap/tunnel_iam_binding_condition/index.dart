@@ -1,3 +1,0 @@
-library module_iap_tunnel_iam_binding_condition;
-
-export 'tunnel_iam_binding_condition.dart';

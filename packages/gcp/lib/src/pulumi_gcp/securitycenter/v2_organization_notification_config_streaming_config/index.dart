@@ -1,3 +1,0 @@
-library module_securitycenter_v2_organization_notification_config_streaming_config;
-
-export 'v2_organization_notification_config_streaming_config.dart';

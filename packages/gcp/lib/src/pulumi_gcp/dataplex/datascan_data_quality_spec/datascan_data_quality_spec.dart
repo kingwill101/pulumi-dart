@@ -21,7 +21,7 @@ class DatascanDataQualitySpec {
 
   /// The percentage of the records to be selected from the dataset for DataScan.
   /// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
-  /// Sampling is not applied if <span pulumi-lang-nodejs="`samplingPercent`" pulumi-lang-dotnet="`SamplingPercent`" pulumi-lang-go="`samplingPercent`" pulumi-lang-python="`sampling_percent`" pulumi-lang-yaml="`samplingPercent`" pulumi-lang-java="`samplingPercent`">`sampling_percent`</span> is not specified, 0 or 100.
+  /// Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
   final double? samplingPercent;
 
   DatascanDataQualitySpec({

@@ -1,0 +1,3 @@
+library module_firebase_app_hosting_traffic_current_split;
+
+export 'app_hosting_traffic_current_split/app_hosting_traffic_current_split.dart';

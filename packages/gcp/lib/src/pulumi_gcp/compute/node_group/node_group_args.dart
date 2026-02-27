@@ -9,14 +9,14 @@ import '../node_group_share_settings/node_group_share_settings.dart';
 class NodeGroupArgs {
   /// If you use sole-tenant nodes for your workloads, you can use the node
   /// group autoscaler to automatically manage the sizes of your node groups.
-  /// One of <span pulumi-lang-nodejs="`initialSize`" pulumi-lang-dotnet="`InitialSize`" pulumi-lang-go="`initialSize`" pulumi-lang-python="`initial_size`" pulumi-lang-yaml="`initialSize`" pulumi-lang-java="`initialSize`">`initial_size`</span> or <span pulumi-lang-nodejs="`autoscalingPolicy`" pulumi-lang-dotnet="`AutoscalingPolicy`" pulumi-lang-go="`autoscalingPolicy`" pulumi-lang-python="`autoscaling_policy`" pulumi-lang-yaml="`autoscalingPolicy`" pulumi-lang-java="`autoscalingPolicy`">`autoscaling_policy`</span> must be configured on resource creation.
+  /// One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
   /// Structure is documented below.
   final Input<NodeGroupAutoscalingPolicy>? autoscalingPolicy;
 
   /// An optional textual description of the resource.
   final Input<String>? description;
 
-  /// The initial number of nodes in the node group. One of <span pulumi-lang-nodejs="`initialSize`" pulumi-lang-dotnet="`InitialSize`" pulumi-lang-go="`initialSize`" pulumi-lang-python="`initial_size`" pulumi-lang-yaml="`initialSize`" pulumi-lang-java="`initialSize`">`initial_size`</span> or <span pulumi-lang-nodejs="`autoscalingPolicy`" pulumi-lang-dotnet="`AutoscalingPolicy`" pulumi-lang-go="`autoscalingPolicy`" pulumi-lang-python="`autoscaling_policy`" pulumi-lang-yaml="`autoscalingPolicy`" pulumi-lang-java="`autoscalingPolicy`">`autoscaling_policy`</span> must be configured on resource creation.
+  /// The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
   final Input<int>? initialSize;
 
   /// Specifies the frequency of planned maintenance events. Set to one of the following:

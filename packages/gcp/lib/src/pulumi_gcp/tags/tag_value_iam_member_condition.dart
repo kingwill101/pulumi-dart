@@ -1,0 +1,3 @@
+library module_tags_tag_value_iam_member_condition;
+
+export 'tag_value_iam_member_condition/tag_value_iam_member_condition.dart';

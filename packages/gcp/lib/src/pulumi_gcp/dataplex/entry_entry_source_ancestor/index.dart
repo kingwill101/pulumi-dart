@@ -1,3 +1,0 @@
-library module_dataplex_entry_entry_source_ancestor;
-
-export 'entry_entry_source_ancestor.dart';

@@ -1,0 +1,3 @@
+library module_storage_get_insights_dataset_config_link;
+
+export 'get_insights_dataset_config_link/get_insights_dataset_config_link.dart';

@@ -1,0 +1,3 @@
+library module_firebase_hosting_custom_domain_cert_verification_dns_desired_record;
+
+export 'hosting_custom_domain_cert_verification_dns_desired_record/hosting_custom_domain_cert_verification_dns_desired_record.dart';

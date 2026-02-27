@@ -1,3 +1,0 @@
-library module_dataplex_datascan_data_profile_spec_include_fields;
-
-export 'datascan_data_profile_spec_include_fields.dart';

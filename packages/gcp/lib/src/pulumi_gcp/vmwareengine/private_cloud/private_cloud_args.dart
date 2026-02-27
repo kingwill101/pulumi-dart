@@ -30,7 +30,7 @@ class PrivateCloudArgs {
   /// If it is not provided, the provider project is used.
   final Input<String>? project;
 
-  /// While set true,<span pulumi-lang-nodejs=" deletionDelayHours " pulumi-lang-dotnet=" DeletionDelayHours " pulumi-lang-go=" deletionDelayHours " pulumi-lang-python=" deletion_delay_hours " pulumi-lang-yaml=" deletionDelayHours " pulumi-lang-java=" deletionDelayHours "> deletion_delay_hours </span>value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the<span pulumi-lang-nodejs=" deletionDelayHours " pulumi-lang-dotnet=" DeletionDelayHours " pulumi-lang-go=" deletionDelayHours " pulumi-lang-python=" deletion_delay_hours " pulumi-lang-yaml=" deletionDelayHours " pulumi-lang-java=" deletionDelayHours "> deletion_delay_hours </span>field. It can be used both alone and together with deletion_delay_hours.
+  /// While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
   final Input<bool>? sendDeletionDelayHoursIfZero;
 
   /// Initial type of the private cloud.

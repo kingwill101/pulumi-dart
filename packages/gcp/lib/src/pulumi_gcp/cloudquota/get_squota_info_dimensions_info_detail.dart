@@ -1,0 +1,3 @@
+library module_cloudquota_get_squota_info_dimensions_info_detail;
+
+export 'get_squota_info_dimensions_info_detail/get_squota_info_dimensions_info_detail.dart';

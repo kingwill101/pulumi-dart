@@ -1,3 +1,0 @@
-library module_cloudrunv2_service_template_volume_gcs;
-
-export 'service_template_volume_gcs.dart';

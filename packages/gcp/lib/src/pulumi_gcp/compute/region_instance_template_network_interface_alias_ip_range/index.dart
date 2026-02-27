@@ -1,3 +1,0 @@
-library module_compute_region_instance_template_network_interface_alias_ip_range;
-
-export 'region_instance_template_network_interface_alias_ip_range.dart';

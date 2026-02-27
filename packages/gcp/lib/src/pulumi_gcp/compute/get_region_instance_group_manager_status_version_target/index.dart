@@ -1,3 +1,0 @@
-library module_compute_get_region_instance_group_manager_status_version_target;
-
-export 'get_region_instance_group_manager_status_version_target.dart';

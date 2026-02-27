@@ -5,7 +5,7 @@ import '../toolset_open_api_toolset/toolset_open_api_toolset.dart';
 
 /// The set of arguments for Toolset.
 class ToolsetArgs {
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> app;
 
   /// The description of the toolset.
@@ -19,7 +19,7 @@ class ToolsetArgs {
   /// ASYNCHRONOUS
   final Input<String>? executionType;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> location;
 
   /// A toolset that contains a list of tools that are defined by an OpenAPI

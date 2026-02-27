@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class GetBucketCustomPlacementConfig {
-  /// The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the<span pulumi-lang-nodejs=" dataLocations " pulumi-lang-dotnet=" DataLocations " pulumi-lang-go=" dataLocations " pulumi-lang-python=" data_locations " pulumi-lang-yaml=" dataLocations " pulumi-lang-java=" dataLocations "> data_locations </span>changes, it will recreate the bucket.
+  /// The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the data_locations changes, it will recreate the bucket.
   final List<String> dataLocations;
 
   GetBucketCustomPlacementConfig({

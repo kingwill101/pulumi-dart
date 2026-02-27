@@ -1,3 +1,0 @@
-library module_binaryauthorization_attestor_attestation_authority_note_public_key_pkix_public_key;
-
-export 'attestor_attestation_authority_note_public_key_pkix_public_key.dart';

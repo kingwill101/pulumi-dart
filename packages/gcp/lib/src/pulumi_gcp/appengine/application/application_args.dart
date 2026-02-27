@@ -13,7 +13,7 @@ class ApplicationArgs {
   /// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
   /// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
   /// To create a Cloud Firestore database without creating an App Engine application, use the
-  /// <span pulumi-lang-nodejs="`gcp.firestore.Database`" pulumi-lang-dotnet="`gcp.firestore.Database`" pulumi-lang-go="`firestore.Database`" pulumi-lang-python="`firestore.Database`" pulumi-lang-yaml="`gcp.firestore.Database`" pulumi-lang-java="`gcp.firestore.Database`">`gcp.firestore.Database`</span>
+  /// `gcp.firestore.Database`
   /// resource instead.
   final Input<String>? databaseType;
 

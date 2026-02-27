@@ -6,11 +6,11 @@ class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText {
   final bool? allowPlaybackInterruption;
 
   /// The SSML text to be synthesized. For more information, see SSML.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span>: Only one of <span pulumi-lang-nodejs="`text`" pulumi-lang-dotnet="`Text`" pulumi-lang-go="`text`" pulumi-lang-python="`text`" pulumi-lang-yaml="`text`" pulumi-lang-java="`text`">`text`</span> or <span pulumi-lang-nodejs="`ssml`" pulumi-lang-dotnet="`Ssml`" pulumi-lang-go="`ssml`" pulumi-lang-python="`ssml`" pulumi-lang-yaml="`ssml`" pulumi-lang-java="`ssml`">`ssml`</span> may be set.
+  /// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
   final String? ssml;
 
   /// The raw text to be synthesized.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span>: Only one of <span pulumi-lang-nodejs="`text`" pulumi-lang-dotnet="`Text`" pulumi-lang-go="`text`" pulumi-lang-python="`text`" pulumi-lang-yaml="`text`" pulumi-lang-java="`text`">`text`</span> or <span pulumi-lang-nodejs="`ssml`" pulumi-lang-dotnet="`Ssml`" pulumi-lang-go="`ssml`" pulumi-lang-python="`ssml`" pulumi-lang-yaml="`ssml`" pulumi-lang-java="`ssml`">`ssml`</span> may be set.
+  /// This field is part of a union field `source`: Only one of `text` or `ssml` may be set.
   final String? text;
 
   CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText({

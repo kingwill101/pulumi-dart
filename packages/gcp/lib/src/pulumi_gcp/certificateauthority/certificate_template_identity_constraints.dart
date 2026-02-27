@@ -1,0 +1,3 @@
+library module_certificateauthority_certificate_template_identity_constraints;
+
+export 'certificate_template_identity_constraints/certificate_template_identity_constraints.dart';

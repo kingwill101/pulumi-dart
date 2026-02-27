@@ -1,0 +1,3 @@
+library module_container_get_cluster_node_pool_upgrade_setting;
+
+export 'get_cluster_node_pool_upgrade_setting/get_cluster_node_pool_upgrade_setting.dart';

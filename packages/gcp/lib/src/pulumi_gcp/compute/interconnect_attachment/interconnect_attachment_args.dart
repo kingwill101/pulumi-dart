@@ -98,7 +98,7 @@ class InterconnectAttachmentArgs {
   /// method. Each label key/value pair must comply with RFC1035. Label values may be empty.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
@@ -118,7 +118,7 @@ class InterconnectAttachmentArgs {
   ///
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedL2Forwarding"" pulumi-lang-dotnet=""NestedL2Forwarding"" pulumi-lang-go=""nestedL2Forwarding"" pulumi-lang-python=""nested_l2_forwarding"" pulumi-lang-yaml=""nestedL2Forwarding"" pulumi-lang-java=""nestedL2Forwarding"">"nested_l2_forwarding"</span>></a>The <span pulumi-lang-nodejs="`l2Forwarding`" pulumi-lang-dotnet="`L2Forwarding`" pulumi-lang-go="`l2Forwarding`" pulumi-lang-python="`l2_forwarding`" pulumi-lang-yaml="`l2Forwarding`" pulumi-lang-java="`l2Forwarding`">`l2_forwarding`</span> block supports:
+  /// <a name="nested_l2_forwarding"></a>The `l2_forwarding` block supports:
   final Input<String>? project;
 
   /// Region where the regional interconnect attachment resides.

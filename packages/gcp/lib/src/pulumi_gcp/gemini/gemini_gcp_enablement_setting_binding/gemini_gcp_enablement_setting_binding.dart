@@ -13,171 +13,7 @@ import 'gemini_gcp_enablement_setting_binding_args.dart';
 /// ### Gemini Gemini Gcp Enablement Setting Binding Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const basic = new gcp.gemini.GeminiGcpEnablementSetting("basic", {
-/// geminiGcpEnablementSettingId: "ls-tf1",
-/// location: "global",
-/// labels: {
-/// my_key: "my_value",
-/// },
-/// enableCustomerDataSharing: true,
-/// webGroundingType: "WEB_GROUNDING_FOR_ENTERPRISE",
-/// });
-/// const example = new gcp.gemini.GeminiGcpEnablementSettingBinding("example", {
-/// geminiGcpEnablementSettingId: basic.geminiGcpEnablementSettingId,
-/// settingBindingId: "ls-tf1b1",
-/// location: "global",
-/// target: "projects/980109375338",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// basic = gcp.gemini.GeminiGcpEnablementSetting("basic",
-/// gemini_gcp_enablement_setting_id="ls-tf1",
-/// location="global",
-/// labels={
-/// "my_key": "my_value",
-/// },
-/// enable_customer_data_sharing=True,
-/// web_grounding_type="WEB_GROUNDING_FOR_ENTERPRISE")
-/// example = gcp.gemini.GeminiGcpEnablementSettingBinding("example",
-/// gemini_gcp_enablement_setting_id=basic.gemini_gcp_enablement_setting_id,
-/// setting_binding_id="ls-tf1b1",
-/// location="global",
-/// target="projects/980109375338")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var basic = new Gcp.Gemini.GeminiGcpEnablementSetting("basic", new()
-/// {
-/// GeminiGcpEnablementSettingId = "ls-tf1",
-/// Location = "global",
-/// Labels =
-/// {
-/// { "my_key", "my_value" },
-/// },
-/// EnableCustomerDataSharing = true,
-/// WebGroundingType = "WEB_GROUNDING_FOR_ENTERPRISE",
-/// });
-///
-/// var example = new Gcp.Gemini.GeminiGcpEnablementSettingBinding("example", new()
-/// {
-/// GeminiGcpEnablementSettingId = basic.GeminiGcpEnablementSettingId,
-/// SettingBindingId = "ls-tf1b1",
-/// Location = "global",
-/// Target = "projects/980109375338",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// basic, err := gemini.NewGeminiGcpEnablementSetting(ctx, "basic", &gemini.GeminiGcpEnablementSettingArgs{
-/// GeminiGcpEnablementSettingId: pulumi.String("ls-tf1"),
-/// Location:                     pulumi.String("global"),
-/// Labels: pulumi.StringMap{
-/// "my_key": pulumi.String("my_value"),
-/// },
-/// EnableCustomerDataSharing: pulumi.Bool(true),
-/// WebGroundingType:          pulumi.String("WEB_GROUNDING_FOR_ENTERPRISE"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = gemini.NewGeminiGcpEnablementSettingBinding(ctx, "example", &gemini.GeminiGcpEnablementSettingBindingArgs{
-/// GeminiGcpEnablementSettingId: basic.GeminiGcpEnablementSettingId,
-/// SettingBindingId:             pulumi.String("ls-tf1b1"),
-/// Location:                     pulumi.String("global"),
-/// Target:                       pulumi.String("projects/980109375338"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.gemini.GeminiGcpEnablementSetting;
-/// import com.pulumi.gcp.gemini.GeminiGcpEnablementSettingArgs;
-/// import com.pulumi.gcp.gemini.GeminiGcpEnablementSettingBinding;
-/// import com.pulumi.gcp.gemini.GeminiGcpEnablementSettingBindingArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var basic = new GeminiGcpEnablementSetting("basic", GeminiGcpEnablementSettingArgs.builder()
-/// .geminiGcpEnablementSettingId("ls-tf1")
-/// .location("global")
-/// .labels(Map.of("my_key", "my_value"))
-/// .enableCustomerDataSharing(true)
-/// .webGroundingType("WEB_GROUNDING_FOR_ENTERPRISE")
-/// .build());
-///
-/// var example = new GeminiGcpEnablementSettingBinding("example", GeminiGcpEnablementSettingBindingArgs.builder()
-/// .geminiGcpEnablementSettingId(basic.geminiGcpEnablementSettingId())
-/// .settingBindingId("ls-tf1b1")
-/// .location("global")
-/// .target("projects/980109375338")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// basic:
-/// type: gcp:gemini:GeminiGcpEnablementSetting
-/// properties:
-/// geminiGcpEnablementSettingId: ls-tf1
-/// location: global
-/// labels:
-/// my_key: my_value
-/// enableCustomerDataSharing: true
-/// webGroundingType: WEB_GROUNDING_FOR_ENTERPRISE
-/// example:
-/// type: gcp:gemini:GeminiGcpEnablementSettingBinding
-/// properties:
-/// geminiGcpEnablementSettingId: ${basic.geminiGcpEnablementSettingId}
-/// settingBindingId: ls-tf1b1
-/// location: global
-/// target: projects/980109375338
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -209,15 +45,15 @@ class GeminiGcpEnablementSettingBinding extends CustomResource {
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final Output<Map<String, String>> effectiveLabels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> geminiGcpEnablementSettingId;
 
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String?> location;
 
   /// Identifier. Name of the resource.

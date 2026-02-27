@@ -1,0 +1,3 @@
+library module_iap_web_region_forwarding_rule_service_iam_member_condition;
+
+export 'web_region_forwarding_rule_service_iam_member_condition/web_region_forwarding_rule_service_iam_member_condition.dart';

@@ -14,125 +14,7 @@ import 'region_health_aggregation_policy_args.dart';
 /// ### Compute Region Health Aggregation Policy Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const project = gcp.organizations.getProject({});
-/// const exampleTestHealthAggregationPolicy = new gcp.compute.RegionHealthAggregationPolicy("example_test_health_aggregation_policy", {
-/// name: "test-health-aggregation-policy",
-/// description: "Example health aggregation policy basic",
-/// region: "us-central1",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// project = gcp.organizations.get_project()
-/// example_test_health_aggregation_policy = gcp.compute.RegionHealthAggregationPolicy("example_test_health_aggregation_policy",
-/// name="test-health-aggregation-policy",
-/// description="Example health aggregation policy basic",
-/// region="us-central1")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var project = Gcp.Organizations.GetProject.Invoke();
-///
-/// var exampleTestHealthAggregationPolicy = new Gcp.Compute.RegionHealthAggregationPolicy("example_test_health_aggregation_policy", new()
-/// {
-/// Name = "test-health-aggregation-policy",
-/// Description = "Example health aggregation policy basic",
-/// Region = "us-central1",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-/// if err != nil {
-/// return err
-/// }
-/// _, err = compute.NewRegionHealthAggregationPolicy(ctx, "example_test_health_aggregation_policy", &compute.RegionHealthAggregationPolicyArgs{
-/// Name:        pulumi.String("test-health-aggregation-policy"),
-/// Description: pulumi.String("Example health aggregation policy basic"),
-/// Region:      pulumi.String("us-central1"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
-/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import com.pulumi.gcp.compute.RegionHealthAggregationPolicy;
-/// import com.pulumi.gcp.compute.RegionHealthAggregationPolicyArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-/// .build());
-///
-/// var exampleTestHealthAggregationPolicy = new RegionHealthAggregationPolicy("exampleTestHealthAggregationPolicy", RegionHealthAggregationPolicyArgs.builder()
-/// .name("test-health-aggregation-policy")
-/// .description("Example health aggregation policy basic")
-/// .region("us-central1")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// exampleTestHealthAggregationPolicy:
-/// type: gcp:compute:RegionHealthAggregationPolicy
-/// name: example_test_health_aggregation_policy
-/// properties:
-/// name: test-health-aggregation-policy
-/// description: Example health aggregation policy basic
-/// region: us-central1
-/// variables:
-/// project:
-/// fn::invoke:
-/// function: gcp:organizations:getProject
-/// arguments: {}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -183,7 +65,7 @@ class RegionHealthAggregationPolicy extends CustomResource {
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the threshold (as a
   /// percentage) of healthy endpoints required in order to consider the
-  /// aggregated health result HEALTHY. Defaults to <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span>. Must be in
+  /// aggregated health result HEALTHY. Defaults to `60`. Must be in
   /// range [0, 100]. Not applicable if the `policyType` field is
   /// `DNB_PUBLIC_IP_POLICY`. Can be mutated. This field is optional,
   /// and will be set to the default if unspecified. Note that both this
@@ -196,7 +78,7 @@ class RegionHealthAggregationPolicy extends CustomResource {
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the minimum number of
   /// healthy endpoints required in order to consider the aggregated health
-  /// result HEALTHY. Defaults to <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>. Must be positive. Not
+  /// result HEALTHY. Defaults to `1`. Must be positive. Not
   /// applicable if the `policyType` field is
   /// `DNB_PUBLIC_IP_POLICY`. Can be mutated. This field is optional,
   /// and will be set to the default if unspecified. Note that both this

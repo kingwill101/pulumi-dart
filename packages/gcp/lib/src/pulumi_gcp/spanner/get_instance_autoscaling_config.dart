@@ -1,0 +1,3 @@
+library module_spanner_get_instance_autoscaling_config;
+
+export 'get_instance_autoscaling_config/get_instance_autoscaling_config.dart';

@@ -1,3 +1,0 @@
-library module_beyondcorp_security_gateway_service_discovery_api_gateway_resource_override;
-
-export 'security_gateway_service_discovery_api_gateway_resource_override.dart';

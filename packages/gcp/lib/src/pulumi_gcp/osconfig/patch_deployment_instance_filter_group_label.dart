@@ -1,0 +1,3 @@
+library module_osconfig_patch_deployment_instance_filter_group_label;
+
+export 'patch_deployment_instance_filter_group_label/patch_deployment_instance_filter_group_label.dart';

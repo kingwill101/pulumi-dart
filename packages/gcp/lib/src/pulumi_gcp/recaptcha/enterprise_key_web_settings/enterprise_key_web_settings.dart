@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class EnterpriseKeyWebSettings {
-  /// If set to true, it means<span pulumi-lang-nodejs=" allowedDomains " pulumi-lang-dotnet=" AllowedDomains " pulumi-lang-go=" allowedDomains " pulumi-lang-python=" allowed_domains " pulumi-lang-yaml=" allowedDomains " pulumi-lang-java=" allowedDomains "> allowed_domains </span>will not be enforced.
+  /// If set to true, it means allowed_domains will not be enforced.
   final bool? allowAllDomains;
 
   /// If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.

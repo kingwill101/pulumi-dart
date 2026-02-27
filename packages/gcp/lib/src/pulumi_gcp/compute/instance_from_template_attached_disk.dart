@@ -1,0 +1,3 @@
+library module_compute_instance_from_template_attached_disk;
+
+export 'instance_from_template_attached_disk/instance_from_template_attached_disk.dart';

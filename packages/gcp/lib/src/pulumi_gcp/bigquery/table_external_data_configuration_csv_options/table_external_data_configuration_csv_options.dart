@@ -20,7 +20,7 @@ class TableExternalDataConfigurationCsvOptions {
   /// The value that is used to quote data sections in a
   /// CSV file. If your data does not contain quoted sections, set the
   /// property value to an empty string. If your data contains quoted newline
-  /// characters, you must also set the <span pulumi-lang-nodejs="`allowQuotedNewlines`" pulumi-lang-dotnet="`AllowQuotedNewlines`" pulumi-lang-go="`allowQuotedNewlines`" pulumi-lang-python="`allow_quoted_newlines`" pulumi-lang-yaml="`allowQuotedNewlines`" pulumi-lang-java="`allowQuotedNewlines`">`allow_quoted_newlines`</span> property to true.
+  /// characters, you must also set the `allow_quoted_newlines` property to true.
   /// The API-side default is `"`, specified in the provider escaped as `\"`. Due to
   /// limitations with default values, this value is required to be
   /// explicitly set.

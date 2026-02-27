@@ -13,20 +13,20 @@ class CxIntentArgs {
   final Input<String> displayName;
 
   /// Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
-  /// The Default Negative Intent cannot be deleted; deleting the <span pulumi-lang-nodejs="`gcp.diagflow.CxIntent`" pulumi-lang-dotnet="`gcp.diagflow.CxIntent`" pulumi-lang-go="`diagflow.CxIntent`" pulumi-lang-python="`diagflow.CxIntent`" pulumi-lang-yaml="`gcp.diagflow.CxIntent`" pulumi-lang-java="`gcp.diagflow.CxIntent`">`gcp.diagflow.CxIntent`</span> resource does nothing to the underlying GCP resources.
+  /// The Default Negative Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
   ///
-  /// > Avoid having multiple <span pulumi-lang-nodejs="`gcp.diagflow.CxIntent`" pulumi-lang-dotnet="`gcp.diagflow.CxIntent`" pulumi-lang-go="`diagflow.CxIntent`" pulumi-lang-python="`diagflow.CxIntent`" pulumi-lang-yaml="`gcp.diagflow.CxIntent`" pulumi-lang-java="`gcp.diagflow.CxIntent`">`gcp.diagflow.CxIntent`</span> resources linked to the same agent with <span pulumi-lang-nodejs="`isDefaultNegativeIntent " pulumi-lang-dotnet="`IsDefaultNegativeIntent " pulumi-lang-go="`isDefaultNegativeIntent " pulumi-lang-python="`is_default_negative_intent " pulumi-lang-yaml="`isDefaultNegativeIntent " pulumi-lang-java="`isDefaultNegativeIntent ">`is_default_negative_intent </span>= true` because they will compete to control a single Default Negative Intent resource in GCP.
+  /// > Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_negative_intent = true` because they will compete to control a single Default Negative Intent resource in GCP.
   final Input<bool>? isDefaultNegativeIntent;
 
   /// Marks this as the [Default Welcome Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#welcome) for an agent. When you create an agent, a Default Welcome Intent is created automatically.
-  /// The Default Welcome Intent cannot be deleted; deleting the <span pulumi-lang-nodejs="`gcp.diagflow.CxIntent`" pulumi-lang-dotnet="`gcp.diagflow.CxIntent`" pulumi-lang-go="`diagflow.CxIntent`" pulumi-lang-python="`diagflow.CxIntent`" pulumi-lang-yaml="`gcp.diagflow.CxIntent`" pulumi-lang-java="`gcp.diagflow.CxIntent`">`gcp.diagflow.CxIntent`</span> resource does nothing to the underlying GCP resources.
+  /// The Default Welcome Intent cannot be deleted; deleting the `gcp.diagflow.CxIntent` resource does nothing to the underlying GCP resources.
   ///
-  /// > Avoid having multiple <span pulumi-lang-nodejs="`gcp.diagflow.CxIntent`" pulumi-lang-dotnet="`gcp.diagflow.CxIntent`" pulumi-lang-go="`diagflow.CxIntent`" pulumi-lang-python="`diagflow.CxIntent`" pulumi-lang-yaml="`gcp.diagflow.CxIntent`" pulumi-lang-java="`gcp.diagflow.CxIntent`">`gcp.diagflow.CxIntent`</span> resources linked to the same agent with <span pulumi-lang-nodejs="`isDefaultWelcomeIntent " pulumi-lang-dotnet="`IsDefaultWelcomeIntent " pulumi-lang-go="`isDefaultWelcomeIntent " pulumi-lang-python="`is_default_welcome_intent " pulumi-lang-yaml="`isDefaultWelcomeIntent " pulumi-lang-java="`isDefaultWelcomeIntent ">`is_default_welcome_intent </span>= true` because they will compete to control a single Default Welcome Intent resource in GCP.
+  /// > Avoid having multiple `gcp.diagflow.CxIntent` resources linked to the same agent with `is_default_welcome_intent = true` because they will compete to control a single Default Welcome Intent resource in GCP.
   final Input<bool>? isDefaultWelcomeIntent;
 
   /// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
   /// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
-  /// To manage the fallback intent, set <span pulumi-lang-nodejs="`isDefaultNegativeIntent " pulumi-lang-dotnet="`IsDefaultNegativeIntent " pulumi-lang-go="`isDefaultNegativeIntent " pulumi-lang-python="`is_default_negative_intent " pulumi-lang-yaml="`isDefaultNegativeIntent " pulumi-lang-java="`isDefaultNegativeIntent ">`is_default_negative_intent </span>= true`
+  /// To manage the fallback intent, set `is_default_negative_intent = true`
   final Input<bool>? isFallback;
 
   /// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
@@ -34,7 +34,7 @@ class CxIntentArgs {
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The language of the following fields in intent:

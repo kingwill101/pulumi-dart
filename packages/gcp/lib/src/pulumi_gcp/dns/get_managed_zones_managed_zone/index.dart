@@ -1,3 +1,0 @@
-library module_dns_get_managed_zones_managed_zone;
-
-export 'get_managed_zones_managed_zone.dart';

@@ -1,0 +1,3 @@
+library module_networkservices_edge_cache_service_routing;
+
+export 'edge_cache_service_routing/edge_cache_service_routing.dart';

@@ -1,0 +1,3 @@
+library module_container_get_cluster_addons_config_stateful_ha_config;
+
+export 'get_cluster_addons_config_stateful_ha_config/get_cluster_addons_config_stateful_ha_config.dart';

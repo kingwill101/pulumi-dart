@@ -8,7 +8,7 @@ class JobIAMBindingArgs {
   final Input<JobIAMBindingCondition>? condition;
   final Input<String> jobId;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -27,10 +27,10 @@ class JobIAMBindingArgs {
   final Input<String>? region;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.dataproc.JobIAMBinding`" pulumi-lang-dotnet="`gcp.dataproc.JobIAMBinding`" pulumi-lang-go="`dataproc.JobIAMBinding`" pulumi-lang-python="`dataproc.JobIAMBinding`" pulumi-lang-yaml="`gcp.dataproc.JobIAMBinding`" pulumi-lang-java="`gcp.dataproc.JobIAMBinding`">`gcp.dataproc.JobIAMBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   ///
-  /// <span pulumi-lang-nodejs="`gcp.dataproc.JobIAMPolicy`" pulumi-lang-dotnet="`gcp.dataproc.JobIAMPolicy`" pulumi-lang-go="`dataproc.JobIAMPolicy`" pulumi-lang-python="`dataproc.JobIAMPolicy`" pulumi-lang-yaml="`gcp.dataproc.JobIAMPolicy`" pulumi-lang-java="`gcp.dataproc.JobIAMPolicy`">`gcp.dataproc.JobIAMPolicy`</span> only:
+  /// `gcp.dataproc.JobIAMPolicy` only:
   final Input<String> role;
 
   JobIAMBindingArgs({

@@ -1,3 +1,0 @@
-library module_certificateauthority_certificate_config_public_key;
-
-export 'certificate_config_public_key.dart';

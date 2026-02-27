@@ -1,3 +1,0 @@
-library module_appengine_flexible_app_version_resources_volume;
-
-export 'flexible_app_version_resources_volume.dart';

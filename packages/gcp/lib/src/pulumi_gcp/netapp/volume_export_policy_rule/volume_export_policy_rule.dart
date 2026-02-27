@@ -8,11 +8,11 @@ class VolumeExportPolicyRule {
   /// Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
   final String? allowedClients;
 
-  /// An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when <span pulumi-lang-nodejs="`squashMode`" pulumi-lang-dotnet="`SquashMode`" pulumi-lang-go="`squashMode`" pulumi-lang-python="`squash_mode`" pulumi-lang-yaml="`squashMode`" pulumi-lang-java="`squashMode`">`squash_mode`</span> is `ALL_SQUASH`.
+  /// An integer representing the anonymous user ID. Range is 0 to 4294967295. Required when `squash_mode` is `ALL_SQUASH`.
   final int? anonUid;
 
   /// If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
-  /// Use either<span pulumi-lang-nodejs=" squashMode " pulumi-lang-dotnet=" SquashMode " pulumi-lang-go=" squashMode " pulumi-lang-python=" squash_mode " pulumi-lang-yaml=" squashMode " pulumi-lang-java=" squashMode "> squash_mode </span>or has_root_access, but never both at the same time. These parameters are mutually exclusive.
+  /// Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
   final String? hasRootAccess;
 
   /// If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
@@ -40,7 +40,7 @@ class VolumeExportPolicyRule {
   final bool? nfsv4;
 
   /// SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-  /// Use either<span pulumi-lang-nodejs=" squashMode " pulumi-lang-dotnet=" SquashMode " pulumi-lang-go=" squashMode " pulumi-lang-python=" squash_mode " pulumi-lang-yaml=" squashMode " pulumi-lang-java=" squashMode "> squash_mode </span>or has_root_access, but never both at the same time. These parameters are mutually exclusive.
+  /// Use either squash_mode or has_root_access, but never both at the same time. These parameters are mutually exclusive.
   /// Possible values are: `SQUASH_MODE_UNSPECIFIED`, `NO_ROOT_SQUASH`, `ROOT_SQUASH`, `ALL_SQUASH`.
   final String? squashMode;
 

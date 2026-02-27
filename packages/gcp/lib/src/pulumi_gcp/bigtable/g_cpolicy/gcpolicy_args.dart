@@ -15,11 +15,11 @@ class GCPolicyArgs {
   /// Possible values are: `ABANDON`.
   final Input<String>? deletionPolicy;
 
-  /// Serialized JSON object to represent a more complex GC policy. Conflicts with <span pulumi-lang-nodejs="`mode`" pulumi-lang-dotnet="`Mode`" pulumi-lang-go="`mode`" pulumi-lang-python="`mode`" pulumi-lang-yaml="`mode`" pulumi-lang-java="`mode`">`mode`</span>, <span pulumi-lang-nodejs="`maxAge`" pulumi-lang-dotnet="`MaxAge`" pulumi-lang-go="`maxAge`" pulumi-lang-python="`max_age`" pulumi-lang-yaml="`maxAge`" pulumi-lang-java="`maxAge`">`max_age`</span> and <span pulumi-lang-nodejs="`maxVersion`" pulumi-lang-dotnet="`MaxVersion`" pulumi-lang-go="`maxVersion`" pulumi-lang-python="`max_version`" pulumi-lang-yaml="`maxVersion`" pulumi-lang-java="`maxVersion`">`max_version`</span>. Conflicts with <span pulumi-lang-nodejs="`mode`" pulumi-lang-dotnet="`Mode`" pulumi-lang-go="`mode`" pulumi-lang-python="`mode`" pulumi-lang-yaml="`mode`" pulumi-lang-java="`mode`">`mode`</span>, <span pulumi-lang-nodejs="`maxAge`" pulumi-lang-dotnet="`MaxAge`" pulumi-lang-go="`maxAge`" pulumi-lang-python="`max_age`" pulumi-lang-yaml="`maxAge`" pulumi-lang-java="`maxAge`">`max_age`</span> and <span pulumi-lang-nodejs="`maxVersion`" pulumi-lang-dotnet="`MaxVersion`" pulumi-lang-go="`maxVersion`" pulumi-lang-python="`max_version`" pulumi-lang-yaml="`maxVersion`" pulumi-lang-java="`maxVersion`">`max_version`</span>.
+  /// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
   final Input<String>? gcRules;
 
   /// Boolean for whether to allow ignoring warnings when updating the gc policy.
-  /// Setting this to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
+  /// Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
   /// you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
   ///
   /// -----

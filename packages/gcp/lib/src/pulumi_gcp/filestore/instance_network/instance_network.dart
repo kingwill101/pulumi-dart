@@ -24,7 +24,7 @@ class InstanceNetwork {
   final String network;
 
   /// Private Service Connect configuration.
-  /// Should only be set when<span pulumi-lang-nodejs=" connectMode " pulumi-lang-dotnet=" ConnectMode " pulumi-lang-go=" connectMode " pulumi-lang-python=" connect_mode " pulumi-lang-yaml=" connectMode " pulumi-lang-java=" connectMode "> connect_mode </span>is PRIVATE_SERVICE_CONNECT.
+  /// Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
   /// Structure is documented below.
   final InstanceNetworkPscConfig? pscConfig;
 

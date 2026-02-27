@@ -1,0 +1,3 @@
+library module_cloudbuild_trigger_build_artifacts_objects;
+
+export 'trigger_build_artifacts_objects/trigger_build_artifacts_objects.dart';

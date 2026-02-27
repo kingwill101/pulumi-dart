@@ -1,3 +1,0 @@
-library module_compute_region_backend_service_strong_session_affinity_cookie_ttl;
-
-export 'region_backend_service_strong_session_affinity_cookie_ttl.dart';

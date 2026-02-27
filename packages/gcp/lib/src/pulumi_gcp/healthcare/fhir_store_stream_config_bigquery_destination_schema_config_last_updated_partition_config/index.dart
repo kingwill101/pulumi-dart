@@ -1,3 +1,0 @@
-library module_healthcare_fhir_store_stream_config_bigquery_destination_schema_config_last_updated_partition_config;
-
-export 'fhir_store_stream_config_bigquery_destination_schema_config_last_updated_partition_config.dart';

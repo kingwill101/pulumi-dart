@@ -1,3 +1,0 @@
-library module_developerconnect_insights_config_runtime_config_gke_workload;
-
-export 'insights_config_runtime_config_gke_workload.dart';

@@ -1,0 +1,3 @@
+library module_backupdisasterrecovery_restore_workload_compute_instance_restore_properties_disk;
+
+export 'restore_workload_compute_instance_restore_properties_disk/restore_workload_compute_instance_restore_properties_disk.dart';

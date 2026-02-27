@@ -6,7 +6,7 @@ import '../service_perimeter_spec_ingress_policy_ingress_to_operation_method_sel
 class ServicePerimeterSpecIngressPolicyIngressToOperation {
   /// API methods or permissions to allow. Method or permission must belong
   /// to the service specified by `serviceName` field. A single MethodSelector
-  /// entry with `*` specified for the <span pulumi-lang-nodejs="`method`" pulumi-lang-dotnet="`Method`" pulumi-lang-go="`method`" pulumi-lang-python="`method`" pulumi-lang-yaml="`method`" pulumi-lang-java="`method`">`method`</span> field will allow all methods
+  /// entry with `*` specified for the `method` field will allow all methods
   /// AND permissions for the service specified in `serviceName`.
   /// Structure is documented below.
   final List<ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector>?

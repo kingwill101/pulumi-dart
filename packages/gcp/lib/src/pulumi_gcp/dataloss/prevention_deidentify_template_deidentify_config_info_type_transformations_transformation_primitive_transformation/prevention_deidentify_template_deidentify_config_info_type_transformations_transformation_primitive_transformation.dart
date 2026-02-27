@@ -50,7 +50,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
       dateShiftConfig;
 
   /// Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
-  /// The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if<span pulumi-lang-nodejs=" lowerBound " pulumi-lang-dotnet=" LowerBound " pulumi-lang-go=" lowerBound " pulumi-lang-python=" lower_bound " pulumi-lang-yaml=" lowerBound " pulumi-lang-java=" lowerBound "> lower_bound </span>= 10 and<span pulumi-lang-nodejs=" upperBound " pulumi-lang-dotnet=" UpperBound " pulumi-lang-go=" upperBound " pulumi-lang-python=" upper_bound " pulumi-lang-yaml=" upperBound " pulumi-lang-java=" upperBound "> upper_bound </span>= 20, all values that are within this bucket will be replaced with "10-20".
+  /// The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
   /// This can be used on data of type: double, long.
   /// If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
   /// See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.

@@ -1,5 +1,0 @@
-library module_logging_get_organization_settings;
-
-export 'get_organization_settings.dart';
-export 'get_organization_settings_args.dart';
-export 'get_organization_settings_result.dart';

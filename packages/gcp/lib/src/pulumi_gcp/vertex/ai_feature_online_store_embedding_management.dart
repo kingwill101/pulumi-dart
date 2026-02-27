@@ -1,0 +1,3 @@
+library module_vertex_ai_feature_online_store_embedding_management;
+
+export 'ai_feature_online_store_embedding_management/ai_feature_online_store_embedding_management.dart';

@@ -1,0 +1,3 @@
+library module_workbench_instance_gce_setup_vm_image;
+
+export 'instance_gce_setup_vm_image/instance_gce_setup_vm_image.dart';

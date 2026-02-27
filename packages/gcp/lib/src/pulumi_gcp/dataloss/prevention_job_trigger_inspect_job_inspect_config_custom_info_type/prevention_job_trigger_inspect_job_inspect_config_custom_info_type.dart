@@ -17,8 +17,8 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoType {
   final String? exclusionType;
 
   /// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
-  /// infoTypes and that infoType is specified in <span pulumi-lang-nodejs="`infoTypes`" pulumi-lang-dotnet="`InfoTypes`" pulumi-lang-go="`infoTypes`" pulumi-lang-python="`info_types`" pulumi-lang-yaml="`infoTypes`" pulumi-lang-java="`infoTypes`">`info_types`</span> field. Specifying the latter adds findings to the
-  /// one detected by the system. If built-in info type is not specified in <span pulumi-lang-nodejs="`infoTypes`" pulumi-lang-dotnet="`InfoTypes`" pulumi-lang-go="`infoTypes`" pulumi-lang-python="`info_types`" pulumi-lang-yaml="`infoTypes`" pulumi-lang-java="`infoTypes`">`info_types`</span> list then the name is
+  /// infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
+  /// one detected by the system. If built-in info type is not specified in `info_types` list then the name is
   /// treated as a custom info type.
   /// Structure is documented below.
   final PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType

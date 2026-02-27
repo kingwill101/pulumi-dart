@@ -42,7 +42,7 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStore {
   /// CONNECTOR
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"" pulumi-lang-dotnet=""NestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"" pulumi-lang-go=""nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"" pulumi-lang-python=""nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"" pulumi-lang-yaml=""nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"" pulumi-lang-java=""nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"">"nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"</span>></a>The <span pulumi-lang-nodejs="`connectorConfig`" pulumi-lang-dotnet="`ConnectorConfig`" pulumi-lang-go="`connectorConfig`" pulumi-lang-python="`connector_config`" pulumi-lang-yaml="`connectorConfig`" pulumi-lang-java="`connectorConfig`">`connector_config`</span> block contains:
+  /// <a name="nested_data_store_tool_engine_source_data_store_sources_data_store_connector_config"></a>The `connector_config` block contains:
   final String? type;
 
   ToolDataStoreToolEngineSourceDataStoreSourceDataStore({

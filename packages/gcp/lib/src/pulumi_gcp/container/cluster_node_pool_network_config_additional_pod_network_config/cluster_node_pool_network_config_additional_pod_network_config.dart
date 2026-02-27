@@ -7,7 +7,7 @@ class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
   /// The name of the secondary range on the subnet which provides IP address for this pod range.
   final String? secondaryPodRange;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the Google Compute Engine
+  /// The name or self_link of the Google Compute Engine
   /// subnetwork in which the cluster's instances are launched.
   final String? subnetwork;
 

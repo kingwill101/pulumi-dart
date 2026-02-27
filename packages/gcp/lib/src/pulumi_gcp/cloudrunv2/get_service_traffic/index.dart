@@ -1,3 +1,0 @@
-library module_cloudrunv2_get_service_traffic;
-
-export 'get_service_traffic2.dart';

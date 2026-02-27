@@ -11,146 +11,17 @@ import 'contact_args.dart';
 /// * [Official Documentation](https://docs.cloud.google.com/resource-manager/docs/managing-notification-contacts)
 ///
 /// > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-/// you must specify a <span pulumi-lang-nodejs="`billingProject`" pulumi-lang-dotnet="`BillingProject`" pulumi-lang-go="`billingProject`" pulumi-lang-python="`billing_project`" pulumi-lang-yaml="`billingProject`" pulumi-lang-java="`billingProject`">`billing_project`</span> and set <span pulumi-lang-nodejs="`userProjectOverride`" pulumi-lang-dotnet="`UserProjectOverride`" pulumi-lang-go="`userProjectOverride`" pulumi-lang-python="`user_project_override`" pulumi-lang-yaml="`userProjectOverride`" pulumi-lang-java="`userProjectOverride`">`user_project_override`</span> to true
+/// you must specify a `billing_project` and set `user_project_override` to true
 /// in the provider configuration. Otherwise the Essential Contacts API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
-/// <span pulumi-lang-nodejs="`billingProject`" pulumi-lang-dotnet="`BillingProject`" pulumi-lang-go="`billingProject`" pulumi-lang-python="`billing_project`" pulumi-lang-yaml="`billingProject`" pulumi-lang-java="`billingProject`">`billing_project`</span> you defined.
+/// `billing_project` you defined.
 ///
 /// ## Example Usage
 ///
 /// ### Essential Contact
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const project = gcp.organizations.getProject({});
-/// const contact = new gcp.essentialcontacts.Contact("contact", {
-/// parent: project.then(project => project.id),
-/// email: "foo@bar.com",
-/// languageTag: "en-GB",
-/// notificationCategorySubscriptions: ["ALL"],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// project = gcp.organizations.get_project()
-/// contact = gcp.essentialcontacts.Contact("contact",
-/// parent=project.id,
-/// email="foo@bar.com",
-/// language_tag="en-GB",
-/// notification_category_subscriptions=["ALL"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var project = Gcp.Organizations.GetProject.Invoke();
-///
-/// var contact = new Gcp.EssentialContacts.Contact("contact", new()
-/// {
-/// Parent = project.Apply(getProjectResult => getProjectResult.Id),
-/// Email = "foo@bar.com",
-/// LanguageTag = "en-GB",
-/// NotificationCategorySubscriptions = new[]
-/// {
-/// "ALL",
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/essentialcontacts"
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-/// if err != nil {
-/// return err
-/// }
-/// _, err = essentialcontacts.NewContact(ctx, "contact", &essentialcontacts.ContactArgs{
-/// Parent:      pulumi.String(project.Id),
-/// Email:       pulumi.String("foo@bar.com"),
-/// LanguageTag: pulumi.String("en-GB"),
-/// NotificationCategorySubscriptions: pulumi.StringArray{
-/// pulumi.String("ALL"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
-/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
-/// import com.pulumi.gcp.essentialcontacts.Contact;
-/// import com.pulumi.gcp.essentialcontacts.ContactArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-/// .build());
-///
-/// var contact = new Contact("contact", ContactArgs.builder()
-/// .parent(project.id())
-/// .email("foo@bar.com")
-/// .languageTag("en-GB")
-/// .notificationCategorySubscriptions("ALL")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// contact:
-/// type: gcp:essentialcontacts:Contact
-/// properties:
-/// parent: ${project.id}
-/// email: foo@bar.com
-/// languageTag: en-GB
-/// notificationCategorySubscriptions:
-/// - ALL
-/// variables:
-/// project:
-/// fn::invoke:
-/// function: gcp:organizations:getProject
-/// arguments: {}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///

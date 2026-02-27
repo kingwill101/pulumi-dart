@@ -1,3 +1,0 @@
-library module_applicationintegration_auth_config_decrypted_credential_oauth2_client_credentials_token_params_entry;
-
-export 'auth_config_decrypted_credential_oauth2_client_credentials_token_params_entry.dart';

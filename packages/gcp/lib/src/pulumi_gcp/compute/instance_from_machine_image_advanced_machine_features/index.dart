@@ -1,3 +1,0 @@
-library module_compute_instance_from_machine_image_advanced_machine_features;
-
-export 'instance_from_machine_image_advanced_machine_features.dart';

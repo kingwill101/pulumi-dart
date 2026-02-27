@@ -1,3 +1,0 @@
-library module_storage_transfer_job_replication_spec_gcs_data_source;
-
-export 'transfer_job_replication_spec_gcs_data_source.dart';

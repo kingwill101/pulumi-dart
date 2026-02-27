@@ -1,3 +1,0 @@
-library module_logging_project_bucket_config_index_config;
-
-export 'project_bucket_config_index_config.dart';

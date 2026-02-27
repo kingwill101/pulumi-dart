@@ -19,7 +19,7 @@ class ApplicationArgs2 {
   /// Optional. User-defined name for the Application.
   final Input<String>? displayName;
 
-  /// Part of <span pulumi-lang-nodejs="`parent`" pulumi-lang-dotnet="`Parent`" pulumi-lang-go="`parent`" pulumi-lang-python="`parent`" pulumi-lang-yaml="`parent`" pulumi-lang-java="`parent`">`parent`</span>. See documentation of `projectsId`.
+  /// Part of `parent`. See documentation of `projectsId`.
   final Input<String> location;
 
   /// The ID of the project in which the resource belongs.

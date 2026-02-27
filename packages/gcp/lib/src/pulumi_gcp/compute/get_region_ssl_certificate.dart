@@ -1,0 +1,5 @@
+library module_compute_get_region_ssl_certificate;
+
+export 'get_region_ssl_certificate/get_region_ssl_certificate.dart';
+export 'get_region_ssl_certificate/get_region_ssl_certificate_args.dart';
+export 'get_region_ssl_certificate/get_region_ssl_certificate_result.dart';

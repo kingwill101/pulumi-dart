@@ -1,0 +1,3 @@
+library module_compute_interconnect_attachment_group_configured_availability_sla;
+
+export 'interconnect_attachment_group_configured_availability_sla/interconnect_attachment_group_configured_availability_sla.dart';

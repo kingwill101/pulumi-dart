@@ -1,3 +1,0 @@
-library module_integrationconnectors_connection_eventing_runtime_data;
-
-export 'connection_eventing_runtime_data.dart';

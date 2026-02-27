@@ -6,7 +6,7 @@ import '../get_cluster_maintenance_policy_maintenance_exclusion/get_cluster_main
 import '../get_cluster_maintenance_policy_recurring_window/get_cluster_maintenance_policy_recurring_window.dart';
 
 class GetClusterMaintenancePolicy {
-  /// Time window specified for daily maintenance operations. Specify<span pulumi-lang-nodejs=" startTime " pulumi-lang-dotnet=" StartTime " pulumi-lang-go=" startTime " pulumi-lang-python=" start_time " pulumi-lang-yaml=" startTime " pulumi-lang-java=" startTime "> start_time </span>in RFC3339 format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
+  /// Time window specified for daily maintenance operations. Specify start_time in RFC3339 format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
   final List<GetClusterMaintenancePolicyDailyMaintenanceWindow>
       dailyMaintenanceWindows;
 

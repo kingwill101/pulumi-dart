@@ -1,3 +1,0 @@
-library module_edgecontainer_vpn_connection_detail_cloud_router;
-
-export 'vpn_connection_detail_cloud_router.dart';

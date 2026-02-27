@@ -1,0 +1,3 @@
+library module_container_azure_cluster_workload_identity_config;
+
+export 'azure_cluster_workload_identity_config/azure_cluster_workload_identity_config.dart';

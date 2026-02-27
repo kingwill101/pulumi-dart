@@ -1,0 +1,3 @@
+library module_orgpolicy_policy_spec_rule_condition;
+
+export 'policy_spec_rule_condition/policy_spec_rule_condition.dart';

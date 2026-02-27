@@ -22,133 +22,8 @@ import 'instance_from_machine_image_args.dart';
 /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
 ///
 /// This resource is specifically to create a compute instance from a given
-/// <span pulumi-lang-nodejs="`sourceMachineImage`" pulumi-lang-dotnet="`SourceMachineImage`" pulumi-lang-go="`sourceMachineImage`" pulumi-lang-python="`source_machine_image`" pulumi-lang-yaml="`sourceMachineImage`" pulumi-lang-java="`sourceMachineImage`">`source_machine_image`</span>. To create an instance without a machine image, use the
-/// <span pulumi-lang-nodejs="`gcp.compute.Instance`" pulumi-lang-dotnet="`gcp.compute.Instance`" pulumi-lang-go="`compute.Instance`" pulumi-lang-python="`compute.Instance`" pulumi-lang-yaml="`gcp.compute.Instance`" pulumi-lang-java="`gcp.compute.Instance`">`gcp.compute.Instance`</span> resource.
-///
-///
-/// ## Example Usage
-///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
-///
-/// const tpl = new gcp.compute.InstanceFromMachineImage("tpl", {
-/// name: "instance-from-machine-image",
-/// zone: "us-central1-a",
-/// sourceMachineImage: "projects/PROJECT-ID/global/machineImages/NAME",
-/// canIpForward: false,
-/// labels: {
-/// my_key: "my_value",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// tpl = gcp.compute.InstanceFromMachineImage("tpl",
-/// name="instance-from-machine-image",
-/// zone="us-central1-a",
-/// source_machine_image="projects/PROJECT-ID/global/machineImages/NAME",
-/// can_ip_forward=False,
-/// labels={
-/// "my_key": "my_value",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var tpl = new Gcp.Compute.InstanceFromMachineImage("tpl", new()
-/// {
-/// Name = "instance-from-machine-image",
-/// Zone = "us-central1-a",
-/// SourceMachineImage = "projects/PROJECT-ID/global/machineImages/NAME",
-/// CanIpForward = false,
-/// Labels =
-/// {
-/// { "my_key", "my_value" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := compute.NewInstanceFromMachineImage(ctx, "tpl", &compute.InstanceFromMachineImageArgs{
-/// Name:               pulumi.String("instance-from-machine-image"),
-/// Zone:               pulumi.String("us-central1-a"),
-/// SourceMachineImage: pulumi.String("projects/PROJECT-ID/global/machineImages/NAME"),
-/// CanIpForward:       pulumi.Bool(false),
-/// Labels: pulumi.StringMap{
-/// "my_key": pulumi.String("my_value"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.InstanceFromMachineImage;
-/// import com.pulumi.gcp.compute.InstanceFromMachineImageArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var tpl = new InstanceFromMachineImage("tpl", InstanceFromMachineImageArgs.builder()
-/// .name("instance-from-machine-image")
-/// .zone("us-central1-a")
-/// .sourceMachineImage("projects/PROJECT-ID/global/machineImages/NAME")
-/// .canIpForward(false)
-/// .labels(Map.of("my_key", "my_value"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// tpl:
-/// type: gcp:compute:InstanceFromMachineImage
-/// properties:
-/// name: instance-from-machine-image
-/// zone: us-central1-a
-/// sourceMachineImage: projects/PROJECT-ID/global/machineImages/NAME
-/// canIpForward: false
-/// labels:
-/// my_key: my_value
-/// ```
-/// <!--End PulumiCodeChooser -->
+/// `source_machine_image`. To create an instance without a machine image, use the
+/// `gcp.compute.Instance` resource.
 class InstanceFromMachineImage extends CustomResource {
   /// Controls for advanced machine-related behavior features.
   late final Output<InstanceFromMachineImageAdvancedMachineFeatures>
@@ -164,7 +39,7 @@ class InstanceFromMachineImage extends CustomResource {
   /// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
   late final Output<bool> canIpForward;
 
-  /// The Confidential VM config being used by the instance. <span pulumi-lang-nodejs=" onHostMaintenance " pulumi-lang-dotnet=" OnHostMaintenance " pulumi-lang-go=" onHostMaintenance " pulumi-lang-python=" on_host_maintenance " pulumi-lang-yaml=" onHostMaintenance " pulumi-lang-java=" onHostMaintenance "> on_host_maintenance </span>has to be set to TERMINATE or this will fail to create.
+  /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
   late final Output<InstanceFromMachineImageConfidentialInstanceConfig>
       confidentialInstanceConfig;
 
@@ -251,7 +126,7 @@ class InstanceFromMachineImage extends CustomResource {
   /// Partner Metadata Map made available within the instance.
   late final Output<Map<String, String>> partnerMetadata;
 
-  /// The ID of the project in which the resource belongs. If<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>is provided, this value is ignored. If neither<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>nor project are provided, the provider project is used.
+  /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
   late final Output<String> project;
 
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -261,7 +136,7 @@ class InstanceFromMachineImage extends CustomResource {
   late final Output<InstanceFromMachineImageReservationAffinity>
       reservationAffinity;
 
-  /// A list of<span pulumi-lang-nodejs=" selfLinks " pulumi-lang-dotnet=" SelfLinks " pulumi-lang-go=" selfLinks " pulumi-lang-python=" self_links " pulumi-lang-yaml=" selfLinks " pulumi-lang-java=" selfLinks "> self_links </span>of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+  /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
   late final Output<String> resourcePolicies;
 
   /// The scheduling strategy being used by the instance.
@@ -299,11 +174,11 @@ class InstanceFromMachineImage extends CustomResource {
   /// The zone that the machine should be created in. If not
   /// set, the provider zone is used.
   ///
-  /// In addition to these, most* arguments from <span pulumi-lang-nodejs="`gcp.compute.Instance`" pulumi-lang-dotnet="`gcp.compute.Instance`" pulumi-lang-go="`compute.Instance`" pulumi-lang-python="`compute.Instance`" pulumi-lang-yaml="`gcp.compute.Instance`" pulumi-lang-java="`gcp.compute.Instance`">`gcp.compute.Instance`</span> are supported
+  /// In addition to these, most* arguments from `gcp.compute.Instance` are supported
   /// as a way to override the properties in the machine image. All exported attributes
-  /// from <span pulumi-lang-nodejs="`gcp.compute.Instance`" pulumi-lang-dotnet="`gcp.compute.Instance`" pulumi-lang-go="`compute.Instance`" pulumi-lang-python="`compute.Instance`" pulumi-lang-yaml="`gcp.compute.Instance`" pulumi-lang-java="`gcp.compute.Instance`">`gcp.compute.Instance`</span> are likewise exported here.
+  /// from `gcp.compute.Instance` are likewise exported here.
   ///
-  /// > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the <span pulumi-lang-nodejs=""bootDisk"" pulumi-lang-dotnet=""BootDisk"" pulumi-lang-go=""bootDisk"" pulumi-lang-python=""boot_disk"" pulumi-lang-yaml=""bootDisk"" pulumi-lang-java=""bootDisk"">"boot_disk"</span>, <span pulumi-lang-nodejs=""attachedDisk"" pulumi-lang-dotnet=""AttachedDisk"" pulumi-lang-go=""attachedDisk"" pulumi-lang-python=""attached_disk"" pulumi-lang-yaml=""attachedDisk"" pulumi-lang-java=""attachedDisk"">"attached_disk"</span>, and <span pulumi-lang-nodejs=""scratchDisk"" pulumi-lang-dotnet=""ScratchDisk"" pulumi-lang-go=""scratchDisk"" pulumi-lang-python=""scratch_disk"" pulumi-lang-yaml=""scratchDisk"" pulumi-lang-java=""scratchDisk"">"scratch_disk"</span> fields.
+  /// > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "boot_disk", "attached_disk", and "scratch_disk" fields.
   late final Output<String> zone;
 
   InstanceFromMachineImage(

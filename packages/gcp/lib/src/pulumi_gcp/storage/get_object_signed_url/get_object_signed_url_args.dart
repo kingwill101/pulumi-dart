@@ -16,12 +16,12 @@ class GetObjectSignedUrlArgs {
   final Input<String>? contentType;
 
   /// What Google service account credentials json should be used to sign the URL.
-  /// This data source checks the following locations for credentials, in order of preference: data source <span pulumi-lang-nodejs="`credentials`" pulumi-lang-dotnet="`Credentials`" pulumi-lang-go="`credentials`" pulumi-lang-python="`credentials`" pulumi-lang-yaml="`credentials`" pulumi-lang-java="`credentials`">`credentials`</span> attribute, provider <span pulumi-lang-nodejs="`credentials`" pulumi-lang-dotnet="`Credentials`" pulumi-lang-go="`credentials`" pulumi-lang-python="`credentials`" pulumi-lang-yaml="`credentials`" pulumi-lang-java="`credentials`">`credentials`</span> attribute and finally the GOOGLE_APPLICATION_CREDENTIALS environment variable.
+  /// This data source checks the following locations for credentials, in order of preference: data source `credentials` attribute, provider `credentials` attribute and finally the GOOGLE_APPLICATION_CREDENTIALS environment variable.
   ///
-  /// > **NOTE** the default google credentials configured by <span pulumi-lang-nodejs="`gcloud`" pulumi-lang-dotnet="`Gcloud`" pulumi-lang-go="`gcloud`" pulumi-lang-python="`gcloud`" pulumi-lang-yaml="`gcloud`" pulumi-lang-java="`gcloud`">`gcloud`</span> sdk or the service account associated with a compute instance cannot be used, because these do not include the private key required to sign the URL. A valid <span pulumi-lang-nodejs="`json`" pulumi-lang-dotnet="`Json`" pulumi-lang-go="`json`" pulumi-lang-python="`json`" pulumi-lang-yaml="`json`" pulumi-lang-java="`json`">`json`</span> service account credentials key file must be used, as generated via Google cloud console.
+  /// > **NOTE** the default google credentials configured by `gcloud` sdk or the service account associated with a compute instance cannot be used, because these do not include the private key required to sign the URL. A valid `json` service account credentials key file must be used, as generated via Google cloud console.
   final Input<String>? credentials;
 
-  /// For how long shall the signed URL be valid (defaults to 1 hour - i.e. <span pulumi-lang-nodejs="`1h`" pulumi-lang-dotnet="`1h`" pulumi-lang-go="`1h`" pulumi-lang-python="`1h`" pulumi-lang-yaml="`1h`" pulumi-lang-java="`1h`">`1h`</span>).
+  /// For how long shall the signed URL be valid (defaults to 1 hour - i.e. `1h`).
   /// See [here](https://golang.org/pkg/time/#ParseDuration) for info on valid duration formats.
   final Input<String>? duration;
 

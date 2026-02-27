@@ -1,3 +1,0 @@
-library module_dataproc_cluster_cluster_config_encryption_config;
-
-export 'cluster_cluster_config_encryption_config.dart';

@@ -9,14 +9,8 @@ class SloRequestBasedSliDistributionCut {
   /// MetricKind = DELTA or MetricKind = CUMULATIVE.
   final String distributionFilter;
 
-  /// Range of numerical values. The computed<span pulumi-lang-nodejs=" goodService
-  /// " pulumi-lang-dotnet=" GoodService
-  /// " pulumi-lang-go=" goodService
-  /// " pulumi-lang-python=" good_service
-  /// " pulumi-lang-yaml=" goodService
-  /// " pulumi-lang-java=" goodService
-  /// "> good_service
-  /// </span>will be the count of values x in the Distribution such
+  /// Range of numerical values. The computed good_service
+  /// will be the count of values x in the Distribution such
   /// that range.min <= x <= range.max. inclusive of min and
   /// max. Open ranges can be defined by setting
   /// just one of min or max.

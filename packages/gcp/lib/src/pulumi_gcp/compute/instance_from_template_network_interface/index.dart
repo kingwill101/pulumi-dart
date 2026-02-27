@@ -1,3 +1,0 @@
-library module_compute_instance_from_template_network_interface;
-
-export 'instance_from_template_network_interface.dart';

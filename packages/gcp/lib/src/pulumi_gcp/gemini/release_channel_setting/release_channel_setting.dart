@@ -10,121 +10,7 @@ import 'release_channel_setting_args.dart';
 /// ### Gemini Release Channel Setting Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const example = new gcp.gemini.ReleaseChannelSetting("example", {
-/// releaseChannelSettingId: "ls1-tf",
-/// location: "global",
-/// labels: {
-/// my_key: "my_value",
-/// },
-/// releaseChannel: "EXPERIMENTAL",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// example = gcp.gemini.ReleaseChannelSetting("example",
-/// release_channel_setting_id="ls1-tf",
-/// location="global",
-/// labels={
-/// "my_key": "my_value",
-/// },
-/// release_channel="EXPERIMENTAL")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Gcp.Gemini.ReleaseChannelSetting("example", new()
-/// {
-/// ReleaseChannelSettingId = "ls1-tf",
-/// Location = "global",
-/// Labels =
-/// {
-/// { "my_key", "my_value" },
-/// },
-/// ReleaseChannel = "EXPERIMENTAL",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := gemini.NewReleaseChannelSetting(ctx, "example", &gemini.ReleaseChannelSettingArgs{
-/// ReleaseChannelSettingId: pulumi.String("ls1-tf"),
-/// Location:                pulumi.String("global"),
-/// Labels: pulumi.StringMap{
-/// "my_key": pulumi.String("my_value"),
-/// },
-/// ReleaseChannel: pulumi.String("EXPERIMENTAL"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.gemini.ReleaseChannelSetting;
-/// import com.pulumi.gcp.gemini.ReleaseChannelSettingArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new ReleaseChannelSetting("example", ReleaseChannelSettingArgs.builder()
-/// .releaseChannelSettingId("ls1-tf")
-/// .location("global")
-/// .labels(Map.of("my_key", "my_value"))
-/// .releaseChannel("EXPERIMENTAL")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: gcp:gemini:ReleaseChannelSetting
-/// properties:
-/// releaseChannelSettingId: ls1-tf
-/// location: global
-/// labels:
-/// my_key: my_value
-/// releaseChannel: EXPERIMENTAL
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -158,10 +44,10 @@ class ReleaseChannelSetting extends CustomResource {
 
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> location;
 
   /// Identifier. Name of the resource.

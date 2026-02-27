@@ -8,7 +8,7 @@ class TraceScopeArgs {
   /// The maximum length of the description is 8000 characters.
   final Input<String>? description;
 
-  /// GCP region the TraceScope is stored in. Only <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span> is supported.
+  /// GCP region the TraceScope is stored in. Only `global` is supported.
   final Input<String> location;
 
   /// The ID of the project in which the resource belongs.

@@ -1,3 +1,0 @@
-library module_healthcare_hl7_store_iam_member_condition;
-
-export 'hl7_store_iam_member_condition.dart';

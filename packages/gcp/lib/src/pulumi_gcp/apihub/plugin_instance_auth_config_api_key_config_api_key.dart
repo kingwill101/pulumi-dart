@@ -1,0 +1,3 @@
+library module_apihub_plugin_instance_auth_config_api_key_config_api_key;
+
+export 'plugin_instance_auth_config_api_key_config_api_key/plugin_instance_auth_config_api_key_config_api_key.dart';

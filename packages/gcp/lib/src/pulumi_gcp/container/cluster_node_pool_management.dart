@@ -1,0 +1,3 @@
+library module_container_cluster_node_pool_management;
+
+export 'cluster_node_pool_management/cluster_node_pool_management.dart';

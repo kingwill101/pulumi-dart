@@ -5,7 +5,7 @@ class CxWebhookGenericWebServiceOauthConfig {
   final String clientId;
 
   /// The client secret provided by the 3rd party platform.  If the
-  /// <span pulumi-lang-nodejs="`secretVersionForClientSecret`" pulumi-lang-dotnet="`SecretVersionForClientSecret`" pulumi-lang-go="`secretVersionForClientSecret`" pulumi-lang-python="`secret_version_for_client_secret`" pulumi-lang-yaml="`secretVersionForClientSecret`" pulumi-lang-java="`secretVersionForClientSecret`">`secret_version_for_client_secret`</span> field is set, this field will be
+  /// `secret_version_for_client_secret` field is set, this field will be
   /// ignored.
   final String? clientSecret;
 
@@ -13,7 +13,7 @@ class CxWebhookGenericWebServiceOauthConfig {
   final List<String>? scopes;
 
   /// The name of the SecretManager secret version resource storing the
-  /// client secret. If this field is set, the <span pulumi-lang-nodejs="`clientSecret`" pulumi-lang-dotnet="`ClientSecret`" pulumi-lang-go="`clientSecret`" pulumi-lang-python="`client_secret`" pulumi-lang-yaml="`clientSecret`" pulumi-lang-java="`clientSecret`">`client_secret`</span> field will be
+  /// client secret. If this field is set, the `client_secret` field will be
   /// ignored.
   /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
   final String? secretVersionForClientSecret;

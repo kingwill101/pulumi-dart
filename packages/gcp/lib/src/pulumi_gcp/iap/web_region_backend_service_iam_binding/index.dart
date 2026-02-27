@@ -1,4 +1,0 @@
-library module_iap_web_region_backend_service_iam_binding;
-
-export 'web_region_backend_service_iam_binding.dart';
-export 'web_region_backend_service_iam_binding_args.dart';

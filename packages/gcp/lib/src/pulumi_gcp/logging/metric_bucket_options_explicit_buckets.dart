@@ -1,0 +1,3 @@
+library module_logging_metric_bucket_options_explicit_buckets;
+
+export 'metric_bucket_options_explicit_buckets/metric_bucket_options_explicit_buckets.dart';

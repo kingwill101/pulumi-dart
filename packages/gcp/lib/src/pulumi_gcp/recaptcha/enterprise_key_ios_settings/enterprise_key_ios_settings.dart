@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class EnterpriseKeyIosSettings {
-  /// If set to true, it means<span pulumi-lang-nodejs=" allowedBundleIds " pulumi-lang-dotnet=" AllowedBundleIds " pulumi-lang-go=" allowedBundleIds " pulumi-lang-python=" allowed_bundle_ids " pulumi-lang-yaml=" allowedBundleIds " pulumi-lang-java=" allowedBundleIds "> allowed_bundle_ids </span>will not be enforced.
+  /// If set to true, it means allowed_bundle_ids will not be enforced.
   final bool? allowAllBundleIds;
 
   /// iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'

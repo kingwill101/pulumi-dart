@@ -1,0 +1,4 @@
+library module_compute_instance_from_machine_image;
+
+export 'instance_from_machine_image/instance_from_machine_image.dart';
+export 'instance_from_machine_image/instance_from_machine_image_args.dart';

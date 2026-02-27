@@ -1,4 +1,0 @@
-library module_securitycenter_v2_organization_source_iam_binding;
-
-export 'v2_organization_source_iam_binding.dart';
-export 'v2_organization_source_iam_binding_args.dart';

@@ -11,7 +11,7 @@ class GetBackupPlanAssociationsArgs {
   /// is not provided, the provider project is used.
   final Input<String>? project;
 
-  /// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. <span pulumi-lang-nodejs="`resourceType`" pulumi-lang-dotnet="`ResourceType`" pulumi-lang-go="`resourceType`" pulumi-lang-python="`resource_type`" pulumi-lang-yaml="`resourceType`" pulumi-lang-java="`resourceType`">`resource_type`</span> is deprecated and will be removed in a future major release.
+  /// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resource_type` is deprecated and will be removed in a future major release.
   /// - - -
   final Input<String>? resourceType;
 

@@ -1,0 +1,3 @@
+library module_datacatalog_entry_bigquery_date_sharded_spec;
+
+export 'entry_bigquery_date_sharded_spec/entry_bigquery_date_sharded_spec.dart';

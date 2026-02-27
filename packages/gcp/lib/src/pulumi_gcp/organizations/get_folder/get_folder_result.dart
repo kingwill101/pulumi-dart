@@ -27,7 +27,7 @@ class GetFolderResult {
   /// The resource name of the Folder in the form `folders/{folder_id}`.
   final String name;
 
-  /// If <span pulumi-lang-nodejs="`lookupOrganization`" pulumi-lang-dotnet="`LookupOrganization`" pulumi-lang-go="`lookupOrganization`" pulumi-lang-python="`lookup_organization`" pulumi-lang-yaml="`lookupOrganization`" pulumi-lang-java="`lookupOrganization`">`lookup_organization`</span> is enable, the resource name of the Organization that the folder belongs.
+  /// If `lookup_organization` is enable, the resource name of the Organization that the folder belongs.
   final String organization;
 
   /// The resource name of the parent Folder or Organization.

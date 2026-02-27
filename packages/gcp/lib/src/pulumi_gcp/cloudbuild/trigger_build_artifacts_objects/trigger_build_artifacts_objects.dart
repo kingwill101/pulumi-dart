@@ -17,7 +17,7 @@ class TriggerBuildArtifactsObjects {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedBuildArtifactsObjectsTiming"" pulumi-lang-dotnet=""NestedBuildArtifactsObjectsTiming"" pulumi-lang-go=""nestedBuildArtifactsObjectsTiming"" pulumi-lang-python=""nested_build_artifacts_objects_timing"" pulumi-lang-yaml=""nestedBuildArtifactsObjectsTiming"" pulumi-lang-java=""nestedBuildArtifactsObjectsTiming"">"nested_build_artifacts_objects_timing"</span>></a>The <span pulumi-lang-nodejs="`timing`" pulumi-lang-dotnet="`Timing`" pulumi-lang-go="`timing`" pulumi-lang-python="`timing`" pulumi-lang-yaml="`timing`" pulumi-lang-java="`timing`">`timing`</span> block contains:
+  /// <a name="nested_build_artifacts_objects_timing"></a>The `timing` block contains:
   final List<TriggerBuildArtifactsObjectsTiming>? timings;
 
   TriggerBuildArtifactsObjects({

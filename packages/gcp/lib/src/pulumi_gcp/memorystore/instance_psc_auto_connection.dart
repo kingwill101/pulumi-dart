@@ -1,0 +1,3 @@
+library module_memorystore_instance_psc_auto_connection;
+
+export 'instance_psc_auto_connection/instance_psc_auto_connection.dart';

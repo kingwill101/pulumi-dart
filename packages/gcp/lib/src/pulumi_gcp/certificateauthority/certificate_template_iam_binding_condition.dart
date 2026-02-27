@@ -1,0 +1,3 @@
+library module_certificateauthority_certificate_template_iam_binding_condition;
+
+export 'certificate_template_iam_binding_condition/certificate_template_iam_binding_condition.dart';

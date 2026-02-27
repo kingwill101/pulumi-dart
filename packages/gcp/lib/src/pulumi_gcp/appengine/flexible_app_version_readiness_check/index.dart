@@ -1,3 +1,0 @@
-library module_appengine_flexible_app_version_readiness_check;
-
-export 'flexible_app_version_readiness_check.dart';

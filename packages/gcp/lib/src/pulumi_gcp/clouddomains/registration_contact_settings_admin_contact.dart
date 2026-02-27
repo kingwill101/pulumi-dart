@@ -1,0 +1,3 @@
+library module_clouddomains_registration_contact_settings_admin_contact;
+
+export 'registration_contact_settings_admin_contact/registration_contact_settings_admin_contact.dart';

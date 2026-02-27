@@ -1,3 +1,0 @@
-library module_compute_firewall_policy_rule_match_layer4_config;
-
-export 'firewall_policy_rule_match_layer4_config.dart';

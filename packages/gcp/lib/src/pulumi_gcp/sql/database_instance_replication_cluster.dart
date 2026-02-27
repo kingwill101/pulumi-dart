@@ -1,0 +1,3 @@
+library module_sql_database_instance_replication_cluster;
+
+export 'database_instance_replication_cluster/database_instance_replication_cluster.dart';

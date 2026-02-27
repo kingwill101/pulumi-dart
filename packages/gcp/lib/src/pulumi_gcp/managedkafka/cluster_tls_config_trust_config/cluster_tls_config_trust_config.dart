@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../cluster_tls_config_trust_config_cas_config/cluster_tls_config_trust_config_cas_config.dart';
 
 class ClusterTlsConfigTrustConfig {
-  /// Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one <span pulumi-lang-nodejs="`casConfigs`" pulumi-lang-dotnet="`CasConfigs`" pulumi-lang-go="`casConfigs`" pulumi-lang-python="`cas_configs`" pulumi-lang-yaml="`casConfigs`" pulumi-lang-java="`casConfigs`">`cas_configs`</span> block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional <span pulumi-lang-nodejs="`casConfigs`" pulumi-lang-dotnet="`CasConfigs`" pulumi-lang-go="`casConfigs`" pulumi-lang-python="`cas_configs`" pulumi-lang-yaml="`casConfigs`" pulumi-lang-java="`casConfigs`">`cas_configs`</span> blocks.
+  /// Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
   /// Structure is documented below.
   final List<ClusterTlsConfigTrustConfigCasConfig>? casConfigs;
 

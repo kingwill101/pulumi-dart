@@ -10,7 +10,7 @@ import '../uptime_check_config_tcp_check/uptime_check_config_tcp_check.dart';
 
 /// The set of arguments for UptimeCheckConfig.
 class UptimeCheckConfigArgs {
-  /// The checker type to use for the check. If the monitored resource type is <span pulumi-lang-nodejs="`servicedirectoryService`" pulumi-lang-dotnet="`ServicedirectoryService`" pulumi-lang-go="`servicedirectoryService`" pulumi-lang-python="`servicedirectory_service`" pulumi-lang-yaml="`servicedirectoryService`" pulumi-lang-java="`servicedirectoryService`">`servicedirectory_service`</span>, <span pulumi-lang-nodejs="`checkerType`" pulumi-lang-dotnet="`CheckerType`" pulumi-lang-go="`checkerType`" pulumi-lang-python="`checker_type`" pulumi-lang-yaml="`checkerType`" pulumi-lang-java="`checkerType`">`checker_type`</span> must be set to `VPC_CHECKERS`.
+  /// The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
   /// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
   final Input<String>? checkerType;
 

@@ -1,0 +1,3 @@
+library module_modelarmor_floorsetting_floor_setting_metadata;
+
+export 'floorsetting_floor_setting_metadata/floorsetting_floor_setting_metadata.dart';

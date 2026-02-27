@@ -1,3 +1,0 @@
-library module_securesourcemanager_instance_workforce_identity_federation_config;
-
-export 'instance_workforce_identity_federation_config.dart';

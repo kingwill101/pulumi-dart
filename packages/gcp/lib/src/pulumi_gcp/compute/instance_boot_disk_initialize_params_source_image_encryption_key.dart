@@ -1,0 +1,3 @@
+library module_compute_instance_boot_disk_initialize_params_source_image_encryption_key;
+
+export 'instance_boot_disk_initialize_params_source_image_encryption_key/instance_boot_disk_initialize_params_source_image_encryption_key.dart';

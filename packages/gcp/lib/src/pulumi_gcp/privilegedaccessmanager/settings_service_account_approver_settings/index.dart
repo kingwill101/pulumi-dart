@@ -1,3 +1,0 @@
-library module_privilegedaccessmanager_settings_service_account_approver_settings;
-
-export 'settings_service_account_approver_settings.dart';

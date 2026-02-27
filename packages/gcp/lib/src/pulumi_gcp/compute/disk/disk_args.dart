@@ -50,7 +50,7 @@ class DiskArgs {
   final Input<DiskDiskEncryptionKey>? diskEncryptionKey;
 
   /// Whether this disk is using confidential compute mode.
-  /// Note: Only supported on hyperdisk skus,<span pulumi-lang-nodejs=" diskEncryptionKey " pulumi-lang-dotnet=" DiskEncryptionKey " pulumi-lang-go=" diskEncryptionKey " pulumi-lang-python=" disk_encryption_key " pulumi-lang-yaml=" diskEncryptionKey " pulumi-lang-java=" diskEncryptionKey "> disk_encryption_key </span>is required when setting to true
+  /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
   final Input<bool>? enableConfidentialCompute;
 
   /// A list of features to enable on the guest operating system.
@@ -59,25 +59,25 @@ class DiskArgs {
   final Input<List<DiskGuestOsFeature>>? guestOsFeatures;
 
   /// The image from which to initialize this disk. This can be
-  /// one of: the image's <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span>, `projects/{project}/global/images/{image}`,
+  /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
   /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
   /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
   /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
   /// images names must include the family name. If they don't, use the
-  /// <span pulumi-lang-nodejs="[gcp.compute.Image " pulumi-lang-dotnet="[gcp.compute.Image " pulumi-lang-go="[compute.Image " pulumi-lang-python="[compute.Image " pulumi-lang-yaml="[gcp.compute.Image " pulumi-lang-java="[gcp.compute.Image ">[gcp.compute.Image </span>data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+  /// [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
   /// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
   /// These images can be referred by family name here.
   final Input<String>? image;
 
   /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`interface`" pulumi-lang-dotnet="`Interface`" pulumi-lang-go="`interface`" pulumi-lang-python="`interface`" pulumi-lang-yaml="`interface`" pulumi-lang-java="`interface`">`interface`</span> is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+  /// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
   final Input<String>? interface;
 
   /// Labels to apply to this disk.  A list of key->value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Any applicable license URI.
@@ -124,15 +124,15 @@ class DiskArgs {
   /// ~>**NOTE** This value does not support updating the
   /// resource policy, as resource policies can not be updated more than
   /// one at a time. Use
-  /// <span pulumi-lang-nodejs="`gcp.compute.DiskResourcePolicyAttachment`" pulumi-lang-dotnet="`gcp.compute.DiskResourcePolicyAttachment`" pulumi-lang-go="`compute.DiskResourcePolicyAttachment`" pulumi-lang-python="`compute.DiskResourcePolicyAttachment`" pulumi-lang-yaml="`gcp.compute.DiskResourcePolicyAttachment`" pulumi-lang-java="`gcp.compute.DiskResourcePolicyAttachment`">`gcp.compute.DiskResourcePolicyAttachment`</span>
+  /// `gcp.compute.DiskResourcePolicyAttachment`
   /// to allow for updating the resource policy attached to the disk.
   final Input<List<String>>? resourcePolicies;
 
   /// Size of the persistent disk, specified in GB. You can specify this
-  /// field when creating a persistent disk using the <span pulumi-lang-nodejs="`image`" pulumi-lang-dotnet="`Image`" pulumi-lang-go="`image`" pulumi-lang-python="`image`" pulumi-lang-yaml="`image`" pulumi-lang-java="`image`">`image`</span> or
-  /// <span pulumi-lang-nodejs="`snapshot`" pulumi-lang-dotnet="`Snapshot`" pulumi-lang-go="`snapshot`" pulumi-lang-python="`snapshot`" pulumi-lang-yaml="`snapshot`" pulumi-lang-java="`snapshot`">`snapshot`</span> parameter, or specify it alone to create an empty
+  /// field when creating a persistent disk using the `image` or
+  /// `snapshot` parameter, or specify it alone to create an empty
   /// persistent disk.
-  /// If you specify this field along with <span pulumi-lang-nodejs="`image`" pulumi-lang-dotnet="`Image`" pulumi-lang-go="`image`" pulumi-lang-python="`image`" pulumi-lang-yaml="`image`" pulumi-lang-java="`image`">`image`</span> or <span pulumi-lang-nodejs="`snapshot`" pulumi-lang-dotnet="`Snapshot`" pulumi-lang-go="`snapshot`" pulumi-lang-python="`snapshot`" pulumi-lang-yaml="`snapshot`" pulumi-lang-java="`snapshot`">`snapshot`</span>,
+  /// If you specify this field along with `image` or `snapshot`,
   /// the value must not be less than the size of the image
   /// or the size of the snapshot.
   /// ~>**NOTE** If you change the size, the provider updates the disk size

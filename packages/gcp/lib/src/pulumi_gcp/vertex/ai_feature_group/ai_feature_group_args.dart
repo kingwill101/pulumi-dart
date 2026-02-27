@@ -5,7 +5,7 @@ import '../ai_feature_group_big_query/ai_feature_group_big_query.dart';
 
 /// The set of arguments for AiFeatureGroup.
 class AiFeatureGroupArgs {
-  /// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a<span pulumi-lang-nodejs=" featureTimestamp " pulumi-lang-dotnet=" FeatureTimestamp " pulumi-lang-go=" featureTimestamp " pulumi-lang-python=" feature_timestamp " pulumi-lang-yaml=" featureTimestamp " pulumi-lang-java=" featureTimestamp "> feature_timestamp </span>column in the source.
+  /// Indicates that features for this group come from BigQuery Table/View. By default treats the source as a sparse time series source, which is required to have an entityId and a feature_timestamp column in the source.
   /// Structure is documented below.
   final Input<AiFeatureGroupBigQuery>? bigQuery;
 
@@ -14,7 +14,7 @@ class AiFeatureGroupArgs {
 
   /// The labels with user-defined metadata to organize your FeatureGroup.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The resource name of the Feature Group.

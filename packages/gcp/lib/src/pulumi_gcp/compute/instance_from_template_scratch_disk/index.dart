@@ -1,3 +1,0 @@
-library module_compute_instance_from_template_scratch_disk;
-
-export 'instance_from_template_scratch_disk.dart';

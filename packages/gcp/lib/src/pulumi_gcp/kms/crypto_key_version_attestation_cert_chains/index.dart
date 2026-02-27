@@ -1,3 +1,0 @@
-library module_kms_crypto_key_version_attestation_cert_chains;
-
-export 'crypto_key_version_attestation_cert_chains.dart';

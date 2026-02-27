@@ -1,3 +1,0 @@
-library module_compute_urlmap_default_route_action_max_stream_duration;
-
-export 'urlmap_default_route_action_max_stream_duration.dart';

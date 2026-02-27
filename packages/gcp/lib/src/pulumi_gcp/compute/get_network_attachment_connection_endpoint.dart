@@ -1,0 +1,3 @@
+library module_compute_get_network_attachment_connection_endpoint;
+
+export 'get_network_attachment_connection_endpoint/get_network_attachment_connection_endpoint.dart';

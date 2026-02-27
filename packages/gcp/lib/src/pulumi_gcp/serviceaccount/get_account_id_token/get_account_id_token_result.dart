@@ -7,7 +7,7 @@ class GetAccountIdTokenResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// The <span pulumi-lang-nodejs="`idToken`" pulumi-lang-dotnet="`IdToken`" pulumi-lang-go="`idToken`" pulumi-lang-python="`id_token`" pulumi-lang-yaml="`idToken`" pulumi-lang-java="`idToken`">`id_token`</span> representing the new generated identity.
+  /// The `id_token` representing the new generated identity.
   final String idToken;
   final bool? includeEmail;
   final String targetAudience;

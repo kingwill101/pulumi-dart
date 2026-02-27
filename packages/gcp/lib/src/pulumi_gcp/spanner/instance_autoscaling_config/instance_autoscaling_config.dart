@@ -15,14 +15,8 @@ class InstanceAutoscalingConfig {
   /// and outages due to abrupt scale-in events. Users can define the minimum and
   /// maximum compute capacity allocated to the instance, and the autoscaler will
   /// only scale within that range. Users can either use nodes or processing
-  /// units to specify the limits, but should use the same unit to set both the<span pulumi-lang-nodejs="
-  /// minLimit " pulumi-lang-dotnet="
-  /// MinLimit " pulumi-lang-go="
-  /// minLimit " pulumi-lang-python="
-  /// min_limit " pulumi-lang-yaml="
-  /// minLimit " pulumi-lang-java="
-  /// minLimit ">
-  /// min_limit </span>and max_limit.
+  /// units to specify the limits, but should use the same unit to set both the
+  /// min_limit and max_limit.
   /// Structure is documented below.
   final InstanceAutoscalingConfigAutoscalingLimits? autoscalingLimits;
 

@@ -1,0 +1,3 @@
+library module_gkebackup_restore_plan_restore_config_selected_namespaces;
+
+export 'restore_plan_restore_config_selected_namespaces/restore_plan_restore_config_selected_namespaces.dart';

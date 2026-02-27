@@ -1,3 +1,0 @@
-library module_datastream_stream_destination_config_bigquery_destination_config_single_target_dataset;
-
-export 'stream_destination_config_bigquery_destination_config_single_target_dataset.dart';

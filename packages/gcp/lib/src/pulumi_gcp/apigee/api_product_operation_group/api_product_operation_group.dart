@@ -5,7 +5,7 @@ import '../api_product_operation_group_operation_config/api_product_operation_gr
 
 class ApiProductOperationGroup {
   /// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
-  /// Possible values are: <span pulumi-lang-nodejs="`proxy`" pulumi-lang-dotnet="`Proxy`" pulumi-lang-go="`proxy`" pulumi-lang-python="`proxy`" pulumi-lang-yaml="`proxy`" pulumi-lang-java="`proxy`">`proxy`</span>, <span pulumi-lang-nodejs="`remoteservice`" pulumi-lang-dotnet="`Remoteservice`" pulumi-lang-go="`remoteservice`" pulumi-lang-python="`remoteservice`" pulumi-lang-yaml="`remoteservice`" pulumi-lang-java="`remoteservice`">`remoteservice`</span>.
+  /// Possible values are: `proxy`, `remoteservice`.
   final String? operationConfigType;
 
   /// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.

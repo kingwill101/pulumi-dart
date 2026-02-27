@@ -10,7 +10,7 @@ import 'folder_args.dart';
 ///
 /// Folders created live inside an Organization. See the [Organization documentation](https://docs.cloud.google.com/resource-manager/docs/quickstarts) for more details.
 ///
-/// The service account used to run the provider when creating a <span pulumi-lang-nodejs="`gcp.organizations.Folder`" pulumi-lang-dotnet="`gcp.organizations.Folder`" pulumi-lang-go="`organizations.Folder`" pulumi-lang-python="`organizations.Folder`" pulumi-lang-yaml="`gcp.organizations.Folder`" pulumi-lang-java="`gcp.organizations.Folder`">`gcp.organizations.Folder`</span>
+/// The service account used to run the provider when creating a `gcp.organizations.Folder`
 /// resource must have `roles/resourcemanager.folderCreator`. See the
 /// [Access Control for Folders Using IAM](https://docs.cloud.google.com/resource-manager/docs/access-control-folders)
 /// doc for more information.
@@ -63,7 +63,7 @@ class Folder extends CustomResource {
   /// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
   late final Output<String> parent;
 
-  /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the <span pulumi-lang-nodejs="`gcp.tags.TagValue`" pulumi-lang-dotnet="`gcp.tags.TagValue`" pulumi-lang-go="`tags.TagValue`" pulumi-lang-python="`tags.TagValue`" pulumi-lang-yaml="`gcp.tags.TagValue`" pulumi-lang-java="`gcp.tags.TagValue`">`gcp.tags.TagValue`</span> resource.
+  /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `gcp.tags.TagValue` resource.
   late final Output<Map<String, String>?> tags;
 
   Folder(

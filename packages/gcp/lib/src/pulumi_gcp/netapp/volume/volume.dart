@@ -29,215 +29,7 @@ import 'volume_args.dart';
 /// ### Netapp Volume Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = gcp.compute.getNetwork({
-/// name: "test-network",
-/// });
-/// const defaultStoragePool = new gcp.netapp.StoragePool("default", {
-/// name: "test-pool",
-/// location: "us-west2",
-/// serviceLevel: "PREMIUM",
-/// capacityGib: "2048",
-/// network: _default.then(_default => _default.id),
-/// });
-/// const testVolume = new gcp.netapp.Volume("test_volume", {
-/// location: "us-west2",
-/// name: "test-volume",
-/// capacityGib: "100",
-/// shareName: "test-volume",
-/// storagePool: defaultStoragePool.name,
-/// protocols: ["NFSV3"],
-/// deletionPolicy: "DEFAULT",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default = gcp.compute.get_network(name="test-network")
-/// default_storage_pool = gcp.netapp.StoragePool("default",
-/// name="test-pool",
-/// location="us-west2",
-/// service_level="PREMIUM",
-/// capacity_gib="2048",
-/// network=default.id)
-/// test_volume = gcp.netapp.Volume("test_volume",
-/// location="us-west2",
-/// name="test-volume",
-/// capacity_gib="100",
-/// share_name="test-volume",
-/// storage_pool=default_storage_pool.name,
-/// protocols=["NFSV3"],
-/// deletion_policy="DEFAULT")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var @default = Gcp.Compute.GetNetwork.Invoke(new()
-/// {
-/// Name = "test-network",
-/// });
-///
-/// var defaultStoragePool = new Gcp.Netapp.StoragePool("default", new()
-/// {
-/// Name = "test-pool",
-/// Location = "us-west2",
-/// ServiceLevel = "PREMIUM",
-/// CapacityGib = "2048",
-/// Network = @default.Apply(@default => @default.Apply(getNetworkResult => getNetworkResult.Id)),
-/// });
-///
-/// var testVolume = new Gcp.Netapp.Volume("test_volume", new()
-/// {
-/// Location = "us-west2",
-/// Name = "test-volume",
-/// CapacityGib = "100",
-/// ShareName = "test-volume",
-/// StoragePool = defaultStoragePool.Name,
-/// Protocols = new[]
-/// {
-/// "NFSV3",
-/// },
-/// DeletionPolicy = "DEFAULT",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// Name: "test-network",
-/// }, nil)
-/// if err != nil {
-/// return err
-/// }
-/// defaultStoragePool, err := netapp.NewStoragePool(ctx, "default", &netapp.StoragePoolArgs{
-/// Name:         pulumi.String("test-pool"),
-/// Location:     pulumi.String("us-west2"),
-/// ServiceLevel: pulumi.String("PREMIUM"),
-/// CapacityGib:  pulumi.String("2048"),
-/// Network:      pulumi.String(_default.Id),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = netapp.NewVolume(ctx, "test_volume", &netapp.VolumeArgs{
-/// Location:    pulumi.String("us-west2"),
-/// Name:        pulumi.String("test-volume"),
-/// CapacityGib: pulumi.String("100"),
-/// ShareName:   pulumi.String("test-volume"),
-/// StoragePool: defaultStoragePool.Name,
-/// Protocols: pulumi.StringArray{
-/// pulumi.String("NFSV3"),
-/// },
-/// DeletionPolicy: pulumi.String("DEFAULT"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.ComputeFunctions;
-/// import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
-/// import com.pulumi.gcp.netapp.StoragePool;
-/// import com.pulumi.gcp.netapp.StoragePoolArgs;
-/// import com.pulumi.gcp.netapp.Volume;
-/// import com.pulumi.gcp.netapp.VolumeArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
-/// .name("test-network")
-/// .build());
-///
-/// var defaultStoragePool = new StoragePool("defaultStoragePool", StoragePoolArgs.builder()
-/// .name("test-pool")
-/// .location("us-west2")
-/// .serviceLevel("PREMIUM")
-/// .capacityGib("2048")
-/// .network(default_.id())
-/// .build());
-///
-/// var testVolume = new Volume("testVolume", VolumeArgs.builder()
-/// .location("us-west2")
-/// .name("test-volume")
-/// .capacityGib("100")
-/// .shareName("test-volume")
-/// .storagePool(defaultStoragePool.name())
-/// .protocols("NFSV3")
-/// .deletionPolicy("DEFAULT")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// defaultStoragePool:
-/// type: gcp:netapp:StoragePool
-/// name: default
-/// properties:
-/// name: test-pool
-/// location: us-west2
-/// serviceLevel: PREMIUM
-/// capacityGib: '2048'
-/// network: ${default.id}
-/// testVolume:
-/// type: gcp:netapp:Volume
-/// name: test_volume
-/// properties:
-/// location: us-west2
-/// name: test-volume
-/// capacityGib: '100'
-/// shareName: test-volume
-/// storagePool: ${defaultStoragePool.name}
-/// protocols:
-/// - NFSV3
-/// deletionPolicy: DEFAULT
-/// variables:
-/// default:
-/// fn::invoke:
-/// function: gcp:compute:getNetwork
-/// arguments:
-/// name: test-network
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -329,7 +121,7 @@ class Volume extends CustomResource {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
@@ -400,7 +192,7 @@ class Volume extends CustomResource {
   late final Output<bool?> snapshotDirectory;
 
   /// Snapshot policy defines the schedule for automatic snapshot creation.
-  /// To disable automatic snapshot creation you have to remove the whole<span pulumi-lang-nodejs=" snapshotPolicy " pulumi-lang-dotnet=" SnapshotPolicy " pulumi-lang-go=" snapshotPolicy " pulumi-lang-python=" snapshot_policy " pulumi-lang-yaml=" snapshotPolicy " pulumi-lang-java=" snapshotPolicy "> snapshot_policy </span>block.
+  /// To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
   /// Structure is documented below.
   late final Output<VolumeSnapshotPolicy?> snapshotPolicy;
 

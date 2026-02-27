@@ -2,7 +2,7 @@
 
 class ReservationAutoscale {
   /// (Output)
-  /// The slot capacity added to this reservation when autoscale happens. Will be between [0,<span pulumi-lang-nodejs=" maxSlots]" pulumi-lang-dotnet=" MaxSlots]" pulumi-lang-go=" maxSlots]" pulumi-lang-python=" max_slots]" pulumi-lang-yaml=" maxSlots]" pulumi-lang-java=" maxSlots]"> max_slots]</span>.
+  /// The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
   final int? currentSlots;
 
   /// Number of slots to be scaled when needed.

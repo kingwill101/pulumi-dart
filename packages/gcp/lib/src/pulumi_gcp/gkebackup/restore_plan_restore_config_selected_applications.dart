@@ -1,0 +1,3 @@
+library module_gkebackup_restore_plan_restore_config_selected_applications;
+
+export 'restore_plan_restore_config_selected_applications/restore_plan_restore_config_selected_applications.dart';

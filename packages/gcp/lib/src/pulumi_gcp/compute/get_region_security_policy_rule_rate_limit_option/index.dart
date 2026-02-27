@@ -1,3 +1,0 @@
-library module_compute_get_region_security_policy_rule_rate_limit_option;
-
-export 'get_region_security_policy_rule_rate_limit_option.dart';

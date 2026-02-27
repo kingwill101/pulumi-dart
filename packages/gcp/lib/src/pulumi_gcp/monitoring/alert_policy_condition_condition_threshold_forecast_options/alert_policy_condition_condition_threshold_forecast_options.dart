@@ -5,7 +5,7 @@ class AlertPolicyConditionConditionThresholdForecastOptions {
   /// whether a timeseries will violate the threshold.
   /// If the predicted value is found to violate the
   /// threshold, and the violation is observed in all
-  /// forecasts made for the Configured <span pulumi-lang-nodejs="`duration`" pulumi-lang-dotnet="`Duration`" pulumi-lang-go="`duration`" pulumi-lang-python="`duration`" pulumi-lang-yaml="`duration`" pulumi-lang-java="`duration`">`duration`</span>,
+  /// forecasts made for the Configured `duration`,
   /// then the timeseries is considered to be failing.
   final String forecastHorizon;
 

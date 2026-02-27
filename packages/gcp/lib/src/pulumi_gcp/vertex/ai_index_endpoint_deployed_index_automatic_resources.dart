@@ -1,0 +1,3 @@
+library module_vertex_ai_index_endpoint_deployed_index_automatic_resources;
+
+export 'ai_index_endpoint_deployed_index_automatic_resources/ai_index_endpoint_deployed_index_automatic_resources.dart';

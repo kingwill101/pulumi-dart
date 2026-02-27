@@ -12,7 +12,7 @@ class ServicePerimeterIngressPolicyIngressFrom {
   final List<String>? identities;
 
   /// Specifies the type of identities that are allowed access from outside the
-  /// perimeter. If left unspecified, then members of <span pulumi-lang-nodejs="`identities`" pulumi-lang-dotnet="`Identities`" pulumi-lang-go="`identities`" pulumi-lang-python="`identities`" pulumi-lang-yaml="`identities`" pulumi-lang-java="`identities`">`identities`</span> field will be
+  /// perimeter. If left unspecified, then members of `identities` field will be
   /// allowed access.
   /// Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
   final String? identityType;

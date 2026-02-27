@@ -1,0 +1,3 @@
+library module_biglake_table_hive_options_storage_descriptor;
+
+export 'table_hive_options_storage_descriptor/table_hive_options_storage_descriptor.dart';

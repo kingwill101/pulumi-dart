@@ -1,0 +1,3 @@
+library module_workstations_workstation_config_persistent_directory;
+
+export 'workstation_config_persistent_directory/workstation_config_persistent_directory.dart';

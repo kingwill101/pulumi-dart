@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class TargetMultiTarget {
-  /// Required. The<span pulumi-lang-nodejs=" targetIds " pulumi-lang-dotnet=" TargetIds " pulumi-lang-go=" targetIds " pulumi-lang-python=" target_ids " pulumi-lang-yaml=" targetIds " pulumi-lang-java=" targetIds "> target_ids </span>of this multiTarget.
+  /// Required. The target_ids of this multiTarget.
   final List<String> targetIds;
 
   TargetMultiTarget({

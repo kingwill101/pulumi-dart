@@ -1,0 +1,3 @@
+library module_ces_app_logging_settings_redaction_config;
+
+export 'app_logging_settings_redaction_config/app_logging_settings_redaction_config.dart';

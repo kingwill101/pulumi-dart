@@ -1,13 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class FieldIndexConfigIndex {
-  /// Indicates that this field supports operations on arrayValues. Only one of <span pulumi-lang-nodejs="`order`" pulumi-lang-dotnet="`Order`" pulumi-lang-go="`order`" pulumi-lang-python="`order`" pulumi-lang-yaml="`order`" pulumi-lang-java="`order`">`order`</span> and `arrayConfig` can
+  /// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
   /// be specified.
   /// Possible values are: `CONTAINS`.
   final String? arrayConfig;
 
   /// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=, !=.
-  /// Only one of <span pulumi-lang-nodejs="`order`" pulumi-lang-dotnet="`Order`" pulumi-lang-go="`order`" pulumi-lang-python="`order`" pulumi-lang-yaml="`order`" pulumi-lang-java="`order`">`order`</span> and `arrayConfig` can be specified.
+  /// Only one of `order` and `arrayConfig` can be specified.
   /// Possible values are: `ASCENDING`, `DESCENDING`.
   final String? order;
 

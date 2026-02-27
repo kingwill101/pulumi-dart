@@ -71,7 +71,7 @@ class FhirStoreArgs {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The resource name for the FhirStore.
@@ -82,7 +82,7 @@ class FhirStoreArgs {
   /// A nested object resource.
   /// Structure is documented below.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`notificationConfig`" pulumi-lang-dotnet="`NotificationConfig`" pulumi-lang-go="`notificationConfig`" pulumi-lang-python="`notification_config`" pulumi-lang-yaml="`notificationConfig`" pulumi-lang-java="`notificationConfig`">`notification_config`</span> is deprecated and will be removed in a future major release. Use <span pulumi-lang-nodejs="`notificationConfigs`" pulumi-lang-dotnet="`NotificationConfigs`" pulumi-lang-go="`notificationConfigs`" pulumi-lang-python="`notification_configs`" pulumi-lang-yaml="`notificationConfigs`" pulumi-lang-java="`notificationConfigs`">`notification_configs`</span> instead.
+  /// > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
   final Input<FhirStoreNotificationConfig>? notificationConfig;
 
   /// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.

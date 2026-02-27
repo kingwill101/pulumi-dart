@@ -1,3 +1,0 @@
-library module_networkservices_http_route_rule_action;
-
-export 'http_route_rule_action.dart';

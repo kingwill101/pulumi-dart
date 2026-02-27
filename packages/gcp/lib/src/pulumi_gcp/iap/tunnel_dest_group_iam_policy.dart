@@ -1,0 +1,4 @@
+library module_iap_tunnel_dest_group_iam_policy;
+
+export 'tunnel_dest_group_iam_policy/tunnel_dest_group_iam_policy.dart';
+export 'tunnel_dest_group_iam_policy/tunnel_dest_group_iam_policy_args.dart';

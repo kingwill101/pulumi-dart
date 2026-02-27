@@ -1,0 +1,3 @@
+library module_applicationintegration_auth_config_decrypted_credential_username_and_password;
+
+export 'auth_config_decrypted_credential_username_and_password/auth_config_decrypted_credential_username_and_password.dart';

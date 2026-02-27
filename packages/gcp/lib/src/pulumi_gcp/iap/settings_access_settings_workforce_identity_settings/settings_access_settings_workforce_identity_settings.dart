@@ -8,7 +8,7 @@ class SettingsAccessSettingsWorkforceIdentitySettings {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedAccessSettingsWorkforceIdentitySettingsOauth2"" pulumi-lang-dotnet=""NestedAccessSettingsWorkforceIdentitySettingsOauth2"" pulumi-lang-go=""nestedAccessSettingsWorkforceIdentitySettingsOauth2"" pulumi-lang-python=""nested_access_settings_workforce_identity_settings_oauth2"" pulumi-lang-yaml=""nestedAccessSettingsWorkforceIdentitySettingsOauth2"" pulumi-lang-java=""nestedAccessSettingsWorkforceIdentitySettingsOauth2"">"nested_access_settings_workforce_identity_settings_oauth2"</span>></a>The <span pulumi-lang-nodejs="`oauth2`" pulumi-lang-dotnet="`Oauth2`" pulumi-lang-go="`oauth2`" pulumi-lang-python="`oauth2`" pulumi-lang-yaml="`oauth2`" pulumi-lang-java="`oauth2`">`oauth2`</span> block supports:
+  /// <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
   final SettingsAccessSettingsWorkforceIdentitySettingsOauth2? oauth2;
 
   /// The workforce pool resources. Only one workforce pool is accepted.

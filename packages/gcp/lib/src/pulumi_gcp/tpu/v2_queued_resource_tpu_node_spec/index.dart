@@ -1,3 +1,0 @@
-library module_tpu_v2_queued_resource_tpu_node_spec;
-
-export 'v2_queued_resource_tpu_node_spec.dart';

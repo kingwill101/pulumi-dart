@@ -24,8 +24,8 @@ class MuteConfigArgs {
   final Input<String> muteConfigId;
 
   /// Resource name of the new mute configs's parent. Its format is
-  /// "organizations/<span pulumi-lang-nodejs="[organizationId]" pulumi-lang-dotnet="[OrganizationId]" pulumi-lang-go="[organizationId]" pulumi-lang-python="[organization_id]" pulumi-lang-yaml="[organizationId]" pulumi-lang-java="[organizationId]">[organization_id]</span>", "folders/<span pulumi-lang-nodejs="[folderId]" pulumi-lang-dotnet="[FolderId]" pulumi-lang-go="[folderId]" pulumi-lang-python="[folder_id]" pulumi-lang-yaml="[folderId]" pulumi-lang-java="[folderId]">[folder_id]</span>", or
-  /// "projects/<span pulumi-lang-nodejs="[projectId]" pulumi-lang-dotnet="[ProjectId]" pulumi-lang-go="[projectId]" pulumi-lang-python="[project_id]" pulumi-lang-yaml="[projectId]" pulumi-lang-java="[projectId]">[project_id]</span>".
+  /// "organizations/[organization_id]", "folders/[folder_id]", or
+  /// "projects/[project_id]".
   final Input<String> parent;
 
   /// The type of the mute config, which determines what type of mute state the config affects.

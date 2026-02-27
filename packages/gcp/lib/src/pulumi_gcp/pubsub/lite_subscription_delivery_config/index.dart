@@ -1,3 +1,0 @@
-library module_pubsub_lite_subscription_delivery_config;
-
-export 'lite_subscription_delivery_config.dart';

@@ -41,7 +41,7 @@ class SubscriptionArgs {
   final Input<SubscriptionCloudStorageConfig>? cloudStorageConfig;
 
   /// A policy that specifies the conditions for dead lettering messages in
-  /// this subscription. If<span pulumi-lang-nodejs=" deadLetterPolicy " pulumi-lang-dotnet=" DeadLetterPolicy " pulumi-lang-go=" deadLetterPolicy " pulumi-lang-python=" dead_letter_policy " pulumi-lang-yaml=" deadLetterPolicy " pulumi-lang-java=" deadLetterPolicy "> dead_letter_policy </span>is not set, dead lettering
+  /// this subscription. If dead_letter_policy is not set, dead lettering
   /// is disabled.
   /// The Cloud Pub/Sub service account associated with this subscription's
   /// parent project (i.e.,
@@ -50,15 +50,15 @@ class SubscriptionArgs {
   /// Structure is documented below.
   final Input<SubscriptionDeadLetterPolicy>? deadLetterPolicy;
 
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, Pub/Sub provides the following guarantees for the delivery
+  /// If `true`, Pub/Sub provides the following guarantees for the delivery
   /// of a message with a given value of messageId on this Subscriptions':
   /// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
   /// - An acknowledged message will not be resent to a subscriber.
-  /// Note that subscribers may still receive multiple copies of a message when <span pulumi-lang-nodejs="`enableExactlyOnceDelivery`" pulumi-lang-dotnet="`EnableExactlyOnceDelivery`" pulumi-lang-go="`enableExactlyOnceDelivery`" pulumi-lang-python="`enable_exactly_once_delivery`" pulumi-lang-yaml="`enableExactlyOnceDelivery`" pulumi-lang-java="`enableExactlyOnceDelivery`">`enable_exactly_once_delivery`</span>
+  /// Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
   /// is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
   final Input<bool>? enableExactlyOnceDelivery;
 
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, messages published with the same orderingKey in PubsubMessage will be delivered to
+  /// If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
   /// the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
   /// may be delivered in any order.
   final Input<bool>? enableMessageOrdering;
@@ -82,18 +82,12 @@ class SubscriptionArgs {
   /// A set of key/value label pairs to assign to this Subscription.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// How long to retain unacknowledged messages in the subscription's
-  /// backlog, from the moment a message is published. If<span pulumi-lang-nodejs="
-  /// retainAckedMessages " pulumi-lang-dotnet="
-  /// RetainAckedMessages " pulumi-lang-go="
-  /// retainAckedMessages " pulumi-lang-python="
-  /// retain_acked_messages " pulumi-lang-yaml="
-  /// retainAckedMessages " pulumi-lang-java="
-  /// retainAckedMessages ">
-  /// retain_acked_messages </span>is true, then this also configures the retention
+  /// backlog, from the moment a message is published. If
+  /// retain_acked_messages is true, then this also configures the retention
   /// of acknowledged messages, and thus configures how far back in time a
   /// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
   /// than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
@@ -119,7 +113,7 @@ class SubscriptionArgs {
   /// Structure is documented below.
   final Input<SubscriptionPushConfig>? pushConfig;
 
-  /// Indicates whether to retain acknowledged messages. If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, then
+  /// Indicates whether to retain acknowledged messages. If `true`, then
   /// messages are not expunged from the subscription's backlog, even if
   /// they are acknowledged, until they fall out of the
   /// messageRetentionDuration window.
@@ -137,7 +131,7 @@ class SubscriptionArgs {
   /// tagValues/456. The field is ignored when empty. The field is immutable and
   /// causes resource replacement when mutated. This field is only set at create
   /// time and modifying this field after creation will trigger recreation. To
-  /// apply tags to an existing resource, see the <span pulumi-lang-nodejs="`gcp.tags.TagValue`" pulumi-lang-dotnet="`gcp.tags.TagValue`" pulumi-lang-go="`tags.TagValue`" pulumi-lang-python="`tags.TagValue`" pulumi-lang-yaml="`gcp.tags.TagValue`" pulumi-lang-java="`gcp.tags.TagValue`">`gcp.tags.TagValue`</span>
+  /// apply tags to an existing resource, see the `gcp.tags.TagValue`
   /// resource.
   final Input<Map<String, String>>? tags;
 

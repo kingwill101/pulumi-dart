@@ -1,0 +1,3 @@
+library module_compute_instance_scheduling_graceful_shutdown_max_duration;
+
+export 'instance_scheduling_graceful_shutdown_max_duration/instance_scheduling_graceful_shutdown_max_duration.dart';

@@ -13,115 +13,7 @@ import 'template_args.dart';
 /// ### Modelarmor Template Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const template_basic = new gcp.modelarmor.Template("template-basic", {
-/// location: "<no value>",
-/// templateId: "<no value>",
-/// filterConfig: {},
-/// templateMetadata: {},
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// template_basic = gcp.modelarmor.Template("template-basic",
-/// location="<no value>",
-/// template_id="<no value>",
-/// filter_config={},
-/// template_metadata={})
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var template_basic = new Gcp.ModelArmor.Template("template-basic", new()
-/// {
-/// Location = "<no value>",
-/// TemplateId = "<no value>",
-/// FilterConfig = null,
-/// TemplateMetadata = null,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := modelarmor.NewTemplate(ctx, "template-basic", &modelarmor.TemplateArgs{
-/// Location:         pulumi.String("<no value>"),
-/// TemplateId:       pulumi.String("<no value>"),
-/// FilterConfig:     &modelarmor.TemplateFilterConfigArgs{},
-/// TemplateMetadata: &modelarmor.TemplateTemplateMetadataArgs{},
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.modelarmor.Template;
-/// import com.pulumi.gcp.modelarmor.TemplateArgs;
-/// import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigArgs;
-/// import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var template_basic = new Template("template-basic", TemplateArgs.builder()
-/// .location("<no value>")
-/// .templateId("<no value>")
-/// .filterConfig(TemplateFilterConfigArgs.builder()
-/// .build())
-/// .templateMetadata(TemplateTemplateMetadataArgs.builder()
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// template-basic:
-/// type: gcp:modelarmor:Template
-/// properties:
-/// location: <no value>
-/// templateId: <no value>
-/// filterConfig: {}
-/// templateMetadata: {}
-/// ```
-/// <!--End PulumiCodeChooser -->
 /// ## Import
 ///
 /// Template can be imported using any of these accepted formats:
@@ -158,10 +50,10 @@ class Template extends CustomResource {
 
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> location;
 
   /// Identifier. name of resource
@@ -176,14 +68,8 @@ class Template extends CustomResource {
   late final Output<Map<String, String>> pulumiLabels;
 
   /// Id of the requesting object
-  /// If auto-generating Id server-side, remove this field and<span pulumi-lang-nodejs="
-  /// templateId " pulumi-lang-dotnet="
-  /// TemplateId " pulumi-lang-go="
-  /// templateId " pulumi-lang-python="
-  /// template_id " pulumi-lang-yaml="
-  /// templateId " pulumi-lang-java="
-  /// templateId ">
-  /// template_id </span>from the<span pulumi-lang-nodejs=" methodSignature " pulumi-lang-dotnet=" MethodSignature " pulumi-lang-go=" methodSignature " pulumi-lang-python=" method_signature " pulumi-lang-yaml=" methodSignature " pulumi-lang-java=" methodSignature "> method_signature </span>of Create RPC
+  /// If auto-generating Id server-side, remove this field and
+  /// template_id from the method_signature of Create RPC
   late final Output<String> templateId;
 
   /// Message describing TemplateMetadata

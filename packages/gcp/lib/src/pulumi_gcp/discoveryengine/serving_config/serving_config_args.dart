@@ -7,7 +7,7 @@ class ServingConfigArgs {
   /// The resource IDs of the boost controls to be applied.
   final Input<List<String>>? boostControlIds;
 
-  /// The collection ID. Currently only accepts <span pulumi-lang-nodejs=""defaultCollection"" pulumi-lang-dotnet=""DefaultCollection"" pulumi-lang-go=""defaultCollection"" pulumi-lang-python=""default_collection"" pulumi-lang-yaml=""defaultCollection"" pulumi-lang-java=""defaultCollection"">"default_collection"</span>.
+  /// The collection ID. Currently only accepts "default_collection".
   final Input<String>? collectionId;
 
   /// The ID of the engine associated with the serving config.
@@ -30,7 +30,7 @@ class ServingConfigArgs {
   /// The resource IDs of the redirect controls to be applied.
   final Input<List<String>>? redirectControlIds;
 
-  /// 'The unique ID of the serving config. Currently only accepts <span pulumi-lang-nodejs=""defaultSearch"" pulumi-lang-dotnet=""DefaultSearch"" pulumi-lang-go=""defaultSearch"" pulumi-lang-python=""default_search"" pulumi-lang-yaml=""defaultSearch"" pulumi-lang-java=""defaultSearch"">"default_search"</span>.'
+  /// 'The unique ID of the serving config. Currently only accepts "default_search".'
   final Input<String>? servingConfigId;
 
   /// The resource IDs of the synonyms controls to be applied.

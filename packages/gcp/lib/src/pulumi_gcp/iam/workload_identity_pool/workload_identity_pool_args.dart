@@ -38,7 +38,7 @@ class WorkloadIdentityPoolArgs {
   /// > **Note** This field cannot be changed after the Workload Identity Pool is created. While
   /// `pulumi preview` may show an update if you change this field's value, `pulumi up`
   /// **will fail with an API error** (such as `Error 400: Attempted to update an immutable field.`).
-  /// To specify a different <span pulumi-lang-nodejs="`mode`" pulumi-lang-dotnet="`Mode`" pulumi-lang-go="`mode`" pulumi-lang-python="`mode`" pulumi-lang-yaml="`mode`" pulumi-lang-java="`mode`">`mode`</span>, please create a new Workload Identity Pool resource.
+  /// To specify a different `mode`, please create a new Workload Identity Pool resource.
   /// * `FEDERATION_ONLY`: Pools can only be used for federating external workload identities into
   /// Google Cloud. Unless otherwise noted, no structure or format constraints are applied to
   /// workload identities in a `FEDERATION_ONLY` mode pool, and you may not create any resources
@@ -47,7 +47,7 @@ class WorkloadIdentityPoolArgs {
   /// identities within a `TRUST_DOMAIN` mode pool must consist of a single namespace and individual
   /// workload identifier. The subject identifier for all identities must conform to the following
   /// format: `ns/<namespace>/sa/<workload_identifier>`.
-  /// <span pulumi-lang-nodejs="`gcp.iam.WorkloadIdentityPoolProvider`" pulumi-lang-dotnet="`gcp.iam.WorkloadIdentityPoolProvider`" pulumi-lang-go="`iam.WorkloadIdentityPoolProvider`" pulumi-lang-python="`iam.WorkloadIdentityPoolProvider`" pulumi-lang-yaml="`gcp.iam.WorkloadIdentityPoolProvider`" pulumi-lang-java="`gcp.iam.WorkloadIdentityPoolProvider`">`gcp.iam.WorkloadIdentityPoolProvider`</span>s cannot be created within `TRUST_DOMAIN`
+  /// `gcp.iam.WorkloadIdentityPoolProvider`s cannot be created within `TRUST_DOMAIN`
   /// mode pools.
   /// Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`.
   final Input<String>? mode;

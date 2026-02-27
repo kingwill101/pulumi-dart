@@ -17,7 +17,7 @@ class BatchOperationsJobArgs {
   /// Structure is documented below.
   final Input<BatchOperationsJobDeleteObject>? deleteObject;
 
-  /// If set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the storage batch operation job will not be deleted and new job will be created.
+  /// If set to `true`, the storage batch operation job will not be deleted and new job will be created.
   final Input<bool>? deleteProtection;
 
   /// The ID of the job.

@@ -23,7 +23,7 @@ class GetInstancePscAutoConnection {
   /// Output only. Ports of the exposed endpoint.
   final int port;
 
-  /// Output only. The consumer<span pulumi-lang-nodejs=" projectId " pulumi-lang-dotnet=" ProjectId " pulumi-lang-go=" projectId " pulumi-lang-python=" project_id " pulumi-lang-yaml=" projectId " pulumi-lang-java=" projectId "> project_id </span>where the forwarding rule is created from.
+  /// Output only. The consumer project_id where the forwarding rule is created from.
   final String projectId;
 
   /// Output only. The PSC connection id of the forwarding rule connected to the

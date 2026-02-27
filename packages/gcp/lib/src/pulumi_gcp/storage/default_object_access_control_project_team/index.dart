@@ -1,3 +1,0 @@
-library module_storage_default_object_access_control_project_team;
-
-export 'default_object_access_control_project_team.dart';

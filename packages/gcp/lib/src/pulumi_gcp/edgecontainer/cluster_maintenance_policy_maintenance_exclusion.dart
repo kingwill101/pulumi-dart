@@ -1,0 +1,3 @@
+library module_edgecontainer_cluster_maintenance_policy_maintenance_exclusion;
+
+export 'cluster_maintenance_policy_maintenance_exclusion/cluster_maintenance_policy_maintenance_exclusion2.dart';

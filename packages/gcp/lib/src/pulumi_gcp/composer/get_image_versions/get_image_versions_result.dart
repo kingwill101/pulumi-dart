@@ -8,7 +8,7 @@ class GetImageVersionsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// A list of composer image versions available in the given project and location. Each <span pulumi-lang-nodejs="`imageVersion`" pulumi-lang-dotnet="`ImageVersion`" pulumi-lang-go="`imageVersion`" pulumi-lang-python="`image_version`" pulumi-lang-yaml="`imageVersion`" pulumi-lang-java="`imageVersion`">`image_version`</span> contains:
+  /// A list of composer image versions available in the given project and location. Each `image_version` contains:
   final List<GetImageVersionsImageVersion> imageVersions;
   final String project;
   final String region;

@@ -1,3 +1,0 @@
-library module_firebase_ai_logic_config_generative_language_config;
-
-export 'ai_logic_config_generative_language_config.dart';

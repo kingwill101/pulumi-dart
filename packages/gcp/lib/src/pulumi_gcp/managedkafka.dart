@@ -1,0 +1,22 @@
+library module_managedkafka;
+
+export 'managedkafka/acl.dart';
+export 'managedkafka/acl_acl_entry.dart';
+export 'managedkafka/cluster.dart';
+export 'managedkafka/cluster_broker_capacity_config.dart';
+export 'managedkafka/cluster_capacity_config.dart';
+export 'managedkafka/cluster_gcp_config.dart';
+export 'managedkafka/cluster_gcp_config_access_config.dart';
+export 'managedkafka/cluster_gcp_config_access_config_network_config.dart';
+export 'managedkafka/cluster_rebalance_config.dart';
+export 'managedkafka/cluster_tls_config.dart';
+export 'managedkafka/cluster_tls_config_trust_config.dart';
+export 'managedkafka/cluster_tls_config_trust_config_cas_config.dart';
+export 'managedkafka/connect_cluster.dart';
+export 'managedkafka/connect_cluster_capacity_config.dart';
+export 'managedkafka/connect_cluster_gcp_config.dart';
+export 'managedkafka/connect_cluster_gcp_config_access_config.dart';
+export 'managedkafka/connect_cluster_gcp_config_access_config_network_config.dart';
+export 'managedkafka/connector.dart';
+export 'managedkafka/connector_task_restart_policy.dart';
+export 'managedkafka/topic.dart';

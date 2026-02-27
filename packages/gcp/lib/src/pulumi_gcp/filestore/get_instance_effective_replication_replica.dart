@@ -1,0 +1,3 @@
+library module_filestore_get_instance_effective_replication_replica;
+
+export 'get_instance_effective_replication_replica/get_instance_effective_replication_replica.dart';

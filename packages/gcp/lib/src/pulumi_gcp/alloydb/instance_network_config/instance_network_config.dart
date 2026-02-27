@@ -10,7 +10,7 @@ class InstanceNetworkConfig {
   final String? allocatedIpRangeOverride;
 
   /// A list of external networks authorized to access this instance. This
-  /// field is only allowed to be set when <span pulumi-lang-nodejs="`enablePublicIp`" pulumi-lang-dotnet="`EnablePublicIp`" pulumi-lang-go="`enablePublicIp`" pulumi-lang-python="`enable_public_ip`" pulumi-lang-yaml="`enablePublicIp`" pulumi-lang-java="`enablePublicIp`">`enable_public_ip`</span> is set to
+  /// field is only allowed to be set when `enable_public_ip` is set to
   /// true.
   /// Structure is documented below.
   final List<InstanceNetworkConfigAuthorizedExternalNetwork>?

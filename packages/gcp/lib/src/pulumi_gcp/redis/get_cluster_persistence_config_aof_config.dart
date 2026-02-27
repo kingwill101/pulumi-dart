@@ -1,0 +1,3 @@
+library module_redis_get_cluster_persistence_config_aof_config;
+
+export 'get_cluster_persistence_config_aof_config/get_cluster_persistence_config_aof_config.dart';

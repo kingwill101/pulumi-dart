@@ -1,0 +1,3 @@
+library module_gkeonprem_vmware_admin_cluster_addon_node_auto_resize_config;
+
+export 'vmware_admin_cluster_addon_node_auto_resize_config/vmware_admin_cluster_addon_node_auto_resize_config.dart';

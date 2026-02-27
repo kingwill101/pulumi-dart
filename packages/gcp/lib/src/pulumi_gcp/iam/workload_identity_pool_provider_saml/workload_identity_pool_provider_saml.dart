@@ -3,7 +3,7 @@
 class WorkloadIdentityPoolProviderSaml {
   /// SAML Identity provider configuration metadata xml doc.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedX509"" pulumi-lang-dotnet=""NestedX509"" pulumi-lang-go=""nestedX509"" pulumi-lang-python=""nested_x509"" pulumi-lang-yaml=""nestedX509"" pulumi-lang-java=""nestedX509"">"nested_x509"</span>></a>The <span pulumi-lang-nodejs="`x509`" pulumi-lang-dotnet="`X509`" pulumi-lang-go="`x509`" pulumi-lang-python="`x509`" pulumi-lang-yaml="`x509`" pulumi-lang-java="`x509`">`x509`</span> block supports:
+  /// <a name="nested_x509"></a>The `x509` block supports:
   final String idpMetadataXml;
 
   WorkloadIdentityPoolProviderSaml({

@@ -1,3 +1,0 @@
-library module_accesscontextmanager_service_perimeter_spec_egress_policy;
-
-export 'service_perimeter_spec_egress_policy.dart';

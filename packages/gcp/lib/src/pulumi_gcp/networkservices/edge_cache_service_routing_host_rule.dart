@@ -1,0 +1,3 @@
+library module_networkservices_edge_cache_service_routing_host_rule;
+
+export 'edge_cache_service_routing_host_rule/edge_cache_service_routing_host_rule.dart';

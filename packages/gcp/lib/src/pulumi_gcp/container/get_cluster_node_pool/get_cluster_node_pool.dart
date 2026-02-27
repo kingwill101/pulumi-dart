@@ -47,7 +47,7 @@ class GetClusterNodePool {
   /// Node drain configuration for this NodePool.
   final List<GetClusterNodePoolNodeDrainConfig> nodeDrainConfigs;
 
-  /// The list of zones in which the node pool's nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster's zone for zonal clusters. If unspecified, the cluster-level<span pulumi-lang-nodejs=" nodeLocations " pulumi-lang-dotnet=" NodeLocations " pulumi-lang-go=" nodeLocations " pulumi-lang-python=" node_locations " pulumi-lang-yaml=" nodeLocations " pulumi-lang-java=" nodeLocations "> node_locations </span>will be used.
+  /// The list of zones in which the node pool's nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster's zone for zonal clusters. If unspecified, the cluster-level node_locations will be used.
   final List<String> nodeLocations;
 
   /// Specifies the node placement policy
@@ -56,7 +56,7 @@ class GetClusterNodePool {
   /// Specifies the configuration of queued provisioning
   final List<GetClusterNodePoolQueuedProvisioning> queuedProvisionings;
 
-  /// Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of<span pulumi-lang-nodejs=" maxSurge " pulumi-lang-dotnet=" MaxSurge " pulumi-lang-go=" maxSurge " pulumi-lang-python=" max_surge " pulumi-lang-yaml=" maxSurge " pulumi-lang-java=" maxSurge "> max_surge </span>and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+  /// Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
   final List<GetClusterNodePoolUpgradeSetting> upgradeSettings;
   final String version;
 

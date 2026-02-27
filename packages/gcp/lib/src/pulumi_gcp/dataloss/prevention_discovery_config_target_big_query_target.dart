@@ -1,0 +1,3 @@
+library module_dataloss_prevention_discovery_config_target_big_query_target;
+
+export 'prevention_discovery_config_target_big_query_target/prevention_discovery_config_target_big_query_target.dart';

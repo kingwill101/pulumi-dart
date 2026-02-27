@@ -1,3 +1,0 @@
-library module_modelarmor_floorsetting_filter_config;
-
-export 'floorsetting_filter_config.dart';

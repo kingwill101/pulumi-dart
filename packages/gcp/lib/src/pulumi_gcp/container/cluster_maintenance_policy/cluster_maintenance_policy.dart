@@ -7,7 +7,7 @@ import '../cluster_maintenance_policy_recurring_window/cluster_maintenance_polic
 
 class ClusterMaintenancePolicy {
   /// Time window specified for daily maintenance operations.
-  /// Specify <span pulumi-lang-nodejs="`startTime`" pulumi-lang-dotnet="`StartTime`" pulumi-lang-go="`startTime`" pulumi-lang-python="`start_time`" pulumi-lang-yaml="`startTime`" pulumi-lang-java="`startTime`">`start_time`</span> in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
+  /// Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
   /// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
   ///
   /// Examples:
@@ -19,8 +19,8 @@ class ClusterMaintenancePolicy {
 
   /// Time window for recurring maintenance operations.
   ///
-  /// Specify <span pulumi-lang-nodejs="`startTime`" pulumi-lang-dotnet="`StartTime`" pulumi-lang-go="`startTime`" pulumi-lang-python="`start_time`" pulumi-lang-yaml="`startTime`" pulumi-lang-java="`startTime`">`start_time`</span> and <span pulumi-lang-nodejs="`endTime`" pulumi-lang-dotnet="`EndTime`" pulumi-lang-go="`endTime`" pulumi-lang-python="`end_time`" pulumi-lang-yaml="`endTime`" pulumi-lang-java="`endTime`">`end_time`</span> in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
-  /// the initial date that the window starts, and the end time is used for calculating duration.  Specify <span pulumi-lang-nodejs="`recurrence`" pulumi-lang-dotnet="`Recurrence`" pulumi-lang-go="`recurrence`" pulumi-lang-python="`recurrence`" pulumi-lang-yaml="`recurrence`" pulumi-lang-java="`recurrence`">`recurrence`</span> in
+  /// Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
+  /// the initial date that the window starts, and the end time is used for calculating duration.  Specify `recurrence` in
   /// [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
   /// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
   ///

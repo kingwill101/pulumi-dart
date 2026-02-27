@@ -1,3 +1,0 @@
-library module_firebase_app_hosting_domain_custom_domain_status_required_dns_update_discovered_check_error;
-
-export 'app_hosting_domain_custom_domain_status_required_dns_update_discovered_check_error.dart';

@@ -6,7 +6,7 @@ import '../organization_security_policy_rule_match/organization_security_policy_
 /// The set of arguments for OrganizationSecurityPolicyRule.
 class OrganizationSecurityPolicyRuleArgs {
   /// The Action to perform when the client connection triggers the rule. Can currently be either
-  /// "allow", "deny" or <span pulumi-lang-nodejs=""gotoNext"" pulumi-lang-dotnet=""GotoNext"" pulumi-lang-go=""gotoNext"" pulumi-lang-python=""goto_next"" pulumi-lang-yaml=""gotoNext"" pulumi-lang-java=""gotoNext"">"goto_next"</span>.
+  /// "allow", "deny" or "goto_next".
   final Input<String> action;
 
   /// A description of the rule.

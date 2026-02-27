@@ -1,3 +1,0 @@
-library module_compute_interconnect_group_physical_structure_metro_facility;
-
-export 'interconnect_group_physical_structure_metro_facility.dart';

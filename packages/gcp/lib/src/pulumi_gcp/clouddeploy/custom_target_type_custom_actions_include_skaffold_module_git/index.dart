@@ -1,3 +1,0 @@
-library module_clouddeploy_custom_target_type_custom_actions_include_skaffold_module_git;
-
-export 'custom_target_type_custom_actions_include_skaffold_module_git.dart';

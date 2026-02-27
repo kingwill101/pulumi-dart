@@ -1,3 +1,0 @@
-library module_dataplex_zone_iam_member_condition;
-
-export 'zone_iam_member_condition.dart';

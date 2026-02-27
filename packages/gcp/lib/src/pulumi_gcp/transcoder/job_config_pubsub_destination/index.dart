@@ -1,3 +1,0 @@
-library module_transcoder_job_config_pubsub_destination;
-
-export 'job_config_pubsub_destination.dart';

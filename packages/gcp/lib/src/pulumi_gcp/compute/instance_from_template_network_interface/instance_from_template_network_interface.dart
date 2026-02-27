@@ -35,7 +35,7 @@ class InstanceFromTemplateNetworkInterface {
   /// Changing this forces a new resource to be created.
   final String? name;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the network attached to this interface.
+  /// The name or self_link of the network attached to this interface.
   final String? network;
 
   /// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
@@ -56,7 +56,7 @@ class InstanceFromTemplateNetworkInterface {
   /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
   final String? stackType;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the subnetwork attached to this interface.
+  /// The name or self_link of the subnetwork attached to this interface.
   final String? subnetwork;
 
   /// The project in which the subnetwork belongs.

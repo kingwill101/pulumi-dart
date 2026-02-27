@@ -5,14 +5,8 @@ class GetHealthCheckSslHealthCheck {
   /// The default value is 443.
   final int port;
 
-  /// Port name as defined in InstanceGroup#NamedPort#name. If both port and<span pulumi-lang-nodejs="
-  /// portName " pulumi-lang-dotnet="
-  /// PortName " pulumi-lang-go="
-  /// portName " pulumi-lang-python="
-  /// port_name " pulumi-lang-yaml="
-  /// portName " pulumi-lang-java="
-  /// portName ">
-  /// port_name </span>are defined, port takes precedence.
+  /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+  /// port_name are defined, port takes precedence.
   final String portName;
 
   /// Specifies how port is selected for health checking, can be one of the

@@ -9,12 +9,12 @@ class CertificateMapGclbTarget {
   final List<CertificateMapGclbTargetIpConfig>? ipConfigs;
 
   /// Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`targetProxy`" pulumi-lang-dotnet="`TargetProxy`" pulumi-lang-go="`targetProxy`" pulumi-lang-python="`target_proxy`" pulumi-lang-yaml="`targetProxy`" pulumi-lang-java="`targetProxy`">`target_proxy`</span>: Only one of `targetHttpsProxy` or
+  /// This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
   /// `targetSslProxy` may be set.
   final String? targetHttpsProxy;
 
   /// Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`targetProxy`" pulumi-lang-dotnet="`TargetProxy`" pulumi-lang-go="`targetProxy`" pulumi-lang-python="`target_proxy`" pulumi-lang-yaml="`targetProxy`" pulumi-lang-java="`targetProxy`">`target_proxy`</span>: Only one of `targetHttpsProxy` or
+  /// This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
   /// `targetSslProxy` may be set.
   final String? targetSslProxy;
 

@@ -59,7 +59,7 @@ class RouterNatArgs {
   final Input<String>? name;
 
   /// One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
-  /// Only used if <span pulumi-lang-nodejs="`sourceSubnetworkIpRangesToNat64`" pulumi-lang-dotnet="`SourceSubnetworkIpRangesToNat64`" pulumi-lang-go="`sourceSubnetworkIpRangesToNat64`" pulumi-lang-python="`source_subnetwork_ip_ranges_to_nat64`" pulumi-lang-yaml="`sourceSubnetworkIpRangesToNat64`" pulumi-lang-java="`sourceSubnetworkIpRangesToNat64`">`source_subnetwork_ip_ranges_to_nat64`</span> is set to `LIST_OF_IPV6_SUBNETWORKS`
+  /// Only used if `source_subnetwork_ip_ranges_to_nat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
   /// Structure is documented below.
   final Input<List<RouterNatNat64Subnetwork>>? nat64Subnetworks;
 
@@ -72,7 +72,7 @@ class RouterNatArgs {
   /// Self-links of NAT IPs. Only valid if natIpAllocateOption
   /// is set to MANUAL_ONLY.
   /// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
-  /// the access level resource for the address resource must have a <span pulumi-lang-nodejs="`lifecycle`" pulumi-lang-dotnet="`Lifecycle`" pulumi-lang-go="`lifecycle`" pulumi-lang-python="`lifecycle`" pulumi-lang-yaml="`lifecycle`" pulumi-lang-java="`lifecycle`">`lifecycle`</span> block with <span pulumi-lang-nodejs="`createBeforeDestroy " pulumi-lang-dotnet="`CreateBeforeDestroy " pulumi-lang-go="`createBeforeDestroy " pulumi-lang-python="`create_before_destroy " pulumi-lang-yaml="`createBeforeDestroy " pulumi-lang-java="`createBeforeDestroy ">`create_before_destroy </span>= true` so
+  /// the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
   /// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
   final Input<List<String>>? natIps;
 
@@ -112,7 +112,7 @@ class RouterNatArgs {
   final Input<String>? sourceSubnetworkIpRangesToNat64;
 
   /// One or more subnetwork NAT configurations. Only used if
-  /// <span pulumi-lang-nodejs="`sourceSubnetworkIpRangesToNat`" pulumi-lang-dotnet="`SourceSubnetworkIpRangesToNat`" pulumi-lang-go="`sourceSubnetworkIpRangesToNat`" pulumi-lang-python="`source_subnetwork_ip_ranges_to_nat`" pulumi-lang-yaml="`sourceSubnetworkIpRangesToNat`" pulumi-lang-java="`sourceSubnetworkIpRangesToNat`">`source_subnetwork_ip_ranges_to_nat`</span> is set to `LIST_OF_SUBNETWORKS`
+  /// `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
   /// Structure is documented below.
   final Input<List<RouterNatSubnetwork>>? subnetworks;
 

@@ -8,7 +8,7 @@ class FrameworkDeploymentTargetResourceConfig {
   final String? existingTargetResource;
 
   /// TargetResourceCreationConfig contains the config to create a new resource to
-  /// be used as the<span pulumi-lang-nodejs=" targetResource " pulumi-lang-dotnet=" TargetResource " pulumi-lang-go=" targetResource " pulumi-lang-python=" target_resource " pulumi-lang-yaml=" targetResource " pulumi-lang-java=" targetResource "> target_resource </span>of a deployment.
+  /// be used as the target_resource of a deployment.
   /// Structure is documented below.
   final FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig?
       targetResourceCreationConfig;

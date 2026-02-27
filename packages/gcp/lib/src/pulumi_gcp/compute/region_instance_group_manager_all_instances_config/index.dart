@@ -1,3 +1,0 @@
-library module_compute_region_instance_group_manager_all_instances_config;
-
-export 'region_instance_group_manager_all_instances_config.dart';

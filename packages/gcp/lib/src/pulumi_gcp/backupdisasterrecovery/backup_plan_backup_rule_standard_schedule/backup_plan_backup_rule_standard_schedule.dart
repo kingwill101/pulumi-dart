@@ -12,12 +12,12 @@ class BackupPlanBackupRuleStandardSchedule {
   /// Specifies days of months like 1, 5, or 14 on which jobs will run.
   final List<int>? daysOfMonths;
 
-  /// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for <span pulumi-lang-nodejs="`recurrenceType`" pulumi-lang-dotnet="`RecurrenceType`" pulumi-lang-go="`recurrenceType`" pulumi-lang-python="`recurrence_type`" pulumi-lang-yaml="`recurrenceType`" pulumi-lang-java="`recurrenceType`">`recurrence_type`</span>, `WEEKLY` and is not applicable otherwise.
+  /// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
   /// Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final List<String>? daysOfWeeks;
 
   /// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
-  /// This is required for <span pulumi-lang-nodejs="`recurrenceType`" pulumi-lang-dotnet="`RecurrenceType`" pulumi-lang-go="`recurrenceType`" pulumi-lang-python="`recurrence_type`" pulumi-lang-yaml="`recurrenceType`" pulumi-lang-java="`recurrenceType`">`recurrence_type`</span>, `HOURLY` and is not applicable otherwise.
+  /// This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
   final int? hourlyFrequency;
 
   /// Specifies values of months

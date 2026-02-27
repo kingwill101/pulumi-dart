@@ -6,7 +6,7 @@ class BudgetAmount {
   /// Configures a budget amount that is automatically set to 100% of
   /// last period's spend.
   /// Boolean. Set value to true to use. Do not set to false, instead
-  /// use the <span pulumi-lang-nodejs="`specifiedAmount`" pulumi-lang-dotnet="`SpecifiedAmount`" pulumi-lang-go="`specifiedAmount`" pulumi-lang-python="`specified_amount`" pulumi-lang-yaml="`specifiedAmount`" pulumi-lang-java="`specifiedAmount`">`specified_amount`</span> block.
+  /// use the `specified_amount` block.
   final bool? lastPeriodAmount;
 
   /// A specified amount to use as the budget. currencyCode is

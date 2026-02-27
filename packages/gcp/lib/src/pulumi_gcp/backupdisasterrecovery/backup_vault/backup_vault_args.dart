@@ -16,7 +16,7 @@ class BackupVaultArgs {
   /// Optional. User annotations. See https://google.aip.dev/128#annotations
   /// Stores small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveAnnotations`" pulumi-lang-dotnet="`EffectiveAnnotations`" pulumi-lang-go="`effectiveAnnotations`" pulumi-lang-python="`effective_annotations`" pulumi-lang-yaml="`effectiveAnnotations`" pulumi-lang-java="`effectiveAnnotations`">`effective_annotations`</span> for all of the annotations present on the resource.
+  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final Input<Map<String, String>>? annotations;
 
   /// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
@@ -44,7 +44,7 @@ class BackupVaultArgs {
   /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
   /// * deletion of a backup vault instance that is being referenced by an active backup plan.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`forceDelete`" pulumi-lang-dotnet="`ForceDelete`" pulumi-lang-go="`forceDelete`" pulumi-lang-python="`force_delete`" pulumi-lang-yaml="`forceDelete`" pulumi-lang-java="`forceDelete`">`force_delete`</span> is deprecated and will be removed in a future major release. Use <span pulumi-lang-nodejs="`ignoreInactiveDatasources`" pulumi-lang-dotnet="`IgnoreInactiveDatasources`" pulumi-lang-go="`ignoreInactiveDatasources`" pulumi-lang-python="`ignore_inactive_datasources`" pulumi-lang-yaml="`ignoreInactiveDatasources`" pulumi-lang-java="`ignoreInactiveDatasources`">`ignore_inactive_datasources`</span> instead.
+  /// > **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
   final Input<bool>? forceDelete;
 
   /// If set, allow update to extend the minimum enforced retention for backup vault. This overrides
@@ -63,7 +63,7 @@ class BackupVaultArgs {
 
   /// Optional. Resource labels to represent user provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The GCP location for the backup vault.

@@ -1,3 +1,0 @@
-library module_identityplatform_config_sign_in_email;
-
-export 'config_sign_in_email.dart';

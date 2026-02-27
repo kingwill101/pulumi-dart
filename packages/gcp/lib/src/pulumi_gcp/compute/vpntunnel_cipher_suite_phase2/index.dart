@@ -1,3 +1,0 @@
-library module_compute_vpntunnel_cipher_suite_phase2;
-
-export 'vpntunnel_cipher_suite_phase2.dart';

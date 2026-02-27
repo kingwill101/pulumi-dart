@@ -1,3 +1,0 @@
-library module_diagflow_cx_agent_answer_feedback_settings;
-
-export 'cx_agent_answer_feedback_settings.dart';

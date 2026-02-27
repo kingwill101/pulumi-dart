@@ -6,7 +6,7 @@ import '../get_security_policy_rule_match_expr/get_security_policy_rule_match_ex
 import '../get_security_policy_rule_match_expr_option/get_security_policy_rule_match_expr_option.dart';
 
 class GetSecurityPolicyRuleMatch {
-  /// The configuration options available when specifying versioned_expr. This field must be specified if<span pulumi-lang-nodejs=" versionedExpr " pulumi-lang-dotnet=" VersionedExpr " pulumi-lang-go=" versionedExpr " pulumi-lang-python=" versioned_expr " pulumi-lang-yaml=" versionedExpr " pulumi-lang-java=" versionedExpr "> versioned_expr </span>is specified and cannot be specified if<span pulumi-lang-nodejs=" versionedExpr " pulumi-lang-dotnet=" VersionedExpr " pulumi-lang-go=" versionedExpr " pulumi-lang-python=" versioned_expr " pulumi-lang-yaml=" versionedExpr " pulumi-lang-java=" versionedExpr "> versioned_expr </span>is not specified.
+  /// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
   final List<GetSecurityPolicyRuleMatchConfig> configs;
 
   /// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
@@ -15,7 +15,7 @@ class GetSecurityPolicyRuleMatch {
   /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
   final List<GetSecurityPolicyRuleMatchExpr> exprs;
 
-  /// Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding<span pulumi-lang-nodejs=" srcIpRanges " pulumi-lang-dotnet=" SrcIpRanges " pulumi-lang-go=" srcIpRanges " pulumi-lang-python=" src_ip_ranges " pulumi-lang-yaml=" srcIpRanges " pulumi-lang-java=" srcIpRanges "> src_ip_ranges </span>field in config.
+  /// Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding src_ip_ranges field in config.
   final String versionedExpr;
 
   GetSecurityPolicyRuleMatch({

@@ -1,0 +1,3 @@
+library module_compute_urlmap_path_matcher_route_rule_match_rule_query_parameter_match;
+
+export 'urlmap_path_matcher_route_rule_match_rule_query_parameter_match/urlmap_path_matcher_route_rule_match_rule_query_parameter_match.dart';

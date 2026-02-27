@@ -1,0 +1,3 @@
+library module_integrationconnectors_connection_node_config;
+
+export 'connection_node_config/connection_node_config.dart';

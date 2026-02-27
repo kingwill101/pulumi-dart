@@ -23,12 +23,12 @@ class ClusterArgs3 {
   /// - - -
   final Input<String>? name;
 
-  /// The ID of the project in which the <span pulumi-lang-nodejs="`cluster`" pulumi-lang-dotnet="`Cluster`" pulumi-lang-go="`cluster`" pulumi-lang-python="`cluster`" pulumi-lang-yaml="`cluster`" pulumi-lang-java="`cluster`">`cluster`</span> will exist. If it
+  /// The ID of the project in which the `cluster` will exist. If it
   /// is not provided, the provider project is used.
   final Input<String>? project;
 
   /// The region in which the cluster and associated nodes will be created in.
-  /// Defaults to <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span>.
+  /// Defaults to `global`.
   final Input<String>? region;
 
   /// Allows you to configure a virtual Dataproc on GKE cluster.

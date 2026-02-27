@@ -1,3 +1,0 @@
-library module_diagflow_conversation_profile_human_agent_assistant_config_notification_config;
-
-export 'conversation_profile_human_agent_assistant_config_notification_config.dart';

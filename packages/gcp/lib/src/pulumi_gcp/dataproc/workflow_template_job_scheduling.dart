@@ -1,0 +1,3 @@
+library module_dataproc_workflow_template_job_scheduling;
+
+export 'workflow_template_job_scheduling/workflow_template_job_scheduling.dart';

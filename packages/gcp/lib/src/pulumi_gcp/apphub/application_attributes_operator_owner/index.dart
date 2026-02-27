@@ -1,3 +1,0 @@
-library module_apphub_application_attributes_operator_owner;
-
-export 'application_attributes_operator_owner.dart';

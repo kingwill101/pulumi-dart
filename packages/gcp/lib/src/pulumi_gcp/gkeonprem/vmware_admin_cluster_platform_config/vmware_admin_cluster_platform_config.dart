@@ -26,7 +26,7 @@ class VmwareAdminClusterPlatformConfig {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedPlatformConfigBundlesStatus"" pulumi-lang-dotnet=""NestedPlatformConfigBundlesStatus"" pulumi-lang-go=""nestedPlatformConfigBundlesStatus"" pulumi-lang-python=""nested_platform_config_bundles_status"" pulumi-lang-yaml=""nestedPlatformConfigBundlesStatus"" pulumi-lang-java=""nestedPlatformConfigBundlesStatus"">"nested_platform_config_bundles_status"</span>></a>The <span pulumi-lang-nodejs="`status`" pulumi-lang-dotnet="`Status`" pulumi-lang-go="`status`" pulumi-lang-python="`status`" pulumi-lang-yaml="`status`" pulumi-lang-java="`status`">`status`</span> block contains:
+  /// <a name="nested_platform_config_bundles_status"></a>The `status` block contains:
   final List<VmwareAdminClusterPlatformConfigStatus>? statuses;
 
   VmwareAdminClusterPlatformConfig({

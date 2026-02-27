@@ -12,10 +12,10 @@ class TemplateArgs {
 
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> location;
 
   /// The ID of the project in which the resource belongs.
@@ -23,14 +23,8 @@ class TemplateArgs {
   final Input<String>? project;
 
   /// Id of the requesting object
-  /// If auto-generating Id server-side, remove this field and<span pulumi-lang-nodejs="
-  /// templateId " pulumi-lang-dotnet="
-  /// TemplateId " pulumi-lang-go="
-  /// templateId " pulumi-lang-python="
-  /// template_id " pulumi-lang-yaml="
-  /// templateId " pulumi-lang-java="
-  /// templateId ">
-  /// template_id </span>from the<span pulumi-lang-nodejs=" methodSignature " pulumi-lang-dotnet=" MethodSignature " pulumi-lang-go=" methodSignature " pulumi-lang-python=" method_signature " pulumi-lang-yaml=" methodSignature " pulumi-lang-java=" methodSignature "> method_signature </span>of Create RPC
+  /// If auto-generating Id server-side, remove this field and
+  /// template_id from the method_signature of Create RPC
   final Input<String> templateId;
 
   /// Message describing TemplateMetadata

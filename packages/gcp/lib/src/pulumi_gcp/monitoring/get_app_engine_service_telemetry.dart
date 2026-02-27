@@ -1,0 +1,3 @@
+library module_monitoring_get_app_engine_service_telemetry;
+
+export 'get_app_engine_service_telemetry/get_app_engine_service_telemetry.dart';

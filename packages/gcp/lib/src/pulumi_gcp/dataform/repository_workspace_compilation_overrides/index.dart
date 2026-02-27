@@ -1,3 +1,0 @@
-library module_dataform_repository_workspace_compilation_overrides;
-
-export 'repository_workspace_compilation_overrides.dart';

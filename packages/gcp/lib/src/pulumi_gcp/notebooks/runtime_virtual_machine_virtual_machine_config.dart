@@ -1,0 +1,3 @@
+library module_notebooks_runtime_virtual_machine_virtual_machine_config;
+
+export 'runtime_virtual_machine_virtual_machine_config/runtime_virtual_machine_virtual_machine_config.dart';

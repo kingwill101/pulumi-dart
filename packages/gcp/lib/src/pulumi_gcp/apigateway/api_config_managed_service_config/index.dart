@@ -1,3 +1,0 @@
-library module_apigateway_api_config_managed_service_config;
-
-export 'api_config_managed_service_config.dart';

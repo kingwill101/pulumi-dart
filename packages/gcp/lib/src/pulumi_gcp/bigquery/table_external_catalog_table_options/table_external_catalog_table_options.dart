@@ -5,14 +5,8 @@ import '../table_external_catalog_table_options_storage_descriptor/table_externa
 class TableExternalCatalogTableOptions {
   /// The connection specifying the credentials to be
   /// used to read external storage, such as Azure Blob, Cloud Storage, or S3. The
-  /// connection is needed to read the open source table from BigQuery Engine. The<span pulumi-lang-nodejs="
-  /// connectionId " pulumi-lang-dotnet="
-  /// ConnectionId " pulumi-lang-go="
-  /// connectionId " pulumi-lang-python="
-  /// connection_id " pulumi-lang-yaml="
-  /// connectionId " pulumi-lang-java="
-  /// connectionId ">
-  /// connection_id </span>can have the form `<project_id>.<location_id>.<connection_id>`
+  /// connection is needed to read the open source table from BigQuery Engine. The
+  /// connection_id can have the form `<project_id>.<location_id>.<connection_id>`
   /// or `projects/<project_id>/locations/<location_id>/connections/<connection_id>`.
   final String? connectionId;
 

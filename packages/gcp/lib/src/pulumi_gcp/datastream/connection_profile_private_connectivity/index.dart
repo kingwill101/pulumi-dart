@@ -1,3 +1,0 @@
-library module_datastream_connection_profile_private_connectivity;
-
-export 'connection_profile_private_connectivity.dart';

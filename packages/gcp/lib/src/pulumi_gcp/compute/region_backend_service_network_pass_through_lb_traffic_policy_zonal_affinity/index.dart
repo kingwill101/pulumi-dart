@@ -1,3 +1,0 @@
-library module_compute_region_backend_service_network_pass_through_lb_traffic_policy_zonal_affinity;
-
-export 'region_backend_service_network_pass_through_lb_traffic_policy_zonal_affinity.dart';

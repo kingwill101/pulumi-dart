@@ -1,3 +1,0 @@
-library module_dns_managed_zone_peering_config_target_network;
-
-export 'managed_zone_peering_config_target_network.dart';

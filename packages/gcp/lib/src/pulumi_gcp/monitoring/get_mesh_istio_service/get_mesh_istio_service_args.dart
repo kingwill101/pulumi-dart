@@ -13,7 +13,7 @@ class GetMeshIstioServiceArgs {
   final Input<String>? project;
 
   /// The name of the Istio service underlying this service.
-  /// Corresponds to the<span pulumi-lang-nodejs=" destinationServiceName " pulumi-lang-dotnet=" DestinationServiceName " pulumi-lang-go=" destinationServiceName " pulumi-lang-python=" destination_service_name " pulumi-lang-yaml=" destinationServiceName " pulumi-lang-java=" destinationServiceName "> destination_service_name </span>metric label in Istio metrics.
+  /// Corresponds to the destination_service_name metric label in Istio metrics.
   ///
   /// - - -
   ///
@@ -21,7 +21,7 @@ class GetMeshIstioServiceArgs {
   final Input<String> serviceName;
 
   /// The namespace of the Istio service underlying this service.
-  /// Corresponds to the<span pulumi-lang-nodejs=" destinationServiceNamespace " pulumi-lang-dotnet=" DestinationServiceNamespace " pulumi-lang-go=" destinationServiceNamespace " pulumi-lang-python=" destination_service_namespace " pulumi-lang-yaml=" destinationServiceNamespace " pulumi-lang-java=" destinationServiceNamespace "> destination_service_namespace </span>metric label in Istio metrics.
+  /// Corresponds to the destination_service_namespace metric label in Istio metrics.
   final Input<String> serviceNamespace;
 
   GetMeshIstioServiceArgs({

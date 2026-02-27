@@ -1,3 +1,0 @@
-library module_datacatalog_tag_template_iam_member_condition;
-
-export 'tag_template_iam_member_condition.dart';

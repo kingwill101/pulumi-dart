@@ -1,3 +1,0 @@
-library module_container_get_cluster_database_encryption;
-
-export 'get_cluster_database_encryption.dart';

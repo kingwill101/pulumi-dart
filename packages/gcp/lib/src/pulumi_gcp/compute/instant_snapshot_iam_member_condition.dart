@@ -1,0 +1,3 @@
+library module_compute_instant_snapshot_iam_member_condition;
+
+export 'instant_snapshot_iam_member_condition/instant_snapshot_iam_member_condition.dart';

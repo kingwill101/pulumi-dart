@@ -1,0 +1,3 @@
+library module_dataproc_gdc_spark_application_spark_rapplication_config;
+
+export 'gdc_spark_application_spark_rapplication_config/gdc_spark_application_spark_rapplication_config.dart';

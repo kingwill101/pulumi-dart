@@ -1,3 +1,0 @@
-library module_modelarmor_template_filter_config_malicious_uri_filter_settings;
-
-export 'template_filter_config_malicious_uri_filter_settings.dart';

@@ -1,3 +1,0 @@
-library module_backupdisasterrecovery_restore_workload_disk_restore_properties_resource_manager_tag;
-
-export 'restore_workload_disk_restore_properties_resource_manager_tag.dart';

@@ -1,0 +1,3 @@
+library module_redis_cluster_maintenance_policy_weekly_maintenance_window;
+
+export 'cluster_maintenance_policy_weekly_maintenance_window/cluster_maintenance_policy_weekly_maintenance_window.dart';

@@ -1,3 +1,0 @@
-library module_diagflow_conversation_profile_logging_config;
-
-export 'conversation_profile_logging_config.dart';

@@ -1,0 +1,3 @@
+library module_dataproc_workflow_template_job_spark_sql_job_query_list;
+
+export 'workflow_template_job_spark_sql_job_query_list/workflow_template_job_spark_sql_job_query_list.dart';

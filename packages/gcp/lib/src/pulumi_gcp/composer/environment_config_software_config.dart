@@ -1,0 +1,3 @@
+library module_composer_environment_config_software_config;
+
+export 'environment_config_software_config/environment_config_software_config.dart';

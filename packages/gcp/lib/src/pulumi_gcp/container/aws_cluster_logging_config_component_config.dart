@@ -1,0 +1,3 @@
+library module_container_aws_cluster_logging_config_component_config;
+
+export 'aws_cluster_logging_config_component_config/aws_cluster_logging_config_component_config.dart';

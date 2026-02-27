@@ -14,8 +14,8 @@ class AuthorizedOrgsDescArgs {
   /// and the organizations listed in the "orgs" field. The valid values for this
   /// field include the following:
   /// AUTHORIZATION_DIRECTION_FROM: Allows this organization to evaluate traffic
-  /// in the organizations listed in the <span pulumi-lang-nodejs="`orgs`" pulumi-lang-dotnet="`Orgs`" pulumi-lang-go="`orgs`" pulumi-lang-python="`orgs`" pulumi-lang-yaml="`orgs`" pulumi-lang-java="`orgs`">`orgs`</span> field.
-  /// AUTHORIZATION_DIRECTION_TO: Allows the organizations listed in the <span pulumi-lang-nodejs="`orgs`" pulumi-lang-dotnet="`Orgs`" pulumi-lang-go="`orgs`" pulumi-lang-python="`orgs`" pulumi-lang-yaml="`orgs`" pulumi-lang-java="`orgs`">`orgs`</span>
+  /// in the organizations listed in the `orgs` field.
+  /// AUTHORIZATION_DIRECTION_TO: Allows the organizations listed in the `orgs`
   /// field to evaluate the traffic in this organization.
   /// For the authorization relationship to take effect, all of the organizations
   /// must authorize and specify the appropriate relationship direction. For
@@ -33,9 +33,9 @@ class AuthorizedOrgsDescArgs {
 
   /// Resource name for the `AuthorizedOrgsDesc`. Format:
   /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
-  /// The <span pulumi-lang-nodejs="`authorizedOrgsDesc`" pulumi-lang-dotnet="`AuthorizedOrgsDesc`" pulumi-lang-go="`authorizedOrgsDesc`" pulumi-lang-python="`authorized_orgs_desc`" pulumi-lang-yaml="`authorizedOrgsDesc`" pulumi-lang-java="`authorizedOrgsDesc`">`authorized_orgs_desc`</span> component must begin with a letter, followed by
+  /// The `authorized_orgs_desc` component must begin with a letter, followed by
   /// alphanumeric characters or `_`.
-  /// After you create an `AuthorizedOrgsDesc`, you cannot change its <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
   final Input<String>? name;
 
   /// The list of organization ids in this AuthorizedOrgsDesc.

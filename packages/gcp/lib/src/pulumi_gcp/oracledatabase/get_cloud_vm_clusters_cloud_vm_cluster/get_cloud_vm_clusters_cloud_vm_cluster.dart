@@ -61,7 +61,7 @@ class GetCloudVmClustersCloudVmCluster {
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
-  /// the<span pulumi-lang-nodejs=" odbSubnet " pulumi-lang-dotnet=" OdbSubnet " pulumi-lang-go=" odbSubnet " pulumi-lang-python=" odb_subnet " pulumi-lang-yaml=" odbSubnet " pulumi-lang-java=" odbSubnet "> odb_subnet </span>and backup_odb_subnet.
+  /// the odb_subnet and backup_odb_subnet.
   final String odbNetwork;
 
   /// The name of the OdbSubnet associated with the VM Cluster for

@@ -1,0 +1,3 @@
+library module_colab_runtime_template_software_config_env;
+
+export 'runtime_template_software_config_env/runtime_template_software_config_env.dart';

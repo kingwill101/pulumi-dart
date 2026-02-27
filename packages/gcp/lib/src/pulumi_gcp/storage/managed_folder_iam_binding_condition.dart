@@ -1,0 +1,3 @@
+library module_storage_managed_folder_iam_binding_condition;
+
+export 'managed_folder_iam_binding_condition/managed_folder_iam_binding_condition.dart';

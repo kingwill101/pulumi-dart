@@ -1,3 +1,0 @@
-library module_networkconnectivity_destination_state_timeline_state;
-
-export 'destination_state_timeline_state.dart';

@@ -1,3 +1,0 @@
-library module_compute_region_url_map_path_matcher_default_route_action_cors_policy;
-
-export 'region_url_map_path_matcher_default_route_action_cors_policy.dart';

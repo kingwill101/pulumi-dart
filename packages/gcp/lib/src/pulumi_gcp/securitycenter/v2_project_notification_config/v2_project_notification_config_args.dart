@@ -11,7 +11,7 @@ class V2ProjectNotificationConfigArgs {
   /// The description of the notification config (max of 1024 characters).
   final Input<String>? description;
 
-  /// Location ID for the parent project. Defaults to <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span> if location is not provided.
+  /// Location ID for the parent project. Defaults to `global` if location is not provided.
   final Input<String>? location;
 
   /// The ID of the project in which the resource belongs.
@@ -19,7 +19,7 @@ class V2ProjectNotificationConfigArgs {
   final Input<String>? project;
 
   /// The Pub/Sub topic to send notifications to. Its format is
-  /// "projects/<span pulumi-lang-nodejs="[projectId]" pulumi-lang-dotnet="[ProjectId]" pulumi-lang-go="[projectId]" pulumi-lang-python="[project_id]" pulumi-lang-yaml="[projectId]" pulumi-lang-java="[projectId]">[project_id]</span>/topics/[topic]".
+  /// "projects/[project_id]/topics/[topic]".
   final Input<String>? pubsubTopic;
 
   /// The config for triggering streaming-based notifications.

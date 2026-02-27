@@ -7,23 +7,11 @@ class TargetSiteArgs {
   /// The unique id of the data store.
   final Input<String> dataStoreId;
 
-  /// If set to false, a<span pulumi-lang-nodejs=" uriPattern " pulumi-lang-dotnet=" UriPattern " pulumi-lang-go=" uriPattern " pulumi-lang-python=" uri_pattern " pulumi-lang-yaml=" uriPattern " pulumi-lang-java=" uriPattern "> uri_pattern </span>is generated to include all pages whose
-  /// address contains the provided_uri_pattern. If set to true, an<span pulumi-lang-nodejs=" uriPattern
-  /// " pulumi-lang-dotnet=" UriPattern
-  /// " pulumi-lang-go=" uriPattern
-  /// " pulumi-lang-python=" uri_pattern
-  /// " pulumi-lang-yaml=" uriPattern
-  /// " pulumi-lang-java=" uriPattern
-  /// "> uri_pattern
-  /// </span>is generated to try to be an exact match of the<span pulumi-lang-nodejs=" providedUriPattern " pulumi-lang-dotnet=" ProvidedUriPattern " pulumi-lang-go=" providedUriPattern " pulumi-lang-python=" provided_uri_pattern " pulumi-lang-yaml=" providedUriPattern " pulumi-lang-java=" providedUriPattern "> provided_uri_pattern </span>or
-  /// just the specific page if the<span pulumi-lang-nodejs=" providedUriPattern " pulumi-lang-dotnet=" ProvidedUriPattern " pulumi-lang-go=" providedUriPattern " pulumi-lang-python=" provided_uri_pattern " pulumi-lang-yaml=" providedUriPattern " pulumi-lang-java=" providedUriPattern "> provided_uri_pattern </span>is a specific one.<span pulumi-lang-nodejs="
-  /// providedUriPattern " pulumi-lang-dotnet="
-  /// ProvidedUriPattern " pulumi-lang-go="
-  /// providedUriPattern " pulumi-lang-python="
-  /// provided_uri_pattern " pulumi-lang-yaml="
-  /// providedUriPattern " pulumi-lang-java="
-  /// providedUriPattern ">
-  /// provided_uri_pattern </span>is always normalized to generate the URI pattern to
+  /// If set to false, a uri_pattern is generated to include all pages whose
+  /// address contains the provided_uri_pattern. If set to true, an uri_pattern
+  /// is generated to try to be an exact match of the provided_uri_pattern or
+  /// just the specific page if the provided_uri_pattern is a specific one.
+  /// provided_uri_pattern is always normalized to generate the URI pattern to
   /// be used by the search engine.
   final Input<bool>? exactMatch;
 
@@ -35,7 +23,7 @@ class TargetSiteArgs {
   /// If it is not provided, the provider project is used.
   final Input<String>? project;
 
-  /// The user provided URI pattern from which the <span pulumi-lang-nodejs="`generatedUriPattern`" pulumi-lang-dotnet="`GeneratedUriPattern`" pulumi-lang-go="`generatedUriPattern`" pulumi-lang-python="`generated_uri_pattern`" pulumi-lang-yaml="`generatedUriPattern`" pulumi-lang-java="`generatedUriPattern`">`generated_uri_pattern`</span> is
+  /// The user provided URI pattern from which the `generated_uri_pattern` is
   /// generated.
   final Input<String> providedUriPattern;
 

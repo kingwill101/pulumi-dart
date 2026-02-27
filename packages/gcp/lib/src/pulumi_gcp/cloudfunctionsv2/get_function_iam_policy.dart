@@ -1,0 +1,5 @@
+library module_cloudfunctionsv2_get_function_iam_policy;
+
+export 'get_function_iam_policy/get_function_iam_policy2.dart';
+export 'get_function_iam_policy/get_function_iam_policy_args2.dart';
+export 'get_function_iam_policy/get_function_iam_policy_result2.dart';

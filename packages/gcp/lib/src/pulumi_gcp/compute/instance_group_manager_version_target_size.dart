@@ -1,0 +1,3 @@
+library module_compute_instance_group_manager_version_target_size;
+
+export 'instance_group_manager_version_target_size/instance_group_manager_version_target_size.dart';

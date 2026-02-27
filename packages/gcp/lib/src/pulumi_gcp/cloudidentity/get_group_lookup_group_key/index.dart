@@ -1,3 +1,0 @@
-library module_cloudidentity_get_group_lookup_group_key;
-
-export 'get_group_lookup_group_key.dart';

@@ -10,7 +10,7 @@ class LogViewArgs {
   /// Describes this view.
   final Input<String>? description;
 
-  /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = <span pulumi-lang-nodejs=""gceInstance"" pulumi-lang-dotnet=""GceInstance"" pulumi-lang-go=""gceInstance"" pulumi-lang-python=""gce_instance"" pulumi-lang-yaml=""gceInstance"" pulumi-lang-java=""gceInstance"">"gce_instance"</span> AND LOG_ID("stdout")
+  /// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
   final Input<String>? filter;
 
   /// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.

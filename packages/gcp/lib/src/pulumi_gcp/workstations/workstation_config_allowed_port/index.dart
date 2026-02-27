@@ -1,3 +1,0 @@
-library module_workstations_workstation_config_allowed_port;
-
-export 'workstation_config_allowed_port.dart';

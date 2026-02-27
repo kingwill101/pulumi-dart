@@ -20,7 +20,7 @@ class MigrationJobArgs {
 
   /// The path to the dump file in Google Cloud Storage,
   /// in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
-  /// This field and the <span pulumi-lang-nodejs=""dumpFlags"" pulumi-lang-dotnet=""DumpFlags"" pulumi-lang-go=""dumpFlags"" pulumi-lang-python=""dump_flags"" pulumi-lang-yaml=""dumpFlags"" pulumi-lang-java=""dumpFlags"">"dump_flags"</span> field are mutually exclusive.
+  /// This field and the "dump_flags" field are mutually exclusive.
   final Input<String>? dumpPath;
 
   /// The type of the data dump. Supported for MySQL to CloudSQL for MySQL
@@ -31,7 +31,7 @@ class MigrationJobArgs {
   /// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The location where the migration job should reside.

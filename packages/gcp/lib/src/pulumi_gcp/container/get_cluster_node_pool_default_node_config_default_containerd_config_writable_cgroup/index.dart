@@ -1,3 +1,0 @@
-library module_container_get_cluster_node_pool_default_node_config_default_containerd_config_writable_cgroup;
-
-export 'get_cluster_node_pool_default_node_config_default_containerd_config_writable_cgroup.dart';

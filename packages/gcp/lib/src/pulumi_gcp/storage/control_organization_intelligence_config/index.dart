@@ -1,4 +1,0 @@
-library module_storage_control_organization_intelligence_config;
-
-export 'control_organization_intelligence_config.dart';
-export 'control_organization_intelligence_config_args.dart';

@@ -1,0 +1,3 @@
+library module_bigquery_table_table_constraints_primary_key;
+
+export 'table_table_constraints_primary_key/table_table_constraints_primary_key.dart';

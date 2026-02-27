@@ -8,10 +8,10 @@ class GetClusterNodePoolUpgradeSetting {
   final List<GetClusterNodePoolUpgradeSettingBlueGreenSetting>
       blueGreenSettings;
 
-  /// The number of additional nodes that can be added to the node pool during an upgrade. Increasing<span pulumi-lang-nodejs=" maxSurge " pulumi-lang-dotnet=" MaxSurge " pulumi-lang-go=" maxSurge " pulumi-lang-python=" max_surge " pulumi-lang-yaml=" maxSurge " pulumi-lang-java=" maxSurge "> max_surge </span>raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
+  /// The number of additional nodes that can be added to the node pool during an upgrade. Increasing max_surge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
   final int maxSurge;
 
-  /// The number of nodes that can be simultaneously unavailable during an upgrade. Increasing<span pulumi-lang-nodejs=" maxUnavailable " pulumi-lang-dotnet=" MaxUnavailable " pulumi-lang-go=" maxUnavailable " pulumi-lang-python=" max_unavailable " pulumi-lang-yaml=" maxUnavailable " pulumi-lang-java=" maxUnavailable "> max_unavailable </span>raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
+  /// The number of nodes that can be simultaneously unavailable during an upgrade. Increasing max_unavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
   final int maxUnavailable;
 
   /// Update strategy for the given nodepool.

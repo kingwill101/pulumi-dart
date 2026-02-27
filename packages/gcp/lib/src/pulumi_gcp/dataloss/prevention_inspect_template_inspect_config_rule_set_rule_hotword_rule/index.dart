@@ -1,3 +1,0 @@
-library module_dataloss_prevention_inspect_template_inspect_config_rule_set_rule_hotword_rule;
-
-export 'prevention_inspect_template_inspect_config_rule_set_rule_hotword_rule.dart';

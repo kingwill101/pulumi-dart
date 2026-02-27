@@ -1,0 +1,3 @@
+library module_dataplex_datascan_data_quality_spec;
+
+export 'datascan_data_quality_spec/datascan_data_quality_spec.dart';

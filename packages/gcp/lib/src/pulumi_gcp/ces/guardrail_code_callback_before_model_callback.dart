@@ -1,0 +1,3 @@
+library module_ces_guardrail_code_callback_before_model_callback;
+
+export 'guardrail_code_callback_before_model_callback/guardrail_code_callback_before_model_callback.dart';

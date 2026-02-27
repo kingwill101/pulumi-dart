@@ -1,3 +1,0 @@
-library module_filestore_instance_initial_replication;
-
-export 'instance_initial_replication.dart';

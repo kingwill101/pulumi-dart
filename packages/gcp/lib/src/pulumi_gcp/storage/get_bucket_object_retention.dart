@@ -1,0 +1,3 @@
+library module_storage_get_bucket_object_retention;
+
+export 'get_bucket_object_retention/get_bucket_object_retention.dart';

@@ -1,3 +1,0 @@
-library module_secretmanager_secret_iam_binding_condition;
-
-export 'secret_iam_binding_condition.dart';

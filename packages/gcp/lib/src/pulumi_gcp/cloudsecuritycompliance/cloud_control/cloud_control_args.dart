@@ -21,14 +21,14 @@ class CloudControlArgs {
   /// characters.
   final Input<String>? displayName;
 
-  /// The<span pulumi-lang-nodejs=" findingCategory " pulumi-lang-dotnet=" FindingCategory " pulumi-lang-go=" findingCategory " pulumi-lang-python=" finding_category " pulumi-lang-yaml=" findingCategory " pulumi-lang-java=" findingCategory "> finding_category </span>of the cloud control. The maximum length is 255
+  /// The finding_category of the cloud control. The maximum length is 255
   /// characters.
   final Input<String>? findingCategory;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Currently, only "global" is supported as a location.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Currently, only "global" is supported as a location.
   final Input<String> location;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> organization;
 
   /// The parameter spec of the cloud control.

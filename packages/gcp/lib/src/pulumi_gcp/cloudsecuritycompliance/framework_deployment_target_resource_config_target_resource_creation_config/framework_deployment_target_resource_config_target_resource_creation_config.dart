@@ -5,13 +5,13 @@ import '../framework_deployment_target_resource_config_target_resource_creation_
 
 class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig {
   /// FolderCreationConfig contains the config to create a new folder to be used
-  /// as the<span pulumi-lang-nodejs=" targetResource " pulumi-lang-dotnet=" TargetResource " pulumi-lang-go=" targetResource " pulumi-lang-python=" target_resource " pulumi-lang-yaml=" targetResource " pulumi-lang-java=" targetResource "> target_resource </span>of a deployment.
+  /// as the target_resource of a deployment.
   /// Structure is documented below.
   final FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig?
       folderCreationConfig;
 
   /// ProjectCreationConfig contains the config to create a new project to be used
-  /// as the<span pulumi-lang-nodejs=" targetResource " pulumi-lang-dotnet=" TargetResource " pulumi-lang-go=" targetResource " pulumi-lang-python=" target_resource " pulumi-lang-yaml=" targetResource " pulumi-lang-java=" targetResource "> target_resource </span>of a deployment.
+  /// as the target_resource of a deployment.
   /// Structure is documented below.
   final FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig?
       projectCreationConfig;

@@ -9,7 +9,7 @@ class ServiceTemplateContainerStartupProbeGrpc {
   /// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
   /// If this is not specified, the default behavior is defined by gRPC.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedTemplateContainersBuildInfo"" pulumi-lang-dotnet=""NestedTemplateContainersBuildInfo"" pulumi-lang-go=""nestedTemplateContainersBuildInfo"" pulumi-lang-python=""nested_template_containers_build_info"" pulumi-lang-yaml=""nestedTemplateContainersBuildInfo"" pulumi-lang-java=""nestedTemplateContainersBuildInfo"">"nested_template_containers_build_info"</span>></a>The <span pulumi-lang-nodejs="`buildInfo`" pulumi-lang-dotnet="`BuildInfo`" pulumi-lang-go="`buildInfo`" pulumi-lang-python="`build_info`" pulumi-lang-yaml="`buildInfo`" pulumi-lang-java="`buildInfo`">`build_info`</span> block contains:
+  /// <a name="nested_template_containers_build_info"></a>The `build_info` block contains:
   final String? service;
 
   ServiceTemplateContainerStartupProbeGrpc({

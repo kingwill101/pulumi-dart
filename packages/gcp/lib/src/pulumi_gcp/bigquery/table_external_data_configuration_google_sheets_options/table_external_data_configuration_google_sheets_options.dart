@@ -2,14 +2,14 @@
 
 class TableExternalDataConfigurationGoogleSheetsOptions {
   /// Range of a sheet to query from. Only used when
-  /// non-empty. At least one of <span pulumi-lang-nodejs="`range`" pulumi-lang-dotnet="`Range`" pulumi-lang-go="`range`" pulumi-lang-python="`range`" pulumi-lang-yaml="`range`" pulumi-lang-java="`range`">`range`</span> or <span pulumi-lang-nodejs="`skipLeadingRows`" pulumi-lang-dotnet="`SkipLeadingRows`" pulumi-lang-go="`skipLeadingRows`" pulumi-lang-python="`skip_leading_rows`" pulumi-lang-yaml="`skipLeadingRows`" pulumi-lang-java="`skipLeadingRows`">`skip_leading_rows`</span> must be set.
+  /// non-empty. At least one of `range` or `skip_leading_rows` must be set.
   /// Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id"
   /// For example: "sheet1!A1:B20"
   final String? range;
 
   /// The number of rows at the top of the sheet
-  /// that BigQuery will skip when reading the data. At least one of <span pulumi-lang-nodejs="`range`" pulumi-lang-dotnet="`Range`" pulumi-lang-go="`range`" pulumi-lang-python="`range`" pulumi-lang-yaml="`range`" pulumi-lang-java="`range`">`range`</span> or
-  /// <span pulumi-lang-nodejs="`skipLeadingRows`" pulumi-lang-dotnet="`SkipLeadingRows`" pulumi-lang-go="`skipLeadingRows`" pulumi-lang-python="`skip_leading_rows`" pulumi-lang-yaml="`skipLeadingRows`" pulumi-lang-java="`skipLeadingRows`">`skip_leading_rows`</span> must be set.
+  /// that BigQuery will skip when reading the data. At least one of `range` or
+  /// `skip_leading_rows` must be set.
   final int? skipLeadingRows;
 
   TableExternalDataConfigurationGoogleSheetsOptions({

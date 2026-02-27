@@ -1,0 +1,3 @@
+library module_networkconnectivity_spoke_linked_vpn_tunnels;
+
+export 'spoke_linked_vpn_tunnels/spoke_linked_vpn_tunnels.dart';

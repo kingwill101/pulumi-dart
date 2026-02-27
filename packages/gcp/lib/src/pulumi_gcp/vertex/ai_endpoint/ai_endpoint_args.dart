@@ -22,7 +22,7 @@ class AiEndpointArgs {
 
   /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The location for the resource
@@ -31,7 +31,7 @@ class AiEndpointArgs {
   /// The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
   final Input<String>? name;
 
-  /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in <span pulumi-lang-nodejs="`12345`" pulumi-lang-dotnet="`12345`" pulumi-lang-go="`12345`" pulumi-lang-python="`12345`" pulumi-lang-yaml="`12345`" pulumi-lang-java="`12345`">`12345`</span>, and `{network}` is network name. Only one of the fields, <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span> or `privateServiceConnectConfig`, can be set.
+  /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
   final Input<String>? network;
 
   /// Configures the request-response logging for online prediction.
@@ -39,7 +39,7 @@ class AiEndpointArgs {
   final Input<AiEndpointPredictRequestResponseLoggingConfig>?
       predictRequestResponseLoggingConfig;
 
-  /// Configuration for private service connect. <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span> and `privateServiceConnectConfig` are mutually exclusive.
+  /// Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
   /// Structure is documented below.
   final Input<AiEndpointPrivateServiceConnectConfig>?
       privateServiceConnectConfig;

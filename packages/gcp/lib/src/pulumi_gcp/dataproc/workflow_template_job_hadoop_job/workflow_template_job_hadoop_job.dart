@@ -18,7 +18,7 @@ class WorkflowTemplateJobHadoopJob {
   /// The runtime log config for job execution.
   final WorkflowTemplateJobHadoopJobLoggingConfig? loggingConfig;
 
-  /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in <span pulumi-lang-nodejs="`jarFileUris`" pulumi-lang-dotnet="`JarFileUris`" pulumi-lang-go="`jarFileUris`" pulumi-lang-python="`jar_file_uris`" pulumi-lang-yaml="`jarFileUris`" pulumi-lang-java="`jarFileUris`">`jar_file_uris`</span>.
+  /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
   final String? mainClass;
 
   /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'

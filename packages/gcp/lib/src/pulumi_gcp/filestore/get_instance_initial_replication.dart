@@ -1,0 +1,3 @@
+library module_filestore_get_instance_initial_replication;
+
+export 'get_instance_initial_replication/get_instance_initial_replication.dart';

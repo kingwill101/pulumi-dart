@@ -7,7 +7,7 @@ class WorkflowTemplateJobPrestoJob {
   /// Presto client tags to attach to this query
   final List<String>? clientTags;
 
-  /// Whether to continue executing queries if a query fails. The default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. Setting to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> can be useful when executing independent parallel queries.
+  /// Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
   final bool? continueOnFailure;
 
   /// The runtime log config for job execution.

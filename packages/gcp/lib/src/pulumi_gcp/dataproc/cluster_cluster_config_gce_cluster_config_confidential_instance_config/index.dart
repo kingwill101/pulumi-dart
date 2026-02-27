@@ -1,3 +1,0 @@
-library module_dataproc_cluster_cluster_config_gce_cluster_config_confidential_instance_config;
-
-export 'cluster_cluster_config_gce_cluster_config_confidential_instance_config.dart';

@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_example_message_chunk_tool_response_toolset_tool;
-
-export 'app_version_snapshot_example_message_chunk_tool_response_toolset_tool.dart';

@@ -1,0 +1,4 @@
+library module_securesourcemanager_repository_iam_member;
+
+export 'repository_iam_member/repository_iam_member3.dart';
+export 'repository_iam_member/repository_iam_member_args3.dart';

@@ -1,3 +1,0 @@
-library module_bigquerydatapolicy_data_policy_iam_member_condition;
-
-export 'data_policy_iam_member_condition.dart';

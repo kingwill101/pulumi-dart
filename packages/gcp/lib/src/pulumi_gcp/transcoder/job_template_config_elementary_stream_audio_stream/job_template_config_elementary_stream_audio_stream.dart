@@ -4,16 +4,16 @@ class JobTemplateConfigElementaryStreamAudioStream {
   /// Audio bitrate in bits per second.
   final int bitrateBps;
 
-  /// Number of audio channels. The default is <span pulumi-lang-nodejs="`2`" pulumi-lang-dotnet="`2`" pulumi-lang-go="`2`" pulumi-lang-python="`2`" pulumi-lang-yaml="`2`" pulumi-lang-java="`2`">`2`</span>.
+  /// Number of audio channels. The default is `2`.
   final int? channelCount;
 
   /// A list of channel names specifying layout of the audio channels.  The default is ["fl", "fr"].
   final List<String>? channelLayouts;
 
-  /// The codec for this audio stream. The default is <span pulumi-lang-nodejs="`aac`" pulumi-lang-dotnet="`Aac`" pulumi-lang-go="`aac`" pulumi-lang-python="`aac`" pulumi-lang-yaml="`aac`" pulumi-lang-java="`aac`">`aac`</span>.
+  /// The codec for this audio stream. The default is `aac`.
   final String? codec;
 
-  /// The audio sample rate in Hertz. The default is <span pulumi-lang-nodejs="`48000`" pulumi-lang-dotnet="`48000`" pulumi-lang-go="`48000`" pulumi-lang-python="`48000`" pulumi-lang-yaml="`48000`" pulumi-lang-java="`48000`">`48000`</span>.
+  /// The audio sample rate in Hertz. The default is `48000`.
   final int? sampleRateHertz;
 
   JobTemplateConfigElementaryStreamAudioStream({

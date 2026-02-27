@@ -1,3 +1,0 @@
-library module_artifactregistry_repository_remote_repository_config;
-
-export 'repository_remote_repository_config.dart';

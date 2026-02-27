@@ -1,3 +1,0 @@
-library module_cloudsecuritycompliance_cloud_control_parameter_spec_sub_parameter_validation_regexp_pattern;
-
-export 'cloud_control_parameter_spec_sub_parameter_validation_regexp_pattern.dart';

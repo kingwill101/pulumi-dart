@@ -1,0 +1,3 @@
+library module_memcache_instance_maintenance_schedule;
+
+export 'instance_maintenance_schedule/instance_maintenance_schedule.dart';

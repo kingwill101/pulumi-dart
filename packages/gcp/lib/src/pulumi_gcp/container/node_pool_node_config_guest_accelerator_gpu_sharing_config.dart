@@ -1,0 +1,3 @@
+library module_container_node_pool_node_config_guest_accelerator_gpu_sharing_config;
+
+export 'node_pool_node_config_guest_accelerator_gpu_sharing_config/node_pool_node_config_guest_accelerator_gpu_sharing_config.dart';

@@ -5,14 +5,8 @@ class NotificationChannelSensitiveLabels {
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final String? authToken;
 
-  /// An password for a notification channel. Channel types that support this field include:<span pulumi-lang-nodejs=" webhookBasicauth
-  /// " pulumi-lang-dotnet=" WebhookBasicauth
-  /// " pulumi-lang-go=" webhookBasicauth
-  /// " pulumi-lang-python=" webhook_basicauth
-  /// " pulumi-lang-yaml=" webhookBasicauth
-  /// " pulumi-lang-java=" webhookBasicauth
-  /// "> webhook_basicauth
-  /// </span>**Note**: This property is sensitive and will not be displayed in the plan.
+  /// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+  /// **Note**: This property is sensitive and will not be displayed in the plan.
   final String? password;
 
   /// An servicekey token for a notification channel. Channel types that support this field include: pagerduty

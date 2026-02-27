@@ -1,3 +1,0 @@
-library module_secretmanager_get_regional_secrets_secret_customer_managed_encryption;
-
-export 'get_regional_secrets_secret_customer_managed_encryption.dart';

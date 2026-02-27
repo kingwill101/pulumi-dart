@@ -1,3 +1,0 @@
-library module_container_get_cluster_node_pool_placement_policy;
-
-export 'get_cluster_node_pool_placement_policy.dart';

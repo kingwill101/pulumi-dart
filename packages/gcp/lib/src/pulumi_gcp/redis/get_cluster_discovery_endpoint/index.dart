@@ -1,3 +1,0 @@
-library module_redis_get_cluster_discovery_endpoint;
-
-export 'get_cluster_discovery_endpoint.dart';

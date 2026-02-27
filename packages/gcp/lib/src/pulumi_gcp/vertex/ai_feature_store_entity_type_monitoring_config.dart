@@ -1,0 +1,3 @@
+library module_vertex_ai_feature_store_entity_type_monitoring_config;
+
+export 'ai_feature_store_entity_type_monitoring_config/ai_feature_store_entity_type_monitoring_config.dart';

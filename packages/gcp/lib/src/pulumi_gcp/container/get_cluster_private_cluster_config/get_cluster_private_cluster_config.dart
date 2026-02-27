@@ -14,7 +14,7 @@ class GetClusterPrivateClusterConfig {
   final List<GetClusterPrivateClusterConfigMasterGlobalAccessConfig>
       masterGlobalAccessConfigs;
 
-  /// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when<span pulumi-lang-nodejs=" enablePrivateNodes " pulumi-lang-dotnet=" EnablePrivateNodes " pulumi-lang-go=" enablePrivateNodes " pulumi-lang-python=" enable_private_nodes " pulumi-lang-yaml=" enablePrivateNodes " pulumi-lang-java=" enablePrivateNodes "> enable_private_nodes </span>is true.
+  /// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enable_private_nodes is true.
   final String masterIpv4CidrBlock;
 
   /// The name of the peering between this cluster and the Google owned VPC.

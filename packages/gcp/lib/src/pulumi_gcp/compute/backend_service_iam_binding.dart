@@ -1,0 +1,4 @@
+library module_compute_backend_service_iam_binding;
+
+export 'backend_service_iam_binding/backend_service_iam_binding.dart';
+export 'backend_service_iam_binding/backend_service_iam_binding_args.dart';

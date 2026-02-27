@@ -10,7 +10,7 @@ class FirewallPolicyAssociationArgs {
   /// The firewall policy of the resource.
   /// This field can be updated to refer to a different Firewall Policy, which will create a new association from that new
   /// firewall policy with the flag to override the existing attachmentTarget's policy association.
-  /// **Note** Due to potential risks with this operation it is *highly* recommended to use the <span pulumi-lang-nodejs="`createBeforeDestroy`" pulumi-lang-dotnet="`CreateBeforeDestroy`" pulumi-lang-go="`createBeforeDestroy`" pulumi-lang-python="`create_before_destroy`" pulumi-lang-yaml="`createBeforeDestroy`" pulumi-lang-java="`createBeforeDestroy`">`create_before_destroy`</span> life cycle option
+  /// **Note** Due to potential risks with this operation it is *highly* recommended to use the `create_before_destroy` life cycle option
   /// on your exisiting firewall policy so as to prevent a situation where your attachment target has no associated policy.
   final Input<String> firewallPolicy;
 

@@ -20,7 +20,7 @@ class GetDataSourceReferencesDataSourceReference {
   final String lastSuccessfulBackupTime;
   final String name;
 
-  /// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". <span pulumi-lang-nodejs="`resourceType`" pulumi-lang-dotnet="`ResourceType`" pulumi-lang-go="`resourceType`" pulumi-lang-python="`resource_type`" pulumi-lang-yaml="`resourceType`" pulumi-lang-java="`resourceType`">`resource_type`</span> is deprecated and will be removed in a future major release.
+  /// The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
   final String resourceType;
 
   GetDataSourceReferencesDataSourceReference({

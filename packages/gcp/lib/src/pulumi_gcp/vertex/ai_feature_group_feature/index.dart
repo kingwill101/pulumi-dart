@@ -1,4 +1,0 @@
-library module_vertex_ai_feature_group_feature;
-
-export 'ai_feature_group_feature.dart';
-export 'ai_feature_group_feature_args.dart';

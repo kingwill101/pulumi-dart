@@ -28,9 +28,9 @@ class CxFlowArgs {
   final Input<List<CxFlowEventHandler>>? eventHandlers;
 
   /// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
-  /// The Default Start Flow cannot be deleted; deleting the <span pulumi-lang-nodejs="`gcp.diagflow.CxFlow`" pulumi-lang-dotnet="`gcp.diagflow.CxFlow`" pulumi-lang-go="`diagflow.CxFlow`" pulumi-lang-python="`diagflow.CxFlow`" pulumi-lang-yaml="`gcp.diagflow.CxFlow`" pulumi-lang-java="`gcp.diagflow.CxFlow`">`gcp.diagflow.CxFlow`</span> resource does nothing to the underlying GCP resources.
+  /// The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
   ///
-  /// > Avoid having multiple <span pulumi-lang-nodejs="`gcp.diagflow.CxFlow`" pulumi-lang-dotnet="`gcp.diagflow.CxFlow`" pulumi-lang-go="`diagflow.CxFlow`" pulumi-lang-python="`diagflow.CxFlow`" pulumi-lang-yaml="`gcp.diagflow.CxFlow`" pulumi-lang-java="`gcp.diagflow.CxFlow`">`gcp.diagflow.CxFlow`</span> resources linked to the same agent with <span pulumi-lang-nodejs="`isDefaultStartFlow " pulumi-lang-dotnet="`IsDefaultStartFlow " pulumi-lang-go="`isDefaultStartFlow " pulumi-lang-python="`is_default_start_flow " pulumi-lang-yaml="`isDefaultStartFlow " pulumi-lang-java="`isDefaultStartFlow ">`is_default_start_flow </span>= true` because they will compete to control a single Default Start Flow resource in GCP.
+  /// > Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `is_default_start_flow = true` because they will compete to control a single Default Start Flow resource in GCP.
   final Input<bool>? isDefaultStartFlow;
 
   /// Knowledge connector configuration.

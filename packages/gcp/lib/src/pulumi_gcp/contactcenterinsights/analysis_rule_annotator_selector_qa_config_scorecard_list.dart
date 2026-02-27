@@ -1,0 +1,3 @@
+library module_contactcenterinsights_analysis_rule_annotator_selector_qa_config_scorecard_list;
+
+export 'analysis_rule_annotator_selector_qa_config_scorecard_list/analysis_rule_annotator_selector_qa_config_scorecard_list.dart';

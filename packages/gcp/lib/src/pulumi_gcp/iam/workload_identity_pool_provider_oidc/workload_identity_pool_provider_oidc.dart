@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class WorkloadIdentityPoolProviderOidc {
-  /// Acceptable values for the <span pulumi-lang-nodejs="`aud`" pulumi-lang-dotnet="`Aud`" pulumi-lang-go="`aud`" pulumi-lang-python="`aud`" pulumi-lang-yaml="`aud`" pulumi-lang-java="`aud`">`aud`</span> field (audience) in the OIDC token. Token exchange
+  /// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
   /// requests are rejected if the token audience does not match one of the configured
   /// values. Each audience may be at most 256 characters. A maximum of 10 audiences may
   /// be configured.
@@ -19,8 +19,8 @@ class WorkloadIdentityPoolProviderOidc {
 
   /// OIDC JWKs in JSON String format. For details on definition of a
   /// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
-  /// use the <span pulumi-lang-nodejs="`jwksUri`" pulumi-lang-dotnet="`JwksUri`" pulumi-lang-go="`jwksUri`" pulumi-lang-python="`jwks_uri`" pulumi-lang-yaml="`jwksUri`" pulumi-lang-java="`jwksUri`">`jwks_uri`</span> from the discovery document fetched from the
-  /// .well-known path for the <span pulumi-lang-nodejs="`issuerUri`" pulumi-lang-dotnet="`IssuerUri`" pulumi-lang-go="`issuerUri`" pulumi-lang-python="`issuer_uri`" pulumi-lang-yaml="`issuerUri`" pulumi-lang-java="`issuerUri`">`issuer_uri`</span>. Currently, RSA and EC asymmetric
+  /// use the `jwks_uri` from the discovery document fetched from the
+  /// .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
   /// keys are supported. The JWK must use following format and include only
   /// the following fields:
   /// ```

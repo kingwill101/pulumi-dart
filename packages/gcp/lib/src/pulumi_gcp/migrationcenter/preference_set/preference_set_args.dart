@@ -11,7 +11,7 @@ class PreferenceSetArgs {
   /// User-friendly display name. Maximum length is 63 characters.
   final Input<String>? displayName;
 
-  /// Part of <span pulumi-lang-nodejs="`parent`" pulumi-lang-dotnet="`Parent`" pulumi-lang-go="`parent`" pulumi-lang-python="`parent`" pulumi-lang-yaml="`parent`" pulumi-lang-java="`parent`">`parent`</span>. See documentation of `projectsId`.
+  /// Part of `parent`. See documentation of `projectsId`.
   final Input<String> location;
 
   /// Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.

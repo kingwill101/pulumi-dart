@@ -1,0 +1,3 @@
+library module_container_cluster_node_config_local_nvme_ssd_block_config;
+
+export 'cluster_node_config_local_nvme_ssd_block_config/cluster_node_config_local_nvme_ssd_block_config.dart';

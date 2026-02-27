@@ -20,7 +20,7 @@ class AiFeatureOnlineStoreArgs {
   /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
   /// Structure is documented below.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`embeddingManagement`" pulumi-lang-dotnet="`EmbeddingManagement`" pulumi-lang-go="`embeddingManagement`" pulumi-lang-python="`embedding_management`" pulumi-lang-yaml="`embeddingManagement`" pulumi-lang-java="`embeddingManagement`">`embedding_management`</span> is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
+  /// > **Warning:** `embedding_management` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
   final Input<AiFeatureOnlineStoreEmbeddingManagement>? embeddingManagement;
 
   /// If set, both of the online and offline data storage will be secured by this key.
@@ -32,7 +32,7 @@ class AiFeatureOnlineStoreArgs {
 
   /// The labels with user-defined metadata to organize your feature online stores.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.

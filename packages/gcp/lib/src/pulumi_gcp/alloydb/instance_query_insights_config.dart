@@ -1,0 +1,3 @@
+library module_alloydb_instance_query_insights_config;
+
+export 'instance_query_insights_config/instance_query_insights_config.dart';

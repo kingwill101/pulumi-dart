@@ -1,4 +1,0 @@
-library module_networkservices_multicast_consumer_association;
-
-export 'multicast_consumer_association.dart';
-export 'multicast_consumer_association_args.dart';

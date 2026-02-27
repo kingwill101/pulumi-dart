@@ -1,3 +1,0 @@
-library module_dataproc_metastore_service_telemetry_config;
-
-export 'metastore_service_telemetry_config.dart';

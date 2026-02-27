@@ -1,0 +1,3 @@
+library module_vmwareengine_datastore_nfs_datastore_google_file_service;
+
+export 'datastore_nfs_datastore_google_file_service/datastore_nfs_datastore_google_file_service.dart';

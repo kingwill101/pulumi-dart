@@ -1,3 +1,0 @@
-library module_dataloss_prevention_job_trigger_trigger_schedule;
-
-export 'prevention_job_trigger_trigger_schedule.dart';

@@ -16,221 +16,7 @@ import 'instance_args8.dart';
 /// ### Lustre Instance Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// // This example assumes this network already exists.
-/// // The API creates a tenant network per network authorized for a
-/// // Lustre instance and that network is not deleted when the user-created
-/// // network (authorized_network) is deleted, so this prevents issues
-/// // with tenant network quota.
-/// // If this network hasn't been created and you are using this example in your
-/// // config, add an additional network resource or change
-/// // this from "data"to "resource"
-/// const lustre_network = gcp.compute.getNetwork({
-/// name: "my-network",
-/// });
-/// const instance = new gcp.lustre.Instance("instance", {
-/// instanceId: "my-instance",
-/// location: "us-central1-a",
-/// description: "test lustre instance",
-/// filesystem: "testfs",
-/// capacityGib: "18000",
-/// network: lustre_network.then(lustre_network => lustre_network.id),
-/// perUnitStorageThroughput: "1000",
-/// labels: {
-/// test: "value",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// # This example assumes this network already exists.
-/// # The API creates a tenant network per network authorized for a
-/// # Lustre instance and that network is not deleted when the user-created
-/// # network (authorized_network) is deleted, so this prevents issues
-/// # with tenant network quota.
-/// # If this network hasn't been created and you are using this example in your
-/// # config, add an additional network resource or change
-/// # this from "data"to "resource"
-/// lustre_network = gcp.compute.get_network(name="my-network")
-/// instance = gcp.lustre.Instance("instance",
-/// instance_id="my-instance",
-/// location="us-central1-a",
-/// description="test lustre instance",
-/// filesystem="testfs",
-/// capacity_gib="18000",
-/// network=lustre_network.id,
-/// per_unit_storage_throughput="1000",
-/// labels={
-/// "test": "value",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// // This example assumes this network already exists.
-/// // The API creates a tenant network per network authorized for a
-/// // Lustre instance and that network is not deleted when the user-created
-/// // network (authorized_network) is deleted, so this prevents issues
-/// // with tenant network quota.
-/// // If this network hasn't been created and you are using this example in your
-/// // config, add an additional network resource or change
-/// // this from "data"to "resource"
-/// var lustre_network = Gcp.Compute.GetNetwork.Invoke(new()
-/// {
-/// Name = "my-network",
-/// });
-///
-/// var instance = new Gcp.Lustre.Instance("instance", new()
-/// {
-/// InstanceId = "my-instance",
-/// Location = "us-central1-a",
-/// Description = "test lustre instance",
-/// Filesystem = "testfs",
-/// CapacityGib = "18000",
-/// Network = lustre_network.Apply(lustre_network => lustre_network.Apply(getNetworkResult => getNetworkResult.Id)),
-/// PerUnitStorageThroughput = "1000",
-/// Labels =
-/// {
-/// { "test", "value" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/lustre"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// // This example assumes this network already exists.
-/// // The API creates a tenant network per network authorized for a
-/// // Lustre instance and that network is not deleted when the user-created
-/// // network (authorized_network) is deleted, so this prevents issues
-/// // with tenant network quota.
-/// // If this network hasn't been created and you are using this example in your
-/// // config, add an additional network resource or change
-/// // this from "data"to "resource"
-/// lustre_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-/// Name: "my-network",
-/// }, nil)
-/// if err != nil {
-/// return err
-/// }
-/// _, err = lustre.NewInstance(ctx, "instance", &lustre.InstanceArgs{
-/// InstanceId:               pulumi.String("my-instance"),
-/// Location:                 pulumi.String("us-central1-a"),
-/// Description:              pulumi.String("test lustre instance"),
-/// Filesystem:               pulumi.String("testfs"),
-/// CapacityGib:              pulumi.String("18000"),
-/// Network:                  pulumi.String(lustre_network.Id),
-/// PerUnitStorageThroughput: pulumi.String("1000"),
-/// Labels: pulumi.StringMap{
-/// "test": pulumi.String("value"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.ComputeFunctions;
-/// import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
-/// import com.pulumi.gcp.lustre.Instance;
-/// import com.pulumi.gcp.lustre.InstanceArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// // This example assumes this network already exists.
-/// // The API creates a tenant network per network authorized for a
-/// // Lustre instance and that network is not deleted when the user-created
-/// // network (authorized_network) is deleted, so this prevents issues
-/// // with tenant network quota.
-/// // If this network hasn't been created and you are using this example in your
-/// // config, add an additional network resource or change
-/// // this from "data"to "resource"
-/// final var lustre-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
-/// .name("my-network")
-/// .build());
-///
-/// var instance = new Instance("instance", InstanceArgs.builder()
-/// .instanceId("my-instance")
-/// .location("us-central1-a")
-/// .description("test lustre instance")
-/// .filesystem("testfs")
-/// .capacityGib("18000")
-/// .network(lustre_network.id())
-/// .perUnitStorageThroughput("1000")
-/// .labels(Map.of("test", "value"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// instance:
-/// type: gcp:lustre:Instance
-/// properties:
-/// instanceId: my-instance
-/// location: us-central1-a
-/// description: test lustre instance
-/// filesystem: testfs
-/// capacityGib: 18000
-/// network: ${["lustre-network"].id}
-/// perUnitStorageThroughput: 1000
-/// labels:
-/// test: value
-/// variables:
-/// # This example assumes this network already exists.
-/// # // The API creates a tenant network per network authorized for a
-/// # // Lustre instance and that network is not deleted when the user-created
-/// # // network (authorized_network) is deleted, so this prevents issues
-/// # // with tenant network quota.
-/// # // If this network hasn't been created and you are using this example in your
-/// # // config, add an additional network resource or change
-/// # // this from "data"to "resource"
-/// lustre-network:
-/// fn::invoke:
-/// function: gcp:compute:getNetwork
-/// arguments:
-/// name: my-network
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -262,7 +48,7 @@ class Instance8 extends CustomResource {
   late final Output<InstanceAccessRulesOptions?> accessRulesOptions;
 
   /// The storage capacity of the instance in gibibytes (GiB). Allowed values
-  /// are from <span pulumi-lang-nodejs="`18000`" pulumi-lang-dotnet="`18000`" pulumi-lang-go="`18000`" pulumi-lang-python="`18000`" pulumi-lang-yaml="`18000`" pulumi-lang-java="`18000`">`18000`</span> to <span pulumi-lang-nodejs="`954000`" pulumi-lang-dotnet="`954000`" pulumi-lang-go="`954000`" pulumi-lang-python="`954000`" pulumi-lang-yaml="`954000`" pulumi-lang-java="`954000`">`954000`</span>, in increments of 9000.
+  /// are from `18000` to `954000`, in increments of 9000.
   late final Output<String> capacityGib;
 
   /// Timestamp when the instance was created.
@@ -295,10 +81,10 @@ class Instance8 extends CustomResource {
 
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> location;
 
   /// Mount point of the instance in the format `IP_ADDRESS@tcp:/FILESYSTEM`.

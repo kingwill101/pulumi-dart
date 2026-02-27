@@ -1,3 +1,0 @@
-library module_compute_instance_settings_metadata;
-
-export 'instance_settings_metadata.dart';

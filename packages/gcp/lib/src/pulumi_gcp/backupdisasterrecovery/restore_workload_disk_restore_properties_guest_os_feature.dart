@@ -1,0 +1,3 @@
+library module_backupdisasterrecovery_restore_workload_disk_restore_properties_guest_os_feature;
+
+export 'restore_workload_disk_restore_properties_guest_os_feature/restore_workload_disk_restore_properties_guest_os_feature.dart';

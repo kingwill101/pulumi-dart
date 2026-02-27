@@ -1,0 +1,3 @@
+library module_dataplex_glossary_iam_member_condition;
+
+export 'glossary_iam_member_condition/glossary_iam_member_condition.dart';

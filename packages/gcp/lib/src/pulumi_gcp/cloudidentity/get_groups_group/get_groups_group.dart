@@ -32,7 +32,7 @@ class GetGroupsGroup {
   /// 'system/groups/external': '' if the Group is an external-identity-mapped group.
   final Map<String, String> labels;
 
-  /// Resource name of the Group in the format: groups/{group_id}, where <span pulumi-lang-nodejs="`groupId`" pulumi-lang-dotnet="`GroupId`" pulumi-lang-go="`groupId`" pulumi-lang-python="`group_id`" pulumi-lang-yaml="`groupId`" pulumi-lang-java="`groupId`">`group_id`</span> is the unique ID assigned to the Group.
+  /// Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
   final String name;
 
   /// The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.

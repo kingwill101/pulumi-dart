@@ -1,3 +1,0 @@
-library module_compute_get_backend_service_security_setting_aws_v4_authentication;
-
-export 'get_backend_service_security_setting_aws_v4_authentication.dart';

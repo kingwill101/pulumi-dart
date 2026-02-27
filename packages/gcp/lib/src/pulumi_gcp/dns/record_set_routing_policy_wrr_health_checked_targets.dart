@@ -1,0 +1,3 @@
+library module_dns_record_set_routing_policy_wrr_health_checked_targets;
+
+export 'record_set_routing_policy_wrr_health_checked_targets/record_set_routing_policy_wrr_health_checked_targets.dart';

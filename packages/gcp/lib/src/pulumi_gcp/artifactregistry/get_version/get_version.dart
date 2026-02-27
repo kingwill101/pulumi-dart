@@ -3,22 +3,6 @@ import 'get_version_args.dart';
 import 'get_version_result.dart';
 
 /// This data source fetches information of a version from a provided Artifact Registry repository.
-///
-/// ## Example Usage
-///
-/// <!--Start PulumiCodeChooser -->
-/// ```yaml
-/// variables:
-/// myVersions:
-/// fn::invoke:
-/// function: gcp:artifactregistry:getVersions
-/// arguments:
-/// location: us-central1
-/// repositoryId: example-repo
-/// packageName: example-package
-/// versionName: latest
-/// ```
-/// <!--End PulumiCodeChooser -->
 Future<GetVersionResult> getVersion(
   GetVersionArgs args, {
   InvokeOptions? options,

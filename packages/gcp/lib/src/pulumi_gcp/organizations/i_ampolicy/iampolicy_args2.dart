@@ -7,7 +7,7 @@ class IAMPolicyArgs2 {
   /// The organization id of the target organization.
   final Input<String> orgId;
 
-  /// The <span pulumi-lang-nodejs="`gcp.organizations.getIAMPolicy`" pulumi-lang-dotnet="`gcp.organizations.getIAMPolicy`" pulumi-lang-go="`organizations.getIAMPolicy`" pulumi-lang-python="`organizations_get_iam_policy`" pulumi-lang-yaml="`gcp.organizations.getIAMPolicy`" pulumi-lang-java="`gcp.organizations.getIAMPolicy`">`gcp.organizations.getIAMPolicy`</span> data source that represents
+  /// The `gcp.organizations.getIAMPolicy` data source that represents
   /// the IAM policy that will be applied to the organization. The policy will be
   /// merged with any existing policy applied to the organization.
   ///

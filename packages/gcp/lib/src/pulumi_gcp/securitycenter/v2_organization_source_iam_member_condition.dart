@@ -1,0 +1,3 @@
+library module_securitycenter_v2_organization_source_iam_member_condition;
+
+export 'v2_organization_source_iam_member_condition/v2_organization_source_iam_member_condition.dart';

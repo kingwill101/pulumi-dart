@@ -1,3 +1,0 @@
-library module_beyondcorp_security_gateway_hub_internet_gateway;
-
-export 'security_gateway_hub_internet_gateway.dart';

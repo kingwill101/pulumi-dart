@@ -12,7 +12,7 @@ class SecurityGatewayApplicationIamMemberArgs {
   /// Structure is documented below.
   final Input<SecurityGatewayApplicationIamMemberCondition>? condition;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -31,7 +31,7 @@ class SecurityGatewayApplicationIamMemberArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.beyondcorp.SecurityGatewayApplicationIamBinding`" pulumi-lang-dotnet="`gcp.beyondcorp.SecurityGatewayApplicationIamBinding`" pulumi-lang-go="`beyondcorp.SecurityGatewayApplicationIamBinding`" pulumi-lang-python="`beyondcorp.SecurityGatewayApplicationIamBinding`" pulumi-lang-yaml="`gcp.beyondcorp.SecurityGatewayApplicationIamBinding`" pulumi-lang-java="`gcp.beyondcorp.SecurityGatewayApplicationIamBinding`">`gcp.beyondcorp.SecurityGatewayApplicationIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

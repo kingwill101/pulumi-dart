@@ -1,0 +1,3 @@
+library module_apihub_curation_endpoint_application_integration_endpoint_details;
+
+export 'curation_endpoint_application_integration_endpoint_details/curation_endpoint_application_integration_endpoint_details.dart';

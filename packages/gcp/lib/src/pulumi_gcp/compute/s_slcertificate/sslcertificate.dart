@@ -69,13 +69,13 @@ class SSLCertificate extends CustomResource {
   late final Output<String> name;
 
   /// Creates a unique name beginning with the
-  /// specified prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. Max length is 54 characters.
+  /// specified prefix. Conflicts with `name`. Max length is 54 characters.
   /// Prefixes with lengths longer than 37 characters will use a shortened
   /// UUID that will be more prone to collisions.
-  /// Resulting name for a <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span> <= 37 characters:
-  /// <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span> + YYYYmmddHHSSssss + 8 digit incremental counter
-  /// Resulting name for a <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span> 38 - 54 characters:
-  /// <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span> + YYmmdd + 3 digit incremental counter
+  /// Resulting name for a `name_prefix` <= 37 characters:
+  /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+  /// Resulting name for a `name_prefix` 38 - 54 characters:
+  /// `name_prefix` + YYmmdd + 3 digit incremental counter
   late final Output<String> namePrefix;
 
   /// The write-only private key in PEM format.

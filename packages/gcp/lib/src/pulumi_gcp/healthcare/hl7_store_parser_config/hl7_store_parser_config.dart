@@ -12,7 +12,7 @@ class Hl7StoreParserConfig {
   /// A base64-encoded string.
   final String? segmentTerminator;
 
-  /// The version of the unschematized parser to be used when a custom <span pulumi-lang-nodejs="`schema`" pulumi-lang-dotnet="`Schema`" pulumi-lang-go="`schema`" pulumi-lang-python="`schema`" pulumi-lang-yaml="`schema`" pulumi-lang-java="`schema`">`schema`</span> is not set.
+  /// The version of the unschematized parser to be used when a custom `schema` is not set.
   /// Default value is `V1`.
   /// Possible values are: `V1`, `V2`, `V3`.
   final String? version;

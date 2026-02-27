@@ -1,0 +1,3 @@
+library module_storage_bucket_lifecycle_rule_condition;
+
+export 'bucket_lifecycle_rule_condition/bucket_lifecycle_rule_condition.dart';

@@ -36,7 +36,7 @@ class RuntimeVirtualMachineVirtualMachineConfig {
   /// If true, runtime will only have internal IP addresses. By default,
   /// runtimes are not restricted to internal IP addresses, and will
   /// have ephemeral external IP addresses assigned to each vm. This
-  /// <span pulumi-lang-nodejs="`internalIpOnly`" pulumi-lang-dotnet="`InternalIpOnly`" pulumi-lang-go="`internalIpOnly`" pulumi-lang-python="`internal_ip_only`" pulumi-lang-yaml="`internalIpOnly`" pulumi-lang-java="`internalIpOnly`">`internal_ip_only`</span> restriction can only be enabled for subnetwork
+  /// `internal_ip_only` restriction can only be enabled for subnetwork
   /// enabled networks, and all dependencies must be configured to be
   /// accessible without external IP addresses.
   final bool? internalIpOnly;
@@ -59,12 +59,12 @@ class RuntimeVirtualMachineVirtualMachineConfig {
   final Map<String, String>? metadata;
 
   /// The Compute Engine network to be used for machine communications.
-  /// Cannot be specified with subnetwork. If neither <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span> nor
-  /// <span pulumi-lang-nodejs="`subnet`" pulumi-lang-dotnet="`Subnet`" pulumi-lang-go="`subnet`" pulumi-lang-python="`subnet`" pulumi-lang-yaml="`subnet`" pulumi-lang-java="`subnet`">`subnet`</span> is specified, the "default" network of the project is
+  /// Cannot be specified with subnetwork. If neither `network` nor
+  /// `subnet` is specified, the "default" network of the project is
   /// used, if it exists. A full URL or partial URI. Examples:
-  /// * `https://www.googleapis.com/compute/v1/projects/<span pulumi-lang-nodejs="[projectId]" pulumi-lang-dotnet="[ProjectId]" pulumi-lang-go="[projectId]" pulumi-lang-python="[project_id]" pulumi-lang-yaml="[projectId]" pulumi-lang-java="[projectId]">[project_id]</span>/
+  /// * `https://www.googleapis.com/compute/v1/projects/[project_id]/
   /// regions/global/default`
-  /// * `projects/<span pulumi-lang-nodejs="[projectId]" pulumi-lang-dotnet="[ProjectId]" pulumi-lang-go="[projectId]" pulumi-lang-python="[project_id]" pulumi-lang-yaml="[projectId]" pulumi-lang-java="[projectId]">[project_id]</span>/regions/global/default`
+  /// * `projects/[project_id]/regions/global/default`
   /// Runtimes are managed resources inside Google Infrastructure.
   /// Runtimes support the following network configurations:
   /// * Google Managed Network (Network & subnet are empty)
@@ -91,9 +91,9 @@ class RuntimeVirtualMachineVirtualMachineConfig {
   /// The Compute Engine subnetwork to be used for machine
   /// communications. Cannot be specified with network. A full URL or
   /// partial URI are valid. Examples:
-  /// * `https://www.googleapis.com/compute/v1/projects/<span pulumi-lang-nodejs="[projectId]" pulumi-lang-dotnet="[ProjectId]" pulumi-lang-go="[projectId]" pulumi-lang-python="[project_id]" pulumi-lang-yaml="[projectId]" pulumi-lang-java="[projectId]">[project_id]</span>/
+  /// * `https://www.googleapis.com/compute/v1/projects/[project_id]/
   /// regions/us-east1/subnetworks/sub0`
-  /// * `projects/<span pulumi-lang-nodejs="[projectId]" pulumi-lang-dotnet="[ProjectId]" pulumi-lang-go="[projectId]" pulumi-lang-python="[project_id]" pulumi-lang-yaml="[projectId]" pulumi-lang-java="[projectId]">[project_id]</span>/regions/us-east1/subnetworks/sub0`
+  /// * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
   final String? subnet;
 
   /// The Compute Engine tags to add to runtime (see [Tagging instances]

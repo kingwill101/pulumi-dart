@@ -25,7 +25,7 @@ class SubscriptionPushConfig {
   final Map<String, String>? attributes;
 
   /// When set, the payload to the push endpoint is not wrapped.Sets the
-  /// <span pulumi-lang-nodejs="`data`" pulumi-lang-dotnet="`Data`" pulumi-lang-go="`data`" pulumi-lang-python="`data`" pulumi-lang-yaml="`data`" pulumi-lang-java="`data`">`data`</span> field as the HTTP body for delivery.
+  /// `data` field as the HTTP body for delivery.
   /// Structure is documented below.
   final SubscriptionPushConfigNoWrapper? noWrapper;
 

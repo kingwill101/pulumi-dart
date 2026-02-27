@@ -1,3 +1,0 @@
-library module_compute_urlmap_path_matcher_header_action;
-
-export 'urlmap_path_matcher_header_action.dart';

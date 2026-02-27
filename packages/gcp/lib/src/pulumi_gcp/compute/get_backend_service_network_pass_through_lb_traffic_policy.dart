@@ -1,0 +1,3 @@
+library module_compute_get_backend_service_network_pass_through_lb_traffic_policy;
+
+export 'get_backend_service_network_pass_through_lb_traffic_policy/get_backend_service_network_pass_through_lb_traffic_policy.dart';

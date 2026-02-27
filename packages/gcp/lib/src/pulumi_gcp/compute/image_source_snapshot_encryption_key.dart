@@ -1,0 +1,3 @@
+library module_compute_image_source_snapshot_encryption_key;
+
+export 'image_source_snapshot_encryption_key/image_source_snapshot_encryption_key.dart';

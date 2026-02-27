@@ -1,0 +1,3 @@
+library module_discoveryengine_recommendation_engine_common_config;
+
+export 'recommendation_engine_common_config/recommendation_engine_common_config.dart';

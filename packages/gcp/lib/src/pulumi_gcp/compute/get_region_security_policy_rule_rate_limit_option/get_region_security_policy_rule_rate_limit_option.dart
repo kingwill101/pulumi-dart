@@ -6,11 +6,11 @@ import '../get_region_security_policy_rule_rate_limit_option_enforce_on_key_conf
 import '../get_region_security_policy_rule_rate_limit_option_rate_limit_threshold/get_region_security_policy_rule_rate_limit_option_rate_limit_threshold.dart';
 
 class GetRegionSecurityPolicyRuleRateLimitOption {
-  /// Can only be specified if the action for the rule is <span pulumi-lang-nodejs=""rateBasedBan"" pulumi-lang-dotnet=""RateBasedBan"" pulumi-lang-go=""rateBasedBan"" pulumi-lang-python=""rate_based_ban"" pulumi-lang-yaml=""rateBasedBan"" pulumi-lang-java=""rateBasedBan"">"rate_based_ban"</span>.
+  /// Can only be specified if the action for the rule is "rate_based_ban".
   /// If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
   final int banDurationSec;
 
-  /// Can only be specified if the action for the rule is <span pulumi-lang-nodejs=""rateBasedBan"" pulumi-lang-dotnet=""RateBasedBan"" pulumi-lang-go=""rateBasedBan"" pulumi-lang-python=""rate_based_ban"" pulumi-lang-yaml=""rateBasedBan"" pulumi-lang-java=""rateBasedBan"">"rate_based_ban"</span>.
+  /// Can only be specified if the action for the rule is "rate_based_ban".
   /// If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
   final List<GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold>
       banThresholds;

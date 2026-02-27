@@ -1,0 +1,3 @@
+library module_gkeonprem_vmware_node_pool_status;
+
+export 'vmware_node_pool_status/vmware_node_pool_status.dart';

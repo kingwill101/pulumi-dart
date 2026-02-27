@@ -1,3 +1,0 @@
-library module_redis_cluster_cross_cluster_replication_config_membership;
-
-export 'cluster_cross_cluster_replication_config_membership.dart';

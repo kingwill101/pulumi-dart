@@ -16,11 +16,11 @@ class TriggerGithub {
   /// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
   final String? owner;
 
-  /// filter to match changes in pull requests. Specify only one of <span pulumi-lang-nodejs="`pullRequest`" pulumi-lang-dotnet="`PullRequest`" pulumi-lang-go="`pullRequest`" pulumi-lang-python="`pull_request`" pulumi-lang-yaml="`pullRequest`" pulumi-lang-java="`pullRequest`">`pull_request`</span> or <span pulumi-lang-nodejs="`push`" pulumi-lang-dotnet="`Push`" pulumi-lang-go="`push`" pulumi-lang-python="`push`" pulumi-lang-yaml="`push`" pulumi-lang-java="`push`">`push`</span>.
+  /// filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
   /// Structure is documented below.
   final TriggerGithubPullRequest? pullRequest;
 
-  /// filter to match changes in refs, like branches or tags. Specify only one of <span pulumi-lang-nodejs="`pullRequest`" pulumi-lang-dotnet="`PullRequest`" pulumi-lang-go="`pullRequest`" pulumi-lang-python="`pull_request`" pulumi-lang-yaml="`pullRequest`" pulumi-lang-java="`pullRequest`">`pull_request`</span> or <span pulumi-lang-nodejs="`push`" pulumi-lang-dotnet="`Push`" pulumi-lang-go="`push`" pulumi-lang-python="`push`" pulumi-lang-yaml="`push`" pulumi-lang-java="`push`">`push`</span>.
+  /// filter to match changes in refs, like branches or tags. Specify only one of `pull_request` or `push`.
   /// Structure is documented below.
   final TriggerGithubPush? push;
 

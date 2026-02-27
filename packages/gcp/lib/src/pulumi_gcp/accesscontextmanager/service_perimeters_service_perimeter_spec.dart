@@ -1,0 +1,3 @@
+library module_accesscontextmanager_service_perimeters_service_perimeter_spec;
+
+export 'service_perimeters_service_perimeter_spec/service_perimeters_service_perimeter_spec.dart';

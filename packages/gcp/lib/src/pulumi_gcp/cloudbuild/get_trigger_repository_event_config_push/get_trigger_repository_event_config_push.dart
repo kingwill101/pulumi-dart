@@ -7,7 +7,7 @@ class GetTriggerRepositoryEventConfigPush {
   /// RE2 and described at https://github.com/google/re2/wiki/Syntax
   final String branch;
 
-  /// If true, only trigger a build if the revision regex does NOT match the<span pulumi-lang-nodejs=" gitRef " pulumi-lang-dotnet=" GitRef " pulumi-lang-go=" gitRef " pulumi-lang-python=" git_ref " pulumi-lang-yaml=" gitRef " pulumi-lang-java=" gitRef "> git_ref </span>regex.
+  /// If true, only trigger a build if the revision regex does NOT match the git_ref regex.
   final bool invertRegex;
 
   /// Regex of tags to match.

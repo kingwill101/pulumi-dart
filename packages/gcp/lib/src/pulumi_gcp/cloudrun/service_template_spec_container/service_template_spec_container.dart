@@ -27,7 +27,7 @@ class ServiceTemplateSpecContainer {
   /// precedence.
   /// Structure is documented below.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`envFrom`" pulumi-lang-dotnet="`EnvFrom`" pulumi-lang-go="`envFrom`" pulumi-lang-python="`env_from`" pulumi-lang-yaml="`envFrom`" pulumi-lang-java="`envFrom`">`env_from`</span> is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+  /// > **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
   final List<ServiceTemplateSpecContainerEnvFrom>? envFroms;
 
   /// List of environment variables to set in the container.
@@ -74,7 +74,7 @@ class ServiceTemplateSpecContainer {
   /// If not specified, the container runtime's default will be used, which
   /// might be configured in the container image.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`workingDir`" pulumi-lang-dotnet="`WorkingDir`" pulumi-lang-go="`workingDir`" pulumi-lang-python="`working_dir`" pulumi-lang-yaml="`workingDir`" pulumi-lang-java="`workingDir`">`working_dir`</span> is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+  /// > **Warning:** `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
   final String? workingDir;
 
   ServiceTemplateSpecContainer({

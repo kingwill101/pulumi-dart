@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getRegionInstanceGroupManager.
 class GetRegionInstanceGroupManagerArgs {
-  /// The name of the instance group. Either <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span> must be provided.
+  /// The name of the instance group. Either `name` or `self_link` must be provided.
   final Input<String>? name;
 
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
@@ -13,7 +13,7 @@ class GetRegionInstanceGroupManagerArgs {
   final Input<String>? project;
   final Input<String>? region;
 
-  /// The self link of the instance group. Either <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span> must be provided.
+  /// The self link of the instance group. Either `name` or `self_link` must be provided.
   final Input<String>? selfLink;
 
   GetRegionInstanceGroupManagerArgs({

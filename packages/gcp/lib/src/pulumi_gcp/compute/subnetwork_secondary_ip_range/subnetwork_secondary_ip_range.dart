@@ -5,7 +5,7 @@ class SubnetworkSecondaryIpRange {
   /// range. Provide this property when you create the subnetwork.
   /// Ranges must be unique and non-overlapping with all primary and
   /// secondary IP ranges within a network. Only IPv4 is supported.
-  /// Field is optional when <span pulumi-lang-nodejs="`reservedInternalRange`" pulumi-lang-dotnet="`ReservedInternalRange`" pulumi-lang-go="`reservedInternalRange`" pulumi-lang-python="`reserved_internal_range`" pulumi-lang-yaml="`reservedInternalRange`" pulumi-lang-java="`reservedInternalRange`">`reserved_internal_range`</span> is defined, otherwise required.
+  /// Field is optional when `reserved_internal_range` is defined, otherwise required.
   final String? ipCidrRange;
 
   /// The name associated with this subnetwork secondary range, used

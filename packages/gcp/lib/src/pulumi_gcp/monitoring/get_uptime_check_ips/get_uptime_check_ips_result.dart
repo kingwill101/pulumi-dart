@@ -8,7 +8,7 @@ class GetUptimeCheckIPsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// A list of uptime check IPs used by Stackdriver Monitoring. Each <span pulumi-lang-nodejs="`uptimeCheckIp`" pulumi-lang-dotnet="`UptimeCheckIp`" pulumi-lang-go="`uptimeCheckIp`" pulumi-lang-python="`uptime_check_ip`" pulumi-lang-yaml="`uptimeCheckIp`" pulumi-lang-java="`uptimeCheckIp`">`uptime_check_ip`</span> contains:
+  /// A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
   final List<GetUptimeCheckIPsUptimeCheckIp> uptimeCheckIps;
 
   GetUptimeCheckIPsResult({

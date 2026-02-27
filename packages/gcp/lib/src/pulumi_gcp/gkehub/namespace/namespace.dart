@@ -16,205 +16,7 @@ import 'namespace_args.dart';
 /// ### Gkehub Namespace Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_8647"});
-/// const namespace = new gcp.gkehub.Namespace("namespace", {
-/// scopeNamespaceId: "tf-test-namespace_50610",
-/// scopeId: scope.scopeId,
-/// scope: scope.name,
-/// namespaceLabels: {
-/// keyb: "valueb",
-/// keya: "valuea",
-/// keyc: "valuec",
-/// },
-/// labels: {
-/// keyb: "valueb",
-/// keya: "valuea",
-/// keyc: "valuec",
-/// },
-/// }, {
-/// dependsOn: [scope],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_8647")
-/// namespace = gcp.gkehub.Namespace("namespace",
-/// scope_namespace_id="tf-test-namespace_50610",
-/// scope_id=scope.scope_id,
-/// scope=scope.name,
-/// namespace_labels={
-/// "keyb": "valueb",
-/// "keya": "valuea",
-/// "keyc": "valuec",
-/// },
-/// labels={
-/// "keyb": "valueb",
-/// "keya": "valuea",
-/// "keyc": "valuec",
-/// },
-/// opts = pulumi.ResourceOptions(depends_on=[scope]))
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var scope = new Gcp.GkeHub.Scope("scope", new()
-/// {
-/// ScopeId = "tf-test-scope_8647",
-/// });
-///
-/// var @namespace = new Gcp.GkeHub.Namespace("namespace", new()
-/// {
-/// ScopeNamespaceId = "tf-test-namespace_50610",
-/// ScopeId = scope.ScopeId,
-/// Scope = scope.Name,
-/// NamespaceLabels =
-/// {
-/// { "keyb", "valueb" },
-/// { "keya", "valuea" },
-/// { "keyc", "valuec" },
-/// },
-/// Labels =
-/// {
-/// { "keyb", "valueb" },
-/// { "keya", "valuea" },
-/// { "keyc", "valuec" },
-/// },
-/// }, new CustomResourceOptions
-/// {
-/// DependsOn =
-/// {
-/// scope,
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// scope, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-/// ScopeId: pulumi.String("tf-test-scope_8647"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = gkehub.NewNamespace(ctx, "namespace", &gkehub.NamespaceArgs{
-/// ScopeNamespaceId: pulumi.String("tf-test-namespace_50610"),
-/// ScopeId:          scope.ScopeId,
-/// Scope:            scope.Name,
-/// NamespaceLabels: pulumi.StringMap{
-/// "keyb": pulumi.String("valueb"),
-/// "keya": pulumi.String("valuea"),
-/// "keyc": pulumi.String("valuec"),
-/// },
-/// Labels: pulumi.StringMap{
-/// "keyb": pulumi.String("valueb"),
-/// "keya": pulumi.String("valuea"),
-/// "keyc": pulumi.String("valuec"),
-/// },
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// scope,
-/// }))
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.gkehub.Scope;
-/// import com.pulumi.gcp.gkehub.ScopeArgs;
-/// import com.pulumi.gcp.gkehub.Namespace;
-/// import com.pulumi.gcp.gkehub.NamespaceArgs;
-/// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var scope = new Scope("scope", ScopeArgs.builder()
-/// .scopeId("tf-test-scope_8647")
-/// .build());
-///
-/// var namespace = new Namespace("namespace", NamespaceArgs.builder()
-/// .scopeNamespaceId("tf-test-namespace_50610")
-/// .scopeId(scope.scopeId())
-/// .scope(scope.name())
-/// .namespaceLabels(Map.ofEntries(
-/// Map.entry("keyb", "valueb"),
-/// Map.entry("keya", "valuea"),
-/// Map.entry("keyc", "valuec")
-/// ))
-/// .labels(Map.ofEntries(
-/// Map.entry("keyb", "valueb"),
-/// Map.entry("keya", "valuea"),
-/// Map.entry("keyc", "valuec")
-/// ))
-/// .build(), CustomResourceOptions.builder()
-/// .dependsOn(scope)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// scope:
-/// type: gcp:gkehub:Scope
-/// properties:
-/// scopeId: tf-test-scope_8647
-/// namespace:
-/// type: gcp:gkehub:Namespace
-/// properties:
-/// scopeNamespaceId: tf-test-namespace_50610
-/// scopeId: ${scope.scopeId}
-/// scope: ${scope.name}
-/// namespaceLabels:
-/// keyb: valueb
-/// keya: valuea
-/// keyc: valuec
-/// labels:
-/// keyb: valueb
-/// keya: valuea
-/// keyc: valuec
-/// options:
-/// dependsOn:
-/// - ${scope}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -252,7 +54,7 @@ class Namespace extends CustomResource {
   /// Labels for this Namespace.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// The resource name for the namespace
@@ -260,7 +62,7 @@ class Namespace extends CustomResource {
 
   /// Namespace-level cluster namespace labels. These labels are applied
   /// to the related namespace of the member clusters bound to the parent
-  /// Scope. Scope-level labels (<span pulumi-lang-nodejs="`namespaceLabels`" pulumi-lang-dotnet="`NamespaceLabels`" pulumi-lang-go="`namespaceLabels`" pulumi-lang-python="`namespace_labels`" pulumi-lang-yaml="`namespaceLabels`" pulumi-lang-java="`namespaceLabels`">`namespace_labels`</span> in the Fleet Scope
+  /// Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
   /// resource) take precedence over Namespace-level labels if they share
   /// a key. Keys and values must be Kubernetes-conformant.
   late final Output<Map<String, String>?> namespaceLabels;

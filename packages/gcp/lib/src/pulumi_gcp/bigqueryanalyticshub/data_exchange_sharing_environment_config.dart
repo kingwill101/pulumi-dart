@@ -1,0 +1,3 @@
+library module_bigqueryanalyticshub_data_exchange_sharing_environment_config;
+
+export 'data_exchange_sharing_environment_config/data_exchange_sharing_environment_config.dart';

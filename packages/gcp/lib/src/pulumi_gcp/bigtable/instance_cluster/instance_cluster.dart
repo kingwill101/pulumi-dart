@@ -12,16 +12,16 @@ class InstanceCluster {
   /// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
   final String? kmsKeyName;
 
-  /// The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then <span pulumi-lang-nodejs="`numNodes`" pulumi-lang-dotnet="`NumNodes`" pulumi-lang-go="`numNodes`" pulumi-lang-python="`num_nodes`" pulumi-lang-yaml="`numNodes`" pulumi-lang-java="`numNodes`">`num_nodes`</span>, <span pulumi-lang-nodejs="`minNodes`" pulumi-lang-dotnet="`MinNodes`" pulumi-lang-go="`minNodes`" pulumi-lang-python="`min_nodes`" pulumi-lang-yaml="`minNodes`" pulumi-lang-java="`minNodes`">`min_nodes`</span>, and <span pulumi-lang-nodejs="`maxNodes`" pulumi-lang-dotnet="`MaxNodes`" pulumi-lang-go="`maxNodes`" pulumi-lang-python="`max_nodes`" pulumi-lang-yaml="`maxNodes`" pulumi-lang-java="`maxNodes`">`max_nodes`</span> would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
+  /// The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
   ///
   /// > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
   ///
   /// !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
   ///
-  /// !> **Warning:** Modifying the <span pulumi-lang-nodejs="`storageType`" pulumi-lang-dotnet="`StorageType`" pulumi-lang-go="`storageType`" pulumi-lang-python="`storage_type`" pulumi-lang-yaml="`storageType`" pulumi-lang-java="`storageType`">`storage_type`</span>, <span pulumi-lang-nodejs="`zone`" pulumi-lang-dotnet="`Zone`" pulumi-lang-go="`zone`" pulumi-lang-python="`zone`" pulumi-lang-yaml="`zone`" pulumi-lang-java="`zone`">`zone`</span> or <span pulumi-lang-nodejs="`kmsKeyName`" pulumi-lang-dotnet="`KmsKeyName`" pulumi-lang-go="`kmsKeyName`" pulumi-lang-python="`kms_key_name`" pulumi-lang-yaml="`kmsKeyName`" pulumi-lang-java="`kmsKeyName`">`kms_key_name`</span> of an existing cluster (by
-  /// <span pulumi-lang-nodejs="`clusterId`" pulumi-lang-dotnet="`ClusterId`" pulumi-lang-go="`clusterId`" pulumi-lang-python="`cluster_id`" pulumi-lang-yaml="`clusterId`" pulumi-lang-java="`clusterId`">`cluster_id`</span>) will cause the provider to delete/recreate the entire
-  /// <span pulumi-lang-nodejs="`gcp.bigtable.Instance`" pulumi-lang-dotnet="`gcp.bigtable.Instance`" pulumi-lang-go="`bigtable.Instance`" pulumi-lang-python="`bigtable.Instance`" pulumi-lang-yaml="`gcp.bigtable.Instance`" pulumi-lang-java="`gcp.bigtable.Instance`">`gcp.bigtable.Instance`</span> resource. If these values are changing, use a new
-  /// <span pulumi-lang-nodejs="`clusterId`" pulumi-lang-dotnet="`ClusterId`" pulumi-lang-go="`clusterId`" pulumi-lang-python="`cluster_id`" pulumi-lang-yaml="`clusterId`" pulumi-lang-java="`clusterId`">`cluster_id`</span>.
+  /// !> **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
+  /// `cluster_id`) will cause the provider to delete/recreate the entire
+  /// `gcp.bigtable.Instance` resource. If these values are changing, use a new
+  /// `cluster_id`.
   final String? nodeScalingFactor;
 
   /// The number of nodes in the cluster.

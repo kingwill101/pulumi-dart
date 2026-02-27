@@ -6,7 +6,7 @@ class BucketObjectRetention {
 
   /// The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedContexts"" pulumi-lang-dotnet=""NestedContexts"" pulumi-lang-go=""nestedContexts"" pulumi-lang-python=""nested_contexts"" pulumi-lang-yaml=""nestedContexts"" pulumi-lang-java=""nestedContexts"">"nested_contexts"</span>></a> The <span pulumi-lang-nodejs="`contexts`" pulumi-lang-dotnet="`Contexts`" pulumi-lang-go="`contexts`" pulumi-lang-python="`contexts`" pulumi-lang-yaml="`contexts`" pulumi-lang-java="`contexts`">`contexts`</span> block supports -
+  /// <a name="nested_contexts"></a> The `contexts` block supports -
   final String retainUntilTime;
 
   BucketObjectRetention({

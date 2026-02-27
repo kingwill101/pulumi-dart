@@ -1,3 +1,0 @@
-library module_container_attached_cluster_oidc_config;
-
-export 'attached_cluster_oidc_config.dart';

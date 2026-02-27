@@ -1,3 +1,0 @@
-library module_datastream_stream_source_config_salesforce_source_config_exclude_objects_object;
-
-export 'stream_source_config_salesforce_source_config_exclude_objects_object.dart';

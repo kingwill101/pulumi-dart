@@ -17,7 +17,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule {
   /// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
   final bool? denyAll;
 
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, then the policy is enforced. If <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, then any configuration is acceptable.
+  /// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
   /// This field can be set only in policies for boolean constraints.
   final bool? enforce;
 

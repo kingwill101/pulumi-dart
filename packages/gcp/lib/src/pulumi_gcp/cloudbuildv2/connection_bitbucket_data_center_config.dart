@@ -1,0 +1,3 @@
+library module_cloudbuildv2_connection_bitbucket_data_center_config;
+
+export 'connection_bitbucket_data_center_config/connection_bitbucket_data_center_config.dart';

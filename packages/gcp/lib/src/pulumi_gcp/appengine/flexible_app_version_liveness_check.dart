@@ -1,0 +1,3 @@
+library module_appengine_flexible_app_version_liveness_check;
+
+export 'flexible_app_version_liveness_check/flexible_app_version_liveness_check.dart';

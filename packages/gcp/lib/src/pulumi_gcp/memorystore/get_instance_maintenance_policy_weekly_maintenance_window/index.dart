@@ -1,3 +1,0 @@
-library module_memorystore_get_instance_maintenance_policy_weekly_maintenance_window;
-
-export 'get_instance_maintenance_policy_weekly_maintenance_window2.dart';

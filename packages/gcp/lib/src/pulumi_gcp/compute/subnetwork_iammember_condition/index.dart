@@ -1,3 +1,0 @@
-library module_compute_subnetwork_iammember_condition;
-
-export 'subnetwork_iammember_condition.dart';

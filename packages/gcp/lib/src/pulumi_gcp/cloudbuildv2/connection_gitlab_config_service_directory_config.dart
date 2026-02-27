@@ -1,0 +1,3 @@
+library module_cloudbuildv2_connection_gitlab_config_service_directory_config;
+
+export 'connection_gitlab_config_service_directory_config/connection_gitlab_config_service_directory_config.dart';

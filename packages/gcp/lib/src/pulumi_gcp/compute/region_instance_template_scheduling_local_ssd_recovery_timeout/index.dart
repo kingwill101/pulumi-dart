@@ -1,3 +1,0 @@
-library module_compute_region_instance_template_scheduling_local_ssd_recovery_timeout;
-
-export 'region_instance_template_scheduling_local_ssd_recovery_timeout.dart';

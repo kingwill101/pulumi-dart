@@ -1,0 +1,3 @@
+library module_memcache_get_instance_node_config;
+
+export 'get_instance_node_config/get_instance_node_config.dart';

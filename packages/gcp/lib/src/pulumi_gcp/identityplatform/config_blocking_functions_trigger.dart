@@ -1,0 +1,3 @@
+library module_identityplatform_config_blocking_functions_trigger;
+
+export 'config_blocking_functions_trigger/config_blocking_functions_trigger.dart';

@@ -1,0 +1,3 @@
+library module_networkservices_multicast_domain_activation_state;
+
+export 'multicast_domain_activation_state/multicast_domain_activation_state.dart';

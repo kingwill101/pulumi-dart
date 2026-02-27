@@ -6,7 +6,7 @@ import '../table_column_family/table_column_family.dart';
 
 /// The set of arguments for Table.
 class TableArgs3 {
-  /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the<span pulumi-lang-nodejs=" automatedBackupPolicy " pulumi-lang-dotnet=" AutomatedBackupPolicy " pulumi-lang-go=" automatedBackupPolicy " pulumi-lang-python=" automated_backup_policy " pulumi-lang-yaml=" automatedBackupPolicy " pulumi-lang-java=" automatedBackupPolicy "> automated_backup_policy </span>argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the<span pulumi-lang-nodejs=" automatedBackupPolicy " pulumi-lang-dotnet=" AutomatedBackupPolicy " pulumi-lang-go=" automatedBackupPolicy " pulumi-lang-python=" automated_backup_policy " pulumi-lang-yaml=" automatedBackupPolicy " pulumi-lang-java=" automatedBackupPolicy "> automated_backup_policy </span>argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
+  /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automated_backup_policy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automated_backup_policy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
   ///
   /// -----
   final Input<TableAutomatedBackupPolicy>? automatedBackupPolicy;
@@ -39,8 +39,8 @@ class TableArgs3 {
   final Input<String>? rowKeySchema;
 
   /// A list of predefined keys to split the table on.
-  /// !> **Warning:** Modifying the <span pulumi-lang-nodejs="`splitKeys`" pulumi-lang-dotnet="`SplitKeys`" pulumi-lang-go="`splitKeys`" pulumi-lang-python="`split_keys`" pulumi-lang-yaml="`splitKeys`" pulumi-lang-java="`splitKeys`">`split_keys`</span> of an existing table will cause the provider
-  /// to delete/recreate the entire <span pulumi-lang-nodejs="`gcp.bigtable.Table`" pulumi-lang-dotnet="`gcp.bigtable.Table`" pulumi-lang-go="`bigtable.Table`" pulumi-lang-python="`bigtable.Table`" pulumi-lang-yaml="`gcp.bigtable.Table`" pulumi-lang-java="`gcp.bigtable.Table`">`gcp.bigtable.Table`</span> resource.
+  /// !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+  /// to delete/recreate the entire `gcp.bigtable.Table` resource.
   final Input<List<String>>? splitKeys;
 
   TableArgs3({

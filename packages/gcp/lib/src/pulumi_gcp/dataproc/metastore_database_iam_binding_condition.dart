@@ -1,0 +1,3 @@
+library module_dataproc_metastore_database_iam_binding_condition;
+
+export 'metastore_database_iam_binding_condition/metastore_database_iam_binding_condition.dart';

@@ -14,100 +14,7 @@ import 'squota_adjuster_settings_args.dart';
 /// ### Cloudquotas Quota Adjuster Settings Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const adjusterSettings = new gcp.cloudquota.SQuotaAdjusterSettings("adjuster_settings", {
-/// parent: "projects/104740170505",
-/// enablement: "ENABLED",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// adjuster_settings = gcp.cloudquota.SQuotaAdjusterSettings("adjuster_settings",
-/// parent="projects/104740170505",
-/// enablement="ENABLED")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var adjusterSettings = new Gcp.CloudQuota.SQuotaAdjusterSettings("adjuster_settings", new()
-/// {
-/// Parent = "projects/104740170505",
-/// Enablement = "ENABLED",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudquota"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := cloudquota.NewSQuotaAdjusterSettings(ctx, "adjuster_settings", &cloudquota.SQuotaAdjusterSettingsArgs{
-/// Parent:     pulumi.String("projects/104740170505"),
-/// Enablement: pulumi.String("ENABLED"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.cloudquota.SQuotaAdjusterSettings;
-/// import com.pulumi.gcp.cloudquota.SQuotaAdjusterSettingsArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var adjusterSettings = new SQuotaAdjusterSettings("adjusterSettings", SQuotaAdjusterSettingsArgs.builder()
-/// .parent("projects/104740170505")
-/// .enablement("ENABLED")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// adjusterSettings:
-/// type: gcp:cloudquota:SQuotaAdjusterSettings
-/// name: adjuster_settings
-/// properties:
-/// parent: projects/104740170505
-/// enablement: ENABLED
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -139,8 +46,8 @@ class SQuotaAdjusterSettings extends CustomResource {
   late final Output<bool> inherited;
 
   /// The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
-  /// The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span> if no ancestor exists with enablement set.
-  /// The value will be empty when <span pulumi-lang-nodejs="`enablement`" pulumi-lang-dotnet="`Enablement`" pulumi-lang-go="`enablement`" pulumi-lang-python="`enablement`" pulumi-lang-yaml="`enablement`" pulumi-lang-java="`enablement`">`enablement`</span> is specified on this resource container.
+  /// The value can be `organizations/{organization_id}`, `folders/{folder_id}`, or can be `default` if no ancestor exists with enablement set.
+  /// The value will be empty when `enablement` is specified on this resource container.
   late final Output<String> inheritedFrom;
 
   /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".

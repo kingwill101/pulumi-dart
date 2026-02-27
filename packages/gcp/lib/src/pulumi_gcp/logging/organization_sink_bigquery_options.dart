@@ -1,0 +1,3 @@
+library module_logging_organization_sink_bigquery_options;
+
+export 'organization_sink_bigquery_options/organization_sink_bigquery_options.dart';

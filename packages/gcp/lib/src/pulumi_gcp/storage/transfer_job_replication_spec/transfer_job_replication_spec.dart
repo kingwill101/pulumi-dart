@@ -12,10 +12,10 @@ class TransferJobReplicationSpec {
   /// A Google Cloud Storage data source. Structure documented below.
   final TransferJobReplicationSpecGcsDataSource? gcsDataSource;
 
-  /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' <span pulumi-lang-nodejs="`lastModificationTime`" pulumi-lang-dotnet="`LastModificationTime`" pulumi-lang-go="`lastModificationTime`" pulumi-lang-python="`last_modification_time`" pulumi-lang-yaml="`lastModificationTime`" pulumi-lang-java="`lastModificationTime`">`last_modification_time`</span> do not exclude objects in a data sink. Structure documented below.
+  /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
   final TransferJobReplicationSpecObjectConditions? objectConditions;
 
-  /// Characteristics of how to treat files from datasource and sink during job. If the option <span pulumi-lang-nodejs="`deleteObjectsUniqueInSink`" pulumi-lang-dotnet="`DeleteObjectsUniqueInSink`" pulumi-lang-go="`deleteObjectsUniqueInSink`" pulumi-lang-python="`delete_objects_unique_in_sink`" pulumi-lang-yaml="`deleteObjectsUniqueInSink`" pulumi-lang-java="`deleteObjectsUniqueInSink`">`delete_objects_unique_in_sink`</span> is true, object conditions based on objects' <span pulumi-lang-nodejs="`lastModificationTime`" pulumi-lang-dotnet="`LastModificationTime`" pulumi-lang-go="`lastModificationTime`" pulumi-lang-python="`last_modification_time`" pulumi-lang-yaml="`lastModificationTime`" pulumi-lang-java="`lastModificationTime`">`last_modification_time`</span> are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+  /// Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
   final TransferJobReplicationSpecTransferOptions? transferOptions;
 
   TransferJobReplicationSpec({

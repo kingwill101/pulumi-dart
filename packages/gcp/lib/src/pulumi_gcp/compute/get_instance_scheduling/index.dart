@@ -1,3 +1,0 @@
-library module_compute_get_instance_scheduling;
-
-export 'get_instance_scheduling.dart';

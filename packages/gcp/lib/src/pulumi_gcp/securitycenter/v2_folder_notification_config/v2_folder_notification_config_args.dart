@@ -18,7 +18,7 @@ class V2FolderNotificationConfigArgs {
   final Input<String>? location;
 
   /// The Pub/Sub topic to send notifications to. Its format is
-  /// "projects/<span pulumi-lang-nodejs="[projectId]" pulumi-lang-dotnet="[ProjectId]" pulumi-lang-go="[projectId]" pulumi-lang-python="[project_id]" pulumi-lang-yaml="[projectId]" pulumi-lang-java="[projectId]">[project_id]</span>/topics/[topic]".
+  /// "projects/[project_id]/topics/[topic]".
   final Input<String> pubsubTopic;
 
   /// The config for triggering streaming-based notifications.

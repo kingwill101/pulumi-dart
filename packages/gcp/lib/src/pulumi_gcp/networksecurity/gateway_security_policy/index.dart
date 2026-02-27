@@ -1,4 +1,0 @@
-library module_networksecurity_gateway_security_policy;
-
-export 'gateway_security_policy.dart';
-export 'gateway_security_policy_args.dart';

@@ -1,0 +1,3 @@
+library module_compute_disk_source_image_encryption_key;
+
+export 'disk_source_image_encryption_key/disk_source_image_encryption_key.dart';

@@ -12,7 +12,7 @@ class NetworkEndpointListNetworkEndpoint {
   final String ipAddress;
 
   /// Port number of network endpoint.
-  /// **Note** <span pulumi-lang-nodejs="`port`" pulumi-lang-dotnet="`Port`" pulumi-lang-go="`port`" pulumi-lang-python="`port`" pulumi-lang-yaml="`port`" pulumi-lang-java="`port`">`port`</span> is required unless the Network Endpoint Group is created
+  /// **Note** `port` is required unless the Network Endpoint Group is created
   /// with the type of `GCE_VM_IP`
   final int? port;
 

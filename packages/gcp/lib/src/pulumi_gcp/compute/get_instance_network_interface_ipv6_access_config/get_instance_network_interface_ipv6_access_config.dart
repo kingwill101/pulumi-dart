@@ -7,7 +7,7 @@ class GetInstanceNetworkInterfaceIpv6AccessConfig {
   /// The prefix length of the external IPv6 range.
   final String externalIpv6PrefixLength;
 
-  /// The name of the instance. One of <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span> must be provided.
+  /// The name of the instance. One of `name` or `self_link` must be provided.
   final String name;
 
   /// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.

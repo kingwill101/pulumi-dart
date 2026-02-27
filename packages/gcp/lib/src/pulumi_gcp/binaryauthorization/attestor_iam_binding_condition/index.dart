@@ -1,3 +1,0 @@
-library module_binaryauthorization_attestor_iam_binding_condition;
-
-export 'attestor_iam_binding_condition.dart';

@@ -1,0 +1,3 @@
+library module_dataproc_cluster_virtual_cluster_config;
+
+export 'cluster_virtual_cluster_config/cluster_virtual_cluster_config.dart';

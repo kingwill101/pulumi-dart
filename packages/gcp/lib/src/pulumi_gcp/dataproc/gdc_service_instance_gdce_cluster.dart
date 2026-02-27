@@ -1,0 +1,3 @@
+library module_dataproc_gdc_service_instance_gdce_cluster;
+
+export 'gdc_service_instance_gdce_cluster/gdc_service_instance_gdce_cluster.dart';

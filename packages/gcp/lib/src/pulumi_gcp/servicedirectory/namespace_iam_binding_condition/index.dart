@@ -1,3 +1,0 @@
-library module_servicedirectory_namespace_iam_binding_condition;
-
-export 'namespace_iam_binding_condition.dart';

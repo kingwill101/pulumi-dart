@@ -1,0 +1,3 @@
+library module_container_get_cluster_master_auth_client_certificate_config;
+
+export 'get_cluster_master_auth_client_certificate_config/get_cluster_master_auth_client_certificate_config.dart';

@@ -1,0 +1,3 @@
+library module_dns_managed_zone_service_directory_config_namespace;
+
+export 'managed_zone_service_directory_config_namespace/managed_zone_service_directory_config_namespace.dart';

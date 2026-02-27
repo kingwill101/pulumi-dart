@@ -1,3 +1,0 @@
-library module_cloudrunv2_get_worker_pool_instance_split_status;
-
-export 'get_worker_pool_instance_split_status.dart';

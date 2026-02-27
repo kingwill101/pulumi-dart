@@ -1,0 +1,3 @@
+library module_dataloss_prevention_job_trigger_inspect_job_action;
+
+export 'prevention_job_trigger_inspect_job_action/prevention_job_trigger_inspect_job_action.dart';

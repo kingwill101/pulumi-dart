@@ -1,0 +1,3 @@
+library module_gkehub_scope_iam_binding_condition;
+
+export 'scope_iam_binding_condition/scope_iam_binding_condition.dart';

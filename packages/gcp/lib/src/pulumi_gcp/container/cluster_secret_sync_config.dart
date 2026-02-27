@@ -1,0 +1,3 @@
+library module_container_cluster_secret_sync_config;
+
+export 'cluster_secret_sync_config/cluster_secret_sync_config.dart';

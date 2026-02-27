@@ -1,3 +1,0 @@
-library module_dataloss_prevention_discovery_config_target_cloud_sql_target_filter_database_resource_reference;
-
-export 'prevention_discovery_config_target_cloud_sql_target_filter_database_resource_reference.dart';

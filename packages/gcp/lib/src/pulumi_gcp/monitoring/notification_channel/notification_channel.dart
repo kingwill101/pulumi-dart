@@ -7,15 +7,15 @@ import 'notification_channel_args.dart';
 /// and third-party messaging applications. Fields containing sensitive information
 /// like authentication tokens or contact info are only partially populated on retrieval.
 ///
-/// Notification Channels are designed to be flexible and are made up of a supported <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span>
-/// and labels to configure that channel. Each <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> has specific labels that need to be
+/// Notification Channels are designed to be flexible and are made up of a supported `type`
+/// and labels to configure that channel. Each `type` has specific labels that need to be
 /// present for that channel to be correctly configured. The labels that are required to be
-/// present for one channel <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> are often different than those required for another.
+/// present for one channel `type` are often different than those required for another.
 /// Due to these loose constraints it's often best to set up a channel through the UI
 /// and import it to the provider when setting up a brand new channel type to determine which
 /// labels are required.
 ///
-/// A list of supported channels per project the <span pulumi-lang-nodejs="`list`" pulumi-lang-dotnet="`List`" pulumi-lang-go="`list`" pulumi-lang-python="`list`" pulumi-lang-yaml="`list`" pulumi-lang-java="`list`">`list`</span> endpoint can be
+/// A list of supported channels per project the `list` endpoint can be
 /// accessed programmatically or through the api explorer at  https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list .
 /// This provides the channel type and all of the required labels that must be passed.
 ///
@@ -34,252 +34,11 @@ import 'notification_channel_args.dart';
 /// ### Notification Channel Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const basic = new gcp.monitoring.NotificationChannel("basic", {
-/// displayName: "Test Notification Channel",
-/// type: "email",
-/// labels: {
-/// email_address: "fake_email@blahblah.com",
-/// },
-/// forceDelete: false,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// basic = gcp.monitoring.NotificationChannel("basic",
-/// display_name="Test Notification Channel",
-/// type="email",
-/// labels={
-/// "email_address": "fake_email@blahblah.com",
-/// },
-/// force_delete=False)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var basic = new Gcp.Monitoring.NotificationChannel("basic", new()
-/// {
-/// DisplayName = "Test Notification Channel",
-/// Type = "email",
-/// Labels =
-/// {
-/// { "email_address", "fake_email@blahblah.com" },
-/// },
-/// ForceDelete = false,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := monitoring.NewNotificationChannel(ctx, "basic", &monitoring.NotificationChannelArgs{
-/// DisplayName: pulumi.String("Test Notification Channel"),
-/// Type:        pulumi.String("email"),
-/// Labels: pulumi.StringMap{
-/// "email_address": pulumi.String("fake_email@blahblah.com"),
-/// },
-/// ForceDelete: pulumi.Bool(false),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.monitoring.NotificationChannel;
-/// import com.pulumi.gcp.monitoring.NotificationChannelArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var basic = new NotificationChannel("basic", NotificationChannelArgs.builder()
-/// .displayName("Test Notification Channel")
-/// .type("email")
-/// .labels(Map.of("email_address", "fake_email@blahblah.com"))
-/// .forceDelete(false)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// basic:
-/// type: gcp:monitoring:NotificationChannel
-/// properties:
-/// displayName: Test Notification Channel
-/// type: email
-/// labels:
-/// email_address: fake_email@blahblah.com
-/// forceDelete: false
-/// ```
-/// <!--End PulumiCodeChooser -->
 /// ### Notification Channel Sensitive
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = new gcp.monitoring.NotificationChannel("default", {
-/// displayName: "Test Slack Channel",
-/// type: "slack",
-/// labels: {
-/// channel_name: "#foobar",
-/// },
-/// sensitiveLabels: {
-/// authToken: "one",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default = gcp.monitoring.NotificationChannel("default",
-/// display_name="Test Slack Channel",
-/// type="slack",
-/// labels={
-/// "channel_name": "#foobar",
-/// },
-/// sensitive_labels={
-/// "auth_token": "one",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var @default = new Gcp.Monitoring.NotificationChannel("default", new()
-/// {
-/// DisplayName = "Test Slack Channel",
-/// Type = "slack",
-/// Labels =
-/// {
-/// { "channel_name", "#foobar" },
-/// },
-/// SensitiveLabels = new Gcp.Monitoring.Inputs.NotificationChannelSensitiveLabelsArgs
-/// {
-/// AuthToken = "one",
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := monitoring.NewNotificationChannel(ctx, "default", &monitoring.NotificationChannelArgs{
-/// DisplayName: pulumi.String("Test Slack Channel"),
-/// Type:        pulumi.String("slack"),
-/// Labels: pulumi.StringMap{
-/// "channel_name": pulumi.String("#foobar"),
-/// },
-/// SensitiveLabels: &monitoring.NotificationChannelSensitiveLabelsArgs{
-/// AuthToken: pulumi.String("one"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.monitoring.NotificationChannel;
-/// import com.pulumi.gcp.monitoring.NotificationChannelArgs;
-/// import com.pulumi.gcp.monitoring.inputs.NotificationChannelSensitiveLabelsArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var default_ = new NotificationChannel("default", NotificationChannelArgs.builder()
-/// .displayName("Test Slack Channel")
-/// .type("slack")
-/// .labels(Map.of("channel_name", "#foobar"))
-/// .sensitiveLabels(NotificationChannelSensitiveLabelsArgs.builder()
-/// .authToken("one")
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// default:
-/// type: gcp:monitoring:NotificationChannel
-/// properties:
-/// displayName: Test Slack Channel
-/// type: slack
-/// labels:
-/// channel_name: '#foobar'
-/// sensitiveLabels:
-/// authToken: one
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -314,7 +73,7 @@ class NotificationChannel extends CustomResource {
   /// NotificationChannelDescriptor corresponding to the type field.
   /// Labels with sensitive data are obfuscated by the API and therefore the provider cannot
   /// determine if there are upstream changes to these fields. They can also be configured via
-  /// the<span pulumi-lang-nodejs=" sensitiveLabels " pulumi-lang-dotnet=" SensitiveLabels " pulumi-lang-go=" sensitiveLabels " pulumi-lang-python=" sensitive_labels " pulumi-lang-yaml=" sensitiveLabels " pulumi-lang-java=" sensitiveLabels "> sensitive_labels </span>block, but cannot be configured in both places.
+  /// the sensitive_labels block, but cannot be configured in both places.
   late final Output<Map<String, String>?> labels;
 
   /// The full REST resource name for this channel. The syntax is:
@@ -326,10 +85,10 @@ class NotificationChannel extends CustomResource {
   /// If it is not provided, the provider project is used.
   late final Output<String> project;
 
-  /// Different notification type behaviors are configured primarily using the the <span pulumi-lang-nodejs="`labels`" pulumi-lang-dotnet="`Labels`" pulumi-lang-go="`labels`" pulumi-lang-python="`labels`" pulumi-lang-yaml="`labels`" pulumi-lang-java="`labels`">`labels`</span> field on this
+  /// Different notification type behaviors are configured primarily using the the `labels` field on this
   /// resource. This block contains the labels which contain secrets or passwords so that they can be marked
   /// sensitive and hidden from plan output. The name of the field, eg: password, will be the key
-  /// in the <span pulumi-lang-nodejs="`labels`" pulumi-lang-dotnet="`Labels`" pulumi-lang-go="`labels`" pulumi-lang-python="`labels`" pulumi-lang-yaml="`labels`" pulumi-lang-java="`labels`">`labels`</span> map in the api request.
+  /// in the `labels` map in the api request.
   /// Credentials may not be specified in both locations and will cause an error. Changing from one location
   /// to a different credential configuration in the config will require an apply to update state.
   /// Structure is documented below.

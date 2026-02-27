@@ -1,3 +1,0 @@
-library module_cloudsecuritycompliance_cloud_control_rule_cel_expression_resource_types_values;
-
-export 'cloud_control_rule_cel_expression_resource_types_values.dart';

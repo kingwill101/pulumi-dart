@@ -1,0 +1,3 @@
+library module_cloudrunv2_service_template_volume_nfs;
+
+export 'service_template_volume_nfs/service_template_volume_nfs.dart';

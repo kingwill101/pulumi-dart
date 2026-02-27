@@ -1,0 +1,3 @@
+library module_apigee_environment_properties_property;
+
+export 'environment_properties_property/environment_properties_property.dart';

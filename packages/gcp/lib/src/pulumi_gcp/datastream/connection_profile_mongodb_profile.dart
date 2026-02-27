@@ -1,0 +1,3 @@
+library module_datastream_connection_profile_mongodb_profile;
+
+export 'connection_profile_mongodb_profile/connection_profile_mongodb_profile.dart';

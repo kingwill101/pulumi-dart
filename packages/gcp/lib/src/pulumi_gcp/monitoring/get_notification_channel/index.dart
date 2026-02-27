@@ -1,5 +1,0 @@
-library module_monitoring_get_notification_channel;
-
-export 'get_notification_channel.dart';
-export 'get_notification_channel_args.dart';
-export 'get_notification_channel_result.dart';

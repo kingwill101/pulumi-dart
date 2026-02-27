@@ -1,3 +1,0 @@
-library module_compute_region_network_firewall_policy_with_rules_rule_match_src_secure_tag;
-
-export 'region_network_firewall_policy_with_rules_rule_match_src_secure_tag.dart';

@@ -1,0 +1,3 @@
+library module_containeranalysis_note_attestation_authority_hint;
+
+export 'note_attestation_authority_hint/note_attestation_authority_hint.dart';

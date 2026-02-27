@@ -1,3 +1,0 @@
-library module_vmwareengine_cluster_autoscaling_settings_autoscaling_policy_consumed_memory_thresholds;
-
-export 'cluster_autoscaling_settings_autoscaling_policy_consumed_memory_thresholds.dart';

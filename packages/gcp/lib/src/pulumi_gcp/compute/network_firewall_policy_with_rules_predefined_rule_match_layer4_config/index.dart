@@ -1,3 +1,0 @@
-library module_compute_network_firewall_policy_with_rules_predefined_rule_match_layer4_config;
-
-export 'network_firewall_policy_with_rules_predefined_rule_match_layer4_config.dart';

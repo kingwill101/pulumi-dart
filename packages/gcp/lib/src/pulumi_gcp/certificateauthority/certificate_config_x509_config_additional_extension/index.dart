@@ -1,3 +1,0 @@
-library module_certificateauthority_certificate_config_x509_config_additional_extension;
-
-export 'certificate_config_x509_config_additional_extension.dart';

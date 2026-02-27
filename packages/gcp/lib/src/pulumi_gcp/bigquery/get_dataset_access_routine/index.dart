@@ -1,3 +1,0 @@
-library module_bigquery_get_dataset_access_routine;
-
-export 'get_dataset_access_routine.dart';

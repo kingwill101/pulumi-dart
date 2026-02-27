@@ -9,14 +9,8 @@ class ConnectivityTestDestination {
   final String? forwardingRule;
 
   /// A DNS endpoint of Google Kubernetes Engine cluster control plane.
-  /// Requires<span pulumi-lang-nodejs=" gkeMasterCluster " pulumi-lang-dotnet=" GkeMasterCluster " pulumi-lang-go=" gkeMasterCluster " pulumi-lang-python=" gke_master_cluster " pulumi-lang-yaml=" gkeMasterCluster " pulumi-lang-java=" gkeMasterCluster "> gke_master_cluster </span>to be set, can't be used simultaneoulsly with<span pulumi-lang-nodejs="
-  /// ipAddress " pulumi-lang-dotnet="
-  /// IpAddress " pulumi-lang-go="
-  /// ipAddress " pulumi-lang-python="
-  /// ip_address " pulumi-lang-yaml="
-  /// ipAddress " pulumi-lang-java="
-  /// ipAddress ">
-  /// ip_address </span>or network. Applicable only to destination endpoint.
+  /// Requires gke_master_cluster to be set, can't be used simultaneoulsly with
+  /// ip_address or network. Applicable only to destination endpoint.
   final String? fqdn;
 
   /// A cluster URI for Google Kubernetes Engine cluster control plane.

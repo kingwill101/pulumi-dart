@@ -55,7 +55,7 @@ class DatabaseArgs2 {
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
   /// The field is ignored when empty. The field is immutable and causes
   /// resource replacement when mutated. To apply tags to an existing resource, see
-  /// the <span pulumi-lang-nodejs="`gcp.tags.TagValue`" pulumi-lang-dotnet="`gcp.tags.TagValue`" pulumi-lang-go="`tags.TagValue`" pulumi-lang-python="`tags.TagValue`" pulumi-lang-yaml="`gcp.tags.TagValue`" pulumi-lang-java="`gcp.tags.TagValue`">`gcp.tags.TagValue`</span> resource.
+  /// the `gcp.tags.TagValue` resource.
   final Input<Map<String, String>>? tags;
 
   /// The type of the database.

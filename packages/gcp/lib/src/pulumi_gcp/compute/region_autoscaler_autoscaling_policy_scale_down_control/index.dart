@@ -1,3 +1,0 @@
-library module_compute_region_autoscaler_autoscaling_policy_scale_down_control;
-
-export 'region_autoscaler_autoscaling_policy_scale_down_control.dart';

@@ -1,0 +1,3 @@
+library module_bigquery_job_load_parquet_options;
+
+export 'job_load_parquet_options/job_load_parquet_options.dart';

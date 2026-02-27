@@ -1,0 +1,3 @@
+library module_sql_database_instance_settings_location_preference;
+
+export 'database_instance_settings_location_preference/database_instance_settings_location_preference.dart';

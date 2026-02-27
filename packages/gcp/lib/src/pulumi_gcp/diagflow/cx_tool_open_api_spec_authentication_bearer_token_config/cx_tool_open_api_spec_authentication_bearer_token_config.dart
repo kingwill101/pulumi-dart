@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class CxToolOpenApiSpecAuthenticationBearerTokenConfig {
-  /// Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the <span pulumi-lang-nodejs="`token`" pulumi-lang-dotnet="`Token`" pulumi-lang-go="`token`" pulumi-lang-python="`token`" pulumi-lang-yaml="`token`" pulumi-lang-java="`token`">`token`</span> field will be ignored.
+  /// Optional. The name of the SecretManager secret version resource storing the Bearer token. If this field is set, the `token` field will be ignored.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}
   final String? secretVersionForToken;
 

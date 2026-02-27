@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class InterceptEndpointGroupAssociationLocation {
-  /// The cloud location of the association, currently restricted to <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span>.
+  /// The cloud location of the association, currently restricted to `global`.
   final String? location;
 
   /// (Output)

@@ -15,7 +15,7 @@ class DatabaseInstanceReplicaConfiguration {
   final String? clientCertificate;
 
   /// PEM representation of the replica's private key. The
-  /// corresponding public key in encoded in the <span pulumi-lang-nodejs="`clientCertificate`" pulumi-lang-dotnet="`ClientCertificate`" pulumi-lang-go="`clientCertificate`" pulumi-lang-python="`client_certificate`" pulumi-lang-yaml="`clientCertificate`" pulumi-lang-java="`clientCertificate`">`client_certificate`</span>.
+  /// corresponding public key in encoded in the `client_certificate`.
   final String? clientKey;
 
   /// The number of seconds

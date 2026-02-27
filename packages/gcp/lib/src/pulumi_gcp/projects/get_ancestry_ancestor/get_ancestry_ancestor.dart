@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class GetAncestryAncestor {
-  /// If it's a project, the <span pulumi-lang-nodejs="`projectId`" pulumi-lang-dotnet="`ProjectId`" pulumi-lang-go="`projectId`" pulumi-lang-python="`project_id`" pulumi-lang-yaml="`projectId`" pulumi-lang-java="`projectId`">`project_id`</span> is exported, else the numeric folder id or organization id.
+  /// If it's a project, the `project_id` is exported, else the numeric folder id or organization id.
   final String id;
 
   /// One of `"project"`, `"folder"` or `"organization"`.

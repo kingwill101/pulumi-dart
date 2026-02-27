@@ -1,0 +1,3 @@
+library module_apigateway_api_config_gateway_config_backend_config;
+
+export 'api_config_gateway_config_backend_config/api_config_gateway_config_backend_config.dart';

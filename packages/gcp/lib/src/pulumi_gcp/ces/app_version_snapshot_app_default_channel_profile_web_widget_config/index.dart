@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_app_default_channel_profile_web_widget_config;
-
-export 'app_version_snapshot_app_default_channel_profile_web_widget_config.dart';

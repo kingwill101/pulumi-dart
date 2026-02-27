@@ -1,0 +1,3 @@
+library module_pubsub_get_subscription_retry_policy;
+
+export 'get_subscription_retry_policy/get_subscription_retry_policy.dart';

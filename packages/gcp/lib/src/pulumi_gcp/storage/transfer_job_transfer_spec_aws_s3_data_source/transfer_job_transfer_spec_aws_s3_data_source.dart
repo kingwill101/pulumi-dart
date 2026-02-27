@@ -12,7 +12,7 @@ class TransferJobTransferSpecAwsS3DataSource {
   /// The CloudFront distribution domain name pointing to this bucket, to use when fetching. See [Transfer from S3 via CloudFront](https://cloud.google.com/storage-transfer/docs/s3-cloudfront) for more information. Format: https://{id}.cloudfront.net or any valid custom domain. Must begin with https://.
   final String? cloudfrontDomain;
 
-  /// The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If<span pulumi-lang-nodejs=" credentialsSecret " pulumi-lang-dotnet=" CredentialsSecret " pulumi-lang-go=" credentialsSecret " pulumi-lang-python=" credentials_secret " pulumi-lang-yaml=" credentialsSecret " pulumi-lang-java=" credentialsSecret "> credentials_secret </span>is specified, do not specify<span pulumi-lang-nodejs=" roleArn " pulumi-lang-dotnet=" RoleArn " pulumi-lang-go=" roleArn " pulumi-lang-python=" role_arn " pulumi-lang-yaml=" roleArn " pulumi-lang-java=" roleArn "> role_arn </span>or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
+  /// The Resource name of a secret in Secret Manager. AWS credentials must be stored in Secret Manager in JSON format. If credentials_secret is specified, do not specify role_arn or aws_access_key. Format: projects/{projectNumber}/secrets/{secret_name}.
   final String? credentialsSecret;
 
   /// Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.

@@ -1,3 +1,0 @@
-library module_compute_get_instance_network_performance_config;
-
-export 'get_instance_network_performance_config.dart';

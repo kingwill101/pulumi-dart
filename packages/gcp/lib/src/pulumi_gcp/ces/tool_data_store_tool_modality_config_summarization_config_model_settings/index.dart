@@ -1,3 +1,0 @@
-library module_ces_tool_data_store_tool_modality_config_summarization_config_model_settings;
-
-export 'tool_data_store_tool_modality_config_summarization_config_model_settings.dart';

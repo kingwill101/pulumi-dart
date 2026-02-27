@@ -1,0 +1,3 @@
+library module_compute_snapshot_settings_storage_location;
+
+export 'snapshot_settings_storage_location/snapshot_settings_storage_location.dart';

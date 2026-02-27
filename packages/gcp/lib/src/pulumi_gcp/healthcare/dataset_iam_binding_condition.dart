@@ -1,0 +1,3 @@
+library module_healthcare_dataset_iam_binding_condition;
+
+export 'dataset_iam_binding_condition/dataset_iam_binding_condition2.dart';

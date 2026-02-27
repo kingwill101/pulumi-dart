@@ -64,7 +64,7 @@ class RouterStatusBestRoutesForRouter {
   /// * Just the instance name, with the zone in 'next_hop_instance_zone'.
   final String nextHopInstance;
 
-  /// The zone of the instance specified in next_hop_instance. Omit if<span pulumi-lang-nodejs=" nextHopInstance " pulumi-lang-dotnet=" NextHopInstance " pulumi-lang-go=" nextHopInstance " pulumi-lang-python=" next_hop_instance " pulumi-lang-yaml=" nextHopInstance " pulumi-lang-java=" nextHopInstance "> next_hop_instance </span>is specified as a URL.
+  /// The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
   final String nextHopInstanceZone;
 
   /// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.

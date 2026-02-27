@@ -1,4 +1,0 @@
-library module_securitycenter_management_project_security_health_analytics_custom_module;
-
-export 'management_project_security_health_analytics_custom_module.dart';
-export 'management_project_security_health_analytics_custom_module_args.dart';

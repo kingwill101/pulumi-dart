@@ -1,0 +1,3 @@
+library module_monitoring_alert_policy_condition_condition_absent_trigger;
+
+export 'alert_policy_condition_condition_absent_trigger/alert_policy_condition_condition_absent_trigger.dart';

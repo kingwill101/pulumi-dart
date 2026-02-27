@@ -1,3 +1,0 @@
-library module_storage_get_control_project_intelligence_config_filter;
-
-export 'get_control_project_intelligence_config_filter.dart';

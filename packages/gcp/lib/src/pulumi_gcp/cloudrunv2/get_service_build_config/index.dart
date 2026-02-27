@@ -1,3 +1,0 @@
-library module_cloudrunv2_get_service_build_config;
-
-export 'get_service_build_config.dart';

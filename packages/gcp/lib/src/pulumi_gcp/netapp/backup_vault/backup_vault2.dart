@@ -17,122 +17,7 @@ import 'backup_vault_args2.dart';
 /// ### Netapp Backup Vault
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const testBackupVault = new gcp.netapp.BackupVault("test_backup_vault", {
-/// name: "test-backup-vault",
-/// location: "us-west1",
-/// description: "Terraform created vault",
-/// labels: {
-/// creator: "testuser",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// test_backup_vault = gcp.netapp.BackupVault("test_backup_vault",
-/// name="test-backup-vault",
-/// location="us-west1",
-/// description="Terraform created vault",
-/// labels={
-/// "creator": "testuser",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var testBackupVault = new Gcp.Netapp.BackupVault("test_backup_vault", new()
-/// {
-/// Name = "test-backup-vault",
-/// Location = "us-west1",
-/// Description = "Terraform created vault",
-/// Labels =
-/// {
-/// { "creator", "testuser" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := netapp.NewBackupVault(ctx, "test_backup_vault", &netapp.BackupVaultArgs{
-/// Name:        pulumi.String("test-backup-vault"),
-/// Location:    pulumi.String("us-west1"),
-/// Description: pulumi.String("Terraform created vault"),
-/// Labels: pulumi.StringMap{
-/// "creator": pulumi.String("testuser"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.netapp.BackupVault;
-/// import com.pulumi.gcp.netapp.BackupVaultArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var testBackupVault = new BackupVault("testBackupVault", BackupVaultArgs.builder()
-/// .name("test-backup-vault")
-/// .location("us-west1")
-/// .description("Terraform created vault")
-/// .labels(Map.of("creator", "testuser"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// testBackupVault:
-/// type: gcp:netapp:BackupVault
-/// name: test_backup_vault
-/// properties:
-/// name: test-backup-vault
-/// location: us-west1
-/// description: Terraform created vault
-/// labels:
-/// creator: testuser
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -184,7 +69,7 @@ class BackupVault2 extends CustomResource {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// Location (region) of the backup vault.

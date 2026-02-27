@@ -18,7 +18,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
   /// The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
   final String? image;
 
-  /// Output only. The list of instance names. Dataproc derives the names from <span pulumi-lang-nodejs="`clusterName`" pulumi-lang-dotnet="`ClusterName`" pulumi-lang-go="`clusterName`" pulumi-lang-python="`cluster_name`" pulumi-lang-yaml="`clusterName`" pulumi-lang-java="`clusterName`">`cluster_name`</span>, <span pulumi-lang-nodejs="`numInstances`" pulumi-lang-dotnet="`NumInstances`" pulumi-lang-go="`numInstances`" pulumi-lang-python="`num_instances`" pulumi-lang-yaml="`numInstances`" pulumi-lang-java="`numInstances`">`num_instances`</span>, and the instance group.
+  /// Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
   final List<String>? instanceNames;
 
   /// Output only. Specifies that this instance group contains preemptible instances.

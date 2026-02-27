@@ -1,3 +1,0 @@
-library module_container_cluster_secret_manager_config;
-
-export 'cluster_secret_manager_config.dart';

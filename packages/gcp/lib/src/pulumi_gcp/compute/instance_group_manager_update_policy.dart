@@ -1,0 +1,3 @@
+library module_compute_instance_group_manager_update_policy;
+
+export 'instance_group_manager_update_policy/instance_group_manager_update_policy.dart';

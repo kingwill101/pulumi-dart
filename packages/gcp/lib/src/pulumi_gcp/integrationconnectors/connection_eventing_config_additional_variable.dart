@@ -1,0 +1,3 @@
+library module_integrationconnectors_connection_eventing_config_additional_variable;
+
+export 'connection_eventing_config_additional_variable/connection_eventing_config_additional_variable.dart';

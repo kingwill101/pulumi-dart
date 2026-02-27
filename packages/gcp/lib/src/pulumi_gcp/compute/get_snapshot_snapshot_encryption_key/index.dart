@@ -1,3 +1,0 @@
-library module_compute_get_snapshot_snapshot_encryption_key;
-
-export 'get_snapshot_snapshot_encryption_key.dart';

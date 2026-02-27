@@ -1,4 +1,0 @@
-library module_storage_managed_folder_iam_member;
-
-export 'managed_folder_iam_member.dart';
-export 'managed_folder_iam_member_args.dart';

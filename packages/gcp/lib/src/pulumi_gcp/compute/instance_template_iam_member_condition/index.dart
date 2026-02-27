@@ -1,3 +1,0 @@
-library module_compute_instance_template_iam_member_condition;
-
-export 'instance_template_iam_member_condition.dart';

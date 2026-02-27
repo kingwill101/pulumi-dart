@@ -1,3 +1,0 @@
-library module_networksecurity_client_tls_policy_client_certificate_certificate_provider_instance;
-
-export 'client_tls_policy_client_certificate_certificate_provider_instance.dart';

@@ -1,0 +1,3 @@
+library module_networkservices_multicast_domain_group_state;
+
+export 'multicast_domain_group_state/multicast_domain_group_state.dart';

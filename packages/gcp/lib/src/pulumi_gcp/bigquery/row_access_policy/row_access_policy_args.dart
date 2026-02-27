@@ -12,31 +12,13 @@ class RowAccessPolicyArgs {
   /// SELECT query on a table.
   /// References to other tables, routines, and temporary functions are not
   /// supported.
-  /// Examples: region="EU"<span pulumi-lang-nodejs="
-  /// dateField " pulumi-lang-dotnet="
-  /// DateField " pulumi-lang-go="
-  /// dateField " pulumi-lang-python="
-  /// date_field " pulumi-lang-yaml="
-  /// dateField " pulumi-lang-java="
-  /// dateField ">
-  /// date_field </span>= CAST('2019-9-27' as DATE)<span pulumi-lang-nodejs="
-  /// nullableField " pulumi-lang-dotnet="
-  /// NullableField " pulumi-lang-go="
-  /// nullableField " pulumi-lang-python="
-  /// nullable_field " pulumi-lang-yaml="
-  /// nullableField " pulumi-lang-java="
-  /// nullableField ">
-  /// nullable_field </span>is not NULL<span pulumi-lang-nodejs="
-  /// numericField " pulumi-lang-dotnet="
-  /// NumericField " pulumi-lang-go="
-  /// numericField " pulumi-lang-python="
-  /// numeric_field " pulumi-lang-yaml="
-  /// numericField " pulumi-lang-java="
-  /// numericField ">
-  /// numeric_field </span>BETWEEN 1.0 AND 5.0
+  /// Examples: region="EU"
+  /// date_field = CAST('2019-9-27' as DATE)
+  /// nullable_field is not NULL
+  /// numeric_field BETWEEN 1.0 AND 5.0
   final Input<String> filterPredicate;
 
-  /// Input only. The optional list of<span pulumi-lang-nodejs=" iamMember " pulumi-lang-dotnet=" IamMember " pulumi-lang-go=" iamMember " pulumi-lang-python=" iam_member " pulumi-lang-yaml=" iamMember " pulumi-lang-java=" iamMember "> iam_member </span>users or groups that specifies the initial
+  /// Input only. The optional list of iam_member users or groups that specifies the initial
   /// members that the row-level access policy should be created with.
   /// grantees types:
   /// - "user:alice@example.com": An email address that represents a specific

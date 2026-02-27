@@ -30,7 +30,7 @@ class GetSecurityPolicyRule {
   /// An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
   final int priority;
 
-  /// Rate limit threshold for this security policy. Must be specified if the action is <span pulumi-lang-nodejs=""rateBasedBan"" pulumi-lang-dotnet=""RateBasedBan"" pulumi-lang-go=""rateBasedBan"" pulumi-lang-python=""rate_based_ban"" pulumi-lang-yaml=""rateBasedBan"" pulumi-lang-java=""rateBasedBan"">"rate_based_ban"</span> or "throttle". Cannot be specified for any other actions.
+  /// Rate limit threshold for this security policy. Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
   final List<GetSecurityPolicyRuleRateLimitOption> rateLimitOptions;
 
   /// Parameters defining the redirect action. Cannot be specified for any other actions.

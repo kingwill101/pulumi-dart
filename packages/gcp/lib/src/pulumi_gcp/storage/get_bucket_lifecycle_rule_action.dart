@@ -1,0 +1,3 @@
+library module_storage_get_bucket_lifecycle_rule_action;
+
+export 'get_bucket_lifecycle_rule_action/get_bucket_lifecycle_rule_action.dart';

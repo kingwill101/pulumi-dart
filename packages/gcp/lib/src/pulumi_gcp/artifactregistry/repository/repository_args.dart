@@ -47,27 +47,15 @@ class RepositoryArgs {
   /// and dashes.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The name of the repository's location. In addition to specific regions,
-  /// special values for multi-region locations are <span pulumi-lang-nodejs="`asia`" pulumi-lang-dotnet="`Asia`" pulumi-lang-go="`asia`" pulumi-lang-python="`asia`" pulumi-lang-yaml="`asia`" pulumi-lang-java="`asia`">`asia`</span>, <span pulumi-lang-nodejs="`europe`" pulumi-lang-dotnet="`Europe`" pulumi-lang-go="`europe`" pulumi-lang-python="`europe`" pulumi-lang-yaml="`europe`" pulumi-lang-java="`europe`">`europe`</span>, and <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`">`us`</span>.
+  /// special values for multi-region locations are `asia`, `europe`, and `us`.
   /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
-  /// or use the<span pulumi-lang-nodejs="
+  /// or use the
   /// gcp.artifactregistry.getLocations
-  /// " pulumi-lang-dotnet="
-  /// gcp.artifactregistry.getLocations
-  /// " pulumi-lang-go="
-  /// artifactregistry.getLocations
-  /// " pulumi-lang-python="
-  /// artifactregistry_get_locations
-  /// " pulumi-lang-yaml="
-  /// gcp.artifactregistry.getLocations
-  /// " pulumi-lang-java="
-  /// gcp.artifactregistry.getLocations
-  /// ">
-  /// gcp.artifactregistry.getLocations
-  /// </span>data source for possible values.
+  /// data source for possible values.
   final Input<String>? location;
 
   /// MavenRepositoryConfig is maven related repository details.

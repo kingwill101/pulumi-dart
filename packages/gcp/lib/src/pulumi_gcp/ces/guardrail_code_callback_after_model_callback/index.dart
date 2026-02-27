@@ -1,3 +1,0 @@
-library module_ces_guardrail_code_callback_after_model_callback;
-
-export 'guardrail_code_callback_after_model_callback.dart';

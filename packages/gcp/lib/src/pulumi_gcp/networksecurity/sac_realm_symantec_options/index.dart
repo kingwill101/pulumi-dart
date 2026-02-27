@@ -1,3 +1,0 @@
-library module_networksecurity_sac_realm_symantec_options;
-
-export 'sac_realm_symantec_options.dart';

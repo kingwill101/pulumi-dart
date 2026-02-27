@@ -1,0 +1,3 @@
+library module_networkservices_multicast_group_consumer_activation_state;
+
+export 'multicast_group_consumer_activation_state/multicast_group_consumer_activation_state.dart';

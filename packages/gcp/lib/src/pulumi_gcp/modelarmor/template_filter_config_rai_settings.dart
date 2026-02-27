@@ -1,0 +1,3 @@
+library module_modelarmor_template_filter_config_rai_settings;
+
+export 'template_filter_config_rai_settings/template_filter_config_rai_settings.dart';

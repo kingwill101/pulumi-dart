@@ -21,7 +21,7 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection {
   /// projects/{project_id}/global/networks/{network_id}.
   final String network;
 
-  /// The consumer<span pulumi-lang-nodejs=" projectId " pulumi-lang-dotnet=" ProjectId " pulumi-lang-go=" projectId " pulumi-lang-python=" project_id " pulumi-lang-yaml=" projectId " pulumi-lang-java=" projectId "> project_id </span>where the forwarding rule is created from.
+  /// The consumer project_id where the forwarding rule is created from.
   final String? projectId;
 
   /// The PSC connection id of the forwarding rule connected to the

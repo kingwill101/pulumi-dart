@@ -15,14 +15,8 @@ class GetRegionBackendServiceBackend {
   ///
   /// ~>**NOTE**: This field cannot be set for
   /// INTERNAL region backend services (default loadBalancingScheme),
-  /// but is required for non-INTERNAL backend service. The total<span pulumi-lang-nodejs="
-  /// capacityScaler " pulumi-lang-dotnet="
-  /// CapacityScaler " pulumi-lang-go="
-  /// capacityScaler " pulumi-lang-python="
-  /// capacity_scaler " pulumi-lang-yaml="
-  /// capacityScaler " pulumi-lang-java="
-  /// capacityScaler ">
-  /// capacity_scaler </span>for all backends must be non-zero.
+  /// but is required for non-INTERNAL backend service. The total
+  /// capacity_scaler for all backends must be non-zero.
   ///
   /// A setting of 0 means the group is completely drained, offering
   /// 0% of its available Capacity. Valid range is [0.0,1.0].

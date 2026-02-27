@@ -1,0 +1,3 @@
+library module_organizations_get_iampolicy_binding;
+
+export 'get_iampolicy_binding/get_iampolicy_binding.dart';

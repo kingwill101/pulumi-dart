@@ -15,15 +15,9 @@ class SettingsApplicationSettingsAttributePropagationSettings {
   /// Possible values are:
   /// * `HEADER`: Propagate attributes in the headers with "x-goog-iap-attr-" prefix.
   /// * `JWT`: Propagate attributes in the JWT of the form:
-  /// <span pulumi-lang-nodejs=""additionalClaims"" pulumi-lang-dotnet=""AdditionalClaims"" pulumi-lang-go=""additionalClaims"" pulumi-lang-python=""additional_claims"" pulumi-lang-yaml=""additionalClaims"" pulumi-lang-java=""additionalClaims"">"additional_claims"</span>: { <span pulumi-lang-nodejs=""myAttribute"" pulumi-lang-dotnet=""MyAttribute"" pulumi-lang-go=""myAttribute"" pulumi-lang-python=""my_attribute"" pulumi-lang-yaml=""myAttribute"" pulumi-lang-java=""myAttribute"">"my_attribute"</span>: ["value1", "value2"] }
-  /// * `RCTOKEN`: Propagate attributes in the RCToken of the form: "<span pulumi-lang-nodejs="
-  /// additionalClaims"" pulumi-lang-dotnet="
-  /// AdditionalClaims"" pulumi-lang-go="
-  /// additionalClaims"" pulumi-lang-python="
-  /// additional_claims"" pulumi-lang-yaml="
-  /// additionalClaims"" pulumi-lang-java="
-  /// additionalClaims"">
-  /// additional_claims"</span>: { <span pulumi-lang-nodejs=""myAttribute"" pulumi-lang-dotnet=""MyAttribute"" pulumi-lang-go=""myAttribute"" pulumi-lang-python=""my_attribute"" pulumi-lang-yaml=""myAttribute"" pulumi-lang-java=""myAttribute"">"my_attribute"</span>: ["value1", "value2"] }
+  /// "additional_claims": { "my_attribute": ["value1", "value2"] }
+  /// * `RCTOKEN`: Propagate attributes in the RCToken of the form: "
+  /// additional_claims": { "my_attribute": ["value1", "value2"] }
   /// Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
   final List<String>? outputCredentials;
 

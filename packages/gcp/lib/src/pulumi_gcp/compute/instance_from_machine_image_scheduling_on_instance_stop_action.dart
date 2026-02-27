@@ -1,0 +1,3 @@
+library module_compute_instance_from_machine_image_scheduling_on_instance_stop_action;
+
+export 'instance_from_machine_image_scheduling_on_instance_stop_action/instance_from_machine_image_scheduling_on_instance_stop_action.dart';

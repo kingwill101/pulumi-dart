@@ -1,3 +1,0 @@
-library module_blockchainnodeengine_blockchain_nodes_connection_info;
-
-export 'blockchain_nodes_connection_info.dart';

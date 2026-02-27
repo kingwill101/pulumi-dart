@@ -26,7 +26,7 @@ class FolderSinkArgs {
   /// If set to True, then this sink is disabled and it does not export any log entries.
   final Input<bool>? disabled;
 
-  /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+  /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
   final Input<List<FolderSinkExclusion>>? exclusions;
 
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.

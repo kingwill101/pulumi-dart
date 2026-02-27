@@ -1,3 +1,0 @@
-library module_iam_get_workload_identity_pool_inline_certificate_issuance_config;
-
-export 'get_workload_identity_pool_inline_certificate_issuance_config.dart';

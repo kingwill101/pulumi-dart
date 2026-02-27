@@ -16,124 +16,7 @@ import 'host_group_args.dart';
 /// ### Netapp Host Group
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const testHostGroup = new gcp.netapp.HostGroup("test_host_group", {
-/// name: "test-host-group",
-/// location: "us-central1",
-/// osType: "LINUX",
-/// type: "ISCSI_INITIATOR",
-/// hosts: ["iqn.1994-05.com.redhat:8518f79d5366"],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// test_host_group = gcp.netapp.HostGroup("test_host_group",
-/// name="test-host-group",
-/// location="us-central1",
-/// os_type="LINUX",
-/// type="ISCSI_INITIATOR",
-/// hosts=["iqn.1994-05.com.redhat:8518f79d5366"])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var testHostGroup = new Gcp.Netapp.HostGroup("test_host_group", new()
-/// {
-/// Name = "test-host-group",
-/// Location = "us-central1",
-/// OsType = "LINUX",
-/// Type = "ISCSI_INITIATOR",
-/// Hosts = new[]
-/// {
-/// "iqn.1994-05.com.redhat:8518f79d5366",
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := netapp.NewHostGroup(ctx, "test_host_group", &netapp.HostGroupArgs{
-/// Name:     pulumi.String("test-host-group"),
-/// Location: pulumi.String("us-central1"),
-/// OsType:   pulumi.String("LINUX"),
-/// Type:     pulumi.String("ISCSI_INITIATOR"),
-/// Hosts: pulumi.StringArray{
-/// pulumi.String("iqn.1994-05.com.redhat:8518f79d5366"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.netapp.HostGroup;
-/// import com.pulumi.gcp.netapp.HostGroupArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var testHostGroup = new HostGroup("testHostGroup", HostGroupArgs.builder()
-/// .name("test-host-group")
-/// .location("us-central1")
-/// .osType("LINUX")
-/// .type("ISCSI_INITIATOR")
-/// .hosts("iqn.1994-05.com.redhat:8518f79d5366")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// testHostGroup:
-/// type: gcp:netapp:HostGroup
-/// name: test_host_group
-/// properties:
-/// name: test-host-group
-/// location: us-central1
-/// osType: LINUX
-/// type: ISCSI_INITIATOR
-/// hosts:
-/// - iqn.1994-05.com.redhat:8518f79d5366
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -174,7 +57,7 @@ class HostGroup extends CustomResource {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// Location (region) of the Host Group.

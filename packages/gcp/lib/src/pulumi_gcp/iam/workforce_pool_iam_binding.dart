@@ -1,0 +1,4 @@
+library module_iam_workforce_pool_iam_binding;
+
+export 'workforce_pool_iam_binding/workforce_pool_iam_binding.dart';
+export 'workforce_pool_iam_binding/workforce_pool_iam_binding_args.dart';

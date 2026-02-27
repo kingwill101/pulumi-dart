@@ -1,3 +1,0 @@
-library module_firebase_hosting_custom_domain_cert;
-
-export 'hosting_custom_domain_cert.dart';

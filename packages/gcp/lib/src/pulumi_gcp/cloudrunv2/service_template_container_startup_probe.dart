@@ -1,0 +1,3 @@
+library module_cloudrunv2_service_template_container_startup_probe;
+
+export 'service_template_container_startup_probe/service_template_container_startup_probe.dart';

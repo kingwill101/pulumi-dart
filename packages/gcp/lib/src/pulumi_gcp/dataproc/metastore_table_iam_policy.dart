@@ -1,0 +1,4 @@
+library module_dataproc_metastore_table_iam_policy;
+
+export 'metastore_table_iam_policy/metastore_table_iam_policy.dart';
+export 'metastore_table_iam_policy/metastore_table_iam_policy_args.dart';

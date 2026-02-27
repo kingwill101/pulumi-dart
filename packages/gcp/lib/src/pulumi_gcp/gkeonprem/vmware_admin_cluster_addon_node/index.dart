@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_admin_cluster_addon_node;
-
-export 'vmware_admin_cluster_addon_node.dart';

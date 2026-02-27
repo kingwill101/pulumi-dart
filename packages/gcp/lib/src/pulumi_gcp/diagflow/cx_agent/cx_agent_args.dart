@@ -48,7 +48,7 @@ class CxAgentArgs {
   /// (Optional, Deprecated)
   /// Determines whether this agent should log conversation queries.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`enableStackdriverLogging`" pulumi-lang-dotnet="`EnableStackdriverLogging`" pulumi-lang-go="`enableStackdriverLogging`" pulumi-lang-python="`enable_stackdriver_logging`" pulumi-lang-yaml="`enableStackdriverLogging`" pulumi-lang-java="`enableStackdriverLogging`">`enable_stackdriver_logging`</span> is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+  /// > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
   final Input<bool>? enableStackdriverLogging;
 
   /// Gen App Builder-related agent-level settings.

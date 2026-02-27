@@ -1,3 +1,0 @@
-library module_apphub_workload_workload_property_functional_type;
-
-export 'workload_workload_property_functional_type.dart';

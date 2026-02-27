@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getKMSCryptoKey.
 class GetKMSCryptoKeyArgs {
-  /// The <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span> of the Google Cloud Platform KeyRing to which the key belongs.
+  /// The `id` of the Google Cloud Platform KeyRing to which the key belongs.
   final Input<String> keyRing;
 
   /// The CryptoKey's name.

@@ -1,3 +1,0 @@
-library module_apigateway_api_config_grpc_service_file_descriptor_set;
-
-export 'api_config_grpc_service_file_descriptor_set.dart';

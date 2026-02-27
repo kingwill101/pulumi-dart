@@ -1,0 +1,3 @@
+library module_ces_app_variable_declaration_schema;
+
+export 'app_variable_declaration_schema/app_variable_declaration_schema.dart';

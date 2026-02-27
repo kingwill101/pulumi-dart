@@ -1,0 +1,3 @@
+library module_artifactregistry_repository_cleanup_policy;
+
+export 'repository_cleanup_policy/repository_cleanup_policy.dart';

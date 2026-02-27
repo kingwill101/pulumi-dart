@@ -8,7 +8,7 @@ class TagTemplateArgs {
   /// The display name for this template.
   final Input<String>? displayName;
 
-  /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of<span pulumi-lang-nodejs=" fieldId " pulumi-lang-dotnet=" FieldId " pulumi-lang-go=" fieldId " pulumi-lang-python=" field_id " pulumi-lang-yaml=" fieldId " pulumi-lang-java=" fieldId "> field_id </span>will be resulting in re-creating of field. The change of<span pulumi-lang-nodejs=" primitiveType " pulumi-lang-dotnet=" PrimitiveType " pulumi-lang-go=" primitiveType " pulumi-lang-python=" primitive_type " pulumi-lang-yaml=" primitiveType " pulumi-lang-java=" primitiveType "> primitive_type </span>will be resulting in re-creating of field, however if the field is a required, you cannot update it.
+  /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of field_id will be resulting in re-creating of field. The change of primitive_type will be resulting in re-creating of field, however if the field is a required, you cannot update it.
   /// Structure is documented below.
   final Input<List<TagTemplateField>> fields;
 

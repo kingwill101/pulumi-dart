@@ -1,0 +1,3 @@
+library module_identityplatform_inbound_saml_config_sp_config;
+
+export 'inbound_saml_config_sp_config/inbound_saml_config_sp_config.dart';

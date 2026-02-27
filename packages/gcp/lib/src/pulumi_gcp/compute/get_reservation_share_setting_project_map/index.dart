@@ -1,3 +1,0 @@
-library module_compute_get_reservation_share_setting_project_map;
-
-export 'get_reservation_share_setting_project_map.dart';

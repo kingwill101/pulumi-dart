@@ -11,7 +11,7 @@ class AnalysisRuleArgs {
 
   /// Percentage of conversations that we should apply this analysis setting
   /// automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
-  /// are sampled in a determenestic way. The original<span pulumi-lang-nodejs=" runtimePercentage " pulumi-lang-dotnet=" RuntimePercentage " pulumi-lang-go=" runtimePercentage " pulumi-lang-python=" runtime_percentage " pulumi-lang-yaml=" runtimePercentage " pulumi-lang-java=" runtimePercentage "> runtime_percentage </span>&
+  /// are sampled in a determenestic way. The original runtime_percentage &
   /// upload percentage will be replaced by defining filters on the conversation.
   final Input<double>? analysisPercentage;
 

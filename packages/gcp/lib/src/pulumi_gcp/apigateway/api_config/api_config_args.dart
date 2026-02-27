@@ -15,7 +15,7 @@ class ApiConfigArgs {
   final Input<String>? apiConfigId;
 
   /// Creates a unique name beginning with the
-  /// specified prefix. If this and<span pulumi-lang-nodejs=" apiConfigId " pulumi-lang-dotnet=" ApiConfigId " pulumi-lang-go=" apiConfigId " pulumi-lang-python=" api_config_id " pulumi-lang-yaml=" apiConfigId " pulumi-lang-java=" apiConfigId "> api_config_id </span>are unspecified, a random value is chosen for the name.
+  /// specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
   final Input<String>? apiConfigIdPrefix;
 
   /// A user-visible name for the API.
@@ -33,7 +33,7 @@ class ApiConfigArgs {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.

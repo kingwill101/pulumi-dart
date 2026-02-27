@@ -7,7 +7,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket"" pulumi-lang-dotnet=""NestedTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket"" pulumi-lang-go=""nestedTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket"" pulumi-lang-python=""nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"" pulumi-lang-yaml=""nestedTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket"" pulumi-lang-java=""nestedTargetsOtherCloudTargetFilterSingleResourceAmazonS3Bucket"">"nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"</span>></a>The <span pulumi-lang-nodejs="`amazonS3Bucket`" pulumi-lang-dotnet="`AmazonS3Bucket`" pulumi-lang-go="`amazonS3Bucket`" pulumi-lang-python="`amazon_s3_bucket`" pulumi-lang-yaml="`amazonS3Bucket`" pulumi-lang-java="`amazonS3Bucket`">`amazon_s3_bucket`</span> block supports:
+  /// <a name="nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"></a>The `amazon_s3_bucket` block supports:
   final PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket?
       amazonS3Bucket;
 

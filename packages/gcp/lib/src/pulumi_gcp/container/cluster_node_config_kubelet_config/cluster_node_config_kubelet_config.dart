@@ -17,7 +17,7 @@ class ClusterNodeConfigKubeletConfig {
   /// container log file before it is rotated. Specified as a positive number and a
   /// unit suffix, such as `"100Ki"`, `"10Mi"`. Valid units are "Ki", "Mi", "Gi".
   /// The value must be between `"10Mi"` and `"500Mi"`, inclusive. And the total container log size
-  /// (<span pulumi-lang-nodejs="`containerLogMaxSize`" pulumi-lang-dotnet="`ContainerLogMaxSize`" pulumi-lang-go="`containerLogMaxSize`" pulumi-lang-python="`container_log_max_size`" pulumi-lang-yaml="`containerLogMaxSize`" pulumi-lang-java="`containerLogMaxSize`">`container_log_max_size`</span> * <span pulumi-lang-nodejs="`containerLogMaxFiles`" pulumi-lang-dotnet="`ContainerLogMaxFiles`" pulumi-lang-go="`containerLogMaxFiles`" pulumi-lang-python="`container_log_max_files`" pulumi-lang-yaml="`containerLogMaxFiles`" pulumi-lang-java="`containerLogMaxFiles`">`container_log_max_files`</span>) cannot exceed 1% of the total storage of the node.
+  /// (`container_log_max_size` * `container_log_max_files`) cannot exceed 1% of the total storage of the node.
   final String? containerLogMaxSize;
 
   /// If true, enables CPU CFS quota enforcement for

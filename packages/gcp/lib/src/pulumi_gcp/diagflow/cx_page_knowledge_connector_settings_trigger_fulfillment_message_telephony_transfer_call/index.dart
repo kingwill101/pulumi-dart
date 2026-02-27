@@ -1,3 +1,0 @@
-library module_diagflow_cx_page_knowledge_connector_settings_trigger_fulfillment_message_telephony_transfer_call;
-
-export 'cx_page_knowledge_connector_settings_trigger_fulfillment_message_telephony_transfer_call.dart';

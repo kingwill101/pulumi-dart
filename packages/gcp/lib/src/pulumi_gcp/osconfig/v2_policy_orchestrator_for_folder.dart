@@ -1,0 +1,4 @@
+library module_osconfig_v2_policy_orchestrator_for_folder;
+
+export 'v2_policy_orchestrator_for_folder/v2_policy_orchestrator_for_folder.dart';
+export 'v2_policy_orchestrator_for_folder/v2_policy_orchestrator_for_folder_args.dart';

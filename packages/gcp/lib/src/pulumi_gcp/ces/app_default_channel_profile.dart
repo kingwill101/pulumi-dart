@@ -1,0 +1,3 @@
+library module_ces_app_default_channel_profile;
+
+export 'app_default_channel_profile/app_default_channel_profile.dart';

@@ -45,11 +45,11 @@ class ClusterNodePoolNodeConfig {
 
   /// Size of the disk attached to each node, specified
   /// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
-  /// Prefer configuring <span pulumi-lang-nodejs="`bootDisk`" pulumi-lang-dotnet="`BootDisk`" pulumi-lang-go="`bootDisk`" pulumi-lang-python="`boot_disk`" pulumi-lang-yaml="`bootDisk`" pulumi-lang-java="`bootDisk`">`boot_disk`</span>.
+  /// Prefer configuring `boot_disk`.
   final int? diskSizeGb;
 
   /// Type of the disk attached to each node
-  /// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring <span pulumi-lang-nodejs="`bootDisk`" pulumi-lang-dotnet="`BootDisk`" pulumi-lang-go="`bootDisk`" pulumi-lang-python="`boot_disk`" pulumi-lang-yaml="`bootDisk`" pulumi-lang-java="`bootDisk`">`boot_disk`</span>.
+  /// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
   final String? diskType;
 
   /// List of kubernetes taints applied to each node.
@@ -75,9 +75,9 @@ class ClusterNodePoolNodeConfig {
   final bool? flexStart;
 
   /// Parameters for the Google Container Filesystem (GCFS).
-  /// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify <span pulumi-lang-nodejs="`imageType " pulumi-lang-dotnet="`ImageType " pulumi-lang-go="`imageType " pulumi-lang-python="`image_type " pulumi-lang-yaml="`imageType " pulumi-lang-java="`imageType ">`image_type </span>= "COS_CONTAINERD"` and <span pulumi-lang-nodejs="`nodeVersion`" pulumi-lang-dotnet="`NodeVersion`" pulumi-lang-go="`nodeVersion`" pulumi-lang-python="`node_version`" pulumi-lang-yaml="`nodeVersion`" pulumi-lang-java="`nodeVersion`">`node_version`</span> from GKE versions 1.19 or later to use it.
-  /// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum <span pulumi-lang-nodejs="`nodeVersion`" pulumi-lang-dotnet="`NodeVersion`" pulumi-lang-go="`nodeVersion`" pulumi-lang-python="`node_version`" pulumi-lang-yaml="`nodeVersion`" pulumi-lang-java="`nodeVersion`">`node_version`</span> would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
-  /// A <span pulumi-lang-nodejs="`machineType`" pulumi-lang-dotnet="`MachineType`" pulumi-lang-go="`machineType`" pulumi-lang-python="`machine_type`" pulumi-lang-yaml="`machineType`" pulumi-lang-java="`machineType`">`machine_type`</span> that has more than 16 GiB of memory is also recommended.
+  /// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
+  /// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+  /// A `machine_type` that has more than 16 GiB of memory is also recommended.
   /// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
   /// Structure is documented below.
   final ClusterNodePoolNodeConfigGcfsConfig? gcfsConfig;
@@ -147,7 +147,7 @@ class ClusterNodePoolNodeConfig {
 
   /// The metadata key/value pairs assigned to instances in
   /// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> by the API; if <span pulumi-lang-nodejs="`metadata`" pulumi-lang-dotnet="`Metadata`" pulumi-lang-go="`metadata`" pulumi-lang-python="`metadata`" pulumi-lang-yaml="`metadata`" pulumi-lang-java="`metadata`">`metadata`</span> is set but that default value is not
+  /// `true` by the API; if `metadata` is set but that default value is not
   /// included, the provider will attempt to unset the value. To avoid this, set the
   /// value in your config.
   final Map<String, String>? metadata;
@@ -164,7 +164,7 @@ class ClusterNodePoolNodeConfig {
 
   /// The set of Google API scopes to be made available
   /// on all of the node VMs under the "default" service account.
-  /// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set <span pulumi-lang-nodejs="`serviceAccount`" pulumi-lang-dotnet="`ServiceAccount`" pulumi-lang-go="`serviceAccount`" pulumi-lang-python="`service_account`" pulumi-lang-yaml="`serviceAccount`" pulumi-lang-java="`serviceAccount`">`service_account`</span> to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+  /// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
   ///
   /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
   final List<String>? oauthScopes;
@@ -187,7 +187,7 @@ class ClusterNodePoolNodeConfig {
   /// Sandbox configuration for this node.
   final ClusterNodePoolNodeConfigSandboxConfig? sandboxConfig;
 
-  /// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. <span pulumi-lang-nodejs="`gcfsConfig`" pulumi-lang-dotnet="`GcfsConfig`" pulumi-lang-go="`gcfsConfig`" pulumi-lang-python="`gcfs_config`" pulumi-lang-yaml="`gcfsConfig`" pulumi-lang-java="`gcfsConfig`">`gcfs_config`</span> must be `enabled=true` for this feature to work. <span pulumi-lang-nodejs="`minMasterVersion`" pulumi-lang-dotnet="`MinMasterVersion`" pulumi-lang-go="`minMasterVersion`" pulumi-lang-python="`min_master_version`" pulumi-lang-yaml="`minMasterVersion`" pulumi-lang-java="`minMasterVersion`">`min_master_version`</span> must also be set to use GKE 1.28.3-gke.106700 or later versions.
+  /// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
   final List<ClusterNodePoolNodeConfigSecondaryBootDisk>? secondaryBootDisks;
 
   /// The service account to be used by the Node VMs.
@@ -217,7 +217,7 @@ class ClusterNodePoolNodeConfig {
   /// However, GKE will add taints to your nodes if you enable certain features such
   /// as GPUs. If this field is set, any diffs on this field will cause the provider to
   /// recreate the underlying resource. Taint values can be updated safely in
-  /// Kubernetes (eg. through <span pulumi-lang-nodejs="`kubectl`" pulumi-lang-dotnet="`Kubectl`" pulumi-lang-go="`kubectl`" pulumi-lang-python="`kubectl`" pulumi-lang-yaml="`kubectl`" pulumi-lang-java="`kubectl`">`kubectl`</span>), and it's recommended that you do not use
+  /// Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
   /// this field to manage taints. If you do, `lifecycle.ignore_changes` is
   /// recommended. Structure is documented below.
   final List<ClusterNodePoolNodeConfigTaint>? taints;

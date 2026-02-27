@@ -1,0 +1,3 @@
+library module_certificateauthority_certificate_revocation_detail;
+
+export 'certificate_revocation_detail/certificate_revocation_detail.dart';

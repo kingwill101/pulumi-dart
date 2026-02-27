@@ -1,0 +1,3 @@
+library module_cloudrunv2_service_template_volume_cloud_sql_instance;
+
+export 'service_template_volume_cloud_sql_instance/service_template_volume_cloud_sql_instance.dart';

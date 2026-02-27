@@ -1,0 +1,3 @@
+library module_networkservices_http_route_rule_match_query_parameter;
+
+export 'http_route_rule_match_query_parameter/http_route_rule_match_query_parameter.dart';

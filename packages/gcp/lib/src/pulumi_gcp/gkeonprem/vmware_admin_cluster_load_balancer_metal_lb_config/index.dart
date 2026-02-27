@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_admin_cluster_load_balancer_metal_lb_config;
-
-export 'vmware_admin_cluster_load_balancer_metal_lb_config.dart';

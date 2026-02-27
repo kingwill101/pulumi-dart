@@ -16,11 +16,11 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// `CMD`'s "default parameters" form.
   /// If you don't specify this field but do specify the
   /// command field, then the command from the
-  /// <span pulumi-lang-nodejs="`command`" pulumi-lang-dotnet="`Command`" pulumi-lang-go="`command`" pulumi-lang-python="`command`" pulumi-lang-yaml="`command`" pulumi-lang-java="`command`">`command`</span> field runs without any additional arguments. See the
+  /// `command` field runs without any additional arguments. See the
   /// [Kubernetes documentation about how the
-  /// <span pulumi-lang-nodejs="`command`" pulumi-lang-dotnet="`Command`" pulumi-lang-go="`command`" pulumi-lang-python="`command`" pulumi-lang-yaml="`command`" pulumi-lang-java="`command`">`command`</span> and <span pulumi-lang-nodejs="`args`" pulumi-lang-dotnet="`Args`" pulumi-lang-go="`args`" pulumi-lang-python="`args`" pulumi-lang-yaml="`args`" pulumi-lang-java="`args`">`args`</span> fields interact with a container's `ENTRYPOINT` and
+  /// `command` and `args` fields interact with a container's `ENTRYPOINT` and
   /// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
-  /// If you don't specify this field and don't specify the <span pulumi-lang-nodejs="`command`" pulumi-lang-dotnet="`Command`" pulumi-lang-go="`command`" pulumi-lang-python="`command`" pulumi-lang-yaml="`command`" pulumi-lang-java="`command`">`command`</span> field,
+  /// If you don't specify this field and don't specify the `command` field,
   /// then the container's
   /// [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#cmd) and
   /// `CMD` determine what runs based on their default behavior. See the Docker
@@ -37,7 +37,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// parentheses. If a variable cannot be resolved, the reference in the input
   /// string is used unchanged. To avoid variable expansion, you can escape this
   /// syntax with `$$`; for example:$$(VARIABLE_NAME)
-  /// This field corresponds to the <span pulumi-lang-nodejs="`args`" pulumi-lang-dotnet="`Args`" pulumi-lang-go="`args`" pulumi-lang-python="`args`" pulumi-lang-yaml="`args`" pulumi-lang-java="`args`">`args`</span> field of the Kubernetes Containers
+  /// This field corresponds to the `args` field of the Kubernetes Containers
   /// [v1 core
   /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
   final List<String>? args;
@@ -54,11 +54,11 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// have an `ENTRYPOINT`, then refer to the Docker documentation about [how
   /// `CMD` and `ENTRYPOINT`
   /// interact](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
-  /// If you specify this field, then you can also specify the <span pulumi-lang-nodejs="`args`" pulumi-lang-dotnet="`Args`" pulumi-lang-go="`args`" pulumi-lang-python="`args`" pulumi-lang-yaml="`args`" pulumi-lang-java="`args`">`args`</span> field to
+  /// If you specify this field, then you can also specify the `args` field to
   /// provide additional arguments for this command. However, if you specify this
   /// field, then the container's `CMD` is ignored. See the
   /// [Kubernetes documentation about how the
-  /// <span pulumi-lang-nodejs="`command`" pulumi-lang-dotnet="`Command`" pulumi-lang-go="`command`" pulumi-lang-python="`command`" pulumi-lang-yaml="`command`" pulumi-lang-java="`command`">`command`</span> and <span pulumi-lang-nodejs="`args`" pulumi-lang-dotnet="`Args`" pulumi-lang-go="`args`" pulumi-lang-python="`args`" pulumi-lang-yaml="`args`" pulumi-lang-java="`args`">`args`</span> fields interact with a container's `ENTRYPOINT` and
+  /// `command` and `args` fields interact with a container's `ENTRYPOINT` and
   /// `CMD`](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
   /// In this field, you can reference [environment variables set by Vertex
   /// AI](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables)
@@ -70,7 +70,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// parentheses. If a variable cannot be resolved, the reference in the input
   /// string is used unchanged. To avoid variable expansion, you can escape this
   /// syntax with `$$`; for example:$$(VARIABLE_NAME)
-  /// This field corresponds to the <span pulumi-lang-nodejs="`command`" pulumi-lang-dotnet="`Command`" pulumi-lang-go="`command`" pulumi-lang-python="`command`" pulumi-lang-yaml="`command`" pulumi-lang-java="`command`">`command`</span> field of the Kubernetes Containers
+  /// This field corresponds to the `command` field of the Kubernetes Containers
   /// [v1 core
   /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
   final List<String>? commands;
@@ -100,7 +100,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// ```
   /// If you switch the order of the variables in the example, then the expansion
   /// does not occur.
-  /// This field corresponds to the <span pulumi-lang-nodejs="`env`" pulumi-lang-dotnet="`Env`" pulumi-lang-go="`env`" pulumi-lang-python="`env`" pulumi-lang-yaml="`env`" pulumi-lang-java="`env`">`env`</span> field of the Kubernetes Containers
+  /// This field corresponds to the `env` field of the Kubernetes Containers
   /// [v1 core
   /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
   /// Structure is documented below.
@@ -113,7 +113,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// If you do not specify this field, gRPC requests to the container will be
   /// disabled.
   /// Vertex AI does not use ports other than the first one listed. This field
-  /// corresponds to the <span pulumi-lang-nodejs="`ports`" pulumi-lang-dotnet="`Ports`" pulumi-lang-go="`ports`" pulumi-lang-python="`ports`" pulumi-lang-yaml="`ports`" pulumi-lang-java="`ports`">`ports`</span> field of the Kubernetes Containers v1 core API.
+  /// corresponds to the `ports` field of the Kubernetes Containers v1 core API.
   /// Structure is documented below.
   final List<
           AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort>?
@@ -184,7 +184,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// ]
   /// ```
   /// Vertex AI does not use ports other than the first one listed. This field
-  /// corresponds to the <span pulumi-lang-nodejs="`ports`" pulumi-lang-dotnet="`Ports`" pulumi-lang-go="`ports`" pulumi-lang-python="`ports`" pulumi-lang-yaml="`ports`" pulumi-lang-java="`ports`">`ports`</span> field of the Kubernetes Containers
+  /// corresponds to the `ports` field of the Kubernetes Containers
   /// [v1 core
   /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
   /// Structure is documented below.

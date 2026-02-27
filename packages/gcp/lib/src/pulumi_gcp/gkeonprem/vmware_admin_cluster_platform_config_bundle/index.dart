@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_admin_cluster_platform_config_bundle;
-
-export 'vmware_admin_cluster_platform_config_bundle.dart';

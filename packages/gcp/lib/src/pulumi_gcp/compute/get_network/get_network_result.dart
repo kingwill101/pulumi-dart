@@ -21,7 +21,7 @@ class GetNetworkResult {
   /// A full or partial URL of the network profile to apply to this network.
   final String? networkProfile;
 
-  /// (Deprecated) The numeric unique identifier for the resource. <span pulumi-lang-nodejs="`numericId`" pulumi-lang-dotnet="`NumericId`" pulumi-lang-go="`numericId`" pulumi-lang-python="`numeric_id`" pulumi-lang-yaml="`numericId`" pulumi-lang-java="`numericId`">`numeric_id`</span> is deprecated and will be removed in a future major release. Use <span pulumi-lang-nodejs="`networkId`" pulumi-lang-dotnet="`NetworkId`" pulumi-lang-go="`networkId`" pulumi-lang-python="`network_id`" pulumi-lang-yaml="`networkId`" pulumi-lang-java="`networkId`">`network_id`</span> instead.
+  /// (Deprecated) The numeric unique identifier for the resource. `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
   final String numericId;
   final String? project;
 

@@ -1,3 +1,0 @@
-library module_bigquery_table_external_data_configuration;
-
-export 'table_external_data_configuration.dart';

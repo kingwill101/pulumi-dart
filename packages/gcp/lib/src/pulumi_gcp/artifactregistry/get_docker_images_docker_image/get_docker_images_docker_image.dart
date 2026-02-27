@@ -4,7 +4,7 @@ class GetDockerImagesDockerImage {
   /// The time, as a RFC 3339 string, this image was built.
   final String buildTime;
 
-  /// Extracted short name of the image (last part of <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>, without tag or digest). For example, from `.../nginx@sha256:...` → <span pulumi-lang-nodejs="`nginx`" pulumi-lang-dotnet="`Nginx`" pulumi-lang-go="`nginx`" pulumi-lang-python="`nginx`" pulumi-lang-yaml="`nginx`" pulumi-lang-java="`nginx`">`nginx`</span>.
+  /// Extracted short name of the image (last part of `name`, without tag or digest). For example, from `.../nginx@sha256:...` → `nginx`.
   final String imageName;
 
   /// Calculated size of the image in bytes.

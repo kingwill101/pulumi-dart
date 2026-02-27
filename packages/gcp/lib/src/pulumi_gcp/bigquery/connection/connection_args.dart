@@ -40,7 +40,7 @@ class ConnectionArgs {
   final Input<String>? friendlyName;
 
   /// Optional. The Cloud KMS key that is used for encryption.
-  /// Example: projects/<span pulumi-lang-nodejs="[kmsProjectId]" pulumi-lang-dotnet="[KmsProjectId]" pulumi-lang-go="[kmsProjectId]" pulumi-lang-python="[kms_project_id]" pulumi-lang-yaml="[kmsProjectId]" pulumi-lang-java="[kmsProjectId]">[kms_project_id]</span>/locations/[region]/keyRings/<span pulumi-lang-nodejs="[keyRegion]" pulumi-lang-dotnet="[KeyRegion]" pulumi-lang-go="[keyRegion]" pulumi-lang-python="[key_region]" pulumi-lang-yaml="[keyRegion]" pulumi-lang-java="[keyRegion]">[key_region]</span>/cryptoKeys/[key]
+  /// Example: projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
   final Input<String>? kmsKeyName;
 
   /// The geographic location where the connection should reside.

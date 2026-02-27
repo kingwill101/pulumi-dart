@@ -18,14 +18,8 @@ class AiReasoningEngineSpec {
 
   /// Optional. User provided package spec of the ReasoningEngine.
   /// Ignored when users directly specify a deployment image through
-  /// deploymentSpec.first_party_image_override, but keeping the<span pulumi-lang-nodejs="
-  /// fieldBehavior " pulumi-lang-dotnet="
-  /// FieldBehavior " pulumi-lang-go="
-  /// fieldBehavior " pulumi-lang-python="
-  /// field_behavior " pulumi-lang-yaml="
-  /// fieldBehavior " pulumi-lang-java="
-  /// fieldBehavior ">
-  /// field_behavior </span>to avoid introducing breaking changes.
+  /// deploymentSpec.first_party_image_override, but keeping the
+  /// field_behavior to avoid introducing breaking changes.
   /// Structure is documented below.
   final AiReasoningEngineSpecPackageSpec? packageSpec;
 

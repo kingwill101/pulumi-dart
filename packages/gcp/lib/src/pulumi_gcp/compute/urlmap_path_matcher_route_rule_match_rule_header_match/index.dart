@@ -1,3 +1,0 @@
-library module_compute_urlmap_path_matcher_route_rule_match_rule_header_match;
-
-export 'urlmap_path_matcher_route_rule_match_rule_header_match.dart';

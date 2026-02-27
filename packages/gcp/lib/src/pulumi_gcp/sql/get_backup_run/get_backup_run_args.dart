@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// Arguments for getBackupRun.
 class GetBackupRunArgs {
   /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
-  /// If left empty and multiple backups exist for the instance, <span pulumi-lang-nodejs="`mostRecent`" pulumi-lang-dotnet="`MostRecent`" pulumi-lang-go="`mostRecent`" pulumi-lang-python="`most_recent`" pulumi-lang-yaml="`mostRecent`" pulumi-lang-java="`mostRecent`">`most_recent`</span> must be set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
   final Input<int>? backupId;
 
   /// The name of the instance the backup is taken from.

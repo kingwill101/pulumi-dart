@@ -8,7 +8,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults {
   /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
   final String? bootDiskKmsKey;
 
-  /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to <span pulumi-lang-nodejs="`100`" pulumi-lang-dotnet="`100`" pulumi-lang-go="`100`" pulumi-lang-python="`100`" pulumi-lang-yaml="`100`" pulumi-lang-java="`100`">`100`</span>
+  /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
   final int? diskSize;
 
   /// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd', 'pd-balanced', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
@@ -25,12 +25,12 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults {
   /// as "Intel Haswell" or "Intel Sandy Bridge".
   final String? minCpuPlatform;
 
-  /// Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set <span pulumi-lang-nodejs="`serviceAccount`" pulumi-lang-dotnet="`ServiceAccount`" pulumi-lang-go="`serviceAccount`" pulumi-lang-python="`service_account`" pulumi-lang-yaml="`serviceAccount`" pulumi-lang-java="`serviceAccount`">`service_account`</span> to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+  /// Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
   ///
-  /// > `monitoring.write` is always enabled regardless of user input.  <span pulumi-lang-nodejs="`monitoring`" pulumi-lang-dotnet="`Monitoring`" pulumi-lang-go="`monitoring`" pulumi-lang-python="`monitoring`" pulumi-lang-yaml="`monitoring`" pulumi-lang-java="`monitoring`">`monitoring`</span> and `logging.write` may also be enabled depending on the values for <span pulumi-lang-nodejs="`monitoringService`" pulumi-lang-dotnet="`MonitoringService`" pulumi-lang-go="`monitoringService`" pulumi-lang-python="`monitoring_service`" pulumi-lang-yaml="`monitoringService`" pulumi-lang-java="`monitoringService`">`monitoring_service`</span> and <span pulumi-lang-nodejs="`loggingService`" pulumi-lang-dotnet="`LoggingService`" pulumi-lang-go="`loggingService`" pulumi-lang-python="`logging_service`" pulumi-lang-yaml="`loggingService`" pulumi-lang-java="`loggingService`">`logging_service`</span>.
+  /// > `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoring_service` and `logging_service`.
   final List<String>? oauthScopes;
 
-  /// The <span pulumi-lang-nodejs="`email`" pulumi-lang-dotnet="`Email`" pulumi-lang-go="`email`" pulumi-lang-python="`email`" pulumi-lang-yaml="`email`" pulumi-lang-java="`email`">`email`</span> of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+  /// The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
   final String? serviceAccount;
 
   /// Shielded Instance options. Structure is documented below.

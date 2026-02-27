@@ -1,0 +1,3 @@
+library module_iam_folders_policy_binding_condition;
+
+export 'folders_policy_binding_condition/folders_policy_binding_condition.dart';

@@ -1,3 +1,0 @@
-library module_gkebackup_restore_plan_restore_config_transformation_rule_resource_filter_group_kind;
-
-export 'restore_plan_restore_config_transformation_rule_resource_filter_group_kind.dart';

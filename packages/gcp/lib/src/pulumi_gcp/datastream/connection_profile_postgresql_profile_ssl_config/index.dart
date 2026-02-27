@@ -1,3 +1,0 @@
-library module_datastream_connection_profile_postgresql_profile_ssl_config;
-
-export 'connection_profile_postgresql_profile_ssl_config.dart';

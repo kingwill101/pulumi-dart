@@ -1,0 +1,3 @@
+library module_networkservices_edge_cache_origin_aws_v4_authentication;
+
+export 'edge_cache_origin_aws_v4_authentication/edge_cache_origin_aws_v4_authentication.dart';

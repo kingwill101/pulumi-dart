@@ -1,3 +1,0 @@
-library module_compute_future_reservation_share_settings_project_map;
-
-export 'future_reservation_share_settings_project_map.dart';

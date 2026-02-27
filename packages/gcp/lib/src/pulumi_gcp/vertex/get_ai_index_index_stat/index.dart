@@ -1,3 +1,0 @@
-library module_vertex_get_ai_index_index_stat;
-
-export 'get_ai_index_index_stat.dart';

@@ -2,7 +2,7 @@ import 'package:pulumi/pulumi.dart';
 import 'bucket_access_control_args.dart';
 
 /// Bucket ACLs can be managed authoritatively using the
-/// <span pulumi-lang-nodejs="`storageBucketAcl`" pulumi-lang-dotnet="`StorageBucketAcl`" pulumi-lang-go="`storageBucketAcl`" pulumi-lang-python="`storage_bucket_acl`" pulumi-lang-yaml="`storageBucketAcl`" pulumi-lang-java="`storageBucketAcl`">`storage_bucket_acl`</span> resource. Do not use these two resources in conjunction to manage the same bucket.
+/// `storage_bucket_acl` resource. Do not use these two resources in conjunction to manage the same bucket.
 ///
 /// The BucketAccessControls resource manages the Access Control List
 /// (ACLs) for a single entity/role pairing on a bucket. ACLs let you specify who
@@ -30,138 +30,7 @@ import 'bucket_access_control_args.dart';
 /// ### Storage Bucket Access Control Public Bucket
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const bucket = new gcp.storage.Bucket("bucket", {
-/// name: "static-content-bucket",
-/// location: "US",
-/// });
-/// const publicRule = new gcp.storage.BucketAccessControl("public_rule", {
-/// bucket: bucket.name,
-/// role: "READER",
-/// entity: "allUsers",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// bucket = gcp.storage.Bucket("bucket",
-/// name="static-content-bucket",
-/// location="US")
-/// public_rule = gcp.storage.BucketAccessControl("public_rule",
-/// bucket=bucket.name,
-/// role="READER",
-/// entity="allUsers")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var bucket = new Gcp.Storage.Bucket("bucket", new()
-/// {
-/// Name = "static-content-bucket",
-/// Location = "US",
-/// });
-///
-/// var publicRule = new Gcp.Storage.BucketAccessControl("public_rule", new()
-/// {
-/// Bucket = bucket.Name,
-/// Role = "READER",
-/// Entity = "allUsers",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
-/// Name:     pulumi.String("static-content-bucket"),
-/// Location: pulumi.String("US"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = storage.NewBucketAccessControl(ctx, "public_rule", &storage.BucketAccessControlArgs{
-/// Bucket: bucket.Name,
-/// Role:   pulumi.String("READER"),
-/// Entity: pulumi.String("allUsers"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.storage.Bucket;
-/// import com.pulumi.gcp.storage.BucketArgs;
-/// import com.pulumi.gcp.storage.BucketAccessControl;
-/// import com.pulumi.gcp.storage.BucketAccessControlArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var bucket = new Bucket("bucket", BucketArgs.builder()
-/// .name("static-content-bucket")
-/// .location("US")
-/// .build());
-///
-/// var publicRule = new BucketAccessControl("publicRule", BucketAccessControlArgs.builder()
-/// .bucket(bucket.name())
-/// .role("READER")
-/// .entity("allUsers")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// publicRule:
-/// type: gcp:storage:BucketAccessControl
-/// name: public_rule
-/// properties:
-/// bucket: ${bucket.name}
-/// role: READER
-/// entity: allUsers
-/// bucket:
-/// type: gcp:storage:Bucket
-/// properties:
-/// name: static-content-bucket
-/// location: US
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///

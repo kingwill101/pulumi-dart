@@ -21,16 +21,16 @@ class FeatureMembershipConfigmanagementConfigSync {
 
   /// (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
   ///
-  /// Use either <span pulumi-lang-nodejs="`git`" pulumi-lang-dotnet="`Git`" pulumi-lang-go="`git`" pulumi-lang-python="`git`" pulumi-lang-yaml="`git`" pulumi-lang-java="`git`">`git`</span> or <span pulumi-lang-nodejs="`oci`" pulumi-lang-dotnet="`Oci`" pulumi-lang-go="`oci`" pulumi-lang-python="`oci`" pulumi-lang-yaml="`oci`" pulumi-lang-java="`oci`">`oci`</span> config option.
+  /// Use either `git` or `oci` config option.
   final FeatureMembershipConfigmanagementConfigSyncOci? oci;
 
-  /// Supported from Config Sync versions 1.10.0 onwards. Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to enable the Config Sync admission webhook to prevent drifts. If set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, disables the Config Sync admission webhook and does not prevent drifts.
+  /// Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
   final bool? preventDrift;
 
   /// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
   final String? sourceFormat;
 
-  /// Set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
   final bool? stopSyncing;
 
   FeatureMembershipConfigmanagementConfigSync({

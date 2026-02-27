@@ -9,7 +9,7 @@ class IAMMemberArgs2 {
   /// Structure is documented below.
   final Input<IAMMemberCondition2>? condition;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -21,7 +21,7 @@ class IAMMemberArgs2 {
   final Input<String> orgId;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.organizations.IAMBinding`" pulumi-lang-dotnet="`gcp.organizations.IAMBinding`" pulumi-lang-go="`organizations.IAMBinding`" pulumi-lang-python="`organizations.IAMBinding`" pulumi-lang-yaml="`gcp.organizations.IAMBinding`" pulumi-lang-java="`gcp.organizations.IAMBinding`">`gcp.organizations.IAMBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `organizations/{{org_id}}/roles/{{role_id}}`.
   final Input<String> role;
 

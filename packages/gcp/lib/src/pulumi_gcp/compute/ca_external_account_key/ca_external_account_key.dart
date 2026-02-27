@@ -25,90 +25,7 @@ import 'ca_external_account_key_args.dart';
 /// ### Public Ca External Account Key
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const prod = new gcp.compute.CaExternalAccountKey("prod", {project: "my-project-name"});
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// prod = gcp.compute.CaExternalAccountKey("prod", project="my-project-name")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var prod = new Gcp.Compute.CaExternalAccountKey("prod", new()
-/// {
-/// Project = "my-project-name",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := compute.NewCaExternalAccountKey(ctx, "prod", &compute.CaExternalAccountKeyArgs{
-/// Project: pulumi.String("my-project-name"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.CaExternalAccountKey;
-/// import com.pulumi.gcp.compute.CaExternalAccountKeyArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var prod = new CaExternalAccountKey("prod", CaExternalAccountKeyArgs.builder()
-/// .project("my-project-name")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// prod:
-/// type: gcp:compute:CaExternalAccountKey
-/// properties:
-/// project: my-project-name
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -129,7 +46,7 @@ class CaExternalAccountKey extends CustomResource {
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final Output<String> keyId;
 
-  /// Location for the externalAccountKey. Currently only <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span> is supported.
+  /// Location for the externalAccountKey. Currently only `global` is supported.
   late final Output<String?> location;
 
   /// Resource name. projects/{project}/locations/{location}/externalAccountKeys/{keyId}.

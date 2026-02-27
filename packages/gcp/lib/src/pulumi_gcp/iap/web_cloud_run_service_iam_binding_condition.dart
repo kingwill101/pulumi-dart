@@ -1,0 +1,3 @@
+library module_iap_web_cloud_run_service_iam_binding_condition;
+
+export 'web_cloud_run_service_iam_binding_condition/web_cloud_run_service_iam_binding_condition.dart';

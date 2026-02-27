@@ -1,0 +1,4 @@
+library module_iap_web_cloud_run_service_iam_policy;
+
+export 'web_cloud_run_service_iam_policy/web_cloud_run_service_iam_policy.dart';
+export 'web_cloud_run_service_iam_policy/web_cloud_run_service_iam_policy_args.dart';

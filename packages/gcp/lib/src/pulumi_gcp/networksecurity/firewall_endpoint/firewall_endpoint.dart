@@ -15,137 +15,17 @@ import 'firewall_endpoint_args.dart';
 /// * [Firewall endpoint overview](https://cloud.google.com/firewall/docs/about-firewall-endpoints)
 ///
 /// > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-/// you must specify a <span pulumi-lang-nodejs="`billingProjectId`" pulumi-lang-dotnet="`BillingProjectId`" pulumi-lang-go="`billingProjectId`" pulumi-lang-python="`billing_project_id`" pulumi-lang-yaml="`billingProjectId`" pulumi-lang-java="`billingProjectId`">`billing_project_id`</span> and set <span pulumi-lang-nodejs="`userProjectOverride`" pulumi-lang-dotnet="`UserProjectOverride`" pulumi-lang-go="`userProjectOverride`" pulumi-lang-python="`user_project_override`" pulumi-lang-yaml="`userProjectOverride`" pulumi-lang-java="`userProjectOverride`">`user_project_override`</span> to true
+/// you must specify a `billing_project_id` and set `user_project_override` to true
 /// in the provider configuration. Otherwise the ACM API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
-/// <span pulumi-lang-nodejs="`billingProjectId`" pulumi-lang-dotnet="`BillingProjectId`" pulumi-lang-go="`billingProjectId`" pulumi-lang-python="`billing_project_id`" pulumi-lang-yaml="`billingProjectId`" pulumi-lang-java="`billingProjectId`">`billing_project_id`</span> you defined.
+/// `billing_project_id` you defined.
 ///
 /// ## Example Usage
 ///
 /// ### Network Security Firewall Endpoint Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = new gcp.networksecurity.FirewallEndpoint("default", {
-/// name: "my-firewall-endpoint",
-/// parent: "organizations/123456789",
-/// location: "us-central1-a",
-/// billingProjectId: "my-project-name",
-/// labels: {
-/// foo: "bar",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default = gcp.networksecurity.FirewallEndpoint("default",
-/// name="my-firewall-endpoint",
-/// parent="organizations/123456789",
-/// location="us-central1-a",
-/// billing_project_id="my-project-name",
-/// labels={
-/// "foo": "bar",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var @default = new Gcp.NetworkSecurity.FirewallEndpoint("default", new()
-/// {
-/// Name = "my-firewall-endpoint",
-/// Parent = "organizations/123456789",
-/// Location = "us-central1-a",
-/// BillingProjectId = "my-project-name",
-/// Labels =
-/// {
-/// { "foo", "bar" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := networksecurity.NewFirewallEndpoint(ctx, "default", &networksecurity.FirewallEndpointArgs{
-/// Name:             pulumi.String("my-firewall-endpoint"),
-/// Parent:           pulumi.String("organizations/123456789"),
-/// Location:         pulumi.String("us-central1-a"),
-/// BillingProjectId: pulumi.String("my-project-name"),
-/// Labels: pulumi.StringMap{
-/// "foo": pulumi.String("bar"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.networksecurity.FirewallEndpoint;
-/// import com.pulumi.gcp.networksecurity.FirewallEndpointArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var default_ = new FirewallEndpoint("default", FirewallEndpointArgs.builder()
-/// .name("my-firewall-endpoint")
-/// .parent("organizations/123456789")
-/// .location("us-central1-a")
-/// .billingProjectId("my-project-name")
-/// .labels(Map.of("foo", "bar"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// default:
-/// type: gcp:networksecurity:FirewallEndpoint
-/// properties:
-/// name: my-firewall-endpoint
-/// parent: organizations/123456789
-/// location: us-central1-a
-/// billingProjectId: my-project-name
-/// labels:
-/// foo: bar
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -181,7 +61,7 @@ class FirewallEndpoint extends CustomResource {
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// The location (zone) of the firewall endpoint.

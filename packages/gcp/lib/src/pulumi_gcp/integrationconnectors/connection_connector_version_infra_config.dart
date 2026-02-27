@@ -1,0 +1,3 @@
+library module_integrationconnectors_connection_connector_version_infra_config;
+
+export 'connection_connector_version_infra_config/connection_connector_version_infra_config.dart';

@@ -16,7 +16,7 @@ class GetInstanceMaintenancePolicy2 {
 
   /// Optional. Maintenance window that is applied to resources covered by this policy.
   /// Minimum 1. For the current version, the maximum number
-  /// of<span pulumi-lang-nodejs=" weeklyWindow " pulumi-lang-dotnet=" WeeklyWindow " pulumi-lang-go=" weeklyWindow " pulumi-lang-python=" weekly_window " pulumi-lang-yaml=" weeklyWindow " pulumi-lang-java=" weeklyWindow "> weekly_window </span>is expected to be one.
+  /// of weekly_window is expected to be one.
   final List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow2>
       weeklyMaintenanceWindows;
 

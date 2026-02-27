@@ -16,7 +16,7 @@ class ClusterResourceUsageExportConfig {
   /// consumption metering on this cluster. When enabled, a table will be created in
   /// the resource export BigQuery dataset to store resource consumption data. The
   /// resulting table can be joined with the resource usage table or with BigQuery
-  /// billing export. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// billing export. Defaults to `true`.
   final bool? enableResourceConsumptionMetering;
 
   ClusterResourceUsageExportConfig({

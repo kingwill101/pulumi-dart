@@ -15,139 +15,7 @@ import 'application_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const myProject = new gcp.organizations.Project("my_project", {
-/// name: "My Project",
-/// projectId: "your-project-id",
-/// orgId: "1234567",
-/// });
-/// const app = new gcp.appengine.Application("app", {
-/// project: myProject.projectId,
-/// locationId: "us-central",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// my_project = gcp.organizations.Project("my_project",
-/// name="My Project",
-/// project_id="your-project-id",
-/// org_id="1234567")
-/// app = gcp.appengine.Application("app",
-/// project=my_project.project_id,
-/// location_id="us-central")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var myProject = new Gcp.Organizations.Project("my_project", new()
-/// {
-/// Name = "My Project",
-/// ProjectId = "your-project-id",
-/// OrgId = "1234567",
-/// });
-///
-/// var app = new Gcp.AppEngine.Application("app", new()
-/// {
-/// Project = myProject.ProjectId,
-/// LocationId = "us-central",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// myProject, err := organizations.NewProject(ctx, "my_project", &organizations.ProjectArgs{
-/// Name:      pulumi.String("My Project"),
-/// ProjectId: pulumi.String("your-project-id"),
-/// OrgId:     pulumi.String("1234567"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = appengine.NewApplication(ctx, "app", &appengine.ApplicationArgs{
-/// Project:    myProject.ProjectId,
-/// LocationId: pulumi.String("us-central"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.organizations.Project;
-/// import com.pulumi.gcp.organizations.ProjectArgs;
-/// import com.pulumi.gcp.appengine.Application;
-/// import com.pulumi.gcp.appengine.ApplicationArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var myProject = new Project("myProject", ProjectArgs.builder()
-/// .name("My Project")
-/// .projectId("your-project-id")
-/// .orgId("1234567")
-/// .build());
-///
-/// var app = new Application("app", ApplicationArgs.builder()
-/// .project(myProject.projectId())
-/// .locationId("us-central")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// myProject:
-/// type: gcp:organizations:Project
-/// name: my_project
-/// properties:
-/// name: My Project
-/// projectId: your-project-id
-/// orgId: '1234567'
-/// app:
-/// type: gcp:appengine:Application
-/// properties:
-/// project: ${myProject.projectId}
-/// locationId: us-central
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -174,7 +42,7 @@ class Application extends CustomResource {
   /// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
   /// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
   /// To create a Cloud Firestore database without creating an App Engine application, use the
-  /// <span pulumi-lang-nodejs="`gcp.firestore.Database`" pulumi-lang-dotnet="`gcp.firestore.Database`" pulumi-lang-go="`firestore.Database`" pulumi-lang-python="`firestore.Database`" pulumi-lang-yaml="`gcp.firestore.Database`" pulumi-lang-java="`gcp.firestore.Database`">`gcp.firestore.Database`</span>
+  /// `gcp.firestore.Database`
   /// resource instead.
   late final Output<String> databaseType;
 
@@ -211,7 +79,7 @@ class Application extends CustomResource {
   /// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
   late final Output<String> sslPolicy;
 
-  /// A list of dispatch rule blocks. Each block has a <span pulumi-lang-nodejs="`domain`" pulumi-lang-dotnet="`Domain`" pulumi-lang-go="`domain`" pulumi-lang-python="`domain`" pulumi-lang-yaml="`domain`" pulumi-lang-java="`domain`">`domain`</span>, <span pulumi-lang-nodejs="`path`" pulumi-lang-dotnet="`Path`" pulumi-lang-go="`path`" pulumi-lang-python="`path`" pulumi-lang-yaml="`path`" pulumi-lang-java="`path`">`path`</span>, and <span pulumi-lang-nodejs="`service`" pulumi-lang-dotnet="`Service`" pulumi-lang-go="`service`" pulumi-lang-python="`service`" pulumi-lang-yaml="`service`" pulumi-lang-java="`service`">`service`</span> field.
+  /// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
   late final Output<List<ApplicationUrlDispatchRule>> urlDispatchRules;
 
   Application(

@@ -1,3 +1,0 @@
-library module_monitoring_uptime_check_config_tcp_check;
-
-export 'uptime_check_config_tcp_check.dart';

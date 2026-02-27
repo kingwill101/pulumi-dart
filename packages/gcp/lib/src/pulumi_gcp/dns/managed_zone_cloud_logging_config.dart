@@ -1,0 +1,3 @@
+library module_dns_managed_zone_cloud_logging_config;
+
+export 'managed_zone_cloud_logging_config/managed_zone_cloud_logging_config.dart';

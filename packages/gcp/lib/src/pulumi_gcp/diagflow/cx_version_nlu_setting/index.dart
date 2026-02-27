@@ -1,3 +1,0 @@
-library module_diagflow_cx_version_nlu_setting;
-
-export 'cx_version_nlu_setting.dart';

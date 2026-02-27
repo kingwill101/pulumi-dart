@@ -1,0 +1,4 @@
+library module_organizations_get_client_open_id_user_info;
+
+export 'get_client_open_id_user_info/get_client_open_id_user_info.dart';
+export 'get_client_open_id_user_info/get_client_open_id_user_info_result.dart';

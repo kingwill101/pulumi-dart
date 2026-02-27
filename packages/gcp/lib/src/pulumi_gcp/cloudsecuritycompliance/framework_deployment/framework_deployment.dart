@@ -36,14 +36,8 @@ class FrameworkDeployment extends CustomResource {
   /// CloudControlDeployments which are either directly added in the framework or
   /// through a CloudControlGroup.
   /// Example: If a framework deployment deploys two
-  /// cloud controls, cc-deployment-1 and cc-deployment-2, then the<span pulumi-lang-nodejs="
-  /// cloudControlDeploymentReferences " pulumi-lang-dotnet="
-  /// CloudControlDeploymentReferences " pulumi-lang-go="
-  /// cloudControlDeploymentReferences " pulumi-lang-python="
-  /// cloud_control_deployment_references " pulumi-lang-yaml="
-  /// cloudControlDeploymentReferences " pulumi-lang-java="
-  /// cloudControlDeploymentReferences ">
-  /// cloud_control_deployment_references </span>will be:
+  /// cloud controls, cc-deployment-1 and cc-deployment-2, then the
+  /// cloud_control_deployment_references will be:
   /// {
   /// cloud_control_deployment_reference: {
   /// cloud_control_deployment:
@@ -87,8 +81,8 @@ class FrameworkDeployment extends CustomResource {
   late final Output<String?> description;
 
   /// To prevent concurrent updates from overwriting each other, always provide
-  /// the <span pulumi-lang-nodejs="`etag`" pulumi-lang-dotnet="`Etag`" pulumi-lang-go="`etag`" pulumi-lang-python="`etag`" pulumi-lang-yaml="`etag`" pulumi-lang-java="`etag`">`etag`</span> when you update a FrameworkDeployment. You can also
-  /// provide the <span pulumi-lang-nodejs="`etag`" pulumi-lang-dotnet="`Etag`" pulumi-lang-go="`etag`" pulumi-lang-python="`etag`" pulumi-lang-yaml="`etag`" pulumi-lang-java="`etag`">`etag`</span> when you delete a FrameworkDeployment, to help
+  /// the `etag` when you update a FrameworkDeployment. You can also
+  /// provide the `etag` when you delete a FrameworkDeployment, to help
   /// ensure that you're deleting the intended version of the
   /// FrameworkDeployment.
   late final Output<String> etag;
@@ -101,17 +95,17 @@ class FrameworkDeployment extends CustomResource {
   /// This is optional and if not provided, a random UUID will be generated.
   late final Output<String> frameworkDeploymentId;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> location;
 
   /// Identifier. FrameworkDeployment name in the following format:
   /// organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
   late final Output<String> name;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> organization;
 
-  /// TargetResourceConfig contains either the name of the<span pulumi-lang-nodejs=" targetResource " pulumi-lang-dotnet=" TargetResource " pulumi-lang-go=" targetResource " pulumi-lang-python=" target_resource " pulumi-lang-yaml=" targetResource " pulumi-lang-java=" targetResource "> target_resource </span>or
+  /// TargetResourceConfig contains either the name of the target_resource or
   /// contains the config to create a new target_resource.
   /// Structure is documented below.
   late final Output<FrameworkDeploymentTargetResourceConfig>

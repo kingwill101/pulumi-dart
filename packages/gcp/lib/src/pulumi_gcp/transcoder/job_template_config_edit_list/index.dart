@@ -1,3 +1,0 @@
-library module_transcoder_job_template_config_edit_list;
-
-export 'job_template_config_edit_list.dart';

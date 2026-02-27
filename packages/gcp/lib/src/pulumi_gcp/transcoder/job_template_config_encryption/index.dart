@@ -1,3 +1,0 @@
-library module_transcoder_job_template_config_encryption;
-
-export 'job_template_config_encryption.dart';

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class SubscriptionBigqueryConfig {
-  /// When true and<span pulumi-lang-nodejs=" useTopicSchema " pulumi-lang-dotnet=" UseTopicSchema " pulumi-lang-go=" useTopicSchema " pulumi-lang-python=" use_topic_schema " pulumi-lang-yaml=" useTopicSchema " pulumi-lang-java=" useTopicSchema "> use_topic_schema </span>or<span pulumi-lang-nodejs=" useTableSchema " pulumi-lang-dotnet=" UseTableSchema " pulumi-lang-go=" useTableSchema " pulumi-lang-python=" use_table_schema " pulumi-lang-yaml=" useTableSchema " pulumi-lang-java=" useTableSchema "> use_table_schema </span>is true, any fields that are a part of the topic schema or message schema that
+  /// When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
   /// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
   /// and any messages with extra fields are not written and remain in the subscription's backlog.
   final bool? dropUnknownFields;
@@ -15,11 +15,11 @@ class SubscriptionBigqueryConfig {
   final String table;
 
   /// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
-  /// must be published in JSON format. Only one of<span pulumi-lang-nodejs=" useTopicSchema " pulumi-lang-dotnet=" UseTopicSchema " pulumi-lang-go=" useTopicSchema " pulumi-lang-python=" use_topic_schema " pulumi-lang-yaml=" useTopicSchema " pulumi-lang-java=" useTopicSchema "> use_topic_schema </span>and<span pulumi-lang-nodejs=" useTableSchema " pulumi-lang-dotnet=" UseTableSchema " pulumi-lang-go=" useTableSchema " pulumi-lang-python=" use_table_schema " pulumi-lang-yaml=" useTableSchema " pulumi-lang-java=" useTableSchema "> use_table_schema </span>can be set.
+  /// must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
   final bool? useTableSchema;
 
   /// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
-  /// Only one of<span pulumi-lang-nodejs=" useTopicSchema " pulumi-lang-dotnet=" UseTopicSchema " pulumi-lang-go=" useTopicSchema " pulumi-lang-python=" use_topic_schema " pulumi-lang-yaml=" useTopicSchema " pulumi-lang-java=" useTopicSchema "> use_topic_schema </span>and<span pulumi-lang-nodejs=" useTableSchema " pulumi-lang-dotnet=" UseTableSchema " pulumi-lang-go=" useTableSchema " pulumi-lang-python=" use_table_schema " pulumi-lang-yaml=" useTableSchema " pulumi-lang-java=" useTableSchema "> use_table_schema </span>can be set.
+  /// Only one of use_topic_schema and use_table_schema can be set.
   final bool? useTopicSchema;
 
   /// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.

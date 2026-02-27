@@ -13,10 +13,10 @@ class GetSubnetworksSubnetwork {
   /// The self link of the parent network.
   final String network;
 
-  /// The name of the parent network computed from <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span> attribute.
+  /// The name of the parent network computed from `network` attribute.
   final String networkName;
 
-  /// (Deprecated) The name of the parent network computed from <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span> attribute. (deprecated and will be removed in a future major release. Use <span pulumi-lang-nodejs="`networkName`" pulumi-lang-dotnet="`NetworkName`" pulumi-lang-go="`networkName`" pulumi-lang-python="`network_name`" pulumi-lang-yaml="`networkName`" pulumi-lang-java="`networkName`">`network_name`</span> instead.)
+  /// (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `network_name` instead.)
   final String networkSelfLink;
 
   /// Whether the VMs in the subnet can access Google services without assigned external IP addresses.

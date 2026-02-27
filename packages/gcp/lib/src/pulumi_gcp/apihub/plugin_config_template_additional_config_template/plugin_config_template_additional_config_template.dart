@@ -25,7 +25,7 @@ class PluginConfigTemplateAdditionalConfigTemplate {
   /// PluginInstance.
   final bool? required;
 
-  /// Regular expression in RE2 syntax used for validating the <span pulumi-lang-nodejs="`value`" pulumi-lang-dotnet="`Value`" pulumi-lang-go="`value`" pulumi-lang-python="`value`" pulumi-lang-yaml="`value`" pulumi-lang-java="`value`">`value`</span> of a
+  /// Regular expression in RE2 syntax used for validating the `value` of a
   /// `ConfigVariable`.
   final String? validationRegex;
 

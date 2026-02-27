@@ -7,12 +7,12 @@ class NamespaceArgs {
   /// Labels for this Namespace.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Namespace-level cluster namespace labels. These labels are applied
   /// to the related namespace of the member clusters bound to the parent
-  /// Scope. Scope-level labels (<span pulumi-lang-nodejs="`namespaceLabels`" pulumi-lang-dotnet="`NamespaceLabels`" pulumi-lang-go="`namespaceLabels`" pulumi-lang-python="`namespace_labels`" pulumi-lang-yaml="`namespaceLabels`" pulumi-lang-java="`namespaceLabels`">`namespace_labels`</span> in the Fleet Scope
+  /// Scope. Scope-level labels (`namespace_labels` in the Fleet Scope
   /// resource) take precedence over Namespace-level labels if they share
   /// a key. Keys and values must be Kubernetes-conformant.
   final Input<Map<String, String>>? namespaceLabels;

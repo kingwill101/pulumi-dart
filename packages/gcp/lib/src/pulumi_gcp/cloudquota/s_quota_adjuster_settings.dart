@@ -1,0 +1,4 @@
+library module_cloudquota_s_quota_adjuster_settings;
+
+export 's_quota_adjuster_settings/squota_adjuster_settings.dart';
+export 's_quota_adjuster_settings/squota_adjuster_settings_args.dart';

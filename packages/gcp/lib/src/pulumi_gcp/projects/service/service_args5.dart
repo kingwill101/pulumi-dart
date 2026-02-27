@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart';
 /// The set of arguments for Service.
 class ServiceArgs5 {
   /// Beta
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the usage of the service to be disabled will be checked and an error
+  /// If `true`, the usage of the service to be disabled will be checked and an error
   /// will be returned if the service to be disabled has usage in last 30 days.
   final Input<bool>? checkIfServiceHasUsageOnDestroy;
 
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, services that are enabled
+  /// If `true`, services that are enabled
   /// and which depend on this service should also be disabled when this service is
-  /// destroyed. If <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> or unset, an error will be generated if any enabled
+  /// destroyed. If `false` or unset, an error will be generated if any enabled
   /// services depend on this service when destroying it.
   final Input<bool>? disableDependentServices;
   final Input<bool>? disableOnDestroy;

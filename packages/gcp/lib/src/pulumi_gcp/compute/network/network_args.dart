@@ -5,10 +5,10 @@ import '../network_params/network_params.dart';
 
 /// The set of arguments for Network.
 class NetworkArgs {
-  /// When set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the network is created in "auto subnet mode" and
+  /// When set to `true`, the network is created in "auto subnet mode" and
   /// it will create a subnet for each region automatically across the
   /// `10.128.0.0/9` address range.
-  /// When set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, the network is created in "custom subnet mode" so
+  /// When set to `false`, the network is created in "custom subnet mode" so
   /// the user can explicitly connect subnetwork resources.
   final Input<bool>? autoCreateSubnetworks;
 
@@ -24,12 +24,12 @@ class NetworkArgs {
   /// Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
   final Input<String>? bgpInterRegionCost;
 
-  /// If set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the <span pulumi-lang-nodejs="`bgpAlwaysCompareMed`" pulumi-lang-dotnet="`BgpAlwaysCompareMed`" pulumi-lang-go="`bgpAlwaysCompareMed`" pulumi-lang-python="`bgp_always_compare_med`" pulumi-lang-yaml="`bgpAlwaysCompareMed`" pulumi-lang-java="`bgpAlwaysCompareMed`">`bgp_always_compare_med`</span> field will be cleared.
-  /// If set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> (the default), <span pulumi-lang-nodejs="`bgpAlwaysCompareMed`" pulumi-lang-dotnet="`BgpAlwaysCompareMed`" pulumi-lang-go="`bgpAlwaysCompareMed`" pulumi-lang-python="`bgp_always_compare_med`" pulumi-lang-yaml="`bgpAlwaysCompareMed`" pulumi-lang-java="`bgpAlwaysCompareMed`">`bgp_always_compare_med`</span> will be set to the value specified in the configuration.
+  /// If set to `true`, the `bgp_always_compare_med` field will be cleared.
+  /// If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
   final Input<bool>? deleteBgpAlwaysCompareMed;
 
-  /// If set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, default routes (`0.0.0.0/0`) will be deleted
-  /// immediately after network creation. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
+  /// immediately after network creation. Defaults to `false`.
   final Input<bool>? deleteDefaultRoutesOnCreate;
 
   /// An optional description of this resource. The resource must be

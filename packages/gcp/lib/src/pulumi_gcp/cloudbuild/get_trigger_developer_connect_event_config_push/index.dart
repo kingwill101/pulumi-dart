@@ -1,3 +1,0 @@
-library module_cloudbuild_get_trigger_developer_connect_event_config_push;
-
-export 'get_trigger_developer_connect_event_config_push.dart';

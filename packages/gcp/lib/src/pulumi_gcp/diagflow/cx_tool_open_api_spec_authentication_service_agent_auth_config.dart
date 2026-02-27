@@ -1,0 +1,3 @@
+library module_diagflow_cx_tool_open_api_spec_authentication_service_agent_auth_config;
+
+export 'cx_tool_open_api_spec_authentication_service_agent_auth_config/cx_tool_open_api_spec_authentication_service_agent_auth_config.dart';

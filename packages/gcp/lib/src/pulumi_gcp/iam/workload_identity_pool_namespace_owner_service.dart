@@ -1,0 +1,3 @@
+library module_iam_workload_identity_pool_namespace_owner_service;
+
+export 'workload_identity_pool_namespace_owner_service/workload_identity_pool_namespace_owner_service.dart';

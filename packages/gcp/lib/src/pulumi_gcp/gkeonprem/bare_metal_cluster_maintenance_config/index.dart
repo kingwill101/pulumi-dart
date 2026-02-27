@@ -1,3 +1,0 @@
-library module_gkeonprem_bare_metal_cluster_maintenance_config;
-
-export 'bare_metal_cluster_maintenance_config.dart';

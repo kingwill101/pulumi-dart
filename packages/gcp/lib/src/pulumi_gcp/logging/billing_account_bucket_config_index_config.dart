@@ -1,0 +1,3 @@
+library module_logging_billing_account_bucket_config_index_config;
+
+export 'billing_account_bucket_config_index_config/billing_account_bucket_config_index_config.dart';

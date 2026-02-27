@@ -1,3 +1,0 @@
-library module_cloudrunv2_get_service_template_container_source_code;
-
-export 'get_service_template_container_source_code.dart';

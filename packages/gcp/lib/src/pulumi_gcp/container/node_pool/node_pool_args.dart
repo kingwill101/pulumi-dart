@@ -16,7 +16,7 @@ class NodePoolArgs {
   /// the size of the node pool to the current cluster usage. Structure is documented below.
   final Input<NodePoolAutoscaling>? autoscaling;
 
-  /// The cluster to create the node pool for. Cluster must be present in <span pulumi-lang-nodejs="`location`" pulumi-lang-dotnet="`Location`" pulumi-lang-go="`location`" pulumi-lang-python="`location`" pulumi-lang-yaml="`location`" pulumi-lang-java="`location`">`location`</span> provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+  /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
   ///
   /// - - -
   final Input<String> cluster;
@@ -51,7 +51,7 @@ class NodePoolArgs {
   final Input<String>? name;
 
   /// Creates a unique name for the node pool beginning
-  /// with the specified prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// with the specified prefix. Conflicts with `name`.
   final Input<String>? namePrefix;
 
   /// The network configuration of the pool. Such as
@@ -59,18 +59,12 @@ class NodePoolArgs {
   /// documented below
   final Input<NodePoolNetworkConfig>? networkConfig;
 
-  /// Parameters used in creating the node pool. See<span pulumi-lang-nodejs="
-  /// gcp.container.Cluster " pulumi-lang-dotnet="
-  /// gcp.container.Cluster " pulumi-lang-go="
-  /// container.Cluster " pulumi-lang-python="
-  /// container.Cluster " pulumi-lang-yaml="
-  /// gcp.container.Cluster " pulumi-lang-java="
-  /// gcp.container.Cluster ">
-  /// gcp.container.Cluster </span>for schema.
+  /// Parameters used in creating the node pool. See
+  /// gcp.container.Cluster for schema.
   final Input<NodePoolNodeConfig>? nodeConfig;
 
   /// The number of nodes per instance group. This field can be used to
-  /// update the number of nodes per instance group but should not be used alongside <span pulumi-lang-nodejs="`autoscaling`" pulumi-lang-dotnet="`Autoscaling`" pulumi-lang-go="`autoscaling`" pulumi-lang-python="`autoscaling`" pulumi-lang-yaml="`autoscaling`" pulumi-lang-java="`autoscaling`">`autoscaling`</span>.
+  /// update the number of nodes per instance group but should not be used alongside `autoscaling`.
   final Input<int>? nodeCount;
 
   /// The node drain configuration of the pool. Structure is documented below.
@@ -79,9 +73,9 @@ class NodePoolArgs {
   /// The list of zones in which the node pool's nodes should be located. Nodes must
   /// be in the region of their regional cluster or in the same region as their
   /// cluster's zone for zonal clusters. If unspecified, the cluster-level
-  /// <span pulumi-lang-nodejs="`nodeLocations`" pulumi-lang-dotnet="`NodeLocations`" pulumi-lang-go="`nodeLocations`" pulumi-lang-python="`node_locations`" pulumi-lang-yaml="`nodeLocations`" pulumi-lang-java="`nodeLocations`">`node_locations`</span> will be used.
+  /// `node_locations` will be used.
   ///
-  /// > Note: <span pulumi-lang-nodejs="`nodeLocations`" pulumi-lang-dotnet="`NodeLocations`" pulumi-lang-go="`nodeLocations`" pulumi-lang-python="`node_locations`" pulumi-lang-yaml="`nodeLocations`" pulumi-lang-java="`nodeLocations`">`node_locations`</span> will not revert to the cluster's default set of zones
+  /// > Note: `node_locations` will not revert to the cluster's default set of zones
   /// upon being unset. You must manually reconcile the list of zones with your
   /// cluster.
   final Input<List<String>>? nodeLocations;
@@ -97,7 +91,7 @@ class NodePoolArgs {
   /// Specifies node pool-level settings of queued provisioning.
   /// Structure is documented below.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedAutoscaling"" pulumi-lang-dotnet=""NestedAutoscaling"" pulumi-lang-go=""nestedAutoscaling"" pulumi-lang-python=""nested_autoscaling"" pulumi-lang-yaml=""nestedAutoscaling"" pulumi-lang-java=""nestedAutoscaling"">"nested_autoscaling"</span>></a>The <span pulumi-lang-nodejs="`autoscaling`" pulumi-lang-dotnet="`Autoscaling`" pulumi-lang-go="`autoscaling`" pulumi-lang-python="`autoscaling`" pulumi-lang-yaml="`autoscaling`" pulumi-lang-java="`autoscaling`">`autoscaling`</span> block supports (either total or per zone limits are required):
+  /// <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
   final Input<NodePoolQueuedProvisioning>? queuedProvisioning;
 
   /// Specify node upgrade settings to change how GKE upgrades nodes.
@@ -105,11 +99,11 @@ class NodePoolArgs {
   final Input<NodePoolUpgradeSettings>? upgradeSettings;
 
   /// The Kubernetes version for the nodes in this pool. Note that if this field
-  /// and <span pulumi-lang-nodejs="`autoUpgrade`" pulumi-lang-dotnet="`AutoUpgrade`" pulumi-lang-go="`autoUpgrade`" pulumi-lang-python="`auto_upgrade`" pulumi-lang-yaml="`autoUpgrade`" pulumi-lang-java="`autoUpgrade`">`auto_upgrade`</span> are both specified, they will fight each other for what the node version should
+  /// and `auto_upgrade` are both specified, they will fight each other for what the node version should
   /// be, so setting both is highly discouraged. While a fuzzy version can be specified, it's
   /// recommended that you specify explicit versions as the provider will see spurious diffs
-  /// when fuzzy versions are used. See the <span pulumi-lang-nodejs="`gcp.container.getEngineVersions`" pulumi-lang-dotnet="`gcp.container.getEngineVersions`" pulumi-lang-go="`container.getEngineVersions`" pulumi-lang-python="`container_get_engine_versions`" pulumi-lang-yaml="`gcp.container.getEngineVersions`" pulumi-lang-java="`gcp.container.getEngineVersions`">`gcp.container.getEngineVersions`</span> data source's
-  /// <span pulumi-lang-nodejs="`versionPrefix`" pulumi-lang-dotnet="`VersionPrefix`" pulumi-lang-go="`versionPrefix`" pulumi-lang-python="`version_prefix`" pulumi-lang-yaml="`versionPrefix`" pulumi-lang-java="`versionPrefix`">`version_prefix`</span> field to approximate fuzzy versions in a provider-compatible way.
+  /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
+  /// `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
   final Input<String>? version;
 
   NodePoolArgs({

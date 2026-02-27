@@ -21,8 +21,8 @@ class ClusterClusterConfigGceClusterConfig {
   /// (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
   final Map<String, String>? metadata;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the Google Compute Engine
-  /// network to the cluster will be part of. Conflicts with <span pulumi-lang-nodejs="`subnetwork`" pulumi-lang-dotnet="`Subnetwork`" pulumi-lang-go="`subnetwork`" pulumi-lang-python="`subnetwork`" pulumi-lang-yaml="`subnetwork`" pulumi-lang-java="`subnetwork`">`subnetwork`</span>.
+  /// The name or self_link of the Google Compute Engine
+  /// network to the cluster will be part of. Conflicts with `subnetwork`.
   /// If neither is specified, this defaults to the "default" network.
   final String? network;
 
@@ -44,7 +44,7 @@ class ClusterClusterConfigGceClusterConfig {
   final String? serviceAccount;
 
   /// The set of Google API scopes
-  /// to be made available on all of the node VMs under the <span pulumi-lang-nodejs="`serviceAccount`" pulumi-lang-dotnet="`ServiceAccount`" pulumi-lang-go="`serviceAccount`" pulumi-lang-python="`service_account`" pulumi-lang-yaml="`serviceAccount`" pulumi-lang-java="`serviceAccount`">`service_account`</span>
+  /// to be made available on all of the node VMs under the `service_account`
   /// specified. Both OAuth2 URLs and gcloud
   /// short names are supported. To allow full access to all Cloud APIs, use the
   /// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
@@ -56,8 +56,8 @@ class ClusterClusterConfigGceClusterConfig {
   final ClusterClusterConfigGceClusterConfigShieldedInstanceConfig?
       shieldedInstanceConfig;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the Google Compute Engine
-  /// subnetwork the cluster will be part of. Conflicts with <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span>.
+  /// The name or self_link of the Google Compute Engine
+  /// subnetwork the cluster will be part of. Conflicts with `network`.
   final String? subnetwork;
 
   /// The list of instance tags applied to instances in the cluster.
@@ -65,8 +65,8 @@ class ClusterClusterConfigGceClusterConfig {
   final List<String>? tags;
 
   /// The GCP zone where your data is stored and used (i.e. where
-  /// the master and the worker nodes will be created in). If <span pulumi-lang-nodejs="`region`" pulumi-lang-dotnet="`Region`" pulumi-lang-go="`region`" pulumi-lang-python="`region`" pulumi-lang-yaml="`region`" pulumi-lang-java="`region`">`region`</span> is set to 'global' (default)
-  /// then <span pulumi-lang-nodejs="`zone`" pulumi-lang-dotnet="`Zone`" pulumi-lang-go="`zone`" pulumi-lang-python="`zone`" pulumi-lang-yaml="`zone`" pulumi-lang-java="`zone`">`zone`</span> is mandatory, otherwise GCP is able to make use of [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/auto-zone)
+  /// the master and the worker nodes will be created in). If `region` is set to 'global' (default)
+  /// then `zone` is mandatory, otherwise GCP is able to make use of [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/auto-zone)
   /// to determine this automatically for you.
   /// Note: This setting additionally determines and restricts
   /// which computing resources are available for use with other configs such as

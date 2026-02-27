@@ -1,0 +1,3 @@
+library module_identityplatform_tenant_client_permissions;
+
+export 'tenant_client_permissions/tenant_client_permissions.dart';

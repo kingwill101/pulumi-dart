@@ -13,7 +13,7 @@ class FhirStoreIamMemberArgs {
   /// project setting will be used as a fallback.
   final Input<String> fhirStoreId;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -24,7 +24,7 @@ class FhirStoreIamMemberArgs {
   final Input<String> member;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.healthcare.FhirStoreIamBinding`" pulumi-lang-dotnet="`gcp.healthcare.FhirStoreIamBinding`" pulumi-lang-go="`healthcare.FhirStoreIamBinding`" pulumi-lang-python="`healthcare.FhirStoreIamBinding`" pulumi-lang-yaml="`gcp.healthcare.FhirStoreIamBinding`" pulumi-lang-java="`gcp.healthcare.FhirStoreIamBinding`">`gcp.healthcare.FhirStoreIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

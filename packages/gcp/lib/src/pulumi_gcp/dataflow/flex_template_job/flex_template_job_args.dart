@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for FlexTemplateJob.
 class FlexTemplateJobArgs {
-  /// List of experiments that should be used by the job. An example value is `[<span pulumi-lang-nodejs=""enableStackdriverAgentMetrics"" pulumi-lang-dotnet=""EnableStackdriverAgentMetrics"" pulumi-lang-go=""enableStackdriverAgentMetrics"" pulumi-lang-python=""enable_stackdriver_agent_metrics"" pulumi-lang-yaml=""enableStackdriverAgentMetrics"" pulumi-lang-java=""enableStackdriverAgentMetrics"">"enable_stackdriver_agent_metrics"</span>]`.
+  /// List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
   final Input<List<String>>? additionalExperiments;
 
   /// List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.

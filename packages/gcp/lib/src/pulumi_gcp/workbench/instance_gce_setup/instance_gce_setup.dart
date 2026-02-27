@@ -14,7 +14,7 @@ import '../instance_gce_setup_vm_image/instance_gce_setup_vm_image.dart';
 
 class InstanceGceSetup {
   /// The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has
-  /// [enough vCPUs and memory to support the <span pulumi-lang-nodejs="`machineType`" pulumi-lang-dotnet="`MachineType`" pulumi-lang-go="`machineType`" pulumi-lang-python="`machine_type`" pulumi-lang-yaml="`machineType`" pulumi-lang-java="`machineType`">`machine_type`</span> you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
+  /// [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
   /// Currently supports only one accelerator configuration.
   /// Structure is documented below.
   final List<InstanceGceSetupAcceleratorConfig>? acceleratorConfigs;

@@ -1,0 +1,3 @@
+library module_container_aws_cluster_authorization_admin_user;
+
+export 'aws_cluster_authorization_admin_user/aws_cluster_authorization_admin_user.dart';

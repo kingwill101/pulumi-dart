@@ -1,0 +1,3 @@
+library module_assuredworkloads_workload_kms_settings;
+
+export 'workload_kms_settings/workload_kms_settings.dart';

@@ -1,0 +1,3 @@
+library module_bigquery_get_table_encryption_configuration;
+
+export 'get_table_encryption_configuration/get_table_encryption_configuration.dart';

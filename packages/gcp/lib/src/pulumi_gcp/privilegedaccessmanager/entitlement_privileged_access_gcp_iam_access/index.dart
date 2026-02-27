@@ -1,3 +1,0 @@
-library module_privilegedaccessmanager_entitlement_privileged_access_gcp_iam_access;
-
-export 'entitlement_privileged_access_gcp_iam_access.dart';

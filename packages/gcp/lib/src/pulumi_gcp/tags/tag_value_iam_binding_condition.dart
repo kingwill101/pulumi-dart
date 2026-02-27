@@ -1,0 +1,3 @@
+library module_tags_tag_value_iam_binding_condition;
+
+export 'tag_value_iam_binding_condition/tag_value_iam_binding_condition.dart';

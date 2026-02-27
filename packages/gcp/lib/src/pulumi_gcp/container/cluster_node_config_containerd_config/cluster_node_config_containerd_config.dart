@@ -10,10 +10,10 @@ class ClusterNodeConfigContainerdConfig {
   final ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig?
       privateRegistryAccessConfig;
 
-  /// Defines containerd registry host configuration. Each <span pulumi-lang-nodejs="`registryHosts`" pulumi-lang-dotnet="`RegistryHosts`" pulumi-lang-go="`registryHosts`" pulumi-lang-python="`registry_hosts`" pulumi-lang-yaml="`registryHosts`" pulumi-lang-java="`registryHosts`">`registry_hosts`</span> entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
+  /// Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
   final List<ClusterNodeConfigContainerdConfigRegistryHost>? registryHosts;
 
-  /// Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The <span pulumi-lang-nodejs="`writableCgroups`" pulumi-lang-dotnet="`WritableCgroups`" pulumi-lang-go="`writableCgroups`" pulumi-lang-python="`writable_cgroups`" pulumi-lang-yaml="`writableCgroups`" pulumi-lang-java="`writableCgroups`">`writable_cgroups`</span> block supports:
+  /// Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
   final ClusterNodeConfigContainerdConfigWritableCgroups? writableCgroups;
 
   ClusterNodeConfigContainerdConfig({

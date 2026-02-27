@@ -15,7 +15,7 @@ class MetastoreTableIamMemberArgs {
   /// location is specified, it is taken from the provider configuration.
   final Input<String>? location;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -34,7 +34,7 @@ class MetastoreTableIamMemberArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.dataproc.MetastoreTableIamBinding`" pulumi-lang-dotnet="`gcp.dataproc.MetastoreTableIamBinding`" pulumi-lang-go="`dataproc.MetastoreTableIamBinding`" pulumi-lang-python="`dataproc.MetastoreTableIamBinding`" pulumi-lang-yaml="`gcp.dataproc.MetastoreTableIamBinding`" pulumi-lang-java="`gcp.dataproc.MetastoreTableIamBinding`">`gcp.dataproc.MetastoreTableIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.dataproc.MetastoreTableIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

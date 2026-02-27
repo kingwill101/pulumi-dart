@@ -17,10 +17,10 @@ class CaPoolIssuancePolicy {
   final List<CaPoolIssuancePolicyAllowedKeyType>? allowedKeyTypes;
 
   /// The duration to backdate all certificates issued from this CaPool. If not set, the
-  /// certificates will be issued with a<span pulumi-lang-nodejs=" notBeforeTime " pulumi-lang-dotnet=" NotBeforeTime " pulumi-lang-go=" notBeforeTime " pulumi-lang-python=" not_before_time " pulumi-lang-yaml=" notBeforeTime " pulumi-lang-java=" notBeforeTime "> not_before_time </span>of the issuance time (i.e. the current
-  /// time). If set, the certificates will be issued with a<span pulumi-lang-nodejs=" notBeforeTime " pulumi-lang-dotnet=" NotBeforeTime " pulumi-lang-go=" notBeforeTime " pulumi-lang-python=" not_before_time " pulumi-lang-yaml=" notBeforeTime " pulumi-lang-java=" notBeforeTime "> not_before_time </span>of the issuance
-  /// time minus the backdate_duration. The<span pulumi-lang-nodejs=" notAfterTime " pulumi-lang-dotnet=" NotAfterTime " pulumi-lang-go=" notAfterTime " pulumi-lang-python=" not_after_time " pulumi-lang-yaml=" notAfterTime " pulumi-lang-java=" notAfterTime "> not_after_time </span>will be adjusted to preserve the
-  /// requested lifetime. The<span pulumi-lang-nodejs=" backdateDuration " pulumi-lang-dotnet=" BackdateDuration " pulumi-lang-go=" backdateDuration " pulumi-lang-python=" backdate_duration " pulumi-lang-yaml=" backdateDuration " pulumi-lang-java=" backdateDuration "> backdate_duration </span>must be less than or equal to 48 hours.
+  /// certificates will be issued with a not_before_time of the issuance time (i.e. the current
+  /// time). If set, the certificates will be issued with a not_before_time of the issuance
+  /// time minus the backdate_duration. The not_after_time will be adjusted to preserve the
+  /// requested lifetime. The backdate_duration must be less than or equal to 48 hours.
   final String? backdateDuration;
 
   /// A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request

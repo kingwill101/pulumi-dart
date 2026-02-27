@@ -1,0 +1,5 @@
+library module_filestore_get_instance;
+
+export 'get_instance/get_instance3.dart';
+export 'get_instance/get_instance_args3.dart';
+export 'get_instance/get_instance_result3.dart';

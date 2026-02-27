@@ -1,0 +1,3 @@
+library module_diagflow_cx_page_transition_route_trigger_fulfillment_message;
+
+export 'cx_page_transition_route_trigger_fulfillment_message/cx_page_transition_route_trigger_fulfillment_message.dart';

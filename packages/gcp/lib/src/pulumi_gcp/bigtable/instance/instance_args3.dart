@@ -16,10 +16,10 @@ class InstanceArgs3 {
   /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
   final Input<bool>? deletionProtection;
 
-  /// The human-readable display name of the Bigtable instance. Defaults to the instance <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
   final Input<String>? displayName;
 
-  /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When <span pulumi-lang-nodejs="`forceDestroy`" pulumi-lang-dotnet="`ForceDestroy`" pulumi-lang-go="`forceDestroy`" pulumi-lang-python="`force_destroy`" pulumi-lang-yaml="`forceDestroy`" pulumi-lang-java="`forceDestroy`">`force_destroy`</span> is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
+  /// Deleting a BigTable instance can be blocked if any backups are present in the instance. When `force_destroy` is set to true, the Provider will delete all backups found in the BigTable instance before attempting to delete the instance itself. Defaults to false.
   final Input<bool>? forceDestroy;
 
   /// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.

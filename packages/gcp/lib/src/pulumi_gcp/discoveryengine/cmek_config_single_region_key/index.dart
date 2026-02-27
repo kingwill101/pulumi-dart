@@ -1,3 +1,0 @@
-library module_discoveryengine_cmek_config_single_region_key;
-
-export 'cmek_config_single_region_key.dart';

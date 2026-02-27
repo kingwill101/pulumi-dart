@@ -1,0 +1,4 @@
+library module_networksecurity_address_group_iam_member;
+
+export 'address_group_iam_member/address_group_iam_member.dart';
+export 'address_group_iam_member/address_group_iam_member_args.dart';

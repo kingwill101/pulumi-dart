@@ -36,7 +36,7 @@ class Api2 extends CustomResource {
   /// The id of the most recently created revision for this API proxy.
   late final Output<String> latestRevisionId;
 
-  /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned<span pulumi-lang-nodejs=" lastModified " pulumi-lang-dotnet=" LastModified " pulumi-lang-go=" lastModified " pulumi-lang-python=" last_modified " pulumi-lang-yaml=" lastModified " pulumi-lang-java=" lastModified "> last_modified </span>timestamp.
+  /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
   late final Output<String> md5hash;
 
   /// Metadata describing the API proxy.

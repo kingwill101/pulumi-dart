@@ -1,3 +1,0 @@
-library module_vertex_ai_endpoint_with_model_garden_deployment_deploy_config_dedicated_resources_machine_spec;
-
-export 'ai_endpoint_with_model_garden_deployment_deploy_config_dedicated_resources_machine_spec.dart';

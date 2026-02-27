@@ -1,3 +1,0 @@
-library module_dataplex_task_notebook_infrastructure_spec_batch;
-
-export 'task_notebook_infrastructure_spec_batch.dart';

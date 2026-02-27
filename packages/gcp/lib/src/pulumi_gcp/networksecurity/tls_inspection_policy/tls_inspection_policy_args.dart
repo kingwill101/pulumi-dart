@@ -7,7 +7,7 @@ class TlsInspectionPolicyArgs {
   /// A CA pool resource used to issue interception certificates.
   final Input<String> caPool;
 
-  /// List of custom TLS cipher suites selected. This field is valid only if the selected<span pulumi-lang-nodejs=" tlsFeatureProfile " pulumi-lang-dotnet=" TlsFeatureProfile " pulumi-lang-go=" tlsFeatureProfile " pulumi-lang-python=" tls_feature_profile " pulumi-lang-yaml=" tlsFeatureProfile " pulumi-lang-java=" tlsFeatureProfile "> tls_feature_profile </span>is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
+  /// List of custom TLS cipher suites selected. This field is valid only if the selected tls_feature_profile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
   final Input<List<String>>? customTlsFeatures;
 
   /// Free-text description of the resource.

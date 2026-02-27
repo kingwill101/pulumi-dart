@@ -10,7 +10,7 @@ class GetSupportedDatabaseFlagsResult {
   final String location;
   final String? project;
 
-  /// Contains a list of <span pulumi-lang-nodejs="`flag`" pulumi-lang-dotnet="`Flag`" pulumi-lang-go="`flag`" pulumi-lang-python="`flag`" pulumi-lang-yaml="`flag`" pulumi-lang-java="`flag`">`flag`</span>, which contains the details about a particular flag.
+  /// Contains a list of `flag`, which contains the details about a particular flag.
   final List<GetSupportedDatabaseFlagsSupportedDatabaseFlag>
       supportedDatabaseFlags;
 

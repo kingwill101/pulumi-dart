@@ -1,0 +1,4 @@
+library module_vertex_ai_feature_online_store_featureview_iam_member;
+
+export 'ai_feature_online_store_featureview_iam_member/ai_feature_online_store_featureview_iam_member.dart';
+export 'ai_feature_online_store_featureview_iam_member/ai_feature_online_store_featureview_iam_member_args.dart';

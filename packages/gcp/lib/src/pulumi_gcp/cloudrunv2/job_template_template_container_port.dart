@@ -1,0 +1,3 @@
+library module_cloudrunv2_job_template_template_container_port;
+
+export 'job_template_template_container_port/job_template_template_container_port.dart';

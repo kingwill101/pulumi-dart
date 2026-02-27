@@ -16,7 +16,7 @@ class TargetPoolArgs {
   final Input<double>? failoverRatio;
 
   /// List of zero or one health check name or self_link. Only
-  /// legacy <span pulumi-lang-nodejs="`gcp.compute.HttpHealthCheck`" pulumi-lang-dotnet="`gcp.compute.HttpHealthCheck`" pulumi-lang-go="`compute.HttpHealthCheck`" pulumi-lang-python="`compute.HttpHealthCheck`" pulumi-lang-yaml="`gcp.compute.HttpHealthCheck`" pulumi-lang-java="`gcp.compute.HttpHealthCheck`">`gcp.compute.HttpHealthCheck`</span> is supported.
+  /// legacy `gcp.compute.HttpHealthCheck` is supported.
   final Input<String>? healthChecks;
 
   /// List of instances in the pool. They can be given as

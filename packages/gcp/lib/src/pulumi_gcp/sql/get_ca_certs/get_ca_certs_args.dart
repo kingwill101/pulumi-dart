@@ -7,7 +7,7 @@ class GetCaCertsArgs {
   /// The name or self link of the instance.
   final Input<String> instance;
 
-  /// The ID of the project in which the resource belongs. If <span pulumi-lang-nodejs="`project`" pulumi-lang-dotnet="`Project`" pulumi-lang-go="`project`" pulumi-lang-python="`project`" pulumi-lang-yaml="`project`" pulumi-lang-java="`project`">`project`</span> is not provided, the provider project is used.
+  /// The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
   final Input<String>? project;
 
   GetCaCertsArgs({

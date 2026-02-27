@@ -1,3 +1,0 @@
-library module_storage_transfer_agent_pool_bandwidth_limit;
-
-export 'transfer_agent_pool_bandwidth_limit.dart';

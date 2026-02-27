@@ -1,0 +1,3 @@
+library module_cloudfunctionsv2_function_service_config_secret_environment_variable;
+
+export 'function_service_config_secret_environment_variable/function_service_config_secret_environment_variable.dart';

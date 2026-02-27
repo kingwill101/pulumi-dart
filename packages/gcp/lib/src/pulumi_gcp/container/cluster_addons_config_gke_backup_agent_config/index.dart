@@ -1,3 +1,0 @@
-library module_container_cluster_addons_config_gke_backup_agent_config;
-
-export 'cluster_addons_config_gke_backup_agent_config.dart';

@@ -23,7 +23,7 @@ class AppVersionSnapshotAppLanguageSetting {
 
   /// (Output)
   /// List of languages codes supported by the app, in addition to the
-  /// <span pulumi-lang-nodejs="`defaultLanguageCode`" pulumi-lang-dotnet="`DefaultLanguageCode`" pulumi-lang-go="`defaultLanguageCode`" pulumi-lang-python="`default_language_code`" pulumi-lang-yaml="`defaultLanguageCode`" pulumi-lang-java="`defaultLanguageCode`">`default_language_code`</span>.
+  /// `default_language_code`.
   final List<String>? supportedLanguageCodes;
 
   AppVersionSnapshotAppLanguageSetting({

@@ -1,0 +1,3 @@
+library module_compute_security_policy_adaptive_protection_config_auto_deploy_config;
+
+export 'security_policy_adaptive_protection_config_auto_deploy_config/security_policy_adaptive_protection_config_auto_deploy_config.dart';

@@ -1,0 +1,3 @@
+library module_iam_workforce_pool_access_restrictions_allowed_service;
+
+export 'workforce_pool_access_restrictions_allowed_service/workforce_pool_access_restrictions_allowed_service.dart';

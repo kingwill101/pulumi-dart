@@ -13,7 +13,7 @@ class GdcSparkApplicationSparkApplicationConfig {
   /// HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
   final List<String>? jarFileUris;
 
-  /// The name of the driver main class. The jar file that contains the class must be in the classpath or specified in <span pulumi-lang-nodejs="`jarFileUris`" pulumi-lang-dotnet="`JarFileUris`" pulumi-lang-go="`jarFileUris`" pulumi-lang-python="`jar_file_uris`" pulumi-lang-yaml="`jarFileUris`" pulumi-lang-java="`jarFileUris`">`jar_file_uris`</span>.
+  /// The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jar_file_uris`.
   final String? mainClass;
 
   /// The HCFS URI of the jar file that contains the main class.

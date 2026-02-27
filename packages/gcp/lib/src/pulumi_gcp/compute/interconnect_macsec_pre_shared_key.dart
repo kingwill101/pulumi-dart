@@ -1,0 +1,3 @@
+library module_compute_interconnect_macsec_pre_shared_key;
+
+export 'interconnect_macsec_pre_shared_key/interconnect_macsec_pre_shared_key.dart';

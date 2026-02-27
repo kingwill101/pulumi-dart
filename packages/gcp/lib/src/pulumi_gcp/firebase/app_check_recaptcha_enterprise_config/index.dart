@@ -1,4 +1,0 @@
-library module_firebase_app_check_recaptcha_enterprise_config;
-
-export 'app_check_recaptcha_enterprise_config.dart';
-export 'app_check_recaptcha_enterprise_config_args.dart';

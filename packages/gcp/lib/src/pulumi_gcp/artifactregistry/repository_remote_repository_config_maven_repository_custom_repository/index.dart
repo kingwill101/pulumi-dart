@@ -1,3 +1,0 @@
-library module_artifactregistry_repository_remote_repository_config_maven_repository_custom_repository;
-
-export 'repository_remote_repository_config_maven_repository_custom_repository.dart';

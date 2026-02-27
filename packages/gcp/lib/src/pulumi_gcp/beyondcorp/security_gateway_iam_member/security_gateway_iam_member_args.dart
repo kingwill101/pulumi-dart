@@ -9,12 +9,12 @@ class SecurityGatewayIamMemberArgs {
   /// Structure is documented below.
   final Input<SecurityGatewayIamMemberCondition>? condition;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span>. Used to find the parent resource to bind the IAM policy to. If not specified,
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final Input<String>? location;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -33,7 +33,7 @@ class SecurityGatewayIamMemberArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.beyondcorp.SecurityGatewayIamBinding`" pulumi-lang-dotnet="`gcp.beyondcorp.SecurityGatewayIamBinding`" pulumi-lang-go="`beyondcorp.SecurityGatewayIamBinding`" pulumi-lang-python="`beyondcorp.SecurityGatewayIamBinding`" pulumi-lang-yaml="`gcp.beyondcorp.SecurityGatewayIamBinding`" pulumi-lang-java="`gcp.beyondcorp.SecurityGatewayIamBinding`">`gcp.beyondcorp.SecurityGatewayIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.beyondcorp.SecurityGatewayIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

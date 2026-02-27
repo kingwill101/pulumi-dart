@@ -1,0 +1,3 @@
+library module_sql_get_database_instances_instance_replica_configuration;
+
+export 'get_database_instances_instance_replica_configuration/get_database_instances_instance_replica_configuration.dart';

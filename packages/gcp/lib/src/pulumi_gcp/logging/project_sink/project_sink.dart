@@ -41,7 +41,7 @@ class ProjectSink extends CustomResource {
   /// If set to True, then this sink is disabled and it does not export any log entries.
   late final Output<bool?> disabled;
 
-  /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+  /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
   late final Output<List<ProjectSinkExclusion>?> exclusions;
 
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -56,13 +56,13 @@ class ProjectSink extends CustomResource {
   /// used.
   late final Output<String> project;
 
-  /// Whether or not to create a unique identity associated with this sink. If <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, then the <span pulumi-lang-nodejs="`writerIdentity`" pulumi-lang-dotnet="`WriterIdentity`" pulumi-lang-go="`writerIdentity`" pulumi-lang-python="`writer_identity`" pulumi-lang-yaml="`writerIdentity`" pulumi-lang-java="`writerIdentity`">`writer_identity`</span> used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> (the default),
+  /// Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
   /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-  /// <span pulumi-lang-nodejs="`bigqueryOptions`" pulumi-lang-dotnet="`BigqueryOptions`" pulumi-lang-go="`bigqueryOptions`" pulumi-lang-python="`bigquery_options`" pulumi-lang-yaml="`bigqueryOptions`" pulumi-lang-java="`bigqueryOptions`">`bigquery_options`</span>, you must set <span pulumi-lang-nodejs="`uniqueWriterIdentity`" pulumi-lang-dotnet="`UniqueWriterIdentity`" pulumi-lang-go="`uniqueWriterIdentity`" pulumi-lang-python="`unique_writer_identity`" pulumi-lang-yaml="`uniqueWriterIdentity`" pulumi-lang-java="`uniqueWriterIdentity`">`unique_writer_identity`</span> to true.
+  /// `bigquery_options`, you must set `unique_writer_identity` to true.
   late final Output<bool?> uniqueWriterIdentity;
 
   /// The identity associated with this sink. This identity must be granted write access to the
-  /// configured <span pulumi-lang-nodejs="`destination`" pulumi-lang-dotnet="`Destination`" pulumi-lang-go="`destination`" pulumi-lang-python="`destination`" pulumi-lang-yaml="`destination`" pulumi-lang-java="`destination`">`destination`</span>.
+  /// configured `destination`.
   late final Output<String> writerIdentity;
 
   ProjectSink(

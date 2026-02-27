@@ -1,3 +1,0 @@
-library module_cloudfunctions_get_function_source_repository;
-
-export 'get_function_source_repository.dart';

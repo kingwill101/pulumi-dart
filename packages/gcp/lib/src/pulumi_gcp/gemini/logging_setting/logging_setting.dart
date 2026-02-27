@@ -10,127 +10,7 @@ import 'logging_setting_args.dart';
 /// ### Gemini Logging Setting Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const example = new gcp.gemini.LoggingSetting("example", {
-/// loggingSettingId: "ls1-tf",
-/// location: "global",
-/// labels: {
-/// my_key: "my_value",
-/// },
-/// logPromptsAndResponses: true,
-/// logMetadata: true,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// example = gcp.gemini.LoggingSetting("example",
-/// logging_setting_id="ls1-tf",
-/// location="global",
-/// labels={
-/// "my_key": "my_value",
-/// },
-/// log_prompts_and_responses=True,
-/// log_metadata=True)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var example = new Gcp.Gemini.LoggingSetting("example", new()
-/// {
-/// LoggingSettingId = "ls1-tf",
-/// Location = "global",
-/// Labels =
-/// {
-/// { "my_key", "my_value" },
-/// },
-/// LogPromptsAndResponses = true,
-/// LogMetadata = true,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := gemini.NewLoggingSetting(ctx, "example", &gemini.LoggingSettingArgs{
-/// LoggingSettingId: pulumi.String("ls1-tf"),
-/// Location:         pulumi.String("global"),
-/// Labels: pulumi.StringMap{
-/// "my_key": pulumi.String("my_value"),
-/// },
-/// LogPromptsAndResponses: pulumi.Bool(true),
-/// LogMetadata:            pulumi.Bool(true),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.gemini.LoggingSetting;
-/// import com.pulumi.gcp.gemini.LoggingSettingArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var example = new LoggingSetting("example", LoggingSettingArgs.builder()
-/// .loggingSettingId("ls1-tf")
-/// .location("global")
-/// .labels(Map.of("my_key", "my_value"))
-/// .logPromptsAndResponses(true)
-/// .logMetadata(true)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// example:
-/// type: gcp:gemini:LoggingSetting
-/// properties:
-/// loggingSettingId: ls1-tf
-/// location: global
-/// labels:
-/// my_key: my_value
-/// logPromptsAndResponses: true
-/// logMetadata: true
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -164,10 +44,10 @@ class LoggingSetting extends CustomResource {
 
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> location;
 
   /// Whether to log metadata.

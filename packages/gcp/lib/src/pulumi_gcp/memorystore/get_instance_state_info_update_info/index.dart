@@ -1,3 +1,0 @@
-library module_memorystore_get_instance_state_info_update_info;
-
-export 'get_instance_state_info_update_info.dart';

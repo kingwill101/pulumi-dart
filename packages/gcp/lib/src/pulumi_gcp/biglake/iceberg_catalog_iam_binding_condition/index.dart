@@ -1,3 +1,0 @@
-library module_biglake_iceberg_catalog_iam_binding_condition;
-
-export 'iceberg_catalog_iam_binding_condition.dart';

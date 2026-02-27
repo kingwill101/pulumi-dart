@@ -1,3 +1,0 @@
-library module_workstations_workstation_config_host_gce_instance_confidential_instance_config;
-
-export 'workstation_config_host_gce_instance_confidential_instance_config.dart';

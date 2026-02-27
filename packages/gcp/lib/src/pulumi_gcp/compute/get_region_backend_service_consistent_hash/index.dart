@@ -1,3 +1,0 @@
-library module_compute_get_region_backend_service_consistent_hash;
-
-export 'get_region_backend_service_consistent_hash.dart';

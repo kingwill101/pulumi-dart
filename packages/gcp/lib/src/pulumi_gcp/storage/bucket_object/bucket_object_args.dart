@@ -14,7 +14,7 @@ class BucketObjectArgs {
   /// directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
   final Input<String>? cacheControl;
 
-  /// Data as <span pulumi-lang-nodejs="`string`" pulumi-lang-dotnet="`String`" pulumi-lang-go="`string`" pulumi-lang-python="`string`" pulumi-lang-yaml="`string`" pulumi-lang-java="`string`">`string`</span> to be uploaded. Must be defined if <span pulumi-lang-nodejs="`source`" pulumi-lang-dotnet="`Source`" pulumi-lang-go="`source`" pulumi-lang-python="`source`" pulumi-lang-yaml="`source`" pulumi-lang-java="`source`">`source`</span> is not. **Note**: The <span pulumi-lang-nodejs="`content`" pulumi-lang-dotnet="`Content`" pulumi-lang-go="`content`" pulumi-lang-python="`content`" pulumi-lang-yaml="`content`" pulumi-lang-java="`content`">`content`</span> field is marked as sensitive.
+  /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
   final Input<String>? content;
 
   /// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
@@ -52,14 +52,14 @@ class BucketObjectArgs {
   /// One of the following is required:
   final Input<Map<String, String>>? metadata;
 
-  /// The name of the object. If you're interpolating the name of this object, see <span pulumi-lang-nodejs="`outputName`" pulumi-lang-dotnet="`OutputName`" pulumi-lang-go="`outputName`" pulumi-lang-python="`output_name`" pulumi-lang-yaml="`outputName`" pulumi-lang-java="`outputName`">`output_name`</span> instead.
+  /// The name of the object. If you're interpolating the name of this object, see `output_name` instead.
   final Input<String>? name;
 
   /// The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
   final Input<BucketObjectRetention>? retention;
 
   /// A path to the data you want to upload. Must be defined
-  /// if <span pulumi-lang-nodejs="`content`" pulumi-lang-dotnet="`Content`" pulumi-lang-go="`content`" pulumi-lang-python="`content`" pulumi-lang-yaml="`content`" pulumi-lang-java="`content`">`content`</span> is not.
+  /// if `content` is not.
   ///
   /// - - -
   final Input<dynamic>? source;

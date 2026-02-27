@@ -1,3 +1,0 @@
-library module_developerconnect_connection_bitbucket_cloud_config;
-
-export 'connection_bitbucket_cloud_config2.dart';

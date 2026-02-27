@@ -1,0 +1,3 @@
+library module_monitoring_uptime_check_config_http_check;
+
+export 'uptime_check_config_http_check/uptime_check_config_http_check.dart';

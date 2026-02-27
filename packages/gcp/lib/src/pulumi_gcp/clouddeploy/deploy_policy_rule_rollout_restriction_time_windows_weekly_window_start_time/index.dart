@@ -1,3 +1,0 @@
-library module_clouddeploy_deploy_policy_rule_rollout_restriction_time_windows_weekly_window_start_time;
-
-export 'deploy_policy_rule_rollout_restriction_time_windows_weekly_window_start_time.dart';

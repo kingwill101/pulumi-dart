@@ -1,0 +1,3 @@
+library module_storage_bucket_iammember_condition;
+
+export 'bucket_iammember_condition/bucket_iammember_condition.dart';

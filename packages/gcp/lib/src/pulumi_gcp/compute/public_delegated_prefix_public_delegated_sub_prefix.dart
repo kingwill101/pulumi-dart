@@ -1,0 +1,3 @@
+library module_compute_public_delegated_prefix_public_delegated_sub_prefix;
+
+export 'public_delegated_prefix_public_delegated_sub_prefix/public_delegated_prefix_public_delegated_sub_prefix.dart';

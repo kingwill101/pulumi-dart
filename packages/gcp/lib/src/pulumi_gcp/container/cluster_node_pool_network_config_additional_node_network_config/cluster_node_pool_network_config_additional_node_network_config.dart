@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the Google Compute Engine
+  /// The name or self_link of the Google Compute Engine
   /// network to which the cluster is connected. For Shared VPC, set this to the self link of the
   /// shared network.
   final String? network;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the Google Compute Engine
+  /// The name or self_link of the Google Compute Engine
   /// subnetwork in which the cluster's instances are launched.
   final String? subnetwork;
 

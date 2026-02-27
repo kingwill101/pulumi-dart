@@ -1,0 +1,3 @@
+library module_cloudrun_service_template_spec_volume_csi;
+
+export 'service_template_spec_volume_csi/service_template_spec_volume_csi.dart';

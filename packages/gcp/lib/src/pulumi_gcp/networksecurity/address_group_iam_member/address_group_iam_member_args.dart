@@ -13,7 +13,7 @@ class AddressGroupIamMemberArgs {
   /// location is specified, it is taken from the provider configuration.
   final Input<String>? location;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -35,7 +35,7 @@ class AddressGroupIamMemberArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-dotnet="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-go="`networksecurity.AddressGroupIamBinding`" pulumi-lang-python="`networksecurity.AddressGroupIamBinding`" pulumi-lang-yaml="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-java="`gcp.networksecurity.AddressGroupIamBinding`">`gcp.networksecurity.AddressGroupIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.networksecurity.AddressGroupIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

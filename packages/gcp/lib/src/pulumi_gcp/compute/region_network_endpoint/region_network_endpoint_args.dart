@@ -8,7 +8,7 @@ class RegionNetworkEndpointArgs {
   final Input<int>? clientDestinationPort;
 
   /// Fully qualified domain name of network endpoint.
-  /// This can only be specified when<span pulumi-lang-nodejs=" networkEndpointType " pulumi-lang-dotnet=" NetworkEndpointType " pulumi-lang-go=" networkEndpointType " pulumi-lang-python=" network_endpoint_type " pulumi-lang-yaml=" networkEndpointType " pulumi-lang-java=" networkEndpointType "> network_endpoint_type </span>of the NEG is INTERNET_FQDN_PORT.
+  /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
   final Input<String>? fqdn;
 
   /// The name for a specific VM instance that the IP address belongs to.
@@ -16,7 +16,7 @@ class RegionNetworkEndpointArgs {
   final Input<String>? instance;
 
   /// IPv4 address external endpoint.
-  /// This can only be specified when<span pulumi-lang-nodejs=" networkEndpointType " pulumi-lang-dotnet=" NetworkEndpointType " pulumi-lang-go=" networkEndpointType " pulumi-lang-python=" network_endpoint_type " pulumi-lang-yaml=" networkEndpointType " pulumi-lang-java=" networkEndpointType "> network_endpoint_type </span>of the NEG is INTERNET_IP_PORT.
+  /// This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
   final Input<String>? ipAddress;
 
   /// Port number of network endpoint.

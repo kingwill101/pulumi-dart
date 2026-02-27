@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart';
 import '../certificate_template_passthrough_extensions_additional_extension/certificate_template_passthrough_extensions_additional_extension.dart';
 
 class CertificateTemplatePassthroughExtensions {
-  /// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with<span pulumi-lang-nodejs=" knownExtensions " pulumi-lang-dotnet=" KnownExtensions " pulumi-lang-go=" knownExtensions " pulumi-lang-python=" known_extensions " pulumi-lang-yaml=" knownExtensions " pulumi-lang-java=" knownExtensions "> known_extensions </span>to determine the full set of X.509 extensions.
+  /// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
   /// Structure is documented below.
   final List<CertificateTemplatePassthroughExtensionsAdditionalExtension>?
       additionalExtensions;
 
-  /// Optional. A set of named X.509 extensions. Will be combined with<span pulumi-lang-nodejs=" additionalExtensions " pulumi-lang-dotnet=" AdditionalExtensions " pulumi-lang-go=" additionalExtensions " pulumi-lang-python=" additional_extensions " pulumi-lang-yaml=" additionalExtensions " pulumi-lang-java=" additionalExtensions "> additional_extensions </span>to determine the full set of X.509 extensions.
+  /// Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
   final List<String>? knownExtensions;
 
   CertificateTemplatePassthroughExtensions({

@@ -1,3 +1,0 @@
-library module_bigquery_connection_cloud_sql_credential;
-
-export 'connection_cloud_sql_credential.dart';

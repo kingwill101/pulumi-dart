@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class RegionInstanceGroupManagerVersionTargetSize {
-  /// , The number of instances which are managed for this version. Conflicts with <span pulumi-lang-nodejs="`percent`" pulumi-lang-dotnet="`Percent`" pulumi-lang-go="`percent`" pulumi-lang-python="`percent`" pulumi-lang-yaml="`percent`" pulumi-lang-java="`percent`">`percent`</span>.
+  /// , The number of instances which are managed for this version. Conflicts with `percent`.
   final int? fixed;
 
-  /// , The number of instances (calculated as percentage) which are managed for this version. Conflicts with <span pulumi-lang-nodejs="`fixed`" pulumi-lang-dotnet="`Fixed`" pulumi-lang-go="`fixed`" pulumi-lang-python="`fixed`" pulumi-lang-yaml="`fixed`" pulumi-lang-java="`fixed`">`fixed`</span>.
-  /// Note that when using <span pulumi-lang-nodejs="`percent`" pulumi-lang-dotnet="`Percent`" pulumi-lang-go="`percent`" pulumi-lang-python="`percent`" pulumi-lang-yaml="`percent`" pulumi-lang-java="`percent`">`percent`</span>, rounding will be in favor of explicitly set <span pulumi-lang-nodejs="`targetSize`" pulumi-lang-dotnet="`TargetSize`" pulumi-lang-go="`targetSize`" pulumi-lang-python="`target_size`" pulumi-lang-yaml="`targetSize`" pulumi-lang-java="`targetSize`">`target_size`</span> values; a managed instance group with 2 instances and 2 <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span>s,
-  /// one of which has a `target_size.percent` of <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span> will create 2 instances of that <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span>.
+  /// , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
+  /// Note that when using `percent`, rounding will be in favor of explicitly set `target_size` values; a managed instance group with 2 instances and 2 `version`s,
+  /// one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
   final int? percent;
 
   RegionInstanceGroupManagerVersionTargetSize({

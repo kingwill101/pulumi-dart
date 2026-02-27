@@ -9,35 +9,11 @@ class EntryGcsFilesetSpec {
   /// for more information. Note that bucket wildcards are currently not supported. Examples of valid filePatterns:
   /// * gs://bucket_name/dir/*: matches all files within bucket_name/dir directory.
   /// * gs://bucket_name/dir/**: matches all files in bucket_name/dir spanning all subdirectories.
-  /// * gs://bucket_name/file*: matches files prefixed by file in<span pulumi-lang-nodejs=" bucketName
-  /// " pulumi-lang-dotnet=" BucketName
-  /// " pulumi-lang-go=" bucketName
-  /// " pulumi-lang-python=" bucket_name
-  /// " pulumi-lang-yaml=" bucketName
-  /// " pulumi-lang-java=" bucketName
-  /// "> bucket_name
-  /// </span>* gs://bucket_name/??.txt: matches files with two characters followed by .txt in<span pulumi-lang-nodejs=" bucketName
-  /// " pulumi-lang-dotnet=" BucketName
-  /// " pulumi-lang-go=" bucketName
-  /// " pulumi-lang-python=" bucket_name
-  /// " pulumi-lang-yaml=" bucketName
-  /// " pulumi-lang-java=" bucketName
-  /// "> bucket_name
-  /// </span>* gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in<span pulumi-lang-nodejs=" bucketName
-  /// " pulumi-lang-dotnet=" BucketName
-  /// " pulumi-lang-go=" bucketName
-  /// " pulumi-lang-python=" bucket_name
-  /// " pulumi-lang-yaml=" bucketName
-  /// " pulumi-lang-java=" bucketName
-  /// "> bucket_name
-  /// </span>* gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in<span pulumi-lang-nodejs=" bucketName
-  /// " pulumi-lang-dotnet=" BucketName
-  /// " pulumi-lang-go=" bucketName
-  /// " pulumi-lang-python=" bucket_name
-  /// " pulumi-lang-yaml=" bucketName
-  /// " pulumi-lang-java=" bucketName
-  /// "> bucket_name
-  /// </span>* gs://bucket_name/a/*/b: matches all files in<span pulumi-lang-nodejs=" bucketName " pulumi-lang-dotnet=" BucketName " pulumi-lang-go=" bucketName " pulumi-lang-python=" bucket_name " pulumi-lang-yaml=" bucketName " pulumi-lang-java=" bucketName "> bucket_name </span>that match a/*/b pattern, such as a/c/b, a/d/b
+  /// * gs://bucket_name/file*: matches files prefixed by file in bucket_name
+  /// * gs://bucket_name/??.txt: matches files with two characters followed by .txt in bucket_name
+  /// * gs://bucket_name/[aeiou].txt: matches files that contain a single vowel character followed by .txt in bucket_name
+  /// * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
+  /// * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
   /// * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
   final List<String> filePatterns;
 
@@ -46,7 +22,7 @@ class EntryGcsFilesetSpec {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedGcsFilesetSpecSampleGcsFileSpecs"" pulumi-lang-dotnet=""NestedGcsFilesetSpecSampleGcsFileSpecs"" pulumi-lang-go=""nestedGcsFilesetSpecSampleGcsFileSpecs"" pulumi-lang-python=""nested_gcs_fileset_spec_sample_gcs_file_specs"" pulumi-lang-yaml=""nestedGcsFilesetSpecSampleGcsFileSpecs"" pulumi-lang-java=""nestedGcsFilesetSpecSampleGcsFileSpecs"">"nested_gcs_fileset_spec_sample_gcs_file_specs"</span>></a>The <span pulumi-lang-nodejs="`sampleGcsFileSpecs`" pulumi-lang-dotnet="`SampleGcsFileSpecs`" pulumi-lang-go="`sampleGcsFileSpecs`" pulumi-lang-python="`sample_gcs_file_specs`" pulumi-lang-yaml="`sampleGcsFileSpecs`" pulumi-lang-java="`sampleGcsFileSpecs`">`sample_gcs_file_specs`</span> block contains:
+  /// <a name="nested_gcs_fileset_spec_sample_gcs_file_specs"></a>The `sample_gcs_file_specs` block contains:
   final List<EntryGcsFilesetSpecSampleGcsFileSpec>? sampleGcsFileSpecs;
 
   EntryGcsFilesetSpec({

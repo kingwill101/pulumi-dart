@@ -1,3 +1,0 @@
-library module_cloudrunv2_worker_pool_template_volume_cloud_sql_instance;
-
-export 'worker_pool_template_volume_cloud_sql_instance.dart';

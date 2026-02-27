@@ -1,3 +1,0 @@
-library module_iam_principal_access_boundary_policy_details;
-
-export 'principal_access_boundary_policy_details.dart';

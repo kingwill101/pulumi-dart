@@ -29,14 +29,8 @@ class InstanceArgs6 {
   final Input<InstanceFileShares> fileShares;
 
   /// Replication configuration, once set, this cannot be updated.
-  /// Additionally this should be specified on the replica instance only, indicating the active as the<span pulumi-lang-nodejs=" peerInstance
-  /// " pulumi-lang-dotnet=" PeerInstance
-  /// " pulumi-lang-go=" peerInstance
-  /// " pulumi-lang-python=" peer_instance
-  /// " pulumi-lang-yaml=" peerInstance
-  /// " pulumi-lang-java=" peerInstance
-  /// "> peer_instance
-  /// </span>Structure is documented below.
+  /// Additionally this should be specified on the replica instance only, indicating the active as the peer_instance
+  /// Structure is documented below.
   final Input<InstanceInitialReplication>? initialReplication;
 
   /// KMS key name used for data encryption.
@@ -45,7 +39,7 @@ class InstanceArgs6 {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
@@ -84,7 +78,7 @@ class InstanceArgs6 {
   /// resource replacement when mutated. This field is only set
   /// at create time and modifying this field after creation
   /// will trigger recreation. To apply tags to an existing
-  /// resource, see the <span pulumi-lang-nodejs="`gcp.tags.TagValue`" pulumi-lang-dotnet="`gcp.tags.TagValue`" pulumi-lang-go="`tags.TagValue`" pulumi-lang-python="`tags.TagValue`" pulumi-lang-yaml="`gcp.tags.TagValue`" pulumi-lang-java="`gcp.tags.TagValue`">`gcp.tags.TagValue`</span> resource.
+  /// resource, see the `gcp.tags.TagValue` resource.
   final Input<Map<String, String>>? tags;
 
   /// The service tier of the instance.
@@ -94,7 +88,7 @@ class InstanceArgs6 {
   /// (Optional, Deprecated)
   /// The name of the Filestore zone of the instance.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`zone`" pulumi-lang-dotnet="`Zone`" pulumi-lang-go="`zone`" pulumi-lang-python="`zone`" pulumi-lang-yaml="`zone`" pulumi-lang-java="`zone`">`zone`</span> is deprecated and will be removed in a future major release. Use <span pulumi-lang-nodejs="`location`" pulumi-lang-dotnet="`Location`" pulumi-lang-go="`location`" pulumi-lang-python="`location`" pulumi-lang-yaml="`location`" pulumi-lang-java="`location`">`location`</span> instead.
+  /// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
   final Input<String>? zone;
 
   InstanceArgs6({

@@ -1,3 +1,0 @@
-library module_gkehub_feature_spec_fleetobservability_logging_config;
-
-export 'feature_spec_fleetobservability_logging_config.dart';

@@ -1,3 +1,0 @@
-library module_healthcare_pipeline_job_mapping_pipeline_job_fhir_streaming_source;
-
-export 'pipeline_job_mapping_pipeline_job_fhir_streaming_source.dart';

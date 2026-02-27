@@ -1,3 +1,0 @@
-library module_lustre_instance_access_rules_options_access_rule;
-
-export 'instance_access_rules_options_access_rule.dart';

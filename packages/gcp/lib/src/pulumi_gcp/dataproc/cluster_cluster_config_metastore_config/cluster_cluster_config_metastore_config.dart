@@ -5,7 +5,7 @@ class ClusterClusterConfigMetastoreConfig {
   ///
   /// Only resource names including projectid and location (region) are valid. Examples:
   ///
-  /// `projects/[projectId]/locations/<span pulumi-lang-nodejs="[dataprocRegion]" pulumi-lang-dotnet="[DataprocRegion]" pulumi-lang-go="[dataprocRegion]" pulumi-lang-python="[dataproc_region]" pulumi-lang-yaml="[dataprocRegion]" pulumi-lang-java="[dataprocRegion]">[dataproc_region]</span>/services/[service-name]`
+  /// `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
   final String dataprocMetastoreService;
 
   ClusterClusterConfigMetastoreConfig({

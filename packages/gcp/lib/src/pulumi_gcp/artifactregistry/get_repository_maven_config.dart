@@ -1,0 +1,3 @@
+library module_artifactregistry_get_repository_maven_config;
+
+export 'get_repository_maven_config/get_repository_maven_config.dart';

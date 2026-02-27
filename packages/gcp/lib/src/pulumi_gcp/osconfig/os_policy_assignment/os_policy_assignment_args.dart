@@ -30,7 +30,7 @@ class OsPolicyAssignmentArgs {
   /// Rollout to deploy the OS policy assignment. A rollout
   /// is triggered in the following situations: 1) OSPolicyAssignment is created.
   /// 2) OSPolicyAssignment is updated and the update contains changes to one of
-  /// the following fields: -<span pulumi-lang-nodejs=" instanceFilter " pulumi-lang-dotnet=" InstanceFilter " pulumi-lang-go=" instanceFilter " pulumi-lang-python=" instance_filter " pulumi-lang-yaml=" instanceFilter " pulumi-lang-java=" instanceFilter "> instance_filter </span>-<span pulumi-lang-nodejs=" osPolicies " pulumi-lang-dotnet=" OsPolicies " pulumi-lang-go=" osPolicies " pulumi-lang-python=" os_policies " pulumi-lang-yaml=" osPolicies " pulumi-lang-java=" osPolicies "> os_policies </span>3) OSPolicyAssignment
+  /// the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
   /// is deleted. Structure is documented below.
   final Input<OsPolicyAssignmentRollout> rollout;
 

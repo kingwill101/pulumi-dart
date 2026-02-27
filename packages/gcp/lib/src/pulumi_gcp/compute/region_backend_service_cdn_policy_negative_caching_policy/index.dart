@@ -1,3 +1,0 @@
-library module_compute_region_backend_service_cdn_policy_negative_caching_policy;
-
-export 'region_backend_service_cdn_policy_negative_caching_policy.dart';

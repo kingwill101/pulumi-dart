@@ -1,3 +1,0 @@
-library module_container_node_pool_node_config_ephemeral_storage_config;
-
-export 'node_pool_node_config_ephemeral_storage_config.dart';

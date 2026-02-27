@@ -1,0 +1,3 @@
+library module_transcoder_job_template_config_input;
+
+export 'job_template_config_input/job_template_config_input.dart';

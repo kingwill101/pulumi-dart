@@ -18,7 +18,7 @@ class AccessLevelArgs {
   /// Description of the AccessLevel and its use. Does not affect behavior.
   final Input<String>? description;
 
-  /// Resource name for the Access Level. The<span pulumi-lang-nodejs=" shortName " pulumi-lang-dotnet=" ShortName " pulumi-lang-go=" shortName " pulumi-lang-python=" short_name " pulumi-lang-yaml=" shortName " pulumi-lang-java=" shortName "> short_name </span>component must begin
+  /// Resource name for the Access Level. The short_name component must begin
   /// with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
   final Input<String>? name;

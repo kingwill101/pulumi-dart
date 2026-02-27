@@ -1,3 +1,0 @@
-library module_container_cluster_ip_allocation_policy_auto_ipam_config;
-
-export 'cluster_ip_allocation_policy_auto_ipam_config.dart';

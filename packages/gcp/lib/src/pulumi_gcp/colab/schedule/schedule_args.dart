@@ -5,7 +5,7 @@ import '../schedule_create_notebook_execution_job_request/schedule_create_notebo
 
 /// The set of arguments for Schedule.
 class ScheduleArgs {
-  /// Whether new scheduled runs can be queued when<span pulumi-lang-nodejs=" maxConcurrentRuns " pulumi-lang-dotnet=" MaxConcurrentRuns " pulumi-lang-go=" maxConcurrentRuns " pulumi-lang-python=" max_concurrent_runs " pulumi-lang-yaml=" maxConcurrentRuns " pulumi-lang-java=" maxConcurrentRuns "> max_concurrent_runs </span>limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
+  /// Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
   final Input<bool>? allowQueueing;
 
   /// Request for google_colab_notebook_execution.
@@ -22,7 +22,7 @@ class ScheduleArgs {
   /// Required. The display name of the Schedule.
   final Input<String> displayName;
 
-  /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either<span pulumi-lang-nodejs=" endTime " pulumi-lang-dotnet=" EndTime " pulumi-lang-go=" endTime " pulumi-lang-python=" end_time " pulumi-lang-yaml=" endTime " pulumi-lang-java=" endTime "> end_time </span>is reached or when<span pulumi-lang-nodejs=" scheduledRunCount " pulumi-lang-dotnet=" ScheduledRunCount " pulumi-lang-go=" scheduledRunCount " pulumi-lang-python=" scheduled_run_count " pulumi-lang-yaml=" scheduledRunCount " pulumi-lang-java=" scheduledRunCount "> scheduled_run_count </span>>= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
+  /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
   final Input<String>? endTime;
 
   /// The location for the resource: https://cloud.google.com/colab/docs/locations

@@ -1,0 +1,3 @@
+library module_privilegedaccessmanager_entitlement_privileged_access_gcp_iam_access_role_binding;
+
+export 'entitlement_privileged_access_gcp_iam_access_role_binding/entitlement_privileged_access_gcp_iam_access_role_binding.dart';

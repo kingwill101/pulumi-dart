@@ -1,3 +1,0 @@
-library module_compute_instance_from_machine_image_confidential_instance_config;
-
-export 'instance_from_machine_image_confidential_instance_config.dart';

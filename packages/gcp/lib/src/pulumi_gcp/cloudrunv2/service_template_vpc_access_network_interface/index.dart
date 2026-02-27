@@ -1,3 +1,0 @@
-library module_cloudrunv2_service_template_vpc_access_network_interface;
-
-export 'service_template_vpc_access_network_interface.dart';

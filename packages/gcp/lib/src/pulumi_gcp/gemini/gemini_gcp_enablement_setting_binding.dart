@@ -1,0 +1,4 @@
+library module_gemini_gemini_gcp_enablement_setting_binding;
+
+export 'gemini_gcp_enablement_setting_binding/gemini_gcp_enablement_setting_binding.dart';
+export 'gemini_gcp_enablement_setting_binding/gemini_gcp_enablement_setting_binding_args.dart';

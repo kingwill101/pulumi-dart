@@ -1,0 +1,3 @@
+library module_dns_record_set_routing_policy_primary_backup_backup_geo;
+
+export 'record_set_routing_policy_primary_backup_backup_geo/record_set_routing_policy_primary_backup_backup_geo.dart';

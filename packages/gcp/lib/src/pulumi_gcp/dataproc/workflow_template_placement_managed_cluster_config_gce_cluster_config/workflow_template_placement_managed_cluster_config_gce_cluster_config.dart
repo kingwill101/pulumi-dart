@@ -5,13 +5,13 @@ import '../workflow_template_placement_managed_cluster_config_gce_cluster_config
 import '../workflow_template_placement_managed_cluster_config_gce_cluster_config_shielded_instance_config/workflow_template_placement_managed_cluster_config_gce_cluster_config_shielded_instance_config.dart';
 
 class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
-  /// If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This <span pulumi-lang-nodejs="`internalIpOnly`" pulumi-lang-dotnet="`InternalIpOnly`" pulumi-lang-go="`internalIpOnly`" pulumi-lang-python="`internal_ip_only`" pulumi-lang-yaml="`internalIpOnly`" pulumi-lang-java="`internalIpOnly`">`internal_ip_only`</span> restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+  /// If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
   final bool? internalIpOnly;
 
   /// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
   final Map<String, String>? metadata;
 
-  /// The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither <span pulumi-lang-nodejs="`networkUri`" pulumi-lang-dotnet="`NetworkUri`" pulumi-lang-go="`networkUri`" pulumi-lang-python="`network_uri`" pulumi-lang-yaml="`networkUri`" pulumi-lang-java="`networkUri`">`network_uri`</span> nor <span pulumi-lang-nodejs="`subnetworkUri`" pulumi-lang-dotnet="`SubnetworkUri`" pulumi-lang-go="`subnetworkUri`" pulumi-lang-python="`subnetwork_uri`" pulumi-lang-yaml="`subnetworkUri`" pulumi-lang-java="`subnetworkUri`">`subnetwork_uri`</span> is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>
+  /// The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
   final String? network;
 
   /// Node Group Affinity for sole-tenant clusters.
@@ -35,7 +35,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig {
   final WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig?
       shieldedInstanceConfig;
 
-  /// The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * <span pulumi-lang-nodejs="`sub0`" pulumi-lang-dotnet="`Sub0`" pulumi-lang-go="`sub0`" pulumi-lang-python="`sub0`" pulumi-lang-yaml="`sub0`" pulumi-lang-java="`sub0`">`sub0`</span>
+  /// The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
   final String? subnetwork;
 
   /// The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).

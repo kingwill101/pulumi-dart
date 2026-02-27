@@ -1,0 +1,3 @@
+library module_diagflow_fulfillment_generic_web_service;
+
+export 'fulfillment_generic_web_service/fulfillment_generic_web_service.dart';

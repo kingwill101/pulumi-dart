@@ -1,3 +1,0 @@
-library module_compute_future_reservation_commitment_info;
-
-export 'future_reservation_commitment_info.dart';

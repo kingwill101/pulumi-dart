@@ -6,11 +6,11 @@ class ServiceAttachmentConsumerAcceptList {
   final int connectionLimit;
 
   /// The network that is allowed to connect to this service attachment.
-  /// Only one of<span pulumi-lang-nodejs=" projectIdOrNum " pulumi-lang-dotnet=" ProjectIdOrNum " pulumi-lang-go=" projectIdOrNum " pulumi-lang-python=" project_id_or_num " pulumi-lang-yaml=" projectIdOrNum " pulumi-lang-java=" projectIdOrNum "> project_id_or_num </span>and<span pulumi-lang-nodejs=" networkUrl " pulumi-lang-dotnet=" NetworkUrl " pulumi-lang-go=" networkUrl " pulumi-lang-python=" network_url " pulumi-lang-yaml=" networkUrl " pulumi-lang-java=" networkUrl "> network_url </span>may be set.
+  /// Only one of project_id_or_num and network_url may be set.
   final String? networkUrl;
 
   /// A project that is allowed to connect to this service attachment.
-  /// Only one of<span pulumi-lang-nodejs=" projectIdOrNum " pulumi-lang-dotnet=" ProjectIdOrNum " pulumi-lang-go=" projectIdOrNum " pulumi-lang-python=" project_id_or_num " pulumi-lang-yaml=" projectIdOrNum " pulumi-lang-java=" projectIdOrNum "> project_id_or_num </span>and<span pulumi-lang-nodejs=" networkUrl " pulumi-lang-dotnet=" NetworkUrl " pulumi-lang-go=" networkUrl " pulumi-lang-python=" network_url " pulumi-lang-yaml=" networkUrl " pulumi-lang-java=" networkUrl "> network_url </span>may be set.
+  /// Only one of project_id_or_num and network_url may be set.
   final String? projectIdOrNum;
 
   ServiceAttachmentConsumerAcceptList({

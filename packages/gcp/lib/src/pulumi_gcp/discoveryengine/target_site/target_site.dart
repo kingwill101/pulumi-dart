@@ -16,381 +16,11 @@ import 'target_site_args.dart';
 /// ### Discoveryengine Targetsite Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const basicDataStore = new gcp.discoveryengine.DataStore("basic", {
-/// location: "global",
-/// dataStoreId: "data-store-id",
-/// displayName: "tf-test-basic-site-search-datastore",
-/// industryVertical: "GENERIC",
-/// contentConfig: "PUBLIC_WEBSITE",
-/// solutionTypes: ["SOLUTION_TYPE_SEARCH"],
-/// createAdvancedSiteSearch: false,
-/// skipDefaultSchemaCreation: false,
-/// });
-/// const basic = new gcp.discoveryengine.TargetSite("basic", {
-/// location: basicDataStore.location,
-/// dataStoreId: basicDataStore.dataStoreId,
-/// providedUriPattern: "cloud.google.com/docs/*",
-/// type: "INCLUDE",
-/// exactMatch: false,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// basic_data_store = gcp.discoveryengine.DataStore("basic",
-/// location="global",
-/// data_store_id="data-store-id",
-/// display_name="tf-test-basic-site-search-datastore",
-/// industry_vertical="GENERIC",
-/// content_config="PUBLIC_WEBSITE",
-/// solution_types=["SOLUTION_TYPE_SEARCH"],
-/// create_advanced_site_search=False,
-/// skip_default_schema_creation=False)
-/// basic = gcp.discoveryengine.TargetSite("basic",
-/// location=basic_data_store.location,
-/// data_store_id=basic_data_store.data_store_id,
-/// provided_uri_pattern="cloud.google.com/docs/*",
-/// type="INCLUDE",
-/// exact_match=False)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var basicDataStore = new Gcp.DiscoveryEngine.DataStore("basic", new()
-/// {
-/// Location = "global",
-/// DataStoreId = "data-store-id",
-/// DisplayName = "tf-test-basic-site-search-datastore",
-/// IndustryVertical = "GENERIC",
-/// ContentConfig = "PUBLIC_WEBSITE",
-/// SolutionTypes = new[]
-/// {
-/// "SOLUTION_TYPE_SEARCH",
-/// },
-/// CreateAdvancedSiteSearch = false,
-/// SkipDefaultSchemaCreation = false,
-/// });
-///
-/// var basic = new Gcp.DiscoveryEngine.TargetSite("basic", new()
-/// {
-/// Location = basicDataStore.Location,
-/// DataStoreId = basicDataStore.DataStoreId,
-/// ProvidedUriPattern = "cloud.google.com/docs/*",
-/// Type = "INCLUDE",
-/// ExactMatch = false,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// basicDataStore, err := discoveryengine.NewDataStore(ctx, "basic", &discoveryengine.DataStoreArgs{
-/// Location:         pulumi.String("global"),
-/// DataStoreId:      pulumi.String("data-store-id"),
-/// DisplayName:      pulumi.String("tf-test-basic-site-search-datastore"),
-/// IndustryVertical: pulumi.String("GENERIC"),
-/// ContentConfig:    pulumi.String("PUBLIC_WEBSITE"),
-/// SolutionTypes: pulumi.StringArray{
-/// pulumi.String("SOLUTION_TYPE_SEARCH"),
-/// },
-/// CreateAdvancedSiteSearch:  pulumi.Bool(false),
-/// SkipDefaultSchemaCreation: pulumi.Bool(false),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = discoveryengine.NewTargetSite(ctx, "basic", &discoveryengine.TargetSiteArgs{
-/// Location:           basicDataStore.Location,
-/// DataStoreId:        basicDataStore.DataStoreId,
-/// ProvidedUriPattern: pulumi.String("cloud.google.com/docs/*"),
-/// Type:               pulumi.String("INCLUDE"),
-/// ExactMatch:         pulumi.Bool(false),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.discoveryengine.DataStore;
-/// import com.pulumi.gcp.discoveryengine.DataStoreArgs;
-/// import com.pulumi.gcp.discoveryengine.TargetSite;
-/// import com.pulumi.gcp.discoveryengine.TargetSiteArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var basicDataStore = new DataStore("basicDataStore", DataStoreArgs.builder()
-/// .location("global")
-/// .dataStoreId("data-store-id")
-/// .displayName("tf-test-basic-site-search-datastore")
-/// .industryVertical("GENERIC")
-/// .contentConfig("PUBLIC_WEBSITE")
-/// .solutionTypes("SOLUTION_TYPE_SEARCH")
-/// .createAdvancedSiteSearch(false)
-/// .skipDefaultSchemaCreation(false)
-/// .build());
-///
-/// var basic = new TargetSite("basic", TargetSiteArgs.builder()
-/// .location(basicDataStore.location())
-/// .dataStoreId(basicDataStore.dataStoreId())
-/// .providedUriPattern("cloud.google.com/docs/*")
-/// .type("INCLUDE")
-/// .exactMatch(false)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// basic:
-/// type: gcp:discoveryengine:TargetSite
-/// properties:
-/// location: ${basicDataStore.location}
-/// dataStoreId: ${basicDataStore.dataStoreId}
-/// providedUriPattern: cloud.google.com/docs/*
-/// type: INCLUDE
-/// exactMatch: false
-/// basicDataStore:
-/// type: gcp:discoveryengine:DataStore
-/// name: basic
-/// properties:
-/// location: global
-/// dataStoreId: data-store-id
-/// displayName: tf-test-basic-site-search-datastore
-/// industryVertical: GENERIC
-/// contentConfig: PUBLIC_WEBSITE
-/// solutionTypes:
-/// - SOLUTION_TYPE_SEARCH
-/// createAdvancedSiteSearch: false
-/// skipDefaultSchemaCreation: false
-/// ```
-/// <!--End PulumiCodeChooser -->
 /// ### Discoveryengine Targetsite Advanced
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const advancedDataStore = new gcp.discoveryengine.DataStore("advanced", {
-/// location: "global",
-/// dataStoreId: "data-store-id",
-/// displayName: "tf-test-advanced-site-search-datastore",
-/// industryVertical: "GENERIC",
-/// contentConfig: "PUBLIC_WEBSITE",
-/// solutionTypes: ["SOLUTION_TYPE_SEARCH"],
-/// createAdvancedSiteSearch: true,
-/// skipDefaultSchemaCreation: false,
-/// });
-/// const advanced = new gcp.discoveryengine.TargetSite("advanced", {
-/// location: advancedDataStore.location,
-/// dataStoreId: advancedDataStore.dataStoreId,
-/// providedUriPattern: "cloud.google.com/docs/*",
-/// type: "INCLUDE",
-/// exactMatch: false,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// advanced_data_store = gcp.discoveryengine.DataStore("advanced",
-/// location="global",
-/// data_store_id="data-store-id",
-/// display_name="tf-test-advanced-site-search-datastore",
-/// industry_vertical="GENERIC",
-/// content_config="PUBLIC_WEBSITE",
-/// solution_types=["SOLUTION_TYPE_SEARCH"],
-/// create_advanced_site_search=True,
-/// skip_default_schema_creation=False)
-/// advanced = gcp.discoveryengine.TargetSite("advanced",
-/// location=advanced_data_store.location,
-/// data_store_id=advanced_data_store.data_store_id,
-/// provided_uri_pattern="cloud.google.com/docs/*",
-/// type="INCLUDE",
-/// exact_match=False)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var advancedDataStore = new Gcp.DiscoveryEngine.DataStore("advanced", new()
-/// {
-/// Location = "global",
-/// DataStoreId = "data-store-id",
-/// DisplayName = "tf-test-advanced-site-search-datastore",
-/// IndustryVertical = "GENERIC",
-/// ContentConfig = "PUBLIC_WEBSITE",
-/// SolutionTypes = new[]
-/// {
-/// "SOLUTION_TYPE_SEARCH",
-/// },
-/// CreateAdvancedSiteSearch = true,
-/// SkipDefaultSchemaCreation = false,
-/// });
-///
-/// var advanced = new Gcp.DiscoveryEngine.TargetSite("advanced", new()
-/// {
-/// Location = advancedDataStore.Location,
-/// DataStoreId = advancedDataStore.DataStoreId,
-/// ProvidedUriPattern = "cloud.google.com/docs/*",
-/// Type = "INCLUDE",
-/// ExactMatch = false,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// advancedDataStore, err := discoveryengine.NewDataStore(ctx, "advanced", &discoveryengine.DataStoreArgs{
-/// Location:         pulumi.String("global"),
-/// DataStoreId:      pulumi.String("data-store-id"),
-/// DisplayName:      pulumi.String("tf-test-advanced-site-search-datastore"),
-/// IndustryVertical: pulumi.String("GENERIC"),
-/// ContentConfig:    pulumi.String("PUBLIC_WEBSITE"),
-/// SolutionTypes: pulumi.StringArray{
-/// pulumi.String("SOLUTION_TYPE_SEARCH"),
-/// },
-/// CreateAdvancedSiteSearch:  pulumi.Bool(true),
-/// SkipDefaultSchemaCreation: pulumi.Bool(false),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = discoveryengine.NewTargetSite(ctx, "advanced", &discoveryengine.TargetSiteArgs{
-/// Location:           advancedDataStore.Location,
-/// DataStoreId:        advancedDataStore.DataStoreId,
-/// ProvidedUriPattern: pulumi.String("cloud.google.com/docs/*"),
-/// Type:               pulumi.String("INCLUDE"),
-/// ExactMatch:         pulumi.Bool(false),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.discoveryengine.DataStore;
-/// import com.pulumi.gcp.discoveryengine.DataStoreArgs;
-/// import com.pulumi.gcp.discoveryengine.TargetSite;
-/// import com.pulumi.gcp.discoveryengine.TargetSiteArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var advancedDataStore = new DataStore("advancedDataStore", DataStoreArgs.builder()
-/// .location("global")
-/// .dataStoreId("data-store-id")
-/// .displayName("tf-test-advanced-site-search-datastore")
-/// .industryVertical("GENERIC")
-/// .contentConfig("PUBLIC_WEBSITE")
-/// .solutionTypes("SOLUTION_TYPE_SEARCH")
-/// .createAdvancedSiteSearch(true)
-/// .skipDefaultSchemaCreation(false)
-/// .build());
-///
-/// var advanced = new TargetSite("advanced", TargetSiteArgs.builder()
-/// .location(advancedDataStore.location())
-/// .dataStoreId(advancedDataStore.dataStoreId())
-/// .providedUriPattern("cloud.google.com/docs/*")
-/// .type("INCLUDE")
-/// .exactMatch(false)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// advanced:
-/// type: gcp:discoveryengine:TargetSite
-/// properties:
-/// location: ${advancedDataStore.location}
-/// dataStoreId: ${advancedDataStore.dataStoreId}
-/// providedUriPattern: cloud.google.com/docs/*
-/// type: INCLUDE
-/// exactMatch: false
-/// advancedDataStore:
-/// type: gcp:discoveryengine:DataStore
-/// name: advanced
-/// properties:
-/// location: global
-/// dataStoreId: data-store-id
-/// displayName: tf-test-advanced-site-search-datastore
-/// industryVertical: GENERIC
-/// contentConfig: PUBLIC_WEBSITE
-/// solutionTypes:
-/// - SOLUTION_TYPE_SEARCH
-/// createAdvancedSiteSearch: true
-/// skipDefaultSchemaCreation: false
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -419,23 +49,11 @@ class TargetSite extends CustomResource {
   /// The unique id of the data store.
   late final Output<String> dataStoreId;
 
-  /// If set to false, a<span pulumi-lang-nodejs=" uriPattern " pulumi-lang-dotnet=" UriPattern " pulumi-lang-go=" uriPattern " pulumi-lang-python=" uri_pattern " pulumi-lang-yaml=" uriPattern " pulumi-lang-java=" uriPattern "> uri_pattern </span>is generated to include all pages whose
-  /// address contains the provided_uri_pattern. If set to true, an<span pulumi-lang-nodejs=" uriPattern
-  /// " pulumi-lang-dotnet=" UriPattern
-  /// " pulumi-lang-go=" uriPattern
-  /// " pulumi-lang-python=" uri_pattern
-  /// " pulumi-lang-yaml=" uriPattern
-  /// " pulumi-lang-java=" uriPattern
-  /// "> uri_pattern
-  /// </span>is generated to try to be an exact match of the<span pulumi-lang-nodejs=" providedUriPattern " pulumi-lang-dotnet=" ProvidedUriPattern " pulumi-lang-go=" providedUriPattern " pulumi-lang-python=" provided_uri_pattern " pulumi-lang-yaml=" providedUriPattern " pulumi-lang-java=" providedUriPattern "> provided_uri_pattern </span>or
-  /// just the specific page if the<span pulumi-lang-nodejs=" providedUriPattern " pulumi-lang-dotnet=" ProvidedUriPattern " pulumi-lang-go=" providedUriPattern " pulumi-lang-python=" provided_uri_pattern " pulumi-lang-yaml=" providedUriPattern " pulumi-lang-java=" providedUriPattern "> provided_uri_pattern </span>is a specific one.<span pulumi-lang-nodejs="
-  /// providedUriPattern " pulumi-lang-dotnet="
-  /// ProvidedUriPattern " pulumi-lang-go="
-  /// providedUriPattern " pulumi-lang-python="
-  /// provided_uri_pattern " pulumi-lang-yaml="
-  /// providedUriPattern " pulumi-lang-java="
-  /// providedUriPattern ">
-  /// provided_uri_pattern </span>is always normalized to generate the URI pattern to
+  /// If set to false, a uri_pattern is generated to include all pages whose
+  /// address contains the provided_uri_pattern. If set to true, an uri_pattern
+  /// is generated to try to be an exact match of the provided_uri_pattern or
+  /// just the specific page if the provided_uri_pattern is a specific one.
+  /// provided_uri_pattern is always normalized to generate the URI pattern to
   /// be used by the search engine.
   late final Output<bool?> exactMatch;
 
@@ -443,7 +61,7 @@ class TargetSite extends CustomResource {
   /// Structure is documented below.
   late final Output<List<TargetSiteFailureReason>> failureReasons;
 
-  /// This is system-generated based on the <span pulumi-lang-nodejs="`providedUriPattern`" pulumi-lang-dotnet="`ProvidedUriPattern`" pulumi-lang-go="`providedUriPattern`" pulumi-lang-python="`provided_uri_pattern`" pulumi-lang-yaml="`providedUriPattern`" pulumi-lang-java="`providedUriPattern`">`provided_uri_pattern`</span>.
+  /// This is system-generated based on the `provided_uri_pattern`.
   late final Output<String> generatedUriPattern;
 
   /// The indexing status.
@@ -463,11 +81,11 @@ class TargetSite extends CustomResource {
   /// If it is not provided, the provider project is used.
   late final Output<String> project;
 
-  /// The user provided URI pattern from which the <span pulumi-lang-nodejs="`generatedUriPattern`" pulumi-lang-dotnet="`GeneratedUriPattern`" pulumi-lang-go="`generatedUriPattern`" pulumi-lang-python="`generated_uri_pattern`" pulumi-lang-yaml="`generatedUriPattern`" pulumi-lang-java="`generatedUriPattern`">`generated_uri_pattern`</span> is
+  /// The user provided URI pattern from which the `generated_uri_pattern` is
   /// generated.
   late final Output<String> providedUriPattern;
 
-  /// Root domain of the <span pulumi-lang-nodejs="`providedUriPattern`" pulumi-lang-dotnet="`ProvidedUriPattern`" pulumi-lang-go="`providedUriPattern`" pulumi-lang-python="`provided_uri_pattern`" pulumi-lang-yaml="`providedUriPattern`" pulumi-lang-java="`providedUriPattern`">`provided_uri_pattern`</span>.
+  /// Root domain of the `provided_uri_pattern`.
   late final Output<String> rootDomainUri;
 
   /// Site ownership and validity verification status.

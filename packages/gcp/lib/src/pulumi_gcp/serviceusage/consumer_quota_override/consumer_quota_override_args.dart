@@ -8,11 +8,11 @@ class ConsumerQuotaOverrideArgs {
   final Input<Map<String, String>>? dimensions;
 
   /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
-  /// If <span pulumi-lang-nodejs="`force`" pulumi-lang-dotnet="`Force`" pulumi-lang-go="`force`" pulumi-lang-python="`force`" pulumi-lang-yaml="`force`" pulumi-lang-java="`force`">`force`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, that safety check is ignored.
+  /// If `force` is `true`, that safety check is ignored.
   final Input<bool>? force;
 
   /// The limit on the metric, e.g. `/project/region`.
-  /// > Make sure that <span pulumi-lang-nodejs="`limit`" pulumi-lang-dotnet="`Limit`" pulumi-lang-go="`limit`" pulumi-lang-python="`limit`" pulumi-lang-yaml="`limit`" pulumi-lang-java="`limit`">`limit`</span> is in a format that doesn't start with `1/` or contain curly braces.
+  /// > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
   /// E.g. use `/project/user` instead of `1/{project}/{user}`.
   final Input<String> limit;
 

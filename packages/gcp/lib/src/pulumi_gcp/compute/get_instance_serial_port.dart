@@ -1,0 +1,5 @@
+library module_compute_get_instance_serial_port;
+
+export 'get_instance_serial_port/get_instance_serial_port.dart';
+export 'get_instance_serial_port/get_instance_serial_port_args.dart';
+export 'get_instance_serial_port/get_instance_serial_port_result.dart';

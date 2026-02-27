@@ -10,13 +10,13 @@ import '../v2_vm_shielded_instance_config/v2_vm_shielded_instance_config.dart';
 
 /// The set of arguments for V2Vm.
 class V2VmArgs {
-  /// The AccleratorConfig for the TPU Node. <span pulumi-lang-nodejs="`acceleratorConfig`" pulumi-lang-dotnet="`AcceleratorConfig`" pulumi-lang-go="`acceleratorConfig`" pulumi-lang-python="`accelerator_config`" pulumi-lang-yaml="`acceleratorConfig`" pulumi-lang-java="`acceleratorConfig`">`accelerator_config`</span> cannot be used at the same time
-  /// as <span pulumi-lang-nodejs="`acceleratorType`" pulumi-lang-dotnet="`AcceleratorType`" pulumi-lang-go="`acceleratorType`" pulumi-lang-python="`accelerator_type`" pulumi-lang-yaml="`acceleratorType`" pulumi-lang-java="`acceleratorType`">`accelerator_type`</span>. If neither is specified, <span pulumi-lang-nodejs="`acceleratorType`" pulumi-lang-dotnet="`AcceleratorType`" pulumi-lang-go="`acceleratorType`" pulumi-lang-python="`accelerator_type`" pulumi-lang-yaml="`acceleratorType`" pulumi-lang-java="`acceleratorType`">`accelerator_type`</span> defaults to 'v2-8'.
+  /// The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
+  /// as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
   /// Structure is documented below.
   final Input<V2VmAcceleratorConfig>? acceleratorConfig;
 
-  /// TPU accelerator type for the TPU. <span pulumi-lang-nodejs="`acceleratorType`" pulumi-lang-dotnet="`AcceleratorType`" pulumi-lang-go="`acceleratorType`" pulumi-lang-python="`accelerator_type`" pulumi-lang-yaml="`acceleratorType`" pulumi-lang-java="`acceleratorType`">`accelerator_type`</span> cannot be used at the same time as
-  /// <span pulumi-lang-nodejs="`acceleratorConfig`" pulumi-lang-dotnet="`AcceleratorConfig`" pulumi-lang-go="`acceleratorConfig`" pulumi-lang-python="`accelerator_config`" pulumi-lang-yaml="`acceleratorConfig`" pulumi-lang-java="`acceleratorConfig`">`accelerator_config`</span>. If neither is specified, <span pulumi-lang-nodejs="`acceleratorType`" pulumi-lang-dotnet="`AcceleratorType`" pulumi-lang-go="`acceleratorType`" pulumi-lang-python="`accelerator_type`" pulumi-lang-yaml="`acceleratorType`" pulumi-lang-java="`acceleratorType`">`accelerator_type`</span> defaults to 'v2-8'.
+  /// TPU accelerator type for the TPU. `accelerator_type` cannot be used at the same time as
+  /// `accelerator_config`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
   final Input<String>? acceleratorType;
 
   /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must
@@ -36,7 +36,7 @@ class V2VmArgs {
 
   /// Resource labels to represent user-provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.

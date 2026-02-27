@@ -13,7 +13,7 @@ class NodePoolAutoscaling {
   final int? maxNodeCount;
 
   /// Minimum number of nodes per zone in the NodePool.
-  /// Must be >=0 and <= <span pulumi-lang-nodejs="`maxNodeCount`" pulumi-lang-dotnet="`MaxNodeCount`" pulumi-lang-go="`maxNodeCount`" pulumi-lang-python="`max_node_count`" pulumi-lang-yaml="`maxNodeCount`" pulumi-lang-java="`maxNodeCount`">`max_node_count`</span>. Cannot be used with total limits.
+  /// Must be >=0 and <= `max_node_count`. Cannot be used with total limits.
   final int? minNodeCount;
 
   /// Total maximum number of nodes in the NodePool.
@@ -22,7 +22,7 @@ class NodePoolAutoscaling {
   final int? totalMaxNodeCount;
 
   /// Total minimum number of nodes in the NodePool.
-  /// Must be >=0 and <= <span pulumi-lang-nodejs="`totalMaxNodeCount`" pulumi-lang-dotnet="`TotalMaxNodeCount`" pulumi-lang-go="`totalMaxNodeCount`" pulumi-lang-python="`total_max_node_count`" pulumi-lang-yaml="`totalMaxNodeCount`" pulumi-lang-java="`totalMaxNodeCount`">`total_max_node_count`</span>. Cannot be used with per zone limits.
+  /// Must be >=0 and <= `total_max_node_count`. Cannot be used with per zone limits.
   /// Total size limits are supported only in 1.24.1+ clusters.
   final int? totalMinNodeCount;
 

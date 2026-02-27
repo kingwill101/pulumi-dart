@@ -1,0 +1,3 @@
+library module_transcoder_job_config_elementary_stream_video_stream;
+
+export 'job_config_elementary_stream_video_stream/job_config_elementary_stream_video_stream.dart';

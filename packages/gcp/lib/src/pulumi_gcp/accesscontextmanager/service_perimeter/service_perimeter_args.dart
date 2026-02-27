@@ -10,7 +10,7 @@ class ServicePerimeterArgs {
   /// behavior.
   final Input<String>? description;
 
-  /// Resource name for the ServicePerimeter. The<span pulumi-lang-nodejs=" shortName " pulumi-lang-dotnet=" ShortName " pulumi-lang-go=" shortName " pulumi-lang-python=" short_name " pulumi-lang-yaml=" shortName " pulumi-lang-java=" shortName "> short_name </span>component must
+  /// Resource name for the ServicePerimeter. The short_name component must
   /// begin with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
   final Input<String>? name;

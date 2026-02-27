@@ -1,0 +1,3 @@
+library module_dataplex_aspect_type_iam_member_condition;
+
+export 'aspect_type_iam_member_condition/aspect_type_iam_member_condition.dart';

@@ -1,3 +1,0 @@
-library module_compute_get_region_instance_template_guest_accelerator;
-
-export 'get_region_instance_template_guest_accelerator.dart';

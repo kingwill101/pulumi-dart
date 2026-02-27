@@ -28,7 +28,7 @@ class InternalRangeArgs {
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Specification for migration with source and target resource names.
@@ -51,7 +51,7 @@ class InternalRangeArgs {
 
   /// An alternate to ipCidrRange. Can be set when trying to create a reservation that automatically finds a free range of the given size.
   /// If both ipCidrRange and prefixLength are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
-  /// NOTE: For IPv6 this field only works if<span pulumi-lang-nodejs=" ipCidrRange " pulumi-lang-dotnet=" IpCidrRange " pulumi-lang-go=" ipCidrRange " pulumi-lang-python=" ip_cidr_range " pulumi-lang-yaml=" ipCidrRange " pulumi-lang-java=" ipCidrRange "> ip_cidr_range </span>is set as well, and both fields must match. In other words, with IPv6 this field only works as
+  /// NOTE: For IPv6 this field only works if ip_cidr_range is set as well, and both fields must match. In other words, with IPv6 this field only works as
   /// a redundant parameter.
   final Input<int>? prefixLength;
 

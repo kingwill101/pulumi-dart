@@ -13,7 +13,7 @@ class ServiceProjectAttachmentArgs {
   /// are accepted. As output, this field will contain project number."
   final Input<String>? serviceProject;
 
-  /// Required. The service project attachment identifier must contain the<span pulumi-lang-nodejs=" projectId " pulumi-lang-dotnet=" ProjectId " pulumi-lang-go=" projectId " pulumi-lang-python=" project_id " pulumi-lang-yaml=" projectId " pulumi-lang-java=" projectId "> project_id </span>of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
+  /// Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
   final Input<String> serviceProjectAttachmentId;
 
   ServiceProjectAttachmentArgs({

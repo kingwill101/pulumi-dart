@@ -7,10 +7,10 @@ class GetIamCustomRolesArgs {
   /// The numeric ID of the organization.
   final Input<String>? orgId;
 
-  /// Include Roles that have been deleted. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Include Roles that have been deleted. Defaults to `false`.
   final Input<bool>? showDeleted;
 
-  /// When `"FULL"` is specified, the <span pulumi-lang-nodejs="`permissions`" pulumi-lang-dotnet="`Permissions`" pulumi-lang-go="`permissions`" pulumi-lang-python="`permissions`" pulumi-lang-yaml="`permissions`" pulumi-lang-java="`permissions`">`permissions`</span> field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the <span pulumi-lang-nodejs="`permissions`" pulumi-lang-dotnet="`Permissions`" pulumi-lang-go="`permissions`" pulumi-lang-python="`permissions`" pulumi-lang-yaml="`permissions`" pulumi-lang-java="`permissions`">`permissions`</span>.
+  /// When `"FULL"` is specified, the `permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `permissions`.
   final Input<String>? view;
 
   GetIamCustomRolesArgs({

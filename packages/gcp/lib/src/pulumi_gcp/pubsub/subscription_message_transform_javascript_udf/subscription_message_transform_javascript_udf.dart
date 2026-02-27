@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class SubscriptionMessageTransformJavascriptUdf {
-  /// JavaScript code that contains a function <span pulumi-lang-nodejs="`functionName`" pulumi-lang-dotnet="`FunctionName`" pulumi-lang-go="`functionName`" pulumi-lang-python="`function_name`" pulumi-lang-yaml="`functionName`" pulumi-lang-java="`functionName`">`function_name`</span> with the
+  /// JavaScript code that contains a function `function_name` with the
   /// following signature:
   /// ```
   /// /**

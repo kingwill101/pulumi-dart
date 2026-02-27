@@ -13,7 +13,7 @@ class WorkerPoolArgs2 {
   /// All system annotations in v1 now have a corresponding field in v2 WorkerPool.
   /// This field follows Kubernetes annotations' namespacing, limits, and rules.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveAnnotations`" pulumi-lang-dotnet="`EffectiveAnnotations`" pulumi-lang-go="`effectiveAnnotations`" pulumi-lang-python="`effective_annotations`" pulumi-lang-yaml="`effectiveAnnotations`" pulumi-lang-java="`effectiveAnnotations`">`effective_annotations`</span> for all of the annotations present on the resource.
+  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final Input<Map<String, String>>? annotations;
 
   /// Settings for the Binary Authorization feature.
@@ -30,7 +30,7 @@ class WorkerPoolArgs2 {
   /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
   /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`customAudiences`" pulumi-lang-dotnet="`CustomAudiences`" pulumi-lang-go="`customAudiences`" pulumi-lang-python="`custom_audiences`" pulumi-lang-yaml="`customAudiences`" pulumi-lang-java="`customAudiences`">`custom_audiences`</span> is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
+  /// > **Warning:** `custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
   final Input<List<String>>? customAudiences;
   final Input<bool>? deletionProtection;
 
@@ -46,7 +46,7 @@ class WorkerPoolArgs2 {
   /// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
   /// All system labels in v1 now have a corresponding field in v2 WorkerPool.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.

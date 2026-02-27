@@ -1,0 +1,3 @@
+library module_bigtable_authorized_view_subset_view_family_subset;
+
+export 'authorized_view_subset_view_family_subset/authorized_view_subset_view_family_subset.dart';

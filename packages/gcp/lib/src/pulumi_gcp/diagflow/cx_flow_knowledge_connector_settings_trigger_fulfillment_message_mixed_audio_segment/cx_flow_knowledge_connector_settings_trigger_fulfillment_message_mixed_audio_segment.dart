@@ -7,11 +7,11 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment
 
   /// Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
   /// A base64-encoded string.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`content`" pulumi-lang-dotnet="`Content`" pulumi-lang-go="`content`" pulumi-lang-python="`content`" pulumi-lang-yaml="`content`" pulumi-lang-java="`content`">`content`</span>: Only one of <span pulumi-lang-nodejs="`audio`" pulumi-lang-dotnet="`Audio`" pulumi-lang-go="`audio`" pulumi-lang-python="`audio`" pulumi-lang-yaml="`audio`" pulumi-lang-java="`audio`">`audio`</span> or <span pulumi-lang-nodejs="`uri`" pulumi-lang-dotnet="`Uri`" pulumi-lang-go="`uri`" pulumi-lang-python="`uri`" pulumi-lang-yaml="`uri`" pulumi-lang-java="`uri`">`uri`</span> may be set.
+  /// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
   final String? audio;
 
   /// Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`content`" pulumi-lang-dotnet="`Content`" pulumi-lang-go="`content`" pulumi-lang-python="`content`" pulumi-lang-yaml="`content`" pulumi-lang-java="`content`">`content`</span>: Only one of <span pulumi-lang-nodejs="`audio`" pulumi-lang-dotnet="`Audio`" pulumi-lang-go="`audio`" pulumi-lang-python="`audio`" pulumi-lang-yaml="`audio`" pulumi-lang-java="`audio`">`audio`</span> or <span pulumi-lang-nodejs="`uri`" pulumi-lang-dotnet="`Uri`" pulumi-lang-go="`uri`" pulumi-lang-python="`uri`" pulumi-lang-yaml="`uri`" pulumi-lang-java="`uri`">`uri`</span> may be set.
+  /// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
   final String? uri;
 
   CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment({

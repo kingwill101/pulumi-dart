@@ -1,0 +1,18 @@
+library module_memcache;
+
+export 'memcache/get_instance.dart';
+export 'memcache/get_instance_maintenance_policy.dart';
+export 'memcache/get_instance_maintenance_policy_weekly_maintenance_window.dart';
+export 'memcache/get_instance_maintenance_policy_weekly_maintenance_window_start_time.dart';
+export 'memcache/get_instance_maintenance_schedule.dart';
+export 'memcache/get_instance_memcache_node.dart';
+export 'memcache/get_instance_memcache_parameter.dart';
+export 'memcache/get_instance_node_config.dart';
+export 'memcache/instance.dart';
+export 'memcache/instance_maintenance_policy.dart';
+export 'memcache/instance_maintenance_policy_weekly_maintenance_window.dart';
+export 'memcache/instance_maintenance_policy_weekly_maintenance_window_start_time.dart';
+export 'memcache/instance_maintenance_schedule.dart';
+export 'memcache/instance_memcache_node.dart';
+export 'memcache/instance_memcache_parameters.dart';
+export 'memcache/instance_node_config.dart';

@@ -16,7 +16,7 @@ class V2PolicyOrchestratorOrchestratedResource {
   /// PolicyOrchestrator creation.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedOrchestratedResourceOsPolicyAssignmentV1Payload"" pulumi-lang-dotnet=""NestedOrchestratedResourceOsPolicyAssignmentV1Payload"" pulumi-lang-go=""nestedOrchestratedResourceOsPolicyAssignmentV1Payload"" pulumi-lang-python=""nested_orchestrated_resource_os_policy_assignment_v1_payload"" pulumi-lang-yaml=""nestedOrchestratedResourceOsPolicyAssignmentV1Payload"" pulumi-lang-java=""nestedOrchestratedResourceOsPolicyAssignmentV1Payload"">"nested_orchestrated_resource_os_policy_assignment_v1_payload"</span>></a>The <span pulumi-lang-nodejs="`osPolicyAssignmentV1Payload`" pulumi-lang-dotnet="`OsPolicyAssignmentV1Payload`" pulumi-lang-go="`osPolicyAssignmentV1Payload`" pulumi-lang-python="`os_policy_assignment_v1_payload`" pulumi-lang-yaml="`osPolicyAssignmentV1Payload`" pulumi-lang-java="`osPolicyAssignmentV1Payload`">`os_policy_assignment_v1_payload`</span> block supports:
+  /// <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
   final String? id;
 
   /// OS policy assignment is an API resource that is used to

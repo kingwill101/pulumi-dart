@@ -1,0 +1,3 @@
+library module_privilegedaccessmanager_get_entitlement_additional_notification_target;
+
+export 'get_entitlement_additional_notification_target/get_entitlement_additional_notification_target.dart';

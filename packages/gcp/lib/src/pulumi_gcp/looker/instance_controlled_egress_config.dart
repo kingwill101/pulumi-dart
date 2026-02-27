@@ -1,0 +1,3 @@
+library module_looker_instance_controlled_egress_config;
+
+export 'instance_controlled_egress_config/instance_controlled_egress_config.dart';

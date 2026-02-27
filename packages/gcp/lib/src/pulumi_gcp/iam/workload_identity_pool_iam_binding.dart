@@ -1,0 +1,4 @@
+library module_iam_workload_identity_pool_iam_binding;
+
+export 'workload_identity_pool_iam_binding/workload_identity_pool_iam_binding.dart';
+export 'workload_identity_pool_iam_binding/workload_identity_pool_iam_binding_args.dart';

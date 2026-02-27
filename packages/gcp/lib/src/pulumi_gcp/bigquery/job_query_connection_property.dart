@@ -1,0 +1,3 @@
+library module_bigquery_job_query_connection_property;
+
+export 'job_query_connection_property/job_query_connection_property.dart';

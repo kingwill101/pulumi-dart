@@ -1,3 +1,0 @@
-library module_backupdisasterrecovery_get_backup_plan_backup_rule;
-
-export 'get_backup_plan_backup_rule.dart';

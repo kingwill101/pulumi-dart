@@ -10,17 +10,17 @@ import '../region_network_endpoint_group_serverless_deployment/region_network_en
 /// The set of arguments for RegionNetworkEndpointGroup.
 class RegionNetworkEndpointGroupArgs {
   /// This field is only used for SERVERLESS NEGs.
-  /// Only one of cloud_run, app_engine,<span pulumi-lang-nodejs=" cloudFunction " pulumi-lang-dotnet=" CloudFunction " pulumi-lang-go=" cloudFunction " pulumi-lang-python=" cloud_function " pulumi-lang-yaml=" cloudFunction " pulumi-lang-java=" cloudFunction "> cloud_function </span>or<span pulumi-lang-nodejs=" serverlessDeployment " pulumi-lang-dotnet=" ServerlessDeployment " pulumi-lang-go=" serverlessDeployment " pulumi-lang-python=" serverless_deployment " pulumi-lang-yaml=" serverlessDeployment " pulumi-lang-java=" serverlessDeployment "> serverless_deployment </span>may be set.
+  /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
   /// Structure is documented below.
   final Input<RegionNetworkEndpointGroupAppEngine>? appEngine;
 
   /// This field is only used for SERVERLESS NEGs.
-  /// Only one of cloud_run, app_engine,<span pulumi-lang-nodejs=" cloudFunction " pulumi-lang-dotnet=" CloudFunction " pulumi-lang-go=" cloudFunction " pulumi-lang-python=" cloud_function " pulumi-lang-yaml=" cloudFunction " pulumi-lang-java=" cloudFunction "> cloud_function </span>or<span pulumi-lang-nodejs=" serverlessDeployment " pulumi-lang-dotnet=" ServerlessDeployment " pulumi-lang-go=" serverlessDeployment " pulumi-lang-python=" serverless_deployment " pulumi-lang-yaml=" serverlessDeployment " pulumi-lang-java=" serverlessDeployment "> serverless_deployment </span>may be set.
+  /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
   /// Structure is documented below.
   final Input<RegionNetworkEndpointGroupCloudFunction>? cloudFunction;
 
   /// This field is only used for SERVERLESS NEGs.
-  /// Only one of cloud_run, app_engine,<span pulumi-lang-nodejs=" cloudFunction " pulumi-lang-dotnet=" CloudFunction " pulumi-lang-go=" cloudFunction " pulumi-lang-python=" cloud_function " pulumi-lang-yaml=" cloudFunction " pulumi-lang-java=" cloudFunction "> cloud_function </span>or<span pulumi-lang-nodejs=" serverlessDeployment " pulumi-lang-dotnet=" ServerlessDeployment " pulumi-lang-go=" serverlessDeployment " pulumi-lang-python=" serverless_deployment " pulumi-lang-yaml=" serverlessDeployment " pulumi-lang-java=" serverlessDeployment "> serverless_deployment </span>may be set.
+  /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
   /// Structure is documented below.
   final Input<RegionNetworkEndpointGroupCloudRun>? cloudRun;
 

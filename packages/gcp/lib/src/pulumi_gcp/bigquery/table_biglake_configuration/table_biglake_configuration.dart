@@ -2,7 +2,7 @@
 
 class TableBiglakeConfiguration {
   /// The connection specifying the credentials to be used to
-  /// read and write to external storage, such as Cloud Storage. The<span pulumi-lang-nodejs=" connectionId " pulumi-lang-dotnet=" ConnectionId " pulumi-lang-go=" connectionId " pulumi-lang-python=" connection_id " pulumi-lang-yaml=" connectionId " pulumi-lang-java=" connectionId "> connection_id </span>can
+  /// read and write to external storage, such as Cloud Storage. The connection_id can
   /// have the form "&lt;project\_id&gt;.&lt;location\_id&gt;.&lt;connection\_id&gt;" or
   /// projects/&lt;project\_id&gt;/locations/&lt;location\_id&gt;/connections/&lt;connection\_id&gt;".
   final String connectionId;

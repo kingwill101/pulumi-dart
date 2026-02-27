@@ -9,7 +9,7 @@ class InstantSnapshotIamMemberArgs {
   /// Structure is documented below.
   final Input<InstantSnapshotIamMemberCondition>? condition;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -31,7 +31,7 @@ class InstantSnapshotIamMemberArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.compute.InstantSnapshotIamBinding`" pulumi-lang-dotnet="`gcp.compute.InstantSnapshotIamBinding`" pulumi-lang-go="`compute.InstantSnapshotIamBinding`" pulumi-lang-python="`compute.InstantSnapshotIamBinding`" pulumi-lang-yaml="`gcp.compute.InstantSnapshotIamBinding`" pulumi-lang-java="`gcp.compute.InstantSnapshotIamBinding`">`gcp.compute.InstantSnapshotIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.compute.InstantSnapshotIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

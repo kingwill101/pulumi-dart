@@ -1,0 +1,3 @@
+library module_monitoring_get_cluster_istio_service_telemetry;
+
+export 'get_cluster_istio_service_telemetry/get_cluster_istio_service_telemetry.dart';

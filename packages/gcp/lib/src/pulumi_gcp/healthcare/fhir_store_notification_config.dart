@@ -1,0 +1,3 @@
+library module_healthcare_fhir_store_notification_config;
+
+export 'fhir_store_notification_config/fhir_store_notification_config.dart';

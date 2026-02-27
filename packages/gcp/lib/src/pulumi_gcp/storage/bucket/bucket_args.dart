@@ -37,7 +37,7 @@ class BucketArgs {
   /// When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
   final Input<bool>? forceDestroy;
 
-  /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, <span pulumi-lang-nodejs="`uniformBucketLevelAccess`" pulumi-lang-dotnet="`UniformBucketLevelAccess`" pulumi-lang-go="`uniformBucketLevelAccess`" pulumi-lang-python="`uniform_bucket_level_access`" pulumi-lang-yaml="`uniformBucketLevelAccess`" pulumi-lang-java="`uniformBucketLevelAccess`">`uniform_bucket_level_access`</span> must be enabled on bucket.
+  /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
   final Input<BucketHierarchicalNamespace>? hierarchicalNamespace;
 
   /// The bucket IP filtering configuration. Specifies the network sources that can access the bucket, as well as its underlying objects. Structure is documented below.

@@ -1,0 +1,3 @@
+library module_compute_firewall_policy_with_rules_predefined_rule;
+
+export 'firewall_policy_with_rules_predefined_rule/firewall_policy_with_rules_predefined_rule.dart';

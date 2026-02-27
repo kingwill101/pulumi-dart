@@ -1,0 +1,4 @@
+library module_clouddeploy_custom_target_type_iam_policy;
+
+export 'custom_target_type_iam_policy/custom_target_type_iam_policy.dart';
+export 'custom_target_type_iam_policy/custom_target_type_iam_policy_args.dart';

@@ -11,8 +11,8 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   final List<String>? gpgKeys;
 
   /// Required. A one word, unique name for this repository. This is the `repo
-  /// id` in the zypper config file and also the <span pulumi-lang-nodejs="`displayName`" pulumi-lang-dotnet="`DisplayName`" pulumi-lang-go="`displayName`" pulumi-lang-python="`display_name`" pulumi-lang-yaml="`displayName`" pulumi-lang-java="`displayName`">`display_name`</span> if
-  /// <span pulumi-lang-nodejs="`displayName`" pulumi-lang-dotnet="`DisplayName`" pulumi-lang-go="`displayName`" pulumi-lang-python="`display_name`" pulumi-lang-yaml="`displayName`" pulumi-lang-java="`displayName`">`display_name`</span> is omitted. This id is also used as the unique
+  /// id` in the zypper config file and also the `display_name` if
+  /// `display_name` is omitted. This id is also used as the unique
   /// identifier when checking for GuestPolicy conflicts.
   final String id;
 

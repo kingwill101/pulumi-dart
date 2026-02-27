@@ -1,0 +1,3 @@
+library module_certificateauthority_certificate_template_predefined_values_ca_options;
+
+export 'certificate_template_predefined_values_ca_options/certificate_template_predefined_values_ca_options.dart';

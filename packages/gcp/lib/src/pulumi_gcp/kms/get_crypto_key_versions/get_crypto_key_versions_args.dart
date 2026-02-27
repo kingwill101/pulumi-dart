@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getCryptoKeyVersions.
 class GetCryptoKeyVersionsArgs {
-  /// The <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span> of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span> field of the
-  /// <span pulumi-lang-nodejs="`gcp.kms.CryptoKey`" pulumi-lang-dotnet="`gcp.kms.CryptoKey`" pulumi-lang-go="`kms.CryptoKey`" pulumi-lang-python="`kms.CryptoKey`" pulumi-lang-yaml="`gcp.kms.CryptoKey`" pulumi-lang-java="`gcp.kms.CryptoKey`">`gcp.kms.CryptoKey`</span> resource/datasource.
+  /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
+  /// `gcp.kms.CryptoKey` resource/datasource.
   final Input<String> cryptoKey;
 
   /// The filter argument is used to add a filter query parameter that limits which versions are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.

@@ -1,0 +1,3 @@
+library module_blockchainnodeengine_blockchain_nodes_ethereum_details_validator_config;
+
+export 'blockchain_nodes_ethereum_details_validator_config/blockchain_nodes_ethereum_details_validator_config.dart';

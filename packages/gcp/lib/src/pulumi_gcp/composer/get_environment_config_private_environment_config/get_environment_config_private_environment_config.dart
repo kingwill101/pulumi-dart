@@ -22,7 +22,7 @@ class GetEnvironmentConfigPrivateEnvironmentConfig {
   /// The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
   final String masterIpv4CidrBlock;
 
-  /// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from<span pulumi-lang-nodejs=" masterIpv4CidrBlock " pulumi-lang-dotnet=" MasterIpv4CidrBlock " pulumi-lang-go=" masterIpv4CidrBlock " pulumi-lang-python=" master_ipv4_cidr_block " pulumi-lang-yaml=" masterIpv4CidrBlock " pulumi-lang-java=" masterIpv4CidrBlock "> master_ipv4_cidr_block </span>and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+  /// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
   final String webServerIpv4CidrBlock;
 
   GetEnvironmentConfigPrivateEnvironmentConfig({

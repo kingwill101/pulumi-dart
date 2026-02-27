@@ -10,21 +10,21 @@ class DatabaseInstanceSettingsIpConfiguration {
   final List<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork>?
       authorizedNetworks;
 
-  /// The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the <span pulumi-lang-nodejs="`serverCaMode`" pulumi-lang-dotnet="`ServerCaMode`" pulumi-lang-go="`serverCaMode`" pulumi-lang-python="`server_ca_mode`" pulumi-lang-yaml="`serverCaMode`" pulumi-lang-java="`serverCaMode`">`server_ca_mode`</span>.
+  /// The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
   final List<String>? customSubjectAlternativeNames;
 
   /// Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
   final bool? enablePrivatePathForGoogleCloudServices;
 
   /// Whether this Cloud SQL instance should be assigned
-  /// a public IPV4 address. At least <span pulumi-lang-nodejs="`ipv4Enabled`" pulumi-lang-dotnet="`Ipv4Enabled`" pulumi-lang-go="`ipv4Enabled`" pulumi-lang-python="`ipv4_enabled`" pulumi-lang-yaml="`ipv4Enabled`" pulumi-lang-java="`ipv4Enabled`">`ipv4_enabled`</span> must be enabled or a
-  /// <span pulumi-lang-nodejs="`privateNetwork`" pulumi-lang-dotnet="`PrivateNetwork`" pulumi-lang-go="`privateNetwork`" pulumi-lang-python="`private_network`" pulumi-lang-yaml="`privateNetwork`" pulumi-lang-java="`privateNetwork`">`private_network`</span> must be configured.
+  /// a public IPV4 address. At least `ipv4_enabled` must be enabled or a
+  /// `private_network` must be configured.
   final bool? ipv4Enabled;
 
   /// The VPC network from which the Cloud SQL
   /// instance is accessible for private IP. For example, projects/myProject/global/networks/default.
   /// Specifying a network enables private IP.
-  /// At least <span pulumi-lang-nodejs="`ipv4Enabled`" pulumi-lang-dotnet="`Ipv4Enabled`" pulumi-lang-go="`ipv4Enabled`" pulumi-lang-python="`ipv4_enabled`" pulumi-lang-yaml="`ipv4Enabled`" pulumi-lang-java="`ipv4Enabled`">`ipv4_enabled`</span> must be enabled or a <span pulumi-lang-nodejs="`privateNetwork`" pulumi-lang-dotnet="`PrivateNetwork`" pulumi-lang-go="`privateNetwork`" pulumi-lang-python="`private_network`" pulumi-lang-yaml="`privateNetwork`" pulumi-lang-java="`privateNetwork`">`private_network`</span> must be configured.
+  /// At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
   /// This setting can be updated, but it cannot be removed after it is set.
   final String? privateNetwork;
 
@@ -34,7 +34,7 @@ class DatabaseInstanceSettingsIpConfiguration {
   /// Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
   final String? serverCaMode;
 
-  /// The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the <span pulumi-lang-nodejs="`serverCaMode`" pulumi-lang-dotnet="`ServerCaMode`" pulumi-lang-go="`serverCaMode`" pulumi-lang-python="`server_ca_mode`" pulumi-lang-yaml="`serverCaMode`" pulumi-lang-java="`serverCaMode`">`server_ca_mode`</span>.
+  /// The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
   final String? serverCaPool;
 
   /// Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.

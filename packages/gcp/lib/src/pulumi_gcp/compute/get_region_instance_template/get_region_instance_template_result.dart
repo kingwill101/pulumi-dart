@@ -38,7 +38,7 @@ class GetRegionInstanceTemplateResult {
   final Map<String, String> effectiveLabels;
 
   /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-  /// **Note**: <span pulumi-lang-nodejs="`allowStoppingForUpdate`" pulumi-lang-dotnet="`AllowStoppingForUpdate`" pulumi-lang-go="`allowStoppingForUpdate`" pulumi-lang-python="`allow_stopping_for_update`" pulumi-lang-yaml="`allowStoppingForUpdate`" pulumi-lang-java="`allowStoppingForUpdate`">`allow_stopping_for_update`</span> must be set to true in order to update this field.
+  /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
   final bool enableDisplay;
   final String? filter;
 
@@ -70,7 +70,7 @@ class GetRegionInstanceTemplateResult {
   final String metadataFingerprint;
 
   /// An alternative to using the
-  /// startup-script metadata key, mostly to match the<span pulumi-lang-nodejs=" computeInstance " pulumi-lang-dotnet=" ComputeInstance " pulumi-lang-go=" computeInstance " pulumi-lang-python=" compute_instance " pulumi-lang-yaml=" computeInstance " pulumi-lang-java=" computeInstance "> compute_instance </span>resource.
+  /// startup-script metadata key, mostly to match the compute_instance resource.
   /// This replaces the startup-script metadata key on the created instance and
   /// thus the two mechanisms are not allowed to be used simultaneously.
   final String metadataStartupScript;
@@ -82,7 +82,7 @@ class GetRegionInstanceTemplateResult {
   final String? name;
 
   /// Creates a unique name beginning with the specified
-  /// prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>.
+  /// prefix. Conflicts with `name`.
   final String namePrefix;
 
   /// Networks to attach to instances created from
@@ -120,7 +120,7 @@ class GetRegionInstanceTemplateResult {
   final List<GetRegionInstanceTemplateServiceAccount> serviceAccounts;
 
   /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-  /// **Note**: <span pulumi-lang-nodejs="`shieldedInstanceConfig`" pulumi-lang-dotnet="`ShieldedInstanceConfig`" pulumi-lang-go="`shieldedInstanceConfig`" pulumi-lang-python="`shielded_instance_config`" pulumi-lang-yaml="`shieldedInstanceConfig`" pulumi-lang-java="`shieldedInstanceConfig`">`shielded_instance_config`</span> can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+  /// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
   final List<GetRegionInstanceTemplateShieldedInstanceConfig>
       shieldedInstanceConfigs;
 

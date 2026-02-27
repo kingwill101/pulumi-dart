@@ -4,28 +4,22 @@ import 'address_group_iam_member_args.dart';
 
 /// Three different resources help you manage your IAM policy for Network Security ProjectAddressGroup. Each of these resources serves a different use case:
 ///
-/// * <span pulumi-lang-nodejs="`gcp.networksecurity.AddressGroupIamPolicy`" pulumi-lang-dotnet="`gcp.networksecurity.AddressGroupIamPolicy`" pulumi-lang-go="`networksecurity.AddressGroupIamPolicy`" pulumi-lang-python="`networksecurity.AddressGroupIamPolicy`" pulumi-lang-yaml="`gcp.networksecurity.AddressGroupIamPolicy`" pulumi-lang-java="`gcp.networksecurity.AddressGroupIamPolicy`">`gcp.networksecurity.AddressGroupIamPolicy`</span>: Authoritative. Sets the IAM policy for the projectaddressgroup and replaces any existing policy already attached.
-/// * <span pulumi-lang-nodejs="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-dotnet="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-go="`networksecurity.AddressGroupIamBinding`" pulumi-lang-python="`networksecurity.AddressGroupIamBinding`" pulumi-lang-yaml="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-java="`gcp.networksecurity.AddressGroupIamBinding`">`gcp.networksecurity.AddressGroupIamBinding`</span>: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the projectaddressgroup are preserved.
-/// * <span pulumi-lang-nodejs="`gcp.networksecurity.AddressGroupIamMember`" pulumi-lang-dotnet="`gcp.networksecurity.AddressGroupIamMember`" pulumi-lang-go="`networksecurity.AddressGroupIamMember`" pulumi-lang-python="`networksecurity.AddressGroupIamMember`" pulumi-lang-yaml="`gcp.networksecurity.AddressGroupIamMember`" pulumi-lang-java="`gcp.networksecurity.AddressGroupIamMember`">`gcp.networksecurity.AddressGroupIamMember`</span>: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the projectaddressgroup are preserved.
+/// * `gcp.networksecurity.AddressGroupIamPolicy`: Authoritative. Sets the IAM policy for the projectaddressgroup and replaces any existing policy already attached.
+/// * `gcp.networksecurity.AddressGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the projectaddressgroup are preserved.
+/// * `gcp.networksecurity.AddressGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the projectaddressgroup are preserved.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
-/// * <span pulumi-lang-nodejs="`gcp.networksecurity.AddressGroupIamPolicy`" pulumi-lang-dotnet="`gcp.networksecurity.AddressGroupIamPolicy`" pulumi-lang-go="`networksecurity.AddressGroupIamPolicy`" pulumi-lang-python="`networksecurity.AddressGroupIamPolicy`" pulumi-lang-yaml="`gcp.networksecurity.AddressGroupIamPolicy`" pulumi-lang-java="`gcp.networksecurity.AddressGroupIamPolicy`">`gcp.networksecurity.AddressGroupIamPolicy`</span>: Retrieves the IAM policy for the projectaddressgroup
+/// * `gcp.networksecurity.AddressGroupIamPolicy`: Retrieves the IAM policy for the projectaddressgroup
 ///
-/// > **Note:** <span pulumi-lang-nodejs="`gcp.networksecurity.AddressGroupIamPolicy`" pulumi-lang-dotnet="`gcp.networksecurity.AddressGroupIamPolicy`" pulumi-lang-go="`networksecurity.AddressGroupIamPolicy`" pulumi-lang-python="`networksecurity.AddressGroupIamPolicy`" pulumi-lang-yaml="`gcp.networksecurity.AddressGroupIamPolicy`" pulumi-lang-java="`gcp.networksecurity.AddressGroupIamPolicy`">`gcp.networksecurity.AddressGroupIamPolicy`</span> **cannot** be used in conjunction with <span pulumi-lang-nodejs="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-dotnet="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-go="`networksecurity.AddressGroupIamBinding`" pulumi-lang-python="`networksecurity.AddressGroupIamBinding`" pulumi-lang-yaml="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-java="`gcp.networksecurity.AddressGroupIamBinding`">`gcp.networksecurity.AddressGroupIamBinding`</span> and <span pulumi-lang-nodejs="`gcp.networksecurity.AddressGroupIamMember`" pulumi-lang-dotnet="`gcp.networksecurity.AddressGroupIamMember`" pulumi-lang-go="`networksecurity.AddressGroupIamMember`" pulumi-lang-python="`networksecurity.AddressGroupIamMember`" pulumi-lang-yaml="`gcp.networksecurity.AddressGroupIamMember`" pulumi-lang-java="`gcp.networksecurity.AddressGroupIamMember`">`gcp.networksecurity.AddressGroupIamMember`</span> or they will fight over what your policy should be.
+/// > **Note:** `gcp.networksecurity.AddressGroupIamPolicy` **cannot** be used in conjunction with `gcp.networksecurity.AddressGroupIamBinding` and `gcp.networksecurity.AddressGroupIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** <span pulumi-lang-nodejs="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-dotnet="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-go="`networksecurity.AddressGroupIamBinding`" pulumi-lang-python="`networksecurity.AddressGroupIamBinding`" pulumi-lang-yaml="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-java="`gcp.networksecurity.AddressGroupIamBinding`">`gcp.networksecurity.AddressGroupIamBinding`</span> resources **can be** used in conjunction with <span pulumi-lang-nodejs="`gcp.networksecurity.AddressGroupIamMember`" pulumi-lang-dotnet="`gcp.networksecurity.AddressGroupIamMember`" pulumi-lang-go="`networksecurity.AddressGroupIamMember`" pulumi-lang-python="`networksecurity.AddressGroupIamMember`" pulumi-lang-yaml="`gcp.networksecurity.AddressGroupIamMember`" pulumi-lang-java="`gcp.networksecurity.AddressGroupIamMember`">`gcp.networksecurity.AddressGroupIamMember`</span> resources **only if** they do not grant privilege to the same role.
+/// > **Note:** `gcp.networksecurity.AddressGroupIamBinding` resources **can be** used in conjunction with `gcp.networksecurity.AddressGroupIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 ///
 ///
-/// ##<span pulumi-lang-nodejs=" gcp.networksecurity.AddressGroupIamPolicy
-/// " pulumi-lang-dotnet=" gcp.networksecurity.AddressGroupIamPolicy
-/// " pulumi-lang-go=" networksecurity.AddressGroupIamPolicy
-/// " pulumi-lang-python=" networksecurity.AddressGroupIamPolicy
-/// " pulumi-lang-yaml=" gcp.networksecurity.AddressGroupIamPolicy
-/// " pulumi-lang-java=" gcp.networksecurity.AddressGroupIamPolicy
-/// "> gcp.networksecurity.AddressGroupIamPolicy
-/// </span>
+/// ## gcp.networksecurity.AddressGroupIamPolicy
+///
 /// ## Import
 ///
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -75,7 +69,7 @@ class AddressGroupIamMember extends CustomResource {
   /// location is specified, it is taken from the provider configuration.
   late final Output<String> location;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -97,7 +91,7 @@ class AddressGroupIamMember extends CustomResource {
   late final Output<String> project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-dotnet="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-go="`networksecurity.AddressGroupIamBinding`" pulumi-lang-python="`networksecurity.AddressGroupIamBinding`" pulumi-lang-yaml="`gcp.networksecurity.AddressGroupIamBinding`" pulumi-lang-java="`gcp.networksecurity.AddressGroupIamBinding`">`gcp.networksecurity.AddressGroupIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.networksecurity.AddressGroupIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final Output<String> role;
 

@@ -40,7 +40,7 @@ class WidgetConfigArgs {
   /// Structure is documented below.
   final Input<WidgetConfigUiSettings>? uiSettings;
 
-  /// The unique ID to use for the WidgetConfig. Currently only accepts <span pulumi-lang-nodejs=""defaultSearchWidgetConfig"" pulumi-lang-dotnet=""DefaultSearchWidgetConfig"" pulumi-lang-go=""defaultSearchWidgetConfig"" pulumi-lang-python=""default_search_widget_config"" pulumi-lang-yaml=""defaultSearchWidgetConfig"" pulumi-lang-java=""defaultSearchWidgetConfig"">"default_search_widget_config"</span>.
+  /// The unique ID to use for the WidgetConfig. Currently only accepts "default_search_widget_config".
   final Input<String>? widgetConfigId;
 
   WidgetConfigArgs({

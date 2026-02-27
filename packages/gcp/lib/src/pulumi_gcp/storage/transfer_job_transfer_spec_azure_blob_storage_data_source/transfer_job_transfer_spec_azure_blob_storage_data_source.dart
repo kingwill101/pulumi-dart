@@ -11,7 +11,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSource {
   /// The container to transfer from the Azure Storage account.`
   final String container;
 
-  /// ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If<span pulumi-lang-nodejs=" credentialsSecret " pulumi-lang-dotnet=" CredentialsSecret " pulumi-lang-go=" credentialsSecret " pulumi-lang-python=" credentials_secret " pulumi-lang-yaml=" credentialsSecret " pulumi-lang-java=" credentialsSecret "> credentials_secret </span>is specified, do not specify azure_credentials.`,
+  /// ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
   final String? credentialsSecret;
 
   /// Federated identity config of a user registered Azure application. Structure documented below.

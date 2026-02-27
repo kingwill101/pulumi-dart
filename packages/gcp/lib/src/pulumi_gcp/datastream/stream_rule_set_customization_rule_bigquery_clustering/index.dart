@@ -1,3 +1,0 @@
-library module_datastream_stream_rule_set_customization_rule_bigquery_clustering;
-
-export 'stream_rule_set_customization_rule_bigquery_clustering.dart';

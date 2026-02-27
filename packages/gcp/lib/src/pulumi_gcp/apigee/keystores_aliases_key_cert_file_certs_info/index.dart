@@ -1,3 +1,0 @@
-library module_apigee_keystores_aliases_key_cert_file_certs_info;
-
-export 'keystores_aliases_key_cert_file_certs_info.dart';

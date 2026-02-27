@@ -1,3 +1,0 @@
-library module_networkservices_multicast_domain_connection_config;
-
-export 'multicast_domain_connection_config.dart';

@@ -1,3 +1,0 @@
-library module_datastream_stream_rule_set_object_filter;
-
-export 'stream_rule_set_object_filter.dart';

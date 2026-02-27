@@ -1,3 +1,0 @@
-library module_datastream_stream_source_config_oracle_source_config_exclude_objects_oracle_schema;
-
-export 'stream_source_config_oracle_source_config_exclude_objects_oracle_schema.dart';

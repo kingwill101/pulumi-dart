@@ -1,4 +1,0 @@
-library module_redis_cluster_user_created_connections;
-
-export 'cluster_user_created_connections.dart';
-export 'cluster_user_created_connections_args.dart';

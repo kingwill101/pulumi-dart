@@ -1,3 +1,0 @@
-library module_compute_urlmap_default_route_action_cors_policy;
-
-export 'urlmap_default_route_action_cors_policy.dart';

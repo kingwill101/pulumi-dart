@@ -1,4 +1,0 @@
-library module_artifactregistry_repository_iam_policy;
-
-export 'repository_iam_policy.dart';
-export 'repository_iam_policy_args.dart';

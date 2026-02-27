@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class BucketEncryption {
-  /// The <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span> of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+  /// The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
   /// You must pay attention to whether the crypto key is available in the location that this bucket is created in.
   /// See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
   ///
@@ -10,7 +10,7 @@ class BucketEncryption {
   /// project to use the specified key for encryption and decryption operations.
   /// Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
   /// until a relevant action has occurred which triggers its creation.
-  /// You should use the [<span pulumi-lang-nodejs="`gcp.storage.getProjectServiceAccount`" pulumi-lang-dotnet="`gcp.storage.getProjectServiceAccount`" pulumi-lang-go="`storage.getProjectServiceAccount`" pulumi-lang-python="`storage_get_project_service_account`" pulumi-lang-yaml="`gcp.storage.getProjectServiceAccount`" pulumi-lang-java="`gcp.storage.getProjectServiceAccount`">`gcp.storage.getProjectServiceAccount`</span>](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
+  /// You should use the [`gcp.storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
   /// address for the service account when configuring IAM policy on the Cloud KMS key.
   /// This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
   /// state of the project.

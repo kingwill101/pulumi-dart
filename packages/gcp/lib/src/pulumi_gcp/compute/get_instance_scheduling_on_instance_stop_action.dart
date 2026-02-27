@@ -1,0 +1,3 @@
+library module_compute_get_instance_scheduling_on_instance_stop_action;
+
+export 'get_instance_scheduling_on_instance_stop_action/get_instance_scheduling_on_instance_stop_action.dart';

@@ -1,3 +1,0 @@
-library module_datastream_connection_profile_sql_server_profile;
-
-export 'connection_profile_sql_server_profile.dart';

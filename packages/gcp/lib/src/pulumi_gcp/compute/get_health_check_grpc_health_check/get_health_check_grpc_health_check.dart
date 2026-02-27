@@ -10,17 +10,11 @@ class GetHealthCheckGrpcHealthCheck {
 
   /// The port number for the health check request.
   /// Must be specified if portName and portSpecification are not set
-  /// or if<span pulumi-lang-nodejs=" portSpecification " pulumi-lang-dotnet=" PortSpecification " pulumi-lang-go=" portSpecification " pulumi-lang-python=" port_specification " pulumi-lang-yaml=" portSpecification " pulumi-lang-java=" portSpecification "> port_specification </span>is USE_FIXED_PORT. Valid values are 1 through 65535.
+  /// or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
   final int port;
 
-  /// Port name as defined in InstanceGroup#NamedPort#name. If both port and<span pulumi-lang-nodejs="
-  /// portName " pulumi-lang-dotnet="
-  /// PortName " pulumi-lang-go="
-  /// portName " pulumi-lang-python="
-  /// port_name " pulumi-lang-yaml="
-  /// portName " pulumi-lang-java="
-  /// portName ">
-  /// port_name </span>are defined, port takes precedence.
+  /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+  /// port_name are defined, port takes precedence.
   final String portName;
 
   /// Specifies how port is selected for health checking, can be one of the

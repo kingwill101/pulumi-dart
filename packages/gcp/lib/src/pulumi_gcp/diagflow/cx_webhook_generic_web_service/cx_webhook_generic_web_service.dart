@@ -48,9 +48,9 @@ class CxWebhookGenericWebService {
 
   /// The HTTP request headers to send together with webhook requests. Header
   /// values are stored in SecretManager secret versions.
-  /// When the same header name is specified in both <span pulumi-lang-nodejs="`requestHeaders`" pulumi-lang-dotnet="`RequestHeaders`" pulumi-lang-go="`requestHeaders`" pulumi-lang-python="`request_headers`" pulumi-lang-yaml="`requestHeaders`" pulumi-lang-java="`requestHeaders`">`request_headers`</span> and
-  /// <span pulumi-lang-nodejs="`secretVersionsForRequestHeaders`" pulumi-lang-dotnet="`SecretVersionsForRequestHeaders`" pulumi-lang-go="`secretVersionsForRequestHeaders`" pulumi-lang-python="`secret_versions_for_request_headers`" pulumi-lang-yaml="`secretVersionsForRequestHeaders`" pulumi-lang-java="`secretVersionsForRequestHeaders`">`secret_versions_for_request_headers`</span>, the value in
-  /// <span pulumi-lang-nodejs="`secretVersionsForRequestHeaders`" pulumi-lang-dotnet="`SecretVersionsForRequestHeaders`" pulumi-lang-go="`secretVersionsForRequestHeaders`" pulumi-lang-python="`secret_versions_for_request_headers`" pulumi-lang-yaml="`secretVersionsForRequestHeaders`" pulumi-lang-java="`secretVersionsForRequestHeaders`">`secret_versions_for_request_headers`</span> will be used.
+  /// When the same header name is specified in both `request_headers` and
+  /// `secret_versions_for_request_headers`, the value in
+  /// `secret_versions_for_request_headers` will be used.
   /// Structure is documented below.
   final List<CxWebhookGenericWebServiceSecretVersionsForRequestHeader>?
       secretVersionsForRequestHeaders;

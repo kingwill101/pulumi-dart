@@ -1,0 +1,3 @@
+library module_deploymentmanager_deployment_target_config;
+
+export 'deployment_target_config/deployment_target_config.dart';

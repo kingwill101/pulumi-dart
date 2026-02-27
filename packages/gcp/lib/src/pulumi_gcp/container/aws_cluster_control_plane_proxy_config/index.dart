@@ -1,3 +1,0 @@
-library module_container_aws_cluster_control_plane_proxy_config;
-
-export 'aws_cluster_control_plane_proxy_config.dart';

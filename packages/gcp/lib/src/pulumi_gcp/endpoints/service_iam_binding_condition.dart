@@ -1,0 +1,3 @@
+library module_endpoints_service_iam_binding_condition;
+
+export 'service_iam_binding_condition/service_iam_binding_condition2.dart';

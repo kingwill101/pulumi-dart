@@ -1,3 +1,0 @@
-library module_tpu_v2_vm_network_endpoint_access_config;
-
-export 'v2_vm_network_endpoint_access_config.dart';

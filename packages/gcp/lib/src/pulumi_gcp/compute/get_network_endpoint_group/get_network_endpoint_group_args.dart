@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// Arguments for getNetworkEndpointGroup.
 class GetNetworkEndpointGroupArgs {
   /// The Network Endpoint Group name.
-  /// Provide either this or a <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span>.
+  /// Provide either this or a `self_link`.
   final Input<String>? name;
 
   /// The ID of the project to list versions in.

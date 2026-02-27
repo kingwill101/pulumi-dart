@@ -1,0 +1,3 @@
+library module_redis_get_cluster_discovery_endpoint_psc_config;
+
+export 'get_cluster_discovery_endpoint_psc_config/get_cluster_discovery_endpoint_psc_config.dart';

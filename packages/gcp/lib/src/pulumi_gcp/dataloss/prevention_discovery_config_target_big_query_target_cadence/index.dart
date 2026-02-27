@@ -1,3 +1,0 @@
-library module_dataloss_prevention_discovery_config_target_big_query_target_cadence;
-
-export 'prevention_discovery_config_target_big_query_target_cadence.dart';

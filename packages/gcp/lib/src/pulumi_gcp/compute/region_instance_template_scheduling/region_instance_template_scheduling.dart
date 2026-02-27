@@ -35,7 +35,7 @@ class RegionInstanceTemplateScheduling {
   /// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
   final String? maintenanceInterval;
 
-  /// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in <span pulumi-lang-nodejs="`instanceTerminationAction`" pulumi-lang-dotnet="`InstanceTerminationAction`" pulumi-lang-go="`instanceTerminationAction`" pulumi-lang-python="`instance_termination_action`" pulumi-lang-yaml="`instanceTerminationAction`" pulumi-lang-java="`instanceTerminationAction`">`instance_termination_action`</span>. Only support `DELETE` <span pulumi-lang-nodejs="`instanceTerminationAction`" pulumi-lang-dotnet="`InstanceTerminationAction`" pulumi-lang-go="`instanceTerminationAction`" pulumi-lang-python="`instance_termination_action`" pulumi-lang-yaml="`instanceTerminationAction`" pulumi-lang-java="`instanceTerminationAction`">`instance_termination_action`</span> at this point. Structure is documented below.
+  /// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
   final RegionInstanceTemplateSchedulingMaxRunDuration? maxRunDuration;
 
   /// Minimum number of cpus for the instance.
@@ -62,8 +62,8 @@ class RegionInstanceTemplateScheduling {
   final bool? preemptible;
 
   /// Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-  /// <span pulumi-lang-nodejs="`preemptible`" pulumi-lang-dotnet="`Preemptible`" pulumi-lang-go="`preemptible`" pulumi-lang-python="`preemptible`" pulumi-lang-yaml="`preemptible`" pulumi-lang-java="`preemptible`">`preemptible`</span> should be <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> and <span pulumi-lang-nodejs="`automaticRestart`" pulumi-lang-dotnet="`AutomaticRestart`" pulumi-lang-go="`automaticRestart`" pulumi-lang-python="`automatic_restart`" pulumi-lang-yaml="`automaticRestart`" pulumi-lang-java="`automaticRestart`">`automatic_restart`</span> should be
-  /// <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. For more info about
+  /// `preemptible` should be `true` and `automatic_restart` should be
+  /// `false`. For more info about
   /// `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
   final String? provisioningModel;
 

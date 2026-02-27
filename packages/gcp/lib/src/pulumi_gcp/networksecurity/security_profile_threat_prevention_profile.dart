@@ -1,0 +1,3 @@
+library module_networksecurity_security_profile_threat_prevention_profile;
+
+export 'security_profile_threat_prevention_profile/security_profile_threat_prevention_profile.dart';

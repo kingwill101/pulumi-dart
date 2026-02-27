@@ -1,3 +1,0 @@
-library module_container_cluster_node_config_sole_tenant_config_node_affinity;
-
-export 'cluster_node_config_sole_tenant_config_node_affinity.dart';

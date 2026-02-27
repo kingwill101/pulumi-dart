@@ -1,4 +1,0 @@
-library module_essentialcontacts_document_ai_processor_default_version;
-
-export 'document_ai_processor_default_version.dart';
-export 'document_ai_processor_default_version_args.dart';

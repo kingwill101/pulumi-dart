@@ -1,3 +1,0 @@
-library module_storage_transfer_job_replication_spec_object_conditions;
-
-export 'transfer_job_replication_spec_object_conditions.dart';

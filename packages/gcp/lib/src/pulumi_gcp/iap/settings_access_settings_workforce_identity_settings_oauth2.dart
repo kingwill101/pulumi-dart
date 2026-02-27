@@ -1,0 +1,3 @@
+library module_iap_settings_access_settings_workforce_identity_settings_oauth2;
+
+export 'settings_access_settings_workforce_identity_settings_oauth2/settings_access_settings_workforce_identity_settings_oauth2.dart';

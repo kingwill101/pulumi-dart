@@ -1,3 +1,0 @@
-library module_discoveryengine_control_promote_action_search_link_promotion;
-
-export 'control_promote_action_search_link_promotion.dart';

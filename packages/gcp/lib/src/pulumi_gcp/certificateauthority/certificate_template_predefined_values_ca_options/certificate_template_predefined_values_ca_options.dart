@@ -9,12 +9,12 @@ class CertificateTemplatePredefinedValuesCaOptions {
   final int? maxIssuerPathLength;
 
   /// Optional. When true, the "CA" in Basic Constraints extension will be set to null and omitted from the CA certificate.
-  /// If both <span pulumi-lang-nodejs="`isCa`" pulumi-lang-dotnet="`IsCa`" pulumi-lang-go="`isCa`" pulumi-lang-python="`is_ca`" pulumi-lang-yaml="`isCa`" pulumi-lang-java="`isCa`">`is_ca`</span> and <span pulumi-lang-nodejs="`nullCa`" pulumi-lang-dotnet="`NullCa`" pulumi-lang-go="`nullCa`" pulumi-lang-python="`null_ca`" pulumi-lang-yaml="`nullCa`" pulumi-lang-java="`nullCa`">`null_ca`</span> are unset, the "CA" in Basic Constraints extension will be set to false.
-  /// Note that the behavior when <span pulumi-lang-nodejs="`isCa " pulumi-lang-dotnet="`IsCa " pulumi-lang-go="`isCa " pulumi-lang-python="`is_ca " pulumi-lang-yaml="`isCa " pulumi-lang-java="`isCa ">`is_ca </span>= false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
+  /// If both `is_ca` and `null_ca` are unset, the "CA" in Basic Constraints extension will be set to false.
+  /// Note that the behavior when `is_ca = false` for this resource is different from the behavior in the Certificate Authority, Certificate and CaPool resources.
   final bool? nullCa;
 
   /// Optional. When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-  /// if both <span pulumi-lang-nodejs="`maxIssuerPathLength`" pulumi-lang-dotnet="`MaxIssuerPathLength`" pulumi-lang-go="`maxIssuerPathLength`" pulumi-lang-python="`max_issuer_path_length`" pulumi-lang-yaml="`maxIssuerPathLength`" pulumi-lang-java="`maxIssuerPathLength`">`max_issuer_path_length`</span> and <span pulumi-lang-nodejs="`zeroMaxIssuerPathLength`" pulumi-lang-dotnet="`ZeroMaxIssuerPathLength`" pulumi-lang-go="`zeroMaxIssuerPathLength`" pulumi-lang-python="`zero_max_issuer_path_length`" pulumi-lang-yaml="`zeroMaxIssuerPathLength`" pulumi-lang-java="`zeroMaxIssuerPathLength`">`zero_max_issuer_path_length`</span> are unset,
+  /// if both `max_issuer_path_length` and `zero_max_issuer_path_length` are unset,
   /// the max path length will be omitted from the CA certificate.
   final bool? zeroMaxIssuerPathLength;
 

@@ -1,3 +1,0 @@
-library module_compute_get_region_backend_service_circuit_breaker_connect_timeout;
-
-export 'get_region_backend_service_circuit_breaker_connect_timeout.dart';

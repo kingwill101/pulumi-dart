@@ -1,0 +1,3 @@
+library module_bigtable_instance_iam_member_condition;
+
+export 'instance_iam_member_condition/instance_iam_member_condition.dart';

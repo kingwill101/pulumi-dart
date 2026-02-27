@@ -1,3 +1,0 @@
-library module_identityplatform_config_monitoring_request_logging;
-
-export 'config_monitoring_request_logging.dart';

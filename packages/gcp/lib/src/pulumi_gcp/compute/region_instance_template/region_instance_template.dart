@@ -62,7 +62,7 @@ class RegionInstanceTemplate extends CustomResource {
   late final Output<Map<String, String>> effectiveLabels;
 
   /// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
-  /// **Note**: <span pulumi-lang-nodejs="`allowStoppingForUpdate`" pulumi-lang-dotnet="`AllowStoppingForUpdate`" pulumi-lang-go="`allowStoppingForUpdate`" pulumi-lang-python="`allow_stopping_for_update`" pulumi-lang-yaml="`allowStoppingForUpdate`" pulumi-lang-java="`allowStoppingForUpdate`">`allow_stopping_for_update`</span> must be set to true in order to update this field.
+  /// **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
   late final Output<bool?> enableDisplay;
 
   /// List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -98,7 +98,7 @@ class RegionInstanceTemplate extends CustomResource {
   late final Output<String> metadataFingerprint;
 
   /// An alternative to using the
-  /// startup-script metadata key, mostly to match the<span pulumi-lang-nodejs=" computeInstance " pulumi-lang-dotnet=" ComputeInstance " pulumi-lang-go=" computeInstance " pulumi-lang-python=" compute_instance " pulumi-lang-yaml=" computeInstance " pulumi-lang-java=" computeInstance "> compute_instance </span>resource.
+  /// startup-script metadata key, mostly to match the compute_instance resource.
   /// This replaces the startup-script metadata key on the created instance and
   /// thus the two mechanisms are not allowed to be used simultaneously.
   late final Output<String?> metadataStartupScript;
@@ -109,14 +109,14 @@ class RegionInstanceTemplate extends CustomResource {
   late final Output<String> name;
 
   /// Creates a unique name beginning with the specified
-  /// prefix. Conflicts with <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. Max length is 54 characters.
+  /// prefix. Conflicts with `name`. Max length is 54 characters.
   /// Prefixes with lengths longer than 37 characters will use a shortened
   /// UUID that will be more prone to collisions.
   ///
-  /// Resulting name for a <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span> <= 37 characters:
-  /// <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span> + YYYYmmddHHSSssss + 8 digit incremental counter
-  /// Resulting name for a <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span> 38 - 54 characters:
-  /// <span pulumi-lang-nodejs="`namePrefix`" pulumi-lang-dotnet="`NamePrefix`" pulumi-lang-go="`namePrefix`" pulumi-lang-python="`name_prefix`" pulumi-lang-yaml="`namePrefix`" pulumi-lang-java="`namePrefix`">`name_prefix`</span> + YYmmdd + 3 digit incremental counter
+  /// Resulting name for a `name_prefix` <= 37 characters:
+  /// `name_prefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+  /// Resulting name for a `name_prefix` 38 - 54 characters:
+  /// `name_prefix` + YYmmdd + 3 digit incremental counter
   late final Output<String> namePrefix;
 
   /// Networks to attach to instances created from
@@ -126,9 +126,9 @@ class RegionInstanceTemplate extends CustomResource {
       networkInterfaces;
 
   /// Configures network performance settings for the instance created from the
-  /// template. Structure is documented below. **Note**: <span pulumi-lang-nodejs="`machineType`" pulumi-lang-dotnet="`MachineType`" pulumi-lang-go="`machineType`" pulumi-lang-python="`machine_type`" pulumi-lang-yaml="`machineType`" pulumi-lang-java="`machineType`">`machine_type`</span>
+  /// template. Structure is documented below. **Note**: `machine_type`
   /// must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-  /// the <span pulumi-lang-nodejs="`image`" pulumi-lang-dotnet="`Image`" pulumi-lang-go="`image`" pulumi-lang-python="`image`" pulumi-lang-yaml="`image`" pulumi-lang-java="`image`">`image`</span> used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
+  /// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
   /// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
   /// in order for this setting to take effect.
   late final Output<RegionInstanceTemplateNetworkPerformanceConfig?>
@@ -159,7 +159,7 @@ class RegionInstanceTemplate extends CustomResource {
   /// A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
   late final Output<Map<String, String>?> resourceManagerTags;
 
-  /// - A list of<span pulumi-lang-nodejs=" selfLinks " pulumi-lang-dotnet=" SelfLinks " pulumi-lang-go=" selfLinks " pulumi-lang-python=" self_links " pulumi-lang-yaml=" selfLinks " pulumi-lang-java=" selfLinks "> self_links </span>of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+  /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
   late final Output<String?> resourcePolicies;
 
   /// The scheduling strategy to use. More details about
@@ -173,7 +173,7 @@ class RegionInstanceTemplate extends CustomResource {
   late final Output<RegionInstanceTemplateServiceAccount?> serviceAccount;
 
   /// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
-  /// **Note**: <span pulumi-lang-nodejs="`shieldedInstanceConfig`" pulumi-lang-dotnet="`ShieldedInstanceConfig`" pulumi-lang-go="`shieldedInstanceConfig`" pulumi-lang-python="`shielded_instance_config`" pulumi-lang-yaml="`shieldedInstanceConfig`" pulumi-lang-java="`shieldedInstanceConfig`">`shielded_instance_config`</span> can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
+  /// **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
   late final Output<RegionInstanceTemplateShieldedInstanceConfig>
       shieldedInstanceConfig;
 

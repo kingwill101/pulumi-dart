@@ -1,3 +1,0 @@
-library module_vertex_ai_endpoint_with_model_garden_deployment_endpoint_config_private_service_connect_config;
-
-export 'ai_endpoint_with_model_garden_deployment_endpoint_config_private_service_connect_config.dart';

@@ -1,0 +1,3 @@
+library module_bigquery_reservation_replication_status;
+
+export 'reservation_replication_status/reservation_replication_status.dart';

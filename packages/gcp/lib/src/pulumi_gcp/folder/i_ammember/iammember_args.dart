@@ -12,7 +12,7 @@ class IAMMemberArgs {
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   final Input<String> folder;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -21,7 +21,7 @@ class IAMMemberArgs {
   final Input<String> member;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.folder.IAMBinding`" pulumi-lang-dotnet="`gcp.folder.IAMBinding`" pulumi-lang-go="`folder.IAMBinding`" pulumi-lang-python="`folder.IAMBinding`" pulumi-lang-yaml="`gcp.folder.IAMBinding`" pulumi-lang-java="`gcp.folder.IAMBinding`">`gcp.folder.IAMBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `organizations/{{org_id}}/roles/{{role_id}}`.
   final Input<String> role;
 

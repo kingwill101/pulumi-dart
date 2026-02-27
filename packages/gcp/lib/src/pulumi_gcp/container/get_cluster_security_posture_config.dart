@@ -1,0 +1,3 @@
+library module_container_get_cluster_security_posture_config;
+
+export 'get_cluster_security_posture_config/get_cluster_security_posture_config.dart';

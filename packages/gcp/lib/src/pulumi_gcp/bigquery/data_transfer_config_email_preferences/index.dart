@@ -1,3 +1,0 @@
-library module_bigquery_data_transfer_config_email_preferences;
-
-export 'data_transfer_config_email_preferences.dart';

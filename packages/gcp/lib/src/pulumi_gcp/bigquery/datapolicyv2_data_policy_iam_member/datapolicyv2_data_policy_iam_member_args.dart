@@ -10,12 +10,12 @@ class Datapolicyv2DataPolicyIamMemberArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final Input<String> dataPolicyId;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Used to find the parent resource to bind the IAM policy to. If not specified,
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final Input<String>? location;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -34,7 +34,7 @@ class Datapolicyv2DataPolicyIamMemberArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.bigquery.Datapolicyv2DataPolicyIamBinding`" pulumi-lang-dotnet="`gcp.bigquery.Datapolicyv2DataPolicyIamBinding`" pulumi-lang-go="`bigquery.Datapolicyv2DataPolicyIamBinding`" pulumi-lang-python="`bigquery.Datapolicyv2DataPolicyIamBinding`" pulumi-lang-yaml="`gcp.bigquery.Datapolicyv2DataPolicyIamBinding`" pulumi-lang-java="`gcp.bigquery.Datapolicyv2DataPolicyIamBinding`">`gcp.bigquery.Datapolicyv2DataPolicyIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.bigquery.Datapolicyv2DataPolicyIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

@@ -1,3 +1,0 @@
-library module_compute_region_url_map_path_matcher_path_rule;
-
-export 'region_url_map_path_matcher_path_rule.dart';

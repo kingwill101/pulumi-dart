@@ -1,3 +1,0 @@
-library module_gkeonprem_bare_metal_cluster_network_config_island_mode_cidr;
-
-export 'bare_metal_cluster_network_config_island_mode_cidr.dart';

@@ -19,7 +19,7 @@ class BackupPlanRetentionPolicy {
   /// will automatically pick up the new value.
   /// NOTE: backupRetainDays must be >= backupDeleteLockDays.
   /// If cronSchedule is defined, then this must be <= 360 * the creation interval.
-  /// If<span pulumi-lang-nodejs=" rpoConfig " pulumi-lang-dotnet=" RpoConfig " pulumi-lang-go=" rpoConfig " pulumi-lang-python=" rpo_config " pulumi-lang-yaml=" rpoConfig " pulumi-lang-java=" rpoConfig "> rpo_config </span>is defined, then this must be
+  /// If rpo_config is defined, then this must be
   /// <= 360 * targetRpoMinutes/(1440minutes/day)
   final int? backupRetainDays;
 

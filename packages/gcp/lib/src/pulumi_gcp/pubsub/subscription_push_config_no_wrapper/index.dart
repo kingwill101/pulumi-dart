@@ -1,3 +1,0 @@
-library module_pubsub_subscription_push_config_no_wrapper;
-
-export 'subscription_push_config_no_wrapper.dart';

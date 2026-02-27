@@ -13,7 +13,7 @@ class RuleDeploymentArgs {
   /// archiving requires a two-step process: first, disable the rule by
   /// setting 'enabled' to false, then set 'archive' to true.
   /// If set to true, alerting will automatically be set to false.
-  /// If currently set to true, enabled, alerting, and<span pulumi-lang-nodejs=" runFrequency " pulumi-lang-dotnet=" RunFrequency " pulumi-lang-go=" runFrequency " pulumi-lang-python=" run_frequency " pulumi-lang-yaml=" runFrequency " pulumi-lang-java=" runFrequency "> run_frequency </span>cannot be
+  /// If currently set to true, enabled, alerting, and run_frequency cannot be
   /// updated.
   final Input<bool>? archived;
 

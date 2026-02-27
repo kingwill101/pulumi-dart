@@ -1,3 +1,0 @@
-library module_dataloss_prevention_stored_info_type_regex;
-
-export 'prevention_stored_info_type_regex.dart';

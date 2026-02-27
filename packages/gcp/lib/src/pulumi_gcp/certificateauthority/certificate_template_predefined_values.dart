@@ -1,0 +1,3 @@
+library module_certificateauthority_certificate_template_predefined_values;
+
+export 'certificate_template_predefined_values/certificate_template_predefined_values.dart';

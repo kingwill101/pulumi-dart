@@ -9,168 +9,7 @@ import 'tenant_args2.dart';
 /// ### Saas Runtime Tenant Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const exampleSaas = new gcp.saasruntime.SaaS("example_saas", {
-/// saasId: "example-saas",
-/// location: "global",
-/// locations: [{
-/// name: "us-central1",
-/// }],
-/// });
-/// const example = new gcp.saasruntime.Tenant("example", {
-/// location: "global",
-/// tenantId: "example-tenant",
-/// saas: exampleSaas.id,
-/// consumerResource: "//compute.googleapis.com/projects/example-project/zones/us-central1-a/instances/example-instance",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// example_saas = gcp.saasruntime.SaaS("example_saas",
-/// saas_id="example-saas",
-/// location="global",
-/// locations=[{
-/// "name": "us-central1",
-/// }])
-/// example = gcp.saasruntime.Tenant("example",
-/// location="global",
-/// tenant_id="example-tenant",
-/// saas=example_saas.id,
-/// consumer_resource="//compute.googleapis.com/projects/example-project/zones/us-central1-a/instances/example-instance")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var exampleSaas = new Gcp.SaaSRuntime.SaaS("example_saas", new()
-/// {
-/// SaasId = "example-saas",
-/// Location = "global",
-/// Locations = new[]
-/// {
-/// new Gcp.SaaSRuntime.Inputs.SaaSLocationArgs
-/// {
-/// Name = "us-central1",
-/// },
-/// },
-/// });
-///
-/// var example = new Gcp.SaaSRuntime.Tenant("example", new()
-/// {
-/// Location = "global",
-/// TenantId = "example-tenant",
-/// Saas = exampleSaas.Id,
-/// ConsumerResource = "//compute.googleapis.com/projects/example-project/zones/us-central1-a/instances/example-instance",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/saasruntime"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// exampleSaas, err := saasruntime.NewSaaS(ctx, "example_saas", &saasruntime.SaaSArgs{
-/// SaasId:   pulumi.String("example-saas"),
-/// Location: pulumi.String("global"),
-/// Locations: saasruntime.SaaSLocationArray{
-/// &saasruntime.SaaSLocationArgs{
-/// Name: pulumi.String("us-central1"),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = saasruntime.NewTenant(ctx, "example", &saasruntime.TenantArgs{
-/// Location:         pulumi.String("global"),
-/// TenantId:         pulumi.String("example-tenant"),
-/// Saas:             exampleSaas.ID(),
-/// ConsumerResource: pulumi.String("//compute.googleapis.com/projects/example-project/zones/us-central1-a/instances/example-instance"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.saasruntime.SaaS;
-/// import com.pulumi.gcp.saasruntime.SaaSArgs;
-/// import com.pulumi.gcp.saasruntime.inputs.SaaSLocationArgs;
-/// import com.pulumi.gcp.saasruntime.Tenant;
-/// import com.pulumi.gcp.saasruntime.TenantArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var exampleSaas = new SaaS("exampleSaas", SaaSArgs.builder()
-/// .saasId("example-saas")
-/// .location("global")
-/// .locations(SaaSLocationArgs.builder()
-/// .name("us-central1")
-/// .build())
-/// .build());
-///
-/// var example = new Tenant("example", TenantArgs.builder()
-/// .location("global")
-/// .tenantId("example-tenant")
-/// .saas(exampleSaas.id())
-/// .consumerResource("//compute.googleapis.com/projects/example-project/zones/us-central1-a/instances/example-instance")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// exampleSaas:
-/// type: gcp:saasruntime:SaaS
-/// name: example_saas
-/// properties:
-/// saasId: example-saas
-/// location: global
-/// locations:
-/// - name: us-central1
-/// example:
-/// type: gcp:saasruntime:Tenant
-/// properties:
-/// location: global
-/// tenantId: example-tenant
-/// saas: ${exampleSaas.id}
-/// consumerResource: //compute.googleapis.com/projects/example-project/zones/us-central1-a/instances/example-instance
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -201,7 +40,7 @@ class Tenant2 extends CustomResource {
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveAnnotations`" pulumi-lang-dotnet="`EffectiveAnnotations`" pulumi-lang-go="`effectiveAnnotations`" pulumi-lang-python="`effective_annotations`" pulumi-lang-yaml="`effectiveAnnotations`" pulumi-lang-java="`effectiveAnnotations`">`effective_annotations`</span> for all of the annotations present on the resource.
+  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final Output<Map<String, String>?> annotations;
 
   /// A reference to the consumer resource this SaaS Tenant is representing.
@@ -220,10 +59,10 @@ class Tenant2 extends CustomResource {
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> location;
 
   /// Identifier. The resource name (full URI of the resource) following the standard naming

@@ -1,3 +1,0 @@
-library module_osconfig_os_policy_assignment_instance_filter_exclusion_label;
-
-export 'os_policy_assignment_instance_filter_exclusion_label.dart';

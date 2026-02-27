@@ -1,3 +1,0 @@
-library module_sql_get_database_instance_setting_read_pool_auto_scale_config;
-
-export 'get_database_instance_setting_read_pool_auto_scale_config.dart';

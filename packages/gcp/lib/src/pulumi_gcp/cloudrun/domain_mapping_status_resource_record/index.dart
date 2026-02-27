@@ -1,3 +1,0 @@
-library module_cloudrun_domain_mapping_status_resource_record;
-
-export 'domain_mapping_status_resource_record.dart';

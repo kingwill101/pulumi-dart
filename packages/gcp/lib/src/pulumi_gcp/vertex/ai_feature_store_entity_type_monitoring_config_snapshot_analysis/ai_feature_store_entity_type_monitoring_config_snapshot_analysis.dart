@@ -7,7 +7,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
   /// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`monitoringInterval`" pulumi-lang-dotnet="`MonitoringInterval`" pulumi-lang-go="`monitoringInterval`" pulumi-lang-python="`monitoring_interval`" pulumi-lang-yaml="`monitoringInterval`" pulumi-lang-java="`monitoringInterval`">`monitoring_interval`</span> is deprecated and will be removed in a future release.
+  /// > **Warning:** `monitoring_interval` is deprecated and will be removed in a future release.
   final String? monitoringInterval;
 
   /// Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.

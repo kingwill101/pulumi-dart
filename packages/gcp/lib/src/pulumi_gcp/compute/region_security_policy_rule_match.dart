@@ -1,0 +1,3 @@
+library module_compute_region_security_policy_rule_match;
+
+export 'region_security_policy_rule_match/region_security_policy_rule_match.dart';

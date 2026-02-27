@@ -17,8 +17,8 @@ class DataConnectorEntity {
 
   /// Attributes for indexing.
   /// Key: Field name.
-  /// Value: The key property to map a field to, such as <span pulumi-lang-nodejs="`title`" pulumi-lang-dotnet="`Title`" pulumi-lang-go="`title`" pulumi-lang-python="`title`" pulumi-lang-yaml="`title`" pulumi-lang-java="`title`">`title`</span>, and
-  /// <span pulumi-lang-nodejs="`description`" pulumi-lang-dotnet="`Description`" pulumi-lang-go="`description`" pulumi-lang-python="`description`" pulumi-lang-yaml="`description`" pulumi-lang-java="`description`">`description`</span>. Supported key properties:
+  /// Value: The key property to map a field to, such as `title`, and
+  /// `description`. Supported key properties:
   final Map<String, String>? keyPropertyMappings;
 
   /// The parameters for the entity to facilitate data ingestion.

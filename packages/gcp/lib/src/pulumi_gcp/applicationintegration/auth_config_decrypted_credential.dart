@@ -1,0 +1,3 @@
+library module_applicationintegration_auth_config_decrypted_credential;
+
+export 'auth_config_decrypted_credential/auth_config_decrypted_credential.dart';

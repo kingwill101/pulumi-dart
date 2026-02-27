@@ -1,3 +1,0 @@
-library module_compute_node_template_node_type_flexibility;
-
-export 'node_template_node_type_flexibility.dart';

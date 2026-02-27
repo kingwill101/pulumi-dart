@@ -1,3 +1,0 @@
-library module_clouddomains_registration_dns_settings;
-
-export 'registration_dns_settings.dart';

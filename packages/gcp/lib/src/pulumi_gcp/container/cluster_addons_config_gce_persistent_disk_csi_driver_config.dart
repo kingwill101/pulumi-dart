@@ -1,0 +1,3 @@
+library module_container_cluster_addons_config_gce_persistent_disk_csi_driver_config;
+
+export 'cluster_addons_config_gce_persistent_disk_csi_driver_config/cluster_addons_config_gce_persistent_disk_csi_driver_config.dart';

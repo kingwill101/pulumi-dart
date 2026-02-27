@@ -1,3 +1,0 @@
-library module_cloudbuildv2_connection_gitlab_config_read_authorizer_credential;
-
-export 'connection_gitlab_config_read_authorizer_credential.dart';

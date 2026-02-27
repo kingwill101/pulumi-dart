@@ -1,0 +1,23 @@
+library module_gemini;
+
+export 'gemini/code_repository_index.dart';
+export 'gemini/code_tools_setting.dart';
+export 'gemini/code_tools_setting_binding.dart';
+export 'gemini/code_tools_setting_enabled_tool.dart';
+export 'gemini/code_tools_setting_enabled_tool_config.dart';
+export 'gemini/data_sharing_with_google_setting.dart';
+export 'gemini/data_sharing_with_google_setting_binding.dart';
+export 'gemini/gemini_gcp_enablement_setting.dart';
+export 'gemini/gemini_gcp_enablement_setting_binding.dart';
+export 'gemini/get_repository_group_iam_policy.dart';
+export 'gemini/logging_setting.dart';
+export 'gemini/logging_setting_binding.dart';
+export 'gemini/release_channel_setting.dart';
+export 'gemini/release_channel_setting_binding.dart';
+export 'gemini/repository_group.dart';
+export 'gemini/repository_group_iam_binding.dart';
+export 'gemini/repository_group_iam_binding_condition.dart';
+export 'gemini/repository_group_iam_member.dart';
+export 'gemini/repository_group_iam_member_condition.dart';
+export 'gemini/repository_group_iam_policy.dart';
+export 'gemini/repository_group_repository.dart';

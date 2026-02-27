@@ -1,5 +1,0 @@
-library module_compute_instance_group_named_port;
-
-export 'instance_group_named_port.dart';
-export 'instance_group_named_port2.dart';
-export 'instance_group_named_port_args.dart';

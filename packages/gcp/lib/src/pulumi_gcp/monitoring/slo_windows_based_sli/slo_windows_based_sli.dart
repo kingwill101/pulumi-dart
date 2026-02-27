@@ -7,35 +7,35 @@ import '../slo_windows_based_sli_metric_sum_in_range/slo_windows_based_sli_metri
 class SloWindowsBasedSli {
   /// A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// with ValueType = BOOL. The window is good if any true values
-  /// appear in the window. One of <span pulumi-lang-nodejs="`goodBadMetricFilter`" pulumi-lang-dotnet="`GoodBadMetricFilter`" pulumi-lang-go="`goodBadMetricFilter`" pulumi-lang-python="`good_bad_metric_filter`" pulumi-lang-yaml="`goodBadMetricFilter`" pulumi-lang-java="`goodBadMetricFilter`">`good_bad_metric_filter`</span>,
-  /// <span pulumi-lang-nodejs="`goodTotalRatioThreshold`" pulumi-lang-dotnet="`GoodTotalRatioThreshold`" pulumi-lang-go="`goodTotalRatioThreshold`" pulumi-lang-python="`good_total_ratio_threshold`" pulumi-lang-yaml="`goodTotalRatioThreshold`" pulumi-lang-java="`goodTotalRatioThreshold`">`good_total_ratio_threshold`</span>, <span pulumi-lang-nodejs="`metricMeanInRange`" pulumi-lang-dotnet="`MetricMeanInRange`" pulumi-lang-go="`metricMeanInRange`" pulumi-lang-python="`metric_mean_in_range`" pulumi-lang-yaml="`metricMeanInRange`" pulumi-lang-java="`metricMeanInRange`">`metric_mean_in_range`</span>,
-  /// <span pulumi-lang-nodejs="`metricSumInRange`" pulumi-lang-dotnet="`MetricSumInRange`" pulumi-lang-go="`metricSumInRange`" pulumi-lang-python="`metric_sum_in_range`" pulumi-lang-yaml="`metricSumInRange`" pulumi-lang-java="`metricSumInRange`">`metric_sum_in_range`</span> must be set for <span pulumi-lang-nodejs="`windowsBasedSli`" pulumi-lang-dotnet="`WindowsBasedSli`" pulumi-lang-go="`windowsBasedSli`" pulumi-lang-python="`windows_based_sli`" pulumi-lang-yaml="`windowsBasedSli`" pulumi-lang-java="`windowsBasedSli`">`windows_based_sli`</span>.
+  /// appear in the window. One of `good_bad_metric_filter`,
+  /// `good_total_ratio_threshold`, `metric_mean_in_range`,
+  /// `metric_sum_in_range` must be set for `windows_based_sli`.
   final String? goodBadMetricFilter;
 
   /// Criterion that describes a window as good if its performance is
-  /// high enough. One of <span pulumi-lang-nodejs="`goodBadMetricFilter`" pulumi-lang-dotnet="`GoodBadMetricFilter`" pulumi-lang-go="`goodBadMetricFilter`" pulumi-lang-python="`good_bad_metric_filter`" pulumi-lang-yaml="`goodBadMetricFilter`" pulumi-lang-java="`goodBadMetricFilter`">`good_bad_metric_filter`</span>,
-  /// <span pulumi-lang-nodejs="`goodTotalRatioThreshold`" pulumi-lang-dotnet="`GoodTotalRatioThreshold`" pulumi-lang-go="`goodTotalRatioThreshold`" pulumi-lang-python="`good_total_ratio_threshold`" pulumi-lang-yaml="`goodTotalRatioThreshold`" pulumi-lang-java="`goodTotalRatioThreshold`">`good_total_ratio_threshold`</span>, <span pulumi-lang-nodejs="`metricMeanInRange`" pulumi-lang-dotnet="`MetricMeanInRange`" pulumi-lang-go="`metricMeanInRange`" pulumi-lang-python="`metric_mean_in_range`" pulumi-lang-yaml="`metricMeanInRange`" pulumi-lang-java="`metricMeanInRange`">`metric_mean_in_range`</span>,
-  /// <span pulumi-lang-nodejs="`metricSumInRange`" pulumi-lang-dotnet="`MetricSumInRange`" pulumi-lang-go="`metricSumInRange`" pulumi-lang-python="`metric_sum_in_range`" pulumi-lang-yaml="`metricSumInRange`" pulumi-lang-java="`metricSumInRange`">`metric_sum_in_range`</span> must be set for <span pulumi-lang-nodejs="`windowsBasedSli`" pulumi-lang-dotnet="`WindowsBasedSli`" pulumi-lang-go="`windowsBasedSli`" pulumi-lang-python="`windows_based_sli`" pulumi-lang-yaml="`windowsBasedSli`" pulumi-lang-java="`windowsBasedSli`">`windows_based_sli`</span>.
+  /// high enough. One of `good_bad_metric_filter`,
+  /// `good_total_ratio_threshold`, `metric_mean_in_range`,
+  /// `metric_sum_in_range` must be set for `windows_based_sli`.
   /// Structure is documented below.
   final SloWindowsBasedSliGoodTotalRatioThreshold? goodTotalRatioThreshold;
 
   /// Criterion that describes a window as good if the metric's value
   /// is in a good range, *averaged* across returned streams.
-  /// One of <span pulumi-lang-nodejs="`goodBadMetricFilter`" pulumi-lang-dotnet="`GoodBadMetricFilter`" pulumi-lang-go="`goodBadMetricFilter`" pulumi-lang-python="`good_bad_metric_filter`" pulumi-lang-yaml="`goodBadMetricFilter`" pulumi-lang-java="`goodBadMetricFilter`">`good_bad_metric_filter`</span>,
-  /// <span pulumi-lang-nodejs="`goodTotalRatioThreshold`" pulumi-lang-dotnet="`GoodTotalRatioThreshold`" pulumi-lang-go="`goodTotalRatioThreshold`" pulumi-lang-python="`good_total_ratio_threshold`" pulumi-lang-yaml="`goodTotalRatioThreshold`" pulumi-lang-java="`goodTotalRatioThreshold`">`good_total_ratio_threshold`</span>, <span pulumi-lang-nodejs="`metricMeanInRange`" pulumi-lang-dotnet="`MetricMeanInRange`" pulumi-lang-go="`metricMeanInRange`" pulumi-lang-python="`metric_mean_in_range`" pulumi-lang-yaml="`metricMeanInRange`" pulumi-lang-java="`metricMeanInRange`">`metric_mean_in_range`</span>,
-  /// <span pulumi-lang-nodejs="`metricSumInRange`" pulumi-lang-dotnet="`MetricSumInRange`" pulumi-lang-go="`metricSumInRange`" pulumi-lang-python="`metric_sum_in_range`" pulumi-lang-yaml="`metricSumInRange`" pulumi-lang-java="`metricSumInRange`">`metric_sum_in_range`</span> must be set for <span pulumi-lang-nodejs="`windowsBasedSli`" pulumi-lang-dotnet="`WindowsBasedSli`" pulumi-lang-go="`windowsBasedSli`" pulumi-lang-python="`windows_based_sli`" pulumi-lang-yaml="`windowsBasedSli`" pulumi-lang-java="`windowsBasedSli`">`windows_based_sli`</span>.
-  /// Average value X of <span pulumi-lang-nodejs="`timeSeries`" pulumi-lang-dotnet="`TimeSeries`" pulumi-lang-go="`timeSeries`" pulumi-lang-python="`time_series`" pulumi-lang-yaml="`timeSeries`" pulumi-lang-java="`timeSeries`">`time_series`</span> should satisfy
+  /// One of `good_bad_metric_filter`,
+  /// `good_total_ratio_threshold`, `metric_mean_in_range`,
+  /// `metric_sum_in_range` must be set for `windows_based_sli`.
+  /// Average value X of `time_series` should satisfy
   /// `range.min <= X <= range.max` for a good window.
   /// Structure is documented below.
   final SloWindowsBasedSliMetricMeanInRange? metricMeanInRange;
 
   /// Criterion that describes a window as good if the metric's value
   /// is in a good range, *summed* across returned streams.
-  /// Summed value `X` of <span pulumi-lang-nodejs="`timeSeries`" pulumi-lang-dotnet="`TimeSeries`" pulumi-lang-go="`timeSeries`" pulumi-lang-python="`time_series`" pulumi-lang-yaml="`timeSeries`" pulumi-lang-java="`timeSeries`">`time_series`</span> should satisfy
+  /// Summed value `X` of `time_series` should satisfy
   /// `range.min <= X <= range.max` for a good window.
-  /// One of <span pulumi-lang-nodejs="`goodBadMetricFilter`" pulumi-lang-dotnet="`GoodBadMetricFilter`" pulumi-lang-go="`goodBadMetricFilter`" pulumi-lang-python="`good_bad_metric_filter`" pulumi-lang-yaml="`goodBadMetricFilter`" pulumi-lang-java="`goodBadMetricFilter`">`good_bad_metric_filter`</span>,
-  /// <span pulumi-lang-nodejs="`goodTotalRatioThreshold`" pulumi-lang-dotnet="`GoodTotalRatioThreshold`" pulumi-lang-go="`goodTotalRatioThreshold`" pulumi-lang-python="`good_total_ratio_threshold`" pulumi-lang-yaml="`goodTotalRatioThreshold`" pulumi-lang-java="`goodTotalRatioThreshold`">`good_total_ratio_threshold`</span>, <span pulumi-lang-nodejs="`metricMeanInRange`" pulumi-lang-dotnet="`MetricMeanInRange`" pulumi-lang-go="`metricMeanInRange`" pulumi-lang-python="`metric_mean_in_range`" pulumi-lang-yaml="`metricMeanInRange`" pulumi-lang-java="`metricMeanInRange`">`metric_mean_in_range`</span>,
-  /// <span pulumi-lang-nodejs="`metricSumInRange`" pulumi-lang-dotnet="`MetricSumInRange`" pulumi-lang-go="`metricSumInRange`" pulumi-lang-python="`metric_sum_in_range`" pulumi-lang-yaml="`metricSumInRange`" pulumi-lang-java="`metricSumInRange`">`metric_sum_in_range`</span> must be set for <span pulumi-lang-nodejs="`windowsBasedSli`" pulumi-lang-dotnet="`WindowsBasedSli`" pulumi-lang-go="`windowsBasedSli`" pulumi-lang-python="`windows_based_sli`" pulumi-lang-yaml="`windowsBasedSli`" pulumi-lang-java="`windowsBasedSli`">`windows_based_sli`</span>.
+  /// One of `good_bad_metric_filter`,
+  /// `good_total_ratio_threshold`, `metric_mean_in_range`,
+  /// `metric_sum_in_range` must be set for `windows_based_sli`.
   /// Structure is documented below.
   final SloWindowsBasedSliMetricSumInRange? metricSumInRange;
 

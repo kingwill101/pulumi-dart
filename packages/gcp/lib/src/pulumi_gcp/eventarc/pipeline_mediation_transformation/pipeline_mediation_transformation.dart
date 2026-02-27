@@ -67,14 +67,8 @@ class PipelineMediationTransformation {
   /// - This function applies toDestinationPayloadFormat() to the
   /// message data. It also sets the corresponding datacontenttype of
   /// the CloudEvent, as indicated by
-  /// Pipeline.Destination.output_payload_format. If no<span pulumi-lang-nodejs="
-  /// outputPayloadFormat " pulumi-lang-dotnet="
-  /// OutputPayloadFormat " pulumi-lang-go="
-  /// outputPayloadFormat " pulumi-lang-python="
-  /// output_payload_format " pulumi-lang-yaml="
-  /// outputPayloadFormat " pulumi-lang-java="
-  /// outputPayloadFormat ">
-  /// output_payload_format </span>is set it will use the existing
+  /// Pipeline.Destination.output_payload_format. If no
+  /// output_payload_format is set it will use the existing
   /// datacontenttype on the CloudEvent if present, else leave
   /// datacontenttype absent.
   /// - This function expects that the content of the message will

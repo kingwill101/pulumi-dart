@@ -1,0 +1,3 @@
+library module_diagflow_cx_flow_knowledge_connector_settings;
+
+export 'cx_flow_knowledge_connector_settings/cx_flow_knowledge_connector_settings.dart';

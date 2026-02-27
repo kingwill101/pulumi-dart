@@ -1,3 +1,0 @@
-library module_memcache_get_instance_maintenance_policy;
-
-export 'get_instance_maintenance_policy.dart';

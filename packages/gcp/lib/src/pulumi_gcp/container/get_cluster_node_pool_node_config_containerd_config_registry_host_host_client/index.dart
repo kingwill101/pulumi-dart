@@ -1,3 +1,0 @@
-library module_container_get_cluster_node_pool_node_config_containerd_config_registry_host_host_client;
-
-export 'get_cluster_node_pool_node_config_containerd_config_registry_host_host_client.dart';

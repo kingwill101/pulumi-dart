@@ -16,10 +16,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
   final String? maskingCharacter;
 
   /// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
-  /// If<span pulumi-lang-nodejs=" numberToMask " pulumi-lang-dotnet=" NumberToMask " pulumi-lang-go=" numberToMask " pulumi-lang-python=" number_to_mask " pulumi-lang-yaml=" numberToMask " pulumi-lang-java=" numberToMask "> number_to_mask </span>is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
+  /// If number_to_mask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
   final int? numberToMask;
 
-  /// Mask characters in reverse order. For example, if<span pulumi-lang-nodejs=" maskingCharacter " pulumi-lang-dotnet=" MaskingCharacter " pulumi-lang-go=" maskingCharacter " pulumi-lang-python=" masking_character " pulumi-lang-yaml=" maskingCharacter " pulumi-lang-java=" maskingCharacter "> masking_character </span>is 0,<span pulumi-lang-nodejs=" numberToMask " pulumi-lang-dotnet=" NumberToMask " pulumi-lang-go=" numberToMask " pulumi-lang-python=" number_to_mask " pulumi-lang-yaml=" numberToMask " pulumi-lang-java=" numberToMask "> number_to_mask </span>is 14, and<span pulumi-lang-nodejs=" reverseOrder " pulumi-lang-dotnet=" ReverseOrder " pulumi-lang-go=" reverseOrder " pulumi-lang-python=" reverse_order " pulumi-lang-yaml=" reverseOrder " pulumi-lang-java=" reverseOrder "> reverse_order </span>is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, then the
+  /// Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
   /// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
   final bool? reverseOrder;
 

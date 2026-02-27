@@ -25,7 +25,7 @@ class EntitlementArgs {
 
   /// The ID to use for this Entitlement. This will become the last part of the resource name.
   /// This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
-  /// This value should be unique among all other Entitlements under the specified <span pulumi-lang-nodejs="`parent`" pulumi-lang-dotnet="`Parent`" pulumi-lang-go="`parent`" pulumi-lang-python="`parent`" pulumi-lang-yaml="`parent`" pulumi-lang-java="`parent`">`parent`</span>.
+  /// This value should be unique among all other Entitlements under the specified `parent`.
   final Input<String> entitlementId;
 
   /// The region of the Entitlement resource.

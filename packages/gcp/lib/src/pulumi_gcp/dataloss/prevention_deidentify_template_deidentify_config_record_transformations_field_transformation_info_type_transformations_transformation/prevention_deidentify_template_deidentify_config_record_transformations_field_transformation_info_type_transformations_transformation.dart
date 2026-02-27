@@ -13,7 +13,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
       infoTypes;
 
   /// Apply the transformation to the entire field.
-  /// The <span pulumi-lang-nodejs="`primitiveTransformation`" pulumi-lang-dotnet="`PrimitiveTransformation`" pulumi-lang-go="`primitiveTransformation`" pulumi-lang-python="`primitive_transformation`" pulumi-lang-yaml="`primitiveTransformation`" pulumi-lang-java="`primitiveTransformation`">`primitive_transformation`</span> block must only contain one argument, corresponding to the type of transformation.
+  /// The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
   /// Structure is documented below.
   final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformation
       primitiveTransformation;

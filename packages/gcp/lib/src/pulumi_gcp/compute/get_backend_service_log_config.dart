@@ -1,0 +1,3 @@
+library module_compute_get_backend_service_log_config;
+
+export 'get_backend_service_log_config/get_backend_service_log_config.dart';

@@ -1,0 +1,3 @@
+library module_container_node_pool_upgrade_settings_blue_green_settings;
+
+export 'node_pool_upgrade_settings_blue_green_settings/node_pool_upgrade_settings_blue_green_settings.dart';

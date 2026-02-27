@@ -1,3 +1,0 @@
-library module_alloydb_get_instance_machine_config;
-
-export 'get_instance_machine_config.dart';

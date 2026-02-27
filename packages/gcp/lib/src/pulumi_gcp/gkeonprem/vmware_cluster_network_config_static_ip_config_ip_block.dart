@@ -1,0 +1,3 @@
+library module_gkeonprem_vmware_cluster_network_config_static_ip_config_ip_block;
+
+export 'vmware_cluster_network_config_static_ip_config_ip_block/vmware_cluster_network_config_static_ip_config_ip_block.dart';

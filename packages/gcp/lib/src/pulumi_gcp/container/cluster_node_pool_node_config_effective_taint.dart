@@ -1,0 +1,3 @@
+library module_container_cluster_node_pool_node_config_effective_taint;
+
+export 'cluster_node_pool_node_config_effective_taint/cluster_node_pool_node_config_effective_taint.dart';

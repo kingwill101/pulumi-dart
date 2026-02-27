@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_cluster_load_balancer_metal_lb_config_address_pool;
-
-export 'vmware_cluster_load_balancer_metal_lb_config_address_pool.dart';

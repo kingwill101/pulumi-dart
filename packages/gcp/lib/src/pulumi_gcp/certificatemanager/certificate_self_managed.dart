@@ -1,0 +1,3 @@
+library module_certificatemanager_certificate_self_managed;
+
+export 'certificate_self_managed/certificate_self_managed.dart';

@@ -1,0 +1,3 @@
+library module_firebase_hosting_version_config_rewrite;
+
+export 'hosting_version_config_rewrite/hosting_version_config_rewrite.dart';

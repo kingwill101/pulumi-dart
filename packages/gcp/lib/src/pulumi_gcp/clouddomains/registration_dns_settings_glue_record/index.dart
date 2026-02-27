@@ -1,3 +1,0 @@
-library module_clouddomains_registration_dns_settings_glue_record;
-
-export 'registration_dns_settings_glue_record.dart';

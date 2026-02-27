@@ -10,7 +10,7 @@ class DiskAsyncReplicationArgs {
 
   /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
   ///
-  /// The <span pulumi-lang-nodejs="`secondaryDisk`" pulumi-lang-dotnet="`SecondaryDisk`" pulumi-lang-go="`secondaryDisk`" pulumi-lang-python="`secondary_disk`" pulumi-lang-yaml="`secondaryDisk`" pulumi-lang-java="`secondaryDisk`">`secondary_disk`</span> block includes:
+  /// The `secondary_disk` block includes:
   final Input<DiskAsyncReplicationSecondaryDisk> secondaryDisk;
 
   DiskAsyncReplicationArgs({

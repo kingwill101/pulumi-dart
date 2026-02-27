@@ -1,0 +1,3 @@
+library module_certificateauthority_authority_user_defined_access_urls;
+
+export 'authority_user_defined_access_urls/authority_user_defined_access_urls.dart';

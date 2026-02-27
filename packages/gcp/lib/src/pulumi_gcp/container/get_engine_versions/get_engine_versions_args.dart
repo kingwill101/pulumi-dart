@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart';
 class GetEngineVersionsArgs {
   /// The location (region or zone) to list versions for.
   /// Must exactly match the location the cluster will be deployed in, or listed
-  /// versions may not be available. If <span pulumi-lang-nodejs="`location`" pulumi-lang-dotnet="`Location`" pulumi-lang-go="`location`" pulumi-lang-python="`location`" pulumi-lang-yaml="`location`" pulumi-lang-java="`location`">`location`</span>, <span pulumi-lang-nodejs="`region`" pulumi-lang-dotnet="`Region`" pulumi-lang-go="`region`" pulumi-lang-python="`region`" pulumi-lang-yaml="`region`" pulumi-lang-java="`region`">`region`</span>, and <span pulumi-lang-nodejs="`zone`" pulumi-lang-dotnet="`Zone`" pulumi-lang-go="`zone`" pulumi-lang-python="`zone`" pulumi-lang-yaml="`zone`" pulumi-lang-java="`zone`">`zone`</span> are not
+  /// versions may not be available. If `location`, `region`, and `zone` are not
   /// specified, the provider-level zone must be set and is used instead.
   final Input<String>? location;
 

@@ -1,0 +1,3 @@
+library module_osconfig_patch_deployment_one_time_schedule;
+
+export 'patch_deployment_one_time_schedule/patch_deployment_one_time_schedule.dart';

@@ -3,9 +3,9 @@ import 'router_nat_address_args.dart';
 
 /// A resource used to set the list of IP addresses to be used in a NAT service and manage the draining of destroyed IPs.
 ///
-/// > **Note:** This resource is to be used alongside a <span pulumi-lang-nodejs="`gcp.compute.RouterNat`" pulumi-lang-dotnet="`gcp.compute.RouterNat`" pulumi-lang-go="`compute.RouterNat`" pulumi-lang-python="`compute.RouterNat`" pulumi-lang-yaml="`gcp.compute.RouterNat`" pulumi-lang-java="`gcp.compute.RouterNat`">`gcp.compute.RouterNat`</span> resource,
-/// the router nat resource must have no defined <span pulumi-lang-nodejs="`natIps`" pulumi-lang-dotnet="`NatIps`" pulumi-lang-go="`natIps`" pulumi-lang-python="`nat_ips`" pulumi-lang-yaml="`natIps`" pulumi-lang-java="`natIps`">`nat_ips`</span> or <span pulumi-lang-nodejs="`drainNatIps`" pulumi-lang-dotnet="`DrainNatIps`" pulumi-lang-go="`drainNatIps`" pulumi-lang-python="`drain_nat_ips`" pulumi-lang-yaml="`drainNatIps`" pulumi-lang-java="`drainNatIps`">`drain_nat_ips`</span> parameters,
-/// instead using the <span pulumi-lang-nodejs="`initialNatIps`" pulumi-lang-dotnet="`InitialNatIps`" pulumi-lang-go="`initialNatIps`" pulumi-lang-python="`initial_nat_ips`" pulumi-lang-yaml="`initialNatIps`" pulumi-lang-java="`initialNatIps`">`initial_nat_ips`</span> parameter to set at least one IP for the creation of the resource.
+/// > **Note:** This resource is to be used alongside a `gcp.compute.RouterNat` resource,
+/// the router nat resource must have no defined `nat_ips` or `drain_nat_ips` parameters,
+/// instead using the `initial_nat_ips` parameter to set at least one IP for the creation of the resource.
 ///
 ///
 /// To get more information about RouterNatAddress, see:

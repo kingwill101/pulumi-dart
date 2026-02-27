@@ -43,7 +43,7 @@ import 'gateway_args.dart';
 class Gateway extends CustomResource {
   /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
   /// When changing api configs please ensure the new config is a new resource and the
-  /// lifecycle rule <span pulumi-lang-nodejs="`createBeforeDestroy`" pulumi-lang-dotnet="`CreateBeforeDestroy`" pulumi-lang-go="`createBeforeDestroy`" pulumi-lang-python="`create_before_destroy`" pulumi-lang-yaml="`createBeforeDestroy`" pulumi-lang-java="`createBeforeDestroy`">`create_before_destroy`</span> is set.
+  /// lifecycle rule `create_before_destroy` is set.
   late final Output<String> apiConfig;
 
   /// The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
@@ -61,7 +61,7 @@ class Gateway extends CustomResource {
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// Resource name of the Gateway. Format: projects/{project}/locations/{region}/gateways/{gateway}

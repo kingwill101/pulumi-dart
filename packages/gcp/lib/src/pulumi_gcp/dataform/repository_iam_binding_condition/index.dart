@@ -1,3 +1,0 @@
-library module_dataform_repository_iam_binding_condition;
-
-export 'repository_iam_binding_condition2.dart';

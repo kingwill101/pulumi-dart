@@ -1,0 +1,3 @@
+library module_databasemigrationservice_migration_job_vpc_peering_connectivity;
+
+export 'migration_job_vpc_peering_connectivity/migration_job_vpc_peering_connectivity.dart';

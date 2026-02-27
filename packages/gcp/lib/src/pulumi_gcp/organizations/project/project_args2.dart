@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for Project.
 class ProjectArgs2 {
-  /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set<span pulumi-lang-nodejs=" autoCreateNetwork " pulumi-lang-dotnet=" AutoCreateNetwork " pulumi-lang-go=" autoCreateNetwork " pulumi-lang-python=" auto_create_network " pulumi-lang-yaml=" autoCreateNetwork " pulumi-lang-java=" autoCreateNetwork "> auto_create_network </span>to false, since the network will exist momentarily.
+  /// Create the 'default' network automatically.  Default true. If set to false, the default network will be deleted.  Note that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even if you set auto_create_network to false, since the network will exist momentarily.
   final Input<bool>? autoCreateNetwork;
 
   /// The alphanumeric ID of the billing account this project
@@ -16,8 +16,8 @@ class ProjectArgs2 {
   final Input<String>? deletionPolicy;
 
   /// The numeric ID of the folder this project should be
-  /// created under. Only one of <span pulumi-lang-nodejs="`orgId`" pulumi-lang-dotnet="`OrgId`" pulumi-lang-go="`orgId`" pulumi-lang-python="`org_id`" pulumi-lang-yaml="`orgId`" pulumi-lang-java="`orgId`">`org_id`</span> or <span pulumi-lang-nodejs="`folderId`" pulumi-lang-dotnet="`FolderId`" pulumi-lang-go="`folderId`" pulumi-lang-python="`folder_id`" pulumi-lang-yaml="`folderId`" pulumi-lang-java="`folderId`">`folder_id`</span> may be
-  /// specified. If the <span pulumi-lang-nodejs="`folderId`" pulumi-lang-dotnet="`FolderId`" pulumi-lang-go="`folderId`" pulumi-lang-python="`folder_id`" pulumi-lang-yaml="`folderId`" pulumi-lang-java="`folderId`">`folder_id`</span> is specified, then the project is
+  /// created under. Only one of `org_id` or `folder_id` may be
+  /// specified. If the `folder_id` is specified, then the project is
   /// created under the specified folder. Changing this forces the
   /// project to be migrated to the newly specified folder.
   final Input<String>? folderId;
@@ -32,7 +32,7 @@ class ProjectArgs2 {
 
   /// The numeric ID of the organization this project belongs to.
   /// Changing this forces a new project to be created.  Only one of
-  /// <span pulumi-lang-nodejs="`orgId`" pulumi-lang-dotnet="`OrgId`" pulumi-lang-go="`orgId`" pulumi-lang-python="`org_id`" pulumi-lang-yaml="`orgId`" pulumi-lang-java="`orgId`">`org_id`</span> or <span pulumi-lang-nodejs="`folderId`" pulumi-lang-dotnet="`FolderId`" pulumi-lang-go="`folderId`" pulumi-lang-python="`folder_id`" pulumi-lang-yaml="`folderId`" pulumi-lang-java="`folderId`">`folder_id`</span> may be specified. If the <span pulumi-lang-nodejs="`orgId`" pulumi-lang-dotnet="`OrgId`" pulumi-lang-go="`orgId`" pulumi-lang-python="`org_id`" pulumi-lang-yaml="`orgId`" pulumi-lang-java="`orgId`">`org_id`</span> is
+  /// `org_id` or `folder_id` may be specified. If the `org_id` is
   /// specified then the project is created at the top level. Changing
   /// this forces the project to be migrated to the newly specified
   /// organization.
@@ -41,7 +41,7 @@ class ProjectArgs2 {
   /// The project ID. Changing this forces a new project to be created.
   final Input<String>? projectId;
 
-  /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the <span pulumi-lang-nodejs="`gcp.tags.TagValue`" pulumi-lang-dotnet="`gcp.tags.TagValue`" pulumi-lang-go="`tags.TagValue`" pulumi-lang-python="`tags.TagValue`" pulumi-lang-yaml="`gcp.tags.TagValue`" pulumi-lang-java="`gcp.tags.TagValue`">`gcp.tags.TagValue`</span> resource.
+  /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `gcp.tags.TagValue` resource.
   final Input<Map<String, String>>? tags;
 
   ProjectArgs2({

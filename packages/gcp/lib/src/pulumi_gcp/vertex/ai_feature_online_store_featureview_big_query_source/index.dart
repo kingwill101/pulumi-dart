@@ -1,3 +1,0 @@
-library module_vertex_ai_feature_online_store_featureview_big_query_source;
-
-export 'ai_feature_online_store_featureview_big_query_source.dart';

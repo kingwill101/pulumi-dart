@@ -1,3 +1,0 @@
-library module_monitoring_get_uptime_check_ips_uptime_check_ip;
-
-export 'get_uptime_check_ips_uptime_check_ip.dart';

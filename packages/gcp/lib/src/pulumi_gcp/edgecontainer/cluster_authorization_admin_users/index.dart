@@ -1,3 +1,0 @@
-library module_edgecontainer_cluster_authorization_admin_users;
-
-export 'cluster_authorization_admin_users.dart';

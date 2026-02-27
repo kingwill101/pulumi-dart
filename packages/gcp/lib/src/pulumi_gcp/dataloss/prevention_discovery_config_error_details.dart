@@ -1,0 +1,3 @@
+library module_dataloss_prevention_discovery_config_error_details;
+
+export 'prevention_discovery_config_error_details/prevention_discovery_config_error_details.dart';

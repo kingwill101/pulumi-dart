@@ -1,0 +1,4 @@
+library module_compute_storage_pool_iam_binding;
+
+export 'storage_pool_iam_binding/storage_pool_iam_binding.dart';
+export 'storage_pool_iam_binding/storage_pool_iam_binding_args.dart';

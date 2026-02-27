@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// Arguments for getMembershipBinding.
 class GetMembershipBindingArgs {
   /// The location for the GKE Hub Membership Binding.
-  /// Currently only <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span> is supported.
+  /// Currently only `global` is supported.
   final Input<String> location;
 
   /// The ID of the membership binding.

@@ -15,7 +15,7 @@ class HostingReleaseArgs {
   final Input<String> siteId;
 
   /// The type of the release; indicates what happened to the content of the site. There is no need to specify
-  /// `DEPLOY` or `ROLLBACK` type if a <span pulumi-lang-nodejs="`versionName`" pulumi-lang-dotnet="`VersionName`" pulumi-lang-go="`versionName`" pulumi-lang-python="`version_name`" pulumi-lang-yaml="`versionName`" pulumi-lang-java="`versionName`">`version_name`</span> is provided.
+  /// `DEPLOY` or `ROLLBACK` type if a `version_name` is provided.
   /// DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
   /// ROLLBACK: The release points back to a previously deployed version. Output only.
   /// SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
@@ -24,8 +24,8 @@ class HostingReleaseArgs {
 
   /// The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
   /// The content of the version specified will be actively displayed on the appropriate URL.
-  /// The Version must belong to the same site as in the <span pulumi-lang-nodejs="`siteId`" pulumi-lang-dotnet="`SiteId`" pulumi-lang-go="`siteId`" pulumi-lang-python="`site_id`" pulumi-lang-yaml="`siteId`" pulumi-lang-java="`siteId`">`site_id`</span>.
-  /// This parameter must be empty if the <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span> of the release is `SITE_DISABLE`.
+  /// The Version must belong to the same site as in the `site_id`.
+  /// This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
   final Input<String>? versionName;
 
   HostingReleaseArgs({

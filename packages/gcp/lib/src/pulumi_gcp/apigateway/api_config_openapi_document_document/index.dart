@@ -1,3 +1,0 @@
-library module_apigateway_api_config_openapi_document_document;
-
-export 'api_config_openapi_document_document.dart';

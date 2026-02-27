@@ -1,0 +1,3 @@
+library module_clouddeploy_custom_target_type_custom_actions_include_skaffold_module;
+
+export 'custom_target_type_custom_actions_include_skaffold_module/custom_target_type_custom_actions_include_skaffold_module.dart';

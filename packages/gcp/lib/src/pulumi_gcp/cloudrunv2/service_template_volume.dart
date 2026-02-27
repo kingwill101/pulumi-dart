@@ -1,0 +1,3 @@
+library module_cloudrunv2_service_template_volume;
+
+export 'service_template_volume/service_template_volume.dart';

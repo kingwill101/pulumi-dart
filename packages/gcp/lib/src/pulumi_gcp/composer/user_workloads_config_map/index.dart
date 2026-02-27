@@ -1,4 +1,0 @@
-library module_composer_user_workloads_config_map;
-
-export 'user_workloads_config_map.dart';
-export 'user_workloads_config_map_args.dart';

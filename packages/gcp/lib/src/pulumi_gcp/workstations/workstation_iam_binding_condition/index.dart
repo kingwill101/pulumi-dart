@@ -1,3 +1,0 @@
-library module_workstations_workstation_iam_binding_condition;
-
-export 'workstation_iam_binding_condition.dart';

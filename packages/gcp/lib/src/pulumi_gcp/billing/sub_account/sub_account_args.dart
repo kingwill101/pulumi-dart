@@ -4,14 +4,8 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for SubAccount.
 class SubAccountArgs {
-  /// If set to "RENAME_ON_DESTROY" the billing account<span pulumi-lang-nodejs=" displayName
-  /// " pulumi-lang-dotnet=" DisplayName
-  /// " pulumi-lang-go=" displayName
-  /// " pulumi-lang-python=" display_name
-  /// " pulumi-lang-yaml=" displayName
-  /// " pulumi-lang-java=" displayName
-  /// "> display_name
-  /// </span>will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
+  /// If set to "RENAME_ON_DESTROY" the billing account display_name
+  /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
   /// Default is "".
   final Input<String>? deletionPolicy;
 

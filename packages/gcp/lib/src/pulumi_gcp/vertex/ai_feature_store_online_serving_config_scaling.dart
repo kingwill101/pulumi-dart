@@ -1,0 +1,3 @@
+library module_vertex_ai_feature_store_online_serving_config_scaling;
+
+export 'ai_feature_store_online_serving_config_scaling/ai_feature_store_online_serving_config_scaling.dart';

@@ -3,7 +3,7 @@
 import '../instance_group_manager_version_target_size/instance_group_manager_version_target_size.dart';
 
 class InstanceGroupManagerVersion {
-  /// The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (<span pulumi-lang-nodejs="`selfLinkUnique`" pulumi-lang-dotnet="`SelfLinkUnique`" pulumi-lang-go="`selfLinkUnique`" pulumi-lang-python="`self_link_unique`" pulumi-lang-yaml="`selfLinkUnique`" pulumi-lang-java="`selfLinkUnique`">`self_link_unique`</span> attribute).
+  /// The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
   final String instanceTemplate;
 
   /// Version name.
@@ -11,8 +11,8 @@ class InstanceGroupManagerVersion {
 
   /// The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
   ///
-  /// > Exactly one <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span> you specify must not have a <span pulumi-lang-nodejs="`targetSize`" pulumi-lang-dotnet="`TargetSize`" pulumi-lang-go="`targetSize`" pulumi-lang-python="`target_size`" pulumi-lang-yaml="`targetSize`" pulumi-lang-java="`targetSize`">`target_size`</span> specified. During a rolling update, the instance group manager will fulfill the <span pulumi-lang-nodejs="`targetSize`" pulumi-lang-dotnet="`TargetSize`" pulumi-lang-go="`targetSize`" pulumi-lang-python="`target_size`" pulumi-lang-yaml="`targetSize`" pulumi-lang-java="`targetSize`">`target_size`</span>
-  /// constraints of every other <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span>, and any remaining instances will be provisioned with the version where <span pulumi-lang-nodejs="`targetSize`" pulumi-lang-dotnet="`TargetSize`" pulumi-lang-go="`targetSize`" pulumi-lang-python="`target_size`" pulumi-lang-yaml="`targetSize`" pulumi-lang-java="`targetSize`">`target_size`</span> is unset.
+  /// > Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
+  /// constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
   final InstanceGroupManagerVersionTargetSize? targetSize;
 
   InstanceGroupManagerVersion({

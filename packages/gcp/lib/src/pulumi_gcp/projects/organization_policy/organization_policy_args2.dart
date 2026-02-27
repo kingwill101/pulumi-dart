@@ -23,7 +23,7 @@ class OrganizationPolicyArgs2 {
 
   /// A restore policy is a constraint to restore the default policy. Structure is documented below.
   ///
-  /// > **Note:** If none of [<span pulumi-lang-nodejs="`booleanPolicy`" pulumi-lang-dotnet="`BooleanPolicy`" pulumi-lang-go="`booleanPolicy`" pulumi-lang-python="`boolean_policy`" pulumi-lang-yaml="`booleanPolicy`" pulumi-lang-java="`booleanPolicy`">`boolean_policy`</span>, <span pulumi-lang-nodejs="`listPolicy`" pulumi-lang-dotnet="`ListPolicy`" pulumi-lang-go="`listPolicy`" pulumi-lang-python="`list_policy`" pulumi-lang-yaml="`listPolicy`" pulumi-lang-java="`listPolicy`">`list_policy`</span>, <span pulumi-lang-nodejs="`restorePolicy`" pulumi-lang-dotnet="`RestorePolicy`" pulumi-lang-go="`restorePolicy`" pulumi-lang-python="`restore_policy`" pulumi-lang-yaml="`restorePolicy`" pulumi-lang-java="`restorePolicy`">`restore_policy`</span>] are defined the policy for a given constraint will
+  /// > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
   /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
   ///
   /// - - -

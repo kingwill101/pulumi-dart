@@ -6,7 +6,7 @@ class SecretRotation {
   final String? nextRotationTime;
 
   /// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
-  /// If rotationPeriod is set, <span pulumi-lang-nodejs="`nextRotationTime`" pulumi-lang-dotnet="`NextRotationTime`" pulumi-lang-go="`nextRotationTime`" pulumi-lang-python="`next_rotation_time`" pulumi-lang-yaml="`nextRotationTime`" pulumi-lang-java="`nextRotationTime`">`next_rotation_time`</span> must be set. <span pulumi-lang-nodejs="`nextRotationTime`" pulumi-lang-dotnet="`NextRotationTime`" pulumi-lang-go="`nextRotationTime`" pulumi-lang-python="`next_rotation_time`" pulumi-lang-yaml="`nextRotationTime`" pulumi-lang-java="`nextRotationTime`">`next_rotation_time`</span> will be advanced by this period when the service automatically sends rotation notifications.
+  /// If rotationPeriod is set, `next_rotation_time` must be set. `next_rotation_time` will be advanced by this period when the service automatically sends rotation notifications.
   final String? rotationPeriod;
 
   SecretRotation({

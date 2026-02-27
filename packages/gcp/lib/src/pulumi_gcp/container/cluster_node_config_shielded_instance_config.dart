@@ -1,0 +1,3 @@
+library module_container_cluster_node_config_shielded_instance_config;
+
+export 'cluster_node_config_shielded_instance_config/cluster_node_config_shielded_instance_config.dart';

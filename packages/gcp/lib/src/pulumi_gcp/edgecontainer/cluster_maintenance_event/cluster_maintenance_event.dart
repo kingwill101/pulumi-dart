@@ -7,14 +7,8 @@ class ClusterMaintenanceEvent {
 
   /// (Output)
   /// The time when the maintenance event ended, either successfully or not. If
-  /// the maintenance event is split into multiple maintenance windows,<span pulumi-lang-nodejs="
-  /// endTime " pulumi-lang-dotnet="
-  /// EndTime " pulumi-lang-go="
-  /// endTime " pulumi-lang-python="
-  /// end_time " pulumi-lang-yaml="
-  /// endTime " pulumi-lang-java="
-  /// endTime ">
-  /// end_time </span>is only updated when the whole flow ends.
+  /// the maintenance event is split into multiple maintenance windows,
+  /// end_time is only updated when the whole flow ends.
   final String? endTime;
 
   /// (Output)

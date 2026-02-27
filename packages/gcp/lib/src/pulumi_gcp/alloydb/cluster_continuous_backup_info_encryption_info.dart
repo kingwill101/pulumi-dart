@@ -1,0 +1,3 @@
+library module_alloydb_cluster_continuous_backup_info_encryption_info;
+
+export 'cluster_continuous_backup_info_encryption_info/cluster_continuous_backup_info_encryption_info.dart';

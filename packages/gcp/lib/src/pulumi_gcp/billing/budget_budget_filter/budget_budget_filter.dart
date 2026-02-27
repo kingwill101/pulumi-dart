@@ -6,7 +6,7 @@ class BudgetBudgetFilter {
   /// A CalendarPeriod represents the abstract concept of a recurring time period that has a
   /// canonical start. Grammatically, "the start of the current CalendarPeriod".
   /// All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
-  /// Exactly one of <span pulumi-lang-nodejs="`calendarPeriod`" pulumi-lang-dotnet="`CalendarPeriod`" pulumi-lang-go="`calendarPeriod`" pulumi-lang-python="`calendar_period`" pulumi-lang-yaml="`calendarPeriod`" pulumi-lang-java="`calendarPeriod`">`calendar_period`</span>, <span pulumi-lang-nodejs="`customPeriod`" pulumi-lang-dotnet="`CustomPeriod`" pulumi-lang-go="`customPeriod`" pulumi-lang-python="`custom_period`" pulumi-lang-yaml="`customPeriod`" pulumi-lang-java="`customPeriod`">`custom_period`</span> must be provided.
+  /// Exactly one of `calendar_period`, `custom_period` must be provided.
   /// Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
   final String? calendarPeriod;
 
@@ -23,7 +23,7 @@ class BudgetBudgetFilter {
 
   /// Specifies to track usage from any start date (required) to any end date (optional).
   /// This time period is static, it does not recur.
-  /// Exactly one of <span pulumi-lang-nodejs="`calendarPeriod`" pulumi-lang-dotnet="`CalendarPeriod`" pulumi-lang-go="`calendarPeriod`" pulumi-lang-python="`calendar_period`" pulumi-lang-yaml="`calendarPeriod`" pulumi-lang-java="`calendarPeriod`">`calendar_period`</span>, <span pulumi-lang-nodejs="`customPeriod`" pulumi-lang-dotnet="`CustomPeriod`" pulumi-lang-go="`customPeriod`" pulumi-lang-python="`custom_period`" pulumi-lang-yaml="`customPeriod`" pulumi-lang-java="`customPeriod`">`custom_period`</span> must be provided.
+  /// Exactly one of `calendar_period`, `custom_period` must be provided.
   /// Structure is documented below.
   final BudgetBudgetFilterCustomPeriod? customPeriod;
 

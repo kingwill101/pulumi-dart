@@ -1,3 +1,0 @@
-library module_recaptcha_enterprise_key_testing_options;
-
-export 'enterprise_key_testing_options.dart';

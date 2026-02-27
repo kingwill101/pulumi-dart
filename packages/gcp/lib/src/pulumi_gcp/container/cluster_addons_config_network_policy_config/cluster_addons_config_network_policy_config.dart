@@ -3,7 +3,7 @@
 class ClusterAddonsConfigNetworkPolicyConfig {
   /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedClusterTelemetry"" pulumi-lang-dotnet=""NestedClusterTelemetry"" pulumi-lang-go=""nestedClusterTelemetry"" pulumi-lang-python=""nested_cluster_telemetry"" pulumi-lang-yaml=""nestedClusterTelemetry"" pulumi-lang-java=""nestedClusterTelemetry"">"nested_cluster_telemetry"</span>></a>The <span pulumi-lang-nodejs="`clusterTelemetry`" pulumi-lang-dotnet="`ClusterTelemetry`" pulumi-lang-go="`clusterTelemetry`" pulumi-lang-python="`cluster_telemetry`" pulumi-lang-yaml="`clusterTelemetry`" pulumi-lang-java="`clusterTelemetry`">`cluster_telemetry`</span> block supports
+  /// <a name="nested_cluster_telemetry"></a>The `cluster_telemetry` block supports
   final bool disabled;
 
   ClusterAddonsConfigNetworkPolicyConfig({

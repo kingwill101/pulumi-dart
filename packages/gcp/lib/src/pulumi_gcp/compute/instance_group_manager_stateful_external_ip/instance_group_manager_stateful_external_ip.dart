@@ -4,7 +4,7 @@ class InstanceGroupManagerStatefulExternalIp {
   /// , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
   final String? deleteRule;
 
-  /// , The network interface name of the external Ip. Possible value: <span pulumi-lang-nodejs="`nic0`" pulumi-lang-dotnet="`Nic0`" pulumi-lang-go="`nic0`" pulumi-lang-python="`nic0`" pulumi-lang-yaml="`nic0`" pulumi-lang-java="`nic0`">`nic0`</span>
+  /// , The network interface name of the external Ip. Possible value: `nic0`
   final String? interfaceName;
 
   InstanceGroupManagerStatefulExternalIp({

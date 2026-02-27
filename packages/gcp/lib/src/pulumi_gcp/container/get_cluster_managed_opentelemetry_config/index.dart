@@ -1,3 +1,0 @@
-library module_container_get_cluster_managed_opentelemetry_config;
-
-export 'get_cluster_managed_opentelemetry_config.dart';

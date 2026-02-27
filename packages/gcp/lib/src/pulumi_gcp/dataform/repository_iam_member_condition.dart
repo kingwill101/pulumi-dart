@@ -1,0 +1,3 @@
+library module_dataform_repository_iam_member_condition;
+
+export 'repository_iam_member_condition/repository_iam_member_condition2.dart';

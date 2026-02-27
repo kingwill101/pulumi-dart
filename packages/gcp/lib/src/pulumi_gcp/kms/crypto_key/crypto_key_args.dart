@@ -36,7 +36,7 @@ class CryptoKeyArgs {
   /// Labels with user-defined metadata to apply to this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The resource name for the CryptoKey.
@@ -51,12 +51,12 @@ class CryptoKeyArgs {
   /// Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
   /// The first rotation will take place after the specified period. The rotation period has
   /// the format of a decimal number with up to 9 fractional digits, followed by the
-  /// letter <span pulumi-lang-nodejs="`s`" pulumi-lang-dotnet="`S`" pulumi-lang-go="`s`" pulumi-lang-python="`s`" pulumi-lang-yaml="`s`" pulumi-lang-java="`s`">`s`</span> (seconds). It must be greater than a day (ie, 86400).
+  /// letter `s` (seconds). It must be greater than a day (ie, 86400).
   final Input<String>? rotationPeriod;
 
   /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
-  /// You must use the <span pulumi-lang-nodejs="`gcp.kms.CryptoKeyVersion`" pulumi-lang-dotnet="`gcp.kms.CryptoKeyVersion`" pulumi-lang-go="`kms.CryptoKeyVersion`" pulumi-lang-python="`kms.CryptoKeyVersion`" pulumi-lang-yaml="`gcp.kms.CryptoKeyVersion`" pulumi-lang-java="`gcp.kms.CryptoKeyVersion`">`gcp.kms.CryptoKeyVersion`</span> resource to create a new CryptoKeyVersion
-  /// or <span pulumi-lang-nodejs="`gcp.kms.KeyRingImportJob`" pulumi-lang-dotnet="`gcp.kms.KeyRingImportJob`" pulumi-lang-go="`kms.KeyRingImportJob`" pulumi-lang-python="`kms.KeyRingImportJob`" pulumi-lang-yaml="`gcp.kms.KeyRingImportJob`" pulumi-lang-java="`gcp.kms.KeyRingImportJob`">`gcp.kms.KeyRingImportJob`</span> resource to import the CryptoKeyVersion.
+  /// You must use the `gcp.kms.CryptoKeyVersion` resource to create a new CryptoKeyVersion
+  /// or `gcp.kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
   /// This field is only applicable during initial CryptoKey creation.
   final Input<bool>? skipInitialVersionCreation;
 

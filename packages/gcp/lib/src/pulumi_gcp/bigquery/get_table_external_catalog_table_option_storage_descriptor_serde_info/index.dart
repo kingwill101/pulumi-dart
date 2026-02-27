@@ -1,3 +1,0 @@
-library module_bigquery_get_table_external_catalog_table_option_storage_descriptor_serde_info;
-
-export 'get_table_external_catalog_table_option_storage_descriptor_serde_info.dart';

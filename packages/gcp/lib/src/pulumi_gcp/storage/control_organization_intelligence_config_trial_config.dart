@@ -1,0 +1,3 @@
+library module_storage_control_organization_intelligence_config_trial_config;
+
+export 'control_organization_intelligence_config_trial_config/control_organization_intelligence_config_trial_config.dart';

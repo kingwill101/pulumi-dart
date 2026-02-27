@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class InstanceInstanceEncryptionKey {
-  /// The<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the encryption key that is
+  /// The self_link of the encryption key that is
   /// stored in Google Cloud KMS to encrypt the data on this instance.
   final String? kmsKeySelfLink;
 

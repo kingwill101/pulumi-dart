@@ -21,7 +21,7 @@ class ResponsePolicyArgs {
   /// If it is not provided, the provider project is used.
   final Input<String>? project;
 
-  /// The user assigned name for this Response Policy, such as <span pulumi-lang-nodejs="`myresponsepolicy`" pulumi-lang-dotnet="`Myresponsepolicy`" pulumi-lang-go="`myresponsepolicy`" pulumi-lang-python="`myresponsepolicy`" pulumi-lang-yaml="`myresponsepolicy`" pulumi-lang-java="`myresponsepolicy`">`myresponsepolicy`</span>.
+  /// The user assigned name for this Response Policy, such as `myresponsepolicy`.
   final Input<String> responsePolicyName;
 
   ResponsePolicyArgs({

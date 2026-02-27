@@ -1,0 +1,3 @@
+library module_osconfig_os_policy_assignment_os_policy_resource_group_inventory_filter;
+
+export 'os_policy_assignment_os_policy_resource_group_inventory_filter/os_policy_assignment_os_policy_resource_group_inventory_filter.dart';

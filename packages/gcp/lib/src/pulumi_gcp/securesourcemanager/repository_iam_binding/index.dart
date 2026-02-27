@@ -1,4 +1,0 @@
-library module_securesourcemanager_repository_iam_binding;
-
-export 'repository_iam_binding3.dart';
-export 'repository_iam_binding_args3.dart';

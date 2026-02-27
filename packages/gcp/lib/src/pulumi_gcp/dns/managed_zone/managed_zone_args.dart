@@ -36,7 +36,7 @@ class ManagedZoneArgs {
   /// A set of key/value label pairs to assign to this ManagedZone.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// User assigned name for this resource.
@@ -49,7 +49,7 @@ class ManagedZoneArgs {
   final Input<ManagedZonePeeringConfig>? peeringConfig;
 
   /// For privately visible zones, the set of Virtual Private Cloud
-  /// resources that the zone is visible from. At least one of <span pulumi-lang-nodejs="`gkeClusters`" pulumi-lang-dotnet="`GkeClusters`" pulumi-lang-go="`gkeClusters`" pulumi-lang-python="`gke_clusters`" pulumi-lang-yaml="`gkeClusters`" pulumi-lang-java="`gkeClusters`">`gke_clusters`</span> or <span pulumi-lang-nodejs="`networks`" pulumi-lang-dotnet="`Networks`" pulumi-lang-go="`networks`" pulumi-lang-python="`networks`" pulumi-lang-yaml="`networks`" pulumi-lang-java="`networks`">`networks`</span> must be specified.
+  /// resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
   /// Structure is documented below.
   final Input<ManagedZonePrivateVisibilityConfig>? privateVisibilityConfig;
 
@@ -59,7 +59,7 @@ class ManagedZoneArgs {
 
   /// Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
   /// lookup queries using automatically configured records for VPC resources. This only applies
-  /// to networks listed under <span pulumi-lang-nodejs="`privateVisibilityConfig`" pulumi-lang-dotnet="`PrivateVisibilityConfig`" pulumi-lang-go="`privateVisibilityConfig`" pulumi-lang-python="`private_visibility_config`" pulumi-lang-yaml="`privateVisibilityConfig`" pulumi-lang-java="`privateVisibilityConfig`">`private_visibility_config`</span>.
+  /// to networks listed under `private_visibility_config`.
   final Input<bool>? reverseLookup;
 
   /// The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
@@ -68,8 +68,8 @@ class ManagedZoneArgs {
 
   /// The zone's visibility: public zones are exposed to the Internet,
   /// while private zones are visible only to Virtual Private Cloud resources.
-  /// Default value is <span pulumi-lang-nodejs="`public`" pulumi-lang-dotnet="`Public`" pulumi-lang-go="`public`" pulumi-lang-python="`public`" pulumi-lang-yaml="`public`" pulumi-lang-java="`public`">`public`</span>.
-  /// Possible values are: <span pulumi-lang-nodejs="`private`" pulumi-lang-dotnet="`Private`" pulumi-lang-go="`private`" pulumi-lang-python="`private`" pulumi-lang-yaml="`private`" pulumi-lang-java="`private`">`private`</span>, <span pulumi-lang-nodejs="`public`" pulumi-lang-dotnet="`Public`" pulumi-lang-go="`public`" pulumi-lang-python="`public`" pulumi-lang-yaml="`public`" pulumi-lang-java="`public`">`public`</span>.
+  /// Default value is `public`.
+  /// Possible values are: `private`, `public`.
   final Input<String>? visibility;
 
   ManagedZoneArgs({

@@ -1,0 +1,3 @@
+library module_bigqueryanalyticshub_data_exchange_iam_binding_condition;
+
+export 'data_exchange_iam_binding_condition/data_exchange_iam_binding_condition.dart';

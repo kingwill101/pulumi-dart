@@ -1,0 +1,3 @@
+library module_workstations_workstation_config_host_gce_instance;
+
+export 'workstation_config_host_gce_instance/workstation_config_host_gce_instance.dart';

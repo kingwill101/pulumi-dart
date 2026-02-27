@@ -1,0 +1,3 @@
+library module_cloudbuild_worker_pool_private_service_connect;
+
+export 'worker_pool_private_service_connect/worker_pool_private_service_connect.dart';

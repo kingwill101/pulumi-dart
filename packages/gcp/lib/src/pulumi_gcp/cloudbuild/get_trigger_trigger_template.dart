@@ -1,0 +1,3 @@
+library module_cloudbuild_get_trigger_trigger_template;
+
+export 'get_trigger_trigger_template/get_trigger_trigger_template.dart';

@@ -1,0 +1,3 @@
+library module_privilegedaccessmanager_entitlement_eligible_user;
+
+export 'entitlement_eligible_user/entitlement_eligible_user.dart';

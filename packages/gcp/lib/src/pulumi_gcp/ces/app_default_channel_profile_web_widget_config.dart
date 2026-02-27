@@ -1,0 +1,3 @@
+library module_ces_app_default_channel_profile_web_widget_config;
+
+export 'app_default_channel_profile_web_widget_config/app_default_channel_profile_web_widget_config.dart';

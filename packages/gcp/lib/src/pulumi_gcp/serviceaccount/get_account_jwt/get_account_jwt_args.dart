@@ -7,7 +7,7 @@ class GetAccountJwtArgs {
   /// Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.
   final Input<List<String>>? delegates;
 
-  /// Number of seconds until the JWT expires. If set and non-zero an <span pulumi-lang-nodejs="`exp`" pulumi-lang-dotnet="`Exp`" pulumi-lang-go="`exp`" pulumi-lang-python="`exp`" pulumi-lang-yaml="`exp`" pulumi-lang-java="`exp`">`exp`</span> claim will be added to the payload derived from the current timestamp plus<span pulumi-lang-nodejs=" expiresIn " pulumi-lang-dotnet=" ExpiresIn " pulumi-lang-go=" expiresIn " pulumi-lang-python=" expires_in " pulumi-lang-yaml=" expiresIn " pulumi-lang-java=" expiresIn "> expires_in </span>seconds.
+  /// Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expires_in seconds.
   final Input<int>? expiresIn;
 
   /// The JSON-encoded JWT claims set to include in the self-signed JWT.

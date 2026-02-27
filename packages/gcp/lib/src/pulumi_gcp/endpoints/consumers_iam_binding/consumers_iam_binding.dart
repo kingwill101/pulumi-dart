@@ -4,28 +4,22 @@ import 'consumers_iam_binding_args.dart';
 
 /// Three different resources help you manage your IAM policy for Cloud Endpoints ServiceConsumers. Each of these resources serves a different use case:
 ///
-/// * <span pulumi-lang-nodejs="`gcp.endpoints.ConsumersIamPolicy`" pulumi-lang-dotnet="`gcp.endpoints.ConsumersIamPolicy`" pulumi-lang-go="`endpoints.ConsumersIamPolicy`" pulumi-lang-python="`endpoints.ConsumersIamPolicy`" pulumi-lang-yaml="`gcp.endpoints.ConsumersIamPolicy`" pulumi-lang-java="`gcp.endpoints.ConsumersIamPolicy`">`gcp.endpoints.ConsumersIamPolicy`</span>: Authoritative. Sets the IAM policy for the serviceconsumers and replaces any existing policy already attached.
-/// * <span pulumi-lang-nodejs="`gcp.endpoints.ConsumersIamBinding`" pulumi-lang-dotnet="`gcp.endpoints.ConsumersIamBinding`" pulumi-lang-go="`endpoints.ConsumersIamBinding`" pulumi-lang-python="`endpoints.ConsumersIamBinding`" pulumi-lang-yaml="`gcp.endpoints.ConsumersIamBinding`" pulumi-lang-java="`gcp.endpoints.ConsumersIamBinding`">`gcp.endpoints.ConsumersIamBinding`</span>: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the serviceconsumers are preserved.
-/// * <span pulumi-lang-nodejs="`gcp.endpoints.ConsumersIamMember`" pulumi-lang-dotnet="`gcp.endpoints.ConsumersIamMember`" pulumi-lang-go="`endpoints.ConsumersIamMember`" pulumi-lang-python="`endpoints.ConsumersIamMember`" pulumi-lang-yaml="`gcp.endpoints.ConsumersIamMember`" pulumi-lang-java="`gcp.endpoints.ConsumersIamMember`">`gcp.endpoints.ConsumersIamMember`</span>: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the serviceconsumers are preserved.
+/// * `gcp.endpoints.ConsumersIamPolicy`: Authoritative. Sets the IAM policy for the serviceconsumers and replaces any existing policy already attached.
+/// * `gcp.endpoints.ConsumersIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the serviceconsumers are preserved.
+/// * `gcp.endpoints.ConsumersIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the serviceconsumers are preserved.
 ///
 /// A data source can be used to retrieve policy data in advent you do not need creation
 ///
-/// * <span pulumi-lang-nodejs="`gcp.endpoints.ConsumersIamPolicy`" pulumi-lang-dotnet="`gcp.endpoints.ConsumersIamPolicy`" pulumi-lang-go="`endpoints.ConsumersIamPolicy`" pulumi-lang-python="`endpoints.ConsumersIamPolicy`" pulumi-lang-yaml="`gcp.endpoints.ConsumersIamPolicy`" pulumi-lang-java="`gcp.endpoints.ConsumersIamPolicy`">`gcp.endpoints.ConsumersIamPolicy`</span>: Retrieves the IAM policy for the serviceconsumers
+/// * `gcp.endpoints.ConsumersIamPolicy`: Retrieves the IAM policy for the serviceconsumers
 ///
-/// > **Note:** <span pulumi-lang-nodejs="`gcp.endpoints.ConsumersIamPolicy`" pulumi-lang-dotnet="`gcp.endpoints.ConsumersIamPolicy`" pulumi-lang-go="`endpoints.ConsumersIamPolicy`" pulumi-lang-python="`endpoints.ConsumersIamPolicy`" pulumi-lang-yaml="`gcp.endpoints.ConsumersIamPolicy`" pulumi-lang-java="`gcp.endpoints.ConsumersIamPolicy`">`gcp.endpoints.ConsumersIamPolicy`</span> **cannot** be used in conjunction with <span pulumi-lang-nodejs="`gcp.endpoints.ConsumersIamBinding`" pulumi-lang-dotnet="`gcp.endpoints.ConsumersIamBinding`" pulumi-lang-go="`endpoints.ConsumersIamBinding`" pulumi-lang-python="`endpoints.ConsumersIamBinding`" pulumi-lang-yaml="`gcp.endpoints.ConsumersIamBinding`" pulumi-lang-java="`gcp.endpoints.ConsumersIamBinding`">`gcp.endpoints.ConsumersIamBinding`</span> and <span pulumi-lang-nodejs="`gcp.endpoints.ConsumersIamMember`" pulumi-lang-dotnet="`gcp.endpoints.ConsumersIamMember`" pulumi-lang-go="`endpoints.ConsumersIamMember`" pulumi-lang-python="`endpoints.ConsumersIamMember`" pulumi-lang-yaml="`gcp.endpoints.ConsumersIamMember`" pulumi-lang-java="`gcp.endpoints.ConsumersIamMember`">`gcp.endpoints.ConsumersIamMember`</span> or they will fight over what your policy should be.
+/// > **Note:** `gcp.endpoints.ConsumersIamPolicy` **cannot** be used in conjunction with `gcp.endpoints.ConsumersIamBinding` and `gcp.endpoints.ConsumersIamMember` or they will fight over what your policy should be.
 ///
-/// > **Note:** <span pulumi-lang-nodejs="`gcp.endpoints.ConsumersIamBinding`" pulumi-lang-dotnet="`gcp.endpoints.ConsumersIamBinding`" pulumi-lang-go="`endpoints.ConsumersIamBinding`" pulumi-lang-python="`endpoints.ConsumersIamBinding`" pulumi-lang-yaml="`gcp.endpoints.ConsumersIamBinding`" pulumi-lang-java="`gcp.endpoints.ConsumersIamBinding`">`gcp.endpoints.ConsumersIamBinding`</span> resources **can be** used in conjunction with <span pulumi-lang-nodejs="`gcp.endpoints.ConsumersIamMember`" pulumi-lang-dotnet="`gcp.endpoints.ConsumersIamMember`" pulumi-lang-go="`endpoints.ConsumersIamMember`" pulumi-lang-python="`endpoints.ConsumersIamMember`" pulumi-lang-yaml="`gcp.endpoints.ConsumersIamMember`" pulumi-lang-java="`gcp.endpoints.ConsumersIamMember`">`gcp.endpoints.ConsumersIamMember`</span> resources **only if** they do not grant privilege to the same role.
+/// > **Note:** `gcp.endpoints.ConsumersIamBinding` resources **can be** used in conjunction with `gcp.endpoints.ConsumersIamMember` resources **only if** they do not grant privilege to the same role.
 ///
 ///
 ///
-/// ##<span pulumi-lang-nodejs=" gcp.endpoints.ConsumersIamPolicy
-/// " pulumi-lang-dotnet=" gcp.endpoints.ConsumersIamPolicy
-/// " pulumi-lang-go=" endpoints.ConsumersIamPolicy
-/// " pulumi-lang-python=" endpoints.ConsumersIamPolicy
-/// " pulumi-lang-yaml=" gcp.endpoints.ConsumersIamPolicy
-/// " pulumi-lang-java=" gcp.endpoints.ConsumersIamPolicy
-/// "> gcp.endpoints.ConsumersIamPolicy
-/// </span>
+/// ## gcp.endpoints.ConsumersIamPolicy
+///
 /// ## Import
 ///
 /// For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -70,7 +64,7 @@ class ConsumersIamBinding extends CustomResource {
   /// (Computed) The etag of the IAM policy.
   late final Output<String> etag;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -85,7 +79,7 @@ class ConsumersIamBinding extends CustomResource {
   late final Output<List<String>> members;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.endpoints.ConsumersIamBinding`" pulumi-lang-dotnet="`gcp.endpoints.ConsumersIamBinding`" pulumi-lang-go="`endpoints.ConsumersIamBinding`" pulumi-lang-python="`endpoints.ConsumersIamBinding`" pulumi-lang-yaml="`gcp.endpoints.ConsumersIamBinding`" pulumi-lang-java="`gcp.endpoints.ConsumersIamBinding`">`gcp.endpoints.ConsumersIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final Output<String> role;
 

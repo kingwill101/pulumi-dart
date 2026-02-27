@@ -14,8 +14,8 @@ class WorkstationConfigEphemeralDirectoryGcePd {
 
   /// Name of the snapshot to use as the source for the disk.
   /// Must be empty if `sourceImage` is set.
-  /// Must be empty if <span pulumi-lang-nodejs="`readOnly`" pulumi-lang-dotnet="`ReadOnly`" pulumi-lang-go="`readOnly`" pulumi-lang-python="`read_only`" pulumi-lang-yaml="`readOnly`" pulumi-lang-java="`readOnly`">`read_only`</span> is false.
-  /// Updating <span pulumi-lang-nodejs="`sourceSnapshot`" pulumi-lang-dotnet="`SourceSnapshot`" pulumi-lang-go="`sourceSnapshot`" pulumi-lang-python="`source_snapshot`" pulumi-lang-yaml="`sourceSnapshot`" pulumi-lang-java="`sourceSnapshot`">`source_snapshot`</span> will update content in the ephemeral directory after the workstation is restarted.
+  /// Must be empty if `read_only` is false.
+  /// Updating `source_snapshot` will update content in the ephemeral directory after the workstation is restarted.
   final String? sourceSnapshot;
 
   WorkstationConfigEphemeralDirectoryGcePd({

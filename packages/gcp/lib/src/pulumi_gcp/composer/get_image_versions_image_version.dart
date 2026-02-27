@@ -1,0 +1,3 @@
+library module_composer_get_image_versions_image_version;
+
+export 'get_image_versions_image_version/get_image_versions_image_version.dart';

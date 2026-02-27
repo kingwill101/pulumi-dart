@@ -1,3 +1,0 @@
-library module_alloydb_get_supported_database_flags_supported_database_flag_string_restrictions;
-
-export 'get_supported_database_flags_supported_database_flag_string_restrictions.dart';

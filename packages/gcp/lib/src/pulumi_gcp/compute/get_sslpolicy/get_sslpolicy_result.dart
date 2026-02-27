@@ -4,8 +4,8 @@
 class GetSSLPolicyResult {
   final String creationTimestamp;
 
-  /// If the <span pulumi-lang-nodejs="`profile`" pulumi-lang-dotnet="`Profile`" pulumi-lang-go="`profile`" pulumi-lang-python="`profile`" pulumi-lang-yaml="`profile`" pulumi-lang-java="`profile`">`profile`</span> is `CUSTOM`, these are the custom encryption
-  /// ciphers supported by the profile. If the <span pulumi-lang-nodejs="`profile`" pulumi-lang-dotnet="`Profile`" pulumi-lang-go="`profile`" pulumi-lang-python="`profile`" pulumi-lang-yaml="`profile`" pulumi-lang-java="`profile`">`profile`</span> is *not* `CUSTOM`, this
+  /// If the `profile` is `CUSTOM`, these are the custom encryption
+  /// ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
   /// attribute will be empty.
   final List<String> customFeatures;
 

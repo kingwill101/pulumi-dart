@@ -32,7 +32,7 @@ class MetricDescriptorArgs {
   /// If it is not provided, the provider project is used.
   final Input<String>? project;
 
-  /// The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the<span pulumi-lang-nodejs=" relativeMetricName " pulumi-lang-dotnet=" RelativeMetricName " pulumi-lang-go=" relativeMetricName " pulumi-lang-python=" relative_metric_name " pulumi-lang-yaml=" relativeMetricName " pulumi-lang-java=" relativeMetricName "> relative_metric_name </span>is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
+  /// The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
   final Input<String> type;
 
   /// The units in which the metric value is reported. It is only applicable if the

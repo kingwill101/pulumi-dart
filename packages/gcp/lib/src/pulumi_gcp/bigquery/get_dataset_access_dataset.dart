@@ -1,0 +1,3 @@
+library module_bigquery_get_dataset_access_dataset;
+
+export 'get_dataset_access_dataset/get_dataset_access_dataset.dart';

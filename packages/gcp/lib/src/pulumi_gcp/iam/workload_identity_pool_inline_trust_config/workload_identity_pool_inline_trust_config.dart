@@ -6,11 +6,11 @@ import '../workload_identity_pool_inline_trust_config_additional_trust_bundle/wo
 class WorkloadIdentityPoolInlineTrustConfig {
   /// Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
   /// objects, which contain the trusted root certificates for that domain. There can be a
-  /// maximum of <span pulumi-lang-nodejs="`10`" pulumi-lang-dotnet="`10`" pulumi-lang-go="`10`" pulumi-lang-python="`10`" pulumi-lang-yaml="`10`" pulumi-lang-java="`10`">`10`</span> trust domain entries in this map.
+  /// maximum of `10` trust domain entries in this map.
   /// Note that a trust domain automatically trusts itself and don't need to be specified here.
   /// If however, this `WorkloadIdentityPool`'s trust domain contains any trust anchors in the
-  /// <span pulumi-lang-nodejs="`additionalTrustBundles`" pulumi-lang-dotnet="`AdditionalTrustBundles`" pulumi-lang-go="`additionalTrustBundles`" pulumi-lang-python="`additional_trust_bundles`" pulumi-lang-yaml="`additionalTrustBundles`" pulumi-lang-java="`additionalTrustBundles`">`additional_trust_bundles`</span> map, those trust anchors will be *appended to* the Trust Bundle
-  /// automatically derived from your `InlineCertificateIssuanceConfig`'s <span pulumi-lang-nodejs="`caPools`" pulumi-lang-dotnet="`CaPools`" pulumi-lang-go="`caPools`" pulumi-lang-python="`ca_pools`" pulumi-lang-yaml="`caPools`" pulumi-lang-java="`caPools`">`ca_pools`</span>.
+  /// `additional_trust_bundles` map, those trust anchors will be *appended to* the Trust Bundle
+  /// automatically derived from your `InlineCertificateIssuanceConfig`'s `ca_pools`.
   /// Structure is documented below.
   final List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>?
       additionalTrustBundles;

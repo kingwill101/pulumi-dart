@@ -17,14 +17,14 @@ class RepositoryArgs3 {
   final Input<RepositoryGitRemoteSettings>? gitRemoteSettings;
 
   /// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
-  /// It is not possible to add or update the encryption key after the repository is created. Example projects/<span pulumi-lang-nodejs="[kmsProjectId]" pulumi-lang-dotnet="[KmsProjectId]" pulumi-lang-go="[kmsProjectId]" pulumi-lang-python="[kms_project_id]" pulumi-lang-yaml="[kmsProjectId]" pulumi-lang-java="[kmsProjectId]">[kms_project_id]</span>/locations/[region]/keyRings/<span pulumi-lang-nodejs="[keyRegion]" pulumi-lang-dotnet="[KeyRegion]" pulumi-lang-go="[keyRegion]" pulumi-lang-python="[key_region]" pulumi-lang-yaml="[keyRegion]" pulumi-lang-java="[keyRegion]">[key_region]</span>/cryptoKeys/[key]
+  /// It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
   final Input<String>? kmsKeyName;
 
   /// Optional. Repository user labels.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The repository's name.

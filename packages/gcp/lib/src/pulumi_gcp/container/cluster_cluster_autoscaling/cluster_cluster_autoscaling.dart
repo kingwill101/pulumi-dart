@@ -25,12 +25,12 @@ class ClusterClusterAutoscaling {
   /// Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
   final bool? defaultComputeClassEnabled;
 
-  /// Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> is implied
-  /// for autopilot clusters. Resource limits for <span pulumi-lang-nodejs="`cpu`" pulumi-lang-dotnet="`Cpu`" pulumi-lang-go="`cpu`" pulumi-lang-python="`cpu`" pulumi-lang-yaml="`cpu`" pulumi-lang-java="`cpu`">`cpu`</span> and <span pulumi-lang-nodejs="`memory`" pulumi-lang-dotnet="`Memory`" pulumi-lang-go="`memory`" pulumi-lang-python="`memory`" pulumi-lang-yaml="`memory`" pulumi-lang-java="`memory`">`memory`</span> must be defined to enable node auto-provisioning for GKE Standard.
+  /// Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
+  /// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
   final bool? enabled;
 
   /// Global constraints for machine resources in the
-  /// cluster. Configuring the <span pulumi-lang-nodejs="`cpu`" pulumi-lang-dotnet="`Cpu`" pulumi-lang-go="`cpu`" pulumi-lang-python="`cpu`" pulumi-lang-yaml="`cpu`" pulumi-lang-java="`cpu`">`cpu`</span> and <span pulumi-lang-nodejs="`memory`" pulumi-lang-dotnet="`Memory`" pulumi-lang-go="`memory`" pulumi-lang-python="`memory`" pulumi-lang-yaml="`memory`" pulumi-lang-java="`memory`">`memory`</span> types is required if node
+  /// cluster. Configuring the `cpu` and `memory` types is required if node
   /// auto-provisioning is enabled. These limits will apply to node pool autoscaling
   /// in addition to node auto-provisioning. Structure is documented below.
   final List<ClusterClusterAutoscalingResourceLimit>? resourceLimits;

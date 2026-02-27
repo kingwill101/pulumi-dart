@@ -38,7 +38,7 @@ class RegionSslPolicyArgs {
   /// `customFeatures` field.
   /// See the [official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies#profilefeaturesupport)
   /// for information on what cipher suites each profile provides. If
-  /// `CUSTOM` is used, the <span pulumi-lang-nodejs="`customFeatures`" pulumi-lang-dotnet="`CustomFeatures`" pulumi-lang-go="`customFeatures`" pulumi-lang-python="`custom_features`" pulumi-lang-yaml="`customFeatures`" pulumi-lang-java="`customFeatures`">`custom_features`</span> attribute **must be set**.
+  /// `CUSTOM` is used, the `custom_features` attribute **must be set**.
   /// If set to `FIPS_202205`, `minTlsVersion` must also be set to
   /// `TLS_1_2`.
   /// Default value is `COMPATIBLE`.

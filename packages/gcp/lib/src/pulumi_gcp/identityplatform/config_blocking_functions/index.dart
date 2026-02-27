@@ -1,3 +1,0 @@
-library module_identityplatform_config_blocking_functions;
-
-export 'config_blocking_functions.dart';

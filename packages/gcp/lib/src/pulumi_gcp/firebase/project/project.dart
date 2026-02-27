@@ -13,7 +13,7 @@ import 'project_args.dart';
 /// * Official Documentation
 ///
 /// > **Note:** This resource should usually be used with a provider configuration
-/// with <span pulumi-lang-nodejs="`userProjectOverride " pulumi-lang-dotnet="`UserProjectOverride " pulumi-lang-go="`userProjectOverride " pulumi-lang-python="`user_project_override " pulumi-lang-yaml="`userProjectOverride " pulumi-lang-java="`userProjectOverride ">`user_project_override </span>= true` unless you wish for your quota
+/// with `user_project_override = true` unless you wish for your quota
 /// project to be different from the Firebase project.
 ///
 /// ## Example Usage
@@ -21,148 +21,7 @@ import 'project_args.dart';
 /// ### Firebase Project Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = new gcp.organizations.Project("default", {
-/// projectId: "my-project",
-/// name: "my-project",
-/// orgId: "123456789",
-/// deletionPolicy: "DELETE",
-/// labels: {
-/// firebase: "enabled",
-/// },
-/// });
-/// const defaultProject = new gcp.firebase.Project("default", {project: _default.projectId});
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default = gcp.organizations.Project("default",
-/// project_id="my-project",
-/// name="my-project",
-/// org_id="123456789",
-/// deletion_policy="DELETE",
-/// labels={
-/// "firebase": "enabled",
-/// })
-/// default_project = gcp.firebase.Project("default", project=default.project_id)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var @default = new Gcp.Organizations.Project("default", new()
-/// {
-/// ProjectId = "my-project",
-/// Name = "my-project",
-/// OrgId = "123456789",
-/// DeletionPolicy = "DELETE",
-/// Labels =
-/// {
-/// { "firebase", "enabled" },
-/// },
-/// });
-///
-/// var defaultProject = new Gcp.Firebase.Project("default", new()
-/// {
-/// ProjectID = @default.ProjectId,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _default, err := organizations.NewProject(ctx, "default", &organizations.ProjectArgs{
-/// ProjectId:      pulumi.String("my-project"),
-/// Name:           pulumi.String("my-project"),
-/// OrgId:          pulumi.String("123456789"),
-/// DeletionPolicy: pulumi.String("DELETE"),
-/// Labels: pulumi.StringMap{
-/// "firebase": pulumi.String("enabled"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = firebase.NewProject(ctx, "default", &firebase.ProjectArgs{
-/// Project: _default.ProjectId,
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var default_ = new com.pulumi.gcp.organizations.Project("default", com.pulumi.gcp.organizations.ProjectArgs.builder()
-/// .projectId("my-project")
-/// .name("my-project")
-/// .orgId("123456789")
-/// .deletionPolicy("DELETE")
-/// .labels(Map.of("firebase", "enabled"))
-/// .build());
-///
-/// var defaultProject = new com.pulumi.gcp.firebase.Project("defaultProject", com.pulumi.gcp.firebase.ProjectArgs.builder()
-/// .project(default_.projectId())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// default:
-/// type: gcp:organizations:Project
-/// properties:
-/// projectId: my-project
-/// name: my-project
-/// orgId: '123456789'
-/// deletionPolicy: DELETE
-/// labels:
-/// firebase: enabled
-/// defaultProject:
-/// type: gcp:firebase:Project
-/// name: default
-/// properties:
-/// project: ${default.projectId}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///

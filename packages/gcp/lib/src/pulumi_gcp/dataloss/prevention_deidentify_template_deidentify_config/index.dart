@@ -1,3 +1,0 @@
-library module_dataloss_prevention_deidentify_template_deidentify_config;
-
-export 'prevention_deidentify_template_deidentify_config.dart';

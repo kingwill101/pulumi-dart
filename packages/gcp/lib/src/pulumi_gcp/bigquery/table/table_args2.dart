@@ -119,7 +119,7 @@ class TableArgs2 {
 
   /// Replication info of a table created
   /// using "AS REPLICA" DDL like:
-  /// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF<span pulumi-lang-nodejs=" srcMv`" pulumi-lang-dotnet=" SrcMv`" pulumi-lang-go=" srcMv`" pulumi-lang-python=" src_mv`" pulumi-lang-yaml=" srcMv`" pulumi-lang-java=" srcMv`"> src_mv`</span>.
+  /// `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv`.
   /// Structure is documented below.
   final Input<TableTableReplicationInfo>? tableReplicationInfo;
 

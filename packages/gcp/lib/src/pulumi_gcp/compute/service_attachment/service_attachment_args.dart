@@ -52,7 +52,7 @@ class ServiceAttachmentArgs {
   /// This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
   /// If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
   /// If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
-  /// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set <span pulumi-lang-nodejs="`sendPropagatedConnectionLimitIfZero " pulumi-lang-dotnet="`SendPropagatedConnectionLimitIfZero " pulumi-lang-go="`sendPropagatedConnectionLimitIfZero " pulumi-lang-python="`send_propagated_connection_limit_if_zero " pulumi-lang-yaml="`sendPropagatedConnectionLimitIfZero " pulumi-lang-java="`sendPropagatedConnectionLimitIfZero ">`send_propagated_connection_limit_if_zero </span>= true`.
+  /// If unspecified, the default propagated connection limit is 250. To explicitly send a zero value, set `send_propagated_connection_limit_if_zero = true`.
   final Input<int>? propagatedConnectionLimit;
 
   /// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
@@ -64,8 +64,8 @@ class ServiceAttachmentArgs {
   final Input<String>? region;
 
   /// Controls the behavior of propagated_connection_limit.
-  /// When false, setting<span pulumi-lang-nodejs=" propagatedConnectionLimit " pulumi-lang-dotnet=" PropagatedConnectionLimit " pulumi-lang-go=" propagatedConnectionLimit " pulumi-lang-python=" propagated_connection_limit " pulumi-lang-yaml=" propagatedConnectionLimit " pulumi-lang-java=" propagatedConnectionLimit "> propagated_connection_limit </span>to zero causes the provider to use to the API's default value.
-  /// When true, the provider will set<span pulumi-lang-nodejs=" propagatedConnectionLimit " pulumi-lang-dotnet=" PropagatedConnectionLimit " pulumi-lang-go=" propagatedConnectionLimit " pulumi-lang-python=" propagated_connection_limit " pulumi-lang-yaml=" propagatedConnectionLimit " pulumi-lang-java=" propagatedConnectionLimit "> propagated_connection_limit </span>to zero.
+  /// When false, setting propagated_connection_limit to zero causes the provider to use to the API's default value.
+  /// When true, the provider will set propagated_connection_limit to zero.
   /// Defaults to false.
   final Input<bool>? sendPropagatedConnectionLimitIfZero;
 

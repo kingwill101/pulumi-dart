@@ -1,3 +1,0 @@
-library module_container_node_pool_node_config_boot_disk;
-
-export 'node_pool_node_config_boot_disk.dart';

@@ -1,0 +1,3 @@
+library module_databasemigrationservice_connection_profile_error;
+
+export 'connection_profile_error/connection_profile_error.dart';

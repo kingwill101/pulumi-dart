@@ -4,7 +4,7 @@ class GCPolicyMaxAge {
   /// Number of days before applying GC policy.
   final int? days;
 
-  /// Duration before applying GC policy (ex. "8h"). This is required when <span pulumi-lang-nodejs="`days`" pulumi-lang-dotnet="`Days`" pulumi-lang-go="`days`" pulumi-lang-python="`days`" pulumi-lang-yaml="`days`" pulumi-lang-java="`days`">`days`</span> isn't set
+  /// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
   ///
   /// -----
   final String? duration;

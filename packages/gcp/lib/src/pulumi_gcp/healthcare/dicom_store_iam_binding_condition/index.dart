@@ -1,3 +1,0 @@
-library module_healthcare_dicom_store_iam_binding_condition;
-
-export 'dicom_store_iam_binding_condition.dart';

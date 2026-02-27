@@ -62,7 +62,7 @@ class GetClusterAddonsConfig {
   final List<GetClusterAddonsConfigLustreCsiDriverConfig>
       lustreCsiDriverConfigs;
 
-  /// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a<span pulumi-lang-nodejs=" networkPolicy " pulumi-lang-dotnet=" NetworkPolicy " pulumi-lang-go=" networkPolicy " pulumi-lang-python=" network_policy " pulumi-lang-yaml=" networkPolicy " pulumi-lang-java=" networkPolicy "> network_policy </span>block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
+  /// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
   final List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
 
   /// The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.

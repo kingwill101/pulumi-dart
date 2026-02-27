@@ -58,8 +58,8 @@ class ClusterArgs2 {
   final Input<ClusterAddonsConfig>? addonsConfig;
 
   /// Enable NET_ADMIN for the cluster. Defaults to
-  /// <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. This field should only be enabled for Autopilot clusters (<span pulumi-lang-nodejs="`enableAutopilot`" pulumi-lang-dotnet="`EnableAutopilot`" pulumi-lang-go="`enableAutopilot`" pulumi-lang-python="`enable_autopilot`" pulumi-lang-yaml="`enableAutopilot`" pulumi-lang-java="`enableAutopilot`">`enable_autopilot`</span>
-  /// set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>).
+  /// `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+  /// set to `true`).
   final Input<bool>? allowNetAdmin;
 
   /// Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
@@ -85,7 +85,7 @@ class ClusterArgs2 {
   /// The IP address range of the Kubernetes pods
   /// in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
   /// automatically chosen or specify a `/14` block in `10.0.0.0/8`. This field will
-  /// default a new cluster to routes-based, where <span pulumi-lang-nodejs="`ipAllocationPolicy`" pulumi-lang-dotnet="`IpAllocationPolicy`" pulumi-lang-go="`ipAllocationPolicy`" pulumi-lang-python="`ip_allocation_policy`" pulumi-lang-yaml="`ipAllocationPolicy`" pulumi-lang-java="`ipAllocationPolicy`">`ip_allocation_policy`</span> is not defined.
+  /// default a new cluster to routes-based, where `ip_allocation_policy` is not defined.
   final Input<String>? clusterIpv4Cidr;
 
   /// Configuration for
@@ -130,7 +130,7 @@ class ClusterArgs2 {
   /// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
   final Input<ClusterDnsConfig>? dnsConfig;
 
-  /// Enable Autopilot for this cluster. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enable Autopilot for this cluster. Defaults to `false`.
   /// Note that when this option is enabled, certain features of Standard GKE are not available.
   /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
   /// for available features.
@@ -139,7 +139,7 @@ class ClusterArgs2 {
   /// Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
   final Input<bool>? enableCiliumClusterwideNetworkPolicy;
 
-  /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 <span pulumi-lang-nodejs="`anetd`" pulumi-lang-dotnet="`Anetd`" pulumi-lang-go="`anetd`" pulumi-lang-python="`anetd`" pulumi-lang-yaml="`anetd`" pulumi-lang-java="`anetd`">`anetd`</span> DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+  /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
   final Input<bool>? enableFqdnNetworkPolicy;
 
   /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -160,13 +160,13 @@ class ClusterArgs2 {
   /// Whether the ABAC authorizer is enabled for this cluster.
   /// When enabled, identities in the system, including service accounts, nodes, and controllers,
   /// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
-  /// Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>
+  /// Defaults to `false`
   final Input<bool>? enableLegacyAbac;
 
   /// Whether multi-networking is enabled for this cluster.
   final Input<bool>? enableMultiNetworking;
 
-  /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
   final Input<bool>? enableShieldedNodes;
 
   /// Whether to enable Cloud TPU resources in this cluster.
@@ -194,10 +194,10 @@ class ClusterArgs2 {
 
   /// The number of nodes to create in this
   /// cluster's default node pool. In regional or multi-zonal clusters, this is the
-  /// number of nodes per zone. Must be set if <span pulumi-lang-nodejs="`nodePool`" pulumi-lang-dotnet="`NodePool`" pulumi-lang-go="`nodePool`" pulumi-lang-python="`node_pool`" pulumi-lang-yaml="`nodePool`" pulumi-lang-java="`nodePool`">`node_pool`</span> is not set. If you're using
-  /// <span pulumi-lang-nodejs="`gcp.container.NodePool`" pulumi-lang-dotnet="`gcp.container.NodePool`" pulumi-lang-go="`container.NodePool`" pulumi-lang-python="`container.NodePool`" pulumi-lang-yaml="`gcp.container.NodePool`" pulumi-lang-java="`gcp.container.NodePool`">`gcp.container.NodePool`</span> objects with no default node pool, you'll need to
-  /// set this to a value of at least <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>, alongside setting
-  /// <span pulumi-lang-nodejs="`removeDefaultNodePool`" pulumi-lang-dotnet="`RemoveDefaultNodePool`" pulumi-lang-go="`removeDefaultNodePool`" pulumi-lang-python="`remove_default_node_pool`" pulumi-lang-yaml="`removeDefaultNodePool`" pulumi-lang-java="`removeDefaultNodePool`">`remove_default_node_pool`</span> to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// number of nodes per zone. Must be set if `node_pool` is not set. If you're using
+  /// `gcp.container.NodePool` objects with no default node pool, you'll need to
+  /// set this to a value of at least `1`, alongside setting
+  /// `remove_default_node_pool` to `true`.
   final Input<int>? initialNodeCount;
 
   /// Configuration of cluster IP allocation for
@@ -219,7 +219,7 @@ class ClusterArgs2 {
 
   /// The logging service that the cluster should
   /// write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
-  /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>. Defaults to `logging.googleapis.com/kubernetes`
+  /// `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
   final Input<String>? loggingService;
 
   /// The maintenance policy to use for the cluster. Structure is
@@ -239,7 +239,7 @@ class ClusterArgs2 {
 
   /// The desired
   /// configuration options for master authorized networks. Omit the
-  /// nested <span pulumi-lang-nodejs="`cidrBlocks`" pulumi-lang-dotnet="`CidrBlocks`" pulumi-lang-go="`cidrBlocks`" pulumi-lang-python="`cidr_blocks`" pulumi-lang-yaml="`cidrBlocks`" pulumi-lang-java="`cidrBlocks`">`cidr_blocks`</span> attribute to disallow external access (except
+  /// nested `cidr_blocks` attribute to disallow external access (except
   /// the cluster node IPs, which GKE automatically whitelists).
   /// Structure is documented below.
   final Input<ClusterMasterAuthorizedNetworksConfig>?
@@ -250,15 +250,15 @@ class ClusterArgs2 {
 
   /// The minimum version of the master. GKE
   /// will auto-update the master to new versions, so this does not guarantee the
-  /// current master version--use the read-only <span pulumi-lang-nodejs="`masterVersion`" pulumi-lang-dotnet="`MasterVersion`" pulumi-lang-go="`masterVersion`" pulumi-lang-python="`master_version`" pulumi-lang-yaml="`masterVersion`" pulumi-lang-java="`masterVersion`">`master_version`</span> field to obtain that.
+  /// current master version--use the read-only `master_version` field to obtain that.
   /// If unset, the cluster's version will be set by GKE to the version of the most recent
   /// official release (which is not necessarily the latest version).  Most users will find
-  /// the <span pulumi-lang-nodejs="`gcp.container.getEngineVersions`" pulumi-lang-dotnet="`gcp.container.getEngineVersions`" pulumi-lang-go="`container.getEngineVersions`" pulumi-lang-python="`container_get_engine_versions`" pulumi-lang-yaml="`gcp.container.getEngineVersions`" pulumi-lang-java="`gcp.container.getEngineVersions`">`gcp.container.getEngineVersions`</span> data source useful - it indicates which versions
+  /// the `gcp.container.getEngineVersions` data source useful - it indicates which versions
   /// are available. If you intend to specify versions manually,
   /// [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
   /// describe the various acceptable formats for this field.
   ///
-  /// > If you are using the <span pulumi-lang-nodejs="`gcp.container.getEngineVersions`" pulumi-lang-dotnet="`gcp.container.getEngineVersions`" pulumi-lang-go="`container.getEngineVersions`" pulumi-lang-python="`container_get_engine_versions`" pulumi-lang-yaml="`gcp.container.getEngineVersions`" pulumi-lang-java="`gcp.container.getEngineVersions`">`gcp.container.getEngineVersions`</span> datasource with a regional cluster, ensure that you have provided a <span pulumi-lang-nodejs="`location`" pulumi-lang-dotnet="`Location`" pulumi-lang-go="`location`" pulumi-lang-python="`location`" pulumi-lang-yaml="`location`" pulumi-lang-java="`location`">`location`</span>
+  /// > If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `location`
   /// to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
   /// region are guaranteed to support the same version.
   final Input<String>? minMasterVersion;
@@ -272,7 +272,7 @@ class ClusterArgs2 {
   /// Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API.
   /// VM metrics will be collected by Google Compute Engine regardless of this setting
   /// Available options include
-  /// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and <span pulumi-lang-nodejs="`none`" pulumi-lang-dotnet="`None`" pulumi-lang-go="`none`" pulumi-lang-python="`none`" pulumi-lang-yaml="`none`" pulumi-lang-java="`none`">`none`</span>.
+  /// `monitoring.googleapis.com`(Legacy Stackdriver), `monitoring.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Monitoring), and `none`.
   /// Defaults to `monitoring.googleapis.com/kubernetes`
   final Input<String>? monitoringService;
 
@@ -282,7 +282,7 @@ class ClusterArgs2 {
   /// - - -
   final Input<String>? name;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the Google Compute Engine
+  /// The name or self_link of the Google Compute Engine
   /// network to which the cluster is connected. For Shared VPC, set this to the self link of the
   /// shared network.
   final Input<String>? network;
@@ -301,7 +301,7 @@ class ClusterArgs2 {
 
   /// Parameters used in creating the default node pool.
   /// Generally, this field should not be used at the same time as a
-  /// <span pulumi-lang-nodejs="`gcp.container.NodePool`" pulumi-lang-dotnet="`gcp.container.NodePool`" pulumi-lang-go="`container.NodePool`" pulumi-lang-python="`container.NodePool`" pulumi-lang-yaml="`gcp.container.NodePool`" pulumi-lang-java="`gcp.container.NodePool`">`gcp.container.NodePool`</span> or a <span pulumi-lang-nodejs="`nodePool`" pulumi-lang-dotnet="`NodePool`" pulumi-lang-go="`nodePool`" pulumi-lang-python="`node_pool`" pulumi-lang-yaml="`nodePool`" pulumi-lang-java="`nodePool`">`node_pool`</span> block; this configuration
+  /// `gcp.container.NodePool` or a `node_pool` block; this configuration
   /// manages the default node pool, which isn't recommended to be used.
   /// Structure is documented below.
   final Input<ClusterNodeConfig>? nodeConfig;
@@ -328,27 +328,21 @@ class ClusterArgs2 {
   final Input<ClusterNodePoolDefaults>? nodePoolDefaults;
 
   /// List of node pools associated with this cluster.
-  /// See<span pulumi-lang-nodejs=" gcp.container.NodePool " pulumi-lang-dotnet=" gcp.container.NodePool " pulumi-lang-go=" container.NodePool " pulumi-lang-python=" container.NodePool " pulumi-lang-yaml=" gcp.container.NodePool " pulumi-lang-java=" gcp.container.NodePool "> gcp.container.NodePool </span>for schema.
+  /// See gcp.container.NodePool for schema.
   /// **Warning:** node pools defined inside a cluster can't be changed (or added/removed) after
   /// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
-  /// to say "these are the _only_ node pools associated with this cluster", use the<span pulumi-lang-nodejs="
-  /// gcp.container.NodePool " pulumi-lang-dotnet="
-  /// gcp.container.NodePool " pulumi-lang-go="
-  /// container.NodePool " pulumi-lang-python="
-  /// container.NodePool " pulumi-lang-yaml="
-  /// gcp.container.NodePool " pulumi-lang-java="
-  /// gcp.container.NodePool ">
-  /// gcp.container.NodePool </span>resource instead of this property.
+  /// to say "these are the _only_ node pools associated with this cluster", use the
+  /// gcp.container.NodePool resource instead of this property.
   final Input<List<ClusterNodePool>>? nodePools;
 
   /// The Kubernetes version on the nodes. Must either be unset
-  /// or set to the same value as <span pulumi-lang-nodejs="`minMasterVersion`" pulumi-lang-dotnet="`MinMasterVersion`" pulumi-lang-go="`minMasterVersion`" pulumi-lang-python="`min_master_version`" pulumi-lang-yaml="`minMasterVersion`" pulumi-lang-java="`minMasterVersion`">`min_master_version`</span> on create. Defaults to the default
+  /// or set to the same value as `min_master_version` on create. Defaults to the default
   /// version set by GKE which is not necessarily the latest version. This only affects
   /// nodes in the default node pool. While a fuzzy version can be specified, it's
   /// recommended that you specify explicit versions as the provider will see spurious diffs
-  /// when fuzzy versions are used. See the <span pulumi-lang-nodejs="`gcp.container.getEngineVersions`" pulumi-lang-dotnet="`gcp.container.getEngineVersions`" pulumi-lang-go="`container.getEngineVersions`" pulumi-lang-python="`container_get_engine_versions`" pulumi-lang-yaml="`gcp.container.getEngineVersions`" pulumi-lang-java="`gcp.container.getEngineVersions`">`gcp.container.getEngineVersions`</span> data source's
-  /// <span pulumi-lang-nodejs="`versionPrefix`" pulumi-lang-dotnet="`VersionPrefix`" pulumi-lang-go="`versionPrefix`" pulumi-lang-python="`version_prefix`" pulumi-lang-yaml="`versionPrefix`" pulumi-lang-java="`versionPrefix`">`version_prefix`</span> field to approximate fuzzy versions.
-  /// To update nodes in other node pools, use the <span pulumi-lang-nodejs="`version`" pulumi-lang-dotnet="`Version`" pulumi-lang-go="`version`" pulumi-lang-python="`version`" pulumi-lang-yaml="`version`" pulumi-lang-java="`version`">`version`</span> attribute on the node pool.
+  /// when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
+  /// `version_prefix` field to approximate fuzzy versions.
+  /// To update nodes in other node pools, use the `version` attribute on the node pool.
   final Input<String>? nodeVersion;
 
   /// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
@@ -379,24 +373,24 @@ class ClusterArgs2 {
 
   /// RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedDefaultSnatStatus"" pulumi-lang-dotnet=""NestedDefaultSnatStatus"" pulumi-lang-go=""nestedDefaultSnatStatus"" pulumi-lang-python=""nested_default_snat_status"" pulumi-lang-yaml=""nestedDefaultSnatStatus"" pulumi-lang-java=""nestedDefaultSnatStatus"">"nested_default_snat_status"</span>></a>The <span pulumi-lang-nodejs="`defaultSnatStatus`" pulumi-lang-dotnet="`DefaultSnatStatus`" pulumi-lang-go="`defaultSnatStatus`" pulumi-lang-python="`default_snat_status`" pulumi-lang-yaml="`defaultSnatStatus`" pulumi-lang-java="`defaultSnatStatus`">`default_snat_status`</span> block supports
+  /// <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
   final Input<ClusterRbacBindingConfig>? rbacBindingConfig;
 
   /// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
   /// feature, which provide more control over automatic upgrades of your GKE clusters.
   /// When updating this field, GKE imposes specific version requirements. See
   /// [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-  /// for more details; the <span pulumi-lang-nodejs="`gcp.container.getEngineVersions`" pulumi-lang-dotnet="`gcp.container.getEngineVersions`" pulumi-lang-go="`container.getEngineVersions`" pulumi-lang-python="`container_get_engine_versions`" pulumi-lang-yaml="`gcp.container.getEngineVersions`" pulumi-lang-java="`gcp.container.getEngineVersions`">`gcp.container.getEngineVersions`</span> datasource can provide
-  /// the default version for a channel. Note that removing the <span pulumi-lang-nodejs="`releaseChannel`" pulumi-lang-dotnet="`ReleaseChannel`" pulumi-lang-go="`releaseChannel`" pulumi-lang-python="`release_channel`" pulumi-lang-yaml="`releaseChannel`" pulumi-lang-java="`releaseChannel`">`release_channel`</span>
+  /// for more details; the `gcp.container.getEngineVersions` datasource can provide
+  /// the default version for a channel. Note that removing the `release_channel`
   /// field from your config will cause the provider to stop managing your cluster's
   /// release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
   /// channel. Structure is documented below.
   final Input<ClusterReleaseChannel>? releaseChannel;
 
-  /// If <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, deletes the default node
-  /// pool upon cluster creation. If you're using <span pulumi-lang-nodejs="`gcp.container.NodePool`" pulumi-lang-dotnet="`gcp.container.NodePool`" pulumi-lang-go="`container.NodePool`" pulumi-lang-python="`container.NodePool`" pulumi-lang-yaml="`gcp.container.NodePool`" pulumi-lang-java="`gcp.container.NodePool`">`gcp.container.NodePool`</span>
-  /// resources with no default node pool, this should be set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, alongside
-  /// setting <span pulumi-lang-nodejs="`initialNodeCount`" pulumi-lang-dotnet="`InitialNodeCount`" pulumi-lang-go="`initialNodeCount`" pulumi-lang-python="`initial_node_count`" pulumi-lang-yaml="`initialNodeCount`" pulumi-lang-java="`initialNodeCount`">`initial_node_count`</span> to at least <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>.
+  /// If `true`, deletes the default node
+  /// pool upon cluster creation. If you're using `gcp.container.NodePool`
+  /// resources with no default node pool, this should be set to `true`, alongside
+  /// setting `initial_node_count` to at least `1`.
   final Input<bool>? removeDefaultNodePool;
 
   /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
@@ -426,7 +420,7 @@ class ClusterArgs2 {
   /// Structure is documented below.
   final Input<ClusterServiceExternalIpsConfig>? serviceExternalIpsConfig;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the Google Compute Engine
+  /// The name or self_link of the Google Compute Engine
   /// subnetwork in which the cluster's instances are launched.
   final Input<String>? subnetwork;
 

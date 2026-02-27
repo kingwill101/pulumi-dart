@@ -1,3 +1,0 @@
-library module_storage_transfer_job_event_stream;
-
-export 'transfer_job_event_stream.dart';

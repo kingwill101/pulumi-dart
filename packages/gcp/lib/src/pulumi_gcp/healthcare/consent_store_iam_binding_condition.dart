@@ -1,0 +1,3 @@
+library module_healthcare_consent_store_iam_binding_condition;
+
+export 'consent_store_iam_binding_condition/consent_store_iam_binding_condition.dart';

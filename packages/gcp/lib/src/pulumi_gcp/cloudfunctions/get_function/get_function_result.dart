@@ -44,7 +44,7 @@ class GetFunctionResult {
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final Map<String, String> labels;
 
-  /// The limit on the maximum number of function instances that may coexist at a given time. If unset or set to <span pulumi-lang-nodejs="`0`" pulumi-lang-dotnet="`0`" pulumi-lang-go="`0`" pulumi-lang-python="`0`" pulumi-lang-yaml="`0`" pulumi-lang-java="`0`">`0`</span>, the API default will be used.
+  /// The limit on the maximum number of function instances that may coexist at a given time. If unset or set to `0`, the API default will be used.
   final int maxInstances;
   final int minInstances;
 

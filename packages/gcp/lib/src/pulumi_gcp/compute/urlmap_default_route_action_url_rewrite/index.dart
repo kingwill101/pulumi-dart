@@ -1,3 +1,0 @@
-library module_compute_urlmap_default_route_action_url_rewrite;
-
-export 'urlmap_default_route_action_url_rewrite.dart';

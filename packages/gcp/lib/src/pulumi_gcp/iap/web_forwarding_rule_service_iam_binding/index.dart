@@ -1,4 +1,0 @@
-library module_iap_web_forwarding_rule_service_iam_binding;
-
-export 'web_forwarding_rule_service_iam_binding.dart';
-export 'web_forwarding_rule_service_iam_binding_args.dart';

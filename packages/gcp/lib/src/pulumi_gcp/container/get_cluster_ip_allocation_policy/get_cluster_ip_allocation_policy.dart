@@ -22,7 +22,7 @@ class GetClusterIpAllocationPolicy {
   /// The IP address range for the cluster pod IPs. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
   final String clusterIpv4CidrBlock;
 
-  /// The name of the existing secondary range in the cluster's subnetwork to use for pod IP addresses. Alternatively,<span pulumi-lang-nodejs=" clusterIpv4CidrBlock " pulumi-lang-dotnet=" ClusterIpv4CidrBlock " pulumi-lang-go=" clusterIpv4CidrBlock " pulumi-lang-python=" cluster_ipv4_cidr_block " pulumi-lang-yaml=" clusterIpv4CidrBlock " pulumi-lang-java=" clusterIpv4CidrBlock "> cluster_ipv4_cidr_block </span>can be used to automatically create a GKE-managed one.
+  /// The name of the existing secondary range in the cluster's subnetwork to use for pod IP addresses. Alternatively, cluster_ipv4_cidr_block can be used to automatically create a GKE-managed one.
   final String clusterSecondaryRangeName;
 
   /// Used to determine the default network tier for external IP addresses on cluster resources, such as node pools and load balancers.
@@ -35,7 +35,7 @@ class GetClusterIpAllocationPolicy {
   /// The IP address range of the services IPs in this cluster. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
   final String servicesIpv4CidrBlock;
 
-  /// The name of the existing secondary range in the cluster's subnetwork to use for service ClusterIPs. Alternatively,<span pulumi-lang-nodejs=" servicesIpv4CidrBlock " pulumi-lang-dotnet=" ServicesIpv4CidrBlock " pulumi-lang-go=" servicesIpv4CidrBlock " pulumi-lang-python=" services_ipv4_cidr_block " pulumi-lang-yaml=" servicesIpv4CidrBlock " pulumi-lang-java=" servicesIpv4CidrBlock "> services_ipv4_cidr_block </span>can be used to automatically create a GKE-managed one.
+  /// The name of the existing secondary range in the cluster's subnetwork to use for service ClusterIPs. Alternatively, services_ipv4_cidr_block can be used to automatically create a GKE-managed one.
   final String servicesSecondaryRangeName;
 
   /// The IP Stack type of the cluster. Choose between IPV4 and IPV4_IPV6. Default type is IPV4 Only if not set

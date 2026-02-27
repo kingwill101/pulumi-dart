@@ -21,143 +21,7 @@ import 'instant_snapshot_args.dart';
 /// ### Instant Snapshot Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const foo = new gcp.compute.Disk("foo", {
-/// name: "example-disk",
-/// type: "pd-ssd",
-/// size: 10,
-/// });
-/// const _default = new gcp.compute.InstantSnapshot("default", {
-/// name: "instant-snapshot",
-/// zone: "us-central1-a",
-/// sourceDisk: foo.selfLink,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// foo = gcp.compute.Disk("foo",
-/// name="example-disk",
-/// type="pd-ssd",
-/// size=10)
-/// default = gcp.compute.InstantSnapshot("default",
-/// name="instant-snapshot",
-/// zone="us-central1-a",
-/// source_disk=foo.self_link)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var foo = new Gcp.Compute.Disk("foo", new()
-/// {
-/// Name = "example-disk",
-/// Type = "pd-ssd",
-/// Size = 10,
-/// });
-///
-/// var @default = new Gcp.Compute.InstantSnapshot("default", new()
-/// {
-/// Name = "instant-snapshot",
-/// Zone = "us-central1-a",
-/// SourceDisk = foo.SelfLink,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// foo, err := compute.NewDisk(ctx, "foo", &compute.DiskArgs{
-/// Name: pulumi.String("example-disk"),
-/// Type: pulumi.String("pd-ssd"),
-/// Size: pulumi.Int(10),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = compute.NewInstantSnapshot(ctx, "default", &compute.InstantSnapshotArgs{
-/// Name:       pulumi.String("instant-snapshot"),
-/// Zone:       pulumi.String("us-central1-a"),
-/// SourceDisk: foo.SelfLink,
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.Disk;
-/// import com.pulumi.gcp.compute.DiskArgs;
-/// import com.pulumi.gcp.compute.InstantSnapshot;
-/// import com.pulumi.gcp.compute.InstantSnapshotArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var foo = new Disk("foo", DiskArgs.builder()
-/// .name("example-disk")
-/// .type("pd-ssd")
-/// .size(10)
-/// .build());
-///
-/// var default_ = new InstantSnapshot("default", InstantSnapshotArgs.builder()
-/// .name("instant-snapshot")
-/// .zone("us-central1-a")
-/// .sourceDisk(foo.selfLink())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// foo:
-/// type: gcp:compute:Disk
-/// properties:
-/// name: example-disk
-/// type: pd-ssd
-/// size: 10
-/// default:
-/// type: gcp:compute:InstantSnapshot
-/// properties:
-/// name: instant-snapshot
-/// zone: us-central1-a
-/// sourceDisk: ${foo.selfLink}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -207,7 +71,7 @@ class InstantSnapshot extends CustomResource {
 
   /// Labels to apply to this InstantSnapshot.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// Name of the resource; provided by the client when the resource is

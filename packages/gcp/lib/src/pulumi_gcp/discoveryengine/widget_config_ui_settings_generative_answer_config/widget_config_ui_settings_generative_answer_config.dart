@@ -11,9 +11,9 @@ class WidgetConfigUiSettingsGenerativeAnswerConfig {
   final bool? ignoreLowRelevantContent;
 
   /// Specifies whether to filter out queries that are not answer-seeking.
-  /// The default value is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. No answer is returned if the search query
+  /// The default value is `false`. No answer is returned if the search query
   /// is classified as a non-answer seeking query.
-  /// If this field is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, we skip generating answers for
+  /// If this field is set to `true`, we skip generating answers for
   /// non-answer seeking queries and return fallback messages instead.
   final bool? ignoreNonAnswerSeekingQuery;
 

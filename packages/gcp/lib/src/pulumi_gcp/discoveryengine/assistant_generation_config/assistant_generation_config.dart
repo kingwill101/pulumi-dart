@@ -4,7 +4,7 @@ import '../assistant_generation_config_system_instruction/assistant_generation_c
 
 class AssistantGenerationConfig {
   /// The default language to use for the generation of the assistant response.
-  /// Use an ISO 639-1 language code such as <span pulumi-lang-nodejs="`en`" pulumi-lang-dotnet="`En`" pulumi-lang-go="`en`" pulumi-lang-python="`en`" pulumi-lang-yaml="`en`" pulumi-lang-java="`en`">`en`</span>.
+  /// Use an ISO 639-1 language code such as `en`.
   /// If not specified, the language will be automatically detected.
   final String? defaultLanguage;
 

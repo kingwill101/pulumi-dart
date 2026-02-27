@@ -1,0 +1,4 @@
+library module_iap_web_type_compute_iam_binding;
+
+export 'web_type_compute_iam_binding/web_type_compute_iam_binding.dart';
+export 'web_type_compute_iam_binding/web_type_compute_iam_binding_args.dart';

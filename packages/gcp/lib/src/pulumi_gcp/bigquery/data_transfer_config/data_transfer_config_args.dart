@@ -70,10 +70,10 @@ class DataTransferConfigArgs {
   /// Structure is documented below.
   final Input<DataTransferConfigScheduleOptions>? scheduleOptions;
 
-  /// Different parameters are configured primarily using the the <span pulumi-lang-nodejs="`params`" pulumi-lang-dotnet="`Params`" pulumi-lang-go="`params`" pulumi-lang-python="`params`" pulumi-lang-yaml="`params`" pulumi-lang-java="`params`">`params`</span> field on this
+  /// Different parameters are configured primarily using the the `params` field on this
   /// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
   /// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
-  /// in the <span pulumi-lang-nodejs="`params`" pulumi-lang-dotnet="`Params`" pulumi-lang-go="`params`" pulumi-lang-python="`params`" pulumi-lang-yaml="`params`" pulumi-lang-java="`params`">`params`</span> map in the api request.
+  /// in the `params` map in the api request.
   /// Credentials may not be specified in both locations and will cause an error. Changing from one location
   /// to a different credential configuration in the config will require an apply to update state.
   /// Structure is documented below.

@@ -1,3 +1,0 @@
-library module_compute_router_status_best_route_as_path;
-
-export 'router_status_best_route_as_path.dart';

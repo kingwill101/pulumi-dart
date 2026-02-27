@@ -1,3 +1,0 @@
-library module_datastream_connection_profile_gcs_profile;
-
-export 'connection_profile_gcs_profile.dart';

@@ -1,0 +1,3 @@
+library module_compute_region_network_firewall_policy_rule_target_secure_tag;
+
+export 'region_network_firewall_policy_rule_target_secure_tag/region_network_firewall_policy_rule_target_secure_tag.dart';

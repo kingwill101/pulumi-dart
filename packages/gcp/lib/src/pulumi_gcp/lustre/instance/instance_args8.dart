@@ -11,7 +11,7 @@ class InstanceArgs8 {
   final Input<InstanceAccessRulesOptions>? accessRulesOptions;
 
   /// The storage capacity of the instance in gibibytes (GiB). Allowed values
-  /// are from <span pulumi-lang-nodejs="`18000`" pulumi-lang-dotnet="`18000`" pulumi-lang-go="`18000`" pulumi-lang-python="`18000`" pulumi-lang-yaml="`18000`" pulumi-lang-java="`18000`">`18000`</span> to <span pulumi-lang-nodejs="`954000`" pulumi-lang-dotnet="`954000`" pulumi-lang-go="`954000`" pulumi-lang-python="`954000`" pulumi-lang-yaml="`954000`" pulumi-lang-java="`954000`">`954000`</span>, in increments of 9000.
+  /// are from `18000` to `954000`, in increments of 9000.
   final Input<String> capacityGib;
 
   /// A user-readable description of the instance.
@@ -38,10 +38,10 @@ class InstanceArgs8 {
 
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> location;
 
   /// The full name of the VPC network to which the instance is connected.

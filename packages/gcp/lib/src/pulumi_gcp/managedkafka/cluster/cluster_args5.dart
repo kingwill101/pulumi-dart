@@ -26,7 +26,7 @@ class ClusterArgs5 {
 
   /// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
@@ -40,7 +40,7 @@ class ClusterArgs5 {
   /// Structure is documented below.
   final Input<ClusterRebalanceConfig>? rebalanceConfig;
 
-  /// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty <span pulumi-lang-nodejs="`tlsConfig`" pulumi-lang-dotnet="`TlsConfig`" pulumi-lang-go="`tlsConfig`" pulumi-lang-python="`tls_config`" pulumi-lang-yaml="`tlsConfig`" pulumi-lang-java="`tlsConfig`">`tls_config`</span> block.
+  /// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
   /// Structure is documented below.
   final Input<ClusterTlsConfig>? tlsConfig;
 

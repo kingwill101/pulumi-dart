@@ -1,3 +1,0 @@
-library module_redis_cluster_state_info_update_info;
-
-export 'cluster_state_info_update_info.dart';

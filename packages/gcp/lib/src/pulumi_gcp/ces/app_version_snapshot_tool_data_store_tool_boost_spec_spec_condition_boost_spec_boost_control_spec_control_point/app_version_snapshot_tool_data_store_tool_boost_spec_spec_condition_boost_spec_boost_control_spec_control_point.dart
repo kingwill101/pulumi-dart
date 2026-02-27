@@ -11,14 +11,8 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
   final String? attributeValue;
 
   /// (Output)
-  /// The value between -1 to 1 by which to boost the score if the<span pulumi-lang-nodejs="
-  /// attributeValue " pulumi-lang-dotnet="
-  /// AttributeValue " pulumi-lang-go="
-  /// attributeValue " pulumi-lang-python="
-  /// attribute_value " pulumi-lang-yaml="
-  /// attributeValue " pulumi-lang-java="
-  /// attributeValue ">
-  /// attribute_value </span>evaluates to the value specified above.
+  /// The value between -1 to 1 by which to boost the score if the
+  /// attribute_value evaluates to the value specified above.
   final double? boostAmount;
 
   AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint({

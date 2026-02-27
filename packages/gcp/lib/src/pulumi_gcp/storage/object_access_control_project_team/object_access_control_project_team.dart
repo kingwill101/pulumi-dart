@@ -5,7 +5,7 @@ class ObjectAccessControlProjectTeam {
   final String? projectNumber;
 
   /// The team.
-  /// Possible values are: <span pulumi-lang-nodejs="`editors`" pulumi-lang-dotnet="`Editors`" pulumi-lang-go="`editors`" pulumi-lang-python="`editors`" pulumi-lang-yaml="`editors`" pulumi-lang-java="`editors`">`editors`</span>, <span pulumi-lang-nodejs="`owners`" pulumi-lang-dotnet="`Owners`" pulumi-lang-go="`owners`" pulumi-lang-python="`owners`" pulumi-lang-yaml="`owners`" pulumi-lang-java="`owners`">`owners`</span>, <span pulumi-lang-nodejs="`viewers`" pulumi-lang-dotnet="`Viewers`" pulumi-lang-go="`viewers`" pulumi-lang-python="`viewers`" pulumi-lang-yaml="`viewers`" pulumi-lang-java="`viewers`">`viewers`</span>.
+  /// Possible values are: `editors`, `owners`, `viewers`.
   final String? team;
 
   ObjectAccessControlProjectTeam({

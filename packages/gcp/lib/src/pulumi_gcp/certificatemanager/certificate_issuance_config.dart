@@ -1,0 +1,4 @@
+library module_certificatemanager_certificate_issuance_config;
+
+export 'certificate_issuance_config/certificate_issuance_config.dart';
+export 'certificate_issuance_config/certificate_issuance_config_args.dart';

@@ -8,7 +8,7 @@ class GetAccountJwtResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// The signed JWT containing the JWT Claims Set from the <span pulumi-lang-nodejs="`payload`" pulumi-lang-dotnet="`Payload`" pulumi-lang-go="`payload`" pulumi-lang-python="`payload`" pulumi-lang-yaml="`payload`" pulumi-lang-java="`payload`">`payload`</span>.
+  /// The signed JWT containing the JWT Claims Set from the `payload`.
   final String jwt;
   final String payload;
   final String targetServiceAccount;

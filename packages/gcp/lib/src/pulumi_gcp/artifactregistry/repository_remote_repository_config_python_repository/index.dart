@@ -1,3 +1,0 @@
-library module_artifactregistry_repository_remote_repository_config_python_repository;
-
-export 'repository_remote_repository_config_python_repository.dart';

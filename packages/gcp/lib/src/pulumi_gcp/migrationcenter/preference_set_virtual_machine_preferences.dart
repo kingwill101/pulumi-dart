@@ -1,0 +1,3 @@
+library module_migrationcenter_preference_set_virtual_machine_preferences;
+
+export 'preference_set_virtual_machine_preferences/preference_set_virtual_machine_preferences.dart';

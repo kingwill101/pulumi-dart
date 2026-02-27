@@ -1,3 +1,0 @@
-library module_cloudidentity_group_additional_group_key;
-
-export 'group_additional_group_key.dart';

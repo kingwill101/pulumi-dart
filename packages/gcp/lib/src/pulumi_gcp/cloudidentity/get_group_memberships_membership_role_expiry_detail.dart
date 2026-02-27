@@ -1,0 +1,3 @@
+library module_cloudidentity_get_group_memberships_membership_role_expiry_detail;
+
+export 'get_group_memberships_membership_role_expiry_detail/get_group_memberships_membership_role_expiry_detail.dart';

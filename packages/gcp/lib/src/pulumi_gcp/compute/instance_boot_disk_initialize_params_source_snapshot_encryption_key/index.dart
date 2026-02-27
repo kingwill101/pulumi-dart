@@ -1,3 +1,0 @@
-library module_compute_instance_boot_disk_initialize_params_source_snapshot_encryption_key;
-
-export 'instance_boot_disk_initialize_params_source_snapshot_encryption_key.dart';

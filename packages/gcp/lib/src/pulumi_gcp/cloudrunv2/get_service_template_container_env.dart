@@ -1,0 +1,3 @@
+library module_cloudrunv2_get_service_template_container_env;
+
+export 'get_service_template_container_env/get_service_template_container_env.dart';

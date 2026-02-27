@@ -1,3 +1,0 @@
-library module_monitoring_slo_windows_based_sli_metric_mean_in_range_range;
-
-export 'slo_windows_based_sli_metric_mean_in_range_range.dart';

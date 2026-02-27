@@ -1,3 +1,0 @@
-library module_monitoring_slo_basic_sli_latency;
-
-export 'slo_basic_sli_latency.dart';

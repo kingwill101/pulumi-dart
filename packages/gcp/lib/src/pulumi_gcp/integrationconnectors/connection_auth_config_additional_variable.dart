@@ -1,0 +1,3 @@
+library module_integrationconnectors_connection_auth_config_additional_variable;
+
+export 'connection_auth_config_additional_variable/connection_auth_config_additional_variable.dart';

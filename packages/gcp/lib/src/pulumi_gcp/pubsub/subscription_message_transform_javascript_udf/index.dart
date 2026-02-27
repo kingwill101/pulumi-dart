@@ -1,3 +1,0 @@
-library module_pubsub_subscription_message_transform_javascript_udf;
-
-export 'subscription_message_transform_javascript_udf.dart';

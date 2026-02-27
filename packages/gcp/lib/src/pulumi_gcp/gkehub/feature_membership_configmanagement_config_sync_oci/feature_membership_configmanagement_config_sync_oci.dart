@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class FeatureMembershipConfigmanagementConfigSyncOci {
-  /// The GCP Service Account Email used for auth when<span pulumi-lang-nodejs=" secretType " pulumi-lang-dotnet=" SecretType " pulumi-lang-go=" secretType " pulumi-lang-python=" secret_type " pulumi-lang-yaml=" secretType " pulumi-lang-java=" secretType "> secret_type </span>is gcpserviceaccount.
+  /// The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
   final String? gcpServiceAccountEmail;
 
   /// The absolute path of the directory that contains the local resources. Default: the root directory of the image.

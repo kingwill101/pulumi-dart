@@ -1,3 +1,0 @@
-library module_networkservices_http_route_rule_action_fault_injection_policy_abort;
-
-export 'http_route_rule_action_fault_injection_policy_abort.dart';

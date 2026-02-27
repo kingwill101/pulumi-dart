@@ -9,12 +9,12 @@ class DatascanDataProfileSpec {
   final bool? catalogPublishingEnabled;
 
   /// The fields to exclude from data profile.
-  /// If specified, the fields will be excluded from data profile, regardless of <span pulumi-lang-nodejs="`includeFields`" pulumi-lang-dotnet="`IncludeFields`" pulumi-lang-go="`includeFields`" pulumi-lang-python="`include_fields`" pulumi-lang-yaml="`includeFields`" pulumi-lang-java="`includeFields`">`include_fields`</span> value.
+  /// If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
   /// Structure is documented below.
   final DatascanDataProfileSpecExcludeFields? excludeFields;
 
   /// The fields to include in data profile.
-  /// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in <span pulumi-lang-nodejs="`excludeFields`" pulumi-lang-dotnet="`ExcludeFields`" pulumi-lang-go="`excludeFields`" pulumi-lang-python="`exclude_fields`" pulumi-lang-yaml="`excludeFields`" pulumi-lang-java="`excludeFields`">`exclude_fields`</span>.
+  /// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
   /// Structure is documented below.
   final DatascanDataProfileSpecIncludeFields? includeFields;
 
@@ -27,7 +27,7 @@ class DatascanDataProfileSpec {
 
   /// The percentage of the records to be selected from the dataset for DataScan.
   /// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
-  /// Sampling is not applied if <span pulumi-lang-nodejs="`samplingPercent`" pulumi-lang-dotnet="`SamplingPercent`" pulumi-lang-go="`samplingPercent`" pulumi-lang-python="`sampling_percent`" pulumi-lang-yaml="`samplingPercent`" pulumi-lang-java="`samplingPercent`">`sampling_percent`</span> is not specified, 0 or 100.
+  /// Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
   final double? samplingPercent;
 
   DatascanDataProfileSpec({

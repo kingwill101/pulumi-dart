@@ -9,7 +9,7 @@ class RouterNatSubnetwork {
   /// `LIST_OF_SECONDARY_IP_RANGES` is one of the values in
   /// sourceIpRangesToNat
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedNat64Subnetwork"" pulumi-lang-dotnet=""NestedNat64Subnetwork"" pulumi-lang-go=""nestedNat64Subnetwork"" pulumi-lang-python=""nested_nat64_subnetwork"" pulumi-lang-yaml=""nestedNat64Subnetwork"" pulumi-lang-java=""nestedNat64Subnetwork"">"nested_nat64_subnetwork"</span>></a>The <span pulumi-lang-nodejs="`nat64Subnetwork`" pulumi-lang-dotnet="`Nat64Subnetwork`" pulumi-lang-go="`nat64Subnetwork`" pulumi-lang-python="`nat64_subnetwork`" pulumi-lang-yaml="`nat64Subnetwork`" pulumi-lang-java="`nat64Subnetwork`">`nat64_subnetwork`</span> block supports:
+  /// <a name="nested_nat64_subnetwork"></a>The `nat64_subnetwork` block supports:
   final List<String>? secondaryIpRangeNames;
 
   /// List of options for which source IPs in the subnetwork

@@ -1,3 +1,0 @@
-library module_oracledatabase_get_autonomous_database_source_config;
-
-export 'get_autonomous_database_source_config.dart';

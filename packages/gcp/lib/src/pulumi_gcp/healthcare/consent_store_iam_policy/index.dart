@@ -1,4 +1,0 @@
-library module_healthcare_consent_store_iam_policy;
-
-export 'consent_store_iam_policy.dart';
-export 'consent_store_iam_policy_args.dart';

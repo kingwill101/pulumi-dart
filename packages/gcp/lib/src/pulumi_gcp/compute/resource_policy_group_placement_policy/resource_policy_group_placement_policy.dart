@@ -6,8 +6,8 @@ class ResourcePolicyGroupPlacementPolicy {
   final int? availabilityDomainCount;
 
   /// Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
-  /// Specify `COLLOCATED` to enable collocation. Can only be specified with <span pulumi-lang-nodejs="`vmCount`" pulumi-lang-dotnet="`VmCount`" pulumi-lang-go="`vmCount`" pulumi-lang-python="`vm_count`" pulumi-lang-yaml="`vmCount`" pulumi-lang-java="`vmCount`">`vm_count`</span>. If compute instances are created
-  /// with a COLLOCATED policy, then exactly <span pulumi-lang-nodejs="`vmCount`" pulumi-lang-dotnet="`VmCount`" pulumi-lang-go="`vmCount`" pulumi-lang-python="`vm_count`" pulumi-lang-yaml="`vmCount`" pulumi-lang-java="`vmCount`">`vm_count`</span> instances must be created at the same time with the resource policy
+  /// Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
+  /// with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
   /// attached.
   /// Possible values are: `COLLOCATED`.
   final String? collocation;

@@ -6,19 +6,19 @@ import '../prevention_deidentify_template_deidentify_config_record_transformatio
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket {
   /// Upper bound of the range, exclusive; type must match min.
-  /// The <span pulumi-lang-nodejs="`max`" pulumi-lang-dotnet="`Max`" pulumi-lang-go="`max`" pulumi-lang-python="`max`" pulumi-lang-yaml="`max`" pulumi-lang-java="`max`">`max`</span> block must only contain one argument. See the <span pulumi-lang-nodejs="`bucketingConfig`" pulumi-lang-dotnet="`BucketingConfig`" pulumi-lang-go="`bucketingConfig`" pulumi-lang-python="`bucketing_config`" pulumi-lang-yaml="`bucketingConfig`" pulumi-lang-java="`bucketingConfig`">`bucketing_config`</span> block description for more information about choosing a data type.
+  /// The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
   /// Structure is documented below.
   final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax?
       max;
 
   /// Lower bound of the range, inclusive. Type should be the same as max if used.
-  /// The <span pulumi-lang-nodejs="`min`" pulumi-lang-dotnet="`Min`" pulumi-lang-go="`min`" pulumi-lang-python="`min`" pulumi-lang-yaml="`min`" pulumi-lang-java="`min`">`min`</span> block must only contain one argument. See the <span pulumi-lang-nodejs="`bucketingConfig`" pulumi-lang-dotnet="`BucketingConfig`" pulumi-lang-go="`bucketingConfig`" pulumi-lang-python="`bucketing_config`" pulumi-lang-yaml="`bucketingConfig`" pulumi-lang-java="`bucketingConfig`">`bucketing_config`</span> block description for more information about choosing a data type.
+  /// The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
   /// Structure is documented below.
   final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMin?
       min;
 
   /// Replacement value for this bucket.
-  /// The <span pulumi-lang-nodejs="`replacementValue`" pulumi-lang-dotnet="`ReplacementValue`" pulumi-lang-go="`replacementValue`" pulumi-lang-python="`replacement_value`" pulumi-lang-yaml="`replacementValue`" pulumi-lang-java="`replacementValue`">`replacement_value`</span> block must only contain one argument.
+  /// The `replacement_value` block must only contain one argument.
   /// Structure is documented below.
   final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue
       replacementValue;

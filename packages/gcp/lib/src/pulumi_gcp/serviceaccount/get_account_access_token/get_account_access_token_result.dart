@@ -2,7 +2,7 @@
 
 /// Result data returned by getAccountAccessToken.
 class GetAccountAccessTokenResult {
-  /// The <span pulumi-lang-nodejs="`accessToken`" pulumi-lang-dotnet="`AccessToken`" pulumi-lang-go="`accessToken`" pulumi-lang-python="`access_token`" pulumi-lang-yaml="`accessToken`" pulumi-lang-java="`accessToken`">`access_token`</span> representing the new generated identity.
+  /// The `access_token` representing the new generated identity.
   final String accessToken;
   final List<String>? delegates;
 

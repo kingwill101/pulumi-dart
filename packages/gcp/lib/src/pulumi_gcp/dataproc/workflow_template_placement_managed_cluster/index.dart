@@ -1,3 +1,0 @@
-library module_dataproc_workflow_template_placement_managed_cluster;
-
-export 'workflow_template_placement_managed_cluster.dart';

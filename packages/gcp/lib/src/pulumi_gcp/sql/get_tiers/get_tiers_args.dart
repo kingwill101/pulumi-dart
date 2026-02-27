@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getTiers.
 class GetTiersArgs {
-  /// The Project ID for which to list tiers. If <span pulumi-lang-nodejs="`project`" pulumi-lang-dotnet="`Project`" pulumi-lang-go="`project`" pulumi-lang-python="`project`" pulumi-lang-yaml="`project`" pulumi-lang-java="`project`">`project`</span> is not provided, the project defined within the default provider configuration is used.
+  /// The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.
   final Input<String>? project;
 
   GetTiersArgs({

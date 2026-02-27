@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_app_default_channel_profile_persona_property;
-
-export 'app_version_snapshot_app_default_channel_profile_persona_property.dart';

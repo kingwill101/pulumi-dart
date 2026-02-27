@@ -1,0 +1,3 @@
+library module_datacatalog_entry_bigquery_table_spec_view_spec;
+
+export 'entry_bigquery_table_spec_view_spec/entry_bigquery_table_spec_view_spec.dart';

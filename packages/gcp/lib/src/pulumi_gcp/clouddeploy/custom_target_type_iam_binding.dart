@@ -1,0 +1,4 @@
+library module_clouddeploy_custom_target_type_iam_binding;
+
+export 'custom_target_type_iam_binding/custom_target_type_iam_binding.dart';
+export 'custom_target_type_iam_binding/custom_target_type_iam_binding_args.dart';

@@ -1,3 +1,0 @@
-library module_databasemigrationservice_connection_profile_postgresql_ssl;
-
-export 'connection_profile_postgresql_ssl.dart';

@@ -1,0 +1,3 @@
+library module_compute_future_reservation_time_window_duration;
+
+export 'future_reservation_time_window_duration/future_reservation_time_window_duration.dart';

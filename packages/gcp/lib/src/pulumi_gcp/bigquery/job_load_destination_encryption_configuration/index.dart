@@ -1,3 +1,0 @@
-library module_bigquery_job_load_destination_encryption_configuration;
-
-export 'job_load_destination_encryption_configuration.dart';

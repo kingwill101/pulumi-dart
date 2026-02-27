@@ -9,12 +9,12 @@ import '../cx_tool_open_api_spec/cx_tool_open_api_spec.dart';
 /// The set of arguments for CxTool.
 class CxToolArgs {
   /// Integration connectors tool specification.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`specification`" pulumi-lang-dotnet="`Specification`" pulumi-lang-go="`specification`" pulumi-lang-python="`specification`" pulumi-lang-yaml="`specification`" pulumi-lang-java="`specification`">`specification`</span>: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
+  /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
   /// Structure is documented below.
   final Input<CxToolConnectorSpec>? connectorSpec;
 
   /// Data store search tool specification.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`specification`" pulumi-lang-dotnet="`Specification`" pulumi-lang-go="`specification`" pulumi-lang-python="`specification`" pulumi-lang-yaml="`specification`" pulumi-lang-java="`specification`">`specification`</span>: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+  /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   final Input<CxToolDataStoreSpec>? dataStoreSpec;
 
@@ -25,12 +25,12 @@ class CxToolArgs {
   final Input<String> displayName;
 
   /// Client side executed function specification.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`specification`" pulumi-lang-dotnet="`Specification`" pulumi-lang-go="`specification`" pulumi-lang-python="`specification`" pulumi-lang-yaml="`specification`" pulumi-lang-java="`specification`">`specification`</span>: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+  /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   final Input<CxToolFunctionSpec>? functionSpec;
 
   /// OpenAPI specification of the Tool.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`specification`" pulumi-lang-dotnet="`Specification`" pulumi-lang-go="`specification`" pulumi-lang-python="`specification`" pulumi-lang-yaml="`specification`" pulumi-lang-java="`specification`">`specification`</span>: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
+  /// This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
   /// Structure is documented below.
   final Input<CxToolOpenApiSpec>? openApiSpec;
 

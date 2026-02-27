@@ -1,0 +1,4 @@
+library module_storage_control_project_intelligence_config;
+
+export 'control_project_intelligence_config/control_project_intelligence_config.dart';
+export 'control_project_intelligence_config/control_project_intelligence_config_args.dart';

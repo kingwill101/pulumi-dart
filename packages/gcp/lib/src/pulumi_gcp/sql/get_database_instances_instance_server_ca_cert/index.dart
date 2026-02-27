@@ -1,3 +1,0 @@
-library module_sql_get_database_instances_instance_server_ca_cert;
-
-export 'get_database_instances_instance_server_ca_cert.dart';

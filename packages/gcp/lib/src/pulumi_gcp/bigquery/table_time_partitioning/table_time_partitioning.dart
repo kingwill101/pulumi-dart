@@ -12,7 +12,7 @@ class TableTimePartitioning {
 
   /// If set to true, queries over this table
   /// require a partition filter that can be used for partition elimination to be
-  /// specified. <span pulumi-lang-nodejs="`requirePartitionFilter`" pulumi-lang-dotnet="`RequirePartitionFilter`" pulumi-lang-go="`requirePartitionFilter`" pulumi-lang-python="`require_partition_filter`" pulumi-lang-yaml="`requirePartitionFilter`" pulumi-lang-java="`requirePartitionFilter`">`require_partition_filter`</span> is deprecated and will be removed in
+  /// specified. `require_partition_filter` is deprecated and will be removed in
   /// a future major release. Use the top level field with the same name instead.
   final bool? requirePartitionFilter;
 

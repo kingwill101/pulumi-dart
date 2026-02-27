@@ -1,0 +1,3 @@
+library module_diagflow_cx_generator_model_parameter;
+
+export 'cx_generator_model_parameter/cx_generator_model_parameter.dart';

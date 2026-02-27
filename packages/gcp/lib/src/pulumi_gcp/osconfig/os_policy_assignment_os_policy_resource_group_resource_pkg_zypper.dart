@@ -1,0 +1,3 @@
+library module_osconfig_os_policy_assignment_os_policy_resource_group_resource_pkg_zypper;
+
+export 'os_policy_assignment_os_policy_resource_group_resource_pkg_zypper/os_policy_assignment_os_policy_resource_group_resource_pkg_zypper.dart';

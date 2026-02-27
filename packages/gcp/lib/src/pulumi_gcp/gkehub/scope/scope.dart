@@ -16,153 +16,7 @@ import 'scope_args.dart';
 /// ### Gkehub Scope Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const scope = new gcp.gkehub.Scope("scope", {
-/// scopeId: "my-scope",
-/// namespaceLabels: {
-/// keyb: "valueb",
-/// keya: "valuea",
-/// keyc: "valuec",
-/// },
-/// labels: {
-/// keyb: "valueb",
-/// keya: "valuea",
-/// keyc: "valuec",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// scope = gcp.gkehub.Scope("scope",
-/// scope_id="my-scope",
-/// namespace_labels={
-/// "keyb": "valueb",
-/// "keya": "valuea",
-/// "keyc": "valuec",
-/// },
-/// labels={
-/// "keyb": "valueb",
-/// "keya": "valuea",
-/// "keyc": "valuec",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var scope = new Gcp.GkeHub.Scope("scope", new()
-/// {
-/// ScopeId = "my-scope",
-/// NamespaceLabels =
-/// {
-/// { "keyb", "valueb" },
-/// { "keya", "valuea" },
-/// { "keyc", "valuec" },
-/// },
-/// Labels =
-/// {
-/// { "keyb", "valueb" },
-/// { "keya", "valuea" },
-/// { "keyc", "valuec" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := gkehub.NewScope(ctx, "scope", &gkehub.ScopeArgs{
-/// ScopeId: pulumi.String("my-scope"),
-/// NamespaceLabels: pulumi.StringMap{
-/// "keyb": pulumi.String("valueb"),
-/// "keya": pulumi.String("valuea"),
-/// "keyc": pulumi.String("valuec"),
-/// },
-/// Labels: pulumi.StringMap{
-/// "keyb": pulumi.String("valueb"),
-/// "keya": pulumi.String("valuea"),
-/// "keyc": pulumi.String("valuec"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.gkehub.Scope;
-/// import com.pulumi.gcp.gkehub.ScopeArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var scope = new Scope("scope", ScopeArgs.builder()
-/// .scopeId("my-scope")
-/// .namespaceLabels(Map.ofEntries(
-/// Map.entry("keyb", "valueb"),
-/// Map.entry("keya", "valuea"),
-/// Map.entry("keyc", "valuec")
-/// ))
-/// .labels(Map.ofEntries(
-/// Map.entry("keyb", "valueb"),
-/// Map.entry("keya", "valuea"),
-/// Map.entry("keyc", "valuec")
-/// ))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// scope:
-/// type: gcp:gkehub:Scope
-/// properties:
-/// scopeId: my-scope
-/// namespaceLabels:
-/// keyb: valueb
-/// keya: valuea
-/// keyc: valuec
-/// labels:
-/// keyb: valueb
-/// keya: valuea
-/// keyc: valuec
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -200,7 +54,7 @@ class Scope extends CustomResource {
   /// Labels for this Scope.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// The unique identifier of the scope
@@ -209,7 +63,7 @@ class Scope extends CustomResource {
   /// Scope-level cluster namespace labels. For the member clusters bound
   /// to the Scope, these labels are applied to each namespace under the
   /// Scope. Scope-level labels take precedence over Namespace-level
-  /// labels (<span pulumi-lang-nodejs="`namespaceLabels`" pulumi-lang-dotnet="`NamespaceLabels`" pulumi-lang-go="`namespaceLabels`" pulumi-lang-python="`namespace_labels`" pulumi-lang-yaml="`namespaceLabels`" pulumi-lang-java="`namespaceLabels`">`namespace_labels`</span> in the Fleet Namespace resource) if they
+  /// labels (`namespace_labels` in the Fleet Namespace resource) if they
   /// share a key. Keys and values must be Kubernetes-conformant.
   late final Output<Map<String, String>?> namespaceLabels;
 

@@ -1,0 +1,3 @@
+library module_discoveryengine_widget_config_ui_settings_data_store_ui_config;
+
+export 'widget_config_ui_settings_data_store_ui_config/widget_config_ui_settings_data_store_ui_config.dart';

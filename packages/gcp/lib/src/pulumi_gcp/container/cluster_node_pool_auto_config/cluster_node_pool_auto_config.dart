@@ -5,13 +5,13 @@ import '../cluster_node_pool_auto_config_network_tags/cluster_node_pool_auto_con
 import '../cluster_node_pool_auto_config_node_kubelet_config/cluster_node_pool_auto_config_node_kubelet_config.dart';
 
 class ClusterNodePoolAutoConfig {
-  /// Linux system configuration for the cluster's automatically provisioned node pools. Only <span pulumi-lang-nodejs="`cgroupMode`" pulumi-lang-dotnet="`CgroupMode`" pulumi-lang-go="`cgroupMode`" pulumi-lang-python="`cgroup_mode`" pulumi-lang-yaml="`cgroupMode`" pulumi-lang-java="`cgroupMode`">`cgroup_mode`</span> and <span pulumi-lang-nodejs="`nodeKernelModuleLoading`" pulumi-lang-dotnet="`NodeKernelModuleLoading`" pulumi-lang-go="`nodeKernelModuleLoading`" pulumi-lang-python="`node_kernel_module_loading`" pulumi-lang-yaml="`nodeKernelModuleLoading`" pulumi-lang-java="`nodeKernelModuleLoading`">`node_kernel_module_loading`</span> fields are supported in <span pulumi-lang-nodejs="`nodePoolAutoConfig`" pulumi-lang-dotnet="`NodePoolAutoConfig`" pulumi-lang-go="`nodePoolAutoConfig`" pulumi-lang-python="`node_pool_auto_config`" pulumi-lang-yaml="`nodePoolAutoConfig`" pulumi-lang-java="`nodePoolAutoConfig`">`node_pool_auto_config`</span>. Structure is documented below.
+  /// Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` and `node_kernel_module_loading` fields are supported in `node_pool_auto_config`. Structure is documented below.
   final ClusterNodePoolAutoConfigLinuxNodeConfig? linuxNodeConfig;
 
   /// The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
   final ClusterNodePoolAutoConfigNetworkTags? networkTags;
 
-  /// Kubelet configuration for Autopilot clusters. Currently, only <span pulumi-lang-nodejs="`insecureKubeletReadonlyPortEnabled`" pulumi-lang-dotnet="`InsecureKubeletReadonlyPortEnabled`" pulumi-lang-go="`insecureKubeletReadonlyPortEnabled`" pulumi-lang-python="`insecure_kubelet_readonly_port_enabled`" pulumi-lang-yaml="`insecureKubeletReadonlyPortEnabled`" pulumi-lang-java="`insecureKubeletReadonlyPortEnabled`">`insecure_kubelet_readonly_port_enabled`</span> is supported here.
+  /// Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
   /// Structure is documented below.
   final ClusterNodePoolAutoConfigNodeKubeletConfig? nodeKubeletConfig;
 

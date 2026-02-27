@@ -1,0 +1,3 @@
+library module_appengine_standard_app_version_deployment;
+
+export 'standard_app_version_deployment/standard_app_version_deployment.dart';

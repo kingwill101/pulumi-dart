@@ -1,0 +1,4 @@
+library module_bigqueryanalyticshub_data_exchange_subscription;
+
+export 'data_exchange_subscription/data_exchange_subscription.dart';
+export 'data_exchange_subscription/data_exchange_subscription_args.dart';

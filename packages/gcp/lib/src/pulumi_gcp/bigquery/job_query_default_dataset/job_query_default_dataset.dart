@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class JobQueryDefaultDataset {
-  /// The dataset. Can be specified `{{dataset_id}}` if <span pulumi-lang-nodejs="`projectId`" pulumi-lang-dotnet="`ProjectId`" pulumi-lang-go="`projectId`" pulumi-lang-python="`project_id`" pulumi-lang-yaml="`projectId`" pulumi-lang-java="`projectId`">`project_id`</span> is also set,
+  /// The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
   /// or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
   final String datasetId;
 

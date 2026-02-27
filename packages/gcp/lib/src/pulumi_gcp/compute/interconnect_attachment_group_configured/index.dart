@@ -1,3 +1,0 @@
-library module_compute_interconnect_attachment_group_configured;
-
-export 'interconnect_attachment_group_configured.dart';

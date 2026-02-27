@@ -1,3 +1,0 @@
-library module_networksecurity_server_tls_policy_mtls_policy_client_validation_ca_certificate_provider_instance;
-
-export 'server_tls_policy_mtls_policy_client_validation_ca_certificate_provider_instance.dart';

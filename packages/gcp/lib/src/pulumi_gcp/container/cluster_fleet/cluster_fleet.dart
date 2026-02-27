@@ -10,7 +10,7 @@ class ClusterFleet {
   /// Location of the fleet membership, for example "us-central1".
   final String? membershipLocation;
 
-  /// Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the<span pulumi-lang-nodejs=" membershipType " pulumi-lang-dotnet=" MembershipType " pulumi-lang-go=" membershipType " pulumi-lang-python=" membership_type " pulumi-lang-yaml=" membershipType " pulumi-lang-java=" membershipType "> membership_type </span>will be a regular membership that supports all features.
+  /// Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membership_type will be a regular membership that supports all features.
   final String? membershipType;
 
   /// Whether the cluster has been registered via the fleet API.

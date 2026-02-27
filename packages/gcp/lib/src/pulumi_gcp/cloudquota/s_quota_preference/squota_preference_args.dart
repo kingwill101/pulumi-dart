@@ -9,7 +9,7 @@ class SQuotaPreferenceArgs {
   /// The Google account for the email address must have quota update permission for the project, folder or organization this quota preference is for.
   final Input<String>? contactEmail;
 
-  /// The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", <span pulumi-lang-nodejs=""networkId"" pulumi-lang-dotnet=""NetworkId"" pulumi-lang-go=""networkId"" pulumi-lang-python=""network_id"" pulumi-lang-yaml=""networkId"" pulumi-lang-java=""networkId"">"network_id"</span>, and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
+  /// The dimensions that this quota preference applies to. The key of the map entry is the name of a dimension, such as "region", "zone", "network_id", and the value of the map entry is the dimension value. If a dimension is missing from the map of dimensions, the quota preference applies to all the dimension values except for those that have other quota preferences configured for the specific value.
   /// NOTE: QuotaPreferences can only be applied across all values of "user" and "resource" dimension. Do not set values for "user" or "resource" in the dimension map.
   /// Example: `{"provider": "Foo Inc"}` where "provider" is a service specific dimension.
   final Input<Map<String, String>>? dimensions;

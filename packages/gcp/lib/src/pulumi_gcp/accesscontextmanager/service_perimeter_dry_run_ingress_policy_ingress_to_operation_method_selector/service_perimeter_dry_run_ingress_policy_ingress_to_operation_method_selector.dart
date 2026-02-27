@@ -2,7 +2,7 @@
 
 class ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector {
   /// Value for method should be a valid method name for the corresponding
-  /// serviceName in `ApiOperation`. If `*` used as value for <span pulumi-lang-nodejs="`method`" pulumi-lang-dotnet="`Method`" pulumi-lang-go="`method`" pulumi-lang-python="`method`" pulumi-lang-yaml="`method`" pulumi-lang-java="`method`">`method`</span>, then
+  /// serviceName in `ApiOperation`. If `*` used as value for `method`, then
   /// ALL methods and permissions are allowed.
   final String? method;
 

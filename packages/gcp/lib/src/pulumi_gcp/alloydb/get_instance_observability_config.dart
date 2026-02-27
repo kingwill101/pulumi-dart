@@ -1,0 +1,3 @@
+library module_alloydb_get_instance_observability_config;
+
+export 'get_instance_observability_config/get_instance_observability_config.dart';

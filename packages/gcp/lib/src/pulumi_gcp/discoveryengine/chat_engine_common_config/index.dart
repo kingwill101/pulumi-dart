@@ -1,3 +1,0 @@
-library module_discoveryengine_chat_engine_common_config;
-
-export 'chat_engine_common_config.dart';

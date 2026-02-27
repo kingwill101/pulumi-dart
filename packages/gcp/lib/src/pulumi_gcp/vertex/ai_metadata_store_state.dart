@@ -1,0 +1,3 @@
+library module_vertex_ai_metadata_store_state;
+
+export 'ai_metadata_store_state/ai_metadata_store_state.dart';

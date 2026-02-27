@@ -53,7 +53,7 @@ class AccessLevelConditionArgs {
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
   final Input<List<String>>? requiredAccessLevels;
 
-  /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with <span pulumi-lang-nodejs="`ipSubnetworks`" pulumi-lang-dotnet="`IpSubnetworks`" pulumi-lang-go="`ipSubnetworks`" pulumi-lang-python="`ip_subnetworks`" pulumi-lang-yaml="`ipSubnetworks`" pulumi-lang-java="`ipSubnetworks`">`ip_subnetworks`</span>.
+  /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
   /// Structure is documented below.
   final Input<List<AccessLevelConditionVpcNetworkSource>>? vpcNetworkSources;
 

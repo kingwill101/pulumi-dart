@@ -1,4 +1,0 @@
-library module_datacatalog_entry_group_iam_binding;
-
-export 'entry_group_iam_binding.dart';
-export 'entry_group_iam_binding_args.dart';

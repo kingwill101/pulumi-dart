@@ -68,7 +68,7 @@ class JobQuery {
 
   /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
   /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-  /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify <span pulumi-lang-nodejs="`createDisposition " pulumi-lang-dotnet="`CreateDisposition " pulumi-lang-go="`createDisposition " pulumi-lang-python="`create_disposition " pulumi-lang-yaml="`createDisposition " pulumi-lang-java="`createDisposition ">`create_disposition </span>= ""` and <span pulumi-lang-nodejs="`writeDisposition " pulumi-lang-dotnet="`WriteDisposition " pulumi-lang-go="`writeDisposition " pulumi-lang-python="`write_disposition " pulumi-lang-yaml="`writeDisposition " pulumi-lang-java="`writeDisposition ">`write_disposition </span>= ""`.
+  /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
   final String query;
 
   /// Allows the schema of the destination table to be updated as a side effect of the query job.

@@ -1,0 +1,3 @@
+library module_compute_resource_policy_snapshot_schedule_policy_schedule_weekly_schedule;
+
+export 'resource_policy_snapshot_schedule_policy_schedule_weekly_schedule/resource_policy_snapshot_schedule_policy_schedule_weekly_schedule.dart';

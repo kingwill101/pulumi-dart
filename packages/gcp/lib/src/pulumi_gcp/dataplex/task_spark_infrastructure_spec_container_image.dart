@@ -1,0 +1,3 @@
+library module_dataplex_task_spark_infrastructure_spec_container_image;
+
+export 'task_spark_infrastructure_spec_container_image/task_spark_infrastructure_spec_container_image.dart';

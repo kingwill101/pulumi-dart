@@ -13,7 +13,7 @@ class MulticloudDataTransferConfigService {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedServicesStates"" pulumi-lang-dotnet=""NestedServicesStates"" pulumi-lang-go=""nestedServicesStates"" pulumi-lang-python=""nested_services_states"" pulumi-lang-yaml=""nestedServicesStates"" pulumi-lang-java=""nestedServicesStates"">"nested_services_states"</span>></a>The <span pulumi-lang-nodejs="`states`" pulumi-lang-dotnet="`States`" pulumi-lang-go="`states`" pulumi-lang-python="`states`" pulumi-lang-yaml="`states`" pulumi-lang-java="`states`">`states`</span> block contains:
+  /// <a name="nested_services_states"></a>The `states` block contains:
   final List<MulticloudDataTransferConfigServiceState>? states;
 
   MulticloudDataTransferConfigService({

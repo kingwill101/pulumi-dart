@@ -1,0 +1,3 @@
+library module_storage_managed_folder_iam_member_condition;
+
+export 'managed_folder_iam_member_condition/managed_folder_iam_member_condition.dart';

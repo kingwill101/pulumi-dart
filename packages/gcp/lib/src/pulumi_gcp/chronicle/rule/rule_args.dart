@@ -5,8 +5,8 @@ import 'package:pulumi/pulumi.dart';
 /// The set of arguments for Rule.
 class RuleArgs {
   /// Policy to determine if the rule should be deleted forcefully.
-  /// If<span pulumi-lang-nodejs=" deletionPolicy " pulumi-lang-dotnet=" DeletionPolicy " pulumi-lang-go=" deletionPolicy " pulumi-lang-python=" deletion_policy " pulumi-lang-yaml=" deletionPolicy " pulumi-lang-java=" deletionPolicy "> deletion_policy </span>= "FORCE", any retrohunts and any detections associated with the rule
-  /// will also be deleted. If<span pulumi-lang-nodejs=" deletionPolicy " pulumi-lang-dotnet=" DeletionPolicy " pulumi-lang-go=" deletionPolicy " pulumi-lang-python=" deletion_policy " pulumi-lang-yaml=" deletionPolicy " pulumi-lang-java=" deletionPolicy "> deletion_policy </span>= "DEFAULT", the call will only succeed if the
+  /// If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
+  /// will also be deleted. If deletion_policy = "DEFAULT", the call will only succeed if the
   /// rule has no associated retrohunts, including completed retrohunts, and no
   /// associated detections. Regardless of this field's value, the rule
   /// deployment associated with this rule will also be deleted.

@@ -1,3 +1,0 @@
-library module_pubsub_subscription_cloud_storage_config;
-
-export 'subscription_cloud_storage_config.dart';

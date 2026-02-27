@@ -1,3 +1,0 @@
-library module_dataplex_datascan_data_discovery_spec_bigquery_publishing_config;
-
-export 'datascan_data_discovery_spec_bigquery_publishing_config.dart';

@@ -1,0 +1,3 @@
+library module_vertex_ai_metadata_store_encryption_spec;
+
+export 'ai_metadata_store_encryption_spec/ai_metadata_store_encryption_spec.dart';

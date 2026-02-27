@@ -1,0 +1,3 @@
+library module_vertex_ai_tensorboard_encryption_spec;
+
+export 'ai_tensorboard_encryption_spec/ai_tensorboard_encryption_spec.dart';

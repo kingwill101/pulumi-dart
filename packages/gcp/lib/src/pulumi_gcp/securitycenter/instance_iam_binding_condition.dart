@@ -1,0 +1,3 @@
+library module_securitycenter_instance_iam_binding_condition;
+
+export 'instance_iam_binding_condition/instance_iam_binding_condition4.dart';

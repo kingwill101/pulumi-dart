@@ -1,3 +1,0 @@
-library module_compute_get_backend_service_outlier_detection;
-
-export 'get_backend_service_outlier_detection.dart';

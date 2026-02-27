@@ -24,7 +24,7 @@ class InstanceFromMachineImageArgs {
   /// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
   final Input<bool>? canIpForward;
 
-  /// The Confidential VM config being used by the instance. <span pulumi-lang-nodejs=" onHostMaintenance " pulumi-lang-dotnet=" OnHostMaintenance " pulumi-lang-go=" onHostMaintenance " pulumi-lang-python=" on_host_maintenance " pulumi-lang-yaml=" onHostMaintenance " pulumi-lang-java=" onHostMaintenance "> on_host_maintenance </span>has to be set to TERMINATE or this will fail to create.
+  /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
   final Input<InstanceFromMachineImageConfidentialInstanceConfig>?
       confidentialInstanceConfig;
 
@@ -90,13 +90,13 @@ class InstanceFromMachineImageArgs {
   /// Partner Metadata Map made available within the instance.
   final Input<Map<String, String>>? partnerMetadata;
 
-  /// The ID of the project in which the resource belongs. If<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>is provided, this value is ignored. If neither<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>nor project are provided, the provider project is used.
+  /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
   final Input<String>? project;
 
   /// Specifies the reservations that this instance can consume from.
   final Input<InstanceFromMachineImageReservationAffinity>? reservationAffinity;
 
-  /// A list of<span pulumi-lang-nodejs=" selfLinks " pulumi-lang-dotnet=" SelfLinks " pulumi-lang-go=" selfLinks " pulumi-lang-python=" self_links " pulumi-lang-yaml=" selfLinks " pulumi-lang-java=" selfLinks "> self_links </span>of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+  /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
   final Input<String>? resourcePolicies;
 
   /// The scheduling strategy being used by the instance.
@@ -125,11 +125,11 @@ class InstanceFromMachineImageArgs {
   /// The zone that the machine should be created in. If not
   /// set, the provider zone is used.
   ///
-  /// In addition to these, most* arguments from <span pulumi-lang-nodejs="`gcp.compute.Instance`" pulumi-lang-dotnet="`gcp.compute.Instance`" pulumi-lang-go="`compute.Instance`" pulumi-lang-python="`compute.Instance`" pulumi-lang-yaml="`gcp.compute.Instance`" pulumi-lang-java="`gcp.compute.Instance`">`gcp.compute.Instance`</span> are supported
+  /// In addition to these, most* arguments from `gcp.compute.Instance` are supported
   /// as a way to override the properties in the machine image. All exported attributes
-  /// from <span pulumi-lang-nodejs="`gcp.compute.Instance`" pulumi-lang-dotnet="`gcp.compute.Instance`" pulumi-lang-go="`compute.Instance`" pulumi-lang-python="`compute.Instance`" pulumi-lang-yaml="`gcp.compute.Instance`" pulumi-lang-java="`gcp.compute.Instance`">`gcp.compute.Instance`</span> are likewise exported here.
+  /// from `gcp.compute.Instance` are likewise exported here.
   ///
-  /// > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the <span pulumi-lang-nodejs=""bootDisk"" pulumi-lang-dotnet=""BootDisk"" pulumi-lang-go=""bootDisk"" pulumi-lang-python=""boot_disk"" pulumi-lang-yaml=""bootDisk"" pulumi-lang-java=""bootDisk"">"boot_disk"</span>, <span pulumi-lang-nodejs=""attachedDisk"" pulumi-lang-dotnet=""AttachedDisk"" pulumi-lang-go=""attachedDisk"" pulumi-lang-python=""attached_disk"" pulumi-lang-yaml=""attachedDisk"" pulumi-lang-java=""attachedDisk"">"attached_disk"</span>, and <span pulumi-lang-nodejs=""scratchDisk"" pulumi-lang-dotnet=""ScratchDisk"" pulumi-lang-go=""scratchDisk"" pulumi-lang-python=""scratch_disk"" pulumi-lang-yaml=""scratchDisk"" pulumi-lang-java=""scratchDisk"">"scratch_disk"</span> fields.
+  /// > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "boot_disk", "attached_disk", and "scratch_disk" fields.
   final Input<String>? zone;
 
   InstanceFromMachineImageArgs({

@@ -108,7 +108,7 @@ class RouterPeerArgs {
   final Input<int> peerAsn;
 
   /// IP address of the BGP interface outside Google Cloud Platform.
-  /// Only IPv4 is supported. Required if <span pulumi-lang-nodejs="`ipAddress`" pulumi-lang-dotnet="`IpAddress`" pulumi-lang-go="`ipAddress`" pulumi-lang-python="`ip_address`" pulumi-lang-yaml="`ipAddress`" pulumi-lang-java="`ipAddress`">`ip_address`</span> is set.
+  /// Only IPv4 is supported. Required if `ip_address` is set.
   final Input<String>? peerIpAddress;
 
   /// IPv4 address of the BGP interface outside Google Cloud Platform.
@@ -141,11 +141,11 @@ class RouterPeerArgs {
   final Input<String>? routerApplianceInstance;
 
   /// The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
-  /// This value has to be set true to force the<span pulumi-lang-nodejs=" advertisedRoutePriority " pulumi-lang-dotnet=" AdvertisedRoutePriority " pulumi-lang-go=" advertisedRoutePriority " pulumi-lang-python=" advertised_route_priority " pulumi-lang-yaml=" advertisedRoutePriority " pulumi-lang-java=" advertisedRoutePriority "> advertised_route_priority </span>to be 0.
+  /// This value has to be set true to force the advertised_route_priority to be 0.
   final Input<bool>? zeroAdvertisedRoutePriority;
 
   /// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
-  /// This value has to be set true to force the<span pulumi-lang-nodejs=" customLearnedRoutePriority " pulumi-lang-dotnet=" CustomLearnedRoutePriority " pulumi-lang-go=" customLearnedRoutePriority " pulumi-lang-python=" custom_learned_route_priority " pulumi-lang-yaml=" customLearnedRoutePriority " pulumi-lang-java=" customLearnedRoutePriority "> custom_learned_route_priority </span>to be 0.
+  /// This value has to be set true to force the custom_learned_route_priority to be 0.
   final Input<bool>? zeroCustomLearnedRoutePriority;
 
   RouterPeerArgs({

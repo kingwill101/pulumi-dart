@@ -1,0 +1,3 @@
+library module_dataproc_cluster_iammember_condition;
+
+export 'cluster_iammember_condition/cluster_iammember_condition.dart';

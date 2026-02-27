@@ -1,3 +1,0 @@
-library module_appengine_domain_mapping_resource_record;
-
-export 'domain_mapping_resource_record.dart';

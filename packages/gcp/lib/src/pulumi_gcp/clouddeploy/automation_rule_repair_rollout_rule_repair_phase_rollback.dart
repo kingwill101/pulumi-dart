@@ -1,0 +1,3 @@
+library module_clouddeploy_automation_rule_repair_rollout_rule_repair_phase_rollback;
+
+export 'automation_rule_repair_rollout_rule_repair_phase_rollback/automation_rule_repair_rollout_rule_repair_phase_rollback.dart';

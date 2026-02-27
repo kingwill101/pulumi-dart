@@ -1,0 +1,3 @@
+library module_apphub_get_discovered_service_service_property;
+
+export 'get_discovered_service_service_property/get_discovered_service_service_property.dart';

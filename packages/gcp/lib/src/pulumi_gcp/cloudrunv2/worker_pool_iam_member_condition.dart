@@ -1,0 +1,3 @@
+library module_cloudrunv2_worker_pool_iam_member_condition;
+
+export 'worker_pool_iam_member_condition/worker_pool_iam_member_condition.dart';

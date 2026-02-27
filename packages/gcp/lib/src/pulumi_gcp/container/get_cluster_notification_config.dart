@@ -1,0 +1,3 @@
+library module_container_get_cluster_notification_config;
+
+export 'get_cluster_notification_config/get_cluster_notification_config.dart';

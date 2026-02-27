@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 import '../connect_cluster_gcp_config_access_config_network_config/connect_cluster_gcp_config_access_config_network_config.dart';
 
 class ConnectClusterGcpConfigAccessConfig {
-  /// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional <span pulumi-lang-nodejs="`networkConfigs`" pulumi-lang-dotnet="`NetworkConfigs`" pulumi-lang-go="`networkConfigs`" pulumi-lang-python="`network_configs`" pulumi-lang-yaml="`networkConfigs`" pulumi-lang-java="`networkConfigs`">`network_configs`</span> blocks.
+  /// Virtual Private Cloud (VPC) subnets where IP addresses for the Kafka Connect cluster are allocated. To make the connect cluster available in a VPC, you must specify at least one subnet per network. You must specify between 1 and 10 subnets. Additional subnets may be specified with additional `network_configs` blocks.
   /// Structure is documented below.
   final List<ConnectClusterGcpConfigAccessConfigNetworkConfig> networkConfigs;
 

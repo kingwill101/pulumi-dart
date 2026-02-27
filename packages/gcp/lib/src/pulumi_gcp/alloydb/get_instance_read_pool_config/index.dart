@@ -1,3 +1,0 @@
-library module_alloydb_get_instance_read_pool_config;
-
-export 'get_instance_read_pool_config.dart';

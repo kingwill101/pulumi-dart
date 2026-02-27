@@ -1,0 +1,3 @@
+library module_apigee_keystores_aliases_pkcs12_certs_info;
+
+export 'keystores_aliases_pkcs12_certs_info/keystores_aliases_pkcs12_certs_info.dart';

@@ -1,3 +1,0 @@
-library module_datastream_stream_rule_set_customization_rule_bigquery_partitioning_ingestion_time_partition;
-
-export 'stream_rule_set_customization_rule_bigquery_partitioning_ingestion_time_partition.dart';

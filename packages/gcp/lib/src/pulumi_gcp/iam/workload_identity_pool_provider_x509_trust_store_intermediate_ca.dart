@@ -1,0 +1,3 @@
+library module_iam_workload_identity_pool_provider_x509_trust_store_intermediate_ca;
+
+export 'workload_identity_pool_provider_x509_trust_store_intermediate_ca/workload_identity_pool_provider_x509_trust_store_intermediate_ca.dart';

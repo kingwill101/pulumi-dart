@@ -1,3 +1,0 @@
-library module_integrationconnectors_connection_auth_config_oauth2_client_credentials_client_secret;
-
-export 'connection_auth_config_oauth2_client_credentials_client_secret.dart';

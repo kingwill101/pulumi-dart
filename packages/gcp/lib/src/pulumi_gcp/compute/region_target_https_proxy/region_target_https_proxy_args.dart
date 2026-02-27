@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart';
 class RegionTargetHttpsProxyArgs {
   /// URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
   /// sslCertificates and certificateManagerCertificates can't be defined together.
-  /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>`projects/{project}/locations/{location}/certificates/{resourceName}`
+  /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
   final Input<List<String>>? certificateManagerCertificates;
 
   /// An optional description of this resource.

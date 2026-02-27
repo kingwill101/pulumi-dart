@@ -1,0 +1,3 @@
+library module_cloudbuild_get_trigger_approval_config;
+
+export 'get_trigger_approval_config/get_trigger_approval_config.dart';

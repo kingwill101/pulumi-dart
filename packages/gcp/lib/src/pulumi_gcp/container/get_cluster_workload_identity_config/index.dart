@@ -1,3 +1,0 @@
-library module_container_get_cluster_workload_identity_config;
-
-export 'get_cluster_workload_identity_config.dart';

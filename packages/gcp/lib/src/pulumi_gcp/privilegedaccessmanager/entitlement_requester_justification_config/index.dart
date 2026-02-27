@@ -1,3 +1,0 @@
-library module_privilegedaccessmanager_entitlement_requester_justification_config;
-
-export 'entitlement_requester_justification_config.dart';

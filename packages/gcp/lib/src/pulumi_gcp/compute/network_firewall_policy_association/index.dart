@@ -1,4 +1,0 @@
-library module_compute_network_firewall_policy_association;
-
-export 'network_firewall_policy_association.dart';
-export 'network_firewall_policy_association_args.dart';

@@ -1,0 +1,3 @@
+library module_databasemigrationservice_connection_profile_cloudsql_settings_ip_config;
+
+export 'connection_profile_cloudsql_settings_ip_config/connection_profile_cloudsql_settings_ip_config.dart';

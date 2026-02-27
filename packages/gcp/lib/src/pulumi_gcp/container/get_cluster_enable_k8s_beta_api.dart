@@ -1,0 +1,3 @@
+library module_container_get_cluster_enable_k8s_beta_api;
+
+export 'get_cluster_enable_k8s_beta_api/get_cluster_enable_k8s_beta_api.dart';

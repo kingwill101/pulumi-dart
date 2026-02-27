@@ -1,0 +1,3 @@
+library module_dns_managed_zone_dnssec_config;
+
+export 'managed_zone_dnssec_config/managed_zone_dnssec_config.dart';

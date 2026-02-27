@@ -1,3 +1,0 @@
-library module_compute_storage_pool_iam_member_condition;
-
-export 'storage_pool_iam_member_condition.dart';

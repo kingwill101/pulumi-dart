@@ -1,3 +1,0 @@
-library module_appengine_flexible_app_version_deployment_container;
-
-export 'flexible_app_version_deployment_container.dart';

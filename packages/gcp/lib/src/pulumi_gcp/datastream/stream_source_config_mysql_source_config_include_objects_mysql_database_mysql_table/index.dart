@@ -1,3 +1,0 @@
-library module_datastream_stream_source_config_mysql_source_config_include_objects_mysql_database_mysql_table;
-
-export 'stream_source_config_mysql_source_config_include_objects_mysql_database_mysql_table.dart';

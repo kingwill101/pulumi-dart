@@ -1,0 +1,3 @@
+library module_diagflow_cx_page_entry_fulfillment_message_telephony_transfer_call;
+
+export 'cx_page_entry_fulfillment_message_telephony_transfer_call/cx_page_entry_fulfillment_message_telephony_transfer_call.dart';

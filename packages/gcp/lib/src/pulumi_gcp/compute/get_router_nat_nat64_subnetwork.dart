@@ -1,0 +1,3 @@
+library module_compute_get_router_nat_nat64_subnetwork;
+
+export 'get_router_nat_nat64_subnetwork/get_router_nat_nat64_subnetwork.dart';

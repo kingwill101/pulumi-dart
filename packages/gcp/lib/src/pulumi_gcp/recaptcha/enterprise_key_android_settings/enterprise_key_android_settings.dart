@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class EnterpriseKeyAndroidSettings {
-  /// If set to true, it means<span pulumi-lang-nodejs=" allowedPackageNames " pulumi-lang-dotnet=" AllowedPackageNames " pulumi-lang-go=" allowedPackageNames " pulumi-lang-python=" allowed_package_names " pulumi-lang-yaml=" allowedPackageNames " pulumi-lang-java=" allowedPackageNames "> allowed_package_names </span>will not be enforced.
+  /// If set to true, it means allowed_package_names will not be enforced.
   final bool? allowAllPackageNames;
 
   /// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'

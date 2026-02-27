@@ -7,7 +7,7 @@ class AppHostingBackendCodebase {
   /// projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}
   final String repository;
 
-  /// If <span pulumi-lang-nodejs="`repository`" pulumi-lang-dotnet="`Repository`" pulumi-lang-go="`repository`" pulumi-lang-python="`repository`" pulumi-lang-yaml="`repository`" pulumi-lang-java="`repository`">`repository`</span> is provided, the directory relative to the root of the
+  /// If `repository` is provided, the directory relative to the root of the
   /// repository to use as the root for the deployed web app.
   final String? rootDirectory;
 

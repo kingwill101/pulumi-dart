@@ -1,0 +1,3 @@
+library module_iap_web_cloud_run_service_iam_member_condition;
+
+export 'web_cloud_run_service_iam_member_condition/web_cloud_run_service_iam_member_condition.dart';

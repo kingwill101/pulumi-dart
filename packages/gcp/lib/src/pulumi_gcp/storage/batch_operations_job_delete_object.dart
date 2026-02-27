@@ -1,0 +1,3 @@
+library module_storage_batch_operations_job_delete_object;
+
+export 'batch_operations_job_delete_object/batch_operations_job_delete_object.dart';

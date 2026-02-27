@@ -1,3 +1,0 @@
-library module_appengine_flexible_app_version_api_config;
-
-export 'flexible_app_version_api_config.dart';

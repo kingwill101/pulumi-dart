@@ -21,7 +21,7 @@ import '../region_backend_service_tls_settings/region_backend_service_tls_settin
 
 /// The set of arguments for RegionBackendService.
 class RegionBackendServiceArgs {
-  /// Lifetime of cookies in seconds if<span pulumi-lang-nodejs=" sessionAffinity " pulumi-lang-dotnet=" SessionAffinity " pulumi-lang-go=" sessionAffinity " pulumi-lang-python=" session_affinity " pulumi-lang-yaml=" sessionAffinity " pulumi-lang-java=" sessionAffinity "> session_affinity </span>is
+  /// Lifetime of cookies in seconds if session_affinity is
   /// GENERATED_COOKIE. If set to 0, the cookie is non-persistent and lasts
   /// only until the end of the browser session (or equivalent). The
   /// maximum allowed value for TTL is one day.
@@ -37,8 +37,8 @@ class RegionBackendServiceArgs {
   final Input<RegionBackendServiceCdnPolicy>? cdnPolicy;
 
   /// Settings controlling the volume of connections to a backend service. This field
-  /// is applicable only when the <span pulumi-lang-nodejs="`loadBalancingScheme`" pulumi-lang-dotnet="`LoadBalancingScheme`" pulumi-lang-go="`loadBalancingScheme`" pulumi-lang-python="`load_balancing_scheme`" pulumi-lang-yaml="`loadBalancingScheme`" pulumi-lang-java="`loadBalancingScheme`">`load_balancing_scheme`</span> is set to INTERNAL_MANAGED
-  /// and the <span pulumi-lang-nodejs="`protocol`" pulumi-lang-dotnet="`Protocol`" pulumi-lang-go="`protocol`" pulumi-lang-python="`protocol`" pulumi-lang-yaml="`protocol`" pulumi-lang-java="`protocol`">`protocol`</span> is set to HTTP, HTTPS, HTTP2 or H2C.
+  /// is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
+  /// and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
   /// Structure is documented below.
   final Input<RegionBackendServiceCircuitBreakers>? circuitBreakers;
 
@@ -154,31 +154,19 @@ class RegionBackendServiceArgs {
   /// responses are expected to contain non-standard HTTP response header field
   /// X-Endpoint-Load-Metrics. The reported metrics
   /// to use for computing the weights are specified via the
-  /// backends[].customMetrics fields.<span pulumi-lang-nodejs="
-  /// localityLbPolicy " pulumi-lang-dotnet="
-  /// LocalityLbPolicy " pulumi-lang-go="
-  /// localityLbPolicy " pulumi-lang-python="
-  /// locality_lb_policy " pulumi-lang-yaml="
-  /// localityLbPolicy " pulumi-lang-java="
-  /// localityLbPolicy ">
-  /// locality_lb_policy </span>is applicable to either:
-  /// * A regional backend service with the<span pulumi-lang-nodejs=" serviceProtocol " pulumi-lang-dotnet=" ServiceProtocol " pulumi-lang-go=" serviceProtocol " pulumi-lang-python=" service_protocol " pulumi-lang-yaml=" serviceProtocol " pulumi-lang-java=" serviceProtocol "> service_protocol </span>set to HTTP, HTTPS, HTTP2 or H2C,
+  /// backends[].customMetrics fields.
+  /// locality_lb_policy is applicable to either:
+  /// * A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2 or H2C,
   /// and loadBalancingScheme set to INTERNAL_MANAGED.
-  /// * A global backend service with the<span pulumi-lang-nodejs=" loadBalancingScheme " pulumi-lang-dotnet=" LoadBalancingScheme " pulumi-lang-go=" loadBalancingScheme " pulumi-lang-python=" load_balancing_scheme " pulumi-lang-yaml=" loadBalancingScheme " pulumi-lang-java=" loadBalancingScheme "> load_balancing_scheme </span>set to INTERNAL_SELF_MANAGED.
+  /// * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
   /// * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
   /// Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
   /// Network Load Balancing. The default is MAGLEV.
-  /// If<span pulumi-lang-nodejs=" sessionAffinity " pulumi-lang-dotnet=" SessionAffinity " pulumi-lang-go=" sessionAffinity " pulumi-lang-python=" session_affinity " pulumi-lang-yaml=" sessionAffinity " pulumi-lang-java=" sessionAffinity "> session_affinity </span>is not NONE, and<span pulumi-lang-nodejs=" localityLbPolicy " pulumi-lang-dotnet=" LocalityLbPolicy " pulumi-lang-go=" localityLbPolicy " pulumi-lang-python=" locality_lb_policy " pulumi-lang-yaml=" localityLbPolicy " pulumi-lang-java=" localityLbPolicy "> locality_lb_policy </span>is not set to MAGLEV, WEIGHTED_MAGLEV,
+  /// If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
   /// or RING_HASH, session affinity settings will not take effect.
   /// Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
-  /// by a URL map that is bound to target gRPC proxy that has<span pulumi-lang-nodejs=" validateForProxyless
-  /// " pulumi-lang-dotnet=" ValidateForProxyless
-  /// " pulumi-lang-go=" validateForProxyless
-  /// " pulumi-lang-python=" validate_for_proxyless
-  /// " pulumi-lang-yaml=" validateForProxyless
-  /// " pulumi-lang-java=" validateForProxyless
-  /// "> validate_for_proxyless
-  /// </span>field set to true.
+  /// by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
+  /// field set to true.
   /// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
   final Input<String>? localityLbPolicy;
 
@@ -208,8 +196,8 @@ class RegionBackendServiceArgs {
       networkPassThroughLbTrafficPolicy;
 
   /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
-  /// This field is applicable only when the <span pulumi-lang-nodejs="`loadBalancingScheme`" pulumi-lang-dotnet="`LoadBalancingScheme`" pulumi-lang-go="`loadBalancingScheme`" pulumi-lang-python="`load_balancing_scheme`" pulumi-lang-yaml="`loadBalancingScheme`" pulumi-lang-java="`loadBalancingScheme`">`load_balancing_scheme`</span> is set
-  /// to INTERNAL_MANAGED and the <span pulumi-lang-nodejs="`protocol`" pulumi-lang-dotnet="`Protocol`" pulumi-lang-go="`protocol`" pulumi-lang-python="`protocol`" pulumi-lang-yaml="`protocol`" pulumi-lang-java="`protocol`">`protocol`</span> is set to HTTP, HTTPS, HTTP2 or H2C.
+  /// This field is applicable only when the `load_balancing_scheme` is set
+  /// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
   /// Structure is documented below.
   final Input<RegionBackendServiceOutlierDetection>? outlierDetection;
 

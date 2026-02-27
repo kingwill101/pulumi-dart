@@ -31,12 +31,12 @@ class ClusterIpAllocationPolicy {
 
   /// The name of the existing secondary
   /// range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
-  /// <span pulumi-lang-nodejs="`clusterIpv4CidrBlock`" pulumi-lang-dotnet="`ClusterIpv4CidrBlock`" pulumi-lang-go="`clusterIpv4CidrBlock`" pulumi-lang-python="`cluster_ipv4_cidr_block`" pulumi-lang-yaml="`clusterIpv4CidrBlock`" pulumi-lang-java="`clusterIpv4CidrBlock`">`cluster_ipv4_cidr_block`</span> can be used to automatically create a GKE-managed one.
+  /// `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
   final String? clusterSecondaryRangeName;
 
   /// Contains network tier information. Structure is documented below
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedAutoIpamConfig"" pulumi-lang-dotnet=""NestedAutoIpamConfig"" pulumi-lang-go=""nestedAutoIpamConfig"" pulumi-lang-python=""nested_auto_ipam_config"" pulumi-lang-yaml=""nestedAutoIpamConfig"" pulumi-lang-java=""nestedAutoIpamConfig"">"nested_auto_ipam_config"</span>></a>The auto ipam config supports:
+  /// <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
   final ClusterIpAllocationPolicyNetworkTierConfig? networkTierConfig;
 
   /// Configuration for cluster level pod cidr overprovision. Default is disabled=false.
@@ -52,7 +52,7 @@ class ClusterIpAllocationPolicy {
 
   /// The name of the existing
   /// secondary range in the cluster's subnetwork to use for service `ClusterIP`s.
-  /// Alternatively, <span pulumi-lang-nodejs="`servicesIpv4CidrBlock`" pulumi-lang-dotnet="`ServicesIpv4CidrBlock`" pulumi-lang-go="`servicesIpv4CidrBlock`" pulumi-lang-python="`services_ipv4_cidr_block`" pulumi-lang-yaml="`servicesIpv4CidrBlock`" pulumi-lang-java="`servicesIpv4CidrBlock`">`services_ipv4_cidr_block`</span> can be used to automatically create a
+  /// Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
   /// GKE-managed one.
   final String? servicesSecondaryRangeName;
 

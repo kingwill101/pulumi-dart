@@ -1,0 +1,3 @@
+library module_dataloss_prevention_discovery_config_target_other_cloud_target;
+
+export 'prevention_discovery_config_target_other_cloud_target/prevention_discovery_config_target_other_cloud_target.dart';

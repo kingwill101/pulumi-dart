@@ -1,0 +1,3 @@
+library module_iam_workforce_pool_iam_member_condition;
+
+export 'workforce_pool_iam_member_condition/workforce_pool_iam_member_condition.dart';

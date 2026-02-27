@@ -39,7 +39,7 @@ class JobArgs5 {
   /// The config of presto job
   final Input<JobPrestoConfig>? prestoConfig;
 
-  /// The project in which the <span pulumi-lang-nodejs="`cluster`" pulumi-lang-dotnet="`Cluster`" pulumi-lang-go="`cluster`" pulumi-lang-python="`cluster`" pulumi-lang-yaml="`cluster`" pulumi-lang-java="`cluster`">`cluster`</span> can be found and jobs
+  /// The project in which the `cluster` can be found and jobs
   /// subsequently run against. If it is not provided, the provider project is used.
   final Input<String>? project;
 
@@ -50,7 +50,7 @@ class JobArgs5 {
   final Input<JobReference>? reference;
 
   /// The Cloud Dataproc region. This essentially determines which clusters are available
-  /// for this job to be submitted to. If not specified, defaults to <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span>.
+  /// for this job to be submitted to. If not specified, defaults to `global`.
   final Input<String>? region;
 
   /// Optional. Job scheduling configuration.

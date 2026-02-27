@@ -1,0 +1,3 @@
+library module_sql_get_database_instances_instance_setting_final_backup_config;
+
+export 'get_database_instances_instance_setting_final_backup_config/get_database_instances_instance_setting_final_backup_config.dart';

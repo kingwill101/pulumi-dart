@@ -1,0 +1,3 @@
+library module_storage_get_bucket_object_context_custom;
+
+export 'get_bucket_object_context_custom/get_bucket_object_context_custom.dart';

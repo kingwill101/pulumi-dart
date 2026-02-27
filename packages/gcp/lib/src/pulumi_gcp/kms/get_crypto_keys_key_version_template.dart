@@ -1,0 +1,3 @@
+library module_kms_get_crypto_keys_key_version_template;
+
+export 'get_crypto_keys_key_version_template/get_crypto_keys_key_version_template.dart';

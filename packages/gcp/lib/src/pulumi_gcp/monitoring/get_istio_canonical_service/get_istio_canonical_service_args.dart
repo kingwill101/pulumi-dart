@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// Arguments for getIstioCanonicalService.
 class GetIstioCanonicalServiceArgs {
   /// The name of the canonical service underlying this service.
-  /// Corresponds to the<span pulumi-lang-nodejs=" destinationCanonicalServiceName " pulumi-lang-dotnet=" DestinationCanonicalServiceName " pulumi-lang-go=" destinationCanonicalServiceName " pulumi-lang-python=" destination_canonical_service_name " pulumi-lang-yaml=" destinationCanonicalServiceName " pulumi-lang-java=" destinationCanonicalServiceName "> destination_canonical_service_name </span>metric label in label in Istio metrics.
+  /// Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
   ///
   /// - - -
   ///
@@ -13,7 +13,7 @@ class GetIstioCanonicalServiceArgs {
   final Input<String> canonicalService;
 
   /// The namespace of the canonical service underlying this service.
-  /// Corresponds to the<span pulumi-lang-nodejs=" destinationCanonicalServiceNamespace " pulumi-lang-dotnet=" DestinationCanonicalServiceNamespace " pulumi-lang-go=" destinationCanonicalServiceNamespace " pulumi-lang-python=" destination_canonical_service_namespace " pulumi-lang-yaml=" destinationCanonicalServiceNamespace " pulumi-lang-java=" destinationCanonicalServiceNamespace "> destination_canonical_service_namespace </span>metric label in Istio metrics.
+  /// Corresponds to the destination_canonical_service_namespace metric label in Istio metrics.
   final Input<String> canonicalServiceNamespace;
 
   /// Identifier for the mesh in which this Istio service is defined.

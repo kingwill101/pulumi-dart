@@ -1,0 +1,3 @@
+library module_certificateauthority_certificate_certificate_description_authority_key_id;
+
+export 'certificate_certificate_description_authority_key_id/certificate_certificate_description_authority_key_id.dart';

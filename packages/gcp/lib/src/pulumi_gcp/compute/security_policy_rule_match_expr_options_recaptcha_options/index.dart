@@ -1,3 +1,0 @@
-library module_compute_security_policy_rule_match_expr_options_recaptcha_options;
-
-export 'security_policy_rule_match_expr_options_recaptcha_options.dart';

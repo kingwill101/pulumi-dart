@@ -26,7 +26,7 @@ class GetInstanceBootDiskInitializeParam {
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
   final Map<String, String> resourceManagerTags;
 
-  /// A list of<span pulumi-lang-nodejs=" selfLinks " pulumi-lang-dotnet=" SelfLinks " pulumi-lang-go=" selfLinks " pulumi-lang-python=" self_links " pulumi-lang-yaml=" selfLinks " pulumi-lang-java=" selfLinks "> self_links </span>to resource policies attached to the selected <span pulumi-lang-nodejs="`bootDisk`" pulumi-lang-dotnet="`BootDisk`" pulumi-lang-go="`bootDisk`" pulumi-lang-python="`boot_disk`" pulumi-lang-yaml="`bootDisk`" pulumi-lang-java="`bootDisk`">`boot_disk`</span>
+  /// A list of self_links to resource policies attached to the selected `boot_disk`
   final List<String> resourcePolicies;
 
   /// The size of the image in gigabytes.

@@ -1,3 +1,0 @@
-library module_networkconnectivity_policy_based_route_interconnect_attachment;
-
-export 'policy_based_route_interconnect_attachment.dart';

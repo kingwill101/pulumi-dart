@@ -1,0 +1,5 @@
+library module_compute_get_instance_iam_policy;
+
+export 'get_instance_iam_policy/get_instance_iam_policy2.dart';
+export 'get_instance_iam_policy/get_instance_iam_policy_args2.dart';
+export 'get_instance_iam_policy/get_instance_iam_policy_result2.dart';

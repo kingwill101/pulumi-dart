@@ -18,7 +18,7 @@ class RoutineSparkOptions {
   final List<String>? jarUris;
 
   /// The fully qualified name of a class in jarUris, for example, com.example.wordcount.
-  /// Exactly one of mainClass and<span pulumi-lang-nodejs=" mainJarUri " pulumi-lang-dotnet=" MainJarUri " pulumi-lang-go=" mainJarUri " pulumi-lang-python=" main_jar_uri " pulumi-lang-yaml=" mainJarUri " pulumi-lang-java=" mainJarUri "> main_jar_uri </span>field should be set for Java/Scala language type.
+  /// Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
   final String? mainClass;
 
   /// The main file/jar URI of the Spark application.

@@ -27,12 +27,12 @@ class DatabaseInstanceSettings {
 
   /// The availability type of the Cloud SQL
   /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`). For all instances, ensure that
-  /// `settings.backup_configuration.enabled` is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
-  /// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// `settings.backup_configuration.enabled` is set to `true`.
+  /// For MySQL instances, ensure that `settings.backup_configuration.binary_log_enabled` is set to `true`.
   /// For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
-  /// is set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. Defaults to `ZONAL`.
+  /// is set to `true`. Defaults to `ZONAL`.
   /// For read pool instances, this field is read-only. The availability type is changed by specifying
-  /// the number of nodes (<span pulumi-lang-nodejs="`nodeCount`" pulumi-lang-dotnet="`NodeCount`" pulumi-lang-go="`nodeCount`" pulumi-lang-python="`node_count`" pulumi-lang-yaml="`nodeCount`" pulumi-lang-java="`nodeCount`">`node_count`</span>).
+  /// the number of nodes (`node_count`).
   final String? availabilityType;
   final DatabaseInstanceSettingsBackupConfiguration? backupConfiguration;
 
@@ -60,13 +60,13 @@ class DatabaseInstanceSettings {
   final bool? deletionProtectionEnabled;
   final DatabaseInstanceSettingsDenyMaintenancePeriod? denyMaintenancePeriod;
 
-  /// Enables auto-resizing of the storage size. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>. Note that if <span pulumi-lang-nodejs="`diskSize`" pulumi-lang-dotnet="`DiskSize`" pulumi-lang-go="`diskSize`" pulumi-lang-python="`disk_size`" pulumi-lang-yaml="`diskSize`" pulumi-lang-java="`diskSize`">`disk_size`</span> is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in<span pulumi-lang-nodejs=" diskSize " pulumi-lang-dotnet=" DiskSize " pulumi-lang-go=" diskSize " pulumi-lang-python=" disk_size " pulumi-lang-yaml=" diskSize " pulumi-lang-java=" diskSize "> disk_size </span>if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to <span pulumi-lang-nodejs="`diskSize`" pulumi-lang-dotnet="`DiskSize`" pulumi-lang-go="`diskSize`" pulumi-lang-python="`disk_size`" pulumi-lang-yaml="`diskSize`" pulumi-lang-java="`diskSize`">`disk_size`</span>.
+  /// Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
   final bool? diskAutoresize;
 
   /// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
   final int? diskAutoresizeLimit;
 
-  /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from <span pulumi-lang-nodejs="`diskAutoresize`" pulumi-lang-dotnet="`DiskAutoresize`" pulumi-lang-go="`diskAutoresize`" pulumi-lang-python="`disk_autoresize`" pulumi-lang-yaml="`diskAutoresize`" pulumi-lang-java="`diskAutoresize`">`disk_autoresize`</span> if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
+  /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB for `PD_SSD`, `PD_HDD` and 20GB for `HYPERDISK_BALANCED`. Note that this value will override the resizing from `disk_autoresize` if that feature is enabled. To avoid this, set `lifecycle.ignore_changes` on this field.
   final int? diskSize;
 
   /// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
@@ -82,10 +82,10 @@ class DatabaseInstanceSettings {
   /// `settings.0.availability_type`).
   final String? effectiveAvailabilityType;
 
-  /// Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enables [Cloud SQL instance integration with Dataplex](https://cloud.google.com/sql/docs/mysql/dataplex-catalog-integration). MySQL, Postgres and SQL Server instances are supported for this feature. Defaults to `false`.
   final bool? enableDataplexIntegration;
 
-  /// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
   final bool? enableGoogleMlIntegration;
 
   /// Config used to determine the final backup settings for the instance
@@ -117,13 +117,13 @@ class DatabaseInstanceSettings {
   /// and custom machine types such as `db-custom-2-13312`. See the [Custom Machine Type Documentation](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create) to learn about specifying custom machine types.
   final String tier;
 
-  /// The<span pulumi-lang-nodejs=" timeZone " pulumi-lang-dotnet=" TimeZone " pulumi-lang-go=" timeZone " pulumi-lang-python=" time_zone " pulumi-lang-yaml=" timeZone " pulumi-lang-java=" timeZone "> time_zone </span>to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+  /// The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
   final String? timeZone;
 
   /// A set of key/value user label pairs to assign to the instance.
   final Map<String, String>? userLabels;
 
-  /// Used to make sure changes to the <span pulumi-lang-nodejs="`settings`" pulumi-lang-dotnet="`Settings`" pulumi-lang-go="`settings`" pulumi-lang-python="`settings`" pulumi-lang-yaml="`settings`" pulumi-lang-java="`settings`">`settings`</span> block are
+  /// Used to make sure changes to the `settings` block are
   /// atomic.
   final int? version;
 

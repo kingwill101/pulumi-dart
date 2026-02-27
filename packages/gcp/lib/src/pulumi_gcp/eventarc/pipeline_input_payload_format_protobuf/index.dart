@@ -1,3 +1,0 @@
-library module_eventarc_pipeline_input_payload_format_protobuf;
-
-export 'pipeline_input_payload_format_protobuf.dart';

@@ -12,7 +12,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {
   /// to the response or request headers with the
   /// same field names. The added values are
   /// separated by commas.
-  /// To overwrite existing values, set <span pulumi-lang-nodejs="`replace`" pulumi-lang-dotnet="`Replace`" pulumi-lang-go="`replace`" pulumi-lang-python="`replace`" pulumi-lang-yaml="`replace`" pulumi-lang-java="`replace`">`replace`</span> to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// To overwrite existing values, set `replace` to `true`.
   final bool? replace;
 
   EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd({

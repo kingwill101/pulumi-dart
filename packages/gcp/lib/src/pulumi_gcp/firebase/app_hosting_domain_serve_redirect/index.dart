@@ -1,3 +1,0 @@
-library module_firebase_app_hosting_domain_serve_redirect;
-
-export 'app_hosting_domain_serve_redirect.dart';

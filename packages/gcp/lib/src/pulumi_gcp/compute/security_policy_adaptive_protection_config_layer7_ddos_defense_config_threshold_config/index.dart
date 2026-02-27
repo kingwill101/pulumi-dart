@@ -1,3 +1,0 @@
-library module_compute_security_policy_adaptive_protection_config_layer7_ddos_defense_config_threshold_config;
-
-export 'security_policy_adaptive_protection_config_layer7_ddos_defense_config_threshold_config.dart';

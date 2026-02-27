@@ -15,7 +15,7 @@ class BackendServiceCdnPolicyCacheKeyPolicy {
   final bool? includeProtocol;
 
   /// If true, include query string parameters in the cache key
-  /// according to<span pulumi-lang-nodejs=" queryStringWhitelist " pulumi-lang-dotnet=" QueryStringWhitelist " pulumi-lang-go=" queryStringWhitelist " pulumi-lang-python=" query_string_whitelist " pulumi-lang-yaml=" queryStringWhitelist " pulumi-lang-java=" queryStringWhitelist "> query_string_whitelist </span>and
+  /// according to query_string_whitelist and
   /// query_string_blacklist. If neither is set, the entire query
   /// string will be included.
   /// If false, the query string will be excluded from the cache
@@ -23,27 +23,15 @@ class BackendServiceCdnPolicyCacheKeyPolicy {
   final bool? includeQueryString;
 
   /// Names of query string parameters to exclude in cache keys.
-  /// All other parameters will be included. Either specify<span pulumi-lang-nodejs="
-  /// queryStringWhitelist " pulumi-lang-dotnet="
-  /// QueryStringWhitelist " pulumi-lang-go="
-  /// queryStringWhitelist " pulumi-lang-python="
-  /// query_string_whitelist " pulumi-lang-yaml="
-  /// queryStringWhitelist " pulumi-lang-java="
-  /// queryStringWhitelist ">
-  /// query_string_whitelist </span>or query_string_blacklist, not both.
+  /// All other parameters will be included. Either specify
+  /// query_string_whitelist or query_string_blacklist, not both.
   /// '&' and '=' will be percent encoded and not treated as
   /// delimiters.
   final List<String>? queryStringBlacklists;
 
   /// Names of query string parameters to include in cache keys.
-  /// All other parameters will be excluded. Either specify<span pulumi-lang-nodejs="
-  /// queryStringWhitelist " pulumi-lang-dotnet="
-  /// QueryStringWhitelist " pulumi-lang-go="
-  /// queryStringWhitelist " pulumi-lang-python="
-  /// query_string_whitelist " pulumi-lang-yaml="
-  /// queryStringWhitelist " pulumi-lang-java="
-  /// queryStringWhitelist ">
-  /// query_string_whitelist </span>or query_string_blacklist, not both.
+  /// All other parameters will be excluded. Either specify
+  /// query_string_whitelist or query_string_blacklist, not both.
   /// '&' and '=' will be percent encoded and not treated as
   /// delimiters.
   final List<String>? queryStringWhitelists;

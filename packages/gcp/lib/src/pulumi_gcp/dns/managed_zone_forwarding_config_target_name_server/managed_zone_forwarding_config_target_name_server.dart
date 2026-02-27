@@ -4,12 +4,12 @@ class ManagedZoneForwardingConfigTargetNameServer {
   /// Fully qualified domain name for the forwarding target.
   final String? domainName;
 
-  /// Forwarding path for this TargetNameServer. If unset or <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>
+  /// Forwarding path for this TargetNameServer. If unset or `default`
   /// Cloud DNS will make forwarding decision based on address ranges,
   /// i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-  /// to the Internet. When set to <span pulumi-lang-nodejs="`private`" pulumi-lang-dotnet="`Private`" pulumi-lang-go="`private`" pulumi-lang-python="`private`" pulumi-lang-yaml="`private`" pulumi-lang-java="`private`">`private`</span>, Cloud DNS will always
+  /// to the Internet. When set to `private`, Cloud DNS will always
   /// send queries through VPC for this target.
-  /// Possible values are: <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>, <span pulumi-lang-nodejs="`private`" pulumi-lang-dotnet="`Private`" pulumi-lang-go="`private`" pulumi-lang-python="`private`" pulumi-lang-yaml="`private`" pulumi-lang-java="`private`">`private`</span>.
+  /// Possible values are: `default`, `private`.
   final String? forwardingPath;
 
   /// IPv4 address of a target name server.

@@ -1,0 +1,3 @@
+library module_bigquery_bi_reservation_preferred_table;
+
+export 'bi_reservation_preferred_table/bi_reservation_preferred_table.dart';

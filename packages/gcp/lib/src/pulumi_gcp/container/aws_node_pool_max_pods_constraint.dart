@@ -1,0 +1,3 @@
+library module_container_aws_node_pool_max_pods_constraint;
+
+export 'aws_node_pool_max_pods_constraint/aws_node_pool_max_pods_constraint.dart';

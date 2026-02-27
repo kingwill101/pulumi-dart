@@ -8,15 +8,15 @@ class NodePoolUpgradeSettings {
   final NodePoolUpgradeSettingsBlueGreenSettings? blueGreenSettings;
 
   /// The number of additional nodes that can be added to the node pool during
-  /// an upgrade. Increasing <span pulumi-lang-nodejs="`maxSurge`" pulumi-lang-dotnet="`MaxSurge`" pulumi-lang-go="`maxSurge`" pulumi-lang-python="`max_surge`" pulumi-lang-yaml="`maxSurge`" pulumi-lang-java="`maxSurge`">`max_surge`</span> raises the number of nodes that can be upgraded simultaneously.
+  /// an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
   /// Can be set to 0 or greater.
   final int? maxSurge;
 
   /// The number of nodes that can be simultaneously unavailable during
-  /// an upgrade. Increasing <span pulumi-lang-nodejs="`maxUnavailable`" pulumi-lang-dotnet="`MaxUnavailable`" pulumi-lang-go="`maxUnavailable`" pulumi-lang-python="`max_unavailable`" pulumi-lang-yaml="`maxUnavailable`" pulumi-lang-java="`maxUnavailable`">`max_unavailable`</span> raises the number of nodes that can be upgraded in
+  /// an upgrade. Increasing `max_unavailable` raises the number of nodes that can be upgraded in
   /// parallel. Can be set to 0 or greater.
   ///
-  /// <span pulumi-lang-nodejs="`maxSurge`" pulumi-lang-dotnet="`MaxSurge`" pulumi-lang-go="`maxSurge`" pulumi-lang-python="`max_surge`" pulumi-lang-yaml="`maxSurge`" pulumi-lang-java="`maxSurge`">`max_surge`</span> and <span pulumi-lang-nodejs="`maxUnavailable`" pulumi-lang-dotnet="`MaxUnavailable`" pulumi-lang-go="`maxUnavailable`" pulumi-lang-python="`max_unavailable`" pulumi-lang-yaml="`maxUnavailable`" pulumi-lang-java="`maxUnavailable`">`max_unavailable`</span> must not be negative and at least one of them must be greater than zero.
+  /// `max_surge` and `max_unavailable` must not be negative and at least one of them must be greater than zero.
   final int? maxUnavailable;
 
   /// The upgrade strategy to be used for upgrading the nodes.

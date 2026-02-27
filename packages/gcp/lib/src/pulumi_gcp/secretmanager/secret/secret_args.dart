@@ -19,13 +19,13 @@ class SecretArgs {
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveAnnotations`" pulumi-lang-dotnet="`EffectiveAnnotations`" pulumi-lang-go="`effectiveAnnotations`" pulumi-lang-python="`effective_annotations`" pulumi-lang-yaml="`effectiveAnnotations`" pulumi-lang-java="`effectiveAnnotations`">`effective_annotations`</span> for all of the annotations present on the resource.
+  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final Input<Map<String, String>>? annotations;
   final Input<bool>? deletionProtection;
 
   /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  /// Only one of <span pulumi-lang-nodejs="`expireTime`" pulumi-lang-dotnet="`ExpireTime`" pulumi-lang-go="`expireTime`" pulumi-lang-python="`expire_time`" pulumi-lang-yaml="`expireTime`" pulumi-lang-java="`expireTime`">`expire_time`</span> or <span pulumi-lang-nodejs="`ttl`" pulumi-lang-dotnet="`Ttl`" pulumi-lang-go="`ttl`" pulumi-lang-python="`ttl`" pulumi-lang-yaml="`ttl`" pulumi-lang-java="`ttl`">`ttl`</span> can be provided.
+  /// Only one of `expire_time` or `ttl` can be provided.
   final Input<String>? expireTime;
 
   /// The labels assigned to this Secret.
@@ -38,7 +38,7 @@ class SecretArgs {
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The ID of the project in which the resource belongs.
@@ -50,7 +50,7 @@ class SecretArgs {
   /// Structure is documented below.
   final Input<SecretReplication> replication;
 
-  /// The rotation time and period for a Secret. At <span pulumi-lang-nodejs="`nextRotationTime`" pulumi-lang-dotnet="`NextRotationTime`" pulumi-lang-go="`nextRotationTime`" pulumi-lang-python="`next_rotation_time`" pulumi-lang-yaml="`nextRotationTime`" pulumi-lang-java="`nextRotationTime`">`next_rotation_time`</span>, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. <span pulumi-lang-nodejs="`topics`" pulumi-lang-dotnet="`Topics`" pulumi-lang-go="`topics`" pulumi-lang-python="`topics`" pulumi-lang-yaml="`topics`" pulumi-lang-java="`topics`">`topics`</span> must be set to configure rotation.
+  /// The rotation time and period for a Secret. At `next_rotation_time`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
   /// Structure is documented below.
   final Input<SecretRotation>? rotation;
 
@@ -68,7 +68,7 @@ class SecretArgs {
 
   /// The TTL for the Secret.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  /// Only one of <span pulumi-lang-nodejs="`ttl`" pulumi-lang-dotnet="`Ttl`" pulumi-lang-go="`ttl`" pulumi-lang-python="`ttl`" pulumi-lang-yaml="`ttl`" pulumi-lang-java="`ttl`">`ttl`</span> or <span pulumi-lang-nodejs="`expireTime`" pulumi-lang-dotnet="`ExpireTime`" pulumi-lang-go="`expireTime`" pulumi-lang-python="`expire_time`" pulumi-lang-yaml="`expireTime`" pulumi-lang-java="`expireTime`">`expire_time`</span> can be provided.
+  /// Only one of `ttl` or `expire_time` can be provided.
   final Input<String>? ttl;
 
   /// Mapping from version alias to version name.

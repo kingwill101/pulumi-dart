@@ -1,3 +1,0 @@
-library module_clouddeploy_delivery_pipeline_serial_pipeline_stage;
-
-export 'delivery_pipeline_serial_pipeline_stage.dart';

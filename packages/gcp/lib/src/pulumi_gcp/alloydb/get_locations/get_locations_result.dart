@@ -8,7 +8,7 @@ class GetLocationsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
 
-  /// Contains a list of <span pulumi-lang-nodejs="`location`" pulumi-lang-dotnet="`Location`" pulumi-lang-go="`location`" pulumi-lang-python="`location`" pulumi-lang-yaml="`location`" pulumi-lang-java="`location`">`location`</span>, which contains the details about a particular location.
+  /// Contains a list of `location`, which contains the details about a particular location.
   final List<GetLocationsLocation> locations;
   final String? project;
 

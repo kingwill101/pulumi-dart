@@ -1,0 +1,3 @@
+library module_osconfig_patch_deployment_recurring_schedule_time_of_day;
+
+export 'patch_deployment_recurring_schedule_time_of_day/patch_deployment_recurring_schedule_time_of_day.dart';

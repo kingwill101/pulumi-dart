@@ -1,3 +1,0 @@
-library module_compute_get_instance_guest_attributes_query_value;
-
-export 'get_instance_guest_attributes_query_value.dart';

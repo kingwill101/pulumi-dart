@@ -1,3 +1,0 @@
-library module_vertex_ai_endpoint_encryption_spec;
-
-export 'ai_endpoint_encryption_spec.dart';

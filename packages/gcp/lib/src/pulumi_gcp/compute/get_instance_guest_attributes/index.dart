@@ -1,5 +1,0 @@
-library module_compute_get_instance_guest_attributes;
-
-export 'get_instance_guest_attributes.dart';
-export 'get_instance_guest_attributes_args.dart';
-export 'get_instance_guest_attributes_result.dart';

@@ -1,3 +1,0 @@
-library module_container_get_cluster_user_managed_keys_config;
-
-export 'get_cluster_user_managed_keys_config.dart';

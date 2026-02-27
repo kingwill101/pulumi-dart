@@ -1,0 +1,4 @@
+library module_workstations_workstation_config_iam_member;
+
+export 'workstation_config_iam_member/workstation_config_iam_member.dart';
+export 'workstation_config_iam_member/workstation_config_iam_member_args.dart';

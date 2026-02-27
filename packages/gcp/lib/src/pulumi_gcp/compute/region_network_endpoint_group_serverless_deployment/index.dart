@@ -1,3 +1,0 @@
-library module_compute_region_network_endpoint_group_serverless_deployment;
-
-export 'region_network_endpoint_group_serverless_deployment.dart';

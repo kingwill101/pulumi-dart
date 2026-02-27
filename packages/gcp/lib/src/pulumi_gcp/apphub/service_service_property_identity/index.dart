@@ -1,3 +1,0 @@
-library module_apphub_service_service_property_identity;
-
-export 'service_service_property_identity.dart';

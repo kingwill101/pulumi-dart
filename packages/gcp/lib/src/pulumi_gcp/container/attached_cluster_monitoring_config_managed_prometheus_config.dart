@@ -1,0 +1,3 @@
+library module_container_attached_cluster_monitoring_config_managed_prometheus_config;
+
+export 'attached_cluster_monitoring_config_managed_prometheus_config/attached_cluster_monitoring_config_managed_prometheus_config.dart';

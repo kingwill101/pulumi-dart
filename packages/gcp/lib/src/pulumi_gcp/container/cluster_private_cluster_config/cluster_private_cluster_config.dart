@@ -3,10 +3,10 @@
 import '../cluster_private_cluster_config_master_global_access_config/cluster_private_cluster_config_master_global_access_config.dart';
 
 class ClusterPrivateClusterConfig {
-  /// When <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the cluster's private
+  /// When `true`, the cluster's private
   /// endpoint is used as the cluster endpoint and access through the public endpoint
-  /// is disabled. When <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, either endpoint can be used. This field only applies
-  /// to private clusters, when <span pulumi-lang-nodejs="`enablePrivateNodes`" pulumi-lang-dotnet="`EnablePrivateNodes`" pulumi-lang-go="`enablePrivateNodes`" pulumi-lang-python="`enable_private_nodes`" pulumi-lang-yaml="`enablePrivateNodes`" pulumi-lang-java="`enablePrivateNodes`">`enable_private_nodes`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// is disabled. When `false`, either endpoint can be used. This field only applies
+  /// to private clusters, when `enable_private_nodes` is `true`.
   final bool? enablePrivateEndpoint;
 
   /// Enables the private cluster feature,
@@ -27,7 +27,7 @@ class ClusterPrivateClusterConfig {
   /// with any other ranges in use within the cluster's network, and it must be a /28
   /// subnet. See [Private Cluster Limitations](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#req_res_lim)
   /// for more details. This field only applies to private clusters, when
-  /// <span pulumi-lang-nodejs="`enablePrivateNodes`" pulumi-lang-dotnet="`EnablePrivateNodes`" pulumi-lang-go="`enablePrivateNodes`" pulumi-lang-python="`enable_private_nodes`" pulumi-lang-yaml="`enablePrivateNodes`" pulumi-lang-java="`enablePrivateNodes`">`enable_private_nodes`</span> is <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// `enable_private_nodes` is `true`.
   final String? masterIpv4CidrBlock;
 
   /// The name of the peering between this cluster and the Google owned VPC.
@@ -42,8 +42,8 @@ class ClusterPrivateClusterConfig {
   /// The external IP address of this cluster's master endpoint.
   ///
   /// !> The Google provider is unable to validate certain configurations of
-  /// <span pulumi-lang-nodejs="`privateClusterConfig`" pulumi-lang-dotnet="`PrivateClusterConfig`" pulumi-lang-go="`privateClusterConfig`" pulumi-lang-python="`private_cluster_config`" pulumi-lang-yaml="`privateClusterConfig`" pulumi-lang-java="`privateClusterConfig`">`private_cluster_config`</span> when <span pulumi-lang-nodejs="`enablePrivateNodes`" pulumi-lang-dotnet="`EnablePrivateNodes`" pulumi-lang-go="`enablePrivateNodes`" pulumi-lang-python="`enable_private_nodes`" pulumi-lang-yaml="`enablePrivateNodes`" pulumi-lang-java="`enablePrivateNodes`">`enable_private_nodes`</span> is <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. It's
-  /// recommended that you omit the block entirely if the field is not set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// `private_cluster_config` when `enable_private_nodes` is `false`. It's
+  /// recommended that you omit the block entirely if the field is not set to `true`.
   final String? publicEndpoint;
 
   ClusterPrivateClusterConfig({

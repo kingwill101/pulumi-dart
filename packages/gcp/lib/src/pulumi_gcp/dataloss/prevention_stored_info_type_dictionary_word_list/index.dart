@@ -1,3 +1,0 @@
-library module_dataloss_prevention_stored_info_type_dictionary_word_list;
-
-export 'prevention_stored_info_type_dictionary_word_list.dart';

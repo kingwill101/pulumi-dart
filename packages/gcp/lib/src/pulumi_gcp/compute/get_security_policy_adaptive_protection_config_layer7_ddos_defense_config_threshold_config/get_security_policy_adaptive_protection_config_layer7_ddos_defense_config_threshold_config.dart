@@ -12,7 +12,7 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
   final double detectionLoadThreshold;
   final double detectionRelativeToBaselineQps;
 
-  /// The name of the security policy. Provide either this or a <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span>.
+  /// The name of the security policy. Provide either this or a `self_link`.
   final String name;
   final List<
           GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>

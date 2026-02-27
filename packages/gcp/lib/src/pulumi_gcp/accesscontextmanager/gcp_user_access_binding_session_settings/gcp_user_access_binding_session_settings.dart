@@ -4,7 +4,7 @@ class GcpUserAccessBindingSessionSettings {
   /// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
   final String? maxInactivity;
 
-  /// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC<span pulumi-lang-nodejs=" maxAge " pulumi-lang-dotnet=" MaxAge " pulumi-lang-go=" maxAge " pulumi-lang-python=" max_age " pulumi-lang-yaml=" maxAge " pulumi-lang-java=" maxAge "> max_age </span>param.
+  /// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
   final String? sessionLength;
 
   /// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
@@ -14,7 +14,7 @@ class GcpUserAccessBindingSessionSettings {
   /// Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
   final String? sessionReauthMethod;
 
-  /// Optional. Only useful for OIDC apps. When false, the OIDC<span pulumi-lang-nodejs=" maxAge " pulumi-lang-dotnet=" MaxAge " pulumi-lang-go=" maxAge " pulumi-lang-python=" max_age " pulumi-lang-yaml=" maxAge " pulumi-lang-java=" maxAge "> max_age </span>param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the<span pulumi-lang-nodejs=" maxAge " pulumi-lang-dotnet=" MaxAge " pulumi-lang-go=" maxAge " pulumi-lang-python=" max_age " pulumi-lang-yaml=" maxAge " pulumi-lang-java=" maxAge "> max_age </span>OIDC param.
+  /// Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the max_age OIDC param.
   final bool? useOidcMaxAge;
 
   GcpUserAccessBindingSessionSettings({

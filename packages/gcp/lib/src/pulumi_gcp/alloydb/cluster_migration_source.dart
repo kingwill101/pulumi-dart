@@ -1,0 +1,3 @@
+library module_alloydb_cluster_migration_source;
+
+export 'cluster_migration_source/cluster_migration_source.dart';

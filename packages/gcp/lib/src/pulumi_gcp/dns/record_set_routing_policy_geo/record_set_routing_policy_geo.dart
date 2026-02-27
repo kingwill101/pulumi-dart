@@ -3,14 +3,14 @@
 import '../record_set_routing_policy_geo_health_checked_targets/record_set_routing_policy_geo_health_checked_targets.dart';
 
 class RecordSetRoutingPolicyGeo {
-  /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with <span pulumi-lang-nodejs="`rrdatas`" pulumi-lang-dotnet="`Rrdatas`" pulumi-lang-go="`rrdatas`" pulumi-lang-python="`rrdatas`" pulumi-lang-yaml="`rrdatas`" pulumi-lang-java="`rrdatas`">`rrdatas`</span> within this item.
+  /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
   /// Structure is documented below.
   final RecordSetRoutingPolicyGeoHealthCheckedTargets? healthCheckedTargets;
 
   /// The location name defined in Google Cloud.
   final String location;
 
-  /// Same as <span pulumi-lang-nodejs="`rrdatas`" pulumi-lang-dotnet="`Rrdatas`" pulumi-lang-go="`rrdatas`" pulumi-lang-python="`rrdatas`" pulumi-lang-yaml="`rrdatas`" pulumi-lang-java="`rrdatas`">`rrdatas`</span> above.
+  /// Same as `rrdatas` above.
   final List<String>? rrdatas;
 
   RecordSetRoutingPolicyGeo({

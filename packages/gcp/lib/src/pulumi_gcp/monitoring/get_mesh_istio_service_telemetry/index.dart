@@ -1,3 +1,0 @@
-library module_monitoring_get_mesh_istio_service_telemetry;
-
-export 'get_mesh_istio_service_telemetry.dart';

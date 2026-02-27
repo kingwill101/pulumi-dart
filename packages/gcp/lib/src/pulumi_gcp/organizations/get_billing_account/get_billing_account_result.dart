@@ -16,7 +16,7 @@ class GetBillingAccountResult {
   final String name;
   final bool open;
 
-  /// The IDs of any projects associated with the billing account. <span pulumi-lang-nodejs="`lookupProjects`" pulumi-lang-dotnet="`LookupProjects`" pulumi-lang-go="`lookupProjects`" pulumi-lang-python="`lookup_projects`" pulumi-lang-yaml="`lookupProjects`" pulumi-lang-java="`lookupProjects`">`lookup_projects`</span> must not be false
+  /// The IDs of any projects associated with the billing account. `lookup_projects` must not be false
   /// for this to be populated.
   final List<String> projectIds;
 

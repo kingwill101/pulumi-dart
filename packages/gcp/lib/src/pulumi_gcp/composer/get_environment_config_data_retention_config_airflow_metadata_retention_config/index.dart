@@ -1,3 +1,0 @@
-library module_composer_get_environment_config_data_retention_config_airflow_metadata_retention_config;
-
-export 'get_environment_config_data_retention_config_airflow_metadata_retention_config.dart';

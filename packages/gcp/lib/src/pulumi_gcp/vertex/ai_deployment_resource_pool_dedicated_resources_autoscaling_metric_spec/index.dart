@@ -1,3 +1,0 @@
-library module_vertex_ai_deployment_resource_pool_dedicated_resources_autoscaling_metric_spec;
-
-export 'ai_deployment_resource_pool_dedicated_resources_autoscaling_metric_spec.dart';

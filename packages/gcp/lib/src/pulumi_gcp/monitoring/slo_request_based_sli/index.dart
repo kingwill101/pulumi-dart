@@ -1,3 +1,0 @@
-library module_monitoring_slo_request_based_sli;
-
-export 'slo_request_based_sli.dart';

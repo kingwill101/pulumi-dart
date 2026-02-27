@@ -1,3 +1,0 @@
-library module_compute_get_region_backend_service_iap;
-
-export 'get_region_backend_service_iap.dart';

@@ -1,3 +1,0 @@
-library module_integrationconnectors_connection_destination_config;
-
-export 'connection_destination_config.dart';

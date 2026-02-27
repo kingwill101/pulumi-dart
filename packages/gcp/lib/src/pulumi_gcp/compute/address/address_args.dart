@@ -10,7 +10,7 @@ class AddressArgs {
   final Input<String>? address;
 
   /// The type of address to reserve.
-  /// Note: if you set this argument's value as `INTERNAL` you need to leave the <span pulumi-lang-nodejs="`networkTier`" pulumi-lang-dotnet="`NetworkTier`" pulumi-lang-go="`networkTier`" pulumi-lang-python="`network_tier`" pulumi-lang-yaml="`networkTier`" pulumi-lang-java="`networkTier`">`network_tier`</span> argument unset in that resource block.
+  /// Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
   /// Default value is `EXTERNAL`.
   /// Possible values are: `INTERNAL`, `EXTERNAL`.
   final Input<String>? addressType;
@@ -41,7 +41,7 @@ class AddressArgs {
   /// Labels to apply to this address.  A list of key->value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Name of the resource. The name must be 1-63 characters long, and

@@ -1,3 +1,0 @@
-library module_container_cluster_logging_config;
-
-export 'cluster_logging_config.dart';

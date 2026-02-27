@@ -1,3 +1,0 @@
-library module_osconfig_v2_policy_orchestrator_for_organization_orchestration_scope_selector_location_selector;
-
-export 'v2_policy_orchestrator_for_organization_orchestration_scope_selector_location_selector.dart';

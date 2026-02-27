@@ -1,0 +1,3 @@
+library module_databasemigrationservice_connection_profile_oracle_private_connectivity;
+
+export 'connection_profile_oracle_private_connectivity/connection_profile_oracle_private_connectivity.dart';

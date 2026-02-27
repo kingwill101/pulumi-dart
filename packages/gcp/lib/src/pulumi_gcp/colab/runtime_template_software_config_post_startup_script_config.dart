@@ -1,0 +1,3 @@
+library module_colab_runtime_template_software_config_post_startup_script_config;
+
+export 'runtime_template_software_config_post_startup_script_config/runtime_template_software_config_post_startup_script_config.dart';

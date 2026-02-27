@@ -5,7 +5,7 @@ class ClusterClusterConfigInitializationAction {
   /// The script must be a GCS file with a gs:// prefix.
   final String script;
 
-  /// The maximum duration (in seconds) which <span pulumi-lang-nodejs="`script`" pulumi-lang-dotnet="`Script`" pulumi-lang-go="`script`" pulumi-lang-python="`script`" pulumi-lang-yaml="`script`" pulumi-lang-java="`script`">`script`</span> is
+  /// The maximum duration (in seconds) which `script` is
   /// allowed to take to execute its action. GCP will default to a predetermined
   /// computed value if not set (currently 300).
   ///

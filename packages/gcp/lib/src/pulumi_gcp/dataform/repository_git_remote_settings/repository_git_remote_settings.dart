@@ -3,7 +3,7 @@
 import '../repository_git_remote_settings_ssh_authentication_config/repository_git_remote_settings_ssh_authentication_config.dart';
 
 class RepositoryGitRemoteSettings {
-  /// The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use <span pulumi-lang-nodejs="`sshAuthenticationConfig`" pulumi-lang-dotnet="`SshAuthenticationConfig`" pulumi-lang-go="`sshAuthenticationConfig`" pulumi-lang-python="`ssh_authentication_config`" pulumi-lang-yaml="`sshAuthenticationConfig`" pulumi-lang-java="`sshAuthenticationConfig`">`ssh_authentication_config`</span>). Must be in the format projects/*/secrets/*/versions/*.
+  /// The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*/secrets/*/versions/*.
   final String? authenticationTokenSecretVersion;
 
   /// The Git remote's default branch name.

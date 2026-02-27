@@ -17,11 +17,11 @@ class GroupArgs4 {
 
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The name of the group. Group names must be unique.
-  /// Possible values are: <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>, <span pulumi-lang-nodejs="`center`" pulumi-lang-dotnet="`Center`" pulumi-lang-go="`center`" pulumi-lang-python="`center`" pulumi-lang-yaml="`center`" pulumi-lang-java="`center`">`center`</span>, <span pulumi-lang-nodejs="`edge`" pulumi-lang-dotnet="`Edge`" pulumi-lang-go="`edge`" pulumi-lang-python="`edge`" pulumi-lang-yaml="`edge`" pulumi-lang-java="`edge`">`edge`</span>.
+  /// Possible values are: `default`, `center`, `edge`.
   final Input<String>? name;
 
   /// The ID of the project in which the resource belongs.

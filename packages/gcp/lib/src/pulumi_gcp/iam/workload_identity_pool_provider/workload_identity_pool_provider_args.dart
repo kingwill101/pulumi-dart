@@ -16,7 +16,7 @@ class WorkloadIdentityPoolProviderArgs {
   final Input<String>? attributeCondition;
 
   /// Maps attributes from authentication credentials issued by an external identity provider
-  /// to Google Cloud attributes, such as <span pulumi-lang-nodejs="`subject`" pulumi-lang-dotnet="`Subject`" pulumi-lang-go="`subject`" pulumi-lang-python="`subject`" pulumi-lang-yaml="`subject`" pulumi-lang-java="`subject`">`subject`</span> and <span pulumi-lang-nodejs="`segment`" pulumi-lang-dotnet="`Segment`" pulumi-lang-go="`segment`" pulumi-lang-python="`segment`" pulumi-lang-yaml="`segment`" pulumi-lang-java="`segment`">`segment`</span>.
+  /// to Google Cloud attributes, such as `subject` and `segment`.
   /// Each key must be a string specifying the Google Cloud IAM attribute to map to.
   /// The following keys are supported:
   /// * `google.subject`: The principal IAM is authenticating. You can reference this value
@@ -40,7 +40,7 @@ class WorkloadIdentityPoolProviderArgs {
   /// Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
   /// function that maps an identity provider credential to the normalized attribute specified
   /// by the corresponding map key.
-  /// You can use the <span pulumi-lang-nodejs="`assertion`" pulumi-lang-dotnet="`Assertion`" pulumi-lang-go="`assertion`" pulumi-lang-python="`assertion`" pulumi-lang-yaml="`assertion`" pulumi-lang-java="`assertion`">`assertion`</span> keyword in the expression to access a JSON representation of
+  /// You can use the `assertion` keyword in the expression to access a JSON representation of
   /// the authentication credential issued by the provider.
   /// The maximum length of an attribute mapping expression is 2048 characters. When evaluated,
   /// the total size of all mapped attributes must not exceed 8KB.
@@ -61,8 +61,8 @@ class WorkloadIdentityPoolProviderArgs {
   /// `google.subject` attribute.
   /// For OIDC providers, the following rules apply:
   /// - Custom attribute mappings must be defined, and must include a mapping to the
-  /// `google.subject` attribute. For example, the following maps the <span pulumi-lang-nodejs="`sub`" pulumi-lang-dotnet="`Sub`" pulumi-lang-go="`sub`" pulumi-lang-python="`sub`" pulumi-lang-yaml="`sub`" pulumi-lang-java="`sub`">`sub`</span> claim of the
-  /// incoming credential to the <span pulumi-lang-nodejs="`subject`" pulumi-lang-dotnet="`Subject`" pulumi-lang-go="`subject`" pulumi-lang-python="`subject`" pulumi-lang-yaml="`subject`" pulumi-lang-java="`subject`">`subject`</span> attribute on a Google token.
+  /// `google.subject` attribute. For example, the following maps the `sub` claim of the
+  /// incoming credential to the `subject` attribute on a Google token.
   /// ```
   /// {"google.subject": "assertion.sub"}
   /// ```

@@ -1,3 +1,0 @@
-library module_discoveryengine_data_store_advanced_site_search_config;
-
-export 'data_store_advanced_site_search_config.dart';

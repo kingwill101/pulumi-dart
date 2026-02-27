@@ -7,7 +7,7 @@ class JobConfigElementaryStreamVideoStream {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedConfigElementaryStreamsVideoStreamH264"" pulumi-lang-dotnet=""NestedConfigElementaryStreamsVideoStreamH264"" pulumi-lang-go=""nestedConfigElementaryStreamsVideoStreamH264"" pulumi-lang-python=""nested_config_elementary_streams_video_stream_h264"" pulumi-lang-yaml=""nestedConfigElementaryStreamsVideoStreamH264"" pulumi-lang-java=""nestedConfigElementaryStreamsVideoStreamH264"">"nested_config_elementary_streams_video_stream_h264"</span>></a>The <span pulumi-lang-nodejs="`h264`" pulumi-lang-dotnet="`H264`" pulumi-lang-go="`h264`" pulumi-lang-python="`h264`" pulumi-lang-yaml="`h264`" pulumi-lang-java="`h264`">`h264`</span> block supports:
+  /// <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
   final JobConfigElementaryStreamVideoStreamH264? h264;
 
   JobConfigElementaryStreamVideoStream({

@@ -19,7 +19,7 @@ class PreventionJobTriggerInspectJobAction {
   /// (Optional, Deprecated)
   /// Publish findings of a DlpJob to Data Catalog.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`publishFindingsToCloudDataCatalog`" pulumi-lang-dotnet="`PublishFindingsToCloudDataCatalog`" pulumi-lang-go="`publishFindingsToCloudDataCatalog`" pulumi-lang-python="`publish_findings_to_cloud_data_catalog`" pulumi-lang-yaml="`publishFindingsToCloudDataCatalog`" pulumi-lang-java="`publishFindingsToCloudDataCatalog`">`publish_findings_to_cloud_data_catalog`</span> is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use <span pulumi-lang-nodejs="`publishFindingsToDataplexCatalog`" pulumi-lang-dotnet="`PublishFindingsToDataplexCatalog`" pulumi-lang-go="`publishFindingsToDataplexCatalog`" pulumi-lang-python="`publish_findings_to_dataplex_catalog`" pulumi-lang-yaml="`publishFindingsToDataplexCatalog`" pulumi-lang-java="`publishFindingsToDataplexCatalog`">`publish_findings_to_dataplex_catalog`</span> instead.
+  /// > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
   final Map<String, dynamic>? publishFindingsToCloudDataCatalog;
 
   /// Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.

@@ -4,12 +4,12 @@ import '../tag_template_field_type_enum_type/tag_template_field_type_enum_type.d
 
 class TagTemplateFieldType {
   /// Represents an enum type.
-  /// Exactly one of <span pulumi-lang-nodejs="`primitiveType`" pulumi-lang-dotnet="`PrimitiveType`" pulumi-lang-go="`primitiveType`" pulumi-lang-python="`primitive_type`" pulumi-lang-yaml="`primitiveType`" pulumi-lang-java="`primitiveType`">`primitive_type`</span> or <span pulumi-lang-nodejs="`enumType`" pulumi-lang-dotnet="`EnumType`" pulumi-lang-go="`enumType`" pulumi-lang-python="`enum_type`" pulumi-lang-yaml="`enumType`" pulumi-lang-java="`enumType`">`enum_type`</span> must be set
+  /// Exactly one of `primitive_type` or `enum_type` must be set
   /// Structure is documented below.
   final TagTemplateFieldTypeEnumType? enumType;
 
   /// Represents primitive types - string, bool etc.
-  /// Exactly one of <span pulumi-lang-nodejs="`primitiveType`" pulumi-lang-dotnet="`PrimitiveType`" pulumi-lang-go="`primitiveType`" pulumi-lang-python="`primitive_type`" pulumi-lang-yaml="`primitiveType`" pulumi-lang-java="`primitiveType`">`primitive_type`</span> or <span pulumi-lang-nodejs="`enumType`" pulumi-lang-dotnet="`EnumType`" pulumi-lang-go="`enumType`" pulumi-lang-python="`enum_type`" pulumi-lang-yaml="`enumType`" pulumi-lang-java="`enumType`">`enum_type`</span> must be set
+  /// Exactly one of `primitive_type` or `enum_type` must be set
   /// Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
   final String? primitiveType;
 

@@ -18,10 +18,10 @@ class JobHadoopConfig {
   /// The runtime logging config of the job
   final JobHadoopConfigLoggingConfig? loggingConfig;
 
-  /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in <span pulumi-lang-nodejs="`jarFileUris`" pulumi-lang-dotnet="`JarFileUris`" pulumi-lang-go="`jarFileUris`" pulumi-lang-python="`jar_file_uris`" pulumi-lang-yaml="`jarFileUris`" pulumi-lang-java="`jarFileUris`">`jar_file_uris`</span>. Conflicts with <span pulumi-lang-nodejs="`mainJarFileUri`" pulumi-lang-dotnet="`MainJarFileUri`" pulumi-lang-go="`mainJarFileUri`" pulumi-lang-python="`main_jar_file_uri`" pulumi-lang-yaml="`mainJarFileUri`" pulumi-lang-java="`mainJarFileUri`">`main_jar_file_uri`</span>
+  /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
   final String? mainClass;
 
-  /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with <span pulumi-lang-nodejs="`mainClass`" pulumi-lang-dotnet="`MainClass`" pulumi-lang-go="`mainClass`" pulumi-lang-python="`main_class`" pulumi-lang-yaml="`mainClass`" pulumi-lang-java="`mainClass`">`main_class`</span>
+  /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
   final String? mainJarFileUri;
 
   /// A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site` and classes in user code..

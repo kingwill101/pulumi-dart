@@ -1,0 +1,3 @@
+library module_netapp_volume_snapshot_policy_monthly_schedule;
+
+export 'volume_snapshot_policy_monthly_schedule/volume_snapshot_policy_monthly_schedule.dart';

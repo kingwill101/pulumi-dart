@@ -1,3 +1,0 @@
-library module_dataform_repository_git_remote_settings_ssh_authentication_config;
-
-export 'repository_git_remote_settings_ssh_authentication_config.dart';

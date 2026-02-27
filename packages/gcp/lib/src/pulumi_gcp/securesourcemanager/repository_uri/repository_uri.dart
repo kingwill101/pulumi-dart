@@ -5,14 +5,8 @@ class RepositoryUri {
   /// API is the URI for API access.
   final String? api;
 
-  /// (Output)<span pulumi-lang-nodejs="
-  /// gitHttps " pulumi-lang-dotnet="
-  /// GitHttps " pulumi-lang-go="
-  /// gitHttps " pulumi-lang-python="
-  /// git_https " pulumi-lang-yaml="
-  /// gitHttps " pulumi-lang-java="
-  /// gitHttps ">
-  /// git_https </span>is the git HTTPS URI for git operations.
+  /// (Output)
+  /// git_https is the git HTTPS URI for git operations.
   final String? gitHttps;
 
   /// (Output)

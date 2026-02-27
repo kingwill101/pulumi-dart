@@ -15,7 +15,7 @@ class CxToolVersionToolOpenApiSpec {
       serviceDirectoryConfig;
 
   /// The OpenAPI schema specified as a text.
-  /// This field is part of a union field <span pulumi-lang-nodejs="`schema`" pulumi-lang-dotnet="`Schema`" pulumi-lang-go="`schema`" pulumi-lang-python="`schema`" pulumi-lang-yaml="`schema`" pulumi-lang-java="`schema`">`schema`</span>: only one of `textSchema` may be set.
+  /// This field is part of a union field `schema`: only one of `textSchema` may be set.
   final String textSchema;
 
   /// Optional. TLS configuration for the HTTPS verification.

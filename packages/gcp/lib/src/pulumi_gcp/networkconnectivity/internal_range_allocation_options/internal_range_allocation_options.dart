@@ -5,7 +5,7 @@ class InternalRangeAllocationOptions {
   /// Possible values are: `RANDOM`, `FIRST_AVAILABLE`, `RANDOM_FIRST_N_AVAILABLE`, `FIRST_SMALLEST_FITTING`.
   final String? allocationStrategy;
 
-  /// Must be set when<span pulumi-lang-nodejs=" allocationStrategy " pulumi-lang-dotnet=" AllocationStrategy " pulumi-lang-go=" allocationStrategy " pulumi-lang-python=" allocation_strategy " pulumi-lang-yaml=" allocationStrategy " pulumi-lang-java=" allocationStrategy "> allocation_strategy </span>is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
+  /// Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
   /// in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
   final int? firstAvailableRangesLookupSize;
 

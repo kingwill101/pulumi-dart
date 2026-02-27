@@ -1,3 +1,0 @@
-library module_artifactregistry_get_repository_remote_repository_config_docker_repository_custom_repository;
-
-export 'get_repository_remote_repository_config_docker_repository_custom_repository.dart';

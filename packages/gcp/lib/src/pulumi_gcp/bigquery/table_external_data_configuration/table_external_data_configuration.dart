@@ -13,12 +13,12 @@ class TableExternalDataConfiguration {
   /// and format of the table.
   final bool autodetect;
 
-  /// Additional options if <span pulumi-lang-nodejs="`sourceFormat`" pulumi-lang-dotnet="`SourceFormat`" pulumi-lang-go="`sourceFormat`" pulumi-lang-python="`source_format`" pulumi-lang-yaml="`sourceFormat`" pulumi-lang-java="`sourceFormat`">`source_format`</span> is set to
+  /// Additional options if `source_format` is set to
   /// "AVRO".  Structure is documented below.
   final TableExternalDataConfigurationAvroOptions? avroOptions;
 
   /// Additional properties to set if
-  /// <span pulumi-lang-nodejs="`sourceFormat`" pulumi-lang-dotnet="`SourceFormat`" pulumi-lang-go="`sourceFormat`" pulumi-lang-python="`source_format`" pulumi-lang-yaml="`sourceFormat`" pulumi-lang-java="`sourceFormat`">`source_format`</span> is set to "BIGTABLE". Structure is documented below.
+  /// `source_format` is set to "BIGTABLE". Structure is documented below.
   final TableExternalDataConfigurationBigtableOptions? bigtableOptions;
 
   /// The compression type of the data source.
@@ -26,17 +26,17 @@ class TableExternalDataConfiguration {
   final String? compression;
 
   /// The connection specifying the credentials to be used to read
-  /// external storage, such as Azure Blob, Cloud Storage, or S3. The <span pulumi-lang-nodejs="`connectionId`" pulumi-lang-dotnet="`ConnectionId`" pulumi-lang-go="`connectionId`" pulumi-lang-python="`connection_id`" pulumi-lang-yaml="`connectionId`" pulumi-lang-java="`connectionId`">`connection_id`</span> can have
+  /// external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
   /// the form `{{project}}.{{location}}.{{connection_id}}`
   /// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
   ///
   /// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-  /// table schema must be specified using the top-level <span pulumi-lang-nodejs="`schema`" pulumi-lang-dotnet="`Schema`" pulumi-lang-go="`schema`" pulumi-lang-python="`schema`" pulumi-lang-yaml="`schema`" pulumi-lang-java="`schema`">`schema`</span> field
+  /// table schema must be specified using the top-level `schema` field
   /// documented above.
   final String? connectionId;
 
   /// Additional properties to set if
-  /// <span pulumi-lang-nodejs="`sourceFormat`" pulumi-lang-dotnet="`SourceFormat`" pulumi-lang-go="`sourceFormat`" pulumi-lang-python="`source_format`" pulumi-lang-yaml="`sourceFormat`" pulumi-lang-java="`sourceFormat`">`source_format`</span> is set to "CSV". Structure is documented below.
+  /// `source_format` is set to "CSV". Structure is documented below.
   final TableExternalDataConfigurationCsvOptions? csvOptions;
 
   /// Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown.
@@ -60,7 +60,7 @@ class TableExternalDataConfiguration {
   final String? fileSetSpecType;
 
   /// Additional options if
-  /// <span pulumi-lang-nodejs="`sourceFormat`" pulumi-lang-dotnet="`SourceFormat`" pulumi-lang-go="`sourceFormat`" pulumi-lang-python="`source_format`" pulumi-lang-yaml="`sourceFormat`" pulumi-lang-java="`sourceFormat`">`source_format`</span> is set to "GOOGLE_SHEETS". Structure is
+  /// `source_format` is set to "GOOGLE_SHEETS". Structure is
   /// documented below.
   final TableExternalDataConfigurationGoogleSheetsOptions? googleSheetsOptions;
 
@@ -83,7 +83,7 @@ class TableExternalDataConfiguration {
   final String? jsonExtension;
 
   /// Additional properties to set if
-  /// <span pulumi-lang-nodejs="`sourceFormat`" pulumi-lang-dotnet="`SourceFormat`" pulumi-lang-go="`sourceFormat`" pulumi-lang-python="`source_format`" pulumi-lang-yaml="`sourceFormat`" pulumi-lang-java="`sourceFormat`">`source_format`</span> is set to "JSON". Structure is documented below.
+  /// `source_format` is set to "JSON". Structure is documented below.
   final TableExternalDataConfigurationJsonOptions? jsonOptions;
 
   /// The maximum number of bad records that
@@ -93,11 +93,11 @@ class TableExternalDataConfiguration {
   /// Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
   final String? metadataCacheMode;
 
-  /// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If <span pulumi-lang-nodejs="`objectMetadata`" pulumi-lang-dotnet="`ObjectMetadata`" pulumi-lang-go="`objectMetadata`" pulumi-lang-python="`object_metadata`" pulumi-lang-yaml="`objectMetadata`" pulumi-lang-java="`objectMetadata`">`object_metadata`</span> is set, <span pulumi-lang-nodejs="`sourceFormat`" pulumi-lang-dotnet="`SourceFormat`" pulumi-lang-go="`sourceFormat`" pulumi-lang-python="`source_format`" pulumi-lang-yaml="`sourceFormat`" pulumi-lang-java="`sourceFormat`">`source_format`</span> should be omitted.
+  /// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
   final String? objectMetadata;
 
   /// Additional properties to set if
-  /// <span pulumi-lang-nodejs="`sourceFormat`" pulumi-lang-dotnet="`SourceFormat`" pulumi-lang-go="`sourceFormat`" pulumi-lang-python="`source_format`" pulumi-lang-yaml="`sourceFormat`" pulumi-lang-java="`sourceFormat`">`source_format`</span> is set to "PARQUET". Structure is documented below.
+  /// `source_format` is set to "PARQUET". Structure is documented below.
   final TableExternalDataConfigurationParquetOptions? parquetOptions;
 
   /// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
@@ -116,14 +116,14 @@ class TableExternalDataConfiguration {
   /// `google_bigquery_table.schema`
   ///
   /// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
-  /// table schema must be specified using the top-level <span pulumi-lang-nodejs="`schema`" pulumi-lang-dotnet="`Schema`" pulumi-lang-go="`schema`" pulumi-lang-python="`schema`" pulumi-lang-yaml="`schema`" pulumi-lang-java="`schema`">`schema`</span> field
+  /// table schema must be specified using the top-level `schema` field
   /// documented above.
   final String? schema;
 
   /// The data format. Please see sourceFormat under
   /// [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
   /// in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
-  /// the <span pulumi-lang-nodejs="`scopes`" pulumi-lang-dotnet="`Scopes`" pulumi-lang-go="`scopes`" pulumi-lang-python="`scopes`" pulumi-lang-yaml="`scopes`" pulumi-lang-java="`scopes`">`scopes`</span> must include "https://www.googleapis.com/auth/drive.readonly".
+  /// the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
   final String? sourceFormat;
 
   /// A list of the fully-qualified URIs that point to

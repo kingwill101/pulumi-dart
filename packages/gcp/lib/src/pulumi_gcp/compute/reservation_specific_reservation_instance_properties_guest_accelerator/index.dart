@@ -1,3 +1,0 @@
-library module_compute_reservation_specific_reservation_instance_properties_guest_accelerator;
-
-export 'reservation_specific_reservation_instance_properties_guest_accelerator.dart';

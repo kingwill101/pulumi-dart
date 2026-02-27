@@ -1,0 +1,3 @@
+library module_compute_instance_template_reservation_affinity_specific_reservation;
+
+export 'instance_template_reservation_affinity_specific_reservation/instance_template_reservation_affinity_specific_reservation.dart';

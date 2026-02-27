@@ -16,7 +16,7 @@ class InstanceGceSetupBootDisk {
   final String? diskType;
 
   /// 'Optional. The KMS key used to encrypt the disks, only
-  /// applicable if<span pulumi-lang-nodejs=" diskEncryption " pulumi-lang-dotnet=" DiskEncryption " pulumi-lang-go=" diskEncryption " pulumi-lang-python=" disk_encryption " pulumi-lang-yaml=" diskEncryption " pulumi-lang-java=" diskEncryption "> disk_encryption </span>is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
+  /// applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
   /// Learn more about using your own encryption keys.'
   final String? kmsKey;
 

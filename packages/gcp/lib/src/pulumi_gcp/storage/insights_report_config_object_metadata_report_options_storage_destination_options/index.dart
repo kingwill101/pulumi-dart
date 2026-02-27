@@ -1,3 +1,0 @@
-library module_storage_insights_report_config_object_metadata_report_options_storage_destination_options;
-
-export 'insights_report_config_object_metadata_report_options_storage_destination_options.dart';

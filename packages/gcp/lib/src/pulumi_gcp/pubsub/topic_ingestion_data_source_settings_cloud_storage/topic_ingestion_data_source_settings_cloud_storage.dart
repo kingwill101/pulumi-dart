@@ -4,7 +4,7 @@ import '../topic_ingestion_data_source_settings_cloud_storage_text_format/topic_
 
 class TopicIngestionDataSourceSettingsCloudStorage {
   /// Configuration for reading Cloud Storage data in Avro binary format. The
-  /// bytes of each object will be set to the <span pulumi-lang-nodejs="`data`" pulumi-lang-dotnet="`Data`" pulumi-lang-go="`data`" pulumi-lang-python="`data`" pulumi-lang-yaml="`data`" pulumi-lang-java="`data`">`data`</span> field of a Pub/Sub message.
+  /// bytes of each object will be set to the `data` field of a Pub/Sub message.
   final Map<String, dynamic>? avroFormat;
 
   /// Cloud Storage bucket. The bucket name must be without any
@@ -29,7 +29,7 @@ class TopicIngestionDataSourceSettingsCloudStorage {
   final Map<String, dynamic>? pubsubAvroFormat;
 
   /// Configuration for reading Cloud Storage data in text format. Each line of
-  /// text as specified by the delimiter will be set to the <span pulumi-lang-nodejs="`data`" pulumi-lang-dotnet="`Data`" pulumi-lang-go="`data`" pulumi-lang-python="`data`" pulumi-lang-yaml="`data`" pulumi-lang-java="`data`">`data`</span> field of a
+  /// text as specified by the delimiter will be set to the `data` field of a
   /// Pub/Sub message.
   /// Structure is documented below.
   final TopicIngestionDataSourceSettingsCloudStorageTextFormat? textFormat;

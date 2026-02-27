@@ -9,7 +9,7 @@ class MangedSslCertificateArgs {
   final Input<String>? description;
 
   /// Properties relevant to a managed certificate.  These will be used if the
-  /// certificate is managed (as indicated by a value of `MANAGED` in <span pulumi-lang-nodejs="`type`" pulumi-lang-dotnet="`Type`" pulumi-lang-go="`type`" pulumi-lang-python="`type`" pulumi-lang-yaml="`type`" pulumi-lang-java="`type`">`type`</span>).
+  /// certificate is managed (as indicated by a value of `MANAGED` in `type`).
   /// Structure is documented below.
   final Input<MangedSslCertificateManaged>? managed;
 

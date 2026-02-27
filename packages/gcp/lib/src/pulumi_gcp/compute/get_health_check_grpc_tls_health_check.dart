@@ -1,0 +1,3 @@
+library module_compute_get_health_check_grpc_tls_health_check;
+
+export 'get_health_check_grpc_tls_health_check/get_health_check_grpc_tls_health_check.dart';

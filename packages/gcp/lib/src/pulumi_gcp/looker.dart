@@ -1,0 +1,19 @@
+library module_looker;
+
+export 'looker/instance.dart';
+export 'looker/instance_admin_settings.dart';
+export 'looker/instance_controlled_egress_config.dart';
+export 'looker/instance_custom_domain.dart';
+export 'looker/instance_deny_maintenance_period.dart';
+export 'looker/instance_deny_maintenance_period_end_date.dart';
+export 'looker/instance_deny_maintenance_period_start_date.dart';
+export 'looker/instance_deny_maintenance_period_time.dart';
+export 'looker/instance_encryption_config.dart';
+export 'looker/instance_maintenance_window.dart';
+export 'looker/instance_maintenance_window_start_time.dart';
+export 'looker/instance_oauth_config.dart';
+export 'looker/instance_periodic_export_config.dart';
+export 'looker/instance_periodic_export_config_start_time.dart';
+export 'looker/instance_psc_config.dart';
+export 'looker/instance_psc_config_service_attachment.dart';
+export 'looker/instance_user_metadata.dart';

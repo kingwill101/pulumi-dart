@@ -41,8 +41,8 @@ class TriggerArgs {
   final Input<bool>? disabled;
 
   /// Path, from the source root, to a file whose contents is used for the template.
-  /// Either a filename or build template must be provided. Set this only when using<span pulumi-lang-nodejs=" triggerTemplate " pulumi-lang-dotnet=" TriggerTemplate " pulumi-lang-go=" triggerTemplate " pulumi-lang-python=" trigger_template " pulumi-lang-yaml=" triggerTemplate " pulumi-lang-java=" triggerTemplate "> trigger_template </span>or github.
-  /// When using Pub/Sub, Webhook or Manual set the file name using<span pulumi-lang-nodejs=" gitFileSource " pulumi-lang-dotnet=" GitFileSource " pulumi-lang-go=" gitFileSource " pulumi-lang-python=" git_file_source " pulumi-lang-yaml=" gitFileSource " pulumi-lang-java=" gitFileSource "> git_file_source </span>instead.
+  /// Either a filename or build template must be provided. Set this only when using trigger_template or github.
+  /// When using Pub/Sub, Webhook or Manual set the file name using git_file_source instead.
   final Input<String>? filename;
 
   /// A Common Expression Language string. Used only with Pub/Sub and Webhook.
@@ -53,7 +53,7 @@ class TriggerArgs {
   final Input<TriggerGitFileSource>? gitFileSource;
 
   /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-  /// One of <span pulumi-lang-nodejs="`triggerTemplate`" pulumi-lang-dotnet="`TriggerTemplate`" pulumi-lang-go="`triggerTemplate`" pulumi-lang-python="`trigger_template`" pulumi-lang-yaml="`triggerTemplate`" pulumi-lang-java="`triggerTemplate`">`trigger_template`</span>, <span pulumi-lang-nodejs="`github`" pulumi-lang-dotnet="`Github`" pulumi-lang-go="`github`" pulumi-lang-python="`github`" pulumi-lang-yaml="`github`" pulumi-lang-java="`github`">`github`</span>, <span pulumi-lang-nodejs="`pubsubConfig`" pulumi-lang-dotnet="`PubsubConfig`" pulumi-lang-go="`pubsubConfig`" pulumi-lang-python="`pubsub_config`" pulumi-lang-yaml="`pubsubConfig`" pulumi-lang-java="`pubsubConfig`">`pubsub_config`</span> or <span pulumi-lang-nodejs="`webhookConfig`" pulumi-lang-dotnet="`WebhookConfig`" pulumi-lang-go="`webhookConfig`" pulumi-lang-python="`webhook_config`" pulumi-lang-yaml="`webhookConfig`" pulumi-lang-java="`webhookConfig`">`webhook_config`</span> must be provided.
+  /// One of `trigger_template`, `github`, `pubsub_config` or `webhook_config` must be provided.
   /// Structure is documented below.
   final Input<TriggerGithub>? github;
 
@@ -62,7 +62,7 @@ class TriggerArgs {
   /// If ignoredFiles and changed files are both empty, then they are not
   /// used to determine whether or not to trigger a build.
   /// If ignoredFiles is not empty, then we ignore any files that match any
-  /// of the<span pulumi-lang-nodejs=" ignoredFile " pulumi-lang-dotnet=" IgnoredFile " pulumi-lang-go=" ignoredFile " pulumi-lang-python=" ignored_file " pulumi-lang-yaml=" ignoredFile " pulumi-lang-java=" ignoredFile "> ignored_file </span>globs. If the change has no files that are outside
+  /// of the ignored_file globs. If the change has no files that are outside
   /// of the ignoredFiles globs, then we do not trigger a build.
   final Input<List<String>>? ignoredFiles;
 
@@ -96,7 +96,7 @@ class TriggerArgs {
 
   /// PubsubConfig describes the configuration of a trigger that creates
   /// a build whenever a Pub/Sub message is published.
-  /// One of <span pulumi-lang-nodejs="`triggerTemplate`" pulumi-lang-dotnet="`TriggerTemplate`" pulumi-lang-go="`triggerTemplate`" pulumi-lang-python="`trigger_template`" pulumi-lang-yaml="`triggerTemplate`" pulumi-lang-java="`triggerTemplate`">`trigger_template`</span>, <span pulumi-lang-nodejs="`github`" pulumi-lang-dotnet="`Github`" pulumi-lang-go="`github`" pulumi-lang-python="`github`" pulumi-lang-yaml="`github`" pulumi-lang-java="`github`">`github`</span>, <span pulumi-lang-nodejs="`pubsubConfig`" pulumi-lang-dotnet="`PubsubConfig`" pulumi-lang-go="`pubsubConfig`" pulumi-lang-python="`pubsub_config`" pulumi-lang-yaml="`pubsubConfig`" pulumi-lang-java="`pubsubConfig`">`pubsub_config`</span> <span pulumi-lang-nodejs="`webhookConfig`" pulumi-lang-dotnet="`WebhookConfig`" pulumi-lang-go="`webhookConfig`" pulumi-lang-python="`webhook_config`" pulumi-lang-yaml="`webhookConfig`" pulumi-lang-java="`webhookConfig`">`webhook_config`</span> or <span pulumi-lang-nodejs="`sourceToBuild`" pulumi-lang-dotnet="`SourceToBuild`" pulumi-lang-go="`sourceToBuild`" pulumi-lang-python="`source_to_build`" pulumi-lang-yaml="`sourceToBuild`" pulumi-lang-java="`sourceToBuild`">`source_to_build`</span> must be provided.
+  /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
   /// Structure is documented below.
   final Input<TriggerPubsubConfig>? pubsubConfig;
 
@@ -115,7 +115,7 @@ class TriggerArgs {
   /// This field is used only for those triggers that do not respond to SCM events.
   /// Triggers that respond to such events build source at whatever commit caused the event.
   /// This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
-  /// One of <span pulumi-lang-nodejs="`triggerTemplate`" pulumi-lang-dotnet="`TriggerTemplate`" pulumi-lang-go="`triggerTemplate`" pulumi-lang-python="`trigger_template`" pulumi-lang-yaml="`triggerTemplate`" pulumi-lang-java="`triggerTemplate`">`trigger_template`</span>, <span pulumi-lang-nodejs="`github`" pulumi-lang-dotnet="`Github`" pulumi-lang-go="`github`" pulumi-lang-python="`github`" pulumi-lang-yaml="`github`" pulumi-lang-java="`github`">`github`</span>, <span pulumi-lang-nodejs="`pubsubConfig`" pulumi-lang-dotnet="`PubsubConfig`" pulumi-lang-go="`pubsubConfig`" pulumi-lang-python="`pubsub_config`" pulumi-lang-yaml="`pubsubConfig`" pulumi-lang-java="`pubsubConfig`">`pubsub_config`</span> <span pulumi-lang-nodejs="`webhookConfig`" pulumi-lang-dotnet="`WebhookConfig`" pulumi-lang-go="`webhookConfig`" pulumi-lang-python="`webhook_config`" pulumi-lang-yaml="`webhookConfig`" pulumi-lang-java="`webhookConfig`">`webhook_config`</span> or <span pulumi-lang-nodejs="`sourceToBuild`" pulumi-lang-dotnet="`SourceToBuild`" pulumi-lang-go="`sourceToBuild`" pulumi-lang-python="`source_to_build`" pulumi-lang-yaml="`sourceToBuild`" pulumi-lang-java="`sourceToBuild`">`source_to_build`</span> must be provided.
+  /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
   /// Structure is documented below.
   final Input<TriggerSourceToBuild>? sourceToBuild;
 
@@ -129,13 +129,13 @@ class TriggerArgs {
   /// Branch and tag names in trigger templates are interpreted as regular
   /// expressions. Any branch or tag change that matches that regular
   /// expression will trigger a build.
-  /// One of <span pulumi-lang-nodejs="`triggerTemplate`" pulumi-lang-dotnet="`TriggerTemplate`" pulumi-lang-go="`triggerTemplate`" pulumi-lang-python="`trigger_template`" pulumi-lang-yaml="`triggerTemplate`" pulumi-lang-java="`triggerTemplate`">`trigger_template`</span>, <span pulumi-lang-nodejs="`github`" pulumi-lang-dotnet="`Github`" pulumi-lang-go="`github`" pulumi-lang-python="`github`" pulumi-lang-yaml="`github`" pulumi-lang-java="`github`">`github`</span>, <span pulumi-lang-nodejs="`pubsubConfig`" pulumi-lang-dotnet="`PubsubConfig`" pulumi-lang-go="`pubsubConfig`" pulumi-lang-python="`pubsub_config`" pulumi-lang-yaml="`pubsubConfig`" pulumi-lang-java="`pubsubConfig`">`pubsub_config`</span>, <span pulumi-lang-nodejs="`webhookConfig`" pulumi-lang-dotnet="`WebhookConfig`" pulumi-lang-go="`webhookConfig`" pulumi-lang-python="`webhook_config`" pulumi-lang-yaml="`webhookConfig`" pulumi-lang-java="`webhookConfig`">`webhook_config`</span> or <span pulumi-lang-nodejs="`sourceToBuild`" pulumi-lang-dotnet="`SourceToBuild`" pulumi-lang-go="`sourceToBuild`" pulumi-lang-python="`source_to_build`" pulumi-lang-yaml="`sourceToBuild`" pulumi-lang-java="`sourceToBuild`">`source_to_build`</span> must be provided.
+  /// One of `trigger_template`, `github`, `pubsub_config`, `webhook_config` or `source_to_build` must be provided.
   /// Structure is documented below.
   final Input<TriggerTriggerTemplate>? triggerTemplate;
 
   /// WebhookConfig describes the configuration of a trigger that creates
   /// a build whenever a webhook is sent to a trigger's webhook URL.
-  /// One of <span pulumi-lang-nodejs="`triggerTemplate`" pulumi-lang-dotnet="`TriggerTemplate`" pulumi-lang-go="`triggerTemplate`" pulumi-lang-python="`trigger_template`" pulumi-lang-yaml="`triggerTemplate`" pulumi-lang-java="`triggerTemplate`">`trigger_template`</span>, <span pulumi-lang-nodejs="`github`" pulumi-lang-dotnet="`Github`" pulumi-lang-go="`github`" pulumi-lang-python="`github`" pulumi-lang-yaml="`github`" pulumi-lang-java="`github`">`github`</span>, <span pulumi-lang-nodejs="`pubsubConfig`" pulumi-lang-dotnet="`PubsubConfig`" pulumi-lang-go="`pubsubConfig`" pulumi-lang-python="`pubsub_config`" pulumi-lang-yaml="`pubsubConfig`" pulumi-lang-java="`pubsubConfig`">`pubsub_config`</span> <span pulumi-lang-nodejs="`webhookConfig`" pulumi-lang-dotnet="`WebhookConfig`" pulumi-lang-go="`webhookConfig`" pulumi-lang-python="`webhook_config`" pulumi-lang-yaml="`webhookConfig`" pulumi-lang-java="`webhookConfig`">`webhook_config`</span> or <span pulumi-lang-nodejs="`sourceToBuild`" pulumi-lang-dotnet="`SourceToBuild`" pulumi-lang-go="`sourceToBuild`" pulumi-lang-python="`source_to_build`" pulumi-lang-yaml="`sourceToBuild`" pulumi-lang-java="`sourceToBuild`">`source_to_build`</span> must be provided.
+  /// One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
   /// Structure is documented below.
   final Input<TriggerWebhookConfig>? webhookConfig;
 

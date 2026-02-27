@@ -1,3 +1,0 @@
-library module_compute_security_policy_rule_rate_limit_options;
-
-export 'security_policy_rule_rate_limit_options.dart';

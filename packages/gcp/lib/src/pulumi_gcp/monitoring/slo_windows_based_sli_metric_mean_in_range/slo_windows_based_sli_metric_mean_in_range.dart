@@ -3,17 +3,11 @@
 import '../slo_windows_based_sli_metric_mean_in_range_range/slo_windows_based_sli_metric_mean_in_range_range.dart';
 
 class SloWindowsBasedSliMetricMeanInRange {
-  /// Range of numerical values. The computed<span pulumi-lang-nodejs=" goodService
-  /// " pulumi-lang-dotnet=" GoodService
-  /// " pulumi-lang-go=" goodService
-  /// " pulumi-lang-python=" good_service
-  /// " pulumi-lang-yaml=" goodService
-  /// " pulumi-lang-java=" goodService
-  /// "> good_service
-  /// </span>will be the count of values x in the Distribution such
+  /// Range of numerical values. The computed good_service
+  /// will be the count of values x in the Distribution such
   /// that range.min <= x <= range.max. inclusive of min and
   /// max. Open ranges can be defined by setting
-  /// just one of min or max. Mean value `X` of <span pulumi-lang-nodejs="`timeSeries`" pulumi-lang-dotnet="`TimeSeries`" pulumi-lang-go="`timeSeries`" pulumi-lang-python="`time_series`" pulumi-lang-yaml="`timeSeries`" pulumi-lang-java="`timeSeries`">`time_series`</span>
+  /// just one of min or max. Mean value `X` of `time_series`
   /// values should satisfy `range.min <= X <= range.max` for a
   /// good service.
   /// Structure is documented below.

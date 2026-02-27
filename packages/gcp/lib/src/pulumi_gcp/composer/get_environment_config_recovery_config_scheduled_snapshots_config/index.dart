@@ -1,3 +1,0 @@
-library module_composer_get_environment_config_recovery_config_scheduled_snapshots_config;
-
-export 'get_environment_config_recovery_config_scheduled_snapshots_config.dart';

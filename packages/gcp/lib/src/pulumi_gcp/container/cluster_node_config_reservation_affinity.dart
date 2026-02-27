@@ -1,0 +1,3 @@
+library module_container_cluster_node_config_reservation_affinity;
+
+export 'cluster_node_config_reservation_affinity/cluster_node_config_reservation_affinity.dart';

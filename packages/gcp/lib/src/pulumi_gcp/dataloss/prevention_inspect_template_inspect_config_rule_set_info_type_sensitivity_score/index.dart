@@ -1,3 +1,0 @@
-library module_dataloss_prevention_inspect_template_inspect_config_rule_set_info_type_sensitivity_score;
-
-export 'prevention_inspect_template_inspect_config_rule_set_info_type_sensitivity_score.dart';

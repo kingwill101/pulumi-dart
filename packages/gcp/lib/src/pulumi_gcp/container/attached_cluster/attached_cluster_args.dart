@@ -20,7 +20,7 @@ class AttachedClusterArgs {
   /// with dashes (-), underscores (_), dots (.), and alphanumerics between.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveAnnotations`" pulumi-lang-dotnet="`EffectiveAnnotations`" pulumi-lang-go="`effectiveAnnotations`" pulumi-lang-python="`effective_annotations`" pulumi-lang-yaml="`effectiveAnnotations`" pulumi-lang-java="`effectiveAnnotations`">`effective_annotations`</span> for all of the annotations present on the resource.
+  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final Input<Map<String, String>>? annotations;
 
   /// Configuration related to the cluster RBAC settings.
@@ -67,9 +67,9 @@ class AttachedClusterArgs {
   /// validate KSA tokens in order to allow system workloads (such as GKE Connect
   /// and telemetry agents) to authenticate back to GCP.
   /// Both clusters with public and private issuer URLs are supported.
-  /// Clusters with public issuers only need to specify the <span pulumi-lang-nodejs="`issuerUrl`" pulumi-lang-dotnet="`IssuerUrl`" pulumi-lang-go="`issuerUrl`" pulumi-lang-python="`issuer_url`" pulumi-lang-yaml="`issuerUrl`" pulumi-lang-java="`issuerUrl`">`issuer_url`</span> field
+  /// Clusters with public issuers only need to specify the `issuer_url` field
   /// while clusters with private issuers need to provide both
-  /// <span pulumi-lang-nodejs="`issuerUrl`" pulumi-lang-dotnet="`IssuerUrl`" pulumi-lang-go="`issuerUrl`" pulumi-lang-python="`issuer_url`" pulumi-lang-yaml="`issuerUrl`" pulumi-lang-java="`issuerUrl`">`issuer_url`</span> and <span pulumi-lang-nodejs="`jwks`" pulumi-lang-dotnet="`Jwks`" pulumi-lang-go="`jwks`" pulumi-lang-python="`jwks`" pulumi-lang-yaml="`jwks`" pulumi-lang-java="`jwks`">`jwks`</span>.
+  /// `issuer_url` and `jwks`.
   /// Structure is documented below.
   final Input<AttachedClusterOidcConfig> oidcConfig;
 
@@ -88,7 +88,7 @@ class AttachedClusterArgs {
   /// Enable/Disable Security Posture API features for the cluster.
   /// Structure is documented below.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`securityPostureConfig`" pulumi-lang-dotnet="`SecurityPostureConfig`" pulumi-lang-go="`securityPostureConfig`" pulumi-lang-python="`security_posture_config`" pulumi-lang-yaml="`securityPostureConfig`" pulumi-lang-java="`securityPostureConfig`">`security_posture_config`</span> is deprecated and will be removed in a future major release.
+  /// > **Warning:** `security_posture_config` is deprecated and will be removed in a future major release.
   final Input<AttachedClusterSecurityPostureConfig>? securityPostureConfig;
 
   AttachedClusterArgs({

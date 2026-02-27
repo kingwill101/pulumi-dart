@@ -6,7 +6,7 @@ class CertificateSelfManaged {
   /// Leaf certificate comes first, followed by intermediate ones if any.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`certificatePem`" pulumi-lang-dotnet="`CertificatePem`" pulumi-lang-go="`certificatePem`" pulumi-lang-python="`certificate_pem`" pulumi-lang-yaml="`certificatePem`" pulumi-lang-java="`certificatePem`">`certificate_pem`</span> is deprecated and will be removed in a future major release. Use <span pulumi-lang-nodejs="`pemCertificate`" pulumi-lang-dotnet="`PemCertificate`" pulumi-lang-go="`pemCertificate`" pulumi-lang-python="`pem_certificate`" pulumi-lang-yaml="`pemCertificate`" pulumi-lang-java="`pemCertificate`">`pem_certificate`</span> instead.
+  /// > **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
   final String? certificatePem;
 
   /// The certificate chain in PEM-encoded form.
@@ -22,7 +22,7 @@ class CertificateSelfManaged {
   /// The private key of the leaf certificate in PEM-encoded form.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`privateKeyPem`" pulumi-lang-dotnet="`PrivateKeyPem`" pulumi-lang-go="`privateKeyPem`" pulumi-lang-python="`private_key_pem`" pulumi-lang-yaml="`privateKeyPem`" pulumi-lang-java="`privateKeyPem`">`private_key_pem`</span> is deprecated and will be removed in a future major release. Use <span pulumi-lang-nodejs="`pemPrivateKey`" pulumi-lang-dotnet="`PemPrivateKey`" pulumi-lang-go="`pemPrivateKey`" pulumi-lang-python="`pem_private_key`" pulumi-lang-yaml="`pemPrivateKey`" pulumi-lang-java="`pemPrivateKey`">`pem_private_key`</span> instead.
+  /// > **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
   final String? privateKeyPem;
 
   CertificateSelfManaged({

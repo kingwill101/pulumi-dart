@@ -1,3 +1,0 @@
-library module_compute_resource_policy_snapshot_schedule_policy_schedule_weekly_schedule_day_of_week;
-
-export 'resource_policy_snapshot_schedule_policy_schedule_weekly_schedule_day_of_week.dart';

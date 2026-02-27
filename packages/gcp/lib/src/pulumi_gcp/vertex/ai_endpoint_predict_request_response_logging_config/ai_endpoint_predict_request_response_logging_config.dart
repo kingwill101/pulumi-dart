@@ -3,7 +3,7 @@
 import '../ai_endpoint_predict_request_response_logging_config_bigquery_destination/ai_endpoint_predict_request_response_logging_config_bigquery_destination.dart';
 
 class AiEndpointPredictRequestResponseLoggingConfig {
-  /// BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name <span pulumi-lang-nodejs="`requestResponseLogging`" pulumi-lang-dotnet="`RequestResponseLogging`" pulumi-lang-go="`requestResponseLogging`" pulumi-lang-python="`request_response_logging`" pulumi-lang-yaml="`requestResponseLogging`" pulumi-lang-java="`requestResponseLogging`">`request_response_logging`</span>
+  /// BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
   /// Structure is documented below.
   final AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination?
       bigqueryDestination;

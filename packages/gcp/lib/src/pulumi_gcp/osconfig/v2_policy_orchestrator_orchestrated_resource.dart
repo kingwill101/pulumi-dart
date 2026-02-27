@@ -1,0 +1,3 @@
+library module_osconfig_v2_policy_orchestrator_orchestrated_resource;
+
+export 'v2_policy_orchestrator_orchestrated_resource/v2_policy_orchestrator_orchestrated_resource.dart';

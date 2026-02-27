@@ -1,0 +1,3 @@
+library module_cloudtasks_queue_iam_binding_condition;
+
+export 'queue_iam_binding_condition/queue_iam_binding_condition.dart';

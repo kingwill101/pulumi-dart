@@ -6,7 +6,7 @@ import '../network_firewall_policy_packet_mirroring_rule_target_secure_tag/netwo
 
 /// The set of arguments for NetworkFirewallPolicyPacketMirroringRule.
 class NetworkFirewallPolicyPacketMirroringRuleArgs {
-  /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", <span pulumi-lang-nodejs=""doNotMirror"" pulumi-lang-dotnet=""DoNotMirror"" pulumi-lang-go=""doNotMirror"" pulumi-lang-python=""do_not_mirror"" pulumi-lang-yaml=""doNotMirror"" pulumi-lang-java=""doNotMirror"">"do_not_mirror"</span>, <span pulumi-lang-nodejs=""gotoNext"" pulumi-lang-dotnet=""GotoNext"" pulumi-lang-go=""gotoNext"" pulumi-lang-python=""goto_next"" pulumi-lang-yaml=""gotoNext"" pulumi-lang-java=""gotoNext"">"goto_next"</span>.
+  /// The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
   final Input<String> action;
 
   /// An optional description for this resource.

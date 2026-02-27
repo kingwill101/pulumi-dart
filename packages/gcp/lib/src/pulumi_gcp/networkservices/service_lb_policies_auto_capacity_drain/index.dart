@@ -1,3 +1,0 @@
-library module_networkservices_service_lb_policies_auto_capacity_drain;
-
-export 'service_lb_policies_auto_capacity_drain.dart';

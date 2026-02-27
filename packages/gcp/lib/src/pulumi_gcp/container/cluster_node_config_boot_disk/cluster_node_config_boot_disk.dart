@@ -5,10 +5,10 @@ class ClusterNodeConfigBootDisk {
   /// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
   final String? diskType;
 
-  /// Configure disk IOPs. This is only valid if the <span pulumi-lang-nodejs="`diskType`" pulumi-lang-dotnet="`DiskType`" pulumi-lang-go="`diskType`" pulumi-lang-python="`disk_type`" pulumi-lang-yaml="`diskType`" pulumi-lang-java="`diskType`">`disk_type`</span> is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+  /// Configure disk IOPs. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
   final int? provisionedIops;
 
-  /// Configure disk throughput. This is only valid if the <span pulumi-lang-nodejs="`diskType`" pulumi-lang-dotnet="`DiskType`" pulumi-lang-go="`diskType`" pulumi-lang-python="`disk_type`" pulumi-lang-yaml="`diskType`" pulumi-lang-java="`diskType`">`disk_type`</span> is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
+  /// Configure disk throughput. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
   final int? provisionedThroughput;
 
   /// Size of the disk attached to each node, specified

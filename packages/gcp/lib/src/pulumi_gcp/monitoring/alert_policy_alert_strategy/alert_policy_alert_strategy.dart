@@ -8,7 +8,7 @@ class AlertPolicyAlertStrategy {
   /// If an alert policy that was active has no data for this long, any open incidents will close.
   final String? autoClose;
 
-  /// Control over how the notification channels in <span pulumi-lang-nodejs="`notificationChannels`" pulumi-lang-dotnet="`NotificationChannels`" pulumi-lang-go="`notificationChannels`" pulumi-lang-python="`notification_channels`" pulumi-lang-yaml="`notificationChannels`" pulumi-lang-java="`notificationChannels`">`notification_channels`</span>
+  /// Control over how the notification channels in `notification_channels`
   /// are notified when this alert fires, on a per-channel basis.
   /// Structure is documented below.
   final List<AlertPolicyAlertStrategyNotificationChannelStrategy>?

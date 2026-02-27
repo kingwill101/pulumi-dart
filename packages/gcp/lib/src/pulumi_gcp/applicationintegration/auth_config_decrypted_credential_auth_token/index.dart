@@ -1,3 +1,0 @@
-library module_applicationintegration_auth_config_decrypted_credential_auth_token;
-
-export 'auth_config_decrypted_credential_auth_token.dart';

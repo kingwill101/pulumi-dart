@@ -1,0 +1,5 @@
+library module_compute_get_region_backend_service_iam_policy;
+
+export 'get_region_backend_service_iam_policy/get_region_backend_service_iam_policy.dart';
+export 'get_region_backend_service_iam_policy/get_region_backend_service_iam_policy_args.dart';
+export 'get_region_backend_service_iam_policy/get_region_backend_service_iam_policy_result.dart';

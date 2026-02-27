@@ -19,7 +19,7 @@ class VPNTunnelArgs {
 
   /// Labels to apply to this VpnTunnel.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Local traffic selector to use when establishing the VPN tunnel with
@@ -44,15 +44,9 @@ class VPNTunnelArgs {
   final Input<int>? peerExternalGatewayInterface;
 
   /// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
-  /// If provided, the VPN tunnel will automatically use the same<span pulumi-lang-nodejs=" vpnGatewayInterface
-  /// " pulumi-lang-dotnet=" VpnGatewayInterface
-  /// " pulumi-lang-go=" vpnGatewayInterface
-  /// " pulumi-lang-python=" vpn_gateway_interface
-  /// " pulumi-lang-yaml=" vpnGatewayInterface
-  /// " pulumi-lang-java=" vpnGatewayInterface
-  /// "> vpn_gateway_interface
-  /// </span>ID in the peer GCP VPN gateway.
-  /// This field must reference a <span pulumi-lang-nodejs="`gcp.compute.HaVpnGateway`" pulumi-lang-dotnet="`gcp.compute.HaVpnGateway`" pulumi-lang-go="`compute.HaVpnGateway`" pulumi-lang-python="`compute.HaVpnGateway`" pulumi-lang-yaml="`gcp.compute.HaVpnGateway`" pulumi-lang-java="`gcp.compute.HaVpnGateway`">`gcp.compute.HaVpnGateway`</span> resource.
+  /// If provided, the VPN tunnel will automatically use the same vpn_gateway_interface
+  /// ID in the peer GCP VPN gateway.
+  /// This field must reference a `gcp.compute.HaVpnGateway` resource.
   final Input<String>? peerGcpGateway;
 
   /// IP address of the peer VPN gateway. Only IPv4 is supported.
@@ -62,7 +56,7 @@ class VPNTunnelArgs {
   /// If it is not provided, the provider project is used.
   final Input<String>? project;
 
-  /// The region where the tunnel is located. If unset, is set to the region of <span pulumi-lang-nodejs="`targetVpnGateway`" pulumi-lang-dotnet="`TargetVpnGateway`" pulumi-lang-go="`targetVpnGateway`" pulumi-lang-python="`target_vpn_gateway`" pulumi-lang-yaml="`targetVpnGateway`" pulumi-lang-java="`targetVpnGateway`">`target_vpn_gateway`</span>.
+  /// The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
   final Input<String>? region;
 
   /// Remote traffic selector to use when establishing the VPN tunnel with
@@ -85,10 +79,10 @@ class VPNTunnelArgs {
   /// gateway and the peer VPN gateway.
   /// **Note**: This property is write-only and will not be read from the API.
   ///
-  /// > **Note:** One of <span pulumi-lang-nodejs="`sharedSecret`" pulumi-lang-dotnet="`SharedSecret`" pulumi-lang-go="`sharedSecret`" pulumi-lang-python="`shared_secret`" pulumi-lang-yaml="`sharedSecret`" pulumi-lang-java="`sharedSecret`">`shared_secret`</span> or <span pulumi-lang-nodejs="`sharedSecretWo`" pulumi-lang-dotnet="`SharedSecretWo`" pulumi-lang-go="`sharedSecretWo`" pulumi-lang-python="`shared_secret_wo`" pulumi-lang-yaml="`sharedSecretWo`" pulumi-lang-java="`sharedSecretWo`">`shared_secret_wo`</span> can only be set.
+  /// > **Note:** One of `shared_secret` or `shared_secret_wo` can only be set.
   final Input<String>? sharedSecretWo;
 
-  /// Triggers update of <span pulumi-lang-nodejs="`sharedSecretWo`" pulumi-lang-dotnet="`SharedSecretWo`" pulumi-lang-go="`sharedSecretWo`" pulumi-lang-python="`shared_secret_wo`" pulumi-lang-yaml="`sharedSecretWo`" pulumi-lang-java="`sharedSecretWo`">`shared_secret_wo`</span> write-only. Increment this value when an update to <span pulumi-lang-nodejs="`sharedSecretWo`" pulumi-lang-dotnet="`SharedSecretWo`" pulumi-lang-go="`sharedSecretWo`" pulumi-lang-python="`shared_secret_wo`" pulumi-lang-yaml="`sharedSecretWo`" pulumi-lang-java="`sharedSecretWo`">`shared_secret_wo`</span> is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  /// Triggers update of `shared_secret_wo` write-only. Increment this value when an update to `shared_secret_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   final Input<String>? sharedSecretWoVersion;
 
   /// URL of the Target VPN gateway with which this VPN tunnel is
@@ -97,7 +91,7 @@ class VPNTunnelArgs {
 
   /// URL of the VPN gateway with which this VPN tunnel is associated.
   /// This must be used if a High Availability VPN gateway resource is created.
-  /// This field must reference a <span pulumi-lang-nodejs="`gcp.compute.HaVpnGateway`" pulumi-lang-dotnet="`gcp.compute.HaVpnGateway`" pulumi-lang-go="`compute.HaVpnGateway`" pulumi-lang-python="`compute.HaVpnGateway`" pulumi-lang-yaml="`gcp.compute.HaVpnGateway`" pulumi-lang-java="`gcp.compute.HaVpnGateway`">`gcp.compute.HaVpnGateway`</span> resource.
+  /// This field must reference a `gcp.compute.HaVpnGateway` resource.
   final Input<String>? vpnGateway;
 
   /// The interface ID of the VPN gateway with which this VPN tunnel is associated.

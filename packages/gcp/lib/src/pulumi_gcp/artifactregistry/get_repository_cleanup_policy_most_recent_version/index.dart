@@ -1,3 +1,0 @@
-library module_artifactregistry_get_repository_cleanup_policy_most_recent_version;
-
-export 'get_repository_cleanup_policy_most_recent_version.dart';

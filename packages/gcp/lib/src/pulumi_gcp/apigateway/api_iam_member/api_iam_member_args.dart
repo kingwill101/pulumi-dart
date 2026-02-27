@@ -9,7 +9,7 @@ class ApiIamMemberArgs {
   final Input<String> api;
   final Input<ApiIamMemberCondition>? condition;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -28,7 +28,7 @@ class ApiIamMemberArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.apigateway.ApiIamBinding`" pulumi-lang-dotnet="`gcp.apigateway.ApiIamBinding`" pulumi-lang-go="`apigateway.ApiIamBinding`" pulumi-lang-python="`apigateway.ApiIamBinding`" pulumi-lang-yaml="`gcp.apigateway.ApiIamBinding`" pulumi-lang-java="`gcp.apigateway.ApiIamBinding`">`gcp.apigateway.ApiIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.apigateway.ApiIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

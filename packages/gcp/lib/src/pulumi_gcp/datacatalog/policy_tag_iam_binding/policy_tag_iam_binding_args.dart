@@ -7,7 +7,7 @@ import '../policy_tag_iam_binding_condition/policy_tag_iam_binding_condition.dar
 class PolicyTagIamBindingArgs {
   final Input<PolicyTagIamBindingCondition>? condition;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -25,7 +25,7 @@ class PolicyTagIamBindingArgs {
   final Input<String> policyTag;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.datacatalog.PolicyTagIamBinding`" pulumi-lang-dotnet="`gcp.datacatalog.PolicyTagIamBinding`" pulumi-lang-go="`datacatalog.PolicyTagIamBinding`" pulumi-lang-python="`datacatalog.PolicyTagIamBinding`" pulumi-lang-yaml="`gcp.datacatalog.PolicyTagIamBinding`" pulumi-lang-java="`gcp.datacatalog.PolicyTagIamBinding`">`gcp.datacatalog.PolicyTagIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.datacatalog.PolicyTagIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

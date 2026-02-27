@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class VMwareClusterDataplaneV2 {
-  /// Enable advanced networking which requires<span pulumi-lang-nodejs=" dataplaneV2Enabled " pulumi-lang-dotnet=" DataplaneV2Enabled " pulumi-lang-go=" dataplaneV2Enabled " pulumi-lang-python=" dataplane_v2_enabled " pulumi-lang-yaml=" dataplaneV2Enabled " pulumi-lang-java=" dataplaneV2Enabled "> dataplane_v2_enabled </span>to be set true.
+  /// Enable advanced networking which requires dataplane_v2_enabled to be set true.
   final bool? advancedNetworking;
 
   /// Enables Dataplane V2.

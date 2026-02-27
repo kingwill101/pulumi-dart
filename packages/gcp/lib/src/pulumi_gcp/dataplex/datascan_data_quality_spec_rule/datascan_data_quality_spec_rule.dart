@@ -66,7 +66,7 @@ class DatascanDataQualitySpecRule {
   final DatascanDataQualitySpecRuleTableConditionExpectation?
       tableConditionExpectation;
 
-  /// The minimum ratio of<span pulumi-lang-nodejs=" passingRows " pulumi-lang-dotnet=" PassingRows " pulumi-lang-go=" passingRows " pulumi-lang-python=" passing_rows " pulumi-lang-yaml=" passingRows " pulumi-lang-java=" passingRows "> passing_rows </span>/<span pulumi-lang-nodejs=" totalRows " pulumi-lang-dotnet=" TotalRows " pulumi-lang-go=" totalRows " pulumi-lang-python=" total_rows " pulumi-lang-yaml=" totalRows " pulumi-lang-java=" totalRows "> total_rows </span>required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+  /// The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
   final double? threshold;
 
   /// Row-level rule which evaluates whether each column value is unique.

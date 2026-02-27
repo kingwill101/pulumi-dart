@@ -1,3 +1,0 @@
-library module_composer_get_environment_config_maintenance_window;
-
-export 'get_environment_config_maintenance_window.dart';

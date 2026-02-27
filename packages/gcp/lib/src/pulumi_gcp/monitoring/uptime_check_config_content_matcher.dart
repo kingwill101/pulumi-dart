@@ -1,0 +1,3 @@
+library module_monitoring_uptime_check_config_content_matcher;
+
+export 'uptime_check_config_content_matcher/uptime_check_config_content_matcher.dart';

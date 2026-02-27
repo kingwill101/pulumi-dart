@@ -1,0 +1,3 @@
+library module_compute_get_region_instance_group_manager_version_target_size;
+
+export 'get_region_instance_group_manager_version_target_size/get_region_instance_group_manager_version_target_size.dart';

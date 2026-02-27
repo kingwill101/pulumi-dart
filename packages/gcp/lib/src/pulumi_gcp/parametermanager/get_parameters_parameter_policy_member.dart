@@ -1,0 +1,3 @@
+library module_parametermanager_get_parameters_parameter_policy_member;
+
+export 'get_parameters_parameter_policy_member/get_parameters_parameter_policy_member.dart';

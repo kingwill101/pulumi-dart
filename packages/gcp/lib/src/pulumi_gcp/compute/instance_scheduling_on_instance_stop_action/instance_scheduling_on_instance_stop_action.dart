@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class InstanceSchedulingOnInstanceStopAction {
-  /// Whether to discard local SSDs attached to the VM while terminating using <span pulumi-lang-nodejs="`maxRunDuration`" pulumi-lang-dotnet="`MaxRunDuration`" pulumi-lang-go="`maxRunDuration`" pulumi-lang-python="`max_run_duration`" pulumi-lang-yaml="`maxRunDuration`" pulumi-lang-java="`maxRunDuration`">`max_run_duration`</span>. Only supports <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> at this point.
+  /// Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
   final bool? discardLocalSsd;
 
   InstanceSchedulingOnInstanceStopAction({

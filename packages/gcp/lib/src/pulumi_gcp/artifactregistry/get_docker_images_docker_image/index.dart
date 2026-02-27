@@ -1,3 +1,0 @@
-library module_artifactregistry_get_docker_images_docker_image;
-
-export 'get_docker_images_docker_image.dart';

@@ -1,3 +1,0 @@
-library module_compute_get_router_status_best_route_warning_data;
-
-export 'get_router_status_best_route_warning_data.dart';

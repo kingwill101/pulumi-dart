@@ -1,3 +1,0 @@
-library module_compute_region_commitment_license_resource;
-
-export 'region_commitment_license_resource.dart';

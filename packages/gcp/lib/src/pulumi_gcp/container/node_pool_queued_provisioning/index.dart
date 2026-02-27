@@ -1,3 +1,0 @@
-library module_container_node_pool_queued_provisioning;
-
-export 'node_pool_queued_provisioning.dart';

@@ -1,3 +1,0 @@
-library module_diagflow_cx_page_knowledge_connector_settings;
-
-export 'cx_page_knowledge_connector_settings.dart';

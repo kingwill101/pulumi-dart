@@ -1,0 +1,5 @@
+library module_oracledatabase_get_autonomous_databases;
+
+export 'get_autonomous_databases/get_autonomous_databases.dart';
+export 'get_autonomous_databases/get_autonomous_databases_args.dart';
+export 'get_autonomous_databases/get_autonomous_databases_result.dart';

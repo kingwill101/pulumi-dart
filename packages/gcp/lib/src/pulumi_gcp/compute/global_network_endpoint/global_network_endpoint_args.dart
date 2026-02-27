@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart';
 /// The set of arguments for GlobalNetworkEndpoint.
 class GlobalNetworkEndpointArgs {
   /// Fully qualified domain name of network endpoint.
-  /// This can only be specified when<span pulumi-lang-nodejs=" networkEndpointType " pulumi-lang-dotnet=" NetworkEndpointType " pulumi-lang-go=" networkEndpointType " pulumi-lang-python=" network_endpoint_type " pulumi-lang-yaml=" networkEndpointType " pulumi-lang-java=" networkEndpointType "> network_endpoint_type </span>of the NEG is INTERNET_FQDN_PORT.
+  /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
   final Input<String>? fqdn;
 
   /// The global network endpoint group this endpoint is part of.

@@ -1,3 +1,0 @@
-library module_iap_settings_access_settings_allowed_domains_settings;
-
-export 'settings_access_settings_allowed_domains_settings.dart';

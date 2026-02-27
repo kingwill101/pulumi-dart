@@ -1,3 +1,0 @@
-library module_firebase_app_hosting_build_source_codebase_author;
-
-export 'app_hosting_build_source_codebase_author.dart';

@@ -1,4 +1,0 @@
-library module_vertex_ai_feature_store_entity_type_iam_member;
-
-export 'ai_feature_store_entity_type_iam_member.dart';
-export 'ai_feature_store_entity_type_iam_member_args.dart';

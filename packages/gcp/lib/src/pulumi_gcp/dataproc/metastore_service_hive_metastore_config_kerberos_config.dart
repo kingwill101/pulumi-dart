@@ -1,0 +1,3 @@
+library module_dataproc_metastore_service_hive_metastore_config_kerberos_config;
+
+export 'metastore_service_hive_metastore_config_kerberos_config/metastore_service_hive_metastore_config_kerberos_config.dart';

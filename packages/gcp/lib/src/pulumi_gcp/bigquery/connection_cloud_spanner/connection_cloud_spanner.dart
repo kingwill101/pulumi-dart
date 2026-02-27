@@ -10,7 +10,7 @@ class ConnectionCloudSpanner {
   /// Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
   final int? maxParallelism;
 
-  /// If set, the request will be executed via Spanner independent compute resources. <span pulumi-lang-nodejs="`useParallelism`" pulumi-lang-dotnet="`UseParallelism`" pulumi-lang-go="`useParallelism`" pulumi-lang-python="`use_parallelism`" pulumi-lang-yaml="`useParallelism`" pulumi-lang-java="`useParallelism`">`use_parallelism`</span> must be set when using data boost.
+  /// If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
   final bool? useDataBoost;
 
   /// If parallelism should be used when reading from Cloud Spanner.

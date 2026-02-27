@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart';
 class InstanceIamPolicyArgs {
   /// The name or relative resource id of the instance to manage IAM policies for.
   ///
-  /// For <span pulumi-lang-nodejs="`gcp.bigtable.InstanceIamMember`" pulumi-lang-dotnet="`gcp.bigtable.InstanceIamMember`" pulumi-lang-go="`bigtable.InstanceIamMember`" pulumi-lang-python="`bigtable.InstanceIamMember`" pulumi-lang-yaml="`gcp.bigtable.InstanceIamMember`" pulumi-lang-java="`gcp.bigtable.InstanceIamMember`">`gcp.bigtable.InstanceIamMember`</span> or <span pulumi-lang-nodejs="`gcp.bigtable.InstanceIamBinding`" pulumi-lang-dotnet="`gcp.bigtable.InstanceIamBinding`" pulumi-lang-go="`bigtable.InstanceIamBinding`" pulumi-lang-python="`bigtable.InstanceIamBinding`" pulumi-lang-yaml="`gcp.bigtable.InstanceIamBinding`" pulumi-lang-java="`gcp.bigtable.InstanceIamBinding`">`gcp.bigtable.InstanceIamBinding`</span>:
+  /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
   final Input<String> instance;
   final Input<String> policyData;
   final Input<String>? project;

@@ -1,0 +1,3 @@
+library module_workbench_instance_gce_setup_boot_disk;
+
+export 'instance_gce_setup_boot_disk/instance_gce_setup_boot_disk.dart';

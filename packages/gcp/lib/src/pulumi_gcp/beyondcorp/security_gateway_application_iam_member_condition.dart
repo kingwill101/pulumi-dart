@@ -1,0 +1,3 @@
+library module_beyondcorp_security_gateway_application_iam_member_condition;
+
+export 'security_gateway_application_iam_member_condition/security_gateway_application_iam_member_condition.dart';

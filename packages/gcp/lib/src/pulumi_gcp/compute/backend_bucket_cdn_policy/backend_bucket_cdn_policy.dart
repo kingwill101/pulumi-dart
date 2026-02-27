@@ -21,16 +21,16 @@ class BackendBucketCdnPolicy {
   final String? cacheMode;
 
   /// Specifies the maximum allowed TTL for cached content served by this origin. When the
-  /// <span pulumi-lang-nodejs="`cacheMode`" pulumi-lang-dotnet="`CacheMode`" pulumi-lang-go="`cacheMode`" pulumi-lang-python="`cache_mode`" pulumi-lang-yaml="`cacheMode`" pulumi-lang-java="`cacheMode`">`cache_mode`</span> is set to "USE_ORIGIN_HEADERS", you must omit this field.
+  /// `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
   final int? clientTtl;
 
   /// Specifies the default TTL for cached content served by this origin for responses
-  /// that do not have an existing valid TTL (max-age or s-max-age). When the <span pulumi-lang-nodejs="`cacheMode`" pulumi-lang-dotnet="`CacheMode`" pulumi-lang-go="`cacheMode`" pulumi-lang-python="`cache_mode`" pulumi-lang-yaml="`cacheMode`" pulumi-lang-java="`cacheMode`">`cache_mode`</span>
+  /// that do not have an existing valid TTL (max-age or s-max-age). When the `cache_mode`
   /// is set to "USE_ORIGIN_HEADERS", you must omit this field.
   final int? defaultTtl;
 
   /// Specifies the maximum allowed TTL for cached content served by this origin. When the
-  /// <span pulumi-lang-nodejs="`cacheMode`" pulumi-lang-dotnet="`CacheMode`" pulumi-lang-go="`cacheMode`" pulumi-lang-python="`cache_mode`" pulumi-lang-yaml="`cacheMode`" pulumi-lang-java="`cacheMode`">`cache_mode`</span> is set to "USE_ORIGIN_HEADERS", you must omit this field.
+  /// `cache_mode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
   final int? maxTtl;
 
   /// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.

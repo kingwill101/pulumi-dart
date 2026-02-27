@@ -1,0 +1,4 @@
+library module_gemini_release_channel_setting_binding;
+
+export 'release_channel_setting_binding/release_channel_setting_binding.dart';
+export 'release_channel_setting_binding/release_channel_setting_binding_args.dart';

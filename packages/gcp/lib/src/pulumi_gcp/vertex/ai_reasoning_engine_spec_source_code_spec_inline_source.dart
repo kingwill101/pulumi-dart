@@ -1,0 +1,3 @@
+library module_vertex_ai_reasoning_engine_spec_source_code_spec_inline_source;
+
+export 'ai_reasoning_engine_spec_source_code_spec_inline_source/ai_reasoning_engine_spec_source_code_spec_inline_source.dart';

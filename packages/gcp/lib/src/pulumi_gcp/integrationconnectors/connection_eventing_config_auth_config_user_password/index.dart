@@ -1,3 +1,0 @@
-library module_integrationconnectors_connection_eventing_config_auth_config_user_password;
-
-export 'connection_eventing_config_auth_config_user_password.dart';

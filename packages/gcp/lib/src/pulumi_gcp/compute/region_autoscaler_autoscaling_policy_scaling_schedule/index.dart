@@ -1,3 +1,0 @@
-library module_compute_region_autoscaler_autoscaling_policy_scaling_schedule;
-
-export 'region_autoscaler_autoscaling_policy_scaling_schedule.dart';

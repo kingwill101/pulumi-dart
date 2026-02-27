@@ -1,3 +1,0 @@
-library module_storage_transfer_job_transfer_spec_azure_blob_storage_data_source_azure_credentials;
-
-export 'transfer_job_transfer_spec_azure_blob_storage_data_source_azure_credentials.dart';

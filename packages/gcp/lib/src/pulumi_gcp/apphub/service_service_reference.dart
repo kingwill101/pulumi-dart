@@ -1,0 +1,3 @@
+library module_apphub_service_service_reference;
+
+export 'service_service_reference/service_service_reference.dart';

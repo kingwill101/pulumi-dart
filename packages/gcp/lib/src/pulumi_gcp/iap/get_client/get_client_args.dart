@@ -7,7 +7,7 @@ class GetClientArgs {
   /// The name of the brand.
   final Input<String> brand;
 
-  /// The<span pulumi-lang-nodejs=" clientId " pulumi-lang-dotnet=" ClientId " pulumi-lang-go=" clientId " pulumi-lang-python=" client_id " pulumi-lang-yaml=" clientId " pulumi-lang-java=" clientId "> client_id </span>of the brand.
+  /// The client_id of the brand.
   final Input<String> clientId;
 
   GetClientArgs({

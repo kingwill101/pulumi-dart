@@ -58,7 +58,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleMatch {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedRuleMatchLayer4Config"" pulumi-lang-dotnet=""NestedRuleMatchLayer4Config"" pulumi-lang-go=""nestedRuleMatchLayer4Config"" pulumi-lang-python=""nested_rule_match_layer4_config"" pulumi-lang-yaml=""nestedRuleMatchLayer4Config"" pulumi-lang-java=""nestedRuleMatchLayer4Config"">"nested_rule_match_layer4_config"</span>></a>The <span pulumi-lang-nodejs="`layer4Config`" pulumi-lang-dotnet="`Layer4Config`" pulumi-lang-go="`layer4Config`" pulumi-lang-python="`layer4_config`" pulumi-lang-yaml="`layer4Config`" pulumi-lang-java="`layer4Config`">`layer4_config`</span> block supports:
+  /// <a name="nested_rule_match_layer4_config"></a>The `layer4_config` block supports:
   final List<NetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag>?
       srcSecureTags;
 

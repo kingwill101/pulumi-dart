@@ -1,0 +1,3 @@
+library module_container_attached_cluster_authorization;
+
+export 'attached_cluster_authorization/attached_cluster_authorization.dart';

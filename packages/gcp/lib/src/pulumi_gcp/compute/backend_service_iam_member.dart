@@ -1,0 +1,4 @@
+library module_compute_backend_service_iam_member;
+
+export 'backend_service_iam_member/backend_service_iam_member.dart';
+export 'backend_service_iam_member/backend_service_iam_member_args.dart';

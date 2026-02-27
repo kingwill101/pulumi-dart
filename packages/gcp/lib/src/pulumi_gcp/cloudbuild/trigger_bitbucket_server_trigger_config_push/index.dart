@@ -1,3 +1,0 @@
-library module_cloudbuild_trigger_bitbucket_server_trigger_config_push;
-
-export 'trigger_bitbucket_server_trigger_config_push.dart';

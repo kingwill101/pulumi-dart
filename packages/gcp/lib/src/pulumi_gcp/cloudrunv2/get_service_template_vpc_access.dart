@@ -1,0 +1,3 @@
+library module_cloudrunv2_get_service_template_vpc_access;
+
+export 'get_service_template_vpc_access/get_service_template_vpc_access.dart';

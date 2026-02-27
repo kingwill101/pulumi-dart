@@ -1,0 +1,3 @@
+library module_osconfig_guest_policies_recipe_artifact_gcs;
+
+export 'guest_policies_recipe_artifact_gcs/guest_policies_recipe_artifact_gcs.dart';

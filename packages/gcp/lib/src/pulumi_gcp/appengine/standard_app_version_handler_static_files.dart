@@ -1,0 +1,3 @@
+library module_appengine_standard_app_version_handler_static_files;
+
+export 'standard_app_version_handler_static_files/standard_app_version_handler_static_files.dart';

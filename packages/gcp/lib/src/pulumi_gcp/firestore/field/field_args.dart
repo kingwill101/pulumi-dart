@@ -26,7 +26,7 @@ class FieldArgs {
   /// If it is not provided, the provider project is used.
   final Input<String>? project;
 
-  /// The TTL configuration for this Field. If set to an empty block (i.e. <span pulumi-lang-nodejs="`ttlConfig " pulumi-lang-dotnet="`TtlConfig " pulumi-lang-go="`ttlConfig " pulumi-lang-python="`ttl_config " pulumi-lang-yaml="`ttlConfig " pulumi-lang-java="`ttlConfig ">`ttl_config </span>{}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+  /// The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
   /// Structure is documented below.
   final Input<FieldTtlConfig>? ttlConfig;
 

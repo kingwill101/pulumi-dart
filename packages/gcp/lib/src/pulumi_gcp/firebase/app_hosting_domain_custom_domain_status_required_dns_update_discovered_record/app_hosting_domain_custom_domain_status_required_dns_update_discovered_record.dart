@@ -23,7 +23,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord {
   /// (Output)
   /// An enum that indicates the a required action for this record. Populated
   /// when the record is part of a required change in a  `DnsUpdates`
-  /// <span pulumi-lang-nodejs="`discovered`" pulumi-lang-dotnet="`Discovered`" pulumi-lang-go="`discovered`" pulumi-lang-python="`discovered`" pulumi-lang-yaml="`discovered`" pulumi-lang-java="`discovered`">`discovered`</span> or <span pulumi-lang-nodejs="`desired`" pulumi-lang-dotnet="`Desired`" pulumi-lang-go="`desired`" pulumi-lang-python="`desired`" pulumi-lang-yaml="`desired`" pulumi-lang-java="`desired`">`desired`</span> record set.
+  /// `discovered` or `desired` record set.
   /// Possible values:
   /// NONE
   /// ADD

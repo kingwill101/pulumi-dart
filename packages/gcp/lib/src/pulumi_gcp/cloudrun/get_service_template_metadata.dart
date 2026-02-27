@@ -1,0 +1,3 @@
+library module_cloudrun_get_service_template_metadata;
+
+export 'get_service_template_metadata/get_service_template_metadata.dart';

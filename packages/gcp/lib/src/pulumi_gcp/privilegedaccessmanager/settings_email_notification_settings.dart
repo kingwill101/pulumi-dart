@@ -1,0 +1,3 @@
+library module_privilegedaccessmanager_settings_email_notification_settings;
+
+export 'settings_email_notification_settings/settings_email_notification_settings.dart';

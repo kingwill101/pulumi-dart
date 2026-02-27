@@ -3,7 +3,7 @@
 class InstanceFromTemplateConfidentialInstanceConfig {
   /// The confidential computing technology the instance uses.
   /// SEV is an AMD feature. TDX is an Intel feature. One of the following
-  /// values is required: SEV, SEV_SNP, TDX. If SEV_SNP,<span pulumi-lang-nodejs=" minCpuPlatform " pulumi-lang-dotnet=" MinCpuPlatform " pulumi-lang-go=" minCpuPlatform " pulumi-lang-python=" min_cpu_platform " pulumi-lang-yaml=" minCpuPlatform " pulumi-lang-java=" minCpuPlatform "> min_cpu_platform </span>=
+  /// values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
   /// "AMD Milan" is currently required.
   final String? confidentialInstanceType;
 

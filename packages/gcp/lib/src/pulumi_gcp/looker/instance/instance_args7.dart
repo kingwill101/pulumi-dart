@@ -35,7 +35,7 @@ class InstanceArgs7 {
   final Input<InstanceCustomDomain>? customDomain;
 
   /// Policy to determine if the cluster should be deleted forcefully.
-  /// If setting<span pulumi-lang-nodejs=" deletionPolicy " pulumi-lang-dotnet=" DeletionPolicy " pulumi-lang-go=" deletionPolicy " pulumi-lang-python=" deletion_policy " pulumi-lang-yaml=" deletionPolicy " pulumi-lang-java=" deletionPolicy "> deletion_policy </span>= "FORCE", the Looker instance will be deleted regardless
+  /// If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
   /// of its nested resources. If set to "DEFAULT", Looker instances that still have
   /// nested resources will return an error. Possible values: DEFAULT, FORCE
   final Input<String>? deletionPolicy;

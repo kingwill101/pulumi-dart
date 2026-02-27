@@ -1,3 +1,0 @@
-library module_iam_get_testable_permissions_permission;
-
-export 'get_testable_permissions_permission.dart';

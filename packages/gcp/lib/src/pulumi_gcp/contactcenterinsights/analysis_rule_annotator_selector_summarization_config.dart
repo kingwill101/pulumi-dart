@@ -1,0 +1,3 @@
+library module_contactcenterinsights_analysis_rule_annotator_selector_summarization_config;
+
+export 'analysis_rule_annotator_selector_summarization_config/analysis_rule_annotator_selector_summarization_config.dart';

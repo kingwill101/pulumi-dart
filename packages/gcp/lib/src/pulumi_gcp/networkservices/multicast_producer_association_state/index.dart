@@ -1,3 +1,0 @@
-library module_networkservices_multicast_producer_association_state;
-
-export 'multicast_producer_association_state.dart';

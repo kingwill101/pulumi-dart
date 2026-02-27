@@ -1,5 +1,0 @@
-library module_tpu_get_v2_accelerator_types;
-
-export 'get_v2_accelerator_types.dart';
-export 'get_v2_accelerator_types_args.dart';
-export 'get_v2_accelerator_types_result.dart';

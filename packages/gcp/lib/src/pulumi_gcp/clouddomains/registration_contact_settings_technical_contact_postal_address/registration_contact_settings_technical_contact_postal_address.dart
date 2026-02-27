@@ -4,14 +4,8 @@ class RegistrationContactSettingsTechnicalContactPostalAddress {
   /// Unstructured address lines describing the lower levels of an address.
   /// Because values in addressLines do not have type information and may sometimes contain multiple values in a single
   /// field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
-  /// "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan),<span pulumi-lang-nodejs=" addressLanguage
-  /// " pulumi-lang-dotnet=" AddressLanguage
-  /// " pulumi-lang-go=" addressLanguage
-  /// " pulumi-lang-python=" address_language
-  /// " pulumi-lang-yaml=" addressLanguage
-  /// " pulumi-lang-java=" addressLanguage
-  /// "> address_language
-  /// </span>is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
+  /// "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language
+  /// is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
   /// the most specific line of an address can be selected based on the language.
   final List<String>? addressLines;
 

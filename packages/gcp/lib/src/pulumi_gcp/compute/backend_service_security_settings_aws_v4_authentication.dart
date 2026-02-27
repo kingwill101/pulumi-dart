@@ -1,0 +1,3 @@
+library module_compute_backend_service_security_settings_aws_v4_authentication;
+
+export 'backend_service_security_settings_aws_v4_authentication/backend_service_security_settings_aws_v4_authentication.dart';

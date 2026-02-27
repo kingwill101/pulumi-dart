@@ -1,0 +1,3 @@
+library module_bigquery_datapolicyv2_data_policy_data_masking_policy;
+
+export 'datapolicyv2_data_policy_data_masking_policy/datapolicyv2_data_policy_data_masking_policy.dart';

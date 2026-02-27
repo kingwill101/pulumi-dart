@@ -1,0 +1,3 @@
+library module_iam_get_workload_identity_pool_provider_x509_trust_store_trust_anchor;
+
+export 'get_workload_identity_pool_provider_x509_trust_store_trust_anchor/get_workload_identity_pool_provider_x509_trust_store_trust_anchor.dart';

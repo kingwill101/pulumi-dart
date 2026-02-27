@@ -28,7 +28,7 @@ class AiEndpointDeployedModel {
   final bool? enableAccessLogging;
 
   /// (Output)
-  /// If true, the container of the DeployedModel instances will send <span pulumi-lang-nodejs="`stderr`" pulumi-lang-dotnet="`Stderr`" pulumi-lang-go="`stderr`" pulumi-lang-python="`stderr`" pulumi-lang-yaml="`stderr`" pulumi-lang-java="`stderr`">`stderr`</span> and <span pulumi-lang-nodejs="`stdout`" pulumi-lang-dotnet="`Stdout`" pulumi-lang-go="`stdout`" pulumi-lang-python="`stdout`" pulumi-lang-yaml="`stdout`" pulumi-lang-java="`stdout`">`stdout`</span> streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+  /// If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
   final bool? enableContainerLogging;
 
   /// (Output)

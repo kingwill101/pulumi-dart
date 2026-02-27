@@ -11,7 +11,7 @@ import '../pipeline_retry_policy/pipeline_retry_policy.dart';
 class PipelineArgs2 {
   /// User-defined annotations. See https://google.aip.dev/128#annotations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveAnnotations`" pulumi-lang-dotnet="`EffectiveAnnotations`" pulumi-lang-go="`effectiveAnnotations`" pulumi-lang-python="`effective_annotations`" pulumi-lang-yaml="`effectiveAnnotations`" pulumi-lang-java="`effectiveAnnotations`">`effective_annotations`</span> for all of the annotations present on the resource.
+  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final Input<Map<String, String>>? annotations;
 
   /// Resource name of a KMS crypto key (managed by the user) used to
@@ -36,10 +36,10 @@ class PipelineArgs2 {
   /// resources. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1.3kg", "count": "3" }.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> location;
 
   /// The configuration for Platform Telemetry logging for Eventarc Advanced
@@ -66,7 +66,7 @@ class PipelineArgs2 {
   /// The backoff starts with a 5 second delay and doubles the
   /// delay after each failed attempt (10 seconds, 20 seconds, 40 seconds, etc.).
   /// The delay is capped at 60 seconds by default.
-  /// Please note that if you set the<span pulumi-lang-nodejs=" minRetryDelay " pulumi-lang-dotnet=" MinRetryDelay " pulumi-lang-go=" minRetryDelay " pulumi-lang-python=" min_retry_delay " pulumi-lang-yaml=" minRetryDelay " pulumi-lang-java=" minRetryDelay "> min_retry_delay </span>and<span pulumi-lang-nodejs=" maxRetryDelay " pulumi-lang-dotnet=" MaxRetryDelay " pulumi-lang-go=" maxRetryDelay " pulumi-lang-python=" max_retry_delay " pulumi-lang-yaml=" maxRetryDelay " pulumi-lang-java=" maxRetryDelay "> max_retry_delay </span>fields
+  /// Please note that if you set the min_retry_delay and max_retry_delay fields
   /// to the same value this will make the duration between retries constant.
   /// Structure is documented below.
   final Input<PipelineRetryPolicy>? retryPolicy;

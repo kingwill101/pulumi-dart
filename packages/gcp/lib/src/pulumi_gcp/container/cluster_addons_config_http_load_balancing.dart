@@ -1,0 +1,3 @@
+library module_container_cluster_addons_config_http_load_balancing;
+
+export 'cluster_addons_config_http_load_balancing/cluster_addons_config_http_load_balancing.dart';

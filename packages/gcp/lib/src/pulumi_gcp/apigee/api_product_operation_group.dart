@@ -1,0 +1,3 @@
+library module_apigee_api_product_operation_group;
+
+export 'api_product_operation_group/api_product_operation_group.dart';

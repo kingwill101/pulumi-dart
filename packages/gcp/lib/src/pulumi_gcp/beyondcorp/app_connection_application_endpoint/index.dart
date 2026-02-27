@@ -1,3 +1,0 @@
-library module_beyondcorp_app_connection_application_endpoint;
-
-export 'app_connection_application_endpoint.dart';

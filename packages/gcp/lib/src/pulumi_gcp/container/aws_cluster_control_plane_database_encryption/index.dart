@@ -1,3 +1,0 @@
-library module_container_aws_cluster_control_plane_database_encryption;
-
-export 'aws_cluster_control_plane_database_encryption.dart';

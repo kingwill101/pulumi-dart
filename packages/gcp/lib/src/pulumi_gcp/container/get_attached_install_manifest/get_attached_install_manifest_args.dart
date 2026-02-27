@@ -10,7 +10,7 @@ class GetAttachedInstallManifestArgs {
   /// The location to list versions for.
   final Input<String> location;
 
-  /// The platform version for the cluster. A list of valid values can be retrieved using the <span pulumi-lang-nodejs="`gcp.container.getAttachedVersions`" pulumi-lang-dotnet="`gcp.container.getAttachedVersions`" pulumi-lang-go="`container.getAttachedVersions`" pulumi-lang-python="`container_get_attached_versions`" pulumi-lang-yaml="`gcp.container.getAttachedVersions`" pulumi-lang-java="`gcp.container.getAttachedVersions`">`gcp.container.getAttachedVersions`</span> data source.
+  /// The platform version for the cluster. A list of valid values can be retrieved using the `gcp.container.getAttachedVersions` data source.
   final Input<String> platformVersion;
 
   /// ID of the project to list available platform versions for. Should match the project the cluster will be deployed to.

@@ -9,7 +9,7 @@ class AppDataStoreSettings {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedDataStoreSettingsEngines"" pulumi-lang-dotnet=""NestedDataStoreSettingsEngines"" pulumi-lang-go=""nestedDataStoreSettingsEngines"" pulumi-lang-python=""nested_data_store_settings_engines"" pulumi-lang-yaml=""nestedDataStoreSettingsEngines"" pulumi-lang-java=""nestedDataStoreSettingsEngines"">"nested_data_store_settings_engines"</span>></a>The <span pulumi-lang-nodejs="`engines`" pulumi-lang-dotnet="`Engines`" pulumi-lang-go="`engines`" pulumi-lang-python="`engines`" pulumi-lang-yaml="`engines`" pulumi-lang-java="`engines`">`engines`</span> block contains:
+  /// <a name="nested_data_store_settings_engines"></a>The `engines` block contains:
   final List<AppDataStoreSettingsEngine>? engines;
 
   AppDataStoreSettings({

@@ -6,7 +6,7 @@ import '../network_firewall_policy_rule_target_secure_tag/network_firewall_polic
 
 /// The set of arguments for NetworkFirewallPolicyRule.
 class NetworkFirewallPolicyRuleArgs {
-  /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", <span pulumi-lang-nodejs=""gotoNext"" pulumi-lang-dotnet=""GotoNext"" pulumi-lang-go=""gotoNext"" pulumi-lang-python=""goto_next"" pulumi-lang-yaml=""gotoNext"" pulumi-lang-java=""gotoNext"">"goto_next"</span> and <span pulumi-lang-nodejs=""applySecurityProfileGroup"" pulumi-lang-dotnet=""ApplySecurityProfileGroup"" pulumi-lang-go=""applySecurityProfileGroup"" pulumi-lang-python=""apply_security_profile_group"" pulumi-lang-yaml=""applySecurityProfileGroup"" pulumi-lang-java=""applySecurityProfileGroup"">"apply_security_profile_group"</span>.
+  /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "goto_next" and "apply_security_profile_group".
   final Input<String> action;
 
   /// An optional description for this resource.
@@ -24,7 +24,7 @@ class NetworkFirewallPolicyRuleArgs {
   /// Denotes whether to enable logging for a particular rule.
   /// If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
   /// Logs may be exported to BigQuery or Pub/Sub.
-  /// Note: you cannot enable logging on <span pulumi-lang-nodejs=""gotoNext"" pulumi-lang-dotnet=""GotoNext"" pulumi-lang-go=""gotoNext"" pulumi-lang-python=""goto_next"" pulumi-lang-yaml=""gotoNext"" pulumi-lang-java=""gotoNext"">"goto_next"</span> rules.
+  /// Note: you cannot enable logging on "goto_next" rules.
   final Input<bool>? enableLogging;
 
   /// The firewall policy of the resource.

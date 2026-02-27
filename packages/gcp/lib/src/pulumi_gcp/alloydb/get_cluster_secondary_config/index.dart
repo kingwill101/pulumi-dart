@@ -1,3 +1,0 @@
-library module_alloydb_get_cluster_secondary_config;
-
-export 'get_cluster_secondary_config.dart';

@@ -1,3 +1,0 @@
-library module_dataloss_prevention_discovery_config_action_tag_resources_tag_condition_tag;
-
-export 'prevention_discovery_config_action_tag_resources_tag_condition_tag.dart';

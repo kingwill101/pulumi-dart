@@ -9,12 +9,12 @@ class HostingChannelArgs {
 
   /// The time at which the channel will be automatically deleted. If null, the channel
   /// will not be automatically deleted. This field is present in the output whether it's
-  /// set directly or via the <span pulumi-lang-nodejs="`ttl`" pulumi-lang-dotnet="`Ttl`" pulumi-lang-go="`ttl`" pulumi-lang-python="`ttl`" pulumi-lang-yaml="`ttl`" pulumi-lang-java="`ttl`">`ttl`</span> field.
+  /// set directly or via the `ttl` field.
   final Input<String>? expireTime;
 
   /// Text labels used for extra metadata and/or filtering
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The number of previous releases to retain on the channel for rollback or other
@@ -24,7 +24,7 @@ class HostingChannelArgs {
   /// Required. The ID of the site in which to create this channel.
   final Input<String> siteId;
 
-  /// Input only. A time-to-live for this channel. Sets <span pulumi-lang-nodejs="`expireTime`" pulumi-lang-dotnet="`ExpireTime`" pulumi-lang-go="`expireTime`" pulumi-lang-python="`expire_time`" pulumi-lang-yaml="`expireTime`" pulumi-lang-java="`expireTime`">`expire_time`</span> to the provided
+  /// Input only. A time-to-live for this channel. Sets `expire_time` to the provided
   /// duration past the time of the request. A duration in seconds with up to nine fractional
   /// digits, terminated by 's'. Example: "86400s" (one day).
   final Input<String>? ttl;

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart';
 
 /// The set of arguments for NetworkPeering.
 class NetworkPeeringArgs {
-  /// Whether to export the custom routes to the peer network. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to export the custom routes to the peer network. Defaults to `false`.
   final Input<bool>? exportCustomRoutes;
 
   /// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
   final Input<bool>? exportSubnetRoutesWithPublicIp;
 
-  /// Whether to import the custom routes from the peer network. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Whether to import the custom routes from the peer network. Defaults to `false`.
   final Input<bool>? importCustomRoutes;
 
   /// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.

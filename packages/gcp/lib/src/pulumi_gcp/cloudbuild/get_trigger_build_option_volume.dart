@@ -1,0 +1,3 @@
+library module_cloudbuild_get_trigger_build_option_volume;
+
+export 'get_trigger_build_option_volume/get_trigger_build_option_volume.dart';

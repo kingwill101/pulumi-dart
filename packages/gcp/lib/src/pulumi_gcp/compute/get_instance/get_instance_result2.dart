@@ -96,7 +96,7 @@ class GetInstanceResult2 {
   final Map<String, String> pulumiLabels;
   final List<GetInstanceReservationAffinity> reservationAffinities;
 
-  /// A list of<span pulumi-lang-nodejs=" selfLinks " pulumi-lang-dotnet=" SelfLinks " pulumi-lang-go=" selfLinks " pulumi-lang-python=" self_links " pulumi-lang-yaml=" selfLinks " pulumi-lang-java=" selfLinks "> self_links </span>to resource policies attached to the selected <span pulumi-lang-nodejs="`bootDisk`" pulumi-lang-dotnet="`BootDisk`" pulumi-lang-go="`bootDisk`" pulumi-lang-python="`boot_disk`" pulumi-lang-yaml="`bootDisk`" pulumi-lang-java="`bootDisk`">`boot_disk`</span>
+  /// A list of self_links to resource policies attached to the selected `boot_disk`
   final List<String> resourcePolicies;
 
   /// The scheduling strategy being used by the instance. Structure is documented below

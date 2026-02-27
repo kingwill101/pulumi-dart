@@ -1,0 +1,3 @@
+library module_discoveryengine_widget_config_ui_branding;
+
+export 'widget_config_ui_branding/widget_config_ui_branding.dart';

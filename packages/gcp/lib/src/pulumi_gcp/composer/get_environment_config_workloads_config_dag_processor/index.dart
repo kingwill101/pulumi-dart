@@ -1,3 +1,0 @@
-library module_composer_get_environment_config_workloads_config_dag_processor;
-
-export 'get_environment_config_workloads_config_dag_processor.dart';

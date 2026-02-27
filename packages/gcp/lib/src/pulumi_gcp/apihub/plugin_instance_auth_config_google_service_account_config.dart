@@ -1,0 +1,3 @@
+library module_apihub_plugin_instance_auth_config_google_service_account_config;
+
+export 'plugin_instance_auth_config_google_service_account_config/plugin_instance_auth_config_google_service_account_config.dart';

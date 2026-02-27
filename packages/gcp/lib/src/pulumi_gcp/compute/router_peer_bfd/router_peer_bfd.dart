@@ -19,7 +19,7 @@ class RouterPeerBfd {
   /// BFD declares that a peer is unavailable. If set, the value must
   /// be a value between 5 and 16.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedMd5AuthenticationKey"" pulumi-lang-dotnet=""NestedMd5AuthenticationKey"" pulumi-lang-go=""nestedMd5AuthenticationKey"" pulumi-lang-python=""nested_md5_authentication_key"" pulumi-lang-yaml=""nestedMd5AuthenticationKey"" pulumi-lang-java=""nestedMd5AuthenticationKey"">"nested_md5_authentication_key"</span>></a>The <span pulumi-lang-nodejs="`md5AuthenticationKey`" pulumi-lang-dotnet="`Md5AuthenticationKey`" pulumi-lang-go="`md5AuthenticationKey`" pulumi-lang-python="`md5_authentication_key`" pulumi-lang-yaml="`md5AuthenticationKey`" pulumi-lang-java="`md5AuthenticationKey`">`md5_authentication_key`</span> block supports:
+  /// <a name="nested_md5_authentication_key"></a>The `md5_authentication_key` block supports:
   final int? multiplier;
 
   /// The BFD session initialization mode for this BGP peer.

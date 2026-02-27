@@ -7,7 +7,7 @@ import '../security_policy_rule_rate_limit_options/security_policy_rule_rate_lim
 import '../security_policy_rule_redirect_options/security_policy_rule_redirect_options.dart';
 
 class SecurityPolicyRule {
-  /// Action to take when <span pulumi-lang-nodejs="`match`" pulumi-lang-dotnet="`Match`" pulumi-lang-go="`match`" pulumi-lang-python="`match`" pulumi-lang-yaml="`match`" pulumi-lang-java="`match`">`match`</span> matches the request. Valid values:
+  /// Action to take when `match` matches the request. Valid values:
   final String action;
 
   /// An optional description of this rule. Max size is 64.
@@ -17,13 +17,13 @@ class SecurityPolicyRule {
   final SecurityPolicyRuleHeaderAction? headerAction;
 
   /// A match condition that incoming traffic is evaluated against.
-  /// If it evaluates to true, the corresponding <span pulumi-lang-nodejs="`action`" pulumi-lang-dotnet="`Action`" pulumi-lang-go="`action`" pulumi-lang-python="`action`" pulumi-lang-yaml="`action`" pulumi-lang-java="`action`">`action`</span> is enforced. Structure is documented below.
+  /// If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
   final SecurityPolicyRuleMatch match;
 
   /// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
   final SecurityPolicyRulePreconfiguredWafConfig? preconfiguredWafConfig;
 
-  /// When set to true, the <span pulumi-lang-nodejs="`action`" pulumi-lang-dotnet="`Action`" pulumi-lang-go="`action`" pulumi-lang-python="`action`" pulumi-lang-yaml="`action`" pulumi-lang-java="`action`">`action`</span> specified above is not enforced.
+  /// When set to true, the `action` specified above is not enforced.
   /// Stackdriver logs for requests that trigger a preview action are annotated as such.
   final bool? preview;
 
@@ -31,10 +31,10 @@ class SecurityPolicyRule {
   /// Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
   final int priority;
 
-  /// Must be specified if the <span pulumi-lang-nodejs="`action`" pulumi-lang-dotnet="`Action`" pulumi-lang-go="`action`" pulumi-lang-python="`action`" pulumi-lang-yaml="`action`" pulumi-lang-java="`action`">`action`</span> is <span pulumi-lang-nodejs="`rateBasedBan`" pulumi-lang-dotnet="`RateBasedBan`" pulumi-lang-go="`rateBasedBan`" pulumi-lang-python="`rate_based_ban`" pulumi-lang-yaml="`rateBasedBan`" pulumi-lang-java="`rateBasedBan`">`rate_based_ban`</span> or <span pulumi-lang-nodejs="`throttle`" pulumi-lang-dotnet="`Throttle`" pulumi-lang-go="`throttle`" pulumi-lang-python="`throttle`" pulumi-lang-yaml="`throttle`" pulumi-lang-java="`throttle`">`throttle`</span>. Cannot be specified for other actions. Structure is documented below.
+  /// Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
   final SecurityPolicyRuleRateLimitOptions? rateLimitOptions;
 
-  /// Can be specified if the <span pulumi-lang-nodejs="`action`" pulumi-lang-dotnet="`Action`" pulumi-lang-go="`action`" pulumi-lang-python="`action`" pulumi-lang-yaml="`action`" pulumi-lang-java="`action`">`action`</span> is <span pulumi-lang-nodejs="`redirect`" pulumi-lang-dotnet="`Redirect`" pulumi-lang-go="`redirect`" pulumi-lang-python="`redirect`" pulumi-lang-yaml="`redirect`" pulumi-lang-java="`redirect`">`redirect`</span>. Cannot be specified for other actions. Structure is documented below.
+  /// Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
   final SecurityPolicyRuleRedirectOptions? redirectOptions;
 
   SecurityPolicyRule({

@@ -1,3 +1,0 @@
-library module_memorystore_instance_discovery_endpoint;
-
-export 'instance_discovery_endpoint.dart';

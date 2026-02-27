@@ -1,3 +1,0 @@
-library module_identityplatform_tenant_inbound_saml_config_sp_config_sp_certificate;
-
-export 'tenant_inbound_saml_config_sp_config_sp_certificate.dart';

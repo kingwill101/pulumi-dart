@@ -1,0 +1,3 @@
+library module_secretmanager_get_secrets_secret_replication_auto_customer_managed_encryption;
+
+export 'get_secrets_secret_replication_auto_customer_managed_encryption/get_secrets_secret_replication_auto_customer_managed_encryption.dart';

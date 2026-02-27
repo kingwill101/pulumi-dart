@@ -3,8 +3,8 @@ import 'posture_deployment_args.dart';
 
 /// Represents a deployment of a security posture on a resource. A posture contains user curated policy sets. A posture can
 /// be deployed on a project or on a folder or on an organization. To deploy a posture we need to populate the posture's name
-/// and its<span pulumi-lang-nodejs=" revisionId " pulumi-lang-dotnet=" RevisionId " pulumi-lang-go=" revisionId " pulumi-lang-python=" revision_id " pulumi-lang-yaml=" revisionId " pulumi-lang-java=" revisionId "> revision_id </span>in the posture deployment configuration. Every update to a deployed posture generates a new revision_id.
-/// Thus, the updated<span pulumi-lang-nodejs=" revisionId " pulumi-lang-dotnet=" RevisionId " pulumi-lang-go=" revisionId " pulumi-lang-python=" revision_id " pulumi-lang-yaml=" revisionId " pulumi-lang-java=" revisionId "> revision_id </span>should be used in the respective posture deployment's configuration to deploy that posture
+/// and its revision_id in the posture deployment configuration. Every update to a deployed posture generates a new revision_id.
+/// Thus, the updated revision_id should be used in the respective posture deployment's configuration to deploy that posture
 /// on a resource.
 ///
 ///
@@ -39,7 +39,7 @@ class PostureDeployment extends CustomResource {
 
   /// This is an output only optional field which will be filled in case when
   /// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-  /// It denotes the desired posture<span pulumi-lang-nodejs=" revisionId " pulumi-lang-dotnet=" RevisionId " pulumi-lang-go=" revisionId " pulumi-lang-python=" revision_id " pulumi-lang-yaml=" revisionId " pulumi-lang-java=" revisionId "> revision_id </span>to be deployed.
+  /// It denotes the desired posture revision_id to be deployed.
   late final Output<String> desiredPostureRevisionId;
 
   /// For Resource freshness validation (https://google.aip.dev/154)

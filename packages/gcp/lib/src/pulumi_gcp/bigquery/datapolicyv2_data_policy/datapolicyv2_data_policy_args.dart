@@ -34,10 +34,10 @@ class Datapolicyv2DataPolicyArgs {
   /// syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2) Only
   /// supports principal types users, groups, serviceaccounts, cloudidentity.
   /// This field is supported in V2 Data Policy only. In case of V1 data policies
-  /// (i.e. verion = 1 and<span pulumi-lang-nodejs=" policyTag " pulumi-lang-dotnet=" PolicyTag " pulumi-lang-go=" policyTag " pulumi-lang-python=" policy_tag " pulumi-lang-yaml=" policyTag " pulumi-lang-java=" policyTag "> policy_tag </span>is set), this field is not populated.
+  /// (i.e. verion = 1 and policy_tag is set), this field is not populated.
   final Input<List<String>>? grantees;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> location;
 
   /// The ID of the project in which the resource belongs.

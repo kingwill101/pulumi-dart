@@ -1,0 +1,3 @@
+library module_cloudfunctionsv2_get_function_service_config_direct_vpc_network_interface;
+
+export 'get_function_service_config_direct_vpc_network_interface/get_function_service_config_direct_vpc_network_interface.dart';

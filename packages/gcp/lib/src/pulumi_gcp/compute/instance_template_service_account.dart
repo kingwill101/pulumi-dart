@@ -1,0 +1,3 @@
+library module_compute_instance_template_service_account;
+
+export 'instance_template_service_account/instance_template_service_account.dart';

@@ -1,0 +1,3 @@
+library module_cloudfunctions_function_secret_environment_variable;
+
+export 'function_secret_environment_variable/function_secret_environment_variable.dart';

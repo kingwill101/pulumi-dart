@@ -20,7 +20,7 @@ class AiEndpointWithModelGardenDeploymentArgs {
   /// Format: Hugging Face model ID like `google/gemma-2-2b-it`.
   final Input<String>? huggingFaceModelId;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`location`" pulumi-lang-dotnet="`Location`" pulumi-lang-go="`location`" pulumi-lang-python="`location`" pulumi-lang-yaml="`location`" pulumi-lang-java="`location`">`location`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> location;
 
   /// The model config to use for the deployment.

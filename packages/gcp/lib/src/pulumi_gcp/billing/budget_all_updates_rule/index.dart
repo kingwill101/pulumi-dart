@@ -1,3 +1,0 @@
-library module_billing_budget_all_updates_rule;
-
-export 'budget_all_updates_rule.dart';

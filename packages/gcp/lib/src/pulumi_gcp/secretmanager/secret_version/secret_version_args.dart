@@ -34,7 +34,7 @@ class SecretVersionArgs {
   /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   /// **Note**: This property is write-only and will not be read from the API.
   ///
-  /// > **Note:** One of <span pulumi-lang-nodejs="`secretData`" pulumi-lang-dotnet="`SecretData`" pulumi-lang-go="`secretData`" pulumi-lang-python="`secret_data`" pulumi-lang-yaml="`secretData`" pulumi-lang-java="`secretData`">`secret_data`</span> or <span pulumi-lang-nodejs="`secretDataWo`" pulumi-lang-dotnet="`SecretDataWo`" pulumi-lang-go="`secretDataWo`" pulumi-lang-python="`secret_data_wo`" pulumi-lang-yaml="`secretDataWo`" pulumi-lang-java="`secretDataWo`">`secret_data_wo`</span> can only be set.
+  /// > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
   final Input<String>? secretDataWo;
 
   /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)

@@ -12,7 +12,7 @@ class VPNTunnelCipherSuite {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedCipherSuitePhase1"" pulumi-lang-dotnet=""NestedCipherSuitePhase1"" pulumi-lang-go=""nestedCipherSuitePhase1"" pulumi-lang-python=""nested_cipher_suite_phase1"" pulumi-lang-yaml=""nestedCipherSuitePhase1"" pulumi-lang-java=""nestedCipherSuitePhase1"">"nested_cipher_suite_phase1"</span>></a>The <span pulumi-lang-nodejs="`phase1`" pulumi-lang-dotnet="`Phase1`" pulumi-lang-go="`phase1`" pulumi-lang-python="`phase1`" pulumi-lang-yaml="`phase1`" pulumi-lang-java="`phase1`">`phase1`</span> block supports:
+  /// <a name="nested_cipher_suite_phase1"></a>The `phase1` block supports:
   final VPNTunnelCipherSuitePhase2? phase2;
 
   VPNTunnelCipherSuite({

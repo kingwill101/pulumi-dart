@@ -28,7 +28,7 @@ class AuthorityArgs {
   final Input<String>? gcsBucket;
 
   /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
-  /// Use with care. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Use with care. Defaults to `false`.
   final Input<bool>? ignoreActiveCertificatesOnDeletion;
 
   /// Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
@@ -42,7 +42,7 @@ class AuthorityArgs {
   /// "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
@@ -67,7 +67,7 @@ class AuthorityArgs {
   /// If this flag is set, the Certificate Authority will be deleted as soon as
   /// possible without a 30-day grace period where undeletion would have been
   /// allowed. If you proceed, there will be no way to recover this CA.
-  /// Use with care. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>.
+  /// Use with care. Defaults to `false`.
   final Input<bool>? skipGracePeriod;
 
   /// If this is a subordinate CertificateAuthority, this field will be set

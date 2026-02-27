@@ -1,3 +1,0 @@
-library module_container_cluster_node_pool_auto_config_network_tags;
-
-export 'cluster_node_pool_auto_config_network_tags.dart';

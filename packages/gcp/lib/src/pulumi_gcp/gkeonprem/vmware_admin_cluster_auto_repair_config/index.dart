@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_admin_cluster_auto_repair_config;
-
-export 'vmware_admin_cluster_auto_repair_config.dart';

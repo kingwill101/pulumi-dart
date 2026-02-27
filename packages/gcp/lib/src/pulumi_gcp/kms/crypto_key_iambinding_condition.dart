@@ -1,0 +1,3 @@
+library module_kms_crypto_key_iambinding_condition;
+
+export 'crypto_key_iambinding_condition/crypto_key_iambinding_condition.dart';

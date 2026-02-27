@@ -1,3 +1,0 @@
-library module_dataproc_cluster_virtual_cluster_config_kubernetes_cluster_config_kubernetes_software_config;
-
-export 'cluster_virtual_cluster_config_kubernetes_cluster_config_kubernetes_software_config.dart';

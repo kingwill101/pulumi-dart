@@ -1,3 +1,3 @@
 library pulumi_gcp_diagflow;
 
-export 'package:pulumi_gcp/src/pulumi_gcp/diagflow/index.dart';
+export 'package:pulumi_gcp/src/pulumi_gcp/diagflow.dart';

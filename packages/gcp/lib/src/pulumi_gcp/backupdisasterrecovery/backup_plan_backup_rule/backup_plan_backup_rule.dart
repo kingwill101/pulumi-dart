@@ -6,7 +6,7 @@ class BackupPlanBackupRule {
   /// Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
   final int backupRetentionDays;
 
-  /// The unique ID of this `BackupRule`. The <span pulumi-lang-nodejs="`ruleId`" pulumi-lang-dotnet="`RuleId`" pulumi-lang-go="`ruleId`" pulumi-lang-python="`rule_id`" pulumi-lang-yaml="`ruleId`" pulumi-lang-java="`ruleId`">`rule_id`</span> is unique per `BackupPlan`.
+  /// The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
   final String ruleId;
 
   /// StandardSchedule defines a schedule that runs within the confines of a defined window of days.

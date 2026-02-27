@@ -1,3 +1,0 @@
-library module_cloudrunv2_get_job_template_template_volume_secret;
-
-export 'get_job_template_template_volume_secret.dart';

@@ -1,3 +1,0 @@
-library module_osconfig_guest_policies_package_repository_goo;
-
-export 'guest_policies_package_repository_goo.dart';

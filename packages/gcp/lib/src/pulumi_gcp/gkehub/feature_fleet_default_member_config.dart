@@ -1,0 +1,3 @@
+library module_gkehub_feature_fleet_default_member_config;
+
+export 'feature_fleet_default_member_config/feature_fleet_default_member_config.dart';

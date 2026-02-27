@@ -1,0 +1,3 @@
+library module_composer_environment_config_master_authorized_networks_config;
+
+export 'environment_config_master_authorized_networks_config/environment_config_master_authorized_networks_config.dart';

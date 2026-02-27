@@ -3,7 +3,7 @@
 class VMwareClusterNetworkConfigHostConfig {
   /// DNS search domains.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedNetworkConfigControlPlaneV2Config"" pulumi-lang-dotnet=""NestedNetworkConfigControlPlaneV2Config"" pulumi-lang-go=""nestedNetworkConfigControlPlaneV2Config"" pulumi-lang-python=""nested_network_config_control_plane_v2_config"" pulumi-lang-yaml=""nestedNetworkConfigControlPlaneV2Config"" pulumi-lang-java=""nestedNetworkConfigControlPlaneV2Config"">"nested_network_config_control_plane_v2_config"</span>></a>The <span pulumi-lang-nodejs="`controlPlaneV2Config`" pulumi-lang-dotnet="`ControlPlaneV2Config`" pulumi-lang-go="`controlPlaneV2Config`" pulumi-lang-python="`control_plane_v2_config`" pulumi-lang-yaml="`controlPlaneV2Config`" pulumi-lang-java="`controlPlaneV2Config`">`control_plane_v2_config`</span> block supports:
+  /// <a name="nested_network_config_control_plane_v2_config"></a>The `control_plane_v2_config` block supports:
   final List<String>? dnsSearchDomains;
 
   /// DNS servers.

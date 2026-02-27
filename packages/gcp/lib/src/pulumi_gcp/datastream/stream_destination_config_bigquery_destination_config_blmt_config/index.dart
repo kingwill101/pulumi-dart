@@ -1,3 +1,0 @@
-library module_datastream_stream_destination_config_bigquery_destination_config_blmt_config;
-
-export 'stream_destination_config_bigquery_destination_config_blmt_config.dart';

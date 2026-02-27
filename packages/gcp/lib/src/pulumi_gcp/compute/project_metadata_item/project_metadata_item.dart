@@ -2,105 +2,13 @@ import 'package:pulumi/pulumi.dart';
 import 'project_metadata_item_args.dart';
 
 /// Manages a single key/value pair on metadata common to all instances for
-/// a project in GCE. Using <span pulumi-lang-nodejs="`gcp.compute.ProjectMetadataItem`" pulumi-lang-dotnet="`gcp.compute.ProjectMetadataItem`" pulumi-lang-go="`compute.ProjectMetadataItem`" pulumi-lang-python="`compute.ProjectMetadataItem`" pulumi-lang-yaml="`gcp.compute.ProjectMetadataItem`" pulumi-lang-java="`gcp.compute.ProjectMetadataItem`">`gcp.compute.ProjectMetadataItem`</span> lets you
+/// a project in GCE. Using `gcp.compute.ProjectMetadataItem` lets you
 /// manage a single key/value setting in the provider rather than the entire
 /// project metadata map.
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = new gcp.compute.ProjectMetadataItem("default", {
-/// key: "my_metadata",
-/// value: "my_value",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default = gcp.compute.ProjectMetadataItem("default",
-/// key="my_metadata",
-/// value="my_value")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var @default = new Gcp.Compute.ProjectMetadataItem("default", new()
-/// {
-/// Key = "my_metadata",
-/// Value = "my_value",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := compute.NewProjectMetadataItem(ctx, "default", &compute.ProjectMetadataItemArgs{
-/// Key:   pulumi.String("my_metadata"),
-/// Value: pulumi.String("my_value"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.ProjectMetadataItem;
-/// import com.pulumi.gcp.compute.ProjectMetadataItemArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var default_ = new ProjectMetadataItem("default", ProjectMetadataItemArgs.builder()
-/// .key("my_metadata")
-/// .value("my_value")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// default:
-/// type: gcp:compute:ProjectMetadataItem
-/// properties:
-/// key: my_metadata
-/// value: my_value
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///

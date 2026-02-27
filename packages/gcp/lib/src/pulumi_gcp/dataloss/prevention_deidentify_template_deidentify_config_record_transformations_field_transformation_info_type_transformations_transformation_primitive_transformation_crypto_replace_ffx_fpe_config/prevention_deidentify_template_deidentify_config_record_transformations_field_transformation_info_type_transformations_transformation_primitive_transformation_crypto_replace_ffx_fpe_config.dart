@@ -5,7 +5,7 @@ import '../prevention_deidentify_template_deidentify_config_record_transformatio
 import '../prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_info_type_transformations_transformation_primitive_transformation_crypto_replace_ffx_fpe_config_surrogate_info_type/prevention_deidentify_template_deidentify_config_record_transformations_field_transformation_info_type_transformations_transformation_primitive_transformation_crypto_replace_ffx_fpe_config_surrogate_info_type.dart';
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig {
-  /// Common alphabets. Only one of this, <span pulumi-lang-nodejs="`customAlphabet`" pulumi-lang-dotnet="`CustomAlphabet`" pulumi-lang-go="`customAlphabet`" pulumi-lang-python="`custom_alphabet`" pulumi-lang-yaml="`customAlphabet`" pulumi-lang-java="`customAlphabet`">`custom_alphabet`</span> or <span pulumi-lang-nodejs="`radix`" pulumi-lang-dotnet="`Radix`" pulumi-lang-go="`radix`" pulumi-lang-python="`radix`" pulumi-lang-yaml="`radix`" pulumi-lang-java="`radix`">`radix`</span> must be specified.
+  /// Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
   /// Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
   final String? commonAlphabet;
 
@@ -28,10 +28,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
       cryptoKey;
 
   /// This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-  /// ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, <span pulumi-lang-nodejs="`commonAlphabet`" pulumi-lang-dotnet="`CommonAlphabet`" pulumi-lang-go="`commonAlphabet`" pulumi-lang-python="`common_alphabet`" pulumi-lang-yaml="`commonAlphabet`" pulumi-lang-java="`commonAlphabet`">`common_alphabet`</span> or <span pulumi-lang-nodejs="`radix`" pulumi-lang-dotnet="`Radix`" pulumi-lang-go="`radix`" pulumi-lang-python="`radix`" pulumi-lang-yaml="`radix`" pulumi-lang-java="`radix`">`radix`</span> must be specified.
+  /// ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
   final String? customAlphabet;
 
-  /// The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, <span pulumi-lang-nodejs="`customAlphabet`" pulumi-lang-dotnet="`CustomAlphabet`" pulumi-lang-go="`customAlphabet`" pulumi-lang-python="`custom_alphabet`" pulumi-lang-yaml="`customAlphabet`" pulumi-lang-java="`customAlphabet`">`custom_alphabet`</span> or <span pulumi-lang-nodejs="`commonAlphabet`" pulumi-lang-dotnet="`CommonAlphabet`" pulumi-lang-go="`commonAlphabet`" pulumi-lang-python="`common_alphabet`" pulumi-lang-yaml="`commonAlphabet`" pulumi-lang-java="`commonAlphabet`">`common_alphabet`</span> must be specified.
+  /// The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
   final int? radix;
 
   /// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate

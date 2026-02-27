@@ -1,3 +1,0 @@
-library module_compute_region_resize_request_status;
-
-export 'region_resize_request_status.dart';

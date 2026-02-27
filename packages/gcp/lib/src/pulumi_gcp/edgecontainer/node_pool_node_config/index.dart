@@ -1,3 +1,0 @@
-library module_edgecontainer_node_pool_node_config;
-
-export 'node_pool_node_config2.dart';

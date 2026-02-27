@@ -13,7 +13,7 @@ class ApiConfigIamBindingArgs {
   final Input<String> apiConfig;
   final Input<ApiConfigIamBindingCondition>? condition;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -32,7 +32,7 @@ class ApiConfigIamBindingArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.apigateway.ApiConfigIamBinding`" pulumi-lang-dotnet="`gcp.apigateway.ApiConfigIamBinding`" pulumi-lang-go="`apigateway.ApiConfigIamBinding`" pulumi-lang-python="`apigateway.ApiConfigIamBinding`" pulumi-lang-yaml="`gcp.apigateway.ApiConfigIamBinding`" pulumi-lang-java="`gcp.apigateway.ApiConfigIamBinding`">`gcp.apigateway.ApiConfigIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.apigateway.ApiConfigIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

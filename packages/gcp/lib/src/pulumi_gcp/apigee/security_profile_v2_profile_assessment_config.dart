@@ -1,0 +1,3 @@
+library module_apigee_security_profile_v2_profile_assessment_config;
+
+export 'security_profile_v2_profile_assessment_config/security_profile_v2_profile_assessment_config.dart';

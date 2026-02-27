@@ -1,3 +1,0 @@
-library module_kms_key_ring_import_job_attestation;
-
-export 'key_ring_import_job_attestation.dart';

@@ -16,7 +16,7 @@ class ServicePerimeterSpecIngressPolicyIngressTo {
   /// a resource in this list. If `*` is specified for resources,
   /// then this `IngressTo` rule will authorize access to all
   /// resources inside the perimeter, provided that the request
-  /// also matches the <span pulumi-lang-nodejs="`operations`" pulumi-lang-dotnet="`Operations`" pulumi-lang-go="`operations`" pulumi-lang-python="`operations`" pulumi-lang-yaml="`operations`" pulumi-lang-java="`operations`">`operations`</span> field.
+  /// also matches the `operations` field.
   final List<String>? resources;
 
   /// A list of IAM roles that represent the set of operations that the sources

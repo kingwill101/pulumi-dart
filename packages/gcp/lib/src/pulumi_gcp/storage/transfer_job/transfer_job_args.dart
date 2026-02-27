@@ -13,13 +13,13 @@ class TransferJobArgs {
   /// Unique description to identify the Transfer Job.
   final Input<String> description;
 
-  /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either <span pulumi-lang-nodejs="`eventStream`" pulumi-lang-dotnet="`EventStream`" pulumi-lang-go="`eventStream`" pulumi-lang-python="`event_stream`" pulumi-lang-yaml="`eventStream`" pulumi-lang-java="`eventStream`">`event_stream`</span> or <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`">`schedule`</span> must be set.
+  /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
   final Input<TransferJobEventStream>? eventStream;
 
   /// Logging configuration. Structure documented below.
   final Input<TransferJobLoggingConfig>? loggingConfig;
 
-  /// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> is a numeric value.
+  /// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
   final Input<String>? name;
 
   /// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
@@ -29,12 +29,12 @@ class TransferJobArgs {
   /// is not provided, the provider project is used.
   final Input<String>? project;
 
-  /// Replication specification. Structure documented below. User should not configure <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`">`schedule`</span>, <span pulumi-lang-nodejs="`eventStream`" pulumi-lang-dotnet="`EventStream`" pulumi-lang-go="`eventStream`" pulumi-lang-python="`event_stream`" pulumi-lang-yaml="`eventStream`" pulumi-lang-java="`eventStream`">`event_stream`</span> with this argument. One of <span pulumi-lang-nodejs="`transferSpec`" pulumi-lang-dotnet="`TransferSpec`" pulumi-lang-go="`transferSpec`" pulumi-lang-python="`transfer_spec`" pulumi-lang-yaml="`transferSpec`" pulumi-lang-java="`transferSpec`">`transfer_spec`</span>, or <span pulumi-lang-nodejs="`replicationSpec`" pulumi-lang-dotnet="`ReplicationSpec`" pulumi-lang-go="`replicationSpec`" pulumi-lang-python="`replication_spec`" pulumi-lang-yaml="`replicationSpec`" pulumi-lang-java="`replicationSpec`">`replication_spec`</span> must be specified.
+  /// Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
   ///
   /// - - -
   final Input<TransferJobReplicationSpec>? replicationSpec;
 
-  /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either <span pulumi-lang-nodejs="`schedule`" pulumi-lang-dotnet="`Schedule`" pulumi-lang-go="`schedule`" pulumi-lang-python="`schedule`" pulumi-lang-yaml="`schedule`" pulumi-lang-java="`schedule`">`schedule`</span> or <span pulumi-lang-nodejs="`eventStream`" pulumi-lang-dotnet="`EventStream`" pulumi-lang-go="`eventStream`" pulumi-lang-python="`event_stream`" pulumi-lang-yaml="`eventStream`" pulumi-lang-java="`eventStream`">`event_stream`</span> must be set.
+  /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
   final Input<TransferJobSchedule>? schedule;
 
   /// The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
@@ -43,7 +43,7 @@ class TransferJobArgs {
   /// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
   final Input<String>? status;
 
-  /// Transfer specification. Structure documented below. One of <span pulumi-lang-nodejs="`transferSpec`" pulumi-lang-dotnet="`TransferSpec`" pulumi-lang-go="`transferSpec`" pulumi-lang-python="`transfer_spec`" pulumi-lang-yaml="`transferSpec`" pulumi-lang-java="`transferSpec`">`transfer_spec`</span>, or <span pulumi-lang-nodejs="`replicationSpec`" pulumi-lang-dotnet="`ReplicationSpec`" pulumi-lang-go="`replicationSpec`" pulumi-lang-python="`replication_spec`" pulumi-lang-yaml="`replicationSpec`" pulumi-lang-java="`replicationSpec`">`replication_spec`</span> can be specified.
+  /// Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
   final Input<TransferJobTransferSpec>? transferSpec;
 
   TransferJobArgs({

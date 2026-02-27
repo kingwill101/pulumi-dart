@@ -1,3 +1,0 @@
-library module_logging_metric_metric_descriptor_label;
-
-export 'metric_metric_descriptor_label.dart';

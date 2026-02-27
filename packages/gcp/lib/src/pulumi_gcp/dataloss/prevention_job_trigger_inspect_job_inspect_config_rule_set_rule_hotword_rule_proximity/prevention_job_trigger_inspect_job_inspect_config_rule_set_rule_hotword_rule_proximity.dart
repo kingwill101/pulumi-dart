@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity {
-  /// Number of characters after the finding to consider. Either this or<span pulumi-lang-nodejs=" windowBefore " pulumi-lang-dotnet=" WindowBefore " pulumi-lang-go=" windowBefore " pulumi-lang-python=" window_before " pulumi-lang-yaml=" windowBefore " pulumi-lang-java=" windowBefore "> window_before </span>must be specified
+  /// Number of characters after the finding to consider. Either this or window_before must be specified
   final int? windowAfter;
 
-  /// Number of characters before the finding to consider. Either this or<span pulumi-lang-nodejs=" windowAfter " pulumi-lang-dotnet=" WindowAfter " pulumi-lang-go=" windowAfter " pulumi-lang-python=" window_after " pulumi-lang-yaml=" windowAfter " pulumi-lang-java=" windowAfter "> window_after </span>must be specified
+  /// Number of characters before the finding to consider. Either this or window_after must be specified
   final int? windowBefore;
 
   PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity({

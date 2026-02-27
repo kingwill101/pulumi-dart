@@ -28,7 +28,7 @@ class SubnetworkArgs {
   /// Provide this property when you create the subnetwork. For example,
   /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
   /// non-overlapping within a network. Only IPv4 is supported.
-  /// Field is optional when <span pulumi-lang-nodejs="`reservedInternalRange`" pulumi-lang-dotnet="`ReservedInternalRange`" pulumi-lang-go="`reservedInternalRange`" pulumi-lang-python="`reserved_internal_range`" pulumi-lang-yaml="`reservedInternalRange`" pulumi-lang-java="`reservedInternalRange`">`reserved_internal_range`</span> is defined, otherwise required.
+  /// Field is optional when `reserved_internal_range` is defined, otherwise required.
   final Input<String>? ipCidrRange;
 
   /// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
@@ -43,14 +43,14 @@ class SubnetworkArgs {
   final Input<String>? ipCollection;
 
   /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
-  /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the<span pulumi-lang-nodejs=" ipv6Type " pulumi-lang-dotnet=" Ipv6Type " pulumi-lang-go=" ipv6Type " pulumi-lang-python=" ipv6_type " pulumi-lang-yaml=" ipv6Type " pulumi-lang-java=" ipv6Type "> ipv6_type </span>is EXTERNAL then this subnet
+  /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
   /// cannot enable direct path.
   /// Possible values are: `EXTERNAL`, `INTERNAL`.
   final Input<String>? ipv6AccessType;
 
   /// This field denotes the VPC flow logging options for this subnetwork. If
   /// logging is enabled, logs are exported to Cloud Logging. Flow logging
-  /// isn't supported if the subnet <span pulumi-lang-nodejs="`purpose`" pulumi-lang-dotnet="`Purpose`" pulumi-lang-go="`purpose`" pulumi-lang-python="`purpose`" pulumi-lang-yaml="`purpose`" pulumi-lang-java="`purpose`">`purpose`</span> field is set to subnetwork is
+  /// isn't supported if the subnet `purpose` field is set to subnetwork is
   /// `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
   /// Structure is documented below.
   final Input<SubnetworkLogConfig>? logConfig;
@@ -105,7 +105,7 @@ class SubnetworkArgs {
   final Input<String>? resolveSubnetMask;
 
   /// The role of subnetwork.
-  /// Currently, this field is only used when <span pulumi-lang-nodejs="`purpose`" pulumi-lang-dotnet="`Purpose`" pulumi-lang-go="`purpose`" pulumi-lang-python="`purpose`" pulumi-lang-yaml="`purpose`" pulumi-lang-java="`purpose`">`purpose`</span> is `REGIONAL_MANAGED_PROXY`.
+  /// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
   /// The value can be set to `ACTIVE` or `BACKUP`.
   /// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
   /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
@@ -120,9 +120,9 @@ class SubnetworkArgs {
   final Input<List<SubnetworkSecondaryIpRange>>? secondaryIpRanges;
 
   /// Controls the removal behavior of secondary_ip_range.
-  /// When false, removing<span pulumi-lang-nodejs=" secondaryIpRange " pulumi-lang-dotnet=" SecondaryIpRange " pulumi-lang-go=" secondaryIpRange " pulumi-lang-python=" secondary_ip_range " pulumi-lang-yaml=" secondaryIpRange " pulumi-lang-java=" secondaryIpRange "> secondary_ip_range </span>from config will not produce a diff as
+  /// When false, removing secondary_ip_range from config will not produce a diff as
   /// the provider will default to the API's value.
-  /// When true, the provider will treat removing<span pulumi-lang-nodejs=" secondaryIpRange " pulumi-lang-dotnet=" SecondaryIpRange " pulumi-lang-go=" secondaryIpRange " pulumi-lang-python=" secondary_ip_range " pulumi-lang-yaml=" secondaryIpRange " pulumi-lang-java=" secondaryIpRange "> secondary_ip_range </span>as sending an
+  /// When true, the provider will treat removing secondary_ip_range as sending an
   /// empty list of secondary IP ranges to the API.
   /// Defaults to false.
   final Input<bool>? sendSecondaryIpRangeIfEmpty;

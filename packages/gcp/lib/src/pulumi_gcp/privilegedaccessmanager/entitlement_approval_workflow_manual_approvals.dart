@@ -1,0 +1,3 @@
+library module_privilegedaccessmanager_entitlement_approval_workflow_manual_approvals;
+
+export 'entitlement_approval_workflow_manual_approvals/entitlement_approval_workflow_manual_approvals.dart';

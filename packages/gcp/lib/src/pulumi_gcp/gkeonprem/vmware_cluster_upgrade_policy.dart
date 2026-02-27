@@ -1,0 +1,3 @@
+library module_gkeonprem_vmware_cluster_upgrade_policy;
+
+export 'vmware_cluster_upgrade_policy/vmware_cluster_upgrade_policy.dart';

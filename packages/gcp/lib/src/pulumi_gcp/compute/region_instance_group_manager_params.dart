@@ -1,0 +1,3 @@
+library module_compute_region_instance_group_manager_params;
+
+export 'region_instance_group_manager_params/region_instance_group_manager_params.dart';

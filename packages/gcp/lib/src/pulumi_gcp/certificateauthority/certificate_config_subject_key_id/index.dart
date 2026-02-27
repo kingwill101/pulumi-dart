@@ -1,3 +1,0 @@
-library module_certificateauthority_certificate_config_subject_key_id;
-
-export 'certificate_config_subject_key_id.dart';

@@ -15,7 +15,7 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
   /// Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
   final String minCpuPlatform;
 
-  /// The name of the instance group. Either <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span> must be provided.
+  /// The name of the instance group. Either `name` or `self_link` must be provided.
   final String name;
 
   /// Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.

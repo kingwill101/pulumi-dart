@@ -1,3 +1,0 @@
-library module_cloudbuild_trigger_build_options;
-
-export 'trigger_build_options.dart';

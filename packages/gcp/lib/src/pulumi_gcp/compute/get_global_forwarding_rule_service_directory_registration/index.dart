@@ -1,3 +1,0 @@
-library module_compute_get_global_forwarding_rule_service_directory_registration;
-
-export 'get_global_forwarding_rule_service_directory_registration.dart';

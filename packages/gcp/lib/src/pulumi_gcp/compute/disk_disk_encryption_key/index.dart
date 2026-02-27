@@ -1,3 +1,0 @@
-library module_compute_disk_disk_encryption_key;
-
-export 'disk_disk_encryption_key.dart';

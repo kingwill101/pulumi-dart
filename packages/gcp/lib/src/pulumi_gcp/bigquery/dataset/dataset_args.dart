@@ -63,7 +63,7 @@ class DatasetArgs {
   /// expiration time indicated by this property.
   final Input<int>? defaultTableExpirationMs;
 
-  /// If set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, delete all the tables in the
+  /// If set to `true`, delete all the tables in the
   /// dataset when destroying the resource; otherwise,
   /// destroying the resource will fail if tables are present.
   final Input<bool>? deleteContentsOnDestroy;
@@ -93,7 +93,7 @@ class DatasetArgs {
   /// organize and group your datasets.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The geographic location where the dataset should reside.

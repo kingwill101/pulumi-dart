@@ -1,0 +1,3 @@
+library module_dns_response_policy_rule_local_data_local_data;
+
+export 'response_policy_rule_local_data_local_data/response_policy_rule_local_data_local_data.dart';

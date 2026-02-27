@@ -1,0 +1,3 @@
+library module_dataplex_datascan_data_discovery_spec_storage_config_json_options;
+
+export 'datascan_data_discovery_spec_storage_config_json_options/datascan_data_discovery_spec_storage_config_json_options.dart';

@@ -3,7 +3,7 @@
 import '../job_config_mux_stream_segment_settings/job_config_mux_stream_segment_settings.dart';
 
 class JobConfigMuxStream {
-  /// The container format. The default is <span pulumi-lang-nodejs="`mp4`" pulumi-lang-dotnet="`Mp4`" pulumi-lang-go="`mp4`" pulumi-lang-python="`mp4`" pulumi-lang-yaml="`mp4`" pulumi-lang-java="`mp4`">`mp4`</span>.
+  /// The container format. The default is `mp4`.
   final String? container;
 
   /// List of ElementaryStream.key values multiplexed in this stream.

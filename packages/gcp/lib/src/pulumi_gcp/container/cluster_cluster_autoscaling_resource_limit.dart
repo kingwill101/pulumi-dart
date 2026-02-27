@@ -1,0 +1,3 @@
+library module_container_cluster_cluster_autoscaling_resource_limit;
+
+export 'cluster_cluster_autoscaling_resource_limit/cluster_cluster_autoscaling_resource_limit.dart';

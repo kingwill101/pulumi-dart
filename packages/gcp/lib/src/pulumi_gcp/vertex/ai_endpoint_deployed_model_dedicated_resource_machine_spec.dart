@@ -1,0 +1,3 @@
+library module_vertex_ai_endpoint_deployed_model_dedicated_resource_machine_spec;
+
+export 'ai_endpoint_deployed_model_dedicated_resource_machine_spec/ai_endpoint_deployed_model_dedicated_resource_machine_spec.dart';

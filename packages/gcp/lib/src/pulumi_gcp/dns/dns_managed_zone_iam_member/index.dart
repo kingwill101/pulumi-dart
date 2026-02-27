@@ -1,4 +1,0 @@
-library module_dns_dns_managed_zone_iam_member;
-
-export 'dns_managed_zone_iam_member.dart';
-export 'dns_managed_zone_iam_member_args.dart';

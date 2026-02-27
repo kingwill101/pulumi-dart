@@ -9,7 +9,7 @@ class IAMMemberArgs3 {
   /// Structure is documented below.
   final Input<IAMMemberCondition3>? condition;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.<span pulumi-lang-nodejs=" gcp.projects.IAMBinding " pulumi-lang-dotnet=" gcp.projects.IAMBinding " pulumi-lang-go=" projects.IAMBinding " pulumi-lang-python=" projects.IAMBinding " pulumi-lang-yaml=" gcp.projects.IAMBinding " pulumi-lang-java=" gcp.projects.IAMBinding "> gcp.projects.IAMBinding </span>expects <span pulumi-lang-nodejs="`members`" pulumi-lang-dotnet="`Members`" pulumi-lang-go="`members`" pulumi-lang-python="`members`" pulumi-lang-yaml="`members`" pulumi-lang-java="`members`">`members`</span> field while<span pulumi-lang-nodejs=" gcp.projects.IAMMember " pulumi-lang-dotnet=" gcp.projects.IAMMember " pulumi-lang-go=" projects.IAMMember " pulumi-lang-python=" projects.IAMMember " pulumi-lang-yaml=" gcp.projects.IAMMember " pulumi-lang-java=" gcp.projects.IAMMember "> gcp.projects.IAMMember </span>expects <span pulumi-lang-nodejs="`member`" pulumi-lang-dotnet="`Member`" pulumi-lang-go="`member`" pulumi-lang-python="`member`" pulumi-lang-yaml="`member`" pulumi-lang-java="`member`">`member`</span> field.
+  /// Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
@@ -22,7 +22,7 @@ class IAMMemberArgs3 {
   final Input<String> project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.projects.IAMBinding`" pulumi-lang-dotnet="`gcp.projects.IAMBinding`" pulumi-lang-go="`projects.IAMBinding`" pulumi-lang-python="`projects.IAMBinding`" pulumi-lang-yaml="`gcp.projects.IAMBinding`" pulumi-lang-java="`gcp.projects.IAMBinding`">`gcp.projects.IAMBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

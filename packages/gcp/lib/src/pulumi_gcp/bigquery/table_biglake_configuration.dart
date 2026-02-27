@@ -1,0 +1,3 @@
+library module_bigquery_table_biglake_configuration;
+
+export 'table_biglake_configuration/table_biglake_configuration.dart';

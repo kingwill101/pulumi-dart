@@ -22,7 +22,7 @@ class AuthzExtensionArgs {
   /// Set of labels associated with the AuthzExtension resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
@@ -33,7 +33,7 @@ class AuthzExtensionArgs {
   /// The location of the resource.
   final Input<String> location;
 
-  /// The metadata provided here is included as part of the<span pulumi-lang-nodejs=" metadataContext " pulumi-lang-dotnet=" MetadataContext " pulumi-lang-go=" metadataContext " pulumi-lang-python=" metadata_context " pulumi-lang-yaml=" metadataContext " pulumi-lang-java=" metadataContext "> metadata_context </span>(of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
+  /// The metadata provided here is included as part of the metadata_context (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
   /// {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
   final Input<Map<String, String>>? metadata;
 

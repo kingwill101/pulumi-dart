@@ -31,10 +31,10 @@ class GetInstanceNetworkInterface {
   /// MAC address assigned to this network interface.
   final String macAddress;
 
-  /// The name of the instance. One of <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span> must be provided.
+  /// The name of the instance. One of `name` or `self_link` must be provided.
   final String name;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the network attached to this interface.
+  /// The name or self_link of the network attached to this interface.
   final String network;
 
   /// The URL of the network attachment to this interface.
@@ -55,7 +55,7 @@ class GetInstanceNetworkInterface {
   /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
   final String stackType;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the subnetwork attached to this interface.
+  /// The name or self_link of the subnetwork attached to this interface.
   final String subnetwork;
 
   /// The project in which the subnetwork belongs.

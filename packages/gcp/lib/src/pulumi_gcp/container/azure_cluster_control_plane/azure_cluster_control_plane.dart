@@ -18,7 +18,7 @@ class AzureClusterControlPlane {
   /// Proxy configuration for outbound HTTP(S) traffic.
   final AzureClusterControlPlaneProxyConfig? proxyConfig;
 
-  /// Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If<span pulumi-lang-nodejs=" replicaPlacements " pulumi-lang-dotnet=" ReplicaPlacements " pulumi-lang-go=" replicaPlacements " pulumi-lang-python=" replica_placements " pulumi-lang-yaml=" replicaPlacements " pulumi-lang-java=" replicaPlacements "> replica_placements </span>is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+  /// Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
   final List<AzureClusterControlPlaneReplicaPlacement>? replicaPlacements;
 
   /// Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.

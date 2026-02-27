@@ -36,7 +36,7 @@ class StoragePoolArgs2 {
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
@@ -61,7 +61,7 @@ class StoragePoolArgs2 {
   /// Possible values are: `QOS_TYPE_UNSPECIFIED`, `AUTO`, `MANUAL`.
   final Input<String>? qosType;
 
-  /// Specifies the replica zone for regional Flex pools. <span pulumi-lang-nodejs="`zone`" pulumi-lang-dotnet="`Zone`" pulumi-lang-go="`zone`" pulumi-lang-python="`zone`" pulumi-lang-yaml="`zone`" pulumi-lang-java="`zone`">`zone`</span> and <span pulumi-lang-nodejs="`replicaZone`" pulumi-lang-dotnet="`ReplicaZone`" pulumi-lang-go="`replicaZone`" pulumi-lang-python="`replica_zone`" pulumi-lang-yaml="`replicaZone`" pulumi-lang-java="`replicaZone`">`replica_zone`</span> values can be swapped to initiate a
+  /// Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
   /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
   final Input<String>? replicaZone;
 
@@ -81,9 +81,9 @@ class StoragePoolArgs2 {
   /// Possible values are: `STORAGE_POOL_TYPE_UNSPECIFIED`, `FILE`, `UNIFIED`.
   final Input<String>? type;
 
-  /// Specifies the active zone for regional Flex pools. <span pulumi-lang-nodejs="`zone`" pulumi-lang-dotnet="`Zone`" pulumi-lang-go="`zone`" pulumi-lang-python="`zone`" pulumi-lang-yaml="`zone`" pulumi-lang-java="`zone`">`zone`</span> and <span pulumi-lang-nodejs="`replicaZone`" pulumi-lang-dotnet="`ReplicaZone`" pulumi-lang-go="`replicaZone`" pulumi-lang-python="`replica_zone`" pulumi-lang-yaml="`replicaZone`" pulumi-lang-java="`replicaZone`">`replica_zone`</span> values can be swapped to initiate a
+  /// Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
   /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
-  /// If you want to create a zonal Flex pool, specify a zone name for <span pulumi-lang-nodejs="`location`" pulumi-lang-dotnet="`Location`" pulumi-lang-go="`location`" pulumi-lang-python="`location`" pulumi-lang-yaml="`location`" pulumi-lang-java="`location`">`location`</span> and omit <span pulumi-lang-nodejs="`zone`" pulumi-lang-dotnet="`Zone`" pulumi-lang-go="`zone`" pulumi-lang-python="`zone`" pulumi-lang-yaml="`zone`" pulumi-lang-java="`zone`">`zone`</span>.
+  /// If you want to create a zonal Flex pool, specify a zone name for `location` and omit `zone`.
   final Input<String>? zone;
 
   StoragePoolArgs2({

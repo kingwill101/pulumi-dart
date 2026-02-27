@@ -35,7 +35,7 @@ class InstanceArgs15 {
 
   /// The type of this instance. The type can be used to distinguish product variants, that can affect aspects like:
   /// usage restrictions, quotas and billing. Currently this is used to distinguish FREE_INSTANCE vs PROVISIONED instances.
-  /// When configured as FREE_INSTANCE, the field <span pulumi-lang-nodejs="`edition`" pulumi-lang-dotnet="`Edition`" pulumi-lang-go="`edition`" pulumi-lang-python="`edition`" pulumi-lang-yaml="`edition`" pulumi-lang-java="`edition`">`edition`</span> should not be configured.
+  /// When configured as FREE_INSTANCE, the field `edition` should not be configured.
   /// Possible values are: `PROVISIONED`, `FREE_INSTANCE`.
   final Input<String>? instanceType;
 
@@ -43,7 +43,7 @@ class InstanceArgs15 {
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// A unique identifier for the instance, which cannot be changed after

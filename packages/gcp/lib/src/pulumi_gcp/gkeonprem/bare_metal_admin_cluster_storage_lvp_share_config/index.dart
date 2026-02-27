@@ -1,3 +1,0 @@
-library module_gkeonprem_bare_metal_admin_cluster_storage_lvp_share_config;
-
-export 'bare_metal_admin_cluster_storage_lvp_share_config.dart';

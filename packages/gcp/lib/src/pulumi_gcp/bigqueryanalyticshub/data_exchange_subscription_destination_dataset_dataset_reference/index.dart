@@ -1,3 +1,0 @@
-library module_bigqueryanalyticshub_data_exchange_subscription_destination_dataset_dataset_reference;
-
-export 'data_exchange_subscription_destination_dataset_dataset_reference.dart';

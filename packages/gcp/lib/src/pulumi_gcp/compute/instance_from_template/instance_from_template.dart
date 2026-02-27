@@ -21,254 +21,13 @@ import 'instance_from_template_args.dart';
 /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
 ///
 /// This resource is specifically to create a compute instance from a given
-/// <span pulumi-lang-nodejs="`sourceInstanceTemplate`" pulumi-lang-dotnet="`SourceInstanceTemplate`" pulumi-lang-go="`sourceInstanceTemplate`" pulumi-lang-python="`source_instance_template`" pulumi-lang-yaml="`sourceInstanceTemplate`" pulumi-lang-java="`sourceInstanceTemplate`">`source_instance_template`</span>. To create an instance without a template, use the
-/// <span pulumi-lang-nodejs="`gcp.compute.Instance`" pulumi-lang-dotnet="`gcp.compute.Instance`" pulumi-lang-go="`compute.Instance`" pulumi-lang-python="`compute.Instance`" pulumi-lang-yaml="`gcp.compute.Instance`" pulumi-lang-java="`gcp.compute.Instance`">`gcp.compute.Instance`</span> resource.
+/// `source_instance_template`. To create an instance without a template, use the
+/// `gcp.compute.Instance` resource.
 ///
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const tpl = new gcp.compute.InstanceTemplate("tpl", {
-/// name: "template",
-/// machineType: "e2-medium",
-/// disks: [{
-/// sourceImage: "debian-cloud/debian-11",
-/// autoDelete: true,
-/// diskSizeGb: 100,
-/// boot: true,
-/// }],
-/// networkInterfaces: [{
-/// network: "default",
-/// }],
-/// metadata: {
-/// foo: "bar",
-/// },
-/// canIpForward: true,
-/// });
-/// const tplInstanceFromTemplate = new gcp.compute.InstanceFromTemplate("tpl", {
-/// name: "instance-from-template",
-/// zone: "us-central1-a",
-/// sourceInstanceTemplate: tpl.selfLinkUnique,
-/// canIpForward: false,
-/// labels: {
-/// my_key: "my_value",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// tpl = gcp.compute.InstanceTemplate("tpl",
-/// name="template",
-/// machine_type="e2-medium",
-/// disks=[{
-/// "source_image": "debian-cloud/debian-11",
-/// "auto_delete": True,
-/// "disk_size_gb": 100,
-/// "boot": True,
-/// }],
-/// network_interfaces=[{
-/// "network": "default",
-/// }],
-/// metadata={
-/// "foo": "bar",
-/// },
-/// can_ip_forward=True)
-/// tpl_instance_from_template = gcp.compute.InstanceFromTemplate("tpl",
-/// name="instance-from-template",
-/// zone="us-central1-a",
-/// source_instance_template=tpl.self_link_unique,
-/// can_ip_forward=False,
-/// labels={
-/// "my_key": "my_value",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var tpl = new Gcp.Compute.InstanceTemplate("tpl", new()
-/// {
-/// Name = "template",
-/// MachineType = "e2-medium",
-/// Disks = new[]
-/// {
-/// new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
-/// {
-/// SourceImage = "debian-cloud/debian-11",
-/// AutoDelete = true,
-/// DiskSizeGb = 100,
-/// Boot = true,
-/// },
-/// },
-/// NetworkInterfaces = new[]
-/// {
-/// new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
-/// {
-/// Network = "default",
-/// },
-/// },
-/// Metadata =
-/// {
-/// { "foo", "bar" },
-/// },
-/// CanIpForward = true,
-/// });
-///
-/// var tplInstanceFromTemplate = new Gcp.Compute.InstanceFromTemplate("tpl", new()
-/// {
-/// Name = "instance-from-template",
-/// Zone = "us-central1-a",
-/// SourceInstanceTemplate = tpl.SelfLinkUnique,
-/// CanIpForward = false,
-/// Labels =
-/// {
-/// { "my_key", "my_value" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// tpl, err := compute.NewInstanceTemplate(ctx, "tpl", &compute.InstanceTemplateArgs{
-/// Name:        pulumi.String("template"),
-/// MachineType: pulumi.String("e2-medium"),
-/// Disks: compute.InstanceTemplateDiskArray{
-/// &compute.InstanceTemplateDiskArgs{
-/// SourceImage: pulumi.String("debian-cloud/debian-11"),
-/// AutoDelete:  pulumi.Bool(true),
-/// DiskSizeGb:  pulumi.Int(100),
-/// Boot:        pulumi.Bool(true),
-/// },
-/// },
-/// NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
-/// &compute.InstanceTemplateNetworkInterfaceArgs{
-/// Network: pulumi.String("default"),
-/// },
-/// },
-/// Metadata: pulumi.StringMap{
-/// "foo": pulumi.String("bar"),
-/// },
-/// CanIpForward: pulumi.Bool(true),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = compute.NewInstanceFromTemplate(ctx, "tpl", &compute.InstanceFromTemplateArgs{
-/// Name:                   pulumi.String("instance-from-template"),
-/// Zone:                   pulumi.String("us-central1-a"),
-/// SourceInstanceTemplate: tpl.SelfLinkUnique,
-/// CanIpForward:           pulumi.Bool(false),
-/// Labels: pulumi.StringMap{
-/// "my_key": pulumi.String("my_value"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.InstanceTemplate;
-/// import com.pulumi.gcp.compute.InstanceTemplateArgs;
-/// import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
-/// import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
-/// import com.pulumi.gcp.compute.InstanceFromTemplate;
-/// import com.pulumi.gcp.compute.InstanceFromTemplateArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var tpl = new InstanceTemplate("tpl", InstanceTemplateArgs.builder()
-/// .name("template")
-/// .machineType("e2-medium")
-/// .disks(InstanceTemplateDiskArgs.builder()
-/// .sourceImage("debian-cloud/debian-11")
-/// .autoDelete(true)
-/// .diskSizeGb(100)
-/// .boot(true)
-/// .build())
-/// .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
-/// .network("default")
-/// .build())
-/// .metadata(Map.of("foo", "bar"))
-/// .canIpForward(true)
-/// .build());
-///
-/// var tplInstanceFromTemplate = new InstanceFromTemplate("tplInstanceFromTemplate", InstanceFromTemplateArgs.builder()
-/// .name("instance-from-template")
-/// .zone("us-central1-a")
-/// .sourceInstanceTemplate(tpl.selfLinkUnique())
-/// .canIpForward(false)
-/// .labels(Map.of("my_key", "my_value"))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// tpl:
-/// type: gcp:compute:InstanceTemplate
-/// properties:
-/// name: template
-/// machineType: e2-medium
-/// disks:
-/// - sourceImage: debian-cloud/debian-11
-/// autoDelete: true
-/// diskSizeGb: 100
-/// boot: true
-/// networkInterfaces:
-/// - network: default
-/// metadata:
-/// foo: bar
-/// canIpForward: true
-/// tplInstanceFromTemplate:
-/// type: gcp:compute:InstanceFromTemplate
-/// name: tpl
-/// properties:
-/// name: instance-from-template
-/// zone: us-central1-a
-/// sourceInstanceTemplate: ${tpl.selfLinkUnique}
-/// canIpForward: false
-/// labels:
-/// my_key: my_value
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -288,7 +47,7 @@ class InstanceFromTemplate extends CustomResource {
   /// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
   late final Output<bool> canIpForward;
 
-  /// The Confidential VM config being used by the instance. <span pulumi-lang-nodejs=" onHostMaintenance " pulumi-lang-dotnet=" OnHostMaintenance " pulumi-lang-go=" onHostMaintenance " pulumi-lang-python=" on_host_maintenance " pulumi-lang-yaml=" onHostMaintenance " pulumi-lang-java=" onHostMaintenance "> on_host_maintenance </span>has to be set to TERMINATE or this will fail to create.
+  /// The Confidential VM config being used by the instance.  on_host_maintenance has to be set to TERMINATE or this will fail to create.
   late final Output<InstanceFromTemplateConfidentialInstanceConfig>
       confidentialInstanceConfig;
 
@@ -375,7 +134,7 @@ class InstanceFromTemplate extends CustomResource {
   /// Partner Metadata Map made available within the instance.
   late final Output<Map<String, String>> partnerMetadata;
 
-  /// The ID of the project in which the resource belongs. If<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>is provided, this value is ignored. If neither<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>nor project are provided, the provider project is used.
+  /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither self_link nor project are provided, the provider project is used.
   late final Output<String> project;
 
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -385,7 +144,7 @@ class InstanceFromTemplate extends CustomResource {
   late final Output<InstanceFromTemplateReservationAffinity>
       reservationAffinity;
 
-  /// A list of<span pulumi-lang-nodejs=" selfLinks " pulumi-lang-dotnet=" SelfLinks " pulumi-lang-go=" selfLinks " pulumi-lang-python=" self_links " pulumi-lang-yaml=" selfLinks " pulumi-lang-java=" selfLinks "> self_links </span>of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
+  /// A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
   late final Output<String> resourcePolicies;
 
   /// The scheduling strategy being used by the instance.
@@ -406,7 +165,7 @@ class InstanceFromTemplate extends CustomResource {
 
   /// Name or self link of an instance
   /// template to create the instance based on. It is recommended to reference
-  /// instance templates through their unique id (<span pulumi-lang-nodejs="`selfLinkUnique`" pulumi-lang-dotnet="`SelfLinkUnique`" pulumi-lang-go="`selfLinkUnique`" pulumi-lang-python="`self_link_unique`" pulumi-lang-yaml="`selfLinkUnique`" pulumi-lang-java="`selfLinkUnique`">`self_link_unique`</span> attribute).
+  /// instance templates through their unique id (`self_link_unique` attribute).
   ///
   /// - - -
   late final Output<String> sourceInstanceTemplate;
@@ -420,9 +179,9 @@ class InstanceFromTemplate extends CustomResource {
   /// The zone that the machine should be created in. If not
   /// set, the provider zone is used.
   ///
-  /// In addition to these, all arguments from <span pulumi-lang-nodejs="`gcp.compute.Instance`" pulumi-lang-dotnet="`gcp.compute.Instance`" pulumi-lang-go="`compute.Instance`" pulumi-lang-python="`compute.Instance`" pulumi-lang-yaml="`gcp.compute.Instance`" pulumi-lang-java="`gcp.compute.Instance`">`gcp.compute.Instance`</span> are supported
+  /// In addition to these, all arguments from `gcp.compute.Instance` are supported
   /// as a way to override the properties in the template. All exported attributes
-  /// from <span pulumi-lang-nodejs="`gcp.compute.Instance`" pulumi-lang-dotnet="`gcp.compute.Instance`" pulumi-lang-go="`compute.Instance`" pulumi-lang-python="`compute.Instance`" pulumi-lang-yaml="`gcp.compute.Instance`" pulumi-lang-java="`gcp.compute.Instance`">`gcp.compute.Instance`</span> are likewise exported here.
+  /// from `gcp.compute.Instance` are likewise exported here.
   late final Output<String> zone;
 
   InstanceFromTemplate(

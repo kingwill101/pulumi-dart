@@ -1,0 +1,3 @@
+library module_edgecontainer_cluster_control_plane;
+
+export 'cluster_control_plane/cluster_control_plane.dart';

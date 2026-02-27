@@ -4,12 +4,12 @@ import '../cluster_cluster_config_security_config_identity_config/cluster_cluste
 import '../cluster_cluster_config_security_config_kerberos_config/cluster_cluster_config_security_config_kerberos_config.dart';
 
 class ClusterClusterConfigSecurityConfig {
-  /// Identity Configuration. At least one of <span pulumi-lang-nodejs="`identityConfig`" pulumi-lang-dotnet="`IdentityConfig`" pulumi-lang-go="`identityConfig`" pulumi-lang-python="`identity_config`" pulumi-lang-yaml="`identityConfig`" pulumi-lang-java="`identityConfig`">`identity_config`</span>
-  /// or <span pulumi-lang-nodejs="`kerberosConfig`" pulumi-lang-dotnet="`KerberosConfig`" pulumi-lang-go="`kerberosConfig`" pulumi-lang-python="`kerberos_config`" pulumi-lang-yaml="`kerberosConfig`" pulumi-lang-java="`kerberosConfig`">`kerberos_config`</span> is required.
+  /// Identity Configuration. At least one of `identity_config`
+  /// or `kerberos_config` is required.
   final ClusterClusterConfigSecurityConfigIdentityConfig? identityConfig;
 
-  /// Kerberos Configuration. At least one of <span pulumi-lang-nodejs="`identityConfig`" pulumi-lang-dotnet="`IdentityConfig`" pulumi-lang-go="`identityConfig`" pulumi-lang-python="`identity_config`" pulumi-lang-yaml="`identityConfig`" pulumi-lang-java="`identityConfig`">`identity_config`</span>
-  /// or <span pulumi-lang-nodejs="`kerberosConfig`" pulumi-lang-dotnet="`KerberosConfig`" pulumi-lang-go="`kerberosConfig`" pulumi-lang-python="`kerberos_config`" pulumi-lang-yaml="`kerberosConfig`" pulumi-lang-java="`kerberosConfig`">`kerberos_config`</span> is required.
+  /// Kerberos Configuration. At least one of `identity_config`
+  /// or `kerberos_config` is required.
   final ClusterClusterConfigSecurityConfigKerberosConfig? kerberosConfig;
 
   ClusterClusterConfigSecurityConfig({

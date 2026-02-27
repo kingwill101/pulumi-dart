@@ -13,7 +13,7 @@ import '../connection_gitlab_enterprise_config/connection_gitlab_enterprise_conf
 class ConnectionArgs3 {
   /// Optional. Allows clients to store small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveAnnotations`" pulumi-lang-dotnet="`EffectiveAnnotations`" pulumi-lang-go="`effectiveAnnotations`" pulumi-lang-python="`effective_annotations`" pulumi-lang-yaml="`effectiveAnnotations`" pulumi-lang-java="`effectiveAnnotations`">`effective_annotations`</span> for all of the annotations present on the resource.
+  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final Input<Map<String, String>>? annotations;
 
   /// Configuration for connections to an instance of Bitbucket Cloud.
@@ -25,14 +25,8 @@ class ConnectionArgs3 {
   final Input<ConnectionBitbucketDataCenterConfig2>? bitbucketDataCenterConfig;
 
   /// Required. Id of the requesting object
-  /// If auto-generating Id server-side, remove this field and<span pulumi-lang-nodejs="
-  /// connectionId " pulumi-lang-dotnet="
-  /// ConnectionId " pulumi-lang-go="
-  /// connectionId " pulumi-lang-python="
-  /// connection_id " pulumi-lang-yaml="
-  /// connectionId " pulumi-lang-java="
-  /// connectionId ">
-  /// connection_id </span>from the<span pulumi-lang-nodejs=" methodSignature " pulumi-lang-dotnet=" MethodSignature " pulumi-lang-go=" methodSignature " pulumi-lang-python=" method_signature " pulumi-lang-yaml=" methodSignature " pulumi-lang-java=" methodSignature "> method_signature </span>of Create RPC
+  /// If auto-generating Id server-side, remove this field and
+  /// connection_id from the method_signature of Create RPC
   final Input<String> connectionId;
 
   /// The crypto key configuration. This field is used by the Customer-managed
@@ -68,10 +62,10 @@ class ConnectionArgs3 {
 
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> location;
 
   /// The ID of the project in which the resource belongs.

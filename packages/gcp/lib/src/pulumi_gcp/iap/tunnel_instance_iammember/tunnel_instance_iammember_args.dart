@@ -12,7 +12,7 @@ class TunnelInstanceIAMMemberArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final Input<String> instance;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -31,7 +31,7 @@ class TunnelInstanceIAMMemberArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.iap.TunnelInstanceIAMBinding`" pulumi-lang-dotnet="`gcp.iap.TunnelInstanceIAMBinding`" pulumi-lang-go="`iap.TunnelInstanceIAMBinding`" pulumi-lang-python="`iap.TunnelInstanceIAMBinding`" pulumi-lang-yaml="`gcp.iap.TunnelInstanceIAMBinding`" pulumi-lang-java="`gcp.iap.TunnelInstanceIAMBinding`">`gcp.iap.TunnelInstanceIAMBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

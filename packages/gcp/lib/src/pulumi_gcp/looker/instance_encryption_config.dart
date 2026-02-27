@@ -1,0 +1,3 @@
+library module_looker_instance_encryption_config;
+
+export 'instance_encryption_config/instance_encryption_config.dart';

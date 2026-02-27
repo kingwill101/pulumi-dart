@@ -7,7 +7,7 @@ class JobLoadDestinationTable {
   /// The ID of the project containing this table.
   final String? projectId;
 
-  /// The table. Can be specified `{{table_id}}` if <span pulumi-lang-nodejs="`projectId`" pulumi-lang-dotnet="`ProjectId`" pulumi-lang-go="`projectId`" pulumi-lang-python="`project_id`" pulumi-lang-yaml="`projectId`" pulumi-lang-java="`projectId`">`project_id`</span> and <span pulumi-lang-nodejs="`datasetId`" pulumi-lang-dotnet="`DatasetId`" pulumi-lang-go="`datasetId`" pulumi-lang-python="`dataset_id`" pulumi-lang-yaml="`datasetId`" pulumi-lang-java="`datasetId`">`dataset_id`</span> are also set,
+  /// The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
   /// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
   final String tableId;
 

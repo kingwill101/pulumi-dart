@@ -61,10 +61,10 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk {
   /// , A list (short name or id) of resource policies to attach to this disk. Currently a max of 1 resource policy is supported.
   final String? resourcePolicies;
 
-  /// , The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. > Note: Either source or<span pulumi-lang-nodejs=" sourceImage " pulumi-lang-dotnet=" SourceImage " pulumi-lang-go=" sourceImage " pulumi-lang-python=" source_image " pulumi-lang-yaml=" sourceImage " pulumi-lang-java=" sourceImage "> source_image </span>is required when creating a new instance except for when creating a local SSD.
+  /// , The name (not self_link) of the disk (such as those managed by google_compute_disk) to attach. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
   final String? source;
 
-  /// , The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. > Note: Either source or<span pulumi-lang-nodejs=" sourceImage " pulumi-lang-dotnet=" SourceImage " pulumi-lang-go=" sourceImage " pulumi-lang-python=" source_image " pulumi-lang-yaml=" sourceImage " pulumi-lang-java=" sourceImage "> source_image </span>is required when creating a new instance except for when creating a local SSD.
+  /// , The image from which to initialize this disk. This can be one of: the image's self_link, projects/{project}/global/images/{image}, projects/{project}/global/images/family/{family}, global/images/{image}, global/images/family/{family}, family/{family}, {project}/{family}, {project}/{image}, {family}, or {image}. > Note: Either source or source_image is required when creating a new instance except for when creating a local SSD.
   final String? sourceImage;
 
   /// , The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys. Structure is documented below.

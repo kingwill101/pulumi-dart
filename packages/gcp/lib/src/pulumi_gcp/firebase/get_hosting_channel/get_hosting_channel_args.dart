@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getHostingChannel.
 class GetHostingChannelArgs {
-  /// The ID of the channel. Use <span pulumi-lang-nodejs="`channelId " pulumi-lang-dotnet="`ChannelId " pulumi-lang-go="`channelId " pulumi-lang-python="`channel_id " pulumi-lang-yaml="`channelId " pulumi-lang-java="`channelId ">`channel_id </span>= "live"` for the default channel of a site.
+  /// The ID of the channel. Use `channel_id = "live"` for the default channel of a site.
   final Input<String> channelId;
 
   /// The ID of the site this channel belongs to.

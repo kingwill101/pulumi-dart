@@ -1,3 +1,0 @@
-library module_networkservices_service_lb_policies_failover_config;
-
-export 'service_lb_policies_failover_config.dart';

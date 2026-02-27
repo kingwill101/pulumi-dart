@@ -11,7 +11,7 @@ class RegionHealthAggregationPolicyArgs {
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the threshold (as a
   /// percentage) of healthy endpoints required in order to consider the
-  /// aggregated health result HEALTHY. Defaults to <span pulumi-lang-nodejs="`60`" pulumi-lang-dotnet="`60`" pulumi-lang-go="`60`" pulumi-lang-python="`60`" pulumi-lang-yaml="`60`" pulumi-lang-java="`60`">`60`</span>. Must be in
+  /// aggregated health result HEALTHY. Defaults to `60`. Must be in
   /// range [0, 100]. Not applicable if the `policyType` field is
   /// `DNB_PUBLIC_IP_POLICY`. Can be mutated. This field is optional,
   /// and will be set to the default if unspecified. Note that both this
@@ -24,7 +24,7 @@ class RegionHealthAggregationPolicyArgs {
   /// Can only be set if the `policyType` field is
   /// `BACKEND_SERVICE_POLICY`. Specifies the minimum number of
   /// healthy endpoints required in order to consider the aggregated health
-  /// result HEALTHY. Defaults to <span pulumi-lang-nodejs="`1`" pulumi-lang-dotnet="`1`" pulumi-lang-go="`1`" pulumi-lang-python="`1`" pulumi-lang-yaml="`1`" pulumi-lang-java="`1`">`1`</span>. Must be positive. Not
+  /// result HEALTHY. Defaults to `1`. Must be positive. Not
   /// applicable if the `policyType` field is
   /// `DNB_PUBLIC_IP_POLICY`. Can be mutated. This field is optional,
   /// and will be set to the default if unspecified. Note that both this

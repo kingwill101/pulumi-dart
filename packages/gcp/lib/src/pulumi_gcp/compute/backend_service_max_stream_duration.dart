@@ -1,0 +1,3 @@
+library module_compute_backend_service_max_stream_duration;
+
+export 'backend_service_max_stream_duration/backend_service_max_stream_duration.dart';

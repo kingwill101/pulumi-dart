@@ -13,7 +13,7 @@ class GetTableExternalDataConfiguration {
   /// Let BigQuery try to autodetect the schema and format of the table.
   final bool autodetect;
 
-  /// Additional options if<span pulumi-lang-nodejs=" sourceFormat " pulumi-lang-dotnet=" SourceFormat " pulumi-lang-go=" sourceFormat " pulumi-lang-python=" source_format " pulumi-lang-yaml=" sourceFormat " pulumi-lang-java=" sourceFormat "> source_format </span>is set to "AVRO"
+  /// Additional options if source_format is set to "AVRO"
   final List<GetTableExternalDataConfigurationAvroOption> avroOptions;
 
   /// Additional options if sourceFormat is set to BIGTABLE.
@@ -25,7 +25,7 @@ class GetTableExternalDataConfiguration {
   /// The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connectionId can have the form "<project>.<location>.<connection_id>" or "projects/<project>/locations/<location>/connections/<connection_id>".
   final String connectionId;
 
-  /// Additional properties to set if<span pulumi-lang-nodejs=" sourceFormat " pulumi-lang-dotnet=" SourceFormat " pulumi-lang-go=" sourceFormat " pulumi-lang-python=" source_format " pulumi-lang-yaml=" sourceFormat " pulumi-lang-java=" sourceFormat "> source_format </span>is set to "CSV".
+  /// Additional properties to set if source_format is set to "CSV".
   final List<GetTableExternalDataConfigurationCsvOption> csvOptions;
 
   /// The data types that could be used as a target type when converting decimal values.
@@ -34,7 +34,7 @@ class GetTableExternalDataConfiguration {
   /// Specifies how source URIs are interpreted for constructing the file set to load.  By default source URIs are expanded against the underlying storage.  Other options include specifying manifest files. Only applicable to object storage systems.
   final String fileSetSpecType;
 
-  /// Additional options if<span pulumi-lang-nodejs=" sourceFormat " pulumi-lang-dotnet=" SourceFormat " pulumi-lang-go=" sourceFormat " pulumi-lang-python=" source_format " pulumi-lang-yaml=" sourceFormat " pulumi-lang-java=" sourceFormat "> source_format </span>is set to "GOOGLE_SHEETS".
+  /// Additional options if source_format is set to "GOOGLE_SHEETS".
   final List<GetTableExternalDataConfigurationGoogleSheetsOption>
       googleSheetsOptions;
 

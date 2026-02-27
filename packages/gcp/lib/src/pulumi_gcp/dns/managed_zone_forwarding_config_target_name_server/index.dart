@@ -1,3 +1,0 @@
-library module_dns_managed_zone_forwarding_config_target_name_server;
-
-export 'managed_zone_forwarding_config_target_name_server.dart';

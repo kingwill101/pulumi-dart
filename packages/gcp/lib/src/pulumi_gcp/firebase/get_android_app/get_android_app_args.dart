@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart';
 
 /// Arguments for getAndroidApp.
 class GetAndroidAppArgs {
-  /// The<span pulumi-lang-nodejs=" appId " pulumi-lang-dotnet=" AppId " pulumi-lang-go=" appId " pulumi-lang-python=" app_id " pulumi-lang-yaml=" appId " pulumi-lang-java=" appId "> app_id </span>of name of the Firebase androidApp.
+  /// The app_id of name of the Firebase androidApp.
   ///
   ///
   /// - - -

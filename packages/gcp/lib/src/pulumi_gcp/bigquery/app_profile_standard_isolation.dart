@@ -1,0 +1,3 @@
+library module_bigquery_app_profile_standard_isolation;
+
+export 'app_profile_standard_isolation/app_profile_standard_isolation.dart';

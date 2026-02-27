@@ -13,151 +13,17 @@ import 'group_args.dart';
 /// * [Official Documentation](https://cloud.google.com/identity/docs/how-to/setup)
 ///
 /// > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
-/// you must specify a <span pulumi-lang-nodejs="`billingProject`" pulumi-lang-dotnet="`BillingProject`" pulumi-lang-go="`billingProject`" pulumi-lang-python="`billing_project`" pulumi-lang-yaml="`billingProject`" pulumi-lang-java="`billingProject`">`billing_project`</span> and set <span pulumi-lang-nodejs="`userProjectOverride`" pulumi-lang-dotnet="`UserProjectOverride`" pulumi-lang-go="`userProjectOverride`" pulumi-lang-python="`user_project_override`" pulumi-lang-yaml="`userProjectOverride`" pulumi-lang-java="`userProjectOverride`">`user_project_override`</span> to true
+/// you must specify a `billing_project` and set `user_project_override` to true
 /// in the provider configuration. Otherwise the Cloud Identity API will return a 403 error.
 /// Your account must have the `serviceusage.services.use` permission on the
-/// <span pulumi-lang-nodejs="`billingProject`" pulumi-lang-dotnet="`BillingProject`" pulumi-lang-go="`billingProject`" pulumi-lang-python="`billing_project`" pulumi-lang-yaml="`billingProject`" pulumi-lang-java="`billingProject`">`billing_project`</span> you defined.
+/// `billing_project` you defined.
 ///
 /// ## Example Usage
 ///
 /// ### Cloud Identity Groups Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const cloudIdentityGroupBasic = new gcp.cloudidentity.Group("cloud_identity_group_basic", {
-/// displayName: "my-identity-group",
-/// initialGroupConfig: "WITH_INITIAL_OWNER",
-/// parent: "customers/A01b123xz",
-/// groupKey: {
-/// id: "my-identity-group@example.com",
-/// },
-/// labels: {
-/// "cloudidentity.googleapis.com/groups.discussion_forum": "",
-/// },
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// cloud_identity_group_basic = gcp.cloudidentity.Group("cloud_identity_group_basic",
-/// display_name="my-identity-group",
-/// initial_group_config="WITH_INITIAL_OWNER",
-/// parent="customers/A01b123xz",
-/// group_key={
-/// "id": "my-identity-group@example.com",
-/// },
-/// labels={
-/// "cloudidentity.googleapis.com/groups.discussion_forum": "",
-/// })
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var cloudIdentityGroupBasic = new Gcp.CloudIdentity.Group("cloud_identity_group_basic", new()
-/// {
-/// DisplayName = "my-identity-group",
-/// InitialGroupConfig = "WITH_INITIAL_OWNER",
-/// Parent = "customers/A01b123xz",
-/// GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
-/// {
-/// Id = "my-identity-group@example.com",
-/// },
-/// Labels =
-/// {
-/// { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudidentity"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := cloudidentity.NewGroup(ctx, "cloud_identity_group_basic", &cloudidentity.GroupArgs{
-/// DisplayName:        pulumi.String("my-identity-group"),
-/// InitialGroupConfig: pulumi.String("WITH_INITIAL_OWNER"),
-/// Parent:             pulumi.String("customers/A01b123xz"),
-/// GroupKey: &cloudidentity.GroupGroupKeyArgs{
-/// Id: pulumi.String("my-identity-group@example.com"),
-/// },
-/// Labels: pulumi.StringMap{
-/// "cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.cloudidentity.Group;
-/// import com.pulumi.gcp.cloudidentity.GroupArgs;
-/// import com.pulumi.gcp.cloudidentity.inputs.GroupGroupKeyArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var cloudIdentityGroupBasic = new Group("cloudIdentityGroupBasic", GroupArgs.builder()
-/// .displayName("my-identity-group")
-/// .initialGroupConfig("WITH_INITIAL_OWNER")
-/// .parent("customers/A01b123xz")
-/// .groupKey(GroupGroupKeyArgs.builder()
-/// .id("my-identity-group@example.com")
-/// .build())
-/// .labels(Map.of("cloudidentity.googleapis.com/groups.discussion_forum", ""))
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// cloudIdentityGroupBasic:
-/// type: gcp:cloudidentity:Group
-/// name: cloud_identity_group_basic
-/// properties:
-/// displayName: my-identity-group
-/// initialGroupConfig: WITH_INITIAL_OWNER
-/// parent: customers/A01b123xz
-/// groupKey:
-/// id: my-identity-group@example.com
-/// labels:
-/// cloudidentity.googleapis.com/groups.discussion_forum: ""
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -204,14 +70,8 @@ class Group extends CustomResource {
   /// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
   late final Output<Map<String, String>> labels;
 
-  /// Resource name of the Group in the format: groups/{group_id}, where<span pulumi-lang-nodejs=" groupId
-  /// " pulumi-lang-dotnet=" GroupId
-  /// " pulumi-lang-go=" groupId
-  /// " pulumi-lang-python=" group_id
-  /// " pulumi-lang-yaml=" groupId
-  /// " pulumi-lang-java=" groupId
-  /// "> group_id
-  /// </span>is the unique ID assigned to the Group.
+  /// Resource name of the Group in the format: groups/{group_id}, where group_id
+  /// is the unique ID assigned to the Group.
   late final Output<String> name;
 
   /// The resource name of the entity under which this Group resides in the

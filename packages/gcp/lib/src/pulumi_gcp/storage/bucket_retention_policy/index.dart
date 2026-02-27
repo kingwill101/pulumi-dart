@@ -1,3 +1,0 @@
-library module_storage_bucket_retention_policy;
-
-export 'bucket_retention_policy.dart';

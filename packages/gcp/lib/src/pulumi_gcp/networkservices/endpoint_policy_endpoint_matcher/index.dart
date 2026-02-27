@@ -1,3 +1,0 @@
-library module_networkservices_endpoint_policy_endpoint_matcher;
-
-export 'endpoint_policy_endpoint_matcher.dart';

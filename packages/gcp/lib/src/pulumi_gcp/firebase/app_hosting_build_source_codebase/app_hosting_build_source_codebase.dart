@@ -16,7 +16,7 @@ class AppHostingBuildSourceCodebase {
   /// The commit in the codebase to build from.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedSourceCodebaseAuthor"" pulumi-lang-dotnet=""NestedSourceCodebaseAuthor"" pulumi-lang-go=""nestedSourceCodebaseAuthor"" pulumi-lang-python=""nested_source_codebase_author"" pulumi-lang-yaml=""nestedSourceCodebaseAuthor"" pulumi-lang-java=""nestedSourceCodebaseAuthor"">"nested_source_codebase_author"</span>></a>The <span pulumi-lang-nodejs="`author`" pulumi-lang-dotnet="`Author`" pulumi-lang-go="`author`" pulumi-lang-python="`author`" pulumi-lang-yaml="`author`" pulumi-lang-java="`author`">`author`</span> block contains:
+  /// <a name="nested_source_codebase_author"></a>The `author` block contains:
   final String? commit;
 
   /// (Output)

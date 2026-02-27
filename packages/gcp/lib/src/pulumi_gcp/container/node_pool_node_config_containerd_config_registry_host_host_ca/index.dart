@@ -1,3 +1,0 @@
-library module_container_node_pool_node_config_containerd_config_registry_host_host_ca;
-
-export 'node_pool_node_config_containerd_config_registry_host_host_ca.dart';

@@ -1,3 +1,0 @@
-library module_projects_iamaudit_config_audit_log_config;
-
-export 'iamaudit_config_audit_log_config.dart';

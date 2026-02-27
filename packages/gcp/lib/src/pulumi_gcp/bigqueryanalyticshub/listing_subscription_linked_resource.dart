@@ -1,0 +1,3 @@
+library module_bigqueryanalyticshub_listing_subscription_linked_resource;
+
+export 'listing_subscription_linked_resource/listing_subscription_linked_resource.dart';

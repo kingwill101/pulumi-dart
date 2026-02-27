@@ -79,7 +79,7 @@ class GetDatabaseInstanceSetting {
 
   /// The availability type of the Cloud SQL instance, high availability
   /// (REGIONAL) or single zone (ZONAL). This field always contains the value that is reported by the
-  /// API (for read pools,<span pulumi-lang-nodejs=" effectiveAvailabilityType " pulumi-lang-dotnet=" EffectiveAvailabilityType " pulumi-lang-go=" effectiveAvailabilityType " pulumi-lang-python=" effective_availability_type " pulumi-lang-yaml=" effectiveAvailabilityType " pulumi-lang-java=" effectiveAvailabilityType "> effective_availability_type </span>may differ from availability_type).
+  /// API (for read pools, effective_availability_type may differ from availability_type).
   final String effectiveAvailabilityType;
 
   /// Enables Dataplex Integration.
@@ -116,7 +116,7 @@ class GetDatabaseInstanceSetting {
   /// The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.
   final String tier;
 
-  /// The<span pulumi-lang-nodejs=" timeZone " pulumi-lang-dotnet=" TimeZone " pulumi-lang-go=" timeZone " pulumi-lang-python=" time_zone " pulumi-lang-yaml=" timeZone " pulumi-lang-java=" timeZone "> time_zone </span>to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+  /// The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
   final String timeZone;
 
   /// A set of key/value user label pairs to assign to the instance.

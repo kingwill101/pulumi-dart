@@ -1,4 +1,0 @@
-library module_bigquery_datapolicyv2_data_policy_iam_binding;
-
-export 'datapolicyv2_data_policy_iam_binding.dart';
-export 'datapolicyv2_data_policy_iam_binding_args.dart';

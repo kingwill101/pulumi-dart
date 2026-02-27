@@ -1,3 +1,0 @@
-library module_diagflow_generator_summarization_context_summarization_section;
-
-export 'generator_summarization_context_summarization_section.dart';

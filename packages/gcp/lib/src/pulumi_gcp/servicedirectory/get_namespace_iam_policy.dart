@@ -1,0 +1,5 @@
+library module_servicedirectory_get_namespace_iam_policy;
+
+export 'get_namespace_iam_policy/get_namespace_iam_policy.dart';
+export 'get_namespace_iam_policy/get_namespace_iam_policy_args.dart';
+export 'get_namespace_iam_policy/get_namespace_iam_policy_result.dart';

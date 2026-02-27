@@ -30,7 +30,7 @@ class DatabaseInstanceArgs2 {
   final Input<String> databaseVersion;
 
   /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-  /// in state, a <span pulumi-lang-nodejs="`destroy`" pulumi-lang-dotnet="`Destroy`" pulumi-lang-go="`destroy`" pulumi-lang-python="`destroy`" pulumi-lang-yaml="`destroy`" pulumi-lang-java="`destroy`">`destroy`</span> or <span pulumi-lang-nodejs="`update`" pulumi-lang-dotnet="`Update`" pulumi-lang-go="`update`" pulumi-lang-python="`update`" pulumi-lang-yaml="`update`" pulumi-lang-java="`update`">`update`</span> command that deletes the instance will fail. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
   ///
   /// > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
   final Input<bool>? deletionProtection;
@@ -51,12 +51,12 @@ class DatabaseInstanceArgs2 {
   /// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
   final Input<String>? instanceType;
 
-  /// The current software version on the instance. This attribute can not be set during creation. Refer to <span pulumi-lang-nodejs="`availableMaintenanceVersions`" pulumi-lang-dotnet="`AvailableMaintenanceVersions`" pulumi-lang-go="`availableMaintenanceVersions`" pulumi-lang-python="`available_maintenance_versions`" pulumi-lang-yaml="`availableMaintenanceVersions`" pulumi-lang-java="`availableMaintenanceVersions`">`available_maintenance_versions`</span> attribute to see what <span pulumi-lang-nodejs="`maintenanceVersion`" pulumi-lang-dotnet="`MaintenanceVersion`" pulumi-lang-go="`maintenanceVersion`" pulumi-lang-python="`maintenance_version`" pulumi-lang-yaml="`maintenanceVersion`" pulumi-lang-java="`maintenanceVersion`">`maintenance_version`</span> are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a <span pulumi-lang-nodejs="`maintenanceVersion`" pulumi-lang-dotnet="`MaintenanceVersion`" pulumi-lang-go="`maintenanceVersion`" pulumi-lang-python="`maintenance_version`" pulumi-lang-yaml="`maintenanceVersion`" pulumi-lang-java="`maintenanceVersion`">`maintenance_version`</span> value that is older than the current one on the instance will be ignored.
+  /// The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
   final Input<String>? maintenanceVersion;
 
   /// The name of the existing instance that will
   /// act as the master in the replication setup. Note, this requires the master to
-  /// have <span pulumi-lang-nodejs="`binaryLogEnabled`" pulumi-lang-dotnet="`BinaryLogEnabled`" pulumi-lang-go="`binaryLogEnabled`" pulumi-lang-python="`binary_log_enabled`" pulumi-lang-yaml="`binaryLogEnabled`" pulumi-lang-java="`binaryLogEnabled`">`binary_log_enabled`</span> set, as well as existing backups.
+  /// have `binary_log_enabled` set, as well as existing backups.
   final Input<String>? masterInstanceName;
 
   /// The name of the instance. If the name is left
@@ -89,7 +89,7 @@ class DatabaseInstanceArgs2 {
   /// List of replica names. Can be updated.
   final Input<List<String>>? replicaNames;
 
-  /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has<span pulumi-lang-nodejs=" psaWriteEndpoint " pulumi-lang-dotnet=" PsaWriteEndpoint " pulumi-lang-go=" psaWriteEndpoint " pulumi-lang-python=" psa_write_endpoint " pulumi-lang-yaml=" psaWriteEndpoint " pulumi-lang-java=" psaWriteEndpoint "> psa_write_endpoint </span>set or both the primary and replica are created.
+  /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psa_write_endpoint set or both the primary and replica are created.
   final Input<DatabaseInstanceReplicationCluster>? replicationCluster;
 
   /// The context needed to restore the database to a backup run. This field will
@@ -104,14 +104,14 @@ class DatabaseInstanceArgs2 {
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
   ///
-  /// > **Note:** One of <span pulumi-lang-nodejs="`rootPassword`" pulumi-lang-dotnet="`RootPassword`" pulumi-lang-go="`rootPassword`" pulumi-lang-python="`root_password`" pulumi-lang-yaml="`rootPassword`" pulumi-lang-java="`rootPassword`">`root_password`</span> or <span pulumi-lang-nodejs="`rootPasswordWo`" pulumi-lang-dotnet="`RootPasswordWo`" pulumi-lang-go="`rootPasswordWo`" pulumi-lang-python="`root_password_wo`" pulumi-lang-yaml="`rootPasswordWo`" pulumi-lang-java="`rootPasswordWo`">`root_password_wo`</span> can only be set.
+  /// > **Note:** One of `root_password` or `root_password_wo` can only be set.
   final Input<String>? rootPasswordWo;
 
-  /// Triggers update of <span pulumi-lang-nodejs="`rootPasswordWo`" pulumi-lang-dotnet="`RootPasswordWo`" pulumi-lang-go="`rootPasswordWo`" pulumi-lang-python="`root_password_wo`" pulumi-lang-yaml="`rootPasswordWo`" pulumi-lang-java="`rootPasswordWo`">`root_password_wo`</span> write-only. Increment this value when an update to <span pulumi-lang-nodejs="`rootPasswordWo`" pulumi-lang-dotnet="`RootPasswordWo`" pulumi-lang-go="`rootPasswordWo`" pulumi-lang-python="`root_password_wo`" pulumi-lang-yaml="`rootPasswordWo`" pulumi-lang-java="`rootPasswordWo`">`root_password_wo`</span> is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  /// Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   final Input<String>? rootPasswordWoVersion;
 
   /// The settings to use for the database. The
-  /// configuration is detailed below. Required if <span pulumi-lang-nodejs="`clone`" pulumi-lang-dotnet="`Clone`" pulumi-lang-go="`clone`" pulumi-lang-python="`clone`" pulumi-lang-yaml="`clone`" pulumi-lang-java="`clone`">`clone`</span> is not set.
+  /// configuration is detailed below. Required if `clone` is not set.
   final Input<DatabaseInstanceSettings>? settings;
 
   DatabaseInstanceArgs2({

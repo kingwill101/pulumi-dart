@@ -39,8 +39,8 @@ class InstanceNetworkInterface {
   /// Changing this forces a new resource to be created.
   final String? name;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the network to attach this interface to.
-  /// Either <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span> or <span pulumi-lang-nodejs="`subnetwork`" pulumi-lang-dotnet="`Subnetwork`" pulumi-lang-go="`subnetwork`" pulumi-lang-python="`subnetwork`" pulumi-lang-yaml="`subnetwork`" pulumi-lang-java="`subnetwork`">`subnetwork`</span> must be provided. If network isn't provided it will
+  /// The name or self_link of the network to attach this interface to.
+  /// Either `network` or `subnetwork` must be provided. If network isn't provided it will
   /// be inferred from the subnetwork.
   final String? network;
 
@@ -63,8 +63,8 @@ class InstanceNetworkInterface {
   /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
   final String? stackType;
 
-  /// The name or<span pulumi-lang-nodejs=" selfLink " pulumi-lang-dotnet=" SelfLink " pulumi-lang-go=" selfLink " pulumi-lang-python=" self_link " pulumi-lang-yaml=" selfLink " pulumi-lang-java=" selfLink "> self_link </span>of the subnetwork to attach this
-  /// interface to. Either <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span> or <span pulumi-lang-nodejs="`subnetwork`" pulumi-lang-dotnet="`Subnetwork`" pulumi-lang-go="`subnetwork`" pulumi-lang-python="`subnetwork`" pulumi-lang-yaml="`subnetwork`" pulumi-lang-java="`subnetwork`">`subnetwork`</span> must be provided. If network isn't provided
+  /// The name or self_link of the subnetwork to attach this
+  /// interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
   /// it will be inferred from the subnetwork. The subnetwork must exist in the same region this
   /// instance will be created in. If the network resource is in
   /// [legacy](https://cloud.google.com/vpc/docs/legacy) mode, do not specify this field. If the
@@ -73,8 +73,8 @@ class InstanceNetworkInterface {
   final String? subnetwork;
 
   /// The project in which the subnetwork belongs.
-  /// If the <span pulumi-lang-nodejs="`subnetwork`" pulumi-lang-dotnet="`Subnetwork`" pulumi-lang-go="`subnetwork`" pulumi-lang-python="`subnetwork`" pulumi-lang-yaml="`subnetwork`" pulumi-lang-java="`subnetwork`">`subnetwork`</span> is a self_link, this field is set to the project
-  /// defined in the subnetwork self_link. If the <span pulumi-lang-nodejs="`subnetwork`" pulumi-lang-dotnet="`Subnetwork`" pulumi-lang-go="`subnetwork`" pulumi-lang-python="`subnetwork`" pulumi-lang-yaml="`subnetwork`" pulumi-lang-java="`subnetwork`">`subnetwork`</span> is a name and this
+  /// If the `subnetwork` is a self_link, this field is set to the project
+  /// defined in the subnetwork self_link. If the `subnetwork` is a name and this
   /// field is not provided, the provider project is used.
   final String? subnetworkProject;
 

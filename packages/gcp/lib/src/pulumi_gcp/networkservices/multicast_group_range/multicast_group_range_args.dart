@@ -8,14 +8,8 @@ class MulticastGroupRangeArgs {
   /// A list of consumer projects that are allowed to subscribe to the multicast
   /// IP addresses within the range defined by this MulticastGroupRange. The
   /// project can be specified using its project ID or project number. If left
-  /// empty, then all consumer projects are allowed (unless<span pulumi-lang-nodejs="
-  /// requireExplicitAccept " pulumi-lang-dotnet="
-  /// RequireExplicitAccept " pulumi-lang-go="
-  /// requireExplicitAccept " pulumi-lang-python="
-  /// require_explicit_accept " pulumi-lang-yaml="
-  /// requireExplicitAccept " pulumi-lang-java="
-  /// requireExplicitAccept ">
-  /// require_explicit_accept </span>is set to true) once they have VPC networks
+  /// empty, then all consumer projects are allowed (unless
+  /// require_explicit_accept is set to true) once they have VPC networks
   /// associated to the multicast domain. The current max length of the accept
   /// list is 100.
   final Input<List<String>>? consumerAcceptLists;
@@ -33,10 +27,10 @@ class MulticastGroupRangeArgs {
 
   /// Labels as key-value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final Input<String> location;
 
   /// The logging configuration.
@@ -59,7 +53,7 @@ class MulticastGroupRangeArgs {
   /// If it is not provided, the provider project is used.
   final Input<String>? project;
 
-  /// Whether an empty<span pulumi-lang-nodejs=" consumerAcceptList " pulumi-lang-dotnet=" ConsumerAcceptList " pulumi-lang-go=" consumerAcceptList " pulumi-lang-python=" consumer_accept_list " pulumi-lang-yaml=" consumerAcceptList " pulumi-lang-java=" consumerAcceptList "> consumer_accept_list </span>will deny all consumer projects.
+  /// Whether an empty consumer_accept_list will deny all consumer projects.
   final Input<bool>? requireExplicitAccept;
 
   /// The resource name of the internal range reserved for this

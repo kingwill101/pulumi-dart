@@ -1,5 +1,0 @@
-library module_accessapproval_get_folder_service_account;
-
-export 'get_folder_service_account.dart';
-export 'get_folder_service_account_args.dart';
-export 'get_folder_service_account_result.dart';

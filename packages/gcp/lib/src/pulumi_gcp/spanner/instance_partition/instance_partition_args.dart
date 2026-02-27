@@ -21,18 +21,12 @@ class InstancePartitionArgs {
   final Input<String>? name;
 
   /// The number of nodes allocated to this instance partition. One node equals
-  /// 1000 processing units. Exactly one of either<span pulumi-lang-nodejs=" nodeCount " pulumi-lang-dotnet=" NodeCount " pulumi-lang-go=" nodeCount " pulumi-lang-python=" node_count " pulumi-lang-yaml=" nodeCount " pulumi-lang-java=" nodeCount "> node_count </span>or<span pulumi-lang-nodejs=" processingUnits
-  /// " pulumi-lang-dotnet=" ProcessingUnits
-  /// " pulumi-lang-go=" processingUnits
-  /// " pulumi-lang-python=" processing_units
-  /// " pulumi-lang-yaml=" processingUnits
-  /// " pulumi-lang-java=" processingUnits
-  /// "> processing_units
-  /// </span>must be present.
+  /// 1000 processing units. Exactly one of either node_count or processing_units
+  /// must be present.
   final Input<int>? nodeCount;
 
   /// The number of processing units allocated to this instance partition.
-  /// Exactly one of either<span pulumi-lang-nodejs=" nodeCount " pulumi-lang-dotnet=" NodeCount " pulumi-lang-go=" nodeCount " pulumi-lang-python=" node_count " pulumi-lang-yaml=" nodeCount " pulumi-lang-java=" nodeCount "> node_count </span>or<span pulumi-lang-nodejs=" processingUnits " pulumi-lang-dotnet=" ProcessingUnits " pulumi-lang-go=" processingUnits " pulumi-lang-python=" processing_units " pulumi-lang-yaml=" processingUnits " pulumi-lang-java=" processingUnits "> processing_units </span>must be present.
+  /// Exactly one of either node_count or processing_units must be present.
   final Input<int>? processingUnits;
 
   /// The ID of the project in which the resource belongs.

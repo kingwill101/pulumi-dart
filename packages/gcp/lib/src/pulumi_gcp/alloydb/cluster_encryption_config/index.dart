@@ -1,3 +1,0 @@
-library module_alloydb_cluster_encryption_config;
-
-export 'cluster_encryption_config.dart';

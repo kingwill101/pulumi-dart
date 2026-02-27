@@ -1,0 +1,3 @@
+library module_compute_image_shielded_instance_initial_state_kek;
+
+export 'image_shielded_instance_initial_state_kek/image_shielded_instance_initial_state_kek.dart';

@@ -22,7 +22,7 @@ class ClientArgs {
   /// (Optional, Deprecated)
   /// User input run-as service account, if empty, will bring up a new default service account.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`runAsServiceAccount`" pulumi-lang-dotnet="`RunAsServiceAccount`" pulumi-lang-go="`runAsServiceAccount`" pulumi-lang-python="`run_as_service_account`" pulumi-lang-yaml="`runAsServiceAccount`" pulumi-lang-java="`runAsServiceAccount`">`run_as_service_account`</span> is deprecated and will be removed in a future major release.
+  /// > **Warning:** `run_as_service_account` is deprecated and will be removed in a future major release.
   final Input<String>? runAsServiceAccount;
 
   ClientArgs({

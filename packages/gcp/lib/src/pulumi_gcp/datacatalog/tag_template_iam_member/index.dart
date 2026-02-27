@@ -1,4 +1,0 @@
-library module_datacatalog_tag_template_iam_member;
-
-export 'tag_template_iam_member.dart';
-export 'tag_template_iam_member_args.dart';

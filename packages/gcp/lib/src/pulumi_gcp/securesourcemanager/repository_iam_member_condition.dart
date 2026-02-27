@@ -1,0 +1,3 @@
+library module_securesourcemanager_repository_iam_member_condition;
+
+export 'repository_iam_member_condition/repository_iam_member_condition3.dart';

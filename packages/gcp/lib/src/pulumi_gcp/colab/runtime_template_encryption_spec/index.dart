@@ -1,3 +1,0 @@
-library module_colab_runtime_template_encryption_spec;
-
-export 'runtime_template_encryption_spec.dart';

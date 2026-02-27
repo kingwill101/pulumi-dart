@@ -1,0 +1,3 @@
+library module_dataplex_datascan_execution_spec_trigger_one_time;
+
+export 'datascan_execution_spec_trigger_one_time/datascan_execution_spec_trigger_one_time.dart';

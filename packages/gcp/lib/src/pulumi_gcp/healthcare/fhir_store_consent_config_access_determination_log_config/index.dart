@@ -1,3 +1,0 @@
-library module_healthcare_fhir_store_consent_config_access_determination_log_config;
-
-export 'fhir_store_consent_config_access_determination_log_config.dart';

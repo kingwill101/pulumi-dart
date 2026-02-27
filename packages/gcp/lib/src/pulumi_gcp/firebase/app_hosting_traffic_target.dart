@@ -1,0 +1,3 @@
+library module_firebase_app_hosting_traffic_target;
+
+export 'app_hosting_traffic_target/app_hosting_traffic_target.dart';

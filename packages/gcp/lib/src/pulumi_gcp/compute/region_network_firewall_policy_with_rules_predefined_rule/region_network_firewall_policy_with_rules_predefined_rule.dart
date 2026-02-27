@@ -7,7 +7,7 @@ import '../region_network_firewall_policy_with_rules_predefined_rule_target_secu
 class RegionNetworkFirewallPolicyWithRulesPredefinedRule {
   /// (Output)
   /// The Action to perform when the client connection triggers the rule. Can currently be either
-  /// "allow", "deny", <span pulumi-lang-nodejs=""applySecurityProfileGroup"" pulumi-lang-dotnet=""ApplySecurityProfileGroup"" pulumi-lang-go=""applySecurityProfileGroup"" pulumi-lang-python=""apply_security_profile_group"" pulumi-lang-yaml=""applySecurityProfileGroup"" pulumi-lang-java=""applySecurityProfileGroup"">"apply_security_profile_group"</span> or <span pulumi-lang-nodejs=""gotoNext"" pulumi-lang-dotnet=""GotoNext"" pulumi-lang-go=""gotoNext"" pulumi-lang-python=""goto_next"" pulumi-lang-yaml=""gotoNext"" pulumi-lang-java=""gotoNext"">"goto_next"</span>.
+  /// "allow", "deny", "apply_security_profile_group" or "goto_next".
   final String? action;
 
   /// An optional description of this resource.
@@ -57,7 +57,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRule {
   /// A list of secure tags that controls which instances the firewall rule
   /// applies to. If <code>targetSecureTag</code> are specified, then the
   /// firewall rule applies only to instances in the VPC network that have one
-  /// of those EFFECTIVE secure tags, if all the<span pulumi-lang-nodejs=" targetSecureTag " pulumi-lang-dotnet=" TargetSecureTag " pulumi-lang-go=" targetSecureTag " pulumi-lang-python=" target_secure_tag " pulumi-lang-yaml=" targetSecureTag " pulumi-lang-java=" targetSecureTag "> target_secure_tag </span>are in
+  /// of those EFFECTIVE secure tags, if all the target_secure_tag are in
   /// INEFFECTIVE state, then this rule will be ignored.
   /// <code>targetSecureTag</code> may not be set at the same time as
   /// <code>targetServiceAccounts</code>.

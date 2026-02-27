@@ -1,4 +1,0 @@
-library module_colab_runtime_template_iam_member;
-
-export 'runtime_template_iam_member.dart';
-export 'runtime_template_iam_member_args.dart';

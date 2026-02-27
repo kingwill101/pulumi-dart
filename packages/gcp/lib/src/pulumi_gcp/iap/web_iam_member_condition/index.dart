@@ -1,3 +1,0 @@
-library module_iap_web_iam_member_condition;
-
-export 'web_iam_member_condition.dart';

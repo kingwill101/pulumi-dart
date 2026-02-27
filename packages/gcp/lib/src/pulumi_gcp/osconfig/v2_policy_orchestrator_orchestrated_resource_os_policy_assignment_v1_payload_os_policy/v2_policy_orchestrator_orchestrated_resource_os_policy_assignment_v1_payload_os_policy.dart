@@ -6,7 +6,7 @@ import '../v2_policy_orchestrator_orchestrated_resource_os_policy_assignment_v1_
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy {
   /// This flag determines the OS policy compliance status when none of the
   /// resource groups within the policy are applicable for a VM. Set this value
-  /// to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if the policy needs to be reported as compliant even if the
+  /// to `true` if the policy needs to be reported as compliant even if the
   /// policy has nothing to validate or enforce.
   final bool? allowNoResourceGroupMatch;
 
@@ -35,7 +35,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// are ignored.
   /// If none of the resource groups are applicable for a VM, the VM is
   /// considered to be non-compliant w.r.t this policy. This behavior can be
-  /// toggled by the flag <span pulumi-lang-nodejs="`allowNoResourceGroupMatch`" pulumi-lang-dotnet="`AllowNoResourceGroupMatch`" pulumi-lang-go="`allowNoResourceGroupMatch`" pulumi-lang-python="`allow_no_resource_group_match`" pulumi-lang-yaml="`allowNoResourceGroupMatch`" pulumi-lang-java="`allowNoResourceGroupMatch`">`allow_no_resource_group_match`</span>
+  /// toggled by the flag `allow_no_resource_group_match`
   /// Structure is documented below.
   final List<
           V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup>

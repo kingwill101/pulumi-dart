@@ -29,7 +29,7 @@ class JobArgs3 {
   final Input<String>? description;
 
   /// HTTP target.
-  /// If the job providers a<span pulumi-lang-nodejs=" httpTarget " pulumi-lang-dotnet=" HttpTarget " pulumi-lang-go=" httpTarget " pulumi-lang-python=" http_target " pulumi-lang-yaml=" httpTarget " pulumi-lang-java=" httpTarget "> http_target </span>the cron will
+  /// If the job providers a http_target the cron will
   /// send a request to the targeted url
   /// Structure is documented below.
   final Input<JobHttpTarget>? httpTarget;

@@ -1,3 +1,0 @@
-library module_firebase_extensions_instance_error_status;
-
-export 'extensions_instance_error_status.dart';

@@ -19,7 +19,7 @@ class VMwareNodePoolConfig {
   final String? image;
 
   /// The OS image to be used for each node in a node pool.
-  /// Currently <span pulumi-lang-nodejs="`cos`" pulumi-lang-dotnet="`Cos`" pulumi-lang-go="`cos`" pulumi-lang-python="`cos`" pulumi-lang-yaml="`cos`" pulumi-lang-java="`cos`">`cos`</span>, <span pulumi-lang-nodejs="`cosCgv2`" pulumi-lang-dotnet="`CosCgv2`" pulumi-lang-go="`cosCgv2`" pulumi-lang-python="`cos_cgv2`" pulumi-lang-yaml="`cosCgv2`" pulumi-lang-java="`cosCgv2`">`cos_cgv2`</span>, <span pulumi-lang-nodejs="`ubuntu`" pulumi-lang-dotnet="`Ubuntu`" pulumi-lang-go="`ubuntu`" pulumi-lang-python="`ubuntu`" pulumi-lang-yaml="`ubuntu`" pulumi-lang-java="`ubuntu`">`ubuntu`</span>, <span pulumi-lang-nodejs="`ubuntuCgv2`" pulumi-lang-dotnet="`UbuntuCgv2`" pulumi-lang-go="`ubuntuCgv2`" pulumi-lang-python="`ubuntu_cgv2`" pulumi-lang-yaml="`ubuntuCgv2`" pulumi-lang-java="`ubuntuCgv2`">`ubuntu_cgv2`</span>, <span pulumi-lang-nodejs="`ubuntuContainerd`" pulumi-lang-dotnet="`UbuntuContainerd`" pulumi-lang-go="`ubuntuContainerd`" pulumi-lang-python="`ubuntu_containerd`" pulumi-lang-yaml="`ubuntuContainerd`" pulumi-lang-java="`ubuntuContainerd`">`ubuntu_containerd`</span> and <span pulumi-lang-nodejs="`windows`" pulumi-lang-dotnet="`Windows`" pulumi-lang-go="`windows`" pulumi-lang-python="`windows`" pulumi-lang-yaml="`windows`" pulumi-lang-java="`windows`">`windows`</span> are supported.
+  /// Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
   final String imageType;
 
   /// The map of Kubernetes labels (key/value pairs) to be applied to each node.

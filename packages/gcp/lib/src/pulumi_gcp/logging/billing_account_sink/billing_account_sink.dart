@@ -14,193 +14,7 @@ import 'billing_account_sink_args.dart';
 ///
 /// ## Example Usage
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const log_bucket = new gcp.storage.Bucket("log-bucket", {
-/// name: "billing-logging-bucket",
-/// location: "US",
-/// });
-/// const my_sink = new gcp.logging.BillingAccountSink("my-sink", {
-/// name: "my-sink",
-/// description: "some explanation on what this is",
-/// billingAccount: "ABCDEF-012345-GHIJKL",
-/// destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
-/// });
-/// const log_writer = new gcp.projects.IAMBinding("log-writer", {
-/// project: "your-project-id",
-/// role: "roles/storage.objectCreator",
-/// members: [my_sink.writerIdentity],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// log_bucket = gcp.storage.Bucket("log-bucket",
-/// name="billing-logging-bucket",
-/// location="US")
-/// my_sink = gcp.logging.BillingAccountSink("my-sink",
-/// name="my-sink",
-/// description="some explanation on what this is",
-/// billing_account="ABCDEF-012345-GHIJKL",
-/// destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"))
-/// log_writer = gcp.projects.IAMBinding("log-writer",
-/// project="your-project-id",
-/// role="roles/storage.objectCreator",
-/// members=[my_sink.writer_identity])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var log_bucket = new Gcp.Storage.Bucket("log-bucket", new()
-/// {
-/// Name = "billing-logging-bucket",
-/// Location = "US",
-/// });
-///
-/// var my_sink = new Gcp.Logging.BillingAccountSink("my-sink", new()
-/// {
-/// Name = "my-sink",
-/// Description = "some explanation on what this is",
-/// BillingAccount = "ABCDEF-012345-GHIJKL",
-/// Destination = log_bucket.Name.Apply(name => $"storage.googleapis.com/{name}"),
-/// });
-///
-/// var log_writer = new Gcp.Projects.IAMBinding("log-writer", new()
-/// {
-/// Project = "your-project-id",
-/// Role = "roles/storage.objectCreator",
-/// Members = new[]
-/// {
-/// my_sink.WriterIdentity,
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "fmt"
-///
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// log_bucket, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
-/// Name:     pulumi.String("billing-logging-bucket"),
-/// Location: pulumi.String("US"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// my_sink, err := logging.NewBillingAccountSink(ctx, "my-sink", &logging.BillingAccountSinkArgs{
-/// Name:           pulumi.String("my-sink"),
-/// Description:    pulumi.String("some explanation on what this is"),
-/// BillingAccount: pulumi.String("ABCDEF-012345-GHIJKL"),
-/// Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
-/// return fmt.Sprintf("storage.googleapis.com/%v", name), nil
-/// }).(pulumi.StringOutput),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = projects.NewIAMBinding(ctx, "log-writer", &projects.IAMBindingArgs{
-/// Project: pulumi.String("your-project-id"),
-/// Role:    pulumi.String("roles/storage.objectCreator"),
-/// Members: pulumi.StringArray{
-/// my_sink.WriterIdentity,
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.storage.Bucket;
-/// import com.pulumi.gcp.storage.BucketArgs;
-/// import com.pulumi.gcp.logging.BillingAccountSink;
-/// import com.pulumi.gcp.logging.BillingAccountSinkArgs;
-/// import com.pulumi.gcp.projects.IAMBinding;
-/// import com.pulumi.gcp.projects.IAMBindingArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var log_bucket = new Bucket("log-bucket", BucketArgs.builder()
-/// .name("billing-logging-bucket")
-/// .location("US")
-/// .build());
-///
-/// var my_sink = new BillingAccountSink("my-sink", BillingAccountSinkArgs.builder()
-/// .name("my-sink")
-/// .description("some explanation on what this is")
-/// .billingAccount("ABCDEF-012345-GHIJKL")
-/// .destination(log_bucket.name().applyValue(_name -> String.format("storage.googleapis.com/%s", _name)))
-/// .build());
-///
-/// var log_writer = new IAMBinding("log-writer", IAMBindingArgs.builder()
-/// .project("your-project-id")
-/// .role("roles/storage.objectCreator")
-/// .members(my_sink.writerIdentity())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// my-sink:
-/// type: gcp:logging:BillingAccountSink
-/// properties:
-/// name: my-sink
-/// description: some explanation on what this is
-/// billingAccount: ABCDEF-012345-GHIJKL
-/// destination: storage.googleapis.com/${["log-bucket"].name}
-/// log-bucket:
-/// type: gcp:storage:Bucket
-/// properties:
-/// name: billing-logging-bucket
-/// location: US
-/// log-writer:
-/// type: gcp:projects:IAMBinding
-/// properties:
-/// project: your-project-id
-/// role: roles/storage.objectCreator
-/// members:
-/// - ${["my-sink"].writerIdentity}
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -237,7 +51,7 @@ class BillingAccountSink extends CustomResource {
   /// If set to True, then this sink is disabled and it does not export any log entries.
   late final Output<bool?> disabled;
 
-  /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
+  /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
   late final Output<List<BillingAccountSinkExclusion>?> exclusions;
 
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -249,7 +63,7 @@ class BillingAccountSink extends CustomResource {
   late final Output<String> name;
 
   /// The identity associated with this sink. This identity must be granted write access to the
-  /// configured <span pulumi-lang-nodejs="`destination`" pulumi-lang-dotnet="`Destination`" pulumi-lang-go="`destination`" pulumi-lang-python="`destination`" pulumi-lang-yaml="`destination`" pulumi-lang-java="`destination`">`destination`</span>.
+  /// configured `destination`.
   late final Output<String> writerIdentity;
 
   BillingAccountSink(

@@ -23,14 +23,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
       fields;
 
   /// Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
-  /// Only one of <span pulumi-lang-nodejs="`primitiveTransformation`" pulumi-lang-dotnet="`PrimitiveTransformation`" pulumi-lang-go="`primitiveTransformation`" pulumi-lang-python="`primitive_transformation`" pulumi-lang-yaml="`primitiveTransformation`" pulumi-lang-java="`primitiveTransformation`">`primitive_transformation`</span> or <span pulumi-lang-nodejs="`infoTypeTransformations`" pulumi-lang-dotnet="`InfoTypeTransformations`" pulumi-lang-go="`infoTypeTransformations`" pulumi-lang-python="`info_type_transformations`" pulumi-lang-yaml="`infoTypeTransformations`" pulumi-lang-java="`infoTypeTransformations`">`info_type_transformations`</span> must be specified.
+  /// Only one of `primitive_transformation` or `info_type_transformations` must be specified.
   /// Structure is documented below.
   final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations?
       infoTypeTransformations;
 
   /// Apply the transformation to the entire field.
-  /// The <span pulumi-lang-nodejs="`primitiveTransformation`" pulumi-lang-dotnet="`PrimitiveTransformation`" pulumi-lang-go="`primitiveTransformation`" pulumi-lang-python="`primitive_transformation`" pulumi-lang-yaml="`primitiveTransformation`" pulumi-lang-java="`primitiveTransformation`">`primitive_transformation`</span> block must only contain one argument, corresponding to the type of transformation.
-  /// Only one of <span pulumi-lang-nodejs="`primitiveTransformation`" pulumi-lang-dotnet="`PrimitiveTransformation`" pulumi-lang-go="`primitiveTransformation`" pulumi-lang-python="`primitive_transformation`" pulumi-lang-yaml="`primitiveTransformation`" pulumi-lang-java="`primitiveTransformation`">`primitive_transformation`</span> or <span pulumi-lang-nodejs="`infoTypeTransformations`" pulumi-lang-dotnet="`InfoTypeTransformations`" pulumi-lang-go="`infoTypeTransformations`" pulumi-lang-python="`info_type_transformations`" pulumi-lang-yaml="`infoTypeTransformations`" pulumi-lang-java="`infoTypeTransformations`">`info_type_transformations`</span> must be specified.
+  /// The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+  /// Only one of `primitive_transformation` or `info_type_transformations` must be specified.
   /// Structure is documented below.
   final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation?
       primitiveTransformation;

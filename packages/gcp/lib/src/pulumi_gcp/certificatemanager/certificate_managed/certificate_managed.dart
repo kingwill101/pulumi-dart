@@ -11,7 +11,7 @@ class CertificateManaged {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedManagedProvisioningIssue"" pulumi-lang-dotnet=""NestedManagedProvisioningIssue"" pulumi-lang-go=""nestedManagedProvisioningIssue"" pulumi-lang-python=""nested_managed_provisioning_issue"" pulumi-lang-yaml=""nestedManagedProvisioningIssue"" pulumi-lang-java=""nestedManagedProvisioningIssue"">"nested_managed_provisioning_issue"</span>></a>The <span pulumi-lang-nodejs="`provisioningIssue`" pulumi-lang-dotnet="`ProvisioningIssue`" pulumi-lang-go="`provisioningIssue`" pulumi-lang-python="`provisioning_issue`" pulumi-lang-yaml="`provisioningIssue`" pulumi-lang-java="`provisioningIssue`">`provisioning_issue`</span> block contains:
+  /// <a name="nested_managed_provisioning_issue"></a>The `provisioning_issue` block contains:
   final List<CertificateManagedAuthorizationAttemptInfo>?
       authorizationAttemptInfos;
 

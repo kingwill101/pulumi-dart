@@ -5,7 +5,7 @@ class ManagedZoneServiceDirectoryConfigNamespace {
   /// associated with the zone. This should be formatted like
   /// `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace_id}`
   /// or simply `projects/{project}/locations/{location}/namespaces/{namespace_id}`
-  /// Ignored for <span pulumi-lang-nodejs="`public`" pulumi-lang-dotnet="`Public`" pulumi-lang-go="`public`" pulumi-lang-python="`public`" pulumi-lang-yaml="`public`" pulumi-lang-java="`public`">`public`</span> visibility zones.
+  /// Ignored for `public` visibility zones.
   final String namespaceUrl;
 
   ManagedZoneServiceDirectoryConfigNamespace({

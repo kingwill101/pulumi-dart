@@ -15,117 +15,7 @@ import 'domain_args.dart';
 /// ### Active Directory Domain Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const ad_domain = new gcp.activedirectory.Domain("ad-domain", {
-/// domainName: "tfgen.org.com",
-/// locations: ["us-central1"],
-/// reservedIpRange: "192.168.255.0/24",
-/// deletionProtection: false,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// ad_domain = gcp.activedirectory.Domain("ad-domain",
-/// domain_name="tfgen.org.com",
-/// locations=["us-central1"],
-/// reserved_ip_range="192.168.255.0/24",
-/// deletion_protection=False)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var ad_domain = new Gcp.ActiveDirectory.Domain("ad-domain", new()
-/// {
-/// DomainName = "tfgen.org.com",
-/// Locations = new[]
-/// {
-/// "us-central1",
-/// },
-/// ReservedIpRange = "192.168.255.0/24",
-/// DeletionProtection = false,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/activedirectory"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := activedirectory.NewDomain(ctx, "ad-domain", &activedirectory.DomainArgs{
-/// DomainName: pulumi.String("tfgen.org.com"),
-/// Locations: pulumi.StringArray{
-/// pulumi.String("us-central1"),
-/// },
-/// ReservedIpRange:    pulumi.String("192.168.255.0/24"),
-/// DeletionProtection: pulumi.Bool(false),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.activedirectory.Domain;
-/// import com.pulumi.gcp.activedirectory.DomainArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var ad_domain = new Domain("ad-domain", DomainArgs.builder()
-/// .domainName("tfgen.org.com")
-/// .locations("us-central1")
-/// .reservedIpRange("192.168.255.0/24")
-/// .deletionProtection(false)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// ad-domain:
-/// type: gcp:activedirectory:Domain
-/// properties:
-/// domainName: tfgen.org.com
-/// locations:
-/// - us-central1
-/// reservedIpRange: 192.168.255.0/24
-/// deletionProtection: false
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -173,7 +63,7 @@ class Domain extends CustomResource {
 
   /// Resource labels that can contain user-provided metadata
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]

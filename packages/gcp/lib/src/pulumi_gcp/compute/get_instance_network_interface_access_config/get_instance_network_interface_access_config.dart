@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class GetInstanceNetworkInterfaceAccessConfig {
-  /// If the instance has an access config, either the given external ip (in the <span pulumi-lang-nodejs="`natIp`" pulumi-lang-dotnet="`NatIp`" pulumi-lang-go="`natIp`" pulumi-lang-python="`nat_ip`" pulumi-lang-yaml="`natIp`" pulumi-lang-java="`natIp`">`nat_ip`</span> field) or the ephemeral (generated) ip (if you didn't provide one).
+  /// If the instance has an access config, either the given external ip (in the `nat_ip` field) or the ephemeral (generated) ip (if you didn't provide one).
   final String natIp;
 
   /// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.

@@ -1,0 +1,4 @@
+library module_beyondcorp_security_gateway_application_iam_policy;
+
+export 'security_gateway_application_iam_policy/security_gateway_application_iam_policy.dart';
+export 'security_gateway_application_iam_policy/security_gateway_application_iam_policy_args.dart';

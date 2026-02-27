@@ -17,278 +17,7 @@ import 'multicast_group_range_args.dart';
 /// ### Network Services Multicast Group Range Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const network = new gcp.compute.Network("network", {
-/// name: "test-mgr-network",
-/// autoCreateSubnetworks: false,
-/// });
-/// const multicastDomain = new gcp.networkservices.MulticastDomain("multicast_domain", {
-/// multicastDomainId: "test-mgr-domain",
-/// location: "global",
-/// adminNetwork: network.id,
-/// connectionConfig: {
-/// connectionType: "SAME_VPC",
-/// },
-/// }, {
-/// dependsOn: [network],
-/// });
-/// const internalRange = new gcp.networkconnectivity.InternalRange("internal_range", {
-/// name: "test-mgr-internal-range",
-/// network: network.selfLink,
-/// usage: "FOR_VPC",
-/// peering: "FOR_SELF",
-/// ipCidrRange: "224.2.0.2/32",
-/// });
-/// const mgrTest = new gcp.networkservices.MulticastGroupRange("mgr_test", {
-/// multicastGroupRangeId: "test-mgr-group-range",
-/// location: "global",
-/// reservedInternalRange: internalRange.id,
-/// multicastDomain: multicastDomain.id,
-/// distributionScope: "INTRA_ZONE",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// network = gcp.compute.Network("network",
-/// name="test-mgr-network",
-/// auto_create_subnetworks=False)
-/// multicast_domain = gcp.networkservices.MulticastDomain("multicast_domain",
-/// multicast_domain_id="test-mgr-domain",
-/// location="global",
-/// admin_network=network.id,
-/// connection_config={
-/// "connection_type": "SAME_VPC",
-/// },
-/// opts = pulumi.ResourceOptions(depends_on=[network]))
-/// internal_range = gcp.networkconnectivity.InternalRange("internal_range",
-/// name="test-mgr-internal-range",
-/// network=network.self_link,
-/// usage="FOR_VPC",
-/// peering="FOR_SELF",
-/// ip_cidr_range="224.2.0.2/32")
-/// mgr_test = gcp.networkservices.MulticastGroupRange("mgr_test",
-/// multicast_group_range_id="test-mgr-group-range",
-/// location="global",
-/// reserved_internal_range=internal_range.id,
-/// multicast_domain=multicast_domain.id,
-/// distribution_scope="INTRA_ZONE")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var network = new Gcp.Compute.Network("network", new()
-/// {
-/// Name = "test-mgr-network",
-/// AutoCreateSubnetworks = false,
-/// });
-///
-/// var multicastDomain = new Gcp.NetworkServices.MulticastDomain("multicast_domain", new()
-/// {
-/// MulticastDomainId = "test-mgr-domain",
-/// Location = "global",
-/// AdminNetwork = network.Id,
-/// ConnectionConfig = new Gcp.NetworkServices.Inputs.MulticastDomainConnectionConfigArgs
-/// {
-/// ConnectionType = "SAME_VPC",
-/// },
-/// }, new CustomResourceOptions
-/// {
-/// DependsOn =
-/// {
-/// network,
-/// },
-/// });
-///
-/// var internalRange = new Gcp.NetworkConnectivity.InternalRange("internal_range", new()
-/// {
-/// Name = "test-mgr-internal-range",
-/// Network = network.SelfLink,
-/// Usage = "FOR_VPC",
-/// Peering = "FOR_SELF",
-/// IpCidrRange = "224.2.0.2/32",
-/// });
-///
-/// var mgrTest = new Gcp.NetworkServices.MulticastGroupRange("mgr_test", new()
-/// {
-/// MulticastGroupRangeId = "test-mgr-group-range",
-/// Location = "global",
-/// ReservedInternalRange = internalRange.Id,
-/// MulticastDomain = multicastDomain.Id,
-/// DistributionScope = "INTRA_ZONE",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-/// Name:                  pulumi.String("test-mgr-network"),
-/// AutoCreateSubnetworks: pulumi.Bool(false),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// multicastDomain, err := networkservices.NewMulticastDomain(ctx, "multicast_domain", &networkservices.MulticastDomainArgs{
-/// MulticastDomainId: pulumi.String("test-mgr-domain"),
-/// Location:          pulumi.String("global"),
-/// AdminNetwork:      network.ID(),
-/// ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
-/// ConnectionType: pulumi.String("SAME_VPC"),
-/// },
-/// }, pulumi.DependsOn([]pulumi.Resource{
-/// network,
-/// }))
-/// if err != nil {
-/// return err
-/// }
-/// internalRange, err := networkconnectivity.NewInternalRange(ctx, "internal_range", &networkconnectivity.InternalRangeArgs{
-/// Name:        pulumi.String("test-mgr-internal-range"),
-/// Network:     network.SelfLink,
-/// Usage:       pulumi.String("FOR_VPC"),
-/// Peering:     pulumi.String("FOR_SELF"),
-/// IpCidrRange: pulumi.String("224.2.0.2/32"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = networkservices.NewMulticastGroupRange(ctx, "mgr_test", &networkservices.MulticastGroupRangeArgs{
-/// MulticastGroupRangeId: pulumi.String("test-mgr-group-range"),
-/// Location:              pulumi.String("global"),
-/// ReservedInternalRange: internalRange.ID(),
-/// MulticastDomain:       multicastDomain.ID(),
-/// DistributionScope:     pulumi.String("INTRA_ZONE"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.Network;
-/// import com.pulumi.gcp.compute.NetworkArgs;
-/// import com.pulumi.gcp.networkservices.MulticastDomain;
-/// import com.pulumi.gcp.networkservices.MulticastDomainArgs;
-/// import com.pulumi.gcp.networkservices.inputs.MulticastDomainConnectionConfigArgs;
-/// import com.pulumi.gcp.networkconnectivity.InternalRange;
-/// import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
-/// import com.pulumi.gcp.networkservices.MulticastGroupRange;
-/// import com.pulumi.gcp.networkservices.MulticastGroupRangeArgs;
-/// import com.pulumi.resources.CustomResourceOptions;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var network = new Network("network", NetworkArgs.builder()
-/// .name("test-mgr-network")
-/// .autoCreateSubnetworks(false)
-/// .build());
-///
-/// var multicastDomain = new MulticastDomain("multicastDomain", MulticastDomainArgs.builder()
-/// .multicastDomainId("test-mgr-domain")
-/// .location("global")
-/// .adminNetwork(network.id())
-/// .connectionConfig(MulticastDomainConnectionConfigArgs.builder()
-/// .connectionType("SAME_VPC")
-/// .build())
-/// .build(), CustomResourceOptions.builder()
-/// .dependsOn(network)
-/// .build());
-///
-/// var internalRange = new InternalRange("internalRange", InternalRangeArgs.builder()
-/// .name("test-mgr-internal-range")
-/// .network(network.selfLink())
-/// .usage("FOR_VPC")
-/// .peering("FOR_SELF")
-/// .ipCidrRange("224.2.0.2/32")
-/// .build());
-///
-/// var mgrTest = new MulticastGroupRange("mgrTest", MulticastGroupRangeArgs.builder()
-/// .multicastGroupRangeId("test-mgr-group-range")
-/// .location("global")
-/// .reservedInternalRange(internalRange.id())
-/// .multicastDomain(multicastDomain.id())
-/// .distributionScope("INTRA_ZONE")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// network:
-/// type: gcp:compute:Network
-/// properties:
-/// name: test-mgr-network
-/// autoCreateSubnetworks: false
-/// multicastDomain:
-/// type: gcp:networkservices:MulticastDomain
-/// name: multicast_domain
-/// properties:
-/// multicastDomainId: test-mgr-domain
-/// location: global
-/// adminNetwork: ${network.id}
-/// connectionConfig:
-/// connectionType: SAME_VPC
-/// options:
-/// dependsOn:
-/// - ${network}
-/// internalRange:
-/// type: gcp:networkconnectivity:InternalRange
-/// name: internal_range
-/// properties:
-/// name: test-mgr-internal-range
-/// network: ${network.selfLink}
-/// usage: FOR_VPC
-/// peering: FOR_SELF
-/// ipCidrRange: 224.2.0.2/32
-/// mgrTest:
-/// type: gcp:networkservices:MulticastGroupRange
-/// name: mgr_test
-/// properties:
-/// multicastGroupRangeId: test-mgr-group-range
-/// location: global
-/// reservedInternalRange: ${internalRange.id}
-/// multicastDomain: ${multicastDomain.id}
-/// distributionScope: INTRA_ZONE
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -317,14 +46,8 @@ class MulticastGroupRange extends CustomResource {
   /// A list of consumer projects that are allowed to subscribe to the multicast
   /// IP addresses within the range defined by this MulticastGroupRange. The
   /// project can be specified using its project ID or project number. If left
-  /// empty, then all consumer projects are allowed (unless<span pulumi-lang-nodejs="
-  /// requireExplicitAccept " pulumi-lang-dotnet="
-  /// RequireExplicitAccept " pulumi-lang-go="
-  /// requireExplicitAccept " pulumi-lang-python="
-  /// require_explicit_accept " pulumi-lang-yaml="
-  /// requireExplicitAccept " pulumi-lang-java="
-  /// requireExplicitAccept ">
-  /// require_explicit_accept </span>is set to true) once they have VPC networks
+  /// empty, then all consumer projects are allowed (unless
+  /// require_explicit_accept is set to true) once they have VPC networks
   /// associated to the multicast domain. The current max length of the accept
   /// list is 100.
   late final Output<List<String>?> consumerAcceptLists;
@@ -352,10 +75,10 @@ class MulticastGroupRange extends CustomResource {
 
   /// Labels as key-value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> location;
 
   /// The logging configuration.
@@ -387,7 +110,7 @@ class MulticastGroupRange extends CustomResource {
   /// and default labels configured on the provider.
   late final Output<Map<String, String>> pulumiLabels;
 
-  /// Whether an empty<span pulumi-lang-nodejs=" consumerAcceptList " pulumi-lang-dotnet=" ConsumerAcceptList " pulumi-lang-go=" consumerAcceptList " pulumi-lang-python=" consumer_accept_list " pulumi-lang-yaml=" consumerAcceptList " pulumi-lang-java=" consumerAcceptList "> consumer_accept_list </span>will deny all consumer projects.
+  /// Whether an empty consumer_accept_list will deny all consumer projects.
   late final Output<bool?> requireExplicitAccept;
 
   /// The resource name of the internal range reserved for this

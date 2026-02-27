@@ -1,3 +1,0 @@
-library module_networkservices_edge_cache_origin_flex_shielding;
-
-export 'edge_cache_origin_flex_shielding.dart';

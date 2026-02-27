@@ -1,0 +1,3 @@
+library module_memorystore_get_instance_maintenance_schedule;
+
+export 'get_instance_maintenance_schedule/get_instance_maintenance_schedule2.dart';

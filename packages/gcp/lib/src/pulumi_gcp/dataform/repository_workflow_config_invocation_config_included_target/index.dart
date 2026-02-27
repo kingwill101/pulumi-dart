@@ -1,3 +1,0 @@
-library module_dataform_repository_workflow_config_invocation_config_included_target;
-
-export 'repository_workflow_config_invocation_config_included_target.dart';

@@ -1,3 +1,0 @@
-library module_memorystore_get_instance_desired_auto_created_endpoint;
-
-export 'get_instance_desired_auto_created_endpoint.dart';

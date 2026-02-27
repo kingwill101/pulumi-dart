@@ -1,3 +1,0 @@
-library module_diagflow_cx_test_case_last_test_result_conversation_turn_user_input_input_event;
-
-export 'cx_test_case_last_test_result_conversation_turn_user_input_input_event.dart';

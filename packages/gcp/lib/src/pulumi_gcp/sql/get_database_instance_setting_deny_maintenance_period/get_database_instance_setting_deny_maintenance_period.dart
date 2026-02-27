@@ -7,7 +7,7 @@ class GetDatabaseInstanceSettingDenyMaintenancePeriod {
   /// Start date after which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
   final String startDate;
 
-  /// Time in UTC when the "deny maintenance period" starts on<span pulumi-lang-nodejs=" startDate " pulumi-lang-dotnet=" StartDate " pulumi-lang-go=" startDate " pulumi-lang-python=" start_date " pulumi-lang-yaml=" startDate " pulumi-lang-java=" startDate "> start_date </span>and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+  /// Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
   final String time;
 
   GetDatabaseInstanceSettingDenyMaintenancePeriod({

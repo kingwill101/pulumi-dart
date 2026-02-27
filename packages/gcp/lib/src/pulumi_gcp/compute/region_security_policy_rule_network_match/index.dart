@@ -1,3 +1,0 @@
-library module_compute_region_security_policy_rule_network_match;
-
-export 'region_security_policy_rule_network_match.dart';

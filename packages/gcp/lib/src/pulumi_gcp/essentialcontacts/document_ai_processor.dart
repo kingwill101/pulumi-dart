@@ -1,0 +1,4 @@
+library module_essentialcontacts_document_ai_processor;
+
+export 'document_ai_processor/document_ai_processor.dart';
+export 'document_ai_processor/document_ai_processor_args.dart';

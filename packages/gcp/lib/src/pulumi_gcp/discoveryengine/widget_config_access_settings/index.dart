@@ -1,3 +1,0 @@
-library module_discoveryengine_widget_config_access_settings;
-
-export 'widget_config_access_settings.dart';

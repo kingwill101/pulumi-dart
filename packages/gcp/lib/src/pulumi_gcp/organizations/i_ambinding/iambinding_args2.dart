@@ -14,7 +14,7 @@ class IAMBindingArgs2 {
   final Input<String> orgId;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.organizations.IAMBinding`" pulumi-lang-dotnet="`gcp.organizations.IAMBinding`" pulumi-lang-go="`organizations.IAMBinding`" pulumi-lang-python="`organizations.IAMBinding`" pulumi-lang-yaml="`gcp.organizations.IAMBinding`" pulumi-lang-java="`gcp.organizations.IAMBinding`">`gcp.organizations.IAMBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

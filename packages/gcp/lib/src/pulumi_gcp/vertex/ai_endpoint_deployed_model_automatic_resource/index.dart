@@ -1,3 +1,0 @@
-library module_vertex_ai_endpoint_deployed_model_automatic_resource;
-
-export 'ai_endpoint_deployed_model_automatic_resource.dart';

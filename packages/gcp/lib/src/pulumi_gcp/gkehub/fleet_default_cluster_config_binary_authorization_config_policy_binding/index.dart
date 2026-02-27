@@ -1,3 +1,0 @@
-library module_gkehub_fleet_default_cluster_config_binary_authorization_config_policy_binding;
-
-export 'fleet_default_cluster_config_binary_authorization_config_policy_binding.dart';

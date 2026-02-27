@@ -1,0 +1,3 @@
+library module_blockchainnodeengine_blockchain_nodes_ethereum_details;
+
+export 'blockchain_nodes_ethereum_details/blockchain_nodes_ethereum_details.dart';

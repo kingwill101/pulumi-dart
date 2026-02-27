@@ -1,0 +1,3 @@
+library module_databasemigrationservice_private_connection_error;
+
+export 'private_connection_error/private_connection_error.dart';

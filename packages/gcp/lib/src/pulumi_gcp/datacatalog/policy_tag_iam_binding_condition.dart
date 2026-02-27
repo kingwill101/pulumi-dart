@@ -1,0 +1,3 @@
+library module_datacatalog_policy_tag_iam_binding_condition;
+
+export 'policy_tag_iam_binding_condition/policy_tag_iam_binding_condition.dart';

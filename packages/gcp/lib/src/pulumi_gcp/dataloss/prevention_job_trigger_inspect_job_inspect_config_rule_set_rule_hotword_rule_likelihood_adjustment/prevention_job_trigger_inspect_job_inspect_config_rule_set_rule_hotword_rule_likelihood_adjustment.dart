@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment {
-  /// Set the likelihood of a finding to a fixed value. Either this or<span pulumi-lang-nodejs=" relativeLikelihood " pulumi-lang-dotnet=" RelativeLikelihood " pulumi-lang-go=" relativeLikelihood " pulumi-lang-python=" relative_likelihood " pulumi-lang-yaml=" relativeLikelihood " pulumi-lang-java=" relativeLikelihood "> relative_likelihood </span>can be set.
+  /// Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
   /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
   final String? fixedLikelihood;
 
@@ -10,7 +10,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoo
   /// then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
   /// Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
   /// adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
-  /// will result in a final likelihood of LIKELY. Either this or<span pulumi-lang-nodejs=" fixedLikelihood " pulumi-lang-dotnet=" FixedLikelihood " pulumi-lang-go=" fixedLikelihood " pulumi-lang-python=" fixed_likelihood " pulumi-lang-yaml=" fixedLikelihood " pulumi-lang-java=" fixedLikelihood "> fixed_likelihood </span>can be set.
+  /// will result in a final likelihood of LIKELY. Either this or fixed_likelihood can be set.
   final int? relativeLikelihood;
 
   PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment({

@@ -1,0 +1,3 @@
+library module_securitycenter_organization_custom_module_custom_config_resource_selector;
+
+export 'organization_custom_module_custom_config_resource_selector/organization_custom_module_custom_config_resource_selector.dart';

@@ -1,0 +1,3 @@
+library module_compute_future_reservation_aggregate_reservation_reserved_resource;
+
+export 'future_reservation_aggregate_reservation_reserved_resource/future_reservation_aggregate_reservation_reserved_resource.dart';

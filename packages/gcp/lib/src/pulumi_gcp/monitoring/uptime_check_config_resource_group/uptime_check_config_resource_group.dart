@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class UptimeCheckConfigResourceGroup {
-  /// The group of resources being monitored. Should be the <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> of a group
+  /// The group of resources being monitored. Should be the `name` of a group
   final String? groupId;
 
   /// The resource type of the group members.

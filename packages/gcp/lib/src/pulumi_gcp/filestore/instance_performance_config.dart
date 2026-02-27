@@ -1,0 +1,3 @@
+library module_filestore_instance_performance_config;
+
+export 'instance_performance_config/instance_performance_config.dart';

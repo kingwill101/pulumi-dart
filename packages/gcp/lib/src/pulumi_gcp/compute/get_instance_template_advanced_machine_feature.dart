@@ -1,0 +1,3 @@
+library module_compute_get_instance_template_advanced_machine_feature;
+
+export 'get_instance_template_advanced_machine_feature/get_instance_template_advanced_machine_feature.dart';

@@ -1,3 +1,0 @@
-library module_compute_region_backend_service_outlier_detection_base_ejection_time;
-
-export 'region_backend_service_outlier_detection_base_ejection_time.dart';

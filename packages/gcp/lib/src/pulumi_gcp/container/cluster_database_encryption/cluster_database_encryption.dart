@@ -3,7 +3,7 @@
 class ClusterDatabaseEncryption {
   /// the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedEnableK8sBetaApis"" pulumi-lang-dotnet=""NestedEnableK8sBetaApis"" pulumi-lang-go=""nestedEnableK8sBetaApis"" pulumi-lang-python=""nested_enable_k8s_beta_apis"" pulumi-lang-yaml=""nestedEnableK8sBetaApis"" pulumi-lang-java=""nestedEnableK8sBetaApis"">"nested_enable_k8s_beta_apis"</span>></a>The <span pulumi-lang-nodejs="`enableK8sBetaApis`" pulumi-lang-dotnet="`EnableK8sBetaApis`" pulumi-lang-go="`enableK8sBetaApis`" pulumi-lang-python="`enable_k8s_beta_apis`" pulumi-lang-yaml="`enableK8sBetaApis`" pulumi-lang-java="`enableK8sBetaApis`">`enable_k8s_beta_apis`</span> block supports:
+  /// <a name="nested_enable_k8s_beta_apis"></a>The `enable_k8s_beta_apis` block supports:
   final String? keyName;
 
   /// `ENCRYPTED` or `DECRYPTED`

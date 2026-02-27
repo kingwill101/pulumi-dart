@@ -14,126 +14,7 @@ import 'ai_logic_prompt_template_args.dart';
 /// ### Firebaseailogic Prompt Template Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const basic = new gcp.firebase.AiLogicPromptTemplate("basic", {
-/// location: "global",
-/// templateId: "basic-template",
-/// templateString: `---
-/// model: gemini-2.5-flash
-/// ---
-/// Hello world!
-/// `,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// basic = gcp.firebase.AiLogicPromptTemplate("basic",
-/// location="global",
-/// template_id="basic-template",
-/// template_string="""---
-/// model: gemini-2.5-flash
-/// ---
-/// Hello world!
-/// """)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var basic = new Gcp.Firebase.AiLogicPromptTemplate("basic", new()
-/// {
-/// Location = "global",
-/// TemplateId = "basic-template",
-/// TemplateString = @"---
-/// model: gemini-2.5-flash
-/// ---
-/// Hello world!
-/// ",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := firebase.NewAiLogicPromptTemplate(ctx, "basic", &firebase.AiLogicPromptTemplateArgs{
-/// Location:       pulumi.String("global"),
-/// TemplateId:     pulumi.String("basic-template"),
-/// TemplateString: pulumi.String("---\nmodel: gemini-2.5-flash\n---\nHello world!\n"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.firebase.AiLogicPromptTemplate;
-/// import com.pulumi.gcp.firebase.AiLogicPromptTemplateArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var basic = new AiLogicPromptTemplate("basic", AiLogicPromptTemplateArgs.builder()
-/// .location("global")
-/// .templateId("basic-template")
-/// .templateString("""
-/// ---
-/// model: gemini-2.5-flash
-/// ---
-/// Hello world!
-/// """)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// basic:
-/// type: gcp:firebase:AiLogicPromptTemplate
-/// properties:
-/// location: global
-/// templateId: basic-template
-/// templateString: |
-/// ---
-/// model: gemini-2.5-flash
-/// ---
-/// Hello world!
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -165,7 +46,7 @@ class AiLogicPromptTemplate extends CustomResource {
   /// The display name of the PromptTemplate.
   late final Output<String?> displayName;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> location;
 
   /// Indicates if the PromptTemplate has been locked for mutations.  It is

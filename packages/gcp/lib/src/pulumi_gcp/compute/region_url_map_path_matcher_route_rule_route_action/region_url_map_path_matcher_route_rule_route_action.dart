@@ -20,7 +20,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteAction {
   /// when clients send requests to a backend service, delays can be introduced by
   /// Loadbalancer on a percentage of requests before sending those request to the
   /// backend service. Similarly requests from clients can be aborted by the
-  /// Loadbalancer for a percentage of requests. timeout and<span pulumi-lang-nodejs=" retryPolicy " pulumi-lang-dotnet=" RetryPolicy " pulumi-lang-go=" retryPolicy " pulumi-lang-python=" retry_policy " pulumi-lang-yaml=" retryPolicy " pulumi-lang-java=" retryPolicy "> retry_policy </span>will be
+  /// Loadbalancer for a percentage of requests. timeout and retry_policy will be
   /// ignored by clients that are configured with a fault_injection_policy.
   /// Structure is documented below.
   final RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy?

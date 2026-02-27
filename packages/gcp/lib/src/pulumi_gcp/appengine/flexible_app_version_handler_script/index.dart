@@ -1,3 +1,0 @@
-library module_appengine_flexible_app_version_handler_script;
-
-export 'flexible_app_version_handler_script.dart';

@@ -33,10 +33,10 @@ class CloudVmClusterArgs {
 
   /// Labels or tags associated with the VM Cluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. See documentation for resource type `oracledatabase.googleapis.com/DbNode`.
+  /// Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbNode`.
   final Input<String> location;
 
   /// The name of the VPC network.
@@ -47,7 +47,7 @@ class CloudVmClusterArgs {
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
-  /// the<span pulumi-lang-nodejs=" odbSubnet " pulumi-lang-dotnet=" OdbSubnet " pulumi-lang-go=" odbSubnet " pulumi-lang-python=" odb_subnet " pulumi-lang-yaml=" odbSubnet " pulumi-lang-java=" odbSubnet "> odb_subnet </span>and backup_odb_subnet.
+  /// the odb_subnet and backup_odb_subnet.
   final Input<String>? odbNetwork;
 
   /// The name of the OdbSubnet associated with the VM Cluster for

@@ -1,0 +1,3 @@
+library module_artifactregistry_get_repository_remote_repository_config_upstream_credential;
+
+export 'get_repository_remote_repository_config_upstream_credential/get_repository_remote_repository_config_upstream_credential.dart';

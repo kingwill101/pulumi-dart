@@ -1,0 +1,3 @@
+library module_dataplex_data_product_access_group_principal;
+
+export 'data_product_access_group_principal/data_product_access_group_principal.dart';

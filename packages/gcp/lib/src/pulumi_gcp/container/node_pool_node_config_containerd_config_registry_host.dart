@@ -1,0 +1,3 @@
+library module_container_node_pool_node_config_containerd_config_registry_host;
+
+export 'node_pool_node_config_containerd_config_registry_host/node_pool_node_config_containerd_config_registry_host.dart';

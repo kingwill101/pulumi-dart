@@ -1,3 +1,0 @@
-library module_dns_get_keys_zone_signing_key_digest;
-
-export 'get_keys_zone_signing_key_digest.dart';

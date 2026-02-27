@@ -1,3 +1,0 @@
-library module_container_cluster_master_authorized_networks_config;
-
-export 'cluster_master_authorized_networks_config.dart';

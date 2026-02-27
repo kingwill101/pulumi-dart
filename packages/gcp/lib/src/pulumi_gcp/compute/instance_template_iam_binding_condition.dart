@@ -1,0 +1,3 @@
+library module_compute_instance_template_iam_binding_condition;
+
+export 'instance_template_iam_binding_condition/instance_template_iam_binding_condition.dart';

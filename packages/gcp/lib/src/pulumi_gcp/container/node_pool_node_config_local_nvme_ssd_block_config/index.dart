@@ -1,3 +1,0 @@
-library module_container_node_pool_node_config_local_nvme_ssd_block_config;
-
-export 'node_pool_node_config_local_nvme_ssd_block_config.dart';

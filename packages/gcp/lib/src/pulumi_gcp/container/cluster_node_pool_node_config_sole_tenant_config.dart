@@ -1,0 +1,3 @@
+library module_container_cluster_node_pool_node_config_sole_tenant_config;
+
+export 'cluster_node_pool_node_config_sole_tenant_config/cluster_node_pool_node_config_sole_tenant_config.dart';

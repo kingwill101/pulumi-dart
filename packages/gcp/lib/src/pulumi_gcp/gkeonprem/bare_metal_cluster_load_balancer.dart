@@ -1,0 +1,3 @@
+library module_gkeonprem_bare_metal_cluster_load_balancer;
+
+export 'bare_metal_cluster_load_balancer/bare_metal_cluster_load_balancer.dart';

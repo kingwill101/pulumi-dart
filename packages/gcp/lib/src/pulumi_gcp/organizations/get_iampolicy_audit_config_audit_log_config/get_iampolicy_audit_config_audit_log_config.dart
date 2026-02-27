@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class GetIAMPolicyAuditConfigAuditLogConfig {
-  /// Specifies the identities that are exempt from these types of logging operations. Follows the same format of the <span pulumi-lang-nodejs="`members`" pulumi-lang-dotnet="`Members`" pulumi-lang-go="`members`" pulumi-lang-python="`members`" pulumi-lang-yaml="`members`" pulumi-lang-java="`members`">`members`</span> array for <span pulumi-lang-nodejs="`binding`" pulumi-lang-dotnet="`Binding`" pulumi-lang-go="`binding`" pulumi-lang-python="`binding`" pulumi-lang-yaml="`binding`" pulumi-lang-java="`binding`">`binding`</span>.
+  /// Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
   final List<String>? exemptedMembers;
 
   /// Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://docs.cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.

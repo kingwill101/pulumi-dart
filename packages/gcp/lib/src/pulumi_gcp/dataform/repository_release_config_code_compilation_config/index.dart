@@ -1,3 +1,0 @@
-library module_dataform_repository_release_config_code_compilation_config;
-
-export 'repository_release_config_code_compilation_config.dart';

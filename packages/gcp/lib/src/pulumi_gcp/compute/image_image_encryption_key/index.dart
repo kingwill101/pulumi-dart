@@ -1,3 +1,0 @@
-library module_compute_image_image_encryption_key;
-
-export 'image_image_encryption_key.dart';

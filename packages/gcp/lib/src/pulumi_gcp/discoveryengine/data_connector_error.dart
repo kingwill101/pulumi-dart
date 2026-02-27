@@ -1,0 +1,3 @@
+library module_discoveryengine_data_connector_error;
+
+export 'data_connector_error/data_connector_error.dart';

@@ -39,7 +39,7 @@ class DataStoreArgs {
   /// The KMS key to be used to protect this DataStore at creation time. Must be
   /// set for requests that need to comply with CMEK Org Policy protections.
   /// If this field is set and processed successfully, the DataStore will be
-  /// protected by the KMS key, as indicated in the<span pulumi-lang-nodejs=" cmekConfig " pulumi-lang-dotnet=" CmekConfig " pulumi-lang-go=" cmekConfig " pulumi-lang-python=" cmek_config " pulumi-lang-yaml=" cmekConfig " pulumi-lang-java=" cmekConfig "> cmek_config </span>field.
+  /// protected by the KMS key, as indicated in the cmek_config field.
   final Input<String>? kmsKeyName;
 
   /// The geographic location where the data store should reside. The value can

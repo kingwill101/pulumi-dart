@@ -1,0 +1,3 @@
+library module_identityplatform_config_quota_sign_up_quota_config;
+
+export 'config_quota_sign_up_quota_config/config_quota_sign_up_quota_config.dart';

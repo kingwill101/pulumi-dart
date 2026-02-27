@@ -1,3 +1,0 @@
-library module_container_cluster_authenticator_groups_config;
-
-export 'cluster_authenticator_groups_config.dart';

@@ -7,11 +7,11 @@ import '../cluster_iammember_condition/cluster_iammember_condition.dart';
 class ClusterIAMMemberArgs {
   /// The name or relative resource id of the cluster to manage IAM policies for.
   ///
-  /// For <span pulumi-lang-nodejs="`gcp.dataproc.ClusterIAMMember`" pulumi-lang-dotnet="`gcp.dataproc.ClusterIAMMember`" pulumi-lang-go="`dataproc.ClusterIAMMember`" pulumi-lang-python="`dataproc.ClusterIAMMember`" pulumi-lang-yaml="`gcp.dataproc.ClusterIAMMember`" pulumi-lang-java="`gcp.dataproc.ClusterIAMMember`">`gcp.dataproc.ClusterIAMMember`</span> or <span pulumi-lang-nodejs="`gcp.dataproc.ClusterIAMBinding`" pulumi-lang-dotnet="`gcp.dataproc.ClusterIAMBinding`" pulumi-lang-go="`dataproc.ClusterIAMBinding`" pulumi-lang-python="`dataproc.ClusterIAMBinding`" pulumi-lang-yaml="`gcp.dataproc.ClusterIAMBinding`" pulumi-lang-java="`gcp.dataproc.ClusterIAMBinding`">`gcp.dataproc.ClusterIAMBinding`</span>:
+  /// For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
   final Input<String> cluster;
   final Input<ClusterIAMMemberCondition>? condition;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -30,10 +30,10 @@ class ClusterIAMMemberArgs {
   final Input<String>? region;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.dataproc.ClusterIAMBinding`" pulumi-lang-dotnet="`gcp.dataproc.ClusterIAMBinding`" pulumi-lang-go="`dataproc.ClusterIAMBinding`" pulumi-lang-python="`dataproc.ClusterIAMBinding`" pulumi-lang-yaml="`gcp.dataproc.ClusterIAMBinding`" pulumi-lang-java="`gcp.dataproc.ClusterIAMBinding`">`gcp.dataproc.ClusterIAMBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   ///
-  /// <span pulumi-lang-nodejs="`gcp.dataproc.ClusterIAMPolicy`" pulumi-lang-dotnet="`gcp.dataproc.ClusterIAMPolicy`" pulumi-lang-go="`dataproc.ClusterIAMPolicy`" pulumi-lang-python="`dataproc.ClusterIAMPolicy`" pulumi-lang-yaml="`gcp.dataproc.ClusterIAMPolicy`" pulumi-lang-java="`gcp.dataproc.ClusterIAMPolicy`">`gcp.dataproc.ClusterIAMPolicy`</span> only:
+  /// `gcp.dataproc.ClusterIAMPolicy` only:
   final Input<String> role;
 
   ClusterIAMMemberArgs({

@@ -32,7 +32,7 @@ class UserStoreArgs {
   /// If it is not provided, the provider project is used.
   final Input<String>? project;
 
-  /// The ID of the user store. Currently only accepts <span pulumi-lang-nodejs=""defaultUserStore"" pulumi-lang-dotnet=""DefaultUserStore"" pulumi-lang-go=""defaultUserStore"" pulumi-lang-python=""default_user_store"" pulumi-lang-yaml=""defaultUserStore"" pulumi-lang-java=""defaultUserStore"">"default_user_store"</span>.
+  /// The ID of the user store. Currently only accepts "default_user_store".
   final Input<String>? userStoreId;
 
   UserStoreArgs({

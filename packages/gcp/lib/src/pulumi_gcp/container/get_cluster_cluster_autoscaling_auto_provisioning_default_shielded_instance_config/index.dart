@@ -1,3 +1,0 @@
-library module_container_get_cluster_cluster_autoscaling_auto_provisioning_default_shielded_instance_config;
-
-export 'get_cluster_cluster_autoscaling_auto_provisioning_default_shielded_instance_config.dart';

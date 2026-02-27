@@ -1,3 +1,0 @@
-library module_gkeonprem_vmware_cluster_load_balancer_vip_config;
-
-export 'vmware_cluster_load_balancer_vip_config.dart';

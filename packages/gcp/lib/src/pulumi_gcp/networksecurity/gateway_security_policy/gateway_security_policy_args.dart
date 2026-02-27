@@ -8,7 +8,7 @@ class GatewaySecurityPolicyArgs {
   final Input<String>? description;
 
   /// The location of the gateway security policy.
-  /// The default value is <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span>.
+  /// The default value is `global`.
   final Input<String>? location;
 
   /// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}

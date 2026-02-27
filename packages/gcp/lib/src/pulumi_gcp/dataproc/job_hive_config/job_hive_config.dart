@@ -11,11 +11,11 @@ class JobHiveConfig {
   final Map<String, String>? properties;
 
   /// HCFS URI of file containing Hive script to execute as the job.
-  /// Conflicts with <span pulumi-lang-nodejs="`queryList`" pulumi-lang-dotnet="`QueryList`" pulumi-lang-go="`queryList`" pulumi-lang-python="`query_list`" pulumi-lang-yaml="`queryList`" pulumi-lang-java="`queryList`">`query_list`</span>
+  /// Conflicts with `query_list`
   final String? queryFileUri;
 
   /// The list of Hive queries or statements to execute as part of the job.
-  /// Conflicts with <span pulumi-lang-nodejs="`queryFileUri`" pulumi-lang-dotnet="`QueryFileUri`" pulumi-lang-go="`queryFileUri`" pulumi-lang-python="`query_file_uri`" pulumi-lang-yaml="`queryFileUri`" pulumi-lang-java="`queryFileUri`">`query_file_uri`</span>
+  /// Conflicts with `query_file_uri`
   final List<String>? queryLists;
 
   /// Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).

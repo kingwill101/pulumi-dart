@@ -1,0 +1,3 @@
+library module_compute_get_global_forwarding_rule_metadata_filter_filter_label;
+
+export 'get_global_forwarding_rule_metadata_filter_filter_label/get_global_forwarding_rule_metadata_filter_filter_label.dart';

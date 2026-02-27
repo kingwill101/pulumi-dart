@@ -1,0 +1,3 @@
+library module_compute_reservation_specific_reservation_instance_properties;
+
+export 'reservation_specific_reservation_instance_properties/reservation_specific_reservation_instance_properties.dart';

@@ -10,7 +10,7 @@ class GetIamCustomRolesRole {
   /// an identifier for the resource with the format `organizations/{{org_id}}/roles/{{role_id}}`.
   final String id;
 
-  /// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>, this field can be used as a reference in other resources such as IAM role bindings.
+  /// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
   final String name;
 
   /// The names of the permissions this role grants when bound in an IAM policy.

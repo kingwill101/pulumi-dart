@@ -9,7 +9,7 @@ class InstanceGroupArgs {
   /// group.
   final Input<String>? description;
 
-  /// The list of instances in the group, in <span pulumi-lang-nodejs="`selfLink`" pulumi-lang-dotnet="`SelfLink`" pulumi-lang-go="`selfLink`" pulumi-lang-python="`self_link`" pulumi-lang-yaml="`selfLink`" pulumi-lang-java="`selfLink`">`self_link`</span> format.
+  /// The list of instances in the group, in `self_link` format.
   /// When adding instances they must all be in the same network and zone as the instance group.
   final Input<List<String>>? instances;
 
@@ -26,7 +26,7 @@ class InstanceGroupArgs {
   /// The URL of the network the instance group is in. If
   /// this is different from the network where the instances are in, the creation
   /// fails. Defaults to the network where the instances are in (if neither
-  /// <span pulumi-lang-nodejs="`network`" pulumi-lang-dotnet="`Network`" pulumi-lang-go="`network`" pulumi-lang-python="`network`" pulumi-lang-yaml="`network`" pulumi-lang-java="`network`">`network`</span> nor <span pulumi-lang-nodejs="`instances`" pulumi-lang-dotnet="`Instances`" pulumi-lang-go="`instances`" pulumi-lang-python="`instances`" pulumi-lang-yaml="`instances`" pulumi-lang-java="`instances`">`instances`</span> is specified, this field will be blank).
+  /// `network` nor `instances` is specified, this field will be blank).
   final Input<String>? network;
 
   /// The ID of the project in which the resource belongs. If it

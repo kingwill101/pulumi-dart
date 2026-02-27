@@ -1,3 +1,0 @@
-library module_container_cluster_node_config_guest_accelerator;
-
-export 'cluster_node_config_guest_accelerator.dart';

@@ -1,0 +1,3 @@
+library module_vmwareengine_private_cloud_vcenter;
+
+export 'private_cloud_vcenter/private_cloud_vcenter.dart';

@@ -1,0 +1,3 @@
+library module_netapp_volume_snapshot_policy_hourly_schedule;
+
+export 'volume_snapshot_policy_hourly_schedule/volume_snapshot_policy_hourly_schedule.dart';

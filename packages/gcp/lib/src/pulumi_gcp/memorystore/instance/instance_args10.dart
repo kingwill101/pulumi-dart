@@ -34,7 +34,7 @@ class InstanceArgs10 {
   final Input<List<InstanceDesiredAutoCreatedEndpoint>>?
       desiredAutoCreatedEndpoints;
 
-  /// <span pulumi-lang-nodejs="`desiredPscAutoConnections`" pulumi-lang-dotnet="`DesiredPscAutoConnections`" pulumi-lang-go="`desiredPscAutoConnections`" pulumi-lang-python="`desired_psc_auto_connections`" pulumi-lang-yaml="`desiredPscAutoConnections`" pulumi-lang-java="`desiredPscAutoConnections`">`desired_psc_auto_connections`</span> is deprecated  Use <span pulumi-lang-nodejs="`desiredAutoCreatedEndpoints`" pulumi-lang-dotnet="`DesiredAutoCreatedEndpoints`" pulumi-lang-go="`desiredAutoCreatedEndpoints`" pulumi-lang-python="`desired_auto_created_endpoints`" pulumi-lang-yaml="`desiredAutoCreatedEndpoints`" pulumi-lang-java="`desiredAutoCreatedEndpoints`">`desired_auto_created_endpoints`</span> instead `pulumi import` will only work with<span pulumi-lang-nodejs=" desiredAutoCreatedEndpoints`" pulumi-lang-dotnet=" DesiredAutoCreatedEndpoints`" pulumi-lang-go=" desiredAutoCreatedEndpoints`" pulumi-lang-python=" desired_auto_created_endpoints`" pulumi-lang-yaml=" desiredAutoCreatedEndpoints`" pulumi-lang-java=" desiredAutoCreatedEndpoints`"> desired_auto_created_endpoints`</span>.
+  /// `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
   final Input<List<InstanceDesiredPscAutoConnection>>?
       desiredPscAutoConnections;
 
@@ -63,17 +63,17 @@ class InstanceArgs10 {
 
   /// Optional. Labels to represent user-provided metadata.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
   final Input<String> location;
 
   /// Maintenance policy for a cluster
   /// Structure is documented below.
   final Input<InstanceMaintenancePolicy2>? maintenancePolicy;
 
-  /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the<span pulumi-lang-nodejs=" availableMaintenanceVersions " pulumi-lang-dotnet=" AvailableMaintenanceVersions " pulumi-lang-go=" availableMaintenanceVersions " pulumi-lang-python=" available_maintenance_versions " pulumi-lang-yaml=" availableMaintenanceVersions " pulumi-lang-java=" availableMaintenanceVersions "> available_maintenance_versions </span>field.
+  /// This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the available_maintenance_versions field.
   /// *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
   final Input<String>? maintenanceVersion;
 

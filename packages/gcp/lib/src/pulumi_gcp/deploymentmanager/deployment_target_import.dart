@@ -1,0 +1,3 @@
+library module_deploymentmanager_deployment_target_import;
+
+export 'deployment_target_import/deployment_target_import.dart';

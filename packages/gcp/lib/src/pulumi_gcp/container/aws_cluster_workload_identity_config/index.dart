@@ -1,3 +1,0 @@
-library module_container_aws_cluster_workload_identity_config;
-
-export 'aws_cluster_workload_identity_config.dart';

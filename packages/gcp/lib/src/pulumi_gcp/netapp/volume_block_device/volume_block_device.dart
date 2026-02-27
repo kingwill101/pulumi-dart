@@ -8,14 +8,8 @@ class VolumeBlockDevice {
   final List<String>? hostGroups;
 
   /// (Output)
-  /// Device identifier of the Block volume. This represents<span pulumi-lang-nodejs=" lunSerialNumber
-  /// " pulumi-lang-dotnet=" LunSerialNumber
-  /// " pulumi-lang-go=" lunSerialNumber
-  /// " pulumi-lang-python=" lun_serial_number
-  /// " pulumi-lang-yaml=" lunSerialNumber
-  /// " pulumi-lang-java=" lunSerialNumber
-  /// "> lun_serial_number
-  /// </span>for ISCSI volumes
+  /// Device identifier of the Block volume. This represents lun_serial_number
+  /// for ISCSI volumes
   final String? identifier;
 
   /// User-defined name for the block device, unique within the Volume. In case
@@ -36,7 +30,7 @@ class VolumeBlockDevice {
   /// The size of the block device in GiB.
   /// Any value provided in this field during Volume creation is IGNORED.
   /// The block device's size is system-managed and will be set to match
-  /// the parent Volume's <span pulumi-lang-nodejs="`capacityGib`" pulumi-lang-dotnet="`CapacityGib`" pulumi-lang-go="`capacityGib`" pulumi-lang-python="`capacity_gib`" pulumi-lang-yaml="`capacityGib`" pulumi-lang-java="`capacityGib`">`capacity_gib`</span>.
+  /// the parent Volume's `capacity_gib`.
   final int? sizeGib;
 
   VolumeBlockDevice({

@@ -1,3 +1,0 @@
-library module_identityplatform_config_mfa_provider_config;
-
-export 'config_mfa_provider_config.dart';

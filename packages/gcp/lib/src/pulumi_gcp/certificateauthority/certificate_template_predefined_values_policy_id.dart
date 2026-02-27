@@ -1,0 +1,3 @@
+library module_certificateauthority_certificate_template_predefined_values_policy_id;
+
+export 'certificate_template_predefined_values_policy_id/certificate_template_predefined_values_policy_id.dart';

@@ -14,7 +14,7 @@ class ControlArgs {
   /// Structure is documented below.
   final Input<ControlBoostAction>? boostAction;
 
-  /// The collection ID. Currently only accepts <span pulumi-lang-nodejs=""defaultCollection"" pulumi-lang-dotnet=""DefaultCollection"" pulumi-lang-go=""defaultCollection"" pulumi-lang-python=""default_collection"" pulumi-lang-yaml=""defaultCollection"" pulumi-lang-java=""defaultCollection"">"default_collection"</span>.
+  /// The collection ID. Currently only accepts "default_collection".
   final Input<String>? collectionId;
 
   /// The conditions under which the control is active.

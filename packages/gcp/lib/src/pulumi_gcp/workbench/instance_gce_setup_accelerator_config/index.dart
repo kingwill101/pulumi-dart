@@ -1,3 +1,0 @@
-library module_workbench_instance_gce_setup_accelerator_config;
-
-export 'instance_gce_setup_accelerator_config.dart';

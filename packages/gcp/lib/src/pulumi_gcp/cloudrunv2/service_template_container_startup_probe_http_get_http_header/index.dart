@@ -1,3 +1,0 @@
-library module_cloudrunv2_service_template_container_startup_probe_http_get_http_header;
-
-export 'service_template_container_startup_probe_http_get_http_header.dart';

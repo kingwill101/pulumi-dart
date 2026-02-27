@@ -4,8 +4,8 @@ import 'http_health_check_args.dart';
 /// An HttpHealthCheck resource. This resource defines a template for how
 /// individual VMs should be checked for health, via HTTP.
 ///
-/// > **Note:**<span pulumi-lang-nodejs=" gcp.compute.HttpHealthCheck " pulumi-lang-dotnet=" gcp.compute.HttpHealthCheck " pulumi-lang-go=" compute.HttpHealthCheck " pulumi-lang-python=" compute.HttpHealthCheck " pulumi-lang-yaml=" gcp.compute.HttpHealthCheck " pulumi-lang-java=" gcp.compute.HttpHealthCheck "> gcp.compute.HttpHealthCheck </span>is a legacy health check.
-/// The newer <span pulumi-lang-nodejs="[gcp.compute.HealthCheck]" pulumi-lang-dotnet="[gcp.compute.HealthCheck]" pulumi-lang-go="[compute.HealthCheck]" pulumi-lang-python="[compute.HealthCheck]" pulumi-lang-yaml="[gcp.compute.HealthCheck]" pulumi-lang-java="[gcp.compute.HealthCheck]">[gcp.compute.HealthCheck]</span>(https://www.terraform.io/docs/providers/google/r/compute_health_check.html)
+/// > **Note:** gcp.compute.HttpHealthCheck is a legacy health check.
+/// The newer [gcp.compute.HealthCheck](https://www.terraform.io/docs/providers/google/r/compute_health_check.html)
 /// should be preferred for all uses except
 /// [Network Load Balancers](https://cloud.google.com/compute/docs/load-balancing/network/)
 /// which still require the legacy version.
@@ -22,111 +22,7 @@ import 'http_health_check_args.dart';
 /// ### Http Health Check Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = new gcp.compute.HttpHealthCheck("default", {
-/// name: "authentication-health-check",
-/// requestPath: "/health_check",
-/// timeoutSec: 1,
-/// checkIntervalSec: 1,
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default = gcp.compute.HttpHealthCheck("default",
-/// name="authentication-health-check",
-/// request_path="/health_check",
-/// timeout_sec=1,
-/// check_interval_sec=1)
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var @default = new Gcp.Compute.HttpHealthCheck("default", new()
-/// {
-/// Name = "authentication-health-check",
-/// RequestPath = "/health_check",
-/// TimeoutSec = 1,
-/// CheckIntervalSec = 1,
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
-/// Name:             pulumi.String("authentication-health-check"),
-/// RequestPath:      pulumi.String("/health_check"),
-/// TimeoutSec:       pulumi.Int(1),
-/// CheckIntervalSec: pulumi.Int(1),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.compute.HttpHealthCheck;
-/// import com.pulumi.gcp.compute.HttpHealthCheckArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var default_ = new HttpHealthCheck("default", HttpHealthCheckArgs.builder()
-/// .name("authentication-health-check")
-/// .requestPath("/health_check")
-/// .timeoutSec(1)
-/// .checkIntervalSec(1)
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// default:
-/// type: gcp:compute:HttpHealthCheck
-/// properties:
-/// name: authentication-health-check
-/// requestPath: /health_check
-/// timeoutSec: 1
-/// checkIntervalSec: 1
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///

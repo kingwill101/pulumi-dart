@@ -1,5 +1,0 @@
-library module_iap_get_web_region_forwarding_rule_service_iam_policy;
-
-export 'get_web_region_forwarding_rule_service_iam_policy.dart';
-export 'get_web_region_forwarding_rule_service_iam_policy_args.dart';
-export 'get_web_region_forwarding_rule_service_iam_policy_result.dart';

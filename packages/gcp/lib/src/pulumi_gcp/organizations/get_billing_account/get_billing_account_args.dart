@@ -10,13 +10,13 @@ class GetBillingAccountArgs {
   /// The display name of the billing account.
   final Input<String>? displayName;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if projects associated with the billing account should be read, <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> if this step
-  /// should be skipped. Setting <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> may be useful if the user permissions do not allow listing projects. Defaults to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>.
+  /// `true` if projects associated with the billing account should be read, `false` if this step
+  /// should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
   ///
-  /// > **NOTE:** One of <span pulumi-lang-nodejs="`billingAccount`" pulumi-lang-dotnet="`BillingAccount`" pulumi-lang-go="`billingAccount`" pulumi-lang-python="`billing_account`" pulumi-lang-yaml="`billingAccount`" pulumi-lang-java="`billingAccount`">`billing_account`</span> or <span pulumi-lang-nodejs="`displayName`" pulumi-lang-dotnet="`DisplayName`" pulumi-lang-go="`displayName`" pulumi-lang-python="`display_name`" pulumi-lang-yaml="`displayName`" pulumi-lang-java="`displayName`">`display_name`</span> must be specified.
+  /// > **NOTE:** One of `billing_account` or `display_name` must be specified.
   final Input<bool>? lookupProjects;
 
-  /// <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> if the billing account is open, <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span> if the billing account is closed.
+  /// `true` if the billing account is open, `false` if the billing account is closed.
   final Input<bool>? open;
 
   GetBillingAccountArgs({

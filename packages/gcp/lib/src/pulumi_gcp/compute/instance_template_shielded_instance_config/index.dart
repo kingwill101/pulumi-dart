@@ -1,3 +1,0 @@
-library module_compute_instance_template_shielded_instance_config;
-
-export 'instance_template_shielded_instance_config.dart';

@@ -10,7 +10,7 @@ class TableIamBindingArgs {
   /// The name or relative resource id of the instance that owns the table.
   final Input<String> instanceName;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -25,15 +25,15 @@ class TableIamBindingArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.bigtable.TableIamBinding`" pulumi-lang-dotnet="`gcp.bigtable.TableIamBinding`" pulumi-lang-go="`bigtable.TableIamBinding`" pulumi-lang-python="`bigtable.TableIamBinding`" pulumi-lang-yaml="`gcp.bigtable.TableIamBinding`" pulumi-lang-java="`gcp.bigtable.TableIamBinding`">`gcp.bigtable.TableIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
   ///
-  /// <span pulumi-lang-nodejs="`gcp.bigtable.TableIamPolicy`" pulumi-lang-dotnet="`gcp.bigtable.TableIamPolicy`" pulumi-lang-go="`bigtable.TableIamPolicy`" pulumi-lang-python="`bigtable.TableIamPolicy`" pulumi-lang-yaml="`gcp.bigtable.TableIamPolicy`" pulumi-lang-java="`gcp.bigtable.TableIamPolicy`">`gcp.bigtable.TableIamPolicy`</span> only:
+  /// `gcp.bigtable.TableIamPolicy` only:
   final Input<String> role;
 
   /// The name or relative resource id of the table to manage IAM policies for.
   ///
-  /// For <span pulumi-lang-nodejs="`gcp.bigtable.TableIamMember`" pulumi-lang-dotnet="`gcp.bigtable.TableIamMember`" pulumi-lang-go="`bigtable.TableIamMember`" pulumi-lang-python="`bigtable.TableIamMember`" pulumi-lang-yaml="`gcp.bigtable.TableIamMember`" pulumi-lang-java="`gcp.bigtable.TableIamMember`">`gcp.bigtable.TableIamMember`</span> or <span pulumi-lang-nodejs="`gcp.bigtable.TableIamBinding`" pulumi-lang-dotnet="`gcp.bigtable.TableIamBinding`" pulumi-lang-go="`bigtable.TableIamBinding`" pulumi-lang-python="`bigtable.TableIamBinding`" pulumi-lang-yaml="`gcp.bigtable.TableIamBinding`" pulumi-lang-java="`gcp.bigtable.TableIamBinding`">`gcp.bigtable.TableIamBinding`</span>:
+  /// For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:
   final Input<String> table;
 
   TableIamBindingArgs({

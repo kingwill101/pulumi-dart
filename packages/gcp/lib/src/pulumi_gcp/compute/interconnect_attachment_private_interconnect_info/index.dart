@@ -1,3 +1,0 @@
-library module_compute_interconnect_attachment_private_interconnect_info;
-
-export 'interconnect_attachment_private_interconnect_info.dart';

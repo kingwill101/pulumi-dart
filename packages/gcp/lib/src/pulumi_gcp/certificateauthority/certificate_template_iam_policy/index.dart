@@ -1,4 +1,0 @@
-library module_certificateauthority_certificate_template_iam_policy;
-
-export 'certificate_template_iam_policy.dart';
-export 'certificate_template_iam_policy_args.dart';

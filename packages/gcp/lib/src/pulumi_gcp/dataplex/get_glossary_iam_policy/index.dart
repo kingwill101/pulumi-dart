@@ -1,5 +1,0 @@
-library module_dataplex_get_glossary_iam_policy;
-
-export 'get_glossary_iam_policy.dart';
-export 'get_glossary_iam_policy_args.dart';
-export 'get_glossary_iam_policy_result.dart';

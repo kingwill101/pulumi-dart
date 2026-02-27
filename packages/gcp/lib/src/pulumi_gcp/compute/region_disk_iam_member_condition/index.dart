@@ -1,3 +1,0 @@
-library module_compute_region_disk_iam_member_condition;
-
-export 'region_disk_iam_member_condition.dart';

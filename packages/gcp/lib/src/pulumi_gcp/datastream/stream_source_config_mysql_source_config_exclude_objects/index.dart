@@ -1,3 +1,0 @@
-library module_datastream_stream_source_config_mysql_source_config_exclude_objects;
-
-export 'stream_source_config_mysql_source_config_exclude_objects.dart';

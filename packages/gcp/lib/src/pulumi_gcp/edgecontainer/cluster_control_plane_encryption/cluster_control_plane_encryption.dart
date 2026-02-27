@@ -12,7 +12,7 @@ class ClusterControlPlaneEncryption {
 
   /// (Output)
   /// The Cloud KMS CryptoKeyVersion currently in use for protecting control
-  /// plane disks. Only applicable if<span pulumi-lang-nodejs=" kmsKey " pulumi-lang-dotnet=" KmsKey " pulumi-lang-go=" kmsKey " pulumi-lang-python=" kms_key " pulumi-lang-yaml=" kmsKey " pulumi-lang-java=" kmsKey "> kms_key </span>is set.
+  /// plane disks. Only applicable if kms_key is set.
   final String? kmsKeyActiveVersion;
 
   /// (Output)
@@ -24,12 +24,12 @@ class ClusterControlPlaneEncryption {
 
   /// (Output)
   /// Error status returned by Cloud KMS when using this key. This field may be
-  /// populated only if <span pulumi-lang-nodejs="`kmsKeyState`" pulumi-lang-dotnet="`KmsKeyState`" pulumi-lang-go="`kmsKeyState`" pulumi-lang-python="`kms_key_state`" pulumi-lang-yaml="`kmsKeyState`" pulumi-lang-java="`kmsKeyState`">`kms_key_state`</span> is not `KMS_KEY_STATE_KEY_AVAILABLE`.
+  /// populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
   /// If populated, this field contains the error status reported by Cloud KMS.
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedControlPlaneEncryptionKmsStatus"" pulumi-lang-dotnet=""NestedControlPlaneEncryptionKmsStatus"" pulumi-lang-go=""nestedControlPlaneEncryptionKmsStatus"" pulumi-lang-python=""nested_control_plane_encryption_kms_status"" pulumi-lang-yaml=""nestedControlPlaneEncryptionKmsStatus"" pulumi-lang-java=""nestedControlPlaneEncryptionKmsStatus"">"nested_control_plane_encryption_kms_status"</span>></a>The <span pulumi-lang-nodejs="`kmsStatus`" pulumi-lang-dotnet="`KmsStatus`" pulumi-lang-go="`kmsStatus`" pulumi-lang-python="`kms_status`" pulumi-lang-yaml="`kmsStatus`" pulumi-lang-java="`kmsStatus`">`kms_status`</span> block contains:
+  /// <a name="nested_control_plane_encryption_kms_status"></a>The `kms_status` block contains:
   final List<ClusterControlPlaneEncryptionKmsStatus>? kmsStatuses;
 
   ClusterControlPlaneEncryption({

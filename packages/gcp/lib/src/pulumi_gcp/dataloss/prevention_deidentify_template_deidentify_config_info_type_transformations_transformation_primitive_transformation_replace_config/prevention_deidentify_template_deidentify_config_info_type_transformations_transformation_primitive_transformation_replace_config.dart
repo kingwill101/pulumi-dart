@@ -4,7 +4,7 @@ import '../prevention_deidentify_template_deidentify_config_info_type_transforma
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig {
   /// Replace each input value with a given value.
-  /// The <span pulumi-lang-nodejs="`newValue`" pulumi-lang-dotnet="`NewValue`" pulumi-lang-go="`newValue`" pulumi-lang-python="`new_value`" pulumi-lang-yaml="`newValue`" pulumi-lang-java="`newValue`">`new_value`</span> block must only contain one argument. For example when replacing the contents of a string-type field, only <span pulumi-lang-nodejs="`stringValue`" pulumi-lang-dotnet="`StringValue`" pulumi-lang-go="`stringValue`" pulumi-lang-python="`string_value`" pulumi-lang-yaml="`stringValue`" pulumi-lang-java="`stringValue`">`string_value`</span> should be set.
+  /// The `new_value` block must only contain one argument. For example when replacing the contents of a string-type field, only `string_value` should be set.
   /// Structure is documented below.
   final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue
       newValue;

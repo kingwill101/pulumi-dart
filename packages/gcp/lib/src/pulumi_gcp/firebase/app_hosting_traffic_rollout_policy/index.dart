@@ -1,3 +1,0 @@
-library module_firebase_app_hosting_traffic_rollout_policy;
-
-export 'app_hosting_traffic_rollout_policy.dart';

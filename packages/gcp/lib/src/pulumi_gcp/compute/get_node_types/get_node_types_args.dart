@@ -9,7 +9,7 @@ class GetNodeTypesArgs {
   /// Defaults to the project that the provider is authenticated with.
   final Input<String>? project;
 
-  /// The zone to list node types for. Should be in zone of intended node groups and region of referencing node template. If <span pulumi-lang-nodejs="`zone`" pulumi-lang-dotnet="`Zone`" pulumi-lang-go="`zone`" pulumi-lang-python="`zone`" pulumi-lang-yaml="`zone`" pulumi-lang-java="`zone`">`zone`</span> is not specified, the provider-level zone must be set and is used
+  /// The zone to list node types for. Should be in zone of intended node groups and region of referencing node template. If `zone` is not specified, the provider-level zone must be set and is used
   /// instead.
   final Input<String>? zone;
 

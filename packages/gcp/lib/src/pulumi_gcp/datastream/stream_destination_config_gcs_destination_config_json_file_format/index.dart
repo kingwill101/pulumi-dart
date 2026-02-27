@@ -1,3 +1,0 @@
-library module_datastream_stream_destination_config_gcs_destination_config_json_file_format;
-
-export 'stream_destination_config_gcs_destination_config_json_file_format.dart';

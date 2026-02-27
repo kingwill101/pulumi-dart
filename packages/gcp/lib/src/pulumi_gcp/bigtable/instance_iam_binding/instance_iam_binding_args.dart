@@ -10,10 +10,10 @@ class InstanceIamBindingArgs {
 
   /// The name or relative resource id of the instance to manage IAM policies for.
   ///
-  /// For <span pulumi-lang-nodejs="`gcp.bigtable.InstanceIamMember`" pulumi-lang-dotnet="`gcp.bigtable.InstanceIamMember`" pulumi-lang-go="`bigtable.InstanceIamMember`" pulumi-lang-python="`bigtable.InstanceIamMember`" pulumi-lang-yaml="`gcp.bigtable.InstanceIamMember`" pulumi-lang-java="`gcp.bigtable.InstanceIamMember`">`gcp.bigtable.InstanceIamMember`</span> or <span pulumi-lang-nodejs="`gcp.bigtable.InstanceIamBinding`" pulumi-lang-dotnet="`gcp.bigtable.InstanceIamBinding`" pulumi-lang-go="`bigtable.InstanceIamBinding`" pulumi-lang-python="`bigtable.InstanceIamBinding`" pulumi-lang-yaml="`gcp.bigtable.InstanceIamBinding`" pulumi-lang-java="`gcp.bigtable.InstanceIamBinding`">`gcp.bigtable.InstanceIamBinding`</span>:
+  /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
   final Input<String> instance;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -25,7 +25,7 @@ class InstanceIamBindingArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.bigtable.InstanceIamBinding`" pulumi-lang-dotnet="`gcp.bigtable.InstanceIamBinding`" pulumi-lang-go="`bigtable.InstanceIamBinding`" pulumi-lang-python="`bigtable.InstanceIamBinding`" pulumi-lang-yaml="`gcp.bigtable.InstanceIamBinding`" pulumi-lang-java="`gcp.bigtable.InstanceIamBinding`">`gcp.bigtable.InstanceIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
   final Input<String> role;
 

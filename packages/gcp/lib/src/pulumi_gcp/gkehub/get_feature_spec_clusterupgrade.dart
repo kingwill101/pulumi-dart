@@ -1,0 +1,3 @@
+library module_gkehub_get_feature_spec_clusterupgrade;
+
+export 'get_feature_spec_clusterupgrade/get_feature_spec_clusterupgrade.dart';

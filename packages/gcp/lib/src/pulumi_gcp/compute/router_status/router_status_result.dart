@@ -6,10 +6,10 @@ import '../router_status_best_routes_for_router/router_status_best_routes_for_ro
 
 /// Result data returned by routerStatus.
 class RouterStatusResult {
-  /// List of best `compute#routes` configurations for this router's network. See<span pulumi-lang-nodejs=" gcp.compute.Route " pulumi-lang-dotnet=" gcp.compute.Route " pulumi-lang-go=" compute.Route " pulumi-lang-python=" compute.Route " pulumi-lang-yaml=" gcp.compute.Route " pulumi-lang-java=" gcp.compute.Route "> gcp.compute.Route </span>resource for available attributes.
+  /// List of best `compute#routes` configurations for this router's network. See gcp.compute.Route resource for available attributes.
   final List<RouterStatusBestRoute> bestRoutes;
 
-  /// List of best `compute#routes` for this specific router. See<span pulumi-lang-nodejs=" gcp.compute.Route " pulumi-lang-dotnet=" gcp.compute.Route " pulumi-lang-go=" compute.Route " pulumi-lang-python=" compute.Route " pulumi-lang-yaml=" gcp.compute.Route " pulumi-lang-java=" gcp.compute.Route "> gcp.compute.Route </span>resource for available attributes.
+  /// List of best `compute#routes` for this specific router. See gcp.compute.Route resource for available attributes.
   final List<RouterStatusBestRoutesForRouter> bestRoutesForRouters;
 
   /// The provider-assigned unique ID for this managed resource.

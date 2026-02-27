@@ -1,3 +1,0 @@
-library module_cloudasset_get_search_all_resources_result;
-
-export 'get_search_all_resources_result.dart';

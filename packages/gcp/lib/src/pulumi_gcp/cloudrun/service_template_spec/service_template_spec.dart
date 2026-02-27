@@ -31,7 +31,7 @@ class ServiceTemplateSpec {
   /// It is expected
   /// that the system will manipulate this based on routability and load.
   ///
-  /// > **Warning:** <span pulumi-lang-nodejs="`servingState`" pulumi-lang-dotnet="`ServingState`" pulumi-lang-go="`servingState`" pulumi-lang-python="`serving_state`" pulumi-lang-yaml="`servingState`" pulumi-lang-java="`servingState`">`serving_state`</span> is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+  /// > **Warning:** `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
   final String? servingState;
 
   /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.

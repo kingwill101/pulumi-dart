@@ -1,3 +1,0 @@
-library module_ces_app_version_snapshot_app_client_certificate_setting;
-
-export 'app_version_snapshot_app_client_certificate_setting.dart';

@@ -1,4 +1,0 @@
-library module_secretmanager_regional_secret_version;
-
-export 'regional_secret_version.dart';
-export 'regional_secret_version_args.dart';

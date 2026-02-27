@@ -12,7 +12,7 @@ class DatasetIamBindingArgs {
   /// The dataset ID.
   final Input<String> datasetId;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -31,7 +31,7 @@ class DatasetIamBindingArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.bigquery.DatasetIamBinding`" pulumi-lang-dotnet="`gcp.bigquery.DatasetIamBinding`" pulumi-lang-go="`bigquery.DatasetIamBinding`" pulumi-lang-python="`bigquery.DatasetIamBinding`" pulumi-lang-yaml="`gcp.bigquery.DatasetIamBinding`" pulumi-lang-java="`gcp.bigquery.DatasetIamBinding`">`gcp.bigquery.DatasetIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

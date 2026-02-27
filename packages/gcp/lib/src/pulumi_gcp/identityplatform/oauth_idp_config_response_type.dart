@@ -1,0 +1,3 @@
+library module_identityplatform_oauth_idp_config_response_type;
+
+export 'oauth_idp_config_response_type/oauth_idp_config_response_type.dart';

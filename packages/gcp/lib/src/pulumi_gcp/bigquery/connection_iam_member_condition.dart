@@ -1,0 +1,3 @@
+library module_bigquery_connection_iam_member_condition;
+
+export 'connection_iam_member_condition/connection_iam_member_condition.dart';

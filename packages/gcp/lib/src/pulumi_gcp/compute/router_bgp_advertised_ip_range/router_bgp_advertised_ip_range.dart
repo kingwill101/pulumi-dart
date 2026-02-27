@@ -3,7 +3,7 @@
 class RouterBgpAdvertisedIpRange {
   /// User-specified description for the IP range.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedMd5AuthenticationKeys"" pulumi-lang-dotnet=""NestedMd5AuthenticationKeys"" pulumi-lang-go=""nestedMd5AuthenticationKeys"" pulumi-lang-python=""nested_md5_authentication_keys"" pulumi-lang-yaml=""nestedMd5AuthenticationKeys"" pulumi-lang-java=""nestedMd5AuthenticationKeys"">"nested_md5_authentication_keys"</span>></a>The <span pulumi-lang-nodejs="`md5AuthenticationKeys`" pulumi-lang-dotnet="`Md5AuthenticationKeys`" pulumi-lang-go="`md5AuthenticationKeys`" pulumi-lang-python="`md5_authentication_keys`" pulumi-lang-yaml="`md5AuthenticationKeys`" pulumi-lang-java="`md5AuthenticationKeys`">`md5_authentication_keys`</span> block supports:
+  /// <a name="nested_md5_authentication_keys"></a>The `md5_authentication_keys` block supports:
   final String? description;
 
   /// The IP range to advertise. The value must be a

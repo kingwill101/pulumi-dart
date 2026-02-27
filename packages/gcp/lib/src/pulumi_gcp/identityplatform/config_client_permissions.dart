@@ -1,0 +1,3 @@
+library module_identityplatform_config_client_permissions;
+
+export 'config_client_permissions/config_client_permissions.dart';

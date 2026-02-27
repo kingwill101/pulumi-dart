@@ -1,3 +1,0 @@
-library module_securitycenter_project_notification_config_streaming_config;
-
-export 'project_notification_config_streaming_config.dart';

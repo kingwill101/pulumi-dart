@@ -1,3 +1,0 @@
-library module_certificatemanager_get_certificates_certificate;
-
-export 'get_certificates_certificate.dart';

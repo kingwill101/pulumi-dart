@@ -1,3 +1,0 @@
-library module_compute_region_autoscaler_autoscaling_policy_scale_down_control_max_scaled_down_replicas;
-
-export 'region_autoscaler_autoscaling_policy_scale_down_control_max_scaled_down_replicas.dart';

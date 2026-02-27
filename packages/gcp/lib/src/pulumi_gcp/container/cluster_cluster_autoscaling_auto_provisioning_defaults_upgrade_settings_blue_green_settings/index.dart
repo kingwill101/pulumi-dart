@@ -1,3 +1,0 @@
-library module_container_cluster_cluster_autoscaling_auto_provisioning_defaults_upgrade_settings_blue_green_settings;
-
-export 'cluster_cluster_autoscaling_auto_provisioning_defaults_upgrade_settings_blue_green_settings.dart';

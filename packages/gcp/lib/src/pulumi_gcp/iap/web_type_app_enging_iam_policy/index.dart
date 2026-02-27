@@ -1,4 +1,0 @@
-library module_iap_web_type_app_enging_iam_policy;
-
-export 'web_type_app_enging_iam_policy.dart';
-export 'web_type_app_enging_iam_policy_args.dart';

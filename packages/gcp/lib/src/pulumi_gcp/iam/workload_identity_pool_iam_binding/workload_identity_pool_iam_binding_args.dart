@@ -9,7 +9,7 @@ class WorkloadIdentityPoolIamBindingArgs {
   /// Structure is documented below.
   final Input<WorkloadIdentityPoolIamBindingCondition>? condition;
 
-  /// Identities that will be granted the privilege in <span pulumi-lang-nodejs="`role`" pulumi-lang-dotnet="`Role`" pulumi-lang-go="`role`" pulumi-lang-python="`role`" pulumi-lang-yaml="`role`" pulumi-lang-java="`role`">`role`</span>.
+  /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -28,7 +28,7 @@ class WorkloadIdentityPoolIamBindingArgs {
   final Input<String>? project;
 
   /// The role that should be applied. Only one
-  /// <span pulumi-lang-nodejs="`gcp.iam.WorkloadIdentityPoolIamBinding`" pulumi-lang-dotnet="`gcp.iam.WorkloadIdentityPoolIamBinding`" pulumi-lang-go="`iam.WorkloadIdentityPoolIamBinding`" pulumi-lang-python="`iam.WorkloadIdentityPoolIamBinding`" pulumi-lang-yaml="`gcp.iam.WorkloadIdentityPoolIamBinding`" pulumi-lang-java="`gcp.iam.WorkloadIdentityPoolIamBinding`">`gcp.iam.WorkloadIdentityPoolIamBinding`</span> can be used per role. Note that custom roles must be of the format
+  /// `gcp.iam.WorkloadIdentityPoolIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final Input<String> role;
 

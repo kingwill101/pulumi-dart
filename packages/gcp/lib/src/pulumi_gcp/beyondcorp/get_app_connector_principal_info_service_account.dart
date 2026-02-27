@@ -1,0 +1,3 @@
+library module_beyondcorp_get_app_connector_principal_info_service_account;
+
+export 'get_app_connector_principal_info_service_account/get_app_connector_principal_info_service_account.dart';

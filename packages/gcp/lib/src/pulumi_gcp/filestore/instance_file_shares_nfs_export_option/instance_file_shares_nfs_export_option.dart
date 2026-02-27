@@ -22,7 +22,7 @@ class InstanceFileSharesNfsExportOption {
   /// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
   final List<String>? ipRanges;
 
-  /// The source VPC network for <span pulumi-lang-nodejs="`ipRanges`" pulumi-lang-dotnet="`IpRanges`" pulumi-lang-go="`ipRanges`" pulumi-lang-python="`ip_ranges`" pulumi-lang-yaml="`ipRanges`" pulumi-lang-java="`ipRanges`">`ip_ranges`</span>.
+  /// The source VPC network for `ip_ranges`.
   /// Required for instances using Private Service Connect, optional otherwise.
   final String? network;
 

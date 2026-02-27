@@ -14,9 +14,9 @@ import 'service_perimeter_egress_policy_args.dart';
 ///
 /// > **Note:** By default, updates to this resource will remove the EgressPolicy from the
 /// from the perimeter and add it back in a non-atomic manner. To ensure that the new EgressPolicy
-/// is added before the old one is removed, add a <span pulumi-lang-nodejs="`lifecycle`" pulumi-lang-dotnet="`Lifecycle`" pulumi-lang-go="`lifecycle`" pulumi-lang-python="`lifecycle`" pulumi-lang-yaml="`lifecycle`" pulumi-lang-java="`lifecycle`">`lifecycle`</span> block with <span pulumi-lang-nodejs="`createBeforeDestroy " pulumi-lang-dotnet="`CreateBeforeDestroy " pulumi-lang-go="`createBeforeDestroy " pulumi-lang-python="`create_before_destroy " pulumi-lang-yaml="`createBeforeDestroy " pulumi-lang-java="`createBeforeDestroy ">`create_before_destroy </span>= true` to this resource.
-/// > **Note:** If this resource is used alongside a <span pulumi-lang-nodejs="`gcp.accesscontextmanager.ServicePerimeter`" pulumi-lang-dotnet="`gcp.accesscontextmanager.ServicePerimeter`" pulumi-lang-go="`accesscontextmanager.ServicePerimeter`" pulumi-lang-python="`accesscontextmanager.ServicePerimeter`" pulumi-lang-yaml="`gcp.accesscontextmanager.ServicePerimeter`" pulumi-lang-java="`gcp.accesscontextmanager.ServicePerimeter`">`gcp.accesscontextmanager.ServicePerimeter`</span> resource,
-/// the service perimeter resource must have a <span pulumi-lang-nodejs="`lifecycle`" pulumi-lang-dotnet="`Lifecycle`" pulumi-lang-go="`lifecycle`" pulumi-lang-python="`lifecycle`" pulumi-lang-yaml="`lifecycle`" pulumi-lang-java="`lifecycle`">`lifecycle`</span> block with <span pulumi-lang-nodejs="`ignoreChanges " pulumi-lang-dotnet="`IgnoreChanges " pulumi-lang-go="`ignoreChanges " pulumi-lang-python="`ignore_changes " pulumi-lang-yaml="`ignoreChanges " pulumi-lang-java="`ignoreChanges ">`ignore_changes </span>= [status[0].egress_policies]` so
+/// is added before the old one is removed, add a `lifecycle` block with `create_before_destroy = true` to this resource.
+/// > **Note:** If this resource is used alongside a `gcp.accesscontextmanager.ServicePerimeter` resource,
+/// the service perimeter resource must have a `lifecycle` block with `ignore_changes = [status[0].egress_policies]` so
 /// they don't fight over which egress rules should be in the policy.
 ///
 ///
@@ -25,8 +25,6 @@ import 'service_perimeter_egress_policy_args.dart';
 /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#egresspolicy)
 /// * How-to Guides
 /// * [Guide to Ingress and Egress Rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules)
-///
-/// ## Example Usage
 class ServicePerimeterEgressPolicy extends CustomResource {
   /// The name of the Access Policy this resource belongs to.
   late final Output<String> accessPolicyId;

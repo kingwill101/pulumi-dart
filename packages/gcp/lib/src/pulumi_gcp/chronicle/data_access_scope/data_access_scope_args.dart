@@ -6,18 +6,12 @@ import '../data_access_scope_denied_data_access_label/data_access_scope_denied_d
 
 /// The set of arguments for DataAccessScope.
 class DataAccessScopeArgs {
-  /// Optional. Whether or not the scope allows all labels,<span pulumi-lang-nodejs=" allowAll " pulumi-lang-dotnet=" AllowAll " pulumi-lang-go=" allowAll " pulumi-lang-python=" allow_all " pulumi-lang-yaml=" allowAll " pulumi-lang-java=" allowAll "> allow_all </span>and<span pulumi-lang-nodejs="
-  /// allowedDataAccessLabels " pulumi-lang-dotnet="
-  /// AllowedDataAccessLabels " pulumi-lang-go="
-  /// allowedDataAccessLabels " pulumi-lang-python="
-  /// allowed_data_access_labels " pulumi-lang-yaml="
-  /// allowedDataAccessLabels " pulumi-lang-java="
-  /// allowedDataAccessLabels ">
-  /// allowed_data_access_labels </span>are mutually exclusive and one of them must be
-  /// present.<span pulumi-lang-nodejs=" deniedDataAccessLabels " pulumi-lang-dotnet=" DeniedDataAccessLabels " pulumi-lang-go=" deniedDataAccessLabels " pulumi-lang-python=" denied_data_access_labels " pulumi-lang-yaml=" deniedDataAccessLabels " pulumi-lang-java=" deniedDataAccessLabels "> denied_data_access_labels </span>can still be used along with allow_all.
+  /// Optional. Whether or not the scope allows all labels, allow_all and
+  /// allowed_data_access_labels are mutually exclusive and one of them must be
+  /// present. denied_data_access_labels can still be used along with allow_all.
   /// When combined with denied_data_access_labels, access will be granted to all
   /// data that doesn't have labels mentioned in denied_data_access_labels. E.g.:
-  /// A customer with scope with denied labels A and B and<span pulumi-lang-nodejs=" allowAll " pulumi-lang-dotnet=" AllowAll " pulumi-lang-go=" allowAll " pulumi-lang-python=" allow_all " pulumi-lang-yaml=" allowAll " pulumi-lang-java=" allowAll "> allow_all </span>will be able
+  /// A customer with scope with denied labels A and B and allow_all will be able
   /// to see all data except data labeled with A and data labeled with B and data
   /// with labels A and B.
   final Input<bool>? allowAll;
@@ -25,7 +19,7 @@ class DataAccessScopeArgs {
   /// The allowed labels for the scope. There has to be at
   /// least one label allowed for the scope to be valid.
   /// The logical operator for evaluation of the allowed labels is OR.
-  /// Either<span pulumi-lang-nodejs=" allowAll " pulumi-lang-dotnet=" AllowAll " pulumi-lang-go=" allowAll " pulumi-lang-python=" allow_all " pulumi-lang-yaml=" allowAll " pulumi-lang-java=" allowAll "> allow_all </span>or<span pulumi-lang-nodejs=" allowedDataAccessLabels " pulumi-lang-dotnet=" AllowedDataAccessLabels " pulumi-lang-go=" allowedDataAccessLabels " pulumi-lang-python=" allowed_data_access_labels " pulumi-lang-yaml=" allowedDataAccessLabels " pulumi-lang-java=" allowedDataAccessLabels "> allowed_data_access_labels </span>needs to be provided.
+  /// Either allow_all or allowed_data_access_labels needs to be provided.
   /// E.g.: A customer with scope with allowed labels A and B will be able
   /// to see data with labeled with A or B or (A and B).
   /// Structure is documented below.

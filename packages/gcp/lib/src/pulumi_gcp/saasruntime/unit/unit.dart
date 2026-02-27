@@ -16,207 +16,7 @@ import 'unit_args.dart';
 /// ### Saas Runtime Unit Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const exampleSaasRegional = new gcp.saasruntime.SaaS("example_saas_regional", {
-/// saasId: "example-saas",
-/// location: "us-central1",
-/// locations: [{
-/// name: "us-central1",
-/// }],
-/// });
-/// const exampleUnitKind = new gcp.saasruntime.UnitKind("example_unit_kind", {
-/// location: "us-central1",
-/// unitKindId: "example-unitkind",
-/// saas: exampleSaasRegional.id,
-/// });
-/// const example = new gcp.saasruntime.Unit("example", {
-/// location: "us-central1",
-/// unitId: "example-unit",
-/// unitKind: exampleUnitKind.id,
-/// managementMode: "MANAGEMENT_MODE_USER",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// example_saas_regional = gcp.saasruntime.SaaS("example_saas_regional",
-/// saas_id="example-saas",
-/// location="us-central1",
-/// locations=[{
-/// "name": "us-central1",
-/// }])
-/// example_unit_kind = gcp.saasruntime.UnitKind("example_unit_kind",
-/// location="us-central1",
-/// unit_kind_id="example-unitkind",
-/// saas=example_saas_regional.id)
-/// example = gcp.saasruntime.Unit("example",
-/// location="us-central1",
-/// unit_id="example-unit",
-/// unit_kind=example_unit_kind.id,
-/// management_mode="MANAGEMENT_MODE_USER")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var exampleSaasRegional = new Gcp.SaaSRuntime.SaaS("example_saas_regional", new()
-/// {
-/// SaasId = "example-saas",
-/// Location = "us-central1",
-/// Locations = new[]
-/// {
-/// new Gcp.SaaSRuntime.Inputs.SaaSLocationArgs
-/// {
-/// Name = "us-central1",
-/// },
-/// },
-/// });
-///
-/// var exampleUnitKind = new Gcp.SaaSRuntime.UnitKind("example_unit_kind", new()
-/// {
-/// Location = "us-central1",
-/// UnitKindId = "example-unitkind",
-/// Saas = exampleSaasRegional.Id,
-/// });
-///
-/// var example = new Gcp.SaaSRuntime.Unit("example", new()
-/// {
-/// Location = "us-central1",
-/// UnitId = "example-unit",
-/// UnitKind = exampleUnitKind.Id,
-/// ManagementMode = "MANAGEMENT_MODE_USER",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/saasruntime"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// exampleSaasRegional, err := saasruntime.NewSaaS(ctx, "example_saas_regional", &saasruntime.SaaSArgs{
-/// SaasId:   pulumi.String("example-saas"),
-/// Location: pulumi.String("us-central1"),
-/// Locations: saasruntime.SaaSLocationArray{
-/// &saasruntime.SaaSLocationArgs{
-/// Name: pulumi.String("us-central1"),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// exampleUnitKind, err := saasruntime.NewUnitKind(ctx, "example_unit_kind", &saasruntime.UnitKindArgs{
-/// Location:   pulumi.String("us-central1"),
-/// UnitKindId: pulumi.String("example-unitkind"),
-/// Saas:       exampleSaasRegional.ID(),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// _, err = saasruntime.NewUnit(ctx, "example", &saasruntime.UnitArgs{
-/// Location:       pulumi.String("us-central1"),
-/// UnitId:         pulumi.String("example-unit"),
-/// UnitKind:       exampleUnitKind.ID(),
-/// ManagementMode: pulumi.String("MANAGEMENT_MODE_USER"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.saasruntime.SaaS;
-/// import com.pulumi.gcp.saasruntime.SaaSArgs;
-/// import com.pulumi.gcp.saasruntime.inputs.SaaSLocationArgs;
-/// import com.pulumi.gcp.saasruntime.UnitKind;
-/// import com.pulumi.gcp.saasruntime.UnitKindArgs;
-/// import com.pulumi.gcp.saasruntime.Unit;
-/// import com.pulumi.gcp.saasruntime.UnitArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var exampleSaasRegional = new SaaS("exampleSaasRegional", SaaSArgs.builder()
-/// .saasId("example-saas")
-/// .location("us-central1")
-/// .locations(SaaSLocationArgs.builder()
-/// .name("us-central1")
-/// .build())
-/// .build());
-///
-/// var exampleUnitKind = new UnitKind("exampleUnitKind", UnitKindArgs.builder()
-/// .location("us-central1")
-/// .unitKindId("example-unitkind")
-/// .saas(exampleSaasRegional.id())
-/// .build());
-///
-/// var example = new Unit("example", UnitArgs.builder()
-/// .location("us-central1")
-/// .unitId("example-unit")
-/// .unitKind(exampleUnitKind.id())
-/// .managementMode("MANAGEMENT_MODE_USER")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// exampleSaasRegional:
-/// type: gcp:saasruntime:SaaS
-/// name: example_saas_regional
-/// properties:
-/// saasId: example-saas
-/// location: us-central1
-/// locations:
-/// - name: us-central1
-/// exampleUnitKind:
-/// type: gcp:saasruntime:UnitKind
-/// name: example_unit_kind
-/// properties:
-/// location: us-central1
-/// unitKindId: example-unitkind
-/// saas: ${exampleSaasRegional.id}
-/// example:
-/// type: gcp:saasruntime:Unit
-/// properties:
-/// location: us-central1
-/// unitId: example-unit
-/// unitKind: ${exampleUnitKind.id}
-/// managementMode: MANAGEMENT_MODE_USER
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -247,7 +47,7 @@ class Unit extends CustomResource {
   /// They are not queryable and should be preserved when modifying objects.
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveAnnotations`" pulumi-lang-dotnet="`EffectiveAnnotations`" pulumi-lang-go="`effectiveAnnotations`" pulumi-lang-python="`effective_annotations`" pulumi-lang-yaml="`effectiveAnnotations`" pulumi-lang-java="`effectiveAnnotations`">`effective_annotations`</span> for all of the annotations present on the resource.
+  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final Output<Map<String, String>?> annotations;
 
   /// A set of conditions which indicate the various conditions this resource can
@@ -278,10 +78,10 @@ class Unit extends CustomResource {
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> location;
 
   /// Captures requested directives for performing future maintenance on the

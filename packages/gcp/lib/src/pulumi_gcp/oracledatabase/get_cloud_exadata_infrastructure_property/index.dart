@@ -1,3 +1,0 @@
-library module_oracledatabase_get_cloud_exadata_infrastructure_property;
-
-export 'get_cloud_exadata_infrastructure_property.dart';

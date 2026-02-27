@@ -12,14 +12,8 @@ class ApiHubInstanceConfig {
   /// is false.
   final bool? disableSearch;
 
-  /// Optional. Encryption type for the region. If the encryption type is CMEK, the<span pulumi-lang-nodejs="
-  /// cmekKeyName " pulumi-lang-dotnet="
-  /// CmekKeyName " pulumi-lang-go="
-  /// cmekKeyName " pulumi-lang-python="
-  /// cmek_key_name " pulumi-lang-yaml="
-  /// cmekKeyName " pulumi-lang-java="
-  /// cmekKeyName ">
-  /// cmek_key_name </span>must be provided. If no encryption type is provided,
+  /// Optional. Encryption type for the region. If the encryption type is CMEK, the
+  /// cmek_key_name must be provided. If no encryption type is provided,
   /// GMEK will be used.
   /// Possible values:
   /// ENCRYPTION_TYPE_UNSPECIFIED

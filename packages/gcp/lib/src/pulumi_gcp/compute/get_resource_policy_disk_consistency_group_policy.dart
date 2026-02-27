@@ -1,0 +1,3 @@
+library module_compute_get_resource_policy_disk_consistency_group_policy;
+
+export 'get_resource_policy_disk_consistency_group_policy/get_resource_policy_disk_consistency_group_policy.dart';

@@ -1,3 +1,0 @@
-library module_edgecontainer_cluster_system_addons_config_ingress;
-
-export 'cluster_system_addons_config_ingress.dart';

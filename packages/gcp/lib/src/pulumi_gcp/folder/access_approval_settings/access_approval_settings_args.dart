@@ -6,7 +6,7 @@ import '../access_approval_settings_enrolled_service/access_approval_settings_en
 /// The set of arguments for AccessApprovalSettings.
 class AccessApprovalSettingsArgs {
   /// The asymmetric crypto key version to use for signing approval requests.
-  /// Empty<span pulumi-lang-nodejs=" activeKeyVersion " pulumi-lang-dotnet=" ActiveKeyVersion " pulumi-lang-go=" activeKeyVersion " pulumi-lang-python=" active_key_version " pulumi-lang-yaml=" activeKeyVersion " pulumi-lang-java=" activeKeyVersion "> active_key_version </span>indicates that a Google-managed key should be used for signing.
+  /// Empty active_key_version indicates that a Google-managed key should be used for signing.
   /// This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
   final Input<String>? activeKeyVersion;
 

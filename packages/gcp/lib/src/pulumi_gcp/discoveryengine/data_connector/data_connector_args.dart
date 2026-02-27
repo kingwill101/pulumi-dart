@@ -28,7 +28,7 @@ class DataConnectorArgs {
   final Input<List<String>>? connectorModes;
 
   /// The name of the data source.
-  /// Supported values: <span pulumi-lang-nodejs="`salesforce`" pulumi-lang-dotnet="`Salesforce`" pulumi-lang-go="`salesforce`" pulumi-lang-python="`salesforce`" pulumi-lang-yaml="`salesforce`" pulumi-lang-java="`salesforce`">`salesforce`</span>, <span pulumi-lang-nodejs="`jira`" pulumi-lang-dotnet="`Jira`" pulumi-lang-go="`jira`" pulumi-lang-python="`jira`" pulumi-lang-yaml="`jira`" pulumi-lang-java="`jira`">`jira`</span>, <span pulumi-lang-nodejs="`confluence`" pulumi-lang-dotnet="`Confluence`" pulumi-lang-go="`confluence`" pulumi-lang-python="`confluence`" pulumi-lang-yaml="`confluence`" pulumi-lang-java="`confluence`">`confluence`</span>, <span pulumi-lang-nodejs="`bigquery`" pulumi-lang-dotnet="`Bigquery`" pulumi-lang-go="`bigquery`" pulumi-lang-python="`bigquery`" pulumi-lang-yaml="`bigquery`" pulumi-lang-java="`bigquery`">`bigquery`</span>.
+  /// Supported values: `salesforce`, `jira`, `confluence`, `bigquery`.
   final Input<String> dataSource;
 
   /// List of entities from the connected data source to ingest.

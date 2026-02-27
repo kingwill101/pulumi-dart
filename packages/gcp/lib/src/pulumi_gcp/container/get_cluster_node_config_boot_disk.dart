@@ -1,0 +1,3 @@
+library module_container_get_cluster_node_config_boot_disk;
+
+export 'get_cluster_node_config_boot_disk/get_cluster_node_config_boot_disk.dart';

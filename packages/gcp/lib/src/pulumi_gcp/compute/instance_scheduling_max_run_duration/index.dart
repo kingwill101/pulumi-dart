@@ -1,3 +1,0 @@
-library module_compute_instance_scheduling_max_run_duration;
-
-export 'instance_scheduling_max_run_duration.dart';

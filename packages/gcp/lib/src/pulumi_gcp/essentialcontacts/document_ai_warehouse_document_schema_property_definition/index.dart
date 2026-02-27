@@ -1,3 +1,0 @@
-library module_essentialcontacts_document_ai_warehouse_document_schema_property_definition;
-
-export 'document_ai_warehouse_document_schema_property_definition.dart';

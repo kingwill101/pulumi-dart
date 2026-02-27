@@ -32,7 +32,7 @@ class FlexibleAppVersionArgs {
   /// Only applicable if the corresponding StaticFilesHandler does not specify its own expiration time.
   final Input<String>? defaultExpiration;
 
-  /// If set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the service will be deleted if it is the last version.
+  /// If set to `true`, the service will be deleted if it is the last version.
   final Input<bool>? deleteServiceOnDestroy;
 
   /// Code and application artifacts that make up this version.
@@ -85,7 +85,7 @@ class FlexibleAppVersionArgs {
   /// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
   final Input<String>? nobuildFilesRegex;
 
-  /// If set to <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span>, the application version will not be deleted.
+  /// If set to `true`, the application version will not be deleted.
   final Input<bool>? noopOnDestroy;
 
   /// The ID of the project in which the resource belongs.
@@ -105,7 +105,7 @@ class FlexibleAppVersionArgs {
 
   /// The version of the API in the given runtime environment.
   /// Please see the app.yaml reference for valid values at `https://cloud.google.com/appengine/docs/standard/<language>/config/appref`\
-  /// Substitute `<language>` with <span pulumi-lang-nodejs="`python`" pulumi-lang-dotnet="`Python`" pulumi-lang-go="`python`" pulumi-lang-python="`python`" pulumi-lang-yaml="`python`" pulumi-lang-java="`python`">`python`</span>, <span pulumi-lang-nodejs="`java`" pulumi-lang-dotnet="`Java`" pulumi-lang-go="`java`" pulumi-lang-python="`java`" pulumi-lang-yaml="`java`" pulumi-lang-java="`java`">`java`</span>, <span pulumi-lang-nodejs="`php`" pulumi-lang-dotnet="`Php`" pulumi-lang-go="`php`" pulumi-lang-python="`php`" pulumi-lang-yaml="`php`" pulumi-lang-java="`php`">`php`</span>, <span pulumi-lang-nodejs="`ruby`" pulumi-lang-dotnet="`Ruby`" pulumi-lang-go="`ruby`" pulumi-lang-python="`ruby`" pulumi-lang-yaml="`ruby`" pulumi-lang-java="`ruby`">`ruby`</span>, <span pulumi-lang-nodejs="`go`" pulumi-lang-dotnet="`Go`" pulumi-lang-go="`go`" pulumi-lang-python="`go`" pulumi-lang-yaml="`go`" pulumi-lang-java="`go`">`go`</span> or <span pulumi-lang-nodejs="`nodejs`" pulumi-lang-dotnet="`Nodejs`" pulumi-lang-go="`nodejs`" pulumi-lang-python="`nodejs`" pulumi-lang-yaml="`nodejs`" pulumi-lang-java="`nodejs`">`nodejs`</span>.
+  /// Substitute `<language>` with `python`, `java`, `php`, `ruby`, `go` or `nodejs`.
   final Input<String>? runtimeApiVersion;
 
   /// The channel of the runtime to use. Only available for some runtimes.
@@ -126,7 +126,7 @@ class FlexibleAppVersionArgs {
   /// Possible values are: `SERVING`, `STOPPED`.
   final Input<String>? servingStatus;
 
-  /// Relative name of the version within the service. For example, <span pulumi-lang-nodejs="`v1`" pulumi-lang-dotnet="`V1`" pulumi-lang-go="`v1`" pulumi-lang-python="`v1`" pulumi-lang-yaml="`v1`" pulumi-lang-java="`v1`">`v1`</span>. Version names can contain only lowercase letters, numbers, or hyphens.
+  /// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
   /// Reserved names,"default", "latest", and any name with the prefix "ah-".
   final Input<String>? versionId;
 

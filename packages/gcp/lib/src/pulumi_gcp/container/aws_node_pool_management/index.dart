@@ -1,3 +1,0 @@
-library module_container_aws_node_pool_management;
-
-export 'aws_node_pool_management.dart';

@@ -1,3 +1,0 @@
-library module_compute_backend_service_dynamic_forwarding;
-
-export 'backend_service_dynamic_forwarding.dart';

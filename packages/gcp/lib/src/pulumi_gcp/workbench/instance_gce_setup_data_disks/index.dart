@@ -1,3 +1,0 @@
-library module_workbench_instance_gce_setup_data_disks;
-
-export 'instance_gce_setup_data_disks.dart';

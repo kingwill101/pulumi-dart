@@ -1,4 +1,0 @@
-library module_kms_ekm_connection_iam_policy;
-
-export 'ekm_connection_iam_policy.dart';
-export 'ekm_connection_iam_policy_args.dart';

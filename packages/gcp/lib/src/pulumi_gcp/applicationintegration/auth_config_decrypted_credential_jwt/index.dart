@@ -1,3 +1,0 @@
-library module_applicationintegration_auth_config_decrypted_credential_jwt;
-
-export 'auth_config_decrypted_credential_jwt.dart';

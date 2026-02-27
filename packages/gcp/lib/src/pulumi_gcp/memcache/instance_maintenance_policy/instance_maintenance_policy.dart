@@ -22,14 +22,8 @@ class InstanceMaintenancePolicy {
   final String? updateTime;
 
   /// Required. Maintenance window that is applied to resources covered by this policy.
-  /// Minimum 1. For the current version, the maximum number of<span pulumi-lang-nodejs=" weeklyMaintenanceWindows
-  /// " pulumi-lang-dotnet=" WeeklyMaintenanceWindows
-  /// " pulumi-lang-go=" weeklyMaintenanceWindows
-  /// " pulumi-lang-python=" weekly_maintenance_windows
-  /// " pulumi-lang-yaml=" weeklyMaintenanceWindows
-  /// " pulumi-lang-java=" weeklyMaintenanceWindows
-  /// "> weekly_maintenance_windows
-  /// </span>is expected to be one.
+  /// Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
+  /// is expected to be one.
   /// Structure is documented below.
   final List<InstanceMaintenancePolicyWeeklyMaintenanceWindow>
       weeklyMaintenanceWindows;

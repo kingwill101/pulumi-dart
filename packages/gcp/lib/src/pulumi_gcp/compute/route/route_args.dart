@@ -54,12 +54,12 @@ class RouteArgs {
   /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
   /// * `projects/project/zones/zone/instances/instance`
   /// * `zones/zone/instances/instance`
-  /// * Just the instance name, with the zone in <span pulumi-lang-nodejs="`nextHopInstanceZone`" pulumi-lang-dotnet="`NextHopInstanceZone`" pulumi-lang-go="`nextHopInstanceZone`" pulumi-lang-python="`next_hop_instance_zone`" pulumi-lang-yaml="`nextHopInstanceZone`" pulumi-lang-java="`nextHopInstanceZone`">`next_hop_instance_zone`</span>.
+  /// * Just the instance name, with the zone in `next_hop_instance_zone`.
   final Input<String>? nextHopInstance;
 
-  /// (Optional when <span pulumi-lang-nodejs="`nextHopInstance`" pulumi-lang-dotnet="`NextHopInstance`" pulumi-lang-go="`nextHopInstance`" pulumi-lang-python="`next_hop_instance`" pulumi-lang-yaml="`nextHopInstance`" pulumi-lang-java="`nextHopInstance`">`next_hop_instance`</span> is
+  /// (Optional when `next_hop_instance` is
   /// specified)  The zone of the instance specified in
-  /// <span pulumi-lang-nodejs="`nextHopInstance`" pulumi-lang-dotnet="`NextHopInstance`" pulumi-lang-go="`nextHopInstance`" pulumi-lang-python="`next_hop_instance`" pulumi-lang-yaml="`nextHopInstance`" pulumi-lang-java="`nextHopInstance`">`next_hop_instance`</span>.  Omit if <span pulumi-lang-nodejs="`nextHopInstance`" pulumi-lang-dotnet="`NextHopInstance`" pulumi-lang-go="`nextHopInstance`" pulumi-lang-python="`next_hop_instance`" pulumi-lang-yaml="`nextHopInstance`" pulumi-lang-java="`nextHopInstance`">`next_hop_instance`</span> is specified as
+  /// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
   /// a URL.
   final Input<String>? nextHopInstanceZone;
 

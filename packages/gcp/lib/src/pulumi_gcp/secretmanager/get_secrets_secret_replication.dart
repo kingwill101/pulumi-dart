@@ -1,0 +1,3 @@
+library module_secretmanager_get_secrets_secret_replication;
+
+export 'get_secrets_secret_replication/get_secrets_secret_replication.dart';

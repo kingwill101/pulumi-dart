@@ -20,7 +20,7 @@ class PluginInstanceAuthConfigApiKeyConfig {
 
   /// The parameter name of the API key.
   /// E.g. If the API request is "https://example.com/act?api_key=",
-  /// <span pulumi-lang-nodejs=""apiKey"" pulumi-lang-dotnet=""ApiKey"" pulumi-lang-go=""apiKey"" pulumi-lang-python=""api_key"" pulumi-lang-yaml=""apiKey"" pulumi-lang-java=""apiKey"">"api_key"</span> would be the parameter name.
+  /// "api_key" would be the parameter name.
   final String name;
 
   PluginInstanceAuthConfigApiKeyConfig({

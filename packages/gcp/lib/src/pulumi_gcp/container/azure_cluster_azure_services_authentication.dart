@@ -1,0 +1,3 @@
+library module_container_azure_cluster_azure_services_authentication;
+
+export 'azure_cluster_azure_services_authentication/azure_cluster_azure_services_authentication.dart';

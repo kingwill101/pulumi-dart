@@ -15,127 +15,7 @@ import 'sac_attachment_args.dart';
 /// ### Sac Attachment Prisma Access
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = new gcp.networksecurity.SacAttachment("default", {
-/// name: "sac-attachment-name",
-/// location: "us-central1",
-/// labels: {
-/// "label-one": "value-one",
-/// },
-/// nccGateway: "ncc_gateway_spoke_name",
-/// sacRealm: "sac_realm_name",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// default = gcp.networksecurity.SacAttachment("default",
-/// name="sac-attachment-name",
-/// location="us-central1",
-/// labels={
-/// "label-one": "value-one",
-/// },
-/// ncc_gateway="ncc_gateway_spoke_name",
-/// sac_realm="sac_realm_name")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var @default = new Gcp.NetworkSecurity.SacAttachment("default", new()
-/// {
-/// Name = "sac-attachment-name",
-/// Location = "us-central1",
-/// Labels =
-/// {
-/// { "label-one", "value-one" },
-/// },
-/// NccGateway = "ncc_gateway_spoke_name",
-/// SacRealm = "sac_realm_name",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := networksecurity.NewSacAttachment(ctx, "default", &networksecurity.SacAttachmentArgs{
-/// Name:     pulumi.String("sac-attachment-name"),
-/// Location: pulumi.String("us-central1"),
-/// Labels: pulumi.StringMap{
-/// "label-one": pulumi.String("value-one"),
-/// },
-/// NccGateway: pulumi.String("ncc_gateway_spoke_name"),
-/// SacRealm:   pulumi.String("sac_realm_name"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.networksecurity.SacAttachment;
-/// import com.pulumi.gcp.networksecurity.SacAttachmentArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var default_ = new SacAttachment("default", SacAttachmentArgs.builder()
-/// .name("sac-attachment-name")
-/// .location("us-central1")
-/// .labels(Map.of("label-one", "value-one"))
-/// .nccGateway("ncc_gateway_spoke_name")
-/// .sacRealm("sac_realm_name")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// default:
-/// type: gcp:networksecurity:SacAttachment
-/// properties:
-/// name: sac-attachment-name
-/// location: us-central1
-/// labels:
-/// label-one: value-one
-/// nccGateway: ncc_gateway_spoke_name
-/// sacRealm: sac_realm_name
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -173,7 +53,7 @@ class SacAttachment extends CustomResource {
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
   /// The location of the SACAttachment resource. eg us-central1

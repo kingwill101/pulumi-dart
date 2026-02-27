@@ -1,0 +1,3 @@
+library module_apigee_organization_properties_property;
+
+export 'organization_properties_property/organization_properties_property.dart';

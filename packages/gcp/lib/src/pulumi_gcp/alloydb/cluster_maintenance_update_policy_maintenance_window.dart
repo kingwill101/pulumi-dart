@@ -1,0 +1,3 @@
+library module_alloydb_cluster_maintenance_update_policy_maintenance_window;
+
+export 'cluster_maintenance_update_policy_maintenance_window/cluster_maintenance_update_policy_maintenance_window.dart';

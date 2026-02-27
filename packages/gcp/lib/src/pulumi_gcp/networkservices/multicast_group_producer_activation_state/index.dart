@@ -1,3 +1,0 @@
-library module_networkservices_multicast_group_producer_activation_state;
-
-export 'multicast_group_producer_activation_state.dart';

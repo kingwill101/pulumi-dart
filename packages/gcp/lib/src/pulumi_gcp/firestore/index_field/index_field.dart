@@ -3,7 +3,7 @@
 import '../index_field_vector_config/index_field_vector_config.dart';
 
 class IndexField {
-  /// Indicates that this field supports operations on arrayValues. Only one of <span pulumi-lang-nodejs="`order`" pulumi-lang-dotnet="`Order`" pulumi-lang-go="`order`" pulumi-lang-python="`order`" pulumi-lang-yaml="`order`" pulumi-lang-java="`order`">`order`</span>, `arrayConfig`, and
+  /// Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, and
   /// `vectorConfig` can be specified.
   /// Possible values are: `CONTAINS`.
   final String? arrayConfig;
@@ -12,11 +12,11 @@ class IndexField {
   final String? fieldPath;
 
   /// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
-  /// Only one of <span pulumi-lang-nodejs="`order`" pulumi-lang-dotnet="`Order`" pulumi-lang-go="`order`" pulumi-lang-python="`order`" pulumi-lang-yaml="`order`" pulumi-lang-java="`order`">`order`</span>, `arrayConfig`, and `vectorConfig` can be specified.
+  /// Only one of `order`, `arrayConfig`, and `vectorConfig` can be specified.
   /// Possible values are: `ASCENDING`, `DESCENDING`.
   final String? order;
 
-  /// Indicates that this field supports vector search operations. Only one of <span pulumi-lang-nodejs="`order`" pulumi-lang-dotnet="`Order`" pulumi-lang-go="`order`" pulumi-lang-python="`order`" pulumi-lang-yaml="`order`" pulumi-lang-java="`order`">`order`</span>, `arrayConfig`, and
+  /// Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, and
   /// `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
   /// Structure is documented below.
   final IndexFieldVectorConfig? vectorConfig;

@@ -8,7 +8,7 @@ class BackendServiceSecuritySettings {
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedSecuritySettingsAwsV4Authentication"" pulumi-lang-dotnet=""NestedSecuritySettingsAwsV4Authentication"" pulumi-lang-go=""nestedSecuritySettingsAwsV4Authentication"" pulumi-lang-python=""nested_security_settings_aws_v4_authentication"" pulumi-lang-yaml=""nestedSecuritySettingsAwsV4Authentication"" pulumi-lang-java=""nestedSecuritySettingsAwsV4Authentication"">"nested_security_settings_aws_v4_authentication"</span>></a>The <span pulumi-lang-nodejs="`awsV4Authentication`" pulumi-lang-dotnet="`AwsV4Authentication`" pulumi-lang-go="`awsV4Authentication`" pulumi-lang-python="`aws_v4_authentication`" pulumi-lang-yaml="`awsV4Authentication`" pulumi-lang-java="`awsV4Authentication`">`aws_v4_authentication`</span> block supports:
+  /// <a name="nested_security_settings_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
   final BackendServiceSecuritySettingsAwsV4Authentication? awsV4Authentication;
 
   /// ClientTlsPolicy is a resource that specifies how a client should authenticate

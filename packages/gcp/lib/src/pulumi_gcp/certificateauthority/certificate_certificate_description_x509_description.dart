@@ -1,0 +1,3 @@
+library module_certificateauthority_certificate_certificate_description_x509_description;
+
+export 'certificate_certificate_description_x509_description/certificate_certificate_description_x509_description.dart';

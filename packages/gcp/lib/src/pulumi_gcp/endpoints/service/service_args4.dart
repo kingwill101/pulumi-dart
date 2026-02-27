@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart';
 /// The set of arguments for Service.
 class ServiceArgs4 {
   /// The full text of the Service Config YAML file (Example located [here](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/main/endpoints/bookstore-grpc/api_config.yaml)).
-  /// If provided, must also provide <span pulumi-lang-nodejs="`protocOutputBase64`" pulumi-lang-dotnet="`ProtocOutputBase64`" pulumi-lang-go="`protocOutputBase64`" pulumi-lang-python="`protoc_output_base64`" pulumi-lang-yaml="`protocOutputBase64`" pulumi-lang-java="`protocOutputBase64`">`protoc_output_base64`</span>.  <span pulumi-lang-nodejs="`openApi`" pulumi-lang-dotnet="`OpenApi`" pulumi-lang-go="`openApi`" pulumi-lang-python="`open_api`" pulumi-lang-yaml="`openApi`" pulumi-lang-java="`openApi`">`open_api`</span> config must *not* be provided.
+  /// If provided, must also provide `protoc_output_base64`.  `open_api` config must *not* be provided.
   final Input<String>? grpcConfig;
 
   /// The full text of the OpenAPI YAML configuration as described [here](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md).
-  /// Either this, or *both* of <span pulumi-lang-nodejs="`grpcConfig`" pulumi-lang-dotnet="`GrpcConfig`" pulumi-lang-go="`grpcConfig`" pulumi-lang-python="`grpc_config`" pulumi-lang-yaml="`grpcConfig`" pulumi-lang-java="`grpcConfig`">`grpc_config`</span> and <span pulumi-lang-nodejs="`protocOutputBase64`" pulumi-lang-dotnet="`ProtocOutputBase64`" pulumi-lang-go="`protocOutputBase64`" pulumi-lang-python="`protoc_output_base64`" pulumi-lang-yaml="`protocOutputBase64`" pulumi-lang-java="`protocOutputBase64`">`protoc_output_base64`</span> must be specified.
+  /// Either this, or *both* of `grpc_config` and `protoc_output_base64` must be specified.
   final Input<String>? openapiConfig;
 
   /// The project ID that the service belongs to.  If not provided, provider project is used.

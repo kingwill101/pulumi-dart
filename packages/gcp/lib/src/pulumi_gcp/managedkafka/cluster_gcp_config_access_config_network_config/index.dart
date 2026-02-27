@@ -1,3 +1,0 @@
-library module_managedkafka_cluster_gcp_config_access_config_network_config;
-
-export 'cluster_gcp_config_access_config_network_config.dart';

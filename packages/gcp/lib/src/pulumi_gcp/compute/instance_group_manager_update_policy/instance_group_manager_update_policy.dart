@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class InstanceGroupManagerUpdatePolicy {
-  /// , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with <span pulumi-lang-nodejs="`maxSurgePercent`" pulumi-lang-dotnet="`MaxSurgePercent`" pulumi-lang-go="`maxSurgePercent`" pulumi-lang-python="`max_surge_percent`" pulumi-lang-yaml="`maxSurgePercent`" pulumi-lang-java="`maxSurgePercent`">`max_surge_percent`</span>. Both cannot be 0.
+  /// , Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with `max_surge_percent`. Both cannot be 0.
   final int? maxSurgeFixed;
 
-  /// , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with <span pulumi-lang-nodejs="`maxSurgeFixed`" pulumi-lang-dotnet="`MaxSurgeFixed`" pulumi-lang-go="`maxSurgeFixed`" pulumi-lang-python="`max_surge_fixed`" pulumi-lang-yaml="`maxSurgeFixed`" pulumi-lang-java="`maxSurgeFixed`">`max_surge_fixed`</span>.
+  /// , Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with `max_surge_fixed`.
   final int? maxSurgePercent;
 
   /// , Specifies a fixed number of VM instances. This must be a positive integer.
@@ -22,7 +22,7 @@ class InstanceGroupManagerUpdatePolicy {
   /// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
   final String? mostDisruptiveAllowedAction;
 
-  /// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set<span pulumi-lang-nodejs=" maxUnavailableFixed " pulumi-lang-dotnet=" MaxUnavailableFixed " pulumi-lang-go=" maxUnavailableFixed " pulumi-lang-python=" max_unavailable_fixed " pulumi-lang-yaml=" maxUnavailableFixed " pulumi-lang-java=" maxUnavailableFixed "> max_unavailable_fixed </span>or<span pulumi-lang-nodejs=" maxUnavailablePercent " pulumi-lang-dotnet=" MaxUnavailablePercent " pulumi-lang-go=" maxUnavailablePercent " pulumi-lang-python=" max_unavailable_percent " pulumi-lang-yaml=" maxUnavailablePercent " pulumi-lang-java=" maxUnavailablePercent "> max_unavailable_percent </span>to be greater than 0.
+  /// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
   /// - - -
   final String? replacementMethod;
 

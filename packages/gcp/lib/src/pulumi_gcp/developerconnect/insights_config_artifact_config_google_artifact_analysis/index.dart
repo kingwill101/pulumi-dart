@@ -1,3 +1,0 @@
-library module_developerconnect_insights_config_artifact_config_google_artifact_analysis;
-
-export 'insights_config_artifact_config_google_artifact_analysis.dart';

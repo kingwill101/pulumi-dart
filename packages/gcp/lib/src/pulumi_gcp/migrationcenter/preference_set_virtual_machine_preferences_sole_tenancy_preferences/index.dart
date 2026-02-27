@@ -1,3 +1,0 @@
-library module_migrationcenter_preference_set_virtual_machine_preferences_sole_tenancy_preferences;
-
-export 'preference_set_virtual_machine_preferences_sole_tenancy_preferences.dart';

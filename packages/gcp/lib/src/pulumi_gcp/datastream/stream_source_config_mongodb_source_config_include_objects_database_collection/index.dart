@@ -1,3 +1,0 @@
-library module_datastream_stream_source_config_mongodb_source_config_include_objects_database_collection;
-
-export 'stream_source_config_mongodb_source_config_include_objects_database_collection.dart';

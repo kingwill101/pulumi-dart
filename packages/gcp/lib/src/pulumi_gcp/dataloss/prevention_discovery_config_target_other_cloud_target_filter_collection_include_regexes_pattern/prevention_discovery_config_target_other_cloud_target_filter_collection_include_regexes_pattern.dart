@@ -7,7 +7,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
   /// Structure is documented below.
   ///
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex"" pulumi-lang-dotnet=""NestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex"" pulumi-lang-go=""nestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex"" pulumi-lang-python=""nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"" pulumi-lang-yaml=""nestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex"" pulumi-lang-java=""nestedTargetsOtherCloudTargetFilterCollectionIncludeRegexesPatternsAmazonS3BucketRegex"">"nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"</span>></a>The <span pulumi-lang-nodejs="`amazonS3BucketRegex`" pulumi-lang-dotnet="`AmazonS3BucketRegex`" pulumi-lang-go="`amazonS3BucketRegex`" pulumi-lang-python="`amazon_s3_bucket_regex`" pulumi-lang-yaml="`amazonS3BucketRegex`" pulumi-lang-java="`amazonS3BucketRegex`">`amazon_s3_bucket_regex`</span> block supports:
+  /// <a name="nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"></a>The `amazon_s3_bucket_regex` block supports:
   final PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex?
       amazonS3BucketRegex;
 

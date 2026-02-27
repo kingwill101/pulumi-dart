@@ -1,0 +1,3 @@
+library module_cloudrunv2_worker_pool_terminal_condition;
+
+export 'worker_pool_terminal_condition/worker_pool_terminal_condition.dart';

@@ -1,4 +1,0 @@
-library module_apigee_environment_api_revision_deployment;
-
-export 'environment_api_revision_deployment.dart';
-export 'environment_api_revision_deployment_args.dart';

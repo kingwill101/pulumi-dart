@@ -1,3 +1,0 @@
-library module_bigquery_table_external_data_configuration_parquet_options;
-
-export 'table_external_data_configuration_parquet_options.dart';

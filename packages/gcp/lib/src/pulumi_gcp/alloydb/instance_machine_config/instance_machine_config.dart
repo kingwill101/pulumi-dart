@@ -6,7 +6,7 @@ class InstanceMachineConfig {
 
   /// Machine type of the VM instance.
   /// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd".
-  /// <span pulumi-lang-nodejs="`cpuCount`" pulumi-lang-dotnet="`CpuCount`" pulumi-lang-go="`cpuCount`" pulumi-lang-python="`cpu_count`" pulumi-lang-yaml="`cpuCount`" pulumi-lang-java="`cpuCount`">`cpu_count`</span> must match the number of vCPUs in the machine type.
+  /// `cpu_count` must match the number of vCPUs in the machine type.
   final String? machineType;
 
   InstanceMachineConfig({

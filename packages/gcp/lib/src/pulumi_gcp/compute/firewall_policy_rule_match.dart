@@ -1,0 +1,3 @@
+library module_compute_firewall_policy_rule_match;
+
+export 'firewall_policy_rule_match/firewall_policy_rule_match.dart';

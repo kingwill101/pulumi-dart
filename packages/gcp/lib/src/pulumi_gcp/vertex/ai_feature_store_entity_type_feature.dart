@@ -1,0 +1,4 @@
+library module_vertex_ai_feature_store_entity_type_feature;
+
+export 'ai_feature_store_entity_type_feature/ai_feature_store_entity_type_feature.dart';
+export 'ai_feature_store_entity_type_feature/ai_feature_store_entity_type_feature_args.dart';

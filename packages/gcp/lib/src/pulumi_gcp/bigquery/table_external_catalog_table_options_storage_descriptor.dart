@@ -1,0 +1,3 @@
+library module_bigquery_table_external_catalog_table_options_storage_descriptor;
+
+export 'table_external_catalog_table_options_storage_descriptor/table_external_catalog_table_options_storage_descriptor.dart';

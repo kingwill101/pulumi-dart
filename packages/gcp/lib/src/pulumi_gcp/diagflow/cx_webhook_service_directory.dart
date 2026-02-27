@@ -1,0 +1,3 @@
+library module_diagflow_cx_webhook_service_directory;
+
+export 'cx_webhook_service_directory/cx_webhook_service_directory.dart';

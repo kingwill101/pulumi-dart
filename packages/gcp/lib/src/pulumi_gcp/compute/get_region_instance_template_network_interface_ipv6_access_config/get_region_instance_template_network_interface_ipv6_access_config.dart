@@ -7,7 +7,7 @@ class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
   /// The prefix length of the external IPv6 range.
   final String externalIpv6PrefixLength;
 
-  /// The name of the instance template. One of <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span> or <span pulumi-lang-nodejs="`filter`" pulumi-lang-dotnet="`Filter`" pulumi-lang-go="`filter`" pulumi-lang-python="`filter`" pulumi-lang-yaml="`filter`" pulumi-lang-java="`filter`">`filter`</span> must be provided.
+  /// The name of the instance template. One of `name` or `filter` must be provided.
   final String name;
 
   /// The [networking tier][network-tier] used for configuring

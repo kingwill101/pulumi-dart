@@ -1,0 +1,3 @@
+library module_container_cluster_addons_config_horizontal_pod_autoscaling;
+
+export 'cluster_addons_config_horizontal_pod_autoscaling/cluster_addons_config_horizontal_pod_autoscaling.dart';

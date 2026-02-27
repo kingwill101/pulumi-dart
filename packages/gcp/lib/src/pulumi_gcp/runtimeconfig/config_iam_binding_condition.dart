@@ -1,0 +1,3 @@
+library module_runtimeconfig_config_iam_binding_condition;
+
+export 'config_iam_binding_condition/config_iam_binding_condition.dart';

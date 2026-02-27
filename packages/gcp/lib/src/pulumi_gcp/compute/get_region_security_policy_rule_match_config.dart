@@ -1,0 +1,3 @@
+library module_compute_get_region_security_policy_rule_match_config;
+
+export 'get_region_security_policy_rule_match_config/get_region_security_policy_rule_match_config.dart';

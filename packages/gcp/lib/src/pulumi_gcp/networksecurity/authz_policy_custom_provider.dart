@@ -1,0 +1,3 @@
+library module_networksecurity_authz_policy_custom_provider;
+
+export 'authz_policy_custom_provider/authz_policy_custom_provider.dart';

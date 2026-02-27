@@ -1,0 +1,3 @@
+library module_apphub_get_discovered_service_service_reference;
+
+export 'get_discovered_service_service_reference/get_discovered_service_service_reference.dart';

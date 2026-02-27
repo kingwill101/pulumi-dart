@@ -1,0 +1,3 @@
+library module_artifactregistry_get_repository_virtual_repository_config_upstream_policy;
+
+export 'get_repository_virtual_repository_config_upstream_policy/get_repository_virtual_repository_config_upstream_policy.dart';

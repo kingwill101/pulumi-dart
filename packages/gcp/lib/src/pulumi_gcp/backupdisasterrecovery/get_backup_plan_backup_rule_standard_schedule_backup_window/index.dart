@@ -1,3 +1,0 @@
-library module_backupdisasterrecovery_get_backup_plan_backup_rule_standard_schedule_backup_window;
-
-export 'get_backup_plan_backup_rule_standard_schedule_backup_window.dart';

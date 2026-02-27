@@ -1,4 +1,0 @@
-library module_iap_web_cloud_run_service_iam_member;
-
-export 'web_cloud_run_service_iam_member.dart';
-export 'web_cloud_run_service_iam_member_args.dart';

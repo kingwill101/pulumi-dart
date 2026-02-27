@@ -1,0 +1,3 @@
+library module_cloudrunv2_worker_pool_template_vpc_access_network_interface;
+
+export 'worker_pool_template_vpc_access_network_interface/worker_pool_template_vpc_access_network_interface.dart';

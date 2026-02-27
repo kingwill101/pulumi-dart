@@ -17,7 +17,7 @@ class AccountArgs {
   /// Must be less than or equal to 256 UTF-8 bytes.
   final Input<String>? description;
 
-  /// Whether a service account is disabled or not. Defaults to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. This field has no effect during creation.
+  /// Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
   /// Must be set after creation to disable a service account.
   final Input<bool>? disabled;
 

@@ -34,7 +34,7 @@ class InstanceScheduling {
   /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
   final String? maintenanceInterval;
 
-  /// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in <span pulumi-lang-nodejs="`instanceTerminationAction`" pulumi-lang-dotnet="`InstanceTerminationAction`" pulumi-lang-go="`instanceTerminationAction`" pulumi-lang-python="`instance_termination_action`" pulumi-lang-yaml="`instanceTerminationAction`" pulumi-lang-java="`instanceTerminationAction`">`instance_termination_action`</span>. Structure is documented below.
+  /// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Structure is documented below.
   final InstanceSchedulingMaxRunDuration? maxRunDuration;
 
   /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
@@ -52,17 +52,17 @@ class InstanceScheduling {
   /// [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options).
   final String? onHostMaintenance;
 
-  /// Specifies the action to be performed when the instance is terminated using <span pulumi-lang-nodejs="`maxRunDuration`" pulumi-lang-dotnet="`MaxRunDuration`" pulumi-lang-go="`maxRunDuration`" pulumi-lang-python="`max_run_duration`" pulumi-lang-yaml="`maxRunDuration`" pulumi-lang-java="`maxRunDuration`">`max_run_duration`</span> and `STOP` <span pulumi-lang-nodejs="`instanceTerminationAction`" pulumi-lang-dotnet="`InstanceTerminationAction`" pulumi-lang-go="`instanceTerminationAction`" pulumi-lang-python="`instance_termination_action`" pulumi-lang-yaml="`instanceTerminationAction`" pulumi-lang-java="`instanceTerminationAction`">`instance_termination_action`</span>. Only support <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> <span pulumi-lang-nodejs="`discardLocalSsd`" pulumi-lang-dotnet="`DiscardLocalSsd`" pulumi-lang-go="`discardLocalSsd`" pulumi-lang-python="`discard_local_ssd`" pulumi-lang-yaml="`discardLocalSsd`" pulumi-lang-java="`discardLocalSsd`">`discard_local_ssd`</span> at this point. Structure is documented below.
+  /// Specifies the action to be performed when the instance is terminated using `max_run_duration` and `STOP` `instance_termination_action`. Only support `true` `discard_local_ssd` at this point. Structure is documented below.
   final InstanceSchedulingOnInstanceStopAction? onInstanceStopAction;
 
   /// Specifies if the instance is preemptible.
-  /// If this field is set to true, then <span pulumi-lang-nodejs="`automaticRestart`" pulumi-lang-dotnet="`AutomaticRestart`" pulumi-lang-go="`automaticRestart`" pulumi-lang-python="`automatic_restart`" pulumi-lang-yaml="`automaticRestart`" pulumi-lang-java="`automaticRestart`">`automatic_restart`</span> must be
+  /// If this field is set to true, then `automatic_restart` must be
   /// set to false.  Defaults to false.
   final bool? preemptible;
 
   /// Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-  /// <span pulumi-lang-nodejs="`preemptible`" pulumi-lang-dotnet="`Preemptible`" pulumi-lang-go="`preemptible`" pulumi-lang-python="`preemptible`" pulumi-lang-yaml="`preemptible`" pulumi-lang-java="`preemptible`">`preemptible`</span> should be <span pulumi-lang-nodejs="`true`" pulumi-lang-dotnet="`True`" pulumi-lang-go="`true`" pulumi-lang-python="`true`" pulumi-lang-yaml="`true`" pulumi-lang-java="`true`">`true`</span> and <span pulumi-lang-nodejs="`automaticRestart`" pulumi-lang-dotnet="`AutomaticRestart`" pulumi-lang-go="`automaticRestart`" pulumi-lang-python="`automatic_restart`" pulumi-lang-yaml="`automaticRestart`" pulumi-lang-java="`automaticRestart`">`automatic_restart`</span> should be
-  /// <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>. For more info about
+  /// `preemptible` should be `true` and `automatic_restart` should be
+  /// `false`. For more info about
   /// `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
   final String? provisioningModel;
 

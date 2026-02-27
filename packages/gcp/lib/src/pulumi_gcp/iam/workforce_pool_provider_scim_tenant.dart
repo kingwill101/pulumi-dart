@@ -1,0 +1,4 @@
+library module_iam_workforce_pool_provider_scim_tenant;
+
+export 'workforce_pool_provider_scim_tenant/workforce_pool_provider_scim_tenant.dart';
+export 'workforce_pool_provider_scim_tenant/workforce_pool_provider_scim_tenant_args.dart';

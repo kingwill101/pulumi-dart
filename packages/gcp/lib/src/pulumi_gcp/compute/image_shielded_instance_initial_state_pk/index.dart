@@ -1,3 +1,0 @@
-library module_compute_image_shielded_instance_initial_state_pk;
-
-export 'image_shielded_instance_initial_state_pk.dart';

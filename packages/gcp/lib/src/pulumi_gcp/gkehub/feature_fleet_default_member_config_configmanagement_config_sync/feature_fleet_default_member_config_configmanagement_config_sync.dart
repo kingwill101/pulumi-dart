@@ -11,14 +11,14 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
   /// Structure is documented below.
   final FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit? git;
 
-  /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span> in the namespace `config-management-monitoring` should be bound to the GSA.
+  /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
   final String? metricsGcpServiceAccountEmail;
 
   /// OCI repo configuration for the cluster
   /// Structure is documented below.
   final FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci? oci;
 
-  /// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to <span pulumi-lang-nodejs="`false`" pulumi-lang-dotnet="`False`" pulumi-lang-go="`false`" pulumi-lang-python="`false`" pulumi-lang-yaml="`false`" pulumi-lang-java="`false`">`false`</span>, disables the Config Sync admission webhook and does not prevent drifts.
+  /// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
   final bool? preventDrift;
 
   /// Specifies whether the Config Sync Repo is in hierarchical or unstructured mode

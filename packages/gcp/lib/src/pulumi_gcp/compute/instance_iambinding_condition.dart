@@ -1,0 +1,3 @@
+library module_compute_instance_iambinding_condition;
+
+export 'instance_iambinding_condition/instance_iambinding_condition.dart';

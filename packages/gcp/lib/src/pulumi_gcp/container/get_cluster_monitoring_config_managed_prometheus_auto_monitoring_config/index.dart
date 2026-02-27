@@ -1,3 +1,0 @@
-library module_container_get_cluster_monitoring_config_managed_prometheus_auto_monitoring_config;
-
-export 'get_cluster_monitoring_config_managed_prometheus_auto_monitoring_config.dart';

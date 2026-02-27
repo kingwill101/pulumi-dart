@@ -1,3 +1,0 @@
-library module_compute_instance_from_machine_image_reservation_affinity_specific_reservation;
-
-export 'instance_from_machine_image_reservation_affinity_specific_reservation.dart';

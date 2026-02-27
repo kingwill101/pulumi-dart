@@ -1,0 +1,3 @@
+library module_workstations_workstation_config_encryption_key;
+
+export 'workstation_config_encryption_key/workstation_config_encryption_key.dart';

@@ -12,7 +12,7 @@ class AutoscalingPolicyArgs {
   final Input<AutoscalingPolicyBasicAlgorithm>? basicAlgorithm;
 
   /// The  location where the autoscaling policy should reside.
-  /// The default value is <span pulumi-lang-nodejs="`global`" pulumi-lang-dotnet="`Global`" pulumi-lang-go="`global`" pulumi-lang-python="`global`" pulumi-lang-yaml="`global`" pulumi-lang-java="`global`">`global`</span>.
+  /// The default value is `global`.
   final Input<String>? location;
 
   /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),

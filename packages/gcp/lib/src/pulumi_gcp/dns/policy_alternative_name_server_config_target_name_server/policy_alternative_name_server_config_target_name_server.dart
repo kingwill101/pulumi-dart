@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 class PolicyAlternativeNameServerConfigTargetNameServer {
-  /// Forwarding path for this TargetNameServer. If unset or <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span> Cloud DNS will make forwarding
+  /// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
   /// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
-  /// to the Internet. When set to <span pulumi-lang-nodejs="`private`" pulumi-lang-dotnet="`Private`" pulumi-lang-go="`private`" pulumi-lang-python="`private`" pulumi-lang-yaml="`private`" pulumi-lang-java="`private`">`private`</span>, Cloud DNS will always send queries through VPC for this target
-  /// Possible values are: <span pulumi-lang-nodejs="`default`" pulumi-lang-dotnet="`Default`" pulumi-lang-go="`default`" pulumi-lang-python="`default`" pulumi-lang-yaml="`default`" pulumi-lang-java="`default`">`default`</span>, <span pulumi-lang-nodejs="`private`" pulumi-lang-dotnet="`Private`" pulumi-lang-go="`private`" pulumi-lang-python="`private`" pulumi-lang-yaml="`private`" pulumi-lang-java="`private`">`private`</span>.
+  /// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
+  /// Possible values are: `default`, `private`.
   ///
-  /// <a name=<span pulumi-lang-nodejs=""nestedDns64Config"" pulumi-lang-dotnet=""NestedDns64Config"" pulumi-lang-go=""nestedDns64Config"" pulumi-lang-python=""nested_dns64_config"" pulumi-lang-yaml=""nestedDns64Config"" pulumi-lang-java=""nestedDns64Config"">"nested_dns64_config"</span>></a>The <span pulumi-lang-nodejs="`dns64Config`" pulumi-lang-dotnet="`Dns64Config`" pulumi-lang-go="`dns64Config`" pulumi-lang-python="`dns64_config`" pulumi-lang-yaml="`dns64Config`" pulumi-lang-java="`dns64Config`">`dns64_config`</span> block supports:
+  /// <a name="nested_dns64_config"></a>The `dns64_config` block supports:
   final String? forwardingPath;
 
   /// IPv4 address to forward to.

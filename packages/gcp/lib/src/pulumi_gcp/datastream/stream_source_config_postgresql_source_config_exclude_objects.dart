@@ -1,0 +1,3 @@
+library module_datastream_stream_source_config_postgresql_source_config_exclude_objects;
+
+export 'stream_source_config_postgresql_source_config_exclude_objects/stream_source_config_postgresql_source_config_exclude_objects.dart';

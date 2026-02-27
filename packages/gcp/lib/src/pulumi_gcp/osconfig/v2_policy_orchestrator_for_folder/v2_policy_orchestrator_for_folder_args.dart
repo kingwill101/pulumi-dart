@@ -8,7 +8,7 @@ import '../v2_policy_orchestrator_for_folder_orchestration_scope/v2_policy_orche
 class V2PolicyOrchestratorForFolderArgs {
   /// Action to be done by the orchestrator in
   /// `projects/{project_id}/zones/{zone_id}` locations defined by the
-  /// <span pulumi-lang-nodejs="`orchestrationScope`" pulumi-lang-dotnet="`OrchestrationScope`" pulumi-lang-go="`orchestrationScope`" pulumi-lang-python="`orchestration_scope`" pulumi-lang-yaml="`orchestrationScope`" pulumi-lang-java="`orchestrationScope`">`orchestration_scope`</span>. Allowed values:
+  /// `orchestration_scope`. Allowed values:
   /// - `UPSERT` - Orchestrator will create or update target resources.
   /// - `DELETE` - Orchestrator will delete target resources, if they exist
   final Input<String> action;
@@ -21,7 +21,7 @@ class V2PolicyOrchestratorForFolderArgs {
 
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Represents a resource that is being orchestrated by the policy orchestrator.

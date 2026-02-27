@@ -1,0 +1,3 @@
+library module_cloudsecuritycompliance_cloud_control_parameter_spec;
+
+export 'cloud_control_parameter_spec/cloud_control_parameter_spec.dart';

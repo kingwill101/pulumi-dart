@@ -1,3 +1,0 @@
-library module_appengine_standard_app_version_library;
-
-export 'standard_app_version_library.dart';

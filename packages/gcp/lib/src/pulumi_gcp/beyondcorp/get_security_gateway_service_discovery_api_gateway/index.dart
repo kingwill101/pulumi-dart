@@ -1,3 +1,0 @@
-library module_beyondcorp_get_security_gateway_service_discovery_api_gateway;
-
-export 'get_security_gateway_service_discovery_api_gateway.dart';

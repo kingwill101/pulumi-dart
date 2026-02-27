@@ -12,142 +12,7 @@ import 'plugin_instance_args.dart';
 /// ### Apihub Plugin Instance Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const apihubPluginInstanceBasic = new gcp.apihub.PluginInstance("apihub_plugin_instance_basic", {
-/// location: "us-central1",
-/// plugin: "existing-plugin-id",
-/// pluginInstanceId: "test",
-/// displayName: "Sample Plugin Instance Display Name",
-/// disable: false,
-/// actions: [{
-/// actionId: "existing-action-id",
-/// }],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// apihub_plugin_instance_basic = gcp.apihub.PluginInstance("apihub_plugin_instance_basic",
-/// location="us-central1",
-/// plugin="existing-plugin-id",
-/// plugin_instance_id="test",
-/// display_name="Sample Plugin Instance Display Name",
-/// disable=False,
-/// actions=[{
-/// "action_id": "existing-action-id",
-/// }])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var apihubPluginInstanceBasic = new Gcp.ApiHub.PluginInstance("apihub_plugin_instance_basic", new()
-/// {
-/// Location = "us-central1",
-/// Plugin = "existing-plugin-id",
-/// PluginInstanceId = "test",
-/// DisplayName = "Sample Plugin Instance Display Name",
-/// Disable = false,
-/// Actions = new[]
-/// {
-/// new Gcp.ApiHub.Inputs.PluginInstanceActionArgs
-/// {
-/// ActionId = "existing-action-id",
-/// },
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apihub"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := apihub.NewPluginInstance(ctx, "apihub_plugin_instance_basic", &apihub.PluginInstanceArgs{
-/// Location:         pulumi.String("us-central1"),
-/// Plugin:           pulumi.String("existing-plugin-id"),
-/// PluginInstanceId: pulumi.String("test"),
-/// DisplayName:      pulumi.String("Sample Plugin Instance Display Name"),
-/// Disable:          pulumi.Bool(false),
-/// Actions: apihub.PluginInstanceActionArray{
-/// &apihub.PluginInstanceActionArgs{
-/// ActionId: pulumi.String("existing-action-id"),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.apihub.PluginInstance;
-/// import com.pulumi.gcp.apihub.PluginInstanceArgs;
-/// import com.pulumi.gcp.apihub.inputs.PluginInstanceActionArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var apihubPluginInstanceBasic = new PluginInstance("apihubPluginInstanceBasic", PluginInstanceArgs.builder()
-/// .location("us-central1")
-/// .plugin("existing-plugin-id")
-/// .pluginInstanceId("test")
-/// .displayName("Sample Plugin Instance Display Name")
-/// .disable(false)
-/// .actions(PluginInstanceActionArgs.builder()
-/// .actionId("existing-action-id")
-/// .build())
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// apihubPluginInstanceBasic:
-/// type: gcp:apihub:PluginInstance
-/// name: apihub_plugin_instance_basic
-/// properties:
-/// location: us-central1
-/// plugin: existing-plugin-id
-/// pluginInstanceId: test
-/// displayName: Sample Plugin Instance Display Name
-/// disable: false
-/// actions:
-/// - actionId: existing-action-id
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -195,7 +60,7 @@ class PluginInstance extends CustomResource {
   /// only be populated if the plugin instance is in the ERROR or FAILED state.
   late final Output<String> errorMessage;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> location;
 
   /// Identifier. The unique name of the plugin instance resource.
@@ -203,7 +68,7 @@ class PluginInstance extends CustomResource {
   /// `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`
   late final Output<String> name;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> plugin;
 
   /// The ID to use for the plugin instance, which will become the final

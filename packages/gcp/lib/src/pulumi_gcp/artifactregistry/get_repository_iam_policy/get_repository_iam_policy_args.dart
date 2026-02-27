@@ -5,23 +5,11 @@ import 'package:pulumi/pulumi.dart';
 /// Arguments for getRepositoryIamPolicy.
 class GetRepositoryIamPolicyArgs {
   /// The name of the repository's location. In addition to specific regions,
-  /// special values for multi-region locations are <span pulumi-lang-nodejs="`asia`" pulumi-lang-dotnet="`Asia`" pulumi-lang-go="`asia`" pulumi-lang-python="`asia`" pulumi-lang-yaml="`asia`" pulumi-lang-java="`asia`">`asia`</span>, <span pulumi-lang-nodejs="`europe`" pulumi-lang-dotnet="`Europe`" pulumi-lang-go="`europe`" pulumi-lang-python="`europe`" pulumi-lang-yaml="`europe`" pulumi-lang-java="`europe`">`europe`</span>, and <span pulumi-lang-nodejs="`us`" pulumi-lang-dotnet="`Us`" pulumi-lang-go="`us`" pulumi-lang-python="`us`" pulumi-lang-yaml="`us`" pulumi-lang-java="`us`">`us`</span>.
+  /// special values for multi-region locations are `asia`, `europe`, and `us`.
   /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
-  /// or use the<span pulumi-lang-nodejs="
+  /// or use the
   /// gcp.artifactregistry.getLocations
-  /// " pulumi-lang-dotnet="
-  /// gcp.artifactregistry.getLocations
-  /// " pulumi-lang-go="
-  /// artifactregistry.getLocations
-  /// " pulumi-lang-python="
-  /// artifactregistry_get_locations
-  /// " pulumi-lang-yaml="
-  /// gcp.artifactregistry.getLocations
-  /// " pulumi-lang-java="
-  /// gcp.artifactregistry.getLocations
-  /// ">
-  /// gcp.artifactregistry.getLocations
-  /// </span>data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
+  /// data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final Input<String>? location;

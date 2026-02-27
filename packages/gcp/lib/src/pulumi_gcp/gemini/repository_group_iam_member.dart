@@ -1,0 +1,4 @@
+library module_gemini_repository_group_iam_member;
+
+export 'repository_group_iam_member/repository_group_iam_member.dart';
+export 'repository_group_iam_member/repository_group_iam_member_args.dart';

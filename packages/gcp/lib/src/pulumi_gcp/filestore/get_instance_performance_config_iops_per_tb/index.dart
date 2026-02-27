@@ -1,3 +1,0 @@
-library module_filestore_get_instance_performance_config_iops_per_tb;
-
-export 'get_instance_performance_config_iops_per_tb.dart';

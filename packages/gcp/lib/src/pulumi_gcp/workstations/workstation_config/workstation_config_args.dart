@@ -17,7 +17,7 @@ class WorkstationConfigArgs {
 
   /// Client-specified annotations. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveAnnotations`" pulumi-lang-dotnet="`EffectiveAnnotations`" pulumi-lang-go="`effectiveAnnotations`" pulumi-lang-python="`effective_annotations`" pulumi-lang-yaml="`effectiveAnnotations`" pulumi-lang-java="`effectiveAnnotations`">`effective_annotations`</span> for all of the annotations present on the resource.
+  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final Input<Map<String, String>>? annotations;
 
   /// Container that will be run for each workstation using this configuration when that workstation is started.
@@ -30,7 +30,7 @@ class WorkstationConfigArgs {
   /// Human-readable name for this resource.
   final Input<String>? displayName;
 
-  /// Whether to enable Linux <span pulumi-lang-nodejs="`auditd`" pulumi-lang-dotnet="`Auditd`" pulumi-lang-go="`auditd`" pulumi-lang-python="`auditd`" pulumi-lang-yaml="`auditd`" pulumi-lang-java="`auditd`">`auditd`</span> logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
+  /// Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
   final Input<bool>? enableAuditAgent;
 
   /// Encrypts resources of this workstation configuration using a customer-managed encryption key.
@@ -54,7 +54,7 @@ class WorkstationConfigArgs {
 
   /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// The location where the workstation cluster config should reside.
@@ -80,7 +80,7 @@ class WorkstationConfigArgs {
   /// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
   final Input<List<String>>? replicaZones;
 
-  /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if <span pulumi-lang-nodejs="`encryptionKey`" pulumi-lang-dotnet="`EncryptionKey`" pulumi-lang-go="`encryptionKey`" pulumi-lang-python="`encryption_key`" pulumi-lang-yaml="`encryptionKey`" pulumi-lang-java="`encryptionKey`">`encryption_key`</span> is set. Defaults to 12 hours.
+  /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
   final Input<String>? runningTimeout;
 

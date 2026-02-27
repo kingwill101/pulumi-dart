@@ -1,3 +1,0 @@
-library module_chronicle_data_access_scope_denied_data_access_label;
-
-export 'data_access_scope_denied_data_access_label.dart';

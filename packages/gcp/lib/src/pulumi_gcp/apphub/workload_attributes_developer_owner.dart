@@ -1,0 +1,3 @@
+library module_apphub_workload_attributes_developer_owner;
+
+export 'workload_attributes_developer_owner/workload_attributes_developer_owner.dart';

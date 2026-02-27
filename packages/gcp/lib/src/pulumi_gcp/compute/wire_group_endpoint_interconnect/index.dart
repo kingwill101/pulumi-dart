@@ -1,3 +1,0 @@
-library module_compute_wire_group_endpoint_interconnect;
-
-export 'wire_group_endpoint_interconnect.dart';

@@ -19,7 +19,7 @@ class HostingCustomDomainArgs {
 
   /// A domain name that this CustomDomain should direct traffic towards. If
   /// specified, Hosting will respond to requests against this CustomDomain
-  /// with an HTTP 301 code, and route traffic to the specified <span pulumi-lang-nodejs="`redirectTarget`" pulumi-lang-dotnet="`RedirectTarget`" pulumi-lang-go="`redirectTarget`" pulumi-lang-python="`redirect_target`" pulumi-lang-yaml="`redirectTarget`" pulumi-lang-java="`redirectTarget`">`redirect_target`</span>
+  /// with an HTTP 301 code, and route traffic to the specified `redirect_target`
   /// instead.
   final Input<String>? redirectTarget;
 

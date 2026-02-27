@@ -1,0 +1,3 @@
+library module_gkeonprem_vmware_admin_cluster_fleet;
+
+export 'vmware_admin_cluster_fleet/vmware_admin_cluster_fleet.dart';

@@ -1,3 +1,0 @@
-library module_cloudrunv2_service_template_container_resources;
-
-export 'service_template_container_resources.dart';

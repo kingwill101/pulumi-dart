@@ -1,0 +1,3 @@
+library module_beyondcorp_security_gateway_proxy_protocol_config;
+
+export 'security_gateway_proxy_protocol_config/security_gateway_proxy_protocol_config.dart';

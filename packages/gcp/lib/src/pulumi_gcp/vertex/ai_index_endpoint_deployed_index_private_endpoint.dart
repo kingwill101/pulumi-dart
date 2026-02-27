@@ -1,0 +1,3 @@
+library module_vertex_ai_index_endpoint_deployed_index_private_endpoint;
+
+export 'ai_index_endpoint_deployed_index_private_endpoint/ai_index_endpoint_deployed_index_private_endpoint.dart';

@@ -5,20 +5,20 @@ import '../prevention_deidentify_template_deidentify_config_record_transformatio
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig {
   /// Size of each bucket (except for minimum and maximum buckets).
-  /// So if<span pulumi-lang-nodejs=" lowerBound " pulumi-lang-dotnet=" LowerBound " pulumi-lang-go=" lowerBound " pulumi-lang-python=" lower_bound " pulumi-lang-yaml=" lowerBound " pulumi-lang-java=" lowerBound "> lower_bound </span>= 10,<span pulumi-lang-nodejs=" upperBound " pulumi-lang-dotnet=" UpperBound " pulumi-lang-go=" upperBound " pulumi-lang-python=" upper_bound " pulumi-lang-yaml=" upperBound " pulumi-lang-java=" upperBound "> upper_bound </span>= 89, and bucketSize = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
+  /// So if lower_bound = 10, upper_bound = 89, and bucketSize = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+.
   /// Precision up to 2 decimals works.
   final double bucketSize;
 
   /// Lower bound value of buckets.
-  /// All values less than<span pulumi-lang-nodejs=" lowerBound " pulumi-lang-dotnet=" LowerBound " pulumi-lang-go=" lowerBound " pulumi-lang-python=" lower_bound " pulumi-lang-yaml=" lowerBound " pulumi-lang-java=" lowerBound "> lower_bound </span>are grouped together into a single bucket; for example if<span pulumi-lang-nodejs=" lowerBound " pulumi-lang-dotnet=" LowerBound " pulumi-lang-go=" lowerBound " pulumi-lang-python=" lower_bound " pulumi-lang-yaml=" lowerBound " pulumi-lang-java=" lowerBound "> lower_bound </span>= 10, then all values less than 10 are replaced with the value "-10".
-  /// The <span pulumi-lang-nodejs="`lowerBound`" pulumi-lang-dotnet="`LowerBound`" pulumi-lang-go="`lowerBound`" pulumi-lang-python="`lower_bound`" pulumi-lang-yaml="`lowerBound`" pulumi-lang-java="`lowerBound`">`lower_bound`</span> block must only contain one argument. See the <span pulumi-lang-nodejs="`fixedSizeBucketingConfig`" pulumi-lang-dotnet="`FixedSizeBucketingConfig`" pulumi-lang-go="`fixedSizeBucketingConfig`" pulumi-lang-python="`fixed_size_bucketing_config`" pulumi-lang-yaml="`fixedSizeBucketingConfig`" pulumi-lang-java="`fixedSizeBucketingConfig`">`fixed_size_bucketing_config`</span> block description for more information about choosing a data type.
+  /// All values less than lower_bound are grouped together into a single bucket; for example if lower_bound = 10, then all values less than 10 are replaced with the value "-10".
+  /// The `lower_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
   /// Structure is documented below.
   final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound
       lowerBound;
 
   /// Upper bound value of buckets.
-  /// All values greater than<span pulumi-lang-nodejs=" upperBound " pulumi-lang-dotnet=" UpperBound " pulumi-lang-go=" upperBound " pulumi-lang-python=" upper_bound " pulumi-lang-yaml=" upperBound " pulumi-lang-java=" upperBound "> upper_bound </span>are grouped together into a single bucket; for example if<span pulumi-lang-nodejs=" upperBound " pulumi-lang-dotnet=" UpperBound " pulumi-lang-go=" upperBound " pulumi-lang-python=" upper_bound " pulumi-lang-yaml=" upperBound " pulumi-lang-java=" upperBound "> upper_bound </span>= 89, then all values greater than 89 are replaced with the value "89+".
-  /// The <span pulumi-lang-nodejs="`upperBound`" pulumi-lang-dotnet="`UpperBound`" pulumi-lang-go="`upperBound`" pulumi-lang-python="`upper_bound`" pulumi-lang-yaml="`upperBound`" pulumi-lang-java="`upperBound`">`upper_bound`</span> block must only contain one argument. See the <span pulumi-lang-nodejs="`fixedSizeBucketingConfig`" pulumi-lang-dotnet="`FixedSizeBucketingConfig`" pulumi-lang-go="`fixedSizeBucketingConfig`" pulumi-lang-python="`fixed_size_bucketing_config`" pulumi-lang-yaml="`fixedSizeBucketingConfig`" pulumi-lang-java="`fixedSizeBucketingConfig`">`fixed_size_bucketing_config`</span> block description for more information about choosing a data type.
+  /// All values greater than upper_bound are grouped together into a single bucket; for example if upper_bound = 89, then all values greater than 89 are replaced with the value "89+".
+  /// The `upper_bound` block must only contain one argument. See the `fixed_size_bucketing_config` block description for more information about choosing a data type.
   /// Structure is documented below.
   final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound
       upperBound;

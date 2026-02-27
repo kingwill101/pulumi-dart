@@ -17,134 +17,7 @@ import 'iamcustom_role_args2.dart';
 ///
 /// This snippet creates a customized IAM role.
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const my_custom_role = new gcp.projects.IAMCustomRole("my-custom-role", {
-/// roleId: "myCustomRole",
-/// title: "My Custom Role",
-/// description: "A description",
-/// permissions: [
-/// "iam.roles.list",
-/// "iam.roles.create",
-/// "iam.roles.delete",
-/// ],
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// my_custom_role = gcp.projects.IAMCustomRole("my-custom-role",
-/// role_id="myCustomRole",
-/// title="My Custom Role",
-/// description="A description",
-/// permissions=[
-/// "iam.roles.list",
-/// "iam.roles.create",
-/// "iam.roles.delete",
-/// ])
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var my_custom_role = new Gcp.Projects.IAMCustomRole("my-custom-role", new()
-/// {
-/// RoleId = "myCustomRole",
-/// Title = "My Custom Role",
-/// Description = "A description",
-/// Permissions = new[]
-/// {
-/// "iam.roles.list",
-/// "iam.roles.create",
-/// "iam.roles.delete",
-/// },
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := projects.NewIAMCustomRole(ctx, "my-custom-role", &projects.IAMCustomRoleArgs{
-/// RoleId:      pulumi.String("myCustomRole"),
-/// Title:       pulumi.String("My Custom Role"),
-/// Description: pulumi.String("A description"),
-/// Permissions: pulumi.StringArray{
-/// pulumi.String("iam.roles.list"),
-/// pulumi.String("iam.roles.create"),
-/// pulumi.String("iam.roles.delete"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.projects.IAMCustomRole;
-/// import com.pulumi.gcp.projects.IAMCustomRoleArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var my_custom_role = new IAMCustomRole("my-custom-role", IAMCustomRoleArgs.builder()
-/// .roleId("myCustomRole")
-/// .title("My Custom Role")
-/// .description("A description")
-/// .permissions(
-/// "iam.roles.list",
-/// "iam.roles.create",
-/// "iam.roles.delete")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// my-custom-role:
-/// type: gcp:projects:IAMCustomRole
-/// properties:
-/// roleId: myCustomRole
-/// title: My Custom Role
-/// description: A description
-/// permissions:
-/// - iam.roles.list
-/// - iam.roles.create
-/// - iam.roles.delete
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -176,7 +49,7 @@ class IAMCustomRole2 extends CustomResource {
   /// A human-readable description for the role.
   late final Output<String?> description;
 
-  /// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like <span pulumi-lang-nodejs="`id`" pulumi-lang-dotnet="`Id`" pulumi-lang-go="`id`" pulumi-lang-python="`id`" pulumi-lang-yaml="`id`" pulumi-lang-java="`id`">`id`</span>, this field can be used as a reference in other resources such as IAM role bindings.
+  /// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
   late final Output<String> name;
 
   /// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.

@@ -12,7 +12,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTarget {
   /// Disable profiling for buckets that match this filter.
   final Map<String, dynamic>? disabled;
 
-  /// The buckets the<span pulumi-lang-nodejs=" generationCadence " pulumi-lang-dotnet=" GenerationCadence " pulumi-lang-go=" generationCadence " pulumi-lang-python=" generation_cadence " pulumi-lang-yaml=" generationCadence " pulumi-lang-java=" generationCadence "> generation_cadence </span>applies to. The first target with a matching filter will be the one to apply to a bucket.
+  /// The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
   /// Structure is documented below.
   final PreventionDiscoveryConfigTargetCloudStorageTargetFilter filter;
 

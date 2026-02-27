@@ -1,3 +1,0 @@
-library module_compute_get_interconnect_locations_location;
-
-export 'get_interconnect_locations_location.dart';

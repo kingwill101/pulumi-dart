@@ -1,0 +1,3 @@
+library module_networkservices_multicast_group_range_activation_log_config;
+
+export 'multicast_group_range_activation_log_config/multicast_group_range_activation_log_config.dart';

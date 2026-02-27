@@ -22,7 +22,7 @@ class TopicArgs2 {
   /// A set of key/value label pairs to assign to this Topic.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final Input<Map<String, String>>? labels;
 
   /// Indicates the minimum duration to retain a message after it is published
@@ -32,7 +32,7 @@ class TopicArgs2 {
   /// that is up to messageRetentionDuration in the past. If this field is not
   /// set, message retention is controlled by settings on individual subscriptions.
   /// The rotation period has the format of a decimal number, followed by the
-  /// letter <span pulumi-lang-nodejs="`s`" pulumi-lang-dotnet="`S`" pulumi-lang-go="`s`" pulumi-lang-python="`s`" pulumi-lang-yaml="`s`" pulumi-lang-java="`s`">`s`</span> (seconds). Cannot be more than 31 days or less than 10 minutes.
+  /// letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
   final Input<String>? messageRetentionDuration;
 
   /// Policy constraining the set of Google Cloud Platform regions where
@@ -63,7 +63,7 @@ class TopicArgs2 {
   /// tagValues/456. The field is ignored when empty. The field is immutable and
   /// causes resource replacement when mutated. This field is only set at create
   /// time and modifying this field after creation will trigger recreation. To
-  /// apply tags to an existing resource, see the <span pulumi-lang-nodejs="`gcp.tags.TagValue`" pulumi-lang-dotnet="`gcp.tags.TagValue`" pulumi-lang-go="`tags.TagValue`" pulumi-lang-python="`tags.TagValue`" pulumi-lang-yaml="`gcp.tags.TagValue`" pulumi-lang-java="`gcp.tags.TagValue`">`gcp.tags.TagValue`</span>
+  /// apply tags to an existing resource, see the `gcp.tags.TagValue`
   /// resource.
   final Input<Map<String, String>>? tags;
 

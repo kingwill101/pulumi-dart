@@ -52,7 +52,7 @@ class AppVersionSnapshotAppVariableDeclarationSchema {
 
   /// (Output)
   /// Allows indirect references between schema nodes. The value should be a
-  /// valid reference to a child of the root <span pulumi-lang-nodejs="`defs`" pulumi-lang-dotnet="`Defs`" pulumi-lang-go="`defs`" pulumi-lang-python="`defs`" pulumi-lang-yaml="`defs`" pulumi-lang-java="`defs`">`defs`</span>.
+  /// valid reference to a child of the root `defs`.
   /// For example, the following schema defines a reference to a schema node
   /// named "Pet":
   /// type: object

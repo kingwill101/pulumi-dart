@@ -1,3 +1,0 @@
-library module_memorystore_get_instance_endpoint_connection;
-
-export 'get_instance_endpoint_connection.dart';

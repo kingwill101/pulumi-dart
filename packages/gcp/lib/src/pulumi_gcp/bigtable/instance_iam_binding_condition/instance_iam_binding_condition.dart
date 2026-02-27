@@ -3,7 +3,7 @@
 class InstanceIamBindingCondition {
   /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
   ///
-  /// For <span pulumi-lang-nodejs="`gcp.bigtable.InstanceIamPolicy`" pulumi-lang-dotnet="`gcp.bigtable.InstanceIamPolicy`" pulumi-lang-go="`bigtable.InstanceIamPolicy`" pulumi-lang-python="`bigtable.InstanceIamPolicy`" pulumi-lang-yaml="`gcp.bigtable.InstanceIamPolicy`" pulumi-lang-java="`gcp.bigtable.InstanceIamPolicy`">`gcp.bigtable.InstanceIamPolicy`</span> only:
+  /// For `gcp.bigtable.InstanceIamPolicy` only:
   final String? description;
 
   /// Textual representation of an expression in Common Expression Language syntax.

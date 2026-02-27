@@ -15,7 +15,7 @@ class DeliveryPipelineSerialPipelineStage {
   /// Optional. The strategy to use for a `Rollout` to this stage.
   final DeliveryPipelineSerialPipelineStageStrategy? strategy;
 
-  /// The<span pulumi-lang-nodejs=" targetId " pulumi-lang-dotnet=" TargetId " pulumi-lang-go=" targetId " pulumi-lang-python=" target_id " pulumi-lang-yaml=" targetId " pulumi-lang-java=" targetId "> target_id </span>to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
+  /// The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
   final String? targetId;
 
   DeliveryPipelineSerialPipelineStage({

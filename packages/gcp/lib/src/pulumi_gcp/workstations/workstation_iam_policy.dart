@@ -1,0 +1,4 @@
+library module_workstations_workstation_iam_policy;
+
+export 'workstation_iam_policy/workstation_iam_policy.dart';
+export 'workstation_iam_policy/workstation_iam_policy_args.dart';

@@ -1,0 +1,3 @@
+library module_identityplatform_config_sign_in_phone_number;
+
+export 'config_sign_in_phone_number/config_sign_in_phone_number.dart';

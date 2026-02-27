@@ -1,0 +1,3 @@
+library module_container_cluster_ip_allocation_policy_additional_pod_ranges_config;
+
+export 'cluster_ip_allocation_policy_additional_pod_ranges_config/cluster_ip_allocation_policy_additional_pod_ranges_config.dart';

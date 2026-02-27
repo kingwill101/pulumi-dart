@@ -1,3 +1,0 @@
-library module_chronicle_data_access_scope_allowed_data_access_label_ingestion_label;
-
-export 'data_access_scope_allowed_data_access_label_ingestion_label.dart';

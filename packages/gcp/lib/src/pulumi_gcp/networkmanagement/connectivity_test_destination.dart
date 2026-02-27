@@ -1,0 +1,3 @@
+library module_networkmanagement_connectivity_test_destination;
+
+export 'connectivity_test_destination/connectivity_test_destination.dart';

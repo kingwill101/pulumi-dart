@@ -1,0 +1,4 @@
+library module_compute_instant_snapshot_iam_policy;
+
+export 'instant_snapshot_iam_policy/instant_snapshot_iam_policy.dart';
+export 'instant_snapshot_iam_policy/instant_snapshot_iam_policy_args.dart';

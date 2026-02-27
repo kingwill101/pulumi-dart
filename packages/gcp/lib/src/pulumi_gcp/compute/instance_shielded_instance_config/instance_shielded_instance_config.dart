@@ -2,15 +2,15 @@
 
 class InstanceShieldedInstanceConfig {
   /// - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
-  /// **Note**: <span pulumi-lang-nodejs="`allowStoppingForUpdate`" pulumi-lang-dotnet="`AllowStoppingForUpdate`" pulumi-lang-go="`allowStoppingForUpdate`" pulumi-lang-python="`allow_stopping_for_update`" pulumi-lang-yaml="`allowStoppingForUpdate`" pulumi-lang-java="`allowStoppingForUpdate`">`allow_stopping_for_update`</span> must be set to true or your instance must have a <span pulumi-lang-nodejs="`desiredStatus`" pulumi-lang-dotnet="`DesiredStatus`" pulumi-lang-go="`desiredStatus`" pulumi-lang-python="`desired_status`" pulumi-lang-yaml="`desiredStatus`" pulumi-lang-java="`desiredStatus`">`desired_status`</span> of `TERMINATED` in order to update this field.
+  /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
   final bool? enableIntegrityMonitoring;
 
   /// - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
-  /// **Note**: <span pulumi-lang-nodejs="`allowStoppingForUpdate`" pulumi-lang-dotnet="`AllowStoppingForUpdate`" pulumi-lang-go="`allowStoppingForUpdate`" pulumi-lang-python="`allow_stopping_for_update`" pulumi-lang-yaml="`allowStoppingForUpdate`" pulumi-lang-java="`allowStoppingForUpdate`">`allow_stopping_for_update`</span> must be set to true or your instance must have a <span pulumi-lang-nodejs="`desiredStatus`" pulumi-lang-dotnet="`DesiredStatus`" pulumi-lang-go="`desiredStatus`" pulumi-lang-python="`desired_status`" pulumi-lang-yaml="`desiredStatus`" pulumi-lang-java="`desiredStatus`">`desired_status`</span> of `TERMINATED` in order to update this field.
+  /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
   final bool? enableSecureBoot;
 
   /// - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
-  /// **Note**: <span pulumi-lang-nodejs="`allowStoppingForUpdate`" pulumi-lang-dotnet="`AllowStoppingForUpdate`" pulumi-lang-go="`allowStoppingForUpdate`" pulumi-lang-python="`allow_stopping_for_update`" pulumi-lang-yaml="`allowStoppingForUpdate`" pulumi-lang-java="`allowStoppingForUpdate`">`allow_stopping_for_update`</span> must be set to true or your instance must have a <span pulumi-lang-nodejs="`desiredStatus`" pulumi-lang-dotnet="`DesiredStatus`" pulumi-lang-go="`desiredStatus`" pulumi-lang-python="`desired_status`" pulumi-lang-yaml="`desiredStatus`" pulumi-lang-java="`desiredStatus`">`desired_status`</span> of `TERMINATED` in order to update this field.
+  /// **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
   final bool? enableVtpm;
 
   InstanceShieldedInstanceConfig({

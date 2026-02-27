@@ -18,7 +18,7 @@ class PolicyClusterAdmissionRule {
   /// Each attestor must exist before a policy can reference it. To add an
   /// attestor to a policy the principal issuing the policy change
   /// request must be able to read the attestor resource.
-  /// Note: this field must be non-empty when the<span pulumi-lang-nodejs=" evaluationMode " pulumi-lang-dotnet=" EvaluationMode " pulumi-lang-go=" evaluationMode " pulumi-lang-python=" evaluation_mode " pulumi-lang-yaml=" evaluationMode " pulumi-lang-java=" evaluationMode "> evaluation_mode </span>field
+  /// Note: this field must be non-empty when the evaluation_mode field
   /// specifies REQUIRE_ATTESTATION, otherwise it must be empty.
   final List<String>? requireAttestationsBies;
 

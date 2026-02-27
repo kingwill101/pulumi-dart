@@ -10,105 +10,7 @@ import 'organization_vpc_flow_logs_config_args.dart';
 /// ### Network Management Org Vpc Flow Logs Config Basic
 ///
 ///
-/// <!--Start PulumiCodeChooser -->
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as gcp from "@pulumi/gcp";
 ///
-/// const org_test = new gcp.networkmanagement.OrganizationVpcFlowLogsConfig("org-test", {
-/// vpcFlowLogsConfigId: "basic-org-test-id",
-/// location: "global",
-/// organization: "123456789",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_gcp as gcp
-///
-/// org_test = gcp.networkmanagement.OrganizationVpcFlowLogsConfig("org-test",
-/// vpc_flow_logs_config_id="basic-org-test-id",
-/// location="global",
-/// organization="123456789")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Gcp = Pulumi.Gcp;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-/// var org_test = new Gcp.NetworkManagement.OrganizationVpcFlowLogsConfig("org-test", new()
-/// {
-/// VpcFlowLogsConfigId = "basic-org-test-id",
-/// Location = "global",
-/// Organization = "123456789",
-/// });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// "github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
-/// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := networkmanagement.NewOrganizationVpcFlowLogsConfig(ctx, "org-test", &networkmanagement.OrganizationVpcFlowLogsConfigArgs{
-/// VpcFlowLogsConfigId: pulumi.String("basic-org-test-id"),
-/// Location:            pulumi.String("global"),
-/// Organization:        pulumi.String("123456789"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.gcp.networkmanagement.OrganizationVpcFlowLogsConfig;
-/// import com.pulumi.gcp.networkmanagement.OrganizationVpcFlowLogsConfigArgs;
-/// import java.util.List;
-/// import java.util.ArrayList;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-/// public static void main(String[] args) {
-/// Pulumi.run(App::stack);
-/// }
-///
-/// public static void stack(Context ctx) {
-/// var org_test = new OrganizationVpcFlowLogsConfig("org-test", OrganizationVpcFlowLogsConfigArgs.builder()
-/// .vpcFlowLogsConfigId("basic-org-test-id")
-/// .location("global")
-/// .organization("123456789")
-/// .build());
-///
-/// }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-/// org-test:
-/// type: gcp:networkmanagement:OrganizationVpcFlowLogsConfig
-/// properties:
-/// vpcFlowLogsConfigId: basic-org-test-id
-/// location: global
-/// organization: '123456789'
-/// ```
-/// <!--End PulumiCodeChooser -->
 ///
 /// ## Import
 ///
@@ -163,10 +65,10 @@ class OrganizationVpcFlowLogsConfig extends CustomResource {
   /// Optional. Resource labels to represent the user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-  /// Please refer to the field <span pulumi-lang-nodejs="`effectiveLabels`" pulumi-lang-dotnet="`EffectiveLabels`" pulumi-lang-go="`effectiveLabels`" pulumi-lang-python="`effective_labels`" pulumi-lang-yaml="`effectiveLabels`" pulumi-lang-java="`effectiveLabels`">`effective_labels`</span> for all of the labels present on the resource.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final Output<Map<String, String>?> labels;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource
+  /// Resource ID segment making up resource `name`. It identifies the resource
   /// within its parent collection as described in https://google.aip.dev/122. See documentation
   /// for resource type `networkmanagement.googleapis.com/VpcFlowLogsConfig`.
   late final Output<String> location;
@@ -183,7 +85,7 @@ class OrganizationVpcFlowLogsConfig extends CustomResource {
   /// Identifier. Unique name of the configuration using the form:     `organizations/{org_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
   late final Output<String> name;
 
-  /// Resource ID segment making up resource <span pulumi-lang-nodejs="`name`" pulumi-lang-dotnet="`Name`" pulumi-lang-go="`name`" pulumi-lang-python="`name`" pulumi-lang-yaml="`name`" pulumi-lang-java="`name`">`name`</span>. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final Output<String> organization;
 
   /// The combination of labels configured directly on the resource
