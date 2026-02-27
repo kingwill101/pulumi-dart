@@ -1,5 +1,12 @@
 import 'dart:io';
 
+import 'package:grpc/grpc.dart';
+import 'package:pulumi/src/callback_server.dart';
+import 'package:pulumi/src/invoke.dart';
+import 'package:pulumi/src/pulumirpc/pulumi/callback.pb.dart';
+import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart';
+import 'package:pulumi/src/resource/resource_hooks.dart';
+import 'package:pulumi/src/resource/resource_transformation.dart';
 import 'package:pulumi/src/settings.dart';
 import 'package:test/test.dart';
 
@@ -18,6 +25,47 @@ Settings _cloneSettings(Settings settings) {
     organization: settings.organization,
     syncDir: settings.syncDir,
   );
+}
+
+class _FakeCallbackServer implements ICallbackServer {
+  bool awaitCalled = false;
+  bool shutdownCalled = false;
+
+  @override
+  Future<void> awaitStackRegistrations() async {
+    awaitCalled = true;
+  }
+
+  @override
+  void shutdown() {
+    shutdownCalled = true;
+  }
+
+  @override
+  Future<String> registerErrorHook(ErrorHook hook) async =>
+      throw UnimplementedError();
+
+  @override
+  Future<String> registerResourceHook(ResourceHook hook) async =>
+      throw UnimplementedError();
+
+  @override
+  void registerStackInvokeTransform(InvokeTransform callback) =>
+      throw UnimplementedError();
+
+  @override
+  Future<Callback> registerStackInvokeTransformAsync(
+    InvokeTransform callback,
+  ) async =>
+      throw UnimplementedError();
+
+  @override
+  void registerStackTransform(ResourceTransform callback) =>
+      throw UnimplementedError();
+
+  @override
+  Future<Callback> registerTransform(ResourceTransform callback) async =>
+      throw UnimplementedError();
 }
 
 void main() {
@@ -55,6 +103,14 @@ void main() {
 
     test('organization throws when not configured', () {
       expect(() => runtime.organization, throwsException);
+    });
+
+    test('query and legacy apply getters mirror settings', () {
+      runtime.settings.queryMode = true;
+      runtime.settings.legacyApply = true;
+
+      expect(runtime.isQueryMode, isTrue);
+      expect(runtime.isLegacyApplyEnabled, isTrue);
     });
 
     test(
@@ -202,6 +258,75 @@ void main() {
       expect(syncInvokes, isNotNull);
       syncInvokes!.requests.closeSync();
       syncInvokes.responses.closeSync();
+    });
+
+    test('setMockOptions wires monitor and reuses runtime defaults', () {
+      final channel = ClientChannel(
+        '127.0.0.1',
+        port: 1,
+        options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
+      );
+      addTearDown(() async {
+        await channel.shutdown();
+      });
+      final monitor = ResourceMonitorClient(channel);
+      runtime.resetOptions(
+        project: 'proj',
+        stack: 'dev',
+        preview: false,
+        organization: 'org',
+      );
+
+      runtime.setMockOptions(monitor, preview: true);
+
+      expect(runtime.getMonitor(), same(monitor));
+      expect(runtime.project, equals('proj'));
+      expect(runtime.stack, equals('dev'));
+      expect(runtime.isDryRun, isTrue);
+      expect(runtime.organization, equals('org'));
+    });
+
+    test('setMockOptions defaults preview to existing runtime dry-run value', () {
+      final channel = ClientChannel(
+        '127.0.0.1',
+        port: 1,
+        options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
+      );
+      addTearDown(() async {
+        await channel.shutdown();
+      });
+      final monitor = ResourceMonitorClient(channel);
+
+      runtime.resetOptions(
+        project: 'proj',
+        stack: 'dev',
+        preview: true,
+        organization: 'org',
+      );
+      runtime.setMockOptions(monitor);
+
+      expect(runtime.isDryRun, isTrue);
+    });
+
+    test('awaitStackRegistrations delegates to callbacks when present', () async {
+      final callbacks = _FakeCallbackServer();
+      runtime.callbacks = callbacks;
+
+      await runtime.awaitStackRegistrations();
+
+      expect(callbacks.awaitCalled, isTrue);
+    });
+
+    test('terminateRpcs clears keep-alive and callbacks state', () async {
+      final callbacks = _FakeCallbackServer();
+      runtime.callbacks = callbacks;
+      final release = runtime.rpcKeepAlive();
+
+      runtime.terminateRpcs();
+      await runtime.disconnect();
+
+      expect(callbacks.shutdownCalled, isTrue);
+      release();
     });
   });
 }
