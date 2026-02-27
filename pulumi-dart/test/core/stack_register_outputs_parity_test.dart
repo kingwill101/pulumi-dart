@@ -18,6 +18,19 @@ class _SingleOutputStack extends Stack {
   }
 }
 
+class _StackWithTransforms extends Stack {
+  final ResourceTransformation legacyTransform;
+  final ResourceTransform modernTransform;
+
+  _StackWithTransforms(this.legacyTransform, this.modernTransform)
+    : super(
+        StackOptions(
+          resourceTransformations: [legacyTransform],
+          resourceTransforms: [modernTransform],
+        ),
+      );
+}
+
 void main() {
   group('stack register outputs parity', () {
     late MockDeploymentImpl mockDeployment;
@@ -62,6 +75,22 @@ void main() {
         mockDeployment.registerResourceOutputs(captureAny, captureAny),
       )..called(1);
       expect(verification.captured.first, same(stack));
+    });
+
+    test('stack options propagate legacy and modern transform callbacks', () {
+      final legacy = (ResourceTransformationArgs args) => null;
+      final modern =
+          (
+            ResourceTransformArgs args, [
+            CancellationToken? cancellationToken,
+          ]) async => null;
+
+      final stack = _StackWithTransforms(legacy, modern);
+
+      expect(stack.transformations, hasLength(1));
+      expect(identical(stack.transformations.single, legacy), isTrue);
+      expect(stack.resourceTransforms, hasLength(1));
+      expect(identical(stack.resourceTransforms.single, modern), isTrue);
     });
 
     test(

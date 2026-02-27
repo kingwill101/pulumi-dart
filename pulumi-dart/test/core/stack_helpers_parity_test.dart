@@ -144,23 +144,6 @@ void main() {
       expect(identical(deployment.lastResourceTransform, transform), isTrue);
     });
 
-    test(
-      'registerStackTransform delegates to registerResourceTransform',
-      () async {
-        final transform =
-            (
-              ResourceTransformArgs args, [
-              CancellationToken? cancellationToken,
-            ]) async => null;
-
-        // ignore: deprecated_member_use
-        await registerStackTransform(transform);
-
-        expect(deployment.resourceTransformRegistrations, 1);
-        expect(identical(deployment.lastResourceTransform, transform), isTrue);
-      },
-    );
-
     test('registerInvokeTransform delegates to current deployment', () async {
       final transform = (InvokeTransformArgs args) async => null;
 

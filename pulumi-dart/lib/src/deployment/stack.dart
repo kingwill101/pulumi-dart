@@ -120,11 +120,6 @@ Future<void> registerResourceTransform(ResourceTransform transform) async {
   await deployment.registerResourceTransform(transform);
 }
 
-@Deprecated('Use registerResourceTransform instead.')
-Future<void> registerStackTransform(ResourceTransform transform) async {
-  await registerResourceTransform(transform);
-}
-
 Future<void> registerInvokeTransform(InvokeTransform transform) async {
   final deployment = DeploymentImpl.instance;
   await deployment.registerInvokeTransform(transform);
