@@ -2,8 +2,22 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/src/config.dart' show ConfigMixin;
 import 'package:pulumi/src/store/store.dart' as runtime_store;
 import 'package:test/test.dart';
+
+class _ConfigMixinHarness with ConfigMixin {
+  @override
+  final String projectName;
+  final Map<String, String> _environment;
+
+  _ConfigMixinHarness(this.projectName, this._environment) {
+    initializeConfig();
+  }
+
+  @override
+  Map<String, String> get environment => _environment;
+}
 
 Future<Map<String, dynamic>> _runConfigProbe({
   required String project,
@@ -31,6 +45,54 @@ Future<Map<String, dynamic>> _runConfigProbe({
 }
 
 void main() {
+  group('config mixin parsing', () {
+    test(
+      'parses namespaced config and secret keys from provided environment',
+      () {
+        final harness = _ConfigMixinHarness('proj', {
+          'PULUMI_CONFIG': jsonEncode({
+            'proj:config:sss': 'a string value',
+            'other:config:baz': 'from other namespace',
+            'proj:already': 'already namespaced',
+          }),
+          'PULUMI_CONFIG_SECRET_KEYS': jsonEncode([
+            'proj:config:sss',
+            'other:config:baz',
+          ]),
+        });
+
+        expect(harness.getConfig('sss'), equals('a string value'));
+        expect(harness.getConfig('other:baz'), equals('from other namespace'));
+        expect(harness.getConfig('already'), equals('already namespaced'));
+        expect(harness.getConfig('missing'), isNull);
+        expect(harness.isConfigSecret('sss'), isTrue);
+        expect(harness.isConfigSecret('other:baz'), isTrue);
+        expect(harness.isConfigSecret('already'), isFalse);
+        expect(harness.isConfigSecret('missing'), isFalse);
+      },
+    );
+
+    test('malformed config JSON falls back to empty config map', () {
+      final harness = _ConfigMixinHarness('proj', {
+        'PULUMI_CONFIG': '{malformed-json',
+        'PULUMI_CONFIG_SECRET_KEYS': jsonEncode(['proj:config:sss']),
+      });
+
+      expect(harness.getConfig('sss'), isNull);
+      expect(harness.isConfigSecret('sss'), isTrue);
+    });
+
+    test('malformed secret-keys JSON falls back to non-secret values', () {
+      final harness = _ConfigMixinHarness('proj', {
+        'PULUMI_CONFIG': jsonEncode({'proj:config:sss': 'a string value'}),
+        'PULUMI_CONFIG_SECRET_KEYS': '{malformed-json',
+      });
+
+      expect(harness.getConfig('sss'), equals('a string value'));
+      expect(harness.isConfigSecret('sss'), isFalse);
+    });
+  });
+
   group('config api parity', () {
     late runtime_store.Store store;
     late Map<String, String> originalConfig;
@@ -186,6 +248,13 @@ void main() {
       expect(
         () => explicitConfig.requireObject<Map<String, dynamic>>('missing'),
         throwsA(isA<ConfigException>()),
+      );
+    });
+
+    test('ConfigException formats message in toString', () {
+      expect(
+        ConfigException('broken').toString(),
+        equals('ConfigException: broken'),
       );
     });
   });

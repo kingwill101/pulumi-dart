@@ -11,6 +11,7 @@ mixin ConfigMixin {
   late final Set<String> _secretKeys;
 
   String get projectName;
+  Map<String, String> get environment => Platform.environment;
 
   void initializeConfig() {
     _config = _parseConfig();
@@ -35,7 +36,7 @@ mixin ConfigMixin {
   }
 
   Map<String, String> _parseConfig() {
-    final configJson = Platform.environment[_configEnvKey];
+    final configJson = environment[_configEnvKey];
     if (configJson == null || configJson.isEmpty) {
       return {};
     }
@@ -54,7 +55,7 @@ mixin ConfigMixin {
   }
 
   Set<String> _parseConfigSecretKeys() {
-    final secretKeysJson = Platform.environment[_configSecretKeysEnvKey];
+    final secretKeysJson = environment[_configSecretKeysEnvKey];
     if (secretKeysJson == null || secretKeysJson.isEmpty) {
       return {};
     }
