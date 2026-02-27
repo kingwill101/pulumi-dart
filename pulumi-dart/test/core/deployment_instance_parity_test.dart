@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:grpc/grpc.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/src/deployment/deployment.dart' as deployment_src;
 import 'package:pulumi/src/monitor.dart' as monitorpkg;
 import 'package:pulumi/src/pulumirpc/pulumi/provider.pb.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/resource.pbgrpc.dart'
@@ -105,6 +108,11 @@ void main() {
       expect(() => DeploymentImpl.instance, throwsStateError);
     });
 
+    test('Deployment.instance proxies to DeploymentImpl.instance', () {
+      DeploymentImpl.setTestInstance(deployment);
+      expect(identical(Deployment.instance, deployment), isTrue);
+    });
+
     test('DeploymentImpl.setInstance and clearInstance control singleton', () {
       DeploymentImpl.setInstance(deployment);
       expect(identical(DeploymentImpl.instance, deployment), isTrue);
@@ -129,6 +137,65 @@ void main() {
       expect(identical(deployment.stack, stack), isTrue);
       expect(() => deployment.setStack(MockStack()), throwsStateError);
     });
+
+    test('swallowedExceptions exposes an immutable view', () {
+      expect(deployment.swallowedExceptions, isEmpty);
+      expect(
+        () => deployment.swallowedExceptions.add(Exception('boom')),
+        throwsUnsupportedError,
+      );
+    });
+
+    test('getCurrentDeployment resolves current singleton deployment', () {
+      DeploymentImpl.setTestInstance(deployment);
+      expect(
+        identical(deployment_src.getCurrentDeployment(), deployment),
+        isTrue,
+      );
+    });
+
+    test(
+      'DeploymentImpl.run throws when required Pulumi env vars are missing',
+      () async {
+        final hasFullRuntimeEnv =
+            Platform.environment['PULUMI_MONITOR'] != null &&
+            Platform.environment['PULUMI_ENGINE'] != null &&
+            Platform.environment['PULUMI_PROJECT'] != null &&
+            Platform.environment['PULUMI_STACK'] != null &&
+            Platform.environment['PULUMI_DRY_RUN'] != null;
+
+        if (hasFullRuntimeEnv) {
+          return;
+        }
+
+        await expectLater(
+          DeploymentImpl.run(() {}),
+          throwsA(isA<StateError>()),
+        );
+      },
+    );
+
+    test(
+      'Deployment.run and Deployment.runOrThrow surface missing runtime env parity',
+      () async {
+        final hasFullRuntimeEnv =
+            Platform.environment['PULUMI_MONITOR'] != null &&
+            Platform.environment['PULUMI_ENGINE'] != null &&
+            Platform.environment['PULUMI_PROJECT'] != null &&
+            Platform.environment['PULUMI_STACK'] != null &&
+            Platform.environment['PULUMI_DRY_RUN'] != null;
+
+        if (hasFullRuntimeEnv) {
+          return;
+        }
+
+        await expectLater(Deployment.run(() {}), throwsA(isA<StateError>()));
+        await expectLater(
+          Deployment.runOrThrow(() {}),
+          throwsA(isA<StateError>()),
+        );
+      },
+    );
 
     test('registerOutputs waits pending resource operations', () async {
       var operationCompleted = false;
