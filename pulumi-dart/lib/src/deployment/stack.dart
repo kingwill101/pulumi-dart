@@ -30,23 +30,11 @@ abstract class Stack extends ComponentResource {
 
   void registerPropertyOutputs() {
     final outputProperties = <String, Object?>{};
-    final nullProperties = <String>[];
-    final wrongTypeProperties = <String>[];
 
     for (var property in getOutputProperties()) {
       final name = property.name;
       final value = property.value;
       outputProperties[name] = value;
-    }
-
-    if (nullProperties.isNotEmpty) {
-      throw StackException(
-        "Output(s) '${nullProperties.join(', ')}' have no value assigned. [Output] attributed properties must be assigned inside Stack constructor.",
-      );
-    }
-
-    if (wrongTypeProperties.isNotEmpty) {
-      throw StackException.outputsHaveIncorrectType(wrongTypeProperties);
     }
 
     outputs = outputProperties;
