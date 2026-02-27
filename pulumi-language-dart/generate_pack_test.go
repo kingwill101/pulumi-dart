@@ -335,14 +335,14 @@ func TestGeneratePackageUsesModuleDirectoryStructure(t *testing.T) {
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
 	assert.Contains(t, content, "// FILE: accesscontextmanager/access_level/access_level.dart")
 	assert.Contains(t, content, "// FILE: accesscontextmanager/access_level/get_access_level.dart")
-	assert.Contains(t, content, "// FILE: accesscontextmanager/access_level/index.dart")
-	assert.Contains(t, content, "// FILE: accesscontextmanager/index.dart")
+	assert.Contains(t, content, "// FILE: accesscontextmanager/access_level.dart")
+	assert.Contains(t, content, "// FILE: accesscontextmanager.dart")
 	assert.Contains(t, content, "export 'accesscontextmanager/access_level/access_level.dart';")
 	assert.Contains(t, content, "export 'accesscontextmanager/access_level/get_access_level.dart';")
 
 	parentModuleEntry, err := os.ReadFile(filepath.Join(targetDir, "lib", "accesscontextmanager.dart"))
 	require.NoError(t, err)
-	assert.Contains(t, string(parentModuleEntry), "export 'package:pulumi_sample/src/pulumi_sample/accesscontextmanager/index.dart';")
+	assert.Contains(t, string(parentModuleEntry), "export 'package:pulumi_sample/src/pulumi_sample/accesscontextmanager.dart';")
 
 	_, err = os.Stat(filepath.Join(targetDir, "lib", "accesscontextmanager"))
 	require.Error(t, err)
@@ -945,6 +945,48 @@ func TestGeneratePackageTreatsEmptyObjectTypesAsMaps(t *testing.T) {
 	assert.Contains(t, content, "map['opaque'] = opaqueValue;")
 	assert.NotContains(t, content, "Input<Opaque>")
 	assert.NotContains(t, content, "index/opaque.dart")
+}
+
+func TestGeneratePackageAvoidsPulumiConfigImportCollision(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:Config": {
+				"type": "object",
+				"properties": {
+					"value": { "type": "string" }
+				}
+			}
+		},
+		"resources": {
+			"sample:index:Widget": {
+				"inputProperties": {
+					"config": { "$ref": "#/types/sample:index:Config" }
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	matches, err := filepath.Glob(filepath.Join(targetDir, "lib", "src", "pulumi_sample", "index", "widget_args*.dart"))
+	require.NoError(t, err)
+	require.NotEmpty(t, matches)
+
+	argsData, err := os.ReadFile(matches[0])
+	require.NoError(t, err)
+	argsContent := string(argsData)
+	assert.Contains(t, argsContent, "import 'package:pulumi/pulumi.dart' hide Config;")
+	assert.Contains(t, argsContent, "Input.mapOptionalInputValue<Config, Map<String, dynamic>>")
 }
 
 func TestGeneratePackageAvoidsResourceTypeNameCollisions(t *testing.T) {

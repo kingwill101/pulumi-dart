@@ -3447,7 +3447,7 @@ func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClas
 func generatedPackageLibrary(spec *packageSchema, packageName string) []byte {
 	var b strings.Builder
 	fmt.Fprintf(&b, "library %s;\n\n", packageName)
-	b.WriteString("import 'package:pulumi/pulumi.dart';\n\n")
+	b.WriteString("import 'package:pulumi/pulumi.dart' hide Config;\n\n")
 
 	resourceTokens := make([]string, 0, len(spec.Resources))
 	for token := range spec.Resources {
@@ -4010,7 +4010,7 @@ func generatedObjectClassFile(
 	var b strings.Builder
 	b.WriteString("// ignore_for_file: unused_element, unnecessary_cast\n\n")
 	if objectClass.UsesInputTypes || objectClassNeedsObjectHelpers(objectClass) {
-		b.WriteString("import 'package:pulumi/pulumi.dart';\n")
+		b.WriteString("import 'package:pulumi/pulumi.dart' hide Config;\n")
 	}
 
 	imports := map[string]struct{}{}
@@ -4052,7 +4052,7 @@ func generatedResourceFile(
 	registrationFilePath string,
 ) []byte {
 	var b strings.Builder
-	b.WriteString("import 'package:pulumi/pulumi.dart';\n")
+	b.WriteString("import 'package:pulumi/pulumi.dart' hide Config;\n")
 
 	imports := map[string]struct{}{}
 	if resource.ArgsClass != "" {
@@ -4185,7 +4185,7 @@ func generatedFunctionFile(
 	registrationFilePath string,
 ) []byte {
 	var b strings.Builder
-	b.WriteString("import 'package:pulumi/pulumi.dart';\n")
+	b.WriteString("import 'package:pulumi/pulumi.dart' hide Config;\n")
 
 	imports := map[string]struct{}{}
 	if function.ArgsClass != "" {
@@ -4272,7 +4272,7 @@ func generatedConfigFile(spec *packageSchema, packageName string, filePath strin
 	if configNeedsJSONDecode {
 		b.WriteString("import 'dart:convert';\n")
 	}
-	b.WriteString("import 'package:pulumi/pulumi.dart';\n")
+	b.WriteString("import 'package:pulumi/pulumi.dart' hide Config;\n")
 
 	imports := map[string]struct{}{}
 	for _, ref := range referencedTypesFromProperties(spec.Config.Properties) {
@@ -4483,14 +4483,14 @@ func generatedPackageSources(spec *packageSchema, packageName, sdkLibraryName st
 		sdk.WriteString("// This package schema did not define resources or functions.\n")
 	}
 	files["sdk.dart"] = []byte(sdk.String())
-	for indexPath, indexContent := range generatedModuleIndexFiles(moduleSymbolFiles) {
-		files[indexPath] = indexContent
+	for modulePath, moduleContent := range generatedModuleLibraryFiles(moduleSymbolFiles) {
+		files[modulePath] = moduleContent
 	}
 
 	return files
 }
 
-func generatedModuleIndexFiles(symbolFilePaths []string) map[string][]byte {
+func generatedModuleLibraryFiles(symbolFilePaths []string) map[string][]byte {
 	if len(symbolFilePaths) == 0 {
 		return map[string][]byte{}
 	}
@@ -4544,7 +4544,7 @@ func generatedModuleIndexFiles(symbolFilePaths []string) map[string][]byte {
 	}
 	sort.Strings(dirs)
 
-	indexFiles := map[string][]byte{}
+	moduleFiles := map[string][]byte{}
 	for _, dir := range dirs {
 		var b strings.Builder
 		fmt.Fprintf(&b, "library %s;\n\n", sanitizeDartIdentifier("module_"+strings.ReplaceAll(dir, "/", "_")))
@@ -4558,7 +4558,8 @@ func generatedModuleIndexFiles(symbolFilePaths []string) map[string][]byte {
 		}
 		sort.Strings(fileNames)
 		for _, fileName := range fileNames {
-			fmt.Fprintf(&b, "export '%s';\n", fileName)
+			targetPath := filepath.ToSlash(filepath.Join(dir, fileName))
+			fmt.Fprintf(&b, "export '%s';\n", relativeImportPath(filepath.ToSlash(dir+".dart"), targetPath))
 		}
 
 		childDirs := make([]string, 0, len(childDirsByDir[dir]))
@@ -4567,37 +4568,40 @@ func generatedModuleIndexFiles(symbolFilePaths []string) map[string][]byte {
 		}
 		sort.Strings(childDirs)
 		for _, childDir := range childDirs {
-			fmt.Fprintf(&b, "export '%s/index.dart';\n", childDir)
+			targetPath := filepath.ToSlash(filepath.Join(dir, childDir+".dart"))
+			fmt.Fprintf(&b, "export '%s';\n", relativeImportPath(filepath.ToSlash(dir+".dart"), targetPath))
 		}
 
 		if len(fileNames) == 0 && len(childDirs) == 0 {
 			b.WriteString("// No symbols generated for this module directory.\n")
 		}
 
-		indexFiles[filepath.ToSlash(filepath.Join(dir, "index.dart"))] = []byte(b.String())
+		moduleFiles[filepath.ToSlash(dir+".dart")] = []byte(b.String())
 	}
 
-	return indexFiles
+	return moduleFiles
 }
 
 func generatedPublicModuleEntryPoints(packageName string, sdkSources map[string][]byte) map[string][]byte {
 	rootModules := map[string]struct{}{}
 	for relativePath := range sdkSources {
 		normalized := filepath.ToSlash(relativePath)
-		if !strings.HasSuffix(normalized, "/index.dart") {
+		if !strings.HasSuffix(normalized, ".dart") {
 			continue
 		}
-		moduleDir := strings.TrimSuffix(normalized, "/index.dart")
-		if moduleDir == "" || moduleDir == "." ||
-			strings.HasPrefix(moduleDir, "internal") ||
-			strings.HasPrefix(moduleDir, "config") {
+		if normalized == "sdk.dart" {
 			continue
 		}
-		root := moduleDir
-		if slash := strings.Index(root, "/"); slash > 0 {
-			root = root[:slash]
+		if strings.Contains(normalized, "/") {
+			continue
 		}
-		rootModules[root] = struct{}{}
+		moduleName := strings.TrimSuffix(normalized, ".dart")
+		if moduleName == "" ||
+			strings.HasPrefix(moduleName, "internal") ||
+			strings.HasPrefix(moduleName, "config") {
+			continue
+		}
+		rootModules[moduleName] = struct{}{}
 	}
 
 	entryPoints := map[string][]byte{}
@@ -4607,20 +4611,29 @@ func generatedPublicModuleEntryPoints(packageName string, sdkSources map[string]
 	}
 	sort.Strings(modulePaths)
 
-	for _, moduleDir := range modulePaths {
-		entryPath := filepath.ToSlash(moduleDir + ".dart")
-		libraryName := sanitizeDartIdentifier(packageName + "_" + strings.ReplaceAll(moduleDir, "/", "_"))
+	for _, moduleName := range modulePaths {
+		entryPath := filepath.ToSlash(moduleName + ".dart")
+		libraryName := sanitizeDartIdentifier(packageName + "_" + strings.ReplaceAll(moduleName, "/", "_"))
 		entryContent := fmt.Sprintf(
-			"library %s;\n\nexport 'package:%s/src/%s/%s/index.dart';\n",
+			"library %s;\n\nexport 'package:%s/src/%s/%s.dart';\n",
 			libraryName,
 			packageName,
 			packageName,
-			moduleDir,
+			moduleName,
 		)
 		entryPoints[entryPath] = []byte(entryContent)
 	}
 
 	return entryPoints
+}
+
+func relativeImportPath(fromFile, toFile string) string {
+	fromDir := filepath.Dir(filepath.ToSlash(fromFile))
+	rel, err := filepath.Rel(fromDir, filepath.ToSlash(toFile))
+	if err != nil {
+		return filepath.ToSlash(toFile)
+	}
+	return filepath.ToSlash(rel)
 }
 
 func generatedPackageRootLibrary(packageName string) []byte {

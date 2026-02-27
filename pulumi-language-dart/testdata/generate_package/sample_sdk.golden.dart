@@ -2,7 +2,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'dart:convert';
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import '../index/widget_metadata.dart';
 import '../index/widget_mode.dart';
 
@@ -107,8 +107,19 @@ class SampleConfig {
 final config = SampleConfig();
 
 
+// FILE: index.dart
+library module_index;
+
+export 'index/get_widget_details.dart';
+export 'index/get_widget_details_args.dart';
+export 'index/get_widget_details_result.dart';
+export 'index/widget.dart';
+export 'index/widget_args.dart';
+export 'index/widget_metadata.dart';
+export 'index/widget_mode.dart';
+
 // FILE: index/get_widget_details.dart
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'get_widget_details_args.dart';
 import 'get_widget_details_result.dart';
 
@@ -128,7 +139,7 @@ Future<GetWidgetDetailsResult> getWidgetDetails(
 // FILE: index/get_widget_details_args.dart
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 
 /// Arguments for getWidgetDetails.
 class GetWidgetDetailsArgs {
@@ -184,19 +195,8 @@ class GetWidgetDetailsResult {
 }
 
 
-// FILE: index/index.dart
-library module_index;
-
-export 'get_widget_details.dart';
-export 'get_widget_details_args.dart';
-export 'get_widget_details_result.dart';
-export 'widget.dart';
-export 'widget_args.dart';
-export 'widget_metadata.dart';
-export 'widget_mode.dart';
-
 // FILE: index/widget.dart
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'widget_args.dart';
 import 'widget_mode.dart';
 
@@ -222,7 +222,7 @@ class Widget extends CustomResource {
 // FILE: index/widget_args.dart
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' hide Config;
 import 'widget_metadata.dart';
 import 'widget_mode.dart';
 
