@@ -70,6 +70,23 @@ void main() {
     );
 
     test(
+      'copyWith preserves afterDelete and onError when not overridden',
+      () async {
+        final resourceHook = ResourceHook('afterDelete', (args) async {});
+        final errorHook = ErrorHook('onError', (args) async => false);
+        final original = ResourceHookBinding(
+          afterDelete: [resourceHook],
+          onError: [errorHook],
+        );
+
+        final copied = original.copyWith(beforeCreate: const []);
+
+        expect(copied.afterDelete, same(original.afterDelete));
+        expect(copied.onError, same(original.onError));
+      },
+    );
+
+    test(
       'ResourceHookArgs and ErrorHookArgs retain optional maps and defaults',
       () {
         const resourceArgs = ResourceHookArgs(
