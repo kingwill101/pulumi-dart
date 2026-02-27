@@ -1,0 +1,3 @@
+name: config_missing_dart
+runtime: dart
+description: Missing required config integration fixture for Dart.

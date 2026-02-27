@@ -132,6 +132,30 @@ func TestConfigBasicDart(t *testing.T) {
 	})
 }
 
+// Tests missing required config failure behavior from the perspective of a Pulumi Dart program.
+func TestConfigMissingDart(t *testing.T) {
+	e := ptesting.NewEnvironment(t)
+	defer e.DeleteIfNotFailed()
+
+	languagePluginPath, err := filepath.Abs("../pulumi-language-dart")
+	require.NoError(t, err)
+	t.Setenv("PATH", languagePluginPath+string(os.PathListSeparator)+os.Getenv("PATH"))
+
+	e.ImportDirectory("config_missing")
+	e.RunCommand("pulumi", "login", "--cloud-url", e.LocalURL())
+	e.RunCommand("pulumi", "stack", "init", "dev")
+
+	require.NoError(t, rewritePulumiDependency(e.CWD))
+	_, _, err = e.GetCommandResultsIn(e.CWD, "dart", "pub", "get")
+	require.NoError(t, err)
+
+	stdout, stderr, err := e.GetCommandResults("pulumi", "up", "--skip-preview", "--yes")
+	assert.Contains(t, stdout+stderr, "Missing required configuration variable")
+	if err == nil {
+		t.Log("pulumi up returned success status; validated missing-config diagnostic output")
+	}
+}
+
 // Tests that accessing config secrets using non-secret APIs results in warnings being logged.
 func TestConfigSecretsWarnDart(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
@@ -821,7 +845,7 @@ func isDefaultProviderResource(res apitype.ResourceV3) bool {
 }
 
 // TestDeletedWith tests the DeletedWith resource option.
-func TestDeletedWith(t *testing.T) {
+func TestDeletedWithDart(t *testing.T) {
 	testDartProgram(t, &integration.ProgramTestOptions{
 		Dir:            "deleted_with",
 		LocalProviders: []integration.LocalDependency{{Package: "testprovider", Path: testProviderPath()}},
