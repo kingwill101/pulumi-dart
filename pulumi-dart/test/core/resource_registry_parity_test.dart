@@ -24,6 +24,8 @@ void main() {
         expect(result, isA<DependencyResource>());
         final dependency = result as DependencyResource;
         expect(await dependency.urn.getValue(), equals(urn));
+        expect(dependency.getResourceType(), equals('test:index:Unregistered'));
+        expect(dependency.getResourceName(), equals('res'));
       },
     );
 

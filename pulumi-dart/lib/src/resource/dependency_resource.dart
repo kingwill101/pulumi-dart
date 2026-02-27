@@ -30,6 +30,6 @@ class DependencyResource extends Resource {
 
   static String _nameFromUrn(String urn) {
     var parts = urn.split("::");
-    return parts.length > 4 ? parts[4] : "unknown";
+    return parts.length > 3 ? parts[3] : "unknown";
   }
 }
