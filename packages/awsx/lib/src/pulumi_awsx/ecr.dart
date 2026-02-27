@@ -1,0 +1,13 @@
+library module_ecr;
+
+export 'ecr/builder_version.dart';
+export 'ecr/docker_build.dart';
+export 'ecr/image.dart';
+export 'ecr/image_args.dart';
+export 'ecr/lifecycle_policy.dart';
+export 'ecr/lifecycle_policy_rule.dart';
+export 'ecr/lifecycle_tag_status.dart';
+export 'ecr/registry_image.dart';
+export 'ecr/registry_image_args.dart';
+export 'ecr/repository.dart';
+export 'ecr/repository_args.dart';
