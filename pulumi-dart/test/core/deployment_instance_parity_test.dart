@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:convert';
 
 import 'package:grpc/grpc.dart';
 import 'package:mockito/mockito.dart';
@@ -88,6 +89,28 @@ class _CountingMonitor implements monitorpkg.Monitor {
     }
     return Empty();
   }
+}
+
+Future<Map<String, dynamic>> _runDeploymentProbe({
+  required String mode,
+  required Map<String, String> env,
+}) async {
+  final result = await Process.run(
+    Platform.resolvedExecutable,
+    ['run', 'test/test_utils/deployment_run_probe.dart', mode],
+    workingDirectory: Directory.current.path,
+    environment: {...Platform.environment, ...env},
+  );
+
+  expect(result.exitCode, equals(0), reason: '${result.stderr}');
+  final stdoutLines = result.stdout
+      .toString()
+      .split('\n')
+      .map((line) => line.trim())
+      .where((line) => line.isNotEmpty)
+      .toList();
+  expect(stdoutLines, isNotEmpty);
+  return jsonDecode(stdoutLines.last) as Map<String, dynamic>;
 }
 
 void main() {
@@ -201,6 +224,101 @@ void main() {
         await expectLater(
           Deployment.runOrThrow(() {}),
           throwsA(isA<StateError>()),
+        );
+      },
+    );
+
+    test(
+      'DeploymentImpl.run succeeds with host:port monitor and engine envs',
+      () async {
+        final payload = await _runDeploymentProbe(
+          mode: 'run-success',
+          env: {
+            'PULUMI_MONITOR': '127.0.0.1:65535',
+            'PULUMI_ENGINE': '127.0.0.1:65534',
+            'PULUMI_PROJECT': 'project',
+            'PULUMI_STACK': 'stack',
+            'PULUMI_DRY_RUN': 'false',
+          },
+        );
+
+        expect(payload['mode'], equals('run-success'));
+        expect(payload['exitCode'], equals(0));
+      },
+    );
+
+    test(
+      'DeploymentImpl.run succeeds with http:// monitor and engine envs',
+      () async {
+        final payload = await _runDeploymentProbe(
+          mode: 'run-success',
+          env: {
+            'PULUMI_MONITOR': 'http://127.0.0.1:65535',
+            'PULUMI_ENGINE': 'http://127.0.0.1:65534',
+            'PULUMI_PROJECT': 'project',
+            'PULUMI_STACK': 'stack',
+            'PULUMI_DRY_RUN': 'true',
+          },
+        );
+
+        expect(payload['mode'], equals('run-success'));
+        expect(payload['exitCode'], equals(0));
+      },
+    );
+
+    test(
+      'DeploymentImpl.run returns non-zero when program throws and runOrThrow surfaces it',
+      () async {
+        final runPayload = await _runDeploymentProbe(
+          mode: 'run-catch-error',
+          env: {
+            'PULUMI_MONITOR': '127.0.0.1:65535',
+            'PULUMI_ENGINE': '127.0.0.1:65534',
+            'PULUMI_PROJECT': 'project',
+            'PULUMI_STACK': 'stack',
+            'PULUMI_DRY_RUN': 'false',
+          },
+        );
+        expect(runPayload['exitCode'], equals(1));
+
+        final runOrThrowPayload = await _runDeploymentProbe(
+          mode: 'run-or-throw',
+          env: {
+            'PULUMI_MONITOR': '127.0.0.1:65535',
+            'PULUMI_ENGINE': '127.0.0.1:65534',
+            'PULUMI_PROJECT': 'project',
+            'PULUMI_STACK': 'stack',
+            'PULUMI_DRY_RUN': 'false',
+          },
+        );
+        expect(runOrThrowPayload['threw'], isTrue);
+        expect(runOrThrowPayload['type'], equals('StateError'));
+        expect(
+          runOrThrowPayload['message'].toString(),
+          contains('Pulumi program failed with exit code 1'),
+        );
+      },
+    );
+
+    test(
+      'DeploymentImpl.run rejects invalid monitor endpoint address',
+      () async {
+        final payload = await _runDeploymentProbe(
+          mode: 'run-capture-error',
+          env: {
+            'PULUMI_MONITOR': ':65535',
+            'PULUMI_ENGINE': '127.0.0.1:65534',
+            'PULUMI_PROJECT': 'project',
+            'PULUMI_STACK': 'stack',
+            'PULUMI_DRY_RUN': 'false',
+          },
+        );
+
+        expect(payload['threw'], isTrue);
+        expect(payload['type'], equals('StateError'));
+        expect(
+          payload['message'].toString(),
+          contains('Invalid gRPC endpoint: :65535'),
         );
       },
     );
