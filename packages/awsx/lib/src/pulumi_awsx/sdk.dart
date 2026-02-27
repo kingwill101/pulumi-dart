@@ -13,7 +13,7 @@ export 'awsx/required_bucket.dart';
 export 'awsx/required_log_group.dart';
 export 'awsx/role_with_policy.dart';
 export 'awsx/security_group.dart';
-export 'cloudtrail/log_group2.dart';
+export 'cloudtrail/log_group_cloudtrail.dart';
 export 'cloudtrail/trail_args.dart';
 export 'ec2/get_default_vpc_result.dart';
 export 'ec2/nat_gateway_configuration.dart';

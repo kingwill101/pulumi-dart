@@ -1,26 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The set of arguments for TargetGroupAttachment.
 class TargetGroupAttachmentArgs {
   /// EC2 Instance to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
-  final Input<dynamic>? instance;
+  final pulumi.Input<dynamic>? instance;
 
   /// ID of an EC2 Instance to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
-  final Input<String>? instanceId;
+  final pulumi.Input<String>? instanceId;
 
   /// Lambda Function to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
-  final Input<dynamic>? lambda;
+  final pulumi.Input<dynamic>? lambda;
 
   /// ARN of a Lambda Function to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
-  final Input<String>? lambdaArn;
+  final pulumi.Input<String>? lambdaArn;
 
   /// Target Group to attach to. Exactly one of [targetGroup] or [targetGroupArn] must be specified.
-  final Input<dynamic>? targetGroup;
+  final pulumi.Input<dynamic>? targetGroup;
 
   /// ARN of the Target Group to attach to. Exactly one of [targetGroup] or [targetGroupArn] must be specified.
-  final Input<String>? targetGroupArn;
+  final pulumi.Input<String>? targetGroupArn;
 
   TargetGroupAttachmentArgs({
     this.instance,
@@ -62,12 +62,13 @@ class TargetGroupAttachmentArgs {
 
   factory TargetGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TargetGroupAttachmentArgs(
-      instance: Input.asOptionalInput<dynamic>(map['instance']),
-      instanceId: Input.asOptionalInput<String>(map['instanceId']),
-      lambda: Input.asOptionalInput<dynamic>(map['lambda']),
-      lambdaArn: Input.asOptionalInput<String>(map['lambdaArn']),
-      targetGroup: Input.asOptionalInput<dynamic>(map['targetGroup']),
-      targetGroupArn: Input.asOptionalInput<String>(map['targetGroupArn']),
+      instance: pulumi.Input.asOptionalInput<dynamic>(map['instance']),
+      instanceId: pulumi.Input.asOptionalInput<String>(map['instanceId']),
+      lambda: pulumi.Input.asOptionalInput<dynamic>(map['lambda']),
+      lambdaArn: pulumi.Input.asOptionalInput<String>(map['lambdaArn']),
+      targetGroup: pulumi.Input.asOptionalInput<dynamic>(map['targetGroup']),
+      targetGroupArn:
+          pulumi.Input.asOptionalInput<String>(map['targetGroupArn']),
     );
   }
 }

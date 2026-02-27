@@ -1,4 +1,4 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resolved_subnet_spec.dart';
 import 'vpc_args.dart';
 
@@ -138,50 +138,50 @@ import 'vpc_args.dart';
 /// ### Legacy
 ///
 /// The "Legacy" works similarly to the "Auto" strategy except that within each availability zone it allocates the private subnet first, followed by the public subnets, and lastly the isolated subnets. The order of subnet specifications of the same type can be changed, but the ordering of private, public, isolated is not overridable. For more flexibility we recommend moving to the "Auto" strategy. The output property `subnetLayout` shows the configuration required if specifying the "Auto" strategy to maintain the current layout.
-class Vpc extends ComponentResource {
+class Vpc extends pulumi.ComponentResource {
   /// The EIPs for any NAT Gateways for the VPC. If no NAT Gateways are specified, this will be an empty list.
-  late final Output<List<dynamic>> eips;
+  late final pulumi.Output<List<dynamic>> eips;
 
   /// The Internet Gateway for the VPC.
-  late final Output<dynamic> internetGateway;
-  late final Output<List<String>> isolatedSubnetIds;
+  late final pulumi.Output<dynamic> internetGateway;
+  late final pulumi.Output<List<String>> isolatedSubnetIds;
 
   /// The NAT Gateways for the VPC. If no NAT Gateways are specified, this will be an empty list.
-  late final Output<List<dynamic>> natGateways;
-  late final Output<List<String>> privateSubnetIds;
-  late final Output<List<String>> publicSubnetIds;
+  late final pulumi.Output<List<dynamic>> natGateways;
+  late final pulumi.Output<List<String>> privateSubnetIds;
+  late final pulumi.Output<List<String>> publicSubnetIds;
 
   /// The Route Table Associations for the VPC.
-  late final Output<List<dynamic>> routeTableAssociations;
+  late final pulumi.Output<List<dynamic>> routeTableAssociations;
 
   /// The Route Tables for the VPC.
-  late final Output<List<dynamic>> routeTables;
+  late final pulumi.Output<List<dynamic>> routeTables;
 
   /// The Routes for the VPC.
-  late final Output<List<dynamic>> routes;
+  late final pulumi.Output<List<dynamic>> routes;
 
   /// The resolved subnet specs layout deployed to each availability zone.
-  late final Output<List<ResolvedSubnetSpec>> subnetLayout;
+  late final pulumi.Output<List<ResolvedSubnetSpec>> subnetLayout;
 
   /// The VPC's subnets.
-  late final Output<List<dynamic>> subnets;
+  late final pulumi.Output<List<dynamic>> subnets;
 
   /// The VPC.
-  late final Output<dynamic> vpc;
+  late final pulumi.Output<dynamic> vpc;
 
   /// The VPC Endpoints that are enabled
-  late final Output<List<dynamic>> vpcEndpoints;
-  late final Output<String> vpcId;
+  late final pulumi.Output<List<dynamic>> vpcEndpoints;
+  late final pulumi.Output<String> vpcId;
 
   Vpc(
     String name, {
     VpcArgs? args,
-    ComponentResourceOptions? options,
+    pulumi.ComponentResourceOptions? options,
   }) : super(
           'awsx:ec2:Vpc',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? ComponentResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
         ) {
     this.eips = registerOutput<List<dynamic>>('eips');
     this.internetGateway = registerOutput<dynamic>('internetGateway');

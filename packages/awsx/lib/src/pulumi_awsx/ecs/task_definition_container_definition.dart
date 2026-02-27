@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'task_definition_container_dependency.dart';
 import 'task_definition_environment_file.dart';
 import 'task_definition_firelens_configuration.dart';
@@ -126,7 +126,8 @@ class TaskDefinitionContainerDefinition {
     }
     final dependsOnValue = dependsOn;
     if (dependsOnValue != null) {
-      map['dependsOn'] = Input.encodeList<TaskDefinitionContainerDependency,
+      map['dependsOn'] = pulumi.Input.encodeList<
+          TaskDefinitionContainerDependency,
           Map<String, dynamic>>(dependsOnValue, (value) => value.toMap());
     }
     final disableNetworkingValue = disableNetworking;
@@ -155,15 +156,14 @@ class TaskDefinitionContainerDefinition {
     }
     final environmentValue = environment;
     if (environmentValue != null) {
-      map['environment'] =
-          Input.encodeList<TaskDefinitionKeyValuePair, Map<String, dynamic>>(
-              environmentValue, (value) => value.toMap());
+      map['environment'] = pulumi.Input.encodeList<TaskDefinitionKeyValuePair,
+          Map<String, dynamic>>(environmentValue, (value) => value.toMap());
     }
     final environmentFilesValue = environmentFiles;
     if (environmentFilesValue != null) {
-      map['environmentFiles'] =
-          Input.encodeList<TaskDefinitionEnvironmentFile, Map<String, dynamic>>(
-              environmentFilesValue, (value) => value.toMap());
+      map['environmentFiles'] = pulumi.Input.encodeList<
+              TaskDefinitionEnvironmentFile, Map<String, dynamic>>(
+          environmentFilesValue, (value) => value.toMap());
     }
     final essentialValue = essential;
     if (essentialValue != null) {
@@ -171,9 +171,8 @@ class TaskDefinitionContainerDefinition {
     }
     final extraHostsValue = extraHosts;
     if (extraHostsValue != null) {
-      map['extraHosts'] =
-          Input.encodeList<TaskDefinitionHostEntry, Map<String, dynamic>>(
-              extraHostsValue, (value) => value.toMap());
+      map['extraHosts'] = pulumi.Input.encodeList<TaskDefinitionHostEntry,
+          Map<String, dynamic>>(extraHostsValue, (value) => value.toMap());
     }
     final firelensConfigurationValue = firelensConfiguration;
     if (firelensConfigurationValue != null) {
@@ -214,16 +213,14 @@ class TaskDefinitionContainerDefinition {
     }
     final mountPointsValue = mountPoints;
     if (mountPointsValue != null) {
-      map['mountPoints'] =
-          Input.encodeList<TaskDefinitionMountPoint, Map<String, dynamic>>(
-              mountPointsValue, (value) => value.toMap());
+      map['mountPoints'] = pulumi.Input.encodeList<TaskDefinitionMountPoint,
+          Map<String, dynamic>>(mountPointsValue, (value) => value.toMap());
     }
     map['name'] = name;
     final portMappingsValue = portMappings;
     if (portMappingsValue != null) {
-      map['portMappings'] =
-          Input.encodeList<TaskDefinitionPortMapping, Map<String, dynamic>>(
-              portMappingsValue, (value) => value.toMap());
+      map['portMappings'] = pulumi.Input.encodeList<TaskDefinitionPortMapping,
+          Map<String, dynamic>>(portMappingsValue, (value) => value.toMap());
     }
     final privilegedValue = privileged;
     if (privilegedValue != null) {
@@ -243,14 +240,14 @@ class TaskDefinitionContainerDefinition {
     }
     final resourceRequirementsValue = resourceRequirements;
     if (resourceRequirementsValue != null) {
-      map['resourceRequirements'] = Input.encodeList<
+      map['resourceRequirements'] = pulumi.Input.encodeList<
               TaskDefinitionResourceRequirement, Map<String, dynamic>>(
           resourceRequirementsValue, (value) => value.toMap());
     }
     final secretsValue = secrets;
     if (secretsValue != null) {
       map['secrets'] =
-          Input.encodeList<TaskDefinitionSecret, Map<String, dynamic>>(
+          pulumi.Input.encodeList<TaskDefinitionSecret, Map<String, dynamic>>(
               secretsValue, (value) => value.toMap());
     }
     final startTimeoutValue = startTimeout;
@@ -263,14 +260,14 @@ class TaskDefinitionContainerDefinition {
     }
     final systemControlsValue = systemControls;
     if (systemControlsValue != null) {
-      map['systemControls'] =
-          Input.encodeList<TaskDefinitionSystemControl, Map<String, dynamic>>(
-              systemControlsValue, (value) => value.toMap());
+      map['systemControls'] = pulumi.Input.encodeList<
+          TaskDefinitionSystemControl,
+          Map<String, dynamic>>(systemControlsValue, (value) => value.toMap());
     }
     final ulimitsValue = ulimits;
     if (ulimitsValue != null) {
       map['ulimits'] =
-          Input.encodeList<TaskDefinitionUlimit, Map<String, dynamic>>(
+          pulumi.Input.encodeList<TaskDefinitionUlimit, Map<String, dynamic>>(
               ulimitsValue, (value) => value.toMap());
     }
     final userValue = user;
@@ -279,9 +276,8 @@ class TaskDefinitionContainerDefinition {
     }
     final volumesFromValue = volumesFrom;
     if (volumesFromValue != null) {
-      map['volumesFrom'] =
-          Input.encodeList<TaskDefinitionVolumeFrom, Map<String, dynamic>>(
-              volumesFromValue, (value) => value.toMap());
+      map['volumesFrom'] = pulumi.Input.encodeList<TaskDefinitionVolumeFrom,
+          Map<String, dynamic>>(volumesFromValue, (value) => value.toMap());
     }
     final workingDirectoryValue = workingDirectory;
     if (workingDirectoryValue != null) {
@@ -298,7 +294,7 @@ class TaskDefinitionContainerDefinition {
       cpu: map['cpu'] == null ? null : map['cpu'] as int,
       dependsOn: map['dependsOn'] == null
           ? null
-          : Input.decodeList<TaskDefinitionContainerDependency>(
+          : pulumi.Input.decodeList<TaskDefinitionContainerDependency>(
               map['dependsOn'],
               (value) => TaskDefinitionContainerDependency.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -320,20 +316,20 @@ class TaskDefinitionContainerDefinition {
           : (map['entryPoint'] as List).cast<String>(),
       environment: map['environment'] == null
           ? null
-          : Input.decodeList<TaskDefinitionKeyValuePair>(
+          : pulumi.Input.decodeList<TaskDefinitionKeyValuePair>(
               map['environment'],
               (value) => TaskDefinitionKeyValuePair.fromMap(
                   (value as Map).cast<String, dynamic>())),
       environmentFiles: map['environmentFiles'] == null
           ? null
-          : Input.decodeList<TaskDefinitionEnvironmentFile>(
+          : pulumi.Input.decodeList<TaskDefinitionEnvironmentFile>(
               map['environmentFiles'],
               (value) => TaskDefinitionEnvironmentFile.fromMap(
                   (value as Map).cast<String, dynamic>())),
       essential: map['essential'] == null ? null : map['essential'] as bool,
       extraHosts: map['extraHosts'] == null
           ? null
-          : Input.decodeList<TaskDefinitionHostEntry>(
+          : pulumi.Input.decodeList<TaskDefinitionHostEntry>(
               map['extraHosts'],
               (value) => TaskDefinitionHostEntry.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -365,14 +361,14 @@ class TaskDefinitionContainerDefinition {
           : map['memoryReservation'] as int,
       mountPoints: map['mountPoints'] == null
           ? null
-          : Input.decodeList<TaskDefinitionMountPoint>(
+          : pulumi.Input.decodeList<TaskDefinitionMountPoint>(
               map['mountPoints'],
               (value) => TaskDefinitionMountPoint.fromMap(
                   (value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       portMappings: map['portMappings'] == null
           ? null
-          : Input.decodeList<TaskDefinitionPortMapping>(
+          : pulumi.Input.decodeList<TaskDefinitionPortMapping>(
               map['portMappings'],
               (value) => TaskDefinitionPortMapping.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -388,13 +384,13 @@ class TaskDefinitionContainerDefinition {
               (map['repositoryCredentials'] as Map).cast<String, dynamic>()),
       resourceRequirements: map['resourceRequirements'] == null
           ? null
-          : Input.decodeList<TaskDefinitionResourceRequirement>(
+          : pulumi.Input.decodeList<TaskDefinitionResourceRequirement>(
               map['resourceRequirements'],
               (value) => TaskDefinitionResourceRequirement.fromMap(
                   (value as Map).cast<String, dynamic>())),
       secrets: map['secrets'] == null
           ? null
-          : Input.decodeList<TaskDefinitionSecret>(
+          : pulumi.Input.decodeList<TaskDefinitionSecret>(
               map['secrets'],
               (value) => TaskDefinitionSecret.fromMap(
                   (value as Map).cast<String, dynamic>())),
@@ -404,20 +400,20 @@ class TaskDefinitionContainerDefinition {
           map['stopTimeout'] == null ? null : map['stopTimeout'] as int,
       systemControls: map['systemControls'] == null
           ? null
-          : Input.decodeList<TaskDefinitionSystemControl>(
+          : pulumi.Input.decodeList<TaskDefinitionSystemControl>(
               map['systemControls'],
               (value) => TaskDefinitionSystemControl.fromMap(
                   (value as Map).cast<String, dynamic>())),
       ulimits: map['ulimits'] == null
           ? null
-          : Input.decodeList<TaskDefinitionUlimit>(
+          : pulumi.Input.decodeList<TaskDefinitionUlimit>(
               map['ulimits'],
               (value) => TaskDefinitionUlimit.fromMap(
                   (value as Map).cast<String, dynamic>())),
       user: map['user'] == null ? null : map['user'] as String,
       volumesFrom: map['volumesFrom'] == null
           ? null
-          : Input.decodeList<TaskDefinitionVolumeFrom>(
+          : pulumi.Input.decodeList<TaskDefinitionVolumeFrom>(
               map['volumesFrom'],
               (value) => TaskDefinitionVolumeFrom.fromMap(
                   (value as Map).cast<String, dynamic>())),

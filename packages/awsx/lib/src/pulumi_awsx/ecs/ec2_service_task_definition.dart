@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../awsx/default_log_group.dart';
 import '../awsx/default_role_with_policy.dart';
 import 'task_definition_container_definition.dart';
@@ -117,7 +117,7 @@ class EC2ServiceTaskDefinition {
     }
     final containersValue = containers;
     if (containersValue != null) {
-      map['containers'] = Input.encodeMapValues<
+      map['containers'] = pulumi.Input.encodeMapValues<
           TaskDefinitionContainerDefinition,
           Map<String, dynamic>>(containersValue, (value) => value.toMap());
     }
@@ -208,7 +208,7 @@ class EC2ServiceTaskDefinition {
               (map['container'] as Map).cast<String, dynamic>()),
       containers: map['containers'] == null
           ? null
-          : Input.decodeMapValues<TaskDefinitionContainerDefinition>(
+          : pulumi.Input.decodeMapValues<TaskDefinitionContainerDefinition>(
               map['containers'],
               (value) => TaskDefinitionContainerDefinition.fromMap(
                   (value as Map).cast<String, dynamic>())),

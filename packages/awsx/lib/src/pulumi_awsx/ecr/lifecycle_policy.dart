@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'lifecycle_policy_rule.dart';
 
 /// Simplified lifecycle policy model consisting of one or more rules that determine which images in a repository should be expired. See https://docs.aws.amazon.com/AmazonECR/latest/userguide/lifecycle_policy_examples.html for more details.
@@ -21,7 +21,7 @@ class LifecyclePolicy {
     final rulesValue = rules;
     if (rulesValue != null) {
       map['rules'] =
-          Input.encodeList<LifecyclePolicyRule, Map<String, dynamic>>(
+          pulumi.Input.encodeList<LifecyclePolicyRule, Map<String, dynamic>>(
               rulesValue, (value) => value.toMap());
     }
     final skipValue = skip;
@@ -35,7 +35,7 @@ class LifecyclePolicy {
     return LifecyclePolicy(
       rules: map['rules'] == null
           ? null
-          : Input.decodeList<LifecyclePolicyRule>(
+          : pulumi.Input.decodeList<LifecyclePolicyRule>(
               map['rules'],
               (value) => LifecyclePolicyRule.fromMap(
                   (value as Map).cast<String, dynamic>())),

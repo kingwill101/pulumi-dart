@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 /// Defines the log group configuration for the CloudWatch Log Group to send logs to.
-class LogGroup2 {
+class LogGroupCloudtrail {
   /// The ARN of the KMS Key to use when encrypting log data.
   final String? kmsKeyId;
 
@@ -14,7 +14,7 @@ class LogGroup2 {
   /// A map of tags to assign to the resource. If configured with provider defaultTags present, tags with matching keys will overwrite those defined at the provider-level.
   final Map<String, String>? tags;
 
-  LogGroup2({
+  LogGroupCloudtrail({
     this.kmsKeyId,
     this.namePrefix,
     this.retentionInDays,
@@ -42,8 +42,8 @@ class LogGroup2 {
     return map;
   }
 
-  factory LogGroup2.fromMap(Map<String, dynamic> map) {
-    return LogGroup2(
+  factory LogGroupCloudtrail.fromMap(Map<String, dynamic> map) {
+    return LogGroupCloudtrail(
       kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
       namePrefix:
           map['namePrefix'] == null ? null : map['namePrefix'] as String,

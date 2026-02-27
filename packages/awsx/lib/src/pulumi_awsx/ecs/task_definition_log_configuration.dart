@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'task_definition_secret.dart';
 
 class TaskDefinitionLogConfiguration {
@@ -24,7 +24,7 @@ class TaskDefinitionLogConfiguration {
     final secretOptionsValue = secretOptions;
     if (secretOptionsValue != null) {
       map['secretOptions'] =
-          Input.encodeList<TaskDefinitionSecret, Map<String, dynamic>>(
+          pulumi.Input.encodeList<TaskDefinitionSecret, Map<String, dynamic>>(
               secretOptionsValue, (value) => value.toMap());
     }
     return map;
@@ -36,7 +36,7 @@ class TaskDefinitionLogConfiguration {
       options: map['options'] == null ? null : map['options'],
       secretOptions: map['secretOptions'] == null
           ? null
-          : Input.decodeList<TaskDefinitionSecret>(
+          : pulumi.Input.decodeList<TaskDefinitionSecret>(
               map['secretOptions'],
               (value) => TaskDefinitionSecret.fromMap(
                   (value as Map).cast<String, dynamic>())),

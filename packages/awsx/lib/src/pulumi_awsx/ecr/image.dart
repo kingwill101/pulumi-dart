@@ -1,20 +1,20 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_args.dart';
 
 /// Builds a docker image and pushes to the ECR repository
-class Image extends ComponentResource {
+class Image extends pulumi.ComponentResource {
   /// Unique identifier of the pushed image
-  late final Output<String> imageUri;
+  late final pulumi.Output<String> imageUri;
 
   Image(
     String name, {
     ImageArgs? args,
-    ComponentResourceOptions? options,
+    pulumi.ComponentResourceOptions? options,
   }) : super(
           'awsx:ecr:Image',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? ComponentResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
         ) {
     this.imageUri = registerOutput<String>('imageUri');
   }

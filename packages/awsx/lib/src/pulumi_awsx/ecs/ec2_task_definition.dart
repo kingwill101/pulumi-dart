@@ -1,34 +1,34 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ec2_task_definition_args.dart';
 
 /// Create a TaskDefinition resource with the given unique name, arguments, and options.
 /// Creates required log-group and task & execution roles.
 /// Presents required Service load balancers if target group included in port mappings.
-class EC2TaskDefinition extends ComponentResource {
+class EC2TaskDefinition extends pulumi.ComponentResource {
   /// Auto-created IAM task execution role that the Amazon ECS container agent and the Docker daemon can assume.
-  late final Output<dynamic> executionRole;
+  late final pulumi.Output<dynamic> executionRole;
 
   /// Computed load balancers from target groups specified of container port mappings.
-  late final Output<List<Map<String, dynamic>>> loadBalancers;
+  late final pulumi.Output<List<Map<String, dynamic>>> loadBalancers;
 
   /// Auto-created Log Group resource for use by containers.
-  late final Output<dynamic> logGroup;
+  late final pulumi.Output<dynamic> logGroup;
 
   /// Underlying ECS Task Definition resource
-  late final Output<dynamic> taskDefinition;
+  late final pulumi.Output<dynamic> taskDefinition;
 
   /// Auto-created IAM role that allows your Amazon ECS container task to make calls to other AWS services.
-  late final Output<dynamic> taskRole;
+  late final pulumi.Output<dynamic> taskRole;
 
   EC2TaskDefinition(
     String name, {
     EC2TaskDefinitionArgs? args,
-    ComponentResourceOptions? options,
+    pulumi.ComponentResourceOptions? options,
   }) : super(
           'awsx:ecs:EC2TaskDefinition',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? ComponentResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
         ) {
     this.executionRole = registerOutput<dynamic>('executionRole');
     this.loadBalancers =

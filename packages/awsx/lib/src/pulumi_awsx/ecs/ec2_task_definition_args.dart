@@ -1,6 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../awsx/default_log_group.dart';
 import '../awsx/default_role_with_policy.dart';
 import 'task_definition_container_definition.dart';
@@ -11,77 +11,78 @@ class EC2TaskDefinitionArgs {
   /// multiple containers, especially when creating a TaskDefinition to call [run] on.
   ///
   /// Either [container] or [containers] must be provided.
-  final Input<TaskDefinitionContainerDefinition>? container;
+  final pulumi.Input<TaskDefinitionContainerDefinition>? container;
 
   /// All the containers to make a TaskDefinition from.  Useful when creating a Service that will
   /// contain many containers within.
   ///
   /// Either [container] or [containers] must be provided.
-  final Input<Map<String, TaskDefinitionContainerDefinition>>? containers;
+  final pulumi.Input<Map<String, TaskDefinitionContainerDefinition>>?
+      containers;
 
   /// The number of cpu units used by the task. If not provided, a default will be computed based on the cumulative needs specified by [containerDefinitions]
-  final Input<String>? cpu;
+  final pulumi.Input<String>? cpu;
 
   /// Enables fault injection and allows for fault injection requests to be accepted from the task's containers. Default is `false`.
-  final Input<bool>? enableFaultInjection;
+  final pulumi.Input<bool>? enableFaultInjection;
 
   /// The amount of ephemeral storage to allocate for the task. This parameter is used to expand the total amount of ephemeral storage available, beyond the default amount, for tasks hosted on AWS Fargate. See Ephemeral Storage.
-  final Input<Map<String, dynamic>>? ephemeralStorage;
+  final pulumi.Input<Map<String, dynamic>>? ephemeralStorage;
 
   /// The execution role that the Amazon ECS container agent and the Docker daemon can assume.
   /// Will be created automatically if not defined.
-  final Input<DefaultRoleWithPolicy>? executionRole;
+  final pulumi.Input<DefaultRoleWithPolicy>? executionRole;
 
   /// An optional unique name for your task definition. If not specified, then a default will be created.
-  final Input<String>? family;
+  final pulumi.Input<String>? family;
 
   /// IPC resource namespace to be used for the containers in the task The valid values are `host`, `task`, and `none`.
-  final Input<String>? ipcMode;
+  final pulumi.Input<String>? ipcMode;
 
   /// A set of volume blocks that containers in your task may use.
-  final Input<DefaultLogGroup>? logGroup;
+  final pulumi.Input<DefaultLogGroup>? logGroup;
 
   /// The amount (in MiB) of memory used by the task.  If not provided, a default will be computed
   /// based on the cumulative needs specified by [containerDefinitions]
-  final Input<String>? memory;
+  final pulumi.Input<String>? memory;
 
   /// Docker networking mode to use for the containers in the task. Valid values are `none`, `bridge`, `awsvpc`, and `host`.
-  final Input<String>? networkMode;
+  final pulumi.Input<String>? networkMode;
 
   /// Process namespace to use for the containers in the task. The valid values are `host` and `task`.
-  final Input<String>? pidMode;
+  final pulumi.Input<String>? pidMode;
 
   /// Configuration block for rules that are taken into consideration during task placement. Maximum number of `placement_constraints` is `10`. Detailed below.
-  final Input<List<Map<String, dynamic>>>? placementConstraints;
+  final pulumi.Input<List<Map<String, dynamic>>>? placementConstraints;
 
   /// Configuration block for the App Mesh proxy. Detailed below.
-  final Input<Map<String, dynamic>>? proxyConfiguration;
+  final pulumi.Input<Map<String, dynamic>>? proxyConfiguration;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// Configuration block for runtime_platform that containers in your task may use.
-  final Input<Map<String, dynamic>>? runtimePlatform;
+  final pulumi.Input<Map<String, dynamic>>? runtimePlatform;
 
   /// Whether to retain the old revision when the resource is destroyed or replacement is necessary. Default is `false`.
-  final Input<bool>? skipDestroy;
+  final pulumi.Input<bool>? skipDestroy;
 
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   /// IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   /// Will be created automatically if not defined.
-  final Input<DefaultRoleWithPolicy>? taskRole;
+  final pulumi.Input<DefaultRoleWithPolicy>? taskRole;
 
   /// Whether should track latest `ACTIVE` task definition on AWS or the one created with the resource stored in state. Default is `false`. Useful in the event the task definition is modified outside of this resource.
-  final Input<bool>? trackLatest;
+  final pulumi.Input<bool>? trackLatest;
 
   /// Repeatable configuration block for volumes that containers in your task may use. Detailed below.
   ///
   /// > **NOTE:** Proper escaping is required for JSON field values containing quotes (`"`) such as `environment` values. If directly setting the JSON, they should be escaped as `\"` in the JSON,  e.g., `"value": "I \"love\" escaped quotes"`. If using a variable value, they should be escaped as `\\\"` in the variable, e.g., `value = "I \\\"love\\\" escaped quotes"` in the variable and `"value": "${var.myvariable}"` in the JSON.
   ///
   /// > **Note:** Fault injection only works with tasks using the `awsvpc` or `host` network modes. Fault injection isn't available on Windows.
-  final Input<List<Map<String, dynamic>>>? volumes;
+  final pulumi.Input<List<Map<String, dynamic>>>? volumes;
 
   EC2TaskDefinitionArgs({
     this.container,
@@ -111,17 +112,18 @@ class EC2TaskDefinitionArgs {
     final map = <String, dynamic>{};
     final containerValue = container;
     if (containerValue != null) {
-      map['container'] = Input.mapOptionalInputValue<
+      map['container'] = pulumi.Input.mapOptionalInputValue<
           TaskDefinitionContainerDefinition,
           Map<String, dynamic>>(containerValue, (value) => value.toMap());
     }
     final containersValue = containers;
     if (containersValue != null) {
-      map['containers'] = Input.mapOptionalInputValue<
+      map['containers'] = pulumi.Input.mapOptionalInputValue<
               Map<String, TaskDefinitionContainerDefinition>,
               Map<String, Map<String, dynamic>>>(
           containersValue,
-          (value) => Input.encodeMapValues<TaskDefinitionContainerDefinition,
+          (value) => pulumi.Input.encodeMapValues<
+              TaskDefinitionContainerDefinition,
               Map<String, dynamic>>(value, (value) => value.toMap()));
     }
     final cpuValue = cpu;
@@ -138,7 +140,8 @@ class EC2TaskDefinitionArgs {
     }
     final executionRoleValue = executionRole;
     if (executionRoleValue != null) {
-      map['executionRole'] = Input.mapOptionalInputValue<DefaultRoleWithPolicy,
+      map['executionRole'] = pulumi.Input.mapOptionalInputValue<
+          DefaultRoleWithPolicy,
           Map<String, dynamic>>(executionRoleValue, (value) => value.toMap());
     }
     final familyValue = family;
@@ -151,9 +154,8 @@ class EC2TaskDefinitionArgs {
     }
     final logGroupValue = logGroup;
     if (logGroupValue != null) {
-      map['logGroup'] =
-          Input.mapOptionalInputValue<DefaultLogGroup, Map<String, dynamic>>(
-              logGroupValue, (value) => value.toMap());
+      map['logGroup'] = pulumi.Input.mapOptionalInputValue<DefaultLogGroup,
+          Map<String, dynamic>>(logGroupValue, (value) => value.toMap());
     }
     final memoryValue = memory;
     if (memoryValue != null) {
@@ -193,7 +195,8 @@ class EC2TaskDefinitionArgs {
     }
     final taskRoleValue = taskRole;
     if (taskRoleValue != null) {
-      map['taskRole'] = Input.mapOptionalInputValue<DefaultRoleWithPolicy,
+      map['taskRole'] = pulumi.Input.mapOptionalInputValue<
+          DefaultRoleWithPolicy,
           Map<String, dynamic>>(taskRoleValue, (value) => value.toMap());
     }
     final trackLatestValue = trackLatest;
@@ -209,37 +212,39 @@ class EC2TaskDefinitionArgs {
 
   factory EC2TaskDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return EC2TaskDefinitionArgs(
-      container: Input.asOptionalInput<TaskDefinitionContainerDefinition>(
-          map['container']),
-      containers:
-          Input.asOptionalInput<Map<String, TaskDefinitionContainerDefinition>>(
-              map['containers']),
-      cpu: Input.asOptionalInput<String>(map['cpu']),
+      container:
+          pulumi.Input.asOptionalInput<TaskDefinitionContainerDefinition>(
+              map['container']),
+      containers: pulumi.Input.asOptionalInput<
+          Map<String, TaskDefinitionContainerDefinition>>(map['containers']),
+      cpu: pulumi.Input.asOptionalInput<String>(map['cpu']),
       enableFaultInjection:
-          Input.asOptionalInput<bool>(map['enableFaultInjection']),
-      ephemeralStorage:
-          Input.asOptionalInput<Map<String, dynamic>>(map['ephemeralStorage']),
-      executionRole:
-          Input.asOptionalInput<DefaultRoleWithPolicy>(map['executionRole']),
-      family: Input.asOptionalInput<String>(map['family']),
-      ipcMode: Input.asOptionalInput<String>(map['ipcMode']),
-      logGroup: Input.asOptionalInput<DefaultLogGroup>(map['logGroup']),
-      memory: Input.asOptionalInput<String>(map['memory']),
-      networkMode: Input.asOptionalInput<String>(map['networkMode']),
-      pidMode: Input.asOptionalInput<String>(map['pidMode']),
-      placementConstraints: Input.asOptionalInput<List<Map<String, dynamic>>>(
-          map['placementConstraints']),
-      proxyConfiguration: Input.asOptionalInput<Map<String, dynamic>>(
+          pulumi.Input.asOptionalInput<bool>(map['enableFaultInjection']),
+      ephemeralStorage: pulumi.Input.asOptionalInput<Map<String, dynamic>>(
+          map['ephemeralStorage']),
+      executionRole: pulumi.Input.asOptionalInput<DefaultRoleWithPolicy>(
+          map['executionRole']),
+      family: pulumi.Input.asOptionalInput<String>(map['family']),
+      ipcMode: pulumi.Input.asOptionalInput<String>(map['ipcMode']),
+      logGroup: pulumi.Input.asOptionalInput<DefaultLogGroup>(map['logGroup']),
+      memory: pulumi.Input.asOptionalInput<String>(map['memory']),
+      networkMode: pulumi.Input.asOptionalInput<String>(map['networkMode']),
+      pidMode: pulumi.Input.asOptionalInput<String>(map['pidMode']),
+      placementConstraints:
+          pulumi.Input.asOptionalInput<List<Map<String, dynamic>>>(
+              map['placementConstraints']),
+      proxyConfiguration: pulumi.Input.asOptionalInput<Map<String, dynamic>>(
           map['proxyConfiguration']),
-      region: Input.asOptionalInput<String>(map['region']),
-      runtimePlatform:
-          Input.asOptionalInput<Map<String, dynamic>>(map['runtimePlatform']),
-      skipDestroy: Input.asOptionalInput<bool>(map['skipDestroy']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
-      taskRole: Input.asOptionalInput<DefaultRoleWithPolicy>(map['taskRole']),
-      trackLatest: Input.asOptionalInput<bool>(map['trackLatest']),
-      volumes:
-          Input.asOptionalInput<List<Map<String, dynamic>>>(map['volumes']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      runtimePlatform: pulumi.Input.asOptionalInput<Map<String, dynamic>>(
+          map['runtimePlatform']),
+      skipDestroy: pulumi.Input.asOptionalInput<bool>(map['skipDestroy']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
+      taskRole:
+          pulumi.Input.asOptionalInput<DefaultRoleWithPolicy>(map['taskRole']),
+      trackLatest: pulumi.Input.asOptionalInput<bool>(map['trackLatest']),
+      volumes: pulumi.Input.asOptionalInput<List<Map<String, dynamic>>>(
+          map['volumes']),
     );
   }
 }

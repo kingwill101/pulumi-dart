@@ -1,58 +1,58 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import '../awsx/optional_log_group.dart';
 import '../awsx/required_bucket.dart';
 
 /// The set of arguments for Trail.
 class TrailArgs {
   /// Specifies an advanced event selector for enabling data event logging. Fields documented below. Conflicts with `event_selector`.
-  final Input<List<Map<String, dynamic>>>? advancedEventSelectors;
+  final pulumi.Input<List<Map<String, dynamic>>>? advancedEventSelectors;
 
   /// Log group to which CloudTrail logs will be delivered.
-  final Input<OptionalLogGroup>? cloudWatchLogsGroup;
+  final pulumi.Input<OptionalLogGroup>? cloudWatchLogsGroup;
 
   /// Whether log file integrity validation is enabled. Defaults to `false`.
-  final Input<bool>? enableLogFileValidation;
+  final pulumi.Input<bool>? enableLogFileValidation;
 
   /// Enables logging for the trail. When set to `true`, logging is started by calling the [`StartLogging`](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StartLogging.html) API. When set to `false`, logging is stopped by calling the [`StopLogging`](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_StopLogging.html) API. Defaults to `true`.
-  final Input<bool>? enableLogging;
+  final pulumi.Input<bool>? enableLogging;
 
   /// Specifies an event selector for enabling data event logging. Fields documented below. Please note the [CloudTrail limits](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) when configuring these. Conflicts with `advanced_event_selector`.
-  final Input<List<Map<String, dynamic>>>? eventSelectors;
+  final pulumi.Input<List<Map<String, dynamic>>>? eventSelectors;
 
   /// Whether the trail is publishing events from global services such as IAM to the log files. Defaults to `true`.
-  final Input<bool>? includeGlobalServiceEvents;
+  final pulumi.Input<bool>? includeGlobalServiceEvents;
 
   /// Configuration block for identifying unusual operational activity. See details below.
-  final Input<List<Map<String, dynamic>>>? insightSelectors;
+  final pulumi.Input<List<Map<String, dynamic>>>? insightSelectors;
 
   /// Whether the trail is created in the current region or in all regions. Defaults to `false`.
-  final Input<bool>? isMultiRegionTrail;
+  final pulumi.Input<bool>? isMultiRegionTrail;
 
   /// Whether the trail is an AWS Organizations trail. Organization trails log events for the master account and all member accounts. Can only be created in the organization master account. Defaults to `false`.
-  final Input<bool>? isOrganizationTrail;
+  final pulumi.Input<bool>? isOrganizationTrail;
 
   /// KMS key ARN to use to encrypt the logs delivered by CloudTrail.
-  final Input<String>? kmsKeyId;
+  final pulumi.Input<String>? kmsKeyId;
 
   /// Name of the trail.
-  final Input<String>? name;
+  final pulumi.Input<String>? name;
 
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  final Input<String>? region;
+  final pulumi.Input<String>? region;
 
   /// S3 bucket designated for publishing log files.
-  final Input<RequiredBucket>? s3Bucket;
+  final pulumi.Input<RequiredBucket>? s3Bucket;
 
   /// S3 key prefix that follows the name of the bucket you have designated for log file delivery.
-  final Input<String>? s3KeyPrefix;
+  final pulumi.Input<String>? s3KeyPrefix;
 
   /// Name of the Amazon SNS topic defined for notification of log file delivery. Specify the SNS topic ARN if it resides in another region.
-  final Input<String>? snsTopicName;
+  final pulumi.Input<String>? snsTopicName;
 
   /// Map of tags to assign to the trail. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  final Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>>? tags;
 
   TrailArgs({
     this.advancedEventSelectors,
@@ -81,9 +81,9 @@ class TrailArgs {
     }
     final cloudWatchLogsGroupValue = cloudWatchLogsGroup;
     if (cloudWatchLogsGroupValue != null) {
-      map['cloudWatchLogsGroup'] =
-          Input.mapOptionalInputValue<OptionalLogGroup, Map<String, dynamic>>(
-              cloudWatchLogsGroupValue, (value) => value.toMap());
+      map['cloudWatchLogsGroup'] = pulumi.Input.mapOptionalInputValue<
+              OptionalLogGroup, Map<String, dynamic>>(
+          cloudWatchLogsGroupValue, (value) => value.toMap());
     }
     final enableLogFileValidationValue = enableLogFileValidation;
     if (enableLogFileValidationValue != null) {
@@ -127,9 +127,8 @@ class TrailArgs {
     }
     final s3BucketValue = s3Bucket;
     if (s3BucketValue != null) {
-      map['s3Bucket'] =
-          Input.mapOptionalInputValue<RequiredBucket, Map<String, dynamic>>(
-              s3BucketValue, (value) => value.toMap());
+      map['s3Bucket'] = pulumi.Input.mapOptionalInputValue<RequiredBucket,
+          Map<String, dynamic>>(s3BucketValue, (value) => value.toMap());
     }
     final s3KeyPrefixValue = s3KeyPrefix;
     if (s3KeyPrefixValue != null) {
@@ -148,30 +147,32 @@ class TrailArgs {
 
   factory TrailArgs.fromMap(Map<String, dynamic> map) {
     return TrailArgs(
-      advancedEventSelectors: Input.asOptionalInput<List<Map<String, dynamic>>>(
-          map['advancedEventSelectors']),
-      cloudWatchLogsGroup:
-          Input.asOptionalInput<OptionalLogGroup>(map['cloudWatchLogsGroup']),
+      advancedEventSelectors:
+          pulumi.Input.asOptionalInput<List<Map<String, dynamic>>>(
+              map['advancedEventSelectors']),
+      cloudWatchLogsGroup: pulumi.Input.asOptionalInput<OptionalLogGroup>(
+          map['cloudWatchLogsGroup']),
       enableLogFileValidation:
-          Input.asOptionalInput<bool>(map['enableLogFileValidation']),
-      enableLogging: Input.asOptionalInput<bool>(map['enableLogging']),
-      eventSelectors: Input.asOptionalInput<List<Map<String, dynamic>>>(
+          pulumi.Input.asOptionalInput<bool>(map['enableLogFileValidation']),
+      enableLogging: pulumi.Input.asOptionalInput<bool>(map['enableLogging']),
+      eventSelectors: pulumi.Input.asOptionalInput<List<Map<String, dynamic>>>(
           map['eventSelectors']),
       includeGlobalServiceEvents:
-          Input.asOptionalInput<bool>(map['includeGlobalServiceEvents']),
-      insightSelectors: Input.asOptionalInput<List<Map<String, dynamic>>>(
-          map['insightSelectors']),
+          pulumi.Input.asOptionalInput<bool>(map['includeGlobalServiceEvents']),
+      insightSelectors:
+          pulumi.Input.asOptionalInput<List<Map<String, dynamic>>>(
+              map['insightSelectors']),
       isMultiRegionTrail:
-          Input.asOptionalInput<bool>(map['isMultiRegionTrail']),
+          pulumi.Input.asOptionalInput<bool>(map['isMultiRegionTrail']),
       isOrganizationTrail:
-          Input.asOptionalInput<bool>(map['isOrganizationTrail']),
-      kmsKeyId: Input.asOptionalInput<String>(map['kmsKeyId']),
-      name: Input.asOptionalInput<String>(map['name']),
-      region: Input.asOptionalInput<String>(map['region']),
-      s3Bucket: Input.asOptionalInput<RequiredBucket>(map['s3Bucket']),
-      s3KeyPrefix: Input.asOptionalInput<String>(map['s3KeyPrefix']),
-      snsTopicName: Input.asOptionalInput<String>(map['snsTopicName']),
-      tags: Input.asOptionalInput<Map<String, String>>(map['tags']),
+          pulumi.Input.asOptionalInput<bool>(map['isOrganizationTrail']),
+      kmsKeyId: pulumi.Input.asOptionalInput<String>(map['kmsKeyId']),
+      name: pulumi.Input.asOptionalInput<String>(map['name']),
+      region: pulumi.Input.asOptionalInput<String>(map['region']),
+      s3Bucket: pulumi.Input.asOptionalInput<RequiredBucket>(map['s3Bucket']),
+      s3KeyPrefix: pulumi.Input.asOptionalInput<String>(map['s3KeyPrefix']),
+      snsTopicName: pulumi.Input.asOptionalInput<String>(map['snsTopicName']),
+      tags: pulumi.Input.asOptionalInput<Map<String, String>>(map['tags']),
     );
   }
 }

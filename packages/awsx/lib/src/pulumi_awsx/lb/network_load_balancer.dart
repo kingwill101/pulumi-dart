@@ -1,29 +1,29 @@
-import 'package:pulumi/pulumi.dart';
+import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_load_balancer_args.dart';
 
 /// Provides a Network Load Balancer resource with listeners and default target group.
-class NetworkLoadBalancer extends ComponentResource {
+class NetworkLoadBalancer extends pulumi.ComponentResource {
   /// Default target group, if auto-created
-  late final Output<dynamic> defaultTargetGroup;
+  late final pulumi.Output<dynamic> defaultTargetGroup;
 
   /// Listeners created as part of this load balancer
-  late final Output<List<dynamic>?> listeners;
+  late final pulumi.Output<List<dynamic>?> listeners;
 
   /// Underlying Load Balancer resource
-  late final Output<dynamic> loadBalancer;
+  late final pulumi.Output<dynamic> loadBalancer;
 
   /// Id of the VPC in which this load balancer is operating
-  late final Output<String?> vpcId;
+  late final pulumi.Output<String?> vpcId;
 
   NetworkLoadBalancer(
     String name, {
     NetworkLoadBalancerArgs? args,
-    ComponentResourceOptions? options,
+    pulumi.ComponentResourceOptions? options,
   }) : super(
           'awsx:lb:NetworkLoadBalancer',
           name,
-          Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? ComponentResourceOptions(),
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.ComponentResourceOptions(),
         ) {
     this.defaultTargetGroup = registerOutput<dynamic>('defaultTargetGroup');
     this.listeners = registerOutput<List<dynamic>?>('listeners');
