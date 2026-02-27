@@ -113,3 +113,15 @@ Coverage ratchet baseline:
 Parity backlog inventory and resolved marker classification:
 
 - [`docs/pulumi-dart-parity-backlog.md`](docs/pulumi-dart-parity-backlog.md)
+
+## Integration Parity Audit
+
+Run a recurring audit against upstream Go/Node/Python integration test names:
+
+```bash
+task parity:audit
+```
+
+Audit ignore list (intentional temporary gaps):
+
+- `docs/parity-audit-ignore.txt`

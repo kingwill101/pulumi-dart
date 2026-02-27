@@ -101,6 +101,11 @@ tasks:
         vars:
           COVERAGE_LCOV: "{{.PULUMI_DART_PATH}}/coverage/lcov.info"
 
+  parity:audit:
+    desc: Compare Dart integration test surface against upstream Go/Node/Python tests
+    cmds:
+      - ./scripts/parity_audit.sh
+
   check-tools:
     desc: Verify required tooling for SDK generation
     cmds:

@@ -1,6 +1,6 @@
 # Pulumi Dart Readiness Tracker
 
-Last updated: 2026-02-26
+Last updated: 2026-02-27
 
 ## Executive Status
 
@@ -156,6 +156,7 @@ Evidence:
 - `pulumi-dart/lib/src/callback_server.dart`
 - `pulumi-dart/lib/src/deployment/deployment.dart`
 - `pulumi-dart/lib/src/resource/resource.dart`
+- `pulumi-language-dart/rpc_transport_test.go`
 - `integration_tests/transformations_simple_test.go`
 - `integration_tests/resource_transforms_v2/bin/resource_transforms_v2_dart.dart`
 - `integration_tests/invoke_transforms/bin/invoke_transforms_dart.dart`
@@ -209,6 +210,7 @@ Status: **Open**
 
 Current issues:
 
+- config-missing parity fixture/test is now ported (`config_missing`) and validates required-config failure behavior.
 - parameterized SDK coverage now validates generated package structure, expected resource-class emissions, generated invoke symbol export, and live runtime semantics for generated resource/invoke wrappers (`pkg.Echo`, `pkg.doEcho`) in the parameterized fixture using pure parameterized plugin resolution (without local `pkg` provider mapping).
 - namespace package-add flow now validates generated SDK structure and typed behavior for enum/object/config/args/result symbols in a non-testprovider schema, but does not yet validate live invoke/runtime semantics for generated functions.
 - broader upstream parity classes (for example policy pack publish/lifecycle cloud flows and additional automation API variants) still need Dart ports.
@@ -223,6 +225,7 @@ Evidence:
 - `integration_tests/debugger_dart_test.go`
 - `integration_tests/upstream_dart_ports_test.go`
 - `integration_tests/upstream_policy_plugin_automation_dart_test.go`
+- `integration_tests/config_missing/*`
 - `integration_tests/policy_dart/*`
 - `integration_tests/plugin_install/*`
 - `integration_tests/automation/error/*`
@@ -292,7 +295,7 @@ Source files:
 - [x] Implement `Pack`
 - [x] Implement `Handshake`
 - [x] Implement `Cancel`
-- [ ] Add integration tests for each new RPC behavior
+- [x] Add integration tests for each new RPC behavior
 
 Exit criteria:
 
@@ -321,7 +324,7 @@ Exit criteria:
 - [x] Implement package ref resolution and registration wiring end-to-end
 - [x] Forward `ignoreChanges` and other missing lifecycle fields
 - [x] Add dedicated invoke-transform integration coverage
-- [ ] Add negative feature-support tests for invoke transforms
+- [x] Add negative feature-support tests for invoke transforms
 
 Exit criteria:
 
@@ -336,7 +339,13 @@ Exit criteria:
 - [ ] Port missing upstream integration classes (CLI output/config/error/dynamic-provider edge cases)
 - [x] Unskip/skiplift tests where feasible
 - [x] Add CI matrix slices for Dart parity categories
-- [ ] Define a recurring parity audit against Node/Python/Go changes
+- [x] Define a recurring parity audit against Node/Python/Go changes
+
+Audit workflow:
+
+- run `task parity:audit`
+- script: `scripts/parity_audit.sh`
+- intentional gap filter: `docs/parity-audit-ignore.txt`
 
 Exit criteria:
 
