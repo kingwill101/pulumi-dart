@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+
 import 'package:grpc/grpc.dart';
 import 'package:mockito/mockito.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
@@ -159,6 +161,22 @@ void main() {
       expect(
         identical(deployment_src.getCurrentDeployment(), deployment),
         isTrue,
+      );
+    });
+
+    test('environment provider test hooks override and reset to platform', () {
+      const key = '__PULUMI_TEST_CUSTOM_ENV__';
+      const value = 'set-by-test';
+      DeploymentImpl.setEnvironmentProviderForTesting(() => const {key: value});
+      expect(
+        DeploymentImpl.currentEnvironmentForTesting(),
+        equals(const {key: value}),
+      );
+
+      DeploymentImpl.resetEnvironmentProviderForTesting();
+      expect(
+        DeploymentImpl.currentEnvironmentForTesting(),
+        equals(Platform.environment),
       );
     });
 

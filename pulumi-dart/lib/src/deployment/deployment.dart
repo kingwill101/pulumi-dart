@@ -138,14 +138,15 @@ abstract class Deployment {
 
 class DeploymentImpl extends Deployment
     with ConfigMixin, InvokeMixin, CallMixin {
+  static Map<String, String> _platformEnvironment() => Platform.environment;
+
   static Deployment? _instance;
-  static Map<String, String> Function() _environmentProvider = () =>
-      Platform.environment;
+  static Map<String, String> Function() _environmentProvider =
+      _platformEnvironment;
   late final EngineLogger _logger;
   final String _organizationName;
   final String _projectName;
   final bool _isDryRun;
-  final Map<String, Output<dynamic>> _outputs = {};
   final List<Exception> _swallowedExceptions = [];
   final List<Future<void>> _resourceOperations = [];
   ICallbackServer? _callbacks;
@@ -230,7 +231,12 @@ class DeploymentImpl extends Deployment
 
   @visibleForTesting
   static void resetEnvironmentProviderForTesting() {
-    _environmentProvider = () => Platform.environment;
+    _environmentProvider = _platformEnvironment;
+  }
+
+  @visibleForTesting
+  static Map<String, String> currentEnvironmentForTesting() {
+    return _environmentProvider();
   }
 
   @override
@@ -702,35 +708,6 @@ class DeploymentImpl extends Deployment
 
     if (_stack == null) {
       return;
-    }
-
-    if (_outputs.isEmpty) {
-      return;
-    }
-
-    var serializedOutputs = <String, Value>{};
-
-    for (var entry in _outputs.entries) {
-      var outputData = await entry.value.getData();
-      if (!outputData.isKnown) {
-        await _logger.warn(
-          'Undefined value (${entry.key}) will not show as a stack output.',
-        );
-        continue;
-      }
-      var serializedValue = await _stack!.serializeOutputValue(outputData);
-      serializedOutputs[entry.key] = serializedValue;
-    }
-
-    try {
-      var request = RegisterResourceOutputsRequest();
-      request.urn = await _stackUrn.getValue();
-      request.outputs = Struct()..fields.addAll(serializedOutputs);
-
-      await monitor.registerResourceOutputs(request);
-    } catch (e) {
-      _logger.error('Failed to register outputs: $e');
-      rethrow;
     }
   }
 
