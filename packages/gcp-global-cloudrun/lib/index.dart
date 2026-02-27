@@ -1,3 +1,3 @@
 library pulumi_gcp_global_cloudrun_index;
 
-export 'package:pulumi_gcp_global_cloudrun/src/pulumi_gcp_global_cloudrun/index/index.dart';
+export 'package:pulumi_gcp_global_cloudrun/src/pulumi_gcp_global_cloudrun/index.dart';
