@@ -236,6 +236,61 @@ void main() {
       );
     });
 
+    test('allAliases rejects malformed parent alias URN shape', () async {
+      final parent = DependencyResource('AnUrn::ASegment');
+      final aliases = allAliases(
+        childAliases: const [],
+        childName: 'child',
+        childType: defaultType,
+        parent: parent,
+        parentName: 'parent',
+        project: defaultProject,
+        stack: defaultStack,
+        parentAliases: [Input.fromValue('not-a-valid-urn')],
+      );
+
+      await expectLater(
+        aliases.first.toOutput().getValue(),
+        throwsA(isA<ArgumentError>()),
+      );
+    });
+
+    test('allAliases rejects malformed child alias URN shape', () async {
+      final parent = DependencyResource('AnUrn::ASegment');
+      final aliases = allAliases(
+        childAliases: [Alias(urn: 'bad-child-urn')],
+        childName: 'child',
+        childType: defaultType,
+        parent: parent,
+        parentName: 'parent',
+        project: defaultProject,
+        stack: defaultStack,
+        parentAliases: [Input.fromValue('urn:pulumi:stack::project::pkg:type::parent')],
+      );
+
+      await expectLater(
+        aliases.last.toOutput().getValue(),
+        throwsA(isA<ArgumentError>()),
+      );
+    });
+
+    test('collapseAliasToUrn rejects malformed parent URN separators', () async {
+      final alias = Alias(type: Input.fromValue(defaultType));
+      final malformedParent = DependencyResource('malformed-parent');
+
+      await expectLater(
+        collapseAliasToUrn(
+          alias,
+          name: defaultName,
+          type: 'defType',
+          parent: malformedParent,
+          project: defaultProject,
+          stack: defaultStack,
+        ).toOutput().getValue(),
+        throwsArgumentError,
+      );
+    });
+
     test(
       'inheritedChildAlias keeps child name when no parent-name prefix',
       () async {
