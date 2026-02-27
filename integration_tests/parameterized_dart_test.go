@@ -5,7 +5,6 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"regexp"
 	"runtime"
 	"strings"
 	"testing"
@@ -13,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/pkg/v3/engine"
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 	"github.com/stretchr/testify/assert"
+	"gopkg.in/yaml.v3"
 )
 
 func TestParameterizedDart(t *testing.T) {
@@ -102,15 +102,10 @@ func TestParameterizedDart(t *testing.T) {
 				return fmt.Errorf("expected generated dart sdk at sdks/pkg/pubspec.yaml: %w", err)
 			}
 			generatedSDKPubspecPath := filepath.Join(info.Root, "sdks", "pkg", "pubspec.yaml")
-			generatedSDKPubspec, err := os.ReadFile(generatedSDKPubspecPath)
+			packageName, err := readPubspecPackageName(generatedSDKPubspecPath)
 			if err != nil {
-				return fmt.Errorf("failed to read generated sdk pubspec: %w", err)
+				return err
 			}
-			nameMatch := regexp.MustCompile(`(?m)^name:\s*([a-z0-9_]+)\s*$`).FindStringSubmatch(string(generatedSDKPubspec))
-			if len(nameMatch) < 2 || strings.TrimSpace(nameMatch[1]) == "" {
-				return fmt.Errorf("generated sdk pubspec missing package name: %s", generatedSDKPubspecPath)
-			}
-			packageName := strings.TrimSpace(nameMatch[1])
 			packageImport := fmt.Sprintf("package:%s/%s.dart", packageName, packageName)
 
 			for _, sourceFile := range []string{
@@ -193,4 +188,25 @@ func TestParameterizedDart(t *testing.T) {
 			assert.Equal(t, "hello", stack.Outputs["echoInvoke"])
 		},
 	})
+}
+
+func readPubspecPackageName(path string) (string, error) {
+	content, err := os.ReadFile(path)
+	if err != nil {
+		return "", fmt.Errorf("failed to read generated sdk pubspec: %w", err)
+	}
+
+	pubspec := struct {
+		Name string `yaml:"name"`
+	}{}
+	if err := yaml.Unmarshal(content, &pubspec); err != nil {
+		return "", fmt.Errorf("failed to parse generated sdk pubspec: %w", err)
+	}
+
+	name := strings.TrimSpace(pubspec.Name)
+	if name == "" {
+		return "", fmt.Errorf("generated sdk pubspec missing package name: %s", path)
+	}
+
+	return name, nil
 }
