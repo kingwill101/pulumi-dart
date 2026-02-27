@@ -116,6 +116,10 @@ void main() {
           ),
         ),
       );
+      await expectLater(
+        deployment.registerInvokeTransform((_) async => null),
+        throwsA(isA<Exception>()),
+      );
       expect(monitor.requestedFeatures, equals(['invokeTransforms']));
     });
 
@@ -146,6 +150,10 @@ void main() {
               contains('does not support invoke transforms'),
             ),
           ),
+        );
+        await expectLater(
+          deployment.registerInvokeTransform((_) async => null),
+          throwsA(isA<Exception>()),
         );
         expect(monitor.requestedFeatures, equals(['invokeTransforms']));
       },
