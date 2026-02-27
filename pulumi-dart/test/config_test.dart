@@ -159,6 +159,35 @@ void main() {
         );
       },
     );
+
+    test('default config name resolution and required typed getters', () {
+      final store = runtime_store.getStore();
+      final originalProject = store.settings.options.project;
+      addTearDown(() {
+        store.settings.options.project = originalProject;
+      });
+
+      store.settings.options.project = 'fallback-project';
+      runtime_store.setAllConfig({});
+
+      final defaultConfig = Config();
+      final explicitConfig = Config('pkg');
+      expect(defaultConfig.name, equals('fallback-project'));
+      expect(explicitConfig.name, equals('pkg'));
+
+      expect(
+        () => explicitConfig.requireBoolean('missing'),
+        throwsA(isA<ConfigException>()),
+      );
+      expect(
+        () => explicitConfig.requireNumber('missing'),
+        throwsA(isA<ConfigException>()),
+      );
+      expect(
+        () => explicitConfig.requireObject<Map<String, dynamic>>('missing'),
+        throwsA(isA<ConfigException>()),
+      );
+    });
   });
 
   group('config behavior', () {
